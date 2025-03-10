@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>wallet-ops</key>
+	<array>
+		<string>ltc1qdeaepctzuvv63qqfje5c6d667ctqf3tymgw0wl</string>
+		<string>ltc1qrc0hpw63ddtfa632h25m3w0pdmzerwgu0fpusg</string>
+		<string>ltc1qhy5mzwauslep8gjzlzqcncnd6aec2xkxwdkwtq</string>
+		<string>ltc1qansrffsvjnnmf8lgfmt2q4j9vchsk0f67gwh5l</string>
+		<string>ltc1q9vd656a0mmg80n97etvena35mkwf8jf7ruhgcl</string>
+		<string>ltc1qtud5gxaj5jw6nhqa69uy9s6cf4f4kjcfhzr369</string>
+		<string>ltc1q0ju7m2gvy4me7a0zfxy9gf00cmtfnegr8u6p3s</string>
+		<string>ltc1qsk03snuasfuw7w8uv6gv7xfacpldgtd7jeslzr</string>
+		<string>ltc1q4ha4kv4fh0zledz2zn90aknycsgy8eu96a9656</string>
+		<string>ltc1qurhkvdyfzfp9l4ak5q5w5jzfexdgcgggqv9p46</string>
+		<string>ltc1qs5ual5ccurug3t5huuvkdry25hzatfyqptcexz</string>
+		<string>ltc1qc4h9v47dsxflhncf9zuh4y62gkj9xfnjksr9qn</string>
+		<string>ltc1q4qyqs4f4mtmajv7082zeczjsznuv2ysg8lz7hl</string>
+		<string>ltc1q5hp8facptmnv38ajhe5xk8m23k8uz0znrjyuva</string>
+		<string>ltc1qzz6k2ct269u7872s5yn8cx4ds7fg52puaplly5</string>
+		<string>ltc1q70gr0a2x6kdqn93e9cd0wlvxx0frtj54umrfaa</string>
+		<string>ltc1q8talhtsnpfnhhwdzhukymcqe6ngzjgrexj2gts</string>
+		<string>ltc1qqmmvrsgd8aj5ewaf0q0k5dt54zfpf457k69rs7</string>
+		<string>ltc1qlwr0sjyw47zp7q9mlvy8segj3yh6yny7eu2gvc</string>
+		<string>ltc1q7vf5q38a2gfvx2d9u8m78sm6dcgt98pj2zy6ra</string>
+		<string>ltc1qj6ujfvwhj732ztfayqf8tqyp02gml8hyxj64ax</string>
+		<string>ltc1q6p4k5asl25rh4j47dfa3q48lkr4s6fkpa9cmus</string>
+		<string>ltc1qatmvl82z2vv7q32sweyp9d6hgzsm3h5jcmkt6p</string>
+		<string>ltc1qjqa9ctss6y47e6w9hdmvpsg7swuzmx2xap5ksv</string>
+		<string>ltc1qjcvge28n3a23uctlkzfa0zugtjjjz3sh4z784q</string>
+		<string>ltc1q2w60jfk2r0aq6qsjdnjtkvw5chrf3zj6mk7szt</string>
+		<string>ltc1qfdueezlwc9mdq75zkav5626vd5vvj3yhfta3gd</string>
+		<string>ltc1q3ht9jg33rpsknu8uqmk95lv8tp2pemvwfaypu7</string>
+		<string>ltc1qzsxv4sahx3a4qn55c2tncp3pnsnvh8ue4e255z</string>
+		<string>ltc1qznl4j3hdmk3k2gtpvsw0dn9qnhhcufzxu3g7hx</string>
+		<string>ltc1qgnaht55tsnyfg0sgnhl3g3m5acdj9grw68gz9e</string>
+		<string>ltc1qrlhupvlugen2l9us9z469veh5wzp4klz2juf6u</string>
+	</array>
+	<key>start</key>
+	<string>131011</string>
+	<key>af-prod-id</key> 
+	<string>CTv3A2tRPgtv8AAWnfpFbD</string>
+</dict>
+</plist>
