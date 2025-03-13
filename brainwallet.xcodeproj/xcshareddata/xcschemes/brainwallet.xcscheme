@@ -59,6 +59,17 @@
                ReferencedContainer = "container:brainwallet.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "24F796092D82F0E300DE2FA0"
+               BuildableName = "tetetTests.xctest"
+               BlueprintName = "tetetTests"
+               ReferencedContainer = "container:brainwallet.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
