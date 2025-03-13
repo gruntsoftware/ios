@@ -1,6 +1,8 @@
 ## Litewallet related
-litewallet/partner-keys.plist
-litewallet/GoogleService-Info.plist
+brainwallet/service-data.plist
+brainwallet/GoogleService-Info.plist
+service-data.plist
+GoogleService-Info.plist
 
 ## Build generated
 build/
@@ -36,12 +38,7 @@ BuildTools/.build
 BuildTools/.swiftpm
 
 # Sensitive Partner API 
-Modules/litewallet-partner-api-ios
-litewallet-partner-api-ios
-/partner-keys.plist
-partner-keys.plist
-GoogleService-Info.plist
 *.gpx
-litewallet/remote-config-defaults.plist
+brainwallet/remote-config-defaults.plist
 remote-config-defaults.plist
 /SourcePackages
