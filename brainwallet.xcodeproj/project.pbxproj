@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,10 +14,24 @@
 		22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9651DF61FEE000F0016 /* WebKit.framework */; };
 		246934C72D8FF5D0004973B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 246934C32D8FF5D0004973B9 /* GoogleService-Info.plist */; settings = {ASSET_TAGS = ("initial-resources", ); }; };
 		246934C82D8FF5D0004973B9 /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 246934C42D8FF5D0004973B9 /* remote-config-defaults.plist */; settings = {ASSET_TAGS = ("initial-resources", ); }; };
-		247AC4232D82E49400A6E09C /* gradle-wrapper.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 247AC4102D82E49400A6E09C /* gradle-wrapper.jar */; };
+		24D3C5BA2D9025C600B3366A /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC36A2D82E47C00A6E09C /* BRAddress.c */; };
+		24D3C5BB2D90261400B3366A /* BRBase58.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC36D2D82E47C00A6E09C /* BRBase58.c */; };
+		24D3C5BC2D90261400B3366A /* BRBech32.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC36F2D82E47C00A6E09C /* BRBech32.c */; };
+		24D3C5BD2D90261400B3366A /* BRBIP32Sequence.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC3712D82E47C00A6E09C /* BRBIP32Sequence.c */; };
+		24D3C5BE2D90261400B3366A /* BRBIP38Key.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC3732D82E47C00A6E09C /* BRBIP38Key.c */; };
+		24D3C5BF2D90261400B3366A /* BRBIP39Mnemonic.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC3752D82E47C00A6E09C /* BRBIP39Mnemonic.c */; };
+		24D3C5C02D90261400B3366A /* BRBloomFilter.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC3782D82E47C00A6E09C /* BRBloomFilter.c */; };
+		24D3C5C12D90261400B3366A /* BRCrypto.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC37B2D82E47C00A6E09C /* BRCrypto.c */; };
+		24D3C5C22D90261400B3366A /* BRKey.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC37E2D82E47C00A6E09C /* BRKey.c */; };
+		24D3C5C32D90261400B3366A /* BRMerkleBlock.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC3802D82E47C00A6E09C /* BRMerkleBlock.c */; };
+		24D3C5C42D90261400B3366A /* BRPaymentProtocol.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC3822D82E47C00A6E09C /* BRPaymentProtocol.c */; };
+		24D3C5C52D90261400B3366A /* BRPeer.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC3842D82E47C00A6E09C /* BRPeer.c */; };
+		24D3C5C62D90261400B3366A /* BRPeerManager.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC3862D82E47C00A6E09C /* BRPeerManager.c */; };
+		24D3C5C72D90261400B3366A /* BRSet.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC3882D82E47C00A6E09C /* BRSet.c */; };
+		24D3C5C82D90261400B3366A /* BRTransaction.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC38A2D82E47C00A6E09C /* BRTransaction.c */; };
+		24D3C5C92D90261400B3366A /* BRWallet.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC38C2D82E47C00A6E09C /* BRWallet.c */; };
 		24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D91D0A2166923E0077A619 /* UserNotifications.framework */; };
-		759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 755CD9D11DAA197C0075898E /* libBRCore.a */; };
-		C30808A52D0A23530063E793 /* AppsFlyerLib-Static in Frameworks */ = {isa = PBXBuildFile; productRef = C30808A42D0A23530063E793 /* AppsFlyerLib-Static */; };
+		759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 755CD9D11DAA197C0075898E /* libBRCore.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C312D2CE2D7DC27700BB97A4 /* NodeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C02D7DC27700BB97A4 /* NodeSelectorViewController.swift */; };
 		C312D2CF2D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C22D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift */; };
 		C312D2D02D7DC27700BB97A4 /* ReachabilityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2912D7DC27700BB97A4 /* ReachabilityMonitor.swift */; };
@@ -383,19 +397,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		24618EE72D90397E00A878AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75A2A7881DA5934300A983D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 755CD9D01DAA197C0075898E;
+			remoteInfo = BRCore;
+		};
 		2465873B23A5AAD100A32E9E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75A2A7881DA5934300A983D8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 75A2A78F1DA5934300A983D8;
 			remoteInfo = litewallet;
-		};
-		24F7963E2D8303F700DE2FA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75A2A7881DA5934300A983D8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 755CD9D01DAA197C0075898E;
-			remoteInfo = BRCore;
 		};
 		759DA0DD1DAC86BC008CC49B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -405,29 +419,6 @@
 			remoteInfo = submodules;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		22A9A9831DF63288000F0016 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		75A2A8031DA5935F00A983D8 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		22A9A95D1DF61FD0000F0016 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
@@ -1023,12 +1014,10 @@
 				22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */,
 				22A9A9621DF61FE0000F0016 /* SystemConfiguration.framework in Frameworks */,
 				22A9A9601DF61FD8000F0016 /* CoreLocation.framework in Frameworks */,
-				C30808A52D0A23530063E793 /* AppsFlyerLib-Static in Frameworks */,
 				22A9A95E1DF61FD0000F0016 /* PushKit.framework in Frameworks */,
 				C35C1222293D464A0009022D /* FirebaseAuth in Frameworks */,
 				C35C1224293D464A0009022D /* FirebaseCrashlytics in Frameworks */,
 				C35C1220293D464A0009022D /* FirebaseAnalytics in Frameworks */,
-				247AC4232D82E49400A6E09C /* gradle-wrapper.jar in Frameworks */,
 				759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1644,6 +1633,34 @@
 			path = Modules/data;
 			sourceTree = "<group>";
 		};
+		24D3C5B82D8FFE0F00B3366A /* br-swift */ = {
+			isa = PBXGroup;
+			children = (
+				C312D21D2D7DC27700BB97A4 /* BRAddressExtension.swift */,
+				C312D21E2D7DC27700BB97A4 /* BRAPIClient+Events.swift */,
+				C312D21F2D7DC27700BB97A4 /* BRAPIClient+Features.swift */,
+				C312D2202D7DC27700BB97A4 /* BRAPIClient+KV.swift */,
+				C312D2212D7DC27700BB97A4 /* BRAPIClient+Wallet.swift */,
+				C312D2222D7DC27700BB97A4 /* BRCalculationExtension.swift */,
+				C312D2232D7DC27700BB97A4 /* BRCore.swift */,
+				C312D2242D7DC27700BB97A4 /* BRKeyExtension.swift */,
+				C312D2252D7DC27700BB97A4 /* BRMasterKeyExtension.swift */,
+				C312D2262D7DC27700BB97A4 /* BRPeerManager.swift */,
+				C312D2272D7DC27700BB97A4 /* BRTxInputExtension.swift */,
+				C312D2282D7DC27700BB97A4 /* BRTxOutputExtension.swift */,
+				C312D2292D7DC27700BB97A4 /* BRWallet.swift */,
+				C312D09D2D7DC27700BB97A4 /* BRActivityView.swift */,
+				C312D09E2D7DC27700BB97A4 /* BRAPIClient.swift */,
+				C312D09F2D7DC27700BB97A4 /* BRAPIClient+Assets.swift */,
+				C312D0A02D7DC27700BB97A4 /* BRCoding.swift */,
+				C312D0A12D7DC27700BB97A4 /* BRReplicatedKVStore.swift */,
+				C312D0A22D7DC27700BB97A4 /* BRSocketHelpers.h */,
+				C312D0A32D7DC27700BB97A4 /* BRSocketHelpers.c */,
+				C312D0A42D7DC27700BB97A4 /* BRTar.swift */,
+			);
+			path = "br-swift";
+			sourceTree = "<group>";
+		};
 		75A2A7871DA5934300A983D8 = {
 			isa = PBXGroup;
 			children = (
@@ -1819,6 +1836,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				24D3C5B82D8FFE0F00B3366A /* br-swift */,
 				246934CB2D8FF983004973B9 /* launch-resources */,
 				C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */,
 				C312D06C2D7DC27700BB97A4 /* Async.swift */,
@@ -1866,14 +1884,6 @@
 				C312D1AC2D7DC27700BB97A4 /* SecurityCenterViewController.swift */,
 				C312D1AD2D7DC27700BB97A4 /* UpdatePinViewController.swift */,
 				C312D1AF2D7DC27700BB97A4 /* DismissLoginAnimator.swift */,
-				C312D09D2D7DC27700BB97A4 /* BRActivityView.swift */,
-				C312D09E2D7DC27700BB97A4 /* BRAPIClient.swift */,
-				C312D09F2D7DC27700BB97A4 /* BRAPIClient+Assets.swift */,
-				C312D0A02D7DC27700BB97A4 /* BRCoding.swift */,
-				C312D0A12D7DC27700BB97A4 /* BRReplicatedKVStore.swift */,
-				C312D0A22D7DC27700BB97A4 /* BRSocketHelpers.h */,
-				C312D0A32D7DC27700BB97A4 /* BRSocketHelpers.c */,
-				C312D0A42D7DC27700BB97A4 /* BRTar.swift */,
 				C312D0A62D7DC27700BB97A4 /* Extensions.swift */,
 				C312D0A72D7DC27700BB97A4 /* module.modulemap */,
 				C312D0A82D7DC27700BB97A4 /* TxMetaData.swift */,
@@ -1953,19 +1963,6 @@
 				C312D2052D7DC27700BB97A4 /* BartyCrouch.swift */,
 				C312D21B2D7DC27700BB97A4 /* BIP39Words.plist */,
 				C312D21C2D7DC27700BB97A4 /* bitrefill_index.html */,
-				C312D21D2D7DC27700BB97A4 /* BRAddressExtension.swift */,
-				C312D21E2D7DC27700BB97A4 /* BRAPIClient+Events.swift */,
-				C312D21F2D7DC27700BB97A4 /* BRAPIClient+Features.swift */,
-				C312D2202D7DC27700BB97A4 /* BRAPIClient+KV.swift */,
-				C312D2212D7DC27700BB97A4 /* BRAPIClient+Wallet.swift */,
-				C312D2222D7DC27700BB97A4 /* BRCalculationExtension.swift */,
-				C312D2232D7DC27700BB97A4 /* BRCore.swift */,
-				C312D2242D7DC27700BB97A4 /* BRKeyExtension.swift */,
-				C312D2252D7DC27700BB97A4 /* BRMasterKeyExtension.swift */,
-				C312D2262D7DC27700BB97A4 /* BRPeerManager.swift */,
-				C312D2272D7DC27700BB97A4 /* BRTxInputExtension.swift */,
-				C312D2282D7DC27700BB97A4 /* BRTxOutputExtension.swift */,
-				C312D2292D7DC27700BB97A4 /* BRWallet.swift */,
 				C312D22A2D7DC27700BB97A4 /* BundleExtension.swift */,
 				C312D22B2D7DC27700BB97A4 /* BuyCenterWebViewController.swift */,
 				C312D22C2D7DC27700BB97A4 /* BuyHostingController.swift */,
@@ -2211,7 +2208,7 @@
 /* Begin PBXLegacyTarget section */
 		759DA0D71DAC8668008CC49B /* submodules */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "-c 'git submodule init && git submodule update && git -C Modules/core submodule init && git -C Modules/core submodule update'";
+			buildArgumentsString = "-c 'git submodule init && git submodule update && git -C Modules/core submodule init && git -C Modules/core submodule update && git -C Modules/data submodule init && git -C Modules/data submodule update'";
 			buildConfigurationList = 759DA0DA1DAC8668008CC49B /* Build configuration list for PBXLegacyTarget "submodules" */;
 			buildPhases = (
 			);
@@ -2248,6 +2245,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 755CD9D71DAA197D0075898E /* Build configuration list for PBXNativeTarget "BRCore" */;
 			buildPhases = (
+				24D3C5B92D90259C00B3366A /* Sources */,
 			);
 			buildRules = (
 			);
@@ -2266,8 +2264,6 @@
 				75A2A78C1DA5934300A983D8 /* Sources */,
 				75A2A78D1DA5934300A983D8 /* Frameworks */,
 				75A2A78E1DA5934300A983D8 /* Resources */,
-				75A2A8031DA5935F00A983D8 /* Embed Foundation Extensions */,
-				22A9A9831DF63288000F0016 /* Embed Frameworks */,
 				C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */,
 				C3A3FFB526FE46E8000FE955 /* Mark Dev Notes */,
 				58A9FE4C291BC37400B75825 /* Count number of swift lines */,
@@ -2275,7 +2271,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				24F7963F2D8303F700DE2FA0 /* PBXTargetDependency */,
+				24618EE82D90397E00A878AC /* PBXTargetDependency */,
 			);
 			name = brainwallet;
 			packageProductDependencies = (
@@ -2283,7 +2279,6 @@
 				C35C1221293D464A0009022D /* FirebaseAuth */,
 				C35C1223293D464A0009022D /* FirebaseCrashlytics */,
 				C35C1229293D48340009022D /* KeychainAccess */,
-				C30808A42D0A23530063E793 /* AppsFlyerLib-Static */,
 				C353582C2D11DA4900395C45 /* FirebaseRemoteConfig */,
 			);
 			productName = breadwallet;
@@ -2339,6 +2334,7 @@
 				};
 			};
 			buildConfigurationList = 75A2A78B1DA5934300A983D8 /* Build configuration list for PBXProject "brainwallet" */;
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -2348,9 +2344,7 @@
 			packageReferences = (
 				C35C121E293D464A0009022D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				C30808A32D0A23530063E793 /* XCRemoteSwiftPackageReference "AppsFlyerFramework-Static" */,
 			);
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 75A2A7911DA5934300A983D8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2526,6 +2520,29 @@
 				C312D5102D7DC28E00BB97A4 /* TestHelpers.swift in Sources */,
 				C312D5112D7DC28E00BB97A4 /* UnstoppableDomainViewModelTests.swift in Sources */,
 				C312D5122D7DC28E00BB97A4 /* WalletInfoTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24D3C5B92D90259C00B3366A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24D3C5BB2D90261400B3366A /* BRBase58.c in Sources */,
+				24D3C5BC2D90261400B3366A /* BRBech32.c in Sources */,
+				24D3C5BD2D90261400B3366A /* BRBIP32Sequence.c in Sources */,
+				24D3C5BE2D90261400B3366A /* BRBIP38Key.c in Sources */,
+				24D3C5BF2D90261400B3366A /* BRBIP39Mnemonic.c in Sources */,
+				24D3C5C02D90261400B3366A /* BRBloomFilter.c in Sources */,
+				24D3C5C12D90261400B3366A /* BRCrypto.c in Sources */,
+				24D3C5C22D90261400B3366A /* BRKey.c in Sources */,
+				24D3C5C32D90261400B3366A /* BRMerkleBlock.c in Sources */,
+				24D3C5C42D90261400B3366A /* BRPaymentProtocol.c in Sources */,
+				24D3C5C52D90261400B3366A /* BRPeer.c in Sources */,
+				24D3C5C62D90261400B3366A /* BRPeerManager.c in Sources */,
+				24D3C5C72D90261400B3366A /* BRSet.c in Sources */,
+				24D3C5C82D90261400B3366A /* BRTransaction.c in Sources */,
+				24D3C5C92D90261400B3366A /* BRWallet.c in Sources */,
+				24D3C5BA2D9025C600B3366A /* BRAddress.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2814,15 +2831,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		24618EE82D90397E00A878AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 755CD9D01DAA197C0075898E /* BRCore */;
+			targetProxy = 24618EE72D90397E00A878AC /* PBXContainerItemProxy */;
+		};
 		2465873C23A5AAD100A32E9E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 75A2A78F1DA5934300A983D8 /* brainwallet */;
 			targetProxy = 2465873B23A5AAD100A32E9E /* PBXContainerItemProxy */;
-		};
-		24F7963F2D8303F700DE2FA0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 755CD9D01DAA197C0075898E /* BRCore */;
-			targetProxy = 24F7963E2D8303F700DE2FA0 /* PBXContainerItemProxy */;
 		};
 		759DA0DE1DAC86BC008CC49B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2881,7 +2898,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -2939,7 +2956,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules $(SRCROOT)/";
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules $(SRCROOT)/brainwallet/br-swift";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -2962,6 +2980,7 @@
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				INFOPLIST_FILE = "$(SRCROOT)/brainwallet/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Brainwallet;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -3086,6 +3105,10 @@
 		24470E0C23A5BF3C00ADDA27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules $(SRCROOT)/brainwallet/br-swift";
 			};
 			name = Debug;
 		};
@@ -3138,6 +3161,9 @@
 		759DA0D91DAC8668008CC49B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules $(SRCROOT)/brainwallet/br-swift";
 			};
 			name = Release;
 		};
@@ -3145,7 +3171,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -3196,7 +3222,7 @@
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC  ";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules $(SRCROOT)/";
+				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules $(SRCROOT)/brainwallet/br-swift";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -3218,6 +3244,7 @@
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				INFOPLIST_FILE = "$(SRCROOT)/brainwallet/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Brainwallet;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -3292,14 +3319,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C30808A32D0A23530063E793 /* XCRemoteSwiftPackageReference "AppsFlyerFramework-Static" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Static";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.15.3;
-			};
-		};
 		C35C121E293D464A0009022D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -3319,11 +3338,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C30808A42D0A23530063E793 /* AppsFlyerLib-Static */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C30808A32D0A23530063E793 /* XCRemoteSwiftPackageReference "AppsFlyerFramework-Static" */;
-			productName = "AppsFlyerLib-Static";
-		};
 		C353582C2D11DA4900395C45 /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C35C121E293D464A0009022D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
