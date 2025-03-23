@@ -60,3 +60,8 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+Modules/data/android/dataandroidprivate/gradle/.DS_Store
+brainwallet/launch-resources/service-data.plist
+brainwallet/launch-resources/remote-config-defaults.plist
+brainwallet/launch-resources/GoogleService-Info.plist
+.DS_Store
