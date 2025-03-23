@@ -12,6 +12,7 @@
 		22A9A9621DF61FE0000F0016 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9611DF61FE0000F0016 /* SystemConfiguration.framework */; };
 		22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9631DF61FE7000F0016 /* Security.framework */; };
 		22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9651DF61FEE000F0016 /* WebKit.framework */; };
+		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
 		246934C72D8FF5D0004973B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 246934C32D8FF5D0004973B9 /* GoogleService-Info.plist */; settings = {ASSET_TAGS = ("initial-resources", ); }; };
 		246934C82D8FF5D0004973B9 /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 246934C42D8FF5D0004973B9 /* remote-config-defaults.plist */; settings = {ASSET_TAGS = ("initial-resources", ); }; };
 		24D3C5BA2D9025C600B3366A /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC36A2D82E47C00A6E09C /* BRAddress.c */; };
@@ -204,7 +205,6 @@
 		C312D3E52D7DC27700BB97A4 /* LocalWebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2762D7DC27700BB97A4 /* LocalWebViewModel.swift */; };
 		C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */; };
 		C312D3E82D7DC27700BB97A4 /* FinishedStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24B2D7DC27700BB97A4 /* FinishedStepView.swift */; };
-		C312D3EB2D7DC27700BB97A4 /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2232D7DC27700BB97A4 /* BRCore.swift */; };
 		C312D3EC2D7DC27700BB97A4 /* TxMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A82D7DC27700BB97A4 /* TxMetaData.swift */; };
 		C312D3ED2D7DC27700BB97A4 /* BRTxOutputExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2282D7DC27700BB97A4 /* BRTxOutputExtension.swift */; };
 		C312D3F02D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0762D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift */; };
@@ -427,6 +427,7 @@
 		22A9A9631DF61FE7000F0016 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		22A9A9651DF61FEE000F0016 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		22A9A9671DF61FF8000F0016 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		246934C32D8FF5D0004973B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		246934C42D8FF5D0004973B9 /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "remote-config-defaults.plist"; sourceTree = "<group>"; };
@@ -808,7 +809,6 @@
 		C312D2202D7DC27700BB97A4 /* BRAPIClient+KV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+KV.swift"; sourceTree = "<group>"; };
 		C312D2212D7DC27700BB97A4 /* BRAPIClient+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+Wallet.swift"; sourceTree = "<group>"; };
 		C312D2222D7DC27700BB97A4 /* BRCalculationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCalculationExtension.swift; sourceTree = "<group>"; };
-		C312D2232D7DC27700BB97A4 /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		C312D2242D7DC27700BB97A4 /* BRKeyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRKeyExtension.swift; sourceTree = "<group>"; };
 		C312D2252D7DC27700BB97A4 /* BRMasterKeyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRMasterKeyExtension.swift; sourceTree = "<group>"; };
 		C312D2262D7DC27700BB97A4 /* BRPeerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRPeerManager.swift; sourceTree = "<group>"; };
@@ -1642,7 +1642,6 @@
 				C312D2202D7DC27700BB97A4 /* BRAPIClient+KV.swift */,
 				C312D2212D7DC27700BB97A4 /* BRAPIClient+Wallet.swift */,
 				C312D2222D7DC27700BB97A4 /* BRCalculationExtension.swift */,
-				C312D2232D7DC27700BB97A4 /* BRCore.swift */,
 				C312D2242D7DC27700BB97A4 /* BRKeyExtension.swift */,
 				C312D2252D7DC27700BB97A4 /* BRMasterKeyExtension.swift */,
 				C312D2262D7DC27700BB97A4 /* BRPeerManager.swift */,
@@ -1836,6 +1835,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				24618EE92D90435200A878AC /* BRCore.swift */,
 				24D3C5B82D8FFE0F00B3366A /* br-swift */,
 				246934CB2D8FF983004973B9 /* launch-resources */,
 				C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */,
@@ -2614,6 +2614,7 @@
 				C312D32E2D7DC27700BB97A4 /* StoreReview+Extension.swift in Sources */,
 				C312D32F2D7DC27700BB97A4 /* UISlider+Gradient.swift in Sources */,
 				C312D3302D7DC27700BB97A4 /* UIControl+Callback.swift in Sources */,
+				24618EEA2D90436500A878AC /* BRCore.swift in Sources */,
 				C312D3312D7DC27700BB97A4 /* String+Additions.swift in Sources */,
 				C312D3342D7DC27700BB97A4 /* BRWallet.swift in Sources */,
 				C312D3352D7DC27700BB97A4 /* TransactionManager.swift in Sources */,
@@ -2724,7 +2725,6 @@
 				C312D3E52D7DC27700BB97A4 /* LocalWebViewModel.swift in Sources */,
 				C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */,
 				C312D3E82D7DC27700BB97A4 /* FinishedStepView.swift in Sources */,
-				C312D3EB2D7DC27700BB97A4 /* BRCore.swift in Sources */,
 				C312D3EC2D7DC27700BB97A4 /* TxMetaData.swift in Sources */,
 				C312D3ED2D7DC27700BB97A4 /* BRTxOutputExtension.swift in Sources */,
 				C312D3F02D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift in Sources */,
