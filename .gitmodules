@@ -1,6 +1,3 @@
-[submodule "Modules/unbound"]
-	path = Modules/unbound
-	url = https://github.com/breadwallet/unbound.git
 [submodule "Modules/core"]
 	path = Modules/core
 	url = https://github.com/brainwallet-co/core.git
