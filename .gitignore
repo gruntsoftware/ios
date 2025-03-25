@@ -42,3 +42,6 @@ BuildTools/.swiftpm
 brainwallet/remote-config-defaults.plist
 remote-config-defaults.plist
 /SourcePackages
+/brainwallet/launch-resources/GoogleService-Info.plist
+/brainwallet/launch-resources/remote-config-defaults.plist
+/brainwallet/launch-resources/service-data.plist
