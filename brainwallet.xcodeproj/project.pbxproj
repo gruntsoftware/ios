@@ -13,8 +13,6 @@
 		22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9631DF61FE7000F0016 /* Security.framework */; };
 		22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9651DF61FEE000F0016 /* WebKit.framework */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
-		246934C72D8FF5D0004973B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 246934C32D8FF5D0004973B9 /* GoogleService-Info.plist */; settings = {ASSET_TAGS = ("initial-resources", ); }; };
-		246934C82D8FF5D0004973B9 /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 246934C42D8FF5D0004973B9 /* remote-config-defaults.plist */; settings = {ASSET_TAGS = ("initial-resources", ); }; };
 		24D3C5BA2D9025C600B3366A /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC36A2D82E47C00A6E09C /* BRAddress.c */; };
 		24D3C5BB2D90261400B3366A /* BRBase58.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC36D2D82E47C00A6E09C /* BRBase58.c */; };
 		24D3C5BC2D90261400B3366A /* BRBech32.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC36F2D82E47C00A6E09C /* BRBech32.c */; };
@@ -32,6 +30,9 @@
 		24D3C5C82D90261400B3366A /* BRTransaction.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC38A2D82E47C00A6E09C /* BRTransaction.c */; };
 		24D3C5C92D90261400B3366A /* BRWallet.c in Sources */ = {isa = PBXBuildFile; fileRef = 247AC38C2D82E47C00A6E09C /* BRWallet.c */; };
 		24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D91D0A2166923E0077A619 /* UserNotifications.framework */; };
+		24DF5CBF2D934E39009A426C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24DF5CBE2D934E39009A426C /* GoogleService-Info.plist */; };
+		24DF5CC12D934E42009A426C /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24DF5CC02D934E42009A426C /* remote-config-defaults.plist */; };
+		24DF5CC32D934E4B009A426C /* service-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24DF5CC22D934E4B009A426C /* service-data.plist */; };
 		759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 755CD9D11DAA197C0075898E /* libBRCore.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C312D2CE2D7DC27700BB97A4 /* NodeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C02D7DC27700BB97A4 /* NodeSelectorViewController.swift */; };
 		C312D2CF2D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C22D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift */; };
@@ -350,7 +351,6 @@
 		C312D4C72D7DC27700BB97A4 /* 한국인.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0C42D7DC27700BB97A4 /* 한국인.mp3 */; };
 		C312D4C82D7DC27700BB97A4 /* BIP39Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = C312D21B2D7DC27700BB97A4 /* BIP39Words.plist */; };
 		C312D4CA2D7DC27700BB97A4 /* Buy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1862D7DC27700BB97A4 /* Buy.storyboard */; };
-		C312D4CB2D7DC27700BB97A4 /* service-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = C312D2A62D7DC27700BB97A4 /* service-data.plist */; settings = {ASSET_TAGS = ("initial-resources", ); }; };
 		C312D4CC2D7DC27700BB97A4 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1842D7DC27700BB97A4 /* Alerts.storyboard */; };
 		C312D4CD2D7DC27700BB97A4 /* It.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0B92D7DC27700BB97A4 /* It.mp3 */; };
 		C312D4CE2D7DC27700BB97A4 /* Phrase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1882D7DC27700BB97A4 /* Phrase.storyboard */; };
@@ -429,8 +429,6 @@
 		22A9A9671DF61FF8000F0016 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		246934C32D8FF5D0004973B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		246934C42D8FF5D0004973B9 /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "remote-config-defaults.plist"; sourceTree = "<group>"; };
 		247AC2FF2D82E47C00A6E09C /* ax_jni_include_dir.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_jni_include_dir.m4; sourceTree = "<group>"; };
 		247AC3002D82E47C00A6E09C /* ax_prog_cc_for_build.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_prog_cc_for_build.m4; sourceTree = "<group>"; };
 		247AC3012D82E47C00A6E09C /* bitcoin_secp.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = bitcoin_secp.m4; sourceTree = "<group>"; };
@@ -615,6 +613,9 @@
 		247AC4212D82E49400A6E09C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		24B9621B23BA66CF00ECD938 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		24D91D0A2166923E0077A619 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		24DF5CBE2D934E39009A426C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		24DF5CC02D934E42009A426C /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "remote-config-defaults.plist"; sourceTree = "<group>"; };
+		24DF5CC22D934E4B009A426C /* service-data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "service-data.plist"; sourceTree = "<group>"; };
 		755CD9D11DAA197C0075898E /* libBRCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBRCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A2A7901DA5934300A983D8 /* Brainwallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brainwallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A2A7F21DA5935F00A983D8 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
@@ -911,7 +912,6 @@
 		C312D2A32D7DC27700BB97A4 /* SendButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendButtonView.swift; sourceTree = "<group>"; };
 		C312D2A42D7DC27700BB97A4 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		C312D2A52D7DC27700BB97A4 /* SendLTCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendLTCViewController.swift; sourceTree = "<group>"; };
-		C312D2A62D7DC27700BB97A4 /* service-data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "service-data.plist"; sourceTree = "<group>"; };
 		C312D2A72D7DC27700BB97A4 /* SignupWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupWebView.swift; sourceTree = "<group>"; };
 		C312D2A82D7DC27700BB97A4 /* SignupWebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupWebViewModel.swift; sourceTree = "<group>"; };
 		C312D2A92D7DC27700BB97A4 /* SimpleRedux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRedux.swift; sourceTree = "<group>"; };
@@ -1025,16 +1025,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		246934CB2D8FF983004973B9 /* launch-resources */ = {
-			isa = PBXGroup;
-			children = (
-				246934C32D8FF5D0004973B9 /* GoogleService-Info.plist */,
-				246934C42D8FF5D0004973B9 /* remote-config-defaults.plist */,
-				C312D2A62D7DC27700BB97A4 /* service-data.plist */,
-			);
-			path = "launch-resources";
-			sourceTree = "<group>";
-		};
 		247AC3022D82E47C00A6E09C /* m4 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1660,6 +1650,16 @@
 			path = "br-swift";
 			sourceTree = "<group>";
 		};
+		24DF5CBD2D934E29009A426C /* launch-resources */ = {
+			isa = PBXGroup;
+			children = (
+				24DF5CBE2D934E39009A426C /* GoogleService-Info.plist */,
+				24DF5CC02D934E42009A426C /* remote-config-defaults.plist */,
+				24DF5CC22D934E4B009A426C /* service-data.plist */,
+			);
+			path = "launch-resources";
+			sourceTree = "<group>";
+		};
 		75A2A7871DA5934300A983D8 = {
 			isa = PBXGroup;
 			children = (
@@ -1835,9 +1835,9 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				24DF5CBD2D934E29009A426C /* launch-resources */,
 				24618EE92D90435200A878AC /* BRCore.swift */,
 				24D3C5B82D8FFE0F00B3366A /* br-swift */,
-				246934CB2D8FF983004973B9 /* launch-resources */,
 				C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */,
 				C312D06C2D7DC27700BB97A4 /* Async.swift */,
 				C312D06D2D7DC27700BB97A4 /* CGContext+Additions.swift */,
@@ -2372,7 +2372,9 @@
 			files = (
 				C312D4972D7DC27700BB97A4 /* RELEASE_NOTES.md in Resources */,
 				C312D4982D7DC27700BB97A4 /* українська.mp3 in Resources */,
+				24DF5CC12D934E42009A426C /* remote-config-defaults.plist in Resources */,
 				C312D4992D7DC27700BB97A4 /* Send.storyboard in Resources */,
+				24DF5CC32D934E4B009A426C /* service-data.plist in Resources */,
 				C312D49A2D7DC27700BB97A4 /* Receive.storyboard in Resources */,
 				C312D49B2D7DC27700BB97A4 /* Português.mp3 in Resources */,
 				C312D49C2D7DC27700BB97A4 /* Türkçe.mp3 in Resources */,
@@ -2381,6 +2383,7 @@
 				C312D4A02D7DC27700BB97A4 /* Русский.mp3 in Resources */,
 				C312D4A12D7DC27700BB97A4 /* Icon.xcassets in Resources */,
 				C312D4A22D7DC27700BB97A4 /* Italiano.mp3 in Resources */,
+				24DF5CBF2D934E39009A426C /* GoogleService-Info.plist in Resources */,
 				C312D4A32D7DC27700BB97A4 /* Es.mp3 in Resources */,
 				C312D4A42D7DC27700BB97A4 /* Main.storyboard in Resources */,
 				C312D4A52D7DC27700BB97A4 /* Id.mp3 in Resources */,
@@ -2416,9 +2419,6 @@
 				C312D4C72D7DC27700BB97A4 /* 한국인.mp3 in Resources */,
 				C312D4C82D7DC27700BB97A4 /* BIP39Words.plist in Resources */,
 				C312D4CA2D7DC27700BB97A4 /* Buy.storyboard in Resources */,
-				246934C72D8FF5D0004973B9 /* GoogleService-Info.plist in Resources */,
-				246934C82D8FF5D0004973B9 /* remote-config-defaults.plist in Resources */,
-				C312D4CB2D7DC27700BB97A4 /* service-data.plist in Resources */,
 				C312D4CC2D7DC27700BB97A4 /* Alerts.storyboard in Resources */,
 				C312D4CD2D7DC27700BB97A4 /* It.mp3 in Resources */,
 				C312D4CE2D7DC27700BB97A4 /* Phrase.storyboard in Resources */,
