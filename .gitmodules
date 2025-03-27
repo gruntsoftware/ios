@@ -1,0 +1,6 @@
+[submodule "Modules/core"]
+	path = Modules/core
+	url = https://github.com/gruntsoftware/core.git
+[submodule "Modules/data"]
+	path = Modules/data
+	url = https://github.com/gruntsoftware/data.git
