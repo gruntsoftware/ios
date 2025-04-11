@@ -348,7 +348,6 @@
 		C312D4CE2D7DC27700BB97A4 /* Phrase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1882D7DC27700BB97A4 /* Phrase.storyboard */; };
 		C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0952D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf */; };
 		C312D4D22D7DC27700BB97A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D25A2D7DC27700BB97A4 /* LaunchScreen.storyboard */; };
-		C312D4F72D7DC28E00BB97A4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C312D4F32D7DC28E00BB97A4 /* Info.plist */; };
 		C312D4F82D7DC28E00BB97A4 /* NSDataExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E52D7DC28E00BB97A4 /* NSDataExtensionTests.swift */; };
 		C312D4F92D7DC28E00BB97A4 /* TouchIdEnabledTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E92D7DC28E00BB97A4 /* TouchIdEnabledTests.swift */; };
 		C312D4FA2D7DC28E00BB97A4 /* WalletCreationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4EB2D7DC28E00BB97A4 /* WalletCreationTests.swift */; };
@@ -1829,7 +1828,6 @@
 			buildPhases = (
 				2465873223A5AAD000A32E9E /* Sources */,
 				2465873323A5AAD000A32E9E /* Frameworks */,
-				2465873423A5AAD000A32E9E /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1960,14 +1958,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2465873423A5AAD000A32E9E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C312D4F72D7DC28E00BB97A4 /* Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		75A2A78E1DA5934300A983D8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2601,6 +2591,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"BUNDLE_LOADER[arch=*]" = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2651,8 +2642,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = litewalletTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_FILE = brainwalletTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2661,14 +2652,14 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.litecoin.loafwallet.litewalletTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet.brainwalletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Litewallet.app/Litewallet";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brainwallet.app/Brainwallet";
 			};
 			name = Debug;
 		};
@@ -2716,19 +2707,19 @@
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_ON_DEMAND_RESOURCES = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = litewalletTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_FILE = brainwalletTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.litecoin.loafwallet.litewalletTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet.brainwalletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Litewallet.app/Litewallet";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brainwallet.app/Brainwallet";
 			};
 			name = Release;
 		};
