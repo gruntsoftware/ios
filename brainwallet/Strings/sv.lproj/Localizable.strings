@@ -2,7 +2,7 @@
 "About.blog" = "Blogg";
 
 /* About screen footer */
-"About.footer" = "Skapad av det lokala teamet för Litewallet. Version %1$@";
+"About.footer" = "Skapad av det lokala teamet för Brainwallet. Version %1$@";
 
 /* Privay Policy button label */
 "About.privacy" = "Sekretesspolicy";
@@ -26,7 +26,7 @@
 "Account.loadingMessage" = "Laddar plånbok";
 
 /* Default wallet name */
-"AccountHeader.defaultWalletName" = "Mitt Litewallet";
+"AccountHeader.defaultWalletName" = "Mitt Brainwallet";
 
 /* Manage wallet button title */
 "AccountHeader.manageButtonName" = "HANTERA";
@@ -323,7 +323,7 @@
 "Import.leftCaption" = "Plånbok som ska importeras";
 
 /* Import wallet intro screen message */
-"Import.message" = "Genom att importera en plånbok överförs alla pengar från din andra plånbok till Litewallet genom en enda transaktion.";
+"Import.message" = "Genom att importera en plånbok överförs alla pengar från din andra plånbok till Brainwallet genom en enda transaktion.";
 
 /* Enter password alert view title */
 "Import.password" = "Denna privata nyckel är lösenordsskyddad.";
@@ -332,7 +332,7 @@
 "Import.passwordPlaceholder" = "lösenord";
 
 /* Caption for graphics */
-"Import.rightCaption" = "Din Litewallet-plånbok";
+"Import.rightCaption" = "Din Brainwallet-plånbok";
 
 /* Scan Private key button label */
 "Import.scan" = "Läs av privat nyckel";
@@ -362,10 +362,10 @@
 "JailbreakWarnings.ignore" = "Ignorera";
 
 /* Jailbreak warning message */
-"JailbreakWarnings.messageWithBalance" = "ENHETENS SÄKERHET ÄR ÄVENTYRAD\nEn \"intrångs\"-app kan få tillgång till Litewallets nyckeldata och stjäla dina Litecoin! Töm denna plånbok direkt och återupprätta den på en säker enhet.";
+"JailbreakWarnings.messageWithBalance" = "ENHETENS SÄKERHET ÄR ÄVENTYRAD\nEn \"intrångs\"-app kan få tillgång till Brainwallets nyckeldata och stjäla dina Litecoin! Töm denna plånbok direkt och återupprätta den på en säker enhet.";
 
 /* Jailbreak warning message */
-"JailbreakWarnings.messageWithoutBalance" = "ENHETENS SÄKERHET ÄR ÄVENTYRAD\nEn \"intrångs\"-app kan få tillgång till Litewallets nyckeldata och stjäla dina Litecoin! Använd Litewallet endast på en säker enhet.";
+"JailbreakWarnings.messageWithoutBalance" = "ENHETENS SÄKERHET ÄR ÄVENTYRAD\nEn \"intrångs\"-app kan få tillgång till Brainwallets nyckeldata och stjäla dina Litecoin! Använd Brainwallet endast på en säker enhet.";
 
 /* Jailbreak warning title */
 "JailbreakWarnings.title" = "VARNING";
@@ -373,14 +373,14 @@
 /* Wipe wallet button */
 "JailbreakWarnings.wipe" = "Töm";
 
-/* Litewallet name */
-"Litewallet.name" = "Litewallet";
+/* Brainwallet name */
+"Brainwallet.name" = "Brainwallet";
 
 /* Location services disabled error */
 "LocationPlugin.disabled" = "Platstjänster är inaktiverade.";
 
 /* No permissions for location services */
-"LocationPlugin.notAuthorized" = "Litewallet har inte rätt att utnyttja platstjänster";
+"LocationPlugin.notAuthorized" = "Brainwallet har inte rätt att utnyttja platstjänster";
 
 /* No comment provided by engineer. */
 "Malformed URI" = "Felaktig URI";
@@ -521,13 +521,13 @@
 "Prompts.RecommendRescan.title" = "Transaktionen avslogs";
 
 /* Upgrade PIN prompt body. */
-"Prompts.SetPin.body" = "Litewallet har uppgraderat till att använda 6-siffrig PIN-kod. Klicka här för att uppgradera.";
+"Prompts.SetPin.body" = "Brainwallet har uppgraderat till att använda 6-siffrig PIN-kod. Klicka här för att uppgradera.";
 
 /* Upgrade PIN prompt title. */
 "Prompts.SetPin.title" = "Uppgradera PIN-kod";
 
 /* Share data prompt body */
-"Prompts.ShareData.body" = "Hjälp till att förbättra Litewallet genom att dela dina anonyma data med oss";
+"Prompts.ShareData.body" = "Hjälp till att förbättra Brainwallet genom att dela dina anonyma data med oss";
 
 /* Share data prompt title */
 "Prompts.ShareData.title" = "Dela anonyma data";
@@ -572,7 +572,7 @@
 "RecoverWallet.instruction" = "Ange ordnyckel";
 
 /* Recover wallet intro */
-"RecoverWallet.intro" = "Återupprätta Litewallet med din ordnyckel.";
+"RecoverWallet.intro" = "Återupprätta Brainwallet med din ordnyckel.";
 
 /* Invalid paper key message */
 "RecoverWallet.invalid" = "Den ordnyckel du angav är ogiltig. Dubbelkolla varje ord och försök igen.";
@@ -614,7 +614,7 @@
 "ReScan.body1" = "20-45 minuter";
 
 /* Syncing explanation */
-"ReScan.body2" = "Om en transaktion visar sig som klar i Litecoins nätverk men inte i Litewallet.";
+"ReScan.body2" = "Om en transaktion visar sig som klar i Litecoins nätverk men inte i Brainwallet.";
 
 /* Syncing explanation */
 "ReScan.body3" = "Du får gång på gång ett meddelande som säger att din transaktion avvisades.";
@@ -638,7 +638,7 @@
 "resetButton" = "Ja, återställ plånboken";
 
 /* Warning Empty Wipe title */
-"resetTitle" = "Ta bort min Litewallet";
+"resetTitle" = "Ta bort min Brainwallet";
 
 /* Scan Litecoin address camera flash toggle */
 "Scanner.flashButtonLabel" = "Kamerablixt";
@@ -668,7 +668,7 @@
 "SecurityCenter.paperKeyTitle" = "Ordnyckel";
 
 /* PIN button description */
-"SecurityCenter.pinDescription" = "Skyddar ditt Litewallet från obehöriga användare.";
+"SecurityCenter.pinDescription" = "Skyddar ditt Brainwallet från obehöriga användare.";
 
 /* PIN button title */
 "SecurityCenter.pinTitle" = "6-siffrig PIN-kod";
@@ -677,7 +677,7 @@
 "SecurityCenter.title" = "Säkerhetscenter";
 
 /* Touch ID button description */
-"SecurityCenter.touchIdDescription" = "Lås enkelt upp ditt Litewallet och skicka pengar upp till en inställd gräns.";
+"SecurityCenter.touchIdDescription" = "Lås enkelt upp ditt Brainwallet och skicka pengar upp till en inställd gräns.";
 
 /* Touch ID button title */
 "SecurityCenter.touchIdTitle" = "Touch ID";
@@ -695,7 +695,7 @@
 "Send.cameraunavailableMessage" = "Gå till Inställningar för att ge tillgång till kameran.";
 
 /* Camera not allowed alert title */
-"Send.cameraUnavailableTitle" = "Litewallet har inte tillgång till kameran";
+"Send.cameraUnavailableTitle" = "Brainwallet har inte tillgång till kameran";
 
 /* Warning when sending to self. */
 "Send.containsAddress" = "Destinationen är din egen adress. Du kan inte skicka till dig själv.";
@@ -805,8 +805,8 @@
 /* Join Early access label */
 "Settings.earlyAccess" = "Använd Snabb tillgång";
 
-/* Are you enjoying Litewallet alert message body */
-"Settings.enjoying" = "Gillar du Litewallet?";
+/* Are you enjoying Brainwallet alert message body */
+"Settings.enjoying" = "Gillar du Brainwallet?";
 
 /* Face ID spending limit label */
 "Settings.faceIdLimit" = "PLACEHOLDER";
@@ -817,14 +817,14 @@
 /* Languages label */
 "Settings.languages" = "språk";
 
-/* Litewallet environment */
-"Settings.litewallet.environment" = "Miljö:";
+/* Brainwallet environment */
+"Settings.Brainwallet.environment" = "Miljö:";
 
-/* Litewallet Partners */
-"Settings.litewallet.partners" = "Litewallet-partners";
+/* Brainwallet Partners */
+"Settings.Brainwallet.partners" = "Brainwallet-partners";
 
-/* Litewallet version */
-"Settings.litewallet.version" = "Litewallet version:";
+/* Brainwallet version */
+"Settings.Brainwallet.version" = "Brainwallet version:";
 
 /* Manage settings section header */
 "Settings.manage" = "Hantera";
@@ -838,7 +838,7 @@
 /* Share anonymous data label */
 "Settings.shareData" = "Dela anonyma uppgifter";
 
-/* Litewallet Social links */
+/* Brainwallet Social links */
 "Settings.socialLinks" = "Social";
 
 /* Support settings section header */
@@ -860,7 +860,7 @@
 "Settings.wipe" = "Starta/Återställ en annan plånbok";
 
 /* Share data view body */
-"ShareData.body" = "Hjälp till att förbättra Litewallet genom att dela dina anonyma uppgifter med oss. Detta inbegriper inga ekonomiska uppgifter. Vi respekterar din ekonomiska sekretess.";
+"ShareData.body" = "Hjälp till att förbättra Brainwallet genom att dela dina anonyma uppgifter med oss. Detta inbegriper inga ekonomiska uppgifter. Vi respekterar din ekonomiska sekretess.";
 
 /* Share data header */
 "ShareData.header" = "Dela uppgifter?";
@@ -875,7 +875,7 @@
 "StartPaperPhrase.againButtonTitle" = "Skriv ner ordnyckel på nytt";
 
 /* Paper key explanation text. */
-"StartPaperPhrase.body" = "Din ordnyckel  är enda sättet att återupprätta Litewallet om du förlorat din telefon, blivit bestulen på den eller har uppgraderat den.\n\nVi visar dig en lista över ord som du kan skriva ner på ett papper och gömma undan.";
+"StartPaperPhrase.body" = "Din ordnyckel  är enda sättet att återupprätta Brainwallet om du förlorat din telefon, blivit bestulen på den eller har uppgraderat den.\n\nVi visar dig en lista över ord som du kan skriva ner på ett papper och gömma undan.";
 
 /* button label */
 "StartPaperPhrase.buttonTitle" = "Skriv ner ordnyckel";
@@ -920,7 +920,7 @@
 "TouchIdSettings.customizeText" = "Du kan anpassa din utgiftsgräns i Touch ID från %1$@.";
 
 /* Touch Id screen label */
-"TouchIdSettings.label" = "Använd ditt fingeravtryck för att låsa upp Litewallet och skicka pengar upp till en inställd gräns.";
+"TouchIdSettings.label" = "Använd ditt fingeravtryck för att låsa upp Brainwallet och skicka pengar upp till en inställd gräns.";
 
 /*  ł100,000 ($100) */
 "TouchIdSettings.limitValue" = "%1$@ (%2$@)";
@@ -932,7 +932,7 @@
 "TouchIdSettings.spendingLimit" = "Utnyttjandegräns: %1$@ (%2$@)";
 
 /* Touch id switch label. */
-"TouchIdSettings.switchLabel" = "Aktivera Touch ID för Litewallet";
+"TouchIdSettings.switchLabel" = "Aktivera Touch ID för Brainwallet";
 
 /* Touch ID settings view title */
 "TouchIdSettings.title" = "Touch ID";
@@ -1100,7 +1100,7 @@
 "UnlockScreen.scan" = "Läs av";
 
 /* TouchID prompt text */
-"UnlockScreen.touchIdPrompt" = "Lås upp Litewallet.";
+"UnlockScreen.touchIdPrompt" = "Lås upp Brainwallet.";
 
 /* Unlock with TouchID accessibility label */
 "UnlockScreen.touchIdText" = "Lås upp med TouchID";
@@ -1112,7 +1112,7 @@
 "UpdatePin.caption" = "Kom ihåg PIN-koden. Om du glömmer den, kommer du inte åt dina Litecoin.";
 
 /* PIN creation info. */
-"UpdatePin.createInstruction" = "Din PIN-kod används för att låsa upp ditt Litewallet och skicka pengar";
+"UpdatePin.createInstruction" = "Din PIN-kod används för att låsa upp ditt Brainwallet och skicka pengar";
 
 /* Update PIN title */
 "UpdatePin.createTitle" = "Ställ in PIN-kod";
@@ -1163,7 +1163,7 @@
 "VerifyPin.touchIdMessage" = "Godkänn denna transaktion";
 
 /* 'No wallet' warning for watch app */
-"Watch.noWalletWarning" = "Öppna iPhone-appen Litewallet för att ställa in din plånbok.";
+"Watch.noWalletWarning" = "Öppna iPhone-appen Brainwallet för att ställa in din plånbok.";
 
 /* Dismiss button label */
 "Webview.dismiss" = "Avfärda";
@@ -1175,10 +1175,10 @@
 "Webview.updating" = "Uppdaterar...";
 
 /* Welcome screen text. (?) will be replaced with the help icon users should look for. */
-"Welcome.body" = "Välkommen till Litewallet!";
+"Welcome.body" = "Välkommen till Brainwallet!";
 
 /* Top title of welcome screen */
-"Welcome.title" = "Välkommen till Litewallet!";
+"Welcome.title" = "Välkommen till Brainwallet!";
 
 /* Delete database title */
 "WipeWallet.alertDeleteTitle" = "Radera databas";
@@ -1211,19 +1211,19 @@
 "WipeWallet.instruction" = "Ange den här plånbokens återställningsfras för att rensa den och starta eller återställa en annan. Ditt nuvarande saldo är kvar på den här frasen.";
 
 /* Start wipe wallet view message */
-"WipeWallet.startMessage" = "Att starta eller återställa en annan plånbok ger dig tillgång till och låter dig hantera en annan Litewalletplånbok på denna enhet.";
+"WipeWallet.startMessage" = "Att starta eller återställa en annan plånbok ger dig tillgång till och låter dig hantera en annan Brainwalletplånbok på denna enhet.";
 
 /* Start wipe wallet view warning */
-"WipeWallet.startWarning" = "Du kommer inte längre att kunna komma åt din aktuella Litewalletplånbok från denna enhet. Saldot kommer att kvarstå på frasen.";
+"WipeWallet.startWarning" = "Du kommer inte längre att kunna komma åt din aktuella Brainwalletplånbok från denna enhet. Saldot kommer att kvarstå på frasen.";
 
 /* Wipe wallet navigation item title. */
 "WipeWallet.title" = "Starta eller hämta en annan plånbok";
 
 /* Warning Alert */
-"WipeWallet.warningAlert" = "Denna åtgärd kommer att torka din Litewallet!";
+"WipeWallet.warningAlert" = "Denna åtgärd kommer att torka din Brainwallet!";
 
 /* Warning description */
-"WipeWallet.warningDescription" = "Om du tar bort din plånbok innebär det att den privata nyckeln och appdata försvinner. Du kan förlora Litecoin för alltid!\n\n\nIngen i Litewallet-teamet kan hämta detta frö åt dig. Vi är inte ansvariga om du inte följer denna varning.";
+"WipeWallet.warningDescription" = "Om du tar bort din plånbok innebär det att den privata nyckeln och appdata försvinner. Du kan förlora Litecoin för alltid!\n\n\nIngen i Brainwallet-teamet kan hämta detta frö åt dig. Vi är inte ansvariga om du inte följer denna varning.";
 
 /* Warning title */
 "WipeWallet.warningTitle" = "VÄNLIGEN LÄS!";
@@ -1245,9 +1245,6 @@
 
 /* 1 of 3 */
 "WritePaperPhrase.step" = "%1$d av %2$d";
-
-/* "Fragment.back" */
-"Fragment.back" = "";
 
 /* "Email address label" */
 "Notifications.emailLabel" = "";
@@ -1290,12 +1287,6 @@
 
 /* Change language alert message */
 "Settings.ChangeLanguage.alertMessage" = "";
-
-/* "ShowWords.modalTitle" */
-"ShowWords.modalTitle" = "";
-
-/* "ShowWords.titleWarning" */
-"ShowWords.titleWarning" = "";
 
 /* Start view tagline */
 "StartViewController.tagline" = "";

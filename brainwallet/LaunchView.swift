@@ -4,7 +4,7 @@ struct LaunchView: View {
 	var body: some View {
 		GeometryReader { _ in
 			ZStack {
-                Color.grape.edgesIgnoringSafeArea(.all)
+                Color.midnight.edgesIgnoringSafeArea(.all)
 			}
 		}
 	}
