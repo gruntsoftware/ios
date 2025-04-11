@@ -11,6 +11,73 @@ class Currency {
 	}
 }
 
+import Foundation
+import UIKit
+
+/// 14  Currencies
+enum CurrencySelection: Int, CaseIterable, Equatable, Identifiable {
+    case USD = 0
+    case EUR
+    case GBP
+    case SGD
+    case CAD
+    case AUD
+    case RUB
+    case KRW
+    case MXN
+    case SAR
+    case UAH
+    case NGN
+    case JPY
+    case CNY
+    case IDR
+    case TRY
+      
+    var id: CurrencySelection { self }
+
+    var symbol: String {
+        switch self {
+        case .USD: return "$"
+        case .EUR: return "€"
+        case .GBP: return "£"
+        case .SGD: return "$"
+        case .CAD: return "$"
+        case .AUD: return "$"
+        case .RUB: return "₽"
+        case .KRW: return "₩"
+        case .MXN: return "$"
+        case .SAR: return "﷼"
+        case .UAH: return "₴"
+        case .NGN: return "₦"
+        case .JPY: return "¥"
+        case .CNY: return "¥"
+        case .IDR: return "Rp"
+        case .TRY: return "₺"
+        }
+    }
+
+    var fullCurrencyName: String {
+        switch self {
+        case .USD: return "United States Dollar"
+        case .EUR: return "Euro"
+        case .GBP: return "Great British Pound"
+        case .SGD: return "Singaporean Dollar"
+        case .CAD: return "Canadian Dollar"
+        case .AUD: return "Australian Dollar"
+        case .RUB: return "Russian Ruble"
+        case .KRW: return "Korean Won"
+        case .MXN: return "Mexican Peso"
+        case .SAR: return "Saudi Riyal"
+        case .UAH: return "Ukrainian Hryvnia"
+        case .NGN: return "Nigerian Naira"
+        case .JPY: return "Japanese Yen"
+        case .CNY: return "Chinese Yuan"
+        case .IDR: return "Indonesian Rupiah"
+        case .TRY: return "Turkish Lira"
+        }
+    }
+}
+ 
 enum PartnerFiatOptions: Int, CustomStringConvertible {
 	case cad
 	case aud
