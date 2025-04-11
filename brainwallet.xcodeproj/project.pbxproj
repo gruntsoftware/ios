@@ -12,6 +12,27 @@
 		22A9A9621DF61FE0000F0016 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9611DF61FE0000F0016 /* SystemConfiguration.framework */; };
 		22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9631DF61FE7000F0016 /* Security.framework */; };
 		22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9651DF61FEE000F0016 /* WebKit.framework */; };
+		2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE612DA90D0D00FFBD10 /* BRMasterKeyExtension.swift */; };
+		2416CE6B2DA90D0D00FFBD10 /* BRSocketHelpers.c in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE652DA90D0D00FFBD10 /* BRSocketHelpers.c */; };
+		2416CE6C2DA90D0D00FFBD10 /* BRAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE582DA90D0D00FFBD10 /* BRAPIClient.swift */; };
+		2416CE6D2DA90D0D00FFBD10 /* BRTar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE662DA90D0D00FFBD10 /* BRTar.swift */; };
+		2416CE6E2DA90D0D00FFBD10 /* BRPeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE622DA90D0D00FFBD10 /* BRPeerManager.swift */; };
+		2416CE6F2DA90D0D00FFBD10 /* BRTxOutputExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE682DA90D0D00FFBD10 /* BRTxOutputExtension.swift */; };
+		2416CE702DA90D0D00FFBD10 /* BRAPIClient+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5A2DA90D0D00FFBD10 /* BRAPIClient+Events.swift */; };
+		2416CE712DA90D0D00FFBD10 /* BRWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE692DA90D0D00FFBD10 /* BRWallet.swift */; };
+		2416CE722DA90D0D00FFBD10 /* BRTxInputExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE672DA90D0D00FFBD10 /* BRTxInputExtension.swift */; };
+		2416CE732DA90D0D00FFBD10 /* BRAPIClient+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE592DA90D0D00FFBD10 /* BRAPIClient+Assets.swift */; };
+		2416CE742DA90D0D00FFBD10 /* BRReplicatedKVStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE632DA90D0D00FFBD10 /* BRReplicatedKVStore.swift */; };
+		2416CE752DA90D0D00FFBD10 /* BRAPIClient+KV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5C2DA90D0D00FFBD10 /* BRAPIClient+KV.swift */; };
+		2416CE762DA90D0D00FFBD10 /* BRAPIClient+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5D2DA90D0D00FFBD10 /* BRAPIClient+Wallet.swift */; };
+		2416CE772DA90D0D00FFBD10 /* BRActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */; };
+		2416CE782DA90D0D00FFBD10 /* BRAddressExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE572DA90D0D00FFBD10 /* BRAddressExtension.swift */; };
+		2416CE792DA90D0D00FFBD10 /* BRCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5F2DA90D0D00FFBD10 /* BRCoding.swift */; };
+		2416CE7A2DA90D0D00FFBD10 /* BRKeyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE602DA90D0D00FFBD10 /* BRKeyExtension.swift */; };
+		2416CE7B2DA90D0D00FFBD10 /* BRAPIClient+Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5B2DA90D0D00FFBD10 /* BRAPIClient+Features.swift */; };
+		2416CE7C2DA90D0D00FFBD10 /* BRCalculationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5E2DA90D0D00FFBD10 /* BRCalculationExtension.swift */; };
+		2416CE7E2DA90DB000FFBD10 /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2416CE7D2DA90DB000FFBD10 /* remote-config-defaults.plist */; };
+		2416CE802DA90DE300FFBD10 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2416CE7F2DA90DE300FFBD10 /* GoogleService-Info.plist */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
 		247D74E62DA907FB00855B14 /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45792D936D5900E9C3B0 /* BRAddress.c */; };
 		247D74E72DA907FB00855B14 /* BRBase58.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457C2D936D5900E9C3B0 /* BRBase58.c */; };
@@ -32,8 +53,6 @@
 		249C45DC2D93F23F00E9C3B0 /* service-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 249C45DB2D93F23F00E9C3B0 /* service-data.plist */; };
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
 		24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D91D0A2166923E0077A619 /* UserNotifications.framework */; };
-		24DF5CBF2D934E39009A426C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24DF5CBE2D934E39009A426C /* GoogleService-Info.plist */; };
-		24DF5CC12D934E42009A426C /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24DF5CC02D934E42009A426C /* remote-config-defaults.plist */; };
 		759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 755CD9D11DAA197C0075898E /* libBRCore.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		C312D2CE2D7DC27700BB97A4 /* NodeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C02D7DC27700BB97A4 /* NodeSelectorViewController.swift */; };
 		C312D2CF2D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C22D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift */; };
@@ -398,6 +417,28 @@
 		22A9A9631DF61FE7000F0016 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		22A9A9651DF61FEE000F0016 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		22A9A9671DF61FF8000F0016 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRActivityView.swift; sourceTree = "<group>"; };
+		2416CE572DA90D0D00FFBD10 /* BRAddressExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAddressExtension.swift; sourceTree = "<group>"; };
+		2416CE582DA90D0D00FFBD10 /* BRAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAPIClient.swift; sourceTree = "<group>"; };
+		2416CE592DA90D0D00FFBD10 /* BRAPIClient+Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+Assets.swift"; sourceTree = "<group>"; };
+		2416CE5A2DA90D0D00FFBD10 /* BRAPIClient+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+Events.swift"; sourceTree = "<group>"; };
+		2416CE5B2DA90D0D00FFBD10 /* BRAPIClient+Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+Features.swift"; sourceTree = "<group>"; };
+		2416CE5C2DA90D0D00FFBD10 /* BRAPIClient+KV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+KV.swift"; sourceTree = "<group>"; };
+		2416CE5D2DA90D0D00FFBD10 /* BRAPIClient+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+Wallet.swift"; sourceTree = "<group>"; };
+		2416CE5E2DA90D0D00FFBD10 /* BRCalculationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCalculationExtension.swift; sourceTree = "<group>"; };
+		2416CE5F2DA90D0D00FFBD10 /* BRCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCoding.swift; sourceTree = "<group>"; };
+		2416CE602DA90D0D00FFBD10 /* BRKeyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRKeyExtension.swift; sourceTree = "<group>"; };
+		2416CE612DA90D0D00FFBD10 /* BRMasterKeyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRMasterKeyExtension.swift; sourceTree = "<group>"; };
+		2416CE622DA90D0D00FFBD10 /* BRPeerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRPeerManager.swift; sourceTree = "<group>"; };
+		2416CE632DA90D0D00FFBD10 /* BRReplicatedKVStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRReplicatedKVStore.swift; sourceTree = "<group>"; };
+		2416CE642DA90D0D00FFBD10 /* BRSocketHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSocketHelpers.h; sourceTree = "<group>"; };
+		2416CE652DA90D0D00FFBD10 /* BRSocketHelpers.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = BRSocketHelpers.c; sourceTree = "<group>"; };
+		2416CE662DA90D0D00FFBD10 /* BRTar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRTar.swift; sourceTree = "<group>"; };
+		2416CE672DA90D0D00FFBD10 /* BRTxInputExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRTxInputExtension.swift; sourceTree = "<group>"; };
+		2416CE682DA90D0D00FFBD10 /* BRTxOutputExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRTxOutputExtension.swift; sourceTree = "<group>"; };
+		2416CE692DA90D0D00FFBD10 /* BRWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRWallet.swift; sourceTree = "<group>"; };
+		2416CE7D2DA90DB000FFBD10 /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "remote-config-defaults.plist"; path = "/Users/kerrywashington/Desktop/archive-ios/ios/brainwallet/remote-config-defaults.plist"; sourceTree = "<absolute>"; };
+		2416CE7F2DA90DE300FFBD10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "/Users/kerrywashington/Downloads/GoogleService-Info.plist"; sourceTree = "<absolute>"; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		249C450E2D936D5900E9C3B0 /* ax_jni_include_dir.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_jni_include_dir.m4; sourceTree = "<group>"; };
@@ -534,8 +575,6 @@
 		249C45DB2D93F23F00E9C3B0 /* service-data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "service-data.plist"; sourceTree = "<group>"; };
 		24B9621B23BA66CF00ECD938 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		24D91D0A2166923E0077A619 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		24DF5CBE2D934E39009A426C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		24DF5CC02D934E42009A426C /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "remote-config-defaults.plist"; sourceTree = "<group>"; };
 		755CD9D11DAA197C0075898E /* libBRCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBRCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A2A7901DA5934300A983D8 /* Brainwallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brainwallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A2A7F21DA5935F00A983D8 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
@@ -926,6 +965,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2416CE552DA90C8B00FFBD10 /* Legacy BRClasses */ = {
+			isa = PBXGroup;
+			children = (
+				2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */,
+				2416CE572DA90D0D00FFBD10 /* BRAddressExtension.swift */,
+				2416CE582DA90D0D00FFBD10 /* BRAPIClient.swift */,
+				2416CE592DA90D0D00FFBD10 /* BRAPIClient+Assets.swift */,
+				2416CE5A2DA90D0D00FFBD10 /* BRAPIClient+Events.swift */,
+				2416CE5B2DA90D0D00FFBD10 /* BRAPIClient+Features.swift */,
+				2416CE5C2DA90D0D00FFBD10 /* BRAPIClient+KV.swift */,
+				2416CE5D2DA90D0D00FFBD10 /* BRAPIClient+Wallet.swift */,
+				2416CE5E2DA90D0D00FFBD10 /* BRCalculationExtension.swift */,
+				2416CE5F2DA90D0D00FFBD10 /* BRCoding.swift */,
+				2416CE602DA90D0D00FFBD10 /* BRKeyExtension.swift */,
+				2416CE612DA90D0D00FFBD10 /* BRMasterKeyExtension.swift */,
+				2416CE622DA90D0D00FFBD10 /* BRPeerManager.swift */,
+				2416CE632DA90D0D00FFBD10 /* BRReplicatedKVStore.swift */,
+				2416CE642DA90D0D00FFBD10 /* BRSocketHelpers.h */,
+				2416CE652DA90D0D00FFBD10 /* BRSocketHelpers.c */,
+				2416CE662DA90D0D00FFBD10 /* BRTar.swift */,
+				2416CE672DA90D0D00FFBD10 /* BRTxInputExtension.swift */,
+				2416CE682DA90D0D00FFBD10 /* BRTxOutputExtension.swift */,
+				2416CE692DA90D0D00FFBD10 /* BRWallet.swift */,
+			);
+			path = "Legacy BRClasses";
+			sourceTree = "<group>";
+		};
 		249C45112D936D5900E9C3B0 /* m4 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1188,8 +1254,8 @@
 		24DF5CBD2D934E29009A426C /* launch-resources */ = {
 			isa = PBXGroup;
 			children = (
-				24DF5CBE2D934E39009A426C /* GoogleService-Info.plist */,
-				24DF5CC02D934E42009A426C /* remote-config-defaults.plist */,
+				2416CE7F2DA90DE300FFBD10 /* GoogleService-Info.plist */,
+				2416CE7D2DA90DB000FFBD10 /* remote-config-defaults.plist */,
 				249C45DB2D93F23F00E9C3B0 /* service-data.plist */,
 			);
 			path = "launch-resources";
@@ -1369,6 +1435,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				2416CE552DA90C8B00FFBD10 /* Legacy BRClasses */,
 				24DF5CBD2D934E29009A426C /* launch-resources */,
 				24618EE92D90435200A878AC /* BRCore.swift */,
 				C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */,
@@ -1849,7 +1916,7 @@
 					};
 					75A2A78F1DA5934300A983D8 = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1620;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1906,13 +1973,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C312D4972D7DC27700BB97A4 /* RELEASE_NOTES.md in Resources */,
-				24DF5CC12D934E42009A426C /* remote-config-defaults.plist in Resources */,
 				C312D4992D7DC27700BB97A4 /* Send.storyboard in Resources */,
+				2416CE802DA90DE300FFBD10 /* GoogleService-Info.plist in Resources */,
 				C312D49A2D7DC27700BB97A4 /* Receive.storyboard in Resources */,
 				C312D49E2D7DC27700BB97A4 /* Settings.storyboard in Resources */,
 				C312D49F2D7DC27700BB97A4 /* LFColorPalette.xcassets in Resources */,
 				C312D4A12D7DC27700BB97A4 /* Icon.xcassets in Resources */,
-				24DF5CBF2D934E39009A426C /* GoogleService-Info.plist in Resources */,
 				C312D4A32D7DC27700BB97A4 /* Es.mp3 in Resources */,
 				C312D4A42D7DC27700BB97A4 /* Main.storyboard in Resources */,
 				C312D4A52D7DC27700BB97A4 /* Id.mp3 in Resources */,
@@ -1939,6 +2005,7 @@
 				C312D4BF2D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf in Resources */,
 				C312D4C12D7DC27700BB97A4 /* Fr.mp3 in Resources */,
 				C312D4C22D7DC27700BB97A4 /* general.css in Resources */,
+				2416CE7E2DA90DB000FFBD10 /* remote-config-defaults.plist in Resources */,
 				C312D4C32D7DC27700BB97A4 /* Ko.mp3 in Resources */,
 				249C45DC2D93F23F00E9C3B0 /* service-data.plist in Resources */,
 				C312D4C42D7DC27700BB97A4 /* Assets.xcassets in Resources */,
@@ -2165,6 +2232,25 @@
 				C312D3682D7DC27700BB97A4 /* PINFieldView.swift in Sources */,
 				C312D3692D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift in Sources */,
 				C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */,
+				2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */,
+				2416CE6B2DA90D0D00FFBD10 /* BRSocketHelpers.c in Sources */,
+				2416CE6C2DA90D0D00FFBD10 /* BRAPIClient.swift in Sources */,
+				2416CE6D2DA90D0D00FFBD10 /* BRTar.swift in Sources */,
+				2416CE6E2DA90D0D00FFBD10 /* BRPeerManager.swift in Sources */,
+				2416CE6F2DA90D0D00FFBD10 /* BRTxOutputExtension.swift in Sources */,
+				2416CE702DA90D0D00FFBD10 /* BRAPIClient+Events.swift in Sources */,
+				2416CE712DA90D0D00FFBD10 /* BRWallet.swift in Sources */,
+				2416CE722DA90D0D00FFBD10 /* BRTxInputExtension.swift in Sources */,
+				2416CE732DA90D0D00FFBD10 /* BRAPIClient+Assets.swift in Sources */,
+				2416CE742DA90D0D00FFBD10 /* BRReplicatedKVStore.swift in Sources */,
+				2416CE752DA90D0D00FFBD10 /* BRAPIClient+KV.swift in Sources */,
+				2416CE762DA90D0D00FFBD10 /* BRAPIClient+Wallet.swift in Sources */,
+				2416CE772DA90D0D00FFBD10 /* BRActivityView.swift in Sources */,
+				2416CE782DA90D0D00FFBD10 /* BRAddressExtension.swift in Sources */,
+				2416CE792DA90D0D00FFBD10 /* BRCoding.swift in Sources */,
+				2416CE7A2DA90D0D00FFBD10 /* BRKeyExtension.swift in Sources */,
+				2416CE7B2DA90D0D00FFBD10 /* BRAPIClient+Features.swift in Sources */,
+				2416CE7C2DA90D0D00FFBD10 /* BRCalculationExtension.swift in Sources */,
 				C312D36E2D7DC27700BB97A4 /* PinPadViewController.swift in Sources */,
 				C312D36F2D7DC27700BB97A4 /* EnterPhraseCell.swift in Sources */,
 				C312D3712D7DC27700BB97A4 /* SeedViewModel.swift in Sources */,
