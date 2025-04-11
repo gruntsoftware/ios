@@ -1,18 +1,43 @@
+<<<<<<< HEAD
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## User settings
+=======
+## Litewallet related
+brainwallet/service-data.plist
+brainwallet/GoogleService-Info.plist
+service-data.plist
+GoogleService-Info.plist
+
+## Build generated
+build/
+DerivedData/
+
+## OS Related
+.DS_Store
+
+## Various settings
+*.moved-aside
+
+## Xcode related
+*.xcuserstate
+>>>>>>> origin/techdebt/kcw-debugging
 xcuserdata/
 
 ## Obj-C/Swift specific
 *.hmap
+<<<<<<< HEAD
 
 ## App packaging
+=======
+>>>>>>> origin/techdebt/kcw-debugging
 *.ipa
 *.dSYM.zip
 *.dSYM
 
+<<<<<<< HEAD
 ## Playgrounds
 timeline.xctimeline
 playground.xcworkspace
@@ -65,3 +90,26 @@ brainwallet/launch-resources/service-data.plist
 brainwallet/launch-resources/remote-config-defaults.plist
 brainwallet/launch-resources/GoogleService-Info.plist
 .DS_Store
+=======
+# Swift Package Manager 
+Packages/
+Package.pins
+.build/
+
+# Add this line if you want to avoid checking in Xcode SPM integration.
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+ SourcePackages/
+
+# SwiftFormat
+BuildTools/.build
+BuildTools/.swiftpm
+
+# Sensitive Partner API 
+*.gpx
+brainwallet/remote-config-defaults.plist
+remote-config-defaults.plist
+/SourcePackages
+/brainwallet/launch-resources/GoogleService-Info.plist
+/brainwallet/launch-resources/remote-config-defaults.plist
+/brainwallet/launch-resources/service-data.plist
+>>>>>>> origin/techdebt/kcw-debugging
