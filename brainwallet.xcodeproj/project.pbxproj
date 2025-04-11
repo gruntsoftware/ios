@@ -13,6 +13,22 @@
 		22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9631DF61FE7000F0016 /* Security.framework */; };
 		22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9651DF61FEE000F0016 /* WebKit.framework */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
+		247D74E62DA907FB00855B14 /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45792D936D5900E9C3B0 /* BRAddress.c */; };
+		247D74E72DA907FB00855B14 /* BRBase58.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457C2D936D5900E9C3B0 /* BRBase58.c */; };
+		247D74E82DA907FB00855B14 /* BRBech32.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457E2D936D5900E9C3B0 /* BRBech32.c */; };
+		247D74E92DA907FB00855B14 /* BRBIP32Sequence.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45802D936D5900E9C3B0 /* BRBIP32Sequence.c */; };
+		247D74EA2DA907FB00855B14 /* BRBIP38Key.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45822D936D5900E9C3B0 /* BRBIP38Key.c */; };
+		247D74EB2DA907FB00855B14 /* BRBIP39Mnemonic.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45842D936D5900E9C3B0 /* BRBIP39Mnemonic.c */; };
+		247D74EC2DA907FB00855B14 /* BRBloomFilter.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45872D936D5900E9C3B0 /* BRBloomFilter.c */; };
+		247D74ED2DA907FB00855B14 /* BRCrypto.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C458A2D936D5900E9C3B0 /* BRCrypto.c */; };
+		247D74EE2DA907FB00855B14 /* BRKey.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C458D2D936D5900E9C3B0 /* BRKey.c */; };
+		247D74EF2DA907FB00855B14 /* BRMerkleBlock.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C458F2D936D5900E9C3B0 /* BRMerkleBlock.c */; };
+		247D74F02DA907FB00855B14 /* BRPaymentProtocol.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45912D936D5900E9C3B0 /* BRPaymentProtocol.c */; };
+		247D74F12DA907FB00855B14 /* BRPeer.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45932D936D5900E9C3B0 /* BRPeer.c */; };
+		247D74F22DA907FB00855B14 /* BRPeerManager.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45952D936D5900E9C3B0 /* BRPeerManager.c */; };
+		247D74F32DA907FB00855B14 /* BRSet.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45972D936D5900E9C3B0 /* BRSet.c */; };
+		247D74F42DA907FB00855B14 /* BRTransaction.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45992D936D5900E9C3B0 /* BRTransaction.c */; };
+		247D74F52DA907FB00855B14 /* BRWallet.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C459B2D936D5900E9C3B0 /* BRWallet.c */; };
 		249C45DC2D93F23F00E9C3B0 /* service-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 249C45DB2D93F23F00E9C3B0 /* service-data.plist */; };
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
 		24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D91D0A2166923E0077A619 /* UserNotifications.framework */; };
@@ -26,7 +42,6 @@
 		C312D2D22D7DC27700BB97A4 /* LightWeightAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1EA2D7DC27700BB97A4 /* LightWeightAlert.swift */; };
 		C312D2D32D7DC27700BB97A4 /* ExchangeUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1FB2D7DC27700BB97A4 /* ExchangeUpdater.swift */; };
 		C312D2D42D7DC27700BB97A4 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D23F2D7DC27700BB97A4 /* Currency.swift */; };
-		C312D2D52D7DC27700BB97A4 /* BRSocketHelpers.c in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A32D7DC27700BB97A4 /* BRSocketHelpers.c */; };
 		C312D2D62D7DC27700BB97A4 /* RecoverWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2932D7DC27700BB97A4 /* RecoverWalletView.swift */; };
 		C312D2D72D7DC27700BB97A4 /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0702D7DC27700BB97A4 /* Date+Additions.swift */; };
 		C312D2D92D7DC27700BB97A4 /* LockScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2792D7DC27700BB97A4 /* LockScreenViewModel.swift */; };
@@ -45,9 +60,6 @@
 		C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D32D7DC27700BB97A4 /* AnimatableIcon.swift */; };
 		C312D2ED2D7DC27700BB97A4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D27C2D7DC27700BB97A4 /* LoginViewModel.swift */; };
 		C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */; };
-		C312D2F22D7DC27700BB97A4 /* BRAddressExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D21D2D7DC27700BB97A4 /* BRAddressExtension.swift */; };
-		C312D2F52D7DC27700BB97A4 /* BRCalculationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2222D7DC27700BB97A4 /* BRCalculationExtension.swift */; };
-		C312D2F62D7DC27700BB97A4 /* BRActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D09D2D7DC27700BB97A4 /* BRActivityView.swift */; };
 		C312D2F72D7DC27700BB97A4 /* ArticleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2022D7DC27700BB97A4 /* ArticleIds.swift */; };
 		C312D2F82D7DC27700BB97A4 /* BiometricsSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B82D7DC27700BB97A4 /* BiometricsSettingsViewController.swift */; };
 		C312D2FA2D7DC27700BB97A4 /* SendButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A32D7DC27700BB97A4 /* SendButtonView.swift */; };
@@ -58,19 +70,16 @@
 		C312D30A2D7DC27700BB97A4 /* SupportLFViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2B22D7DC27700BB97A4 /* SupportLFViewModel.swift */; };
 		C312D30B2D7DC27700BB97A4 /* StartWipeWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1CA2D7DC27700BB97A4 /* StartWipeWalletViewController.swift */; };
 		C312D30C2D7DC27700BB97A4 /* LocalWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2752D7DC27700BB97A4 /* LocalWebView.swift */; };
-		C312D30D2D7DC27700BB97A4 /* BRAPIClient+Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D21F2D7DC27700BB97A4 /* BRAPIClient+Features.swift */; };
 		C312D30E2D7DC27700BB97A4 /* TransactionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2BB2D7DC27700BB97A4 /* TransactionCellViewModel.swift */; };
 		C312D3102D7DC27700BB97A4 /* UpdatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F82D7DC27700BB97A4 /* UpdatingLabel.swift */; };
 		C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0872D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift */; };
 		C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */; };
 		C312D3132D7DC27700BB97A4 /* UserDefaultsUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C62D7DC27700BB97A4 /* UserDefaultsUpdater.swift */; };
-		C312D3142D7DC27700BB97A4 /* BRAPIClient+KV.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2202D7DC27700BB97A4 /* BRAPIClient+KV.swift */; };
 		C312D3152D7DC27700BB97A4 /* UILabel+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D07C2D7DC27700BB97A4 /* UILabel+BRWAdditions.swift */; };
 		C312D3162D7DC27700BB97A4 /* WalletDisabledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F92D7DC27700BB97A4 /* WalletDisabledView.swift */; };
 		C312D3172D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B92D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift */; };
 		C312D3192D7DC27700BB97A4 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0982D7DC27700BB97A4 /* Rate.swift */; };
 		C312D31C2D7DC27700BB97A4 /* SupportLitecoinFoundationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2B32D7DC27700BB97A4 /* SupportLitecoinFoundationView.swift */; };
-		C312D31E2D7DC27700BB97A4 /* BRTxInputExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2272D7DC27700BB97A4 /* BRTxInputExtension.swift */; };
 		C312D3202D7DC27700BB97A4 /* CreateStepConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D23B2D7DC27700BB97A4 /* CreateStepConfiguration.swift */; };
 		C312D3212D7DC27700BB97A4 /* StandardDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2AA2D7DC27700BB97A4 /* StandardDividerView.swift */; };
 		C312D3222D7DC27700BB97A4 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0992D7DC27700BB97A4 /* Setting.swift */; };
@@ -83,13 +92,11 @@
 		C312D32F2D7DC27700BB97A4 /* UISlider+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D07F2D7DC27700BB97A4 /* UISlider+Gradient.swift */; };
 		C312D3302D7DC27700BB97A4 /* UIControl+Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0792D7DC27700BB97A4 /* UIControl+Callback.swift */; };
 		C312D3312D7DC27700BB97A4 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0752D7DC27700BB97A4 /* String+Additions.swift */; };
-		C312D3342D7DC27700BB97A4 /* BRWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2292D7DC27700BB97A4 /* BRWallet.swift */; };
 		C312D3352D7DC27700BB97A4 /* TransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2BC2D7DC27700BB97A4 /* TransactionManager.swift */; };
 		C312D3362D7DC27700BB97A4 /* DescriptionSendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D92D7DC27700BB97A4 /* DescriptionSendCell.swift */; };
 		C312D3372D7DC27700BB97A4 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D09B2D7DC27700BB97A4 /* Types.swift */; };
 		C312D3382D7DC27700BB97A4 /* NonScrollingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1ED2D7DC27700BB97A4 /* NonScrollingCollectionView.swift */; };
 		C312D33B2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1CD2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift */; };
-		C312D33D2D7DC27700BB97A4 /* BRTar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A42D7DC27700BB97A4 /* BRTar.swift */; };
 		C312D33E2D7DC27700BB97A4 /* StartFlowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2AB2D7DC27700BB97A4 /* StartFlowPresenter.swift */; };
 		C312D33F2D7DC27700BB97A4 /* ModalTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B22D7DC27700BB97A4 /* ModalTransitionDelegate.swift */; };
 		C312D3402D7DC27700BB97A4 /* WarningConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2CB2D7DC27700BB97A4 /* WarningConfirmationViewController.swift */; };
@@ -99,12 +106,10 @@
 		C312D3472D7DC27700BB97A4 /* WalletManager+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */; };
 		C312D3482D7DC27700BB97A4 /* FeeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2492D7DC27700BB97A4 /* FeeManager.swift */; };
 		C312D3492D7DC27700BB97A4 /* StartNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2AD2D7DC27700BB97A4 /* StartNavigationDelegate.swift */; };
-		C312D34A2D7DC27700BB97A4 /* BRAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D09E2D7DC27700BB97A4 /* BRAPIClient.swift */; };
 		C312D34C2D7DC27700BB97A4 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2042D7DC27700BB97A4 /* AssociatedObject.swift */; };
 		C312D34D2D7DC27700BB97A4 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C92D7DC27700BB97A4 /* StartViewController.swift */; };
 		C312D34F2D7DC27700BB97A4 /* DispatchQueue+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0712D7DC27700BB97A4 /* DispatchQueue+Additions.swift */; };
 		C312D3512D7DC27700BB97A4 /* DataValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2402D7DC27700BB97A4 /* DataValidation.swift */; };
-		C312D3522D7DC27700BB97A4 /* BRAPIClient+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D21E2D7DC27700BB97A4 /* BRAPIClient+Events.swift */; };
 		C312D3532D7DC27700BB97A4 /* TransactionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2BD2D7DC27700BB97A4 /* TransactionModalView.swift */; };
 		C312D3572D7DC27700BB97A4 /* ModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2822D7DC27700BB97A4 /* ModalPresenter.swift */; };
 		C312D3592D7DC27700BB97A4 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2AF2D7DC27700BB97A4 /* StartViewModel.swift */; };
@@ -134,25 +139,21 @@
 		C312D3812D7DC27700BB97A4 /* LoadingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1EB2D7DC27700BB97A4 /* LoadingProgressView.swift */; };
 		C312D3832D7DC27700BB97A4 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0AB2D7DC27700BB97A4 /* Actions.swift */; };
 		C312D3842D7DC27700BB97A4 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D07B2D7DC27700BB97A4 /* UIImage+Utils.swift */; };
-		C312D3862D7DC27700BB97A4 /* BRAPIClient+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2212D7DC27700BB97A4 /* BRAPIClient+Wallet.swift */; };
 		C312D3872D7DC27700BB97A4 /* StartPaperPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C82D7DC27700BB97A4 /* StartPaperPhraseViewController.swift */; };
 		C312D3882D7DC27700BB97A4 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0782D7DC27700BB97A4 /* UIColor+Extension.swift */; };
 		C312D3892D7DC27700BB97A4 /* BartyCrouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2052D7DC27700BB97A4 /* BartyCrouch.swift */; };
 		C312D38D2D7DC27700BB97A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2002D7DC27700BB97A4 /* AppDelegate.swift */; };
 		C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D07A2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift */; };
 		C312D3902D7DC27700BB97A4 /* GradientSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E62D7DC27700BB97A4 /* GradientSwitch.swift */; };
-		C312D3912D7DC27700BB97A4 /* BRCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A02D7DC27700BB97A4 /* BRCoding.swift */; };
 		C312D3932D7DC27700BB97A4 /* EnterPhraseHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2442D7DC27700BB97A4 /* EnterPhraseHostingController.swift */; };
 		C312D3952D7DC27700BB97A4 /* NoBuyTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2842D7DC27700BB97A4 /* NoBuyTabBarViewController.swift */; };
 		C312D3962D7DC27700BB97A4 /* LAContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0722D7DC27700BB97A4 /* LAContext+Extensions.swift */; };
 		C312D39A2D7DC27700BB97A4 /* PinDigitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D28B2D7DC27700BB97A4 /* PinDigitView.swift */; };
 		C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A92D7DC27700BB97A4 /* WalletInfo.swift */; };
 		C312D39D2D7DC27700BB97A4 /* PromptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2902D7DC27700BB97A4 /* PromptTableViewCell.swift */; };
-		C312D39E2D7DC27700BB97A4 /* BRAPIClient+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D09F2D7DC27700BB97A4 /* BRAPIClient+Assets.swift */; };
 		C312D3A02D7DC27700BB97A4 /* BuyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D22D2D7DC27700BB97A4 /* BuyTableViewController.swift */; };
 		C312D3A12D7DC27700BB97A4 /* SendAddressHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A12D7DC27700BB97A4 /* SendAddressHostingController.swift */; };
 		C312D3A22D7DC27700BB97A4 /* SendAddressCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A02D7DC27700BB97A4 /* SendAddressCellViewModel.swift */; };
-		C312D3A32D7DC27700BB97A4 /* BRPeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2262D7DC27700BB97A4 /* BRPeerManager.swift */; };
 		C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */; };
 		C312D3B02D7DC27700BB97A4 /* BuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D22F2D7DC27700BB97A4 /* BuyView.swift */; };
 		C312D3B22D7DC27700BB97A4 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D29A2D7DC27700BB97A4 /* ScanViewController.swift */; };
@@ -171,7 +172,6 @@
 		C312D3C42D7DC27700BB97A4 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2432D7DC27700BB97A4 /* EmptyTableViewCell.swift */; };
 		C312D3C62D7DC27700BB97A4 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C72D7DC27700BB97A4 /* View+Extension.swift */; };
 		C312D3C72D7DC27700BB97A4 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A42D7DC27700BB97A4 /* Sender.swift */; };
-		C312D3C82D7DC27700BB97A4 /* BRKeyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2242D7DC27700BB97A4 /* BRKeyExtension.swift */; };
 		C312D3CA2D7DC27700BB97A4 /* BuyWKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2312D7DC27700BB97A4 /* BuyWKWebViewController.swift */; };
 		C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2862D7DC27700BB97A4 /* PartnerData.swift */; };
 		C312D3CC2D7DC27700BB97A4 /* ManageWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1A52D7DC27700BB97A4 /* ManageWalletViewController.swift */; };
@@ -192,7 +192,6 @@
 		C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */; };
 		C312D3E82D7DC27700BB97A4 /* FinishedStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24B2D7DC27700BB97A4 /* FinishedStepView.swift */; };
 		C312D3EC2D7DC27700BB97A4 /* TxMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A82D7DC27700BB97A4 /* TxMetaData.swift */; };
-		C312D3ED2D7DC27700BB97A4 /* BRTxOutputExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2282D7DC27700BB97A4 /* BRTxOutputExtension.swift */; };
 		C312D3F02D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0762D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift */; };
 		C312D3F22D7DC27700BB97A4 /* SegmentedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0692D7DC27700BB97A4 /* SegmentedButton.swift */; };
 		C312D3F32D7DC27700BB97A4 /* WalletCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */; };
@@ -215,7 +214,6 @@
 		C312D4112D7DC27700BB97A4 /* StartImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1A32D7DC27700BB97A4 /* StartImportViewController.swift */; };
 		C312D4122D7DC27700BB97A4 /* SecurityCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1AC2D7DC27700BB97A4 /* SecurityCenterViewController.swift */; };
 		C312D4152D7DC27700BB97A4 /* VerifyPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1CB2D7DC27700BB97A4 /* VerifyPinViewController.swift */; };
-		C312D4182D7DC27700BB97A4 /* BRMasterKeyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2252D7DC27700BB97A4 /* BRMasterKeyExtension.swift */; };
 		C312D4192D7DC27700BB97A4 /* MoonpayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2832D7DC27700BB97A4 /* MoonpayHelper.swift */; };
 		C312D41B2D7DC27700BB97A4 /* SupportSafariViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2B52D7DC27700BB97A4 /* SupportSafariViewModel.swift */; };
 		C312D41C2D7DC27700BB97A4 /* CreateStepTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D23C2D7DC27700BB97A4 /* CreateStepTabView.swift */; };
@@ -254,7 +252,6 @@
 		C312D4562D7DC27700BB97A4 /* LockScreenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2772D7DC27700BB97A4 /* LockScreenHeaderView.swift */; };
 		C312D4572D7DC27700BB97A4 /* KeyboardNotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0972D7DC27700BB97A4 /* KeyboardNotificationInfo.swift */; };
 		C312D4582D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0882D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift */; };
-		C312D4592D7DC27700BB97A4 /* BRReplicatedKVStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A12D7DC27700BB97A4 /* BRReplicatedKVStore.swift */; };
 		C312D45B2D7DC27700BB97A4 /* StartHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2AC2D7DC27700BB97A4 /* StartHostingController.swift */; };
 		C312D45C2D7DC27700BB97A4 /* HostingTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2512D7DC27700BB97A4 /* HostingTransactionCell.swift */; };
 		C312D4602D7DC27700BB97A4 /* LanguageSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2572D7DC27700BB97A4 /* LanguageSelectionViewModel.swift */; };
@@ -403,58 +400,6 @@
 		22A9A9671DF61FF8000F0016 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		247AC3CB2D82E49400A6E09C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		247AC3CC2D82E49400A6E09C /* .name */ = {isa = PBXFileReference; lastKnownFileType = text; path = .name; sourceTree = "<group>"; };
-		247AC3CD2D82E49400A6E09C /* appInsightsSettings.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = appInsightsSettings.xml; sourceTree = "<group>"; };
-		247AC3CE2D82E49400A6E09C /* compiler.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = compiler.xml; sourceTree = "<group>"; };
-		247AC3CF2D82E49400A6E09C /* deploymentTargetSelector.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = deploymentTargetSelector.xml; sourceTree = "<group>"; };
-		247AC3D02D82E49400A6E09C /* gradle.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = gradle.xml; sourceTree = "<group>"; };
-		247AC3D12D82E49400A6E09C /* kotlinc.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = kotlinc.xml; sourceTree = "<group>"; };
-		247AC3D22D82E49400A6E09C /* migrations.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = migrations.xml; sourceTree = "<group>"; };
-		247AC3D32D82E49400A6E09C /* misc.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = misc.xml; sourceTree = "<group>"; };
-		247AC3D42D82E49400A6E09C /* runConfigurations.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = runConfigurations.xml; sourceTree = "<group>"; };
-		247AC3D62D82E49400A6E09C /* ExampleInstrumentedTest.kt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExampleInstrumentedTest.kt; sourceTree = "<group>"; };
-		247AC3DC2D82E49400A6E09C /* Color.kt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Color.kt; sourceTree = "<group>"; };
-		247AC3DD2D82E49400A6E09C /* Theme.kt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Theme.kt; sourceTree = "<group>"; };
-		247AC3DE2D82E49400A6E09C /* Type.kt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Type.kt; sourceTree = "<group>"; };
-		247AC3E12D82E49400A6E09C /* MainActivity.kt */ = {isa = PBXFileReference; lastKnownFileType = text; path = MainActivity.kt; sourceTree = "<group>"; };
-		247AC3E62D82E49400A6E09C /* ic_launcher_background.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ic_launcher_background.xml; sourceTree = "<group>"; };
-		247AC3E72D82E49400A6E09C /* ic_launcher_foreground.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ic_launcher_foreground.xml; sourceTree = "<group>"; };
-		247AC3E92D82E49400A6E09C /* ic_launcher.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ic_launcher.xml; sourceTree = "<group>"; };
-		247AC3EA2D82E49400A6E09C /* ic_launcher_round.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ic_launcher_round.xml; sourceTree = "<group>"; };
-		247AC3EC2D82E49400A6E09C /* ic_launcher.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = ic_launcher.webp; sourceTree = "<group>"; };
-		247AC3ED2D82E49400A6E09C /* ic_launcher_round.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = ic_launcher_round.webp; sourceTree = "<group>"; };
-		247AC3EF2D82E49400A6E09C /* ic_launcher.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = ic_launcher.webp; sourceTree = "<group>"; };
-		247AC3F02D82E49400A6E09C /* ic_launcher_round.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = ic_launcher_round.webp; sourceTree = "<group>"; };
-		247AC3F22D82E49400A6E09C /* ic_launcher.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = ic_launcher.webp; sourceTree = "<group>"; };
-		247AC3F32D82E49400A6E09C /* ic_launcher_round.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = ic_launcher_round.webp; sourceTree = "<group>"; };
-		247AC3F52D82E49400A6E09C /* ic_launcher.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = ic_launcher.webp; sourceTree = "<group>"; };
-		247AC3F62D82E49400A6E09C /* ic_launcher_round.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = ic_launcher_round.webp; sourceTree = "<group>"; };
-		247AC3F82D82E49400A6E09C /* ic_launcher.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = ic_launcher.webp; sourceTree = "<group>"; };
-		247AC3F92D82E49400A6E09C /* ic_launcher_round.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = ic_launcher_round.webp; sourceTree = "<group>"; };
-		247AC3FB2D82E49400A6E09C /* colors.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = colors.xml; sourceTree = "<group>"; };
-		247AC3FC2D82E49400A6E09C /* strings.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = strings.xml; sourceTree = "<group>"; };
-		247AC3FD2D82E49400A6E09C /* themes.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = themes.xml; sourceTree = "<group>"; };
-		247AC3FF2D82E49400A6E09C /* backup_rules.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = backup_rules.xml; sourceTree = "<group>"; };
-		247AC4002D82E49400A6E09C /* data_extraction_rules.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = data_extraction_rules.xml; sourceTree = "<group>"; };
-		247AC4032D82E49400A6E09C /* AndroidManifest.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AndroidManifest.xml; sourceTree = "<group>"; };
-		247AC4052D82E49400A6E09C /* ExampleUnitTest.kt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExampleUnitTest.kt; sourceTree = "<group>"; };
-		247AC40C2D82E49400A6E09C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		247AC40D2D82E49400A6E09C /* build.gradle.kts */ = {isa = PBXFileReference; lastKnownFileType = text; path = build.gradle.kts; sourceTree = "<group>"; };
-		247AC40E2D82E49400A6E09C /* proguard-rules.pro */ = {isa = PBXFileReference; lastKnownFileType = text; path = "proguard-rules.pro"; sourceTree = "<group>"; };
-		247AC4102D82E49400A6E09C /* gradle-wrapper.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "gradle-wrapper.jar"; sourceTree = "<group>"; };
-		247AC4112D82E49400A6E09C /* gradle-wrapper.properties */ = {isa = PBXFileReference; lastKnownFileType = text; path = "gradle-wrapper.properties"; sourceTree = "<group>"; };
-		247AC4132D82E49400A6E09C /* libs.versions.toml */ = {isa = PBXFileReference; lastKnownFileType = text; path = libs.versions.toml; sourceTree = "<group>"; };
-		247AC4152D82E49400A6E09C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		247AC4162D82E49400A6E09C /* build.gradle.kts */ = {isa = PBXFileReference; lastKnownFileType = text; path = build.gradle.kts; sourceTree = "<group>"; };
-		247AC4172D82E49400A6E09C /* gradle.properties */ = {isa = PBXFileReference; lastKnownFileType = text; path = gradle.properties; sourceTree = "<group>"; };
-		247AC4182D82E49400A6E09C /* gradlew */ = {isa = PBXFileReference; lastKnownFileType = text; path = gradlew; sourceTree = "<group>"; };
-		247AC4192D82E49400A6E09C /* gradlew.bat */ = {isa = PBXFileReference; lastKnownFileType = text; path = gradlew.bat; sourceTree = "<group>"; };
-		247AC41A2D82E49400A6E09C /* settings.gradle.kts */ = {isa = PBXFileReference; lastKnownFileType = text; path = settings.gradle.kts; sourceTree = "<group>"; };
-		247AC41D2D82E49400A6E09C /* TopUpScreen.kt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TopUpScreen.kt; sourceTree = "<group>"; };
-		247AC41F2D82E49400A6E09C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		247AC4202D82E49400A6E09C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		247AC4212D82E49400A6E09C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		249C450E2D936D5900E9C3B0 /* ax_jni_include_dir.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_jni_include_dir.m4; sourceTree = "<group>"; };
 		249C450F2D936D5900E9C3B0 /* ax_prog_cc_for_build.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_prog_cc_for_build.m4; sourceTree = "<group>"; };
 		249C45102D936D5900E9C3B0 /* bitcoin_secp.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = bitcoin_secp.m4; sourceTree = "<group>"; };
@@ -587,7 +532,6 @@
 		249C459E2D936D5900E9C3B0 /* test.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
 		249C45DA2D936DA600E9C3B0 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = ../core/module.modulemap; sourceTree = SOURCE_ROOT; };
 		249C45DB2D93F23F00E9C3B0 /* service-data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "service-data.plist"; sourceTree = "<group>"; };
-		249C45DD2D9411E100E9C3B0 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Modules/core/module.modulemap; sourceTree = SOURCE_ROOT; };
 		24B9621B23BA66CF00ECD938 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		24D91D0A2166923E0077A619 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		24DF5CBE2D934E39009A426C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -642,14 +586,6 @@
 		C312D0992D7DC27700BB97A4 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		C312D09A2D7DC27700BB97A4 /* SimpleUTXO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleUTXO.swift; sourceTree = "<group>"; };
 		C312D09B2D7DC27700BB97A4 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
-		C312D09D2D7DC27700BB97A4 /* BRActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRActivityView.swift; sourceTree = "<group>"; };
-		C312D09E2D7DC27700BB97A4 /* BRAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAPIClient.swift; sourceTree = "<group>"; };
-		C312D09F2D7DC27700BB97A4 /* BRAPIClient+Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+Assets.swift"; sourceTree = "<group>"; };
-		C312D0A02D7DC27700BB97A4 /* BRCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCoding.swift; sourceTree = "<group>"; };
-		C312D0A12D7DC27700BB97A4 /* BRReplicatedKVStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRReplicatedKVStore.swift; sourceTree = "<group>"; };
-		C312D0A22D7DC27700BB97A4 /* BRSocketHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSocketHelpers.h; sourceTree = "<group>"; };
-		C312D0A32D7DC27700BB97A4 /* BRSocketHelpers.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = BRSocketHelpers.c; sourceTree = "<group>"; };
-		C312D0A42D7DC27700BB97A4 /* BRTar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRTar.swift; sourceTree = "<group>"; };
 		C312D0A62D7DC27700BB97A4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C312D0A72D7DC27700BB97A4 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		C312D0A82D7DC27700BB97A4 /* TxMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxMetaData.swift; sourceTree = "<group>"; };
@@ -780,18 +716,6 @@
 		C312D2052D7DC27700BB97A4 /* BartyCrouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BartyCrouch.swift; sourceTree = "<group>"; };
 		C312D2092D7DC27700BB97A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/BIP39Words.plist; sourceTree = "<group>"; };
 		C312D21C2D7DC27700BB97A4 /* bitrefill_index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = bitrefill_index.html; sourceTree = "<group>"; };
-		C312D21D2D7DC27700BB97A4 /* BRAddressExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAddressExtension.swift; sourceTree = "<group>"; };
-		C312D21E2D7DC27700BB97A4 /* BRAPIClient+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+Events.swift"; sourceTree = "<group>"; };
-		C312D21F2D7DC27700BB97A4 /* BRAPIClient+Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+Features.swift"; sourceTree = "<group>"; };
-		C312D2202D7DC27700BB97A4 /* BRAPIClient+KV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+KV.swift"; sourceTree = "<group>"; };
-		C312D2212D7DC27700BB97A4 /* BRAPIClient+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+Wallet.swift"; sourceTree = "<group>"; };
-		C312D2222D7DC27700BB97A4 /* BRCalculationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCalculationExtension.swift; sourceTree = "<group>"; };
-		C312D2242D7DC27700BB97A4 /* BRKeyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRKeyExtension.swift; sourceTree = "<group>"; };
-		C312D2252D7DC27700BB97A4 /* BRMasterKeyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRMasterKeyExtension.swift; sourceTree = "<group>"; };
-		C312D2262D7DC27700BB97A4 /* BRPeerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRPeerManager.swift; sourceTree = "<group>"; };
-		C312D2272D7DC27700BB97A4 /* BRTxInputExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRTxInputExtension.swift; sourceTree = "<group>"; };
-		C312D2282D7DC27700BB97A4 /* BRTxOutputExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRTxOutputExtension.swift; sourceTree = "<group>"; };
-		C312D2292D7DC27700BB97A4 /* BRWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRWallet.swift; sourceTree = "<group>"; };
 		C312D22A2D7DC27700BB97A4 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		C312D22B2D7DC27700BB97A4 /* BuyCenterWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyCenterWebViewController.swift; sourceTree = "<group>"; };
 		C312D22C2D7DC27700BB97A4 /* BuyHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyHostingController.swift; sourceTree = "<group>"; };
@@ -1002,346 +926,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		247AC3D52D82E49400A6E09C /* .idea */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3CB2D82E49400A6E09C /* .gitignore */,
-				247AC3CC2D82E49400A6E09C /* .name */,
-				247AC3CD2D82E49400A6E09C /* appInsightsSettings.xml */,
-				247AC3CE2D82E49400A6E09C /* compiler.xml */,
-				247AC3CF2D82E49400A6E09C /* deploymentTargetSelector.xml */,
-				247AC3D02D82E49400A6E09C /* gradle.xml */,
-				247AC3D12D82E49400A6E09C /* kotlinc.xml */,
-				247AC3D22D82E49400A6E09C /* migrations.xml */,
-				247AC3D32D82E49400A6E09C /* misc.xml */,
-				247AC3D42D82E49400A6E09C /* runConfigurations.xml */,
-			);
-			path = .idea;
-			sourceTree = "<group>";
-		};
-		247AC3D72D82E49400A6E09C /* dataandroidprivate */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3D62D82E49400A6E09C /* ExampleInstrumentedTest.kt */,
-			);
-			path = dataandroidprivate;
-			sourceTree = "<group>";
-		};
-		247AC3D82D82E49400A6E09C /* grunt */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3D72D82E49400A6E09C /* dataandroidprivate */,
-			);
-			path = grunt;
-			sourceTree = "<group>";
-		};
-		247AC3D92D82E49400A6E09C /* ltd */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3D82D82E49400A6E09C /* grunt */,
-			);
-			path = ltd;
-			sourceTree = "<group>";
-		};
-		247AC3DA2D82E49400A6E09C /* java */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3D92D82E49400A6E09C /* ltd */,
-			);
-			path = java;
-			sourceTree = "<group>";
-		};
-		247AC3DB2D82E49400A6E09C /* androidTest */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3DA2D82E49400A6E09C /* java */,
-			);
-			path = androidTest;
-			sourceTree = "<group>";
-		};
-		247AC3DF2D82E49400A6E09C /* theme */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3DC2D82E49400A6E09C /* Color.kt */,
-				247AC3DD2D82E49400A6E09C /* Theme.kt */,
-				247AC3DE2D82E49400A6E09C /* Type.kt */,
-			);
-			path = theme;
-			sourceTree = "<group>";
-		};
-		247AC3E02D82E49400A6E09C /* ui */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3DF2D82E49400A6E09C /* theme */,
-			);
-			path = ui;
-			sourceTree = "<group>";
-		};
-		247AC3E22D82E49400A6E09C /* dataandroidprivate */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3E02D82E49400A6E09C /* ui */,
-				247AC3E12D82E49400A6E09C /* MainActivity.kt */,
-			);
-			path = dataandroidprivate;
-			sourceTree = "<group>";
-		};
-		247AC3E32D82E49400A6E09C /* grunt */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3E22D82E49400A6E09C /* dataandroidprivate */,
-			);
-			path = grunt;
-			sourceTree = "<group>";
-		};
-		247AC3E42D82E49400A6E09C /* ltd */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3E32D82E49400A6E09C /* grunt */,
-			);
-			path = ltd;
-			sourceTree = "<group>";
-		};
-		247AC3E52D82E49400A6E09C /* java */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3E42D82E49400A6E09C /* ltd */,
-			);
-			path = java;
-			sourceTree = "<group>";
-		};
-		247AC3E82D82E49400A6E09C /* drawable */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3E62D82E49400A6E09C /* ic_launcher_background.xml */,
-				247AC3E72D82E49400A6E09C /* ic_launcher_foreground.xml */,
-			);
-			path = drawable;
-			sourceTree = "<group>";
-		};
-		247AC3EB2D82E49400A6E09C /* mipmap-anydpi */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3E92D82E49400A6E09C /* ic_launcher.xml */,
-				247AC3EA2D82E49400A6E09C /* ic_launcher_round.xml */,
-			);
-			path = "mipmap-anydpi";
-			sourceTree = "<group>";
-		};
-		247AC3EE2D82E49400A6E09C /* mipmap-hdpi */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3EC2D82E49400A6E09C /* ic_launcher.webp */,
-				247AC3ED2D82E49400A6E09C /* ic_launcher_round.webp */,
-			);
-			path = "mipmap-hdpi";
-			sourceTree = "<group>";
-		};
-		247AC3F12D82E49400A6E09C /* mipmap-mdpi */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3EF2D82E49400A6E09C /* ic_launcher.webp */,
-				247AC3F02D82E49400A6E09C /* ic_launcher_round.webp */,
-			);
-			path = "mipmap-mdpi";
-			sourceTree = "<group>";
-		};
-		247AC3F42D82E49400A6E09C /* mipmap-xhdpi */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3F22D82E49400A6E09C /* ic_launcher.webp */,
-				247AC3F32D82E49400A6E09C /* ic_launcher_round.webp */,
-			);
-			path = "mipmap-xhdpi";
-			sourceTree = "<group>";
-		};
-		247AC3F72D82E49400A6E09C /* mipmap-xxhdpi */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3F52D82E49400A6E09C /* ic_launcher.webp */,
-				247AC3F62D82E49400A6E09C /* ic_launcher_round.webp */,
-			);
-			path = "mipmap-xxhdpi";
-			sourceTree = "<group>";
-		};
-		247AC3FA2D82E49400A6E09C /* mipmap-xxxhdpi */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3F82D82E49400A6E09C /* ic_launcher.webp */,
-				247AC3F92D82E49400A6E09C /* ic_launcher_round.webp */,
-			);
-			path = "mipmap-xxxhdpi";
-			sourceTree = "<group>";
-		};
-		247AC3FE2D82E49400A6E09C /* values */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3FB2D82E49400A6E09C /* colors.xml */,
-				247AC3FC2D82E49400A6E09C /* strings.xml */,
-				247AC3FD2D82E49400A6E09C /* themes.xml */,
-			);
-			path = values;
-			sourceTree = "<group>";
-		};
-		247AC4012D82E49400A6E09C /* xml */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3FF2D82E49400A6E09C /* backup_rules.xml */,
-				247AC4002D82E49400A6E09C /* data_extraction_rules.xml */,
-			);
-			path = xml;
-			sourceTree = "<group>";
-		};
-		247AC4022D82E49400A6E09C /* res */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3E82D82E49400A6E09C /* drawable */,
-				247AC3EB2D82E49400A6E09C /* mipmap-anydpi */,
-				247AC3EE2D82E49400A6E09C /* mipmap-hdpi */,
-				247AC3F12D82E49400A6E09C /* mipmap-mdpi */,
-				247AC3F42D82E49400A6E09C /* mipmap-xhdpi */,
-				247AC3F72D82E49400A6E09C /* mipmap-xxhdpi */,
-				247AC3FA2D82E49400A6E09C /* mipmap-xxxhdpi */,
-				247AC3FE2D82E49400A6E09C /* values */,
-				247AC4012D82E49400A6E09C /* xml */,
-			);
-			path = res;
-			sourceTree = "<group>";
-		};
-		247AC4042D82E49400A6E09C /* main */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3E52D82E49400A6E09C /* java */,
-				247AC4022D82E49400A6E09C /* res */,
-				247AC4032D82E49400A6E09C /* AndroidManifest.xml */,
-			);
-			path = main;
-			sourceTree = "<group>";
-		};
-		247AC4062D82E49400A6E09C /* dataandroidprivate */ = {
-			isa = PBXGroup;
-			children = (
-				247AC4052D82E49400A6E09C /* ExampleUnitTest.kt */,
-			);
-			path = dataandroidprivate;
-			sourceTree = "<group>";
-		};
-		247AC4072D82E49400A6E09C /* grunt */ = {
-			isa = PBXGroup;
-			children = (
-				247AC4062D82E49400A6E09C /* dataandroidprivate */,
-			);
-			path = grunt;
-			sourceTree = "<group>";
-		};
-		247AC4082D82E49400A6E09C /* ltd */ = {
-			isa = PBXGroup;
-			children = (
-				247AC4072D82E49400A6E09C /* grunt */,
-			);
-			path = ltd;
-			sourceTree = "<group>";
-		};
-		247AC4092D82E49400A6E09C /* java */ = {
-			isa = PBXGroup;
-			children = (
-				247AC4082D82E49400A6E09C /* ltd */,
-			);
-			path = java;
-			sourceTree = "<group>";
-		};
-		247AC40A2D82E49400A6E09C /* test */ = {
-			isa = PBXGroup;
-			children = (
-				247AC4092D82E49400A6E09C /* java */,
-			);
-			path = test;
-			sourceTree = "<group>";
-		};
-		247AC40B2D82E49400A6E09C /* src */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3DB2D82E49400A6E09C /* androidTest */,
-				247AC4042D82E49400A6E09C /* main */,
-				247AC40A2D82E49400A6E09C /* test */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		247AC40F2D82E49400A6E09C /* app */ = {
-			isa = PBXGroup;
-			children = (
-				247AC40B2D82E49400A6E09C /* src */,
-				247AC40C2D82E49400A6E09C /* .gitignore */,
-				247AC40D2D82E49400A6E09C /* build.gradle.kts */,
-				247AC40E2D82E49400A6E09C /* proguard-rules.pro */,
-			);
-			path = app;
-			sourceTree = "<group>";
-		};
-		247AC4122D82E49400A6E09C /* wrapper */ = {
-			isa = PBXGroup;
-			children = (
-				247AC4102D82E49400A6E09C /* gradle-wrapper.jar */,
-				247AC4112D82E49400A6E09C /* gradle-wrapper.properties */,
-			);
-			path = wrapper;
-			sourceTree = "<group>";
-		};
-		247AC4142D82E49400A6E09C /* gradle */ = {
-			isa = PBXGroup;
-			children = (
-				247AC4122D82E49400A6E09C /* wrapper */,
-				247AC4132D82E49400A6E09C /* libs.versions.toml */,
-			);
-			path = gradle;
-			sourceTree = "<group>";
-		};
-		247AC41B2D82E49400A6E09C /* dataandroidprivate */ = {
-			isa = PBXGroup;
-			children = (
-				247AC3D52D82E49400A6E09C /* .idea */,
-				247AC40F2D82E49400A6E09C /* app */,
-				247AC4142D82E49400A6E09C /* gradle */,
-				247AC4152D82E49400A6E09C /* .gitignore */,
-				247AC4162D82E49400A6E09C /* build.gradle.kts */,
-				247AC4172D82E49400A6E09C /* gradle.properties */,
-				247AC4182D82E49400A6E09C /* gradlew */,
-				247AC4192D82E49400A6E09C /* gradlew.bat */,
-				247AC41A2D82E49400A6E09C /* settings.gradle.kts */,
-			);
-			path = dataandroidprivate;
-			sourceTree = "<group>";
-		};
-		247AC41C2D82E49400A6E09C /* android */ = {
-			isa = PBXGroup;
-			children = (
-				247AC41B2D82E49400A6E09C /* dataandroidprivate */,
-			);
-			path = android;
-			sourceTree = "<group>";
-		};
-		247AC41E2D82E49400A6E09C /* moonpay */ = {
-			isa = PBXGroup;
-			children = (
-				247AC41D2D82E49400A6E09C /* TopUpScreen.kt */,
-			);
-			path = moonpay;
-			sourceTree = "<group>";
-		};
-		247AC4222D82E49400A6E09C /* data */ = {
-			isa = PBXGroup;
-			children = (
-				247AC41C2D82E49400A6E09C /* android */,
-				247AC41E2D82E49400A6E09C /* moonpay */,
-				247AC41F2D82E49400A6E09C /* .gitignore */,
-				247AC4202D82E49400A6E09C /* LICENSE */,
-				247AC4212D82E49400A6E09C /* README.md */,
-			);
-			name = data;
-			path = Modules/data;
-			sourceTree = "<group>";
-		};
 		249C45112D936D5900E9C3B0 /* m4 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1601,34 +1185,6 @@
 			path = Modules/core;
 			sourceTree = "<group>";
 		};
-		24D3C5B82D8FFE0F00B3366A /* br-swift */ = {
-			isa = PBXGroup;
-			children = (
-				249C45DD2D9411E100E9C3B0 /* module.modulemap */,
-				C312D21D2D7DC27700BB97A4 /* BRAddressExtension.swift */,
-				C312D21E2D7DC27700BB97A4 /* BRAPIClient+Events.swift */,
-				C312D21F2D7DC27700BB97A4 /* BRAPIClient+Features.swift */,
-				C312D2202D7DC27700BB97A4 /* BRAPIClient+KV.swift */,
-				C312D2212D7DC27700BB97A4 /* BRAPIClient+Wallet.swift */,
-				C312D2222D7DC27700BB97A4 /* BRCalculationExtension.swift */,
-				C312D2242D7DC27700BB97A4 /* BRKeyExtension.swift */,
-				C312D2252D7DC27700BB97A4 /* BRMasterKeyExtension.swift */,
-				C312D2262D7DC27700BB97A4 /* BRPeerManager.swift */,
-				C312D2272D7DC27700BB97A4 /* BRTxInputExtension.swift */,
-				C312D2282D7DC27700BB97A4 /* BRTxOutputExtension.swift */,
-				C312D2292D7DC27700BB97A4 /* BRWallet.swift */,
-				C312D09D2D7DC27700BB97A4 /* BRActivityView.swift */,
-				C312D09E2D7DC27700BB97A4 /* BRAPIClient.swift */,
-				C312D09F2D7DC27700BB97A4 /* BRAPIClient+Assets.swift */,
-				C312D0A02D7DC27700BB97A4 /* BRCoding.swift */,
-				C312D0A12D7DC27700BB97A4 /* BRReplicatedKVStore.swift */,
-				C312D0A22D7DC27700BB97A4 /* BRSocketHelpers.h */,
-				C312D0A32D7DC27700BB97A4 /* BRSocketHelpers.c */,
-				C312D0A42D7DC27700BB97A4 /* BRTar.swift */,
-			);
-			path = "br-swift";
-			sourceTree = "<group>";
-		};
 		24DF5CBD2D934E29009A426C /* launch-resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1700,7 +1256,6 @@
 			isa = PBXGroup;
 			children = (
 				249C459F2D936D5900E9C3B0 /* core */,
-				247AC4222D82E49400A6E09C /* data */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -1816,7 +1371,6 @@
 			children = (
 				24DF5CBD2D934E29009A426C /* launch-resources */,
 				24618EE92D90435200A878AC /* BRCore.swift */,
-				24D3C5B82D8FFE0F00B3366A /* br-swift */,
 				C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */,
 				C312D06C2D7DC27700BB97A4 /* Async.swift */,
 				C312D06D2D7DC27700BB97A4 /* CGContext+Additions.swift */,
@@ -2187,7 +1741,7 @@
 /* Begin PBXLegacyTarget section */
 		759DA0D71DAC8668008CC49B /* submodules */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "-c 'git submodule init && git submodule update && git -C Modules/core submodule init && git -C Modules/core submodule update && git -C Modules/data submodule init && git -C Modules/data submodule update'";
+			buildArgumentsString = "-c 'git submodule init && git submodule update && git -C Modules/core submodule init && git -C Modules/core submodule update'";
 			buildConfigurationList = 759DA0DA1DAC8668008CC49B /* Build configuration list for PBXLegacyTarget "submodules" */;
 			buildPhases = (
 			);
@@ -2497,6 +2051,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				247D74E62DA907FB00855B14 /* BRAddress.c in Sources */,
+				247D74E72DA907FB00855B14 /* BRBase58.c in Sources */,
+				247D74E82DA907FB00855B14 /* BRBech32.c in Sources */,
+				247D74E92DA907FB00855B14 /* BRBIP32Sequence.c in Sources */,
+				247D74EA2DA907FB00855B14 /* BRBIP38Key.c in Sources */,
+				247D74EB2DA907FB00855B14 /* BRBIP39Mnemonic.c in Sources */,
+				247D74EC2DA907FB00855B14 /* BRBloomFilter.c in Sources */,
+				247D74ED2DA907FB00855B14 /* BRCrypto.c in Sources */,
+				247D74EE2DA907FB00855B14 /* BRKey.c in Sources */,
+				247D74EF2DA907FB00855B14 /* BRMerkleBlock.c in Sources */,
+				247D74F02DA907FB00855B14 /* BRPaymentProtocol.c in Sources */,
+				247D74F12DA907FB00855B14 /* BRPeer.c in Sources */,
+				247D74F22DA907FB00855B14 /* BRPeerManager.c in Sources */,
+				247D74F32DA907FB00855B14 /* BRSet.c in Sources */,
+				247D74F42DA907FB00855B14 /* BRTransaction.c in Sources */,
+				247D74F52DA907FB00855B14 /* BRWallet.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2511,7 +2081,6 @@
 				C312D2D22D7DC27700BB97A4 /* LightWeightAlert.swift in Sources */,
 				C312D2D32D7DC27700BB97A4 /* ExchangeUpdater.swift in Sources */,
 				C312D2D42D7DC27700BB97A4 /* Currency.swift in Sources */,
-				C312D2D52D7DC27700BB97A4 /* BRSocketHelpers.c in Sources */,
 				C312D2D62D7DC27700BB97A4 /* RecoverWalletView.swift in Sources */,
 				C312D2D72D7DC27700BB97A4 /* Date+Additions.swift in Sources */,
 				C312D2D92D7DC27700BB97A4 /* LockScreenViewModel.swift in Sources */,
@@ -2530,9 +2099,6 @@
 				C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */,
 				C312D2ED2D7DC27700BB97A4 /* LoginViewModel.swift in Sources */,
 				C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */,
-				C312D2F22D7DC27700BB97A4 /* BRAddressExtension.swift in Sources */,
-				C312D2F52D7DC27700BB97A4 /* BRCalculationExtension.swift in Sources */,
-				C312D2F62D7DC27700BB97A4 /* BRActivityView.swift in Sources */,
 				C312D2F72D7DC27700BB97A4 /* ArticleIds.swift in Sources */,
 				C312D2F82D7DC27700BB97A4 /* BiometricsSettingsViewController.swift in Sources */,
 				C312D2FA2D7DC27700BB97A4 /* SendButtonView.swift in Sources */,
@@ -2544,19 +2110,16 @@
 				C312D30A2D7DC27700BB97A4 /* SupportLFViewModel.swift in Sources */,
 				C312D30B2D7DC27700BB97A4 /* StartWipeWalletViewController.swift in Sources */,
 				C312D30C2D7DC27700BB97A4 /* LocalWebView.swift in Sources */,
-				C312D30D2D7DC27700BB97A4 /* BRAPIClient+Features.swift in Sources */,
 				C312D30E2D7DC27700BB97A4 /* TransactionCellViewModel.swift in Sources */,
 				C312D3102D7DC27700BB97A4 /* UpdatingLabel.swift in Sources */,
 				C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */,
 				C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */,
 				C312D3132D7DC27700BB97A4 /* UserDefaultsUpdater.swift in Sources */,
-				C312D3142D7DC27700BB97A4 /* BRAPIClient+KV.swift in Sources */,
 				C312D3152D7DC27700BB97A4 /* UILabel+BRWAdditions.swift in Sources */,
 				C312D3162D7DC27700BB97A4 /* WalletDisabledView.swift in Sources */,
 				C312D3172D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift in Sources */,
 				C312D3192D7DC27700BB97A4 /* Rate.swift in Sources */,
 				C312D31C2D7DC27700BB97A4 /* SupportLitecoinFoundationView.swift in Sources */,
-				C312D31E2D7DC27700BB97A4 /* BRTxInputExtension.swift in Sources */,
 				C312D3202D7DC27700BB97A4 /* CreateStepConfiguration.swift in Sources */,
 				C312D3212D7DC27700BB97A4 /* StandardDividerView.swift in Sources */,
 				C312D3222D7DC27700BB97A4 /* Setting.swift in Sources */,
@@ -2570,13 +2133,11 @@
 				C312D3302D7DC27700BB97A4 /* UIControl+Callback.swift in Sources */,
 				24618EEA2D90436500A878AC /* BRCore.swift in Sources */,
 				C312D3312D7DC27700BB97A4 /* String+Additions.swift in Sources */,
-				C312D3342D7DC27700BB97A4 /* BRWallet.swift in Sources */,
 				C312D3352D7DC27700BB97A4 /* TransactionManager.swift in Sources */,
 				C312D3362D7DC27700BB97A4 /* DescriptionSendCell.swift in Sources */,
 				C312D3372D7DC27700BB97A4 /* Types.swift in Sources */,
 				C312D3382D7DC27700BB97A4 /* NonScrollingCollectionView.swift in Sources */,
 				C312D33B2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift in Sources */,
-				C312D33D2D7DC27700BB97A4 /* BRTar.swift in Sources */,
 				C312D33E2D7DC27700BB97A4 /* StartFlowPresenter.swift in Sources */,
 				C312D33F2D7DC27700BB97A4 /* ModalTransitionDelegate.swift in Sources */,
 				C312D3402D7DC27700BB97A4 /* WarningConfirmationViewController.swift in Sources */,
@@ -2586,12 +2147,10 @@
 				C312D3472D7DC27700BB97A4 /* WalletManager+Auth.swift in Sources */,
 				C312D3482D7DC27700BB97A4 /* FeeManager.swift in Sources */,
 				C312D3492D7DC27700BB97A4 /* StartNavigationDelegate.swift in Sources */,
-				C312D34A2D7DC27700BB97A4 /* BRAPIClient.swift in Sources */,
 				C312D34C2D7DC27700BB97A4 /* AssociatedObject.swift in Sources */,
 				C312D34D2D7DC27700BB97A4 /* StartViewController.swift in Sources */,
 				C312D34F2D7DC27700BB97A4 /* DispatchQueue+Additions.swift in Sources */,
 				C312D3512D7DC27700BB97A4 /* DataValidation.swift in Sources */,
-				C312D3522D7DC27700BB97A4 /* BRAPIClient+Events.swift in Sources */,
 				C312D3532D7DC27700BB97A4 /* TransactionModalView.swift in Sources */,
 				C312D3572D7DC27700BB97A4 /* ModalPresenter.swift in Sources */,
 				C312D3592D7DC27700BB97A4 /* StartViewModel.swift in Sources */,
@@ -2622,25 +2181,21 @@
 				C312D3812D7DC27700BB97A4 /* LoadingProgressView.swift in Sources */,
 				C312D3832D7DC27700BB97A4 /* Actions.swift in Sources */,
 				C312D3842D7DC27700BB97A4 /* UIImage+Utils.swift in Sources */,
-				C312D3862D7DC27700BB97A4 /* BRAPIClient+Wallet.swift in Sources */,
 				C312D3872D7DC27700BB97A4 /* StartPaperPhraseViewController.swift in Sources */,
 				C312D3882D7DC27700BB97A4 /* UIColor+Extension.swift in Sources */,
 				C312D3892D7DC27700BB97A4 /* BartyCrouch.swift in Sources */,
 				C312D38D2D7DC27700BB97A4 /* AppDelegate.swift in Sources */,
 				C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */,
 				C312D3902D7DC27700BB97A4 /* GradientSwitch.swift in Sources */,
-				C312D3912D7DC27700BB97A4 /* BRCoding.swift in Sources */,
 				C312D3932D7DC27700BB97A4 /* EnterPhraseHostingController.swift in Sources */,
 				C312D3952D7DC27700BB97A4 /* NoBuyTabBarViewController.swift in Sources */,
 				C312D3962D7DC27700BB97A4 /* LAContext+Extensions.swift in Sources */,
 				C312D39A2D7DC27700BB97A4 /* PinDigitView.swift in Sources */,
 				C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */,
 				C312D39D2D7DC27700BB97A4 /* PromptTableViewCell.swift in Sources */,
-				C312D39E2D7DC27700BB97A4 /* BRAPIClient+Assets.swift in Sources */,
 				C312D3A02D7DC27700BB97A4 /* BuyTableViewController.swift in Sources */,
 				C312D3A12D7DC27700BB97A4 /* SendAddressHostingController.swift in Sources */,
 				C312D3A22D7DC27700BB97A4 /* SendAddressCellViewModel.swift in Sources */,
-				C312D3A32D7DC27700BB97A4 /* BRPeerManager.swift in Sources */,
 				C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */,
 				C312D3B02D7DC27700BB97A4 /* BuyView.swift in Sources */,
 				C312D3B22D7DC27700BB97A4 /* ScanViewController.swift in Sources */,
@@ -2659,7 +2214,6 @@
 				C312D3C42D7DC27700BB97A4 /* EmptyTableViewCell.swift in Sources */,
 				C312D3C62D7DC27700BB97A4 /* View+Extension.swift in Sources */,
 				C312D3C72D7DC27700BB97A4 /* Sender.swift in Sources */,
-				C312D3C82D7DC27700BB97A4 /* BRKeyExtension.swift in Sources */,
 				C312D3CA2D7DC27700BB97A4 /* BuyWKWebViewController.swift in Sources */,
 				C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */,
 				C312D3CC2D7DC27700BB97A4 /* ManageWalletViewController.swift in Sources */,
@@ -2680,7 +2234,6 @@
 				C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */,
 				C312D3E82D7DC27700BB97A4 /* FinishedStepView.swift in Sources */,
 				C312D3EC2D7DC27700BB97A4 /* TxMetaData.swift in Sources */,
-				C312D3ED2D7DC27700BB97A4 /* BRTxOutputExtension.swift in Sources */,
 				C312D3F02D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift in Sources */,
 				C312D3F22D7DC27700BB97A4 /* SegmentedButton.swift in Sources */,
 				C312D3F32D7DC27700BB97A4 /* WalletCoordinator.swift in Sources */,
@@ -2703,7 +2256,6 @@
 				C312D4112D7DC27700BB97A4 /* StartImportViewController.swift in Sources */,
 				C312D4122D7DC27700BB97A4 /* SecurityCenterViewController.swift in Sources */,
 				C312D4152D7DC27700BB97A4 /* VerifyPinViewController.swift in Sources */,
-				C312D4182D7DC27700BB97A4 /* BRMasterKeyExtension.swift in Sources */,
 				C312D4192D7DC27700BB97A4 /* MoonpayHelper.swift in Sources */,
 				C312D41B2D7DC27700BB97A4 /* SupportSafariViewModel.swift in Sources */,
 				C312D41C2D7DC27700BB97A4 /* CreateStepTabView.swift in Sources */,
@@ -2742,7 +2294,6 @@
 				C312D4562D7DC27700BB97A4 /* LockScreenHeaderView.swift in Sources */,
 				C312D4572D7DC27700BB97A4 /* KeyboardNotificationInfo.swift in Sources */,
 				C312D4582D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift in Sources */,
-				C312D4592D7DC27700BB97A4 /* BRReplicatedKVStore.swift in Sources */,
 				C312D45B2D7DC27700BB97A4 /* StartHostingController.swift in Sources */,
 				C312D45C2D7DC27700BB97A4 /* HostingTransactionCell.swift in Sources */,
 				C312D4602D7DC27700BB97A4 /* LanguageSelectionViewModel.swift in Sources */,
