@@ -11,6 +11,9 @@ class StartViewModel: ObservableObject {
     
     @Published
     var currentFiat: CurrencySelection = .USD
+    
+    @Published
+    var userPrefersDarkMode: Bool = false
 
 	@Published
 	var tappedIndex: Int = 0
