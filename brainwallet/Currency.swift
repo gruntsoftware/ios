@@ -58,7 +58,7 @@ enum CurrencySelection: Int, CaseIterable, Equatable, Identifiable {
 
     var fullCurrencyName: String {
         switch self {
-        case .USD: return "United States Dollar"
+        case .USD: return "US Dollar"
         case .EUR: return "Euro"
         case .GBP: return "Great British Pound"
         case .SGD: return "Singaporean Dollar"

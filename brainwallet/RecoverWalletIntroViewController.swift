@@ -55,7 +55,7 @@ class RecoverWalletIntroViewController: UIViewController {
 		label.lineBreakMode = .byWordWrapping
 		label.text = S.RecoverWallet.intro.localize()
 		nextButton.tap = didTapNext
-		title = S.RecoverWallet.header.localize()
+        title = S.StartView.restoreButton.localize()
 	}
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -7,16 +7,17 @@ import Lottie
 //)
 
 struct StartView: View {
-    let buttonFont: Font = .barlowSemiBold(size: 16.0)
+    let selectorFont: Font = .barlowSemiBold(size: 16.0)
     let buttonLightFont: Font = .barlowLight(size: 16.0)
-    let largeButtonFont: Font = .barlowSemiBold(size: 22.0)
+    let regularButtonFont: Font = .barlowRegular(size: 24.0)
+    let largeButtonFont: Font = .barlowBold(size: 24.0)
 
-	let tinyFont: Font = .barlowRegular(size: 16.0)
-    let verticalPadding: CGFloat = 10.0
+    let versionFont: Font = .barlowSemiBold(size: 16.0)
+    let verticalPadding: CGFloat = 20.0
 
 	let squareButtonSize: CGFloat = 55.0
 	let squareImageSize: CGFloat = 25.0
-    let lightButtonWidth: CGFloat = 44.0
+    let lightButtonWidth: CGFloat = 40.0
     let largeButtonHeight: CGFloat = 65.0
     let lottieFileName: String = "welcomeemoji20250212.json"
 
@@ -64,20 +65,21 @@ struct StartView: View {
 				ZStack {
                     Color.midnight.edgesIgnoringSafeArea(.all)
 					VStack {
+                        
+                        Group {
                             Image("bw-logotype-white")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
                                 .frame(width: width * 0.8,
                                        alignment: .center)
-                                .padding(.vertical, verticalPadding)
+                                .padding([.top,.bottom], verticalPadding)
                             
                             WelcomeLottieView(lottieFileName: lottieFileName,
                                               shouldRunAnimation: true)
                             .frame(width: width * 0.9,
                                    height: height * 0.45,
                                    alignment: .center)
-                       
-						
+                        }
 						HStack {
                             ZStack {
                                 Group {
@@ -85,12 +87,12 @@ struct StartView: View {
                                         Picker("", selection: $pickedLanguage) {
                                             ForEach(startViewModel.languages, id: \.self) {
                                                 Text($0.nativeName)
-                                                    .font(selectedLang ? buttonFont : buttonLightFont)
+                                                    .font(selectorFont)
                                                     .foregroundColor(.white)
                                             }
                                         }
                                         .pickerStyle(.wheel)
-                                        .frame(width: width * 0.35)
+                                        .frame(width: width * 0.4)
                                         .onChange(of: $pickedLanguage.wrappedValue) { _ in
                                             startViewModel.currentLanguage = pickedLanguage
                                             selectedLang = true
@@ -102,16 +104,18 @@ struct StartView: View {
                                         }
                                         
                                         Button(action: {
+                                            
+                                            startViewModel.userPrefersDarkMode.toggle()
                                             //TODO: Switch appearance reference
                                         }) {
                                             ZStack {
-                                                Image(systemName: "rays")
+                                                Image(systemName: startViewModel.userPrefersDarkMode ? "moon" : "rays")
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fit)
                                                     .frame(width: lightButtonWidth,
                                                            height: lightButtonWidth,
                                                            alignment: .center)
-                                                    .foregroundColor(Color.cheddar)
+                                                    .foregroundColor(startViewModel.userPrefersDarkMode ? Color.midnight : Color.cheddar)
                                             }
                                         }
                                         .frame(width: width * 0.15)
@@ -119,12 +123,12 @@ struct StartView: View {
                                         Picker("", selection: $pickedCurrency) {
                                             ForEach(startViewModel.currencies, id: \.self) {
                                                 Text($0.fullCurrencyName)
-                                                    .font(selectedFiat ? buttonFont : buttonLightFont)
+                                                    .font(selectorFont)
                                                     .foregroundColor(.white)
                                             }
                                         }
                                         .pickerStyle(.wheel)
-                                        .frame(width: width * 0.35)
+                                        .frame(width: width * 0.4)
                                         .onChange(of: $pickedCurrency.wrappedValue) { _ in
                                             startViewModel.currentFiat = pickedCurrency
                                             selectedFiat = true
@@ -158,59 +162,61 @@ struct StartView: View {
 						}
 						Spacer()
 
-                        Button(
+                        NavigationLink(destination:
+
                             AnnounceUpdatesView(navigateStart: .create,
-                                                                            language: startViewModel.currentLanguage,
-                                                                            didTapContinue: $didContinue)
-                                                            .environmentObject(startViewModel)
-                                                            .navigationBarBackButtonHidden(false)
-						) {
-							ZStack {
-								RoundedRectangle(cornerRadius: largeButtonHeight/2)
-									.frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
+                                                language: startViewModel.currentLanguage,
+                                                didTapContinue: $didContinue)
+                                .environmentObject(startViewModel)
+                                .navigationBarBackButtonHidden(false)
+                        ) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: largeButtonHeight/2)
+                                    .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(Color(UIColor.midnight))
+                                    .shadow(radius: 3, x: 3.0, y: 3.0)
 
-								Text(S.StartViewController.createButton.localize())
-									.frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-									.font(largeButtonFont)
+                                Text(S.StartView.readyButton.localize())
+                                    .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
+                                    .font(largeButtonFont)
                                     .foregroundColor(Color(UIColor.white))
-									.overlay(
-										RoundedRectangle(cornerRadius: largeButtonHeight/2)
-											.stroke(.white, lineWidth: 2.0)
-									)
-							}
-						}
-						.padding([.top, .bottom], 10.0)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: largeButtonHeight/2)
+                                            .stroke(.white, lineWidth: 2.0)
+                                    )
+                            }
+                        }
+                        .padding([.top, .bottom], 10.0)
+                        
+                        NavigationLink(destination:
 
-                        Button(
-                            
-                     //       startViewModel.didTapRecover!()
-                            
-                            startViewModel
-                                .cancelLabel[startViewModel.currentLanguage.rawValue], role: .destructive
+                            AnnounceUpdatesView(navigateStart: .recover,
+                                                language: startViewModel.currentLanguage,
+                                                didTapContinue: $didContinue)
+                                .environmentObject(startViewModel)
+                                .navigationBarBackButtonHidden(false)
+                        ) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: largeButtonHeight/2)
+                                    .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
+                                    .foregroundColor(Color(UIColor.midnight)
+                                    ).shadow(radius: 5, x: 3.0, y: 3.0)
 
-                        ){
-							ZStack {
-								RoundedRectangle(cornerRadius: largeButtonHeight/2)
-									.frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-									.foregroundColor(Color(UIColor.midnight)
-									)
-
-								Text(S.StartViewController.recoverButton.localize())
-									.frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-									.font(largeButtonFont)
+                                Text(S.StartView.restoreButton.localize())
+                                    .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
+                                    .font(regularButtonFont)
                                     .foregroundColor(Color(UIColor.white))
-									.overlay(
-										RoundedRectangle(cornerRadius: largeButtonHeight/2)
-											.stroke(.white)
-									)
-							}
-						}
-						.padding([.top, .bottom], 10.0)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: largeButtonHeight/2)
+                                            .stroke(.white)
+                                    )
+                            }
+                        }
+                        .padding([.top, .bottom], 10.0)
 
 						Text(AppVersion.string)
-							.frame(width: 100, alignment: .center)
-							.font(tinyFont)
+							.frame(alignment: .center)
+                            .font(versionFont)
 							.foregroundColor(.white)
 							.padding(.all, 5.0)
 					}

@@ -293,7 +293,7 @@ enum S {
         static let rightArrow = Localization(key: "RecoverWallet.rightArrow", value: "Right Arrow", comment: "Next button accessibility label")
         static let done = Localization(key: "RecoverWallet.done", value: "Done", comment: "Done button text")
         static let instruction = Localization(key: "RecoverWallet.instruction", value: "Enter Paper Key", comment: "Enter paper key instruction")
-        static let header = Localization(key: "RecoverWallet.header", value: "Recover Wallet", comment: "Recover wallet header")
+       // static let header = Localization(key: "RecoverWallet.header", value: "Recover Wallet", comment: "Recover wallet header")
         static let subheader = Localization(key: "RecoverWallet.subheader", value: "Enter the paper key for the wallet you want to recover.", comment: "Recover wallet sub-header")
         
         static let headerResetPin = Localization(key: "RecoverWallet.header_reset_pin", value: "Reset PIN", comment: "Reset PIN with paper key: header")
@@ -501,9 +501,15 @@ enum S {
         static let modalTitle = Localization(key: "MenuViewController.modalTitle", value: "Menu", comment: "Menu modal title")
     }
     
+    enum StartView{
+        static let readyButton = Localization(key: "StartView.createButton", value: "Ready", comment: "button label")
+        static let restoreButton = Localization(key: "StartView.restoreButton", value: "Restore", comment: "button label")
+    }
+    
     enum StartViewController {
         static let createButton = Localization(key: "MenuViewController.createButton", value: "Create New Wallet", comment: "button label")
-        static let recoverButton = Localization(key: "MenuViewController.recoverButton", value: "Recover Wallet", comment: "button label")
+        static let readyButton = Localization(key: "StartView.createButton", value: "Ready", comment: "button label")
+        static let restoreButton = Localization(key: "StartView.restoreButton", value: "Restore", comment: "button label")
         static let tagline = Localization(key: "StartViewController.tagline", value: "The most secure and safest way to use Litecoin.", comment: "Start view message")
         static let continueButton = Localization(key: "StartViewController.continueButton", value: "Continue", comment: "Continue button label")
     }
