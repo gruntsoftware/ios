@@ -7,6 +7,7 @@ let timeSinceLastExitKey = "TimeSinceLastExit"
 let shouldRequireLoginTimeoutKey = "ShouldRequireLoginTimeoutKey"
 let numberOfBrainwalletLaunches = "NumberOfBrainwalletLaunches"
 let hasSeenAnnounceView = "HasSeedAnnounceView"
+let userDidPreferDarkModeKey = "UserDidPreferDarkMode"
 
 class ApplicationController: Subscriber, Trackable {
 	// Ideally the window would be private, but is unfortunately required
