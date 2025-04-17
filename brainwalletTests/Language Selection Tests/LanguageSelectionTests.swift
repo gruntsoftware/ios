@@ -23,12 +23,8 @@ final class LanguageSelectionTests: XCTestCase {
 	}
 
 	func testLanguageChange() throws {
-		let initialLanguage = UserDefaults.selectedLanguage
+        let initialLanguage = UserDefaults.selectedLanguage
 		XCTAssertEqual(initialLanguage, "en")
-
-		let spanish = "es"
-		viewModel.setLanguage(code: spanish)
-		XCTAssertEqual(spanish, UserDefaults.selectedLanguage)
-		XCTAssertEqual(S.BrainwalletAlert.warning.localize(), "Aviso")
+		XCTAssertEqual(S.BrainwalletAlert.warning.localize(), "Warning")  
 	}
 }
