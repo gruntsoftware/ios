@@ -3,7 +3,7 @@ import UIKit
 import Lottie
 //
 //enum OnboardingPath (
-//    
+//
 //)
 
 struct StartView: View {
@@ -17,9 +17,13 @@ struct StartView: View {
 
 	let squareButtonSize: CGFloat = 55.0
 	let squareImageSize: CGFloat = 25.0
-    let lightButtonWidth: CGFloat = 40.0
+    let themeButtonWidth: CGFloat = 28.0
     let largeButtonHeight: CGFloat = 65.0
     let lottieFileName: String = "welcomeemoji20250212.json"
+    
+    let bwSurface: Color = Color("brainwalletSurface")
+    let bwContent: Color = Color("brainwalletContent")
+    let bwWarn: Color = Color("brainwalletWarn")
 
     @State
     private var path: [any View] = []
@@ -35,6 +39,10 @@ struct StartView: View {
 
 	@State
 	private var delayedSelect: Bool = false
+    
+    @State
+    private var userPrefersDarkMode: Bool = false
+
 
 	@State
 	private var currentTagline = ""
@@ -63,11 +71,11 @@ struct StartView: View {
             
 			NavigationView {
 				ZStack {
-                    Color.midnight.edgesIgnoringSafeArea(.all)
+                    bwSurface.edgesIgnoringSafeArea(.all)
 					VStack {
                         
                         Group {
-                            Image("bw-logotype-white")
+                            Image("bw-logotype")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: width * 0.8,
@@ -88,7 +96,7 @@ struct StartView: View {
                                             ForEach(startViewModel.languages, id: \.self) {
                                                 Text($0.nativeName)
                                                     .font(selectorFont)
-                                                    .foregroundColor(.white)
+                                                    .foregroundColor(bwContent)
                                             }
                                         }
                                         .pickerStyle(.wheel)
@@ -104,27 +112,26 @@ struct StartView: View {
                                         }
                                         
                                         Button(action: {
-                                            
-                                            startViewModel.userPrefersDarkMode.toggle()
-                                            //TODO: Switch appearance reference
+                                            userPrefersDarkMode.toggle()
+                                            startViewModel.userDidChangeDarkMode(state: userPrefersDarkMode)
                                         }) {
                                             ZStack {
-                                                Image(systemName: startViewModel.userPrefersDarkMode ? "moon" : "rays")
+                                                Image(systemName: userPrefersDarkMode ? "moon" : "rays")
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fit)
-                                                    .frame(width: lightButtonWidth,
-                                                           height: lightButtonWidth,
+                                                    .frame(width: themeButtonWidth,
+                                                           height: themeButtonWidth,
                                                            alignment: .center)
-                                                    .foregroundColor(startViewModel.userPrefersDarkMode ? Color.midnight : Color.cheddar)
+                                                    .foregroundColor(bwWarn)
                                             }
                                         }
-                                        .frame(width: width * 0.15)
+                                        .frame(width: width * 0.1)
                                         
                                         Picker("", selection: $pickedCurrency) {
                                             ForEach(startViewModel.currencies, id: \.self) {
                                                 Text($0.fullCurrencyName)
                                                     .font(selectorFont)
-                                                    .foregroundColor(.white)
+                                                    .foregroundColor(bwContent)
                                             }
                                         }
                                         .pickerStyle(.wheel)
@@ -173,16 +180,16 @@ struct StartView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                    .foregroundColor(Color(UIColor.midnight))
+                                    .foregroundColor(bwSurface)
                                     .shadow(radius: 3, x: 3.0, y: 3.0)
 
                                 Text(S.StartView.readyButton.localize())
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(largeButtonFont)
-                                    .foregroundColor(Color(UIColor.white))
+                                    .foregroundColor(bwContent)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: largeButtonHeight/2)
-                                            .stroke(.white, lineWidth: 2.0)
+                                            .stroke(bwContent, lineWidth: 2.0)
                                     )
                             }
                         }
@@ -199,16 +206,16 @@ struct StartView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                    .foregroundColor(Color(UIColor.midnight)
-                                    ).shadow(radius: 5, x: 3.0, y: 3.0)
+                                    .foregroundColor(bwSurface)
+                                    .shadow(radius: 5, x: 3.0, y: 3.0)
 
                                 Text(S.StartView.restoreButton.localize())
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(regularButtonFont)
-                                    .foregroundColor(Color(UIColor.white))
+                                    .foregroundColor(bwContent)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: largeButtonHeight/2)
-                                            .stroke(.white)
+                                            .stroke(bwContent, lineWidth: 1.0)
                                     )
                             }
                         }
@@ -217,7 +224,7 @@ struct StartView: View {
 						Text(AppVersion.string)
 							.frame(alignment: .center)
                             .font(versionFont)
-							.foregroundColor(.white)
+                            .foregroundColor(bwContent)
 							.padding(.all, 5.0)
 					}
 					.padding(.all, swiftUICellPadding)
