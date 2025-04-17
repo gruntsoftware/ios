@@ -69,6 +69,13 @@ class StartViewModel: ObservableObject {
 	func userWantsToRecover(completion: @escaping () -> Void) {
 		didTapRecover = completion
 	}
+    
+    func userDidChangeDarkMode(state: Bool){
+         
+        (UIApplication.shared.connectedScenes.first as?
+                      UIWindowScene)?.windows.first!.overrideUserInterfaceStyle = state ?   .dark : .light
+        UserDefaults.standard.set(state, forKey: userDidPreferDarkModeKey)
+    }
 
 	/// DEV: For checking wallet
 //	private func checkForWalletAndSync() {

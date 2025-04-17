@@ -12,7 +12,7 @@ struct WelcomeLottieView: UIViewRepresentable {
     animationView.animation = LottieAnimation.named(lottieFileName)
     animationView.contentMode = .scaleAspectFill
     animationView.loopMode = .loop
-      animationView.backgroundColor = UIColor.midnight
+    animationView.backgroundColor = UIColor(Color("brainwalletSurface"))
     animationView.layer.cornerRadius = 10.0
     animationView.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(animationView)
