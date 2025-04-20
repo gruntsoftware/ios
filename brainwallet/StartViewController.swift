@@ -1,6 +1,5 @@
 import UIKit
 
-//TBD Deprecated
 class StartViewController: UIViewController {
 	// MARK: - Public
 
@@ -15,8 +14,8 @@ class StartViewController: UIViewController {
 
 	private let message = UILabel(font: .barlowLight(size: 22), color: .whiteTint)
 
-    private let create = ShadowButton(title: S.StartView.readyButton.localize(), type: .flatWhite)
-    private let recover = ShadowButton(title:  S.StartView.restoreButton.localize(), type: .flatLitecoinBlue)
+	private let create = ShadowButton(title: S.StartViewController.createButton.localize(), type: .flatWhite)
+	private let recover = ShadowButton(title: S.StartViewController.recoverButton.localize(), type: .flatLitecoinBlue)
 	private let store: Store
 	private let didTapRecover: () -> Void
 	private let didTapCreate: () -> Void
@@ -27,7 +26,7 @@ class StartViewController: UIViewController {
 	}()
 
 	private var logo: UIImageView = {
-		let image = UIImageView(image: UIImage(named: "bw-logotype"))
+		let image = UIImageView(image: UIImage(named: "bw-logotype-white"))
 		image.contentMode = .scaleAspectFit
 		image.alpha = 0.8
 		return image

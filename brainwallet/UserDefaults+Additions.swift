@@ -49,11 +49,11 @@ extension UserDefaults {
 		get {
 			var currencyCode = "USD"
 			if defaults.object(forKey: defaultCurrencyCodeKey) == nil {
-                currencyCode = Locale.current.currency?.identifier ?? "USD"
+				currencyCode = Locale.current.currencyCode ?? "USD"
 			} else {
 				currencyCode = defaults.string(forKey: defaultCurrencyCodeKey)!
 			}
-			let acceptedCurrencyCodes = ["USD", "EUR", "JPY", "GBP", "CHF", "TRY", "AUD", "CAD", "CNY", "IDR", "KRW", "MXN", "SGD",]
+			let acceptedCurrencyCodes = ["USD", "EUR", "JPY", "BGN", "CZK", "DKK", "GBP", "HUF", "PLN", "RON", "SEK", "CHF", "NOK", "HRK", "TRY", "AUD", "BRL", "CAD", "CNY", "HKD", "IDR", "ILS", "INR", "KRW", "MXN", "MYR", "NZD", "PHP", "SDG", "THB", "ZAR"]
 
 			if !(acceptedCurrencyCodes.contains(currencyCode)) {
 				return "USD"
