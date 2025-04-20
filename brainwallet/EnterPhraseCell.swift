@@ -42,23 +42,23 @@ class EnterPhraseCell: UICollectionViewCell {
 	var isWordValid: ((String) -> Bool)?
 
 	func disablePreviousButton() {
-		previousField.tintColor = .secondaryShadow
+		previousField.tintColor = BrainwalletUIColor.border
 		previousField.isEnabled = false
 	}
 
 	func disableNextButton() {
-		nextField.tintColor = .secondaryShadow
+		nextField.tintColor = BrainwalletUIColor.border
 		nextField.isEnabled = false
 	}
 
 	// MARK: - Private
 
 	let textField = UITextField()
-	private let label = UILabel(font: .customBody(size: 13.0), color: .secondaryShadow)
+	private let label = UILabel(font: .customBody(size: 13.0), color: BrainwalletUIColor.border)
 	private let nextField = UIButton.icon(image: #imageLiteral(resourceName: "RightArrow"), accessibilityLabel: S.RecoverWallet.rightArrow.localize())
 	private let previousField = UIButton.icon(image: #imageLiteral(resourceName: "LeftArrow"), accessibilityLabel: S.RecoverWallet.leftArrow.localize())
 	private let done = UIButton(type: .system)
-	fileprivate let separator = UIView(color: .secondaryShadow)
+	fileprivate let separator = UIView(color: BrainwalletUIColor.border)
 	fileprivate var hasDisplayedInvalidState = false
 
 	private func setup() {
@@ -94,15 +94,15 @@ class EnterPhraseCell: UICollectionViewCell {
 		textField.addTarget(self, action: #selector(EnterPhraseCell.textChanged(textField:)), for: .editingChanged)
 
 		label.textAlignment = .center
-		previousField.tintColor = .secondaryGrayText
-		nextField.tintColor = .secondaryGrayText
+		previousField.tintColor = BrainwalletUIColor.content
+		nextField.tintColor = BrainwalletUIColor.content
 		done.setTitle(S.RecoverWallet.done.localize(), for: .normal)
 	}
 
 	private var accessoryView: UIView {
-		let view = UIView(color: .secondaryButton)
+		let view = UIView(color: BrainwalletUIColor.background)
 		view.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 44)
-		let topBorder = UIView(color: .secondaryShadow)
+		let topBorder = UIView(color: BrainwalletUIColor.border)
 		view.addSubview(topBorder)
 		view.addSubview(previousField)
 		view.addSubview(nextField)
@@ -159,11 +159,11 @@ extension EnterPhraseCell: UITextFieldDelegate {
 		guard let isWordValid = isWordValid else { return }
 		guard let word = textField.text else { return }
 		if isWordValid(word) || word == "" {
-			textField.textColor = .darkText
-			separator.backgroundColor = .secondaryShadow
+			textField.textColor = BrainwalletUIColor.content
+			separator.backgroundColor = BrainwalletUIColor.border
 		} else {
-			textField.textColor = .cheddar
-			separator.backgroundColor = .cheddar
+            textField.textColor = BrainwalletUIColor.warn
+			separator.backgroundColor = BrainwalletUIColor.warn
 			hasDisplayedInvalidState = true
 		}
 	}

@@ -41,17 +41,17 @@ struct SendAddressCellView: View {
 									RoundedRectangle(cornerRadius: 4)
 										.frame(width: actionButtonWidth, height: 30,
 										       alignment: .center)
-										.foregroundColor(Color(UIColor.secondaryButton))
-										.shadow(color: Color(UIColor.grayTextTint), radius: 3, x: 0, y: 4)
+                                        .foregroundColor(BrainwalletColor.content)
+                                        .shadow(color: BrainwalletColor.surface, radius: 3, x: 0, y: 4)
 										.padding(.trailing, 3.0)
 
 									Text(S.Send.pasteLabel.localize())
 										.frame(width: actionButtonWidth, height: 30, alignment: .center)
 										.font(Font(UIFont.customMedium(size: 15.0)))
-										.foregroundColor(Color(UIColor.grayTextTint))
+                                        .foregroundColor(BrainwalletColor.background)
 										.overlay(
 											RoundedRectangle(cornerRadius: 4)
-												.stroke(Color(UIColor.secondaryBorder))
+                                                .stroke(BrainwalletColor.border)
 										)
 										.padding(.trailing, 3.0)
 								}
@@ -66,8 +66,8 @@ struct SendAddressCellView: View {
 								ZStack {
 									RoundedRectangle(cornerRadius: 4)
 										.frame(width: actionButtonWidth, height: 30, alignment: .center)
-										.foregroundColor(Color(UIColor.secondaryButton))
-										.shadow(color: Color(UIColor.grayTextTint),
+										.foregroundColor(BrainwalletColor.background)
+                                        .shadow(color: BrainwalletColor.border,
 										        radius: 3,
 										        x: 0, y: 4)
 										.padding(.trailing, 8.0)
@@ -75,10 +75,10 @@ struct SendAddressCellView: View {
 									Text(S.Send.scanLabel.localize())
 										.frame(width: actionButtonWidth, height: 30, alignment: .center)
 										.font(Font(UIFont.customMedium(size: 15.0)))
-										.foregroundColor(Color(UIColor.grayTextTint))
+										.foregroundColor(BrainwalletColor.background)
 										.overlay(
 											RoundedRectangle(cornerRadius: 4)
-												.stroke(Color(UIColor.secondaryBorder))
+												.stroke(BrainwalletColor.border)
 										)
 										.padding(.trailing, 8.0)
 								}
@@ -86,14 +86,14 @@ struct SendAddressCellView: View {
 						}
 					}
 					.background(
-						Color.white.clipShape(RoundedRectangle(cornerRadius: 8.0))
+                        BrainwalletColor.background.clipShape(RoundedRectangle(cornerRadius: 8.0))
 					)
 					.padding([.leading, .trailing], swiftUICellPadding)
 
 					Spacer()
 				}
 			}
-			.background(Color.brainwalletGray)
+            .background(BrainwalletColor.surface)
 		}
 	}
 }

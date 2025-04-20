@@ -6,7 +6,7 @@ class WritePaperPhraseViewController: UIViewController {
 	private let pin: String
 	private let label = UILabel.wrapping(font: UIFont.customBody(size: 16.0))
 	private let stepLabel = UILabel.wrapping(font: UIFont.customMedium(size: 16.0))
-	private let header = RadialGradientView(backgroundColor: .midnight)
+	private let header = RadialGradientView(backgroundColor: BrainwalletUIColor.surface)
 
 	private lazy var phraseViews: [PhraseView] = {
 		guard let phraseString = self.walletManager.seedPhrase(pin: self.pin) else { return [] }
@@ -45,7 +45,7 @@ class WritePaperPhraseViewController: UIViewController {
 	}
 
 	override func viewDidLoad() {
-		view.backgroundColor = .white
+		view.backgroundColor = BrainwalletUIColor.surface
 
 		label.text = S.WritePaperPhrase.instruction.localize()
 		label.textAlignment = .center

@@ -7,10 +7,10 @@ class StartWipeWalletViewController: UIViewController {
 	}
 
 	private let didTapNext: () -> Void
-	private let header = RadialGradientView(backgroundColor: .brainwalletBlue, offset: 64.0)
+    private let header = RadialGradientView(backgroundColor: BrainwalletUIColor.info, offset: 64.0)
 	private let illustration = UIImageView(image: #imageLiteral(resourceName: "RestoreIllustration"))
-	private let message = UILabel.wrapping(font: .customBody(size: 16.0), color: .darkText)
-	private let warning = UILabel.wrapping(font: .customBody(size: 16.0), color: .darkText)
+	private let message = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
+	private let warning = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private let button = ShadowButton(title: S.RecoverWallet.next.localize(), type: .primary)
 	private let bullet = UIImageView(image: #imageLiteral(resourceName: "deletecircle"))
 
@@ -65,7 +65,7 @@ class StartWipeWalletViewController: UIViewController {
 	}
 
 	private func setInitialData() {
-		view.backgroundColor = .white
+		view.backgroundColor = BrainwalletUIColor.surface
 		illustration.contentMode = .scaleAspectFill
 		message.text = S.WipeWallet.startMessage.localize()
 		warning.text = S.WipeWallet.startWarning.localize()

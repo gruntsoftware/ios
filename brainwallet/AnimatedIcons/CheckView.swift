@@ -10,7 +10,7 @@ class CheckView: UIView, AnimatableIcon {
 		let shape = CAShapeLayer()
 		shape.path = check.cgPath
 		shape.lineWidth = 9.0
-		shape.strokeColor = UIColor.white.cgColor
+		shape.strokeColor = BrainwalletUIColor.content.cgColor
 		shape.fillColor = UIColor.clear.cgColor
 		shape.strokeStart = 0.0
 		shape.strokeEnd = 0.0
@@ -44,7 +44,7 @@ class CheckView: UIView, AnimatableIcon {
 		checkcircle.addCurve(to: CGPoint(x: 47.99, y: 85.97), controlPoint1: CGPoint(x: 86.2, y: 68.86), controlPoint2: CGPoint(x: 69.1, y: 85.97))
 		checkcircle.close()
 
-		UIColor.white.setFill()
+		BrainwalletUIColor.content.setFill()
 		checkcircle.fill()
 
 		// This is the non-animated check left here for now as a reference

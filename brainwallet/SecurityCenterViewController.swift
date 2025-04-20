@@ -44,7 +44,7 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 	private let pinCell = SecurityCenterCell(title: S.SecurityCenter.Cells.pinTitle.localize(), descriptionText: S.SecurityCenter.Cells.pinDescription.localize())
 	private let biometricsCell = SecurityCenterCell(title: LAContext.biometricType() == .face ? S.SecurityCenter.Cells.faceIdTitle.localize() : S.SecurityCenter.Cells.touchIdTitle.localize(), descriptionText: S.SecurityCenter.Cells.touchIdDescription.localize())
 	private let paperKeyCell = SecurityCenterCell(title: S.SecurityCenter.Cells.paperKeyTitle.localize(), descriptionText: S.SecurityCenter.Cells.paperKeyDescription.localize())
-	private var separator = UIView(color: .secondaryShadow)
+    private var separator = UIView(color: BrainwalletUIColor.content)
 	private let store: Store
 	private let walletManager: WalletManager
 	fileprivate var didViewAppear = false
@@ -88,7 +88,7 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 			}
 			view.backgroundColor = backgroundColor
 		} else {
-			view.backgroundColor = .white
+			view.backgroundColor = BrainwalletUIColor.surface
 		}
 
 		header.closeCallback = {

@@ -21,7 +21,7 @@ struct IntroStepView: View {
 				VStack {
 					Text(S.CreateStep.DetailedMessage.intro.localize())
 						.font(paragraphFont)
-						.foregroundColor(.midnight)
+						.foregroundColor(BrainwalletColor.content)
 						.frame(width: width * 0.9, alignment: .leading)
 						.padding([.leading, .trailing], genericPad)
 						.padding([.bottom], genericPad)
@@ -36,7 +36,7 @@ struct IntroStepView: View {
 
 					Text(S.CreateStep.ExtendedMessage.intro.localize())
 						.font(paragraphFont)
-						.foregroundColor(.midnight)
+                        .foregroundColor(BrainwalletColor.content)
 						.frame(width: width * 0.9, alignment: .leading)
 						.padding([.leading, .trailing], genericPad)
 						.padding([.bottom], genericPad)
@@ -95,7 +95,7 @@ struct IntroStepView: View {
 //                            Text(S.Button.ok.localize())
 //                                .frame(width: width * 0.6, height: 60, alignment: .center)
 //                                .font(paragraphFont)
-//                                .foregroundColor(.brainwalletBlue)
+//                                .foregroundColor(BrainwalletUIColor.info)
 //                                .overlay(
 //                                    RoundedRectangle(cornerRadius: bigButtonCornerRadius)
 //                                        .stroke(.white, lineWidth: 2.0)

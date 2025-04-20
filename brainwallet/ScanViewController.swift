@@ -55,7 +55,7 @@ class ScanViewController: UIViewController, Trackable {
     
     override func viewDidLoad() {
         view.backgroundColor = .black
-        toolbar.backgroundColor = .secondaryButton
+        toolbar.backgroundColor = BrainwalletUIColor.background
         
         view.addSubview(toolbar)
         toolbar.addSubview(close)

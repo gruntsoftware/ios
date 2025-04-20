@@ -47,19 +47,19 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 	private let cancel = ShadowButton(title: S.Button.cancel.localize(), type: .flatWhiteBorder)
 	private let sendButton = ShadowButton(title: S.Confirmation.send.localize(), type: .flatLitecoinBlue, image: LAContext.biometricType() == .face ? #imageLiteral(resourceName: "FaceId") : #imageLiteral(resourceName: "TouchId"))
 
-	private let payLabel = UILabel(font: .barlowLight(size: 15.0), color: .grayTextTint)
-	private let toLabel = UILabel(font: .barlowLight(size: 15.0), color: .grayTextTint)
-	private let amountLabel = UILabel(font: .barlowRegular(size: 15.0), color: .darkText)
-	private let address = UILabel(font: .barlowRegular(size: 15.0), color: .darkText)
+	private let payLabel = UILabel(font: .barlowLight(size: 15.0), color: BrainwalletUIColor.content)
+	private let toLabel = UILabel(font: .barlowLight(size: 15.0), color: BrainwalletUIColor.content)
+	private let amountLabel = UILabel(font: .barlowRegular(size: 15.0), color: BrainwalletUIColor.content)
+	private let address = UILabel(font: .barlowRegular(size: 15.0), color: BrainwalletUIColor.content)
 
-	private let processingTime = UILabel.wrapping(font: .barlowLight(size: 14.0), color: .grayTextTint)
+	private let processingTime = UILabel.wrapping(font: .barlowLight(size: 14.0), color: BrainwalletUIColor.content)
 	private let sendLabel = UILabel(font: .barlowLight(size: 14.0), color: .darkGray)
 	private let feeLabel = UILabel(font: .barlowLight(size: 14.0), color: .darkGray)
 	private let totalLabel = UILabel(font: .barlowLight(size: 14.0), color: .darkGray)
 
-	private let send = UILabel(font: .barlowRegular(size: 15.0), color: .darkText)
-	private let fee = UILabel(font: .barlowRegular(size: 15.0), color: .darkText)
-	private let total = UILabel(font: .barlowMedium(size: 15.0), color: .darkText)
+	private let send = UILabel(font: .barlowRegular(size: 15.0), color: BrainwalletUIColor.content)
+	private let fee = UILabel(font: .barlowRegular(size: 15.0), color: BrainwalletUIColor.content)
+	private let total = UILabel(font: .barlowMedium(size: 15.0), color: BrainwalletUIColor.content)
 
 	override func viewDidLoad() {
 		DispatchQueue.main.async {

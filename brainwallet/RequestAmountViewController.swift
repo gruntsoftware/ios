@@ -105,10 +105,10 @@ class RequestAmountViewController: UIViewController {
 	}
 
 	private func setData() {
-		view.backgroundColor = .white
+		view.backgroundColor = BrainwalletUIColor.surface
 		address.text = wallet.receiveAddress
-		address.textColor = .grayTextTint
-		border.backgroundColor = .secondaryBorder
+        address.textColor = BrainwalletUIColor.content
+		border.backgroundColor = BrainwalletUIColor.content
 		qrCode.image = UIImage.qrCode(data: "\(wallet.receiveAddress)".data(using: .utf8)!, color: CIColor(color: .black))?
 			.resize(qrSize)!
 		share.isToggleable = true

@@ -47,7 +47,7 @@ class MenuViewController: UIViewController, Trackable {
 		if #available(iOS 11.0, *) {
 			view.backgroundColor = UIColor(named: "lfBackgroundColor")
 		} else {
-			view.backgroundColor = .white
+			view.backgroundColor = BrainwalletUIColor.surface
 		}
 	}
 

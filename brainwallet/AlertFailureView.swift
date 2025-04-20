@@ -12,14 +12,10 @@ struct AlertFailureView: View {
 
 	var body: some View {
 		VStack {
-//			Text(alertFailureType.header)
-//				.foregroundColor(.white)
-//				.font(Font(UIFont.barlowBold(size: 18.0)))
-//				.padding()
 
 			Divider()
 				.frame(maxHeight: 1.0)
-				.background(Color(UIColor.transparentWhite))
+                .background(BrainwalletColor.surface)
 
 			Image(systemName: "nosign")
 				.resizable()

@@ -43,7 +43,7 @@ extension UIButton {
 			button.imageEdgeInsets = UIEdgeInsets(top: 12.0, left: 12.0, bottom: 12.0, right: 12.0)
 		}
 
-		button.tintColor = .darkText
+		button.tintColor = BrainwalletUIColor.content
 		button.accessibilityLabel = accessibilityLabel
 		return button
 	}

@@ -34,10 +34,10 @@ class EnterPhraseViewController: UIViewController, UIScrollViewDelegate, CustomT
 	private let walletManager: WalletManager
 	private let reason: PhraseEntryReason
 	private let enterPhrase: EnterPhraseCollectionViewController
-    private let errorLabel = UILabel.wrapping(font: .customBody(size: 16.0), color: .cheddar)
-	private let instruction = UILabel(font: .customBold(size: 14.0), color: .darkText)
-	let titleLabel = UILabel.wrapping(font: .customBold(size: 26.0), color: .darkText)
-	private let subheader = UILabel.wrapping(font: .customBody(size: 16.0), color: .darkText)
+    private let errorLabel = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.error)
+	private let instruction = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.content)
+	let titleLabel = UILabel.wrapping(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
+	private let subheader = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private let faq: UIButton
 	private let scrollView = UIScrollView()
 	private let container = UIView()
@@ -121,7 +121,7 @@ class EnterPhraseViewController: UIViewController, UIScrollViewDelegate, CustomT
 	}
 
 	private func setData() {
-		view.backgroundColor = .secondaryButton
+		view.backgroundColor = BrainwalletUIColor.background
 		errorLabel.text = S.RecoverWallet.invalid.localize()
 		errorLabel.isHidden = true
 		errorLabel.textAlignment = .center

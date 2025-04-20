@@ -36,8 +36,8 @@ struct SupportLitecoinFoundationView: View {
 					.font(Font(UIFont.customMedium(size: 16.0)))
 					.padding()
 					.frame(maxWidth: .infinity)
-					.foregroundColor(Color(UIColor.white))
-					.background(Color(UIColor.midnight))
+                    .foregroundColor(BrainwalletColor.content)
+                    .background(BrainwalletColor.surface)
 					.cornerRadius(4.0)
 			}
 			.padding([.leading, .trailing], 40)
@@ -51,12 +51,12 @@ struct SupportLitecoinFoundationView: View {
 					.font(Font(UIFont.customMedium(size: 16.0)))
 					.padding()
 					.frame(maxWidth: .infinity)
-					.foregroundColor(Color(UIColor.midnight))
-					.background(Color(UIColor.white))
+                    .foregroundColor(BrainwalletColor.content)
+                    .background(BrainwalletColor.surface)
 					.cornerRadius(4.0)
 					.overlay(
 						RoundedRectangle(cornerRadius: 4)
-							.stroke(Color(UIColor.secondaryBorder))
+                            .stroke(BrainwalletColor.border)
 					)
 			}
 			.padding([.leading, .trailing], 40)

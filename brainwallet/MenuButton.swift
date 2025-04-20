@@ -12,7 +12,7 @@ class MenuButton: UIControl {
 		if #available(iOS 11.0, *) {
 			label.textColor = UIColor(named: "labelTextColor")
 			self.backgroundColor = UIColor(named: "lfBackgroundColor")
-			image.tintColor = .whiteTint
+			image.tintColor = BrainwalletUIColor.content
 		}
 
 		setupViews()
@@ -27,9 +27,9 @@ class MenuButton: UIControl {
 	override var isHighlighted: Bool {
 		didSet {
 			if isHighlighted {
-				backgroundColor = .brainwalletGray
+				backgroundColor = BrainwalletUIColor.content
 			} else {
-				backgroundColor = .white
+				backgroundColor = BrainwalletUIColor.surface
 			}
 		}
 	}
@@ -57,7 +57,7 @@ class MenuButton: UIControl {
 		label.text = type.title
 		image.image = type.image
 		image.contentMode = .scaleAspectFit
-		border.backgroundColor = .secondaryShadow
+		border.backgroundColor = BrainwalletUIColor.border
 	}
 
 	@available(*, unavailable)

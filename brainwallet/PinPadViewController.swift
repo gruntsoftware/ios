@@ -307,18 +307,18 @@ class ClearNumberPad: GenericPinPadCell {
 			centerLabel.isHidden = true
 		}
 
-		topLabel.textColor = .white
-		centerLabel.textColor = .white
-		sublabel.textColor = .white
+        topLabel.textColor = BrainwalletUIColor.content
+		centerLabel.textColor = BrainwalletUIColor.content
+		sublabel.textColor = BrainwalletUIColor.content
 
 		if isHighlighted {
-			backgroundColor = .transparentBlack
+            backgroundColor = BrainwalletUIColor.surface
 		} else {
 			backgroundColor = .clear
 
 			if text == "" || text == deleteKeyIdentifier {
 				imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
-				imageView.tintColor = .white
+                imageView.tintColor = BrainwalletUIColor.content
 			}
 		}
 	}
@@ -337,8 +337,8 @@ class ClearDecimalPad: GenericPinPadCell {
 		imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
 
 		if isHighlighted {
-			centerLabel.textColor = .grayTextTint
-			imageView.tintColor = .grayTextTint
+			centerLabel.textColor = BrainwalletUIColor.content
+			imageView.tintColor = BrainwalletUIColor.content
 		} else {
 			centerLabel.textColor = .white
 			imageView.tintColor = .white
@@ -354,11 +354,11 @@ class ClearDecimalPad: GenericPinPadCell {
 class WhiteDecimalPad: GenericPinPadCell {
 	override func setAppearance() {
 		if isHighlighted {
-			centerLabel.backgroundColor = .secondaryShadow
-			centerLabel.textColor = .darkText
+			centerLabel.backgroundColor = BrainwalletUIColor.border
+			centerLabel.textColor = BrainwalletUIColor.content
 		} else {
-			centerLabel.backgroundColor = .white
-			centerLabel.textColor = .grayTextTint
+            centerLabel.backgroundColor = BrainwalletUIColor.surface
+			centerLabel.textColor = BrainwalletUIColor.content
 		}
 	}
 
@@ -379,20 +379,20 @@ class WhiteNumberPad: GenericPinPadCell {
 		}
 
 		if isHighlighted {
-			backgroundColor = .secondaryShadow
-			topLabel.textColor = .darkText
-			centerLabel.textColor = .darkText
-			sublabel.textColor = .darkText
+			backgroundColor = BrainwalletUIColor.border
+			topLabel.textColor = BrainwalletUIColor.content
+			centerLabel.textColor = BrainwalletUIColor.content
+			sublabel.textColor = BrainwalletUIColor.content
 		} else {
 			if text == "" || text == deleteKeyIdentifier {
-				backgroundColor = .whiteTint
+                backgroundColor = BrainwalletUIColor.surface
 				imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
-				imageView.tintColor = .grayTextTint
+                imageView.tintColor = BrainwalletUIColor.gray
 			} else {
-				backgroundColor = .whiteTint
-				topLabel.textColor = .grayTextTint
-				centerLabel.textColor = .grayTextTint
-				sublabel.textColor = .grayTextTint
+                backgroundColor = BrainwalletUIColor.surface
+				topLabel.textColor = BrainwalletUIColor.content
+				centerLabel.textColor = BrainwalletUIColor.content
+				sublabel.textColor = BrainwalletUIColor.content
 			}
 		}
 	}

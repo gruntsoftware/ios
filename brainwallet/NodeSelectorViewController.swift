@@ -2,11 +2,11 @@ import BRCore
 import UIKit
 
 class NodeSelectorViewController: UIViewController, Trackable {
-	let titleLabel = UILabel(font: .customBold(size: 26.0), color: .darkText)
-	private let nodeLabel = UILabel(font: .customBody(size: 14.0), color: .grayTextTint)
-	private let node = UILabel(font: .customBody(size: 14.0), color: .darkText)
-	private let statusLabel = UILabel(font: .customBody(size: 14.0), color: .grayTextTint)
-	private let status = UILabel(font: .customBody(size: 14.0), color: .darkText)
+	let titleLabel = UILabel(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
+    private let nodeLabel = UILabel(font: .customBody(size: 14.0), color: BrainwalletUIColor.gray)
+	private let node = UILabel(font: .customBody(size: 14.0), color: BrainwalletUIColor.content)
+	private let statusLabel = UILabel(font: .customBody(size: 14.0), color: BrainwalletUIColor.gray)
+	private let status = UILabel(font: .customBody(size: 14.0), color: BrainwalletUIColor.content)
 	private let button: ShadowButton
 	private let walletManager: WalletManager
 	private var okAction: UIAlertAction?
@@ -53,7 +53,7 @@ class NodeSelectorViewController: UIViewController, Trackable {
 	}
 
 	private func setInitialData() {
-		view.backgroundColor = .whiteTint
+		view.backgroundColor = BrainwalletUIColor.surface
 		titleLabel.text = S.NodeSelector.title.localize()
 		nodeLabel.text = S.NodeSelector.nodeLabel.localize()
 		statusLabel.text = S.NodeSelector.statusLabel.localize()

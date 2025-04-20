@@ -8,9 +8,9 @@ class EnterPhraseHostingController: UIHostingController<EnterPhraseView> {
 
 	//    private let enterPhrase: EnterPhraseCollectionViewController
 	//    private let errorLabel = UILabel.wrapping(font: .customBody(size: 16.0), color: .cheddar)
-	//    private let instruction = UILabel(font: .customBold(size: 14.0), color: .darkText)
-	//    internal let titleLabel = UILabel.wrapping(font: .customBold(size: 26.0), color: .darkText)
-	//    private let subheader = UILabel.wrapping(font: .customBody(size: 16.0), color: .darkText)
+	//    private let instruction = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.content)
+	//    internal let titleLabel = UILabel.wrapping(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
+	//    private let subheader = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	//    private let faq: UIButton
 	//    private let scrollView = UIScrollView()
 	//    private let container = UIView()

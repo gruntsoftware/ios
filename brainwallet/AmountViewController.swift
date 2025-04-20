@@ -11,12 +11,12 @@ class AmountViewController: UIViewController, Trackable {
 	private var pinPadHeight: NSLayoutConstraint?
 	private var feeSelectorHeight: NSLayoutConstraint?
 	private var feeSelectorTop: NSLayoutConstraint?
-	private var placeholder = PaddingLabel(font: amountFont, color: .grayTextTint)
-	private var amountLabel = UILabel(font: amountFont, color: .darkText)
+	private var placeholder = PaddingLabel(font: amountFont, color: BrainwalletUIColor.content)
+	private var amountLabel = UILabel(font: amountFont, color: BrainwalletUIColor.content)
 	private let pinPad: PinPadViewController
 	private let currencyToggle: ShadowButton
-	private let border = UIView(color: .secondaryShadow)
-	private let bottomBorder = UIView(color: .secondaryShadow)
+	private let border = UIView(color: BrainwalletUIColor.border)
+	private let bottomBorder = UIView(color: BrainwalletUIColor.border)
 	private let cursor = BlinkingView(blinkColor: C.defaultTintColor)
 	private let balanceLabel = UILabel()
 	private let feesLabel = UILabel()
@@ -94,8 +94,8 @@ class AmountViewController: UIViewController, Trackable {
 			placeholder.textColor = headerTextColor
 			amountLabel.textColor = textColor
 		} else {
-			placeholder.textColor = .grayTextTint
-			amountLabel.textColor = .darkText
+			placeholder.textColor = BrainwalletUIColor.content
+			amountLabel.textColor = BrainwalletUIColor.content
 		}
 
 		addSubviews()
@@ -204,11 +204,11 @@ class AmountViewController: UIViewController, Trackable {
 
 		amountLabel.text = ""
 
-		placeholder.backgroundColor = .white
+		placeholder.backgroundColor = BrainwalletUIColor.surface
 		placeholder.layer.cornerRadius = 8.0
 		placeholder.layer.masksToBounds = true
 
-		amountLabel.backgroundColor = .white
+		amountLabel.backgroundColor = BrainwalletUIColor.surface
 		amountLabel.layer.cornerRadius = 8.0
 		amountLabel.layer.masksToBounds = true
 
@@ -239,7 +239,7 @@ class AmountViewController: UIViewController, Trackable {
 		}
 		editFee.setImage(#imageLiteral(resourceName: "Edit"), for: .normal)
 		editFee.imageEdgeInsets = UIEdgeInsets(top: 15.0, left: 15.0, bottom: 15.0, right: 15.0)
-		editFee.tintColor = .grayTextTint
+		editFee.tintColor = BrainwalletUIColor.content
 		editFee.isHidden = true
 	}
 

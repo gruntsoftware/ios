@@ -9,9 +9,9 @@ class StartNavigationDelegate: NSObject, UINavigationControllerDelegate {
 
 	func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated _: Bool) {
 		if viewController is RecoverWalletIntroViewController {
-			navigationController.navigationBar.tintColor = .white
+			navigationController.navigationBar.tintColor = BrainwalletUIColor.surface
 			navigationController.navigationBar.titleTextAttributes = [
-				NSAttributedString.Key.foregroundColor: UIColor.white,
+				NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
 				NSAttributedString.Key.font: UIFont.customBold(size: 17.0),
 			]
 			navigationController.setClearNavbar()
@@ -19,20 +19,20 @@ class StartNavigationDelegate: NSObject, UINavigationControllerDelegate {
 		}
 
 		if viewController is EnterPhraseViewController {
-			navigationController.navigationBar.tintColor = .darkText
+            navigationController.navigationBar.tintColor = BrainwalletUIColor.surface
 			navigationController.navigationBar.titleTextAttributes = [
-				NSAttributedString.Key.foregroundColor: UIColor.darkText,
+				NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
 				NSAttributedString.Key.font: UIFont.customBold(size: 17.0),
 			]
 			navigationController.setClearNavbar()
 			navigationController.navigationBar.isTranslucent = false
-			navigationController.navigationBar.barTintColor = .whiteTint
+			navigationController.navigationBar.barTintColor = BrainwalletUIColor.surface
 		}
 
 		if viewController is UpdatePinViewController {
-			navigationController.navigationBar.tintColor = .darkText
+			navigationController.navigationBar.tintColor = BrainwalletUIColor.surface
 			navigationController.navigationBar.titleTextAttributes = [
-				NSAttributedString.Key.foregroundColor: UIColor.darkText,
+				NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
 				NSAttributedString.Key.font: UIFont.customBold(size: 17.0),
 			]
 			navigationController.setClearNavbar()

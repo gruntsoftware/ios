@@ -16,8 +16,8 @@ class LoadingProgressView: UIView, GradientDrawable {
 
 	private var hasSetup = false
 
-	private lazy var progressBackground: UIView = self.makeProgressView(backgroundColor: .transparentBlack)
-	private lazy var progressForeground: UIView = self.makeProgressView(backgroundColor: .white)
+    private lazy var progressBackground: UIView = self.makeProgressView(backgroundColor: BrainwalletUIColor.background)
+    private lazy var progressForeground: UIView = self.makeProgressView(backgroundColor: BrainwalletUIColor.content)
 
 	private func makeProgressView(backgroundColor: UIColor) -> UIView {
 		let view = UIView()
@@ -58,7 +58,7 @@ class LoadingProgressView: UIView, GradientDrawable {
 			progressForeground.heightAnchor.constraint(equalTo: progressBackground.heightAnchor),
 			progressForeground.centerYAnchor.constraint(equalTo: progressBackground.centerYAnchor),
 		])
-		shadowView.backgroundColor = .transparentWhite
+		shadowView.backgroundColor = BrainwalletUIColor.background
 		shadowView.constrainTopCorners(height: 0.5)
 	}
 

@@ -74,9 +74,9 @@ class ShadowButton: UIControl {
 			guard isToggleable else { return }
 			if type == .tertiary || type == .search {
 				if isSelected {
-					container.layer.borderColor = UIColor.brainwalletBlue.cgColor
-					imageView?.tintColor = .brainwalletBlue
-					label.textColor = .brainwalletBlue
+					container.layer.borderColor = BrainwalletUIColor.info.cgColor
+					imageView?.tintColor = BrainwalletUIColor.info
+					label.textColor = BrainwalletUIColor.info
 				} else {
 					setColors()
 				}
@@ -105,13 +105,13 @@ class ShadowButton: UIControl {
 		])
 		shadowView.layer.cornerRadius = 4.0
 		shadowView.layer.shadowOffset = CGSize(width: 0, height: 4)
-		shadowView.backgroundColor = .white
+		shadowView.backgroundColor = BrainwalletUIColor.surface
 		shadowView.isUserInteractionEnabled = false
 	}
 
 	private func addContent() {
 		addSubview(container)
-		container.backgroundColor = .brainwalletBlue
+		container.backgroundColor = BrainwalletUIColor.info
 		container.layer.cornerRadius = cornerRadius
 		container.isUserInteractionEnabled = false
 		container.constrain(toSuperviewEdges: nil)
@@ -155,81 +155,80 @@ class ShadowButton: UIControl {
 	private func setColors() {
 		switch type {
 		case .flatLitecoinBlue:
-                container.backgroundColor = .midnight
-			label.textColor = .primaryText
-			container.layer.borderColor = UIColor.white.cgColor
+                container.backgroundColor = BrainwalletUIColor.surface
+            label.textColor = BrainwalletUIColor.content
+            container.layer.borderColor = BrainwalletUIColor.border.cgColor
 			container.layer.borderWidth = 1.0
 			imageView?.tintColor = .white
-			shadowView.layer.shadowColor = UIColor.black.cgColor
+            shadowView.layer.shadowColor = BrainwalletUIColor.background.cgColor
 			shadowView.layer.shadowOpacity = 0.15
 		case .flatWhite:
-			container.backgroundColor = .white
-			label.textColor = .midnight
+			container.backgroundColor = BrainwalletUIColor.surface
+			label.textColor = BrainwalletUIColor.surface
 			container.layer.borderColor = nil
 			container.layer.borderWidth = 0.0
-			imageView?.tintColor = .midnight
+			imageView?.tintColor = BrainwalletUIColor.surface
 		case .flatWhiteBorder:
-			container.backgroundColor = .white
-			label.textColor = .midnight
-			container.layer.borderColor = UIColor.midnight.cgColor
+			container.backgroundColor = BrainwalletUIColor.surface
+			label.textColor = BrainwalletUIColor.surface
+            container.layer.borderColor = BrainwalletUIColor.content.cgColor
 			container.layer.borderWidth = 1.0
-			imageView?.tintColor = .midnight
+			imageView?.tintColor = BrainwalletUIColor.surface
 		case .primary:
-			container.backgroundColor = .brainwalletBlue
-			label.textColor = .primaryText
+			container.backgroundColor = BrainwalletUIColor.info
+			label.textColor = BrainwalletUIColor.content
 			container.layer.borderColor = nil
 			container.layer.borderWidth = 0.0
-			shadowView.layer.shadowColor = UIColor.black.cgColor
+            shadowView.layer.shadowColor = BrainwalletUIColor.border.cgColor
 			shadowView.layer.shadowOpacity = 0.3
 			imageView?.tintColor = .white
 		case .secondary:
-			container.backgroundColor = .secondaryButton
-			label.textColor = .darkText
-			container.layer.borderColor = UIColor.secondaryBorder.cgColor
+			container.backgroundColor = BrainwalletUIColor.background
+			label.textColor = BrainwalletUIColor.content
+            container.layer.borderColor = BrainwalletUIColor.border.cgColor
 			container.layer.borderWidth = 1.0
-			shadowView.layer.shadowColor = UIColor.black.cgColor
+            shadowView.layer.shadowColor = BrainwalletUIColor.background.cgColor
 			shadowView.layer.shadowOpacity = 0.15
-			imageView?.tintColor = .darkText
+			imageView?.tintColor = BrainwalletUIColor.content
 		case .tertiary:
-			container.backgroundColor = .secondaryButton
-			label.textColor = .grayTextTint
-			container.layer.borderColor = UIColor.secondaryBorder.cgColor
+			container.backgroundColor = BrainwalletUIColor.background
+			label.textColor = BrainwalletUIColor.content
+			container.layer.borderColor = BrainwalletUIColor.background.cgColor
 			container.layer.borderWidth = 1.0
-			shadowView.layer.shadowColor = UIColor.black.cgColor
+			shadowView.layer.shadowColor = BrainwalletUIColor.border.cgColor
 			shadowView.layer.shadowOpacity = 0.15
-			imageView?.tintColor = .grayTextTint
+			imageView?.tintColor = BrainwalletUIColor.content
 		case .blackTransparent:
 			container.backgroundColor = .clear
-			label.textColor = .darkText
-			container.layer.borderColor = UIColor.darkText.cgColor
+			label.textColor = BrainwalletUIColor.content
+			container.layer.borderColor = BrainwalletUIColor.content.cgColor
 			container.layer.borderWidth = 1.0
-			imageView?.tintColor = .grayTextTint
+			imageView?.tintColor = BrainwalletUIColor.content
 			shadowView.isHidden = true
 		case .search:
 			label.font = UIFont.customBody(size: 13.0)
-			container.backgroundColor = .secondaryButton
-			label.textColor = .grayTextTint
-			container.layer.borderColor = UIColor.secondaryBorder.cgColor
+			container.backgroundColor = BrainwalletUIColor.background
+			label.textColor = BrainwalletUIColor.content
+			container.layer.borderColor = BrainwalletUIColor.content.cgColor
 			container.layer.borderWidth = 1.0
-			shadowView.layer.shadowColor = UIColor.black.cgColor
+            shadowView.layer.shadowColor = BrainwalletUIColor.border.cgColor
 			shadowView.layer.shadowOpacity = 0.15
-			imageView?.tintColor = .grayTextTint
+			imageView?.tintColor = BrainwalletUIColor.content
 		case .warning:
 			label.font = UIFont.customBody(size: 13.0)
-			container.backgroundColor = .grape
-			label.textColor = .white
-			container.layer.borderColor = UIColor.secondaryBorder.cgColor
+            container.backgroundColor = BrainwalletUIColor.surface
+            label.textColor = BrainwalletUIColor.content
+			container.layer.borderColor =  BrainwalletUIColor.content.cgColor
 			container.layer.borderWidth = 1.0
-			shadowView.layer.shadowColor = UIColor.black.cgColor
+            shadowView.layer.shadowColor = BrainwalletUIColor.background.cgColor
 			shadowView.layer.shadowOpacity = 0.15
-		// imageView?.tintColor = .grayTextTint
 		case .boldWarning:
 			label.font = UIFont.customBold(size: 15.0)
-			container.backgroundColor = .grape
-			label.textColor = .white
-			container.layer.borderColor = UIColor.secondaryBorder.cgColor
+            container.backgroundColor = BrainwalletUIColor.surface
+            label.textColor = BrainwalletUIColor.warn
+			container.layer.borderColor = BrainwalletUIColor.border.cgColor
 			container.layer.borderWidth = 1.0
-			shadowView.layer.shadowColor = UIColor.black.cgColor
+			shadowView.layer.shadowColor = BrainwalletUIColor.border.cgColor
 			shadowView.layer.shadowOpacity = 0.15
 		}
 	}

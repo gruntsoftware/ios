@@ -6,7 +6,6 @@ import UIKit
 let timeSinceLastExitKey = "TimeSinceLastExit"
 let shouldRequireLoginTimeoutKey = "ShouldRequireLoginTimeoutKey"
 let numberOfBrainwalletLaunches = "NumberOfBrainwalletLaunches"
-let hasSeenAnnounceView = "HasSeedAnnounceView"
 let userDidPreferDarkModeKey = "UserDidPreferDarkMode"
 
 class ApplicationController: Subscriber, Trackable {
