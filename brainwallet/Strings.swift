@@ -149,6 +149,36 @@ enum S {
         static let name = Localization(key: "Brainwallet.name", value: "Brainwallet", comment: "Brainwallet name")
     }
     
+    enum Onboarding {
+        static let readyTitle = Localization(key: "Onboarding.readyTitle", value: "Ready?", comment: " ready")
+        static let restoreTitle = Localization(key: "Onboarding.restoreTitle", value: "Restore!", comment: " Restore")
+        static let readyDetail = Localization(key: "Onboarding.readyDetail", value: "Do this for you. Please do it alone. Grab a pen, paper & 5 mins", comment: " detail")
+        static let restoreDetail = Localization(key: "Onboarding.restoreDetail", value: "Switching devices? Lost it in a boating accident? You can restore your Brainwallet here.", comment: " detail")
+        static let readyNextButton = Localization(key: "Onboarding.readyNextButton", value: "Setup app passcode", comment: " ready button")
+        static let restoreNextButton = Localization(key: "Onboarding.restoreNextButton", value: "Restore my Brainwallet", comment: " Restore button")
+    }
+    enum SetPasscode {
+        static let subTitle = Localization(key: "SetPasscode.subTitle", value: "Set app PIN", comment: " sub title")
+        static let detail1 = Localization(key: "SetPasscode.detail", value: "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool", comment: "setuppasscode detail")
+        static let confirmTitle = Localization(key: "SetPasscode.confirmTitle", value: "Confirm", comment: " confirm title")
+        static let detail2 = Localization(key: "SetPasscode.detail2", value: "You didn’t forget did you? Enter it again. Or, go back to start over.", comment: "setuppasscode confirm detail")
+    }
+    
+    enum Restore {
+        static let title = Localization(key: "Restore.title", value: "Restore your power", comment: " Restore your power")
+        static let detail1 = Localization(key: "Restore.detail1", value: "You can get back from where you started", comment: " detail1")
+        static let detail2 = Localization(key: "Restore.detail2", value: "Don’t guess.\n\nIt would take you 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries", comment: " detail1")
+        static let detail3 = Localization(key: "Restore.detail3", value: "Blockchain: Litecoin", comment: " detail3")
+        static let nextButton = Localization(key: "Restore.nextButton", value: "Restore my Brainwallet", comment: "nextButton")
+    }
+    
+    enum TopUp {
+        static let topUpTitle = Localization(key: "TopUp.topUpTitle", value: "Top Up!", comment: " Top Up")
+        static let detail1 = Localization(key: "TopUp.detail1", value: "Get some Litecoin for your Brainwallet", comment: " top up detail")
+        static let detail2 = Localization(key: "TopUp.detail2", value: "Maybe later (Skip)", comment: " top up skip")
+        static let topUpNextButton = Localization(key: "TopUp.nextButton", value: "Get Litecoin", comment: " top up next")
+    }
+        
     enum Account {
         static let loadingMessage = Localization(key: "Account.loadingMessage", value: "Loading Wallet", comment: "Loading Wallet Message")
     }

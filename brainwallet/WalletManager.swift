@@ -36,19 +36,22 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 		do {
 			instance = try WalletManager(store: Store(), dbPath: nil)
 		} catch {
-			NSLog("ERROR: Instance of WalletManager not initialized")
+            assertionFailure("ERROR: Instance of WalletManager not initialized")
 		}
 		return instance!
 	}()
 
 	var wallet: BRWallet? {
-		guard masterPubKey != BRMasterPubKey() else { return nil }
+        guard masterPubKey != BRMasterPubKey() else {
+            return nil
+        }
 		guard let wallet = lazyWallet
 		else {
 			// stored transactions don't match masterPubKey
 			#if !Debug
 				do { try FileManager.default.removeItem(atPath: dbPath) } catch {}
 			#endif
+            assertionFailure("BRWallet is nil")
 			return nil
 		}
 		didInitWallet = true
@@ -61,7 +64,10 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 	}
 
 	var peerManager: BRPeerManager? {
-		guard wallet != nil else { return nil }
+        guard wallet != nil else {
+            assertionFailure("BRPeerManager.wallet is nil")
+            return nil
+        }
 		return lazyPeerManager
 	}
 

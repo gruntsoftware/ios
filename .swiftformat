@@ -1,3 +1,5 @@
+# swift version
+--swiftversion 5
 # format options
 --header strip
 --indent tab

@@ -205,9 +205,16 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		}
 
 		store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
-		                callback: { _ in
-		                	self.tabBar.selectedItem = self.tabBar.items?.first
-		                })
+                        callback: { _ in
+            self.tabBar.selectedItem = self.tabBar.items?.first
+                    if let rate = store.state.currentRate {
+                        let maxDigits = store.state.maxDigits
+                        let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: maxDigits)
+                        secondaryLabel.formatter = placeholderAmount.localFormat
+                        primaryLabel.formatter = placeholderAmount.ltcFormat
+                        self.exchangeRate = rate
+                    }
+        })
 
 		store.lazySubscribe(self,
 		                    selector: { $0.isLtcSwapped != $1.isLtcSwapped },
