@@ -92,7 +92,7 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 	lazy var allWordsLists: [[NSString]] = {
 		var array: [[NSString]] = []
 		for lang in Bundle.main.localizations {
-			if let path = Bundle.main.path(forResource: "BIP39Words", ofType: "plist", inDirectory: nil, forLocalization: lang) {
+			if let path = Bundle.main.path(forResource: "BIP39Words", ofType: "plist") {
 				if let words = NSArray(contentsOfFile: path) as? [NSString] {
 					array.append(words)
 				}
@@ -105,7 +105,7 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 		var set: Set<String> = Set()
 
 		for lang in Bundle.main.localizations {
-			if let path = Bundle.main.path(forResource: "BIP39Words", ofType: "plist", inDirectory: nil, forLocalization: lang) {
+			if let path = Bundle.main.path(forResource: "BIP39Words", ofType: "plist") {
 				if let words = NSArray(contentsOfFile: path) as? [NSString] {
 					set.formUnion(words.map { $0 as String })
 				}

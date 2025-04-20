@@ -71,7 +71,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 	var delegate: LoginViewControllerDelegate?
 
 	private var logo: UIImageView = {
-		let image = UIImageView(image: UIImage(named: "bw-logotype-white"))
+		let image = UIImageView(image: UIImage(named: "bw-logotype"))
 		image.contentMode = .scaleAspectFit
 		image.alpha = 0.8
 		return image

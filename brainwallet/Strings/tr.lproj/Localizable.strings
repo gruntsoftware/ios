@@ -2,7 +2,7 @@
 "About.blog" = "İnternet sitesi";
 
 /* About screen footer */
-"About.footer" = "Litecoin Vakfı'nın LiteWallet\nEkibi tarafından yapılmıştır\n%1$@";
+"About.footer" = "Litecoin Vakfı'nın Brainwallet\nEkibi tarafından yapılmıştır\n%1$@";
 
 /* Privay Policy button label */
 "About.privacy" = "Gizlilik Politikası";
@@ -26,7 +26,7 @@
 "Account.loadingMessage" = "Cüzdan yükleniyor";
 
 /* Default wallet name */
-"AccountHeader.defaultWalletName" = "Litewallet'ım";
+"AccountHeader.defaultWalletName" = "Brainwallet'ım";
 
 /* Manage wallet button title */
 "AccountHeader.manageButtonName" = "YÖNET";
@@ -227,13 +227,13 @@
 "FaceIDSettings.customizeText" = "Face ID harcama limitinizi şuradan özelleştirebilirsiniz: %1$@.";
 
 /* Face ID screen label */
-"FaceIDSettings.label" = "Litewallet'ınızın kilidini açmak ve belirli bir limite kadar para göndermek için yüzünüzü kullanın.";
+"FaceIDSettings.label" = "Brainwallet'ınızın kilidini açmak ve belirli bir limite kadar para göndermek için yüzünüzü kullanın.";
 
 /* Link Text (see TouchIdSettings.customizeText) */
 "FaceIDSettings.linkText" = "Face ID Harcama Sınırı Ekranı";
 
 /* Face id switch label. */
-"FaceIDSettings.switchLabel" = "Litewallet için Face ID'yi etkinleştirin";
+"FaceIDSettings.switchLabel" = "Brainwallet için Face ID'yi etkinleştirin";
 
 /* Face ID settings view title */
 "FaceIDSettings.title" = "Face ID";
@@ -273,9 +273,6 @@
 
 /* Fee Selector title */
 "FeeSelector.title" = "İşleme Hızı";
-
-/* "Fragment.back" */
-"Fragment.back" = "Geri dönmek";
 
 /* Confirm */
 "Fragment.confirm" = "Confirm";
@@ -326,7 +323,7 @@
 "Import.leftCaption" = "İçe aktarılacak Cüzdan";
 
 /* Import wallet intro screen message */
-"Import.message" = "Bir cüzdanı içe aktarmak, diğer cüzdanınızdaki tüm parayı tek bir işlem kullanarak Litewallet cüzdanınıza aktarır.";
+"Import.message" = "Bir cüzdanı içe aktarmak, diğer cüzdanınızdaki tüm parayı tek bir işlem kullanarak Brainwallet cüzdanınıza aktarır.";
 
 /* Enter password alert view title */
 "Import.password" = "Bu özel anahtar şifre korumalıdır.";
@@ -335,7 +332,7 @@
 "Import.passwordPlaceholder" = "şifre";
 
 /* Caption for graphics */
-"Import.rightCaption" = "Litewallet Cüzdanınız";
+"Import.rightCaption" = "Brainwallet Cüzdanınız";
 
 /* Scan Private key button label */
 "Import.scan" = "Özel Anahtarı Tara";
@@ -365,10 +362,10 @@
 "JailbreakWarnings.ignore" = "Yoksay";
 
 /* Jailbreak warning message */
-"JailbreakWarnings.messageWithBalance" = "CİHAZ GÜVENLİĞİ İHLAL EDİLDİ \n Herhangi bir 'jailbreak' uygulaması Litewallet'in anahtar zinciri verilerine erişebilir ve Litecoin'inizi çalabilir! Bu cüzdanı hemen silin ve güvenli bir cihazda geri yükleyin.";
+"JailbreakWarnings.messageWithBalance" = "CİHAZ GÜVENLİĞİ İHLAL EDİLDİ \n Herhangi bir 'jailbreak' uygulaması Brainwallet'in anahtar zinciri verilerine erişebilir ve Litecoin'inizi çalabilir! Bu cüzdanı hemen silin ve güvenli bir cihazda geri yükleyin.";
 
 /* Jailbreak warning message */
-"JailbreakWarnings.messageWithoutBalance" = "CİHAZ GÜVENLİĞİ İHLAL EDİLDİ \n Herhangi bir 'jailbreak' uygulaması Litewallet'in anahtar zinciri verilerine erişebilir ve Litecoin'inizi çalabilir. Lütfen Litewallet'i yalnızca jailbreak yapılmamış bir cihazda kullanın.";
+"JailbreakWarnings.messageWithoutBalance" = "CİHAZ GÜVENLİĞİ İHLAL EDİLDİ \n Herhangi bir 'jailbreak' uygulaması Brainwallet'in anahtar zinciri verilerine erişebilir ve Litecoin'inizi çalabilir. Lütfen Brainwallet'i yalnızca jailbreak yapılmamış bir cihazda kullanın.";
 
 /* Jailbreak warning title */
 "JailbreakWarnings.title" = "UYARI";
@@ -376,14 +373,14 @@
 /* Wipe wallet button */
 "JailbreakWarnings.wipe" = "Sil";
 
-/* Litewallet name */
-"Litewallet.name" = "Litewallet";
+/* Brainwallet name */
+"Brainwallet.name" = "Brainwallet";
 
 /* Location services disabled error */
 "LocationPlugin.disabled" = "Konum hizmetleri devre dışı bırakıldı.";
 
 /* No permissions for location services */
-"LocationPlugin.notAuthorized" = "Litewallet'in konum hizmetlerine erişim izni yok.";
+"LocationPlugin.notAuthorized" = "Brainwallet'in konum hizmetlerine erişim izni yok.";
 
 /* No comment provided by engineer. */
 "Malformed URI" = "Hatalı URI";
@@ -524,7 +521,7 @@
 "Prompts.PaperKey.affirm" = "Devam Et";
 
 /* Warning about paper key. */
-"Prompts.PaperKey.body" = "Kağıt Anahtarınız güvenli bir yerde tutulmalıdır. Litewallet'ınızı değiştirmenin veya geri yüklemenin veya Litecoin'inizi aktarmanın tek yolu budur. Lütfen not edin.";
+"Prompts.PaperKey.body" = "Kağıt Anahtarınız güvenli bir yerde tutulmalıdır. Brainwallet'ınızı değiştirmenin veya geri yüklemenin veya Litecoin'inizi aktarmanın tek yolu budur. Lütfen not edin.";
 
 /* Cancel button. */
 "Prompts.PaperKey.cancel" = "İptal";
@@ -542,13 +539,13 @@
 "Prompts.RecommendRescan.title" = "İşlem Reddedildi";
 
 /* Upgrade PIN prompt body. */
-"Prompts.SetPin.body" = "Litewallet 6 haneli bir PIN gerektirir. Lütfen PIN kodunuzu güvenli bir yerde ayarlayın ve saklayın.";
+"Prompts.SetPin.body" = "Brainwallet 6 haneli bir PIN gerektirir. Lütfen PIN kodunuzu güvenli bir yerde ayarlayın ve saklayın.";
 
 /* Upgrade PIN prompt title. */
 "Prompts.SetPin.title" = "PIN Ayarla";
 
 /* Share data prompt body */
-"Prompts.ShareData.body" = "Anonim verilerinizi bizimle paylaşarak Litewallet'in geliştirilmesine yardımcı olun";
+"Prompts.ShareData.body" = "Anonim verilerinizi bizimle paylaşarak Brainwallet'in geliştirilmesine yardımcı olun";
 
 /* Share data prompt title */
 "Prompts.ShareData.title" = "Anonim Verileri Paylaşın";
@@ -593,7 +590,7 @@
 "RecoverWallet.instruction" = "Kağıt Anahtarını Girin";
 
 /* Recover wallet intro */
-"RecoverWallet.intro" = "Kağıt anahtarınızla Litewallet'inizi kurtarın.";
+"RecoverWallet.intro" = "Kağıt anahtarınızla Brainwallet'inizi kurtarın.";
 
 /* Invalid paper key message */
 "RecoverWallet.invalid" = "Girdiğiniz kağıt anahtarı geçersiz. Lütfen her kelimeyi iki kez kontrol edin ve tekrar deneyin.";
@@ -635,7 +632,7 @@
 "ReScan.body1" = "20-45 dakika";
 
 /* Syncing explanation */
-"ReScan.body2" = "Bir işlem Litecoin ağında tamamlandı olarak gösteriliyor, ancak Litewallet'ınızda gösterilmiyorsa.";
+"ReScan.body2" = "Bir işlem Litecoin ağında tamamlandı olarak gösteriliyor, ancak Brainwallet'ınızda gösterilmiyorsa.";
 
 /* Syncing explanation */
 "ReScan.body3" = "Sürekli olarak işleminizin reddedildiğini söyleyen bir hata alıyorsunuz.";
@@ -659,7 +656,7 @@
 "resetButton" = "Evet, cüzdanı sıfırla";
 
 /* Warning Empty Wipe title */
-"resetTitle" = "Litewallet'ımı sil";
+"resetTitle" = "Brainwallet'ımı sil";
 
 /* Scan Litecoin address camera flash toggle */
 "Scanner.flashButtonLabel" = "Kamera Flaşı";
@@ -689,7 +686,7 @@
 "SecurityCenter.paperKeyTitle" = "Kağıt Anahtarı";
 
 /* PIN button description */
-"SecurityCenter.pinDescription" = "Litewallet'ınızı yetkisiz kullanıcılardan korur.";
+"SecurityCenter.pinDescription" = "Brainwallet'ınızı yetkisiz kullanıcılardan korur.";
 
 /* PIN button title */
 "SecurityCenter.pinTitle" = "6 Haneli PIN";
@@ -698,7 +695,7 @@
 "SecurityCenter.title" = "Güvenlik Merkezi";
 
 /* Touch ID/FaceID button description */
-"SecurityCenter.touchIdDescription" = "Litewallet'ınızın kilidini rahatça açın ve belirlenen limite kadar para gönderin.";
+"SecurityCenter.touchIdDescription" = "Brainwallet'ınızın kilidini rahatça açın ve belirlenen limite kadar para gönderin.";
 
 /* Touch ID button title */
 "SecurityCenter.touchIdTitle" = "Dokunma Kimliği";
@@ -719,7 +716,7 @@
 "Send.cameraunavailableMessage" = "Kamera erişimine izin vermek için Ayarlar'a gidin.";
 
 /* Camera not allowed alert title */
-"Send.cameraUnavailableTitle" = "Litewallet'in kameraya erişmesine izin verilmiyor";
+"Send.cameraUnavailableTitle" = "Brainwallet'in kameraya erişmesine izin verilmiyor";
 
 /* Warning when sending to self. */
 "Send.containsAddress" = "Hedef, kendi adresinizdir. Kendinize gönderemezsiniz.";
@@ -850,8 +847,8 @@
 /* Join Early access label */
 "Settings.earlyAccess" = "Erken Erişime Katılın";
 
-/* Are you enjoying Litewallet alert message body */
-"Settings.enjoying" = "Litewallet'ten hoşlanıyor musunuz?";
+/* Are you enjoying Brainwallet alert message body */
+"Settings.enjoying" = "Brainwallet'ten hoşlanıyor musunuz?";
 
 /* Face ID spending limit label */
 "Settings.faceIdLimit" = "Yüz Kimliği Harcama Sınırı";
@@ -862,14 +859,14 @@
 /* Languages label */
 "Settings.languages" = "Diller";
 
-/* Litewallet environment */
-"Settings.litewallet.environment" = "Çevre:";
+/* Brainwallet environment */
+"Settings.Brainwallet.environment" = "Çevre:";
 
-/* Litewallet Partners */
-"Settings.litewallet.partners" = "Litewallet ortakları";
+/* Brainwallet Partners */
+"Settings.Brainwallet.partners" = "Brainwallet ortakları";
 
-/* Litewallet version */
-"Settings.litewallet.version" = "Litewallet sürümü:";
+/* Brainwallet version */
+"Settings.Brainwallet.version" = "Brainwallet sürümü:";
 
 /* Manage settings section header */
 "Settings.manage" = "Yönet";
@@ -883,7 +880,7 @@
 /* Share anonymous data label */
 "Settings.shareData" = "Anonim Verileri Paylaşın";
 
-/* Litewallet Social links */
+/* Brainwallet Social links */
 "Settings.socialLinks" = "Sosyal";
 
 /* Support settings section header */
@@ -905,19 +902,13 @@
 "Settings.wipe" = "Başka Cüzdanı Başlat / Kurtar";
 
 /* Share data view body */
-"ShareData.body" = "Anonim verilerinizi bizimle paylaşarak Litewallet'i geliştirmeye yardımcı olun. Bu herhangi bir finansal bilgi içermez. Finansal gizliliğinize saygı duyuyoruz.";
+"ShareData.body" = "Anonim verilerinizi bizimle paylaşarak Brainwallet'i geliştirmeye yardımcı olun. Bu herhangi bir finansal bilgi içermez. Finansal gizliliğinize saygı duyuyoruz.";
 
 /* Share data header */
 "ShareData.header" = "Veriler Paylaşılsın mı?";
 
 /* Share data switch label. */
 "ShareData.toggleLabel" = "Anonim Veriler Paylaşılsın mı?";
-
-/* "ShowWords.modalTitle" */
-"ShowWords.modalTitle" = "Tohum cümlesini göster";
-
-/* "ShowWords.titleWarning" */
-"ShowWords.titleWarning" = "Bunlar sizin tohum sözcüklerinizdir. Bunları herhangi birine gösterirseniz, Litecoin'inizi alabilirler";
 
 /* Current spending limit: */
 "SpendingLimit.title" = "Mevcut Harcama Sınırı:";
@@ -926,7 +917,7 @@
 "StartPaperPhrase.againButtonTitle" = "Kağıt Anahtarını Yeniden Yazın";
 
 /* Paper key explanation text. */
-"StartPaperPhrase.body" = "Telefonunuz kaybolursa, çalınırsa, bozulursa veya yükseltilirse, Litewallet'inizi geri yüklemenin tek yolu kağıt anahtarınızdır. \n \n Size bir kağıt parçasına yazabileceğiniz bir kelime listesi göstereceğiz ve güvende tutun. ";
+"StartPaperPhrase.body" = "Telefonunuz kaybolursa, çalınırsa, bozulursa veya yükseltilirse, Brainwallet'inizi geri yüklemenin tek yolu kağıt anahtarınızdır. \n \n Size bir kağıt parçasına yazabileceğiniz bir kelime listesi göstereceğiz ve güvende tutun. ";
 
 /* button label */
 "StartPaperPhrase.buttonTitle" = "Kağıt Anahtarını Yaz";
@@ -974,7 +965,7 @@
 "TouchIdSettings.customizeText" = "Dokunma Kimliği harcama sınırınızı%1$@ üzerinden özelleştirebilirsiniz.";
 
 /* Touch Id screen label */
-"TouchIdSettings.label" = "Litewallet'ınızın kilidini açmak ve belirli bir limite kadar para göndermek için parmak izinizi kullanın.";
+"TouchIdSettings.label" = "Brainwallet'ınızın kilidini açmak ve belirli bir limite kadar para göndermek için parmak izinizi kullanın.";
 
 /*  ł100,000 ($100) */
 "TouchIdSettings.limitValue" = "%1$@ (%2$@)";
@@ -986,7 +977,7 @@
 "TouchIdSettings.spendingLimit" = "Harcama sınırı:%1$@ (%2$@)";
 
 /* Touch id switch label. */
-"TouchIdSettings.switchLabel" = "Litewallet için Dokunmatik Kimliğini Etkinleştir";
+"TouchIdSettings.switchLabel" = "Brainwallet için Dokunmatik Kimliğini Etkinleştir";
 
 /* Touch ID settings view title */
 "TouchIdSettings.title" = "Dokunmatik Kimlik";
@@ -1154,7 +1145,7 @@
 "UnlockScreen.scan" = "Tara";
 
 /* TouchID/FaceID prompt text */
-"UnlockScreen.touchIdPrompt" = "Litewallet'ınızın kilidini açın.";
+"UnlockScreen.touchIdPrompt" = "Brainwallet'ınızın kilidini açın.";
 
 /* Unlock with TouchID accessibility label */
 "UnlockScreen.touchIdText" = "TouchID ile Kilidi Aç";
@@ -1166,7 +1157,7 @@
 "UpdatePin.caption" = "Bu PIN kodunu hatırlayın. Unutursanız, Litecoin'inize erişemezsiniz.";
 
 /* PIN creation info. */
-"UpdatePin.createInstruction" = "PIN kodunuz Litewallet'inizin kilidini açmak ve para göndermek için kullanılacaktır.";
+"UpdatePin.createInstruction" = "PIN kodunuz Brainwallet'inizin kilidini açmak ve para göndermek için kullanılacaktır.";
 
 /* Update PIN title */
 "UpdatePin.createTitle" = "PIN Ayarla";
@@ -1217,7 +1208,7 @@
 "VerifyPin.touchIdMessage" = "Bu işlemi yetkilendirin";
 
 /* 'No wallet' warning for watch app */
-"Watch.noWalletWarning" = "Cüzdanınızı ayarlamak için Litewallet iPhone uygulamasını açın.";
+"Watch.noWalletWarning" = "Cüzdanınızı ayarlamak için Brainwallet iPhone uygulamasını açın.";
 
 /* Dismiss button label */
 "Webview.dismiss" = "Kapat";
@@ -1229,10 +1220,10 @@
 "Webview.updating" = "Güncelleniyor ...";
 
 /* Welcome view body text */
-"Welcome.body" = "Litewallet artık yepyeni bir görünüme ve bazı yeni özelliklere sahip. \n \nTüm paralar lite (ł) olarak gösteriliyor. 1 Litecoin (Ł) = 1000 lite (ł).";
+"Welcome.body" = "Brainwallet artık yepyeni bir görünüme ve bazı yeni özelliklere sahip. \n \nTüm paralar lite (ł) olarak gösteriliyor. 1 Litecoin (Ł) = 1000 lite (ł).";
 
 /* Welcome view title */
-"Welcome.title" = "Litewallet'e Hoş Geldiniz!";
+"Welcome.title" = "Brainwallet'e Hoş Geldiniz!";
 
 /* Delete database title */
 "WipeWallet.alertDeleteTitle" = "Veritabanını Sil";
@@ -1265,7 +1256,7 @@
 "WipeWallet.instruction" = "Yeni bir cüzdan başlatmak veya mevcut bir cüzdanı geri yüklemek için, önce şu anda kurulu olan cüzdanı silmelisiniz. Devam etmek için, mevcut cüzdanın Kağıt Anahtarını girin.";
 
 /* Start wipe wallet view message */
-"WipeWallet.startMessage" = "Başka bir cüzdanın başlatılması veya kurtarılması, bu cihazdaki farklı bir Litewallet cüzdanına erişmenize ve onu yönetmenize olanak sağlar.";
+"WipeWallet.startMessage" = "Başka bir cüzdanın başlatılması veya kurtarılması, bu cihazdaki farklı bir Brainwallet cüzdanına erişmenize ve onu yönetmenize olanak sağlar.";
 
 /* Start wipe wallet view warning */
 "WipeWallet.startWarning" = "Mevcut cüzdanınız bu cihazdan kaldırılacaktır. İleride onu geri yüklemek isterseniz, Kağıt Anahtarınızı girmeniz gerekecektir.";
@@ -1274,10 +1265,10 @@
 "WipeWallet.title" = "Başka Bir Cüzdanı Başlatın veya Kurtarın";
 
 /* Warning Alert */
-"WipeWallet.warningAlert" = "Bu eylem Litewallet'ınızı silecek!";
+"WipeWallet.warningAlert" = "Bu eylem Brainwallet'ınızı silecek!";
 
 /* Warning description */
-"WipeWallet.warningDescription" = "Cüzdanınızı silmek, özel anahtarın ve uygulama verilerinin silinmesinin ortadan kalkacağı anlamına gelir. Litecoin'i sonsuza kadar kaybedebilirsiniz!\n\n\nLitewallet ekibindeki hiç kimse bu tohumu sizin için alamaz. Bu uyarıyı dikkate almazsanız sorumlu değiliz.";
+"WipeWallet.warningDescription" = "Cüzdanınızı silmek, özel anahtarın ve uygulama verilerinin silinmesinin ortadan kalkacağı anlamına gelir. Litecoin'i sonsuza kadar kaybedebilirsiniz!\n\n\nBrainwallet ekibindeki hiç kimse bu tohumu sizin için alamaz. Bu uyarıyı dikkate almazsanız sorumlu değiliz.";
 
 /* Warning title */
 "WipeWallet.warningTitle" = "LÜTFEN OKUYUN!";
