@@ -55,35 +55,35 @@ class StartFlowPresenter: Subscriber {
 	}
 
 	// MARK: - SwiftUI Start Flow
+    
+    private func presentStartFlow() {
+        
+            let startHostingController = StartHostingController(store: store,
+                                                                walletManager: walletManager)
 
-	private func presentStartFlow() {
-		
-			let startHostingController = StartHostingController(store: store,
-			                                                    walletManager: walletManager)
+            startHostingController.viewModel.userWantsToCreate {
+                self.pushPinCreationViewControllerForNewWallet()
+            }
 
-			startHostingController.viewModel.userWantsToCreate {
-				self.pushPinCreationViewControllerForNewWallet()
-			}
+            startHostingController.viewModel.userWantsToRecover {
+                let recoverIntro = RecoverWalletIntroViewController(didTapNext: self.pushRecoverWalletView)
+                self.navigationController?.setClearNavbar()
+                self.navigationController?.modalPresentationStyle = .fullScreen
+                self.navigationController?.setNavigationBarHidden(false, animated: false)
+                self.navigationController?.pushViewController(recoverIntro, animated: true)
+            }
 
-			startHostingController.viewModel.userWantsToRecover {
-				let recoverIntro = RecoverWalletIntroViewController(didTapNext: self.pushRecoverWalletView)
-				self.navigationController?.setClearNavbar()
-				self.navigationController?.modalPresentationStyle = .fullScreen
-				self.navigationController?.setNavigationBarHidden(false, animated: false)
-				self.navigationController?.pushViewController(recoverIntro, animated: true)
-			}
+            navigationController = ModalNavigationController(rootViewController: startHostingController)
+            navigationController?.delegate = navigationControllerDelegate
+            navigationController?.modalPresentationStyle = .fullScreen
+        
 
-			navigationController = ModalNavigationController(rootViewController: startHostingController)
-			navigationController?.delegate = navigationControllerDelegate
-			navigationController?.modalPresentationStyle = .fullScreen
-		
-
-		if let startFlow = navigationController {
-			startFlow.setNavigationBarHidden(true, animated: false)
-			rootViewController.present(startFlow, animated: false, completion: nil)
-		}
-	}
-
+        if let startFlow = navigationController {
+            startFlow.setNavigationBarHidden(true, animated: false)
+            rootViewController.present(startFlow, animated: false, completion: nil)
+        }
+    }
+    
 	private var pushRecoverWalletView: () -> Void {
 		return { [weak self] in
 			guard let myself = self else { return }

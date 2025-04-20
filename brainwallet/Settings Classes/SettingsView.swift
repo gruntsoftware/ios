@@ -2,8 +2,9 @@
 //  SettingsView.swift
 //  brainwallet
 //
-//  Created by Kerry Washington on 03/05/2025.
+//  Created by Kerry Washington on 08/05/2025.
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
+//
 //
 import SwiftUI
 
