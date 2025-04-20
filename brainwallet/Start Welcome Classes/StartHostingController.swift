@@ -8,10 +8,8 @@ class StartHostingController: UIHostingController<StartView> {
 
 	init(store: Store, walletManager: WalletManager) {
 		viewModel = StartViewModel(store: store, walletManager: walletManager)
-
-		super.init(rootView: StartView(viewModel: viewModel))
+        super.init(rootView: StartView(viewModel: viewModel))
 	}
-
 	// MARK: - Private
 
 	@available(*, unavailable)

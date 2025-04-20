@@ -33,8 +33,15 @@
 		2416CE7C2DA90D0D00FFBD10 /* BRCalculationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5E2DA90D0D00FFBD10 /* BRCalculationExtension.swift */; };
 		2416CE7E2DA90DB000FFBD10 /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2416CE7D2DA90DB000FFBD10 /* remote-config-defaults.plist */; };
 		2416CE802DA90DE300FFBD10 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2416CE7F2DA90DE300FFBD10 /* GoogleService-Info.plist */; };
+		241D223F2DB526A1000302C8 /* ReadyRestoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D223E2DB52699000302C8 /* ReadyRestoreView.swift */; };
+		241D22412DB526AE000302C8 /* SetPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22402DB526AC000302C8 /* SetPasscodeView.swift */; };
+		241D22432DB526B7000302C8 /* TopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22422DB526B6000302C8 /* TopUpView.swift */; };
+		241D22452DB526C9000302C8 /* InputWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22442DB526C5000302C8 /* InputWordsView.swift */; };
+		241D22472DB526D7000302C8 /* YourSeedProveItView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22462DB526D4000302C8 /* YourSeedProveItView.swift */; };
+		241D22492DB526E9000302C8 /* YourSeedWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22482DB526E7000302C8 /* YourSeedWordsView.swift */; };
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
+		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
 		247D74E62DA907FB00855B14 /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45792D936D5900E9C3B0 /* BRAddress.c */; };
 		247D74E72DA907FB00855B14 /* BRBase58.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457C2D936D5900E9C3B0 /* BRBase58.c */; };
 		247D74E82DA907FB00855B14 /* BRBech32.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457E2D936D5900E9C3B0 /* BRBech32.c */; };
@@ -441,6 +448,12 @@
 		2416CE692DA90D0D00FFBD10 /* BRWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRWallet.swift; sourceTree = "<group>"; };
 		2416CE7D2DA90DB000FFBD10 /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "remote-config-defaults.plist"; path = "/Users/kerrywashington/Documents/grunt-software-projects/gruntsoftware/ios/brainwallet/launch-resources/remote-config-defaults.plist"; sourceTree = "<absolute>"; };
 		2416CE7F2DA90DE300FFBD10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "/Users/kerrywashington/Documents/grunt-software-projects/gruntsoftware/ios/brainwallet/launch-resources/GoogleService-Info.plist"; sourceTree = "<absolute>"; };
+		241D223E2DB52699000302C8 /* ReadyRestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyRestoreView.swift; sourceTree = "<group>"; };
+		241D22402DB526AC000302C8 /* SetPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasscodeView.swift; sourceTree = "<group>"; };
+		241D22422DB526B6000302C8 /* TopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpView.swift; sourceTree = "<group>"; };
+		241D22442DB526C5000302C8 /* InputWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWordsView.swift; sourceTree = "<group>"; };
+		241D22462DB526D4000302C8 /* YourSeedProveItView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSeedProveItView.swift; sourceTree = "<group>"; };
+		241D22482DB526E7000302C8 /* YourSeedWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSeedWordsView.swift; sourceTree = "<group>"; };
 		242B568C2DA9AF67001E3BC8 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		242B568D2DA9AF71001E3BC8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		242B568E2DA9AF79001E3BC8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -460,6 +473,7 @@
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
 		2492829B2DAC22B00088528E /* BIP39Words.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BIP39Words.plist; sourceTree = "<group>"; };
 		249C450E2D936D5900E9C3B0 /* ax_jni_include_dir.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_jni_include_dir.m4; sourceTree = "<group>"; };
 		249C450F2D936D5900E9C3B0 /* ax_prog_cc_for_build.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_prog_cc_for_build.m4; sourceTree = "<group>"; };
@@ -999,6 +1013,55 @@
 			path = "Legacy BRClasses";
 			sourceTree = "<group>";
 		};
+		241D22382DB52630000302C8 /* Input Words */ = {
+			isa = PBXGroup;
+			children = (
+				241D22442DB526C5000302C8 /* InputWordsView.swift */,
+			);
+			path = "Input Words";
+			sourceTree = "<group>";
+		};
+		241D22392DB5263B000302C8 /* Ready */ = {
+			isa = PBXGroup;
+			children = (
+				241D223E2DB52699000302C8 /* ReadyRestoreView.swift */,
+			);
+			path = Ready;
+			sourceTree = "<group>";
+		};
+		241D223A2DB5264D000302C8 /* Set Passcode */ = {
+			isa = PBXGroup;
+			children = (
+				2473D44E2DB991D90076746A /* PasscodeGridView.swift */,
+				241D22402DB526AC000302C8 /* SetPasscodeView.swift */,
+			);
+			path = "Set Passcode";
+			sourceTree = "<group>";
+		};
+		241D223B2DB5265C000302C8 /* Top Up */ = {
+			isa = PBXGroup;
+			children = (
+				241D22422DB526B6000302C8 /* TopUpView.swift */,
+			);
+			path = "Top Up";
+			sourceTree = "<group>";
+		};
+		241D223C2DB5266F000302C8 /* Your Seed Prove It */ = {
+			isa = PBXGroup;
+			children = (
+				241D22462DB526D4000302C8 /* YourSeedProveItView.swift */,
+			);
+			path = "Your Seed Prove It";
+			sourceTree = "<group>";
+		};
+		241D223D2DB52687000302C8 /* Your Seed Words */ = {
+			isa = PBXGroup;
+			children = (
+				241D22482DB526E7000302C8 /* YourSeedWordsView.swift */,
+			);
+			path = "Your Seed Words";
+			sourceTree = "<group>";
+		};
 		248D87B92DB4E3C900745552 /* Colors */ = {
 			isa = PBXGroup;
 			children = (
@@ -1453,6 +1516,12 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				241D223D2DB52687000302C8 /* Your Seed Words */,
+				241D223C2DB5266F000302C8 /* Your Seed Prove It */,
+				241D223B2DB5265C000302C8 /* Top Up */,
+				241D223A2DB5264D000302C8 /* Set Passcode */,
+				241D22392DB5263B000302C8 /* Ready */,
+				241D22382DB52630000302C8 /* Input Words */,
 				248D87B92DB4E3C900745552 /* Colors */,
 				24F64C212DAFBE49001DC9B6 /* Lottie Data */,
 				24F64C1B2DAFB362001DC9B6 /* Start Welcome Classes */,
@@ -2171,6 +2240,7 @@
 				C312D2D22D7DC27700BB97A4 /* LightWeightAlert.swift in Sources */,
 				C312D2D32D7DC27700BB97A4 /* ExchangeUpdater.swift in Sources */,
 				C312D2D42D7DC27700BB97A4 /* Currency.swift in Sources */,
+				2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */,
 				C312D2D62D7DC27700BB97A4 /* RecoverWalletView.swift in Sources */,
 				C312D2D72D7DC27700BB97A4 /* Date+Additions.swift in Sources */,
 				C312D2D92D7DC27700BB97A4 /* LockScreenViewModel.swift in Sources */,
@@ -2262,6 +2332,7 @@
 				2416CE6E2DA90D0D00FFBD10 /* BRPeerManager.swift in Sources */,
 				2416CE6F2DA90D0D00FFBD10 /* BRTxOutputExtension.swift in Sources */,
 				2416CE702DA90D0D00FFBD10 /* BRAPIClient+Events.swift in Sources */,
+				241D22472DB526D7000302C8 /* YourSeedProveItView.swift in Sources */,
 				2416CE712DA90D0D00FFBD10 /* BRWallet.swift in Sources */,
 				2416CE722DA90D0D00FFBD10 /* BRTxInputExtension.swift in Sources */,
 				2416CE732DA90D0D00FFBD10 /* BRAPIClient+Assets.swift in Sources */,
@@ -2285,6 +2356,7 @@
 				C312D3792D7DC27700BB97A4 /* ReScanViewController.swift in Sources */,
 				C312D37A2D7DC27700BB97A4 /* NumberFormatter+Additions.swift in Sources */,
 				C312D37C2D7DC27700BB97A4 /* Strings.swift in Sources */,
+				241D22452DB526C9000302C8 /* InputWordsView.swift in Sources */,
 				C312D37F2D7DC27700BB97A4 /* Amount.swift in Sources */,
 				C312D3802D7DC27700BB97A4 /* TransactionsViewController.swift in Sources */,
 				C312D3812D7DC27700BB97A4 /* LoadingProgressView.swift in Sources */,
@@ -2295,6 +2367,7 @@
 				C312D3892D7DC27700BB97A4 /* BartyCrouch.swift in Sources */,
 				C312D38D2D7DC27700BB97A4 /* AppDelegate.swift in Sources */,
 				24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */,
+				241D223F2DB526A1000302C8 /* ReadyRestoreView.swift in Sources */,
 				C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */,
 				C312D3902D7DC27700BB97A4 /* GradientSwitch.swift in Sources */,
 				C312D3932D7DC27700BB97A4 /* EnterPhraseHostingController.swift in Sources */,
@@ -2358,6 +2431,7 @@
 				C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */,
 				C312D4032D7DC27700BB97A4 /* ShadowButton.swift in Sources */,
 				C312D4062D7DC27700BB97A4 /* IntroStepView.swift in Sources */,
+				241D22412DB526AE000302C8 /* SetPasscodeView.swift in Sources */,
 				C312D4072D7DC27700BB97A4 /* WipeEmptyWalletViewController.swift in Sources */,
 				C312D40A2D7DC27700BB97A4 /* EnterPhraseView.swift in Sources */,
 				C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */,
@@ -2424,6 +2498,7 @@
 				C312D4782D7DC27700BB97A4 /* ContainerViewController.swift in Sources */,
 				C312D4792D7DC27700BB97A4 /* SafariServices+Extension.swift in Sources */,
 				C312D47A2D7DC27700BB97A4 /* PhraseView.swift in Sources */,
+				241D22432DB526B7000302C8 /* TopUpView.swift in Sources */,
 				C312D47B2D7DC27700BB97A4 /* PartnersViewModel.swift in Sources */,
 				C312D47C2D7DC27700BB97A4 /* PartnersView.swift in Sources */,
 				C312D47F2D7DC27700BB97A4 /* Extensions.swift in Sources */,
@@ -2437,6 +2512,7 @@
 				C312D48E2D7DC27700BB97A4 /* CardV1ToastView.swift in Sources */,
 				C312D48F2D7DC27700BB97A4 /* SimpleRedux.swift in Sources */,
 				C312D4902D7DC27700BB97A4 /* SendAddressCellView.swift in Sources */,
+				241D22492DB526E9000302C8 /* YourSeedWordsView.swift in Sources */,
 				C312D4912D7DC27700BB97A4 /* ForgotAlertViewModel.swift in Sources */,
 				C312D4942D7DC27700BB97A4 /* RetryTimer.swift in Sources */,
 				C312D4952D7DC27700BB97A4 /* RadialGradientView.swift in Sources */,
