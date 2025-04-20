@@ -17,9 +17,7 @@ struct LockScreenHeaderView: View {
 	}
 
 	var body: some View {
-		Color
-			.midnight
-			.edgesIgnoringSafeArea(.all)
+        BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 			.overlay(
 				VStack {
 					Spacer()

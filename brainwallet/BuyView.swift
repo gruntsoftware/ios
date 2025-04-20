@@ -45,7 +45,7 @@ struct BuyView: View {
 			let height = geometry.size.height
 
 			ZStack {
-				Color.midnight.edgesIgnoringSafeArea(.all)
+                BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 				VStack {
 					Divider()
 						.frame(height: 1.0)
@@ -88,10 +88,10 @@ struct BuyView: View {
 									.multilineTextAlignment(.leading)
 									.fixedSize(horizontal: false, vertical: true)
 									.frame(idealHeight: buttonHeight)
-									.foregroundColor(didTapCopy ? .midnight : .white)
+                                    .foregroundColor(didTapCopy ? BrainwalletColor.surface : BrainwalletColor.background)
 									.padding([.top, .bottom], smallPad)
 								Image(systemName: "doc.on.doc")
-									.foregroundColor(didTapCopy ? .midnight : .white)
+									.foregroundColor(didTapCopy ? BrainwalletColor.surface : BrainwalletColor.background)
 							}
 							.onTapGesture {
 								UIPasteboard.general.string = viewModel.receivingAddress
@@ -112,15 +112,15 @@ struct BuyView: View {
 								ZStack {
 									RoundedRectangle(cornerRadius: bigButtonCornerRadius)
 										.frame(width: width * 0.4, height: selectButtonHeight, alignment: .center)
-                                        .foregroundColor(.grape)
+                                        .foregroundColor(BrainwalletColor.surface)
 
 									Text(S.BuyCenter.buyButtonTitle.localize() + " \(viewModel.selectedCode)")
 										.frame(width: width * 0.4, height: selectButtonHeight, alignment: .center)
 										.font(paragraphFont)
-										.foregroundColor(.white)
+                                        .foregroundColor(BrainwalletColor.content)
 										.overlay(
 											RoundedRectangle(cornerRadius: bigButtonCornerRadius)
-												.stroke(.white, lineWidth: 1.0)
+												.stroke(BrainwalletColor.content, lineWidth: 1.0)
 										)
 								}
 							}
@@ -137,7 +137,7 @@ struct BuyView: View {
 
 					Divider()
 						.frame(height: 1.0)
-						.background(.white)
+						.background(BrainwalletColor.content)
 						.frame(maxWidth: .infinity, alignment: .center)
 					HStack {
 						Text(S.BuyCenter.buyMoonpayDetail.localize())

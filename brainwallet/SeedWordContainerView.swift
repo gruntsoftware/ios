@@ -46,7 +46,7 @@ struct SeedWordContainerView: View {
 						Text(S.ShowWords.titleWarning.localize())
 							.font(.barlowSemiBold(size: 24.0))
 							.multilineTextAlignment(.center)
-							.foregroundColor(.midnight)
+                            .foregroundColor(BrainwalletColor.content)
 							.padding()
 					}
 					.padding()

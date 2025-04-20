@@ -26,9 +26,9 @@ class UpdatePinViewController: UIViewController, Subscriber {
 
 	// MARK: - Private
 
-	private var header = UILabel.wrapping(font: .customBold(size: 26.0), color: .darkText)
-	private var instruction = UILabel.wrapping(font: .customBody(size: 14.0), color: .darkText)
-	private var caption = UILabel.wrapping(font: .customBody(size: 13.0), color: .secondaryGrayText)
+	private var header = UILabel.wrapping(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
+	private var instruction = UILabel.wrapping(font: .customBody(size: 14.0), color: BrainwalletUIColor.content)
+	private var caption = UILabel.wrapping(font: .customBody(size: 13.0), color: BrainwalletUIColor.content)
 	private var pinView: PinView
 	private let pinPad = PinPadViewController(style: .clear, keyboardType: .pinPad, maxDigits: 0)
 	private let spacer = UIView()
@@ -129,9 +129,9 @@ class UpdatePinViewController: UIViewController, Subscriber {
 		caption.text = S.UpdatePin.caption.localize()
 		view.addSubview(spacer)
 
-		header.textColor = .whiteTint
-		instruction.textColor = .whiteTint
-		caption.textColor = .whiteTint
+		header.textColor = BrainwalletUIColor.content
+		instruction.textColor = BrainwalletUIColor.content
+		caption.textColor = BrainwalletUIColor.content
 		if #available(iOS 11.0, *) {
 			guard let mainColor = UIColor(named: "mainColor")
 			else {
@@ -140,7 +140,7 @@ class UpdatePinViewController: UIViewController, Subscriber {
 			}
 			view.backgroundColor = mainColor
 		} else {
-			view.backgroundColor = .midnight
+			view.backgroundColor = BrainwalletUIColor.surface
 		}
 		header.text = isCreatingPin ? S.UpdatePin.createTitle.localize() : S.UpdatePin.updateTitle.localize()
 		instruction.text = isCreatingPin ? S.UpdatePin.createInstruction.localize() : S.UpdatePin.enterCurrent.localize()

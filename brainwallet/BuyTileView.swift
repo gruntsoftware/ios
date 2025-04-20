@@ -15,7 +15,7 @@ struct BuyTileView: View {
 	var body: some View {
 		ZStack {
 			RoundedRectangle(cornerRadius: 14.0)
-				.foregroundColor(.midnight)
+                .foregroundColor(BrainwalletColor.content)
 				.frame(width: codeCellWidth,
 				       height: codeCellHeight,
 				       alignment: .center)
@@ -27,7 +27,7 @@ struct BuyTileView: View {
 						       alignment: .center)
 				}
 			Text(code)
-				.foregroundColor(.white)
+				.foregroundColor(BrainwalletColor.content)
 				.font(buttonRegularFont)
 				.frame(width: codeCellWidth,
 				       height: codeCellHeight,

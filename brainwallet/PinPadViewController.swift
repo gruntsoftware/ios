@@ -312,7 +312,7 @@ class ClearNumberPad: GenericPinPadCell {
 		sublabel.textColor = .white
 
 		if isHighlighted {
-			backgroundColor = .transparentBlack
+            backgroundColor = BrainwalletUIColor.surface
 		} else {
 			backgroundColor = .clear
 
@@ -337,8 +337,8 @@ class ClearDecimalPad: GenericPinPadCell {
 		imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
 
 		if isHighlighted {
-			centerLabel.textColor = .grayTextTint
-			imageView.tintColor = .grayTextTint
+			centerLabel.textColor = BrainwalletUIColor.content
+			imageView.tintColor = BrainwalletUIColor.content
 		} else {
 			centerLabel.textColor = .white
 			imageView.tintColor = .white
@@ -354,11 +354,11 @@ class ClearDecimalPad: GenericPinPadCell {
 class WhiteDecimalPad: GenericPinPadCell {
 	override func setAppearance() {
 		if isHighlighted {
-			centerLabel.backgroundColor = .secondaryShadow
-			centerLabel.textColor = .darkText
+			centerLabel.backgroundColor = BrainwalletUIColor.border
+			centerLabel.textColor = BrainwalletUIColor.content
 		} else {
 			centerLabel.backgroundColor = .white
-			centerLabel.textColor = .grayTextTint
+			centerLabel.textColor = BrainwalletUIColor.content
 		}
 	}
 
@@ -379,20 +379,20 @@ class WhiteNumberPad: GenericPinPadCell {
 		}
 
 		if isHighlighted {
-			backgroundColor = .secondaryShadow
-			topLabel.textColor = .darkText
-			centerLabel.textColor = .darkText
-			sublabel.textColor = .darkText
+			backgroundColor = BrainwalletUIColor.border
+			topLabel.textColor = BrainwalletUIColor.content
+			centerLabel.textColor = BrainwalletUIColor.content
+			sublabel.textColor = BrainwalletUIColor.content
 		} else {
 			if text == "" || text == deleteKeyIdentifier {
-				backgroundColor = .whiteTint
+				backgroundColor = BrainwalletUIColor.content
 				imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
-				imageView.tintColor = .grayTextTint
+				imageView.tintColor = BrainwalletUIColor.content
 			} else {
-				backgroundColor = .whiteTint
-				topLabel.textColor = .grayTextTint
-				centerLabel.textColor = .grayTextTint
-				sublabel.textColor = .grayTextTint
+				backgroundColor = BrainwalletUIColor.content
+				topLabel.textColor = BrainwalletUIColor.content
+				centerLabel.textColor = BrainwalletUIColor.content
+				sublabel.textColor = BrainwalletUIColor.content
 			}
 		}
 	}

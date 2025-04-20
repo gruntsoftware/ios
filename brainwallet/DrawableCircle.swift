@@ -28,7 +28,7 @@ class DrawableCircle: UIView {
 
 		checkLayer.path = check.cgPath
 		checkLayer.lineWidth = 2.0
-		checkLayer.strokeColor = UIColor.white.cgColor
+		checkLayer.strokeColor = BrainwalletUIColor.content.cgColor
 		checkLayer.strokeColor = C.defaultTintColor.cgColor
 		checkLayer.fillColor = UIColor.clear.cgColor
 		checkLayer.strokeEnd = 0.0

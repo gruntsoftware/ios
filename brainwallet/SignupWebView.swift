@@ -41,7 +41,7 @@ struct SignupWebViewRepresentable: UIViewRepresentable {
 		_wkwebview.uiDelegate = context.coordinator
 		_wkwebview.allowsBackForwardNavigationGestures = false
 		_wkwebview.scrollView.isScrollEnabled = false
-		_wkwebview.backgroundColor = UIColor.grape
+        _wkwebview.backgroundColor = BrainwalletUIColor.surface
 		_wkwebview.load(URLRequest(url: URL(string: urlString)!))
 
 		return _wkwebview

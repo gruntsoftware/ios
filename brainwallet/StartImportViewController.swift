@@ -12,14 +12,14 @@ class StartImportViewController: UIViewController {
 
 	private let walletManager: WalletManager
 	private let store: Store
-    private let header = RadialGradientView(backgroundColor: .brainwalletBlue, offset: 64.0)
+    private let header = RadialGradientView(backgroundColor: BrainwalletUIColor.info, offset: 64.0)
 	private let illustration = UIImageView(image: #imageLiteral(resourceName: "ImportIllustration"))
-	private let message = UILabel.wrapping(font: .customBody(size: 16.0), color: .darkText)
-	private let warning = UILabel.wrapping(font: .customBody(size: 16.0), color: .darkText)
+	private let message = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
+	private let warning = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private let button = ShadowButton(title: S.Import.scan.localize(), type: .primary)
 	private let bullet = UIImageView(image: #imageLiteral(resourceName: "deletecircle"))
-	private let leftCaption = UILabel.wrapping(font: .customMedium(size: 13.0), color: .darkText)
-	private let rightCaption = UILabel.wrapping(font: .customMedium(size: 13.0), color: .darkText)
+	private let leftCaption = UILabel.wrapping(font: .customMedium(size: 13.0), color: BrainwalletUIColor.content)
+	private let rightCaption = UILabel.wrapping(font: .customMedium(size: 13.0), color: BrainwalletUIColor.content)
 	private let balanceActivity = BRActivityViewController(message: S.Import.checking.localize())
 	private let importingActivity = BRActivityViewController(message: S.Import.importing.localize())
 	private let unlockingActivity = BRActivityViewController(message: S.Import.unlockingActivity.localize())

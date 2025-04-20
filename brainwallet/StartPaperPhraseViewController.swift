@@ -7,8 +7,8 @@ class StartPaperPhraseViewController: UIViewController {
 		let buttonTitle = UserDefaults.walletRequiresBackup ? S.StartPaperPhrase.buttonTitle.localize() : S.StartPaperPhrase.againButtonTitle.localize()
 		button = ShadowButton(title: buttonTitle, type: .flatLitecoinBlue)
 		super.init(nibName: nil, bundle: nil)
-		explanation.textColor = .darkText
-		footer.textColor = .secondaryGrayText
+		explanation.textColor = BrainwalletUIColor.content
+		footer.textColor = BrainwalletUIColor.content
 	}
 
 	private let button: ShadowButton
@@ -16,8 +16,8 @@ class StartPaperPhraseViewController: UIViewController {
 	private let pencil = UIImageView(image: #imageLiteral(resourceName: "Pencil"))
 	private var explanation = UILabel.wrapping(font: UIFont.barlowMedium(size: 20.0))
 	private let store: Store
-	private let header = RadialGradientView(backgroundColor: .midnight, offset: 64.0)
-	private var footer = UILabel.wrapping(font: .customBody(size: 13.0), color: .secondaryGrayText)
+    private let header = RadialGradientView(backgroundColor: BrainwalletUIColor.content, offset: 64.0)
+	private var footer = UILabel.wrapping(font: .customBody(size: 13.0), color: BrainwalletUIColor.content)
 	private let callback: () -> Void
 
 	override func viewDidLoad() {
