@@ -133,8 +133,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	/// Sets the correct Google Services  plist file
 	private func setFirebaseConfiguration() {
-		// Load a Firebase debug config file.
-		// let filePath = Bundle.main.path(forResource: "Debug-GoogleService-Info", ofType: "plist")
 
 		guard let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") else {
 			let properties = ["error_message": "gs_info_file_missing"]

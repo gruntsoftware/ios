@@ -9,6 +9,10 @@ extension ApplicationController {
 		if UserDefaults.standard.object(forKey: hasSeenAnnounceView) == nil {
 			UserDefaults.standard.set(false, forKey: hasSeenAnnounceView) // Hasnt seen the Announce View
 		}
+        
+        if UserDefaults.standard.object(forKey: userDidPreferDarkModeKey) == nil {
+            UserDefaults.standard.set(false, forKey: userDidPreferDarkModeKey)
+        }
 	}
 
 	func countLaunches() {

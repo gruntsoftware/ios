@@ -2,7 +2,7 @@
 "About.blog" = "веб-сайт";
 
 /* About screen footer */
-"About.footer" = "Зроблено командою LiteWallet\of\Litecoin Foundation\n%1$@";
+"About.footer" = "Зроблено командою Brainwallet\of\Litecoin Foundation\n%1$@";
 
 /* Privay Policy button label */
 "About.privacy" = "Політика конфіденційності";
@@ -26,7 +26,7 @@
 "Account.loadingMessage" = "Завантаження гаманця";
 
 /* Default wallet name */
-"AccountHeader.defaultWalletName" = "Мій Litewallet";
+"AccountHeader.defaultWalletName" = "Мій Brainwallet";
 
 /* Manage wallet button title */
 "AccountHeader.manageButtonName" = "КЕРУВАТИ";
@@ -227,13 +227,13 @@
 "FaceIDSettings.customizeText" = "Ви можете налаштувати ліміт витрат на Face ID за допомогою %1$@.";
 
 /* Face ID screen label */
-"FaceIDSettings.label" = "Використовуйте своє обличчя, щоб розблокувати свій Litewallet і надсилати гроші до встановленого ліміту.";
+"FaceIDSettings.label" = "Використовуйте своє обличчя, щоб розблокувати свій Brainwallet і надсилати гроші до встановленого ліміту.";
 
 /* Link Text (see TouchIdSettings.customizeText) */
 "FaceIDSettings.linkText" = "Екран ліміту витрат Face ID";
 
 /* Face id switch label. */
-"FaceIDSettings.switchLabel" = "Увімкнути Face ID для Litewallet";
+"FaceIDSettings.switchLabel" = "Увімкнути Face ID для Brainwallet";
 
 /* Face ID settings view title */
 "FaceIDSettings.title" = "Face ID";
@@ -273,9 +273,6 @@
 
 /* Fee Selector title */
 "FeeSelector.title" = "Швидкість обробки";
-
-/* "Fragment.back" */
-"Fragment.back" = "Повернення";
 
 /* Confirm */
 "Fragment.confirm" = "підтвердити";
@@ -326,7 +323,7 @@
 "Import.leftCaption" = "Гаманець для імпорту";
 
 /* Import wallet intro screen message */
-"Import.message" = "Імпорт гаманця передає всі гроші з вашого іншого гаманця у ваш гаманець Litewallet за допомогою однієї транзакції.";
+"Import.message" = "Імпорт гаманця передає всі гроші з вашого іншого гаманця у ваш гаманець Brainwallet за допомогою однієї транзакції.";
 
 /* Enter password alert view title */
 "Import.password" = "Цей закритий ключ захищений паролем.";
@@ -335,7 +332,7 @@
 "Import.passwordPlaceholder" = "пароль";
 
 /* Caption for graphics */
-"Import.rightCaption" = "Ваш гаманець Litewallet";
+"Import.rightCaption" = "Ваш гаманець Brainwallet";
 
 /* Scan Private key button label */
 "Import.scan" = "Сканувати приватний ключ";
@@ -365,10 +362,10 @@
 "JailbreakWarnings.ignore" = "Ігнорувати";
 
 /* Jailbreak warning message */
-"JailbreakWarnings.messageWithBalance" = "БЕЗПЕКА ПРИСТРОЮ ПОГРУЗАНА\n Будь-який додаток для втечі з в’язниці може отримати доступ до даних брелока Litewallet і вкрасти ваш Litecoin! Негайно зітріть цей гаманець і відновіть його на захищеному пристрої.";
+"JailbreakWarnings.messageWithBalance" = "БЕЗПЕКА ПРИСТРОЮ ПОГРУЗАНА\n Будь-який додаток для втечі з в’язниці може отримати доступ до даних брелока Brainwallet і вкрасти ваш Litecoin! Негайно зітріть цей гаманець і відновіть його на захищеному пристрої.";
 
 /* Jailbreak warning message */
-"JailbreakWarnings.messageWithoutBalance" = "БЕЗПЕКА ПРИСТРОЮ ПОГІДРЕНО\n Будь-який додаток для втечі з в’язниці може отримати доступ до даних брелока Litewallet і вкрасти ваш Litecoin. Будь ласка, використовуйте Litewallet лише на пристрої без джейлбрейка.";
+"JailbreakWarnings.messageWithoutBalance" = "БЕЗПЕКА ПРИСТРОЮ ПОГІДРЕНО\n Будь-який додаток для втечі з в’язниці може отримати доступ до даних брелока Brainwallet і вкрасти ваш Litecoin. Будь ласка, використовуйте Brainwallet лише на пристрої без джейлбрейка.";
 
 /* Jailbreak warning title */
 "JailbreakWarnings.title" = "УВАГА";
@@ -376,14 +373,14 @@
 /* Wipe wallet button */
 "JailbreakWarnings.wipe" = "Витерти";
 
-/* Litewallet name */
-"Litewallet.name" = "Litewallet";
+/* Brainwallet name */
+"Brainwallet.name" = "Brainwallet";
 
 /* Location services disabled error */
 "LocationPlugin.disabled" = "Служби локації вимкнені.";
 
 /* No permissions for location services */
-"LocationPlugin.notAuthorized" = "Litewallet не має дозволу на доступ до служб локації.";
+"LocationPlugin.notAuthorized" = "Brainwallet не має дозволу на доступ до служб локації.";
 
 /* No comment provided by engineer. */
 "Malformed URI" = "Неправильний URI";
@@ -542,13 +539,13 @@
 "Prompts.RecommendRescan.title" = "Транзакція відхилена";
 
 /* Upgrade PIN prompt body. */
-"Prompts.SetPin.body" = "Для Litewallet потрібен 6-значний PIN-код. Будь ласка, встановіть та зберігайте свій PIN-код у безпечному місці.";
+"Prompts.SetPin.body" = "Для Brainwallet потрібен 6-значний PIN-код. Будь ласка, встановіть та зберігайте свій PIN-код у безпечному місці.";
 
 /* Upgrade PIN prompt title. */
 "Prompts.SetPin.title" = "Встановити PIN-код";
 
 /* Share data prompt body */
-"Prompts.ShareData.body" = "Допоможіть покращити Litewallet, поділившись з нами своїми анонімними даними";
+"Prompts.ShareData.body" = "Допоможіть покращити Brainwallet, поділившись з нами своїми анонімними даними";
 
 /* Share data prompt title */
 "Prompts.ShareData.title" = "Поділіться анонімними даними";
@@ -593,7 +590,7 @@
 "RecoverWallet.instruction" = "Введіть ключ паперу";
 
 /* Recover wallet intro */
-"RecoverWallet.intro" = "Відновіть свій Litewallet за допомогою паперового ключа.";
+"RecoverWallet.intro" = "Відновіть свій Brainwallet за допомогою паперового ключа.";
 
 /* Invalid paper key message */
 "RecoverWallet.invalid" = "Паперовий ключ, який ви ввели, недійсний. Перевірте кожне слово і повторіть спробу.";
@@ -635,7 +632,7 @@
 "ReScan.body1" = "20-45 хвилин";
 
 /* Syncing explanation */
-"ReScan.body2" = "Якщо транзакція відображається як завершена в мережі Litecoin, але не у вашому Litewallet.";
+"ReScan.body2" = "Якщо транзакція відображається як завершена в мережі Litecoin, але не у вашому Brainwallet.";
 
 /* Syncing explanation */
 "ReScan.body3" = "Ви неодноразово отримуєте повідомлення про помилку, що ваша транзакція відхилена.";
@@ -659,7 +656,7 @@
 "resetButton" = "Так, скинути гаманець";
 
 /* Warning Empty Wipe title */
-"resetTitle" = "Видалити мій Litewallet";
+"resetTitle" = "Видалити мій Brainwallet";
 
 /* Scan Litecoin address camera flash toggle */
 "Scanner.flashButtonLabel" = "Спалах камери";
@@ -689,7 +686,7 @@
 "SecurityCenter.paperKeyTitle" = "Паперовий ключ";
 
 /* PIN button description */
-"SecurityCenter.pinDescription" = "Захищає ваш Litewallet від неавторизованих користувачів.";
+"SecurityCenter.pinDescription" = "Захищає ваш Brainwallet від неавторизованих користувачів.";
 
 /* PIN button title */
 "SecurityCenter.pinTitle" = "6-значний PIN-код";
@@ -698,7 +695,7 @@
 "SecurityCenter.title" = "Центр безпеки";
 
 /* Touch ID/FaceID button description */
-"SecurityCenter.touchIdDescription" = "Зручно розблокуйте свій Litewallet і надсилайте гроші до встановленого ліміту.";
+"SecurityCenter.touchIdDescription" = "Зручно розблокуйте свій Brainwallet і надсилайте гроші до встановленого ліміту.";
 
 /* Touch ID button title */
 "SecurityCenter.touchIdTitle" = "Touch ID";
@@ -719,7 +716,7 @@
 "Send.cameraunavailableMessage" = "Перейдіть до Налаштувань, щоб дозволити доступ до камери.";
 
 /* Camera not allowed alert title */
-"Send.cameraUnavailableTitle" = "Litewallet не має доступу до камери";
+"Send.cameraUnavailableTitle" = "Brainwallet не має доступу до камери";
 
 /* Warning when sending to self. */
 "Send.containsAddress" = "Пунктом призначення є ваша власна адреса. Ви не можете відправити собі.";
@@ -850,8 +847,8 @@
 /* Join Early access label */
 "Settings.earlyAccess" = "Приєднуйтесь до раннього доступу";
 
-/* Are you enjoying Litewallet alert message body */
-"Settings.enjoying" = "Вам подобається Litewallet?";
+/* Are you enjoying Brainwallet alert message body */
+"Settings.enjoying" = "Вам подобається Brainwallet?";
 
 /* Face ID spending limit label */
 "Settings.faceIdLimit" = "Ліміт витрат на Face ID";
@@ -862,14 +859,14 @@
 /* Languages label */
 "Settings.languages" = "Мови";
 
-/* Litewallet environment */
-"Settings.litewallet.environment" = "Середовище:";
+/* Brainwallet environment */
+"Settings.Brainwallet.environment" = "Середовище:";
 
-/* Litewallet Partners */
-"Settings.litewallet.partners" = "Партнери Litewallet";
+/* Brainwallet Partners */
+"Settings.Brainwallet.partners" = "Партнери Brainwallet";
 
-/* Litewallet version */
-"Settings.litewallet.version" = "Версія Litewallet:";
+/* Brainwallet version */
+"Settings.Brainwallet.version" = "Версія Brainwallet:";
 
 /* Manage settings section header */
 "Settings.manage" = "Керувати";
@@ -883,7 +880,7 @@
 /* Share anonymous data label */
 "Settings.shareData" = "Поділіться анонімними даними";
 
-/* Litewallet Social links */
+/* Brainwallet Social links */
 "Settings.socialLinks" = "Соціальний";
 
 /* Support settings section header */
@@ -905,19 +902,13 @@
 "Settings.wipe" = "Запустити/Відновити інший гаманець";
 
 /* Share data view body */
-"ShareData.body" = "Допоможіть покращити Litewallet, поділившись з нами своїми анонімними даними. Це не включає фінансову інформацію. Ми поважаємо вашу фінансову конфіденційність.";
+"ShareData.body" = "Допоможіть покращити Brainwallet, поділившись з нами своїми анонімними даними. Це не включає фінансову інформацію. Ми поважаємо вашу фінансову конфіденційність.";
 
 /* Share data header */
 "ShareData.header" = "Поділитися даними?";
 
 /* Share data switch label. */
 "ShareData.toggleLabel" = "Поділитися анонімними даними?";
-
-/* "ShowWords.modalTitle" */
-"ShowWords.modalTitle" = "Показати вихідну фразу";
-
-/* "ShowWords.titleWarning" */
-"ShowWords.titleWarning" = "Це ваші початкові слова. Якщо ви покажете їх комусь, вони можуть забрати ваш Litecoin";
 
 /* Current spending limit: */
 "SpendingLimit.title" = "Поточний ліміт витрат: ";
@@ -926,7 +917,7 @@
 "StartPaperPhrase.againButtonTitle" = "Знову запишіть паперовий ключ";
 
 /* Paper key explanation text. */
-"StartPaperPhrase.body" = "Ваш паперовий ключ – це єдиний спосіб відновити Litewallet, якщо ваш телефон втрачено, вкрадено, зламано чи оновлено.\n\nМи покажемо вам список слів, які потрібно записати на аркуші паперу та зберегти в безпеці.";
+"StartPaperPhrase.body" = "Ваш паперовий ключ – це єдиний спосіб відновити Brainwallet, якщо ваш телефон втрачено, вкрадено, зламано чи оновлено.\n\nМи покажемо вам список слів, які потрібно записати на аркуші паперу та зберегти в безпеці.";
 
 /* button label */
 "StartPaperPhrase.buttonTitle" = "Запишіть ключ на папері";
@@ -974,7 +965,7 @@
 "TouchIdSettings.customizeText" = "Ви можете налаштувати свій ліміт витрат Touch ID з %1$@.";
 
 /* Touch Id screen label */
-"TouchIdSettings.label" = "Використовуйте відбиток пальця, щоб розблокувати свій Litewallet і надсилати гроші до встановленого ліміту.";
+"TouchIdSettings.label" = "Використовуйте відбиток пальця, щоб розблокувати свій Brainwallet і надсилати гроші до встановленого ліміту.";
 
 /*  ł100,000 ($100) */
 "TouchIdSettings.limitValue" = "%1$@ (%2$@)";
@@ -986,7 +977,7 @@
 "TouchIdSettings.spendingLimit" = "Ліміт витрат: %1$@ (%2$@)";
 
 /* Touch id switch label. */
-"TouchIdSettings.switchLabel" = "Увімкнути Touch ID для Litewallet";
+"TouchIdSettings.switchLabel" = "Увімкнути Touch ID для Brainwallet";
 
 /* Touch ID settings view title */
 "TouchIdSettings.title" = "Touch ID";
@@ -1154,7 +1145,7 @@
 "UnlockScreen.scan" = "Сканувати";
 
 /* TouchID/FaceID prompt text */
-"UnlockScreen.touchIdPrompt" = "Розблокуйте свій Litewallet.";
+"UnlockScreen.touchIdPrompt" = "Розблокуйте свій Brainwallet.";
 
 /* Unlock with TouchID accessibility label */
 "UnlockScreen.touchIdText" = "Розблокування за допомогою TouchID";
@@ -1166,7 +1157,7 @@
 "UpdatePin.caption" = "Запам’ятайте цей PIN-код. Якщо ви забудете його, ви не зможете отримати доступ до свого Litecoin.";
 
 /* PIN creation info. */
-"UpdatePin.createInstruction" = "Ваш PIN-код буде використано для розблокування вашого Litewallet та надсилання грошей.";
+"UpdatePin.createInstruction" = "Ваш PIN-код буде використано для розблокування вашого Brainwallet та надсилання грошей.";
 
 /* Update PIN title */
 "UpdatePin.createTitle" = "Встановити PIN-код";
@@ -1217,7 +1208,7 @@
 "VerifyPin.touchIdMessage" = "Авторизуйте цю трансакцію";
 
 /* 'No wallet' warning for watch app */
-"Watch.noWalletWarning" = "Відкрийте додаток Litewallet для iPhone, щоб налаштувати гаманець.";
+"Watch.noWalletWarning" = "Відкрийте додаток Brainwallet для iPhone, щоб налаштувати гаманець.";
 
 /* Dismiss button label */
 "Webview.dismiss" = "Звільнити";
@@ -1229,10 +1220,10 @@
 "Webview.updating" = "Оновлення...";
 
 /* Welcome view body text */
-"Welcome.body" = "Тепер Litewallet має абсолютно новий вигляд і деякі нові функції.\n\nУсі монети відображаються в lites (ł). 1 Litecoin (Ł) = 1000 lites (ł).";
+"Welcome.body" = "Тепер Brainwallet має абсолютно новий вигляд і деякі нові функції.\n\nУсі монети відображаються в lites (ł). 1 Litecoin (Ł) = 1000 lites (ł).";
 
 /* Welcome view title */
-"Welcome.title" = "Ласкаво просимо до Litewallet!";
+"Welcome.title" = "Ласкаво просимо до Brainwallet!";
 
 /* Delete database title */
 "WipeWallet.alertDeleteTitle" = "Видалити базу даних";
@@ -1265,7 +1256,7 @@
 "WipeWallet.instruction" = "Щоб запустити новий гаманець або відновити наявний гаманець, спочатку потрібно стерти гаманець, який зараз встановлено. Щоб продовжити, введіть паперовий ключ поточного гаманця.";
 
 /* Start wipe wallet view message */
-"WipeWallet.startMessage" = "Запуск або відновлення іншого гаманця дає змогу отримати доступ до іншого гаманця Litewallet і керувати ним на цьому пристрої.";
+"WipeWallet.startMessage" = "Запуск або відновлення іншого гаманця дає змогу отримати доступ до іншого гаманця Brainwallet і керувати ним на цьому пристрої.";
 
 /* Start wipe wallet view warning */
 "WipeWallet.startWarning" = "Ваш поточний гаманець буде видалено з цього пристрою. Якщо ви хочете відновити його в майбутньому, вам потрібно буде ввести свій паперовий ключ.";
@@ -1274,10 +1265,10 @@
 "WipeWallet.title" = "Запустіть або відновіть інший гаманець";
 
 /* Warning Alert */
-"WipeWallet.warningAlert" = "Ця дія видалить ваш Litewallet!";
+"WipeWallet.warningAlert" = "Ця дія видалить ваш Brainwallet!";
 
 /* Warning description */
-"WipeWallet.warningDescription" = "Видалення гаманця означає, що приватний ключ і стирання даних програми не буде. Ви можете втратити свій Litecoin назавжди! \n\n\nНіхто з команди Litewallet не може отримати це початкове значення для вас. Ми не несемо відповідальності, якщо ви не зважите на це попередження.";
+"WipeWallet.warningDescription" = "Видалення гаманця означає, що приватний ключ і стирання даних програми не буде. Ви можете втратити свій Litecoin назавжди! \n\n\nНіхто з команди Brainwallet не може отримати це початкове значення для вас. Ми не несемо відповідальності, якщо ви не зважите на це попередження.";
 
 /* Warning title */
 "WipeWallet.warningTitle" = "БУДЬ ЛАСКА, ПРОЧИТАЙТЕ!";

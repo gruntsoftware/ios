@@ -274,9 +274,6 @@
 /* Fee Selector title */
 "FeeSelector.title" = "処理速度";
 
-/* "Fragment.back" */
-"Fragment.back" = "戻る";
-
 /* Confirm */
 "Fragment.confirm" = "確認";
 
@@ -376,8 +373,8 @@
 /* Wipe wallet button */
 "JailbreakWarnings.wipe" = "完全削除";
 
-/* Litewallet name */
-"Litewallet.name" = "Litewallet";
+/* Brainwallet name */
+"Brainwallet.name" = "Brainwallet";
 
 /* Location services disabled error */
 "LocationPlugin.disabled" = "位置情報サービスが無効化されています。";
@@ -548,7 +545,7 @@
 "Prompts.SetPin.title" = "PINコードを更新する";
 
 /* Share data prompt body */
-"Prompts.ShareData.body" = "匿名のデータを共有してLitewalletの機能向上に役立てる";
+"Prompts.ShareData.body" = "匿名のデータを共有してBrainwalletの機能向上に役立てる";
 
 /* Share data prompt title */
 "Prompts.ShareData.title" = "匿名のデータを共有する";
@@ -635,7 +632,7 @@
 "ReScan.body1" = "20〜45分";
 
 /* Syncing explanation */
-"ReScan.body2" = "リテコインネットワークでトランザクションが完了したと表示されているが、Litewallet上では完了と表示されない場合。";
+"ReScan.body2" = "リテコインネットワークでトランザクションが完了したと表示されているが、Brainwallet上では完了と表示されない場合。";
 
 /* Syncing explanation */
 "ReScan.body3" = "送金しているが、拒否され続けている場合。";
@@ -659,7 +656,7 @@
 "resetButton" = "はい、ウォレットをリセットします";
 
 /* Warning Empty Wipe title */
-"resetTitle" = "Litewalletを削除します";
+"resetTitle" = "Brainwalletを削除します";
 
 /* Scan bitcoin address camera flash toggle */
 "Scanner.flashButtonLabel" = "カメラのフラッシュ";
@@ -698,7 +695,7 @@
 "SecurityCenter.title" = "セキュリティセンター";
 
 /* Touch ID button description */
-"SecurityCenter.touchIdDescription" = "Litewalletロック解除の他、設定した限度額までの送金も指紋認証で出来ます。";
+"SecurityCenter.touchIdDescription" = "Brainwalletロック解除の他、設定した限度額までの送金も指紋認証で出来ます。";
 
 /* Touch ID button title */
 "SecurityCenter.touchIdTitle" = "Touch ID";
@@ -850,7 +847,7 @@
 /* Join Early access label */
 "Settings.earlyAccess" = "早期アクセスに参加";
 
-/* Are you enjoying Litewallet alert message body */
+/* Are you enjoying Brainwallet alert message body */
 "Settings.enjoying" = "ブレッドをお楽しみいただいていますか?";
 
 /* Face ID spending limit label */
@@ -862,14 +859,14 @@
 /* Languages label */
 "Settings.languages" = "言語";
 
-/* Litewallet environment */
-"Settings.litewallet.environment" = "環境：";
+/* Brainwallet environment */
+"Settings.Brainwallet.environment" = "環境：";
 
-/* Litewallet Partners */
-"Settings.litewallet.partners" = "Litewalletパートナー";
+/* Brainwallet Partners */
+"Settings.Brainwallet.partners" = "Brainwalletパートナー";
 
-/* Litewallet version */
-"Settings.litewallet.version" = "Litewalletバージョン：";
+/* Brainwallet version */
+"Settings.Brainwallet.version" = "Brainwalletバージョン：";
 
 /* Manage settings section header */
 "Settings.manage" = "管理";
@@ -883,7 +880,7 @@
 /* Share anonymous data label */
 "Settings.shareData" = "匿名データをシェアする";
 
-/* Litewallet Social links */
+/* Brainwallet Social links */
 "Settings.socialLinks" = "ソーシャル";
 
 /* Support settings section header */
@@ -912,12 +909,6 @@
 
 /* Share data switch label. */
 "ShareData.toggleLabel" = "匿名データをシェアしますか?";
-
-/* "ShowWords.modalTitle" */
-"ShowWords.modalTitle" = "シードフレーズを表示";
-
-/* "ShowWords.titleWarning" */
-"ShowWords.titleWarning" = "これらはあなたのシードワードです。これを誰かに見せると、ライトコインを盗まれてしまう可能性があります。";
 
 /* Current spending limit: */
 "SpendingLimit.title" = "現在の支出制限：";
@@ -1217,7 +1208,7 @@
 "VerifyPin.touchIdMessage" = "このトランザクションを認証する";
 
 /* 'No wallet' warning for watch app */
-"Watch.noWalletWarning" = "LitewalletのiPhoneアプリを開き、ウォレットをセットアップする";
+"Watch.noWalletWarning" = "BrainwalletのiPhoneアプリを開き、ウォレットをセットアップする";
 
 /* Dismiss button label */
 "Webview.dismiss" = "解除";
@@ -1229,10 +1220,10 @@
 "Webview.updating" = "更新中...";
 
 /* Welcome screen text. (?) will be replaced with the help icon users should look for. */
-"Welcome.body" = "Litewalletへようこそ！";
+"Welcome.body" = "Brainwalletへようこそ！";
 
 /* Top title of welcome screen */
-"Welcome.title" = "Litewalletへようこそ！";
+"Welcome.title" = "Brainwalletへようこそ！";
 
 /* Delete database title */
 "WipeWallet.alertDeleteTitle" = "データベースを削除";
@@ -1265,19 +1256,19 @@
 "WipeWallet.instruction" = "ウォレットを消去し、新しいウォレットを作成したり、復元したりしたい場合は復旧フレーズを入力してください。この段階では残高は残っています。";
 
 /* Start wipe wallet view message */
-"WipeWallet.startMessage" = "別のウォレットを開設するか復元することにより、このデバイス上で異なるLitewalletウォレットへのアクセスと管理ができるようになります。";
+"WipeWallet.startMessage" = "別のウォレットを開設するか復元することにより、このデバイス上で異なるBrainwalletウォレットへのアクセスと管理ができるようになります。";
 
 /* Start wipe wallet view warning */
-"WipeWallet.startWarning" = "このデバイスから現在使用中のLitewalletウォレットへのアクセスはできなくなります。残高はフレーズに残されます。";
+"WipeWallet.startWarning" = "このデバイスから現在使用中のBrainwalletウォレットへのアクセスはできなくなります。残高はフレーズに残されます。";
 
 /* Wipe wallet navigation item title. */
 "WipeWallet.title" = "別のウォレットを作成、または復元する";
 
 /* Warning Alert */
-"WipeWallet.warningAlert" = "このアクションにより、Litewalletがワイプされます。";
+"WipeWallet.warningAlert" = "このアクションにより、Brainwalletがワイプされます。";
 
 /* Warning description */
-"WipeWallet.warningDescription" = "ウォレットを削除すると、秘密鍵とアプリデータのワイプが失われます。 あなたはライトコインを永遠に失うかもしれません！ \ n \ n \ nLitewalletチームの誰もこのシードを取得できません。 この警告に注意を怠った場合、当社は責任を負いません";
+"WipeWallet.warningDescription" = "ウォレットを削除すると、秘密鍵とアプリデータのワイプが失われます。 あなたはライトコインを永遠に失うかもしれません！ \ n \ n \ nBrainwalletチームの誰もこのシードを取得できません。 この警告に注意を怠った場合、当社は責任を負いません";
 
 /* Warning title */
 "WipeWallet.warningTitle" = "読んでください！";

@@ -18,7 +18,7 @@ class EnterPhraseViewController: UIViewController, UIScrollViewDelegate, CustomT
 
 		switch reason {
 		case .setSeed:
-			customTitle = S.RecoverWallet.header.localize()
+            customTitle = S.StartView.restoreButton.localize()
 		case .validateForResettingPin:
 			customTitle = S.RecoverWallet.headerResetPin.localize()
 		case .validateForWipingWallet:
@@ -133,7 +133,7 @@ class EnterPhraseViewController: UIViewController, UIScrollViewDelegate, CustomT
 		switch reason {
 		case .setSeed:
 			saveEvent("enterPhrase.setSeed")
-			titleLabel.text = S.RecoverWallet.header.localize()
+			titleLabel.text = S.StartView.restoreButton.localize()
 			subheader.text = S.RecoverWallet.subheader.localize()
 			moreInfoButton.isHidden = true
 		case .validateForResettingPin:
