@@ -40,7 +40,7 @@ struct CreateStepTabView: View {
 					HStack {
 						Text(viewModel.headerTitle)
 							.font(.barlowBold(size: 30.0))
-							.foregroundColor(.brainwalletGray)
+                            .foregroundColor(BrainwalletColor.content)
 							.padding([.bottom, .top], 10.00)
 					}
 					.frame(height: 25.0)

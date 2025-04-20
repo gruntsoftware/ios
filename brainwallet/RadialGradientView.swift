@@ -15,7 +15,7 @@ class RadialGradientView: UIView {
 
 	override func draw(_ rect: CGRect) {
 		let colorSpace = CGColorSpaceCreateDeviceRGB()
-		let startColor = UIColor.transparentWhite.cgColor
+		let startColor = BrainwalletUIColor.surface.cgColor
 		let endColor = UIColor(white: 1.0, alpha: 0.0).cgColor
 		let colors = [startColor, endColor] as CFArray
 		let locations: [CGFloat] = [0.0, 1.0]

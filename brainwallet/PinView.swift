@@ -29,9 +29,9 @@ class PinView: UIView {
 		self.length = length
 		switch style {
 		case .create:
-			unFilled = (0 ... (length - 1)).map { _ in Circle(color: .transparentWhite) }
+            unFilled = (0 ... (length - 1)).map { _ in Circle(color: BrainwalletUIColor.content) }
 		case .login:
-			unFilled = (0 ... (length - 1)).map { _ in Circle(color: .transparentWhite) }
+			unFilled = (0 ... (length - 1)).map { _ in Circle(color: BrainwalletUIColor.content) }
 		}
 		filled = (0 ... (length - 1)).map { _ in Circle(color: .white) }
 		super.init(frame: CGRect())

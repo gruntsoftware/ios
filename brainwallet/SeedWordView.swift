@@ -25,7 +25,7 @@ struct SeedWordView: View {
 					ZStack {
 						RoundedRectangle(cornerRadius: bigButtonCornerRadius)
 							.frame(height: cellHeight, alignment: .center)
-                            .foregroundColor(Color.brainwalletGray)
+                            .foregroundColor(BrainwalletColor.content)
 							.shadow(radius: 3, x: 3.0, y: 3.0)
 
 						Text(seedWord)
@@ -37,7 +37,7 @@ struct SeedWordView: View {
 							HStack {
 								Text("\(wordNumber)")
 									.font(.barlowSemiBold(size: 14.0))
-									.foregroundColor(.brainwalletGray)
+									.foregroundColor(BrainwalletColor.content)
 									.frame(width: genericPad,
 									       height: cellHeight,
 									       alignment: .leading)

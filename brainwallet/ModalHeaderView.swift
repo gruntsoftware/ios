@@ -68,7 +68,7 @@ class ModalHeaderView: UIView {
 			title.textColor = .white
 			close.tintColor = .white
 		case .dark:
-			border.backgroundColor = .secondaryShadow
+			border.backgroundColor = BrainwalletUIColor.border
 		}
 	}
 

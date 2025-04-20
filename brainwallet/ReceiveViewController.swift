@@ -128,9 +128,9 @@ class ReceiveViewController: UIViewController, Subscriber, Trackable {
 	}
 
 	private func setStyle() {
-		view.backgroundColor = UIColor.brainwalletGray
-		address.textColor = .midnight
-		border.backgroundColor = .secondaryBorder
+        view.backgroundColor = BrainwalletUIColor.surface
+        address.textColor = BrainwalletUIColor.content
+		border.backgroundColor = BrainwalletUIColor.surface
 		share.isToggleable = true
 		if !isRequestAmountVisible {
 			border.isHidden = true
@@ -142,7 +142,7 @@ class ReceiveViewController: UIViewController, Subscriber, Trackable {
 			requestBottom?.constant = 0.0
 		}
 		sharePopout.clipsToBounds = true
-		addressButton.setBackgroundImage(UIImage.imageForColor(.secondaryShadow), for: .highlighted)
+		addressButton.setBackgroundImage(UIImage.imageForColor(BrainwalletUIColor.border), for: .highlighted)
 		addressButton.layer.cornerRadius = 4.0
 		addressButton.layer.masksToBounds = true
 		setReceiveAddress()

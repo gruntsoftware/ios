@@ -68,7 +68,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		transactions = TransactionManager.sharedInstance.transactions
 		rate = TransactionManager.sharedInstance.rate
 
-		tableView.backgroundColor = .midnight
+		tableView.backgroundColor = BrainwalletUIColor.surface
 		initSyncingHeaderView(reduxState: reduxState, completion: {})
 		attemptShowPrompt()
 	}
@@ -136,7 +136,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: tableView.bounds.size.width, height: tableView.bounds.size.height))
 		let messageLabel = UILabel(frame: rect)
 		messageLabel.text = S.TransactionDetails.emptyMessage.localize()
-		messageLabel.textColor = .brainwalletGray
+		messageLabel.textColor = BrainwalletUIColor.content
 		messageLabel.numberOfLines = 0
 		messageLabel.textAlignment = .center
 		messageLabel.font = UIFont.barlowMedium(size: 20)

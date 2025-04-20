@@ -73,14 +73,14 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	}
 
 	override func viewDidLoad() {
-		view.backgroundColor = UIColor.brainwalletGray
+		view.backgroundColor = BrainwalletUIColor.surface
 
 		// set as regular at didLoad
 		walletManager.wallet?.feePerKb = store.state.fees.regular
 
 		// polish parameters
-		memoCell.backgroundColor = UIColor.brainwalletGray
-		amountView.view.backgroundColor = UIColor.brainwalletGray
+		memoCell.backgroundColor = BrainwalletUIColor.surface
+        amountView.view.backgroundColor = BrainwalletUIColor.content
 
 		view.addSubview(sendAddressCell)
 		view.addSubview(memoCell)
@@ -227,7 +227,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 		let balanceOutput = String(format: S.Send.balance.localize(), balanceText)
 		var combinedFeesOutput = ""
-		var balanceColor: UIColor = .grayTextTint
+        var balanceColor: UIColor = BrainwalletUIColor.gray
 
 		/// Check the amount is greater than zero and amount satoshis are not nil
 		if let currentRate = currentRate,
@@ -259,7 +259,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			combinedFeesOutput = "(\(S.Send.networkFee.localize()) + \(S.Send.serviceFee.localize())): \(networkFeeAmount) + \(serviceFeeAmount) = \(totalFeeAmount)"
 
 			if enteredAmount.rawValue > sendTotal || enteredAmount.rawValue > balance {
-				balanceColor = .cheddar
+                balanceColor = BrainwalletUIColor.warn
 			}
 		}
 

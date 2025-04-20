@@ -45,12 +45,12 @@ struct PINFieldView: UIViewRepresentable {
 		textField.font = .barlowSemiBold(size: 24.0)
 		textField.textAlignment = .center
 		textField.backgroundColor = .clear
-        textField.textColor = UIColor(Color.grape)
+        textField.textColor = BrainwalletUIColor.content
 		textField.defaultTextAttributes.updateValue(viewKerning, forKey: NSAttributedString.Key.kern)
 		textField.keyboardType = .decimalPad
 		textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
 			NSAttributedString.Key.kern: 15.0,
-			NSAttributedString.Key.foregroundColor: UIColor(Color.green),
+            NSAttributedString.Key.foregroundColor: BrainwalletUIColor.affirm,
 			NSAttributedString.Key.font: UIFont.barlowBold(size: 17.0),
 		])
 		viewRect = textField.bounds

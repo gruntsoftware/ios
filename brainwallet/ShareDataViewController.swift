@@ -7,11 +7,11 @@ class ShareDataViewController: UIViewController {
 	}
 
 	private let store: Store
-	private let titleLabel = UILabel(font: .customBold(size: 26.0), color: .darkText)
-	private let body = UILabel.wrapping(font: .customBody(size: 16.0), color: .darkText)
-	private let label = UILabel(font: .customBold(size: 16.0), color: .darkText)
+	private let titleLabel = UILabel(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
+	private let body = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
+	private let label = UILabel(font: .customBold(size: 16.0), color: BrainwalletUIColor.content)
 	private let toggle = GradientSwitch()
-	private let separator = UIView(color: .secondaryShadow)
+	private let separator = UIView(color: BrainwalletUIColor.content)
 
 	override func viewDidLoad() {
 		addSubviews()
@@ -54,7 +54,7 @@ class ShareDataViewController: UIViewController {
 	}
 
 	private func setInitialData() {
-		view.backgroundColor = .whiteTint
+        view.backgroundColor = BrainwalletUIColor.background
 		titleLabel.text = S.ShareData.header.localize()
 		body.text = S.ShareData.body.localize()
 		label.text = S.ShareData.toggleLabel.localize()

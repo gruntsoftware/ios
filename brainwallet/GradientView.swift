@@ -12,7 +12,7 @@ extension UIView {
 			return
 		}
 		let colorSpace = CGColorSpaceCreateDeviceRGB()
-		let colors = [UIColor.gradientStart.cgColor, UIColor.gradientEnd.cgColor] as CFArray
+        let colors = [BrainwalletUIColor.content.cgColor, BrainwalletUIColor.background.cgColor] as CFArray
 		let locations: [CGFloat] = [0.2, 0.9] // eyeball attempt! REDO
 		guard let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: locations) else { return }
 		guard let context = UIGraphicsGetCurrentContext() else { return }
@@ -39,7 +39,7 @@ protocol SolidColorDrawable {
 }
 
 extension UIView {
-    func drawColor(color _: UIColor = .midnight, _: CGRect) {
+    func drawColor(color _: UIColor = BrainwalletUIColor.surface, _: CGRect) {
 		let image = UIImageView(image: #imageLiteral(resourceName: "colorImageBlue"))
 		image.contentMode = .scaleToFill
 		addSubview(image)

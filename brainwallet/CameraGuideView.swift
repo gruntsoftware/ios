@@ -8,9 +8,9 @@ enum CameraGuideState {
 
 	var color: UIColor {
 		switch self {
-		case .normal: return .darkLine
-		case .negative: return .cheddar
-		case .positive: return .cameraGuidePositive
+        case .normal: return BrainwalletUIColor.surface
+        case .negative: return BrainwalletUIColor.warn
+        case .positive: return BrainwalletUIColor.affirm
 		}
 	}
 }

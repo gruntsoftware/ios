@@ -19,8 +19,8 @@ class AboutCell: UIView {
 		setup()
 	}
 
-	private var label = UILabel(font: .customBody(size: 16.0), color: .darkText)
-	private let separator = UIView(color: .secondaryShadow)
+	private var label = UILabel(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
+	private let separator = UIView(color: BrainwalletUIColor.border)
 
 	private func setup() {
 		addSubview(label)

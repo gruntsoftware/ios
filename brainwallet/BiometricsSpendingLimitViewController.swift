@@ -8,8 +8,8 @@ class BiometricsSpendingLimitViewController: UITableViewController, Subscriber {
 	private let limits: [UInt64] = [0, 10_000_000, 100_000_000, 1_000_000_000, 10_000_000_000]
 	private var selectedLimit: UInt64?
 	private var header: UIView?
-	private let amount = UILabel(font: .customMedium(size: 26.0), color: .darkText)
-	private let body = UILabel.wrapping(font: .customBody(size: 13.0), color: .darkText)
+	private let amount = UILabel(font: .customMedium(size: 26.0), color: BrainwalletUIColor.content)
+	private let body = UILabel.wrapping(font: .customBody(size: 13.0), color: BrainwalletUIColor.content)
 
 	init(walletManager: WalletManager, store: Store) {
 		self.walletManager = walletManager
@@ -24,17 +24,17 @@ class BiometricsSpendingLimitViewController: UITableViewController, Subscriber {
 		tableView.register(SeparatorCell.self, forCellReuseIdentifier: cellIdentifier)
 		tableView.sectionHeaderHeight = UITableView.automaticDimension
 		tableView.estimatedSectionHeaderHeight = 50.0
-		tableView.backgroundColor = .whiteTint
+        tableView.backgroundColor = BrainwalletUIColor.surface
 		tableView.separatorStyle = .none
 
-		let titleLabel = UILabel(font: .customBold(size: 17.0), color: .darkText)
+        let titleLabel = UILabel(font: .customBold(size: 17.0), color: BrainwalletUIColor.content)
 		let biometricsTitle = LAContext.biometricType() == .face ? S.FaceIdSpendingLimit.title.localize() : S.TouchIdSpendingLimit.title.localize()
 		titleLabel.text = biometricsTitle
 		titleLabel.sizeToFit()
 		navigationItem.titleView = titleLabel
 
 		let faqButton = UIButton.buildFaqButton(store: store, articleId: ArticleIds.nothing)
-		faqButton.tintColor = .darkText
+		faqButton.tintColor = BrainwalletUIColor.content
 		navigationItem.rightBarButtonItems = [UIBarButtonItem.negativePadding, UIBarButtonItem(customView: faqButton)]
 
 		body.text = S.TouchIdSpendingLimit.body.localize()
@@ -88,7 +88,7 @@ class BiometricsSpendingLimitViewController: UITableViewController, Subscriber {
 
 	override func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
 		if let header = self.header { return header }
-		let header = UIView(color: .whiteTint)
+		let header = UIView(color: BrainwalletUIColor.content)
 		header.addSubview(amount)
 		header.addSubview(body)
 		amount.pinTopLeft(padding: C.padding[2])

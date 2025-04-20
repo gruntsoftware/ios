@@ -15,7 +15,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	private let smallFontSize: CGFloat = 12.0
 	private var hasInitialized = false
 	private let dateFormatter = DateFormatter()
-	private let equalsLabel = UILabel(font: .barlowMedium(size: 12), color: .whiteTint)
+	private let equalsLabel = UILabel(font: .barlowMedium(size: 12), color: BrainwalletUIColor.content)
 	private var regularConstraints: [NSLayoutConstraint] = []
 	private var swappedConstraints: [NSLayoutConstraint] = []
 	private let currencyTapView = UIView()
@@ -119,10 +119,10 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	private func setupViews() {
 		walletBalanceLabel.text = S.ManageWallet.balance.localize() + ":"
 
-		headerView.backgroundColor = .midnight
-		tabBar.barTintColor = .midnight
-		containerView.backgroundColor = .midnight
-		view.backgroundColor = .midnight
+		headerView.backgroundColor = BrainwalletUIColor.surface
+		tabBar.barTintColor = BrainwalletUIColor.surface
+		containerView.backgroundColor = BrainwalletUIColor.surface
+		view.backgroundColor = BrainwalletUIColor.surface
 	}
 
 	private func configurePriceLabels() {

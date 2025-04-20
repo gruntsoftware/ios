@@ -17,7 +17,7 @@ class AddressCell: UIView {
 	let textField = UITextField()
 	let paste = ShadowButton(title: S.Send.pasteLabel.localize(), type: .tertiary)
 	let scan = ShadowButton(title: S.Send.scanLabel.localize(), type: .tertiary)
-	private let dividerView = UIView(color: .secondaryShadow)
+	private let dividerView = UIView(color: BrainwalletUIColor.border)
 
 	private func setupViews() {
 		if #available(iOS 11.0, *) {
@@ -28,7 +28,7 @@ class AddressCell: UIView {
 			}
 			textField.textColor = textColor
 		} else {
-			textField.textColor = .darkText
+			textField.textColor = BrainwalletUIColor.content
 		}
 		addSubviews()
 		addConstraints()

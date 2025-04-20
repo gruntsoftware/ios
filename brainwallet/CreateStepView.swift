@@ -4,7 +4,7 @@ struct CreateStepView: View {
 	@EnvironmentObject
 	var viewModel: StartViewModel
 
-    var backgroundColor: Color = .grape
+    var backgroundColor: Color = BrainwalletColor.surface
 	var createStepConfig: CreateStepConfig = .intro
 
 	let hugeFont = Font.barlowBold(size: 30.0)
