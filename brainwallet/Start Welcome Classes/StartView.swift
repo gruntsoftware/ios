@@ -1,10 +1,5 @@
 import SwiftUI
-import UIKit
 import Lottie
-//
-//enum OnboardingPath (
-//
-//)
 
 struct StartView: View {
     let selectorFont: Font = .barlowSemiBold(size: 16.0)
@@ -17,13 +12,11 @@ struct StartView: View {
 
 	let squareButtonSize: CGFloat = 55.0
 	let squareImageSize: CGFloat = 25.0
-    let themeButtonWidth: CGFloat = 28.0
+    let themeButtonSize: CGFloat = 28.0
+    let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
     let lottieFileName: String = "welcomeemoji20250212.json"
-    
-    let bwSurface: Color = Color("brainwalletSurface")
-    let bwContent: Color = Color("brainwalletContent")
-    let bwWarn: Color = Color("brainwalletWarn")
+     
 
     @State
     private var path: [any View] = []
@@ -71,7 +64,7 @@ struct StartView: View {
             
 			NavigationView {
 				ZStack {
-                    bwSurface.edgesIgnoringSafeArea(.all)
+                    BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 					VStack {
                         
                         Group {
@@ -96,7 +89,7 @@ struct StartView: View {
                                             ForEach(startViewModel.languages, id: \.self) {
                                                 Text($0.nativeName)
                                                     .font(selectorFont)
-                                                    .foregroundColor(bwContent)
+                                                    .foregroundColor(BrainwalletColor.content)
                                             }
                                         }
                                         .pickerStyle(.wheel)
@@ -116,13 +109,26 @@ struct StartView: View {
                                             startViewModel.userDidChangeDarkMode(state: userPrefersDarkMode)
                                         }) {
                                             ZStack {
-                                                Image(systemName: userPrefersDarkMode ? "moon" : "rays")
+                                                Ellipse()
+                                                    .frame(width: themeBorderSize,
+                                                           height: themeBorderSize,
+                                                           alignment: .center)
+                                                    .overlay {
+                                                        Ellipse()
+                                                            .frame(width: themeBorderSize,
+                                                                         height: themeBorderSize,
+                                                                         alignment: .center)
+                                                            .foregroundColor(BrainwalletColor.midnight)
+                                                    }
+
+                                                Image(systemName: userPrefersDarkMode ?  "rays" : "moon")
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fit)
-                                                    .frame(width: themeButtonWidth,
-                                                           height: themeButtonWidth,
+                                                    .frame(width: themeButtonSize,
+                                                           height: themeButtonSize,
                                                            alignment: .center)
-                                                    .foregroundColor(bwWarn)
+                                                    .foregroundColor( userPrefersDarkMode ?  BrainwalletColor.warn : BrainwalletColor.surface)
+                                                    
                                             }
                                         }
                                         .frame(width: width * 0.1)
@@ -131,7 +137,7 @@ struct StartView: View {
                                             ForEach(startViewModel.currencies, id: \.self) {
                                                 Text($0.fullCurrencyName)
                                                     .font(selectorFont)
-                                                    .foregroundColor(bwContent)
+                                                    .foregroundColor(BrainwalletColor.content)
                                             }
                                         }
                                         .pickerStyle(.wheel)
@@ -180,16 +186,16 @@ struct StartView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                    .foregroundColor(bwSurface)
+                                    .foregroundColor(BrainwalletColor.surface)
                                     .shadow(radius: 3, x: 3.0, y: 3.0)
 
                                 Text(S.StartView.readyButton.localize())
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(largeButtonFont)
-                                    .foregroundColor(bwContent)
+                                    .foregroundColor(BrainwalletColor.content)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: largeButtonHeight/2)
-                                            .stroke(bwContent, lineWidth: 2.0)
+                                            .stroke(BrainwalletColor.content, lineWidth: 2.0)
                                     )
                             }
                         }
@@ -206,16 +212,16 @@ struct StartView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                    .foregroundColor(bwSurface)
+                                    .foregroundColor(BrainwalletColor.surface)
                                     .shadow(radius: 5, x: 3.0, y: 3.0)
 
                                 Text(S.StartView.restoreButton.localize())
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(regularButtonFont)
-                                    .foregroundColor(bwContent)
+                                    .foregroundColor(BrainwalletColor.content)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: largeButtonHeight/2)
-                                            .stroke(bwContent, lineWidth: 1.0)
+                                            .stroke(BrainwalletColor.content, lineWidth: 1.0)
                                     )
                             }
                         }
@@ -224,7 +230,7 @@ struct StartView: View {
 						Text(AppVersion.string)
 							.frame(alignment: .center)
                             .font(versionFont)
-                            .foregroundColor(bwContent)
+                            .foregroundColor(BrainwalletColor.content)
 							.padding(.all, 5.0)
 					}
 					.padding(.all, swiftUICellPadding)

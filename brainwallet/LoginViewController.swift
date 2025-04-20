@@ -46,7 +46,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 
 	private let backgroundView: UIView = {
 		let view = UIView()
-		view.backgroundColor = .grape
+        view.backgroundColor = BrainwalletUIColor.surface
 		return view
 	}()
 
@@ -58,14 +58,14 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 	private let disabledView: WalletDisabledView
 	private let activityView = UIActivityIndicatorView(style: .large)
 	private let wipeBannerButton = UIButton()
-	private let enterPINLabel = UILabel(font: .barlowSemiBold(size: 18), color: .white)
+    private let enterPINLabel = UILabel(font: .barlowSemiBold(size: 18), color: BrainwalletUIColor.content)
 	private var pinPadBottom: NSLayoutConstraint?
 	private var topControlTop: NSLayoutConstraint?
 	private var unlockTimer: Timer?
 	private var pinPadBackground = UIView()
 	private var hasAttemptedToShowBiometrics = false
 	private var isResetting = false
-	private let versionLabel = UILabel(font: .barlowRegular(size: 12), color: .white)
+	private let versionLabel = UILabel(font: .barlowRegular(size: 12), color: BrainwalletUIColor.content)
 	private var isWalletEmpty = false
 
 	var delegate: LoginViewControllerDelegate?
@@ -81,7 +81,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		let button = UIButton(type: .system)
 		button.tintColor = .white
 		button.setImage(LAContext.biometricType() == .face ? #imageLiteral(resourceName: "FaceId") : #imageLiteral(resourceName: "TouchId"), for: .normal)
-		button.layer.borderColor = UIColor.white.cgColor
+		button.layer.borderColor = BrainwalletUIColor.content.cgColor
 		button.layer.borderWidth = 1.0
 		button.layer.cornerRadius = squareButtonSize / 2.0
 		button.layer.masksToBounds = true
@@ -126,14 +126,14 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 			})
 			recover.addCloseNavigationItem()
 			nc.viewControllers = [recover]
-			nc.navigationBar.tintColor = .darkText
+			nc.navigationBar.tintColor = BrainwalletUIColor.content
 			nc.navigationBar.titleTextAttributes = [
-				NSAttributedString.Key.foregroundColor: UIColor.darkText,
+				NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
 				NSAttributedString.Key.font: UIFont.customBold(size: 17.0),
 			]
 			nc.setClearNavbar()
 			nc.navigationBar.isTranslucent = false
-			nc.navigationBar.barTintColor = .whiteTint
+			nc.navigationBar.barTintColor = BrainwalletUIColor.content
 			nc.viewControllers = [recover]
 			self?.present(nc, animated: true, completion: nil)
 		}
@@ -277,7 +277,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		])
 
 		wipeBannerButton.setTitle(S.WipeWallet.emptyWallet.localize(), for: .normal)
-		wipeBannerButton.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
+		wipeBannerButton.setTitleColor(BrainwalletUIColor.content.withAlphaComponent(0.7), for: .normal)
 		wipeBannerButton.titleLabel?.font = .barlowSemiBold(size: 17)
 		wipeBannerButton.addTarget(self, action: #selector(wipeTapped), for: .touchUpInside)
 	}

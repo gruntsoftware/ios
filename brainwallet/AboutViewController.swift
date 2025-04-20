@@ -2,13 +2,13 @@ import SafariServices
 import UIKit
 
 class AboutViewController: UIViewController {
-	private var titleLabel = UILabel(font: .customBold(size: 26.0), color: .darkText)
+	private var titleLabel = UILabel(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
 	private let logoBackground = UIView()
 	private let blog = AboutCell(text: S.About.blog.localize())
 	private let twitter = AboutCell(text: S.About.twitter.localize())
     private let bluesky = AboutCell(text: S.About.bluesky.localize())
 	private let privacy = UIButton(type: .system)
-	private let footer = UILabel(font: .customBody(size: 13.0), color: .secondaryGrayText)
+    private let footer = UILabel(font: .customBody(size: 13.0), color: BrainwalletUIColor.content)
 	override func viewDidLoad() {
 		if #available(iOS 11.0, *),
 		   let labelTextColor = UIColor(named: "labelTextColor"),
@@ -18,8 +18,8 @@ class AboutViewController: UIViewController {
 			privacy.tintColor = labelTextColor
 			view.backgroundColor = backgroundColor
 		} else {
-			privacy.tintColor = .midnight
-			view.backgroundColor = .whiteTint
+			privacy.tintColor = BrainwalletUIColor.surface
+			view.backgroundColor = BrainwalletUIColor.content
 		}
 
 		addSubviews()

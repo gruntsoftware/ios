@@ -8,7 +8,7 @@ struct SendButtonView: View {
 	var body: some View {
 		GeometryReader { geometry in
 			ZStack {
-				Color.brainwalletGray.edgesIgnoringSafeArea(.all)
+                BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 
 				VStack {
 					Spacer()
@@ -19,16 +19,16 @@ struct SendButtonView: View {
 							ZStack {
 								RoundedRectangle(cornerRadius: 4)
 									.frame(width: geometry.size.width * 0.9, height: 45, alignment: .center)
-									.foregroundColor(Color(UIColor.midnight))
-									.shadow(color: Color(UIColor.grayTextTint), radius: 3, x: 0, y: 4)
+                                    .foregroundColor(BrainwalletColor.surface)
+									.shadow(color: BrainwalletColor.content, radius: 3, x: 0, y: 4)
 
 								Text(S.Send.sendLabel.localize())
 									.frame(width: geometry.size.width * 0.9, height: 45, alignment: .center)
 									.font(Font(UIFont.customMedium(size: 15.0)))
-									.foregroundColor(Color(UIColor.grayTextTint))
+									.foregroundColor(BrainwalletColor.content)
 									.overlay(
 										RoundedRectangle(cornerRadius: 4)
-											.stroke(Color(UIColor.secondaryBorder))
+                                            .stroke(BrainwalletColor.background)
 									)
 							}
 						}

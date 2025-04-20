@@ -11,7 +11,7 @@ class RecoverWalletIntroViewController: UIViewController {
 	// MARK: - Private
 
 	private let didTapNext: () -> Void
-    private let header = RadialGradientView(backgroundColor: .midnight)
+    private let header = RadialGradientView(backgroundColor: BrainwalletUIColor.surface)
 	private let nextButton = ShadowButton(title: S.RecoverWallet.next.localize(), type: .primary)
 	private let label = UILabel(font: .customBody(size: 16.0))
 	private let illustration = UIImageView(image: #imageLiteral(resourceName: "RecoverWalletIllustration"))

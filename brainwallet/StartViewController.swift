@@ -13,7 +13,7 @@ class StartViewController: UIViewController {
 
 	// MARK: - Private
 
-	private let message = UILabel(font: .barlowLight(size: 22), color: .whiteTint)
+    private let message = UILabel(font: .barlowLight(size: 22), color: BrainwalletUIColor.content)
 
     private let create = ShadowButton(title: S.StartView.readyButton.localize(), type: .flatWhite)
     private let recover = ShadowButton(title:  S.StartView.restoreButton.localize(), type: .flatLitecoinBlue)
@@ -22,7 +22,7 @@ class StartViewController: UIViewController {
 	private let didTapCreate: () -> Void
 	private let backgroundView: UIView = {
 		let view = UIView()
-		view.backgroundColor = .midnight
+		view.backgroundColor = BrainwalletUIColor.surface
 		return view
 	}()
 
@@ -33,7 +33,7 @@ class StartViewController: UIViewController {
 		return image
 	}()
 
-	private let versionLabel = UILabel(font: .barlowMedium(size: 14), color: .transparentWhite)
+	private let versionLabel = UILabel(font: .barlowMedium(size: 14), color: BrainwalletUIColor.content)
 
 	override func viewDidLoad() {
 		view.backgroundColor = .white
@@ -60,7 +60,7 @@ class StartViewController: UIViewController {
 			}
 			view.backgroundColor = mainColor
 		} else {
-			view.backgroundColor = .midnight
+			view.backgroundColor = BrainwalletUIColor.surface
 		}
 	}
 

@@ -27,8 +27,8 @@ class VerifyPinViewController: UIViewController, ContentBoxPresenter {
 	private let titleLabel = UILabel(font: .customBold(size: 17.0), color: .white)
 	private let body = UILabel(font: .customBody(size: 14.0), color: .white)
 	private let pinView: PinView
-	private let toolbar = UIView(color: .whiteTint)
-	private let toolbarBorder = UIView(color: .whiteTint)
+    private let toolbar = UIView(color: BrainwalletUIColor.content)
+	private let toolbarBorder = UIView(color: BrainwalletUIColor.content)
 	private let cancel = UIButton(type: .system)
 	private let bodyText: String
 	private let pinLength: Int
@@ -96,11 +96,11 @@ class VerifyPinViewController: UIViewController, ContentBoxPresenter {
 	}
 
 	private func setupSubviews() {
-		contentBox.backgroundColor = .midnight
+		contentBox.backgroundColor = BrainwalletUIColor.surface
 		contentBox.layer.cornerRadius = 8.0
 		contentBox.layer.borderWidth = 1.0
-		contentBox.layer.borderColor = UIColor.secondaryShadow.cgColor
-		contentBox.layer.shadowColor = UIColor.black.cgColor
+		contentBox.layer.borderColor = BrainwalletUIColor.border.cgColor
+		contentBox.layer.shadowColor = BrainwalletUIColor.border.cgColor
 		contentBox.layer.shadowOpacity = 0.15
 		contentBox.layer.shadowRadius = 4.0
 		contentBox.layer.shadowOffset = .zero

@@ -20,7 +20,7 @@ struct LoginView: View {
 	var body: some View {
 		GeometryReader { _ in
 			ZStack {
-				Color.midnight.edgesIgnoringSafeArea(.all)
+                BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 				VStack {
 					Spacer()
 				}

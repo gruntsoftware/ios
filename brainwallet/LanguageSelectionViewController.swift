@@ -3,7 +3,7 @@ import UIKit
 class LanguageSelectionViewController: UITableViewController {
 	let viewModel = LanguageSelectionViewModel()
 
-	var titleLabel = UILabel(font: .customBold(size: 17.0), color: .darkText)
+	var titleLabel = UILabel(font: .customBold(size: 17.0), color: BrainwalletUIColor.content)
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -13,7 +13,7 @@ class LanguageSelectionViewController: UITableViewController {
 	func setupUI() {
 		tableView.register(SeparatorCell.self)
 		tableView.sectionHeaderHeight = UITableView.automaticDimension
-		tableView.backgroundColor = .whiteTint
+		tableView.backgroundColor = BrainwalletUIColor.content
 		tableView.separatorStyle = .none
 
 		titleLabel.text = S.Settings.languages.localize()

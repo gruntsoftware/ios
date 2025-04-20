@@ -30,9 +30,9 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 		}
 	}
 
-	private let bitcoinLabel = UILabel(font: .customBold(size: 14.0), color: .grayTextTint)
+	private let bitcoinLabel = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.gray)
 	private let bitcoinSwitch = UISegmentedControl(items: ["photons (\(S.Symbols.photons))", "lites (\(S.Symbols.lites))", "LTC (\(S.Symbols.ltc))"])
-	private let rateLabel = UILabel(font: .customBody(size: 16.0), color: .darkText)
+	private let rateLabel = UILabel(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private var header: UIView?
 
 	deinit {
@@ -51,16 +51,16 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 
 		tableView.sectionHeaderHeight = UITableView.automaticDimension
 		tableView.estimatedSectionHeaderHeight = 140.0
-		tableView.backgroundColor = .whiteTint
+        tableView.backgroundColor = BrainwalletUIColor.surface
 		tableView.separatorStyle = .none
 
-		let titleLabel = UILabel(font: .customBold(size: 17.0), color: .darkText)
+		let titleLabel = UILabel(font: .customBold(size: 17.0), color: BrainwalletUIColor.content)
 		titleLabel.text = S.Settings.currency.localize()
 		titleLabel.sizeToFit()
 		navigationItem.titleView = titleLabel
 
 		let faqButton = UIButton.buildFaqButton(store: store, articleId: ArticleIds.nothing)
-		faqButton.tintColor = .darkText
+		faqButton.tintColor = BrainwalletUIColor.content
 		navigationItem.rightBarButtonItems = [UIBarButtonItem.negativePadding, UIBarButtonItem(customView: faqButton)]
 	}
 
@@ -68,7 +68,7 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 		if let currentRate = rates.filter({ $0.code == defaultCurrencyCode }).first {
 			let amount = Amount(amount: C.satoshis, rate: currentRate, maxDigits: store.state.maxDigits)
 			let bitsAmount = Amount(amount: C.satoshis, rate: currentRate, maxDigits: store.state.maxDigits)
-			rateLabel.textColor = .darkText
+			rateLabel.textColor = BrainwalletUIColor.content
 			rateLabel.text = "\(bitsAmount.bits) = \(amount.string(forLocal: currentRate.locale))"
 		}
 	}
@@ -100,8 +100,8 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 	override func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
 		if let header = self.header { return header }
 
-		let header = UIView(color: .whiteTint)
-		let rateLabelTitle = UILabel(font: .customBold(size: 14.0), color: .grayTextTint)
+        let header = UIView(color:  BrainwalletUIColor.content)
+        let rateLabelTitle = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.content)
 
 		header.addSubview(rateLabelTitle)
 		header.addSubview(rateLabel)

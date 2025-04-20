@@ -134,7 +134,7 @@ class SearchHeaderView: UIView {
 	}
 
 	private func setData() {
-		backgroundColor = .whiteTint
+		backgroundColor = BrainwalletUIColor.content
 		searchBar.backgroundImage = UIImage()
 		searchBar.delegate = self
 

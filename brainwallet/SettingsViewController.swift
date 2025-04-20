@@ -28,7 +28,7 @@ class SettingsViewController: UITableViewController, CustomTitleView {
 	private let sections: [String]
 	private var rows: [String: [Setting]]
 	private let cellIdentifier = "CellIdentifier"
-	var titleLabel = UILabel(font: .customBold(size: 26.0), color: .darkText)
+	var titleLabel = UILabel(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
 	let customTitle: String
 	private var walletIsEmpty = true
 
@@ -75,7 +75,7 @@ class SettingsViewController: UITableViewController, CustomTitleView {
 			cell.textLabel?.text = setting.title
 			cell.textLabel?.font = .customBody(size: 16.0)
 
-			let label = UILabel(font: .customMedium(size: 14.0), color: .grayTextTint)
+			let label = UILabel(font: .customMedium(size: 14.0), color: BrainwalletUIColor.content)
 			label.text = setting.accessoryText?()
 			label.sizeToFit()
 			cell.accessoryView = label
@@ -89,7 +89,7 @@ class SettingsViewController: UITableViewController, CustomTitleView {
 				cell.textLabel?.textColor = textColor
 				label.textColor = textColor
 			} else {
-				cell.textLabel?.textColor = .darkText
+				cell.textLabel?.textColor = BrainwalletUIColor.content
 			}
 		}
 		return cell
@@ -97,7 +97,7 @@ class SettingsViewController: UITableViewController, CustomTitleView {
 
 	override func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 44))
-		let label = UILabel(font: .customBold(size: 14.0), color: .grayTextTint)
+		let label = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.content)
 		let separator = UIView()
 
 		if #available(iOS 11.0, *),
@@ -107,7 +107,7 @@ class SettingsViewController: UITableViewController, CustomTitleView {
 			view.backgroundColor = backgroundColor
 			label.textColor = labelTextColor
 		} else {
-			view.backgroundColor = .whiteTint
+			view.backgroundColor = BrainwalletUIColor.content
 		}
 
 		view.addSubview(label)
@@ -126,7 +126,7 @@ class SettingsViewController: UITableViewController, CustomTitleView {
 			label.text = ""
 		}
 
-		separator.backgroundColor = .secondaryShadow
+		separator.backgroundColor = BrainwalletUIColor.border
 		view.addSubview(separator)
 		separator.constrain([
 			separator.leadingAnchor.constraint(equalTo: view.leadingAnchor),

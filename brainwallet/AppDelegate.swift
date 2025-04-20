@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		guard let thisWindow = window else { return false }
 
-		thisWindow.tintColor = .midnight
+		thisWindow.tintColor = BrainwalletUIColor.surface
 
 		UIView.swizzleSetFrame()
 

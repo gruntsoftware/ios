@@ -48,7 +48,7 @@ struct AnnounceUpdatesView: View {
 			let height = geometry.size.height
 
 			ZStack {
-                Color.grape.edgesIgnoringSafeArea(.all)
+                BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 				VStack {
 					Text(S.Notifications.emailTitle.localize())
 						.font(hugeFont)
@@ -83,12 +83,12 @@ struct AnnounceUpdatesView: View {
 						ZStack {
 							RoundedRectangle(cornerRadius: bigButtonCornerRadius)
 								.frame(width: width * 0.9, height: 45, alignment: .center)
-                                .foregroundColor(.grape)
+                                .foregroundColor(BrainwalletColor.surface)
 
 							Text(S.Notifications.signupCancel.localize())
 								.frame(width: width * 0.9, height: 45, alignment: .center)
 								.font(buttonLightFont)
-								.foregroundColor(.white)
+                                .foregroundColor(BrainwalletColor.content)
 								.overlay(
 									RoundedRectangle(cornerRadius: bigButtonCornerRadius)
 										.stroke(.white, lineWidth: 0.5)

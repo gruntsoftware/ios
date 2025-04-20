@@ -18,7 +18,7 @@ class DescriptionSendCell: SendCell {
 			textView.textColor = textColor
 			self.placeholder.textColor = headerTextColor
 		} else {
-			textView.textColor = .darkText
+			textView.textColor = BrainwalletUIColor.content
 		}
 
 		setupViews()
@@ -35,7 +35,7 @@ class DescriptionSendCell: SendCell {
 	}
 
 	var textView = UITextView()
-	fileprivate var placeholder = UILabel(font: .customBody(size: 16.0), color: .grayTextTint)
+	fileprivate var placeholder = UILabel(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private func setupViews() {
 		textView.isScrollEnabled = false
 

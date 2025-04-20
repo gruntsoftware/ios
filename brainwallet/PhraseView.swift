@@ -21,7 +21,7 @@ class PhraseView: UIView {
 		label.adjustsFontSizeToFitWidth = true
 		label.text = phrase
 		label.font = UIFont.customBold(size: 30.0)
-		backgroundColor = .midnight
+        backgroundColor =  BrainwalletUIColor.surface
 		layer.cornerRadius = 10.0
 	}
 

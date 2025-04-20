@@ -110,15 +110,15 @@ class AlertView: UIView, SolidColorDrawable {
 		header.text = type.header
 		header.textAlignment = .center
 		header.font = UIFont.barlowBold(size: 18.0)
-		header.textColor = .white
+        header.textColor = BrainwalletUIColor.content
 
 		icon.backgroundColor = .clear
-		separator.backgroundColor = .transparentWhite
+		separator.backgroundColor = BrainwalletUIColor.surface
 
 		subheader.text = type.subheader
 		subheader.textAlignment = .center
 		subheader.font = UIFont.barlowSemiBold(size: 16.0)
-		subheader.textColor = .white
+		subheader.textColor = BrainwalletUIColor.content
 	}
 
 	private func addConstraints() {
@@ -147,7 +147,7 @@ class AlertView: UIView, SolidColorDrawable {
 	}
 
 	override func draw(_ rect: CGRect) {
-		drawColor(color: .midnight, rect)
+        drawColor(color: BrainwalletUIColor.surface, rect)
 	}
 
 	@available(*, unavailable)

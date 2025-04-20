@@ -19,7 +19,7 @@ struct AlertFailureView: View {
 
 			Divider()
 				.frame(maxHeight: 1.0)
-				.background(Color(UIColor.transparentWhite))
+                .background(BrainwalletColor.surface)
 
 			Image(systemName: "nosign")
 				.resizable()
