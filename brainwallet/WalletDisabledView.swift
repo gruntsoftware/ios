@@ -33,7 +33,7 @@ class WalletDisabledView: UIView {
 		}
 	}
 
-	private let label = UILabel(font: .customBold(size: 20.0), color: .darkText)
+	private let label = UILabel(font: .customBold(size: 20.0), color: BrainwalletUIColor.content)
 	private let store: Store
 	private let faq: UIButton
 	private let blur: UIVisualEffectView

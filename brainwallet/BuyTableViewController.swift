@@ -83,21 +83,21 @@ class BuyTableViewController: UITableViewController, SFSafariViewControllerDeleg
 
 		let thinHeaderView = UIView()
 		thinHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 1.0)
-		thinHeaderView.backgroundColor = .white
+		thinHeaderView.backgroundColor = BrainwalletUIColor.surface
 		tableView.tableHeaderView = thinHeaderView
 		tableView.tableFooterView = UIView()
 
 		moonpaySegmentedControl.addTarget(self, action: #selector(didChangeCurrencyMoonpay), for: .valueChanged)
 		moonpaySegmentedControl.selectedSegmentIndex = PartnerFiatOptions.usd.index
 		moonpaySegmentedControl.selectedSegmentTintColor = .white
-		moonpaySegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
-		moonpaySegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.midnight], for: .selected)
+		moonpaySegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content], for: .normal)
+        moonpaySegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: BrainwalletUIColor.surface], for: .selected)
 
 		simplexCurrencySegmentedControl.addTarget(self, action: #selector(didChangeCurrencySimplex), for: .valueChanged)
 		simplexCurrencySegmentedControl.selectedSegmentIndex = PartnerFiatOptions.usd.index
 		simplexCurrencySegmentedControl.selectedSegmentTintColor = .white
-		simplexCurrencySegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
-		simplexCurrencySegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.midnight], for: .selected)
+		simplexCurrencySegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content], for: .normal)
+		simplexCurrencySegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: BrainwalletUIColor.surface], for: .selected)
 
 		setupWkVCData()
 
@@ -110,7 +110,7 @@ class BuyTableViewController: UITableViewController, SFSafariViewControllerDeleg
 		bitrefillHeaderLabel.text = bitrefillData.headerTitle
 		bitrefillDetailsLabel.text = bitrefillData.details
 		bitrefillCellContainerView.layer.cornerRadius = 6.0
-		bitrefillCellContainerView.layer.borderColor = UIColor.white.cgColor
+		bitrefillCellContainerView.layer.borderColor = BrainwalletUIColor.content.cgColor
 		bitrefillCellContainerView.layer.borderWidth = 1.0
 		bitrefillCellContainerView.clipsToBounds = true
 
@@ -119,7 +119,7 @@ class BuyTableViewController: UITableViewController, SFSafariViewControllerDeleg
 		moonpayHeaderLabel.text = moonpayData.headerTitle
 		moonpayDetailsLabel.text = moonpayData.details
 		moonpayCellContainerView.layer.cornerRadius = 6.0
-		moonpayCellContainerView.layer.borderColor = UIColor.white.cgColor
+		moonpayCellContainerView.layer.borderColor = BrainwalletUIColor.content.cgColor
 		moonpayCellContainerView.layer.borderWidth = 1.0
 		moonpayCellContainerView.clipsToBounds = true
 
@@ -128,7 +128,7 @@ class BuyTableViewController: UITableViewController, SFSafariViewControllerDeleg
 		simplexHeaderLabel.text = simplexData.headerTitle
 		simplexDetailsLabel.text = simplexData.details
 		simplexCellContainerView.layer.cornerRadius = 6.0
-		simplexCellContainerView.layer.borderColor = UIColor.white.cgColor
+		simplexCellContainerView.layer.borderColor = BrainwalletUIColor.content.cgColor
 		simplexCellContainerView.layer.borderWidth = 1.0
 		simplexCellContainerView.clipsToBounds = true
 	}

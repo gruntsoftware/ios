@@ -11,16 +11,16 @@ class BiometricsSettingsViewController: UIViewController, Subscriber {
 		super.init(nibName: nil, bundle: nil)
 	}
 
-    private let header = RadialGradientView(backgroundColor: .midnight)
+    private let header = RadialGradientView(backgroundColor: BrainwalletUIColor.surface)
 	private let illustration = LAContext.biometricType() == .face ? UIImageView(image: #imageLiteral(resourceName: "FaceId-Large")) : UIImageView(image: #imageLiteral(resourceName: "TouchId-Large"))
-	private var label = UILabel.wrapping(font: .customBody(size: 16.0), color: .darkText)
-	private var switchLabel = UILabel(font: .customBold(size: 14.0), color: .darkText)
-	private var spendingLimitLabel = UILabel(font: .customBold(size: 14.0), color: .darkText)
+	private var label = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
+	private var switchLabel = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.content)
+	private var spendingLimitLabel = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.content)
 	private var spendingButton = ShadowButton(title: "-", type: .secondary)
 	private var dismissButton = UIButton()
 
 	private let toggle = GradientSwitch()
-	private let separator = UIView(color: .secondaryShadow)
+    private let separator = UIView(color: BrainwalletUIColor.content)
 	private let walletManager: WalletManager
 	private let store: Store
 	private var rate: Rate?
@@ -108,9 +108,9 @@ class BiometricsSettingsViewController: UIViewController, Subscriber {
 			spendingLimitLabel.textColor = textColor
 			view.backgroundColor = backGroundColor
 		} else {
-			label.textColor = .darkText
-			switchLabel.textColor = .darkText
-			view.backgroundColor = .white
+			label.textColor = BrainwalletUIColor.content
+			switchLabel.textColor = BrainwalletUIColor.content
+			view.backgroundColor = BrainwalletUIColor.surface
 		}
 
 		title = LAContext.biometricType() == .face ? S.FaceIDSettings.title.localize() : S.TouchIdSettings.title.localize()

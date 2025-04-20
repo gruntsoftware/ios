@@ -7,7 +7,7 @@ class SecurityCenterCell: UIControl {
 
 	var isCheckHighlighted: Bool = false {
 		didSet {
-			check.tintColor = isCheckHighlighted ? .brainwalletBlue : .grayTextTint
+			check.tintColor = isCheckHighlighted ? BrainwalletUIColor.info : BrainwalletUIColor.content
 		}
 	}
 
@@ -73,16 +73,16 @@ class SecurityCenterCell: UIControl {
 	override var isHighlighted: Bool {
 		didSet {
 			if isHighlighted {
-				backgroundColor = .brainwalletGray
+				backgroundColor = BrainwalletUIColor.background
 			} else {
-				backgroundColor = .white
+                backgroundColor = BrainwalletUIColor.border
 			}
 		}
 	}
 
 	private var titleLabel = UILabel(font: .customBold(size: 13.0))
 	private var descriptionLabel = UILabel(font: .customBody(size: 13.0))
-	private var separator = UIView(color: .secondaryShadow)
+	private var separator = UIView(color: BrainwalletUIColor.border)
 	private var check = UIButton(type: .system)
 
 	@available(*, unavailable)

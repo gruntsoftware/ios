@@ -39,16 +39,16 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	}
 
 	override func viewDidLoad() {
-		view.backgroundColor = .midnight
+		view.backgroundColor = BrainwalletUIColor.surface
 
-		navigationController?.navigationBar.tintColor = .midnight
+		navigationController?.navigationBar.tintColor = BrainwalletUIColor.surface
 		navigationController?.navigationBar.titleTextAttributes = [
-			NSAttributedString.Key.foregroundColor: UIColor.darkText,
+			NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
 			NSAttributedString.Key.font: UIFont.customBold(size: 17.0),
 		]
 
 		navigationController?.navigationBar.isTranslucent = false
-		navigationController?.navigationBar.barTintColor = .midnight
+		navigationController?.navigationBar.barTintColor = BrainwalletUIColor.surface
 		loginView.delegate = self
 
 		// detect jailbreak so we can throw up an idiot warning, in viewDidLoad so it can't easily be swizzled out
@@ -85,7 +85,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	}
 
 	func didUnlockLogin() {
-		let hasSeenAnnounce = UserDefaults.standard.bool(forKey: hasSeenAnnounceView)
 
 		// Check Locale - Assume unsupported if nil
 		let currentLocaleCountry = Locale.current.regionCode ?? "RU"

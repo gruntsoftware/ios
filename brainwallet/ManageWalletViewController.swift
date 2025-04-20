@@ -2,10 +2,10 @@ import UIKit
 
 class ManageWalletViewController: UIViewController, ModalPresentable, Subscriber {
 	var parentView: UIView? // ModalPresentable
-	private let textFieldLabel = UILabel(font: .customBold(size: 14.0), color: .grayTextTint)
+    private let textFieldLabel = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.gray)
 	private let textField = UITextField()
-	private let separator = UIView(color: .secondaryShadow)
-	fileprivate let body = UILabel.wrapping(font: .customBody(size: 13.0), color: .secondaryGrayText)
+	private let separator = UIView(color: BrainwalletUIColor.gray)
+    fileprivate let body = UILabel.wrapping(font: .customBody(size: 13.0), color: BrainwalletUIColor.content)
 	private let store: Store
 	fileprivate let maxWalletNameLength = 20
 
@@ -65,8 +65,8 @@ class ManageWalletViewController: UIViewController, ModalPresentable, Subscriber
 	}
 
 	private func setData() {
-		view.backgroundColor = .white
-		textField.textColor = .darkText
+		view.backgroundColor = BrainwalletUIColor.surface
+		textField.textColor = BrainwalletUIColor.content
 		textField.font = .customBody(size: 14.0)
 		textField.returnKeyType = .done
 		textFieldLabel.text = S.ManageWallet.textFieldLabel.localize()

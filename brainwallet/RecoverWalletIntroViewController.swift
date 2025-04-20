@@ -11,7 +11,7 @@ class RecoverWalletIntroViewController: UIViewController {
 	// MARK: - Private
 
 	private let didTapNext: () -> Void
-    private let header = RadialGradientView(backgroundColor: .midnight)
+    private let header = RadialGradientView(backgroundColor: BrainwalletUIColor.surface)
 	private let nextButton = ShadowButton(title: S.RecoverWallet.next.localize(), type: .primary)
 	private let label = UILabel(font: .customBody(size: 16.0))
 	private let illustration = UIImageView(image: #imageLiteral(resourceName: "RecoverWalletIllustration"))
@@ -50,7 +50,7 @@ class RecoverWalletIntroViewController: UIViewController {
 	}
 
 	private func setData() {
-		view.backgroundColor = .white
+		view.backgroundColor = BrainwalletUIColor.surface
 		label.numberOfLines = 0
 		label.lineBreakMode = .byWordWrapping
 		label.text = S.RecoverWallet.intro.localize()

@@ -14,7 +14,7 @@ extension UINavigationController {
 	func setWhiteStyle() {
 		navigationBar.tintColor = .white
 		navigationBar.titleTextAttributes = [
-			NSAttributedString.Key.foregroundColor: UIColor.white,
+			NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
 			NSAttributedString.Key.font: UIFont.customBold(size: 17.0),
 		]
 		setTintableBackArrow()

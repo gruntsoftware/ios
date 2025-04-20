@@ -22,9 +22,9 @@ class FeeSelector: UIView {
 
 	//: ::
 	private let store: Store
-	private let header = UILabel(font: .barlowMedium(size: 16.0), color: .darkText)
-	private let subheader = UILabel(font: .barlowRegular(size: 14.0), color: .grayTextTint)
-	private let feeMessageLabel = UILabel.wrapping(font: .barlowSemiBold(size: 14.0), color: .red)
+	private let header = UILabel(font: .barlowMedium(size: 16.0), color: BrainwalletUIColor.content)
+	private let subheader = UILabel(font: .barlowRegular(size: 14.0), color: BrainwalletUIColor.content)
+    private let feeMessageLabel = UILabel.wrapping(font: .barlowSemiBold(size: 14.0), color: BrainwalletUIColor.error)
 	private let control = UISegmentedControl(items: [S.FeeSelector.regular.localize(), S.FeeSelector.economy.localize(), S.FeeSelector.luxury.localize()])
 	private var bottomConstraint: NSLayoutConstraint?
 
@@ -34,7 +34,7 @@ class FeeSelector: UIView {
 		addSubview(subheader)
 		addSubview(feeMessageLabel)
 
-		control.tintColor = .midnight
+        control.tintColor = BrainwalletUIColor.background
 
 		header.constrain([
 			header.leadingAnchor.constraint(equalTo: leadingAnchor, constant: C.padding[2]),
@@ -71,12 +71,12 @@ class FeeSelector: UIView {
 				myself.didUpdateFee?(.economy)
 				myself.subheader.text = S.FeeSelector.economyLabel.localize()
 				myself.feeMessageLabel.text = S.FeeSelector.economyWarning.localize()
-				myself.feeMessageLabel.textColor = .red
+                myself.feeMessageLabel.textColor = BrainwalletUIColor.error
 			case 2:
 				myself.didUpdateFee?(.luxury)
 				myself.subheader.text = S.FeeSelector.luxuryLabel.localize()
 				myself.feeMessageLabel.text = S.FeeSelector.luxuryMessage.localize()
-				myself.feeMessageLabel.textColor = .grayTextTint
+                myself.feeMessageLabel.textColor = BrainwalletUIColor.content
 			default:
 				myself.didUpdateFee?(.regular)
 				myself.subheader.text = S.FeeSelector.regularLabel.localize()

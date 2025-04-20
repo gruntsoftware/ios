@@ -6,10 +6,10 @@ class ReScanViewController: UIViewController, Subscriber {
 		super.init(nibName: nil, bundle: nil)
 	}
 
-	private let header = UILabel(font: .customBold(size: 26.0), color: .darkText)
+	private let header = UILabel(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
 	private let body = UILabel.wrapping(font: .systemFont(ofSize: 15.0))
 	private let button = ShadowButton(title: S.ReScan.buttonTitle.localize(), type: .primary)
-	private let footer = UILabel.wrapping(font: .customBody(size: 16.0), color: .secondaryGrayText)
+	private let footer = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private let store: Store
 
 	deinit {
@@ -54,7 +54,7 @@ class ReScanViewController: UIViewController, Subscriber {
 	}
 
 	private func setInitialData() {
-		view.backgroundColor = .whiteTint
+		view.backgroundColor = BrainwalletUIColor.content
 		header.text = S.ReScan.header.localize()
 		body.attributedText = bodyText
 		footer.text = S.ReScan.footer.localize()
@@ -78,9 +78,9 @@ class ReScanViewController: UIViewController, Subscriber {
 	private var bodyText: NSAttributedString {
 		let body = NSMutableAttributedString()
 		let headerAttributes = [NSAttributedString.Key.font: UIFont.customBold(size: 16.0),
-		                        NSAttributedString.Key.foregroundColor: UIColor.darkText]
+		                        NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content]
 		let bodyAttributes = [NSAttributedString.Key.font: UIFont.customBody(size: 16.0),
-		                      NSAttributedString.Key.foregroundColor: UIColor.darkText]
+		                      NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content]
 
 		body.append(NSAttributedString(string: "\(S.ReScan.subheader1.localize())\n", attributes: headerAttributes))
 		body.append(NSAttributedString(string: "\(S.ReScan.body1.localize())\n\n", attributes: bodyAttributes))

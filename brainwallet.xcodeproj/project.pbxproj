@@ -164,7 +164,7 @@
 		C312D3832D7DC27700BB97A4 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0AB2D7DC27700BB97A4 /* Actions.swift */; };
 		C312D3842D7DC27700BB97A4 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D07B2D7DC27700BB97A4 /* UIImage+Utils.swift */; };
 		C312D3872D7DC27700BB97A4 /* StartPaperPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C82D7DC27700BB97A4 /* StartPaperPhraseViewController.swift */; };
-		C312D3882D7DC27700BB97A4 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0782D7DC27700BB97A4 /* UIColor+Extension.swift */; };
+		C312D3882D7DC27700BB97A4 /* Brainwallet+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0782D7DC27700BB97A4 /* Brainwallet+Color.swift */; };
 		C312D3892D7DC27700BB97A4 /* BartyCrouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2052D7DC27700BB97A4 /* BartyCrouch.swift */; };
 		C312D38D2D7DC27700BB97A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2002D7DC27700BB97A4 /* AppDelegate.swift */; };
 		C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D07A2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift */; };
@@ -264,7 +264,6 @@
 		C312D4422D7DC27700BB97A4 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C92D7DC27700BB97A4 /* WalletManager.swift */; };
 		C312D4432D7DC27700BB97A4 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1A92D7DC27700BB97A4 /* ReceiveViewController.swift */; };
 		C312D4452D7DC27700BB97A4 /* BlinkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1DE2D7DC27700BB97A4 /* BlinkingView.swift */; };
-		C312D4472D7DC27700BB97A4 /* AnnounceUpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1FF2D7DC27700BB97A4 /* AnnounceUpdatesView.swift */; };
 		C312D4492D7DC27700BB97A4 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1DD2D7DC27700BB97A4 /* AlertView.swift */; };
 		C312D44C2D7DC27700BB97A4 /* SyncingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F62D7DC27700BB97A4 /* SyncingView.swift */; };
 		C312D44E2D7DC27700BB97A4 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2AE2D7DC27700BB97A4 /* StartView.swift */; };
@@ -616,7 +615,7 @@
 		C312D0752D7DC27700BB97A4 /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		C312D0762D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Additions.swift"; sourceTree = "<group>"; };
 		C312D0772D7DC27700BB97A4 /* UIButton+BRWAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+BRWAdditions.swift"; sourceTree = "<group>"; };
-		C312D0782D7DC27700BB97A4 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		C312D0782D7DC27700BB97A4 /* Brainwallet+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brainwallet+Color.swift"; sourceTree = "<group>"; };
 		C312D0792D7DC27700BB97A4 /* UIControl+Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Callback.swift"; sourceTree = "<group>"; };
 		C312D07A2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+BRWAdditions.swift"; sourceTree = "<group>"; };
 		C312D07B2D7DC27700BB97A4 /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
@@ -765,7 +764,6 @@
 		C312D1FB2D7DC27700BB97A4 /* ExchangeUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeUpdater.swift; sourceTree = "<group>"; };
 		C312D1FD2D7DC27700BB97A4 /* AddressFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFieldView.swift; sourceTree = "<group>"; };
 		C312D1FE2D7DC27700BB97A4 /* AlertFailureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFailureView.swift; sourceTree = "<group>"; };
-		C312D1FF2D7DC27700BB97A4 /* AnnounceUpdatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceUpdatesView.swift; sourceTree = "<group>"; };
 		C312D2002D7DC27700BB97A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C312D2012D7DC27700BB97A4 /* ApplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
 		C312D2022D7DC27700BB97A4 /* ArticleIds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleIds.swift; sourceTree = "<group>"; };
@@ -997,6 +995,14 @@
 				2416CE692DA90D0D00FFBD10 /* BRWallet.swift */,
 			);
 			path = "Legacy BRClasses";
+			sourceTree = "<group>";
+		};
+		248D87B92DB4E3C900745552 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				C312D0782D7DC27700BB97A4 /* Brainwallet+Color.swift */,
+			);
+			path = Colors;
 			sourceTree = "<group>";
 		};
 		249C45112D936D5900E9C3B0 /* m4 */ = {
@@ -1445,6 +1451,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				248D87B92DB4E3C900745552 /* Colors */,
 				24F64C212DAFBE49001DC9B6 /* Lottie Data */,
 				24F64C1B2DAFB362001DC9B6 /* Start Welcome Classes */,
 				2416CE552DA90C8B00FFBD10 /* Legacy BRClasses */,
@@ -1462,7 +1469,6 @@
 				C312D0752D7DC27700BB97A4 /* String+Additions.swift */,
 				C312D0762D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift */,
 				C312D0772D7DC27700BB97A4 /* UIButton+BRWAdditions.swift */,
-				C312D0782D7DC27700BB97A4 /* UIColor+Extension.swift */,
 				C312D0792D7DC27700BB97A4 /* UIControl+Callback.swift */,
 				C312D07A2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift */,
 				2492829B2DAC22B00088528E /* BIP39Words.plist */,
@@ -1567,7 +1573,6 @@
 				C312D1A22D7DC27700BB97A4 /* Strings */,
 				C312D1FD2D7DC27700BB97A4 /* AddressFieldView.swift */,
 				C312D1FE2D7DC27700BB97A4 /* AlertFailureView.swift */,
-				C312D1FF2D7DC27700BB97A4 /* AnnounceUpdatesView.swift */,
 				C312D2002D7DC27700BB97A4 /* AppDelegate.swift */,
 				C312D2012D7DC27700BB97A4 /* ApplicationController.swift */,
 				C312D2022D7DC27700BB97A4 /* ArticleIds.swift */,
@@ -2283,7 +2288,7 @@
 				C312D3832D7DC27700BB97A4 /* Actions.swift in Sources */,
 				C312D3842D7DC27700BB97A4 /* UIImage+Utils.swift in Sources */,
 				C312D3872D7DC27700BB97A4 /* StartPaperPhraseViewController.swift in Sources */,
-				C312D3882D7DC27700BB97A4 /* UIColor+Extension.swift in Sources */,
+				C312D3882D7DC27700BB97A4 /* Brainwallet+Color.swift in Sources */,
 				C312D3892D7DC27700BB97A4 /* BartyCrouch.swift in Sources */,
 				C312D38D2D7DC27700BB97A4 /* AppDelegate.swift in Sources */,
 				24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */,
@@ -2384,7 +2389,6 @@
 				C312D4422D7DC27700BB97A4 /* WalletManager.swift in Sources */,
 				C312D4432D7DC27700BB97A4 /* ReceiveViewController.swift in Sources */,
 				C312D4452D7DC27700BB97A4 /* BlinkingView.swift in Sources */,
-				C312D4472D7DC27700BB97A4 /* AnnounceUpdatesView.swift in Sources */,
 				C312D4492D7DC27700BB97A4 /* AlertView.swift in Sources */,
 				C312D44C2D7DC27700BB97A4 /* SyncingView.swift in Sources */,
 				C312D44E2D7DC27700BB97A4 /* StartView.swift in Sources */,

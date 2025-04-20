@@ -20,7 +20,7 @@ extension CustomTitleView {
 		if #available(iOS 11.0, *) {
 			textColor = UIColor(named: "labelTextColor")!
 		} else {
-			textColor = .darkText
+			textColor = BrainwalletUIColor.content
 		}
 
 		guard let label = objc_getAssociatedObject(self, &AssociatedKeys.label) as? UILabel
@@ -54,7 +54,7 @@ extension CustomTitleView {
 			label.textColor = UIColor(named: "labelTextColor")
 		} else {
 			titleView.backgroundColor = .clear
-			label.textColor = .darkText
+			label.textColor = BrainwalletUIColor.content
 		}
 
 		titleView.clipsToBounds = true

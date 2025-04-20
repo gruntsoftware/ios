@@ -4,7 +4,7 @@ class SeparatorCell: UITableViewCell {
 	override init(style: CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		let separator = UIView()
-		separator.backgroundColor = .secondaryShadow
+		separator.backgroundColor = BrainwalletUIColor.border
 		addSubview(separator)
 		separator.constrain([
 			separator.leadingAnchor.constraint(equalTo: leadingAnchor),

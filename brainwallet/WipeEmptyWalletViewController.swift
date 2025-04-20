@@ -85,8 +85,8 @@ class WipeEmptyWalletViewController: UIViewController, Subscriber, Trackable {
 	}
 
 	private func setStyle() {
-		view.backgroundColor = .white
-		border.backgroundColor = .secondaryBorder
+		view.backgroundColor = BrainwalletUIColor.surface
+        border.backgroundColor = BrainwalletUIColor.surface
 
 		titleLabel.font = UIFont.customBold(size: 24)
 		titleLabel.textAlignment = .center
@@ -95,7 +95,7 @@ class WipeEmptyWalletViewController: UIViewController, Subscriber, Trackable {
 		warningDetailTextView.isUserInteractionEnabled = false
 		warningAlertLabel.font = UIFont.customBold(size: 20)
 		warningAlertLabel.textAlignment = .center
-        warningAlertLabel.textColor = UIColor.chili
+        warningAlertLabel.textColor = BrainwalletUIColor.error
 	}
 
 	private func addActions() {

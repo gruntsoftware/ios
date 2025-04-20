@@ -4,12 +4,12 @@ class SendAmountCell: SendCell {
 	init(placeholder: String) {
 		super.init()
 		let attributes: [NSAttributedString.Key: Any] = [
-			NSAttributedString.Key.foregroundColor: UIColor.grayTextTint,
+            NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
 			NSAttributedString.Key.font: placeholderFont,
 		]
 		textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: attributes)
 		textField.delegate = self
-		textField.textColor = .darkText
+		textField.textColor = BrainwalletUIColor.content
 		textField.inputView = UIView()
 		setupViews()
 	}
@@ -40,8 +40,8 @@ class SendAmountCell: SendCell {
 	private let placeholderFont = UIFont.customBody(size: 16.0)
 	private let textFieldFont = UIFont.customBody(size: 26.0)
 	let textField = UITextField()
-	let label = UILabel(font: .customBody(size: 14.0), color: .grayTextTint)
-	let amountLabel = UILabel(font: .customBody(size: 26.0), color: .darkText)
+    let label = UILabel(font: .customBody(size: 14.0), color: BrainwalletUIColor.content)
+	let amountLabel = UILabel(font: .customBody(size: 26.0), color: BrainwalletUIColor.content)
 	private let cursor = BlinkingView(blinkColor: C.defaultTintColor)
 
 	private func setupViews() {

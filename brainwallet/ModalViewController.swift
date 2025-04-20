@@ -81,7 +81,7 @@ class ModalViewController: UIViewController, Subscriber {
 
 	private func setInitialData() {
 		view.backgroundColor = .clear
-		scrollView.backgroundColor = UIColor.brainwalletGray
+        scrollView.backgroundColor =  BrainwalletUIColor.gray
 
 		scrollView.delaysContentTouches = false
 		if var modalPresentable = childViewController as? ModalPresentable {

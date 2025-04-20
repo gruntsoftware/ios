@@ -6,8 +6,8 @@ class WelcomeViewController: UIViewController, ContentBoxPresenter {
 	let contentBox = UIView(color: .white)
 
 	private let header = GradientView()
-	private let titleLabel = UILabel.wrapping(font: .customBody(size: 26.0), color: .darkText)
-	private let body = UILabel.wrapping(font: .customBody(size: 16.0), color: .darkText)
+	private let titleLabel = UILabel.wrapping(font: .customBody(size: 26.0), color: BrainwalletUIColor.content)
+	private let body = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private let button = ShadowButton(title: S.Button.ok.localize(), type: .primary)
 
 	override func viewDidLoad() {
