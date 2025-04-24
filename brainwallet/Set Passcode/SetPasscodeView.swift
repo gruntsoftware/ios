@@ -14,7 +14,7 @@ struct SetPasscodeView: View {
     
     let subTitleFont: Font = .barlowSemiBold(size: 32.0)
     let largeButtonFont: Font = .barlowBold(size: 24.0)
-    let detailFont: Font = .barlowRegular(size: 28.0)
+    let detailFont: Font = .barlowRegular(size: 26.0)
     
     let verticalPadding: CGFloat = 20.0
     let squareButtonSize: CGFloat = 55.0
@@ -59,38 +59,29 @@ struct SetPasscodeView: View {
                                 }
                             }.frame(maxWidth: .infinity, alignment: .leading)
                         }
+                        .frame(height: squareImageSize)
                         .padding(.all, 20.0)
-                        
-                        Text( S.SetPasscode.subTitle.localize())
-                            .font(subTitleFont)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .foregroundColor(BrainwalletColor.content)
-                            .padding(.bottom, 20.0)
-                        Text( S.SetPasscode.detail1.localize())
-                            .font(detailFont)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .foregroundColor(BrainwalletColor.content)
+                     
+                            Text( S.SetPasscode.subTitle.localize())
+                                .font(subTitleFont)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .foregroundColor(BrainwalletColor.content)
+                            Text( S.SetPasscode.detail1.localize())
+                                .font(detailFont)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .foregroundColor(BrainwalletColor.content)
+                                .padding(.all, 20.0)
 
-                        PasscodeGridView()
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(40.0)
 
-                        PINFieldView(pinText: $viewModel.pinDigits,
-                                     pinIsFilled: $viewModel.pinIsFilled,
-                                     viewRect: $viewModel.pinViewRect)
-                            .onReceive(viewModel.$pinDigits) { newValue in
-                                pinDigits = newValue
-                            }
-                            .frame(width: width * 0.4)
-                            .opacity(0.7)
-                        
-//                        NavigationLink(destination:
-//                                        //InputWordsView().navigationBarBackButtonHidden(true))
-//                        {
-//                            ZStack {
-//                            }
-//                            .padding(.all, 8.0)
-//                        }
+                        PINRowView(pinState: $viewModel.pinState)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .frame(height: 40.0)
+                                .padding(.top, 40.0)
+
+                        Spacer()
+                        PasscodeGridView(digits: $viewModel.pinDigits)
+                            .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
+                            .padding(.bottom, 80.0)
                     }
                 }
             }

@@ -39,6 +39,7 @@
 		241D22452DB526C9000302C8 /* InputWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22442DB526C5000302C8 /* InputWordsView.swift */; };
 		241D22472DB526D7000302C8 /* YourSeedProveItView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22462DB526D4000302C8 /* YourSeedProveItView.swift */; };
 		241D22492DB526E9000302C8 /* YourSeedWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22482DB526E7000302C8 /* YourSeedWordsView.swift */; };
+		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
 		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
@@ -470,6 +471,7 @@
 		242B569A2DA9AFFB001E3BC8 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		242B569B2DA9B003001E3BC8 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		242B569C2DA9B023001E3BC8 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1032,6 +1034,7 @@
 		241D223A2DB5264D000302C8 /* Set Passcode */ = {
 			isa = PBXGroup;
 			children = (
+				245A91DB2DBA3E450048E3A6 /* PINRowView.swift */,
 				2473D44E2DB991D90076746A /* PasscodeGridView.swift */,
 				241D22402DB526AC000302C8 /* SetPasscodeView.swift */,
 			);
@@ -2506,6 +2509,7 @@
 				C312D4822D7DC27700BB97A4 /* SyncProgressHeaderView.swift in Sources */,
 				C312D4832D7DC27700BB97A4 /* GradientCircle.swift in Sources */,
 				C312D4842D7DC27700BB97A4 /* ModalViewController.swift in Sources */,
+				245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */,
 				C312D4872D7DC27700BB97A4 /* Transaction.swift in Sources */,
 				C312D48A2D7DC27700BB97A4 /* MenuButtonType.swift in Sources */,
 				C312D48B2D7DC27700BB97A4 /* CreateWalletView.swift in Sources */,
