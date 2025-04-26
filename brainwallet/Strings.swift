@@ -160,7 +160,9 @@ enum S {
     }
     enum SetPasscode {
         static let subTitle = Localization(key: "SetPasscode.subTitle", value: "Set app PIN", comment: " sub title")
-        static let detail1 = Localization(key: "SetPasscode.detail", value: "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool", comment: "setuppasscode detail") 
+        static let detail1 = Localization(key: "SetPasscode.detail", value: "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool", comment: "setuppasscode detail")
+        static let confirmTitle = Localization(key: "SetPasscode.confirmTitle", value: "Confirm", comment: " confirm title")
+        static let detail2 = Localization(key: "SetPasscode.detail2", value: "You didn’t forget did you? Enter it again. Or, go back to start over.", comment: "setuppasscode confirm detail")
     }
     enum TopUp {
         static let topUpTitle = Localization(key: "TopUp.topUpTitle", value: "Top Up!", comment: " Top Up")

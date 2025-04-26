@@ -1,7 +1,9 @@
 
 import SwiftUI
-struct SetPasscodeView: View {
+struct ConfirmPasscodeView: View {
     
+    @ObservedObject
+    var viewModel: StartViewModel
     
     @Binding
     var path: [Onboarding]
@@ -12,7 +14,7 @@ struct SetPasscodeView: View {
     var pinState: [Bool] = [false,false,false,false]
     
     @State
-    private var didFillPIN: Bool = false
+    private var didConfirmPIN: Bool = false
      
     let subTitleFont: Font = .barlowSemiBold(size: 32.0)
     let largeButtonFont: Font = .barlowBold(size: 24.0)
@@ -27,9 +29,13 @@ struct SetPasscodeView: View {
     
     let arrowSize: CGFloat = 60.0
     
-    init(path: Binding<[Onboarding]>) {
+
+    init(pinDigits: [Int], viewModel: StartViewModel, path: Binding<[Onboarding]>) {
+        self.viewModel = viewModel
         _path = path
+        self.pinDigits = pinDigits
     }
+    
     
     var body: some View {
         
@@ -62,11 +68,11 @@ struct SetPasscodeView: View {
                         .frame(height: squareImageSize)
                         .padding(.all, 20.0)
                      
-                            Text( S.SetPasscode.subTitle.localize())
+                            Text( S.SetPasscode.confirmTitle.localize())
                                 .font(subTitleFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(BrainwalletColor.content)
-                            Text( S.SetPasscode.detail1.localize())
+                            Text( S.SetPasscode.detail2.localize())
                                 .font(detailFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(BrainwalletColor.content)
@@ -83,14 +89,12 @@ struct SetPasscodeView: View {
                             .padding(.bottom, 80.0)
                         }
                 }
-            }
-            .onChange(of: pinDigits) { _ in
-                
-                pinState = (0..<4).map { $0 < pinDigits.count }
-                
-                didFillPIN  = pinState.allSatisfy { $0 == true }
-                if didFillPIN {
-                    path.append(.confirmPasscodeView(pinDigits: pinDigits))
+                .onChange(of: pinDigits) { _ in
+                    pinState = (0..<4).map { $0 < pinDigits.count }
+                    didConfirmPIN  = pinState.allSatisfy { $0 == true }
+                    if didConfirmPIN {
+                        path.append(.yourSeedWordsView)
+                    }
                 }
             }
     }

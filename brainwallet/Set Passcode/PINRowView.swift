@@ -27,16 +27,16 @@ struct PINRowView: View {
     var dotSize: CGFloat = 20.0
     
     private func updatePIN() {
-        
             digitOneEmpty = pinState[0]
             digitTwoEmpty = pinState[1]
             digitThreeEmpty = pinState[2]
             digitFourEmpty = pinState[3]
-        
-        print(":::\(pinState.debugDescription)")
     }
     
-
+    init(pinState: Binding<[Bool]>) {
+        _pinState = pinState
+        
+    }
     var body: some View {
         HStack {
             Ellipse()
@@ -85,11 +85,11 @@ struct PINRowView: View {
 
             }
             .frame(maxWidth: 260.0, alignment: .center)
-            .onChange(of: pinState) { updatedState in
+            .onChange(of: pinState ) { _ in
                 updatePIN()
             }.onAppear {
                 self.updatePIN()
-        }
+            }
 
     }
 }

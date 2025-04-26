@@ -12,7 +12,7 @@ struct PasscodeGridView: View {
     let detailFont: Font = .barlowRegular(size: 28.0)
     let elementSpacing = 5.0
   
-    @Binding var digits: String
+    @Binding var digits: [Int]
  
     var body: some View {
         
@@ -49,9 +49,9 @@ struct CodeButton: View {
     let detailFont: Font = .barlowRegular(size: 28.0)
     var index: Int
     
-    @Binding var digits: String
+    @Binding var digits: [Int]
 
-    init (index: Int, digits: Binding<String>) {
+    init (index: Int, digits: Binding<[Int]>) {
         _digits = digits
         self.index = index
     }
@@ -60,9 +60,10 @@ struct CodeButton: View {
         Button {
             
             if index >= 0 && digits.count < 4 {
-                digits.append(String(index))
+                $digits.wrappedValue.append(index)
+                print("::: in passcode grid \(digits)")
             }
-            else if index == -2 {
+            else if index == -2 && digits.count > 0 {
                 digits.removeLast()
             }
             

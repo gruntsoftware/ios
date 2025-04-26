@@ -5,7 +5,7 @@ import UIKit
 
 class StartViewModel: ObservableObject {
 	// MARK: - Combine Variables
-
+    
 	@Published
 	var currentLanguage: LanguageSelection = .English
     
@@ -21,21 +21,6 @@ class StartViewModel: ObservableObject {
 	@Published
 	var walletCreationDidFail: Bool = false
   
-    @Published var pinDigits: String = "" {
-        didSet {
-                pinState = (0..<4).map { $0 < pinDigits.count }
-            }
-        }
-     
-    @Published
-    var pinState: [Bool] = [false,false,false,false]
-
-	@Published
-	var pinIsFilled = false
-
-	@Published
-	var pinViewRect = CGRect()
-
 	@Published
 	var headerTitle = S.CreateStep.MainTitle.intro.localize()
 

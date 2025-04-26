@@ -1,77 +1,30 @@
 import SwiftUI
 import Lottie
 
-
-enum ReadyOrRestore: Hashable, CaseIterable {
-    case ready
-    case restore
-    case setPasscode
-    case inputWords
-    case topUp
-    
-    var headerTitle: String {
-        switch self {
-        case .ready:
-            return S.Onboarding.readyTitle.localize()
-        case .restore:
-            return S.Onboarding.restoreTitle.localize()
-        case .topUp:
-            return S.TopUp.topUpTitle.localize()
-        default :
-            return ""
-        }
-    }
-    
-    var detailDescription: String {
-        switch self {
-        case .ready:
-            return S.Onboarding.readyDetail.localize()
-        case .restore:
-            return S.Onboarding.restoreTitle.localize()
-        case .topUp:
-            return S.TopUp.detail1.localize()
-        default :
-            return ""
-        }
-    }
-    
-    var continueButtonTitle: String {
-        switch self {
-        case .ready:
-            return S.Onboarding.readyNextButton.localize()
-        case .restore:
-            return S.Onboarding.restoreNextButton.localize()
-        case .topUp:
-            return S.TopUp.topUpNextButton.localize()
-        default :
-            return ""
-        }
-    }
-}
-
 struct StartView: View {
     let selectorFont: Font = .barlowSemiBold(size: 16.0)
     let buttonLightFont: Font = .barlowLight(size: 16.0)
     let regularButtonFont: Font = .barlowRegular(size: 24.0)
     let largeButtonFont: Font = .barlowBold(size: 24.0)
-
+    
     let versionFont: Font = .barlowSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
-	let squareButtonSize: CGFloat = 55.0
-	let squareImageSize: CGFloat = 25.0
+    let squareButtonSize: CGFloat = 55.0
+    let squareImageSize: CGFloat = 25.0
     let themeButtonSize: CGFloat = 28.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
     let lottieFileName: String = "welcomeemoji20250212.json"
     
-    @State
-    private var readyOrRestorePath: [ReadyOrRestore] = []
     
     @State
     private var isShowingOnboardView: Bool = true
     
 	@ObservedObject
 	var startViewModel: StartViewModel
+    
+    @State
+    private var path: [Onboarding] = []
 
 	@State
 	private var selectedLang: Bool = false
@@ -100,9 +53,7 @@ struct StartView: View {
 	@State
 	private var didContinue: Bool = false
     
-    
-
-	init(viewModel: StartViewModel) {
+    init(viewModel: StartViewModel) {
 		startViewModel = viewModel
 	}
 
@@ -111,10 +62,10 @@ struct StartView: View {
             
             let width = geometry.size.width
             let height = geometry.size.height
-            NavigationView {
+            NavigationStack(path: $path) {
                 ZStack {
-                BrainwalletColor.surface.ignoresSafeArea()
-                
+                    BrainwalletColor.surface.ignoresSafeArea()
+                    
                     VStack {
                         
                         Group {
@@ -224,16 +175,14 @@ struct StartView: View {
                             }
                         }
                         Spacer()
-
-                            NavigationLink(destination:
-                                             ReadyRestoreView(viewModel: startViewModel, path: .ready)
-                                            .navigationBarBackButtonHidden(true))
-                            {
+                        
+                        Button(action: {
+                          path.append(.readyView)
+                        }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
-                                    .shadow(radius: 3, x: 3.0, y: 3.0)
                                 
                                 Text(S.StartView.readyButton.localize())
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
@@ -247,15 +196,13 @@ struct StartView: View {
                             .padding(.all, 8.0)
                         }
                         
-                        NavigationLink(destination:
-                                        ReadyRestoreView(viewModel: startViewModel, path: .restore)
-                                        .navigationBarBackButtonHidden(true))
-                        {
+                        Button(action: {
+                          path.append(.restoreView)
+                        }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
-                                    .shadow(radius: 5, x: 3.0, y: 3.0)
                                 
                                 Text(S.StartView.restoreButton.localize())
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
@@ -279,22 +226,66 @@ struct StartView: View {
                 .padding(.all, swiftUICellPadding)
                 .scrollContentBackground(.hidden)
                 .background(BrainwalletColor.surface)
-            }
-        }
-        .alert(S.BrainwalletAlert.error.localize(),
-               isPresented: $startViewModel.walletCreationDidFail,
-               actions: {
-            HStack {
-                Button(S.Button.ok.localize(), role: .cancel) {
-                    startViewModel.walletCreationDidFail = false
+                .navigationDestination(for: Onboarding.self) { onboard in
+                    switch onboard {
+                    case .restoreView:
+                            ReadyRestoreView(isRestore: true, viewModel: startViewModel, path: $path)
+                                .navigationBarBackButtonHidden()
+                    case .readyView:
+                            ReadyRestoreView(isRestore: false, viewModel: startViewModel, path: $path)
+                                .navigationBarBackButtonHidden()
+                    case .setPasscodeView:
+                        ZStack {
+                           SetPasscodeView(path: $path)
+                                .navigationBarBackButtonHidden()
+                        }
+                    case .confirmPasscodeView (let pinDigits):
+                         
+                        ZStack {
+                            ConfirmPasscodeView(pinDigits: pinDigits, viewModel: startViewModel, path: $path)
+                               .navigationBarBackButtonHidden()
+                        }
+                    case .inputWordsView:
+                        ZStack {
+                             InputWordsView(viewModel: startViewModel, path: $path)
+                                .navigationBarBackButtonHidden()
+                        }
+                    case .yourSeedWordsView:
+                        ZStack {
+                            YourSeedWordsView(viewModel: startViewModel, path: $path)
+                                                        .navigationBarBackButtonHidden()
+                        }
+                    case .yourSeedProveView:
+                        Text("Ready")
+//                        YourSeedProveItView(viewModel: startViewModel, path: $path)
+//                            .navigationBarBackButtonHidden()
+                    case .topUpView:
+                        Text("Ready")
+//                        TopUpView(viewModel: startViewModel, path: $path)
+//                            .navigationBarBackButtonHidden()
+                    }
                 }
             }
-        })
+            .alert(S.BrainwalletAlert.error.localize(),
+                   isPresented: $startViewModel.walletCreationDidFail,
+                   actions: {
+                HStack {
+                    Button(S.Button.ok.localize(), role: .cancel) {
+                        startViewModel.walletCreationDidFail = false
+                    }
+                }
+            })
+        }
     }
-	}
+}
 
-// #Preview {
-//	StartView(viewModel: StartViewModel(store: Store(),
-//	                                    walletManager: WalletManager(store: Store())))
-//		.environment(\.locale, .init(identifier: "en"))
-// }
+enum Onboarding: Hashable {
+    case readyView
+    case restoreView
+    case setPasscodeView
+    case confirmPasscodeView(pinDigits: [Int])
+    case inputWordsView
+    case yourSeedWordsView
+    case yourSeedProveView
+    case topUpView
+}

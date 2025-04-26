@@ -62,14 +62,14 @@ struct SeedPhraseStepView: View {
 //						Spacer()
 //					}
 
-					PINFieldView(pinText: $viewModel.pinDigits,
-					             pinIsFilled: $viewModel.pinIsFilled,
-					             viewRect: $viewModel.pinViewRect)
-						.onReceive(viewModel.$pinDigits) { newValue in
-							pinDigits = newValue
-						}
-						.frame(width: width * 0.4)
-						.opacity(0.7)
+//					PINFieldView(pinText: $viewModel.pinDigits,
+//					             pinIsFilled: $viewModel.pinIsFilled,
+//					             viewRect: $viewModel.pinViewRect)
+//						.onReceive(viewModel.$pinDigits) { newValue in
+//							pinDigits = newValue
+//						}
+//						.frame(width: width * 0.4)
+//						.opacity(0.7)
 
 					Spacer()
 					Button(action: {

@@ -12,6 +12,7 @@
 		22A9A9621DF61FE0000F0016 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9611DF61FE0000F0016 /* SystemConfiguration.framework */; };
 		22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9631DF61FE7000F0016 /* Security.framework */; };
 		22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9651DF61FEE000F0016 /* WebKit.framework */; };
+		2415FFDF2DBD8505002A2199 /* SeedWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */; };
 		2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE612DA90D0D00FFBD10 /* BRMasterKeyExtension.swift */; };
 		2416CE6B2DA90D0D00FFBD10 /* BRSocketHelpers.c in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE652DA90D0D00FFBD10 /* BRSocketHelpers.c */; };
 		2416CE6C2DA90D0D00FFBD10 /* BRAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE582DA90D0D00FFBD10 /* BRAPIClient.swift */; };
@@ -39,6 +40,7 @@
 		241D22452DB526C9000302C8 /* InputWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22442DB526C5000302C8 /* InputWordsView.swift */; };
 		241D22472DB526D7000302C8 /* YourSeedProveItView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22462DB526D4000302C8 /* YourSeedProveItView.swift */; };
 		241D22492DB526E9000302C8 /* YourSeedWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22482DB526E7000302C8 /* YourSeedWordsView.swift */; };
+		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
@@ -427,6 +429,7 @@
 		22A9A9631DF61FE7000F0016 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		22A9A9651DF61FEE000F0016 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		22A9A9671DF61FF8000F0016 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordsGridView.swift; sourceTree = "<group>"; };
 		2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRActivityView.swift; sourceTree = "<group>"; };
 		2416CE572DA90D0D00FFBD10 /* BRAddressExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAddressExtension.swift; sourceTree = "<group>"; };
 		2416CE582DA90D0D00FFBD10 /* BRAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAPIClient.swift; sourceTree = "<group>"; };
@@ -471,6 +474,7 @@
 		242B569A2DA9AFFB001E3BC8 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		242B569B2DA9B003001E3BC8 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		242B569C2DA9B023001E3BC8 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
@@ -1037,6 +1041,7 @@
 				245A91DB2DBA3E450048E3A6 /* PINRowView.swift */,
 				2473D44E2DB991D90076746A /* PasscodeGridView.swift */,
 				241D22402DB526AC000302C8 /* SetPasscodeView.swift */,
+				2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */,
 			);
 			path = "Set Passcode";
 			sourceTree = "<group>";
@@ -1061,6 +1066,7 @@
 			isa = PBXGroup;
 			children = (
 				241D22482DB526E7000302C8 /* YourSeedWordsView.swift */,
+				2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */,
 			);
 			path = "Your Seed Words";
 			sourceTree = "<group>";
@@ -2249,6 +2255,7 @@
 				C312D2D92D7DC27700BB97A4 /* LockScreenViewModel.swift in Sources */,
 				C312D2DA2D7DC27700BB97A4 /* LFModalReceiveQRViewController.swift in Sources */,
 				C312D2DC2D7DC27700BB97A4 /* PresentModalAnimator.swift in Sources */,
+				2415FFDF2DBD8505002A2199 /* SeedWordsGridView.swift in Sources */,
 				C312D2DE2D7DC27700BB97A4 /* SendLTCViewController.swift in Sources */,
 				C312D2DF2D7DC27700BB97A4 /* MockSeeds.swift in Sources */,
 				C312D2E02D7DC27700BB97A4 /* ShareDataViewController.swift in Sources */,
@@ -2500,6 +2507,7 @@
 				C312D4772D7DC27700BB97A4 /* NSNotificationNameExtension.swift in Sources */,
 				C312D4782D7DC27700BB97A4 /* ContainerViewController.swift in Sources */,
 				C312D4792D7DC27700BB97A4 /* SafariServices+Extension.swift in Sources */,
+				2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */,
 				C312D47A2D7DC27700BB97A4 /* PhraseView.swift in Sources */,
 				241D22432DB526B7000302C8 /* TopUpView.swift in Sources */,
 				C312D47B2D7DC27700BB97A4 /* PartnersViewModel.swift in Sources */,

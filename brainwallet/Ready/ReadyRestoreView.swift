@@ -4,14 +4,11 @@ import SwiftUI
 
 struct ReadyRestoreView: View {
     
-    
-    private var path: ReadyOrRestore
- 
-    @Environment(\.dismiss)
-    private var dismiss
-    
     @ObservedObject
     var viewModel: StartViewModel
+    
+    @Binding
+    var path: [Onboarding]
       
     let selectorFont: Font = .barlowSemiBold(size: 16.0)
     let buttonLightFont: Font = .barlowLight(size: 16.0)
@@ -29,17 +26,18 @@ struct ReadyRestoreView: View {
     let largeButtonHeight: CGFloat = 65.0
     
     let arrowSize: CGFloat = 60.0
-
-
-    init(viewModel: StartViewModel, path: ReadyOrRestore) {
+    
+    @State
+    private var isRestore = false
+     
+    
+    init(isRestore: Bool, viewModel: StartViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
-        self.path = path
+        self.isRestore = isRestore
+        _path = path
     }
     var body: some View {
         
-        NavigationView {
-            
-            
             GeometryReader { geometry in
                 
                 let width = geometry.size.width
@@ -51,19 +49,19 @@ struct ReadyRestoreView: View {
                     VStack {
                         HStack {
                             Button(action: {
-                                dismiss()
+                                path.removeLast()
                             }) {
                                 HStack {
-                                Image(systemName: "arrow.backward")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: squareImageSize,
-                                           height: squareImageSize,
-                                           alignment: .center)
-                                
-                                    .foregroundColor(BrainwalletColor.content)
-                                Spacer()
-                            }
+                                    Image(systemName: "arrow.backward")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: squareImageSize,
+                                               height: squareImageSize,
+                                               alignment: .center)
+                                    
+                                        .foregroundColor(BrainwalletColor.content)
+                                    Spacer()
+                                }
                             }
                             Spacer()
                         }
@@ -77,7 +75,7 @@ struct ReadyRestoreView: View {
                                 .frame(width: arrowSize,
                                        alignment: .center)
                                 .padding(.leading, 20.0)
-                                
+                            
                             Spacer()
                         }
                         .frame(maxHeight: .infinity, alignment: .bottomLeading)
@@ -85,13 +83,13 @@ struct ReadyRestoreView: View {
                         HStack {
                             VStack {
                                 HStack {
-                                    Text( path == .restore ? S.Onboarding.restoreTitle.localize() : S.Onboarding.readyTitle.localize())
+                                    Text( isRestore ? S.Onboarding.restoreTitle.localize() : S.Onboarding.readyTitle.localize())
                                         .font(billboardFont)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundColor(BrainwalletColor.content)
                                 }
                                 .padding(.bottom, 20.0)
-                                Text( path == .restore ? S.Onboarding.restoreDetail.localize() : S.Onboarding.readyDetail.localize())
+                                Text( isRestore ? S.Onboarding.restoreDetail.localize() : S.Onboarding.readyDetail.localize())
                                     .font(detailFont)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(BrainwalletColor.content)
@@ -102,17 +100,15 @@ struct ReadyRestoreView: View {
                         .padding(.leading, 20.0)
                         
                         Spacer(minLength: 20.0)
-                        if path == .ready {
-                            
-                            NavigationLink(destination:
-                                            SetPasscodeView(viewModel: viewModel)
-                                            .navigationBarBackButtonHidden(true))
-                            {
+                        
+                        
+                            Button(action: {
+                                path.append(.setPasscodeView)
+                            }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                         .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                         .foregroundColor(BrainwalletColor.surface)
-                                        .shadow(radius: 3, x: 3.0, y: 3.0)
                                     
                                     Text(S.Onboarding.readyNextButton.localize())
                                         .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
@@ -125,35 +121,8 @@ struct ReadyRestoreView: View {
                                 }
                                 .padding(.all, 8.0)
                             }
-                            
-                        }
-                        
-                            if path == .restore {
-                                NavigationLink(destination:
-                                        InputWordsView(viewModel: viewModel)
-                                        .navigationBarBackButtonHidden(true))
-                                {
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: largeButtonHeight/2)
-                                            .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                            .foregroundColor(BrainwalletColor.surface)
-                                            .shadow(radius: 3, x: 3.0, y: 3.0)
-                                        
-                                        Text(path == .restore ? S.Onboarding.restoreNextButton.localize() : S.Onboarding.readyNextButton.localize())
-                                            .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                            .font(largeButtonFont)
-                                            .foregroundColor(BrainwalletColor.content)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: largeButtonHeight/2)
-                                                    .stroke(BrainwalletColor.content, lineWidth: 2.0)
-                                            )
-                                    }
-                                    .padding(.all, 8.0)
-                                }
                         }
                     }
                 }
             }
-        }
     }
-}
