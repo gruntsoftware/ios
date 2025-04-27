@@ -8,11 +8,12 @@ struct ConfirmPasscodeView: View {
     @Binding
     var path: [Onboarding]
     
-    @State
-    private var pinDigits: [Int] = []
+    private let pinDigits: [Int]
     
     @State
-    private var isRestore: Bool? = nil
+    private var confirmPinDigits: [Int] = []
+    
+    private let isRestore: Bool?
 
     @State
     private var pinState: [Bool] = [false,false,false,false]
@@ -37,6 +38,7 @@ struct ConfirmPasscodeView: View {
     init(isRestore: Bool?, pinDigits: [Int], viewModel: StartViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
         _path = path
+        
         self.pinDigits = pinDigits
         self.isRestore = isRestore
     }
@@ -55,6 +57,8 @@ struct ConfirmPasscodeView: View {
                     VStack {
                         HStack {
                                 Button(action: {
+                                    confirmPinDigits = []
+                                    pinState = [false,false,false,false]
                                     path.removeLast()
                                 }) {
                                     HStack {
@@ -89,16 +93,30 @@ struct ConfirmPasscodeView: View {
                                 .padding(.top, 40.0)
 
                         Spacer()
-                        PasscodeGridView(digits: $pinDigits)
+                        PasscodeGridView(digits: $confirmPinDigits)
                             .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
                             .padding(.bottom, 80.0)
                         }
                 }
-                .onChange(of: pinDigits) { _ in
-                    pinState = (0..<4).map { $0 < pinDigits.count }
-                    didConfirmPIN  = pinState.allSatisfy { $0 == true }
+                .onChange(of: confirmPinDigits) { _ in
+                    
+                    pinState = (0..<4).map { $0 < confirmPinDigits.count }
+                    let currentPinState = pinState.allSatisfy { $0 == true }
+                    let pinDoesMatch = confirmPinDigits == self.pinDigits
+                    didConfirmPIN  = currentPinState && pinDoesMatch
+                    
                     if didConfirmPIN {
-                        path.append(.yourSeedWordsView)
+                        
+                        switch isRestore {
+                        case true :
+                                path.append(.inputWordsView)
+                        case false :
+                                path.append(.yourSeedWordsView)
+                        case nil :
+                                path.append(.tempSettingsView)
+                        case .some(_):
+                                    path.append(.tempSettingsView)
+                        }
                     }
                 }
             }

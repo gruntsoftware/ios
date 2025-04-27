@@ -12,9 +12,7 @@ struct SetPasscodeView: View {
     @State
     private var pinState: [Bool] = [false,false,false,false]
 
-    
-    @State
-    private var isRestore: Bool? = nil
+    private let isRestore: Bool?
     
     @State
     private var didFillPIN: Bool = false
@@ -50,6 +48,8 @@ struct SetPasscodeView: View {
                     VStack {
                         HStack {
                                 Button(action: {
+                                    pinDigits = []
+                                    pinState = [false,false,false,false]
                                     path.removeLast()
                                 }) {
                                     HStack {
@@ -96,6 +96,7 @@ struct SetPasscodeView: View {
                 
                 didFillPIN  = pinState.allSatisfy { $0 == true }
                 if didFillPIN {
+                
                     path.append(.confirmPasscodeView(isRestore: self.isRestore, pinDigits: pinDigits))
                 }
             }

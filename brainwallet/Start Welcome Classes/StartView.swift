@@ -265,6 +265,12 @@ struct StartView: View {
                             TopUpView(viewModel: startViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
+                        
+                    case .tempSettingsView:
+                        ZStack {
+                            SettingsView(viewModel: startViewModel, path: $path)
+                                .navigationBarBackButtonHidden()
+                        }
                     }
                 }
                 .alert(S.BrainwalletAlert.error.localize(),
@@ -290,4 +296,5 @@ enum Onboarding: Hashable {
     case yourSeedWordsView
     case yourSeedProveView
     case topUpView
+    case tempSettingsView
 }

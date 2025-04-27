@@ -61,7 +61,6 @@ struct CodeButton: View {
             
             if index >= 0 && digits.count < 4 {
                 $digits.wrappedValue.append(index)
-                print("::: in passcode grid \(digits)")
             }
             else if index == -2 && digits.count > 0 {
                 digits.removeLast()

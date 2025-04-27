@@ -1,29 +1,30 @@
+//
+//  SettingsView.swift
+//  brainwallet
+//
+//  Created by Kerry Washington on 27/04/2025.
+//  Copyright © 2025 Grunt Software, LTD. All rights reserved.
+//
 import SwiftUI
 
-struct InputWordsView: View {
+struct SettingsView: View {
     
-    @State
-    private var didContinue: Bool = false
-    
-    @Binding
-    var path: [Onboarding]
+    @Binding var path: [Onboarding]
     
     @ObservedObject
     var viewModel: StartViewModel
     
-    let subTitleFont: Font = .barlowSemiBold(size: 32.0)
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
-    let detailFont: Font = .barlowRegular(size: 28.0)
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
+    let themeBorderSize: CGFloat = 44.0
+    let largeButtonHeight: CGFloat = 65.0
+    let largeButtonFont: Font = .barlowBold(size: 24.0)
 
-    let arrowSize: CGFloat = 60.0
-    
     init(viewModel: StartViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
         _path = path
     }
-    
+                                
     var body: some View {
         
         GeometryReader { geometry in
@@ -33,7 +34,6 @@ struct InputWordsView: View {
             
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                
                 VStack {
                     HStack {
                         Button(action: {
@@ -55,18 +55,27 @@ struct InputWordsView: View {
                     .frame(height: squareImageSize)
                     .padding(.all, 20.0)
                     
-                    Text("Restore your power")
-                        .font(subTitleFont)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .foregroundColor(BrainwalletColor.content)
-                    Text( S.SetPasscode.detail1.localize())
-                        .font(detailFont)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .foregroundColor(BrainwalletColor.content)
-                        .padding(.all, 20.0)
+                    Text("TEMP Settings View")
                     
-                    Spacer()
-                    
+                    Button(action: {
+                        //
+                    }) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: largeButtonHeight/2)
+                                .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
+                                .foregroundColor(BrainwalletColor.surface)
+                            
+                            Text(S.Onboarding.readyNextButton.localize())
+                                .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
+                                .font(largeButtonFont)
+                                .foregroundColor(BrainwalletColor.content)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: largeButtonHeight/2)
+                                        .stroke(BrainwalletColor.content, lineWidth: 2.0)
+                                )
+                        }
+                        .padding(.all, 8.0)
+                    }
                 }
             }
         }

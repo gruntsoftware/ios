@@ -27,9 +27,7 @@ struct ReadyRestoreView: View {
     
     let arrowSize: CGFloat = 60.0
     
-    @State
-    private var isRestore = false
-     
+    private let isRestore: Bool
     
     init(isRestore: Bool, viewModel: StartViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
@@ -100,8 +98,6 @@ struct ReadyRestoreView: View {
                         .padding(.leading, 20.0)
                         
                         Spacer(minLength: 20.0)
-                        
-                        
                             Button(action: {
                                 path.append(.setPasscodeView(isRestore: isRestore))
                             }) {
