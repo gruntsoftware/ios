@@ -65,6 +65,7 @@
 		2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2492829B2DAC22B00088528E /* BIP39Words.plist */; };
 		249C45DC2D93F23F00E9C3B0 /* service-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 249C45DB2D93F23F00E9C3B0 /* service-data.plist */; };
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
+		24D196032DBE69CC0052501D /* SwiftFormat in Frameworks */ = {isa = PBXBuildFile; productRef = 24D196022DBE69CC0052501D /* SwiftFormat */; };
 		24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D91D0A2166923E0077A619 /* UserNotifications.framework */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
@@ -987,6 +988,7 @@
 				C35C1222293D464A0009022D /* FirebaseAuth in Frameworks */,
 				C35C1224293D464A0009022D /* FirebaseCrashlytics in Frameworks */,
 				C35C1220293D464A0009022D /* FirebaseAnalytics in Frameworks */,
+				24D196032DBE69CC0052501D /* SwiftFormat in Frameworks */,
 				759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1983,6 +1985,7 @@
 				C353582C2D11DA4900395C45 /* FirebaseRemoteConfig */,
 				249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */,
 				24F64C1D2DAFBD0F001DC9B6 /* Lottie */,
+				24D196022DBE69CC0052501D /* SwiftFormat */,
 			);
 			productName = breadwallet;
 			productReference = 75A2A7901DA5934300A983D8 /* Brainwallet.app */;
@@ -2064,6 +2067,7 @@
 				C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
 				24F64C1C2DAFBD0F001DC9B6 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				24D196012DBE69CC0052501D /* XCRemoteSwiftPackageReference "SwiftFormat" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 75A2A7911DA5934300A983D8 /* Products */;
@@ -3060,6 +3064,14 @@
 				minimumVersion = 6.16.2;
 			};
 		};
+		24D196012DBE69CC0052501D /* XCRemoteSwiftPackageReference "SwiftFormat" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nicklockwood/SwiftFormat";
+			requirement = {
+				kind = exactVersion;
+				version = 0.55.5;
+			};
+		};
 		24F64C1C2DAFBD0F001DC9B6 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -3091,6 +3103,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
 			productName = AppsFlyerLib;
+		};
+		24D196022DBE69CC0052501D /* SwiftFormat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24D196012DBE69CC0052501D /* XCRemoteSwiftPackageReference "SwiftFormat" */;
+			productName = SwiftFormat;
 		};
 		24F64C1D2DAFBD0F001DC9B6 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

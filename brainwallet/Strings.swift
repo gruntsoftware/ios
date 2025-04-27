@@ -164,6 +164,15 @@ enum S {
         static let confirmTitle = Localization(key: "SetPasscode.confirmTitle", value: "Confirm", comment: " confirm title")
         static let detail2 = Localization(key: "SetPasscode.detail2", value: "You didn’t forget did you? Enter it again. Or, go back to start over.", comment: "setuppasscode confirm detail")
     }
+    
+    enum Restore {
+        static let title = Localization(key: "Restore.title", value: "Restore your power", comment: " Restore your power")
+        static let detail1 = Localization(key: "Restore.detail1", value: "You can get back from where you started", comment: " detail1")
+        static let detail2 = Localization(key: "Restore.detail2", value: "Don’t guess.\n\nIt would take you 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries", comment: " detail1")
+        static let detail3 = Localization(key: "Restore.detail3", value: "Blockchain: Litecoin", comment: " detail3")
+        static let nextButton = Localization(key: "Restore.nextButton", value: "Restore my Brainwallet", comment: "nextButton")
+    }
+    
     enum TopUp {
         static let topUpTitle = Localization(key: "TopUp.topUpTitle", value: "Top Up!", comment: " Top Up")
         static let detail1 = Localization(key: "TopUp.detail1", value: "Get some Litecoin for your Brainwallet", comment: " top up detail")

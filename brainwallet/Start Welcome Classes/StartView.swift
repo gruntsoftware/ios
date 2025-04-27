@@ -72,15 +72,12 @@ struct StartView: View {
                             Image("bw-logotype")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: width * 0.8,
+                                .frame(maxWidth: width * 0.8,
                                        alignment: .center)
                                 .padding([.top,.bottom], verticalPadding)
                             
-                            WelcomeLottieView(lottieFileName: lottieFileName,
-                                              shouldRunAnimation: true)
-                            .frame(width: width * 0.9,
-                                   height: height * 0.45,
-                                   alignment: .center)
+                            WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
+                                .frame(width: width * 0.9, height: height * 0.4, alignment: .center)
                         }
                         HStack {
                             ZStack {
@@ -177,7 +174,11 @@ struct StartView: View {
                         Spacer()
                         
                         Button(action: {
-                            path.append(.readyView)
+                            ////?TBD
+                            ///b
+                            ///
+                            path.append(.inputWordsView)
+                            //path.append(.readyView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
@@ -197,7 +198,11 @@ struct StartView: View {
                         }
                         
                         Button(action: {
-                            path.append(.restoreView)
+                            ////?TBD
+                            ///b
+                            ///
+                            path.append(.yourSeedWordsView)
+                            //path.append(.restoreView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
