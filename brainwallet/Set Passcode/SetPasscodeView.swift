@@ -6,10 +6,15 @@ struct SetPasscodeView: View {
     @Binding
     var path: [Onboarding]
     
-    @State var pinDigits: [Int] = []
+    @State
+    private var pinDigits: [Int] = []
 
     @State
-    var pinState: [Bool] = [false,false,false,false]
+    private var pinState: [Bool] = [false,false,false,false]
+
+    
+    @State
+    private var isRestore: Bool? = nil
     
     @State
     private var didFillPIN: Bool = false
@@ -27,8 +32,9 @@ struct SetPasscodeView: View {
     
     let arrowSize: CGFloat = 60.0
     
-    init(path: Binding<[Onboarding]>) {
+    init(isRestore: Bool?, path: Binding<[Onboarding]>) {
         _path = path
+        self.isRestore = isRestore
     }
     
     var body: some View {
@@ -90,7 +96,7 @@ struct SetPasscodeView: View {
                 
                 didFillPIN  = pinState.allSatisfy { $0 == true }
                 if didFillPIN {
-                    path.append(.confirmPasscodeView(pinDigits: pinDigits))
+                    path.append(.confirmPasscodeView(isRestore: self.isRestore, pinDigits: pinDigits))
                 }
             }
     }

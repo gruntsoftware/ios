@@ -9,6 +9,16 @@
 import SwiftUI
 
 struct TopUpView: View {
+    
+    @Binding var path: [Onboarding]
+
+    @ObservedObject
+    var viewModel: StartViewModel
+
+    init(viewModel: StartViewModel, path: Binding<[Onboarding]>) {
+        self.viewModel = viewModel
+        _path = path
+    }
                                 
     var body: some View {
         Text("TopUpView")

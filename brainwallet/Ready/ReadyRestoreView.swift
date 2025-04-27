@@ -103,7 +103,7 @@ struct ReadyRestoreView: View {
                         
                         
                             Button(action: {
-                                path.append(.setPasscodeView)
+                                path.append(.setPasscodeView(isRestore: isRestore))
                             }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)

@@ -8,10 +8,14 @@ struct ConfirmPasscodeView: View {
     @Binding
     var path: [Onboarding]
     
-    @State var pinDigits: [Int] = []
+    @State
+    private var pinDigits: [Int] = []
+    
+    @State
+    private var isRestore: Bool? = nil
 
     @State
-    var pinState: [Bool] = [false,false,false,false]
+    private var pinState: [Bool] = [false,false,false,false]
     
     @State
     private var didConfirmPIN: Bool = false
@@ -30,10 +34,11 @@ struct ConfirmPasscodeView: View {
     let arrowSize: CGFloat = 60.0
     
 
-    init(pinDigits: [Int], viewModel: StartViewModel, path: Binding<[Onboarding]>) {
+    init(isRestore: Bool?, pinDigits: [Int], viewModel: StartViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
         _path = path
         self.pinDigits = pinDigits
+        self.isRestore = isRestore
     }
     
     

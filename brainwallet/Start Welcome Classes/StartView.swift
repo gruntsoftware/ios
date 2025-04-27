@@ -20,43 +20,43 @@ struct StartView: View {
     @State
     private var isShowingOnboardView: Bool = true
     
-	@ObservedObject
-	var startViewModel: StartViewModel
+    @ObservedObject
+    var startViewModel: StartViewModel
     
     @State
     private var path: [Onboarding] = []
-
-	@State
-	private var selectedLang: Bool = false
+    
+    @State
+    private var selectedLang: Bool = false
     
     @State
     private var selectedFiat: Bool = false
-
-	@State
-	private var delayedSelect: Bool = false
+    
+    @State
+    private var delayedSelect: Bool = false
     
     @State
     private var userPrefersDarkMode: Bool = false
-
-	@State
-	private var currentTagline = ""
-
-	@State
-	private var animationAmount = 0.0
-
-	@State
-	private var pickedLanguage: LanguageSelection = .English
+    
+    @State
+    private var currentTagline = ""
+    
+    @State
+    private var animationAmount = 0.0
+    
+    @State
+    private var pickedLanguage: LanguageSelection = .English
     
     @State
     private var pickedCurrency: CurrencySelection = .USD
-
-	@State
-	private var didContinue: Bool = false
+    
+    @State
+    private var didContinue: Bool = false
     
     init(viewModel: StartViewModel) {
-		startViewModel = viewModel
-	}
-
+        startViewModel = viewModel
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             
@@ -177,7 +177,7 @@ struct StartView: View {
                         Spacer()
                         
                         Button(action: {
-                          path.append(.readyView)
+                            path.append(.readyView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
@@ -197,7 +197,7 @@ struct StartView: View {
                         }
                         
                         Button(action: {
-                          path.append(.restoreView)
+                            path.append(.restoreView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
@@ -229,52 +229,54 @@ struct StartView: View {
                 .navigationDestination(for: Onboarding.self) { onboard in
                     switch onboard {
                     case .restoreView:
-                            ReadyRestoreView(isRestore: true, viewModel: startViewModel, path: $path)
-                                .navigationBarBackButtonHidden()
+                        ReadyRestoreView(isRestore: true, viewModel: startViewModel, path: $path)
+                            .navigationBarBackButtonHidden()
                     case .readyView:
-                            ReadyRestoreView(isRestore: false, viewModel: startViewModel, path: $path)
-                                .navigationBarBackButtonHidden()
-                    case .setPasscodeView:
+                        ReadyRestoreView(isRestore: false, viewModel: startViewModel, path: $path)
+                            .navigationBarBackButtonHidden()
+                    case .setPasscodeView (let isRestore):
                         ZStack {
-                           SetPasscodeView(path: $path)
+                            SetPasscodeView(isRestore: isRestore, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
-                    case .confirmPasscodeView (let pinDigits):
-                         
+                    case .confirmPasscodeView (let isRestore, let pinDigits):
                         ZStack {
-                            ConfirmPasscodeView(pinDigits: pinDigits, viewModel: startViewModel, path: $path)
-                               .navigationBarBackButtonHidden()
+                            ConfirmPasscodeView(isRestore: isRestore, pinDigits: pinDigits, viewModel: startViewModel, path: $path)
+                                .navigationBarBackButtonHidden()
                         }
                     case .inputWordsView:
                         ZStack {
-                             InputWordsView(viewModel: startViewModel, path: $path)
+                            InputWordsView(viewModel: startViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
                     case .yourSeedWordsView:
                         ZStack {
                             YourSeedWordsView(viewModel: startViewModel, path: $path)
-                                                        .navigationBarBackButtonHidden()
+                                .navigationBarBackButtonHidden()
                         }
                     case .yourSeedProveView:
-                        Text("Ready")
-//                        YourSeedProveItView(viewModel: startViewModel, path: $path)
-//                            .navigationBarBackButtonHidden()
+
+                        ZStack {
+                            YourSeedProveItView(viewModel: startViewModel, path: $path)
+                                .navigationBarBackButtonHidden()
+                        }
                     case .topUpView:
-                        Text("Ready")
-//                        TopUpView(viewModel: startViewModel, path: $path)
-//                            .navigationBarBackButtonHidden()
+                        ZStack {
+                            TopUpView(viewModel: startViewModel, path: $path)
+                                .navigationBarBackButtonHidden()
+                        }
                     }
                 }
+                .alert(S.BrainwalletAlert.error.localize(),
+                       isPresented: $startViewModel.walletCreationDidFail,
+                       actions: {
+                    HStack {
+                        Button(S.Button.ok.localize(), role: .cancel) {
+                            startViewModel.walletCreationDidFail = false
+                        }
+                    }
+                })
             }
-            .alert(S.BrainwalletAlert.error.localize(),
-                   isPresented: $startViewModel.walletCreationDidFail,
-                   actions: {
-                HStack {
-                    Button(S.Button.ok.localize(), role: .cancel) {
-                        startViewModel.walletCreationDidFail = false
-                    }
-                }
-            })
         }
     }
 }
@@ -282,8 +284,8 @@ struct StartView: View {
 enum Onboarding: Hashable {
     case readyView
     case restoreView
-    case setPasscodeView
-    case confirmPasscodeView(pinDigits: [Int])
+    case setPasscodeView(isRestore: Bool?)
+    case confirmPasscodeView(isRestore: Bool?, pinDigits: [Int])
     case inputWordsView
     case yourSeedWordsView
     case yourSeedProveView
