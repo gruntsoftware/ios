@@ -62,6 +62,7 @@
 		247D74F32DA907FB00855B14 /* BRSet.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45972D936D5900E9C3B0 /* BRSet.c */; };
 		247D74F42DA907FB00855B14 /* BRTransaction.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45992D936D5900E9C3B0 /* BRTransaction.c */; };
 		247D74F52DA907FB00855B14 /* BRWallet.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C459B2D936D5900E9C3B0 /* BRWallet.c */; };
+		2488A13E2DBF714D00987767 /* SeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2488A13D2DBF713E00987767 /* SeedViewModel.swift */; };
 		2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2492829B2DAC22B00088528E /* BIP39Words.plist */; };
 		249C45DC2D93F23F00E9C3B0 /* service-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 249C45DB2D93F23F00E9C3B0 /* service-data.plist */; };
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
@@ -483,6 +484,7 @@
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
+		2488A13D2DBF713E00987767 /* SeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedViewModel.swift; sourceTree = "<group>"; };
 		2492829B2DAC22B00088528E /* BIP39Words.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BIP39Words.plist; sourceTree = "<group>"; };
 		249C450E2D936D5900E9C3B0 /* ax_jni_include_dir.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_jni_include_dir.m4; sourceTree = "<group>"; };
 		249C450F2D936D5900E9C3B0 /* ax_prog_cc_for_build.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_prog_cc_for_build.m4; sourceTree = "<group>"; };
@@ -1050,6 +1052,7 @@
 		241D223A2DB5264D000302C8 /* Set Passcode */ = {
 			isa = PBXGroup;
 			children = (
+				2488A13D2DBF713E00987767 /* SeedViewModel.swift */,
 				245A91DB2DBA3E450048E3A6 /* PINRowView.swift */,
 				2473D44E2DB991D90076746A /* PasscodeGridView.swift */,
 				241D22402DB526AC000302C8 /* SetPasscodeView.swift */,
@@ -2540,6 +2543,7 @@
 				C312D48E2D7DC27700BB97A4 /* CardV1ToastView.swift in Sources */,
 				C312D48F2D7DC27700BB97A4 /* SimpleRedux.swift in Sources */,
 				C312D4902D7DC27700BB97A4 /* SendAddressCellView.swift in Sources */,
+				2488A13E2DBF714D00987767 /* SeedViewModel.swift in Sources */,
 				241D22492DB526E9000302C8 /* YourSeedWordsView.swift in Sources */,
 				C312D4912D7DC27700BB97A4 /* ForgotAlertViewModel.swift in Sources */,
 				C312D4942D7DC27700BB97A4 /* RetryTimer.swift in Sources */,

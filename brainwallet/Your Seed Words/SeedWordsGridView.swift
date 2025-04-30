@@ -20,6 +20,11 @@ struct SeedWordsGridView: View {
         self.isRestore = isRestore 
     }
     
+    
+    
+    private mutating func clearSeedWords() {
+        
+    }
     var body: some View {
         GeometryReader { geometry in
             
@@ -61,6 +66,7 @@ struct SeedWordsGridView: View {
                             HStack {
                                 Button(action: {
                                     // path.append(.setPasscodeView(isRestore: isRestore))
+                                    clearSeedWords()
                                 }) {
                                     ZStack {
                                         GeometryReader { geometry in
@@ -108,12 +114,35 @@ struct SeedCapsuleView: View {
     let fieldHeight: CGFloat = 40.0
       
     @Binding var word: String
-     
+    
+    private var seedWordList: [String] = []
+    
+    @State
+    private var suggestions: [String] = []
+
+    
     init (index: Int, word: Binding<String>) {
         _word = word
         self.index = index
+        
+        loadSeedWords()
     }
-
+    
+    private mutating func loadSeedWords() {
+        
+        if let seedWordsPath = Bundle.main.path(forResource: "BIP39Words", ofType: "plist") {
+            self.seedWordList = NSArray(contentsOfFile: seedWordsPath) as? [String] ?? []
+        }
+    }
+    
+    private func updateSuggestions() {
+        if word.isEmpty {
+          suggestions = []
+       } else {
+       suggestions = self.seedWordList.filter { $0.hasPrefix(word.lowercased()) }
+      }
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             
@@ -134,18 +163,25 @@ struct SeedCapsuleView: View {
                         .foregroundColor(BrainwalletColor.content)
                         .padding(.leading, 8.0)
                         .frame(width: 24.0)
-                    TextField("12345678",text: $word)
+                    TextField("",text: $word)
                         .font(.footnote)
                         .fontWeight(.semibold)
                         .foregroundColor(BrainwalletColor.content)
                         .frame(minHeight: fieldHeight)
-                        .disableAutocorrection(true)
+                        .onChange(of: word, perform: { _ in
+                            if let lastChar = word.last,
+                               !lastChar.isLetter {
+                                word.removeLast()
+                            }
+                        })
+                        .keyboardType(.alphabet)
+                        .autocapitalization(.none)
                  }
                 
             }
             .frame(minHeight:fieldHeight)
 
-        }
+        }.tag(index)
     }
         
 }
@@ -155,29 +191,3 @@ struct SeedWordsGridView_Previews: PreviewProvider {
         SeedWordsGridView(isRestore: true)
     }
 }
-
-
-//        TextField("", text: .constant(""))
-//            .opacity(0.0)
-//            .frame(width: 0, height: 0)
-//        Button {
-//
-//
-//
-//        } label: {
-//            ZStack {
-//                Capsule()
-//                .frame(width: buttonSize)
-//                .foregroundColor(BrainwalletColor.error.opacity(0.2))
-//
-//                    Text("\(index)")
-//                        .font(detailFont)
-//                        .foregroundColor(BrainwalletColor.content)
-//                        .frame(maxWidth: .infinity,
-//                               maxHeight: .infinity)
-//                        .padding()
-//
-//            }
-//        }
-//        .padding(.all, 5.0)
-//        .disabled(index == -1)
