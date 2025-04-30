@@ -23,13 +23,13 @@ struct LockScreenHeaderView: View {
 					Spacer()
 					Text(fiatValue)
 						.font(Font(UIFont.barlowSemiBold(size: 16.0)))
-						.foregroundColor(.white)
+                        .foregroundColor(BrainwalletColor.content)
 
 					Text(currentFiatValue)
 						.font(Font(UIFont.barlowRegular(size: 14.0)))
-						.foregroundColor(.white)
+                        .foregroundColor(BrainwalletColor.content)
 						.padding(.bottom, 10)
-					Divider().background(.white)
+                    Divider().background(BrainwalletColor.gray)
 				})
 			.onAppear {
 				Task {

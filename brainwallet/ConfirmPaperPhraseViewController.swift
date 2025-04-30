@@ -92,8 +92,8 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 
 		headerTitleLabel.text = S.SecurityCenter.Cells.paperKeyTitle.localize()
 		headerDescriptionLabel.text = S.ConfirmPaperPhrase.label.localize()
-		headerTitleLabel.textColor = .white
-		headerDescriptionLabel.textColor = .white
+        headerTitleLabel.textColor = BrainwalletUIColor.content
+		headerDescriptionLabel.textColor = BrainwalletUIColor.content
 
 		firstWordCell.addSubview(confirmFirstPhrase)
 		firstWordCell.addConstraints(NSLayoutConstraint.constraints(

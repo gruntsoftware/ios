@@ -24,7 +24,7 @@ class ConfirmPhrase: UIView {
 	private func setupSubviews() {
 		label.font = UIFont.customBody(size: 14.0)
 		label.textColor = UIColor(white: 170.0 / 255.0, alpha: 1.0)
-        separator.backgroundColor = BrainwalletUIColor.surface
+        separator.backgroundColor = BrainwalletUIColor.border
 
 		textField.autocapitalizationType = .none
 		textField.autocorrectionType = .no
@@ -66,7 +66,7 @@ class ConfirmPhrase: UIView {
 
 	func validate() {
 		if textField.text != word {
-			textField.textColor = BrainwalletUIColor.warn
+            textField.textColor = BrainwalletUIColor.error
 		}
 	}
 

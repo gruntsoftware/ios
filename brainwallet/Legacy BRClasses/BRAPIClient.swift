@@ -33,13 +33,13 @@ open class BRAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BR
 	private var authenticator: WalletAuthenticator
 
 	// whether or not to emit log messages from this instance of the client
-	private var logEnabled = true
+	private var logEnabled = false
 
 	// proto is the transport protocol to use for talking to the API (either http or https)
 	var proto = "https"
 
 	// host is the server(s) on which the API is hosted
-	var host = "prod.apigsltd.net"
+	var host = "api.grunt.ltd"
 
 	// isFetchingAuth is set to true when a request is currently trying to renew authentication (the token)
 	// it is useful because fetching auth is not idempotent and not reentrant, so at most one auth attempt
@@ -69,7 +69,7 @@ open class BRAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BR
 		if !logEnabled {
 			return
 		}
-		print("[BRAPIClient] \(s)")
+		print("::: [BRAPIClient] \(s)")
 	}
 
 	var deviceId: String {

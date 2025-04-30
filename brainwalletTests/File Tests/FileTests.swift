@@ -3,7 +3,6 @@
 //  loafwalletTests
 //
 //  Created by Kerry Washington on 5/6/21.
-//  Copyright © 2021 Litecoin Foundation. All rights reserved.
 //
 import Firebase
 @testable import brainwallet

@@ -24,7 +24,6 @@ enum S {
         }
         
         enum Bullet1 {
-            static let intro = Localization(key: "Bullet1.intro", value: "Brainwallet is from the Litecoin Foundation and Charlie Lee, creator of Litecoin.", comment: "")
             static let checkboxes = Localization(key: "Bullet1.checkboxes", value: "Settings", comment: "Settings button label")
             static let seedPhrase = Localization(key: "Bullet1.seedPhrase", value: "Settings", comment: "Settings button label")
             static let finished = Localization(key: "Bullet1.finished", value: "Settings", comment: "Settings button label")
@@ -156,7 +155,7 @@ enum S {
     
     enum History {
         static let barItemTitle = Localization(key: "History.barItemTitle", value: "History", comment: "History Bar Item Title")
-        static let currentLitecoinValue = Localization(key: "History.currentLitecoinValue", value: "History CurrentLitecoinValue", comment: "History Current Litecoin Value")
+        static let currentLitecoinValue = Localization(key: "History.currentLitecoinValue", value: "Current Litecoin value in", comment: "History Current Litecoin Value")
     }
     
     enum JailbreakWarnings {
@@ -451,7 +450,7 @@ enum S {
     }
     
     enum StartPaperPhrase {
-        static let body = Localization(key: "StartPaperPhrase.body", value: "Your paper key is the only way to restore your Brainwallet if your mobile is unavailable.\n No one in the Litecoin Foundation team can give this paper key to you!\n\nWe will show you a list of words to write down on a piece of paper and keep safe.\n\nPLEASE MAKE BACKUPS AND DON'T LOSE IT!", comment: "Paper key explanation text.")
+        static let body = Localization(key: "StartPaperPhrase.body", value: "Your paper key is the only way to restore your Brainwallet if your mobile is unavailable.\n No one in the Brainwallet team can give this paper key to you!\n\nWe will show you a list of words to write down on a piece of paper and keep safe.\n\nPLEASE MAKE BACKUPS AND DON'T LOSE IT!", comment: "Paper key explanation text.")
         static let buttonTitle = Localization(key: "StartPaperPhrase.buttonTitle", value: "Write Down Paper Key", comment: "button label")
         static let againButtonTitle = Localization(key: "StartPaperPhrase.againButtonTitle", value: "Write Down Paper Key Again", comment: "button label")
         static let date = Localization(key: "StartPaperPhrase.date", value: "You last wrote down your paper key on %1$@", comment: "Argument is date")

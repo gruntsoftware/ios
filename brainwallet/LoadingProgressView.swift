@@ -16,7 +16,7 @@ class LoadingProgressView: UIView, GradientDrawable {
 
 	private var hasSetup = false
 
-    private lazy var progressBackground: UIView = self.makeProgressView(backgroundColor: BrainwalletUIColor.background)
+    private lazy var progressBackground: UIView = self.makeProgressView(backgroundColor: BrainwalletUIColor.surface)
     private lazy var progressForeground: UIView = self.makeProgressView(backgroundColor: BrainwalletUIColor.content)
 
 	private func makeProgressView(backgroundColor: UIColor) -> UIView {
@@ -32,7 +32,7 @@ class LoadingProgressView: UIView, GradientDrawable {
 	private var progressWidthConstraint: NSLayoutConstraint?
 
 	private func setupView() {
-		label.textColor = .white
+		label.textColor = BrainwalletUIColor.content
         label.text = S.Account.loadingMessage.localize()
 		label.textAlignment = .center
 

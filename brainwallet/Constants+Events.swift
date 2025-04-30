@@ -10,7 +10,7 @@ struct FoundationSupport {
 }
 
 struct APIServer {
-	static let baseUrl = "https://prod.apigsltd.net/"
+	static let baseUrl = "https://api.grunt.ltd/"
 }
 
 struct Padding {

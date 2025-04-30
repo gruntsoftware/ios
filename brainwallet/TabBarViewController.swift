@@ -8,7 +8,9 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	@IBOutlet var tabBar: UITabBar!
 	@IBOutlet var settingsButton: UIButton!
 	@IBOutlet var walletBalanceLabel: UILabel!
-
+    @IBOutlet var newPriceView: UIView!
+    @IBOutlet var newTransactionsScrollView: UIScrollView!
+    
 	var primaryBalanceLabel: UpdatingLabel?
 	var secondaryBalanceLabel: UpdatingLabel?
 	private let largeFontSize: CGFloat = 24.0
@@ -120,9 +122,15 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		walletBalanceLabel.text = S.ManageWallet.balance.localize() + ":"
 
 		headerView.backgroundColor = BrainwalletUIColor.surface
-		tabBar.barTintColor = BrainwalletUIColor.surface
+        tabBar.barTintColor = BrainwalletUIColor.border
 		containerView.backgroundColor = BrainwalletUIColor.surface
 		view.backgroundColor = BrainwalletUIColor.surface
+        
+        
+        newPriceView.backgroundColor = BrainwalletUIColor.error
+        newPriceView.backgroundColor = BrainwalletUIColor.affirm
+        newTransactionsScrollView.backgroundColor = BrainwalletUIColor.warn
+        
 	}
 
 	private func configurePriceLabels() {
@@ -134,11 +142,11 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			return
 		}
 
-		let priceLabelArray = [primaryBalanceLabel, secondaryBalanceLabel, equalsLabel]
+		let priceLabelArray = [primaryBalanceLabel, secondaryBalanceLabel, equalsLabel, walletBalanceLabel]
 
 		for (_, view) in priceLabelArray.enumerated() {
-			view?.backgroundColor = .clear
-			view?.textColor = .white
+            view?.backgroundColor = BrainwalletUIColor.surface
+            view?.textColor = BrainwalletUIColor.content
 		}
 
 		primaryLabel.font = UIFont.barlowSemiBold(size: largeFontSize)

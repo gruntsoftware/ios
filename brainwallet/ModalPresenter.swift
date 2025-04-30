@@ -107,7 +107,7 @@ class ModalPresenter: Subscriber, Trackable {
 	func presentBiometricsSetting() {
 		guard let walletManager = walletManager else { return }
 		let biometricsSettings = BiometricsSettingsViewController(walletManager: walletManager, store: store)
-		biometricsSettings.addCloseNavigationItem(tintColor: .white)
+        biometricsSettings.addCloseNavigationItem(tintColor: BrainwalletUIColor.content)
 		let nc = ModalNavigationController(rootViewController: biometricsSettings)
 		biometricsSettings.presentSpendingLimit = strongify(self) { myself in
 			myself.pushBiometricsSpendingLimit(onNc: nc)
@@ -384,20 +384,6 @@ class ModalPresenter: Subscriber, Trackable {
 			],
 			"Wallet":
 				[
-					Setting(title: S.Settings.importTile.localize(), callback: { [weak self] in
-						guard let myself = self else { return }
-						guard let walletManager = myself.walletManager else { return }
-						let importNav = ModalNavigationController()
-						importNav.setClearNavbar()
-						importNav.setWhiteStyle()
-						let start = StartImportViewController(walletManager: walletManager, store: myself.store)
-						start.addCloseNavigationItem(tintColor: .white)
-						start.navigationItem.title = S.Import.title.localize()
-						importNav.viewControllers = [start]
-						settingsNav.dismiss(animated: true, completion: {
-							myself.topViewController?.present(importNav, animated: true, completion: nil)
-						})
-					}),
 					Setting(title: S.Settings.wipe.localize(), callback: { [weak self] in
 						guard let myself = self else { return }
 						guard let walletManager = myself.walletManager else { return }

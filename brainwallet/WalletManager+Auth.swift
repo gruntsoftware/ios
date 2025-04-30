@@ -4,8 +4,9 @@ import Foundation
 import LocalAuthentication
 import SQLite3
 import UIKit
+import CryptoKit
 
-private let WalletSecAttrService = "com.litecoin.loafwallet"
+private let WalletSecAttrService = "ltd.gruntsoftware.brainwallet"
 private let BIP39CreationTime = TimeInterval(BIP39_CREATION_TIME) - NSTimeIntervalSince1970
 
 /// WalletAuthenticator is a protocol whose implementors are able to interact with wallet authentication
