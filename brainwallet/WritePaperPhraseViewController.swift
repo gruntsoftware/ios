@@ -49,13 +49,12 @@ class WritePaperPhraseViewController: UIViewController {
 
 		label.text = S.WritePaperPhrase.instruction.localize()
 		label.textAlignment = .center
-		label.textColor = .white
+        label.textColor = BrainwalletUIColor.content
 
 		stepLabel.text = String(format: S.WritePaperPhrase.step.localize(), 1, phraseViews.count)
 		stepLabel.textAlignment = .center
 
-		stepLabel.textColor = UIColor(white: 170.0 / 255.0, alpha: 1.0)
-
+        stepLabel.textColor = BrainwalletUIColor.content
 		addSubviews()
 		addConstraints()
 		addButtonTargets()

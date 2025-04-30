@@ -132,16 +132,7 @@ class UpdatePinViewController: UIViewController, Subscriber {
 		header.textColor = BrainwalletUIColor.content
 		instruction.textColor = BrainwalletUIColor.content
 		caption.textColor = BrainwalletUIColor.content
-		if #available(iOS 11.0, *) {
-			guard let mainColor = UIColor(named: "mainColor")
-			else {
-				NSLog("ERROR: Custom color not found")
-				return
-			}
-			view.backgroundColor = mainColor
-		} else {
-			view.backgroundColor = BrainwalletUIColor.surface
-		}
+        view.backgroundColor = BrainwalletUIColor.surface
 		header.text = isCreatingPin ? S.UpdatePin.createTitle.localize() : S.UpdatePin.updateTitle.localize()
 		instruction.text = isCreatingPin ? S.UpdatePin.createInstruction.localize() : S.UpdatePin.enterCurrent.localize()
 

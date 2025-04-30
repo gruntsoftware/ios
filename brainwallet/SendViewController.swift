@@ -80,7 +80,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 		// polish parameters
 		memoCell.backgroundColor = BrainwalletUIColor.surface
-        amountView.view.backgroundColor = BrainwalletUIColor.content
+        amountView.view.backgroundColor = BrainwalletUIColor.surface
 
 		view.addSubview(sendAddressCell)
 		view.addSubview(memoCell)
@@ -227,7 +227,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 		let balanceOutput = String(format: S.Send.balance.localize(), balanceText)
 		var combinedFeesOutput = ""
-        var balanceColor: UIColor = BrainwalletUIColor.gray
+        var balanceColor: UIColor = BrainwalletUIColor.content
 
 		/// Check the amount is greater than zero and amount satoshis are not nil
 		if let currentRate = currentRate,
@@ -259,7 +259,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			combinedFeesOutput = "(\(S.Send.networkFee.localize()) + \(S.Send.serviceFee.localize())): \(networkFeeAmount) + \(serviceFeeAmount) = \(totalFeeAmount)"
 
 			if enteredAmount.rawValue > sendTotal || enteredAmount.rawValue > balance {
-                balanceColor = BrainwalletUIColor.warn
+                balanceColor = BrainwalletUIColor.error
 			}
 		}
 

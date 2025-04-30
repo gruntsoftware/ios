@@ -1,9 +1,6 @@
 /* About screen website label */
 "About.blog" = "веб-сайт";
 
-/* About screen footer */
-"About.footer" = "Зроблено командою Brainwallet\of\Litecoin Foundation\n%1$@";
-
 /* Privay Policy button label */
 "About.privacy" = "Політика конфіденційності";
 
@@ -927,9 +924,6 @@
 
 /* Start view tagline */
 "StartViewController.tagline" = "Найбезпечніший і найбезпечніший спосіб використання Litecoin.";
-
-/* Support the Litecoin Foundation */
-"SupportTheFoundation.title" = "Підтримайте Litecoin Foundation";
 
 /* Syncing view connection state header text */
 "SyncingHeader.connecting" = "Підключення...";

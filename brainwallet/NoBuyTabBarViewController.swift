@@ -120,7 +120,7 @@ class NoBuyTabBarViewController: UIViewController, Subscriber, Trackable, UITabB
 		walletBalanceLabel.text = S.ManageWallet.balance.localize() + ":"
 
 		headerView.backgroundColor = BrainwalletUIColor.surface
-		tabBar.barTintColor = BrainwalletUIColor.surface
+        tabBar.barTintColor = BrainwalletUIColor.grape
 		containerView.backgroundColor = BrainwalletUIColor.surface
 		view.backgroundColor = BrainwalletUIColor.surface
 	}
@@ -138,7 +138,7 @@ class NoBuyTabBarViewController: UIViewController, Subscriber, Trackable, UITabB
 
 		for (_, view) in priceLabelArray.enumerated() {
 			view?.backgroundColor = .clear
-			view?.textColor = .white
+            view?.textColor = BrainwalletUIColor.content
 		}
 
 		primaryLabel.font = UIFont.barlowSemiBold(size: largeFontSize)

@@ -3,7 +3,6 @@
 //  brainwallet
 //
 //  Created by Kerry Washington on 12/25/23.
-//  Copyright © 2023 Litecoin Foundation. All rights reserved.
 //
 import SwiftUI
 

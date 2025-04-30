@@ -159,12 +159,12 @@ struct StartView: View {
 						{
 							HStack {
 								Button(startViewModel
-									.yesLabel[startViewModel.currentLanguage.rawValue], role: .cancel)
+                                    .yesLabel[startViewModel.currentLanguage.rawValue], role: .cancel)
 								{
 									// Changes and Dismisses
 									startViewModel.setLanguage(code: startViewModel.currentLanguage.code)
 									selectedLang = false
-								}
+                                }
 								Button(startViewModel
 									.cancelLabel[startViewModel.currentLanguage.rawValue], role: .destructive)
 								{
@@ -172,7 +172,7 @@ struct StartView: View {
 									selectedLang = false
 								}
 							}
-						}
+                        }
 						Spacer()
 
                         Button(action: {

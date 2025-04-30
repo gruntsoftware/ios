@@ -883,9 +883,6 @@
 /* Argument is date */
 "StartPaperPhrase.date" = "Senast skrev du ner din ordnyckel på %1$@";
 
-/* Support the Litecoin Foundation */
-"SupportTheFoundation.title" = "Stöd Litecoin Foundation";
-
 /* Syncing view connection state header text */
 "SyncingHeader.connecting" = "Ansluter...";
 

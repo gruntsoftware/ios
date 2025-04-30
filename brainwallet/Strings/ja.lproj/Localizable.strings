@@ -928,9 +928,6 @@
 /* Start view tagline */
 "StartViewController.tagline" = "最も安全にリテコインを使う手段。";
 
-/* Support the Litecoin Foundation */
-"SupportTheFoundation.title" = "Litecoin基金を支援する";
-
 /* Syncing view connection state header text */
 "SyncingHeader.connecting" = "接続しています...";
 

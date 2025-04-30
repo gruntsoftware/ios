@@ -17,10 +17,10 @@ class PhraseView: UIView {
 	private func setupSubviews() {
 		addSubview(label)
 		label.constrainToCenter()
-		label.textColor = .white
+        label.textColor = BrainwalletUIColor.content
 		label.adjustsFontSizeToFitWidth = true
 		label.text = phrase
-		label.font = UIFont.customBold(size: 30.0)
+        label.font = UIFont.barlowSemiBold(size: 30.0)
         backgroundColor =  BrainwalletUIColor.surface
 		layer.cornerRadius = 10.0
 	}
