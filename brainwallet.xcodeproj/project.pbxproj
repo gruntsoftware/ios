@@ -52,6 +52,17 @@
 		2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2492829B2DAC22B00088528E /* BIP39Words.plist */; };
 		249C45DC2D93F23F00E9C3B0 /* service-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 249C45DB2D93F23F00E9C3B0 /* service-data.plist */; };
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
+		24B0652A2DC6135900B5E000 /* WalletBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065292DC6134C00B5E000 /* WalletBalanceView.swift */; };
+		24B0652E2DC61E2F00B5E000 /* NewTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0652D2DC61E2100B5E000 /* NewTransactionsView.swift */; };
+		24B065352DC627F000B5E000 /* NewMainHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065342DC627E500B5E000 /* NewMainHostingController.swift */; };
+		24B065372DC6281D00B5E000 /* NewMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065362DC6281D00B5E000 /* NewMainViewModel.swift */; };
+		24B065392DC6282100B5E000 /* NewMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065382DC6282100B5E000 /* NewMainView.swift */; };
+		24B0653B2DC6433800B5E000 /* SimpleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653A2DC6433000B5E000 /* SimpleHeaderView.swift */; };
+		24B0653D2DC6476A00B5E000 /* NewSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653C2DC6476700B5E000 /* NewSendView.swift */; };
+		24B065402DC647F400B5E000 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653F2DC647F000B5E000 /* GameView.swift */; };
+		24B065422DC6484900B5E000 /* NewReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065412DC6484300B5E000 /* NewReceiveView.swift */; };
+		24C639CA2DC69EA60014E6DD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C639C92DC69EA20014E6DD /* SettingsView.swift */; };
+		24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */; };
 		24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D91D0A2166923E0077A619 /* UserNotifications.framework */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
@@ -166,7 +177,6 @@
 		C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D07A2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift */; };
 		C312D3902D7DC27700BB97A4 /* GradientSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E62D7DC27700BB97A4 /* GradientSwitch.swift */; };
 		C312D3932D7DC27700BB97A4 /* EnterPhraseHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2442D7DC27700BB97A4 /* EnterPhraseHostingController.swift */; };
-		C312D3952D7DC27700BB97A4 /* NoBuyTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2842D7DC27700BB97A4 /* NoBuyTabBarViewController.swift */; };
 		C312D3962D7DC27700BB97A4 /* LAContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0722D7DC27700BB97A4 /* LAContext+Extensions.swift */; };
 		C312D39A2D7DC27700BB97A4 /* PinDigitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D28B2D7DC27700BB97A4 /* PinDigitView.swift */; };
 		C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A92D7DC27700BB97A4 /* WalletInfo.swift */; };
@@ -309,7 +319,6 @@
 		C312D4992D7DC27700BB97A4 /* Send.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D18A2D7DC27700BB97A4 /* Send.storyboard */; };
 		C312D49A2D7DC27700BB97A4 /* Receive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1892D7DC27700BB97A4 /* Receive.storyboard */; };
 		C312D49E2D7DC27700BB97A4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D18B2D7DC27700BB97A4 /* Settings.storyboard */; };
-		C312D49F2D7DC27700BB97A4 /* LFColorPalette.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C312D25E2D7DC27700BB97A4 /* LFColorPalette.xcassets */; };
 		C312D4A12D7DC27700BB97A4 /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C312D2522D7DC27700BB97A4 /* Icon.xcassets */; };
 		C312D4A32D7DC27700BB97A4 /* Es.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0B42D7DC27700BB97A4 /* Es.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
 		C312D4A42D7DC27700BB97A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1872D7DC27700BB97A4 /* Main.storyboard */; };
@@ -583,6 +592,17 @@
 		249C459E2D936D5900E9C3B0 /* test.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
 		249C45DA2D936DA600E9C3B0 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = ../core/module.modulemap; sourceTree = SOURCE_ROOT; };
 		249C45DB2D93F23F00E9C3B0 /* service-data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "service-data.plist"; sourceTree = "<group>"; };
+		24B065292DC6134C00B5E000 /* WalletBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalanceView.swift; sourceTree = "<group>"; };
+		24B0652D2DC61E2100B5E000 /* NewTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionsView.swift; sourceTree = "<group>"; };
+		24B065342DC627E500B5E000 /* NewMainHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainHostingController.swift; sourceTree = "<group>"; };
+		24B065362DC6281D00B5E000 /* NewMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainViewModel.swift; sourceTree = "<group>"; };
+		24B065382DC6282100B5E000 /* NewMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainView.swift; sourceTree = "<group>"; };
+		24B0653A2DC6433000B5E000 /* SimpleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleHeaderView.swift; sourceTree = "<group>"; };
+		24B0653C2DC6476700B5E000 /* NewSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSendView.swift; sourceTree = "<group>"; };
+		24B0653F2DC647F000B5E000 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		24B065412DC6484300B5E000 /* NewReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveView.swift; sourceTree = "<group>"; };
+		24C639C92DC69EA20014E6DD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
 		24D91D0A2166923E0077A619 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
@@ -793,7 +813,6 @@
 		C312D2572D7DC27700BB97A4 /* LanguageSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewModel.swift; sourceTree = "<group>"; };
 		C312D2582D7DC27700BB97A4 /* LaunchCardHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCardHostingController.swift; sourceTree = "<group>"; };
 		C312D25D2D7DC27700BB97A4 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
-		C312D25E2D7DC27700BB97A4 /* LFColorPalette.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LFColorPalette.xcassets; sourceTree = "<group>"; };
 		C312D25F2D7DC27700BB97A4 /* LFModalReceiveQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFModalReceiveQRViewController.swift; sourceTree = "<group>"; };
 		C312D2622D7DC27700BB97A4 /* LocaleChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleChangeView.swift; sourceTree = "<group>"; };
 		C312D2632D7DC27700BB97A4 /* LocaleChangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleChangeViewModel.swift; sourceTree = "<group>"; };
@@ -811,7 +830,6 @@
 		C312D2812D7DC27700BB97A4 /* MockSeeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSeeds.swift; sourceTree = "<group>"; };
 		C312D2822D7DC27700BB97A4 /* ModalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresenter.swift; sourceTree = "<group>"; };
 		C312D2832D7DC27700BB97A4 /* MoonpayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonpayHelper.swift; sourceTree = "<group>"; };
-		C312D2842D7DC27700BB97A4 /* NoBuyTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBuyTabBarViewController.swift; sourceTree = "<group>"; };
 		C312D2852D7DC27700BB97A4 /* NSNotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotificationNameExtension.swift; sourceTree = "<group>"; };
 		C312D2862D7DC27700BB97A4 /* PartnerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerData.swift; sourceTree = "<group>"; };
 		C312D2872D7DC27700BB97A4 /* PartnersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnersView.swift; sourceTree = "<group>"; };
@@ -1238,6 +1256,59 @@
 			path = Modules/core;
 			sourceTree = "<group>";
 		};
+		24B065252DC6121A00B5E000 /* Wallet Balance Classes */ = {
+			isa = PBXGroup;
+			children = (
+				24B065292DC6134C00B5E000 /* WalletBalanceView.swift */,
+			);
+			path = "Wallet Balance Classes";
+			sourceTree = "<group>";
+		};
+		24B065262DC6130200B5E000 /* Transactions Classes */ = {
+			isa = PBXGroup;
+			children = (
+				24B0652D2DC61E2100B5E000 /* NewTransactionsView.swift */,
+				C312D2BF2D7DC27700BB97A4 /* TransactionsViewModel.swift */,
+				24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */,
+			);
+			path = "Transactions Classes";
+			sourceTree = "<group>";
+		};
+		24B065332DC627D200B5E000 /* New Main Classes */ = {
+			isa = PBXGroup;
+			children = (
+				24B065382DC6282100B5E000 /* NewMainView.swift */,
+				24B0653A2DC6433000B5E000 /* SimpleHeaderView.swift */,
+				24B065362DC6281D00B5E000 /* NewMainViewModel.swift */,
+				24B065342DC627E500B5E000 /* NewMainHostingController.swift */,
+			);
+			path = "New Main Classes";
+			sourceTree = "<group>";
+		};
+		24B0653E2DC647DC00B5E000 /* Game Classes */ = {
+			isa = PBXGroup;
+			children = (
+				24B0653F2DC647F000B5E000 /* GameView.swift */,
+			);
+			path = "Game Classes";
+			sourceTree = "<group>";
+		};
+		24B065432DC6484C00B5E000 /* Receive Cells */ = {
+			isa = PBXGroup;
+			children = (
+				24B065412DC6484300B5E000 /* NewReceiveView.swift */,
+			);
+			path = "Receive Cells";
+			sourceTree = "<group>";
+		};
+		24C639C82DC69E940014E6DD /* Settings Classes */ = {
+			isa = PBXGroup;
+			children = (
+				24C639C92DC69EA20014E6DD /* SettingsView.swift */,
+			);
+			path = "Settings Classes";
+			sourceTree = "<group>";
+		};
 		24DF5CBD2D934E29009A426C /* launch-resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1407,6 +1478,7 @@
 			children = (
 				C312D1D82D7DC27700BB97A4 /* AddressCell.swift */,
 				C312D1D92D7DC27700BB97A4 /* DescriptionSendCell.swift */,
+				24B0653C2DC6476700B5E000 /* NewSendView.swift */,
 				C312D1DA2D7DC27700BB97A4 /* SendCell.swift */,
 			);
 			path = SendViewCells;
@@ -1415,11 +1487,24 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				24C639C82DC69E940014E6DD /* Settings Classes */,
+				24B0653E2DC647DC00B5E000 /* Game Classes */,
 				248D87B92DB4E3C900745552 /* Colors */,
 				24F64C212DAFBE49001DC9B6 /* Lottie Data */,
 				24F64C1B2DAFB362001DC9B6 /* Start Welcome Classes */,
+				24B065252DC6121A00B5E000 /* Wallet Balance Classes */,
+				24B065432DC6484C00B5E000 /* Receive Cells */,
+				24B065332DC627D200B5E000 /* New Main Classes */,
+				24B065262DC6130200B5E000 /* Transactions Classes */,
 				2416CE552DA90C8B00FFBD10 /* Legacy BRClasses */,
+				C312D1DB2D7DC27700BB97A4 /* SendViewCells */,
+				C312D0962D7DC27700BB97A4 /* Fonts */,
+				C312D0C72D7DC27700BB97A4 /* Sounds */,
+				C312D18E2D7DC27700BB97A4 /* Storyboards */,
+				C312D1A22D7DC27700BB97A4 /* Strings */,
 				24DF5CBD2D934E29009A426C /* launch-resources */,
+				C312D1D52D7DC27700BB97A4 /* AnimatedIcons */,
+				C312D1D72D7DC27700BB97A4 /* PinPadCells */,
 				24618EE92D90435200A878AC /* BRCore.swift */,
 				C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */,
 				C312D06C2D7DC27700BB97A4 /* Async.swift */,
@@ -1487,9 +1572,6 @@
 				C312D1CF2D7DC27700BB97A4 /* Amount.swift */,
 				C312D1D02D7DC27700BB97A4 /* Transaction.swift */,
 				C312D1D12D7DC27700BB97A4 /* TransactionDirection.swift */,
-				C312D1D52D7DC27700BB97A4 /* AnimatedIcons */,
-				C312D1D72D7DC27700BB97A4 /* PinPadCells */,
-				C312D1DB2D7DC27700BB97A4 /* SendViewCells */,
 				C312D1DC2D7DC27700BB97A4 /* AboutCell.swift */,
 				C312D1DD2D7DC27700BB97A4 /* AlertView.swift */,
 				C312D1DE2D7DC27700BB97A4 /* BlinkingView.swift */,
@@ -1530,10 +1612,6 @@
 				C312D1CC2D7DC27700BB97A4 /* WelcomeViewController.swift */,
 				C312D1CD2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift */,
 				C312D5132D7DC2EA00BB97A4 /* PrivacyInfo.xcprivacy */,
-				C312D0962D7DC27700BB97A4 /* Fonts */,
-				C312D0C72D7DC27700BB97A4 /* Sounds */,
-				C312D18E2D7DC27700BB97A4 /* Storyboards */,
-				C312D1A22D7DC27700BB97A4 /* Strings */,
 				C312D1FD2D7DC27700BB97A4 /* AddressFieldView.swift */,
 				C312D1FE2D7DC27700BB97A4 /* AlertFailureView.swift */,
 				C312D2002D7DC27700BB97A4 /* AppDelegate.swift */,
@@ -1585,7 +1663,6 @@
 				C312D2572D7DC27700BB97A4 /* LanguageSelectionViewModel.swift */,
 				C312D2582D7DC27700BB97A4 /* LaunchCardHostingController.swift */,
 				C312D25D2D7DC27700BB97A4 /* LaunchView.swift */,
-				C312D25E2D7DC27700BB97A4 /* LFColorPalette.xcassets */,
 				C312D25F2D7DC27700BB97A4 /* LFModalReceiveQRViewController.swift */,
 				C312D2622D7DC27700BB97A4 /* LocaleChangeView.swift */,
 				C312D2632D7DC27700BB97A4 /* LocaleChangeViewModel.swift */,
@@ -1603,7 +1680,6 @@
 				C312D2812D7DC27700BB97A4 /* MockSeeds.swift */,
 				C312D2822D7DC27700BB97A4 /* ModalPresenter.swift */,
 				C312D2832D7DC27700BB97A4 /* MoonpayHelper.swift */,
-				C312D2842D7DC27700BB97A4 /* NoBuyTabBarViewController.swift */,
 				C312D2852D7DC27700BB97A4 /* NSNotificationNameExtension.swift */,
 				C312D2862D7DC27700BB97A4 /* PartnerData.swift */,
 				C312D2872D7DC27700BB97A4 /* PartnersView.swift */,
@@ -1654,7 +1730,6 @@
 				C312D2BC2D7DC27700BB97A4 /* TransactionManager.swift */,
 				C312D2BD2D7DC27700BB97A4 /* TransactionModalView.swift */,
 				C312D2BE2D7DC27700BB97A4 /* TransactionsViewController.swift */,
-				C312D2BF2D7DC27700BB97A4 /* TransactionsViewModel.swift */,
 				C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */,
 				C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */,
 				C3236A002D7DE34D007039A1 /* URLController.swift */,
@@ -1957,7 +2032,6 @@
 				C312D49A2D7DC27700BB97A4 /* Receive.storyboard in Resources */,
 				24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */,
 				C312D49E2D7DC27700BB97A4 /* Settings.storyboard in Resources */,
-				C312D49F2D7DC27700BB97A4 /* LFColorPalette.xcassets in Resources */,
 				C312D4A12D7DC27700BB97A4 /* Icon.xcassets in Resources */,
 				C312D4A32D7DC27700BB97A4 /* Es.mp3 in Resources */,
 				C312D4A42D7DC27700BB97A4 /* Main.storyboard in Resources */,
@@ -2177,6 +2251,7 @@
 				24618EEA2D90436500A878AC /* BRCore.swift in Sources */,
 				C312D3312D7DC27700BB97A4 /* String+Additions.swift in Sources */,
 				C312D3352D7DC27700BB97A4 /* TransactionManager.swift in Sources */,
+				24B065402DC647F400B5E000 /* GameView.swift in Sources */,
 				C312D3362D7DC27700BB97A4 /* DescriptionSendCell.swift in Sources */,
 				C312D3372D7DC27700BB97A4 /* Types.swift in Sources */,
 				C312D3382D7DC27700BB97A4 /* NonScrollingCollectionView.swift in Sources */,
@@ -2207,6 +2282,7 @@
 				C312D3672D7DC27700BB97A4 /* SupportLitecoinFoundationViewModel.swift in Sources */,
 				C312D3682D7DC27700BB97A4 /* PINFieldView.swift in Sources */,
 				C312D3692D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift in Sources */,
+				24C639CA2DC69EA60014E6DD /* SettingsView.swift in Sources */,
 				C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */,
 				2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */,
 				2416CE6B2DA90D0D00FFBD10 /* BRSocketHelpers.c in Sources */,
@@ -2216,6 +2292,7 @@
 				2416CE6F2DA90D0D00FFBD10 /* BRTxOutputExtension.swift in Sources */,
 				2416CE702DA90D0D00FFBD10 /* BRAPIClient+Events.swift in Sources */,
 				2416CE712DA90D0D00FFBD10 /* BRWallet.swift in Sources */,
+				24B065372DC6281D00B5E000 /* NewMainViewModel.swift in Sources */,
 				2416CE722DA90D0D00FFBD10 /* BRTxInputExtension.swift in Sources */,
 				2416CE742DA90D0D00FFBD10 /* BRReplicatedKVStore.swift in Sources */,
 				2416CE752DA90D0D00FFBD10 /* BRAPIClient+KV.swift in Sources */,
@@ -2243,13 +2320,13 @@
 				C312D3842D7DC27700BB97A4 /* UIImage+Utils.swift in Sources */,
 				C312D3872D7DC27700BB97A4 /* StartPaperPhraseViewController.swift in Sources */,
 				C312D3882D7DC27700BB97A4 /* Brainwallet+Color.swift in Sources */,
+				24B0652A2DC6135900B5E000 /* WalletBalanceView.swift in Sources */,
 				C312D3892D7DC27700BB97A4 /* BartyCrouch.swift in Sources */,
 				C312D38D2D7DC27700BB97A4 /* AppDelegate.swift in Sources */,
 				24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */,
 				C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */,
 				C312D3902D7DC27700BB97A4 /* GradientSwitch.swift in Sources */,
 				C312D3932D7DC27700BB97A4 /* EnterPhraseHostingController.swift in Sources */,
-				C312D3952D7DC27700BB97A4 /* NoBuyTabBarViewController.swift in Sources */,
 				C312D3962D7DC27700BB97A4 /* LAContext+Extensions.swift in Sources */,
 				C312D39A2D7DC27700BB97A4 /* PinDigitView.swift in Sources */,
 				C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */,
@@ -2259,11 +2336,13 @@
 				C312D3A22D7DC27700BB97A4 /* SendAddressCellViewModel.swift in Sources */,
 				C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */,
 				C312D3B02D7DC27700BB97A4 /* BuyView.swift in Sources */,
+				24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */,
 				C312D3B22D7DC27700BB97A4 /* ScanViewController.swift in Sources */,
 				C312D3B32D7DC27700BB97A4 /* SettingsViewController.swift in Sources */,
 				C312D3B42D7DC27700BB97A4 /* AmountViewController.swift in Sources */,
 				C312D3B52D7DC27700BB97A4 /* UpdatePinViewController.swift in Sources */,
 				C312D3B62D7DC27700BB97A4 /* PaymentProtocol.swift in Sources */,
+				24B0653D2DC6476A00B5E000 /* NewSendView.swift in Sources */,
 				C312D3B72D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift in Sources */,
 				C312D3B92D7DC27700BB97A4 /* MenuButton.swift in Sources */,
 				C312D3BB2D7DC27700BB97A4 /* TransactionsViewModel.swift in Sources */,
@@ -2308,6 +2387,7 @@
 				C312D4002D7DC27700BB97A4 /* MessageUIPresenter.swift in Sources */,
 				C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */,
 				C312D4032D7DC27700BB97A4 /* ShadowButton.swift in Sources */,
+				24B0653B2DC6433800B5E000 /* SimpleHeaderView.swift in Sources */,
 				C312D4062D7DC27700BB97A4 /* IntroStepView.swift in Sources */,
 				C312D4072D7DC27700BB97A4 /* WipeEmptyWalletViewController.swift in Sources */,
 				C312D40A2D7DC27700BB97A4 /* EnterPhraseView.swift in Sources */,
@@ -2339,12 +2419,14 @@
 				C312D43D2D7DC27700BB97A4 /* SendCell.swift in Sources */,
 				C312D4402D7DC27700BB97A4 /* SeparatorCell.swift in Sources */,
 				C312D4412D7DC27700BB97A4 /* UIButton+BRWAdditions.swift in Sources */,
+				24B0652E2DC61E2F00B5E000 /* NewTransactionsView.swift in Sources */,
 				C312D4422D7DC27700BB97A4 /* WalletManager.swift in Sources */,
 				C312D4432D7DC27700BB97A4 /* ReceiveViewController.swift in Sources */,
 				C312D4452D7DC27700BB97A4 /* BlinkingView.swift in Sources */,
 				C312D4492D7DC27700BB97A4 /* AlertView.swift in Sources */,
 				C312D44E2D7DC27700BB97A4 /* StartView.swift in Sources */,
 				C312D44F2D7DC27700BB97A4 /* LWActivityIndicator.swift in Sources */,
+				24B065352DC627F000B5E000 /* NewMainHostingController.swift in Sources */,
 				C312D4502D7DC27700BB97A4 /* TransactionDirection.swift in Sources */,
 				C312D4512D7DC27700BB97A4 /* PromptModalViewController.swift in Sources */,
 				C312D4522D7DC27700BB97A4 /* CheckboxesStepView.swift in Sources */,
@@ -2359,12 +2441,14 @@
 				C312D4622D7DC27700BB97A4 /* UIViewController+BRWAdditions.swift in Sources */,
 				C312D4632D7DC27700BB97A4 /* PinPadCells.swift in Sources */,
 				C312D4662D7DC27700BB97A4 /* PaymentRequest.swift in Sources */,
+				24B065422DC6484900B5E000 /* NewReceiveView.swift in Sources */,
 				C312D4672D7DC27700BB97A4 /* SendAmountCell.swift in Sources */,
 				C312D4692D7DC27700BB97A4 /* CGContext+Additions.swift in Sources */,
 				C312D46D2D7DC27700BB97A4 /* DismissLoginAnimator.swift in Sources */,
 				C312D46E2D7DC27700BB97A4 /* SeedWordContainerView.swift in Sources */,
 				C312D46F2D7DC27700BB97A4 /* SignupWebViewModel.swift in Sources */,
 				C312D4712D7DC27700BB97A4 /* ApplicationController+Extension.swift in Sources */,
+				24B065392DC6282100B5E000 /* NewMainView.swift in Sources */,
 				C312D4732D7DC27700BB97A4 /* DefaultCurrencyViewController.swift in Sources */,
 				C312D4742D7DC27700BB97A4 /* SeedPhraseStepView.swift in Sources */,
 				C312D4752D7DC27700BB97A4 /* ApplicationController.swift in Sources */,

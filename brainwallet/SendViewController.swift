@@ -93,7 +93,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			memoCell.widthAnchor.constraint(equalTo: sendAddressCell.widthAnchor),
 			memoCell.topAnchor.constraint(equalTo: sendAddressCell.bottomAnchor),
 			memoCell.leadingAnchor.constraint(equalTo: sendAddressCell.leadingAnchor),
-			memoCell.heightAnchor.constraint(equalTo: memoCell.textView.heightAnchor, constant: C.padding[3]),
+            memoCell.constraint(.height, constant: 44.0),
 		])
 		memoCell.accessoryView.constrain([
 			memoCell.accessoryView.constraint(.width, constant: 0.0),
@@ -258,14 +258,17 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 			combinedFeesOutput = "(\(S.Send.networkFee.localize()) + \(S.Send.serviceFee.localize())): \(networkFeeAmount) + \(serviceFeeAmount) = \(totalFeeAmount)"
 
-			if enteredAmount.rawValue > sendTotal || enteredAmount.rawValue > balance {
+			if sendTotal > balance {
                 balanceColor = BrainwalletUIColor.error
 			}
+            else {
+                balanceColor = BrainwalletUIColor.content
+            }
 		}
 
 		let balanceStyle = [
 			NSAttributedString.Key.font: UIFont.customBody(size: 14.0),
-			NSAttributedString.Key.foregroundColor: balanceColor,
+            NSAttributedString.Key.foregroundColor: balanceColor
 		]
 
 		return (NSAttributedString(string: balanceOutput, attributes: balanceStyle), NSAttributedString(string: combinedFeesOutput, attributes: balanceStyle))

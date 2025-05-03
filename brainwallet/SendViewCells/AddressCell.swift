@@ -20,16 +20,7 @@ class AddressCell: UIView {
 	private let dividerView = UIView(color: BrainwalletUIColor.border)
 
 	private func setupViews() {
-		if #available(iOS 11.0, *) {
-			guard let textColor = UIColor(named: "labelTextColor")
-			else {
-				NSLog("ERROR: Main color")
-				return
-			}
-			textField.textColor = textColor
-		} else {
-			textField.textColor = BrainwalletUIColor.content
-		}
+        textField.textColor = BrainwalletUIColor.content
 		addSubviews()
 		addConstraints()
 		setInitialData()

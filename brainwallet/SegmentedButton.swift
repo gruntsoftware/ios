@@ -20,12 +20,12 @@ class SegmentedButton: UIControl {
 
 	private let title: String
 	private let type: SegmentedButtonType
-	private let label = UILabel(font: .customMedium(size: 13.0), color: .white)
+    private let label = UILabel(font: .customMedium(size: 13.0), color: BrainwalletUIColor.grape)
 
 	override var isHighlighted: Bool {
 		didSet {
 			if isHighlighted {
-				backgroundColor = UIColor(white: 1.0, alpha: 0.4)
+                backgroundColor = BrainwalletUIColor.content
 			} else {
 				backgroundColor = .clear
 			}

@@ -8,8 +8,6 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	@IBOutlet var tabBar: UITabBar!
 	@IBOutlet var settingsButton: UIButton!
 	@IBOutlet var walletBalanceLabel: UILabel!
-    @IBOutlet var newPriceView: UIView!
-    @IBOutlet var newTransactionsScrollView: UIScrollView!
     
 	var primaryBalanceLabel: UpdatingLabel?
 	var secondaryBalanceLabel: UpdatingLabel?
@@ -122,15 +120,9 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		walletBalanceLabel.text = S.ManageWallet.balance.localize() + ":"
 
 		headerView.backgroundColor = BrainwalletUIColor.surface
-        tabBar.barTintColor = BrainwalletUIColor.border
+        tabBar.barTintColor = BrainwalletUIColor.content.withAlphaComponent(0.01)
 		containerView.backgroundColor = BrainwalletUIColor.surface
 		view.backgroundColor = BrainwalletUIColor.surface
-        
-        
-        newPriceView.backgroundColor = BrainwalletUIColor.error
-        newPriceView.backgroundColor = BrainwalletUIColor.affirm
-        newTransactionsScrollView.backgroundColor = BrainwalletUIColor.warn
-        
 	}
 
 	private func configurePriceLabels() {
@@ -316,6 +308,10 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		localizeTabBar()
+        
+        guard let store = self.store,
+                let walletManager = self.walletManager else { return }
+     
 	}
 
 	func localizeTabBar() {
