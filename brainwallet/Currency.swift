@@ -6,7 +6,7 @@ class Currency {
 		print(" ::: \(code)")
 		let result = Locale.availableIdentifiers.map {
 			Locale(identifier: $0)
-		}.first { $0.currencyCode == code }
+        }.first { $0.currency?.identifier == code }
 		return result?.currencySymbol
 	}
 }

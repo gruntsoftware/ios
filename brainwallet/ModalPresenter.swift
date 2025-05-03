@@ -322,7 +322,7 @@ class ModalPresenter: Subscriber, Trackable {
 
 		menu.didTapSupport = { [weak self, weak menu] in
 			menu?.dismiss(animated: true, completion: {
-				let urlString = FoundationSupport.dashboard
+				let urlString = BrainwalletSupport.dashboard
 
 				guard let url = URL(string: urlString) else { return }
 
@@ -373,12 +373,14 @@ class ModalPresenter: Subscriber, Trackable {
 				#endif
 				return envName
 			}, callback: {}),
-			Setting(title: S.Settings.brainwalletPartners.localize(), callback: {
-				let partnerView = UIHostingController(rootView: PartnersView(viewModel: PartnerViewModel()))
-				settingsNav.pushViewController(partnerView, animated: true)
-			}),
-			Setting(title: S.Settings.socialLinks.localize(), callback: {
-				settingsNav.pushViewController(AboutViewController(), animated: true)
+			Setting(title: S.Settings.socialLinks.localize(), accessoryText: {
+                return "linktr.ee/brainwallet"
+            }, callback: {
+                let urlString = BrainwalletSocials.linktree
+                guard let url = URL(string: urlString) else { return }
+                LWAnalytics.logEventWithParameters(itemName: ._20250504_DTSM)
+                let vc = SFSafariViewController(url: url)
+                settingsNav.pushViewController(vc, animated: true)
 			}),
 
 			],

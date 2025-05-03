@@ -99,58 +99,44 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 				break
 			}
 		}
+        
+        guard let walletManager = self.walletManager
+         else {
+            return
+        }
+        
+        guard let tabVC = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "TabBarViewController")
+            as? TabBarViewController
+        else {
+            NSLog("TabBarViewController not intialized")
+            return
+        }
 
-		if userIsMoonPaySupported {
-			guard let tabVC = UIStoryboard(name: "Main", bundle: nil)
-				.instantiateViewController(withIdentifier: "TabBarViewController")
-				as? TabBarViewController
-			else {
-				NSLog("TabBarViewController not intialized")
-				return
-			}
+        tabVC.store = store
+        tabVC.walletManager = walletManager
+        tabVC.userIsMoonPaySupported = userIsMoonPaySupported
 
-			tabVC.store = store
-			tabVC.walletManager = walletManager
-			tabVC.userIsMoonPaySupported = userIsMoonPaySupported
+        addChildViewController(tabVC, layout: {
+            tabVC.view.constrain(toSuperviewEdges: nil)
+            tabVC.view.alpha = 0
+            tabVC.view.layoutIfNeeded()
+        })
 
-			addChildViewController(tabVC, layout: {
-				tabVC.view.constrain(toSuperviewEdges: nil)
-				tabVC.view.alpha = 0
-				tabVC.view.layoutIfNeeded()
-			})
-
-			UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
-				tabVC.view.alpha = 1
-			}) { _ in
-				NSLog("US MainView Controller presented")
-			}
-		} else {
-			guard let noBuyTabVC = UIStoryboard(name: "Main", bundle: nil)
-				.instantiateViewController(withIdentifier: "NoBuyTabBarViewController")
-				as? NoBuyTabBarViewController
-			else {
-				NSLog("TabBarViewController not intialized")
-				return
-			}
-
-			noBuyTabVC.store = store
-			noBuyTabVC.walletManager = walletManager
-
-			addChildViewController(noBuyTabVC, layout: {
-				noBuyTabVC.view.constrain(toSuperviewEdges: nil)
-				noBuyTabVC.view.alpha = 0
-				noBuyTabVC.view.layoutIfNeeded()
-			})
-
-			UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
-				noBuyTabVC.view.alpha = 1
-			}) { _ in
-				NSLog("US MainView Controller presented")
-			}
-		}
-//		delay(4.0) {
-//			self.appDelegate.pushNotifications.registerForRemoteNotifications()
-//		}
+        UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
+            tabVC.view.alpha = 1
+        }) { _ in
+            NSLog("US MainView Controller presented")
+        }
+        
+        
+// STASH FOR NEW UI
+//        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
+//
+//        addChildViewController(newMainViewHostingController, layout: {
+//            newMainViewHostingController.view.constrain(toSuperviewEdges: nil)
+//            newMainViewHostingController.view.layoutIfNeeded()
+//        })
 	}
 
 	private func addTemporaryStartupViews() {

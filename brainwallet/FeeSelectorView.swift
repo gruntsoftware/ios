@@ -24,7 +24,7 @@ class FeeSelector: UIView {
 	private let store: Store
 	private let header = UILabel(font: .barlowMedium(size: 16.0), color: BrainwalletUIColor.content)
 	private let subheader = UILabel(font: .barlowRegular(size: 14.0), color: BrainwalletUIColor.content)
-    private let feeMessageLabel = UILabel.wrapping(font: .barlowSemiBold(size: 14.0), color: BrainwalletUIColor.error)
+    private let feeMessageLabel = UILabel.wrapping(font: .barlowSemiBold(size: 14.0), color: BrainwalletUIColor.content)
 	private let control = UISegmentedControl(items: [S.FeeSelector.regular.localize(), S.FeeSelector.economy.localize(), S.FeeSelector.luxury.localize()])
 	private var bottomConstraint: NSLayoutConstraint?
 
@@ -34,7 +34,15 @@ class FeeSelector: UIView {
 		addSubview(subheader)
 		addSubview(feeMessageLabel)
 
-        control.tintColor = BrainwalletUIColor.background
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: BrainwalletUIColor.surface]
+        let normalTitleTextAttributes = [NSAttributedString.Key.foregroundColor: BrainwalletUIColor.gray]
+ 
+        UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes(normalTitleTextAttributes, for: .normal)
+
+        control.tintColor = BrainwalletUIColor.info
+        control.backgroundColor = BrainwalletUIColor.border
+        control.selectedSegmentTintColor = BrainwalletUIColor.info
 
 		header.constrain([
 			header.leadingAnchor.constraint(equalTo: leadingAnchor, constant: C.padding[2]),

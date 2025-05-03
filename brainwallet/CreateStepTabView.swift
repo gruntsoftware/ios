@@ -66,11 +66,3 @@ struct CreateStepTabView: View {
 		}
 	}
 }
-
-// #Preview {
-//	let store = Store()
-//	let wallet = WalletManager(store: Store())
-//
-//	CreateStepTabView(stepViews: [CreateStepView(createConfig: .intro),
-//	                              CreateStepView(createConfig: .checkboxes)])
-// }

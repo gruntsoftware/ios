@@ -1,8 +1,8 @@
 import UIKit
 
 enum PinPadColorStyle {
-	case white
-	case clear
+	case whitePinPadStyle
+	case clearPinPadStyle
 }
 
 enum KeyboardType {
@@ -76,7 +76,7 @@ class PinPadViewController: UICollectionViewController {
 
 	override func viewDidLoad() {
 		switch style {
-		case .white:
+        case .whitePinPadStyle:
 			switch keyboardType {
 			case .decimalPad:
 				collectionView?.backgroundColor = .clear
@@ -85,7 +85,7 @@ class PinPadViewController: UICollectionViewController {
 				collectionView?.backgroundColor = .clear
 				collectionView?.register(WhiteNumberPad.self, forCellWithReuseIdentifier: cellIdentifier)
 			}
-		case .clear:
+        case .clearPinPadStyle:
 			switch keyboardType {
 			case .decimalPad:
 				collectionView?.backgroundColor = .clear
@@ -312,9 +312,9 @@ class ClearNumberPad: GenericPinPadCell {
 		sublabel.textColor = BrainwalletUIColor.content
 
 		if isHighlighted {
-            backgroundColor = BrainwalletUIColor.surface
+            backgroundColor = BrainwalletUIColor.gray.withAlphaComponent(0.2)
 		} else {
-			backgroundColor = .clear
+			backgroundColor = BrainwalletUIColor.surface
 
 			if text == "" || text == deleteKeyIdentifier {
 				imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
@@ -338,10 +338,10 @@ class ClearDecimalPad: GenericPinPadCell {
 
 		if isHighlighted {
 			centerLabel.textColor = BrainwalletUIColor.content
-			imageView.tintColor = BrainwalletUIColor.content
+			imageView.tintColor = BrainwalletUIColor.warn
 		} else {
-			centerLabel.textColor = .white
-			imageView.tintColor = .white
+            centerLabel.textColor = BrainwalletUIColor.surface
+			imageView.tintColor = BrainwalletUIColor.surface
 		}
 	}
 
@@ -354,7 +354,7 @@ class ClearDecimalPad: GenericPinPadCell {
 class WhiteDecimalPad: GenericPinPadCell {
 	override func setAppearance() {
 		if isHighlighted {
-			centerLabel.backgroundColor = BrainwalletUIColor.border
+            centerLabel.backgroundColor = BrainwalletUIColor.gray
 			centerLabel.textColor = BrainwalletUIColor.content
 		} else {
             centerLabel.backgroundColor = BrainwalletUIColor.surface

@@ -56,19 +56,13 @@ class ModalHeaderView: UIView {
 	}
 
 	private func setColors() {
-		if #available(iOS 11.0, *),
-		   let textColor = UIColor(named: "inverseTextColor")
-		{
-			backgroundColor = textColor
-		} else {
-			backgroundColor = BrainwalletUIColor.surface
-		}
+        backgroundColor = BrainwalletUIColor.surface
 		switch style {
 		case .light:
-			title.textColor = .white
-			close.tintColor = .white
+            title.textColor = BrainwalletUIColor.content
+			close.tintColor = BrainwalletUIColor.content
 		case .dark:
-			border.backgroundColor = BrainwalletUIColor.border
+			border.backgroundColor = BrainwalletUIColor.surface
 		}
 	}
 

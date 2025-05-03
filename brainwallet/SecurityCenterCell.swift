@@ -7,28 +7,17 @@ class SecurityCenterCell: UIControl {
 
 	var isCheckHighlighted: Bool = false {
 		didSet {
-			check.tintColor = isCheckHighlighted ? BrainwalletUIColor.info : BrainwalletUIColor.content
+            check.tintColor = isCheckHighlighted ? BrainwalletUIColor.affirm : BrainwalletUIColor.gray
 		}
 	}
 
 	init(title: String, descriptionText: String) {
 		super.init(frame: .zero)
 		titleLabel.text = title
-
-		if #available(iOS 11.0, *) {
-			guard let headerTextColor = UIColor(named: "headerTextColor"),
-			      let labelTextColor = UIColor(named: "labelTextColor"),
-			      let backgroundColor = UIColor(named: "lfBackgroundColor")
-			else {
-				NSLog("ERROR: Custom colors not set")
-				return
-			}
-			check.tintColor = headerTextColor
-			titleLabel.textColor = labelTextColor
-			descriptionLabel.textColor = labelTextColor
-			self.backgroundColor = backgroundColor
-		}
-
+        check.tintColor = BrainwalletUIColor.affirm
+        titleLabel.textColor = BrainwalletUIColor.content
+        descriptionLabel.textColor = BrainwalletUIColor.content
+        self.backgroundColor = BrainwalletUIColor.surface
 		descriptionLabel.text = descriptionText
 		setup()
 	}
@@ -73,16 +62,16 @@ class SecurityCenterCell: UIControl {
 	override var isHighlighted: Bool {
 		didSet {
 			if isHighlighted {
-				backgroundColor = BrainwalletUIColor.background
+                backgroundColor = BrainwalletUIColor.affirm
 			} else {
-                backgroundColor = BrainwalletUIColor.border
+                backgroundColor = BrainwalletUIColor.gray
 			}
 		}
 	}
 
 	private var titleLabel = UILabel(font: .customBold(size: 13.0))
 	private var descriptionLabel = UILabel(font: .customBody(size: 13.0))
-	private var separator = UIView(color: BrainwalletUIColor.border)
+	private var separator = UIView(color: BrainwalletUIColor.gray)
 	private var check = UIButton(type: .system)
 
 	@available(*, unavailable)

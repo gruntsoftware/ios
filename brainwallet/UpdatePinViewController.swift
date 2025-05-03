@@ -30,7 +30,7 @@ class UpdatePinViewController: UIViewController, Subscriber {
 	private var instruction = UILabel.wrapping(font: .customBody(size: 14.0), color: BrainwalletUIColor.content)
 	private var caption = UILabel.wrapping(font: .customBody(size: 13.0), color: BrainwalletUIColor.content)
 	private var pinView: PinView
-	private let pinPad = PinPadViewController(style: .clear, keyboardType: .pinPad, maxDigits: 0)
+    private let pinPad = PinPadViewController(style: .clearPinPadStyle, keyboardType: .pinPad, maxDigits: 0)
 	private let spacer = UIView()
 	private let store: Store
 	private let walletManager: WalletManager

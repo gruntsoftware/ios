@@ -25,7 +25,6 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 	private func fetchCurrentPrice() {
 		guard let currentRate = store?.state.currentRate
 		else {
-			print(":::Error: Rate not fetched ")
 			return
 		}
 
@@ -49,6 +48,7 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 		store.subscribe(self, selector: { $0.currentRate != $1.currentRate },
 		                callback: { _ in
 		                	self.fetchCurrentPrice()
+            print(":::LockModel fetch current price")
 		                })
 	}
 }

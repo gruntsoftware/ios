@@ -51,7 +51,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 	}()
 
 	private var headerView: UIHostingController<LockScreenHeaderView>
-	private let pinPadViewController = PinPadViewController(style: .clear, keyboardType: .pinPad, maxDigits: 0)
+    private let pinPadViewController = PinPadViewController(style: .clearPinPadStyle, keyboardType: .pinPad, maxDigits: 0)
 	private let pinViewContainer = UIView()
 	private var pinView: PinView?
 	private let isPresentedForLock: Bool
