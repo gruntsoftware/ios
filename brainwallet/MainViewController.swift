@@ -51,26 +51,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		navigationController?.navigationBar.barTintColor = BrainwalletUIColor.surface
 		loginView.delegate = self
 
-		// detect jailbreak so we can throw up an idiot warning, in viewDidLoad so it can't easily be swizzled out
-		if !E.isSimulator {
-			var s = stat()
-			var isJailbroken = (stat("/bin/sh", &s) == 0) ? true : false
-			for i in 0 ..< _dyld_image_count() {
-				guard !isJailbroken else { break }
-				// some anti-jailbreak detection tools re-sandbox apps, so do a secondary check for any MobileSubstrate dyld images
-				if strstr(_dyld_get_image_name(i), "MobileSubstrate") != nil {
-					isJailbroken = true
-				}
-			}
-
-			NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
-			                                       object: nil,
-			                                       queue: nil)
-			{ _ in
-				self.showJailbreakWarnings(isJailbroken: isJailbroken)
-			}
-		}
-
 		NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification,
 		                                       object: nil,
 		                                       queue: nil)
@@ -181,22 +161,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 				self.blurView.constrain(toSuperviewEdges: nil)
 			}
 		}
-	}
-
-	private func showJailbreakWarnings(isJailbroken: Bool) {
-		guard isJailbroken else { return }
-		let totalSent = walletManager?.wallet?.totalSent ?? 0
-		let message = totalSent > 0 ? S.JailbreakWarnings.messageWithBalance.localize() : S.JailbreakWarnings.messageWithBalance.localize()
-		let alert = UIAlertController(title: S.JailbreakWarnings.title.localize(), message: message, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: S.JailbreakWarnings.ignore.localize(), style: .default, handler: nil))
-		if totalSent > 0 {
-			alert.addAction(UIAlertAction(title: S.JailbreakWarnings.wipe.localize(), style: .default, handler: nil)) // TODO: - implement wipe
-		} else {
-			alert.addAction(UIAlertAction(title: S.JailbreakWarnings.close.localize(), style: .default, handler: { _ in
-				exit(0)
-			}))
-		}
-		present(alert, animated: true, completion: nil)
 	}
 
 	override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {

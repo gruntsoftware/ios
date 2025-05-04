@@ -3,6 +3,10 @@ import Foundation
 import SwiftUI
 import UIKit
 
+enum VoidQRState {
+    
+}
+
 class LockScreenViewModel: ObservableObject, Subscriber {
 	// MARK: - Combine Variables
 
@@ -11,6 +15,16 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 
 	@Published
 	var currencyCode: String = ""
+    
+    @Published
+    var userPrefersDarkMode = false
+    
+    @Published
+    var userWantsToDelete = false
+    
+    @Published
+    var userDidTapQR: Bool?
+    
 
 	// MARK: - Public Variables
 
@@ -48,7 +62,6 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 		store.subscribe(self, selector: { $0.currentRate != $1.currentRate },
 		                callback: { _ in
 		                	self.fetchCurrentPrice()
-            print(":::LockModel fetch current price")
 		                })
 	}
 }

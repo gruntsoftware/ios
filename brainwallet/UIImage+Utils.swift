@@ -4,7 +4,7 @@ import UIKit
 private let inputImageKey = "inputImage"
 
 extension UIImage {
-	static func qrCode(data: Data, color: CIColor) -> UIImage? {
+    static func qrCode(data: Data, color: CIColor) -> UIImage? {
 		let qrFilter = CIFilter(name: "CIQRCodeGenerator")
 		let maskFilter = CIFilter(name: "CIMaskToAlpha")
 		let invertFilter = CIFilter(name: "CIColorInvert")

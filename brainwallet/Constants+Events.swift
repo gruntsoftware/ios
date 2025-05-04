@@ -244,5 +244,8 @@ enum CustomEvent: String {
     /// Did Tap to Socials media
     case _20250504_DTSM = "did_tap_to_socials_media"
     
+    /// Did change theme preference
+    case _20250504_DCTP = "did_change_theme_preference"
+    
     
 }
