@@ -385,6 +385,9 @@ enum S {
         static let brainwalletPartners = Localization(key: "Settings.brainwallet.partners", value: "Brainwallet Partners:", comment: "Brainwallet Partners")
         static let currentLocale = Localization(key: "Settings.currentLocale", value: "Current Locale:", comment: "Current Locale")
         static let changeLanguageMessage = Localization(key: "Settings.ChangeLanguage.alertMessage", value: nil, comment: nil)
+        static let userPrefersDarkMode = Localization(key: "Settings.userPrefersDarkMode", value: "Use Dark mode:", comment: "Use dark mode")
+        static let setDarkMode = Localization(key: "Settings.setDarkMode", value: " Set Dark Mode", comment: "Set dark mode")
+
     }
     
     enum About {

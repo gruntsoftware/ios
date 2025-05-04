@@ -1,4 +1,5 @@
 import Firebase
+import Combine
 import LocalAuthentication
 import SwiftUI
 import UIKit
@@ -21,6 +22,11 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 	}
 
 	var shouldSelfDismiss = false
+    
+    var lockScreenViewModel: LockScreenViewModel
+    
+    private var cancellables = Set<AnyCancellable>()
+
 
 	init(store: Store, isPresentedForLock: Bool, walletManager: WalletManager? = nil) {
 		self.store = store
@@ -31,8 +37,9 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 			pinView = PinView(style: .login, length: store.state.pinLength)
 		}
 
-		let viewModel = LockScreenViewModel(store: store)
-		headerView = UIHostingController(rootView: LockScreenHeaderView(viewModel: viewModel))
+        lockScreenViewModel = LockScreenViewModel(store: store)
+		headerView = UIHostingController(rootView: LockScreenHeaderView(viewModel: lockScreenViewModel))
+        footerView = UIHostingController(rootView: LockScreenFooterView(viewModel: lockScreenViewModel))
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -51,6 +58,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 	}()
 
 	private var headerView: UIHostingController<LockScreenHeaderView>
+    private var footerView: UIHostingController<LockScreenFooterView>
     private let pinPadViewController = PinPadViewController(style: .clearPinPadStyle, keyboardType: .pinPad, maxDigits: 0)
 	private let pinViewContainer = UIView()
 	private var pinView: PinView?
@@ -77,37 +85,40 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		return image
 	}()
 
-	private let biometricsButton: UIButton = {
-		let button = UIButton(type: .system)
-        button.tintColor = BrainwalletUIColor.content
-		button.setImage(LAContext.biometricType() == .face ? #imageLiteral(resourceName: "FaceId") : #imageLiteral(resourceName: "TouchId"), for: .normal)
-		button.layer.borderColor = BrainwalletUIColor.content.cgColor
-		button.layer.borderWidth = 1.0
-		button.layer.cornerRadius = squareButtonSize / 2.0
-		button.layer.masksToBounds = true
-		button.accessibilityLabel = LAContext.biometricType() == .face ? S.UnlockScreen.faceIdText.localize() : S.UnlockScreen.touchIdText.localize()
-		return button
-	}()
-
-	private let showLTCAddressButton: UIButton = {
-		let button = UIButton(type: .system)
-        button.tintColor = BrainwalletUIColor.content
-		button.setImage(#imageLiteral(resourceName: "genericqricon"), for: .normal)
-		button.layer.masksToBounds = true
-		return button
-	}()
-
 	override func viewDidLoad() {
 		checkWalletBalance()
 		addSubviews()
 		addConstraints()
-		addBiometricsButton()
+		
 
 		addPinPadCallback()
 		if pinView != nil {
 			addPinView()
 		}
-		addWipeWalletView()
+        
+        
+        lockScreenViewModel.$userPrefersDarkMode.sink { [weak self] newValue in
+            
+            self?.updateTheme(shouldBeDark: newValue)
+            
+        }.store(in: &cancellables)
+        
+        lockScreenViewModel.$userWantsToDelete.sink { [weak self] newBool in
+            if newBool {
+                self?.wipeTapped()
+            }
+        }.store(in: &cancellables)
+        
+        lockScreenViewModel.$userDidTapQR.sink { [weak self] newBool in
+         
+            if let didTap = newBool {
+                
+                   print("::: userDidTapQR \(didTap)")
+                self?.showLTCAddress()
+            }
+        }.store(in: &cancellables)
+        
+      
 		disabledView.didTapReset = { [weak self] in
 			guard let store = self?.store else { return }
 			guard let walletManager = self?.walletManager else { return }
@@ -150,8 +161,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 			biometricsTapped()
 		}
 
-		addShowAddressButton()
-
 		if !isResetting {
 			lockIfNeeded()
 		}
@@ -167,9 +176,9 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		pinViewContainer.addSubview(pinView)
 
 		logo.constrain([
-            logo.topAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.frame.size.height * 0.3),
+            logo.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.size.height * 0.15),
 			logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logo.constraint(.width, constant: view.frame.width * 0.65),
+            logo.constraint(.width, constant: view.frame.width * 0.4),
 		])
 		enterPINLabel.constrain([
 			enterPINLabel.topAnchor.constraint(equalTo: pinView.topAnchor, constant: -40),
@@ -189,8 +198,8 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		view.addSubview(headerView.view)
 		view.addSubview(pinViewContainer)
 		view.addSubview(logo)
-		view.addSubview(versionLabel)
 		view.addSubview(enterPINLabel)
+        view.addSubview(footerView.view)
 
 		pinPadBackground.backgroundColor = .clear
 		if walletManager != nil {
@@ -211,7 +220,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 
 		if walletManager != nil {
 			addChildViewController(pinPadViewController, layout: {
-				pinPadBottom = pinPadViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120)
+				pinPadBottom = pinPadViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -140)
 				pinPadViewController.view.constrain([
 					pinPadViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 					pinPadViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -221,13 +230,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 			})
 		}
 		pinViewContainer.constrain(toSuperviewEdges: nil)
-
-		versionLabel.constrain([
-			versionLabel.constraint(.bottom, toView: view, constant: -15),
-			versionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			versionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			versionLabel.heightAnchor.constraint(equalToConstant: 24.0),
-		])
 
 		if walletManager != nil {
 			pinPadBackground.constrain([
@@ -243,65 +245,15 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 			])
 			activityView.startAnimating()
 		}
+        
+        footerView.view.constrain([
+            footerView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
+            footerView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            footerView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            footerView.view.heightAnchor.constraint(equalToConstant: 60.0),
+        ])
 
 		enterPINLabel.text = S.UnlockScreen.enterPIN.localize()
-		versionLabel.text = AppVersion.string
-		versionLabel.textAlignment = .center
-	}
-
-	private func deviceTopConstraintConstant() -> CGFloat {
-		let screenHeight = E.screenHeight
-		var constant = 0.0
-		if screenHeight <= 640 {
-			constant = 35
-		} else if screenHeight > 640, screenHeight < 800 {
-			constant = 45
-		} else {
-			constant = 55
-		}
-		return C.padding[1] + CGFloat(constant)
-	}
-
-	private func addWipeWalletView() {
-		view.addSubview(wipeBannerButton)
-		wipeBannerButton.translatesAutoresizingMaskIntoConstraints = true
-		wipeBannerButton.backgroundColor = .clear
-		wipeBannerButton.adjustsImageWhenHighlighted = true
-
-		wipeBannerButton.constrain([
-			wipeBannerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -35),
-			wipeBannerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			wipeBannerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			wipeBannerButton.heightAnchor.constraint(equalToConstant: 60),
-		])
-
-		wipeBannerButton.setTitle(S.WipeWallet.emptyWallet.localize(), for: .normal)
-		wipeBannerButton.setTitleColor(BrainwalletUIColor.content.withAlphaComponent(0.7), for: .normal)
-		wipeBannerButton.titleLabel?.font = .barlowSemiBold(size: 17)
-		wipeBannerButton.addTarget(self, action: #selector(wipeTapped), for: .touchUpInside)
-	}
-
-	private func addBiometricsButton() {
-		guard shouldUseBiometrics else { return }
-		view.addSubview(biometricsButton)
-		biometricsButton.addTarget(self, action: #selector(biometricsTapped), for: .touchUpInside)
-		biometricsButton.constrain([
-			biometricsButton.widthAnchor.constraint(equalToConstant: squareButtonSize),
-			biometricsButton.heightAnchor.constraint(equalToConstant: squareButtonSize),
-			biometricsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: C.padding[2]),
-			biometricsButton.topAnchor.constraint(equalTo: view.topAnchor, constant: headerHeight + C.padding[2]),
-		])
-	}
-
-	private func addShowAddressButton() {
-		view.addSubview(showLTCAddressButton)
-		showLTCAddressButton.addTarget(self, action: #selector(showLTCAddress), for: .touchUpInside)
-		showLTCAddressButton.constrain([
-			showLTCAddressButton.widthAnchor.constraint(equalToConstant: squareButtonSize),
-			showLTCAddressButton.heightAnchor.constraint(equalToConstant: squareButtonSize),
-			showLTCAddressButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -C.padding[2]),
-			showLTCAddressButton.topAnchor.constraint(equalTo: view.topAnchor, constant: headerHeight + C.padding[2]),
-		])
 	}
 
 	private func addPinPadCallback() {
@@ -414,9 +366,21 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		})
 	}
 
+    @objc func updateTheme(shouldBeDark: Bool) {
+        UserDefaults.standard.set(shouldBeDark, forKey: userDidPreferDarkModeKey)
+        UserDefaults.standard.synchronize()
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        appDelegate.updatePreferredTheme()
+    }
+    
 	@objc func showLTCAddress() {
 		guard !isWalletDisabled else { return }
 		store.perform(action: RootModalActions.Present(modal: .loginAddress))
+        
+        self.lockScreenViewModel.userDidTapQR = nil
 	}
 
 	@objc func wipeTapped() {
