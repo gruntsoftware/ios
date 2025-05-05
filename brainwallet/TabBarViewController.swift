@@ -26,7 +26,6 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	var updateTimer: Timer?
 	var store: Store?
 	var walletManager: WalletManager?
-	var userIsMoonPaySupported: Bool?
 	var exchangeRate: Rate? {
 		didSet { setBalances() }
 	}
@@ -61,7 +60,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		updateTimer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { _ in
 			self.setBalances()
 		}
-
+        
 		guard let array = tabBar.items
 		else {
 			NSLog("ERROR: no items found")
@@ -310,10 +309,6 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		localizeTabBar()
-        
-        guard let store = self.store,
-                let walletManager = self.walletManager else { return }
-     
 	}
 
 	func localizeTabBar() {

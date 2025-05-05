@@ -18,6 +18,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	var walletManager: WalletManager? {
 		didSet {
 			guard let walletManager = walletManager else { return }
+            
 			if !walletManager.noWallet {
 				loginView.walletManager = walletManager
 				loginView.transitioningDelegate = loginTransitionDelegate
@@ -56,7 +57,9 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		                                       queue: nil)
 		{ _ in
 			if UserDefaults.writePaperPhraseDate != nil
-			{}
+			{
+                
+            }
 		}
 
 		addSubscriptions()
@@ -65,20 +68,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	}
 
 	func didUnlockLogin() {
-
-		// Check Locale - Assume unsupported if nil
-		let currentLocaleCountry = Locale.current.regionCode ?? "RU"
-		var userIsMoonPaySupported = true
-		for unsupportedLocale in UnsupportedCountries.allCases {
-			let truncatedCode = unsupportedLocale.localeCode.suffix(2)
-
-			if currentLocaleCountry == truncatedCode {
-				userIsMoonPaySupported = false
-				let unsupportedDict: [String: String] = ["unsupported_country": unsupportedLocale.localeCode]
-				LWAnalytics.logEventWithParameters(itemName: ._20240527_UBM, properties: unsupportedDict)
-				break
-			}
-		}
         
         guard let walletManager = self.walletManager
          else {
@@ -95,8 +84,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
         tabVC.store = store
         tabVC.walletManager = walletManager
-        tabVC.userIsMoonPaySupported = userIsMoonPaySupported
-
+         
         addChildViewController(tabVC, layout: {
             tabVC.view.constrain(toSuperviewEdges: nil)
             tabVC.view.alpha = 0

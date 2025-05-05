@@ -164,12 +164,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 	private func addPinView() {
 		guard let pinView = pinView else { return }
 		pinViewContainer.addSubview(pinView)
-
-//		logo.constrain([
-//            logo.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.size.height * 0.15),
-//			logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            logo.constraint(.width, constant: view.frame.width * 0.4),
-//		])
+        
 		enterPINLabel.constrain([
 			enterPINLabel.topAnchor.constraint(equalTo: pinView.topAnchor, constant: -40),
 			enterPINLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),

@@ -4,6 +4,7 @@ extension BRAPIClient {
 	func feePerKb(_ handler: @escaping (_ fees: Fees, _ error: String?) -> Void) {
         
         guard let url = URL(string: APIServer.baseUrl + "v1/fee-per-kb") else {
+            assertionFailure("APIServer call for fee-per-kb failed")
             return
         }
         let request = URLRequest(url: url)

@@ -96,60 +96,60 @@ private class KVStoreAdaptor: BRRemoteKVStoreAdaptor {
 	}
 
 	func keys(_ completionFunc: @escaping ([(String, UInt64, Date, BRRemoteKVStoreError?)], BRRemoteKVStoreError?) -> Void) {
-//		var req = URLRequest(url: client.url("/kv/_all_keys"))
-//		req.httpMethod = "GET"
-//		client.dataTaskWithRequest(req as URLRequest, authenticated: true, retryCount: 0) { dat, resp, err in
-//			if let err = err {
-//				self.client.log("[KV] KEYS err=\(err)")
-//				return completionFunc([], .unknown)
-//			}
-//
-//			guard let resp = resp, let dat = dat, resp.statusCode == 200 else {
-//				return completionFunc([], .unknown)
-//			}
-//
-//			// Data format validation (basic check)
-//			guard dat.count >= MemoryLayout<UInt32>.size else {
-//				self.client.log("Invalid data format. Too short.")
-//				return completionFunc([], .unknown)
-//			}
-//
-//			// data is encoded as:
-//			// LE32(num) + (num * (LEU8(keyLeng) + (keyLen * LEU32(char)) + LEU64(ver) + LEU64(msTs) + LEU8(del)))
-//			var i = UInt(MemoryLayout<UInt32>.size)
-//			let c = dat.uInt32(atOffset: 0)
-//			var items = [(String, UInt64, Date, BRRemoteKVStoreError?)]()
-//
-//			for _ in 0 ..< c {
-//				let keyLen = UInt(dat.uInt32(atOffset: i))
-//				i += UInt(MemoryLayout<UInt32>.size)
-//
-//				// Check if key length is within data bounds
-//				guard keyLen <= UInt(dat.count) - i else {
-//					self.client.log("Invalid data format. Key length exceeds data size.")
-//					return completionFunc([], .unknown)
-//				}
-//
-//				let range: Range<Int> = Int(i) ..< Int(i + keyLen)
-//
-//				guard let key = NSString(data: dat.subdata(in: range),
-//				                         encoding: String.Encoding.utf8.rawValue) as String?
-//				else {
-//					self.client.log("Well crap. Failed to decode a string.")
-//					return completionFunc([], .unknown)
-//				}
-//				i += keyLen
-//				let ver = dat.uInt64(atOffset: i)
-//				i += UInt(MemoryLayout<UInt64>.size)
-//				let date = Date.withMsTimestamp(dat.uInt64(atOffset: i))
-//				i += UInt(MemoryLayout<UInt64>.size)
-//				let deleted = dat.uInt8(atOffset: i) > 0
-//				i += UInt(MemoryLayout<UInt8>.size)
-//				items.append((key, ver, date, deleted ? .tombstone : nil))
-//				self.client.log("keys: \(key) \(ver) \(date) \(deleted)")
-//			}
-//			completionFunc(items, nil)
-//		}.resume()
+		var req = URLRequest(url: client.url("/kv/_all_keys"))
+		req.httpMethod = "GET"
+		client.dataTaskWithRequest(req as URLRequest, authenticated: true, retryCount: 0) { dat, resp, err in
+			if let err = err {
+				self.client.log("[KV] KEYS err=\(err)")
+				return completionFunc([], .unknown)
+			}
+
+			guard let resp = resp, let dat = dat, resp.statusCode == 200 else {
+				return completionFunc([], .unknown)
+			}
+
+			// Data format validation (basic check)
+			guard dat.count >= MemoryLayout<UInt32>.size else {
+				self.client.log("Invalid data format. Too short.")
+				return completionFunc([], .unknown)
+			}
+
+			// data is encoded as:
+			// LE32(num) + (num * (LEU8(keyLeng) + (keyLen * LEU32(char)) + LEU64(ver) + LEU64(msTs) + LEU8(del)))
+			var i = UInt(MemoryLayout<UInt32>.size)
+			let c = dat.uInt32(atOffset: 0)
+			var items = [(String, UInt64, Date, BRRemoteKVStoreError?)]()
+
+			for _ in 0 ..< c {
+				let keyLen = UInt(dat.uInt32(atOffset: i))
+				i += UInt(MemoryLayout<UInt32>.size)
+
+				// Check if key length is within data bounds
+				guard keyLen <= UInt(dat.count) - i else {
+					self.client.log("Invalid data format. Key length exceeds data size.")
+					return completionFunc([], .unknown)
+				}
+
+				let range: Range<Int> = Int(i) ..< Int(i + keyLen)
+
+				guard let key = NSString(data: dat.subdata(in: range),
+				                         encoding: String.Encoding.utf8.rawValue) as String?
+				else {
+					self.client.log("Well crap. Failed to decode a string.")
+					return completionFunc([], .unknown)
+				}
+				i += keyLen
+				let ver = dat.uInt64(atOffset: i)
+				i += UInt(MemoryLayout<UInt64>.size)
+				let date = Date.withMsTimestamp(dat.uInt64(atOffset: i))
+				i += UInt(MemoryLayout<UInt64>.size)
+				let deleted = dat.uInt8(atOffset: i) > 0
+				i += UInt(MemoryLayout<UInt8>.size)
+				items.append((key, ver, date, deleted ? .tombstone : nil))
+				self.client.log("keys: \(key) \(ver) \(date) \(deleted)")
+			}
+			completionFunc(items, nil)
+		}.resume()
 	}
 }
 

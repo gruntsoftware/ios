@@ -670,7 +670,6 @@ class ModalPresenter: Subscriber, Trackable {
 					{
 						self.store.trigger(name: .reinitWalletManager {
 							activity.dismiss(animated: true, completion: {
-								print("::: Reiniting the WalletManager")
 							})
 						})
 					} else {

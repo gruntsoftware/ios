@@ -71,7 +71,6 @@ struct SignupWebViewRepresentable: UIViewRepresentable {
 		WKScriptMessageHandler
 	{
 		func userContentController(_: WKUserContentController, didReceive message: WKScriptMessage) {
-			print("::: message \(message)")
 		}
 
 		let parent: SignupWebViewRepresentable
