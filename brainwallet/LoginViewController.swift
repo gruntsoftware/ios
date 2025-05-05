@@ -5,7 +5,7 @@ import SwiftUI
 import UIKit
 
 private let squareButtonSize: CGFloat = 32.0
-private let headerHeight: CGFloat = 110
+private let headerHeight: CGFloat = 180
 
 protocol LoginViewControllerDelegate {
 	func didUnlockLogin()
@@ -78,13 +78,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 
 	var delegate: LoginViewControllerDelegate?
 
-	private var logo: UIImageView = {
-		let image = UIImageView(image: UIImage(named: "bw-logotype"))
-		image.contentMode = .scaleAspectFit
-		image.alpha = 0.8
-		return image
-	}()
-
 	override func viewDidLoad() {
 		checkWalletBalance()
 		addSubviews()
@@ -95,7 +88,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		if pinView != nil {
 			addPinView()
 		}
-        
         
         lockScreenViewModel.$userPrefersDarkMode.sink { [weak self] newValue in
             
@@ -112,8 +104,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
         lockScreenViewModel.$userDidTapQR.sink { [weak self] newBool in
          
             if let didTap = newBool {
-                
-                   print("::: userDidTapQR \(didTap)")
                 self?.showLTCAddress()
             }
         }.store(in: &cancellables)
@@ -175,11 +165,11 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		guard let pinView = pinView else { return }
 		pinViewContainer.addSubview(pinView)
 
-		logo.constrain([
-            logo.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.size.height * 0.15),
-			logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logo.constraint(.width, constant: view.frame.width * 0.4),
-		])
+//		logo.constrain([
+//            logo.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.size.height * 0.15),
+//			logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            logo.constraint(.width, constant: view.frame.width * 0.4),
+//		])
 		enterPINLabel.constrain([
 			enterPINLabel.topAnchor.constraint(equalTo: pinView.topAnchor, constant: -40),
 			enterPINLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -197,7 +187,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		view.addSubview(backgroundView)
 		view.addSubview(headerView.view)
 		view.addSubview(pinViewContainer)
-		view.addSubview(logo)
 		view.addSubview(enterPINLabel)
         view.addSubview(footerView.view)
 
@@ -313,8 +302,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		])
 		view.layoutIfNeeded()
 
-		logo.alpha = 0.0
-		wipeBannerButton.alpha = 1.0
 
 		UIView.spring(0.6, delay: 0.4, animations: {
 			self.pinPadBottom?.constant = self.pinPadViewController.height

@@ -118,6 +118,8 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 	private func setupViews() {
 		walletBalanceLabel.text = S.ManageWallet.balance.localize() + ":"
+        
+        settingsButton.imageView?.tintColor = BrainwalletUIColor.content
 
 		headerView.backgroundColor = BrainwalletUIColor.surface
         tabBar.barTintColor = BrainwalletUIColor.content.withAlphaComponent(0.01)
@@ -423,9 +425,6 @@ extension TabBarViewController {
 			NSLayoutConstraint.deactivate(!isLTCSwapped ? self.regularConstraints : self.swappedConstraints)
 			NSLayoutConstraint.activate(!isLTCSwapped ? self.swappedConstraints : self.regularConstraints)
 			self.view.layoutIfNeeded()
-
-			LWAnalytics.logEventWithParameters(itemName: ._20200207_DTHB)
-
 		}) { _ in }
 		store.perform(action: CurrencyChange.toggle())
 	}

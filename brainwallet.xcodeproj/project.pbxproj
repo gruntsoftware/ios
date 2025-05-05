@@ -969,6 +969,8 @@
 		240204682DC7F37B00EC8E99 /* New Lock Screen Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C312D2772D7DC27700BB97A4 /* LockScreenHeaderView.swift */,
+				C312D2792D7DC27700BB97A4 /* LockScreenViewModel.swift */,
 				2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */,
 			);
 			path = "New Lock Screen Classes";
@@ -1679,8 +1681,6 @@
 				C312D2632D7DC27700BB97A4 /* LocaleChangeViewModel.swift */,
 				C312D2742D7DC27700BB97A4 /* Localization.swift */,
 				C312D2762D7DC27700BB97A4 /* LocalWebViewModel.swift */,
-				C312D2772D7DC27700BB97A4 /* LockScreenHeaderView.swift */,
-				C312D2792D7DC27700BB97A4 /* LockScreenViewModel.swift */,
 				C312D27A2D7DC27700BB97A4 /* LoginView.swift */,
 				C312D27C2D7DC27700BB97A4 /* LoginViewModel.swift */,
 				C32369FE2D7DD431007039A1 /* LoginViewController.swift */,
