@@ -87,7 +87,7 @@ class StartImportViewController: UIViewController {
 	}
 
 	private func setInitialData() {
-		view.backgroundColor = .white
+		view.backgroundColor = BrainwalletUIColor.surface
 		illustration.contentMode = .scaleAspectFill
 		message.text = S.Import.importMessage.localize()
 		leftCaption.text = S.Import.leftCaption.localize()

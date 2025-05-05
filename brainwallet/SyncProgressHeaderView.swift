@@ -3,12 +3,13 @@ import UIKit
 class SyncProgressHeaderView: UITableViewCell, Subscriber {
 	@IBOutlet var headerLabel: UILabel!
 	@IBOutlet var timestampLabel: UILabel!
+    @IBOutlet var blockheightLabel: UILabel!
 	@IBOutlet var progressView: UIProgressView!
 	@IBOutlet var noSendImageView: UIImageView!
 
 	private let dateFormatter: DateFormatter = {
 		let df = DateFormatter()
-		df.setLocalizedDateFormatFromTemplate("MMM d, yyyy")
+		df.setLocalizedDateFormatFromTemplate("MMM d, yyyy h a")
 		return df
 	}()
 
@@ -38,17 +39,27 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
 			timestampLabel.setNeedsDisplay()
 		}
 	}
+    
+    var blockNumber: UInt32 = 0 {
+        didSet {
+            blockheightLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: Double(timestamp)))
+            blockheightLabel.setNeedsDisplay()
+        }
+    }
+
 
 	var isRescanning: Bool = false {
 		didSet {
 			if isRescanning {
 				headerLabel.text = S.SyncingHeader.rescanning.localize()
 				timestampLabel.text = ""
+                blockheightLabel.text = ""
 				progressView.alpha = 0.0
 				noSendImageView.alpha = 1.0
 			} else {
 				headerLabel.text = ""
 				timestampLabel.text = ""
+                blockheightLabel.text = ""
 				progressView.alpha = 1.0
 				noSendImageView.alpha = 0.0
 			}

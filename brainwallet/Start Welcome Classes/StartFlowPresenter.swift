@@ -165,7 +165,7 @@ class StartFlowPresenter: Subscriber {
 				self?.store.perform(action: HideStartFlow())
 			})))
 		}
-		navigationController?.navigationBar.tintColor = .white
+		navigationController?.navigationBar.tintColor = BrainwalletUIColor.surface
 		if let confirmVC = confirmVC {
 			navigationController?.pushViewController(confirmVC, animated: true)
 		}

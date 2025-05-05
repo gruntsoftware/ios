@@ -9,7 +9,7 @@ class StartNavigationDelegate: NSObject, UINavigationControllerDelegate {
 
 	func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated _: Bool) {
 		if viewController is RecoverWalletIntroViewController {
-			navigationController.navigationBar.tintColor = .white
+			navigationController.navigationBar.tintColor = BrainwalletUIColor.surface
 			navigationController.navigationBar.titleTextAttributes = [
 				NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
 				NSAttributedString.Key.font: UIFont.customBold(size: 17.0),
@@ -19,18 +19,18 @@ class StartNavigationDelegate: NSObject, UINavigationControllerDelegate {
 		}
 
 		if viewController is EnterPhraseViewController {
-			navigationController.navigationBar.tintColor = BrainwalletUIColor.content
+            navigationController.navigationBar.tintColor = BrainwalletUIColor.surface
 			navigationController.navigationBar.titleTextAttributes = [
 				NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
 				NSAttributedString.Key.font: UIFont.customBold(size: 17.0),
 			]
 			navigationController.setClearNavbar()
 			navigationController.navigationBar.isTranslucent = false
-			navigationController.navigationBar.barTintColor = BrainwalletUIColor.content
+			navigationController.navigationBar.barTintColor = BrainwalletUIColor.surface
 		}
 
 		if viewController is UpdatePinViewController {
-			navigationController.navigationBar.tintColor = BrainwalletUIColor.content
+			navigationController.navigationBar.tintColor = BrainwalletUIColor.surface
 			navigationController.navigationBar.titleTextAttributes = [
 				NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
 				NSAttributedString.Key.font: UIFont.customBold(size: 17.0),

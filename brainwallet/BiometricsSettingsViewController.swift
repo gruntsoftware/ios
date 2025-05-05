@@ -110,7 +110,7 @@ class BiometricsSettingsViewController: UIViewController, Subscriber {
 		} else {
 			label.textColor = BrainwalletUIColor.content
 			switchLabel.textColor = BrainwalletUIColor.content
-			view.backgroundColor = .white
+			view.backgroundColor = BrainwalletUIColor.surface
 		}
 
 		title = LAContext.biometricType() == .face ? S.FaceIDSettings.title.localize() : S.TouchIdSettings.title.localize()

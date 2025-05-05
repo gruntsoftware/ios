@@ -65,7 +65,7 @@ class StartWipeWalletViewController: UIViewController {
 	}
 
 	private func setInitialData() {
-		view.backgroundColor = .white
+		view.backgroundColor = BrainwalletUIColor.surface
 		illustration.contentMode = .scaleAspectFill
 		message.text = S.WipeWallet.startMessage.localize()
 		warning.text = S.WipeWallet.startWarning.localize()

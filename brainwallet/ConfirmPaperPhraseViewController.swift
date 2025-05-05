@@ -63,7 +63,7 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 	}
 
 	override func viewDidLoad() {
-		view.backgroundColor = .white
+		view.backgroundColor = BrainwalletUIColor.surface
 		navigationController?.navigationBar.isHidden = true
 		setupSubViews()
 		firstWordCell.confirmPhraseView?.textField.becomeFirstResponder()
@@ -92,8 +92,8 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 
 		headerTitleLabel.text = S.SecurityCenter.Cells.paperKeyTitle.localize()
 		headerDescriptionLabel.text = S.ConfirmPaperPhrase.label.localize()
-		headerTitleLabel.textColor = .white
-		headerDescriptionLabel.textColor = .white
+        headerTitleLabel.textColor = BrainwalletUIColor.content
+		headerDescriptionLabel.textColor = BrainwalletUIColor.content
 
 		firstWordCell.addSubview(confirmFirstPhrase)
 		firstWordCell.addConstraints(NSLayoutConstraint.constraints(

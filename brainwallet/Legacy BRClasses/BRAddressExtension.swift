@@ -3,7 +3,6 @@
 //  loafwallet
 //
 //  Created by Kerry Washington on 11/4/23.
-//  Copyright © 2023 Litecoin Foundation. All rights reserved.
 //
 import BRCore
 import Foundation

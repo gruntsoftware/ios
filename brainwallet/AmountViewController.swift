@@ -1,7 +1,7 @@
 import UIKit
 
-private let currencyToggleConstant: CGFloat = 20.0
-private let amountFont: UIFont = .barlowMedium(size: 14.0)
+private let currencyToggleButtonConstant: CGFloat = 20.0
+private let amountFont: UIFont = .barlowMedium(size: 24.0)
 class AmountViewController: UIViewController, Trackable {
 	private let store: Store
 	private let isPinPadExpandedAtLaunch: Bool
@@ -11,13 +11,13 @@ class AmountViewController: UIViewController, Trackable {
 	private var pinPadHeight: NSLayoutConstraint?
 	private var feeSelectorHeight: NSLayoutConstraint?
 	private var feeSelectorTop: NSLayoutConstraint?
-	private var placeholder = PaddingLabel(font: amountFont, color: BrainwalletUIColor.content)
+    private var placeholder = PaddingLabel(font: amountFont, color: BrainwalletUIColor.gray)
 	private var amountLabel = UILabel(font: amountFont, color: BrainwalletUIColor.content)
 	private let pinPad: PinPadViewController
-	private let currencyToggle: ShadowButton
+	private let currencyToggleButton: ShadowButton
 	private let border = UIView(color: BrainwalletUIColor.border)
-	private let bottomBorder = UIView(color: BrainwalletUIColor.border)
-	private let cursor = BlinkingView(blinkColor: C.defaultTintColor)
+    private let bottomBorder = UIView(color: BrainwalletUIColor.surface)
+    private let cursor = BlinkingView(blinkColor: BrainwalletUIColor.affirm)
 	private let balanceLabel = UILabel()
 	private let feesLabel = UILabel()
 	private let feeContainer = InViewAlert(type: .secondary)
@@ -63,12 +63,12 @@ class AmountViewController: UIViewController, Trackable {
 		self.isPinPadExpandedAtLaunch = isPinPadExpandedAtLaunch
 		self.isRequesting = isRequesting
 		if let rate = store.state.currentRate, store.state.isLtcSwapped {
-			currencyToggle = ShadowButton(title: "\(rate.code)(\(rate.currencySymbol))", type: .tertiary)
+			currencyToggleButton = ShadowButton(title: "\(rate.code)(\(rate.currencySymbol))", type: .tertiary)
 		} else {
-			currencyToggle = ShadowButton(title: S.Symbols.currencyButtonTitle(maxDigits: store.state.maxDigits), type: .tertiary)
+			currencyToggleButton = ShadowButton(title: S.Symbols.currencyButtonTitle(maxDigits: store.state.maxDigits), type: .tertiary)
 		}
 		feeSelector = FeeSelector(store: store)
-		pinPad = PinPadViewController(style: .white, keyboardType: .decimalPad, maxDigits: store.state.maxDigits)
+        pinPad = PinPadViewController(style: .whitePinPadStyle, keyboardType: .decimalPad, maxDigits: store.state.maxDigits)
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -84,19 +84,9 @@ class AmountViewController: UIViewController, Trackable {
 	}
 
 	override func viewDidLoad() {
-		if #available(iOS 11.0, *) {
-			guard let headerTextColor = UIColor(named: "headerTextColor"),
-			      let textColor = UIColor(named: "labelTextColor")
-			else {
-				NSLog("ERROR: Custom color")
-				return
-			}
-			placeholder.textColor = headerTextColor
-			amountLabel.textColor = textColor
-		} else {
-			placeholder.textColor = BrainwalletUIColor.content
-			amountLabel.textColor = BrainwalletUIColor.content
-		}
+	
+		placeholder.textColor = BrainwalletUIColor.gray
+        amountLabel.textColor = BrainwalletUIColor.content
 
 		addSubviews()
 		addConstraints()
@@ -105,7 +95,7 @@ class AmountViewController: UIViewController, Trackable {
 
 	private func addSubviews() {
 		view.addSubview(placeholder)
-		view.addSubview(currencyToggle)
+		view.addSubview(currencyToggleButton)
 		view.addSubview(feeContainer)
 		view.addSubview(border)
 		view.addSubview(cursor)
@@ -120,7 +110,7 @@ class AmountViewController: UIViewController, Trackable {
 	private func addConstraints() {
 		amountLabel.constrain([
 			amountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: swiftUICellPadding),
-			amountLabel.centerYAnchor.constraint(equalTo: currencyToggle.centerYAnchor),
+			amountLabel.centerYAnchor.constraint(equalTo: currencyToggleButton.centerYAnchor),
 			amountLabel.heightAnchor.constraint(equalToConstant: 44.0),
 		])
 
@@ -135,9 +125,9 @@ class AmountViewController: UIViewController, Trackable {
 			cursor.centerYAnchor.constraint(equalTo: amountLabel.centerYAnchor),
 			cursor.widthAnchor.constraint(equalToConstant: 2.0),
 		])
-		currencyToggle.constrain([
-			currencyToggle.topAnchor.constraint(equalTo: view.topAnchor, constant: currencyToggleConstant),
-			currencyToggle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -C.padding[2]),
+		currencyToggleButton.constrain([
+			currencyToggleButton.topAnchor.constraint(equalTo: view.topAnchor, constant: currencyToggleButtonConstant),
+			currencyToggleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -C.padding[2]),
 		])
 		feeSelectorHeight = feeContainer.heightAnchor.constraint(equalToConstant: 0.0)
 		feeSelectorTop = feeContainer.topAnchor.constraint(equalTo: feesLabel.bottomAnchor, constant: 0.0)
@@ -150,7 +140,7 @@ class AmountViewController: UIViewController, Trackable {
 		])
 		feeContainer.arrowXLocation = C.padding[4]
 
-		let borderTop = isRequesting ? border.topAnchor.constraint(equalTo: currencyToggle.bottomAnchor, constant: C.padding[2]) : border.topAnchor.constraint(equalTo: feeContainer.bottomAnchor)
+		let borderTop = isRequesting ? border.topAnchor.constraint(equalTo: currencyToggleButton.bottomAnchor, constant: C.padding[2]) : border.topAnchor.constraint(equalTo: feeContainer.bottomAnchor)
 		border.constrain([
 			border.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			borderTop,
@@ -182,7 +172,7 @@ class AmountViewController: UIViewController, Trackable {
 			editFee.heightAnchor.constraint(equalToConstant: 44.0),
 		])
 		bottomBorder.constrain([
-			bottomBorder.topAnchor.constraint(greaterThanOrEqualTo: currencyToggle.bottomAnchor, constant: C.padding[3]),
+			bottomBorder.topAnchor.constraint(greaterThanOrEqualTo: currencyToggleButton.bottomAnchor, constant: C.padding[3]),
 			bottomBorder.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			bottomBorder.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 			bottomBorder.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -192,7 +182,7 @@ class AmountViewController: UIViewController, Trackable {
 		tapView.constrain([
 			tapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			tapView.topAnchor.constraint(equalTo: view.topAnchor),
-			tapView.trailingAnchor.constraint(equalTo: currencyToggle.leadingAnchor, constant: 4.0),
+			tapView.trailingAnchor.constraint(equalTo: currencyToggleButton.leadingAnchor, constant: 4.0),
 			tapView.bottomAnchor.constraint(equalTo: feeContainer.topAnchor),
 		])
 		preventAmountOverflow()
@@ -204,11 +194,11 @@ class AmountViewController: UIViewController, Trackable {
 
 		amountLabel.text = ""
 
-		placeholder.backgroundColor = .white
+		placeholder.backgroundColor = BrainwalletUIColor.surface
 		placeholder.layer.cornerRadius = 8.0
 		placeholder.layer.masksToBounds = true
 
-		amountLabel.backgroundColor = .white
+		amountLabel.backgroundColor = BrainwalletUIColor.surface
 		amountLabel.layer.cornerRadius = 8.0
 		amountLabel.layer.masksToBounds = true
 
@@ -222,7 +212,7 @@ class AmountViewController: UIViewController, Trackable {
 		pinPad.ouputDidUpdate = { [weak self] output in
 			self?.handlePinPadUpdate(output: output)
 		}
-		currencyToggle.tap = strongify(self) { myself in
+		currencyToggleButton.tap = strongify(self) { myself in
 			myself.toggleCurrency()
 		}
 		let gr = UITapGestureRecognizer(target: self, action: #selector(didTap))
@@ -245,12 +235,12 @@ class AmountViewController: UIViewController, Trackable {
 
 	private func toggleCurrency() {
 		selectedRate = (selectedRate == nil) ? store.state.currentRate : nil
-		updateCurrencyToggleTitle()
+		updatecurrencyToggleButtonTitle()
 	}
 
 	private func preventAmountOverflow() {
 		amountLabel.constrain([
-			amountLabel.trailingAnchor.constraint(lessThanOrEqualTo: currencyToggle.leadingAnchor, constant: -C.padding[2]),
+			amountLabel.trailingAnchor.constraint(lessThanOrEqualTo: currencyToggleButton.leadingAnchor, constant: -C.padding[2]),
 		])
 		amountLabel.minimumScaleFactor = 0.95
 		amountLabel.adjustsFontSizeToFitWidth = true
@@ -379,7 +369,7 @@ class AmountViewController: UIViewController, Trackable {
 	}
 
 	private func fullRefresh() {
-		updateCurrencyToggleTitle()
+		updatecurrencyToggleButtonTitle()
 		updateBalanceLabel()
 		updateAmountLabel()
 
@@ -391,12 +381,12 @@ class AmountViewController: UIViewController, Trackable {
 		pinPad.currentOutput = String(String.UnicodeScalarView(currentOutput.unicodeScalars.filter { set.contains($0) }))
 	}
 
-	private func updateCurrencyToggleTitle() {
+	private func updatecurrencyToggleButtonTitle() {
 		if let rate = selectedRate {
-			currencyToggle.title = "\(rate.code)(\(rate.currencySymbol))"
+			currencyToggleButton.title = "\(rate.code)(\(rate.currencySymbol))"
 			didShowFiat?(false)
 		} else {
-			currencyToggle.title = S.Symbols.currencyButtonTitle(maxDigits: store.state.maxDigits)
+			currencyToggleButton.title = S.Symbols.currencyButtonTitle(maxDigits: store.state.maxDigits)
 			didShowFiat?(true)
 		}
 	}

@@ -22,6 +22,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	private var allTransactions: [Transaction] = [] {
 		didSet {
 			transactions = allTransactions
+            print("::: allTransactions \(allTransactions.count)")
 		}
 	}
 
@@ -67,6 +68,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		tableView.register(HostingTransactionCell<TransactionCellView>.self, forCellReuseIdentifier: "HostingTransactionCell<TransactionCellView>")
 		transactions = TransactionManager.sharedInstance.transactions
 		rate = TransactionManager.sharedInstance.rate
+        print("::: transactions \(transactions.count)")
 
 		tableView.backgroundColor = BrainwalletUIColor.surface
 		initSyncingHeaderView(reduxState: reduxState, completion: {})
@@ -132,14 +134,14 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 	/// Empty Message View as a placeholder
 	/// - Returns: a UILabel
-	private func emptyMessageView() -> UILabel {
+    private func emptyMessageView() -> UILabel {
 		let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: tableView.bounds.size.width, height: tableView.bounds.size.height))
 		let messageLabel = UILabel(frame: rect)
-		messageLabel.text = S.TransactionDetails.emptyMessage.localize()
+        messageLabel.text = "www.brainwallet.co"
 		messageLabel.textColor = BrainwalletUIColor.content
 		messageLabel.numberOfLines = 0
 		messageLabel.textAlignment = .center
-		messageLabel.font = UIFont.barlowMedium(size: 20)
+		messageLabel.font = UIFont.barlowMedium(size: 24)
 		messageLabel.sizeToFit()
 		tableView.backgroundView = messageLabel
 		tableView.separatorStyle = .none
@@ -193,6 +195,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 				let viewModel = TransactionCellViewModel(transaction: transaction, isLtcSwapped: isLtcSwapped, rate: rate, maxDigits: store.state.maxDigits, isSyncing: store.state.walletState.syncState != .success)
 				cell.set(rootView: TransactionCellView(viewModel: viewModel), parentController: self)
 				cell.selectionStyle = .default
+                print("::: trancation cell set:  \(transaction.detailsAddressText)")
 			}
 
 			return cell
@@ -321,6 +324,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		store.subscribe(self, selector: { $0.walletState.transactions != $1.walletState.transactions },
 		                callback: { state in
 		                	self.allTransactions = state.walletState.transactions
+            NSLog("::: All Trnasactions \(state.walletState.transactions.count)")
 		                	self.reload()
 		                })
 

@@ -6,9 +6,6 @@ extension ApplicationController {
 		if UserDefaults.standard.object(forKey: shouldRequireLoginTimeoutKey) == nil {
 			UserDefaults.standard.set(60.0 * 3.0, forKey: shouldRequireLoginTimeoutKey) // Default 3 min timeout
 		}
-		if UserDefaults.standard.object(forKey: hasSeenAnnounceView) == nil {
-			UserDefaults.standard.set(false, forKey: hasSeenAnnounceView) // Hasnt seen the Announce View
-		}
         
         if UserDefaults.standard.object(forKey: userDidPreferDarkModeKey) == nil {
             UserDefaults.standard.set(false, forKey: userDidPreferDarkModeKey)

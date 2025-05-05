@@ -72,11 +72,13 @@ struct SeedWordContainerView: View {
 										Spacer()
 										Button(S.RecoverWallet.done.localize()) {
 											didEnterPINCode.toggle()
-										}
-									}
+                                        }
+                                        .foregroundColor(BrainwalletColor.content)
+                                    }
 								}
 								.frame(width: width - largePad,
-								       height: secureFieldHeight, alignment: .center)
+                                       height: secureFieldHeight, alignment: .center)
+                                .background(BrainwalletColor.surface)
 								.padding()
 						}
 					}
@@ -100,6 +102,3 @@ struct SeedWordContainerView: View {
 	}
 }
 
-// #Preview {
-//	SeedWordContainerView(walletManager: WalletManager(store: Store()))
-// }

@@ -23,12 +23,12 @@ class VerifyPinViewController: UIViewController, ContentBoxPresenter {
 	let effect = UIBlurEffect(style: .dark)
 	let contentBox = UIView()
 	private let callback: VerifyPinCallback
-	private let pinPad = PinPadViewController(style: .clear, keyboardType: .pinPad, maxDigits: 0)
-	private let titleLabel = UILabel(font: .customBold(size: 17.0), color: .white)
-	private let body = UILabel(font: .customBody(size: 14.0), color: .white)
+    private let pinPad = PinPadViewController(style: .clearPinPadStyle, keyboardType: .pinPad, maxDigits: 0)
+    private let titleLabel = UILabel(font: .customBold(size: 17.0), color: BrainwalletUIColor.content)
+	private let body = UILabel(font: .customBody(size: 14.0), color: BrainwalletUIColor.content)
 	private let pinView: PinView
-    private let toolbar = UIView(color: BrainwalletUIColor.content)
-	private let toolbarBorder = UIView(color: BrainwalletUIColor.content)
+    private let toolbar = UIView(color: BrainwalletUIColor.surface)
+	private let toolbarBorder = UIView(color: BrainwalletUIColor.surface)
 	private let cancel = UIButton(type: .system)
 	private let bodyText: String
 	private let pinLength: Int
@@ -133,7 +133,7 @@ class VerifyPinViewController: UIViewController, ContentBoxPresenter {
 			self?.dismiss(animated: true, completion: nil)
 		}
 		cancel.setTitle(S.Button.cancel.localize(), for: .normal)
-		cancel.tintColor = .white
+        cancel.tintColor = BrainwalletUIColor.content
 		view.backgroundColor = .clear
 	}
 

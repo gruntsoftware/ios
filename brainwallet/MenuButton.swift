@@ -9,11 +9,9 @@ class MenuButton: UIControl {
 		self.type = type
 		super.init(frame: .zero)
 
-		if #available(iOS 11.0, *) {
-			label.textColor = UIColor(named: "labelTextColor")
-			self.backgroundColor = UIColor(named: "lfBackgroundColor")
-			image.tintColor = BrainwalletUIColor.content
-		}
+        label.textColor = BrainwalletUIColor.content
+        self.backgroundColor = BrainwalletUIColor.surface
+        image.tintColor = BrainwalletUIColor.background
 
 		setupViews()
 	}
@@ -29,7 +27,7 @@ class MenuButton: UIControl {
 			if isHighlighted {
 				backgroundColor = BrainwalletUIColor.content
 			} else {
-				backgroundColor = .white
+				backgroundColor = BrainwalletUIColor.surface
 			}
 		}
 	}

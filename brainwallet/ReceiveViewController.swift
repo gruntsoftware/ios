@@ -150,7 +150,9 @@ class ReceiveViewController: UIViewController, Subscriber, Trackable {
 
 	private func setReceiveAddress() {
 		address.text = wallet.receiveAddress
-		qrCode.image = UIImage.qrCode(data: "\(address.text!)".data(using: .utf8)!, color: CIColor(color: .black))?
+        guard let isDarkMode = UserDefaults.standard.object(forKey: userDidPreferDarkModeKey) else { return }
+        let color = (isDarkMode as! Bool ? CIColor.white : CIColor.black)
+        qrCode.image = UIImage.qrCode(data: "\(address.text!)".data(using: .utf8)!, color: color)?
 			.resize(CGSize(width: qrSize, height: qrSize))!
 	}
 

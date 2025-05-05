@@ -44,11 +44,9 @@ class MenuViewController: UIViewController, Trackable {
 			previousButton?.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -C.padding[2]),
 		])
 
-		if #available(iOS 11.0, *) {
-			view.backgroundColor = UIColor(named: "lfBackgroundColor")
-		} else {
-			view.backgroundColor = .white
-		}
+		
+			view.backgroundColor = BrainwalletUIColor.surface
+		
 	}
 
 	@objc private func didTapButton(button: MenuButton) {

@@ -5,12 +5,16 @@ let customUserAgent: String = "brainwallet-ios"
 let swiftUICellPadding = 12.0
 let bigButtonCornerRadius = 15.0
 
-struct FoundationSupport {
+struct BrainwalletSupport {
 	static let dashboard = "https://brainwallet.co/"
 }
 
+struct BrainwalletSocials {
+    static let linktree = "https://linktr.ee/brainwallet"
+}
+
 struct APIServer {
-	static let baseUrl = "https://prod.apigsltd.net/"
+	static let baseUrl = "https://api.grunt.ltd/"
 }
 
 struct Padding {
@@ -236,6 +240,12 @@ enum CustomEvent: String {
     
     /// Unsupported by Moonpay
     case _20241213_RCC = "remote_configuration_change"
+    
+    /// Did Tap to Socials media
+    case _20250504_DTSM = "did_tap_to_socials_media"
+    
+    /// Did change theme preference
+    case _20250504_DCTP = "did_change_theme_preference"
     
     
 }

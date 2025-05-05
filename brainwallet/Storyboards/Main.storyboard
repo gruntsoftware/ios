@@ -4,6 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,22 +16,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="UUB-Tl-BBQ">
-            <objects>
-                <viewController id="0H7-tx-uMf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="z4T-ui-Ve5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="UuX-cb-qOU"/>
-                        <color key="backgroundColor" red="0.058823529409999999" green="0.031372549020000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" red="0.25098039220000001" green="0.1764705882" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iPr-X2-pHD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3128" y="-122"/>
-        </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="KaL-Vn-Yfq">
             <objects>
@@ -38,75 +24,94 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fw-XB-zyN">
+                                <rect key="frame" x="0.0" y="20" width="414" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLr-H0-dij">
+                                        <rect key="frame" x="358" y="12" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="Sym-3S-iFL"/>
+                                            <constraint firstAttribute="height" constant="44" id="Ykw-TZ-IhF"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="settings_hamburger">
+                                            <color key="titleColor" name="brainwalletContent"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showSettingsAction:" destination="cEo-Qi-bYI" eventType="touchUpInside" id="uju-Ag-uuS"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tK-Tt-zyE">
+                                        <rect key="frame" x="12" y="12" width="120" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="TBT-4V-5It"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="BarlowSemiCondensed-Medium" family="Barlow Semi Condensed Medium" pointSize="20"/>
+                                        <color key="textColor" name="brainwalletContent"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstItem="jLr-H0-dij" firstAttribute="top" secondItem="8fw-XB-zyN" secondAttribute="top" constant="12" id="2nj-w7-WHK"/>
+                                    <constraint firstAttribute="height" constant="80" id="8em-HC-37f"/>
+                                    <constraint firstItem="8tK-Tt-zyE" firstAttribute="top" secondItem="8fw-XB-zyN" secondAttribute="top" constant="12" id="I0f-mL-tM8"/>
+                                    <constraint firstItem="8tK-Tt-zyE" firstAttribute="leading" secondItem="8fw-XB-zyN" secondAttribute="leading" constant="12" id="NGn-Kg-thI"/>
+                                    <constraint firstAttribute="trailing" secondItem="jLr-H0-dij" secondAttribute="trailing" constant="12" id="pVC-kQ-WwZ"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHe-dR-fDI">
+                                <rect key="frame" x="0.0" y="100" width="414" height="538"/>
+                                <viewLayoutGuide key="safeArea" id="Mbc-cM-i4C"/>
+                                <connections>
+                                    <segue destination="OcB-dV-AfP" kind="embed" id="YTB-HG-TRo"/>
+                                </connections>
+                            </containerView>
                             <tabBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zek-0n-Bbp">
-                                <rect key="frame" x="0.0" y="589" width="414" height="98"/>
+                                <rect key="frame" x="0.0" y="638" width="414" height="98"/>
                                 <viewLayoutGuide key="safeArea" id="qCH-cU-E5L"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="brainwalletGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="98" id="5jX-Bm-pRG"/>
+                                </constraints>
                                 <items>
-                                    <tabBarItem title="History" image="history_icon" selectedImage="history_icon" id="bcE-8M-dwp" userLabel="History"/>
-                                    <tabBarItem tag="1" title="Send" image="send_icon" selectedImage="send_icon" id="RIS-fI-9CG" userLabel="Send"/>
-                                    <tabBarItem tag="2" title="Receive" image="receive_icon" selectedImage="receive_icon" id="MWM-XE-gE7" userLabel="Receive"/>
-                                    <tabBarItem tag="3" title="Buy" image="litecoin_cutout24" selectedImage="litecoin_cutout24" id="Pzx-4b-zDZ" userLabel="Buy"/>
+                                    <tabBarItem title="History" id="bcE-8M-dwp" userLabel="History">
+                                        <imageReference key="image" image="deskclock" catalog="system" symbolScale="default"/>
+                                        <color key="badgeColor" name="brainwalletContent"/>
+                                        <imageReference key="selectedImage" image="deskclock" catalog="system" symbolScale="default"/>
+                                    </tabBarItem>
+                                    <tabBarItem tag="1" title="Send" id="RIS-fI-9CG" userLabel="Send">
+                                        <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="default"/>
+                                        <imageReference key="selectedImage" image="square.and.arrow.up" catalog="system" symbolScale="default"/>
+                                    </tabBarItem>
+                                    <tabBarItem tag="2" title="Receive" id="MWM-XE-gE7" userLabel="Receive">
+                                        <imageReference key="image" image="square.and.arrow.down" catalog="system" symbolScale="default"/>
+                                        <imageReference key="selectedImage" image="square.and.arrow.down" catalog="system" symbolScale="default"/>
+                                    </tabBarItem>
+                                    <tabBarItem tag="3" title="Buy" image="litecoin_cutout24" selectedImage="litecoin_cutout24" id="Pzx-4b-zDZ" userLabel="Buy">
+                                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
+                                    </tabBarItem>
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="delegate" destination="cEo-Qi-bYI" id="64Z-Sm-Ogb"/>
                                 </connections>
                             </tabBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fw-XB-zyN">
-                                <rect key="frame" x="0.0" y="20" width="414" height="60"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLr-H0-dij">
-                                        <rect key="frame" x="380" y="18" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="Rfz-OT-qMk"/>
-                                            <constraint firstAttribute="width" constant="24" id="wW7-mg-IHs"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="settingsWhite"/>
-                                        <connections>
-                                            <action selector="showSettingsAction:" destination="cEo-Qi-bYI" eventType="touchUpInside" id="uju-Ag-uuS"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tK-Tt-zyE">
-                                        <rect key="frame" x="10" y="4" width="32.333333333333336" height="18"/>
-                                        <fontDescription key="fontDescription" name="BarlowSemiCondensed-Medium" family="Barlow Semi Condensed Medium" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </label>
-                                </subviews>
-                                <viewLayoutGuide key="safeArea" id="KSJ-6e-pJA"/>
-                                <color key="backgroundColor" systemColor="systemPinkColor"/>
-                                <constraints>
-                                    <constraint firstItem="8tK-Tt-zyE" firstAttribute="top" secondItem="KSJ-6e-pJA" secondAttribute="top" constant="4" id="29g-aL-4hb"/>
-                                    <constraint firstItem="8tK-Tt-zyE" firstAttribute="leading" secondItem="KSJ-6e-pJA" secondAttribute="leading" constant="10" id="U87-Pn-YWO"/>
-                                    <constraint firstItem="jLr-H0-dij" firstAttribute="centerY" secondItem="8fw-XB-zyN" secondAttribute="centerY" id="VTG-uI-Viv"/>
-                                    <constraint firstAttribute="height" constant="60" id="dFR-OH-fVP"/>
-                                    <constraint firstAttribute="trailing" secondItem="jLr-H0-dij" secondAttribute="trailing" constant="10" id="lTh-AB-Zvp"/>
-                                </constraints>
-                            </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHe-dR-fDI">
-                                <rect key="frame" x="0.0" y="80" width="414" height="509"/>
-                                <viewLayoutGuide key="safeArea" id="Mbc-cM-i4C"/>
-                                <connections>
-                                    <segue destination="OcB-dV-AfP" kind="embed" id="YTB-HG-TRo"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Kye-5e-rRE"/>
                         <color key="backgroundColor" red="0.058823529411764705" green="0.031372549019607843" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vHe-dR-fDI" firstAttribute="top" secondItem="8fw-XB-zyN" secondAttribute="bottom" id="7Oq-Io-hBb"/>
-                            <constraint firstItem="Zek-0n-Bbp" firstAttribute="leading" secondItem="Kye-5e-rRE" secondAttribute="leading" id="D9L-zh-Mcj"/>
-                            <constraint firstItem="Kye-5e-rRE" firstAttribute="trailing" secondItem="8fw-XB-zyN" secondAttribute="trailing" id="Fyx-YW-dli"/>
-                            <constraint firstItem="Zek-0n-Bbp" firstAttribute="trailing" secondItem="Kye-5e-rRE" secondAttribute="trailing" id="RVN-ew-tSl"/>
-                            <constraint firstItem="Kye-5e-rRE" firstAttribute="trailing" secondItem="vHe-dR-fDI" secondAttribute="trailing" id="XXV-ST-dgb"/>
-                            <constraint firstItem="Zek-0n-Bbp" firstAttribute="bottom" secondItem="Kye-5e-rRE" secondAttribute="bottom" id="aLk-BH-oPt"/>
-                            <constraint firstItem="8fw-XB-zyN" firstAttribute="top" secondItem="Kye-5e-rRE" secondAttribute="top" id="rWD-Nf-2Yg"/>
-                            <constraint firstItem="Zek-0n-Bbp" firstAttribute="top" secondItem="vHe-dR-fDI" secondAttribute="bottom" id="vnb-fQ-F7j"/>
-                            <constraint firstItem="8fw-XB-zyN" firstAttribute="leading" secondItem="Kye-5e-rRE" secondAttribute="leading" id="wQ6-Pt-HSZ"/>
-                            <constraint firstItem="vHe-dR-fDI" firstAttribute="leading" secondItem="Kye-5e-rRE" secondAttribute="leading" id="yF4-Qn-YfR"/>
+                            <constraint firstItem="8fw-XB-zyN" firstAttribute="top" secondItem="Kye-5e-rRE" secondAttribute="top" id="40n-7q-s4m"/>
+                            <constraint firstItem="vHe-dR-fDI" firstAttribute="leading" secondItem="Kye-5e-rRE" secondAttribute="leading" id="4lJ-Xt-8yh"/>
+                            <constraint firstItem="Zek-0n-Bbp" firstAttribute="top" secondItem="vHe-dR-fDI" secondAttribute="bottom" id="99V-0e-7Ka"/>
+                            <constraint firstItem="8fw-XB-zyN" firstAttribute="leading" secondItem="Kye-5e-rRE" secondAttribute="leading" id="MiA-3I-EG5"/>
+                            <constraint firstItem="Zek-0n-Bbp" firstAttribute="leading" secondItem="qc8-eV-fQy" secondAttribute="leading" id="Mtk-tW-fEk"/>
+                            <constraint firstItem="vHe-dR-fDI" firstAttribute="trailing" secondItem="Kye-5e-rRE" secondAttribute="trailing" id="PLd-R3-zSU"/>
+                            <constraint firstAttribute="bottom" secondItem="Zek-0n-Bbp" secondAttribute="bottom" id="c8X-69-alM"/>
+                            <constraint firstItem="8fw-XB-zyN" firstAttribute="trailing" secondItem="Kye-5e-rRE" secondAttribute="trailing" id="cdw-xz-cu3"/>
+                            <constraint firstItem="vHe-dR-fDI" firstAttribute="top" secondItem="8fw-XB-zyN" secondAttribute="bottom" id="jNk-NZ-YfS"/>
+                            <constraint firstAttribute="trailing" secondItem="Zek-0n-Bbp" secondAttribute="trailing" id="u7o-CZ-8p4"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
@@ -121,14 +126,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5A-w8-5n5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4010" y="522"/>
+            <point key="canvasLocation" x="-4010.144927536232" y="521.73913043478262"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="NEJ-Gg-dyR">
             <objects>
                 <viewController id="OcB-dV-AfP" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KFy-EF-Bhg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="509"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="538"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Eg4-W0-GCf"/>
                         <color key="backgroundColor" red="0.058823529411764705" green="0.031372549019607843" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -139,104 +144,22 @@
             </objects>
             <point key="canvasLocation" x="-3151" y="430"/>
         </scene>
-        <!--Tab Bar View Controller-->
-        <scene sceneID="gub-63-gtJ">
-            <objects>
-                <viewController storyboardIdentifier="NoBuyTabBarViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dmr-23-OJT" userLabel="Tab Bar View Controller" customClass="NoBuyTabBarViewController" customModule="brainwallet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6Vp-kH-Ks0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tabBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EF4-Yw-RAF">
-                                <rect key="frame" x="0.0" y="589" width="414" height="98"/>
-                                <viewLayoutGuide key="safeArea" id="TXQ-qP-8Nc"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="History" image="history_icon" selectedImage="history_icon" id="fJ7-Gn-6uj" userLabel="History"/>
-                                    <tabBarItem tag="1" title="Send" image="send_icon" selectedImage="send_icon" id="Q3a-Cb-gHb" userLabel="Send"/>
-                                    <tabBarItem tag="2" title="Receive" image="receive_icon" selectedImage="receive_icon" id="3cQ-2L-I8W" userLabel="Receive"/>
-                                </items>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="delegate" destination="dmr-23-OJT" id="VI0-UP-K9x"/>
-                                </connections>
-                            </tabBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDW-X4-KHA">
-                                <rect key="frame" x="0.0" y="20" width="414" height="60"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYi-Dd-SM0">
-                                        <rect key="frame" x="380" y="18" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="Ktb-hA-gNl"/>
-                                            <constraint firstAttribute="height" constant="24" id="pfU-mm-lSp"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="settingsWhite"/>
-                                        <connections>
-                                            <action selector="showSettingsAction:" destination="dmr-23-OJT" eventType="touchUpInside" id="6zw-fv-iwl"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUg-8j-LTG">
-                                        <rect key="frame" x="10" y="4" width="32.333333333333336" height="18"/>
-                                        <fontDescription key="fontDescription" name="BarlowSemiCondensed-Medium" family="Barlow Semi Condensed Medium" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </label>
-                                </subviews>
-                                <viewLayoutGuide key="safeArea" id="gVy-M8-SCE"/>
-                                <color key="backgroundColor" systemColor="systemPinkColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="HOz-rO-AM8"/>
-                                    <constraint firstItem="TYi-Dd-SM0" firstAttribute="centerY" secondItem="rDW-X4-KHA" secondAttribute="centerY" id="cDP-zq-AyN"/>
-                                    <constraint firstItem="SUg-8j-LTG" firstAttribute="top" secondItem="gVy-M8-SCE" secondAttribute="top" constant="4" id="pEn-9O-dnJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="TYi-Dd-SM0" secondAttribute="trailing" constant="10" id="xxx-7z-2A3"/>
-                                    <constraint firstItem="SUg-8j-LTG" firstAttribute="leading" secondItem="gVy-M8-SCE" secondAttribute="leading" constant="10" id="ze8-Qf-SgQ"/>
-                                </constraints>
-                            </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEQ-cp-bG1">
-                                <rect key="frame" x="0.0" y="80" width="414" height="509"/>
-                                <viewLayoutGuide key="safeArea" id="4G2-KM-hqd"/>
-                            </containerView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="edZ-uw-XFx"/>
-                        <color key="backgroundColor" red="0.20539733769999999" green="0.36322331429999999" blue="0.61663442850000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="edZ-uw-XFx" firstAttribute="trailing" secondItem="ZEQ-cp-bG1" secondAttribute="trailing" id="96L-Tq-SLA"/>
-                            <constraint firstItem="ZEQ-cp-bG1" firstAttribute="top" secondItem="rDW-X4-KHA" secondAttribute="bottom" id="Nff-KV-TE6"/>
-                            <constraint firstItem="EF4-Yw-RAF" firstAttribute="bottom" secondItem="edZ-uw-XFx" secondAttribute="bottom" id="RQl-Y8-CqS"/>
-                            <constraint firstItem="rDW-X4-KHA" firstAttribute="leading" secondItem="edZ-uw-XFx" secondAttribute="leading" id="U4e-qe-xGd"/>
-                            <constraint firstItem="ZEQ-cp-bG1" firstAttribute="leading" secondItem="edZ-uw-XFx" secondAttribute="leading" id="aQb-QL-zD5"/>
-                            <constraint firstItem="edZ-uw-XFx" firstAttribute="trailing" secondItem="rDW-X4-KHA" secondAttribute="trailing" id="bZQ-ni-oqA"/>
-                            <constraint firstItem="rDW-X4-KHA" firstAttribute="top" secondItem="edZ-uw-XFx" secondAttribute="top" id="r3x-7r-1r3"/>
-                            <constraint firstItem="EF4-Yw-RAF" firstAttribute="trailing" secondItem="edZ-uw-XFx" secondAttribute="trailing" id="seD-ZK-epD"/>
-                            <constraint firstItem="EF4-Yw-RAF" firstAttribute="top" secondItem="ZEQ-cp-bG1" secondAttribute="bottom" id="tjJ-5X-Pbv"/>
-                            <constraint firstItem="EF4-Yw-RAF" firstAttribute="leading" secondItem="edZ-uw-XFx" secondAttribute="leading" id="u0d-ui-cOI"/>
-                        </constraints>
-                    </view>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="containerView" destination="ZEQ-cp-bG1" id="ycs-FN-BHb"/>
-                        <outlet property="headerView" destination="rDW-X4-KHA" id="QPH-e3-Tft"/>
-                        <outlet property="settingsButton" destination="TYi-Dd-SM0" id="SdZ-Y0-SNu"/>
-                        <outlet property="tabBar" destination="EF4-Yw-RAF" id="T71-MD-nMf"/>
-                        <outlet property="walletBalanceLabel" destination="SUg-8j-LTG" id="ngx-yJ-PcF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iXk-yY-M5s" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4010" y="522"/>
-        </scene>
     </scenes>
+    <color key="tintColor" red="0.27058823529999998" green="0.23529411759999999" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
-        <image name="history_icon" width="32" height="32"/>
+        <image name="deskclock" catalog="system" width="128" height="125"/>
         <image name="litecoin_cutout24" width="24" height="24"/>
-        <image name="receive_icon" width="20" height="24"/>
-        <image name="send_icon" width="20" height="24"/>
-        <image name="settingsWhite" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="settings_hamburger" width="33" height="23"/>
+        <image name="square.and.arrow.down" catalog="system" width="114" height="128"/>
+        <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
+        <namedColor name="brainwalletContent">
+            <color red="0.058823525905609131" green="0.031372550874948502" blue="0.32156863808631897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="brainwalletGray">
+            <color red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

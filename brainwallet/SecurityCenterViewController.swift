@@ -26,12 +26,8 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 		self.store = store
 		self.walletManager = walletManager
 		header = ModalHeaderView(title: S.SecurityCenter.title.localize(), style: .light, faqInfo: (store, ArticleIds.nothing))
-
-		if #available(iOS 11.0, *) {
-			shield.tintColor = UIColor(named: "labelTextColor")
-			headerBackground.backgroundColor = UIColor(named: "mainColor")
-		}
-
+        shield.tintColor = BrainwalletUIColor.background
+        headerBackground.backgroundColor = BrainwalletUIColor.surface
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -44,7 +40,7 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 	private let pinCell = SecurityCenterCell(title: S.SecurityCenter.Cells.pinTitle.localize(), descriptionText: S.SecurityCenter.Cells.pinDescription.localize())
 	private let biometricsCell = SecurityCenterCell(title: LAContext.biometricType() == .face ? S.SecurityCenter.Cells.faceIdTitle.localize() : S.SecurityCenter.Cells.touchIdTitle.localize(), descriptionText: S.SecurityCenter.Cells.touchIdDescription.localize())
 	private let paperKeyCell = SecurityCenterCell(title: S.SecurityCenter.Cells.paperKeyTitle.localize(), descriptionText: S.SecurityCenter.Cells.paperKeyDescription.localize())
-    private var separator = UIView(color: BrainwalletUIColor.content)
+    private var separator = UIView(color: BrainwalletUIColor.gray)
 	private let store: Store
 	private let walletManager: WalletManager
 	fileprivate var didViewAppear = false
@@ -80,16 +76,7 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 	}
 
 	private func setupSubviewProperties() {
-		if #available(iOS 11.0, *) {
-			guard let backgroundColor = UIColor(named: "lfBackgroundColor")
-			else {
-				NSLog("ERROR: Main color")
-				return
-			}
-			view.backgroundColor = backgroundColor
-		} else {
-			view.backgroundColor = .white
-		}
+        view.backgroundColor = BrainwalletUIColor.surface
 
 		header.closeCallback = {
 			self.dismiss(animated: true, completion: nil)
@@ -100,7 +87,7 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 		info.text = S.SecurityCenter.info.localize()
 		info.numberOfLines = 0
 		info.lineBreakMode = .byWordWrapping
-		header.backgroundColor = .clear
+		header.backgroundColor = BrainwalletUIColor.surface
 
 		setPinAndPhraseChecks()
 		store.subscribe(self, selector: { $0.isBiometricsEnabled != $1.isBiometricsEnabled }, callback: {

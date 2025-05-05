@@ -7,19 +7,8 @@ class DescriptionSendCell: SendCell {
 		textView.font = .customBody(size: 20.0)
 		textView.returnKeyType = .done
 		self.placeholder.text = placeholder
-
-		if #available(iOS 11.0, *) {
-			guard let headerTextColor = UIColor(named: "headerTextColor"),
-			      let textColor = UIColor(named: "labelTextColor")
-			else {
-				NSLog("ERROR: Custom color")
-				return
-			}
-			textView.textColor = textColor
-			self.placeholder.textColor = headerTextColor
-		} else {
-			textView.textColor = BrainwalletUIColor.content
-		}
+        textView.textColor = BrainwalletUIColor.content
+        self.placeholder.textColor = BrainwalletUIColor.gray
 
 		setupViews()
 	}
@@ -35,7 +24,7 @@ class DescriptionSendCell: SendCell {
 	}
 
 	var textView = UITextView()
-	fileprivate var placeholder = UILabel(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
+	fileprivate var placeholder = UILabel(font: .customBody(size: 16.0), color: BrainwalletUIColor.gray)
 	private func setupViews() {
 		textView.isScrollEnabled = false
 

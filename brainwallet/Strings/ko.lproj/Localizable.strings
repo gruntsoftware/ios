@@ -928,9 +928,6 @@
 /* Start view tagline */
 "StartViewController.tagline" = "라이트코인을 사용하는 가장 안전하고 쉬운 방법입니다.";
 
-/* Support the Litecoin Foundation */
-"SupportTheFoundation.title" = "라이트 코인 재단 지원";
-
 /* Syncing view connection state header text */
 "SyncingHeader.connecting" = "연결 중 ...";
 

@@ -33,7 +33,7 @@ class PinView: UIView {
 		case .login:
 			unFilled = (0 ... (length - 1)).map { _ in Circle(color: BrainwalletUIColor.content) }
 		}
-		filled = (0 ... (length - 1)).map { _ in Circle(color: .white) }
+        filled = (0 ... (length - 1)).map { _ in Circle(color: BrainwalletUIColor.surface.withAlphaComponent(0.6))}
 		super.init(frame: CGRect())
 		setupSubviews()
 	}

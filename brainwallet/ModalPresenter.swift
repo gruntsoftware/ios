@@ -107,7 +107,7 @@ class ModalPresenter: Subscriber, Trackable {
 	func presentBiometricsSetting() {
 		guard let walletManager = walletManager else { return }
 		let biometricsSettings = BiometricsSettingsViewController(walletManager: walletManager, store: store)
-		biometricsSettings.addCloseNavigationItem(tintColor: .white)
+        biometricsSettings.addCloseNavigationItem(tintColor: BrainwalletUIColor.content)
 		let nc = ModalNavigationController(rootViewController: biometricsSettings)
 		biometricsSettings.presentSpendingLimit = strongify(self) { myself in
 			myself.pushBiometricsSpendingLimit(onNc: nc)
@@ -322,7 +322,7 @@ class ModalPresenter: Subscriber, Trackable {
 
 		menu.didTapSupport = { [weak self, weak menu] in
 			menu?.dismiss(animated: true, completion: {
-				let urlString = FoundationSupport.dashboard
+				let urlString = BrainwalletSupport.dashboard
 
 				guard let url = URL(string: urlString) else { return }
 
@@ -373,31 +373,19 @@ class ModalPresenter: Subscriber, Trackable {
 				#endif
 				return envName
 			}, callback: {}),
-			Setting(title: S.Settings.brainwalletPartners.localize(), callback: {
-				let partnerView = UIHostingController(rootView: PartnersView(viewModel: PartnerViewModel()))
-				settingsNav.pushViewController(partnerView, animated: true)
-			}),
-			Setting(title: S.Settings.socialLinks.localize(), callback: {
-				settingsNav.pushViewController(AboutViewController(), animated: true)
+			Setting(title: S.Settings.socialLinks.localize(), accessoryText: {
+                return "linktr.ee/brainwallet"
+            }, callback: {
+                let urlString = BrainwalletSocials.linktree
+                guard let url = URL(string: urlString) else { return }
+                LWAnalytics.logEventWithParameters(itemName: ._20250504_DTSM)
+                let vc = SFSafariViewController(url: url)
+                settingsNav.pushViewController(vc, animated: true)
 			}),
 
 			],
 			"Wallet":
 				[
-					Setting(title: S.Settings.importTile.localize(), callback: { [weak self] in
-						guard let myself = self else { return }
-						guard let walletManager = myself.walletManager else { return }
-						let importNav = ModalNavigationController()
-						importNav.setClearNavbar()
-						importNav.setWhiteStyle()
-						let start = StartImportViewController(walletManager: walletManager, store: myself.store)
-						start.addCloseNavigationItem(tintColor: .white)
-						start.navigationItem.title = S.Import.title.localize()
-						importNav.viewControllers = [start]
-						settingsNav.dismiss(animated: true, completion: {
-							myself.topViewController?.present(importNav, animated: true, completion: nil)
-						})
-					}),
 					Setting(title: S.Settings.wipe.localize(), callback: { [weak self] in
 						guard let myself = self else { return }
 						guard let walletManager = myself.walletManager else { return }

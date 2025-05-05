@@ -105,7 +105,7 @@ class RequestAmountViewController: UIViewController {
 	}
 
 	private func setData() {
-		view.backgroundColor = .white
+		view.backgroundColor = BrainwalletUIColor.surface
 		address.text = wallet.receiveAddress
         address.textColor = BrainwalletUIColor.content
 		border.backgroundColor = BrainwalletUIColor.content
