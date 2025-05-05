@@ -72,7 +72,6 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 		var del: Bool
 		var bytes: [UInt8]
 
-		print("[BRTxMetadataObject] find txKey \(txKey)")
 		do {
 			(ver, date, del, bytes) = try store.get(txKey)
 			let bytesDat = Data(bytes: &bytes, count: bytes.count)

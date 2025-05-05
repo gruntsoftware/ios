@@ -32,16 +32,16 @@ public struct MoonpayCountryData: Codable, Hashable {
 	var isAllowedInCountry: Bool
 }
 
-class BuyHostingController: UIHostingController<BuyView> {
-	var contentView: BuyView
+class BuyHostingController: UIHostingController<WebBuyView> {
+	var contentView: WebBuyView
 
 	var isLoaded: Bool = false
 
 	init() {
-		let buyViewModel = BuyViewModel()
-		contentView = BuyView(viewModel: buyViewModel)
-
-		super.init(rootView: contentView)
+        // HACK TO Widget
+        let buyViewModel = BuyViewModel()
+        contentView = WebBuyView(receiveAddress: buyViewModel.receivingAddress)
+        super.init(rootView: contentView)
 	}
 
 	@available(*, unavailable)

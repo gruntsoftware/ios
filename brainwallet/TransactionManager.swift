@@ -18,12 +18,11 @@ class TransactionManager: NSObject, Subscriber {
 
 	func fetchTransactionData(store: Store) {
 		self.store = store
-        
-         
-        NSLog("::: fetchTransactionData \(store.state.walletState.transactions.count)")
 
 		store.subscribe(self, selector: { $0.walletState.transactions != $1.walletState.transactions },
 		                callback: { state in
+            print(":::: TransactionManager subscribe walletState.transactions \(state.walletState.transactions.count)")
+
 		                	self.transactions = state.walletState.transactions
             
 		                })

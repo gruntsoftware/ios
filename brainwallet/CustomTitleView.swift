@@ -17,11 +17,7 @@ extension CustomTitleView {
 	var label: UILabel {
 		var textColor: UIColor
 
-		if #available(iOS 11.0, *) {
-			textColor = UIColor(named: "labelTextColor")!
-		} else {
-			textColor = BrainwalletUIColor.content
-		}
+        textColor = BrainwalletUIColor.content
 
 		guard let label = objc_getAssociatedObject(self, &AssociatedKeys.label) as? UILabel
 		else {
