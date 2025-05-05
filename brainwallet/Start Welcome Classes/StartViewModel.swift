@@ -75,6 +75,8 @@ class StartViewModel: ObservableObject {
         (UIApplication.shared.connectedScenes.first as?
                       UIWindowScene)?.windows.first!.overrideUserInterfaceStyle = state ?   .dark : .light
         UserDefaults.standard.set(state, forKey: userDidPreferDarkModeKey)
+        
+        UserDefaults.standard.synchronize()
     }
 
 	/// DEV: For checking wallet

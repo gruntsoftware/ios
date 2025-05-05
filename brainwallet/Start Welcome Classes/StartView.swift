@@ -159,12 +159,12 @@ struct StartView: View {
 						{
 							HStack {
 								Button(startViewModel
-									.yesLabel[startViewModel.currentLanguage.rawValue], role: .cancel)
+                                    .yesLabel[startViewModel.currentLanguage.rawValue], role: .cancel)
 								{
 									// Changes and Dismisses
 									startViewModel.setLanguage(code: startViewModel.currentLanguage.code)
 									selectedLang = false
-								}
+                                }
 								Button(startViewModel
 									.cancelLabel[startViewModel.currentLanguage.rawValue], role: .destructive)
 								{
@@ -172,17 +172,12 @@ struct StartView: View {
 									selectedLang = false
 								}
 							}
-						}
+                        }
 						Spacer()
 
-                        NavigationLink(destination:
-
-                            AnnounceUpdatesView(navigateStart: .create,
-                                                language: startViewModel.currentLanguage,
-                                                didTapContinue: $didContinue)
-                                .environmentObject(startViewModel)
-                                .navigationBarBackButtonHidden(false)
-                        ) {
+                        Button(action: {
+                                 startViewModel.didTapCreate!()
+                        }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
@@ -201,14 +196,9 @@ struct StartView: View {
                         }
                         .padding([.top, .bottom], 10.0)
                         
-                        NavigationLink(destination:
-
-                            AnnounceUpdatesView(navigateStart: .recover,
-                                                language: startViewModel.currentLanguage,
-                                                didTapContinue: $didContinue)
-                                .environmentObject(startViewModel)
-                                .navigationBarBackButtonHidden(false)
-                        ) {
+                        Button(action: {
+                                 startViewModel.didTapRecover!()
+                        }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)

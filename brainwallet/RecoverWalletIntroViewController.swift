@@ -50,7 +50,7 @@ class RecoverWalletIntroViewController: UIViewController {
 	}
 
 	private func setData() {
-		view.backgroundColor = .white
+		view.backgroundColor = BrainwalletUIColor.surface
 		label.numberOfLines = 0
 		label.lineBreakMode = .byWordWrapping
 		label.text = S.RecoverWallet.intro.localize()

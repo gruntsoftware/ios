@@ -53,7 +53,7 @@ class NodeSelectorViewController: UIViewController, Trackable {
 	}
 
 	private func setInitialData() {
-		view.backgroundColor = .white
+		view.backgroundColor = BrainwalletUIColor.surface
 		titleLabel.text = S.NodeSelector.title.localize()
 		nodeLabel.text = S.NodeSelector.nodeLabel.localize()
 		statusLabel.text = S.NodeSelector.statusLabel.localize()

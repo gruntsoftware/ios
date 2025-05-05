@@ -1,6 +1,6 @@
 import Foundation
 
-struct Amount {
+struct Amount: Equatable {
 	// MARK: - Public
 
 	let amount: UInt64 // amount in satoshis

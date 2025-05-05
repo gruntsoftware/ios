@@ -85,7 +85,7 @@ class WipeEmptyWalletViewController: UIViewController, Subscriber, Trackable {
 	}
 
 	private func setStyle() {
-		view.backgroundColor = .white
+		view.backgroundColor = BrainwalletUIColor.surface
         border.backgroundColor = BrainwalletUIColor.surface
 
 		titleLabel.font = UIFont.customBold(size: 24)

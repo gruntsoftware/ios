@@ -36,7 +36,7 @@ class StartViewController: UIViewController {
 	private let versionLabel = UILabel(font: .barlowMedium(size: 14), color: BrainwalletUIColor.content)
 
 	override func viewDidLoad() {
-		view.backgroundColor = .white
+		view.backgroundColor = BrainwalletUIColor.surface
 		setData()
 		addSubviews()
 		addConstraints()

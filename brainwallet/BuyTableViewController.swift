@@ -83,7 +83,7 @@ class BuyTableViewController: UITableViewController, SFSafariViewControllerDeleg
 
 		let thinHeaderView = UIView()
 		thinHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 1.0)
-		thinHeaderView.backgroundColor = .white
+		thinHeaderView.backgroundColor = BrainwalletUIColor.surface
 		tableView.tableHeaderView = thinHeaderView
 		tableView.tableFooterView = UIView()
 

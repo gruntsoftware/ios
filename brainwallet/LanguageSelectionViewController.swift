@@ -13,7 +13,7 @@ class LanguageSelectionViewController: UITableViewController {
 	func setupUI() {
 		tableView.register(SeparatorCell.self)
 		tableView.sectionHeaderHeight = UITableView.automaticDimension
-		tableView.backgroundColor = BrainwalletUIColor.content
+        tableView.backgroundColor = BrainwalletUIColor.surface
 		tableView.separatorStyle = .none
 
 		titleLabel.text = S.Settings.languages.localize()
@@ -44,7 +44,7 @@ extension LanguageSelectionViewController {
 		cell.textLabel?.text = "\(Locale.current.localizedString(forLanguageCode: viewModel.localizations[indexPath.row])?.capitalized ?? "") (\(viewModel.localizations[indexPath.row].capitalizingFirstLetter()))"
 		cell.accessoryType = viewModel.localizations[indexPath.row] == UserDefaults.selectedLanguage ? .checkmark : .none
 		cell.textLabel?.font = .customBody(size: 16.0)
-		cell.textLabel?.textColor = UIColor(named: "labelTextColor")
+        cell.textLabel?.textColor = BrainwalletUIColor.content
 
 		return cell
 	}

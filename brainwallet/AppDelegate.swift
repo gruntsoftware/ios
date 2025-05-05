@@ -35,25 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			// Remote Config
 			self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
 
-			// Pusher
-//			self.pushNotifications.start(instanceId: Partner.partnerKeyPath(name: .pusher))
-//			let generalInterest = String.preferredLanguageInterest(currentId: UserDefaults.selectedLanguage)
-//			let debugGeneralInterest = "debug-general"
-//
-//			try? self.pushNotifications.clearDeviceInterests()
-//
-//			try? self.pushNotifications
-//				.addDeviceInterest(interest: generalInterest)
-//			try? self.pushNotifications
-//				.addDeviceInterest(interest: debugGeneralInterest)
-//
-//			let interests = self.pushNotifications.getDeviceInterests()?.joined(separator: "|") ?? ""
-//			let device = UIDevice.current.identifierForVendor?.uuidString ?? "ID"
-//			let interestsDict: [String: String] = ["device_id": device,
-//			                                       "pusher_interests": interests]
-//
-//			LWAnalytics.logEventWithParameters(itemName: ._20231202_RIGI,
-//			                                   properties: interestsDict)
 
 			let current = UNUserNotificationCenter.current()
 
@@ -78,11 +59,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
 			                                   properties: properties)
 		}
-
+        
 		guard let thisWindow = window else { return false }
-
+        // Set global themse
 		thisWindow.tintColor = BrainwalletUIColor.surface
-
+        thisWindow.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: userDidPreferDarkModeKey) ? .dark: .light
+            
 		UIView.swizzleSetFrame()
 
 		applicationController.launch(application: application, window: thisWindow)
@@ -162,6 +144,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			UserDefaults.userIsInUSA = false
 		}
 	}
+    
+    /// Update Theme
+    func updatePreferredTheme() {
+        guard let window = window else { return }
+        // Set global theme
+        window.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: userDidPreferDarkModeKey) ? .dark: .light
+    }
 
 	/// On Demand Resources
 	/// Use for another resource heavy view

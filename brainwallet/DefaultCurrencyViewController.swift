@@ -30,8 +30,8 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 		}
 	}
 
-	private let bitcoinLabel = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.gray)
-	private let bitcoinSwitch = UISegmentedControl(items: ["photons (\(S.Symbols.photons))", "lites (\(S.Symbols.lites))", "LTC (\(S.Symbols.ltc))"])
+    private let litecoinLabel = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.content)
+	private var litecoinUnitSwitch = UISegmentedControl(items: ["photons (\(S.Symbols.photons))", "lites (\(S.Symbols.lites))", "LTC (\(S.Symbols.ltc))"])
 	private let rateLabel = UILabel(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private var header: UIView?
 
@@ -48,7 +48,7 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 		store.subscribe(self, selector: { $0.maxDigits != $1.maxDigits }, callback: { _ in
 			self.setExchangeRateLabel()
 		})
-
+        litecoinUnitSwitch.backgroundColor = BrainwalletUIColor.gray
 		tableView.sectionHeaderHeight = UITableView.automaticDimension
 		tableView.estimatedSectionHeaderHeight = 140.0
         tableView.backgroundColor = BrainwalletUIColor.surface
@@ -61,6 +61,8 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 
 		let faqButton = UIButton.buildFaqButton(store: store, articleId: ArticleIds.nothing)
 		faqButton.tintColor = BrainwalletUIColor.content
+        faqButton.isEnabled = false
+        faqButton.alpha = 0.0
 		navigationItem.rightBarButtonItems = [UIBarButtonItem.negativePadding, UIBarButtonItem(customView: faqButton)]
 	}
 
@@ -88,7 +90,7 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 
 		if rate.code == defaultCurrencyCode {
 			let check = UIImageView(image: #imageLiteral(resourceName: "CircleCheck").withRenderingMode(.alwaysTemplate))
-			check.tintColor = C.defaultTintColor
+            check.tintColor = BrainwalletUIColor.affirm
 			cell.accessoryView = check
 		} else {
 			cell.accessoryView = nil
@@ -100,13 +102,13 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 	override func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
 		if let header = self.header { return header }
 
-        let header = UIView(color:  BrainwalletUIColor.content)
+        let header = UIView(color:  BrainwalletUIColor.surface)
         let rateLabelTitle = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.content)
 
 		header.addSubview(rateLabelTitle)
 		header.addSubview(rateLabel)
-		header.addSubview(bitcoinLabel)
-		header.addSubview(bitcoinSwitch)
+		header.addSubview(litecoinLabel)
+		header.addSubview(litecoinUnitSwitch)
 
 		rateLabelTitle.constrain([
 			rateLabelTitle.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: C.padding[2]),
@@ -117,27 +119,27 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 			rateLabel.topAnchor.constraint(equalTo: rateLabelTitle.bottomAnchor),
 		])
 
-		bitcoinLabel.constrain([
-			bitcoinLabel.leadingAnchor.constraint(equalTo: rateLabelTitle.leadingAnchor),
-			bitcoinLabel.topAnchor.constraint(equalTo: rateLabel.bottomAnchor, constant: C.padding[2]),
+		litecoinLabel.constrain([
+			litecoinLabel.leadingAnchor.constraint(equalTo: rateLabelTitle.leadingAnchor),
+			litecoinLabel.topAnchor.constraint(equalTo: rateLabel.bottomAnchor, constant: C.padding[2]),
 		])
-		bitcoinSwitch.constrain([
-			bitcoinSwitch.leadingAnchor.constraint(equalTo: bitcoinLabel.leadingAnchor),
-			bitcoinSwitch.topAnchor.constraint(equalTo: bitcoinLabel.bottomAnchor, constant: C.padding[1]),
-			bitcoinSwitch.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -C.padding[2]),
-			bitcoinSwitch.widthAnchor.constraint(equalTo: header.widthAnchor, constant: -C.padding[4]),
+		litecoinUnitSwitch.constrain([
+			litecoinUnitSwitch.leadingAnchor.constraint(equalTo: litecoinLabel.leadingAnchor),
+			litecoinUnitSwitch.topAnchor.constraint(equalTo: litecoinLabel.bottomAnchor, constant: C.padding[1]),
+			litecoinUnitSwitch.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -C.padding[2]),
+			litecoinUnitSwitch.widthAnchor.constraint(equalTo: header.widthAnchor, constant: -C.padding[4]),
 		])
 
 		let settingSegment = store.state.maxDigits
 		switch settingSegment {
-		case 2: bitcoinSwitch.selectedSegmentIndex = 0
-		case 5: bitcoinSwitch.selectedSegmentIndex = 1
-		case 8: bitcoinSwitch.selectedSegmentIndex = 2
-		default: bitcoinSwitch.selectedSegmentIndex = 2
+		case 2: litecoinUnitSwitch.selectedSegmentIndex = 0
+		case 5: litecoinUnitSwitch.selectedSegmentIndex = 1
+		case 8: litecoinUnitSwitch.selectedSegmentIndex = 2
+		default: litecoinUnitSwitch.selectedSegmentIndex = 2
 		}
 
-		bitcoinSwitch.valueChanged = strongify(self) { myself in
-			let newIndex = myself.bitcoinSwitch.selectedSegmentIndex
+		litecoinUnitSwitch.valueChanged = strongify(self) { myself in
+			let newIndex = myself.litecoinUnitSwitch.selectedSegmentIndex
 
 			switch newIndex {
 			case 0: // photons
@@ -151,7 +153,7 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 			}
 		}
 
-		bitcoinLabel.text = S.DefaultCurrency.bitcoinLabel.localize()
+		litecoinLabel.text = S.DefaultCurrency.bitcoinLabel.localize()
 		rateLabelTitle.text = S.DefaultCurrency.rateLabel.localize()
 
 		self.header = header

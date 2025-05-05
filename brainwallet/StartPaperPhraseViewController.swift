@@ -16,12 +16,12 @@ class StartPaperPhraseViewController: UIViewController {
 	private let pencil = UIImageView(image: #imageLiteral(resourceName: "Pencil"))
 	private var explanation = UILabel.wrapping(font: UIFont.barlowMedium(size: 20.0))
 	private let store: Store
-    private let header = RadialGradientView(backgroundColor: BrainwalletUIColor.content, offset: 64.0)
+    private let header = RadialGradientView(backgroundColor: BrainwalletUIColor.surface, offset: 64.0)
 	private var footer = UILabel.wrapping(font: .customBody(size: 13.0), color: BrainwalletUIColor.content)
 	private let callback: () -> Void
 
 	override func viewDidLoad() {
-		view.backgroundColor = .white
+		view.backgroundColor = BrainwalletUIColor.surface
 		explanation.text = S.StartPaperPhrase.body.localize()
 
 		addSubviews()

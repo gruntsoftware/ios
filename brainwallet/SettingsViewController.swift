@@ -8,7 +8,7 @@
 import LocalAuthentication
 import UIKit
 
-class SettingsViewController: UITableViewController, CustomTitleView {
+class SettingsViewController: UITableViewController {
 	init(sections: [String], rows: [String: [Setting]], optionalTitle _: String? = nil) {
 		self.sections = sections
 		if UserDefaults.isBiometricsEnabled {
@@ -35,16 +35,10 @@ class SettingsViewController: UITableViewController, CustomTitleView {
 	override func viewDidLoad() {
 		let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 48.0))
 
-		guard let textColor = UIColor(named: "labelTextColor"),
-		      let backGroundColor = UIColor(named: "lfBackgroundColor")
-		else {
-			NSLog("ERROR: Custom color not found")
-			return
-		}
 
-		headerView.backgroundColor = backGroundColor
-		tableView.backgroundColor = backGroundColor
-		titleLabel = UILabel(font: .customBold(size: 26.0), color: textColor)
+        headerView.backgroundColor = BrainwalletUIColor.surface
+		tableView.backgroundColor = BrainwalletUIColor.surface
+        titleLabel = UILabel(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
 
 		headerView.addSubview(titleLabel)
 		titleLabel.constrain(toSuperviewEdges: UIEdgeInsets(top: 0, left: C.padding[2], bottom: 0, right: 0))
@@ -53,7 +47,7 @@ class SettingsViewController: UITableViewController, CustomTitleView {
 		tableView.tableFooterView = UIView()
 		tableView.separatorStyle = .none
 
-		addCustomTitle()
+		//addCustomTitle()
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -83,14 +77,8 @@ class SettingsViewController: UITableViewController, CustomTitleView {
 				cell.selectionStyle = .none
 			}
 
-			if #available(iOS 11.0, *),
-			   let textColor = UIColor(named: "labelTextColor")
-			{
-				cell.textLabel?.textColor = textColor
-				label.textColor = textColor
-			} else {
-				cell.textLabel?.textColor = BrainwalletUIColor.content
-			}
+            cell.textLabel?.textColor = BrainwalletUIColor.content
+			
 		}
 		return cell
 	}
@@ -99,16 +87,8 @@ class SettingsViewController: UITableViewController, CustomTitleView {
 		let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 44))
 		let label = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.content)
 		let separator = UIView()
-
-		if #available(iOS 11.0, *),
-		   let backgroundColor = UIColor(named: "lfBackgroundColor"),
-		   let labelTextColor = UIColor(named: "labelTextColor")
-		{
-			view.backgroundColor = backgroundColor
-			label.textColor = labelTextColor
-		} else {
-			view.backgroundColor = BrainwalletUIColor.content
-		}
+        
+        view.backgroundColor = BrainwalletUIColor.surface
 
 		view.addSubview(label)
 		switch sections[section] {
@@ -126,7 +106,8 @@ class SettingsViewController: UITableViewController, CustomTitleView {
 			label.text = ""
 		}
 
-		separator.backgroundColor = BrainwalletUIColor.border
+        separator.backgroundColor = BrainwalletUIColor.gray
+        
 		view.addSubview(separator)
 		separator.constrain([
 			separator.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -157,15 +138,7 @@ class SettingsViewController: UITableViewController, CustomTitleView {
 		return 48.0
 	}
 
-	override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-		didScrollForCustomTitle(yOffset: scrollView.contentOffset.y)
-	}
-
-	override func scrollViewWillEndDragging(_: UIScrollView, withVelocity _: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-		scrollViewWillEndDraggingForCustomTitle(yOffset: targetContentOffset.pointee.y)
-	}
-
-	@available(*, unavailable)
+    @available(*, unavailable)
 	required init?(coder _: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}

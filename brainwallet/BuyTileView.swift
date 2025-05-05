@@ -15,13 +15,13 @@ struct BuyTileView: View {
 	var body: some View {
 		ZStack {
 			RoundedRectangle(cornerRadius: 14.0)
-                .foregroundColor(BrainwalletColor.content)
+                .foregroundColor(BrainwalletColor.surface)
 				.frame(width: codeCellWidth,
 				       height: codeCellHeight,
 				       alignment: .center)
 				.overlay {
 					RoundedRectangle(cornerRadius: 14.0)
-						.stroke(.white, lineWidth: 0.5)
+						.stroke(BrainwalletColor.content, lineWidth: 0.5)
 						.frame(width: codeCellWidth,
 						       height: codeCellHeight,
 						       alignment: .center)

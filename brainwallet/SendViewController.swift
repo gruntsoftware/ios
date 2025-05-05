@@ -80,7 +80,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 		// polish parameters
 		memoCell.backgroundColor = BrainwalletUIColor.surface
-        amountView.view.backgroundColor = BrainwalletUIColor.content
+        amountView.view.backgroundColor = BrainwalletUIColor.surface
 
 		view.addSubview(sendAddressCell)
 		view.addSubview(memoCell)
@@ -93,7 +93,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			memoCell.widthAnchor.constraint(equalTo: sendAddressCell.widthAnchor),
 			memoCell.topAnchor.constraint(equalTo: sendAddressCell.bottomAnchor),
 			memoCell.leadingAnchor.constraint(equalTo: sendAddressCell.leadingAnchor),
-			memoCell.heightAnchor.constraint(equalTo: memoCell.textView.heightAnchor, constant: C.padding[3]),
+            memoCell.constraint(.height, constant: 44.0),
 		])
 		memoCell.accessoryView.constrain([
 			memoCell.accessoryView.constraint(.width, constant: 0.0),
@@ -227,7 +227,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 		let balanceOutput = String(format: S.Send.balance.localize(), balanceText)
 		var combinedFeesOutput = ""
-        var balanceColor: UIColor = BrainwalletUIColor.gray
+        var balanceColor: UIColor = BrainwalletUIColor.content
 
 		/// Check the amount is greater than zero and amount satoshis are not nil
 		if let currentRate = currentRate,
@@ -258,14 +258,17 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 			combinedFeesOutput = "(\(S.Send.networkFee.localize()) + \(S.Send.serviceFee.localize())): \(networkFeeAmount) + \(serviceFeeAmount) = \(totalFeeAmount)"
 
-			if enteredAmount.rawValue > sendTotal || enteredAmount.rawValue > balance {
-                balanceColor = BrainwalletUIColor.warn
+			if sendTotal > balance {
+                balanceColor = BrainwalletUIColor.error
 			}
+            else {
+                balanceColor = BrainwalletUIColor.content
+            }
 		}
 
 		let balanceStyle = [
 			NSAttributedString.Key.font: UIFont.customBody(size: 14.0),
-			NSAttributedString.Key.foregroundColor: balanceColor,
+            NSAttributedString.Key.foregroundColor: balanceColor
 		]
 
 		return (NSAttributedString(string: balanceOutput, attributes: balanceStyle), NSAttributedString(string: combinedFeesOutput, attributes: balanceStyle))

@@ -8,7 +8,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	@IBOutlet var tabBar: UITabBar!
 	@IBOutlet var settingsButton: UIButton!
 	@IBOutlet var walletBalanceLabel: UILabel!
-
+    
 	var primaryBalanceLabel: UpdatingLabel?
 	var secondaryBalanceLabel: UpdatingLabel?
 	private let largeFontSize: CGFloat = 24.0
@@ -118,9 +118,11 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 	private func setupViews() {
 		walletBalanceLabel.text = S.ManageWallet.balance.localize() + ":"
+        
+        settingsButton.imageView?.tintColor = BrainwalletUIColor.content
 
 		headerView.backgroundColor = BrainwalletUIColor.surface
-		tabBar.barTintColor = BrainwalletUIColor.surface
+        tabBar.barTintColor = BrainwalletUIColor.content.withAlphaComponent(0.01)
 		containerView.backgroundColor = BrainwalletUIColor.surface
 		view.backgroundColor = BrainwalletUIColor.surface
 	}
@@ -134,11 +136,11 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			return
 		}
 
-		let priceLabelArray = [primaryBalanceLabel, secondaryBalanceLabel, equalsLabel]
+		let priceLabelArray = [primaryBalanceLabel, secondaryBalanceLabel, equalsLabel, walletBalanceLabel]
 
 		for (_, view) in priceLabelArray.enumerated() {
-			view?.backgroundColor = .clear
-			view?.textColor = .white
+            view?.backgroundColor = BrainwalletUIColor.surface
+            view?.textColor = BrainwalletUIColor.content
 		}
 
 		primaryLabel.font = UIFont.barlowSemiBold(size: largeFontSize)
@@ -308,6 +310,10 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		localizeTabBar()
+        
+        guard let store = self.store,
+                let walletManager = self.walletManager else { return }
+     
 	}
 
 	func localizeTabBar() {
@@ -419,9 +425,6 @@ extension TabBarViewController {
 			NSLayoutConstraint.deactivate(!isLTCSwapped ? self.regularConstraints : self.swappedConstraints)
 			NSLayoutConstraint.activate(!isLTCSwapped ? self.swappedConstraints : self.regularConstraints)
 			self.view.layoutIfNeeded()
-
-			LWAnalytics.logEventWithParameters(itemName: ._20200207_DTHB)
-
 		}) { _ in }
 		store.perform(action: CurrencyChange.toggle())
 	}
