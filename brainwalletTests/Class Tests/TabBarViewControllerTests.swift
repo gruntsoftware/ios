@@ -3,9 +3,7 @@ import XCTest
 
 class TabBarViewControllerTests: XCTestCase {
 	var viewController: TabBarViewController!
-
-	var noBuyVewController: NoBuyTabBarViewController!
-
+ 
 	override func setUpWithError() throws {
 		viewController = UIStoryboard(name: "Main",
 		                              bundle: nil)
@@ -16,8 +14,7 @@ class TabBarViewControllerTests: XCTestCase {
 	}
 
 	override func tearDownWithError() throws {
-		viewController = nil
-		noBuyVewController = nil
+		viewController = nil 
 	}
 
 	func testTabBarItemCount() throws {

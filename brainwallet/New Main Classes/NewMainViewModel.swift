@@ -110,16 +110,13 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     
     private func setBalances() {
         guard let store = self.store else { return }
-        
-        print("::: set with walletAmmount \(store)")
+    
         if let rate = store.state.currentRate,
            let balance = store.state.walletState.balance,
            walletHasInitialized {
             exchangeRate = rate
             walletAmount = Amount(amount: balance, rate: exchangeRate!, maxDigits: store.state.maxDigits)
             walletHasInitialized = true
-            
-            print("::: set balances \(walletAmount)")
         }
     }
     

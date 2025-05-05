@@ -22,7 +22,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	private var allTransactions: [Transaction] = [] {
 		didSet {
 			transactions = allTransactions
-            print("::: allTransactions \(allTransactions.count)")
 		}
 	}
 
@@ -48,6 +47,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	}
 
 	override func viewDidLoad() {
+        NSLog("::: TransactionsViewController viewDidLoad")
+
 		setup()
 		addSubscriptions()
 	}
@@ -55,20 +56,25 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	private func setup() {
 		guard let _ = walletManager
 		else {
-			NSLog("ERROR: Wallet manager Not initialized")
+			NSLog("::: ERROR: Wallet manager Not initialized")
 			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR)
 			return
 		}
 
 		guard let reduxState = store?.state
 		else {
+            NSLog("::: ERROR: reduxState Not initialized")
 			return
 		}
+        print(":::: TransactionViewController setup: transactions count: \(walletManager?.wallet?.transactions.count)")
+        
+        print(":::: TransactionViewController walletState: balance : \(reduxState.walletState.balance)")
+
 
 		tableView.register(HostingTransactionCell<TransactionCellView>.self, forCellReuseIdentifier: "HostingTransactionCell<TransactionCellView>")
 		transactions = TransactionManager.sharedInstance.transactions
 		rate = TransactionManager.sharedInstance.rate
-        print("::: transactions \(transactions.count)")
+        print(":::: TransactionViewController setup: transactions count: \(transactions.count)")
 
 		tableView.backgroundColor = BrainwalletUIColor.surface
 		initSyncingHeaderView(reduxState: reduxState, completion: {})
@@ -94,7 +100,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 	private func attemptShowPrompt() {
 		guard let walletManager = walletManager else {
-			NSLog("ERROR: WalletManager not initialized")
+			NSLog("::: ERROR: WalletManager not initialized")
 			return
 		}
 		guard let store = store
@@ -102,10 +108,13 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 			NSLog("ERROR: Store not initialized")
 			return
 		}
+        print(":::: TransactionViewController attemptShowPrompt WalletManager \(walletManager.wallet?.transactions.count)")
 
 		let types = PromptType.defaultOrder
 		if let type = types.first(where: { $0.shouldPrompt(walletManager: walletManager, state: store.state) }) {
 			saveEvent("prompt.\(type.name).displayed")
+            print("::: TransactionViewController attemptShowPrompt currentPromptType: \(String(describing: currentPromptType)) tx count: \(walletManager.wallet?.transactions.count)")
+
 			currentPromptType = type
 			if type == .biometrics {
 				UserDefaults.hasPromptedBiometrics = true
@@ -114,6 +123,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 				UserDefaults.hasPromptedShareData = true
 			}
 		} else {
+            print("::: TransactionViewController attemptShowPrompt currentPromptType (nil): \(String(describing: currentPromptType)) tx count: \(walletManager.wallet?.transactions.count)")
 			currentPromptType = nil
 		}
 	}
@@ -122,6 +132,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	/// - Parameter txHash: String reprsentation of the TX
 	private func updateTransactions(txHash: String) {
 		for (i, tx) in transactions.enumerated() {
+            print("::: TransactionViewController updateTransactions transaction blockHeight: \(tx.blockHeight)")
+
 			if tx.hash == txHash {
 				DispatchQueue.main.async {
 					self.tableView.beginUpdates()
@@ -171,8 +183,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	// MARK: - Table view data / delegate source
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+            print("::: Table view data / delegate source section: \(indexPath.section)")
 		switch indexPath.section {
 		case 0:
+            //print("::: TransactionViewController tableView indexPath section: \(indexPath.section)")
 
 			if currentPromptType != nil {
 				return configurePromptCell(promptType: currentPromptType, indexPath: indexPath)
@@ -181,6 +196,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		default:
 			let transaction = transactions[indexPath.row]
+            print("::: TransactionViewController tableView transaction blockHeight: \(transaction.blockHeight)")
 
 			guard let cell = tableView.dequeueReusableCell(withIdentifier: "HostingTransactionCell<TransactionCellView>", for: indexPath) as? HostingTransactionCell<TransactionCellView>
 			else {
@@ -195,7 +211,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 				let viewModel = TransactionCellViewModel(transaction: transaction, isLtcSwapped: isLtcSwapped, rate: rate, maxDigits: store.state.maxDigits, isSyncing: store.state.walletState.syncState != .success)
 				cell.set(rootView: TransactionCellView(viewModel: viewModel), parentController: self)
 				cell.selectionStyle = .default
-                print("::: trancation cell set:  \(transaction.detailsAddressText)")
 			}
 
 			return cell
@@ -205,6 +220,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if indexPath.section == 1 {
 			let transaction = transactions[indexPath.row]
+          
+            print("::: TransactionViewController didSelectRowAt: \(transaction.blockHeight)")
 
 			if let rate = rate,
 			   let store = store,
@@ -263,10 +280,13 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		} else {
 			if !transactions.isEmpty {
 				tableView.backgroundView = nil
+               // print("::: TransactionViewController numberOfRowsInSection: \(transactions.count)")
 				return transactions.count
 			} else {
 				tableView.backgroundView = emptyMessageView()
 				tableView.separatorStyle = .none
+                //print("::: TransactionViewController numberOfRowsInSection: \(transactions.count)")
+
 				return 0
 			}
 		}
@@ -315,7 +335,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	private func addSubscriptions() {
 		guard let store = store
 		else {
-			NSLog("ERROR: Store not initialized")
+			NSLog("::: ERROR: Store not initialized")
 			return
 		}
 
@@ -324,7 +344,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		store.subscribe(self, selector: { $0.walletState.transactions != $1.walletState.transactions },
 		                callback: { state in
 		                	self.allTransactions = state.walletState.transactions
-            NSLog("::: All Trnasactions \(state.walletState.transactions.count)")
+            print(":::: TransactionViewController subscribe state.walletState.transactions \(state.walletState.transactions.count)")
+
 		                	self.reload()
 		                })
 
@@ -348,6 +369,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		store.subscribe(self, selector: { $0.walletState.lastBlockTimestamp != $1.walletState.lastBlockTimestamp },
 		                callback: { reduxState in
+           
+            print("::: TransactionViewController  Sync Progress ")
 
 		                	guard let syncView = self.syncingHeaderView else { return }
 
@@ -374,6 +397,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		store.subscribe(self, name: .showStatusBar) { _ in
 			// DEV: May refactor where the action view persists after confirming pin
+            print("::: TransactionViewController subscription Show Status Bar")
+
+            
 			self.reload()
 		}
 
@@ -387,6 +413,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		                		assertionFailure("PEER MANAGER Not initialized")
 		                		return
 		                	}
+            print("::: TransactionViewController subscription syncState")
+
 
 		                	if reduxState.walletState.syncState == .syncing {
 		                		self.shouldBeSyncing = true
@@ -439,7 +467,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		// MARK: - Subscription:  Memo Updated
 
 		store.subscribe(self, name: .txMemoUpdated(""), callback: {
+            print("::: TransactionViewController subscription txMemoUpdated")
+
 			guard let trigger = $0 else { return }
+            
+            print("::: TransactionViewController subscription triggered, trigger: \(trigger)")
+
 			if case let .txMemoUpdated(txHash) = trigger {
 				self.updateTransactions(txHash: txHash)
 			}

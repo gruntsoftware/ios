@@ -15,6 +15,9 @@ struct BrainwalletSocials {
 
 struct APIServer {
 	static let baseUrl = "https://api.grunt.ltd/"
+    static let mp_pk_live = "pk_test_TkkY0OEGaffToUWhjdUDP2ysWeWyzqc"
+    static let mp_widget_debug_prefix = "https://buy-sandbox.moonpay.com/"
+    static let mp_widget_prod_prefix = "https://https://buy.moonpay.com/"
 }
 
 struct Padding {

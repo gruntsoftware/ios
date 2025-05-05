@@ -33,7 +33,7 @@ open class BRAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BR
 	private var authenticator: WalletAuthenticator
 
 	// whether or not to emit log messages from this instance of the client
-	private var logEnabled = false
+	private var logEnabled = true
 
 	// proto is the transport protocol to use for talking to the API (either http or https)
 	var proto = "https"
@@ -69,7 +69,6 @@ open class BRAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BR
 		if !logEnabled {
 			return
 		}
-		print("::: [BRAPIClient] \(s)")
 	}
 
 	var deviceId: String {
