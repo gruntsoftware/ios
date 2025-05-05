@@ -66,6 +66,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
             NSLog("::: ERROR: reduxState Not initialized")
 			return
 		}
+        print(":::: TransactionViewController setup: transactions count: \(walletManager?.wallet?.transactions.count)")
+        
+        print(":::: TransactionViewController walletState: balance : \(reduxState.walletState.balance)")
+
 
 		tableView.register(HostingTransactionCell<TransactionCellView>.self, forCellReuseIdentifier: "HostingTransactionCell<TransactionCellView>")
 		transactions = TransactionManager.sharedInstance.transactions
@@ -102,10 +106,13 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 			NSLog("ERROR: Store not initialized")
 			return
 		}
+        print(":::: TransactionViewController attemptShowPrompt WalletManager \(walletManager.wallet?.transactions.count)")
 
 		let types = PromptType.defaultOrder
 		if let type = types.first(where: { $0.shouldPrompt(walletManager: walletManager, state: store.state) }) {
 			saveEvent("prompt.\(type.name).displayed")
+            print("::: TransactionViewController attemptShowPrompt currentPromptType: \(String(describing: currentPromptType)) tx count: \(walletManager.wallet?.transactions.count)")
+
 			currentPromptType = type
 			if type == .biometrics {
 				UserDefaults.hasPromptedBiometrics = true
@@ -114,6 +121,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 				UserDefaults.hasPromptedShareData = true
 			}
 		} else {
+            print("::: TransactionViewController attemptShowPrompt currentPromptType (nil): \(String(describing: currentPromptType)) tx count: \(walletManager.wallet?.transactions.count)")
 			currentPromptType = nil
 		}
 	}
@@ -182,6 +190,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		default:
 			let transaction = transactions[indexPath.row]
+            print("::: TransactionViewController tableView transaction blockHeight: \(transaction.blockHeight)")
 
 			guard let cell = tableView.dequeueReusableCell(withIdentifier: "HostingTransactionCell<TransactionCellView>", for: indexPath) as? HostingTransactionCell<TransactionCellView>
 			else {
@@ -263,6 +272,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		} else {
 			if !transactions.isEmpty {
 				tableView.backgroundView = nil
+               // print("::: TransactionViewController numberOfRowsInSection: \(transactions.count)")
 				return transactions.count
 			} else {
 				tableView.backgroundView = emptyMessageView()
@@ -389,6 +399,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		                		assertionFailure("::: PEER MANAGER Not initialized")
 		                		return
 		                	}
+            print("::: TransactionViewController subscription syncState")
+
 
 
 		                	if reduxState.walletState.syncState == .syncing {
