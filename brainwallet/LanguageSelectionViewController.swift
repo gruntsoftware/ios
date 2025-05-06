@@ -14,7 +14,7 @@ class LanguageSelectionViewController: UITableViewController {
 		tableView.register(SeparatorCell.self)
 		tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.backgroundColor = BrainwalletUIColor.surface
-		tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
 
 		titleLabel.text = S.Settings.languages.localize()
 		titleLabel.sizeToFit()

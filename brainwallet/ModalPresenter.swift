@@ -360,7 +360,7 @@ class ModalPresenter: Subscriber, Trackable {
 		guard let top = topViewController else { return }
 		guard let walletManager = walletManager else { return }
 		let settingsNav = UINavigationController()
-		let sections = ["About", "Wallet", "Manage", "Support", "Blockchain"]
+		let sections = ["About", "Wallet", "Manage"]
 
 		let rows = [
 			"About": [Setting(title: S.Settings.brainwalletVersion.localize(), accessoryText: {
@@ -471,37 +471,10 @@ class ModalPresenter: Subscriber, Trackable {
 					let updatePin = UpdatePinViewController(store: myself.store, walletManager: walletManager, type: .update)
 					settingsNav.pushViewController(updatePin, animated: true)
 				}),
-			],
-			"Support": [
-				Setting(title: S.Settings.shareData.localize(), callback: {
-					settingsNav.pushViewController(ShareDataViewController(store: self.store), animated: true)
-				}),
-			],
-			"Blockchain": [
-				Setting(title: S.Settings.advancedTitle.localize(), callback: { [weak self] in
-					guard let myself = self else { return }
-					guard let walletManager = myself.walletManager else { return }
-					let sections = ["Network"]
-					var networkRows = [Setting]()
-					networkRows = [Setting(title: "Litecoin Nodes", callback: {
-						let nodeSelector = NodeSelectorViewController(walletManager: walletManager)
-						settingsNav.pushViewController(nodeSelector, animated: true)
-					})]
-
-					// TODO: Develop this feature for issues with the TXID
-					//                    if UserDefaults.didSeeCorruption {
-					//                        networkRows.append(
-					//                            Setting(title: S.WipeWallet.deleteDatabase, callback: {
-					//                                self?.deleteDatabase()
-					//                            })
-					//                        )
-					//                    }
-
-					let advancedSettings = ["Network": networkRows]
-					let advancedSettingsVC = SettingsViewController(sections: sections, rows: advancedSettings, optionalTitle: S.Settings.advancedTitle.localize())
-					settingsNav.pushViewController(advancedSettingsVC, animated: true)
-				}),
-			],
+                Setting(title: S.Settings.shareData.localize(), callback: {
+                    settingsNav.pushViewController(ShareDataViewController(store: self.store), animated: true)
+                }),
+			]
 		]
 
 		let settings = SettingsViewController(sections: sections, rows: rows)
@@ -660,7 +633,6 @@ class ModalPresenter: Subscriber, Trackable {
 
 				group.enter()
 				DispatchQueue.walletQueue.asyncAfter(deadline: .now() + 2.0) {
-					print("::: Pausing to show 'Wiping' Dialog")
 					group.leave()
 				}
 
