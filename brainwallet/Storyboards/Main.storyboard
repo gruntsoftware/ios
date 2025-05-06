@@ -30,11 +30,13 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLr-H0-dij">
                                         <rect key="frame" x="358" y="12" width="44" height="44"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="BcF-gv-JKM"/>
                                             <constraint firstAttribute="width" constant="44" id="Sym-3S-iFL"/>
                                             <constraint firstAttribute="height" constant="44" id="Ykw-TZ-IhF"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="qm2-yx-Bqu"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="settings_hamburger">
+                                        <state key="normal" image="line.3.horizontal" catalog="system">
                                             <color key="titleColor" name="brainwalletContent"/>
                                         </state>
                                         <connections>
@@ -57,7 +59,9 @@
                                     <constraint firstAttribute="height" constant="80" id="8em-HC-37f"/>
                                     <constraint firstItem="8tK-Tt-zyE" firstAttribute="top" secondItem="8fw-XB-zyN" secondAttribute="top" constant="12" id="I0f-mL-tM8"/>
                                     <constraint firstItem="8tK-Tt-zyE" firstAttribute="leading" secondItem="8fw-XB-zyN" secondAttribute="leading" constant="12" id="NGn-Kg-thI"/>
+                                    <constraint firstAttribute="trailing" secondItem="jLr-H0-dij" secondAttribute="trailing" constant="12" id="cYe-Vi-BDj"/>
                                     <constraint firstAttribute="trailing" secondItem="jLr-H0-dij" secondAttribute="trailing" constant="12" id="pVC-kQ-WwZ"/>
+                                    <constraint firstItem="jLr-H0-dij" firstAttribute="top" secondItem="8fw-XB-zyN" secondAttribute="top" constant="12" id="qHU-Dw-tvb"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHe-dR-fDI">
@@ -148,8 +152,8 @@
     <color key="tintColor" red="0.27058823529999998" green="0.23529411759999999" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
         <image name="deskclock" catalog="system" width="128" height="125"/>
+        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
         <image name="litecoin_cutout24" width="24" height="24"/>
-        <image name="settings_hamburger" width="33" height="23"/>
         <image name="square.and.arrow.down" catalog="system" width="114" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
         <namedColor name="brainwalletContent">
@@ -159,7 +163,7 @@
             <color red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

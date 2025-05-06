@@ -24,10 +24,14 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
 	var headerMessage: SyncState = .success {
 		didSet {
 			switch headerMessage {
-			case .connecting: headerLabel.text = S.SyncingHeader.connecting.localize()
+			case .connecting:
+                headerLabel.text = S.SyncingHeader.connecting.localize()
+                headerLabel.textColor = BrainwalletUIColor.warn
 			case .syncing: headerLabel.text = S.SyncingHeader.syncing.localize()
+                headerLabel.textColor = BrainwalletUIColor.content
 			case .success:
 				headerLabel.text = ""
+                headerLabel.textColor = BrainwalletUIColor.content
 			}
 			headerLabel.setNeedsDisplay()
 		}
@@ -36,6 +40,7 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
 	var timestamp: UInt32 = 0 {
 		didSet {
 			timestampLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: Double(timestamp)))
+            timestampLabel.textColor = BrainwalletUIColor.content
 			timestampLabel.setNeedsDisplay()
 		}
 	}
@@ -43,6 +48,7 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
     var blockNumber: UInt32 = 0 {
         didSet {
             blockheightLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: Double(timestamp)))
+            blockheightLabel.textColor = BrainwalletUIColor.content
             blockheightLabel.setNeedsDisplay()
         }
     }
@@ -69,6 +75,11 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		progressView.transform = progressView.transform.scaledBy(x: 1, y: 2)
+        progressView.trackTintColor = BrainwalletUIColor.background
+        progressView.progressTintColor = BrainwalletUIColor.content
+        noSendImageView.tintColor = BrainwalletUIColor.content
+        noSendImageView.backgroundColor = BrainwalletUIColor.surface
+        self.backgroundColor = BrainwalletUIColor.surface
 	}
 
 	override func setSelected(_ selected: Bool, animated: Bool) {

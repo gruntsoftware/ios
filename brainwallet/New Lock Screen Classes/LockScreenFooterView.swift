@@ -31,7 +31,7 @@ struct LockScreenFooterView: View {
                         Button(action: {
                             viewModel.userPrefersDarkMode.toggle()
                         }) {
-                            Image(systemName: viewModel.userPrefersDarkMode ? "moon.circle" : "sun.max.circle")
+                            Image(systemName: viewModel.userPrefersDarkMode ? "sun.max.circle" : "moon.circle")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: buttonSize, height: buttonSize,

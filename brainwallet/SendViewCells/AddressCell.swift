@@ -3,6 +3,7 @@ import UIKit
 class AddressCell: UIView {
 	init() {
 		super.init(frame: .zero)
+        self.backgroundColor = BrainwalletUIColor.surface
 		setupViews()
 	}
 
