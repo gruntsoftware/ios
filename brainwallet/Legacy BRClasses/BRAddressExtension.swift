@@ -1,7 +1,5 @@
 //
 //  BRAddressExtension.swift
-//  loafwallet
-//
 //  Created by Kerry Washington on 11/4/23.
 //
 import BRCore

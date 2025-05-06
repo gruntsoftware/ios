@@ -25,7 +25,7 @@ struct SeedWordView: View {
 					ZStack {
 						RoundedRectangle(cornerRadius: bigButtonCornerRadius)
 							.frame(height: cellHeight, alignment: .center)
-                            .foregroundColor(BrainwalletColor.surface)
+                            .foregroundColor(BrainwalletColor.background)
 							.shadow(radius: 3, x: 3.0, y: 3.0)
 
 						Text(seedWord)
