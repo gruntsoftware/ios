@@ -1,7 +1,5 @@
 //
 //  TransactionManager.swift
-//  loafwallet
-//
 //  Created by Kerry Washington on 11/17/19.
 //
 import Foundation
@@ -21,10 +19,7 @@ class TransactionManager: NSObject, Subscriber {
 
 		store.subscribe(self, selector: { $0.walletState.transactions != $1.walletState.transactions },
 		                callback: { state in
-            print(":::: TransactionManager subscribe walletState.transactions \(state.walletState.transactions.count)")
-
 		                	self.transactions = state.walletState.transactions
-            
 		                })
 
 		store.subscribe(self, selector: { $0.currentRate != $1.currentRate },
