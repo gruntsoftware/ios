@@ -8,6 +8,7 @@ class DescriptionSendCell: SendCell {
 		textView.returnKeyType = .done
 		self.placeholder.text = placeholder
         textView.textColor = BrainwalletUIColor.content
+        textView.backgroundColor = BrainwalletUIColor.surface
         self.placeholder.textColor = BrainwalletUIColor.gray
 
 		setupViews()
@@ -30,6 +31,7 @@ class DescriptionSendCell: SendCell {
 
 		textView.clipsToBounds = true
 		textView.layer.cornerRadius = 8.0
+        textView.backgroundColor = BrainwalletUIColor.surface
 
 		addSubview(textView)
 		textView.constrain([
