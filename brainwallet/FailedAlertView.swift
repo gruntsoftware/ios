@@ -1,6 +1,5 @@
 //
 //  FailedAlertView.swift
-//  loafwallet
 //
 //  Created by Kerry Washington on 1/29/21.
 //

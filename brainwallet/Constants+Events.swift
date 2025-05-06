@@ -45,14 +45,14 @@ struct C {
 	static let secondsInDay: TimeInterval = 86400
 	static let maxMoney: UInt64 = 84_000_000 * 100_000_000
 	static let satoshis: UInt64 = 100_000_000
-	static let walletQueue = "com.litecoin.walletqueue"
-	static let btcCurrencyCode = "LTC"
+	static let walletQueue = "com.gruntsoftware.brainwalletqueue"
+	static let ltcCurrencyCode = "LTC"
 	static let null = "(null)"
 	static let maxMemoLength = 250
-	static let feedbackEmail = "feedback@litecoinfoundation.zendesk.com"
-	static let supportEmail = "support@litecoinfoundation.zendesk.com"
+	static let feedbackEmail = "feedback@brainwallet.co"
+	static let supportEmail = "support@brainwallet.co"
 
-	static let reviewLink = "https://itunes.apple.com/app/loafwallet-litecoin-wallet/id1119332592?action=write-review"
+	static let reviewLink = "https://apps.apple.com/us/app/brainwallet/id6444157498?action=write-review"
 
 	static var standardPort: Int {
 		return E.isTestnet ? 19335 : 9333

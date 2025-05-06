@@ -8,7 +8,6 @@ class BRAddressTests: XCTestCase {
 	func testNewAddressGeneration() throws {
 		if let address = walletManager.wallet?.receiveAddress {
 			newAddress = address
-			XCTAssertTrue(newAddress == "")
 			XCTAssertTrue(newAddress.isValidAddress)
 		} else {
 			XCTAssertNil(walletManager.wallet?.receiveAddress)
