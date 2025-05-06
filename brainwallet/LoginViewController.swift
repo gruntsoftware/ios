@@ -51,11 +51,8 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 
 	private let store: Store
 
-	private let backgroundView: UIView = {
-		let view = UIView()
-        view.backgroundColor = BrainwalletUIColor.surface
-		return view
-	}()
+	private var backgroundView = UIView()
+		 
 
 	private var headerView: UIHostingController<LockScreenHeaderView>
     private var footerView: UIHostingController<LockScreenFooterView>
@@ -82,8 +79,9 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		checkWalletBalance()
 		addSubviews()
 		addConstraints()
-		
-
+        self.view.backgroundColor = BrainwalletUIColor.surface
+        backgroundView.backgroundColor = BrainwalletUIColor.surface
+        
 		addPinPadCallback()
 		if pinView != nil {
 			addPinView()
