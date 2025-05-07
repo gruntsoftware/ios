@@ -20,6 +20,7 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
 			progressView.setNeedsDisplay()
 		}
 	}
+    
 
 	var headerMessage: SyncState = .success {
 		didSet {
@@ -45,9 +46,10 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
 		}
 	}
     
-    var blockNumber: UInt32 = 0 {
+    var blockNumberString = "" {
         didSet {
-            blockheightLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: Double(timestamp)))
+            blockheightLabel.text = blockNumberString
+            print("::: blockheightLabel.text:\(blockNumberString)")
             blockheightLabel.textColor = BrainwalletUIColor.content
             blockheightLabel.setNeedsDisplay()
         }
