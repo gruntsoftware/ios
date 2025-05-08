@@ -1,6 +1,5 @@
 //
 //  FileTests.swift
-//  loafwalletTests
 //
 //  Created by Kerry Washington on 5/6/21.
 //

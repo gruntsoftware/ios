@@ -241,6 +241,7 @@ enum S {
         static let buyDetail = Localization(key: "BuyCenter.buyDetail", value: "Ł will be sent to:", comment: "Buy ButtonTitle")
         static let buyFiatDetail = Localization(key: "BuyCenter.buyFiatDetail", value: "Using:", comment: "Using fiat")
         static let buyMoonpayDetail = Localization(key: "BuyCenter.buyMoonpayDetail", value: "Powered by:", comment: "Powered by")
+        static let depositAddress = Localization(key: "BuyCenter.depositAddress", value: "Your deposit address:", comment: "Your deposit address")
         
         enum Cells {
             static let moonpayTitle = Localization(key: "BuyCenter.moonpayTitle", value: "Moonpay", comment: "Moonpay Title")

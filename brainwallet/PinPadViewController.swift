@@ -338,7 +338,7 @@ class ClearDecimalPad: GenericPinPadCell {
 
 		if isHighlighted {
 			centerLabel.textColor = BrainwalletUIColor.content
-			imageView.tintColor = BrainwalletUIColor.warn
+            imageView.tintColor = BrainwalletUIColor.content
 		} else {
             centerLabel.textColor = BrainwalletUIColor.surface
 			imageView.tintColor = BrainwalletUIColor.surface
@@ -354,7 +354,7 @@ class ClearDecimalPad: GenericPinPadCell {
 class WhiteDecimalPad: GenericPinPadCell {
 	override func setAppearance() {
 		if isHighlighted {
-            centerLabel.backgroundColor = BrainwalletUIColor.gray
+            centerLabel.backgroundColor = BrainwalletUIColor.surface
 			centerLabel.textColor = BrainwalletUIColor.content
 		} else {
             centerLabel.backgroundColor = BrainwalletUIColor.surface
@@ -379,7 +379,7 @@ class WhiteNumberPad: GenericPinPadCell {
 		}
 
 		if isHighlighted {
-			backgroundColor = BrainwalletUIColor.border
+            backgroundColor = BrainwalletUIColor.surface
 			topLabel.textColor = BrainwalletUIColor.content
 			centerLabel.textColor = BrainwalletUIColor.content
 			sublabel.textColor = BrainwalletUIColor.content
@@ -387,7 +387,7 @@ class WhiteNumberPad: GenericPinPadCell {
 			if text == "" || text == deleteKeyIdentifier {
                 backgroundColor = BrainwalletUIColor.surface
 				imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
-                imageView.tintColor = BrainwalletUIColor.gray
+                imageView.tintColor = BrainwalletUIColor.content
 			} else {
                 backgroundColor = BrainwalletUIColor.surface
 				topLabel.textColor = BrainwalletUIColor.content

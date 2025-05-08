@@ -51,7 +51,6 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 			#endif
 			return nil
 		}
-
 		didInitWallet = true
 		return wallet
 	}

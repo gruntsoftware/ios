@@ -81,6 +81,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		// polish parameters
 		memoCell.backgroundColor = BrainwalletUIColor.surface
         amountView.view.backgroundColor = BrainwalletUIColor.surface
+        self.view.backgroundColor = BrainwalletUIColor.surface
 
 		view.addSubview(sendAddressCell)
 		view.addSubview(memoCell)

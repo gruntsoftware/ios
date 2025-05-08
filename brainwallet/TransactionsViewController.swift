@@ -22,7 +22,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	private var allTransactions: [Transaction] = [] {
 		didSet {
 			transactions = allTransactions
-            print("::: allTransactions \(allTransactions.count)")
 		}
 	}
 
@@ -48,6 +47,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	}
 
 	override func viewDidLoad() {
+        NSLog("::: TransactionsViewController viewDidLoad")
+
 		setup()
 		addSubscriptions()
 	}
@@ -55,21 +56,20 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	private func setup() {
 		guard let _ = walletManager
 		else {
-			NSLog("ERROR: Wallet manager Not initialized")
+			NSLog("::: ERROR: Wallet manager Not initialized")
 			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR)
 			return
 		}
 
 		guard let reduxState = store?.state
 		else {
+            NSLog("::: ERROR: reduxState Not initialized")
 			return
 		}
 
 		tableView.register(HostingTransactionCell<TransactionCellView>.self, forCellReuseIdentifier: "HostingTransactionCell<TransactionCellView>")
 		transactions = TransactionManager.sharedInstance.transactions
 		rate = TransactionManager.sharedInstance.rate
-        print("::: transactions \(transactions.count)")
-
 		tableView.backgroundColor = BrainwalletUIColor.surface
 		initSyncingHeaderView(reduxState: reduxState, completion: {})
 		attemptShowPrompt()
@@ -94,7 +94,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 	private func attemptShowPrompt() {
 		guard let walletManager = walletManager else {
-			NSLog("ERROR: WalletManager not initialized")
+			NSLog("::: ERROR: WalletManager not initialized")
 			return
 		}
 		guard let store = store
@@ -122,6 +122,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	/// - Parameter txHash: String reprsentation of the TX
 	private func updateTransactions(txHash: String) {
 		for (i, tx) in transactions.enumerated() {
+
 			if tx.hash == txHash {
 				DispatchQueue.main.async {
 					self.tableView.beginUpdates()
@@ -171,9 +172,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	// MARK: - Table view data / delegate source
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
 		switch indexPath.section {
 		case 0:
-
 			if currentPromptType != nil {
 				return configurePromptCell(promptType: currentPromptType, indexPath: indexPath)
 			}
@@ -195,7 +196,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 				let viewModel = TransactionCellViewModel(transaction: transaction, isLtcSwapped: isLtcSwapped, rate: rate, maxDigits: store.state.maxDigits, isSyncing: store.state.walletState.syncState != .success)
 				cell.set(rootView: TransactionCellView(viewModel: viewModel), parentController: self)
 				cell.selectionStyle = .default
-                print("::: trancation cell set:  \(transaction.detailsAddressText)")
 			}
 
 			return cell
@@ -205,7 +205,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if indexPath.section == 1 {
 			let transaction = transactions[indexPath.row]
-
+          
 			if let rate = rate,
 			   let store = store,
 			   let isLtcSwapped = isLtcSwapped
@@ -267,6 +267,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 			} else {
 				tableView.backgroundView = emptyMessageView()
 				tableView.separatorStyle = .none
+
 				return 0
 			}
 		}
@@ -315,7 +316,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	private func addSubscriptions() {
 		guard let store = store
 		else {
-			NSLog("ERROR: Store not initialized")
+			NSLog("::: ERROR: Store not initialized")
 			return
 		}
 
@@ -324,7 +325,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		store.subscribe(self, selector: { $0.walletState.transactions != $1.walletState.transactions },
 		                callback: { state in
 		                	self.allTransactions = state.walletState.transactions
-            NSLog("::: All Trnasactions \(state.walletState.transactions.count)")
 		                	self.reload()
 		                })
 
@@ -348,7 +348,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		store.subscribe(self, selector: { $0.walletState.lastBlockTimestamp != $1.walletState.lastBlockTimestamp },
 		                callback: { reduxState in
-
+           
 		                	guard let syncView = self.syncingHeaderView else { return }
 
 		                	syncView.isRescanning = reduxState.walletState.isRescanning
@@ -374,6 +374,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		store.subscribe(self, name: .showStatusBar) { _ in
 			// DEV: May refactor where the action view persists after confirming pin
+
+            
 			self.reload()
 		}
 
@@ -384,9 +386,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		                	guard let _ = self.walletManager?.peerManager
 		                	else {
-		                		assertionFailure("PEER MANAGER Not initialized")
+		                		assertionFailure("::: PEER MANAGER Not initialized")
 		                		return
 		                	}
+
 
 		                	if reduxState.walletState.syncState == .syncing {
 		                		self.shouldBeSyncing = true
@@ -439,7 +442,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		// MARK: - Subscription:  Memo Updated
 
 		store.subscribe(self, name: .txMemoUpdated(""), callback: {
+
 			guard let trigger = $0 else { return }
+            
 			if case let .txMemoUpdated(txHash) = trigger {
 				self.updateTransactions(txHash: txHash)
 			}
