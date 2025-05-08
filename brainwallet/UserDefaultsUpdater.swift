@@ -1,7 +1,7 @@
 import Foundation
 
 private enum AppGroup {
-	static let id = "group.com.litecoin.loafwallet"
+	static let id = "group.com.gruntsoftware.brainwallet"
 	static let requestDataKey = "kBRSharedContainerDataWalletRequestDataKey"
 	static let receiveAddressKey = "kBRSharedContainerDataWalletReceiveAddressKey"
 }

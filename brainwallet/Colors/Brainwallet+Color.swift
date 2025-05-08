@@ -50,7 +50,7 @@ struct BrainwalletUIColor {
     static let background: UIColor = UIColor(Color("brainwalletBackground"))
     /// background -- white or midnight
     static let content: UIColor = UIColor(Color("brainwalletContent"))
-    /// background - NearBorder
+    /// background - NearBlack
     static let border: UIColor = UIColor(Color("brainwalletBorder"))
     /// info - blue
     static let info: UIColor = UIColor(Color("brainwalletInfo"))

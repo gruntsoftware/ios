@@ -90,7 +90,7 @@ class ApplicationController: Subscriber, Trackable {
 							self.walletManager = try WalletManager(store: self.store, dbPath: nil)
 							_ = self.walletManager?.wallet // attempt to initialize wallet
 						} catch {
-							assertionFailure("Error creating new wallet: \(error)")
+							assertionFailure("::: Error creating new wallet: \(error)")
 						}
 						DispatchQueue.main.async {
 							self.didInitWalletManager()

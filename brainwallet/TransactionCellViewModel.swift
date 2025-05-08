@@ -95,7 +95,7 @@ class TransactionCellViewModel: ObservableObject {
 		   let data = address.data(using: .utf8),
 		   let image = UIImage
 		   .qrCode(data: data,
-		           color: .black)?
+                   color: .gray)?
 		   .resize(CGSize(width: kQRImageSide,
 		                  height: kQRImageSide))
 		{

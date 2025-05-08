@@ -53,6 +53,7 @@
 		2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2492829B2DAC22B00088528E /* BIP39Words.plist */; };
 		249C45DC2D93F23F00E9C3B0 /* service-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 249C45DB2D93F23F00E9C3B0 /* service-data.plist */; };
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
+		24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A404222DC92F35006CD076 /* WebBuyView.swift */; };
 		24B0652A2DC6135900B5E000 /* WalletBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065292DC6134C00B5E000 /* WalletBalanceView.swift */; };
 		24B0652E2DC61E2F00B5E000 /* NewTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0652D2DC61E2100B5E000 /* NewTransactionsView.swift */; };
 		24B065352DC627F000B5E000 /* NewMainHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065342DC627E500B5E000 /* NewMainHostingController.swift */; };
@@ -182,7 +183,6 @@
 		C312D39A2D7DC27700BB97A4 /* PinDigitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D28B2D7DC27700BB97A4 /* PinDigitView.swift */; };
 		C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A92D7DC27700BB97A4 /* WalletInfo.swift */; };
 		C312D39D2D7DC27700BB97A4 /* PromptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2902D7DC27700BB97A4 /* PromptTableViewCell.swift */; };
-		C312D3A02D7DC27700BB97A4 /* BuyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D22D2D7DC27700BB97A4 /* BuyTableViewController.swift */; };
 		C312D3A12D7DC27700BB97A4 /* SendAddressHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A12D7DC27700BB97A4 /* SendAddressHostingController.swift */; };
 		C312D3A22D7DC27700BB97A4 /* SendAddressCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A02D7DC27700BB97A4 /* SendAddressCellViewModel.swift */; };
 		C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */; };
@@ -594,6 +594,7 @@
 		249C459E2D936D5900E9C3B0 /* test.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
 		249C45DA2D936DA600E9C3B0 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = ../core/module.modulemap; sourceTree = SOURCE_ROOT; };
 		249C45DB2D93F23F00E9C3B0 /* service-data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "service-data.plist"; sourceTree = "<group>"; };
+		24A404222DC92F35006CD076 /* WebBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBuyView.swift; sourceTree = "<group>"; };
 		24B065292DC6134C00B5E000 /* WalletBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalanceView.swift; sourceTree = "<group>"; };
 		24B0652D2DC61E2100B5E000 /* NewTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionsView.swift; sourceTree = "<group>"; };
 		24B065342DC627E500B5E000 /* NewMainHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainHostingController.swift; sourceTree = "<group>"; };
@@ -774,7 +775,6 @@
 		C312D2052D7DC27700BB97A4 /* BartyCrouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BartyCrouch.swift; sourceTree = "<group>"; };
 		C312D22A2D7DC27700BB97A4 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		C312D22C2D7DC27700BB97A4 /* BuyHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyHostingController.swift; sourceTree = "<group>"; };
-		C312D22D2D7DC27700BB97A4 /* BuyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTableViewController.swift; sourceTree = "<group>"; };
 		C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTileView.swift; sourceTree = "<group>"; };
 		C312D22F2D7DC27700BB97A4 /* BuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyView.swift; sourceTree = "<group>"; };
 		C312D2302D7DC27700BB97A4 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
@@ -1268,6 +1268,14 @@
 			path = Modules/core;
 			sourceTree = "<group>";
 		};
+		24A404212DC92F1F006CD076 /* New Buy Webview */ = {
+			isa = PBXGroup;
+			children = (
+				24A404222DC92F35006CD076 /* WebBuyView.swift */,
+			);
+			path = "New Buy Webview";
+			sourceTree = "<group>";
+		};
 		24B065252DC6121A00B5E000 /* Wallet Balance Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1499,6 +1507,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				24A404212DC92F1F006CD076 /* New Buy Webview */,
 				240204682DC7F37B00EC8E99 /* New Lock Screen Classes */,
 				24C639C82DC69E940014E6DD /* Settings Classes */,
 				24B0653E2DC647DC00B5E000 /* Game Classes */,
@@ -1635,7 +1644,6 @@
 				C312D2052D7DC27700BB97A4 /* BartyCrouch.swift */,
 				C312D22A2D7DC27700BB97A4 /* BundleExtension.swift */,
 				C312D22C2D7DC27700BB97A4 /* BuyHostingController.swift */,
-				C312D22D2D7DC27700BB97A4 /* BuyTableViewController.swift */,
 				C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */,
 				C312D22F2D7DC27700BB97A4 /* BuyView.swift */,
 				C312D2302D7DC27700BB97A4 /* BuyViewModel.swift */,
@@ -2208,6 +2216,7 @@
 				C312D2CF2D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift in Sources */,
 				C312D2D02D7DC27700BB97A4 /* ReachabilityMonitor.swift in Sources */,
 				C312D2D12D7DC27700BB97A4 /* CopyButtonView.swift in Sources */,
+				24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */,
 				C312D2D22D7DC27700BB97A4 /* LightWeightAlert.swift in Sources */,
 				C312D2D32D7DC27700BB97A4 /* ExchangeUpdater.swift in Sources */,
 				C312D2D42D7DC27700BB97A4 /* Currency.swift in Sources */,
@@ -2342,7 +2351,6 @@
 				C312D39A2D7DC27700BB97A4 /* PinDigitView.swift in Sources */,
 				C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */,
 				C312D39D2D7DC27700BB97A4 /* PromptTableViewCell.swift in Sources */,
-				C312D3A02D7DC27700BB97A4 /* BuyTableViewController.swift in Sources */,
 				C312D3A12D7DC27700BB97A4 /* SendAddressHostingController.swift in Sources */,
 				C312D3A22D7DC27700BB97A4 /* SendAddressCellViewModel.swift in Sources */,
 				C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */,
@@ -2616,7 +2624,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250505.0;
+				CURRENT_PROJECT_VERSION = 250506.3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
@@ -2888,7 +2896,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250505.0;
+				CURRENT_PROJECT_VERSION = 250506.3;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				FRAMEWORK_SEARCH_PATHS = "";

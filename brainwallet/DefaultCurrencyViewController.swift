@@ -4,7 +4,8 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 	init(walletManager: WalletManager, store: Store) {
 		self.walletManager = walletManager
 		self.store = store
-		rates = store.state.rates.filter { $0.code != C.btcCurrencyCode }
+		rates = store.state.rates.filter { $0.code != C.ltcCurrencyCode }
+                  
 		super.init(style: .plain)
 	}
 
