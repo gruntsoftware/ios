@@ -6,11 +6,13 @@
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import brainwallet_ios_storekit
 
 struct SettingsView: View {
     
     @ObservedObject
     var newMainViewModel: NewMainViewModel
+    
      
     init(viewModel: NewMainViewModel) {
         newMainViewModel = viewModel
@@ -35,7 +37,7 @@ struct SettingsView: View {
                     
                     Text("Settings View 4")
                         .padding()
-                    
+                                        
                 }
                 .listStyle(.plain)
                 Spacer()
