@@ -32,12 +32,12 @@ enum PromptType {
 
 	var title: String {
 		switch self {
-		case .biometrics: return LAContext.biometricType() == .face ? S.Prompts.FaceId.title.localize() : S.Prompts.TouchId.title.localize()
-		case .paperKey: return S.Prompts.PaperKey.title.localize()
-		case .upgradePin: return S.Prompts.SetPin.title.localize()
-		case .recommendRescan: return S.Prompts.RecommendRescan.title.localize()
-		case .noPasscode: return S.Prompts.NoPasscode.title.localize()
-		case .shareData: return S.Prompts.ShareData.title.localize()
+		case .biometrics: return LAContext.biometricType() == .face ? "Enable Face ID" : "Enable Touch ID" 
+		case .paperKey: return "Action Required" 
+		case .upgradePin: return "Set PIN" 
+		case .recommendRescan: return "Transaction Rejected" 
+		case .noPasscode: return "Turn device passcode on" 
+		case .shareData: return "Share Anonymous Data"
 		}
 	}
 
@@ -54,12 +54,12 @@ enum PromptType {
 
 	var body: String {
 		switch self {
-		case .biometrics: return LAContext.biometricType() == .face ? S.Prompts.FaceId.body.localize() : S.Prompts.TouchId.body.localize()
-		case .paperKey: return S.Prompts.PaperKey.body.localize()
-		case .upgradePin: return S.Prompts.SetPin.body.localize()
-		case .recommendRescan: return S.Prompts.RecommendRescan.body.localize()
-		case .noPasscode: return S.Prompts.NoPasscode.body.localize()
-		case .shareData: return S.Prompts.ShareData.body.localize()
+		case .biometrics: return LAContext.biometricType() == .face ? "Tap here to enable Face ID"  : "Tap here to enable Touch ID" 
+		case .paperKey: return "S.Prompts.PaperKey.body"
+		case .upgradePin: return "S.Prompts.SetPin.body"
+		case .recommendRescan: return "S.Prompts.RecommendRescan.body"
+		case .noPasscode: return "S.Prompts.NoPasscode.body"
+		case .shareData: return "S.Prompts.ShareData.body"
 		}
 	}
 

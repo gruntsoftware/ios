@@ -77,11 +77,11 @@ struct ConfirmPasscodeView: View {
                         .frame(height: squareImageSize)
                         .padding(.all, 20.0)
                      
-                            Text( S.SetPasscode.confirmTitle.localize())
+                            Text( "Confirm" )
                                 .font(subTitleFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(BrainwalletColor.content)
-                            Text( S.SetPasscode.detail2.localize())
+                            Text( "You didn’t forget did you? Enter it again. Or, go back to start over.")
                                 .font(detailFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(BrainwalletColor.content)

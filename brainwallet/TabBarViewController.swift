@@ -78,7 +78,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 	@objc
 	func languageChanged() {
-		walletBalanceLabel.text = S.ManageWallet.balance.localize() + ":"
+		walletBalanceLabel.text = "Balance"  + ":"
 		localizeTabBar()
 		viewControllers = []
 		addViewControllers()
@@ -116,7 +116,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	}
 
 	private func setupViews() {
-		walletBalanceLabel.text = S.ManageWallet.balance.localize() + ":"
+		walletBalanceLabel.text = "Balance"  + ":"
         
         settingsButton.imageView?.tintColor = BrainwalletUIColor.content
 
@@ -327,10 +327,10 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 		for item in array {
 			switch item.tag {
-			case 0: item.title = S.History.barItemTitle.localize()
-			case 1: item.title = S.Send.barItemTitle.localize()
-			case 2: item.title = S.Receive.barItemTitle.localize()
-			case 3: item.title = S.BuyCenter.barItemTitle.localize()
+			case 0: item.title = "History"
+			case 1: item.title = "Send"
+			case 2: item.title = "Receive"
+			case 3: item.title = "Buy"
 			default:
 				item.title = "NO-TITLE"
 				NSLog("ERROR: UITabbar item count is wrong")

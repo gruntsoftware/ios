@@ -25,13 +25,13 @@ struct SettingsView: View {
                 List {
                     
                     
-                    Text(S.SecurityCenter.title.localize())
+                    Text("Security" )
                         .padding()
                     
-                    Text(S.Settings.languages.localize())
+                    Text("Languages" )
                         .padding()
                     
-                    Text(S.Settings.languages.localize())
+                    Text("Languages" )
                         .padding()
                     
                     Text("Settings View 4")

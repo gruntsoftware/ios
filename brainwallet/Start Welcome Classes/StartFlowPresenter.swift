@@ -134,7 +134,7 @@ class StartFlowPresenter: Subscriber {
 		let paperPhraseViewController = StartPaperPhraseViewController(store: store, callback: { [weak self] in
 			self?.pushWritePaperPhraseViewController(pin: pin)
 		})
-		paperPhraseViewController.title = S.SecurityCenter.Cells.paperKeyTitle.localize()
+		paperPhraseViewController.title = S.SecurityCenter.Cells.paperKeyTitle 
 		paperPhraseViewController.navigationItem.setHidesBackButton(true, animated: false)
 		paperPhraseViewController.hideCloseNavigationItem() // Forces user to confirm paper-key
 
@@ -149,7 +149,7 @@ class StartFlowPresenter: Subscriber {
 		let writeViewController = WritePaperPhraseViewController(store: store, walletManager: walletManager, pin: pin, callback: { [weak self] in
 			self?.pushConfirmPaperPhraseViewController(pin: pin)
 		})
-		writeViewController.title = S.SecurityCenter.Cells.paperKeyTitle.localize()
+		writeViewController.title = S.SecurityCenter.Cells.paperKeyTitle 
 		writeViewController.hideCloseNavigationItem()
 		navigationController?.pushViewController(writeViewController, animated: true)
 	}
@@ -184,8 +184,8 @@ class StartFlowPresenter: Subscriber {
 	}
 
 	private func handleWalletCreationError() {
-		let alert = UIAlertController(title: S.BrainwalletAlert.error.localize(), message: "Could not create wallet", preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: S.Button.ok.localize(), style: .default, handler: nil))
+		let alert = UIAlertController(title:  "Error" , message: "Could not create wallet", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok" , style: .default, handler: nil))
 		navigationController?.present(alert, animated: true, completion: nil)
 	}
 

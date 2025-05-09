@@ -7,6 +7,8 @@ class LanguageSelectionViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        
+       print("::: viewModel.localizations.count \(viewModel.localizations.count)")
 		setupUI()
 	}
 
@@ -16,19 +18,19 @@ class LanguageSelectionViewController: UITableViewController {
         tableView.backgroundColor = BrainwalletUIColor.surface
         tableView.separatorStyle = .singleLine
 
-		titleLabel.text = S.Settings.languages.localize()
+		titleLabel.text = "Languages" 
 		titleLabel.sizeToFit()
 		navigationItem.titleView = titleLabel
 	}
 
 	func showConfirmationAlert(code: String) {
 		if UserDefaults.selectedLanguage == code { return }
-		let alert = UIAlertController(title: nil, message: S.Settings.changeLanguageMessage.localize().replacingOccurrences(of: "%l", with: "\(Locale.current.localizedString(forLanguageCode: code) ?? "") (\(code))"), preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: S.Fragments.confirm.localize().capitalized, style: .default, handler: { _ in
+		let alert = UIAlertController(title: nil, message: S.Settings.changeLanguageMessage .replacingOccurrences(of: "%l", with: "\(Locale.current.localizedString(forLanguageCode: code) ?? "") (\(code))"), preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: S.Fragments.confirm .capitalized, style: .default, handler: { _ in
 			self.viewModel.setLanguage(code: code)
 			self.dismiss(animated: true)
 		}))
-		alert.addAction(UIAlertAction(title: S.Button.cancel.localize(), style: .cancel, handler: nil))
+		alert.addAction(UIAlertAction(title:  "Cancel"  , style: .cancel, handler: nil))
 		present(alert, animated: true, completion: nil)
 	}
 }

@@ -183,7 +183,7 @@ struct StartView: View {
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
                                 
-                                Text(S.StartView.readyButton.localize())
+                                Text( "Ready" )
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(largeButtonFont)
                                     .foregroundColor(BrainwalletColor.content)
@@ -205,7 +205,7 @@ struct StartView: View {
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
                                 
-                                Text(S.StartView.restoreButton.localize())
+                                Text(S."Restore")
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(regularButtonFont)
                                     .foregroundColor(BrainwalletColor.content)
@@ -273,11 +273,11 @@ struct StartView: View {
                     }
                 }
             }
-            .alert(S.BrainwalletAlert.error.localize(),
+            .alert( "Error" ,
                    isPresented: $startViewModel.walletCreationDidFail,
                    actions: {
                 HStack {
-                    Button(S.Button.ok.localize(), role: .cancel) {
+                    Button("Ok" , role: .cancel) {
                         startViewModel.walletCreationDidFail = false
                     }
                 }

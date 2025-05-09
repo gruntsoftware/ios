@@ -59,7 +59,7 @@ struct UnstoppableDomainView: View {
                     //					// Unstoppable Domains Image and URL
                     //					HStack {
                     //						Spacer()
-                    //						Text(S.Send.UnstoppableDomains.enterA.localize() + " " + S.Send.UnstoppableDomains.domain.localize() + ":")
+                    //						Text(S.Send.UnstoppableDomains.enterA  + " " + S.Send.UnstoppableDomains.domain  + ":")
                     //							.font(Font(UIFont.barlowMedium(size: 15.0)))
                     //							.foregroundColor(Color(UIColor.brainwalletGray))
                     //							.opacity(0.8)

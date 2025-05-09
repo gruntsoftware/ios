@@ -10,7 +10,7 @@ struct LockScreenHeaderView: View {
 	private var fiatValue = ""
 
 	@State
-	private var currentFiatValue = S.History.currentLitecoinValue.localize()
+	private var currentFiatValue = "Current Litecoin value in"
 
 	init(viewModel: LockScreenViewModel) {
 		self.viewModel = viewModel
@@ -47,8 +47,8 @@ struct LockScreenHeaderView: View {
                 .frame(height: 180)
                 .onAppear {
                     Task {
-                        fiatValue = " 1 LTC = \(viewModel.currentValueInFiat)"
-                        currentFiatValue = "\(S.History.currentLitecoinValue.localize()) \(viewModel.currencyCode)"
+                        fiatValue = "1 LTC = \(viewModel.currentValueInFiat)"
+                        currentFiatValue = "Current Litecoin value in \(viewModel.currencyCode)"
                     }
                 }
                 .onChange(of: viewModel.currentValueInFiat) { newValue in

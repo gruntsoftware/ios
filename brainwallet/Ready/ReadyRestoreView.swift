@@ -81,13 +81,13 @@ struct ReadyRestoreView: View {
                         HStack {
                             VStack {
                                 HStack {
-                                    Text( isRestore ? S.Onboarding.restoreTitle.localize() : S.Onboarding.readyTitle.localize())
+                                    Text( isRestore ? "Restore"  : "Ready" )
                                         .font(billboardFont)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundColor(BrainwalletColor.content)
                                 }
                                 .padding(.bottom, 20.0)
-                                Text( isRestore ? S.Onboarding.restoreDetail.localize() : S.Onboarding.readyDetail.localize())
+                                Text( isRestore ? "Restore!"  : "Do this for you. Please do it alone. Grab a pen, paper & 5 mins" )
                                     .font(detailFont)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(BrainwalletColor.content)
@@ -106,7 +106,7 @@ struct ReadyRestoreView: View {
                                         .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                         .foregroundColor(BrainwalletColor.surface)
                                     
-                                    Text(S.Onboarding.readyNextButton.localize())
+                                    Text("Setup app passcode")
                                         .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                         .font(largeButtonFont)
                                         .foregroundColor(BrainwalletColor.content)

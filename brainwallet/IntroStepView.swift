@@ -19,22 +19,14 @@ struct IntroStepView: View {
 					.backgroundColor
 					.edgesIgnoringSafeArea(.all)
 				VStack {
-					Text(S.CreateStep.DetailedMessage.intro.localize())
+					Text("Take the next 5 minutes to secure your Litecoin.")
 						.font(paragraphFont)
 						.foregroundColor(BrainwalletColor.content)
 						.frame(width: width * 0.9, alignment: .leading)
 						.padding([.leading, .trailing], genericPad)
 						.padding([.bottom], genericPad)
 
-					Image("lofigirl")
-						.resizable()
-						.aspectRatio(contentMode: .fit)
-						.frame(width: width * 0.9, alignment: .center)
-						.mask {
-							RoundedRectangle(cornerRadius: 12.0)
-						}.padding()
-
-					Text(S.CreateStep.ExtendedMessage.intro.localize())
+					Text("S.CreateStep.ExtendedMessage.intro")
 						.font(paragraphFont)
                         .foregroundColor(BrainwalletColor.content)
 						.frame(width: width * 0.9, alignment: .leading)
@@ -92,7 +84,7 @@ struct IntroStepView: View {
 //                                .foregroundColor(.brainwalletGray)
 //                                .shadow(radius: 3, x: 3.0, y: 3.0)
 //
-//                            Text(S.Button.ok.localize())
+//                            Text("Ok" )
 //                                .frame(width: width * 0.6, height: 60, alignment: .center)
 //                                .font(paragraphFont)
 //                                .foregroundColor(BrainwalletUIColor.info)

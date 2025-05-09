@@ -67,7 +67,7 @@ struct YourSeedWordsView: View {
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .foregroundColor(BrainwalletColor.surface)
                             
-                            Text(S.Onboarding.readyNextButton.localize())
+                            Text("Setup app passcode")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .font(largeButtonFont)
                                 .foregroundColor(BrainwalletColor.content)

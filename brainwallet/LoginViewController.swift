@@ -235,7 +235,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
             footerView.view.heightAnchor.constraint(equalToConstant: 60.0),
         ])
 
-		enterPINLabel.text = S.UnlockScreen.enterPIN.localize()
+		enterPINLabel.text = "Enter PIN"
 	}
 
 	private func addPinPadCallback() {
@@ -273,7 +273,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		saveEvent("login.success")
 		let label = UILabel(font: enterPINLabel.font)
         label.textColor = BrainwalletUIColor.content
-		label.text = S.UnlockScreen.unlocked.localize()
+		label.text = "Unlocked"
 		let lock = UIImageView(image: #imageLiteral(resourceName: "unlock"))
 		lock.transform = .init(scaleX: 0.6, y: 0.6)
 
@@ -338,7 +338,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 
 	@objc func biometricsTapped() {
 		guard !isWalletDisabled else { return }
-		walletManager?.authenticate(biometricsPrompt: S.UnlockScreen.touchIdPrompt.localize(), completion: { result in
+		walletManager?.authenticate(biometricsPrompt: "Unlock your Brainwallet." , completion: { result in
 			if result == .success {
 				self.authenticationSucceded()
 				LWAnalytics.logEventWithParameters(itemName: ._20200217_DUWB)
@@ -376,7 +376,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 				let df = DateFormatter()
 				df.setLocalizedDateFormatFromTemplate(unlockInterval > C.secondsInDay ? "h:mm:ss a MMM d, yyy" : "h:mm:ss a")
 
-				disabledView.setTimeLabel(string: String(format: S.UnlockScreen.disabled.localize(), df.string(from: disabledUntilDate)))
+				disabledView.setTimeLabel(string: String(format: "Disabled until: %1$@", df.string(from: disabledUntilDate)))
 
 				pinPadViewController.view.isUserInteractionEnabled = false
 				unlockTimer?.invalidate()
@@ -407,7 +407,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 	@objc private func unlock() {
 		saveEvent("login.unlocked")
 		delegate?.didUnlockLogin()
-		enterPINLabel.pushNewText(S.UnlockScreen.enterPIN.localize())
+		enterPINLabel.pushNewText("Enter PIN" )
 		pinPadViewController.view.isUserInteractionEnabled = true
 		unlockTimer = nil
 		disabledView.hide { [weak self] in

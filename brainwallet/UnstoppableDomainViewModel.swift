@@ -9,7 +9,7 @@ class UnstoppableDomainViewModel: ObservableObject {
 //	var searchString: String = ""
 //
 //	@Published
-//	var placeholderString: String = S.Send.UnstoppableDomains.simplePlaceholder.localize()
+//	var placeholderString: String = S.Send.UnstoppableDomains.simplePlaceholder 
 //
 //	@Published
 //	var isDomainResolving: Bool = false

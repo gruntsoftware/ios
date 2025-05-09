@@ -47,7 +47,7 @@ struct LockScreenFooterView: View {
                             Button(action: {
                                 viewModel.userWantsToDelete.toggle()
                             }) {
-                                Text(S.WipeWallet.emptyWallet.localize())
+                                Text("Wipe wallet" )
                                     .font(.barlowSemiBold(size: 19.0))
                                     .frame(width: width * 0.4,
                                            alignment: .center)

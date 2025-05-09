@@ -113,10 +113,10 @@ class BiometricsSettingsViewController: UIViewController, Subscriber {
 			view.backgroundColor = BrainwalletUIColor.surface
 		}
 
-		title = LAContext.biometricType() == .face ? S.FaceIDSettings.title.localize() : S.TouchIdSettings.title.localize()
-		label.text = LAContext.biometricType() == .face ? S.FaceIDSettings.label.localize() : S.TouchIdSettings.label.localize()
-		switchLabel.text = LAContext.biometricType() == .face ? S.FaceIDSettings.switchLabel.localize() : S.TouchIdSettings.switchLabel.localize()
-		spendingLimitLabel.text = S.SpendingLimit.titleLabel.localize()
+		title = LAContext.biometricType() == .face ? "Face ID" : "Touch ID"
+		label.text = LAContext.biometricType() == .face ? "Use your face to unlock your Brainwallet and send money up to a set limit." : "Use your fingerprint to unlock your Brainwallet and send money up to a set limit."
+		switchLabel.text = LAContext.biometricType() == .face ? "Enable Face ID for Brainwallet" : "Enable Touch ID for Brainwallet"
+		spendingLimitLabel.text = "Current Spending Limit: "
 		spendingButton.title = spendingButtonText
 		let hasSetToggleInitialValue = false
 		store.subscribe(self, selector: { $0.isBiometricsEnabled != $1.isBiometricsEnabled }, callback: {
@@ -144,15 +144,15 @@ class BiometricsSettingsViewController: UIViewController, Subscriber {
 	private var spendingButtonText: String {
 		guard let rate = rate else { return "" }
 		let amount = Amount(amount: walletManager.spendingLimit, rate: rate, maxDigits: store.state.maxDigits)
-		let string = "\(String(format: S.TouchIdSettings.limitValue.localize(), amount.bits, amount.localCurrency))"
+		let string = "\(String(format: "%1$@ (%2$@)" , amount.bits, amount.localCurrency))"
 		return string
 	}
 
 	fileprivate func presentCantUseBiometricsAlert() {
-		let unavailableAlertTitle = LAContext.biometricType() == .face ? S.FaceIDSettings.unavailableAlertTitle.localize() : S.TouchIdSettings.unavailableAlertTitle.localize()
-		let unavailableAlertMessage = LAContext.biometricType() == .face ? S.FaceIDSettings.unavailableAlertMessage.localize() : S.TouchIdSettings.unavailableAlertMessage.localize()
+		let unavailableAlertTitle = LAContext.biometricType() == .face ? "Face ID Not Set Up" : "Touch ID Not Set Up"
+		let unavailableAlertMessage = LAContext.biometricType() == .face ? "You have not set up Face ID on this device. Go to Settings->Face ID & Passcode to set it up now." : "You have not set up Touch ID on this device. Go to Settings->Touch ID & Passcode to set it up now."
 		let alert = UIAlertController(title: unavailableAlertTitle, message: unavailableAlertMessage, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: S.Button.ok.localize(), style: .cancel, handler: nil))
+		alert.addAction(UIAlertAction(title: "Ok" , style: .cancel, handler: nil))
 		present(alert, animated: true, completion: nil)
 	}
 

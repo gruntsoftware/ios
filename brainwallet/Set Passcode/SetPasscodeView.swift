@@ -67,11 +67,11 @@ struct SetPasscodeView: View {
                         .frame(height: squareImageSize)
                         .padding(.all, 20.0)
                      
-                            Text( S.SetPasscode.subTitle.localize())
+                            Text( "Set app PIN" )
                                 .font(subTitleFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(BrainwalletColor.content)
-                            Text( S.SetPasscode.detail1.localize())
+                            Text( "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool" )
                                 .font(detailFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(BrainwalletColor.content)

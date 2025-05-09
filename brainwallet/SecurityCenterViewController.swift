@@ -25,7 +25,7 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store
 		self.walletManager = walletManager
-		header = ModalHeaderView(title: S.SecurityCenter.title.localize(), style: .light, faqInfo: (store, ArticleIds.nothing))
+		header = ModalHeaderView(title: "Security" , style: .light, faqInfo: (store, ArticleIds.nothing))
         shield.tintColor = BrainwalletUIColor.background
         headerBackground.backgroundColor = BrainwalletUIColor.surface
 		super.init(nibName: nil, bundle: nil)
@@ -37,9 +37,9 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 	fileprivate var shield = UIImageView(image: #imageLiteral(resourceName: "shield"))
 	private let scrollView = UIScrollView()
 	private let info = UILabel(font: .customBody(size: 16.0))
-	private let pinCell = SecurityCenterCell(title: S.SecurityCenter.Cells.pinTitle.localize(), descriptionText: S.SecurityCenter.Cells.pinDescription.localize())
-	private let biometricsCell = SecurityCenterCell(title: LAContext.biometricType() == .face ? S.SecurityCenter.Cells.faceIdTitle.localize() : S.SecurityCenter.Cells.touchIdTitle.localize(), descriptionText: S.SecurityCenter.Cells.touchIdDescription.localize())
-	private let paperKeyCell = SecurityCenterCell(title: S.SecurityCenter.Cells.paperKeyTitle.localize(), descriptionText: S.SecurityCenter.Cells.paperKeyDescription.localize())
+	private let pinCell = SecurityCenterCell(title: "6-Digit PIN" , descriptionText: "Protects your Brainwallet from unauthorized users." )
+	private let biometricsCell = SecurityCenterCell(title: LAContext.biometricType() == .face ? "Face ID"  : "Touch ID" , descriptionText: "Conveniently unlock your Brainwallet and send money up to a set limit." )
+	private let paperKeyCell = SecurityCenterCell(title: "Paper Key" , descriptionText: "The only way to access your Litecoin if you lose or upgrade your phone." )
     private var separator = UIView(color: BrainwalletUIColor.gray)
 	private let store: Store
 	private let walletManager: WalletManager
@@ -84,7 +84,7 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 		scrollView.alwaysBounceVertical = true
 		scrollView.panGestureRecognizer.delaysTouchesBegan = false
 		scrollView.delegate = self
-		info.text = S.SecurityCenter.info.localize()
+		info.text = "Enable all security features for maximum protection."
 		info.numberOfLines = 0
 		info.lineBreakMode = .byWordWrapping
 		header.backgroundColor = BrainwalletUIColor.surface

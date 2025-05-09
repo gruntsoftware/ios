@@ -27,7 +27,7 @@ struct TransactionModalView: View {
                 
                 VStack(spacing: 1.0) {
                     HStack {
-                        Text(S.TransactionDetails.title.localize())
+                        Text(S.TransactionDetails.title )
                             .font(Font(UIFont.barlowSemiBold(size: 18.0)))
                             .foregroundColor(BrainwalletColor.content)
                             .frame(minWidth: 0, maxWidth: .infinity)
@@ -40,7 +40,7 @@ struct TransactionModalView: View {
                     
                     Group {
                         VStack(alignment: .leading) {
-                            Text(S.Transaction.amountDetailLabel.localize())
+                            Text(S.Transaction.amountDetailLabel )
                                 .font(Font(UIFont.barlowSemiBold(size: 16.0)))
                                 .foregroundColor(BrainwalletColor.content)
                                 .padding(.leading, 20.0)
@@ -68,7 +68,7 @@ struct TransactionModalView: View {
                         .padding(.bottom, 2.0)
                         
                         VStack(alignment: .leading, spacing: 1.0) {
-                            Text(S.Confirmation.staticAddressLabel.localize().capitalized(with: Locale.current))
+                            Text(S.Confirmation.staticAddressLabel .capitalized(with: Locale.current))
                                 .font(Font(UIFont.barlowSemiBold(size: 16.0)))
                                 .foregroundColor(BrainwalletColor.content)
                                 .padding(.leading, 20.0)
@@ -95,7 +95,7 @@ struct TransactionModalView: View {
                     
                     Group {
                         VStack(alignment: .leading, spacing: 1.0) {
-                            Text(S.Transaction.txIDLabel.localize())
+                            Text(S.Transaction.txIDLabel )
                                 .font(Font(UIFont.barlowSemiBold(size: 16.0)))
                                 .foregroundColor(BrainwalletColor.content)
                                 .padding(.leading, 20.0)
@@ -120,7 +120,7 @@ struct TransactionModalView: View {
                         .frame(height: dataRowHeight)
                         
                         VStack(alignment: .leading, spacing: 1.0) {
-                            Text(S.Transaction.commentLabel.localize())
+                            Text(S.Transaction.commentLabel )
                                 .font(Font(UIFont.barlowSemiBold(size: 16.0)))
                                 .foregroundColor(BrainwalletColor.content)
                                 .padding(.leading, 20.0)
@@ -146,7 +146,7 @@ struct TransactionModalView: View {
                         .frame(height: dataRowHeight)
                         
                         VStack(alignment: .leading, spacing: 1.0) {
-                            Text(S.TransactionDetails.blockHeightLabel.localize() + ":")
+                            Text(S.TransactionDetails.blockHeightLabel  + ":")
                                 .font(Font(UIFont.barlowSemiBold(size: 16.0)))
                                 .foregroundColor(BrainwalletColor.content)
                                 .padding(.leading, 20.0)
@@ -204,7 +204,7 @@ struct TransactionModalView: View {
                                 UIPasteboard.general.string = copiedData
                                 
                             }) {
-                                Text(copiedData == "" ? S.TransactionDetails.copyAllDetails.localize() : S.TransactionDetails.copiedAll.localize())
+                                Text(copiedData == "" ? S.TransactionDetails.copyAllDetails  : S.TransactionDetails.copiedAll )
                                     .animation(.easeInOut(duration: 1.0))
                                     .font(Font(UIFont.barlowSemiBold(size: 20.0)))
                                     .padding(.all, 10.0)

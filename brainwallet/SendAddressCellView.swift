@@ -21,7 +21,7 @@ struct SendAddressCellView: View {
 					/// Send Address Field
 					HStack {
 						VStack {
-							AddressFieldView(placeholder: S.Send.enterLTCAddressLabel.localize(),
+							AddressFieldView(placeholder: "Enter LTC Address" ,
 							                 text: $viewModel.addressString)
 								.onTapGesture {
 									didStartEditing = true
@@ -45,7 +45,7 @@ struct SendAddressCellView: View {
                                         .shadow(color: BrainwalletColor.surface, radius: 3, x: 0, y: 4)
 										.padding(.trailing, 3.0)
 
-									Text(S.Send.pasteLabel.localize())
+									Text("Paste")
 										.frame(width: actionButtonWidth, height: 30, alignment: .center)
 										.font(Font(UIFont.customMedium(size: 15.0)))
                                         .foregroundColor(BrainwalletColor.background)
@@ -72,7 +72,7 @@ struct SendAddressCellView: View {
 										        x: 0, y: 4)
 										.padding(.trailing, 8.0)
 
-									Text(S.Send.scanLabel.localize())
+									Text("Scan")
 										.frame(width: actionButtonWidth, height: 30, alignment: .center)
 										.font(Font(UIFont.customMedium(size: 15.0)))
 										.foregroundColor(BrainwalletColor.background)

@@ -57,7 +57,7 @@ struct BuyView: View {
                         .frame(height: 1.0)
                         .background(BrainwalletColor.content)
                         .frame(maxWidth: .infinity, alignment: .center)
-                    Text(S.BuyCenter.buyModalTitle.localize())
+                    Text("S.BuyCenter.buyModalTitle" )
                         .font(hugeFont)
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -68,7 +68,7 @@ struct BuyView: View {
                     
                     HStack {
                         VStack {
-                            Picker(S.BuyCenter.buyDetail.localize() + " " + viewModel.receivingAddress,
+                            Picker("S.BuyCenter.buyDetail"  + " " + viewModel.receivingAddress,
                                    selection: $viewModel.selectedCode)
                             {
                                 ForEach(rankedFiatCodes, id: \.self) {
@@ -80,7 +80,7 @@ struct BuyView: View {
                         }
                         
                         VStack {
-                            Text(S.BuyCenter.buyDetail.localize())
+                            Text("S.BuyCenter.buyDetail" )
                                 .font(buttonRegularFont)
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -141,7 +141,7 @@ struct BuyView: View {
                                 .foregroundColor(BrainwalletColor.surface)
                                 .shadow(radius: 3, x: 3.0, y: 3.0)
                             
-                            Text(S.BuyCenter.buyButtonTitle.localize() + " \(viewModel.selectedCode)")
+                            Text("S.BuyCenter.buyButtonTitle"  + " \(viewModel.selectedCode)")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .font(largeButtonFont)
                                 .foregroundColor(BrainwalletColor.content)

@@ -27,7 +27,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	private let walletManager: WalletManager
 	private let amountView: AmountViewController
 	private let sendAddressCell = AddressCell()
-	private let memoCell = DescriptionSendCell(placeholder: S.Send.descriptionLabel.localize())
+	private let memoCell = DescriptionSendCell(placeholder: "Memo" )
 	private var sendButtonCell = SendButtonHostingController()
 	private let currency: ShadowButton
 	private var balance: UInt64 = 0
@@ -47,7 +47,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		self.initialAddress = initialAddress
 		self.initialRequest = initialRequest
 
-		currency = ShadowButton(title: S.Symbols.currencyButtonTitle(maxDigits: store.state.maxDigits), type: .tertiary)
+        currency = ShadowButton(title: currencyButtonTitle(maxDigits: store.state.maxDigits), type: .tertiary)
 
 		/// User Preference
 		if let opsPreference = keychainPreferences["hasAcceptedFees"],
@@ -134,6 +134,20 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			handleRequest(initialRequest)
 		}
 	}
+    
+    private func currencyButtonTitle(maxDigits: Int) -> String {
+        switch maxDigits {
+            case 2:
+                return "photons (mł)"
+            case 5:
+                return "lites (ł)"
+            case 8:
+                return "LTC (Ł)"
+            default:
+                return "lites (ł)"
+        }
+    }
+    
 
 	private func addButtonActions() {
 		// MARK: - MemoCell Callbacks
@@ -200,9 +214,9 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			{
 				self.sendTapped()
 			} else {
-				self.showAlert(title: S.BrainwalletAlert.error.localize(),
-				               message: S.Send.enterLTCAddressLabel.localize(),
-				               buttonLabel: S.Button.ok.localize())
+				self.showAlert(title: "Error" ,
+				               message: "Enter LTC address" ,
+				               buttonLabel: "Ok" )
 			}
 		}
 	}
@@ -226,7 +240,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 		let balanceText = balanceAmount.description
 
-		let balanceOutput = String(format: S.Send.balance.localize(), balanceText)
+		let balanceOutput = String(format: "Balance: %1$@" , balanceText)
 		var combinedFeesOutput = ""
         var balanceColor: UIColor = BrainwalletUIColor.content
 
@@ -257,7 +271,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			                                   selectedRate: currentRate,
 			                                   minimumFractionDigits: 2).description
 
-			combinedFeesOutput = "(\(S.Send.networkFee.localize()) + \(S.Send.serviceFee.localize())): \(networkFeeAmount) + \(serviceFeeAmount) = \(totalFeeAmount)"
+			combinedFeesOutput = "( Network fee + Service fee ): \(networkFeeAmount) + \(serviceFeeAmount) = \(totalFeeAmount)"
 
 			if sendTotal > balance {
                 balanceColor = BrainwalletUIColor.error
@@ -278,11 +292,11 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	@objc private func pasteTapped() {
 		guard let pasteboard = UIPasteboard.general.string, !pasteboard.utf8.isEmpty
 		else {
-			return showAlert(title: S.Send.invalidAddressTitle.localize(), message: S.Send.noAddress.localize(), buttonLabel: S.Button.ok.localize())
+			return showAlert(title: "Invalid Address" , message: "Please enter the recipient's address." , buttonLabel: "Ok" )
 		}
 		guard let request = PaymentRequest(string: pasteboard)
 		else {
-			return showAlert(title: S.Send.invalidAddressTitle.localize(), message: S.Send.noAddress.localize(), buttonLabel: S.Button.ok.localize())
+			return showAlert(title: "Invalid Address" , message: "Please enter the recipient's address." , buttonLabel: "Ok" )
 		}
 
 		handleRequest(request)
@@ -309,21 +323,21 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		let bareAmount: Satoshis?
 		if sender.transaction == nil {
 			guard let address = sendAddressCell.address else {
-				return showAlert(title: S.BrainwalletAlert.error.localize(),
-				                 message: S.Send.noAddress.localize(), buttonLabel: S.Button.ok.localize())
+				return showAlert(title: "Error" ,
+				                 message: "Please enter the recipient's address.", buttonLabel: "Ok" )
 			}
 
 			if !address.isValidAddress {
-				return showAlert(title: S.BrainwalletAlert.error.localize(),
-				                 message: S.Send.noAddress.localize(),
-				                 buttonLabel: S.Button.ok.localize())
+				return showAlert(title: "Error" ,
+				                 message: "Please enter the recipient's address." ,
+				                 buttonLabel: "Ok" )
 			}
 
 			guard var amountToSend = amount
 			else {
-				return showAlert(title: S.BrainwalletAlert.error.localize(),
-				                 message: S.Send.noAmount.localize(),
-				                 buttonLabel: S.Button.ok.localize())
+				return showAlert(title: "Error" ,
+				                 message: "Please enter an amount to send.",
+				                 buttonLabel: "Ok" )
 			}
 
 			let opsFeeAmount = Satoshis(rawValue: tieredOpsFee(amount: amountToSend.rawValue))
@@ -340,24 +354,24 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 				guard amountToSend.rawValue >= minOutput
 				else {
 					let minOutputAmount = Amount(amount: minOutput, rate: Rate.empty, maxDigits: store.state.maxDigits)
-					let message = String(format: S.PaymentProtocol.Errors.smallPayment.localize(),
+					let message = String(format: "Litecoin payments can't be less than %1$@" ,
 					                     minOutputAmount.string(isLtcSwapped: store.state.isLtcSwapped))
-					return showAlert(title: S.BrainwalletAlert.error.localize(),
+					return showAlert(title: "Error" ,
 					                 message: message,
-					                 buttonLabel: S.Button.ok.localize())
+					                 buttonLabel: "Ok" )
 				}
 			}
 			guard !(walletManager.wallet?.containsAddress(address) ?? false)
 			else {
-				return showAlert(title: S.BrainwalletAlert.error.localize(),
-				                 message: S.Send.containsAddress.localize(),
-				                 buttonLabel: S.Button.ok.localize())
+				return showAlert(title: "Error" ,
+				                 message: "The destination is your own address. You cannot send to yourself." ,
+				                 buttonLabel: "Ok" )
 			}
 			guard amountToSend.rawValue <= (walletManager.wallet?.maxOutputAmount ?? 0)
 			else {
-				return showAlert(title: S.BrainwalletAlert.error.localize(),
-				                 message: S.Send.insufficientFunds.localize(),
-				                 buttonLabel: S.Button.ok.localize())
+				return showAlert(title: "Error" ,
+				                 message:  "Insufficient Funds" ,
+				                 buttonLabel: "Ok" )
 			}
 
 			/// Set Ops or Single Output
@@ -365,17 +379,17 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 				guard let bareAmt = bareAmount?.rawValue,
 				      sender.createTransactionWithOpsOutputs(amount: bareAmt, to: address)
 				else {
-					return showAlert(title: S.BrainwalletAlert.error.localize(),
-					                 message: S.Send.createTransactionError.localize(),
-					                 buttonLabel: S.Button.ok.localize())
+					return showAlert(title: "Error" ,
+					                 message: "Could not create transaction." ,
+					                 buttonLabel: "Ok")
 				}
 			} else {
 				guard let bareAmt = bareAmount?.rawValue,
 				      sender.createTransaction(amount: bareAmt, to: address)
 				else {
-					return showAlert(title: S.BrainwalletAlert.error.localize(),
-					                 message: S.Send.createTransactionError.localize(),
-					                 buttonLabel: S.Button.ok.localize())
+					return showAlert(title: "Error",
+					                 message: "Could not create transaction." ,
+					                 buttonLabel: "Ok")
 				}
 			}
 
@@ -420,7 +434,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			}
 
 		case .remote:
-			let loadingView = BRActivityViewController(message: S.Send.loadingRequest.localize())
+			let loadingView = BRActivityViewController(message: "Loading Request" )
 			present(loadingView, animated: true, completion: nil)
 			request.fetchRemoteRequest(completion: { [weak self] request in
 				DispatchQueue.main.async {
@@ -428,7 +442,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 						if let paymentProtocolRequest = request?.paymentProtocolRequest {
 							self?.confirmProtocolRequest(protoReq: paymentProtocolRequest)
 						} else {
-							self?.showErrorMessage(S.Send.remoteRequestError.localize())
+							self?.showErrorMessage("Could not load payment request")
 						}
 					})
 				}
@@ -440,12 +454,12 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		guard let rate = store.state.currentRate else { return }
 		guard let feePerKb = walletManager.wallet?.feePerKb else { return }
 
-		sender.send(biometricsMessage: S.VerifyPin.touchIdMessage.localize(),
+		sender.send(biometricsMessage: "Authorize this transaction" ,
 		            rate: rate,
 		            comment: memoCell.textView.text,
 		            feePerKb: feePerKb,
 		            verifyPinFunction: { [weak self] pinValidationCallback in
-		            	self?.presentVerifyPin?(S.VerifyPin.authorize.localize()) { [weak self] pin, vc in
+		            	self?.presentVerifyPin?("Please enter your PIN to authorize this transaction." ) { [weak self] pin, vc in
 		            		if pinValidationCallback(pin) {
 		            			vc.dismiss(animated: true, completion: {
 		            				self?.parent?.view.isFrameChangeBlocked = false
@@ -472,12 +486,12 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		            		LWAnalytics.logEventWithParameters(itemName: ._20191105_DSL)
 
 		            	case let .creationError(message):
-		            		self?.showAlert(title: S.Send.createTransactionError.localize(), message: message, buttonLabel: S.Button.ok.localize())
+		            		self?.showAlert(title: "Could not create transaction." , message: message, buttonLabel: "Ok" )
 		            		self?.saveEvent("send.publishFailed", attributes: ["errorMessage": message])
 
 		            	case let .publishFailure(error):
 		            		if case let .posixError(code, description) = error {
-		            			self?.showAlert(title: S.SecurityAlerts.sendFailure.localize(), message: "\(description) (\(code))", buttonLabel: S.Button.ok.localize())
+		            			self?.showAlert(title: "Send failed" , message: "\(description) (\(code))", buttonLabel: "Ok" )
 		            			self?.saveEvent("send.publishFailed", attributes: ["errorMessage": "\(description) (\(code))"])
 		            		}
 		            	}
@@ -492,8 +506,8 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		let isValid = protoReq.isValid()
 		var isOutputTooSmall = false
 
-		if let errorMessage = protoReq.errorMessage, errorMessage == S.PaymentProtocol.Errors.requestExpired.localize(), !isValid {
-			return showAlert(title: S.PaymentProtocol.Errors.badPaymentRequest.localize(), message: errorMessage, buttonLabel: S.Button.ok.localize())
+		if let errorMessage = protoReq.errorMessage, errorMessage == "request expired" , !isValid {
+			return showAlert(title: "Bad Payment Request" , message: errorMessage, buttonLabel: "Ok" )
 		}
 
 		// TODO: check for duplicates of already paid requests
@@ -506,26 +520,26 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		}
 
 		if wallet.containsAddress(address) {
-			return showAlert(title: S.BrainwalletAlert.warning.localize(), message: S.Send.containsAddress.localize(), buttonLabel: S.Button.ok.localize())
+			return showAlert(title: "Warning", message: "The destination is your own address. You cannot send to yourself." , buttonLabel: "Ok" )
 		} else if wallet.addressIsUsed(address), !didIgnoreUsedAddressWarning {
-			let message = "\(S.Send.UsedAddress.title.localize())\n\n\(S.Send.UsedAddress.firstLine.localize())\n\n\(S.Send.UsedAddress.secondLine.localize())"
-			return showError(title: S.BrainwalletAlert.warning.localize(), message: message, ignore: { [weak self] in
+			let message = "Address Already Used\n\n Litecoin addresses are intended for single use only.\n\nRe-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn't directly control the address."
+			return showError(title: "Warning", message: message, ignore: { [weak self] in
 				self?.didIgnoreUsedAddressWarning = true
 				self?.confirmProtocolRequest(protoReq: protoReq)
 			})
 		} else if let message = protoReq.errorMessage, !message.utf8.isEmpty, (protoReq.commonName?.utf8.count)! > 0, !didIgnoreIdentityNotCertified {
-			return showError(title: S.Send.identityNotCertified.localize(), message: message, ignore: { [weak self] in
+			return showError(title: "Payee identity isn't certified." , message: message, ignore: { [weak self] in
 				self?.didIgnoreIdentityNotCertified = true
 				self?.confirmProtocolRequest(protoReq: protoReq)
 			})
 		} else if requestAmount < wallet.minOutputAmount {
 			let amount = Amount(amount: wallet.minOutputAmount, rate: Rate.empty, maxDigits: store.state.maxDigits)
-			let message = String(format: S.PaymentProtocol.Errors.smallPayment.localize(), amount.bits)
-			return showAlert(title: S.PaymentProtocol.Errors.smallOutputErrorTitle.localize(), message: message, buttonLabel: S.Button.ok.localize())
+			let message = String(format: "S.PaymentProtocol.Errors.smallPayment" , amount.bits)
+			return showAlert(title: "S.PaymentProtocol.Errors.smallOutputErrorTitle" , message: message, buttonLabel: "Ok" )
 		} else if isOutputTooSmall {
 			let amount = Amount(amount: wallet.minOutputAmount, rate: Rate.empty, maxDigits: store.state.maxDigits)
-			let message = String(format: S.PaymentProtocol.Errors.smallTransaction.localize(), amount.bits)
-			return showAlert(title: S.PaymentProtocol.Errors.smallOutputErrorTitle.localize(), message: message, buttonLabel: S.Button.ok.localize())
+			let message = String(format: "S.PaymentProtocol.Errors.smallTransaction" , amount.bits)
+			return showAlert(title: "S.PaymentProtocol.Errors.smallOutputErrorTitle" , message: message, buttonLabel: "Ok" )
 		}
 
 		if requestAmount > 0 {
@@ -537,7 +551,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			if let amount = amount {
 				guard sender.createTransaction(amount: amount.rawValue, to: address)
 				else {
-					return showAlert(title: S.BrainwalletAlert.error.localize(), message: S.Send.createTransactionError.localize(), buttonLabel: S.Button.ok.localize())
+					return showAlert(title:  "Error" , message: "Could not create transaction." , buttonLabel: "Ok" )
 				}
 			}
 		}
@@ -545,10 +559,10 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 	private func showError(title: String, message: String, ignore: @escaping () -> Void) {
 		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		alertController.addAction(UIAlertAction(title: S.Button.ignore.localize(), style: .default, handler: { _ in
+		alertController.addAction(UIAlertAction(title:  "Ignore"  , style: .default, handler: { _ in
 			ignore()
 		}))
-		alertController.addAction(UIAlertAction(title: S.Button.cancel.localize(), style: .cancel, handler: nil))
+		alertController.addAction(UIAlertAction(title:  "Cancel"  , style: .cancel, handler: nil))
 		present(alertController, animated: true, completion: nil)
 	}
 
@@ -564,6 +578,6 @@ extension SendViewController: ModalDisplayable {
 	}
 
 	var modalTitle: String {
-		return S.Send.title.localize()
+		return "Send" 
 	}
 }

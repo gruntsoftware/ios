@@ -22,7 +22,7 @@ class StartViewModel: ObservableObject {
 	var walletCreationDidFail: Bool = false
   
 	@Published
-	var headerTitle = S.CreateStep.MainTitle.intro.localize()
+	var headerTitle = "S.CreateStep.MainTitle.intro"
 
 	// MARK: - Public Variables
 

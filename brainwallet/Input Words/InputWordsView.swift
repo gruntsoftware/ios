@@ -65,14 +65,14 @@ struct InputWordsView: View {
                     .padding([.leading, .trailing], 20.0)
                     .padding(.bottom, 0.0)
                     
-                    Text(S.Restore.title.localize())
+                    Text("Restore your power")
                         .font(subTitleFont)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.05)
                         .foregroundColor(BrainwalletColor.content)
                         .padding(.top, 5.0)
                     
-                    Text( S.Restore.detail1.localize())
+                    Text( "You can get back from where you started" )
                         .font(detailFont)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.1)
@@ -89,7 +89,7 @@ struct InputWordsView: View {
                     Spacer()
                
                     
-                        Text( S.Restore.detail2.localize())
+                        Text( "Don’t guess.\n\nIt would take you 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries")
                             .font(detailerFont)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(BrainwalletColor.content)
@@ -97,7 +97,7 @@ struct InputWordsView: View {
                             .padding(.top, 5.0)
                             .padding([.leading, .trailing], 24.0)
                         
-                        Text( S.Restore.detail3.localize())
+                        Text( "Blockchain: Litecoin" )
                             .font(detailerFont)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .frame(height: height * 0.04, alignment: .center)
@@ -114,7 +114,7 @@ struct InputWordsView: View {
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .foregroundColor(BrainwalletColor.surface)
                             
-                            Text(S.Onboarding.readyNextButton.localize())
+                            Text("Setup app passcode")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .font(largeButtonFont)
                                 .foregroundColor(BrainwalletColor.content)
