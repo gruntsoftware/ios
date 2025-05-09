@@ -74,6 +74,7 @@
 		24B0653D2DC6476A00B5E000 /* NewSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653C2DC6476700B5E000 /* NewSendView.swift */; };
 		24B065402DC647F400B5E000 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653F2DC647F000B5E000 /* GameView.swift */; };
 		24B065422DC6484900B5E000 /* NewReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065412DC6484300B5E000 /* NewReceiveView.swift */; };
+		24BEBB972DCDE4D4001E1F1F /* SwiftFormat in Frameworks */ = {isa = PBXBuildFile; productRef = 24D196022DBE69CC0052501D /* SwiftFormat */; };
 		24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */; };
 		24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D91D0A2166923E0077A619 /* UserNotifications.framework */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
@@ -967,6 +968,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24BEBB972DCDE4D4001E1F1F /* SwiftFormat in Frameworks */,
 				24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */,
 				24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */,
 				C35C122A293D48340009022D /* KeychainAccess in Frameworks */,
@@ -980,7 +982,6 @@
 				C35C1222293D464A0009022D /* FirebaseAuth in Frameworks */,
 				C35C1224293D464A0009022D /* FirebaseCrashlytics in Frameworks */,
 				C35C1220293D464A0009022D /* FirebaseAnalytics in Frameworks */,
-				24D196032DBE69CC0052501D /* SwiftFormat in Frameworks */,
 				759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2727,7 +2728,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250506.3;
+				CURRENT_PROJECT_VERSION = 250509.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3015,7 +3016,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250506.3;
+				CURRENT_PROJECT_VERSION = 250509.0;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
