@@ -65,6 +65,9 @@
 		24B065422DC6484900B5E000 /* NewReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065412DC6484300B5E000 /* NewReceiveView.swift */; };
 		24C639CA2DC69EA60014E6DD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C639C92DC69EA20014E6DD /* SettingsView.swift */; };
 		24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */; };
+		24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */; };
+		24D7AE562DCFF6870078252E /* NewConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE552DCFF6830078252E /* NewConfirmView.swift */; };
+		24D7AE582DCFF72D0078252E /* NewConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */; };
 		24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D91D0A2166923E0077A619 /* UserNotifications.framework */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
@@ -606,6 +609,9 @@
 		24B065412DC6484300B5E000 /* NewReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveView.swift; sourceTree = "<group>"; };
 		24C639C92DC69EA20014E6DD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
+		24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmHostingController.swift; sourceTree = "<group>"; };
+		24D7AE552DCFF6830078252E /* NewConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmView.swift; sourceTree = "<group>"; };
+		24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmViewModel.swift; sourceTree = "<group>"; };
 		24D91D0A2166923E0077A619 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
@@ -1329,6 +1335,16 @@
 			path = "Settings Classes";
 			sourceTree = "<group>";
 		};
+		24D7AE522DCFF6350078252E /* New Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */,
+				24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */,
+				24D7AE552DCFF6830078252E /* NewConfirmView.swift */,
+			);
+			path = "New Onboarding";
+			sourceTree = "<group>";
+		};
 		24DF5CBD2D934E29009A426C /* launch-resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1507,6 +1523,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				24D7AE522DCFF6350078252E /* New Onboarding */,
 				24A404212DC92F1F006CD076 /* New Buy Webview */,
 				240204682DC7F37B00EC8E99 /* New Lock Screen Classes */,
 				24C639C82DC69E940014E6DD /* Settings Classes */,
@@ -2404,6 +2421,7 @@
 				C312D3FD2D7DC27700BB97A4 /* LocaleChangeViewModel.swift in Sources */,
 				C312D3FE2D7DC27700BB97A4 /* ReduxState.swift in Sources */,
 				C312D3FF2D7DC27700BB97A4 /* InViewAlert.swift in Sources */,
+				24D7AE562DCFF6870078252E /* NewConfirmView.swift in Sources */,
 				C312D4002D7DC27700BB97A4 /* MessageUIPresenter.swift in Sources */,
 				C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */,
 				C312D4032D7DC27700BB97A4 /* ShadowButton.swift in Sources */,
@@ -2430,6 +2448,7 @@
 				C312D42D2D7DC27700BB97A4 /* LWAnalytics.swift in Sources */,
 				C312D4312D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift in Sources */,
 				C312D4322D7DC27700BB97A4 /* SecurityCenterCell.swift in Sources */,
+				24D7AE582DCFF72D0078252E /* NewConfirmViewModel.swift in Sources */,
 				C312D4332D7DC27700BB97A4 /* RemoteConfigHelper.swift in Sources */,
 				C312D4342D7DC27700BB97A4 /* TextView+Extension.swift in Sources */,
 				C312D4352D7DC27700BB97A4 /* MenuViewController.swift in Sources */,
@@ -2450,6 +2469,7 @@
 				C312D4502D7DC27700BB97A4 /* TransactionDirection.swift in Sources */,
 				C312D4512D7DC27700BB97A4 /* PromptModalViewController.swift in Sources */,
 				C312D4522D7DC27700BB97A4 /* CheckboxesStepView.swift in Sources */,
+				24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */,
 				C312D4552D7DC27700BB97A4 /* BuyHostingController.swift in Sources */,
 				C312D4562D7DC27700BB97A4 /* LockScreenHeaderView.swift in Sources */,
 				C312D4572D7DC27700BB97A4 /* KeyboardNotificationInfo.swift in Sources */,
@@ -2624,7 +2644,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250508.0;
+				CURRENT_PROJECT_VERSION = 250511.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
@@ -2917,7 +2937,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250508.0;
+				CURRENT_PROJECT_VERSION = 250511.0;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
