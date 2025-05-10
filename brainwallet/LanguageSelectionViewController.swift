@@ -25,8 +25,8 @@ class LanguageSelectionViewController: UITableViewController {
 
 	func showConfirmationAlert(code: String) {
 		if UserDefaults.selectedLanguage == code { return }
-		let alert = UIAlertController(title: nil, message: S.Settings.changeLanguageMessage .replacingOccurrences(of: "%l", with: "\(Locale.current.localizedString(forLanguageCode: code) ?? "") (\(code))"), preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: S.Fragments.confirm .capitalized, style: .default, handler: { _ in
+		let alert = UIAlertController(title: nil, message: "S.Settings.changeLanguageMessage" .replacingOccurrences(of: "%l", with: "\(Locale.current.localizedString(forLanguageCode: code) ?? "") (\(code))"), preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Confirm" .capitalized, style: .default, handler: { _ in
 			self.viewModel.setLanguage(code: code)
 			self.dismiss(animated: true)
 		}))

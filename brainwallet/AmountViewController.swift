@@ -62,15 +62,30 @@ class AmountViewController: UIViewController, Trackable {
 		self.store = store
 		self.isPinPadExpandedAtLaunch = isPinPadExpandedAtLaunch
 		self.isRequesting = isRequesting
+        
+        var currencyButtonTitle = ""
+          
+        switch  store.state.maxDigits {
+            case 2: currencyButtonTitle = "photons (mł)"
+            case 5: currencyButtonTitle = "lites (ł)"
+            case 8: currencyButtonTitle = "LTC (Ł)"
+            default: currencyButtonTitle = "lites (ł)"
+        }
+         
 		if let rate = store.state.currentRate, store.state.isLtcSwapped {
 			currencyToggleButton = ShadowButton(title: "\(rate.code)(\(rate.currencySymbol))", type: .tertiary)
 		} else {
-			currencyToggleButton = ShadowButton(title: currencyButtonTitle(maxDigits: store.state.maxDigits), type: .tertiary)
+
+            currencyToggleButton = ShadowButton(title: currencyButtonTitle, type: .tertiary)
 		}
 		feeSelector = FeeSelector(store: store)
         pinPad = PinPadViewController(style: .whitePinPadStyle, keyboardType: .decimalPad, maxDigits: store.state.maxDigits)
 		super.init(nibName: nil, bundle: nil)
 	}
+    
+    func setCurrencyButton() {
+        
+    }
 
 	func forceUpdateAmount(amount: Satoshis) {
 		self.amount = amount

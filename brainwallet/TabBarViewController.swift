@@ -359,12 +359,11 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			transactionVC.isLtcSwapped = store?.state.isLtcSwapped
 
 		case "brainwallet.BuyHostingController":
-			guard let buyHC = contentController as? BuyHostingController
+            guard let buyHC = contentController as? BuyHostingController
 			else {
 				return
 			}
-
-			buyHC.isLoaded = true
+            buyHC.walletManager = walletManager
 
 		case "brainwallet.SendLTCViewController":
 			guard let sendVC = contentController as? SendLTCViewController

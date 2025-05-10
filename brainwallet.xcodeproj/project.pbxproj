@@ -33,6 +33,7 @@
 		2416CE7C2DA90D0D00FFBD10 /* BRCalculationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5E2DA90D0D00FFBD10 /* BRCalculationExtension.swift */; };
 		2416CE7E2DA90DB000FFBD10 /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2416CE7D2DA90DB000FFBD10 /* remote-config-defaults.plist */; };
 		2416CE802DA90DE300FFBD10 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2416CE7F2DA90DE300FFBD10 /* GoogleService-Info.plist */; };
+		241B47802DCEA08000279954 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 241B477F2DCEA08000279954 /* Localizable.xcstrings */; };
 		241D223F2DB526A1000302C8 /* ReadyRestoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D223E2DB52699000302C8 /* ReadyRestoreView.swift */; };
 		241D22412DB526AE000302C8 /* SetPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22402DB526AC000302C8 /* SetPasscodeView.swift */; };
 		241D22432DB526B7000302C8 /* TopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22422DB526B6000302C8 /* TopUpView.swift */; };
@@ -127,7 +128,6 @@
 		C312D3212D7DC27700BB97A4 /* StandardDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2AA2D7DC27700BB97A4 /* StandardDividerView.swift */; };
 		C312D3222D7DC27700BB97A4 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0992D7DC27700BB97A4 /* Setting.swift */; };
 		C312D3252D7DC27700BB97A4 /* LocaleChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2622D7DC27700BB97A4 /* LocaleChangeView.swift */; };
-		C312D3282D7DC27700BB97A4 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2302D7DC27700BB97A4 /* BuyViewModel.swift */; };
 		C312D3292D7DC27700BB97A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D27F2D7DC27700BB97A4 /* MainViewController.swift */; };
 		C312D32A2D7DC27700BB97A4 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D07D2D7DC27700BB97A4 /* UINavigationController+Extension.swift */; };
 		C312D32E2D7DC27700BB97A4 /* StoreReview+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2B02D7DC27700BB97A4 /* StoreReview+Extension.swift */; };
@@ -192,7 +192,6 @@
 		C312D3A12D7DC27700BB97A4 /* SendAddressHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A12D7DC27700BB97A4 /* SendAddressHostingController.swift */; };
 		C312D3A22D7DC27700BB97A4 /* SendAddressCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A02D7DC27700BB97A4 /* SendAddressCellViewModel.swift */; };
 		C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */; };
-		C312D3B02D7DC27700BB97A4 /* BuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D22F2D7DC27700BB97A4 /* BuyView.swift */; };
 		C312D3B22D7DC27700BB97A4 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D29A2D7DC27700BB97A4 /* ScanViewController.swift */; };
 		C312D3B32D7DC27700BB97A4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C62D7DC27700BB97A4 /* SettingsViewController.swift */; };
 		C312D3B42D7DC27700BB97A4 /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B72D7DC27700BB97A4 /* AmountViewController.swift */; };
@@ -314,7 +313,6 @@
 		C312D4872D7DC27700BB97A4 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D02D7DC27700BB97A4 /* Transaction.swift */; };
 		C312D48A2D7DC27700BB97A4 /* MenuButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0682D7DC27700BB97A4 /* MenuButtonType.swift */; };
 		C312D48B2D7DC27700BB97A4 /* CreateWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D23E2D7DC27700BB97A4 /* CreateWalletView.swift */; };
-		C312D48E2D7DC27700BB97A4 /* CardV1ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2322D7DC27700BB97A4 /* CardV1ToastView.swift */; };
 		C312D48F2D7DC27700BB97A4 /* SimpleRedux.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A92D7DC27700BB97A4 /* SimpleRedux.swift */; };
 		C312D4902D7DC27700BB97A4 /* SendAddressCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D29F2D7DC27700BB97A4 /* SendAddressCellView.swift */; };
 		C312D4912D7DC27700BB97A4 /* ForgotAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24C2D7DC27700BB97A4 /* ForgotAlertViewModel.swift */; };
@@ -448,6 +446,7 @@
 		2416CE692DA90D0D00FFBD10 /* BRWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRWallet.swift; sourceTree = "<group>"; };
 		2416CE7D2DA90DB000FFBD10 /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "remote-config-defaults.plist"; path = "/Users/kerrywashington/Documents/grunt-software-projects/gruntsoftware/ios/brainwallet/launch-resources/remote-config-defaults.plist"; sourceTree = "<absolute>"; };
 		2416CE7F2DA90DE300FFBD10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "/Users/kerrywashington/Documents/grunt-software-projects/gruntsoftware/ios/brainwallet/launch-resources/GoogleService-Info.plist"; sourceTree = "<absolute>"; };
+		241B477F2DCEA08000279954 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		241D223E2DB52699000302C8 /* ReadyRestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyRestoreView.swift; sourceTree = "<group>"; };
 		241D22402DB526AC000302C8 /* SetPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasscodeView.swift; sourceTree = "<group>"; };
 		241D22422DB526B6000302C8 /* TopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpView.swift; sourceTree = "<group>"; };
@@ -772,10 +771,7 @@
 		C312D22A2D7DC27700BB97A4 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		C312D22C2D7DC27700BB97A4 /* BuyHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyHostingController.swift; sourceTree = "<group>"; };
 		C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTileView.swift; sourceTree = "<group>"; };
-		C312D22F2D7DC27700BB97A4 /* BuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyView.swift; sourceTree = "<group>"; };
-		C312D2302D7DC27700BB97A4 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
 		C312D2312D7DC27700BB97A4 /* BuyWKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyWKWebViewController.swift; sourceTree = "<group>"; };
-		C312D2322D7DC27700BB97A4 /* CardV1ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardV1ToastView.swift; sourceTree = "<group>"; };
 		C312D2332D7DC27700BB97A4 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		C312D2342D7DC27700BB97A4 /* CheckboxesStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxesStepView.swift; sourceTree = "<group>"; };
 		C312D2352D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewTransitioningDelegate.swift; sourceTree = "<group>"; };
@@ -991,6 +987,14 @@
 				2416CE692DA90D0D00FFBD10 /* BRWallet.swift */,
 			);
 			path = "Legacy BRClasses";
+			sourceTree = "<group>";
+		};
+		241B477E2DCEA05D00279954 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				241B477F2DCEA08000279954 /* Localizable.xcstrings */,
+			);
+			path = Localizations;
 			sourceTree = "<group>";
 		};
 		241D22382DB52630000302C8 /* Input Words */ = {
@@ -1559,6 +1563,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				241B477E2DCEA05D00279954 /* Localizations */,
 				24A404212DC92F1F006CD076 /* New Buy Webview */,
 				240204682DC7F37B00EC8E99 /* New Lock Screen Classes */,
 				24C639C82DC69E940014E6DD /* Settings Classes */,
@@ -1700,10 +1705,7 @@
 				C312D22A2D7DC27700BB97A4 /* BundleExtension.swift */,
 				C312D22C2D7DC27700BB97A4 /* BuyHostingController.swift */,
 				C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */,
-				C312D22F2D7DC27700BB97A4 /* BuyView.swift */,
-				C312D2302D7DC27700BB97A4 /* BuyViewModel.swift */,
 				C312D2312D7DC27700BB97A4 /* BuyWKWebViewController.swift */,
-				C312D2322D7DC27700BB97A4 /* CardV1ToastView.swift */,
 				C312D2332D7DC27700BB97A4 /* CHANGELOG.md */,
 				C312D2342D7DC27700BB97A4 /* CheckboxesStepView.swift */,
 				C312D2352D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift */,
@@ -2123,6 +2125,7 @@
 				C312D4B52D7DC27700BB97A4 /* Transactions.storyboard in Resources */,
 				C312D4B72D7DC27700BB97A4 /* WarningConfirmation.storyboard in Resources */,
 				C312D4B82D7DC27700BB97A4 /* En.mp3 in Resources */,
+				241B47802DCEA08000279954 /* Localizable.xcstrings in Resources */,
 				C312D5142D7DC2EA00BB97A4 /* PrivacyInfo.xcprivacy in Resources */,
 				C312D4BA2D7DC27700BB97A4 /* De.mp3 in Resources */,
 				C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */,
@@ -2315,7 +2318,6 @@
 				C312D3212D7DC27700BB97A4 /* StandardDividerView.swift in Sources */,
 				C312D3222D7DC27700BB97A4 /* Setting.swift in Sources */,
 				C312D3252D7DC27700BB97A4 /* LocaleChangeView.swift in Sources */,
-				C312D3282D7DC27700BB97A4 /* BuyViewModel.swift in Sources */,
 				C312D3292D7DC27700BB97A4 /* MainViewController.swift in Sources */,
 				C312D32A2D7DC27700BB97A4 /* UINavigationController+Extension.swift in Sources */,
 				C312D32E2D7DC27700BB97A4 /* StoreReview+Extension.swift in Sources */,
@@ -2407,7 +2409,6 @@
 				C312D3A12D7DC27700BB97A4 /* SendAddressHostingController.swift in Sources */,
 				C312D3A22D7DC27700BB97A4 /* SendAddressCellViewModel.swift in Sources */,
 				C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */,
-				C312D3B02D7DC27700BB97A4 /* BuyView.swift in Sources */,
 				24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */,
 				C312D3B22D7DC27700BB97A4 /* ScanViewController.swift in Sources */,
 				C312D3B32D7DC27700BB97A4 /* SettingsViewController.swift in Sources */,
@@ -2541,7 +2542,6 @@
 				C312D4872D7DC27700BB97A4 /* Transaction.swift in Sources */,
 				C312D48A2D7DC27700BB97A4 /* MenuButtonType.swift in Sources */,
 				C312D48B2D7DC27700BB97A4 /* CreateWalletView.swift in Sources */,
-				C312D48E2D7DC27700BB97A4 /* CardV1ToastView.swift in Sources */,
 				C312D48F2D7DC27700BB97A4 /* SimpleRedux.swift in Sources */,
 				C312D4902D7DC27700BB97A4 /* SendAddressCellView.swift in Sources */,
 				241D22492DB526E9000302C8 /* YourSeedWordsView.swift in Sources */,
@@ -2635,6 +2635,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules $(SRCROOT)/brainwallet/br-swift";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2923,6 +2924,7 @@
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC  ";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules $(SRCROOT)/brainwallet/br-swift";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

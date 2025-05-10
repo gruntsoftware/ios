@@ -36,12 +36,20 @@ class BuyHostingController: UIHostingController<WebBuyView> {
 	var contentView: WebBuyView
 
 	var isLoaded: Bool = false
+    var walletManager: WalletManager?
+    var receiveAddress = ""
 
-	init() {
-        // HACK TO Widget
-        let buyViewModel = BuyViewModel()
-        contentView = WebBuyView(receiveAddress: buyViewModel.receivingAddress)
+    init() {
+        if let walletManager = walletManager,
+            let address = walletManager.wallet?.receiveAddress {
+            self.receiveAddress = address
+        }
+        
+        print("::: hosting \(self.receiveAddress) isLoaded \(isLoaded)")
+        contentView = WebBuyView(receiveAddress: self.receiveAddress)
         super.init(rootView: contentView)
+        print("::: hosting \(self.receiveAddress)")
+
 	}
 
 	@available(*, unavailable)

@@ -46,8 +46,16 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		self.walletManager = walletManager
 		self.initialAddress = initialAddress
 		self.initialRequest = initialRequest
+        
+        var currencyButtonTitle = ""
+        switch store.state.maxDigits {
+                    case 2: currencyButtonTitle = "photons (mł)"
+                    case 5: currencyButtonTitle = "lites (ł)"
+                    case 8: currencyButtonTitle = "LTC (Ł)"
+                    default: currencyButtonTitle = "lites (ł)"
+                }
 
-        currency = ShadowButton(title: currencyButtonTitle(maxDigits: store.state.maxDigits), type: .tertiary)
+        currency = ShadowButton(title: currencyButtonTitle, type: .tertiary)
 
 		/// User Preference
 		if let opsPreference = keychainPreferences["hasAcceptedFees"],
@@ -134,20 +142,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			handleRequest(initialRequest)
 		}
 	}
-    
-    private func currencyButtonTitle(maxDigits: Int) -> String {
-        switch maxDigits {
-            case 2:
-                return "photons (mł)"
-            case 5:
-                return "lites (ł)"
-            case 8:
-                return "LTC (Ł)"
-            default:
-                return "lites (ł)"
-        }
-    }
-    
 
 	private func addButtonActions() {
 		// MARK: - MemoCell Callbacks

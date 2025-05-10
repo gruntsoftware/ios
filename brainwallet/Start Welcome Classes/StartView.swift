@@ -205,7 +205,7 @@ struct StartView: View {
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
                                 
-                                Text(S."Restore")
+                                Text("Restore")
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(regularButtonFont)
                                     .foregroundColor(BrainwalletColor.content)

@@ -87,7 +87,7 @@ struct ReadyRestoreView: View {
                                         .foregroundColor(BrainwalletColor.content)
                                 }
                                 .padding(.bottom, 20.0)
-                                Text( isRestore ? "Restore!"  : "Do this for you. Please do it alone. Grab a pen, paper & 5 mins" )
+                                Text( isRestore ? "Restore!"  : "Do this for you. Please do it alone. Grab a pen, paper & 5 mins." )
                                     .font(detailFont)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(BrainwalletColor.content)

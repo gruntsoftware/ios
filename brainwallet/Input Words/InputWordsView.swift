@@ -89,7 +89,7 @@ struct InputWordsView: View {
                     Spacer()
                
                     
-                        Text( "Don’t guess.\n\nIt would take you 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries")
+                        Text( "Don’t guess.\n\nIt would take you 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries.")
                             .font(detailerFont)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(BrainwalletColor.content)

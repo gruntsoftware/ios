@@ -134,7 +134,7 @@ class StartFlowPresenter: Subscriber {
 		let paperPhraseViewController = StartPaperPhraseViewController(store: store, callback: { [weak self] in
 			self?.pushWritePaperPhraseViewController(pin: pin)
 		})
-		paperPhraseViewController.title = S.SecurityCenter.Cells.paperKeyTitle 
+		paperPhraseViewController.title = "Paper Key"
 		paperPhraseViewController.navigationItem.setHidesBackButton(true, animated: false)
 		paperPhraseViewController.hideCloseNavigationItem() // Forces user to confirm paper-key
 
@@ -149,7 +149,7 @@ class StartFlowPresenter: Subscriber {
 		let writeViewController = WritePaperPhraseViewController(store: store, walletManager: walletManager, pin: pin, callback: { [weak self] in
 			self?.pushConfirmPaperPhraseViewController(pin: pin)
 		})
-		writeViewController.title = S.SecurityCenter.Cells.paperKeyTitle 
+		writeViewController.title = "Paper Key"
 		writeViewController.hideCloseNavigationItem()
 		navigationController?.pushViewController(writeViewController, animated: true)
 	}
