@@ -86,13 +86,14 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	private func initSyncingHeaderView(reduxState: ReduxState, completion: @escaping () -> Void) {
 		syncingHeaderView = Bundle.main.loadNibNamed("SyncProgressHeaderView",
 		                                             owner: self,
-		                                             options: nil)?.first as? SyncProgressHeaderView
+		                                             options: nil)?
+            .first as? SyncProgressHeaderView
 		syncingHeaderView?.isRescanning = reduxState.walletState.isRescanning
 		syncingHeaderView?.progress = 0.02
 		syncingHeaderView?.headerMessage = reduxState.walletState.syncState
 		syncingHeaderView?.noSendImageView.alpha = 1.0
 		syncingHeaderView?.timestamp = reduxState.walletState.lastBlockTimestamp
-
+        syncingHeaderView?.blockNumberString = reduxState.walletState.transactions.last?.blockHeight ?? ""
 		completion()
 	}
 
@@ -103,7 +104,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		}
 		guard let store = store
 		else {
-			NSLog("ERROR: Store not initialized")
+			NSLog("::: ERROR: Store not initialized")
 			return
 		}
         print(":::: TransactionViewController attemptShowPrompt WalletManager \(walletManager.wallet?.transactions.count)")
@@ -369,6 +370,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		                		syncView.noSendImageView.alpha = 1.0
 
 		                		syncView.timestamp = reduxState.walletState.lastBlockTimestamp
+                                print("::: transactions.count) \(reduxState.walletState.transactions.count)")
+
+                                syncView.blockNumberString = reduxState.walletState.transactions.last?.blockHeight ?? ""
+
 		                		self.shouldBeSyncing = true
 
 		                		if reduxState.walletState.syncProgress >= 0.99 {

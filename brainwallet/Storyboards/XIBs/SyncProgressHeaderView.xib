@@ -20,7 +20,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="KGk-i7-Jjw" customClass="SyncProgressHeaderView" customModule="brainwallet" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="SyncProgressHeaderView" customModule="brainwallet" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -28,7 +28,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2UC-WW-8VV">
-                        <rect key="frame" x="10" y="11" width="30" height="17"/>
+                        <rect key="frame" x="10" y="11" width="130" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="130" id="Gn4-1h-XDc"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="BarlowSemiCondensed-Medium" family="Barlow Semi Condensed Medium" pointSize="14"/>
                         <color key="textColor" name="brainwalletContent"/>
                         <nil key="highlightedColor"/>
@@ -40,44 +43,48 @@
                         <color key="trackTintColor" name="brainwalletBackground"/>
                     </progressView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0p6-wM-iJ6">
-                        <rect key="frame" x="10" y="28" width="27" height="16"/>
+                        <rect key="frame" x="10" y="28" width="120" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="8UL-Cy-sUK"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="BarlowSemiCondensed-Light" family="Barlow Semi Condensed Light" pointSize="13"/>
                         <color key="textColor" name="brainwalletContent"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7zC-fo-fkw">
-                        <rect key="frame" x="285" y="12" width="25" height="22.5"/>
+                        <rect key="frame" x="290.5" y="12" width="19.5" height="17.5"/>
                         <color key="backgroundColor" name="brainwalletSurface"/>
                         <color key="tintColor" name="brainwalletContent"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="25" id="3Pw-wU-HYc"/>
-                            <constraint firstAttribute="width" constant="25" id="BCR-4f-UQs"/>
-                        </constraints>
                         <imageReference key="image" image="nosign.app" catalog="system" symbolScale="default"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eW1-dV-Ugf">
-                        <rect key="frame" x="268" y="34" width="40" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJn-I9-hzH">
+                        <rect key="frame" x="155.5" y="14" width="130" height="14.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="130" id="ROy-kb-rFc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="BarlowSemiCondensed-Medium" family="Barlow Semi Condensed Medium" pointSize="12"/>
                         <color key="textColor" name="brainwalletContent"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="0p6-wM-iJ6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="2fR-oV-dJn"/>
-                    <constraint firstItem="0p6-wM-iJ6" firstAttribute="top" secondItem="2UC-WW-8VV" secondAttribute="bottom" id="2xG-ff-EOo"/>
-                    <constraint firstAttribute="trailing" secondItem="g5W-Xg-6Ov" secondAttribute="trailing" constant="10" id="6a7-8c-FT5"/>
-                    <constraint firstItem="7zC-fo-fkw" firstAttribute="top" secondItem="g5W-Xg-6Ov" secondAttribute="bottom" constant="5" id="LlW-gM-SKb"/>
-                    <constraint firstItem="2UC-WW-8VV" firstAttribute="top" secondItem="g5W-Xg-6Ov" secondAttribute="bottom" constant="5" id="UUj-vQ-TPK"/>
-                    <constraint firstItem="g5W-Xg-6Ov" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="c1b-UA-9FS"/>
-                    <constraint firstItem="2UC-WW-8VV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="jwW-5v-TTX"/>
-                    <constraint firstItem="g5W-Xg-6Ov" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="s6Q-vH-Qhv"/>
-                    <constraint firstAttribute="trailing" secondItem="7zC-fo-fkw" secondAttribute="trailing" constant="10" id="tD3-gG-Oy0"/>
+                    <constraint firstItem="g5W-Xg-6Ov" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="7yo-PI-CZi"/>
+                    <constraint firstItem="7zC-fo-fkw" firstAttribute="centerY" secondItem="yJn-I9-hzH" secondAttribute="centerY" id="ATI-Wq-0LE"/>
+                    <constraint firstItem="7zC-fo-fkw" firstAttribute="leading" secondItem="yJn-I9-hzH" secondAttribute="trailing" constant="5" id="Div-Es-jGb"/>
+                    <constraint firstAttribute="trailing" secondItem="7zC-fo-fkw" secondAttribute="trailing" constant="10" id="ISb-6T-OLn"/>
+                    <constraint firstItem="2UC-WW-8VV" firstAttribute="top" secondItem="g5W-Xg-6Ov" secondAttribute="bottom" constant="5" id="XZk-bU-HDY"/>
+                    <constraint firstItem="0p6-wM-iJ6" firstAttribute="leading" secondItem="2UC-WW-8VV" secondAttribute="leading" id="h1H-xJ-Aqs"/>
+                    <constraint firstItem="7zC-fo-fkw" firstAttribute="top" secondItem="g5W-Xg-6Ov" secondAttribute="bottom" constant="5" id="j3k-xe-gni"/>
+                    <constraint firstItem="g5W-Xg-6Ov" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="jWx-Rq-zOn"/>
+                    <constraint firstItem="2UC-WW-8VV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="n4B-pV-Dnw"/>
+                    <constraint firstItem="2UC-WW-8VV" firstAttribute="leading" secondItem="g5W-Xg-6Ov" secondAttribute="leading" id="tfw-kd-BqT"/>
+                    <constraint firstAttribute="trailing" secondItem="g5W-Xg-6Ov" secondAttribute="trailing" constant="10" id="xuL-il-9xe"/>
+                    <constraint firstItem="0p6-wM-iJ6" firstAttribute="top" secondItem="2UC-WW-8VV" secondAttribute="bottom" id="zLG-zE-ztE"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="blockheightLabel" destination="eW1-dV-Ugf" id="aml-WL-AIk"/>
+                <outlet property="blockheightLabel" destination="yJn-I9-hzH" id="AAl-Ug-N8v"/>
                 <outlet property="headerLabel" destination="2UC-WW-8VV" id="Y7e-I3-5aj"/>
                 <outlet property="noSendImageView" destination="7zC-fo-fkw" id="PFv-ME-PWs"/>
                 <outlet property="progressView" destination="g5W-Xg-6Ov" id="xBw-RX-R9L"/>
@@ -92,7 +99,7 @@
             <color red="0.8666666666666667" green="0.83529411764705885" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="brainwalletContent">
-            <color red="0.059000000357627869" green="0.030999999493360519" blue="0.32499998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.058823525905609131" green="0.031372550874948502" blue="0.32156863808631897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="brainwalletSurface">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
