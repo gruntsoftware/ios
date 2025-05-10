@@ -78,6 +78,7 @@
 		24BEBB972DCDE4D4001E1F1F /* SwiftFormat in Frameworks */ = {isa = PBXBuildFile; productRef = 24D196022DBE69CC0052501D /* SwiftFormat */; };
 		24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */; };
 		24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D91D0A2166923E0077A619 /* UserNotifications.framework */; };
+		24EE3F1F2DCF5A560017472B /* TopUpSetAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE3F1E2DCF5A560017472B /* TopUpSetAmountView.swift */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
 		24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */; };
@@ -605,6 +606,7 @@
 		24B065412DC6484300B5E000 /* NewReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveView.swift; sourceTree = "<group>"; };
 		24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
 		24D91D0A2166923E0077A619 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		24EE3F1E2DCF5A560017472B /* TopUpSetAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpSetAmountView.swift; sourceTree = "<group>"; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
 		755CD9D11DAA197C0075898E /* libBRCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBRCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1028,6 +1030,7 @@
 			isa = PBXGroup;
 			children = (
 				241D22422DB526B6000302C8 /* TopUpView.swift */,
+				24EE3F1E2DCF5A560017472B /* TopUpSetAmountView.swift */,
 			);
 			path = "Top Up";
 			sourceTree = "<group>";
@@ -2493,6 +2496,7 @@
 				C312D4402D7DC27700BB97A4 /* SeparatorCell.swift in Sources */,
 				C312D4412D7DC27700BB97A4 /* UIButton+BRWAdditions.swift in Sources */,
 				24B0652E2DC61E2F00B5E000 /* NewTransactionsView.swift in Sources */,
+				24EE3F1F2DCF5A560017472B /* TopUpSetAmountView.swift in Sources */,
 				C312D4422D7DC27700BB97A4 /* WalletManager.swift in Sources */,
 				C312D4432D7DC27700BB97A4 /* ReceiveViewController.swift in Sources */,
 				C312D4452D7DC27700BB97A4 /* BlinkingView.swift in Sources */,

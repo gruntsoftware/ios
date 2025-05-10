@@ -1,5 +1,5 @@
 //
-//  TopUpView.swift
+//  TopUpSetAmountView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 20/04/2025.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct TopUpView: View {
+struct TopUpSetAmountView: View {
     
     @Binding var path: [Onboarding]
 
@@ -88,14 +88,14 @@ struct TopUpView: View {
                     
                     Spacer(minLength: 20.0)
                         Button(action: {
-                            path.append(.topUpSetAmountView)
+                            //path.append(.setTopUpAmount)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
                                 
-                                Text("Setup app passcode")
+                                Text("Buy with MoonPay")
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(largeButtonFont)
                                     .foregroundColor(BrainwalletColor.content)
@@ -111,16 +111,4 @@ struct TopUpView: View {
             }
     }
 }
-
-//struct TopUpView_Previews: PreviewProvider {
-//    typealias Previews = <#type#>
-//    
-//    static let walletManager = (try? WalletManager(store: Store(), dbPath: nil))!
-//    static let viewModel = StartViewModel(store: Store(), walletManager: walletManager)
-//    
-////    static var previews: some View {
-////       TopUpView(viewModel: viewModel, path: .constant([.topUpView]))
-////    }
-//}
-
 

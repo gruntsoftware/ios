@@ -23,6 +23,9 @@ struct StartView: View {
 	@ObservedObject
 	var startViewModel: StartViewModel
     
+    @ObservedObject
+    var newMainViewModel: NewMainViewModel
+    
     @State
     private var path: [Onboarding] = []
 
@@ -53,8 +56,9 @@ struct StartView: View {
 	@State
 	private var didContinue: Bool = false
     
-    init(viewModel: StartViewModel) {
-		startViewModel = viewModel
+    init(startViewModel: StartViewModel, newMainViewModel: NewMainViewModel) {
+        self.startViewModel = startViewModel
+        self.newMainViewModel = newMainViewModel
 	}
 
     var body: some View {
@@ -259,17 +263,20 @@ struct StartView: View {
                         YourSeedProveItView(viewModel: startViewModel, path: $path)
                             .navigationBarBackButtonHidden()
                     case .topUpView:
-                        EmptyView()
-//                        ZStack {
-//                            TopUpView(viewModel: startViewModel, path: $path)
-//                                .navigationBarBackButtonHidden()
-//                        }
+                        ZStack {
+                            TopUpView(viewModel: startViewModel, path: $path)
+                                .navigationBarBackButtonHidden()
+                        }
+                    case .topUpSetAmountView:
+                        ZStack {
+                            TopUpSetAmountView(viewModel: startViewModel, path: $path)
+                                .navigationBarBackButtonHidden()
+                        }
                     case .tempSettingsView:
-                        EmptyView()
-//                        ZStack {
-//                            SettingsView(viewModel: startViewModel, path: $path)
-//                                .navigationBarBackButtonHidden()
-//                        }
+                        ZStack {
+                            SettingsView(viewModel: newMainViewModel, path: $path)
+                                .navigationBarBackButtonHidden()
+                        }
                     }
                 }
             }
@@ -295,5 +302,6 @@ enum Onboarding: Hashable {
     case yourSeedWordsView
     case yourSeedProveView
     case topUpView
+    case topUpSetAmountView
     case tempSettingsView
 }

@@ -22,6 +22,9 @@
     "Blockchain: Litecoin" : {
 
     },
+    "Buy with MoonPay" : {
+
+    },
     "Clear" : {
 
     },
@@ -68,10 +71,10 @@
 
     },
     "IS PROGRESSING..." : {
-
+      "shouldTranslate" : false
     },
     "Ł1233.994" : {
-
+      "shouldTranslate" : false
     },
     "Languages" : {
 
@@ -94,6 +97,12 @@
     "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool" : {
 
     },
+    "Please find a private place to write down your PIN and seed phrase." : {
+
+    },
+    "Please write this down" : {
+
+    },
     "Ready" : {
 
     },
@@ -112,12 +121,6 @@
     "Restore!" : {
 
     },
-    "S.CreateStep.DetailedMessage.seedPhrase" : {
-
-    },
-    "S.CreateStep.ExtendedMessage.intro" : {
-
-    },
     "Scan" : {
 
     },
@@ -130,7 +133,7 @@
     "Set app PIN" : {
 
     },
-    "Settings View 4" : {
+    "Settings View" : {
 
     },
     "Setup app passcode" : {
@@ -140,9 +143,6 @@
 
     },
     "These are your seed words. If you show them to anyone, they can take your Litecoin" : {
-
-    },
-    "TopUpView" : {
 
     },
     "Transaction amount detail" : {

@@ -38,7 +38,7 @@ struct SeedPhraseStepView: View {
 					.edgesIgnoringSafeArea(.all)
 				VStack {
 					HStack {
-						Text("S.CreateStep.DetailedMessage.seedPhrase")
+						Text("Please write this down")
 							.font(paragraphFont)
 							.foregroundColor(.white)
 							.frame(width: width * 0.6, alignment: .leading)

@@ -26,7 +26,7 @@ struct IntroStepView: View {
 						.padding([.leading, .trailing], genericPad)
 						.padding([.bottom], genericPad)
 
-					Text("S.CreateStep.ExtendedMessage.intro")
+					Text("Please find a private place to write down your PIN and seed phrase.")
 						.font(paragraphFont)
                         .foregroundColor(BrainwalletColor.content)
 						.frame(width: width * 0.9, alignment: .leading)
