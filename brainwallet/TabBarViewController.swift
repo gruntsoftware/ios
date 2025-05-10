@@ -41,7 +41,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	@IBAction func showSettingsAction(_: Any) {
 		guard let store = store
 		else {
-			NSLog("ERROR: Store not set")
+			print("::: ERROR: Store not set")
 			return
 		}
 		store.perform(action: RootModalActions.Present(modal: .menu))
