@@ -23,7 +23,7 @@ extension BRAPIClient {
         guard let url = URL(string: APIServer.baseUrl + "v1/rates") else {
             let properties = ["error_message": "rates_url_failed"]
             LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
-            print("::: ERROR: rates_url_failed")
+            debugPrint("::: ERROR: rates_url_failed")
             return
         }
         
@@ -38,7 +38,7 @@ extension BRAPIClient {
                 guard let array = parsedData as? [Any] else {
                     let properties = ["error_message": "rates_parsed_data_fail"]
                     LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
-                    print("::: ERROR: rates_parsed_data_fail")
+                    debugPrint("::: ERROR: rates_parsed_data_fail")
                     return handler([], "/rates didn't return an array")
                 }
                 handler(array.compactMap { Rate(data: $0) }, nil)
@@ -46,7 +46,7 @@ extension BRAPIClient {
             else {
                 let properties = ["error_message": "rates_parsed_data_fail"]
                 LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
-                print("::: ERROR: else rates_parsed_data_fail")
+                debugPrint("::: ERROR: else rates_parsed_data_fail")
                 return handler([], "/rates didn't return an array")
 			}
 		}.resume()

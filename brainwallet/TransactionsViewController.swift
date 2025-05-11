@@ -54,14 +54,14 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	private func setup() {
 		guard let _ = walletManager
 		else {
-			print("::: ERROR: Wallet manager Not initialized")
+			debugPrint("::: ERROR: Wallet manager Not initialized")
 			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR)
 			return
 		}
 
 		guard let reduxState = store?.state
 		else {
-            print("::: ERROR: reduxState Not initialized")
+            debugPrint("::: ERROR: reduxState Not initialized")
 			return
 		}
 
@@ -184,7 +184,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 			guard let cell = tableView.dequeueReusableCell(withIdentifier: "HostingTransactionCell<TransactionCellView>", for: indexPath) as? HostingTransactionCell<TransactionCellView>
 			else {
-				print("::: ERROR No cell found")
+				debugPrint("::: ERROR No cell found")
 				return UITableViewCell()
 			}
 
@@ -197,7 +197,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 				cell.selectionStyle = .default
 			}
             else {
-                print("::: ERROR Rate, Store, isLtcSwapped not set")
+                debugPrint("::: ERROR Rate, Store, isLtcSwapped not set")
             }
 
 			return cell
