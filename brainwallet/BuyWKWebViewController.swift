@@ -45,8 +45,10 @@ class BuyWKWebViewController: UIViewController, WKNavigationDelegate, WKScriptMe
 			return
 		}
 
-		let request = URLRequest(url: url)
-
+        var request = URLRequest(url: url)
+        #if targetEnvironment(simulator)
+            request.assumesHTTP3Capable = false
+        #endif
 		let contentController = WKUserContentController()
 		contentController.add(self, name: "callback")
 

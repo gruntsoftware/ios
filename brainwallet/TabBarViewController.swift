@@ -41,7 +41,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	@IBAction func showSettingsAction(_: Any) {
 		guard let store = store
 		else {
-			NSLog("ERROR: Store not set")
+			debugPrint("::: ERROR: Store not set")
 			return
 		}
 		store.perform(action: RootModalActions.Present(modal: .menu))
@@ -193,14 +193,14 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	private func addSubscriptions() {
 		guard let store = store
 		else {
-			NSLog("ERROR - Store not passed")
+			debugPrint("::: ERROR - Store not passed")
 			return
 		}
 
 		guard let primaryLabel = primaryBalanceLabel,
 		      let secondaryLabel = secondaryBalanceLabel
 		else {
-			NSLog("ERROR: Price labels not initialized")
+            debugPrint("::: ERROR: Price labels not initialized")
 			return
 		}
 

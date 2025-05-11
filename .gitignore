@@ -41,4 +41,8 @@ GoogleService-Info.plist
 /brainwallet/launch-resources/GoogleService-Info.plist
 /brainwallet/launch-resources/remote-config-defaults.plist
 /brainwallet/launch-resources/service-data.plist
+
+# Storekit
+/Storekit
+*.storekit
 Brainwallet-StoreKit-v1.storekit

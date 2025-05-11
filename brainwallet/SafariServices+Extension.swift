@@ -17,7 +17,10 @@ struct WebView: UIViewRepresentable {
 
 	func makeUIView(context _: Context) -> WKWebView {
 		let webview = SignupWebView(frame: CGRectZero, didStartEditing: $didStartEditing)
-		let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        #if targetEnvironment(simulator)
+            request.assumesHTTP3Capable = false
+        #endif
 		webview.load(request)
 		return webview
 	}

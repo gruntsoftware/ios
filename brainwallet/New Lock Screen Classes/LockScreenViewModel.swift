@@ -39,7 +39,7 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 	private func fetchCurrentPrice() {
 		guard let currentRate = store?.state.currentRate
 		else {
-            print("::: Error: Rate not fetched ")
+            debugPrint("::: Error: Rate not fetched ")
 			return
 		}
 
@@ -56,12 +56,13 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 	private func addSubscriptions() {
 		guard let store = store
 		else {
-			NSLog("ERROR: Store not initialized")
+            debugPrint("::: ERROR: Store not initialized")
 			return
 		}
 
 		store.subscribe(self, selector: { $0.currentRate != $1.currentRate },
 		                callback: { _ in
+            
 		                	self.fetchCurrentPrice()
 		                })
 	}

@@ -45,7 +45,7 @@ struct SettingsView: View {
                     
                     Text("Settings View")
                         .padding()
-                    
+                                        
                 }
                 .listStyle(.plain)
                 Spacer()
