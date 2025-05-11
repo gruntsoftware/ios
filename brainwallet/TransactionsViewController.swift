@@ -93,7 +93,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		syncingHeaderView?.headerMessage = reduxState.walletState.syncState
 		syncingHeaderView?.noSendImageView.alpha = 1.0
 		syncingHeaderView?.timestamp = reduxState.walletState.lastBlockTimestamp
-        syncingHeaderView?.blockNumberString = reduxState.walletState.transactions.last?.blockHeight ?? ""
+        syncingHeaderView?.blockNumberString = reduxState.walletState.transactions.first?.blockHeight ?? ""
 		completion()
 	}
 
@@ -372,7 +372,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		                		syncView.timestamp = reduxState.walletState.lastBlockTimestamp
                                 print("::: transactions.count) \(reduxState.walletState.transactions.count)")
 
-                                syncView.blockNumberString = reduxState.walletState.transactions.last?.blockHeight ?? ""
+                                syncView.blockNumberString = reduxState.walletState.transactions.first?.blockHeight ?? ""
 
 		                		self.shouldBeSyncing = true
 
