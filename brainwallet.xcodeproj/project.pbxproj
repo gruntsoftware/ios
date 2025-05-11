@@ -13,7 +13,7 @@
 		22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9631DF61FE7000F0016 /* Security.framework */; };
 		22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9651DF61FEE000F0016 /* WebKit.framework */; };
 		2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */; };
-		24131EBA2DD0E0F60022BA7C /* Brainwallet-StoreKit-v1.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 24131EB92DD0E0F60022BA7C /* Brainwallet-StoreKit-v1.storekit */; };
+		2414B00B2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */; };
 		2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE612DA90D0D00FFBD10 /* BRMasterKeyExtension.swift */; };
 		2416CE6B2DA90D0D00FFBD10 /* BRSocketHelpers.c in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE652DA90D0D00FFBD10 /* BRSocketHelpers.c */; };
 		2416CE6C2DA90D0D00FFBD10 /* BRAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE582DA90D0D00FFBD10 /* BRAPIClient.swift */; };
@@ -427,7 +427,7 @@
 		22A9A9651DF61FEE000F0016 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		22A9A9671DF61FF8000F0016 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenFooterView.swift; sourceTree = "<group>"; };
-		24131EB92DD0E0F60022BA7C /* Brainwallet-StoreKit-v1.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Brainwallet-StoreKit-v1.storekit"; sourceTree = "<group>"; };
+		2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Brainwallet-StoreKit-v1.storekit"; sourceTree = "<group>"; };
 		2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRActivityView.swift; sourceTree = "<group>"; };
 		2416CE572DA90D0D00FFBD10 /* BRAddressExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAddressExtension.swift; sourceTree = "<group>"; };
 		2416CE582DA90D0D00FFBD10 /* BRAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAPIClient.swift; sourceTree = "<group>"; };
@@ -1383,7 +1383,7 @@
 		75A2A7871DA5934300A983D8 = {
 			isa = PBXGroup;
 			children = (
-				24131EB92DD0E0F60022BA7C /* Brainwallet-StoreKit-v1.storekit */,
+				2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */,
 				C312D2CD2D7DC27700BB97A4 /* brainwallet */,
 				C312D4F62D7DC28E00BB97A4 /* brainwalletTests */,
 				75B6F52F1DA71DCC0031A93F /* Modules */,
@@ -2111,7 +2111,7 @@
 				C312D4CC2D7DC27700BB97A4 /* Alerts.storyboard in Resources */,
 				C312D4CD2D7DC27700BB97A4 /* It.mp3 in Resources */,
 				C312D4CE2D7DC27700BB97A4 /* Phrase.storyboard in Resources */,
-				24131EBA2DD0E0F60022BA7C /* Brainwallet-StoreKit-v1.storekit in Resources */,
+				2414B00B2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit in Resources */,
 				C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

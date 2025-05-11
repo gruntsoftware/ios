@@ -45,3 +45,4 @@ GoogleService-Info.plist
 # Storekit
 /Storekit
 *.storekit
+Brainwallet-StoreKit-v1.storekit
