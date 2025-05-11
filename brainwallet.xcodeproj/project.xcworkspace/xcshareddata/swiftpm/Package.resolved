@@ -1,5 +1,5 @@
 {
-  "originHash" : "1dbe5b90110590064b9458a98064534ecd437d5c1f20355d46be34953dab60ad",
+  "originHash" : "1fae515ecb077b020404ba96ab97a952faae66bc0ab8f22de14421a303e179c1",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "88269d96aed888416e5fabbe983f769aa9013d5c",
         "version" : "6.17.0"
+      }
+    },
+    {
+      "identity" : "brainwalletiosstorekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gruntsoftware/BrainwalletiOSStorekit.git",
+      "state" : {
+        "revision" : "3465dba4eddab73f68d441db08b710aeb284b198",
+        "version" : "1.0.5"
       }
     },
     {
