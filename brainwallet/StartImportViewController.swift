@@ -160,9 +160,12 @@ class StartImportViewController: UIViewController {
 			let request = NSMutableURLRequest(url: URL(string: urlString)!,
 			                                  cachePolicy: .reloadIgnoringLocalCacheData,
 			                                  timeoutInterval: 20.0)
+            #if targetEnvironment(simulator)
+                request.assumesHTTP3Capable = false
+            #endif
 			request.httpMethod = "POST"
 			request.httpBody = "addrs=\(address)".data(using: .utf8)
-			let task = URLSession.shared.dataTask(with: request as URLRequest) { [weak self] data, _, error in
+			let task = URLSession(configuration: .ephemeral).dataTask(with: request as URLRequest) { [weak self] data, _, error in
 				guard let myself = self else { return }
 				guard error == nil else { print("error: \(error!)"); return }
 				guard let data = data,

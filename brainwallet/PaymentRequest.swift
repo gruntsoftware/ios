@@ -67,9 +67,12 @@ struct PaymentRequest {
 			request = NSMutableURLRequest(url: remoteRequest! as URL, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 5.0) // TODO: - fix !
 		}
 
+        #if targetEnvironment(simulator)
+            request.assumesHTTP3Capable = false
+        #endif
 		request.setValue("application/litecoin-paymentrequest", forHTTPHeaderField: "Accept")
 
-		URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+        URLSession(configuration: .ephemeral).dataTask(with: request as URLRequest) { data, response, error in
 			guard error == nil else { return completion(nil) }
 			guard let data = data else { return completion(nil) }
 			guard let response = response else { return completion(nil) }

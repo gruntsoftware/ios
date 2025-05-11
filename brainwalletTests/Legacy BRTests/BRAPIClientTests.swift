@@ -38,7 +38,7 @@ class FakeAuthenticator: WalletAuthenticator {
 	}
 }
 
-// This test will test against the live API at api.breadwallet.com
+// This test will test against the live API at api.grunt.ltd
 class BRAPIClientTests: XCTestCase {
 	var authenticator: WalletAuthenticator!
 	var client: BRAPIClient!

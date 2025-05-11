@@ -161,10 +161,14 @@ class StartFlowPresenter: Subscriber {
 		confirmVC?.pin = pin
 		confirmVC?.didCompleteConfirmation = { [weak self] in
 			guard let myself = self else { return }
-			myself.store.perform(action: SimpleReduxAlert.Show(.paperKeySet(callback: {
-				self?.store.perform(action: HideStartFlow())
-			})))
+			
+            confirmVC?.dismiss(animated: true, completion: {
+                myself.store.perform(action: SimpleReduxAlert.Show(.paperKeySet(callback: {
+                    myself.store.perform(action: HideStartFlow())
+                })))
+            })
 		}
+        
 		navigationController?.navigationBar.tintColor = BrainwalletUIColor.surface
 		if let confirmVC = confirmVC {
 			navigationController?.pushViewController(confirmVC, animated: true)

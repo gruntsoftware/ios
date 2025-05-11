@@ -217,7 +217,10 @@ open class BRAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BR
 		log("auth: entering group")
 		authFetchGroup.enter()
 		var req = URLRequest(url: url("/token"))
-		req.httpMethod = "POST"
+        #if targetEnvironment(simulator) // Work around due to bug in iOS 18.4.1 https://developer.apple.com/forums/thread/777999
+            req.assumesHTTP3Capable = false
+        #endif
+        req.httpMethod = "POST"
 		req.setValue("application/json", forHTTPHeaderField: "Content-Type")
 		req.setValue("application/json", forHTTPHeaderField: "Accept")
 		let reqJson = [

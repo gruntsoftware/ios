@@ -28,11 +28,14 @@ class BuyViewModel: ObservableObject {
 	func fetchCurrenciesCountries(completion: @escaping ([MoonpayCountryData]) -> Void) {
 		let url = URL(string: "https://api.moonpay.com/v3/countries")!
 		var request = URLRequest(url: url)
+        #if targetEnvironment(simulator)
+            request.assumesHTTP3Capable = false
+        #endif
 		request.httpMethod = "GET"
 		request.timeoutInterval = 10
 		request.allHTTPHeaderFields = ["accept": "application/json"]
 
-		let task = URLSession.shared.dataTask(with: request) { data, _, error in
+		let task = URLSession(configuration: .ephemeral).dataTask(with: request) { data, _, error in
 
 			if error == nil {
 				DispatchQueue.main.sync {
