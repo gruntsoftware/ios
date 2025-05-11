@@ -193,14 +193,14 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	private func addSubscriptions() {
 		guard let store = store
 		else {
-			NSLog("ERROR - Store not passed")
+			print("::: ERROR - Store not passed")
 			return
 		}
 
 		guard let primaryLabel = primaryBalanceLabel,
 		      let secondaryLabel = secondaryBalanceLabel
 		else {
-			NSLog("ERROR: Price labels not initialized")
+            print("::: ERROR: Price labels not initialized")
 			return
 		}
 
