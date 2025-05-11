@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -62,32 +62,8 @@
                                 <constraint firstItem="ers-X3-F0t" firstAttribute="top" secondItem="N57-7f-Fob" secondAttribute="top" constant="10" id="vka-20-0UI"/>
                             </constraints>
                         </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="p1g-xX-RH1">
-                            <rect key="frame" x="0.0" y="446" width="414" height="128"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5P-tU-kKu">
-                                    <rect key="frame" x="20" y="39" width="374" height="50"/>
-                                    <color key="backgroundColor" name="brainwalletSurface"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="vFY-YJ-r9h"/>
-                                    </constraints>
-                                    <state key="normal" title="Button">
-                                        <color key="titleColor" name="brainwalletContent"/>
-                                    </state>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="128" id="38a-OY-xXa"/>
-                                <constraint firstItem="C5P-tU-kKu" firstAttribute="leading" secondItem="p1g-xX-RH1" secondAttribute="leading" constant="20" id="QXE-0w-IeU"/>
-                                <constraint firstItem="C5P-tU-kKu" firstAttribute="centerY" secondItem="p1g-xX-RH1" secondAttribute="centerY" id="ZaW-3I-YY8"/>
-                                <constraint firstItem="C5P-tU-kKu" firstAttribute="centerX" secondItem="p1g-xX-RH1" secondAttribute="centerX" id="hD5-UO-Nyc"/>
-                                <constraint firstAttribute="trailing" secondItem="C5P-tU-kKu" secondAttribute="trailing" constant="20" id="khH-x1-jRU"/>
-                            </constraints>
-                        </view>
                         <sections>
-                            <tableViewSection id="zsA-D5-vbv">
+                            <tableViewSection footerTitle="" id="zsA-D5-vbv">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="XJ7-LS-mgU" customClass="ConfirmPhraseTableViewCell" customModule="brainwallet" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="178" width="414" height="60"/>
@@ -127,6 +103,42 @@
                                             <color key="backgroundColor" name="brainwalletSurface"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2yU-Ua-eil">
+                                        <rect key="frame" x="0.0" y="418" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2yU-Ua-eil" id="EWN-0b-eMY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8DF-vm-CqN" userLabel="Submit Word Cell" customClass="ConfirmPhraseTableViewCell" customModule="brainwallet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="462" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8DF-vm-CqN" id="dhv-wn-Z7E">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5P-tU-kKu">
+                                                    <rect key="frame" x="30" y="-3" width="354" height="50"/>
+                                                    <color key="backgroundColor" name="brainwalletBackground"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="200" id="BY2-cB-GRs"/>
+                                                        <constraint firstAttribute="height" constant="50" id="vFY-YJ-r9h"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" name="brainwalletBorder"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="C5P-tU-kKu" firstAttribute="centerX" secondItem="dhv-wn-Z7E" secondAttribute="centerX" id="RaW-Kk-Wiu"/>
+                                                <constraint firstAttribute="trailing" secondItem="C5P-tU-kKu" secondAttribute="trailing" constant="30" id="W5O-lw-GH3"/>
+                                                <constraint firstItem="C5P-tU-kKu" firstAttribute="centerY" secondItem="dhv-wn-Z7E" secondAttribute="centerY" id="Wa3-k4-elf"/>
+                                                <constraint firstItem="C5P-tU-kKu" firstAttribute="leading" secondItem="dhv-wn-Z7E" secondAttribute="leading" constant="30" id="rsL-f2-4kP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="brainwalletSurface"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -139,13 +151,13 @@
                     <connections>
                         <outlet property="backButton" destination="ers-X3-F0t" id="xzK-EU-oxh"/>
                         <outlet property="firstWordCell" destination="XJ7-LS-mgU" id="s2J-3u-eJG"/>
-                        <outlet property="footerView" destination="p1g-xX-RH1" id="KL1-Ql-aVY"/>
                         <outlet property="fourthWordCell" destination="0qg-cc-Dbu" id="MRG-Vj-fJU"/>
                         <outlet property="headerDescriptionLabel" destination="r6D-qZ-6g0" id="ylc-Va-tXT"/>
                         <outlet property="headerTitleLabel" destination="CQb-VL-NIS" id="SMA-RG-Saf"/>
                         <outlet property="headerView" destination="N57-7f-Fob" id="ug9-OI-VvZ"/>
                         <outlet property="secondWordCell" destination="gzG-fx-3iu" id="7FA-Ja-3ha"/>
                         <outlet property="submitButton" destination="C5P-tU-kKu" id="DV8-cA-8hi"/>
+                        <outlet property="submitWordCell" destination="8DF-vm-CqN" id="kvU-xY-5ha"/>
                         <outlet property="thirdWordCell" destination="ROU-0X-P9H" id="Iti-ia-5kt"/>
                     </connections>
                 </tableViewController>
@@ -159,8 +171,8 @@
         <namedColor name="brainwalletBackground">
             <color red="0.8666666666666667" green="0.83529411764705885" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="brainwalletContent">
-            <color red="0.059000000357627869" green="0.030999999493360519" blue="0.32499998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="brainwalletBorder">
+            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="brainwalletSurface">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -23,6 +23,9 @@ private class KVStoreAdaptor: BRRemoteKVStoreAdaptor {
 
 	func ver(key: String, completionFunc: @escaping (UInt64, Date, BRRemoteKVStoreError?) -> Void) {
 		var req = URLRequest(url: client.url("/kv/1/\(key)"))
+        #if targetEnvironment(simulator) // Work around due to bug in iOS 18.4.1 https://developer.apple.com/forums/thread/777999
+            req.assumesHTTP3Capable = false
+        #endif
 		req.httpMethod = "HEAD"
 		client.dataTaskWithRequest(req, authenticated: true, retryCount: 0) { _, resp, err in
 			if let err = err {
@@ -39,6 +42,9 @@ private class KVStoreAdaptor: BRRemoteKVStoreAdaptor {
 
 	func put(_ key: String, value: [UInt8], version: UInt64, completionFunc: @escaping (UInt64, Date, BRRemoteKVStoreError?) -> Void) {
 		var req = URLRequest(url: client.url("/kv/1/\(key)"))
+        #if targetEnvironment(simulator) // Work around due to bug in iOS 18.4.1 https://developer.apple.com/forums/thread/777999
+            req.assumesHTTP3Capable = false
+        #endif
 		req.httpMethod = "PUT"
 		req.addValue("\(version)", forHTTPHeaderField: "If-None-Match")
 		req.addValue("application/octet-stream", forHTTPHeaderField: "Content-Type")
@@ -60,6 +66,9 @@ private class KVStoreAdaptor: BRRemoteKVStoreAdaptor {
 
 	func del(_ key: String, version: UInt64, completionFunc: @escaping (UInt64, Date, BRRemoteKVStoreError?) -> Void) {
 		var req = URLRequest(url: client.url("/kv/1/\(key)"))
+        #if targetEnvironment(simulator)// Work around due to bug in iOS 18.4.1 https://developer.apple.com/forums/thread/777999
+            req.assumesHTTP3Capable = false
+        #endif
 		req.httpMethod = "DELETE"
 		req.addValue("\(version)", forHTTPHeaderField: "If-None-Match")
 		client.dataTaskWithRequest(req, authenticated: true, retryCount: 0) { _, resp, err in
@@ -77,6 +86,9 @@ private class KVStoreAdaptor: BRRemoteKVStoreAdaptor {
 
 	func get(_ key: String, version: UInt64, completionFunc: @escaping (UInt64, Date, [UInt8], BRRemoteKVStoreError?) -> Void) {
 		var req = URLRequest(url: client.url("/kv/1/\(key)"))
+        #if targetEnvironment(simulator)// Work around due to bug in iOS 18.4.1 https://developer.apple.com/forums/thread/777999
+            req.assumesHTTP3Capable = false
+        #endif
 		req.httpMethod = "GET"
 		req.addValue("\(version)", forHTTPHeaderField: "If-None-Match")
 		client.dataTaskWithRequest(req as URLRequest, authenticated: true, retryCount: 0) { dat, resp, err in
@@ -96,7 +108,10 @@ private class KVStoreAdaptor: BRRemoteKVStoreAdaptor {
 	}
 
 	func keys(_ completionFunc: @escaping ([(String, UInt64, Date, BRRemoteKVStoreError?)], BRRemoteKVStoreError?) -> Void) {
-		var req = URLRequest(url: client.url("/kv/_all_keys"))
+		var req = URLRequest(url: client.url("/kv/_all_keys"))// Work around due to bug in iOS 18.4.1 https://developer.apple.com/forums/thread/777999
+        #if targetEnvironment(simulator)
+            req.assumesHTTP3Capable = false
+        #endif
 		req.httpMethod = "GET"
 		client.dataTaskWithRequest(req as URLRequest, authenticated: true, retryCount: 0) { dat, resp, err in
 			if let err = err {

@@ -80,7 +80,6 @@ class FeeUpdater: Trackable {
 		refresh(completion: {})
 		exchangeUpdater.refresh(completion: {
 			/// DEV: For testing
-			/// NSLog("::: Rate updated")
 		})
 	}
 }
