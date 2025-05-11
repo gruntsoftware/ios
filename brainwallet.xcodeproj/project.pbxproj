@@ -13,6 +13,7 @@
 		22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9631DF61FE7000F0016 /* Security.framework */; };
 		22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9651DF61FEE000F0016 /* WebKit.framework */; };
 		2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */; };
+		24131EBA2DD0E0F60022BA7C /* Brainwallet-StoreKit-v1.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 24131EB92DD0E0F60022BA7C /* Brainwallet-StoreKit-v1.storekit */; };
 		2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE612DA90D0D00FFBD10 /* BRMasterKeyExtension.swift */; };
 		2416CE6B2DA90D0D00FFBD10 /* BRSocketHelpers.c in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE652DA90D0D00FFBD10 /* BRSocketHelpers.c */; };
 		2416CE6C2DA90D0D00FFBD10 /* BRAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE582DA90D0D00FFBD10 /* BRAPIClient.swift */; };
@@ -32,7 +33,6 @@
 		2416CE7C2DA90D0D00FFBD10 /* BRCalculationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5E2DA90D0D00FFBD10 /* BRCalculationExtension.swift */; };
 		2416CE7E2DA90DB000FFBD10 /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2416CE7D2DA90DB000FFBD10 /* remote-config-defaults.plist */; };
 		2416CE802DA90DE300FFBD10 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2416CE7F2DA90DE300FFBD10 /* GoogleService-Info.plist */; };
-		243EE3CA2DD0B93800CBE543 /* Brainwallet-StoreKit-v1.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 243EE3C92DD0B93800CBE543 /* Brainwallet-StoreKit-v1.storekit */; };
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
 		247D74E62DA907FB00855B14 /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45792D936D5900E9C3B0 /* BRAddress.c */; };
@@ -424,6 +424,7 @@
 		22A9A9651DF61FEE000F0016 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		22A9A9671DF61FF8000F0016 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenFooterView.swift; sourceTree = "<group>"; };
+		24131EB92DD0E0F60022BA7C /* Brainwallet-StoreKit-v1.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Brainwallet-StoreKit-v1.storekit"; sourceTree = "<group>"; };
 		2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRActivityView.swift; sourceTree = "<group>"; };
 		2416CE572DA90D0D00FFBD10 /* BRAddressExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAddressExtension.swift; sourceTree = "<group>"; };
 		2416CE582DA90D0D00FFBD10 /* BRAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAPIClient.swift; sourceTree = "<group>"; };
@@ -460,7 +461,6 @@
 		242B569A2DA9AFFB001E3BC8 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		242B569B2DA9B003001E3BC8 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		242B569C2DA9B023001E3BC8 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		243EE3C92DD0B93800CBE543 /* Brainwallet-StoreKit-v1.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Brainwallet-StoreKit-v1.storekit"; sourceTree = "<group>"; };
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1367,7 +1367,7 @@
 		75A2A7871DA5934300A983D8 = {
 			isa = PBXGroup;
 			children = (
-				243EE3C92DD0B93800CBE543 /* Brainwallet-StoreKit-v1.storekit */,
+				24131EB92DD0E0F60022BA7C /* Brainwallet-StoreKit-v1.storekit */,
 				C312D2CD2D7DC27700BB97A4 /* brainwallet */,
 				C312D4F62D7DC28E00BB97A4 /* brainwalletTests */,
 				75B6F52F1DA71DCC0031A93F /* Modules */,
@@ -2067,7 +2067,6 @@
 				C312D4A82D7DC27700BB97A4 /* POSTBouncer.html in Resources */,
 				C312D4A92D7DC27700BB97A4 /* Pt.mp3 in Resources */,
 				C312D4AA2D7DC27700BB97A4 /* 日本語.mp3 in Resources */,
-				243EE3CA2DD0B93800CBE543 /* Brainwallet-StoreKit-v1.storekit in Resources */,
 				C312D4AB2D7DC27700BB97A4 /* BarlowSemiCondensed-Bold.ttf in Resources */,
 				C312D4AD2D7DC27700BB97A4 /* Ru.mp3 in Resources */,
 				C312D4AE2D7DC27700BB97A4 /* CHANGELOG.md in Resources */,
@@ -2095,6 +2094,7 @@
 				C312D4CC2D7DC27700BB97A4 /* Alerts.storyboard in Resources */,
 				C312D4CD2D7DC27700BB97A4 /* It.mp3 in Resources */,
 				C312D4CE2D7DC27700BB97A4 /* Phrase.storyboard in Resources */,
+				24131EBA2DD0E0F60022BA7C /* Brainwallet-StoreKit-v1.storekit in Resources */,
 				C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
