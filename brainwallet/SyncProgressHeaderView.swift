@@ -49,7 +49,6 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
     var blockNumberString = "" {
         didSet {
             blockheightLabel.text = blockNumberString
-            debugPrint("::: blockheightLabel.text:\(blockNumberString)")
             blockheightLabel.textColor = BrainwalletUIColor.content
             blockheightLabel.setNeedsDisplay()
         }

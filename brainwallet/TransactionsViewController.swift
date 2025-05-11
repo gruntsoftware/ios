@@ -47,8 +47,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	}
 
 	override func viewDidLoad() {
-        NSLog("::: TransactionsViewController viewDidLoad")
-
 		setup()
 		addSubscriptions()
 	}
@@ -56,14 +54,14 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	private func setup() {
 		guard let _ = walletManager
 		else {
-			NSLog("::: ERROR: Wallet manager Not initialized")
+			debugPrint("::: ERROR: Wallet manager Not initialized")
 			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR)
 			return
 		}
 
 		guard let reduxState = store?.state
 		else {
-            NSLog("::: ERROR: reduxState Not initialized")
+            debugPrint("::: ERROR: reduxState Not initialized")
 			return
 		}
         debugPrint(":::: TransactionViewController setup: transactions count: \(walletManager?.wallet?.transactions.count)")
@@ -195,7 +193,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 			guard let cell = tableView.dequeueReusableCell(withIdentifier: "HostingTransactionCell<TransactionCellView>", for: indexPath) as? HostingTransactionCell<TransactionCellView>
 			else {
-				NSLog("ERROR No cell found")
+				debugPrint("::: ERROR No cell found")
 				return UITableViewCell()
 			}
 
@@ -207,6 +205,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 				cell.set(rootView: TransactionCellView(viewModel: viewModel), parentController: self)
 				cell.selectionStyle = .default
 			}
+            else {
+                debugPrint("::: ERROR Rate, Store, isLtcSwapped not set")
+            }
 
 			return cell
 		}
@@ -368,7 +369,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		                			CGFloat(reduxState.walletState.syncProgress), lastBlockTimestamp: Double(reduxState.walletState.lastBlockTimestamp)))
 		                		syncView.headerMessage = reduxState.walletState.syncState
 		                		syncView.noSendImageView.alpha = 1.0
-
 		                		syncView.timestamp = reduxState.walletState.lastBlockTimestamp
                                 debugPrint("::: transactions.count) \(reduxState.walletState.transactions.count)")
 

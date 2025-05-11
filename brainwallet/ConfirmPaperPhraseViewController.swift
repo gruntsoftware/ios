@@ -11,7 +11,7 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 	@IBOutlet var secondWordCell: ConfirmPhraseTableViewCell!
 	@IBOutlet var thirdWordCell: ConfirmPhraseTableViewCell!
 	@IBOutlet var fourthWordCell: ConfirmPhraseTableViewCell!
-	@IBOutlet var footerView: UIView!
+    @IBOutlet var submitWordCell: ConfirmPhraseTableViewCell!
 	@IBOutlet var submitButton: UIButton!
 
 	private let fourIndices: (Int, Int, Int, Int) = {
@@ -120,10 +120,15 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 		))
 
 		backButton.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
+        
+        backButton.titleLabel?.textColor = BrainwalletUIColor.content
+
+        
 		submitButton.setTitle(S.Button.submit.localize(), for: .normal)
 		submitButton.titleLabel?.font = UIFont.barlowBold(size: 18.0)
-		submitButton.backgroundColor = BrainwalletUIColor.surface
-		submitButton.layer.cornerRadius = 4.0
+        submitButton.titleLabel?.textColor = BrainwalletUIColor.content
+        submitButton.backgroundColor = BrainwalletUIColor.background
+		submitButton.layer.cornerRadius = 8.0
 		submitButton.clipsToBounds = true
 		submitButton.addTarget(self, action: #selector(checkPhrases), for: .touchUpInside)
 
@@ -201,3 +206,5 @@ class ConfirmPhraseTableViewCell: UITableViewCell {
 		super.setSelected(selected, animated: animated)
 	}
 }
+
+
