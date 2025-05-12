@@ -12,7 +12,7 @@ struct LockScreenFooterView: View {
     
     @ObservedObject
     var viewModel: LockScreenViewModel
- 
+
     init(viewModel: LockScreenViewModel) {
         self.viewModel = viewModel
     } 
