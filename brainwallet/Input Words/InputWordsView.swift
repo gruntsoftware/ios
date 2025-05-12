@@ -138,6 +138,6 @@ struct InputWordsView_Previews: PreviewProvider {
         let walletManager = (try? WalletManager(store: Store(), dbPath: nil))!
         let viewModel = StartViewModel(store: Store(), walletManager: walletManager)
              
-        //InputWordsView(viewModel: viewModel, path: .constant([.inputWordsView]))
+        //InputWordsView(viewModel: viewModel, path: .constant([.]))
     }
 }

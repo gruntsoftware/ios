@@ -360,12 +360,12 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 		case "brainwallet.BuyHostingController":
             guard let buyHC = contentController as? BuyHostingController
-			else {
-				return
-			}
-            buyHC.walletManager = walletManager
-
-		case "brainwallet.SendLTCViewController":
+            else {
+                return
+            }
+            buyHC.isLoaded = true
+            
+        case "brainwallet.SendLTCViewController":
 			guard let sendVC = contentController as? SendLTCViewController
 			else {
 				return
