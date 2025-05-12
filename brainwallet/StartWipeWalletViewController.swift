@@ -67,8 +67,8 @@ class StartWipeWalletViewController: UIViewController {
 	private func setInitialData() {
 		view.backgroundColor = BrainwalletUIColor.surface
 		illustration.contentMode = .scaleAspectFill
-		message.text = "Starting or recovering another wallet allows you to access and manage a different Brainwallet wallet on this device." 
-		warning.text = "Your current wallet will be removed from this device. If you wish to restore it in the future, you will need to enter your Paper Key." 
+		message.text = String(localized: "Starting or recovering another wallet allows you to access and manage a different Brainwallet wallet on this device.", bundle: .main)
+		warning.text = String(localized: "Your current wallet will be removed from this device. If you wish to restore it in the future, you will need to enter your Paper Key.", bundle: .main)
 		button.tap = { [weak self] in
 			self?.didTapNext()
 		}

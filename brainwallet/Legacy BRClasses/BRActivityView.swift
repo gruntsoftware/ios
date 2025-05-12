@@ -7,7 +7,7 @@ class BRActivityViewController: UIViewController {
 		super.init(nibName: nil, bundle: nil)
 		modalTransitionStyle = .crossDissolve
 
-		activityView.messageLabel.text = message
+        activityView.messageLabel.text = message
 		view = activityView
 	}
 

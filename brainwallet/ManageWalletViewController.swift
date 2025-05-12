@@ -69,7 +69,7 @@ class ManageWalletViewController: UIViewController, ModalPresentable, Subscriber
 		textField.textColor = BrainwalletUIColor.content
 		textField.font = .customBody(size: 14.0)
 		textField.returnKeyType = .done
-		textFieldLabel.text = "Wallet Name"
+		textFieldLabel.text = String(localized: "Wallet Name", bundle: .main)
 		textField.delegate = self
 
 		textField.text = store.state.walletState.name
@@ -77,9 +77,10 @@ class ManageWalletViewController: UIViewController, ModalPresentable, Subscriber
 		if creationDate.timeIntervalSince1970 > 0 {
 			let df = DateFormatter()
 			df.dateFormat = "MMMM d, yyyy"
-			body.text = "Your wallet name only appears in your account transaction history and cannot be seen by anyone else.\n\nYou created your wallet on %1$@\(df.string(from: creationDate))"
-		} else {
-			body.text = "Your wallet name only appears in your account transaction history and cannot be seen by anyone else."
+            let dfString = df.string(from: creationDate)
+            body.text = String(format: String(localized: "Your wallet name only appears in your account transaction history and cannot be seen by anyone else.\n\nYou created your wallet on %1$@", bundle: .main), dfString)
+ 		} else {
+			body.text = String(localized: "Your wallet name only appears in your account transaction history and cannot be seen by anyone else.", bundle: .main)
 		}
 	}
 

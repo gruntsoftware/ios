@@ -18,11 +18,11 @@ class EnterPhraseViewController: UIViewController, UIScrollViewDelegate, CustomT
 
 		switch reason {
 		case .setSeed:
-            customTitle = "Restore"
+            customTitle = String(localized: "Restore", bundle: .main)
 		case .validateForResettingPin:
-			customTitle = "Reset PIN"
+			customTitle = String(localized: "Reset PIN", bundle: .main)
 		case .validateForWipingWallet:
-			customTitle = "Start or Recover Another Wallet"
+			customTitle = String(localized: "Start or Recover Another Wallet", bundle: .main)
 		}
 
 		super.init(nibName: nil, bundle: nil)
@@ -122,7 +122,7 @@ class EnterPhraseViewController: UIViewController, UIScrollViewDelegate, CustomT
 
 	private func setData() {
 		view.backgroundColor = BrainwalletUIColor.background
-		errorLabel.text = "Invalid"
+        errorLabel.text = String(localized: "Invalid", bundle: .main)
 		errorLabel.isHidden = true
 		errorLabel.textAlignment = .center
 		enterPhrase.didFinishPhraseEntry = { [weak self] phrase in
@@ -133,23 +133,23 @@ class EnterPhraseViewController: UIViewController, UIScrollViewDelegate, CustomT
 		switch reason {
 		case .setSeed:
 			saveEvent("enterPhrase.setSeed")
-			titleLabel.text = "Restore"
-			subheader.text = "Enter the paper key for the wallet you want to recover."
+			titleLabel.text = String(localized: "Restore", bundle: .main)
+			subheader.text = String(localized: "Enter the paper key for the wallet you want to recover.", bundle: .main)
 			moreInfoButton.isHidden = true
 		case .validateForResettingPin:
 			saveEvent("enterPhrase.resettingPin")
-			titleLabel.text = "Reset PIN"
-			subheader.text = "Enter the paper key for the wallet you want to recover."
+			titleLabel.text = String(localized: "Reset PIN", bundle: .main)
+			subheader.text = String(localized: "Enter the paper key for the wallet you want to recover.", bundle: .main)
 			instruction.isHidden = true
-			moreInfoButton.setTitle("Tap here for more information." , for: .normal)
+			moreInfoButton.setTitle(String(localized: "Tap here for more information.", bundle: .main), for: .normal)
 			moreInfoButton.tap = { [weak self] in
 				self?.store.trigger(name: .presentFaq(ArticleIds.nothing))
 			}
 			faq.isHidden = true
 		case .validateForWipingWallet:
 			saveEvent("enterPhrase.wipeWallet")
-			titleLabel.text = "S.WipeWallet.title"
-			subheader.text = "S.WipeWallet.instruction"
+			titleLabel.text = String(localized: "Start or Recover Another Wallet", bundle: .main)
+			subheader.text = String(localized: "To start a new wallet or restore an existing wallet, you must first erase the wallet that is currently installed. To continue, enter the current wallet's Paper Key.", bundle: .main)
 		}
 
 		scrollView.delegate = self

@@ -33,7 +33,7 @@ class LoadingProgressView: UIView, GradientDrawable {
 
 	private func setupView() {
 		label.textColor = BrainwalletUIColor.content
-        label.text = "Loading Wallet"
+        label.text = String(localized: "Loading Wallet" , bundle: .main)
 		label.textAlignment = .center
 
 		addSubview(label)

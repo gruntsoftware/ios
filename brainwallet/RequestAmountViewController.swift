@@ -135,7 +135,7 @@ class RequestAmountViewController: UIViewController {
 	private func setupCopiedMessage() {
 		let copiedMessage = UILabel(font: .customMedium(size: 14.0))
 		copiedMessage.textColor = .white
-		copiedMessage.text = "Copied"
+		copiedMessage.text = String(localized: "Copied", bundle: .main)
 		copiedMessage.textAlignment = .center
 		addressPopout.contentView = copiedMessage
 	}
@@ -143,8 +143,8 @@ class RequestAmountViewController: UIViewController {
 	private func setupShareButtons() {
 		let container = UIView()
 		container.translatesAutoresizingMaskIntoConstraints = false
-		let email = ShadowButton(title: "Email" , type: .tertiary)
-		let text = ShadowButton(title: "Text Message" , type: .tertiary)
+		let email = ShadowButton(title: String(localized: "Email", bundle: .main), type: .tertiary)
+		let text = ShadowButton(title: String(localized: "Text Message", bundle: .main), type: .tertiary)
 		container.addSubview(email)
 		container.addSubview(text)
 		email.constrain([

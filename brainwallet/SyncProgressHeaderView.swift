@@ -26,9 +26,9 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
 		didSet {
 			switch headerMessage {
 			case .connecting:
-                headerLabel.text = "Connecting..."
+                headerLabel.text = String(localized: "Connecting...", bundle: .main)
                 headerLabel.textColor = BrainwalletUIColor.warn
-			case .syncing: headerLabel.text = "Syncing..."
+			case .syncing: headerLabel.text = String(localized: "Syncing...", bundle: .main)
                 headerLabel.textColor = BrainwalletUIColor.content
 			case .success:
 				headerLabel.text = ""
@@ -58,7 +58,7 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
 	var isRescanning: Bool = false {
 		didSet {
 			if isRescanning {
-				headerLabel.text = "Rescanning..."
+				headerLabel.text = String(localized: "Rescanning...", bundle: .main)
 				timestampLabel.text = ""
                 blockheightLabel.text = ""
 				progressView.alpha = 0.0

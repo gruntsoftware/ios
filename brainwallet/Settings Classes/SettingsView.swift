@@ -40,9 +40,6 @@ struct SettingsView: View {
                     Text("Languages")
                         .padding()
                     
-                    Text("Languages")
-                        .padding()
-                    
                     Text("Settings View")
                         .padding()
                                         

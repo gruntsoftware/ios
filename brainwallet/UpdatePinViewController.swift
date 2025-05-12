@@ -38,21 +38,21 @@ class UpdatePinViewController: UIViewController, Subscriber {
 		didSet {
 			switch step {
 			case .verify:
-				instruction.text = isCreatingPin ? "Your PIN will be used to unlock your Brainwallet and send money."  : "Enter your current PIN."
+				instruction.text = isCreatingPin ? String(localized: "Your PIN will be used to unlock your Brainwallet and send money.", bundle: .main) : String(localized: "Enter your current PIN.", bundle: .main)
 				caption.isHidden = true
 			case .new:
-				let instructionText = isCreatingPin ? "Your PIN will be used to unlock your Brainwallet and send money."  : "Enter your new PIN." 
+				let instructionText = isCreatingPin ? String(localized: "Your PIN will be used to unlock your Brainwallet and send money.", bundle: .main) : String(localized: "Enter your new PIN.", bundle: .main)
 				if instruction.text != instructionText {
 					instruction.pushNewText(instructionText)
 				}
-				header.text = "Set PIN"
+				header.text = String(localized: "Set PIN", bundle: .main)
 				caption.isHidden = false
 			case .confirmNew:
 				caption.isHidden = true
 				if isCreatingPin {
-					header.text = "Re-Enter PIN"
+					header.text = String(localized:"Re-Enter PIN", bundle: .main)
 				} else {
-					instruction.pushNewText("Re-Enter your new PIN.")
+					instruction.pushNewText( String(localized: "Re-Enter your new PIN.", bundle: .main))
 				}
 			}
 		}
@@ -126,15 +126,15 @@ class UpdatePinViewController: UIViewController, Subscriber {
 	}
 
 	private func setData() {
-		caption.text = "Remember this PIN. If you forget it, you won't be able to access your Litecoin."
+		caption.text = String(localized: "Remember this PIN. If you forget it, you won't be able to access your Litecoin.", bundle: .main)
 		view.addSubview(spacer)
 
 		header.textColor = BrainwalletUIColor.content
 		instruction.textColor = BrainwalletUIColor.content
 		caption.textColor = BrainwalletUIColor.content
         view.backgroundColor = BrainwalletUIColor.surface
-		header.text = isCreatingPin ? "Set PIN" : "Update PIN"
-		instruction.text = isCreatingPin ? "Your PIN will be used to unlock your Brainwallet and send money."  : "Enter your current PIN."
+		header.text = isCreatingPin ? String(localized: "Set PIN", bundle: .main) : String(localized: "Update PIN", bundle: .main)
+		instruction.text = isCreatingPin ? String(localized: "Your PIN will be used to unlock your Brainwallet and send money.", bundle: .main) : String(localized: "Enter your current PIN.", bundle: .main)
 
 		pinPad.ouputDidUpdate = { [weak self] text in
 			guard let step = self?.step else { return }

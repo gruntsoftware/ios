@@ -235,7 +235,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
             footerView.view.heightAnchor.constraint(equalToConstant: 60.0),
         ])
 
-		enterPINLabel.text = "Enter PIN"
+		enterPINLabel.text = String(localized: "Enter PIN", bundle: .main)
 	}
 
 	private func addPinPadCallback() {
@@ -273,7 +273,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		saveEvent("login.success")
 		let label = UILabel(font: enterPINLabel.font)
         label.textColor = BrainwalletUIColor.content
-		label.text = "Unlocked"
+		label.text = String(localized: "Unlocked", bundle: .main)
 		let lock = UIImageView(image: #imageLiteral(resourceName: "unlock"))
 		lock.transform = .init(scaleX: 0.6, y: 0.6)
 
@@ -407,7 +407,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 	@objc private func unlock() {
 		saveEvent("login.unlocked")
 		delegate?.didUnlockLogin()
-		enterPINLabel.pushNewText("Enter PIN" )
+		enterPINLabel.pushNewText(String(localized: "Enter PIN", bundle: .main))
 		pinPadViewController.view.isUserInteractionEnabled = true
 		unlockTimer = nil
 		disabledView.hide { [weak self] in

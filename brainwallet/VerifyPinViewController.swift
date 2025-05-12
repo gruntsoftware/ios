@@ -107,7 +107,7 @@ class VerifyPinViewController: UIViewController, ContentBoxPresenter {
 
 		toolbar.backgroundColor = .clear
 
-		titleLabel.text = "PIN Required"
+		titleLabel.text = String(localized: "PIN Required", bundle: .main)
         body.text = bodyText
 		body.numberOfLines = 0
 		body.lineBreakMode = .byWordWrapping
@@ -122,17 +122,17 @@ class VerifyPinViewController: UIViewController, ContentBoxPresenter {
 				if !myself.callback(output, myself) {
 					myself.authenticationFailed()
 				} else {
-					NSLog("FAILED")
+					debugPrint("::: FAILED")
 				}
 			} else {
-				NSLog("FAILED")
+				debugPrint("::: FAILED")
 			}
 		}
 		cancel.tap = { [weak self] in
 			self?.didCancel?()
 			self?.dismiss(animated: true, completion: nil)
 		}
-		cancel.setTitle( "Cancel"  , for: .normal)
+        cancel.setTitle( String(localized: "Cancel", bundle: .main), for: .normal)
         cancel.tintColor = BrainwalletUIColor.content
 		view.backgroundColor = .clear
 	}

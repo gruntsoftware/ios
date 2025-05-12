@@ -264,9 +264,14 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			                                   state: store.state,
 			                                   selectedRate: currentRate,
 			                                   minimumFractionDigits: 2).description
-
-			combinedFeesOutput = "( Network fee + Service fee ): \(networkFeeAmount) + \(serviceFeeAmount) = \(totalFeeAmount)"
-
+            
+            let combinedFeesOutput = String(
+                format: String(localized: "(Network fee + Service fee):", bundle: .main),
+                networkFeeAmount,
+                serviceFeeAmount,
+                totalFeeAmount
+            )
+            
 			if sendTotal > balance {
                 balanceColor = BrainwalletUIColor.error
 			}
@@ -286,7 +291,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	@objc private func pasteTapped() {
 		guard let pasteboard = UIPasteboard.general.string, !pasteboard.utf8.isEmpty
 		else {
-			return showAlert(title: "Invalid Address" , message: "Please enter the recipient's address." , buttonLabel: "Ok" )
+			return showAlert(title:String(localized: "Invalid Address", bundle: .main), message: String(localized: "Please enter the recipient's address.", bundle: .main), buttonLabel:  String(localized: "Ok", bundle: .main))
 		}
 		guard let request = PaymentRequest(string: pasteboard)
 		else {
@@ -480,12 +485,12 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		            		LWAnalytics.logEventWithParameters(itemName: ._20191105_DSL)
 
 		            	case let .creationError(message):
-		            		self?.showAlert(title: "Could not create transaction." , message: message, buttonLabel: "Ok" )
+		            		self?.showAlert(title: String(localized: "Could not create transaction." , bundle: .main), message: message, buttonLabel:  String(localized: "Ok", bundle: .main))
 		            		self?.saveEvent("send.publishFailed", attributes: ["errorMessage": message])
 
 		            	case let .publishFailure(error):
 		            		if case let .posixError(code, description) = error {
-		            			self?.showAlert(title: "Send failed" , message: "\(description) (\(code))", buttonLabel: "Ok" )
+		            			self?.showAlert(title: String(localized: "Send failed", bundle: .main), message: "\(description) (\(code))", buttonLabel: String(localized:  "Ok", bundle: .main))
 		            			self?.saveEvent("send.publishFailed", attributes: ["errorMessage": "\(description) (\(code))"])
 		            		}
 		            	}
@@ -501,7 +506,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		var isOutputTooSmall = false
 
 		if let errorMessage = protoReq.errorMessage, errorMessage == "request expired" , !isValid {
-			return showAlert(title: "Bad Payment Request" , message: errorMessage, buttonLabel: "Ok" )
+			return showAlert(title: String(localized:  "Bad Payment Request", bundle: .main), message: errorMessage, buttonLabel: String(localized:  "Ok", bundle: .main))
 		}
 
 		// TODO: check for duplicates of already paid requests
@@ -514,26 +519,26 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		}
 
 		if wallet.containsAddress(address) {
-			return showAlert(title: "Warning", message: "The destination is your own address. You cannot send to yourself." , buttonLabel: "Ok" )
+			return showAlert(title: String(localized: "Warning", bundle: .main), message: String(localized: "The destination is your own address. You cannot send to yourself.", bundle: .main) , buttonLabel: String(localized:  "Ok", bundle: .main))
 		} else if wallet.addressIsUsed(address), !didIgnoreUsedAddressWarning {
-			let message = "Address Already Used\n\n Litecoin addresses are intended for single use only.\n\nRe-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn't directly control the address."
-			return showError(title: "Warning", message: message, ignore: { [weak self] in
+			let message = String(localized: "Address Already Used\n\n Litecoin addresses are intended for single use only.\n\nRe-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn't directly control the address.", bundle: .main)
+			return showError(title: String(localized: "Warning", bundle: .main), message: message, ignore: { [weak self] in
 				self?.didIgnoreUsedAddressWarning = true
 				self?.confirmProtocolRequest(protoReq: protoReq)
 			})
 		} else if let message = protoReq.errorMessage, !message.utf8.isEmpty, (protoReq.commonName?.utf8.count)! > 0, !didIgnoreIdentityNotCertified {
-			return showError(title: "Payee identity isn't certified." , message: message, ignore: { [weak self] in
+			return showError(title: String(localized: "Payee identity isn't certified.", bundle: .main), message: message, ignore: { [weak self] in
 				self?.didIgnoreIdentityNotCertified = true
 				self?.confirmProtocolRequest(protoReq: protoReq)
 			})
 		} else if requestAmount < wallet.minOutputAmount {
 			let amount = Amount(amount: wallet.minOutputAmount, rate: Rate.empty, maxDigits: store.state.maxDigits)
-			let message = String(format: "S.PaymentProtocol.Errors.smallPayment" , amount.bits)
-			return showAlert(title: "S.PaymentProtocol.Errors.smallOutputErrorTitle" , message: message, buttonLabel: "Ok" )
+			let message = String(format: "Litecoin payments can't be less than %1$@.", amount.bits)
+			return showAlert(title: String(localized: "Couldn't make payment", bundle: .main), message: message, buttonLabel: String(localized: "Ok", bundle: .main))
 		} else if isOutputTooSmall {
 			let amount = Amount(amount: wallet.minOutputAmount, rate: Rate.empty, maxDigits: store.state.maxDigits)
-			let message = String(format: "S.PaymentProtocol.Errors.smallTransaction" , amount.bits)
-			return showAlert(title: "S.PaymentProtocol.Errors.smallOutputErrorTitle" , message: message, buttonLabel: "Ok" )
+			let message = String(format: "Litecoin transaction outputs can't be less than $@.", amount.bits)
+			return showAlert(title: String(localized: "Couldn't make payment", bundle: .main), message: message, buttonLabel: String(localized: "Ok", bundle: .main))
 		}
 
 		if requestAmount > 0 {
@@ -545,7 +550,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			if let amount = amount {
 				guard sender.createTransaction(amount: amount.rawValue, to: address)
 				else {
-					return showAlert(title:  "Error" , message: "Could not create transaction." , buttonLabel: "Ok" )
+					return showAlert(title: String(localized: "Error", bundle: .main) , message: String(localized: "Could not create transaction.", bundle: .main) , buttonLabel: String(localized: "Ok", bundle: .main))
 				}
 			}
 		}
@@ -553,10 +558,10 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 	private func showError(title: String, message: String, ignore: @escaping () -> Void) {
 		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		alertController.addAction(UIAlertAction(title:  "Ignore"  , style: .default, handler: { _ in
+		alertController.addAction(UIAlertAction(title: String(localized: "Ignore", bundle: .main), style: .default, handler: { _ in
 			ignore()
 		}))
-		alertController.addAction(UIAlertAction(title:  "Cancel"  , style: .cancel, handler: nil))
+		alertController.addAction(UIAlertAction(title: String(localized: "Cancel", bundle: .main) , style: .cancel, handler: nil))
 		present(alertController, animated: true, completion: nil)
 	}
 

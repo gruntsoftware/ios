@@ -56,7 +56,7 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 		tableView.separatorStyle = .none
 
 		let titleLabel = UILabel(font: .customBold(size: 17.0), color: BrainwalletUIColor.content)
-		titleLabel.text = "Currency"
+		titleLabel.text =  String(localized: "Currency", bundle: .main)
 		titleLabel.sizeToFit()
 		navigationItem.titleView = titleLabel
 
@@ -154,8 +154,8 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 			}
 		}
 
-		litecoinLabel.text = "Litecoin Display Unit"
-		rateLabelTitle.text = "Exchange Rate"
+		litecoinLabel.text = String(localized: "Litecoin Display Unit" , bundle: .main)
+		rateLabelTitle.text = String(localized: "Exchange Rate" , bundle: .main)
 
 		self.header = header
 		return header

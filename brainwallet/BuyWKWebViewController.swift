@@ -71,7 +71,7 @@ class BuyWKWebViewController: UIViewController, WKNavigationDelegate, WKScriptMe
 	@IBAction func didTapCurrentAddressButton(_: Any) {
 		UIPasteboard.general.string = currentWalletAddress
 		copiedLabel.alpha = 1
-		copiedLabel.text = "Copied"
+        copiedLabel.text = String(localized: "Copied", bundle: .main)
 		UIView.animate(withDuration: 2.0, delay: 0.1, options: .curveEaseInOut, animations: {
 			self.copiedLabel.alpha = 0.0
 		}, completion: nil)

@@ -55,9 +55,9 @@ class ShareDataViewController: UIViewController {
 
 	private func setInitialData() {
         view.backgroundColor = BrainwalletUIColor.background
-		titleLabel.text = "Share data?"
-		body.text = "Help improve Brainwallet by sharing your anonymous data with us to improve the app. We respect your privacy."
-		label.text = "Share anonymous data?"
+		titleLabel.text = String(localized: "Share data?", bundle: .main)
+		body.text = String(localized: "Help improve Brainwallet by sharing your anonymous data with us to improve the app. We respect your privacy.", bundle: .main)
+		label.text = String(localized: "Share anonymous data?", bundle: .main)
 
 		if UserDefaults.hasAquiredShareDataPermission {
 			toggle.isOn = true

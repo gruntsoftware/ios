@@ -93,15 +93,15 @@ class SettingsViewController: UITableViewController {
 		view.addSubview(label)
 		switch sections[section] {
 		case "About":
-			label.text = "About"
+			label.text = String(localized: "About", bundle: .main)
 		case "Wallet":
-			label.text = "Wallet"
+			label.text = String(localized: "Wallet", bundle: .main)
 		case "Manage":
-			label.text = "Manage"
+			label.text = String(localized: "Manage", bundle: .main)
 		case "Support":
-			label.text = "Support"
+			label.text = String(localized: "Support", bundle: .main)
 		case "Blockchain":
-			label.text = "Blockchain"
+			label.text = String(localized: "Blockchain", bundle: .main)
 		default:
 			label.text = ""
 		}

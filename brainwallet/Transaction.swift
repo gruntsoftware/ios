@@ -358,7 +358,7 @@ class Transaction {
 		do {
 			_ = try kvStore?.set(newData)
 		} catch {
-			print("could not update metadata: \(error)")
+			debugPrint("::: could not update metadata: \(error)")
 		}
 	}
 
@@ -409,7 +409,7 @@ private func makeStatus(_ txRef: BRTxRef, wallet: BRWallet, peerManager: BRPeerM
 		let format = direction == .sent ? "In progress: %1$@"  : "In progress: %1$@"
 		return String(format: format, percentageString)
 	} else {
-		return "Complete"
+		return String(localized: "Complete", bundle: .main)
 	}
 }
 
