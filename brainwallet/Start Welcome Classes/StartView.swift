@@ -46,9 +46,6 @@ struct StartView: View {
 
 	@State
 	private var animationAmount = 0.0
-
-	@State
-	private var pickedLanguage: LanguageSelection = .English
     
     @State
     private var pickedCurrency: CurrencySelection = .USD

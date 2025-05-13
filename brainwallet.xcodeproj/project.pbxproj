@@ -151,7 +151,6 @@
 		C312D33F2D7DC27700BB97A4 /* ModalTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B22D7DC27700BB97A4 /* ModalTransitionDelegate.swift */; };
 		C312D3402D7DC27700BB97A4 /* WarningConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2CB2D7DC27700BB97A4 /* WarningConfirmationViewController.swift */; };
 		C312D3422D7DC27700BB97A4 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24E2D7DC27700BB97A4 /* Functions.swift */; };
-		C312D3442D7DC27700BB97A4 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2562D7DC27700BB97A4 /* LanguageSelectionViewController.swift */; };
 		C312D3452D7DC27700BB97A4 /* EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2422D7DC27700BB97A4 /* EmailValidation.swift */; };
 		C312D3472D7DC27700BB97A4 /* WalletManager+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */; };
 		C312D3482D7DC27700BB97A4 /* FeeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2492D7DC27700BB97A4 /* FeeManager.swift */; };
@@ -831,7 +830,6 @@
 		C312D2532D7DC27700BB97A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C312D2542D7DC27700BB97A4 /* IntroStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroStepView.swift; sourceTree = "<group>"; };
 		C312D2552D7DC27700BB97A4 /* KVStoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVStoreCoordinator.swift; sourceTree = "<group>"; };
-		C312D2562D7DC27700BB97A4 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
 		C312D2572D7DC27700BB97A4 /* LanguageSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewModel.swift; sourceTree = "<group>"; };
 		C312D2582D7DC27700BB97A4 /* LaunchCardHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCardHostingController.swift; sourceTree = "<group>"; };
 		C312D25D2D7DC27700BB97A4 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
@@ -1780,7 +1778,6 @@
 				24FEB8B92DD2425A00D60036 /* InfoPlist.strings */,
 				C312D2542D7DC27700BB97A4 /* IntroStepView.swift */,
 				C312D2552D7DC27700BB97A4 /* KVStoreCoordinator.swift */,
-				C312D2562D7DC27700BB97A4 /* LanguageSelectionViewController.swift */,
 				C312D2572D7DC27700BB97A4 /* LanguageSelectionViewModel.swift */,
 				C312D2582D7DC27700BB97A4 /* LaunchCardHostingController.swift */,
 				C312D25D2D7DC27700BB97A4 /* LaunchView.swift */,
@@ -2406,7 +2403,6 @@
 				C312D33F2D7DC27700BB97A4 /* ModalTransitionDelegate.swift in Sources */,
 				C312D3402D7DC27700BB97A4 /* WarningConfirmationViewController.swift in Sources */,
 				C312D3422D7DC27700BB97A4 /* Functions.swift in Sources */,
-				C312D3442D7DC27700BB97A4 /* LanguageSelectionViewController.swift in Sources */,
 				C312D3452D7DC27700BB97A4 /* EmailValidation.swift in Sources */,
 				C312D3472D7DC27700BB97A4 /* WalletManager+Auth.swift in Sources */,
 				C312D3482D7DC27700BB97A4 /* FeeManager.swift in Sources */,

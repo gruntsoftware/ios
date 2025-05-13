@@ -5138,6 +5138,7 @@
       "shouldTranslate" : false
     },
     "Languages" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
