@@ -15,7 +15,7 @@ struct Partner {
 	/// Fills partner data
 	/// - Returns: Array of Partner Data
 	static func partnerDataArray() -> [Partner] {
-		let moonpay = Partner(logo: UIImage(named: "moonpay-logo")!, headerTitle: S.BuyCenter.Cells.moonpayTitle.localize(), details: S.BuyCenter.Cells.moonpayFinancialDetails.localize())
+		let moonpay = Partner(logo: UIImage(named: "moonpay-logo")!, headerTitle: "S.BuyCenter.Cells.moonpayTitle" , details: "S.BuyCenter.Cells.moonpayFinancialDetails")
 
 		return [moonpay]
 	}

@@ -45,7 +45,7 @@ struct SeedWordContainerView: View {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 				VStack {
 					HStack {
-						Text(S.ShowWords.titleWarning.localize())
+						Text("These are your seed words. If you show them to anyone, they can take your Litecoin")
 							.font(.barlowSemiBold(size: 24.0))
 							.multilineTextAlignment(.center)
                             .foregroundColor(BrainwalletColor.content)
@@ -65,14 +65,14 @@ struct SeedWordContainerView: View {
 						Spacer()
 					} else {
 						HStack {
-							SecureField(S.UpdatePin.enterCurrent.localize(),
+							SecureField("Enter your current PIN",
 							            text: $enteredPIN)
 								.keyboardType(.numberPad)
 								.multilineTextAlignment(.center)
 								.toolbar {
 									ToolbarItemGroup(placement: .keyboard) {
 										Spacer()
-										Button(S.RecoverWallet.done.localize()) {
+										Button("Done" ) {
 											didEnterPINCode.toggle()
                                         }
                                         .foregroundColor(BrainwalletColor.content)

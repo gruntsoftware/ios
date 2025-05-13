@@ -4,7 +4,7 @@ class StartPaperPhraseViewController: UIViewController {
 	init(store: Store, callback: @escaping () -> Void) {
 		self.store = store
 		self.callback = callback
-		let buttonTitle = UserDefaults.walletRequiresBackup ? S.StartPaperPhrase.buttonTitle.localize() : S.StartPaperPhrase.againButtonTitle.localize()
+		let buttonTitle = UserDefaults.walletRequiresBackup ? "Write Down Paper Key" : "Write Down Paper Key Again"
 		button = ShadowButton(title: buttonTitle, type: .flatLitecoinBlue)
 		super.init(nibName: nil, bundle: nil)
 		explanation.textColor = BrainwalletUIColor.content
@@ -22,7 +22,7 @@ class StartPaperPhraseViewController: UIViewController {
 
 	override func viewDidLoad() {
 		view.backgroundColor = BrainwalletUIColor.surface
-		explanation.text = S.StartPaperPhrase.body.localize()
+		explanation.text = "Your paper key is the only way to restore your Brainwallet if your mobile is unavailable.\n No one in the Brainwallet team can give this paper key to you!\n\nWe will show you a list of words to write down on a piece of paper and keep safe.\n\nPLEASE MAKE BACKUPS AND DON'T LOSE IT!"
 
 		addSubviews()
 		addConstraints()
@@ -32,7 +32,7 @@ class StartPaperPhraseViewController: UIViewController {
 		if let writePaperPhraseDate = UserDefaults.writePaperPhraseDate {
 			let df = DateFormatter()
 			df.setLocalizedDateFormatFromTemplate("MMMM d, yyyy")
-			footer.text = String(format: S.StartPaperPhrase.date.localize(), df.string(from: writePaperPhraseDate))
+			footer.text = String(format: "You last wrote down your paper key on %1$@" , df.string(from: writePaperPhraseDate))
 			footer.textAlignment = .center
 		}
 	}

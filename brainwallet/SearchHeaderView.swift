@@ -10,13 +10,13 @@ enum SearchFilterType {
 	var description: String {
 		switch self {
 		case .sent:
-			return S.Search.sent.localize()
+			return "sent"
 		case .received:
-			return S.Search.received.localize()
+			return "received"
 		case .pending:
-			return S.Search.pending.localize()
+			return "pending"
 		case .complete:
-			return S.Search.complete.localize()
+			return "complete"
 		case .text:
 			return ""
 		}
@@ -89,10 +89,10 @@ class SearchHeaderView: UIView {
 	}
 
 	private let searchBar = UISearchBar()
-	private let sent = ShadowButton(title: S.Search.sent.localize(), type: .search)
-	private let received = ShadowButton(title: S.Search.received.localize(), type: .search)
-	private let pending = ShadowButton(title: S.Search.pending.localize(), type: .search)
-	private let complete = ShadowButton(title: S.Search.complete.localize(), type: .search)
+	private let sent = ShadowButton(title: "Send" , type: .search)
+	private let received = ShadowButton(title: "Received", type: .search)
+	private let pending = ShadowButton(title: "Pending" , type: .search)
+	private let complete = ShadowButton(title: "Complete" , type: .search)
 	private let cancel = UIButton(type: .system)
 	fileprivate var filters: [SearchFilterType] = [] {
 		didSet {
@@ -119,7 +119,7 @@ class SearchHeaderView: UIView {
 	}
 
 	private func addConstraints() {
-		cancel.setTitle(S.Button.cancel.localize(), for: .normal)
+		cancel.setTitle( "Cancel"  , for: .normal)
 		let titleSize = NSString(string: cancel.titleLabel!.text!).size(withAttributes: [NSAttributedString.Key.font: cancel.titleLabel!.font])
 		cancel.constrain([
 			cancel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -C.padding[2]),

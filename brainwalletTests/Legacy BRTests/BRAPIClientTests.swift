@@ -16,12 +16,12 @@ class FakeAuthenticator: WalletAuthenticator {
 		if result != errSecSuccess {
 			fatalError("couldnt generate random data for key")
 		}
-		print("base58 encoded secret key data \(keyData.base58)")
+		debugPrint(":::base58 encoded secret key data \(keyData.base58)")
 		secret = keyData.uInt256
-		key = withUnsafePointer(to: &secret) { (secPtr: UnsafePointer<UInt256>) in
+		key = withUnsafePointer(to: &secret) { (secPointer: UnsafePointer<UInt256>) in
 			var k = BRKey()
 			k.compressed = 1
-			BRKeySetSecret(&k, secPtr, 0)
+			BRKeySetSecret(&k, secPointer, 0)
 			return k
 		}
 	}

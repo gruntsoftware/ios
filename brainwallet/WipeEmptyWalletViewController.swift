@@ -17,7 +17,7 @@ class WipeEmptyWalletViewController: UIViewController, Subscriber, Trackable {
 	private let warningDetailTextView = UITextView()
 	private let warningAlertLabel = UILabel()
 	private let border = UIView()
-	private let reset = ShadowButton(title: S.WipeWallet.resetButton.localize(), type: .boldWarning)
+	private let reset = ShadowButton(title: "Yes, reset", type: .boldWarning)
 
 	private var topSharePopoutConstraint: NSLayoutConstraint?
 	private let walletManager: WalletManager
@@ -79,9 +79,9 @@ class WipeEmptyWalletViewController: UIViewController, Subscriber, Trackable {
 	}
 
 	private func addContent() {
-		titleLabel.text = S.WipeWallet.warningTitle.localize()
-		warningDetailTextView.text = S.WipeWallet.warningDescription.localize()
-		warningAlertLabel.text = S.WipeWallet.warningAlert.localize()
+		titleLabel.text = "PLEASE READ!"
+		warningDetailTextView.text = "Your Brainwallet is empty. Resetting will delete the old private key and wipe the app data.\n\nAfter the reset, be prepared to record the new 12 words and keep them in a very secure place.\n\nNo Brainwallet developers can retrieve this seed for you."
+		warningAlertLabel.text = "DO NOT LOSE IT!"
 	}
 
 	private func setStyle() {
@@ -119,6 +119,6 @@ extension WipeEmptyWalletViewController: ModalDisplayable {
 	}
 
 	var modalTitle: String {
-		return S.WipeWallet.resetTitle.localize()
+		return "Reset"
 	}
 }

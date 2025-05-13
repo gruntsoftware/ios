@@ -12,7 +12,7 @@ struct LockScreenFooterView: View {
     
     @ObservedObject
     var viewModel: LockScreenViewModel
- 
+
     init(viewModel: LockScreenViewModel) {
         self.viewModel = viewModel
     } 
@@ -47,7 +47,7 @@ struct LockScreenFooterView: View {
                             Button(action: {
                                 viewModel.userWantsToDelete.toggle()
                             }) {
-                                Text(S.WipeWallet.emptyWallet.localize())
+                                Text("Forgot seed phrase?" )
                                     .font(.barlowSemiBold(size: 19.0))
                                     .frame(width: width * 0.4,
                                            alignment: .center)

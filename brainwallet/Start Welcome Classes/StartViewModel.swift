@@ -5,7 +5,7 @@ import UIKit
 
 class StartViewModel: ObservableObject {
 	// MARK: - Combine Variables
-
+    
 	@Published
 	var currentLanguage: LanguageSelection = .English
     
@@ -20,18 +20,9 @@ class StartViewModel: ObservableObject {
 
 	@Published
 	var walletCreationDidFail: Bool = false
-
+  
 	@Published
-	var pinDigits = ""
-
-	@Published
-	var pinIsFilled = false
-
-	@Published
-	var pinViewRect = CGRect()
-
-	@Published
-	var headerTitle = S.CreateStep.MainTitle.intro.localize()
+	var headerTitle = "S.CreateStep.MainTitle.intro"
 
 	// MARK: - Public Variables
 
@@ -112,7 +103,7 @@ class StartViewModel: ObservableObject {
 			}, nil)
 			AudioServicesPlaySystemSound(id)
 		} else {
-			print("NO AUDIO")
+			debugPrint(":::NO AUDIO")
 		}
 	}
     

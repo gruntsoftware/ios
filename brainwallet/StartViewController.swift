@@ -15,8 +15,8 @@ class StartViewController: UIViewController {
 
     private let message = UILabel(font: .barlowLight(size: 22), color: BrainwalletUIColor.content)
 
-    private let create = ShadowButton(title: S.StartView.readyButton.localize(), type: .flatWhite)
-    private let recover = ShadowButton(title:  S.StartView.restoreButton.localize(), type: .flatLitecoinBlue)
+    private let create = ShadowButton(title: "Ready" , type: .flatWhite)
+    private let recover = ShadowButton(title:  "Restore", type: .flatLitecoinBlue)
 	private let store: Store
 	private let didTapRecover: () -> Void
 	private let didTapCreate: () -> Void

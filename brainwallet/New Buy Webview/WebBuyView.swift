@@ -65,7 +65,7 @@ struct WebBuyView: View {
                             
                             VStack {
                                 
-                                Text(S.BuyCenter.depositAddress.localize())
+                                Text("Deposit LTC Address")
                                     .font(.caption)
                                     .multilineTextAlignment(.leading)
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -78,7 +78,7 @@ struct WebBuyView: View {
                                     .foregroundColor(BrainwalletColor.content)
                             }
                             if shouldShowCopied {
-                                Text(S.Receive.copied.localize())
+                                Text("Copied")
                                     .font(.footnote)
                                     .multilineTextAlignment(.trailing)
                                     .frame(maxWidth: 60.0, alignment: .trailing)

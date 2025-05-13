@@ -81,7 +81,7 @@ class Sender {
 	{
 		guard let tx = transaction
 		else {
-			return completion(.creationError(S.Send.createTransactionError.localize()))
+			return completion(.creationError("Could not create transaction." ))
 		}
 
 		self.rate = rate
@@ -150,8 +150,8 @@ class Sender {
 					._20200112_ERR,
 					properties: properties)
 
-				let alert = UIAlertController(title: S.BrainwalletAlert.corruptionError.localize(),
-				                              message: S.BrainwalletAlert.corruptionMessage.localize(),
+				let alert = UIAlertController(title: "Corruption Error",
+				                              message: "Your local database is corrupted. Go to Settings > Blockchain: Settings > Delete Database to refresh",
 				                              preferredStyle: .alert)
 
 				UserDefaults.didSeeCorruption = true

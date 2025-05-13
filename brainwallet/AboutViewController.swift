@@ -4,9 +4,9 @@ import UIKit
 class AboutViewController: UIViewController {
 	private var titleLabel = UILabel(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
 	private let logoBackground = UIView()
-	private let blog = AboutCell(text: S.About.blog.localize())
-	private let twitter = AboutCell(text: S.About.twitter.localize())
-    private let bluesky = AboutCell(text: S.About.bluesky.localize())
+	private let blog = AboutCell(text: "S.About.blog")
+	private let twitter = AboutCell(text: "S.About.twitter" )
+    private let bluesky = AboutCell(text: "S.About.bluesky" )
 	private let privacy = UIButton(type: .system)
     private let footer = UILabel(font: .customBody(size: 13.0), color: BrainwalletUIColor.content)
 	override func viewDidLoad() {
@@ -70,12 +70,12 @@ class AboutViewController: UIViewController {
 	}
 
 	private func setData() {
-		titleLabel.text = S.Settings.socialLinks.localize()
-		privacy.setTitle(S.About.privacy.localize(), for: .normal)
+		titleLabel.text = "Social links"
+		privacy.setTitle("Privacy policy" , for: .normal)
 		privacy.titleLabel?.font = UIFont.customBody(size: 13.0)
 		footer.textAlignment = .center
 		footer.numberOfLines = 4
-		footer.text = String(format: S.About.footer.localize(), AppVersion.string)
+		footer.text = String(format: "Version: %@" , AppVersion.string)
 	}
 
 	private func setActions() {

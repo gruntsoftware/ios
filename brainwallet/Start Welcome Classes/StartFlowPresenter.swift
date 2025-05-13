@@ -55,35 +55,35 @@ class StartFlowPresenter: Subscriber {
 	}
 
 	// MARK: - SwiftUI Start Flow
+    
+    private func presentStartFlow() {
+        
+            let startHostingController = StartHostingController(store: store,
+                                                                walletManager: walletManager)
 
-	private func presentStartFlow() {
-		
-			let startHostingController = StartHostingController(store: store,
-			                                                    walletManager: walletManager)
+        startHostingController.startViewModel.userWantsToCreate {
+                self.pushPinCreationViewControllerForNewWallet()
+            }
 
-			startHostingController.viewModel.userWantsToCreate {
-				self.pushPinCreationViewControllerForNewWallet()
-			}
+            startHostingController.startViewModel.userWantsToRecover {
+                let recoverIntro = RecoverWalletIntroViewController(didTapNext: self.pushRecoverWalletView)
+                self.navigationController?.setClearNavbar()
+                self.navigationController?.modalPresentationStyle = .fullScreen
+                self.navigationController?.setNavigationBarHidden(false, animated: false)
+                self.navigationController?.pushViewController(recoverIntro, animated: true)
+            }
 
-			startHostingController.viewModel.userWantsToRecover {
-				let recoverIntro = RecoverWalletIntroViewController(didTapNext: self.pushRecoverWalletView)
-				self.navigationController?.setClearNavbar()
-				self.navigationController?.modalPresentationStyle = .fullScreen
-				self.navigationController?.setNavigationBarHidden(false, animated: false)
-				self.navigationController?.pushViewController(recoverIntro, animated: true)
-			}
+            navigationController = ModalNavigationController(rootViewController: startHostingController)
+            navigationController?.delegate = navigationControllerDelegate
+            navigationController?.modalPresentationStyle = .fullScreen
+        
 
-			navigationController = ModalNavigationController(rootViewController: startHostingController)
-			navigationController?.delegate = navigationControllerDelegate
-			navigationController?.modalPresentationStyle = .fullScreen
-		
-
-		if let startFlow = navigationController {
-			startFlow.setNavigationBarHidden(true, animated: false)
-			rootViewController.present(startFlow, animated: false, completion: nil)
-		}
-	}
-
+        if let startFlow = navigationController {
+            startFlow.setNavigationBarHidden(true, animated: false)
+            rootViewController.present(startFlow, animated: false, completion: nil)
+        }
+    }
+    
 	private var pushRecoverWalletView: () -> Void {
 		return { [weak self] in
 			guard let myself = self else { return }
@@ -134,7 +134,7 @@ class StartFlowPresenter: Subscriber {
 		let paperPhraseViewController = StartPaperPhraseViewController(store: store, callback: { [weak self] in
 			self?.pushWritePaperPhraseViewController(pin: pin)
 		})
-		paperPhraseViewController.title = S.SecurityCenter.Cells.paperKeyTitle.localize()
+		paperPhraseViewController.title = "Paper Key"
 		paperPhraseViewController.navigationItem.setHidesBackButton(true, animated: false)
 		paperPhraseViewController.hideCloseNavigationItem() // Forces user to confirm paper-key
 
@@ -149,7 +149,7 @@ class StartFlowPresenter: Subscriber {
 		let writeViewController = WritePaperPhraseViewController(store: store, walletManager: walletManager, pin: pin, callback: { [weak self] in
 			self?.pushConfirmPaperPhraseViewController(pin: pin)
 		})
-		writeViewController.title = S.SecurityCenter.Cells.paperKeyTitle.localize()
+		writeViewController.title = "Paper Key"
 		writeViewController.hideCloseNavigationItem()
 		navigationController?.pushViewController(writeViewController, animated: true)
 	}
@@ -188,8 +188,8 @@ class StartFlowPresenter: Subscriber {
 	}
 
 	private func handleWalletCreationError() {
-		let alert = UIAlertController(title: S.BrainwalletAlert.error.localize(), message: "Could not create wallet", preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: S.Button.ok.localize(), style: .default, handler: nil))
+		let alert = UIAlertController(title:  "Error" , message: "Could not create wallet", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok" , style: .default, handler: nil))
 		navigationController?.present(alert, animated: true, completion: nil)
 	}
 

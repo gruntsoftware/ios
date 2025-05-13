@@ -38,21 +38,21 @@ class UpdatePinViewController: UIViewController, Subscriber {
 		didSet {
 			switch step {
 			case .verify:
-				instruction.text = isCreatingPin ? S.UpdatePin.createInstruction.localize() : S.UpdatePin.enterCurrent.localize()
+				instruction.text = isCreatingPin ? "Your PIN will be used to unlock your Brainwallet and send money."  : "Enter your current PIN."
 				caption.isHidden = true
 			case .new:
-				let instructionText = isCreatingPin ? S.UpdatePin.createInstruction.localize() : S.UpdatePin.enterNew.localize()
+				let instructionText = isCreatingPin ? "Your PIN will be used to unlock your Brainwallet and send money."  : "Enter your new PIN." 
 				if instruction.text != instructionText {
 					instruction.pushNewText(instructionText)
 				}
-				header.text = S.UpdatePin.createTitle.localize()
+				header.text = "Set PIN"
 				caption.isHidden = false
 			case .confirmNew:
 				caption.isHidden = true
 				if isCreatingPin {
-					header.text = S.UpdatePin.createTitleConfirm.localize()
+					header.text = "Re-Enter PIN"
 				} else {
-					instruction.pushNewText(S.UpdatePin.reEnterNew.localize())
+					instruction.pushNewText("Re-Enter your new PIN.")
 				}
 			}
 		}
@@ -126,15 +126,15 @@ class UpdatePinViewController: UIViewController, Subscriber {
 	}
 
 	private func setData() {
-		caption.text = S.UpdatePin.caption.localize()
+		caption.text = "Remember this PIN. If you forget it, you won't be able to access your Litecoin."
 		view.addSubview(spacer)
 
 		header.textColor = BrainwalletUIColor.content
 		instruction.textColor = BrainwalletUIColor.content
 		caption.textColor = BrainwalletUIColor.content
         view.backgroundColor = BrainwalletUIColor.surface
-		header.text = isCreatingPin ? S.UpdatePin.createTitle.localize() : S.UpdatePin.updateTitle.localize()
-		instruction.text = isCreatingPin ? S.UpdatePin.createInstruction.localize() : S.UpdatePin.enterCurrent.localize()
+		header.text = isCreatingPin ? "Set PIN" : "Update PIN"
+		instruction.text = isCreatingPin ? "Your PIN will be used to unlock your Brainwallet and send money."  : "Enter your current PIN."
 
 		pinPad.ouputDidUpdate = { [weak self] text in
 			guard let step = self?.step else { return }
@@ -261,8 +261,8 @@ class UpdatePinViewController: UIViewController, Subscriber {
 						})))
 					}
 				} else {
-					let alert = UIAlertController(title: S.UpdatePin.updateTitle.localize(), message: S.UpdatePin.setPinError.localize(), preferredStyle: .alert)
-					alert.addAction(UIAlertAction(title: S.Button.ok.localize(), style: .default, handler: { [weak self] _ in
+					let alert = UIAlertController(title: "Update PIN" , message: "Update PIN Error" , preferredStyle: .alert)
+					alert.addAction(UIAlertAction(title: "Ok" , style: .default, handler: { [weak self] _ in
 						self?.clearAfterFailure()
 						self?.pushNewStep(.new)
 					}))

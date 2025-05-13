@@ -27,10 +27,10 @@ class ReceiveViewController: UIViewController, Subscriber, Trackable {
 	private let qrCode = UIImageView()
 	private let address = UILabel(font: .customBody(size: 14.0))
 	private let addressPopout = InViewAlert(type: .primary)
-	private let share = ShadowButton(title: S.Receive.share.localize(), type: .tertiary, image: #imageLiteral(resourceName: "Share"))
+	private let share = ShadowButton(title: "Share" , type: .tertiary, image: #imageLiteral(resourceName: "Share"))
 	private let sharePopout = InViewAlert(type: .secondary)
 	private let border = UIView()
-	private let request = ShadowButton(title: S.Receive.request.localize(), type: .flatLitecoinBlue)
+	private let request = ShadowButton(title: "Request an Amount" , type: .flatLitecoinBlue)
 	private let addressButton = UIButton(type: .system)
 	private var topSharePopoutConstraint: NSLayoutConstraint?
 	private let wallet: BRWallet
@@ -171,7 +171,7 @@ class ReceiveViewController: UIViewController, Subscriber, Trackable {
 	private func setupCopiedMessage() {
 		let copiedMessage = UILabel(font: .customMedium(size: 14.0))
 		copiedMessage.textColor = .white
-		copiedMessage.text = S.Receive.copied.localize()
+		copiedMessage.text = "Copied"
 		copiedMessage.textAlignment = .center
 		addressPopout.contentView = copiedMessage
 	}
@@ -179,8 +179,8 @@ class ReceiveViewController: UIViewController, Subscriber, Trackable {
 	private func setupShareButtons() {
 		let container = UIView()
 		container.translatesAutoresizingMaskIntoConstraints = false
-		let email = ShadowButton(title: S.Receive.emailButton.localize(), type: .tertiary)
-		let text = ShadowButton(title: S.Receive.textButton.localize(), type: .tertiary)
+		let email = ShadowButton(title: "Email" , type: .tertiary)
+		let text = ShadowButton(title: "Text message" , type: .tertiary)
 		container.addSubview(email)
 		container.addSubview(text)
 		email.constrain([
@@ -276,6 +276,6 @@ extension ReceiveViewController: ModalDisplayable {
 	}
 
 	var modalTitle: String {
-		return S.Receive.title.localize()
+		return "Receive"
 	}
 }

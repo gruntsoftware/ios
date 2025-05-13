@@ -36,19 +36,22 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 		do {
 			instance = try WalletManager(store: Store(), dbPath: nil)
 		} catch {
-			NSLog("ERROR: Instance of WalletManager not initialized")
+            assertionFailure("ERROR: Instance of WalletManager not initialized")
 		}
 		return instance!
 	}()
 
 	var wallet: BRWallet? {
-		guard masterPubKey != BRMasterPubKey() else { return nil }
+        guard masterPubKey != BRMasterPubKey() else {
+            return nil
+        }
 		guard let wallet = lazyWallet
 		else {
 			// stored transactions don't match masterPubKey
 			#if !Debug
 				do { try FileManager.default.removeItem(atPath: dbPath) } catch {}
 			#endif
+            assertionFailure("BRWallet is nil")
 			return nil
 		}
 		didInitWallet = true
@@ -61,7 +64,10 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 	}
 
 	var peerManager: BRPeerManager? {
-		guard wallet != nil else { return nil }
+        guard wallet != nil else {
+            assertionFailure("BRPeerManager.wallet is nil")
+            return nil
+        }
 		return lazyPeerManager
 	}
 
@@ -425,7 +431,7 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 				}
 
 				let timestampResult = Int32(bitPattern: b.pointee.timestamp).subtractingReportingOverflow(Int32(NSTimeIntervalSince1970))
-				guard !timestampResult.1 else { print("skipped block with overflowed timestamp"); continue }
+				guard !timestampResult.1 else { debugPrint(":::skipped block with overflowed timestamp"); continue }
 
 				pk = pk + 1
 				sqlite3_bind_int(sql2, 1, pk)
@@ -609,7 +615,7 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 
 			let result = UInt64(bitPattern: sqlite3_column_int64(sql, 3)).addingReportingOverflow(UInt64(NSTimeIntervalSince1970))
 			if result.1 {
-				print("skipped overflowed timestamp: \(sqlite3_column_int64(sql, 3))")
+				debugPrint(":::skipped overflowed timestamp: \(sqlite3_column_int64(sql, 3))")
 				continue
 			} else {
 				p.timestamp = result.0

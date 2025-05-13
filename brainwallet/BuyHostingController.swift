@@ -36,13 +36,14 @@ class BuyHostingController: UIHostingController<WebBuyView> {
 	var contentView: WebBuyView
 
 	var isLoaded: Bool = false
-
-	init() {
+    
+    init() {
         // HACK TO Widget
         let buyViewModel = BuyViewModel()
         contentView = WebBuyView(receiveAddress: buyViewModel.receivingAddress)
         super.init(rootView: contentView)
-	}
+    }
+
 
 	@available(*, unavailable)
 	@MainActor dynamic required init?(coder _: NSCoder) {

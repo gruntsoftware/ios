@@ -2,7 +2,7 @@ import BRCore
 import Foundation
 
 class BRPeerManager {
-	let cPtr: OpaquePointer
+	let cPointer: OpaquePointer
 	let listener: BRPeerManagerListener
 	let mainNetParams = [BRMainNetParams]
 	var falsePositiveRate: Double
@@ -14,13 +14,13 @@ class BRPeerManager {
 	      fpRate: Double)
 	{
 		var blockRefs = blocks
-		guard let cPtr = BRPeerManagerNew(mainNetParams, wallet.cPtr, UInt32(earliestKeyTime + NSTimeIntervalSince1970),
+        guard let cPointer = BRPeerManagerNew(mainNetParams, wallet.cPointer, UInt32(earliestKeyTime + NSTimeIntervalSince1970),
 		                                  &blockRefs, blockRefs.count, peers, peers.count, fpRate) else { return nil }
 		self.listener = listener
-		self.cPtr = cPtr
+		self.cPointer = cPointer
 		falsePositiveRate = fpRate
 
-		BRPeerManagerSetCallbacks(cPtr, Unmanaged.passUnretained(self).toOpaque(),
+		BRPeerManagerSetCallbacks(cPointer, Unmanaged.passUnretained(self).toOpaque(),
 		                          { info in // syncStarted
 		                          	guard let info = info else { return }
 		                          	Unmanaged<BRPeerManager>.fromOpaque(info).takeUnretainedValue().listener.syncStarted()
@@ -53,7 +53,7 @@ class BRPeerManager {
 
 	// true if currently connected to at least one peer
 	var isConnected: Bool {
-		return BRPeerManagerConnectStatus(cPtr) == BRPeerStatusConnected
+		return BRPeerManagerConnectStatus(cPointer) == BRPeerStatusConnected
 	}
 
 	// connect to litecoin peer-to-peer network (also call this whenever networkIsReachable() status changes)
@@ -61,54 +61,54 @@ class BRPeerManager {
 		if let fixedAddress = UserDefaults.customNodeIP {
 			setFixedPeer(address: fixedAddress, port: UserDefaults.customNodePort ?? C.standardPort)
 		}
-		BRPeerManagerConnect(cPtr)
+		BRPeerManagerConnect(cPointer)
 	}
 
 	// disconnect from litecoin peer-to-peer network
 	func disconnect() {
-		BRPeerManagerDisconnect(cPtr)
+		BRPeerManagerDisconnect(cPointer)
 	}
 
 	// rescans blocks and transactions after earliestKeyTime (a new random download peer is also selected due to the
 	// possibility that a malicious node might lie by omitting transactions that match the bloom filter)
 	func rescan() {
-		BRPeerManagerRescan(cPtr)
+		BRPeerManagerRescan(cPointer)
 	}
 
 	// current proof-of-work verified best block height
 	var lastBlockHeight: UInt32 {
-		return BRPeerManagerLastBlockHeight(cPtr)
+		return BRPeerManagerLastBlockHeight(cPointer)
 	}
 
 	// current proof-of-work verified best block timestamp (time interval since unix epoch)
 	var lastBlockTimestamp: UInt32 {
-		return BRPeerManagerLastBlockTimestamp(cPtr)
+		return BRPeerManagerLastBlockTimestamp(cPointer)
 	}
 
 	// the (unverified) best block height reported by connected peers
 	var estimatedBlockHeight: UInt32 {
-		return BRPeerManagerEstimatedBlockHeight(cPtr)
+		return BRPeerManagerEstimatedBlockHeight(cPointer)
 	}
 
 	// current network sync progress from 0 to 1
 	// startHeight is the block height of the most recent fully completed sync
 	func syncProgress(fromStartHeight: UInt32) -> Double {
-		return BRPeerManagerSyncProgress(cPtr, fromStartHeight)
+		return BRPeerManagerSyncProgress(cPointer, fromStartHeight)
 	}
 
 	// the number of currently connected peers
 	var peerCount: Int {
-		return BRPeerManagerPeerCount(cPtr)
+		return BRPeerManagerPeerCount(cPointer)
 	}
 
 	// description of the peer most recently used to sync blockchain data
 	var downloadPeerName: String {
-		return String(cString: BRPeerManagerDownloadPeerName(cPtr))
+		return String(cString: BRPeerManagerDownloadPeerName(cPointer))
 	}
 
 	// publishes tx to litecoin network
 	func publishTx(_ tx: BRTxRef, completion: @escaping (Bool, BRPeerManagerError?) -> Void) {
-		BRPeerManagerPublishTx(cPtr, tx, Unmanaged.passRetained(CompletionWrapper(completion)).toOpaque()) { info, error in
+		BRPeerManagerPublishTx(cPointer, tx, Unmanaged.passRetained(CompletionWrapper(completion)).toOpaque()) { info, error in
 			guard let info = info else { return }
 			guard error == 0
 			else {
@@ -122,7 +122,7 @@ class BRPeerManager {
 
 	// number of connected peers that have relayed the given unconfirmed transaction
 	func relayCount(_ forTxHash: UInt256) -> Int {
-		return BRPeerManagerRelayCount(cPtr, forTxHash)
+		return BRPeerManagerRelayCount(cPointer, forTxHash)
 	}
 
 	func setFixedPeer(address: Int, port: Int) {
@@ -130,15 +130,15 @@ class BRPeerManager {
 			var newAddress = UInt128()
 			newAddress.u16.5 = 0xFFFF
 			newAddress.u32.3 = UInt32(address)
-			BRPeerManagerSetFixedPeer(cPtr, newAddress, UInt16(port))
+			BRPeerManagerSetFixedPeer(cPointer, newAddress, UInt16(port))
 		} else {
-			BRPeerManagerSetFixedPeer(cPtr, UInt128(), 0)
+			BRPeerManagerSetFixedPeer(cPointer, UInt128(), 0)
 		}
 	}
 
 	deinit {
-		BRPeerManagerDisconnect(cPtr)
-		BRPeerManagerFree(cPtr)
+		BRPeerManagerDisconnect(cPointer)
+		BRPeerManagerFree(cPointer)
 	}
 
 	private class CompletionWrapper {

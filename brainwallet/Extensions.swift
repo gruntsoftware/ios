@@ -92,7 +92,7 @@ extension UserDefaults {
 		}
 		let s = CFUUIDCreateString(nil, CFUUIDCreate(nil)) as String
 		setValue(s, forKey: "BR_DEVICE_ID")
-		print("new device id \(s)")
+		debugPrint(":::new device id \(s)")
 		return s
 	}
 }
@@ -174,7 +174,7 @@ public extension Data {
 //			var bzret = BZ2_bzCompressInit(&stream, BZDefaultBlockSize, 0, BZDefaultWorkFactor)
 //			guard bzret == BZ_OK
 //			else {
-//				print("failed compression init")
+//				debugPrint(":::failed compression init")
 //				success = false
 //				return
 //			}
@@ -182,7 +182,7 @@ public extension Data {
 //				bzret = BZ2_bzCompress(&stream, stream.avail_in > 0 ? BZ_RUN : BZ_FINISH)
 //				guard bzret >= BZ_OK
 //				else {
-//					print("failed compress")
+//					debugPrint(":::failed compress")
 //					success = false
 //					return
 //				}
@@ -218,7 +218,7 @@ public extension Data {
 //			var bzret = BZ2_bzDecompressInit(&stream, 0, 0)
 //			guard bzret == BZ_OK
 //			else {
-//				print("failed decompress init")
+//				debugPrint(":::failed decompress init")
 //				success = false
 //				return
 //			}
@@ -226,7 +226,7 @@ public extension Data {
 //				bzret = BZ2_bzDecompress(&stream)
 //				guard bzret >= BZ_OK
 //				else {
-//					print("failed decompress")
+//					debugPrint(":::failed decompress")
 //					success = false
 //					return
 //				}

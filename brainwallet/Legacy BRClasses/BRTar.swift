@@ -169,7 +169,7 @@ class BRTar {
 
 	fileprivate static func log(_ string: String) {
 		if tarLogEnabled {
-			print("[BRTar] \(string)")
+			debugPrint(":::[BRTar] \(string)")
 		}
 	}
 }

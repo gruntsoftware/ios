@@ -22,7 +22,7 @@ struct SendButtonView: View {
                                     .foregroundColor(BrainwalletColor.surface)
                                     .shadow(color: BrainwalletColor.nearBlack, radius: 3, x: 0, y: 4)
 
-								Text(S.Send.sendLabel.localize())
+								Text("Send")
 									.frame(width: geometry.size.width * 0.9, height: 45, alignment: .center)
 									.font(Font(UIFont.customMedium(size: 18.0)))
 									.foregroundColor(BrainwalletColor.content)

@@ -78,7 +78,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 	@objc
 	func languageChanged() {
-		walletBalanceLabel.text = S.ManageWallet.balance.localize() + ":"
+		walletBalanceLabel.text = "Balance"  + ":"
 		localizeTabBar()
 		viewControllers = []
 		addViewControllers()
@@ -116,7 +116,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	}
 
 	private func setupViews() {
-		walletBalanceLabel.text = S.ManageWallet.balance.localize() + ":"
+		walletBalanceLabel.text = "Balance"  + ":"
         
         settingsButton.imageView?.tintColor = BrainwalletUIColor.content
 
@@ -205,9 +205,16 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		}
 
 		store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
-		                callback: { _ in
-		                	self.tabBar.selectedItem = self.tabBar.items?.first
-		                })
+                        callback: { _ in
+            self.tabBar.selectedItem = self.tabBar.items?.first
+                    if let rate = store.state.currentRate {
+                        let maxDigits = store.state.maxDigits
+                        let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: maxDigits)
+                        secondaryLabel.formatter = placeholderAmount.localFormat
+                        primaryLabel.formatter = placeholderAmount.ltcFormat
+                        self.exchangeRate = rate
+                    }
+        })
 
 		store.lazySubscribe(self,
 		                    selector: { $0.isLtcSwapped != $1.isLtcSwapped },
@@ -320,10 +327,10 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 		for item in array {
 			switch item.tag {
-			case 0: item.title = S.History.barItemTitle.localize()
-			case 1: item.title = S.Send.barItemTitle.localize()
-			case 2: item.title = S.Receive.barItemTitle.localize()
-			case 3: item.title = S.BuyCenter.barItemTitle.localize()
+			case 0: item.title = "History"
+			case 1: item.title = "Send"
+			case 2: item.title = "Receive"
+			case 3: item.title = "Buy"
 			default:
 				item.title = "NO-TITLE"
 				NSLog("ERROR: UITabbar item count is wrong")
@@ -352,14 +359,13 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			transactionVC.isLtcSwapped = store?.state.isLtcSwapped
 
 		case "brainwallet.BuyHostingController":
-			guard let buyHC = contentController as? BuyHostingController
-			else {
-				return
-			}
-
-			buyHC.isLoaded = true
-
-		case "brainwallet.SendLTCViewController":
+            guard let buyHC = contentController as? BuyHostingController
+            else {
+                return
+            }
+            buyHC.isLoaded = true
+            
+        case "brainwallet.SendLTCViewController":
 			guard let sendVC = contentController as? SendLTCViewController
 			else {
 				return

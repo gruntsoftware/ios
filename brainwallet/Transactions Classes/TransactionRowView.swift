@@ -42,7 +42,7 @@ struct TransactionRowView: View {
                             .padding()
                     }
                     VStack {
-                        Text(isReceived ?  S.Transaction.receivedStatus.localize() : S.Transaction.sendingStatus.localize())
+                        Text("In progress: %1$@")
                             .font(.title2)
                             .foregroundColor(BrainwalletColor.content)
                         Text("IS PROGRESSING...")

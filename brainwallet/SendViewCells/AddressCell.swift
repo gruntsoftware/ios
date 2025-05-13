@@ -16,8 +16,8 @@ class AddressCell: UIView {
 	var didReceivePaymentRequest: ((PaymentRequest) -> Void)?
 
 	let textField = UITextField()
-	let paste = ShadowButton(title: S.Send.pasteLabel.localize(), type: .tertiary)
-	let scan = ShadowButton(title: S.Send.scanLabel.localize(), type: .tertiary)
+	let paste = ShadowButton(title:"Paste" , type: .tertiary)
+	let scan = ShadowButton(title: "Scan" , type: .tertiary)
 	private let dividerView = UIView(color: BrainwalletUIColor.border)
 
 	private func setupViews() {
@@ -60,7 +60,7 @@ class AddressCell: UIView {
 		textField.font = .customBody(size: 15.0)
 		textField.adjustsFontSizeToFitWidth = true
 		textField.minimumFontSize = 10.0
-		textField.placeholder = S.Send.enterLTCAddressLabel.localize()
+		textField.placeholder = "Enter LTC Address"
 		textField.returnKeyType = .done
 		textField.delegate = self
 		textField.clearButtonMode = .whileEditing

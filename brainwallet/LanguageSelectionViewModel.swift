@@ -2,7 +2,9 @@ import Foundation
 
 class LanguageSelectionViewModel {
 	var localizations: [String] {
-		return Bundle.main.localizations.filter { $0 != "Base" }.sorted()
+        
+        debugPrint(":::\(Bundle.main.localizations)" )
+		return Bundle.main.localizations
 	}
 
 	func setLanguage(code: String) {

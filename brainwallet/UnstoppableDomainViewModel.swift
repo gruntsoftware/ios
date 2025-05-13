@@ -9,7 +9,7 @@ class UnstoppableDomainViewModel: ObservableObject {
 //	var searchString: String = ""
 //
 //	@Published
-//	var placeholderString: String = S.Send.UnstoppableDomains.simplePlaceholder.localize()
+//	var placeholderString: String = S.Send.UnstoppableDomains.simplePlaceholder 
 //
 //	@Published
 //	var isDomainResolving: Bool = false
@@ -75,7 +75,7 @@ class UnstoppableDomainViewModel: ObservableObject {
 //
 //		guard let resolution = try? Resolution(apiKey: Partner.partnerKeyPath(name: .infura))
 //		else {
-//			print("Init of Resolution instance with default parameters failed...")
+//			debugPrint(":::Init of Resolution instance with default parameters failed...")
 //			return
 //		}
 //

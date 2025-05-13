@@ -13,18 +13,18 @@ enum AlertType {
 	var header: String {
 		switch self {
 		case .pinSet:
-			return S.SecurityAlerts.pinSet.localize()
+			return "PIN Set"
 		case .paperKeySet:
-			return S.SecurityAlerts.paperKeySet.localize()
+			return "Paper Key Set"
 		case .sendSuccess:
-			return S.SecurityAlerts.sendSuccess.localize()
+			return "Send Confirmation"
 		case .addressesCopied:
-			return S.SecurityAlerts.copiedAddressesHeader.localize()
+			return "Addresses Copied"
 		case .sweepSuccess:
-			return S.Import.success.localize()
+			return "Success"
 		// Failure(s)
 		case .failedResolution:
-			return S.SecurityAlerts.sendFailure.localize()
+			return "Send failed" 
 		}
 	}
 
@@ -33,16 +33,16 @@ enum AlertType {
 		case .pinSet:
 			return ""
 		case .paperKeySet:
-			return S.SecurityAlerts.paperKeySetSubheader.localize()
+			return "Awesome!"
 		case .sendSuccess:
-			return S.SecurityAlerts.sendSuccessSubheader.localize()
+			return "Money Sent!"
 		case .addressesCopied:
-			return S.SecurityAlerts.copiedAddressesSubheader.localize()
+			return "Addresses Copied"
 		case .sweepSuccess:
-			return S.Import.successBody.localize()
+			return "Successfully imported wallet."
 		// Failure(s)
 		case .failedResolution:
-			return S.SecurityAlerts.resolvedSuccessSubheader.localize()
+			return "Resolved"
 		}
 	}
 
