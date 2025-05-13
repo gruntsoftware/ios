@@ -371,7 +371,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		                		syncView.noSendImageView.alpha = 1.0
 		                		syncView.timestamp = reduxState.walletState.lastBlockTimestamp
                                 debugPrint("::: transactions.count) \(reduxState.walletState.transactions.count)")
-
                                 syncView.blockNumberString = reduxState.walletState.transactions.first?.blockHeight ?? ""
 
 		                		self.shouldBeSyncing = true

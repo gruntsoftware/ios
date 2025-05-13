@@ -87,25 +87,6 @@ struct StartView: View {
                             ZStack {
                                 Group {
                                     HStack {
-                                        Picker("", selection: $pickedLanguage) {
-                                            ForEach(startViewModel.languages, id: \.self) {
-                                                Text($0.nativeName)
-                                                    .font(selectorFont)
-                                                    .foregroundColor(BrainwalletColor.content)
-                                            }
-                                        }
-                                        .pickerStyle(.wheel)
-                                        .frame(width: width * 0.4)
-                                        .onChange(of: $pickedLanguage.wrappedValue) { _ in
-                                            startViewModel.currentLanguage = pickedLanguage
-                                            selectedLang = true
-                                            currentTagline = startViewModel.taglines[startViewModel.currentLanguage.rawValue]
-                                            startViewModel.speakLanguage()
-                                            delay(1.2) {
-                                                delayedSelect = true
-                                            }
-                                        }
-                                        
                                         Button(action: {
                                             userPrefersDarkMode.toggle()
                                             startViewModel.userDidChangeDarkMode(state: userPrefersDarkMode)
@@ -143,11 +124,11 @@ struct StartView: View {
                                             }
                                         }
                                         .pickerStyle(.wheel)
-                                        .frame(width: width * 0.4)
+                                        .frame(width: width * 0.6)
                                         .onChange(of: $pickedCurrency.wrappedValue) { _ in
                                             startViewModel.currentFiat = pickedCurrency
                                             selectedFiat = true
-                                        }
+                                        }.padding(.trailing, width * 0.1)
                                     }
                                 }
                             }
@@ -155,26 +136,6 @@ struct StartView: View {
 						.frame(width: width * 0.9,
 						       height: height * 0.1,
 						       alignment: .center)
-						.alert(startViewModel
-							.alertMessage[startViewModel.currentLanguage.rawValue],
-							isPresented: $delayedSelect)
-						{
-							HStack {
-								Button(startViewModel
-                                    .yesLabel[startViewModel.currentLanguage.rawValue], role: .cancel)
-								{
-									// Changes and Dismisses
-									startViewModel.setLanguage(code: startViewModel.currentLanguage.code)
-									selectedLang = false
-                                }
-								Button(startViewModel
-									.cancelLabel[startViewModel.currentLanguage.rawValue], role: .destructive)
-								{
-									// Dismisses
-									selectedLang = false
-								}
-							}
-                        }
 						Spacer()
 
                         Button(action: {
