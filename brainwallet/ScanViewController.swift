@@ -139,7 +139,7 @@ class ScanViewController: UIViewController, Trackable {
         }) {
             output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
         } else {
-            print("no qr code support")
+            debugPrint(":::no qr code support")
         }
         
         DispatchQueue(label: "qrscanner").async {
@@ -158,7 +158,7 @@ class ScanViewController: UIViewController, Trackable {
                         self?.saveEvent("scan.torchOn")
                     }
                 } catch {
-                    print("Camera Torch error: \(error)")
+                    debugPrint(":::Camera Torch error: \(error)")
                 }
             }
         }

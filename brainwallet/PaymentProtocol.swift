@@ -199,7 +199,7 @@ class PaymentProtocolRequest {
 					print(errMsg!)
 				} else {
 					errMsg = NSError(domain: NSOSStatusErrorDomain, code: Int(status)).localizedDescription
-					print("SecKeyRawVerify error: " + errMsg!)
+					debugPrint(":::SecKeyRawVerify error: " + errMsg!)
 				}
 
 				return false

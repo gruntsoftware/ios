@@ -49,12 +49,12 @@ open class BRKeyedArchiver {
 			let j = try JSONSerialization.data(withJSONObject: coder.data, options: [])
 			guard let bz = (compressed ? nil : j)
 			else {
-				print("compression error")
+				debugPrint(":::compression error")
 				return Data()
 			}
 			return bz
 		} catch let e {
-			print("BRKeyedArchiver unable to archive object: \(e)")
+			debugPrint(":::BRKeyedArchiver unable to archive object: \(e)")
 			return "{}".data(using: String.Encoding.utf8)!
 		}
 	}
@@ -67,13 +67,13 @@ open class BRKeyedUnarchiver {
 			guard let bz = (compressed ? nil : data),
 			      let j = try JSONSerialization.jsonObject(with: bz, options: []) as? [String: AnyObject]
 			else {
-				print("BRKeyedUnarchiver invalid json object, or invalid bz data")
+				debugPrint(":::BRKeyedUnarchiver invalid json object, or invalid bz data")
 				return nil
 			}
 			let coder = BRCoder(data: j)
 			return T(coder: coder)
 		} catch let e {
-			print("BRKeyedUnarchiver unable to deserialize JSON: \(e)")
+			debugPrint(":::BRKeyedUnarchiver unable to deserialize JSON: \(e)")
 			return nil
 		}
 	}

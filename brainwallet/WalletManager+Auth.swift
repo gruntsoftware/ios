@@ -49,7 +49,7 @@ extension WalletManager: WalletAuthenticator {
 		if try keychainItem(key: KeychainKey.seed) as Data? != nil { // upgrade from old keychain scheme
 			let seedPhrase: String? = try keychainItem(key: KeychainKey.mnemonic)
 			var seed = UInt512()
-			print("upgrading to authenticated keychain scheme")
+			debugPrint(":::upgrading to authenticated keychain scheme")
 			BRBIP39DeriveKey(&seed, seedPhrase, nil)
 			let mpk = BRBIP32MasterPubKey(&seed, MemoryLayout<UInt512>.size)
 			seed = UInt512() // clear seed
@@ -134,7 +134,7 @@ extension WalletManager: WalletAuthenticator {
 				try setKeychainItem(key: KeychainKey.spendLimit, item: Int64(wallet.totalSent + newValue))
 				UserDefaults.standard.set(newValue, forKey: DefaultsKey.spendLimitAmount)
 			} catch {
-				print("Set spending limit error: \(error)")
+				debugPrint(":::Set spending limit error: \(error)")
 			}
 		}
 	}
@@ -169,7 +169,7 @@ extension WalletManager: WalletAuthenticator {
 				return 6
 			}
 		} catch {
-			print("Pin keychain error: \(error)")
+			debugPrint(":::Pin keychain error: \(error)")
 			return 6
 		}
 	}
@@ -416,7 +416,7 @@ extension WalletManager: WalletAuthenticator {
 			NotificationCenter.default.post(name: .walletDidWipeNotification, object: nil)
 			return true
 		} catch {
-			print("Wipe wallet error: \(error)")
+			debugPrint(":::Wipe wallet error: \(error)")
 			return false
 		}
 	}
@@ -440,7 +440,7 @@ extension WalletManager: WalletAuthenticator {
 			NotificationCenter.default.post(name: .didDeleteWalletDBNotification, object: nil)
 			return true
 		} catch {
-			print("Wipe wallet error: \(error)")
+			debugPrint(":::Wipe wallet error: \(error)")
 			return false
 		}
 	}
@@ -469,7 +469,7 @@ extension WalletManager: WalletAuthenticator {
 				try setKeychainItem(key: KeychainKey.apiAuthKey, item: privKey)
 				return privKey
 			} catch {
-				print("apiAuthKey error: \(error)")
+				debugPrint(":::apiAuthKey error: \(error)")
 				return nil
 			}
 		}

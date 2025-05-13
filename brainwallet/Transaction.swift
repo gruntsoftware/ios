@@ -219,7 +219,7 @@ class Transaction {
 
 	var comment: String? {
 		if metaData?.comment != nil {
-			print("=== memo comments \(metaData?.comment ?? "NO MEMO")")
+			debugPrint(":::=== memo comments \(metaData?.comment ?? "NO MEMO")")
 		}
 		return metaData?.comment
 	}

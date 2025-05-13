@@ -47,29 +47,6 @@ struct SeedPhraseStepView: View {
 						Spacer()
 					}
 					.frame(width: width * 0.9)
-//					HStack {
-//						Spacer()
-//						ScrollView {
-//							LazyVGrid(columns: columns) {
-//                                ForEach($viewModel.seedWords) { word in
-//                                    SeedWordView(seedWord: word, wordNumber: Int)
-//										.frame(height: fieldViewHeight)
-//										.padding(.all, 4.0)
-//								}
-//							}
-//						}
-//						.frame(height: height * 0.3)
-//						Spacer()
-//					}
-
-//					PINFieldView(pinText: $viewModel.pinDigits,
-//					             pinIsFilled: $viewModel.pinIsFilled,
-//					             viewRect: $viewModel.pinViewRect)
-//						.onReceive(viewModel.$pinDigits) { newValue in
-//							pinDigits = newValue
-//						}
-//						.frame(width: width * 0.4)
-//						.opacity(0.7)
 
 					Spacer()
 					Button(action: {

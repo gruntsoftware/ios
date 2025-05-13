@@ -103,7 +103,7 @@ class StartViewModel: ObservableObject {
 			}, nil)
 			AudioServicesPlaySystemSound(id)
 		} else {
-			print("NO AUDIO")
+			debugPrint(":::NO AUDIO")
 		}
 	}
     

@@ -51,7 +51,7 @@ struct IntroStepView: View {
 //                            }
 //                        }
 //                        if let error = error {
-//                            print("[PushNotifications] - \(error.localizedDescription)")
+//                            debugPrint(":::[PushNotifications] - \(error.localizedDescription)")
 //                        }
 //                    }
 
@@ -61,10 +61,10 @@ struct IntroStepView: View {
 //    UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in
 //
 //        if granted {
-//            print("Notification: Granted")
+//            debugPrint(":::Notification: Granted")
 //
 //        } else {
-//            print("Notification: not granted")
+//            debugPrint(":::Notification: not granted")
 //
 //        }
 //    }

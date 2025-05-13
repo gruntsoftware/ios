@@ -430,7 +430,7 @@ class ModalPresenter: Subscriber, Trackable {
 					let identifier = Locale.identifier(fromComponents: components)
 					return Locale(identifier: identifier).currencyCode ?? ""
 				}, callback: {
-					guard let wm = self.walletManager else { print("NO WALLET MANAGER!"); return }
+					guard let wm = self.walletManager else { debugPrint(":::NO WALLET MANAGER!"); return }
 					settingsNav.pushViewController(DefaultCurrencyViewController(walletManager: wm, store: self.store), animated: true)
 				}),
 				Setting(title: "Locale" , accessoryText: {
