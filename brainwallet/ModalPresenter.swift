@@ -227,8 +227,6 @@ class ModalPresenter: Subscriber, Trackable {
 			return nil // The scan view needs a custom presentation
 		case .loginAddress:
 			return receiveView(isRequestAmountVisible: false)
-		case .manageWallet:
-			return ModalViewController(childViewController: ManageWalletViewController(store: store), store: store)
 		case .wipeEmptyWallet:
 			return wipeEmptyView()
 		case .requestAmount:

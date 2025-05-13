@@ -47,8 +47,9 @@ struct LockScreenFooterView: View {
                             Button(action: {
                                 viewModel.userWantsToDelete.toggle()
                             }) {
-                                Text("Forgot seed phrase?" )
+                                Text("Forgot seed phrase?")
                                     .font(.barlowSemiBold(size: 19.0))
+                                    .fixedSize(horizontal: false, vertical: true)
                                     .frame(width: width * 0.4,
                                            alignment: .center)
                                     .foregroundColor(BrainwalletColor.content)

@@ -218,7 +218,6 @@
 		C312D3C72D7DC27700BB97A4 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A42D7DC27700BB97A4 /* Sender.swift */; };
 		C312D3CA2D7DC27700BB97A4 /* BuyWKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2312D7DC27700BB97A4 /* BuyWKWebViewController.swift */; };
 		C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2862D7DC27700BB97A4 /* PartnerData.swift */; };
-		C312D3CC2D7DC27700BB97A4 /* ManageWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1A52D7DC27700BB97A4 /* ManageWalletViewController.swift */; };
 		C312D3CD2D7DC27700BB97A4 /* AlertFailureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1FE2D7DC27700BB97A4 /* AlertFailureView.swift */; };
 		C312D3CE2D7DC27700BB97A4 /* TestnetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2B82D7DC27700BB97A4 /* TestnetData.swift */; };
 		C312D3D12D7DC27700BB97A4 /* RequestAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2972D7DC27700BB97A4 /* RequestAmountViewController.swift */; };
@@ -718,7 +717,6 @@
 		C312D18B2D7DC27700BB97A4 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		C312D18C2D7DC27700BB97A4 /* Transactions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Transactions.storyboard; sourceTree = "<group>"; };
 		C312D18D2D7DC27700BB97A4 /* WarningConfirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WarningConfirmation.storyboard; sourceTree = "<group>"; };
-		C312D1A52D7DC27700BB97A4 /* ManageWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWalletViewController.swift; sourceTree = "<group>"; };
 		C312D1A62D7DC27700BB97A4 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C312D1A72D7DC27700BB97A4 /* ModalDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDisplayable.swift; sourceTree = "<group>"; };
 		C312D1A82D7DC27700BB97A4 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -1690,7 +1688,6 @@
 				C312D1B22D7DC27700BB97A4 /* ModalTransitionDelegate.swift */,
 				C312D1B32D7DC27700BB97A4 /* PinTransitioningDelegate.swift */,
 				C312D1B42D7DC27700BB97A4 /* PresentModalAnimator.swift */,
-				C312D1A52D7DC27700BB97A4 /* ManageWalletViewController.swift */,
 				C312D1A62D7DC27700BB97A4 /* MenuViewController.swift */,
 				C312D1A72D7DC27700BB97A4 /* ModalDisplayable.swift */,
 				C312D1A82D7DC27700BB97A4 /* ModalViewController.swift */,
@@ -2503,7 +2500,6 @@
 				C312D3C72D7DC27700BB97A4 /* Sender.swift in Sources */,
 				C312D3CA2D7DC27700BB97A4 /* BuyWKWebViewController.swift in Sources */,
 				C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */,
-				C312D3CC2D7DC27700BB97A4 /* ManageWalletViewController.swift in Sources */,
 				C312D3CD2D7DC27700BB97A4 /* AlertFailureView.swift in Sources */,
 				C312D3CE2D7DC27700BB97A4 /* TestnetData.swift in Sources */,
 				C312D3D12D7DC27700BB97A4 /* RequestAmountViewController.swift in Sources */,
