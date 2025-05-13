@@ -22,7 +22,7 @@ class WalletInfo: BRKVStoreObject, BRCoding {
 		do {
 			(ver, date, del, bytes) = try kvStore.get(walletInfoKey)
 		} catch let e {
-			print("Unable to initialize WalletInfo: \(e)")
+			debugPrint(":::Unable to initialize WalletInfo: \(e)")
 			return nil
 		}
 		let bytesData = Data(bytes: &bytes, count: bytes.count)

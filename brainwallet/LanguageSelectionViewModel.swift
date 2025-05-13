@@ -3,7 +3,7 @@ import Foundation
 class LanguageSelectionViewModel {
 	var localizations: [String] {
         
-        print(":::\(Bundle.main.localizations)" )
+        debugPrint(":::\(Bundle.main.localizations)" )
 		return Bundle.main.localizations
 	}
 

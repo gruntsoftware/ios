@@ -8,7 +8,7 @@ class LanguageSelectionViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
-       print("::: viewModel.localizations.count \(viewModel.localizations.count)")
+       debugPrint("::: viewModel.localizations.count \(viewModel.localizations.count)")
 		setupUI()
 	}
 

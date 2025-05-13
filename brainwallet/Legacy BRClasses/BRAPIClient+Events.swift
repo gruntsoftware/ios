@@ -108,7 +108,7 @@ class EventManager {
 		) { [weak self] note in
 			guard let eventName = note.userInfo?[EventManager.eventNameKey] as? String
 			else {
-				print("[EventManager] received invalid userInfo dict: \(String(describing: note.userInfo))")
+				debugPrint(":::[EventManager] received invalid userInfo dict: \(String(describing: note.userInfo))")
 				return
 			}
 			if let eventAttributes = note.userInfo?[EventManager.eventAttributesKey] as? Attributes {
@@ -137,7 +137,7 @@ class EventManager {
 	private func pushEvent(eventName: String, attributes: [String: String]) {
 		queue.addOperation { [weak self] in
 			guard let myself = self else { return }
-			print("[EventManager] pushEvent name=\(eventName) attributes=\(attributes)")
+			debugPrint(":::[EventManager] pushEvent name=\(eventName) attributes=\(attributes)")
 			myself.buffer.append(Event(sessionId: myself.sessionId,
 			                           time: Date().timeIntervalSince1970 * 1000.0,
 			                           eventName: eventName,
@@ -153,7 +153,7 @@ class EventManager {
 				do {
 					try FileManager.default.createDirectory(atPath: dataDirectory, withIntermediateDirectories: false, attributes: nil)
 				} catch {
-					print("[EventManager] Could not create directory: \(error)")
+					debugPrint(":::[EventManager] Could not create directory: \(error)")
 				}
 			}
 			let fullPath = NSString(string: dataDirectory).appendingPathComponent("/\(NSUUID().uuidString).json")
@@ -161,12 +161,12 @@ class EventManager {
 				outputStream.open()
 				defer { outputStream.close() }
 				let dataToSerialize = myself.buffer.map { $0.dictionary }
-				guard JSONSerialization.isValidJSONObject(dataToSerialize) else { print("Invalid json"); return }
+				guard JSONSerialization.isValidJSONObject(dataToSerialize) else { debugPrint(":::Invalid json"); return }
 				var error: NSError?
 				if JSONSerialization.writeJSONObject(dataToSerialize, to: outputStream, options: [], error: &error) == 0 {
-					print("[EventManager] Unable to write JSON for events file: \(String(describing: error))")
+					debugPrint(":::[EventManager] Unable to write JSON for events file: \(String(describing: error))")
 				} else {
-					print("[EventManager] saved \(myself.buffer.count) events to disk")
+					debugPrint(":::[EventManager] saved \(myself.buffer.count) events to disk")
 				}
 			}
 			myself.buffer.removeAll()
@@ -182,7 +182,7 @@ class EventManager {
 				do {
 					try FileManager.default.removeItem(atPath: fileName)
 				} catch {
-					print("[EventManager] Unable to remove events file at path \(fileName): \(error)")
+					debugPrint(":::[EventManager] Unable to remove events file at path \(fileName): \(error)")
 				}
 			}
 		}

@@ -75,7 +75,7 @@ class UnstoppableDomainViewModel: ObservableObject {
 //
 //		guard let resolution = try? Resolution(apiKey: Partner.partnerKeyPath(name: .infura))
 //		else {
-//			print("Init of Resolution instance with default parameters failed...")
+//			debugPrint(":::Init of Resolution instance with default parameters failed...")
 //			return
 //		}
 //

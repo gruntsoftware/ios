@@ -120,7 +120,7 @@ open class BRReplicatedKVStore: NSObject {
 	func openDatabase() throws {
 		try dispatch_sync_throws(dbQueue) {
 			if self.db != nil {
-				print("Database already open")
+				debugPrint(":::Database already open")
 				throw BRReplicatedKVStoreError.sqLiteError
 			}
 			try self.checkErr(sqlite3_open_v2(
@@ -749,7 +749,7 @@ open class BRReplicatedKVStore: NSObject {
 	}
 
 	fileprivate func log(_ s: String) {
-		print("[KVStore] \(s)")
+		debugPrint(":::[KVStore] \(s)")
 	}
 }
 
