@@ -26,7 +26,7 @@ struct NewMainView: View {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    SettingsView(viewModel: newMainViewModel)
+                   
                 }
                 .frame(width: width,
                        alignment: .center)

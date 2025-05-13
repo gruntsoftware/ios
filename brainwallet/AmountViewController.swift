@@ -62,15 +62,30 @@ class AmountViewController: UIViewController, Trackable {
 		self.store = store
 		self.isPinPadExpandedAtLaunch = isPinPadExpandedAtLaunch
 		self.isRequesting = isRequesting
+        
+        var currencyButtonTitle = ""
+          
+        switch  store.state.maxDigits {
+            case 2: currencyButtonTitle = "photons (mł)"
+            case 5: currencyButtonTitle = "lites (ł)"
+            case 8: currencyButtonTitle = "LTC (Ł)"
+            default: currencyButtonTitle = "lites (ł)"
+        }
+         
 		if let rate = store.state.currentRate, store.state.isLtcSwapped {
 			currencyToggleButton = ShadowButton(title: "\(rate.code)(\(rate.currencySymbol))", type: .tertiary)
 		} else {
-			currencyToggleButton = ShadowButton(title: S.Symbols.currencyButtonTitle(maxDigits: store.state.maxDigits), type: .tertiary)
+
+            currencyToggleButton = ShadowButton(title: currencyButtonTitle, type: .tertiary)
 		}
 		feeSelector = FeeSelector(store: store)
         pinPad = PinPadViewController(style: .whitePinPadStyle, keyboardType: .decimalPad, maxDigits: store.state.maxDigits)
 		super.init(nibName: nil, bundle: nil)
 	}
+    
+    func setCurrencyButton() {
+        
+    }
 
 	func forceUpdateAmount(amount: Satoshis) {
 		self.amount = amount
@@ -92,6 +107,19 @@ class AmountViewController: UIViewController, Trackable {
 		addConstraints()
 		setInitialData()
 	}
+    
+    private func currencyButtonTitle(maxDigits: Int) -> String {
+        switch maxDigits {
+            case 2:
+                return "photons (mł)"
+            case 5:
+                return "lites (ł)"
+            case 8:
+                return "LTC (Ł)"
+            default:
+                return "lites (ł)"
+        }
+    }
 
 	private func addSubviews() {
 		view.addSubview(placeholder)
@@ -202,7 +230,7 @@ class AmountViewController: UIViewController, Trackable {
 		amountLabel.layer.cornerRadius = 8.0
 		amountLabel.layer.masksToBounds = true
 
-		placeholder.text = S.Send.amountLabel.localize()
+		placeholder.text = "Amount"
 		bottomBorder.isHidden = true
 		if store.state.isLtcSwapped {
 			if let rate = store.state.currentRate {
@@ -313,6 +341,8 @@ class AmountViewController: UIViewController, Trackable {
 			balanceLabel.isHidden = cursor.isHidden
 		}
 	}
+    
+   
 
 	private func toggleFeeSelector() {
 		guard let height = feeSelectorHeight else { return }
@@ -386,11 +416,11 @@ class AmountViewController: UIViewController, Trackable {
 			currencyToggleButton.title = "\(rate.code)(\(rate.currencySymbol))"
 			didShowFiat?(false)
 		} else {
-			currencyToggleButton.title = S.Symbols.currencyButtonTitle(maxDigits: store.state.maxDigits)
+			currencyToggleButton.title = currencyButtonTitle(maxDigits: store.state.maxDigits)
 			didShowFiat?(true)
 		}
 	}
-
+    
 	@available(*, unavailable)
 	required init?(coder _: NSCoder) {
 		fatalError("init(coder:) has not been implemented")

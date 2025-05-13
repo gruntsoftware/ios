@@ -1,0 +1,174 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%lld" : {
+
+    },
+    "$43,000,000.99" : {
+      "shouldTranslate" : false
+    },
+    "12345678" : {
+      "shouldTranslate" : false
+    },
+    "ACTIVITY %lld" : {
+      "shouldTranslate" : false
+    },
+    "BALANCE" : {
+      "shouldTranslate" : false
+    },
+    "Blockchain: Litecoin" : {
+
+    },
+    "Buy with MoonPay" : {
+
+    },
+    "Clear" : {
+
+    },
+    "Confirm" : {
+
+    },
+    "Copied" : {
+
+    },
+    "Copied all" : {
+
+    },
+    "Copy all details" : {
+
+    },
+    "Deposit LTC Address" : {
+
+    },
+    "Do this for you. Please do it alone. Grab a pen, paper & 5 mins." : {
+
+    },
+    "Don’t guess.\n\nIt would take you 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries." : {
+
+    },
+    "Done" : {
+
+    },
+    "Enter your current PIN" : {
+
+    },
+    "Error" : {
+
+    },
+    "Forgot seed phrase?" : {
+
+    },
+    "Game View" : {
+      "shouldTranslate" : false
+    },
+    "Hello, World!" : {
+      "shouldTranslate" : false
+    },
+    "In progress: %1$@" : {
+
+    },
+    "IS PROGRESSING..." : {
+      "shouldTranslate" : false
+    },
+    "Ł1233.994" : {
+      "shouldTranslate" : false
+    },
+    "Languages" : {
+
+    },
+    "Locale: %@" : {
+
+    },
+    "New Confirm View" : {
+
+    },
+    "New Receive View" : {
+
+    },
+    "New Send" : {
+
+    },
+    "Ok" : {
+
+    },
+    "Paste" : {
+
+    },
+    "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool" : {
+
+    },
+    "Please find a private place to write down your PIN and seed phrase." : {
+
+    },
+    "Please write this down" : {
+
+    },
+    "Ready" : {
+
+    },
+    "Receive" : {
+
+    },
+    "Recover" : {
+
+    },
+    "Restore" : {
+
+    },
+    "Restore your power" : {
+
+    },
+    "Restore!" : {
+
+    },
+    "Scan" : {
+
+    },
+    "Security" : {
+
+    },
+    "Send" : {
+
+    },
+    "Set app PIN" : {
+
+    },
+    "Settings View" : {
+
+    },
+    "Setup app passcode" : {
+
+    },
+    "Take the next 5 minutes to secure your Litecoin." : {
+
+    },
+    "These are your seed words. If you show them to anyone, they can take your Litecoin" : {
+
+    },
+    "Transaction amount detail" : {
+
+    },
+    "Transaction comment label" : {
+
+    },
+    "Transaction Details" : {
+
+    },
+    "You can get back from where you started" : {
+
+    },
+    "You didn’t forget did you? Enter it again. Or, go back to start over." : {
+
+    },
+    "YourSeedWords Prove It" : {
+
+    },
+    "YourSeedWordsView" : {
+
+    }
+  },
+  "version" : "1.0"
+}

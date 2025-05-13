@@ -43,8 +43,19 @@ class ApplicationController: Subscriber, Trackable {
 	}
 
 	private func initWallet() {
-		walletManager = try? WalletManager(store: store, dbPath: nil)
-		_ = walletManager?.wallet // attempt to initialize wallet
+	//walletManager = try? WalletManager(store: store, dbPath: nil)
+	//	_ = walletManager?.wallet // attempt to initialize wallet
+        
+        guard let tempWalletManager = try? WalletManager(store: store, dbPath: nil) else {
+            assertionFailure("WalletManager no initialized")
+            return
+        }
+        
+        walletManager = tempWalletManager
+        
+        _ = walletManager?.wallet // attempt to initialize wallet
+
+        
 		DispatchQueue.main.async {
 			self.didInitWallet = true
 			if !self.hasPerformedWalletDependentInitialization {
@@ -115,7 +126,7 @@ class ApplicationController: Subscriber, Trackable {
 		}
 		exchangeUpdater?.refresh(completion: {})
 		feeUpdater?.refresh()
-		// walletManager.apiClient?.kv?.syncAllKeys { print("KV finished syncing. err: \(String(describing: $0))") }
+		// walletManager.apiClient?.kv?.syncAllKeys { debugPrint(":::KV finished syncing. err: \(String(describing: $0))") }
 		if modalPresenter?.walletManager == nil {
 			modalPresenter?.walletManager = walletManager
 		}
@@ -129,7 +140,7 @@ class ApplicationController: Subscriber, Trackable {
 		}
 		exchangeUpdater?.refresh(completion: {})
 		feeUpdater?.refresh()
-		// walletManager.apiClient?.kv?.syncAllKeys { print("KV finished syncing. err: \(String(describing: $0))") }
+		// walletManager.apiClient?.kv?.syncAllKeys { debugPrint(":::KV finished syncing. err: \(String(describing: $0))") }
 		if modalPresenter?.walletManager == nil {
 			modalPresenter?.walletManager = walletManager
 		}
@@ -145,7 +156,7 @@ class ApplicationController: Subscriber, Trackable {
 		if !store.state.isLoginRequired {
 			UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: timeSinceLastExitKey)
 		}
-		// walletManager?.apiClient?.kv?.syncAllKeys { print("KV finished syncing. err: \(String(describing: $0))") }
+		// walletManager?.apiClient?.kv?.syncAllKeys { debugPrint(":::KV finished syncing. err: \(String(describing: $0))") }
 	}
 
 	func performFetch(_ completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -162,7 +173,10 @@ class ApplicationController: Subscriber, Trackable {
 	}
 
 	private func didInitWalletManager() {
-		guard let walletManager = walletManager else { assertionFailure("WalletManager should exist!"); return }
+        guard let walletManager = walletManager else {
+            assertionFailure("WalletManager must be initialized before ApplicationController")
+            return
+        }
 		guard let rootViewController = window?.rootViewController else { return }
 		guard let window = window else { return }
 

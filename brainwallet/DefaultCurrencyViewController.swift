@@ -32,7 +32,7 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 	}
 
     private let litecoinLabel = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.content)
-	private var litecoinUnitSwitch = UISegmentedControl(items: ["photons (\(S.Symbols.photons))", "lites (\(S.Symbols.lites))", "LTC (\(S.Symbols.ltc))"])
+	private var litecoinUnitSwitch = UISegmentedControl(items: ["photons mł", "lites ł", "LTC Ł"])
 	private let rateLabel = UILabel(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private var header: UIView?
 
@@ -56,7 +56,7 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 		tableView.separatorStyle = .none
 
 		let titleLabel = UILabel(font: .customBold(size: 17.0), color: BrainwalletUIColor.content)
-		titleLabel.text = S.Settings.currency.localize()
+		titleLabel.text = "Currency"
 		titleLabel.sizeToFit()
 		navigationItem.titleView = titleLabel
 
@@ -154,8 +154,8 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 			}
 		}
 
-		litecoinLabel.text = S.DefaultCurrency.bitcoinLabel.localize()
-		rateLabelTitle.text = S.DefaultCurrency.rateLabel.localize()
+		litecoinLabel.text = "Litecoin Display Unit"
+		rateLabelTitle.text = "Exchange Rate"
 
 		self.header = header
 		return header

@@ -57,16 +57,16 @@ struct Amount: Equatable {
 
 		switch maxDigits {
 		case 2: // photons
-			format.currencySymbol = "m\(S.Symbols.lites)\(S.Symbols.narrowSpace)"
+			format.currencySymbol = "mł  "
 			format.maximum = (C.maxMoney / C.satoshis) * 100_000 as NSNumber
 		case 5: // lites
-			format.currencySymbol = "\(S.Symbols.lites)\(S.Symbols.narrowSpace)"
+			format.currencySymbol = "ł  "
 			format.maximum = (C.maxMoney / C.satoshis) * 1000 as NSNumber
 		case 8: // litecoin
-			format.currencySymbol = "\(S.Symbols.ltc)\(S.Symbols.narrowSpace)"
+			format.currencySymbol = "Ł "
 			format.maximum = C.maxMoney / C.satoshis as NSNumber
 		default:
-			format.currencySymbol = "\(S.Symbols.lites)\(S.Symbols.narrowSpace)"
+			format.currencySymbol = "ł  "
 		}
 
 		format.maximumFractionDigits = maxDigits
@@ -143,16 +143,16 @@ struct DisplayAmount {
 
 		switch state.maxDigits {
 		case 2:
-			format.currencySymbol = "m\(S.Symbols.lites)\(S.Symbols.narrowSpace)"
+			format.currencySymbol = "mł  "
 			format.maximum = (C.maxMoney / C.satoshis) * 100_000 as NSNumber
 		case 5:
-			format.currencySymbol = "\(S.Symbols.lites)\(S.Symbols.narrowSpace)"
+			format.currencySymbol = "ł  "
 			format.maximum = (C.maxMoney / C.satoshis) * 1000 as NSNumber
 		case 8:
-			format.currencySymbol = "\(S.Symbols.ltc)\(S.Symbols.narrowSpace)"
+			format.currencySymbol = "Ł "
 			format.maximum = C.maxMoney / C.satoshis as NSNumber
 		default:
-			format.currencySymbol = "\(S.Symbols.lites)\(S.Symbols.narrowSpace)"
+			format.currencySymbol = "ł  "
 		}
 
 		format.maximumFractionDigits = state.maxDigits

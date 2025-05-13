@@ -12,7 +12,7 @@ struct LocaleChangeView: View {
 
 	var body: some View {
 		VStack {
-			Text("\(S.Settings.currentLocale.localize()) \(viewModel.displayName)")
+			Text("Locale: \(viewModel.displayName)")
 				.font(Font(UIFont.barlowSemiBold(size: 18.0)))
                 .foregroundColor(BrainwalletColor.content)
 				.padding(.leading, 20)

@@ -11,7 +11,7 @@ class StartWipeWalletViewController: UIViewController {
 	private let illustration = UIImageView(image: #imageLiteral(resourceName: "RestoreIllustration"))
 	private let message = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private let warning = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
-	private let button = ShadowButton(title: S.RecoverWallet.next.localize(), type: .primary)
+	private let button = ShadowButton(title: "Next" , type: .primary)
 	private let bullet = UIImageView(image: #imageLiteral(resourceName: "deletecircle"))
 
 	override func viewDidLoad() {
@@ -67,8 +67,8 @@ class StartWipeWalletViewController: UIViewController {
 	private func setInitialData() {
 		view.backgroundColor = BrainwalletUIColor.surface
 		illustration.contentMode = .scaleAspectFill
-		message.text = S.WipeWallet.startMessage.localize()
-		warning.text = S.WipeWallet.startWarning.localize()
+		message.text = "Starting or recovering another wallet allows you to access and manage a different Brainwallet wallet on this device." 
+		warning.text = "Your current wallet will be removed from this device. If you wish to restore it in the future, you will need to enter your Paper Key." 
 		button.tap = { [weak self] in
 			self?.didTapNext()
 		}

@@ -21,7 +21,7 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 		addressText = address
 		self.isUsingBiometrics = isUsingBiometrics
 
-		header = ModalHeaderView(title: S.Confirmation.title.localize(), style: .dark)
+		header = ModalHeaderView(title: "Confirmation" , style: .dark)
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -44,8 +44,8 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 	var cancelCallback: (() -> Void)?
 
 	private var header: ModalHeaderView?
-	private let cancel = ShadowButton(title: S.Button.cancel.localize(), type: .flatWhiteBorder)
-	private let sendButton = ShadowButton(title: S.Confirmation.send.localize(), type: .flatLitecoinBlue, image: LAContext.biometricType() == .face ? #imageLiteral(resourceName: "FaceId") : #imageLiteral(resourceName: "TouchId"))
+	private let cancel = ShadowButton(title:  "Cancel"  , type: .flatWhiteBorder)
+	private let sendButton = ShadowButton(title: "Send" , type: .flatLitecoinBlue, image: LAContext.biometricType() == .face ? #imageLiteral(resourceName: "FaceId") : #imageLiteral(resourceName: "TouchId"))
 
 	private let payLabel = UILabel(font: .barlowLight(size: 15.0), color: BrainwalletUIColor.content)
 	private let toLabel = UILabel(font: .barlowLight(size: 15.0), color: BrainwalletUIColor.content)
@@ -169,7 +169,7 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 
 	private func setInitialData() {
 		view.backgroundColor = .clear
-		payLabel.text = S.Confirmation.send.localize()
+		payLabel.text = "Send"
 		guard let header = header
 		else {
 			NSLog("ERROR: Header not initialized")
@@ -178,21 +178,21 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 
 		switch feeType {
 		case .luxury:
-			processingTime.text = String(format: S.Confirmation.processingTime.localize(), "2.5-5")
+			processingTime.text = String(format: "Processing time: This transaction will take %1$@ minutes to process.", "2.5-5")
 		case .regular:
-			processingTime.text = String(format: S.Confirmation.processingTime.localize(), "2.5-5")
+			processingTime.text = String(format: "Processing time: These transactions will take %1$@ minutes to process." , "2.5-5")
 		case .economy:
-			processingTime.text = String(format: S.Confirmation.processingTime.localize(), "5+")
+			processingTime.text = String(format: "Processing time: These transactions will take %1$@ minutes to process." , "5+")
 		}
 
 		let displayAmount = DisplayAmount(amount: amount, state: state, selectedRate: selectedRate, minimumFractionDigits: 2)
 		let displayFee = DisplayAmount(amount: txFee + opsFee, state: state, selectedRate: selectedRate, minimumFractionDigits: 2)
 		let displayTotal = DisplayAmount(amount: amount + txFee + opsFee, state: state, selectedRate: selectedRate, minimumFractionDigits: 2)
 
-		toLabel.text = S.Confirmation.to.localize()
-		feeLabel.text = S.Send.feeBlank.localize()
-		sendLabel.text = S.Confirmation.amountLabel.localize()
-		totalLabel.text = S.Confirmation.totalLabel.localize()
+		toLabel.text = "to"
+		feeLabel.text = "Fees: "
+		sendLabel.text = "Processing time: These transactions will take %1$@ minutes to process."
+		totalLabel.text = "Total Cost:"
 
 		amountLabel.text = displayAmount.combinedDescription
 		address.text = addressText

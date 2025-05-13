@@ -19,7 +19,7 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 	public required init?(coder decoder: BRCoder) {
 		classVersion = decoder.decode("classVersion")
 		if classVersion == Int.zeroValue() {
-			print("[BRTxMetadataObject] Unable to unarchive _TXMetadata: no version")
+			debugPrint(":::[BRTxMetadataObject] Unable to unarchive _TXMetadata: no version")
 			return nil
 		}
 		blockHeight = decoder.decode("bh")
@@ -78,7 +78,7 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 			super.init(key: txKey, version: ver, lastModified: date, deleted: del, data: bytesDat)
 			return
 		} catch let e {
-			print("[BRTxMetadataObject] Unable to initialize BRTxMetadataObject: \(String(describing: e))")
+			debugPrint(":::[BRTxMetadataObject] Unable to initialize BRTxMetadataObject: \(String(describing: e))")
 		}
 
 		return nil
@@ -88,7 +88,7 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 	public init(transaction: BRTransaction, exchangeRate: Double, exchangeRateCurrency: String, feeRate: Double,
 	            deviceId: String, comment: String? = nil)
 	{
-		print("[BRTxMetadataObject] new \(transaction.txHash.txKey)")
+		debugPrint(":::[BRTxMetadataObject] new \(transaction.txHash.txKey)")
 		super.init(key: transaction.txHash.txKey, version: 0, lastModified: Date(), deleted: false, data: Data())
 		blockHeight = Int(transaction.blockHeight)
 		created = Date()
@@ -108,7 +108,7 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 	override func dataWasSet(_ value: Data) {
 		guard let s: TxMetaData = BRKeyedUnarchiver.unarchiveObjectWithData(value)
 		else {
-			print("[BRTxMetadataObject] unable to deserialise tx metadata")
+			debugPrint(":::[BRTxMetadataObject] unable to deserialise tx metadata")
 			return
 		}
 		blockHeight = s.blockHeight

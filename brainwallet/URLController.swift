@@ -38,7 +38,7 @@ class URLController: Trackable {
                             case "uri":
                                 uri = value
                             default:
-                                print("Key not supported: \(key)")
+                                debugPrint(":::Key not supported: \(key)")
                         }
                     }
                 }

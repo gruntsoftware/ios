@@ -12,7 +12,7 @@ class KVStoreCoordinator: Subscriber {
 			store.perform(action: WalletChange.setWalletName(walletInfo.name))
 			store.perform(action: WalletChange.setWalletCreationDate(walletInfo.creationDate))
 		} else {
-			print("no wallet info found")
+			debugPrint(":::no wallet info found")
 		}
 		hasRetreivedInitialWalletInfo = true
 	}
@@ -35,7 +35,7 @@ class KVStoreCoordinator: Subscriber {
 		do {
 			_ = try kvStore.set(info)
 		} catch {
-			print("error setting wallet info: \(error)")
+			debugPrint(":::error setting wallet info: \(error)")
 		}
 	}
 

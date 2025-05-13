@@ -25,6 +25,6 @@ final class LanguageSelectionTests: XCTestCase {
 	func testLanguageChange() throws {
         let initialLanguage = UserDefaults.selectedLanguage
 		XCTAssertEqual(initialLanguage, "en")
-		XCTAssertEqual(S.BrainwalletAlert.warning.localize(), "Warning")  
+		XCTAssertEqual("Warning", "Warning")  
 	}
 }

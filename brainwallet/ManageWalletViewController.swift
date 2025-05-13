@@ -69,7 +69,7 @@ class ManageWalletViewController: UIViewController, ModalPresentable, Subscriber
 		textField.textColor = BrainwalletUIColor.content
 		textField.font = .customBody(size: 14.0)
 		textField.returnKeyType = .done
-		textFieldLabel.text = S.ManageWallet.textFieldLabel.localize()
+		textFieldLabel.text = "Wallet Name"
 		textField.delegate = self
 
 		textField.text = store.state.walletState.name
@@ -77,9 +77,9 @@ class ManageWalletViewController: UIViewController, ModalPresentable, Subscriber
 		if creationDate.timeIntervalSince1970 > 0 {
 			let df = DateFormatter()
 			df.dateFormat = "MMMM d, yyyy"
-			body.text = "\(S.ManageWallet.description.localize())\n\n\(S.ManageWallet.creationDatePrefix.localize()) \(df.string(from: creationDate))"
+			body.text = "Your wallet name only appears in your account transaction history and cannot be seen by anyone else.\n\nYou created your wallet on %1$@\(df.string(from: creationDate))"
 		} else {
-			body.text = S.ManageWallet.description.localize()
+			body.text = "Your wallet name only appears in your account transaction history and cannot be seen by anyone else."
 		}
 	}
 
@@ -141,6 +141,6 @@ extension ManageWalletViewController: ModalDisplayable {
 	}
 
 	var modalTitle: String {
-		return S.ManageWallet.title.localize()
+		return "Manage Wallet"
 	}
 }

@@ -32,7 +32,7 @@ struct PaymentRequest {
 						case "r":
 							r = URL(string: value)
 						default:
-							print("Key not found: \(key)")
+							debugPrint(":::Key not found: \(key)")
 						}
 					}
 					type = r == nil ? .local : .remote

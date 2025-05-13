@@ -11,14 +11,14 @@ enum AlertFailureType {
 //	var header: String {
 //		switch self {
 //		case .failedResolution:
-//			return S.Send.UnstoppableDomains.lookupFailureHeader.localize()
+//			return S.Send.UnstoppableDomains.lookupFailureHeader 
 //		}
 //	}
 //
 //	var subheader: String {
 //		switch self {
 //		case .failedResolution:
-//			return S.SecurityAlerts.resolvedSuccessSubheader.localize()
+//			return S.SecurityAlerts.resolvedSuccessSubheader 
 //		}
 //	}
 

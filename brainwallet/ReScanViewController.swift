@@ -8,7 +8,7 @@ class ReScanViewController: UIViewController, Subscriber {
 
 	private let header = UILabel(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
 	private let body = UILabel.wrapping(font: .systemFont(ofSize: 15.0))
-	private let button = ShadowButton(title: S.ReScan.buttonTitle.localize(), type: .primary)
+	private let button = ShadowButton(title: "Start Sync" , type: .primary)
 	private let footer = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private let store: Store
 
@@ -55,18 +55,18 @@ class ReScanViewController: UIViewController, Subscriber {
 
 	private func setInitialData() {
 		view.backgroundColor = BrainwalletUIColor.content
-		header.text = S.ReScan.header.localize()
+		header.text = "Sync Blockchain" 
 		body.attributedText = bodyText
-		footer.text = S.ReScan.footer.localize()
+		footer.text = "You will not be able to send money while syncing with the blockchain." 
 		button.tap = { [weak self] in
 			self?.presentRescanAlert()
 		}
 	}
 
 	private func presentRescanAlert() {
-		let alert = UIAlertController(title: S.ReScan.alertTitle.localize(), message: S.ReScan.alertMessage.localize(), preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: S.Button.cancel.localize(), style: .default, handler: nil))
-		alert.addAction(UIAlertAction(title: S.ReScan.alertAction.localize(), style: .default, handler: { _ in
+		let alert = UIAlertController(title: "Sync with Blockchain?" , message: "You will not be able to send money while syncing." , preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title:  "Cancel"  , style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "Sync" , style: .default, handler: { _ in
 			self.store.trigger(name: .rescan)
 			LWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
 
@@ -82,10 +82,10 @@ class ReScanViewController: UIViewController, Subscriber {
 		let bodyAttributes = [NSAttributedString.Key.font: UIFont.customBody(size: 16.0),
 		                      NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content]
 
-		body.append(NSAttributedString(string: "\(S.ReScan.subheader1.localize())\n", attributes: headerAttributes))
-		body.append(NSAttributedString(string: "\(S.ReScan.body1.localize())\n\n", attributes: bodyAttributes))
-		body.append(NSAttributedString(string: "\(S.ReScan.subheader2.localize())\n", attributes: headerAttributes))
-		body.append(NSAttributedString(string: "\(S.ReScan.body2.localize())\n\n\(S.ReScan.body3.localize())", attributes: bodyAttributes))
+		body.append(NSAttributedString(string: "Estimated time\n", attributes: headerAttributes))
+		body.append(NSAttributedString(string: "20-45 minutes\n\n", attributes: bodyAttributes))
+		body.append(NSAttributedString(string: "When to Sync?\n", attributes: headerAttributes))
+		body.append(NSAttributedString(string: "If a transaction shows as completed on the Litecoin network but not in your Brainwallet.\n\nYou repeatedly get an error saying your transaction was rejected.", attributes: bodyAttributes))
 		return body
 	}
 

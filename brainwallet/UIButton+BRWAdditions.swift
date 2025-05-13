@@ -20,12 +20,12 @@ extension UIButton {
 	}
 
 	static var close: UIButton {
-		let accessibilityLabel = E.isScreenshots ? "Close" : S.AccessibilityLabels.close.localize()
+		let accessibilityLabel = "Close"
 		return UIButton.icon(image: #imageLiteral(resourceName: "Close"), accessibilityLabel: accessibilityLabel)
 	}
 
 	static func buildFaqButton(store: Store, articleId: String) -> UIButton {
-		let button = UIButton.icon(image: #imageLiteral(resourceName: "Faq"), accessibilityLabel: S.AccessibilityLabels.faq.localize())
+		let button = UIButton.icon(image: #imageLiteral(resourceName: "Faq"), accessibilityLabel: "S.AccessibilityLabels.faq" )
 		button.tap = {
 			store.trigger(name: .presentFaq(articleId))
 		}

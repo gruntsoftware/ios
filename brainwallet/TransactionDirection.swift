@@ -8,11 +8,11 @@ enum TransactionDirection: String {
 	var amountFormat: String {
 		switch self {
 		case .sent:
-			return S.TransactionDetails.sent.localize()
+			return "Sent <b>%1@</b>"
 		case .received:
-			return S.TransactionDetails.received.localize()
+			return "Received <b>%1@</b>"
 		case .moved:
-			return S.TransactionDetails.moved.localize()
+			return "Moved <b>%1@</b>"
 		}
 	}
 
@@ -30,33 +30,33 @@ enum TransactionDirection: String {
 	var addressHeader: String {
 		switch self {
 		case .sent:
-			return S.TransactionDirection.to.localize()
+			return "Sent to this Address"
 		case .received:
-			return S.TransactionDirection.received.localize()
+			return "Received at this Address"
 		case .moved:
-			return S.TransactionDirection.to.localize()
+			return "Sent to this Address"
 		}
 	}
 
 	var amountDescriptionFormat: String {
 		switch self {
 		case .sent:
-			return S.TransactionDetails.sentAmountDescription.localize()
+			return "Sent <b>%1@</b>"
 		case .received:
-			return S.TransactionDetails.receivedAmountDescription.localize()
+			return "Received <b>%1@</b>"
 		case .moved:
-			return S.TransactionDetails.movedAmountDescription.localize()
+			return "Moved <b>%1@</b>"
 		}
 	}
 
 	var addressTextFormat: String {
 		switch self {
 		case .sent:
-			return S.TransactionDetails.to.localize()
+			return "to %1$@"
 		case .received:
-			return S.TransactionDetails.from.localize()
+			return "at %1$@"
 		case .moved:
-			return S.TransactionDetails.to.localize()
+			return "to %1$@"
 		}
 	}
 }

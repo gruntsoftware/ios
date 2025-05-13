@@ -15,8 +15,8 @@ class WritePaperPhraseViewController: UIViewController {
 	}()
 
 	// This is awkwardly named because nextResponder is now named next is swift 3 :(,
-	private let proceed = ShadowButton(title: S.WritePaperPhrase.next.localize(), type: .secondary)
-	private let previous = ShadowButton(title: S.WritePaperPhrase.previous.localize(), type: .secondary)
+	private let proceed = ShadowButton(title: "Next" , type: .secondary)
+	private let previous = ShadowButton(title: "Previous" , type: .secondary)
 	private var proceedWidth: NSLayoutConstraint?
 	private var previousWidth: NSLayoutConstraint?
 
@@ -26,7 +26,7 @@ class WritePaperPhraseViewController: UIViewController {
 
 	private var currentPhraseIndex = 0 {
 		didSet {
-			stepLabel.text = String(format: S.WritePaperPhrase.step.localize(), currentPhraseIndex + 1, phraseViews.count)
+			stepLabel.text = String(format: "%1$d of %2$d" , currentPhraseIndex + 1, phraseViews.count)
 		}
 	}
 
@@ -47,11 +47,11 @@ class WritePaperPhraseViewController: UIViewController {
 	override func viewDidLoad() {
 		view.backgroundColor = BrainwalletUIColor.surface
 
-		label.text = S.WritePaperPhrase.instruction.localize()
+		label.text = "Write down each word in order and store it in a safe place."
 		label.textAlignment = .center
         label.textColor = BrainwalletUIColor.content
 
-		stepLabel.text = String(format: S.WritePaperPhrase.step.localize(), 1, phraseViews.count)
+		stepLabel.text = String(format: "%1$d of %2$d" , 1, phraseViews.count)
 		stepLabel.textAlignment = .center
 
         stepLabel.textColor = BrainwalletUIColor.content
