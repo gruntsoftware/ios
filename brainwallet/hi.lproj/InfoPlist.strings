@@ -1,0 +1,30 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "ब्रेनवॉलेट";
+
+/* Bundle name */
+"CFBundleName" = "ब्रेनवॉलेट";
+
+/* No comment provided by engineer. */
+"Litecoin Payment" = "लाइटकॉइन भुगतान";
+
+/* No comment provided by engineer. */
+"Litecoin Payment ACK" = "लाइटकॉइन भुगतान ACK";
+
+/* No comment provided by engineer. */
+"Litecoin Payment Request" = "लाइटकॉइन भुगतान अनुरोध";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "बारकोड को स्कैन करने के लिए उपयोग किया जाता है";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "ऐप अनलॉक करने और भुगतान अधिकृत करने के लिए उपयोग किया जाता है";
+
+/* Privacy - Location Always Usage Description */
+"NSLocationAlwaysUsageDescription" = "आपके निकटतम नोड को निर्धारित करने के लिए उपयोग किया जाता है - कभी भी रिकॉर्ड नहीं किया जाता या किसी के साथ साझा नहीं किया जाता";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "आपके निकटतम नोड को निर्धारित करने के लिए उपयोग किया जाता है - कभी भी रिकॉर्ड नहीं किया जाता या किसी के साथ साझा नहीं किया जाता";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "बारकोड को स्कैन करने के लिए उपयोग किया जाता है";
+

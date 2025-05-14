@@ -49,7 +49,6 @@ enum RootModal {
 	case menu
 	case loginAddress
 	case loginScan
-	case manageWallet
 	case requestAmount
 	case wipeEmptyWallet
 }

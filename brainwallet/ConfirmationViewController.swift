@@ -169,30 +169,31 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 
 	private func setInitialData() {
 		view.backgroundColor = .clear
-		payLabel.text = "Send"
+		payLabel.text =  String(localized: "Send", bundle: .main)
 		guard let header = header
 		else {
-			NSLog("ERROR: Header not initialized")
+			debugPrint("::: ERROR: Header not initialized")
 			return
 		}
 
 		switch feeType {
 		case .luxury:
-			processingTime.text = String(format: "Processing time: This transaction will take %1$@ minutes to process.", "2.5-5")
+            
+            processingTime.text = String(localized: "Processing time: This transaction will take 2.5-5 minutes to process.", bundle: .main)
 		case .regular:
-			processingTime.text = String(format: "Processing time: These transactions will take %1$@ minutes to process." , "2.5-5")
+			processingTime.text = String(localized: "Processing time: This transaction will take 2.5-5 minutes to process.", bundle: .main)
 		case .economy:
-			processingTime.text = String(format: "Processing time: These transactions will take %1$@ minutes to process." , "5+")
+			processingTime.text  = String(localized: "Processing time: This transaction will take 5+ minutes to process.", bundle: .main)
 		}
 
 		let displayAmount = DisplayAmount(amount: amount, state: state, selectedRate: selectedRate, minimumFractionDigits: 2)
 		let displayFee = DisplayAmount(amount: txFee + opsFee, state: state, selectedRate: selectedRate, minimumFractionDigits: 2)
 		let displayTotal = DisplayAmount(amount: amount + txFee + opsFee, state: state, selectedRate: selectedRate, minimumFractionDigits: 2)
 
-		toLabel.text = "to"
-		feeLabel.text = "Fees: "
-		sendLabel.text = "Processing time: These transactions will take %1$@ minutes to process."
-		totalLabel.text = "Total Cost:"
+        toLabel.text = String(localized: "to", bundle: .main)
+        feeLabel.text = String(localized: "Fees: ", bundle: .main)
+		sendLabel.text = String(localized: "Processing time: These transactions will take minutes to process.", bundle: .main)
+        totalLabel.text = String(localized: "Total Cost:", bundle: .main)
 
 		amountLabel.text = displayAmount.combinedDescription
 		address.text = addressText

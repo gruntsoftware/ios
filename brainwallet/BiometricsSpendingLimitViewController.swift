@@ -37,7 +37,7 @@ class BiometricsSpendingLimitViewController: UITableViewController, Subscriber {
 		faqButton.tintColor = BrainwalletUIColor.content
 		navigationItem.rightBarButtonItems = [UIBarButtonItem.negativePadding, UIBarButtonItem(customView: faqButton)]
 
-		body.text = "You will be asked to enter your 6-digit PIN to send any transaction over your spending limit, and every 48 hours since the last time you entered your 6-digit PIN."
+		body.text =  String(localized: "You will be asked to enter your 6-digit PIN to send any transaction over your spending limit, and every 48 hours since the last time you entered your 6-digit PIN.", bundle: .main)
 
 		// If the user has a limit that is not a current option, we display their limit
 		if !limits.contains(walletManager.spendingLimit) {
@@ -60,7 +60,7 @@ class BiometricsSpendingLimitViewController: UITableViewController, Subscriber {
 		let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 		let limit = limits[indexPath.row]
 		if limit == 0 {
-			cell.textLabel?.text = "Always require passcode"
+			cell.textLabel?.text = String(localized: "Always require passcode", bundle: .main)
 		} else {
 			let displayAmount = DisplayAmount(amount: Satoshis(rawValue: limit), state: store.state, selectedRate: nil, minimumFractionDigits: 0)
 			cell.textLabel?.text = displayAmount.combinedDescription

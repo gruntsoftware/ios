@@ -113,10 +113,10 @@ class BiometricsSettingsViewController: UIViewController, Subscriber {
 			view.backgroundColor = BrainwalletUIColor.surface
 		}
 
-		title = LAContext.biometricType() == .face ? "Face ID" : "Touch ID"
-		label.text = LAContext.biometricType() == .face ? "Use your face to unlock your Brainwallet and send money up to a set limit." : "Use your fingerprint to unlock your Brainwallet and send money up to a set limit."
-		switchLabel.text = LAContext.biometricType() == .face ? "Enable Face ID for Brainwallet" : "Enable Touch ID for Brainwallet"
-		spendingLimitLabel.text = "Current Spending Limit: "
+		title = LAContext.biometricType() == .face ? String(localized: "Face ID", bundle: .main) : String(localized: "Touch ID", bundle: .main)
+        label.text = LAContext.biometricType() == .face ? String(localized: "Use your face to unlock your Brainwallet and send money up to a set limit.", bundle: .main) :  String(localized: "Use your fingerprint to unlock your Brainwallet and send money up to a set limit.", bundle: .main)
+		switchLabel.text = LAContext.biometricType() == .face ? String(localized: "Enable Face ID for Brainwallet", bundle: .main) : String(localized: "Enable Touch ID for Brainwallet", bundle: .main)
+		spendingLimitLabel.text = String(localized: "Current Spending Limit: ", bundle: .main)
 		spendingButton.title = spendingButtonText
 		let hasSetToggleInitialValue = false
 		store.subscribe(self, selector: { $0.isBiometricsEnabled != $1.isBiometricsEnabled }, callback: {

@@ -79,9 +79,9 @@ class WipeEmptyWalletViewController: UIViewController, Subscriber, Trackable {
 	}
 
 	private func addContent() {
-		titleLabel.text = "PLEASE READ!"
-		warningDetailTextView.text = "Your Brainwallet is empty. Resetting will delete the old private key and wipe the app data.\n\nAfter the reset, be prepared to record the new 12 words and keep them in a very secure place.\n\nNo Brainwallet developers can retrieve this seed for you."
-		warningAlertLabel.text = "DO NOT LOSE IT!"
+		titleLabel.text = String(localized: "PLEASE READ!", bundle: .main)
+		warningDetailTextView.text = String(localized: "Your Brainwallet is empty. Resetting will delete the old private key and wipe the app data.\n\nAfter the reset, be prepared to record the new 12 words and keep them in a very secure place.\n\nNo Brainwallet developers can retrieve this seed for you.", bundle: .main)
+		warningAlertLabel.text = String(localized: "DO NOT LOSE IT!", bundle: .main)
 	}
 
 	private func setStyle() {

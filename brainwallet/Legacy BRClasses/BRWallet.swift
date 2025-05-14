@@ -8,7 +8,6 @@ class BRWallet {
 	init?(transactions: [BRTxRef?], masterPubKey: BRMasterPubKey, listener: BRWalletListener) {
 		var txRefs = transactions
         guard let cPointer = BRWalletNew(&txRefs, txRefs.count, masterPubKey) else {
-            assertionFailure("cPointer of BRWalletNew is nil")
             return nil
         }
 		self.listener = listener

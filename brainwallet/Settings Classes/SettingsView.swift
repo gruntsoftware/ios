@@ -37,12 +37,6 @@ struct SettingsView: View {
                     Text("Security" )
                         .padding()
                     
-                    Text("Languages")
-                        .padding()
-                    
-                    Text("Languages")
-                        .padding()
-                    
                     Text("Settings View")
                         .padding()
                                         

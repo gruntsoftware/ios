@@ -51,7 +51,6 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 			#if !Debug
 				do { try FileManager.default.removeItem(atPath: dbPath) } catch {}
 			#endif
-            assertionFailure("BRWallet is nil")
 			return nil
 		}
 		didInitWallet = true
@@ -65,7 +64,6 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 
 	var peerManager: BRPeerManager? {
         guard wallet != nil else {
-            assertionFailure("BRPeerManager.wallet is nil")
             return nil
         }
 		return lazyPeerManager

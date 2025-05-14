@@ -47,12 +47,12 @@ struct LockScreenHeaderView: View {
                 .frame(height: 180)
                 .onAppear {
                     Task {
-                        fiatValue = "1 LTC = \(viewModel.currentValueInFiat)"
-                        currentFiatValue = "Current Litecoin value in \(viewModel.currencyCode)"
+                        fiatValue = String(format: String(localized: "1 LTC = %@"), viewModel.currentValueInFiat)
+                        currentFiatValue = String(format: String(localized: "Current Litecoin value in = %@"), viewModel.currentValueInFiat)
                     }
                 }
                 .onChange(of: viewModel.currentValueInFiat) { newValue in
-                    fiatValue = " 1 LTC = \(newValue)"
+                    fiatValue = String(format: String(localized: "1 LTC = %@"), newValue)
                 }
             }
         }

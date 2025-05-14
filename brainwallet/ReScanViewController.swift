@@ -55,18 +55,18 @@ class ReScanViewController: UIViewController, Subscriber {
 
 	private func setInitialData() {
 		view.backgroundColor = BrainwalletUIColor.content
-		header.text = "Sync Blockchain" 
+		header.text = String(localized: "Sync Blockchain", bundle: .main)
 		body.attributedText = bodyText
-		footer.text = "You will not be able to send money while syncing with the blockchain." 
+		footer.text = String(localized: "You will not be able to send money while syncing with the blockchain.", bundle: .main)
 		button.tap = { [weak self] in
 			self?.presentRescanAlert()
 		}
 	}
 
 	private func presentRescanAlert() {
-		let alert = UIAlertController(title: "Sync with Blockchain?" , message: "You will not be able to send money while syncing." , preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title:  "Cancel"  , style: .default, handler: nil))
-		alert.addAction(UIAlertAction(title: "Sync" , style: .default, handler: { _ in
+		let alert = UIAlertController(title: String(localized:  "Sync with Blockchain?", bundle: .main), message: String(localized: "You will not be able to send money while syncing.", bundle: .main), preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: String(localized: "Cancel", bundle: .main), style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title:String(localized: "Sync", bundle: .main) , style: .default, handler: { _ in
 			self.store.trigger(name: .rescan)
 			LWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
 

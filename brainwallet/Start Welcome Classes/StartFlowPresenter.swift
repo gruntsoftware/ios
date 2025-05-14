@@ -134,7 +134,7 @@ class StartFlowPresenter: Subscriber {
 		let paperPhraseViewController = StartPaperPhraseViewController(store: store, callback: { [weak self] in
 			self?.pushWritePaperPhraseViewController(pin: pin)
 		})
-		paperPhraseViewController.title = "Paper Key"
+		paperPhraseViewController.title = String(localized: "Paper Key", bundle: .main)
 		paperPhraseViewController.navigationItem.setHidesBackButton(true, animated: false)
 		paperPhraseViewController.hideCloseNavigationItem() // Forces user to confirm paper-key
 
@@ -149,13 +149,13 @@ class StartFlowPresenter: Subscriber {
 		let writeViewController = WritePaperPhraseViewController(store: store, walletManager: walletManager, pin: pin, callback: { [weak self] in
 			self?.pushConfirmPaperPhraseViewController(pin: pin)
 		})
-		writeViewController.title = "Paper Key"
+		writeViewController.title = String(localized: "Paper Key", bundle: .main)
 		writeViewController.hideCloseNavigationItem()
 		navigationController?.pushViewController(writeViewController, animated: true)
 	}
 
 	private func pushConfirmPaperPhraseViewController(pin: String) {
-		let confirmVC = UIStoryboard(name: "Phrase", bundle: nil).instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController") as? ConfirmPaperPhraseViewController
+		let confirmVC = UIStoryboard(name: String(localized: "Phrase", bundle: .main), bundle: nil).instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController") as? ConfirmPaperPhraseViewController
 		confirmVC?.store = store
 		confirmVC?.walletManager = walletManager
 		confirmVC?.pin = pin
@@ -188,8 +188,8 @@ class StartFlowPresenter: Subscriber {
 	}
 
 	private func handleWalletCreationError() {
-		let alert = UIAlertController(title:  "Error" , message: "Could not create wallet", preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Ok" , style: .default, handler: nil))
+		let alert = UIAlertController(title: String(localized: "Error", bundle: .main), message: String(localized: "Could not create wallet", bundle: .main), preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: String(localized: "Ok", bundle: .main), style: .default, handler: nil))
 		navigationController?.present(alert, animated: true, completion: nil)
 	}
 
