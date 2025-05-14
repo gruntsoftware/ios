@@ -179,7 +179,6 @@ extension WalletManager: WalletAuthenticator {
 		do {
 			let secureTime = Date().timeIntervalSince1970 // TODO: XXX use secure time from https request
 			var failCount: Int64 = try keychainItem(key: KeychainKey.pinFailCount) ?? 0
-
 			if failCount >= 3 {
 				let failTime: Int64 = try keychainItem(key: KeychainKey.pinFailTime) ?? 0
 

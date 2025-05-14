@@ -61,8 +61,8 @@ class FeeSelector: UIView {
 			feeMessageLabel.topAnchor.constraint(equalTo: control.bottomAnchor, constant: 4.0),
 			feeMessageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -C.padding[2]),
 		])
-		header.text = "S.FeeSelector.title"
-		subheader.text = "S.FeeSelector.regularLabel"
+		header.text =  String(localized: "Processing Speed", bundle: .main)
+		subheader.text = String(localized: "Estimated Delivery: 2.5 - 5+ minutes", bundle: .main)
 		control.constrain([
 			control.leadingAnchor.constraint(equalTo: feeMessageLabel.leadingAnchor),
 			control.topAnchor.constraint(equalTo: subheader.bottomAnchor, constant: 4.0),
@@ -73,21 +73,21 @@ class FeeSelector: UIView {
 			switch myself.control.selectedSegmentIndex {
 			case 0:
 				myself.didUpdateFee?(.regular)
-				myself.subheader.text = "S.FeeSelector.regularLabel"
+				myself.subheader.text = String(localized: "Estimated Delivery: 2.5 - 5+ minutes", bundle: .main)
 				myself.feeMessageLabel.text = ""
 			case 1:
 				myself.didUpdateFee?(.economy)
-				myself.subheader.text = "S.FeeSelector.economyLabel"
-				myself.feeMessageLabel.text = "S.FeeSelector.economyWarning"
+				myself.subheader.text = String(localized: "Estimated Delivery: ~10 minutes", bundle: .main)
+				myself.feeMessageLabel.text = String(localized: "This option is not recommended for time-sensitive transactions.", bundle: .main)
                 myself.feeMessageLabel.textColor = BrainwalletUIColor.error
 			case 2:
 				myself.didUpdateFee?(.luxury)
-				myself.subheader.text = "S.FeeSelector.luxuryLabel"
-				myself.feeMessageLabel.text = "S.FeeSelector.luxuryMessage"
+				myself.subheader.text = String(localized: "Delivery: 2.5 - 5+  minutes", bundle: .main)
+				myself.feeMessageLabel.text = String(localized: "This option virtually guarantees acceptance of your transaction while you pay a premium.", bundle: .main)
                 myself.feeMessageLabel.textColor = BrainwalletUIColor.content
 			default:
 				myself.didUpdateFee?(.regular)
-				myself.subheader.text = "S.FeeSelector.regularLabel"
+				myself.subheader.text = String(localized: "Estimated Delivery: 2.5 - 5+ minutes", bundle: .main)
 				myself.feeMessageLabel.text = ""
 				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["FEE_MANAGER": "DID_USE_DEFAULT"])
 			}

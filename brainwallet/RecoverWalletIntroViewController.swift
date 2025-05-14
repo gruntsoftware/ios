@@ -53,9 +53,9 @@ class RecoverWalletIntroViewController: UIViewController {
 		view.backgroundColor = BrainwalletUIColor.surface
 		label.numberOfLines = 0
 		label.lineBreakMode = .byWordWrapping
-		label.text = "Recover your Brainwallet with your paper key."
+        label.text = String(localized: "Recover your Brainwallet with your paper key.", bundle: .main)
 		nextButton.tap = didTapNext
-        title = "Restore"
+        title = String(localized: "Restore", bundle: .main)
 	}
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {

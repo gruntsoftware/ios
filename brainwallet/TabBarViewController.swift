@@ -78,7 +78,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 	@objc
 	func languageChanged() {
-		walletBalanceLabel.text = "Balance"  + ":"
+		walletBalanceLabel.text = String(localized: "Balance :", bundle: .main)
 		localizeTabBar()
 		viewControllers = []
 		addViewControllers()
@@ -116,7 +116,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	}
 
 	private func setupViews() {
-		walletBalanceLabel.text = "Balance"  + ":"
+		walletBalanceLabel.text = String(localized: "Balance :", bundle: .main)
         
         settingsButton.imageView?.tintColor = BrainwalletUIColor.content
 
@@ -131,7 +131,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		guard let primaryLabel = primaryBalanceLabel,
 		      let secondaryLabel = secondaryBalanceLabel
 		else {
-			NSLog("ERROR: Price labels not initialized")
+			debugPrint("::: ERROR: Price labels not initialized")
 			return
 		}
 

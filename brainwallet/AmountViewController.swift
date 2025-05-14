@@ -230,7 +230,7 @@ class AmountViewController: UIViewController, Trackable {
 		amountLabel.layer.cornerRadius = 8.0
 		amountLabel.layer.masksToBounds = true
 
-		placeholder.text = "Amount"
+		placeholder.text = String(localized: "Amount", bundle: .main)
 		bottomBorder.isHidden = true
 		if store.state.isLtcSwapped {
 			if let rate = store.state.currentRate {

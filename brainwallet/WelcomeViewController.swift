@@ -56,7 +56,7 @@ class WelcomeViewController: UIViewController, ContentBoxPresenter {
 		contentBox.layer.cornerRadius = 6.0
 		contentBox.layer.masksToBounds = true
 		titleLabel.textAlignment = .center
-		titleLabel.text = "Welcome"
+		titleLabel.text = String(localized: "Welcome", bundle: .main)
 		setBodyText()
 		button.tap = strongify(self) { myself in
 			myself.dismiss(animated: true, completion: nil)
@@ -64,8 +64,8 @@ class WelcomeViewController: UIViewController, ContentBoxPresenter {
 	}
 
 	private func setBodyText() {
-		let bodyText = "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)."
-		let attributedString = NSMutableAttributedString(string: "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł).")
+		let bodyText = String(localized: "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł).", bundle: .main)
+		let attributedString = NSMutableAttributedString(string: String(localized: "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł).", bundle: .main))
 		body.attributedText = attributedString
 	}
 

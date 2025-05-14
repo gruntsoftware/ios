@@ -90,8 +90,8 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 		headerTitleLabel.font = UIFont.barlowBold(size: 18.0)
 		headerDescriptionLabel.font = UIFont.barlowRegular(size: 14.0)
 
-		headerTitleLabel.text = "Paper Key"
-		headerDescriptionLabel.text = "To make sure everything was written down correctly, please enter the following words from your paper key."
+        headerTitleLabel.text = String(localized: "Paper Key", bundle: .main)
+        headerDescriptionLabel.text = String(localized: "To make sure everything was written down correctly, please enter the following words from your paper key.", bundle: .main)
         headerTitleLabel.textColor = BrainwalletUIColor.content
 		headerDescriptionLabel.textColor = BrainwalletUIColor.content
 

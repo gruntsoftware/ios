@@ -57,7 +57,7 @@ struct YourSeedWordsView: View {
                     .frame(height: squareImageSize)
                     .padding(.all, 20.0)
                     
-                    Text("YourSeedWordsView")
+                    Text("Your seed words ")
                     
                     Button(action: {
                         path.append(.yourSeedProveView)

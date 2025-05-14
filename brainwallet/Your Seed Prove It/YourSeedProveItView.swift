@@ -57,7 +57,7 @@ var body: some View {
                 .frame(height: squareImageSize)
                 .padding(.all, 20.0)
                 
-                Text("YourSeedWords Prove It")
+                Text("Your seed words, prove it")
                 
                 Button(action: {
                     path.append(.yourSeedProveView)

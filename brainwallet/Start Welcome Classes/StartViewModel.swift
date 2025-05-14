@@ -6,9 +6,6 @@ import UIKit
 class StartViewModel: ObservableObject {
 	// MARK: - Combine Variables
     
-	@Published
-	var currentLanguage: LanguageSelection = .English
-    
     @Published
     var currentFiat: CurrencySelection = .USD
     
@@ -31,19 +28,12 @@ class StartViewModel: ObservableObject {
 	var didTapRecover: (() -> Void)?
 	var store: Store
 	var walletManager: WalletManager
-
-	let languages: [LanguageSelection] = LanguageSelection.allCases
     
     let currencies: [CurrencySelection] = CurrencySelection.allCases
 
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store
 		self.walletManager = walletManager
-		staticTagline = taglines[0]
-
-		// loadResourcesWithTag(tags: audioTagArray)
-
-		// checkForWalletAndSync()
 	}
 
 	/// Completion Handler process
@@ -93,19 +83,6 @@ class StartViewModel: ObservableObject {
 //			}
 //		}
 //	}
-
-	func speakLanguage() {
-		if let url = Bundle.main.url(forResource: currentLanguage.voiceFilename, withExtension: "mp3") {
-			var id: SystemSoundID = 0
-			AudioServicesCreateSystemSoundID(url as CFURL, &id)
-			AudioServicesAddSystemSoundCompletion(id, nil, nil, { soundId, _ in
-				AudioServicesDisposeSystemSoundID(soundId)
-			}, nil)
-			AudioServicesPlaySystemSound(id)
-		} else {
-			debugPrint(":::NO AUDIO")
-		}
-	}
     
     func setCurrency(code: String) {
         UserDefaults.defaultCurrencyCode = code
@@ -118,125 +95,4 @@ class StartViewModel: ObservableObject {
                                             userInfo: nil)
         }
     }
-    
-
-	func setLanguage(code: String) {
-		UserDefaults.selectedLanguage = code
-		UserDefaults.standard.synchronize()
-		Bundle.setLanguage(code)
-
-		DispatchQueue.main.async {
-			NotificationCenter.default.post(name: .languageChangedNotification,
-			                                object: nil,
-			                                userInfo: nil)
-		}
-	}
-
-	// MARK: - Lengthy elements
-
-	///  Set these to the bottom to make the others more readable
-	///   These are semi-hardcoded because the state is in flux
-	let taglines: [String] = [
-		"The most secure and easiest way to use Litecoin.",
-		"使用莱特币最安全、最简单的方式。",
-		"使用莱特币最安全、最简单的方式",
-		"La manière la plus sûre et la plus simple d'utiliser Litecoin.",
-		"Die sicherste Option zur Nutzung von Litecoin.",
-		"Cara paling aman dan termudah untuk menggunakan Litecoin.",
-		"Il modo più sicuro e semplice per utilizzare Litecoin.",
-		"最も安全にリテコインを使う手段。",
-		"라이트코인을 사용하는 가장 안전하고 쉬운 방법입니다.",
-		"A maneira mais segura e fácil de usar Litecoin.",
-		"Самый безопасный и простой способ использовать Litecoin",
-		"La forma más segura y sencilla de utilizar Litecoin",
-		"Litecoin kullanmanın en güvenli ve en kolay yolu.",
-		"Найбезпечніший і найпростіший спосіб використання Litecoin",
-	]
-
-	let alertMessage: [String] = [
-		"Are you sure you want to change the language to English?",
-		"您确定要更改语言吗?",
-		"您確定要更改語言嗎？",
-		"Voulez-vous vraiment changer la langue?",
-		"Sind Sie sicher, dass Sie die Sprache auf Deutsch ändern möchten?",
-		"Yakin ingin mengubah bahasanya ke bahasa Indonesia?",
-		"Sei sicuro di voler cambiare la lingua in italiano?",
-		"言語を日本語に変更してもよろしいですか?",
-		"언어를 한국어로 변경하시겠습니까?",
-		"Tem certeza de que deseja alterar o idioma para português?",
-		"Вы уверены, что хотите сменить язык на русский?",
-		"¿Estás seguro de que quieres cambiar el idioma a español?",
-		"Dili Türkçe olarak değiştirmek istediğinizden emin misiniz?",
-		"Ви впевнені, що хочете змінити мову на українську?",
-	]
-
-	let yesLabel: [String] = [
-		"Yes",
-		"是的",
-		"是的",
-		"Oui",
-		"Ja",
-		"Ya",
-		"SÌ",
-		"はい",
-		"예",
-		"Sim",
-		"Да",
-		"Sí",
-		"Evet",
-		"Так",
-	]
-
-	let cancelLabel: [String] = [
-		"Cancel",
-		"取消",
-		"取消",
-		"Annuler",
-		"Stornieren",
-		"Membatalkan",
-		"Annulla",
-		"キャンセル",
-		"취소",
-		"Cancelar",
-		"Отмена",
-		"Cancelar",
-		"İptal etmek",
-		"Скасувати",
-	]
-
-	/// DEV: For debugging
-//	func stringToCurrentLanguage(languageString: String) -> LanguageSelection {
-//		switch languageString {
-//		case "English":
-//			return LanguageSelection(rawValue: 0)!
-//		case "中國人":
-//			return LanguageSelection(rawValue: 1)!
-//		case "中国人":
-//			return LanguageSelection(rawValue: 2)!
-//		case "Français":
-//			return LanguageSelection(rawValue: 3)!
-//		case "Deutsch":
-//			return LanguageSelection(rawValue: 4)!
-//		case "Bahasa Indonesia":
-//			return LanguageSelection(rawValue: 5)!
-//		case "Italiano":
-//			return LanguageSelection(rawValue: 6)!
-//		case "日本語":
-//			return LanguageSelection(rawValue: 7)!
-//		case "한국인":
-//			return LanguageSelection(rawValue: 8)!
-//		case "Português":
-//			return LanguageSelection(rawValue: 9)!
-//		case "Русский":
-//			return LanguageSelection(rawValue: 10)!
-//		case "Español":
-//			return LanguageSelection(rawValue: 11)!
-//		case "Türkçe":
-//			return LanguageSelection(rawValue: 12)!
-//		case "українська":
-//			return LanguageSelection(rawValue: 13)!
-//		default:
-//			return LanguageSelection(rawValue: 0)!
-//		}
-//	}
 }

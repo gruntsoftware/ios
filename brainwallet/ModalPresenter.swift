@@ -227,8 +227,6 @@ class ModalPresenter: Subscriber, Trackable {
 			return nil // The scan view needs a custom presentation
 		case .loginAddress:
 			return receiveView(isRequestAmountVisible: false)
-		case .manageWallet:
-			return ModalViewController(childViewController: ManageWalletViewController(store: store), store: store)
 		case .wipeEmptyWallet:
 			return wipeEmptyView()
 		case .requestAmount:
@@ -418,9 +416,6 @@ class ModalPresenter: Subscriber, Trackable {
 					}),
 				],
 			"Manage": [
-				Setting(title: "Languages" , callback: strongify(self) { _ in
-					settingsNav.pushViewController(LanguageSelectionViewController(), animated: true)
-				}),
 				Setting(title: LAContext.biometricType() == .face ?"Face ID Spending Limit"  : "Touch ID Spending Limit" , accessoryText: { [weak self] in
 					guard let myself = self else { return "" }
 					guard let rate = myself.store.state.currentRate else { return "" }

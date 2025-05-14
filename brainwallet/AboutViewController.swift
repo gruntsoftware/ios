@@ -70,8 +70,8 @@ class AboutViewController: UIViewController {
 	}
 
 	private func setData() {
-		titleLabel.text = "Social links"
-		privacy.setTitle("Privacy policy" , for: .normal)
+		titleLabel.text = String(localized: "Social links", bundle: .main)
+		privacy.setTitle(String(localized: "Privacy policy", bundle: .main) , for: .normal)
 		privacy.titleLabel?.font = UIFont.customBody(size: 13.0)
 		footer.textAlignment = .center
 		footer.numberOfLines = 4

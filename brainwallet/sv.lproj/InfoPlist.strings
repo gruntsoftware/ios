@@ -1,0 +1,30 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "Hjärnplånbok";
+
+/* Bundle name */
+"CFBundleName" = "Hjärnplånbok";
+
+/* No comment provided by engineer. */
+"Litecoin Payment" = "Litecoin-betalning";
+
+/* No comment provided by engineer. */
+"Litecoin Payment ACK" = "Litecoin Betalningsbekräftelse";
+
+/* No comment provided by engineer. */
+"Litecoin Payment Request" = "Litecoin Betalningsbegäran";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Används för att skanna streckkoder";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Används för att låsa upp appen och auktorisera betalningar";
+
+/* Privacy - Location Always Usage Description */
+"NSLocationAlwaysUsageDescription" = "Används för att bestämma närmaste nod till dig - sparas eller delas aldrig med någon";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "Används för att bestämma närmaste nod till dig - sparas eller delas aldrig med någon";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "Används för att skanna streckkoder";
+

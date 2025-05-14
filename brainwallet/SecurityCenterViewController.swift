@@ -84,7 +84,7 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 		scrollView.alwaysBounceVertical = true
 		scrollView.panGestureRecognizer.delaysTouchesBegan = false
 		scrollView.delegate = self
-		info.text = "Enable all security features for maximum protection."
+		info.text = String(localized: "Enable all security features for maximum protection.", bundle: .main)
 		info.numberOfLines = 0
 		info.lineBreakMode = .byWordWrapping
 		header.backgroundColor = BrainwalletUIColor.surface

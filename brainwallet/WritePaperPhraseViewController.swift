@@ -47,7 +47,7 @@ class WritePaperPhraseViewController: UIViewController {
 	override func viewDidLoad() {
 		view.backgroundColor = BrainwalletUIColor.surface
 
-		label.text = "Write down each word in order and store it in a safe place."
+		label.text = String(localized: "Write down each word in order and store it in a safe place.", bundle: .main)
 		label.textAlignment = .center
         label.textColor = BrainwalletUIColor.content
 

@@ -171,7 +171,7 @@ class ReceiveViewController: UIViewController, Subscriber, Trackable {
 	private func setupCopiedMessage() {
 		let copiedMessage = UILabel(font: .customMedium(size: 14.0))
 		copiedMessage.textColor = .white
-		copiedMessage.text = "Copied"
+		copiedMessage.text = String(localized: "Copied", bundle: .main)
 		copiedMessage.textAlignment = .center
 		addressPopout.contentView = copiedMessage
 	}
@@ -179,8 +179,8 @@ class ReceiveViewController: UIViewController, Subscriber, Trackable {
 	private func setupShareButtons() {
 		let container = UIView()
 		container.translatesAutoresizingMaskIntoConstraints = false
-		let email = ShadowButton(title: "Email" , type: .tertiary)
-		let text = ShadowButton(title: "Text message" , type: .tertiary)
+		let email = ShadowButton(title: String(localized: "Email", bundle: .main), type: .tertiary)
+		let text = ShadowButton(title: String(localized: "Text message", bundle: .main), type: .tertiary)
 		container.addSubview(email)
 		container.addSubview(text)
 		email.constrain([
