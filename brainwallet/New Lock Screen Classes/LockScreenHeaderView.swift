@@ -1,74 +1,64 @@
 import SwiftUI
 
 struct LockScreenHeaderView: View {
-	// MARK: - Combine Variables
+    // MARK: - Combine Variables
 
-	@ObservedObject
-	var viewModel: LockScreenViewModel
+    @ObservedObject
+    var viewModel: LockScreenViewModel
 
-	@State
-	private var fiatValue = ""
-
-	@State
-	private var currentFiatValue = "Current Litecoin value in"
-
-	init(viewModel: LockScreenViewModel) {
-		self.viewModel = viewModel
-	}
-
-	var body: some View {
+    @State
+    private var fiatValue = ""
+  
+    var viewHeight: CGFloat = 60.0
+    
+    init(viewModel: LockScreenViewModel, viewHeight: CGFloat) {
+        self.viewModel = viewModel
+        self.viewHeight = viewHeight
+    }
+    
+    var body: some View {
         
         GeometryReader { geometry in
             
             let width = geometry.size.width
-            
+
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    Spacer()
+                   
                     Text(fiatValue)
-                        .font(Font(UIFont.barlowSemiBold(size: 16.0)))
+                        .font(Font(UIFont.barlowLight(size: 14.0)))
                         .foregroundColor(BrainwalletColor.content)
-                    
-                    Text(currentFiatValue)
-                        .font(Font(UIFont.barlowRegular(size: 14.0)))
-                        .foregroundColor(BrainwalletColor.content)
-                        .padding(.bottom, 10)
-                    Divider().background(BrainwalletColor.gray)
-                    
+                        .frame(maxWidth: .infinity, alignment: .init(horizontal: .trailing, vertical: .center))
+                        .padding(.trailing, 16.0)
+                        .padding(.top, 5.0)
+
                     Image("bw-logotype")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: width * 0.75)
-                        .padding(.top, 40.0)
-                        .padding(10.0)
+                        .frame(width: width * 0.7)
+                        .padding(.top, 20.0)
+                        .padding([.leading,.trailing], 20.0)
+                    
+                    Spacer()
                 }
-                .frame(height: 180)
                 .onAppear {
                     Task {
-                        fiatValue = String(format: String(localized: "1 LTC = %@"), viewModel.currentValueInFiat)
-                        currentFiatValue = String(format: String(localized: "Current Litecoin value in = %@"), viewModel.currentValueInFiat)
+                        fiatValue = String(format: String(localized: "%@ = Ł1"), viewModel.currentValueInFiat)
                     }
                 }
                 .onChange(of: viewModel.currentValueInFiat) { newValue in
-                    fiatValue = String(format: String(localized: "1 LTC = %@"), newValue)
+                    fiatValue = String(format: String(localized: "%@ = Ł1"), newValue)
                 }
             }
         }
-	}
+    }
 }
 
 struct LockScreenHeaderView_Previews: PreviewProvider {
     static let viewModel = LockScreenViewModel(store: Store())
     static var previews: some View {
-        LockScreenHeaderView(viewModel: viewModel)
+        LockScreenHeaderView(viewModel: viewModel, viewHeight: 60.0)
     }
 }
-
-//GeometryReader { geometry in
-//    
-//    let width = geometry.size.width
-//    
-//    let buttonSize = 30.0
-//    ZStack {

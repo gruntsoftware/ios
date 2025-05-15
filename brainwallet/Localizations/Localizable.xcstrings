@@ -104,6 +104,9 @@
         }
       }
     },
+    "%@ = Ł1" : {
+
+    },
     "%lld" : {
       "localizations" : {
         "ar" : {
@@ -208,6 +211,7 @@
       "shouldTranslate" : false
     },
     "1 LTC = %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -2323,6 +2327,7 @@
       }
     },
     "Current Litecoin value in = %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
