@@ -9,10 +9,10 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	@IBOutlet var settingsButton: UIButton!
 	@IBOutlet var walletBalanceLabel: UILabel!
     @IBOutlet var currentLTCValueLabel: UILabel!
-
-	var primaryBalanceLabel: UpdatingLabel?
+    
+    var primaryBalanceLabel: UpdatingLabel?
 	var secondaryBalanceLabel: UpdatingLabel?
-	private let largeFontSize: CGFloat = 24.0
+    private let largeFontSize: CGFloat = 40.0
 	private let smallFontSize: CGFloat = 12.0
 	private var hasInitialized = false
 	private let dateFormatter = DateFormatter()
@@ -27,6 +27,9 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	var updateTimer: Timer?
 	var store: Store?
 	var walletManager: WalletManager?
+    
+    var userTappedSettingsButton: ((Bool) -> Void)?
+    var shouldShowSettings = false
 	var exchangeRate: Rate? {
 		didSet { setBalances() }
 	}
@@ -47,9 +50,15 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			debugPrint("::: ERROR: Store not set")
 			return
 		}
-		store.perform(action: RootModalActions.Present(modal: .menu))
+        userTappedSettings()
+      //  store.perform(action: RootModalActions.Present(modal: .menu))
 	}
-
+     
+    func userTappedSettings() {
+        shouldShowSettings.toggle()
+        userTappedSettingsButton?(shouldShowSettings)
+    }
+     
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupModels()
@@ -130,11 +139,10 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
         currentLTCValueLabel.text = currencyPrefix + String(localized: "= Ł1", bundle: .main)
 
         settingsButton.imageView?.tintColor = BrainwalletUIColor.content
-
-		headerView.backgroundColor = BrainwalletUIColor.surface
         tabBar.barTintColor = BrainwalletUIColor.content.withAlphaComponent(0.01)
 		containerView.backgroundColor = BrainwalletUIColor.surface
 		view.backgroundColor = BrainwalletUIColor.surface
+        
 	}
 
 	private func configurePriceLabels() {
@@ -155,48 +163,43 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 		primaryLabel.font = UIFont.barlowSemiBold(size: largeFontSize)
 		secondaryLabel.font = UIFont.barlowSemiBold(size: largeFontSize)
+        headerView.backgroundColor = BrainwalletUIColor.surface
 
-		equalsLabel.text = "="
 		headerView.addSubview(primaryLabel)
 		headerView.addSubview(secondaryLabel)
-		headerView.addSubview(equalsLabel)
 		headerView.addSubview(currencyTapView)
+        
+        currencyTapView.constrain([
+            currencyTapView.heightAnchor.constraint(equalToConstant: 70.0),
+            currencyTapView.widthAnchor.constraint(equalToConstant: 240.0),
+            currencyTapView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 0),
+            currencyTapView.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 0),
+        ])
 
-		secondaryLabel.constrain([
-			secondaryLabel.constraint(.firstBaseline, toView: primaryLabel, constant: 0.0),
-		])
-
-		equalsLabel.translatesAutoresizingMaskIntoConstraints = false
-		primaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        let gr = UITapGestureRecognizer(target: self, action: #selector(currencySwitchTapped))
+        currencyTapView.addGestureRecognizer(gr)
+        
+        primaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        //Tap View
+        if let isLTCSwapped = isLtcSwapped {
+            NSLayoutConstraint.activate(isLTCSwapped ? swappedConstraints : regularConstraints)
+        }
+        
 		regularConstraints = [
-			primaryLabel.firstBaselineAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -12),
-			primaryLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: C.padding[1] * 1.25),
-			equalsLabel.firstBaselineAnchor.constraint(equalTo: primaryLabel.firstBaselineAnchor, constant: 0),
-			equalsLabel.leadingAnchor.constraint(equalTo: primaryLabel.trailingAnchor, constant: C.padding[1] / 2.0),
-			secondaryLabel.leadingAnchor.constraint(equalTo: equalsLabel.trailingAnchor, constant: C.padding[1] / 2.0),
+            primaryLabel.topAnchor.constraint(equalTo: currencyTapView.topAnchor, constant: 0),
+            primaryLabel.leadingAnchor.constraint(equalTo: currencyTapView.leadingAnchor, constant: 10),
+            secondaryLabel.topAnchor.constraint(equalTo: currencyTapView.bottomAnchor, constant: -40),
 		]
 
 		swappedConstraints = [
-			secondaryLabel.firstBaselineAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -12),
-			secondaryLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: C.padding[1] * 1.25),
-			equalsLabel.firstBaselineAnchor.constraint(equalTo: secondaryLabel.firstBaselineAnchor, constant: 0),
-			equalsLabel.leadingAnchor.constraint(equalTo: secondaryLabel.trailingAnchor, constant: C.padding[1] / 2.0),
-			primaryLabel.leadingAnchor.constraint(equalTo: equalsLabel.trailingAnchor, constant: C.padding[1] / 2.0),
+            secondaryLabel.topAnchor.constraint(equalTo: currencyTapView.topAnchor, constant: 0),
+            secondaryLabel.leadingAnchor.constraint(equalTo: currencyTapView.leadingAnchor, constant: 10),
+            primaryLabel.topAnchor.constraint(equalTo: currencyTapView.bottomAnchor, constant: -40),
 		]
 
-		if let isLTCSwapped = isLtcSwapped {
-			NSLayoutConstraint.activate(isLTCSwapped ? swappedConstraints : regularConstraints)
-		}
 
-		currencyTapView.constrain([
-			currencyTapView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 0),
-			currencyTapView.trailingAnchor.constraint(equalTo: settingsButton.leadingAnchor, constant: -C.padding[5]),
-			currencyTapView.topAnchor.constraint(equalTo: primaryLabel.topAnchor, constant: 0),
-			currencyTapView.bottomAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: C.padding[1]),
-		])
-
-		let gr = UITapGestureRecognizer(target: self, action: #selector(currencySwitchTapped))
-		currencyTapView.addGestureRecognizer(gr)
 	}
 
 	// MARK: - Adding Subscriptions
@@ -329,6 +332,8 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		let scale = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
 		return scale.translatedBy(x: -deltaX, y: deltaY / 2.0)
 	}
+    
+    
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)

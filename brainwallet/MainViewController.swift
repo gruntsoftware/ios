@@ -11,6 +11,8 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	private var isLoginRequired = false
 	private let loginView: LoginViewController
 	private let tempLoginView: LoginViewController
+    var tabController: TabBarViewController
+    private let settingsViewController: SettingsHostingController
 	private let loginTransitionDelegate = LoginTransitionDelegate()
 
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -36,6 +38,8 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		self.store = store
 		loginView = LoginViewController(store: store, isPresentedForLock: false)
 		tempLoginView = LoginViewController(store: store, isPresentedForLock: false)
+        tabController = TabBarViewController()
+        settingsViewController = SettingsHostingController(store: store)
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -65,6 +69,9 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		addSubscriptions()
 		addAppLifecycleNotificationEvents()
 		addTemporaryStartupViews()
+        
+
+        
 	}
 
 	func didUnlockLogin() {
@@ -78,33 +85,47 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             .instantiateViewController(withIdentifier: "TabBarViewController")
             as? TabBarViewController
         else {
-            NSLog("TabBarViewController not intialized")
+            debugPrint("::: TabBarViewController not intialized")
             return
         }
-
-        tabVC.store = store
-        tabVC.walletManager = walletManager
-         
-        addChildViewController(tabVC, layout: {
-            tabVC.view.constrain(toSuperviewEdges: nil)
-            tabVC.view.alpha = 0
-            tabVC.view.layoutIfNeeded()
+        tabController  = tabVC
+        tabController.store = store
+        tabController.walletManager = walletManager
+        settingsViewController.store = store
+        
+        addChildViewController(settingsViewController, layout: {
+            settingsViewController.view.constrain(toSuperviewEdges: nil)
+            settingsViewController.view.alpha = 0
+            settingsViewController.view.layoutIfNeeded()
         })
+        
+        addChildViewController(tabController, layout: {
+            tabController.view.constrain(toSuperviewEdges: nil)
+            tabController.view.alpha = 0
+            tabController.view.layoutIfNeeded()
+        })
+        
+        tabController.userTappedSettingsButton  = { [weak self] shouldShow in
+            let mainViewWidth = self?.view.frame.width ?? 200.0
+            if shouldShow {
+                UIView.animate(withDuration: 0.3) {
+                    self?.tabController.view.transform = CGAffineTransform(translationX: mainViewWidth * 0.85, y: 0)
+                    self?.settingsViewController.view.alpha = 1
+                }
+            } else {
+                UIView.animate(withDuration: 0.3) {
+                    self?.tabController.view.transform = .identity
+                    self?.settingsViewController.view.alpha = 0
+                }
+             }
+            self?.tabController.view.layoutIfNeeded()
+        }
 
         UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
-            tabVC.view.alpha = 1
+            self.tabController.view.alpha = 1
         }) { _ in
-            NSLog("US MainView Controller presented")
+            debugPrint("::: US MainView Controller presented")
         }
-        
-        
-// STASH FOR NEW UI
-//        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
-//
-//        addChildViewController(newMainViewHostingController, layout: {
-//            newMainViewHostingController.view.constrain(toSuperviewEdges: nil)
-//            newMainViewHostingController.view.layoutIfNeeded()
-//        })
 	}
 
 	private func addTemporaryStartupViews() {

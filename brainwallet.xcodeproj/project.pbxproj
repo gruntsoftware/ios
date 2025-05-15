@@ -41,6 +41,8 @@
 		241D22452DB526C9000302C8 /* InputWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22442DB526C5000302C8 /* InputWordsView.swift */; };
 		241D22472DB526D7000302C8 /* YourSeedProveItView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22462DB526D4000302C8 /* YourSeedProveItView.swift */; };
 		241D22492DB526E9000302C8 /* YourSeedWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22482DB526E7000302C8 /* YourSeedWordsView.swift */; };
+		2432FF6D2DD637E900FF0BFE /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2432FF6C2DD637E000FF0BFE /* SettingsHostingController.swift */; };
+		2432FF6F2DD6384100FF0BFE /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2432FF6E2DD6383500FF0BFE /* SettingsViewModel.swift */; };
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
@@ -460,6 +462,8 @@
 		241D22442DB526C5000302C8 /* InputWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWordsView.swift; sourceTree = "<group>"; };
 		241D22462DB526D4000302C8 /* YourSeedProveItView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSeedProveItView.swift; sourceTree = "<group>"; };
 		241D22482DB526E7000302C8 /* YourSeedWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSeedWordsView.swift; sourceTree = "<group>"; };
+		2432FF6C2DD637E000FF0BFE /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
+		2432FF6E2DD6383500FF0BFE /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
@@ -1410,6 +1414,8 @@
 			isa = PBXGroup;
 			children = (
 				249DDE412DCD572F00B2B275 /* SettingsView.swift */,
+				2432FF6C2DD637E000FF0BFE /* SettingsHostingController.swift */,
+				2432FF6E2DD6383500FF0BFE /* SettingsViewModel.swift */,
 			);
 			path = "Settings Classes";
 			sourceTree = "<group>";
@@ -2340,6 +2346,7 @@
 				C312D2D02D7DC27700BB97A4 /* ReachabilityMonitor.swift in Sources */,
 				C312D2D12D7DC27700BB97A4 /* CopyButtonView.swift in Sources */,
 				24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */,
+				2432FF6F2DD6384100FF0BFE /* SettingsViewModel.swift in Sources */,
 				C312D2D22D7DC27700BB97A4 /* LightWeightAlert.swift in Sources */,
 				C312D2D32D7DC27700BB97A4 /* ExchangeUpdater.swift in Sources */,
 				C312D2D42D7DC27700BB97A4 /* Currency.swift in Sources */,
@@ -2474,6 +2481,7 @@
 				C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */,
 				C312D39D2D7DC27700BB97A4 /* PromptTableViewCell.swift in Sources */,
 				C312D3A12D7DC27700BB97A4 /* SendAddressHostingController.swift in Sources */,
+				2432FF6D2DD637E900FF0BFE /* SettingsHostingController.swift in Sources */,
 				C312D3A22D7DC27700BB97A4 /* SendAddressCellViewModel.swift in Sources */,
 				C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */,
 				24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */,

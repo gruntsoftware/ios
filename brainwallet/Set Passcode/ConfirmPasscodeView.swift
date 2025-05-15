@@ -113,9 +113,9 @@ struct ConfirmPasscodeView: View {
                         case false :
                                 path.append(.yourSeedWordsView)
                         case nil :
-                                path.append(.tempSettingsView)
+                                path.append(.yourSeedProveView)///?Just through something here to compile it is not  debugged 05152025
                         case .some(_):
-                                    path.append(.tempSettingsView)
+                                path.append(.yourSeedProveView)///?Just through something here to compile it is not  debugged 05152025
                         }
                     }
                 }

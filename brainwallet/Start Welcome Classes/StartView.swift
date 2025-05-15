@@ -26,6 +26,9 @@ struct StartView: View {
     @ObservedObject
     var newMainViewModel: NewMainViewModel
     
+    @ObservedObject
+    var settingsViewModel: SettingsViewModel
+    
     @State
     private var path: [Onboarding] = []
 
@@ -53,9 +56,10 @@ struct StartView: View {
 	@State
 	private var didContinue: Bool = false
     
-    init(startViewModel: StartViewModel, newMainViewModel: NewMainViewModel) {
+    init(startViewModel: StartViewModel, newMainViewModel: NewMainViewModel, settingsViewModel: SettingsViewModel) {
         self.startViewModel = startViewModel
         self.newMainViewModel = newMainViewModel
+        self.settingsViewModel = settingsViewModel
 	}
 
     var body: some View {
@@ -193,29 +197,29 @@ struct StartView: View {
                     switch onboard {
                     case .restoreView:
                         ReadyRestoreView(isRestore: true, viewModel: startViewModel, path: $path)
-                                .navigationBarBackButtonHidden()
+                            .navigationBarBackButtonHidden()
                     case .readyView:
                         ReadyRestoreView(isRestore: false, viewModel: startViewModel, path: $path)
-                                .navigationBarBackButtonHidden()
+                            .navigationBarBackButtonHidden()
                     case .setPasscodeView:
                         ZStack {
-                           SetPasscodeView(path: $path)
+                            SetPasscodeView(path: $path)
                                 .navigationBarBackButtonHidden()
                         }
                     case .confirmPasscodeView (let pinDigits):
                         ZStack {
                             ConfirmPasscodeView(pinDigits: pinDigits, viewModel: startViewModel, path: $path)
-                               .navigationBarBackButtonHidden()
+                                .navigationBarBackButtonHidden()
                         }
                     case .inputWordsView:
                         ZStack {
-                             InputWordsView(viewModel: startViewModel, path: $path)
+                            InputWordsView(viewModel: startViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
                     case .yourSeedWordsView:
                         ZStack {
                             YourSeedWordsView(viewModel: startViewModel, path: $path)
-                                                        .navigationBarBackButtonHidden()
+                                .navigationBarBackButtonHidden()
                         }
                     case .yourSeedProveView:
                         YourSeedProveItView(viewModel: startViewModel, path: $path)
@@ -228,11 +232,6 @@ struct StartView: View {
                     case .topUpSetAmountView:
                         ZStack {
                             TopUpSetAmountView(viewModel: startViewModel, path: $path)
-                                .navigationBarBackButtonHidden()
-                        }
-                    case .tempSettingsView:
-                        ZStack {
-                            SettingsView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
                     }
@@ -260,6 +259,5 @@ enum Onboarding: Hashable {
     case yourSeedWordsView
     case yourSeedProveView
     case topUpView
-    case topUpSetAmountView
-    case tempSettingsView
+    case topUpSetAmountView 
 }

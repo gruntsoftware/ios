@@ -11,19 +11,16 @@ import SwiftUI
 struct SettingsView: View {
     
     @ObservedObject
-    var newMainViewModel: NewMainViewModel
-    
-    @Binding var path: [Onboarding]
-    
+    var settingsViewModel: SettingsViewModel
+      
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
     let largeButtonFont: Font = .barlowBold(size: 24.0)
-
-    init(viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
-        self.newMainViewModel = viewModel
-        _path = path
+ 
+    init(viewModel: SettingsViewModel) {
+        self.settingsViewModel = viewModel
     }
     
     var body: some View {
@@ -32,7 +29,6 @@ struct SettingsView: View {
             
             VStack {
                 List {
-                    
                     
                     Text("Security" )
                         .padding()
