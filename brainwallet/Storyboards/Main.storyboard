@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -11,6 +11,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="BarlowSemiCondensed-Light.ttf">
+            <string>BarlowSemiCondensed-Light</string>
+        </array>
         <array key="BarlowSemiCondensed-Medium.ttf">
             <string>BarlowSemiCondensed-Medium</string>
         </array>
@@ -25,26 +28,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fw-XB-zyN">
-                                <rect key="frame" x="0.0" y="20" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="120"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLr-H0-dij">
-                                        <rect key="frame" x="358" y="12" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="BcF-gv-JKM"/>
-                                            <constraint firstAttribute="width" constant="44" id="Sym-3S-iFL"/>
-                                            <constraint firstAttribute="height" constant="44" id="Ykw-TZ-IhF"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="qm2-yx-Bqu"/>
-                                        </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="line.3.horizontal" catalog="system">
-                                            <color key="titleColor" name="brainwalletContent"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="showSettingsAction:" destination="cEo-Qi-bYI" eventType="touchUpInside" id="uju-Ag-uuS"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tK-Tt-zyE">
-                                        <rect key="frame" x="12" y="12" width="120" height="24"/>
+                                        <rect key="frame" x="12" y="61" width="120" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="TBT-4V-5It"/>
                                         </constraints>
@@ -52,20 +39,45 @@
                                         <color key="textColor" name="brainwalletContent"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLr-H0-dij">
+                                        <rect key="frame" x="12" y="12" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="Sym-3S-iFL"/>
+                                            <constraint firstAttribute="height" constant="44" id="Ykw-TZ-IhF"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <color key="titleColor" name="brainwalletContent"/>
+                                            <imageReference key="image" image="line.3.horizontal" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showSettingsAction:" destination="cEo-Qi-bYI" eventType="touchUpInside" id="uju-Ag-uuS"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs1-T4-eIF">
+                                        <rect key="frame" x="242" y="25" width="160" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="160" id="fx3-UN-mCa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="BarlowSemiCondensed-Light" family="Barlow Semi Condensed Light" pointSize="15"/>
+                                        <color key="textColor" name="brainwalletContent"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <constraints>
-                                    <constraint firstItem="jLr-H0-dij" firstAttribute="top" secondItem="8fw-XB-zyN" secondAttribute="top" constant="12" id="2nj-w7-WHK"/>
-                                    <constraint firstAttribute="height" constant="80" id="8em-HC-37f"/>
-                                    <constraint firstItem="8tK-Tt-zyE" firstAttribute="top" secondItem="8fw-XB-zyN" secondAttribute="top" constant="12" id="I0f-mL-tM8"/>
+                                    <constraint firstAttribute="height" constant="120" id="8em-HC-37f"/>
+                                    <constraint firstAttribute="trailing" secondItem="fs1-T4-eIF" secondAttribute="trailing" constant="12" id="AEm-mN-DtY"/>
+                                    <constraint firstItem="fs1-T4-eIF" firstAttribute="centerY" secondItem="jLr-H0-dij" secondAttribute="centerY" id="BtU-bT-BLW"/>
                                     <constraint firstItem="8tK-Tt-zyE" firstAttribute="leading" secondItem="8fw-XB-zyN" secondAttribute="leading" constant="12" id="NGn-Kg-thI"/>
-                                    <constraint firstAttribute="trailing" secondItem="jLr-H0-dij" secondAttribute="trailing" constant="12" id="cYe-Vi-BDj"/>
-                                    <constraint firstAttribute="trailing" secondItem="jLr-H0-dij" secondAttribute="trailing" constant="12" id="pVC-kQ-WwZ"/>
+                                    <constraint firstItem="8tK-Tt-zyE" firstAttribute="top" secondItem="jLr-H0-dij" secondAttribute="bottom" constant="5" id="Wzy-jb-Kof"/>
+                                    <constraint firstItem="jLr-H0-dij" firstAttribute="leading" secondItem="8fw-XB-zyN" secondAttribute="leading" constant="12" id="X4Y-bc-akK"/>
                                     <constraint firstItem="jLr-H0-dij" firstAttribute="top" secondItem="8fw-XB-zyN" secondAttribute="top" constant="12" id="qHU-Dw-tvb"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHe-dR-fDI">
-                                <rect key="frame" x="0.0" y="100" width="414" height="538"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="498"/>
                                 <viewLayoutGuide key="safeArea" id="Mbc-cM-i4C"/>
                                 <connections>
                                     <segue destination="OcB-dV-AfP" kind="embed" id="YTB-HG-TRo"/>
@@ -122,6 +134,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="containerView" destination="vHe-dR-fDI" id="dBb-WB-P2e"/>
+                        <outlet property="currentLTCValueLabel" destination="fs1-T4-eIF" id="Fuc-Z3-cVk"/>
                         <outlet property="headerView" destination="8fw-XB-zyN" id="YML-No-orL"/>
                         <outlet property="settingsButton" destination="jLr-H0-dij" id="j7J-gy-Y6O"/>
                         <outlet property="tabBar" destination="Zek-0n-Bbp" id="9k3-zl-KaC"/>
@@ -137,7 +150,7 @@
             <objects>
                 <viewController id="OcB-dV-AfP" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KFy-EF-Bhg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="538"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="498"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Eg4-W0-GCf"/>
                         <color key="backgroundColor" red="0.058823529411764705" green="0.031372549019607843" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

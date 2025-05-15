@@ -8,7 +8,8 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	@IBOutlet var tabBar: UITabBar!
 	@IBOutlet var settingsButton: UIButton!
 	@IBOutlet var walletBalanceLabel: UILabel!
-    
+    @IBOutlet var currentLTCValueLabel: UILabel!
+
 	var primaryBalanceLabel: UpdatingLabel?
 	var secondaryBalanceLabel: UpdatingLabel?
 	private let largeFontSize: CGFloat = 24.0
@@ -29,6 +30,8 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	var exchangeRate: Rate? {
 		didSet { setBalances() }
 	}
+    
+    var currencyPrefix = ""
 
 	private var balance: UInt64 = 0 {
 		didSet { setBalances() }
@@ -118,6 +121,14 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	private func setupViews() {
 		walletBalanceLabel.text = String(localized: "Balance :", bundle: .main)
         
+        if let currencyRate =  self.exchangeRate?.rate,
+            let symbol = self.exchangeRate?.currencySymbol {
+            let fornattedCurrencyRate = String(format: "%.2f", currencyRate)
+            self.currencyPrefix = "\(String(describing: symbol))  \(String(describing: fornattedCurrencyRate)) "
+        }
+        
+        currentLTCValueLabel.text = currencyPrefix + String(localized: "= Ł1", bundle: .main)
+
         settingsButton.imageView?.tintColor = BrainwalletUIColor.content
 
 		headerView.backgroundColor = BrainwalletUIColor.surface
@@ -135,7 +146,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			return
 		}
 
-		let priceLabelArray = [primaryBalanceLabel, secondaryBalanceLabel, equalsLabel, walletBalanceLabel]
+		let priceLabelArray = [primaryBalanceLabel, secondaryBalanceLabel, equalsLabel, walletBalanceLabel, currentLTCValueLabel]
 
 		for (_, view) in priceLabelArray.enumerated() {
             view?.backgroundColor = BrainwalletUIColor.surface
@@ -228,6 +239,12 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		                    		primaryLabel.formatter = placeholderAmount.ltcFormat
 		                    	}
 		                    	self.exchangeRate = $0.currentRate
+                                if let currencyRate =  self.exchangeRate?.rate,
+                                    let symbol = self.exchangeRate?.currencySymbol {
+                                    let fornattedCurrencyRate = String(format: "%.2f", currencyRate)
+                                    self.currencyPrefix = "\(String(describing: symbol))  \(String(describing: fornattedCurrencyRate)) "
+                                    }
+                                self.currentLTCValueLabel.text = self.currencyPrefix + String(localized: "= Ł1", bundle: .main)
 		                    })
 
 		store.lazySubscribe(self,
