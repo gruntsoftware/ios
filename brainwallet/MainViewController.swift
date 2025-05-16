@@ -102,6 +102,8 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         addChildViewController(tabController, layout: {
             tabController.view.constrain(toSuperviewEdges: nil)
             tabController.view.alpha = 0
+            tabController.view.layer.borderWidth = 0.5
+            tabController.view.layer.borderColor = BrainwalletUIColor.nearBlack.cgColor
             tabController.view.layoutIfNeeded()
         })
         
