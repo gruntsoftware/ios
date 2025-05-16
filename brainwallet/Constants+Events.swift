@@ -6,7 +6,7 @@ let swiftUICellPadding = 12.0
 let bigButtonCornerRadius = 15.0
 
 struct BrainwalletSupport {
-	static let dashboard = "https://brainwallet.co/"
+	static let dashboard = "https://brainwallet.co/support.html"
 }
 
 struct BrainwalletSocials {

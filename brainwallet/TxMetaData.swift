@@ -19,7 +19,6 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 	public required init?(coder decoder: BRCoder) {
 		classVersion = decoder.decode("classVersion")
 		if classVersion == Int.zeroValue() {
-			debugPrint(":::[BRTxMetadataObject] Unable to unarchive _TXMetadata: no version")
 			return nil
 		}
 		blockHeight = decoder.decode("bh")
@@ -52,14 +51,13 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 		var del: Bool
 		var bytes: [UInt8]
 
-		debugPrint("::: [BRTxMetadataObject] find  txHash \(txHash.txKey)")
 		do {
 			(ver, date, del, bytes) = try store.get(txHash.txKey)
 			let bytesDat = Data(bytes: &bytes, count: bytes.count)
 			super.init(key: txHash.txKey, version: ver, lastModified: date, deleted: del, data: bytesDat)
 			return
 		} catch let e {
-			debugPrint("::: [BRTxMetadataObject] Unable to initialize BRTxMetadataObject: \(String(describing: e))")
+           // NSLog("::: [BRTxMetadataObject] Unable to initialize BRTxMetadataObject: \(String(describing: e))")
 		}
 
 		return nil
@@ -78,7 +76,7 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 			super.init(key: txKey, version: ver, lastModified: date, deleted: del, data: bytesDat)
 			return
 		} catch let e {
-			debugPrint(":::[BRTxMetadataObject] Unable to initialize BRTxMetadataObject: \(String(describing: e))")
+			//NSLog(":::[BRTxMetadataObject] Unable to initialize BRTxMetadataObject: \(String(describing: e))")
 		}
 
 		return nil
@@ -88,7 +86,6 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 	public init(transaction: BRTransaction, exchangeRate: Double, exchangeRateCurrency: String, feeRate: Double,
 	            deviceId: String, comment: String? = nil)
 	{
-		debugPrint(":::[BRTxMetadataObject] new \(transaction.txHash.txKey)")
 		super.init(key: transaction.txHash.txKey, version: 0, lastModified: Date(), deleted: false, data: Data())
 		blockHeight = Int(transaction.blockHeight)
 		created = Date()

@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		}
 
         lockScreenViewModel = LockScreenViewModel(store: store)
-		headerView = UIHostingController(rootView: LockScreenHeaderView(viewModel: lockScreenViewModel))
+        headerView = UIHostingController(rootView: LockScreenHeaderView(viewModel: lockScreenViewModel, viewHeight: 60.0))
         footerView = UIHostingController(rootView: LockScreenFooterView(viewModel: lockScreenViewModel))
 		super.init(nibName: nil, bundle: nil)
 	}

@@ -137,7 +137,6 @@ class EventManager {
 	private func pushEvent(eventName: String, attributes: [String: String]) {
 		queue.addOperation { [weak self] in
 			guard let myself = self else { return }
-			debugPrint(":::[EventManager] pushEvent name=\(eventName) attributes=\(attributes)")
 			myself.buffer.append(Event(sessionId: myself.sessionId,
 			                           time: Date().timeIntervalSince1970 * 1000.0,
 			                           eventName: eventName,
