@@ -28,4 +28,19 @@ class SettingsViewModel: ObservableObject, Subscriber {
         self.store = store
     }
     
+    func updateTheme(shouldBeDark: Bool) {
+        UserDefaults.standard.set(shouldBeDark, forKey: userDidPreferDarkModeKey)
+        UserDefaults.standard.synchronize()
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        appDelegate.updatePreferredTheme()
+    }
+    
+    func updateStatus(shouldLockBrainwallet: Bool) {
+
+    }
+    
+    
 }

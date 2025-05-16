@@ -8556,6 +8556,7 @@
       }
     },
     "Security" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -9056,6 +9057,7 @@
       }
     },
     "Settings View" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
