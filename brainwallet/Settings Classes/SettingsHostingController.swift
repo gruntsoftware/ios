@@ -29,8 +29,3 @@ class SettingsHostingController: UIHostingController<SettingsView> {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-
-//func userWantsToCreate(completion: @escaping () -> Void) {
-//    didTapCreate = completion
-//}

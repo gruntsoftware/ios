@@ -1,5 +1,5 @@
 //
-//  SettingsRowInfoView.swift
+//  SettingsRowFooterView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 15/05/2025.
@@ -7,16 +7,18 @@
 //
 import SwiftUI
 
-struct SettingsRowInfoView: View {
+struct SettingsRowFooterView: View {
     
     private let titleText: String
     private let detailText: String
     private let rowHeight: CGFloat
+    private let nearBlackbackgroundColor = BrainwalletColor.nearBlack
+    private let nearBlackforegroundColor = Color.white
     
-    let titleFont: Font = .barlowSemiBold(size: 20.0)
+    let titleFont: Font = .barlowSemiBold(size: 18.0)
     let detailFont: Font = .barlowLight(size: 14.0)
- 
-    init(title: String, detail: String, rowHeight: CGFloat = 44.0) {
+
+    init(title: String, detail: String, rowHeight: CGFloat = 40.0) {
         self.titleText = title
         self.detailText = detail
         self.rowHeight = rowHeight
@@ -28,39 +30,32 @@ struct SettingsRowInfoView: View {
             
             let width = geometry.size.width
             ZStack {
-                BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
+                BrainwalletColor.nearBlack.edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
                        Text(titleText)
                                 .font(titleFont)
-                                .foregroundColor(BrainwalletColor.content)
+                                .foregroundColor( .white)
                                 .frame(width: width * 0.3, alignment: .leading)
                                 .padding(.leading, 16.0)
                         Spacer()
-                         
-                         Text(detailText)
-                                 .font(detailFont)
-                                 .foregroundColor(BrainwalletColor.content)
-                                 .frame(maxWidth: .infinity, alignment: .trailing)
-                                 .padding(.trailing, 16.0)
-                        }
-                        .frame(height: rowHeight, alignment: .trailing)
+                           
+                        Text(detailText)
+                                .font(detailFont)
+                                .foregroundColor( .white)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .padding(.trailing, 16.0)
                     }
-                    .frame(height: rowHeight)
                     .padding(.trailing, 16.0)
-                    Spacer()
-                    Divider()
                 }
                 .frame(height: rowHeight, alignment: .leading)
             }
+        }
     }
 }
- 
- 
- 
-struct SettingsRowInfoView_Previews: PreviewProvider {
+struct SettingsRowFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsRowInfoView(title: "TEST TITLE", detail: "boo bop")
+        SettingsRowFooterView(title: "TEST TITLE", detail: "boo bop")
     }
 }
 

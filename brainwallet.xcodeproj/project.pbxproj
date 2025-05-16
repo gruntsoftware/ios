@@ -44,12 +44,15 @@
 		2432FF6D2DD637E900FF0BFE /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2432FF6C2DD637E000FF0BFE /* SettingsHostingController.swift */; };
 		2432FF6F2DD6384100FF0BFE /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2432FF6E2DD6383500FF0BFE /* SettingsViewModel.swift */; };
 		2432FF712DD68A0200FF0BFE /* SettingsRowInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2432FF702DD689F300FF0BFE /* SettingsRowInfoView.swift */; };
-		2432FF732DD6932C00FF0BFE /* SettingsRowAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2432FF722DD6930800FF0BFE /* SettingsRowAccessoryView.swift */; };
+		2432FF732DD6932C00FF0BFE /* SettingsRowThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2432FF722DD6930800FF0BFE /* SettingsRowThemeView.swift */; };
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
+		246792652DD774C000380763 /* SettingsRowLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246792642DD774C000380763 /* SettingsRowLockView.swift */; };
+		246792672DD77AB700380763 /* SettingsRowFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246792662DD77AB700380763 /* SettingsRowFooterView.swift */; };
+		246792692DD796D000380763 /* SettingsRowWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246792682DD796D000380763 /* SettingsRowWebView.swift */; };
 		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
 		247D74E62DA907FB00855B14 /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45792D936D5900E9C3B0 /* BRAddress.c */; };
 		247D74E72DA907FB00855B14 /* BRBase58.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457C2D936D5900E9C3B0 /* BRBase58.c */; };
@@ -468,13 +471,16 @@
 		2432FF6C2DD637E000FF0BFE /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
 		2432FF6E2DD6383500FF0BFE /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		2432FF702DD689F300FF0BFE /* SettingsRowInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowInfoView.swift; sourceTree = "<group>"; };
-		2432FF722DD6930800FF0BFE /* SettingsRowAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowAccessoryView.swift; sourceTree = "<group>"; };
+		2432FF722DD6930800FF0BFE /* SettingsRowThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowThemeView.swift; sourceTree = "<group>"; };
 		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		246792642DD774C000380763 /* SettingsRowLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowLockView.swift; sourceTree = "<group>"; };
+		246792662DD77AB700380763 /* SettingsRowFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowFooterView.swift; sourceTree = "<group>"; };
+		246792682DD796D000380763 /* SettingsRowWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowWebView.swift; sourceTree = "<group>"; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
 		2492829B2DAC22B00088528E /* BIP39Words.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BIP39Words.plist; sourceTree = "<group>"; };
 		249C450E2D936D5900E9C3B0 /* ax_jni_include_dir.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_jni_include_dir.m4; sourceTree = "<group>"; };
@@ -1421,8 +1427,11 @@
 			children = (
 				249DDE412DCD572F00B2B275 /* SettingsView.swift */,
 				2432FF702DD689F300FF0BFE /* SettingsRowInfoView.swift */,
+				246792682DD796D000380763 /* SettingsRowWebView.swift */,
+				246792662DD77AB700380763 /* SettingsRowFooterView.swift */,
 				24D7B33B2DD749D000CA17F2 /* SettingsRowExpandableView.swift */,
-				2432FF722DD6930800FF0BFE /* SettingsRowAccessoryView.swift */,
+				2432FF722DD6930800FF0BFE /* SettingsRowThemeView.swift */,
+				246792642DD774C000380763 /* SettingsRowLockView.swift */,
 				2432FF6C2DD637E000FF0BFE /* SettingsHostingController.swift */,
 				2432FF6E2DD6383500FF0BFE /* SettingsViewModel.swift */,
 			);
@@ -2370,7 +2379,7 @@
 				C312D2DF2D7DC27700BB97A4 /* MockSeeds.swift in Sources */,
 				C312D2E02D7DC27700BB97A4 /* ShareDataViewController.swift in Sources */,
 				C312D2E12D7DC27700BB97A4 /* PinView.swift in Sources */,
-				2432FF732DD6932C00FF0BFE /* SettingsRowAccessoryView.swift in Sources */,
+				2432FF732DD6932C00FF0BFE /* SettingsRowThemeView.swift in Sources */,
 				C312D2E22D7DC27700BB97A4 /* SimpleUTXO.swift in Sources */,
 				C312D2E32D7DC27700BB97A4 /* SeedWordView.swift in Sources */,
 				C312D2E42D7DC27700BB97A4 /* KVStoreCoordinator.swift in Sources */,
@@ -2504,6 +2513,7 @@
 				24B0653D2DC6476A00B5E000 /* NewSendView.swift in Sources */,
 				C312D3B72D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift in Sources */,
 				C312D3B92D7DC27700BB97A4 /* MenuButton.swift in Sources */,
+				246792692DD796D000380763 /* SettingsRowWebView.swift in Sources */,
 				C312D3BB2D7DC27700BB97A4 /* TransactionsViewModel.swift in Sources */,
 				C312D3BC2D7DC27700BB97A4 /* Constants+Events.swift in Sources */,
 				C312D3BE2D7DC27700BB97A4 /* AddressCell.swift in Sources */,
@@ -2521,6 +2531,7 @@
 				C312D3D22D7DC27700BB97A4 /* LaunchView.swift in Sources */,
 				C312D3D42D7DC27700BB97A4 /* BuyTileView.swift in Sources */,
 				C312D3D52D7DC27700BB97A4 /* UIScreen+Additions.swift in Sources */,
+				246792652DD774C000380763 /* SettingsRowLockView.swift in Sources */,
 				C312D3D82D7DC27700BB97A4 /* UITableView+Additions.swift in Sources */,
 				C312D3DA2D7DC27700BB97A4 /* CameraGuideView.swift in Sources */,
 				2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */,
@@ -2559,6 +2570,7 @@
 				C312D4192D7DC27700BB97A4 /* MoonpayHelper.swift in Sources */,
 				C312D41B2D7DC27700BB97A4 /* SupportSafariViewModel.swift in Sources */,
 				C312D41C2D7DC27700BB97A4 /* CreateStepTabView.swift in Sources */,
+				246792672DD77AB700380763 /* SettingsRowFooterView.swift in Sources */,
 				C312D41D2D7DC27700BB97A4 /* ModalNavigationController.swift in Sources */,
 				C312D41E2D7DC27700BB97A4 /* UnstoppableDomainView.swift in Sources */,
 				C312D41F2D7DC27700BB97A4 /* AboutViewController.swift in Sources */,

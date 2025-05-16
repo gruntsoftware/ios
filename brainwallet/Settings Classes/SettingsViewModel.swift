@@ -39,8 +39,9 @@ class SettingsViewModel: ObservableObject, Subscriber {
     }
     
     func updateStatus(shouldLockBrainwallet: Bool) {
-
+        if let store = self.store,
+           shouldLockBrainwallet {
+            store.trigger(name: .lock)
+        }
     }
-    
-    
 }

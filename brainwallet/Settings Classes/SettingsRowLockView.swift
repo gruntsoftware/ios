@@ -1,5 +1,5 @@
 //
-//  SettingsRowAccessoryView.swift
+//  SettingsRowLockView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 15/05/2025.
@@ -7,7 +7,7 @@
 //
 import SwiftUI
 
-struct SettingsRowAccessoryView: View {
+struct SettingsRowLockView: View {
     
     private let titleText: String
     private let detailText: String
@@ -20,7 +20,7 @@ struct SettingsRowAccessoryView: View {
 
     @Binding
     var didActivate: Bool
-     
+      
     init(title: String, detail: String,
          rowHeight: CGFloat = 44.0,
          accessoryEnum: SettingsRowEnum,
@@ -55,29 +55,17 @@ struct SettingsRowAccessoryView: View {
                         
                         Spacer()
                         Button(action: {
-                                withAnimation(.easeInOut(duration: 0.2)) {
+                            withAnimation(.easeInOut(duration: 0.3)) {
                                         didActivate.toggle()
                                 }
                         }) {
-                            if case .lock = accessoryEnum {
-                                Image(systemName: didActivate ? "lock" : "lock.open")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: buttonSize, height: buttonSize,
-                                           alignment: .center)
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .tint(BrainwalletColor.surface) 
-                            }
-                            else if case .themeMode = accessoryEnum {
-                                Image(systemName: didActivate ? "sun.max.circle" : "moon.circle")
+                            Image(systemName: "lock.open")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: buttonSize, height: buttonSize,
                                            alignment: .center)
                                     .foregroundColor(BrainwalletColor.content)
                                     .tint(BrainwalletColor.surface)
-                            }
-                                
                         }
                         .frame(height: rowHeight, alignment: .trailing)
                         .padding(.trailing, 18.0)
