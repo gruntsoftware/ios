@@ -56,7 +56,6 @@ class FeeUpdater: Trackable {
 			}
 
 			if newFees == Fees.usingDefaultValues {
-				LWAnalytics.logEventWithParameters(itemName: ._20200301_DUDFPK)
 				self.saveEvent("wallet.didUseDefaultFeePerKB")
 			}
 

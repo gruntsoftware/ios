@@ -4,6 +4,9 @@
     "" : {
 
     },
+    " Make sure the send address is valid, the amount is not zero, & you have enough LTC in your Brainwallet" : {
+
+    },
     "(Network fee + Service fee):" : {
       "localizations" : {
         "ar" : {
@@ -203,6 +206,9 @@
           }
         }
       }
+    },
+    "$0.04 + $0.34" : {
+
     },
     "$43,000,000.99" : {
       "shouldTranslate" : false
@@ -3425,6 +3431,9 @@
         }
       }
     },
+    "Enter LTC Address:" : {
+
+    },
     "Enter PIN" : {
       "localizations" : {
         "ar" : {
@@ -5638,6 +5647,12 @@
         }
       }
     },
+    "Memo:" : {
+
+    },
+    "Network + Service Fee:" : {
+
+    },
     "New Confirm View" : {
       "shouldTranslate" : false
     },
@@ -5746,6 +5761,9 @@
           }
         }
       }
+    },
+    "OK" : {
+
     },
     "Paper Key" : {
       "localizations" : {
@@ -5946,6 +5964,9 @@
           }
         }
       }
+    },
+    "PASTE" : {
+
     },
     "Payee identity isn't certified." : {
       "localizations" : {
@@ -8547,6 +8568,9 @@
         }
       }
     },
+    "SCAN" : {
+
+    },
     "Security" : {
       "localizations" : {
         "ar" : {
@@ -8747,6 +8771,15 @@
         }
       }
     },
+    "Send amount:" : {
+
+    },
+    "Send details:" : {
+
+    },
+    "Send Error" : {
+
+    },
     "Send failed" : {
       "localizations" : {
         "ar" : {
@@ -8846,6 +8879,12 @@
           }
         }
       }
+    },
+    "Send LTC" : {
+
+    },
+    "Send View" : {
+
     },
     "Set app PIN" : {
       "localizations" : {

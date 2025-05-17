@@ -206,8 +206,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 		store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
                         callback: { _ in
-            self.tabBar.selectedItem = self.tabBar.items?.first
-                    if let rate = store.state.currentRate {
+                     if let rate = store.state.currentRate {
                         let maxDigits = store.state.maxDigits
                         let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: maxDigits)
                         secondaryLabel.formatter = placeholderAmount.localFormat
@@ -402,10 +401,31 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		if let tempActiveController = activeController {
 			hideContentController(contentController: tempActiveController)
 		}
+        
+        //New Send SwiftUI HC
+        if item.tag == 1 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.presentNewSendModal()
+                self.tabBar.selectedItem = item
+            }
+        }
+        else {
+            
+            // DEV: This happens because it relies on the tab in the storyboard tag
+            displayContentController(contentController: viewControllers[item.tag])
+        }
+        
 
-		// DEV: This happens because it relies on the tab in the storyboard tag
-		displayContentController(contentController: viewControllers[item.tag])
 	}
+    
+    func presentNewSendModal() {
+        guard let store = store else { return }
+        let sendHostingVC = SendHostingController(store: store)
+        addChild(sendHostingVC)
+        sendHostingVC.view.frame = containerView.frame
+        view.addSubview(sendHostingVC.view)
+        sendHostingVC.didMove(toParent: self)
+    }
 }
 
 extension TabBarViewController {

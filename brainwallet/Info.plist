@@ -10,8 +10,6 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>$(PRODUCT_NAME)</string>
-	<key>CFBundleDocumentTypes</key>
-	<array/>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -49,15 +47,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Used to scan barcodes</string>
+	<string>Used to scan Address QR Code</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Used to Unlock app &amp; Authorize payments</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Used to determine the closest node to you - never recorded or shared with anyone</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Used to determine the closest node to you - never recorded or shared with anyone</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Used to scan barcodes</string>
 	<key>NSPrivacyAccessedAPITypes</key>
 	<array>
 		<dict/>
