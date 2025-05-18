@@ -480,6 +480,7 @@ class ModalPresenter: Subscriber, Trackable {
 
 	private func presentScan(parent: UIViewController) -> PresentScan {
         return { [weak parent] scanCompletion in
+            debugPrint("::: ScanViewController.isCameraAllowed \(ScanViewController.isCameraAllowed)")
             guard ScanViewController.isCameraAllowed
             else {
                 if let parent = parent {

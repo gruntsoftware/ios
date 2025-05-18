@@ -193,9 +193,6 @@ enum CustomEvent: String {
     /// App Launched
     case _20200217_DUWB = "did_unlock_with_biometrics"
     
-    /// Did use default fee per kb
-    case _20200301_DUDFPK = "did_use_default_fee_per_kb"
-    
     /// User tapped support LF
     case _20201118_DTGS = "did_tap_get_support"
     

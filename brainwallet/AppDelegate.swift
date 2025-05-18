@@ -61,6 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
         
 		guard let thisWindow = window else { return false }
+        
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = BrainwalletUIColor.grape
+        
         // Set global themse
 		thisWindow.tintColor = BrainwalletUIColor.surface
         thisWindow.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: userDidPreferDarkModeKey) ? .dark: .light
