@@ -34,20 +34,20 @@ class SendViewModelTests: XCTestCase {
     
     func testValidateSegwitAddress() {
         // Valid segwit addresses
-        viewModel.sendAddress = "ltc1qd5wm03tdj98ccc5nnxtejqx5ypgn7nj8sfwmfx"
+        viewModel.sendAddress = "ltc1qsj6va3ax8d7lqcpwjxv7m8pw5fh0jq99t0na54"
         XCTAssertTrue(viewModel.validateSendAddress(), "Should validate correct segwit address")
         
         // With different function
-        XCTAssertTrue(viewModel.validateSendAddressWith(address: "ltc1qd5wm03tdj98ccc5nnxtejqx5ypgn7nj8sfwmfx"), "Should validate correct segwit address with direct function call")
+        XCTAssertTrue(viewModel.validateSendAddressWith(address: "ltc1qsj6va3ax8d7lqcpwjxv7m8pw5fh0jq99t0na54"), "Should validate correct segwit address with direct function call")
     }
     
     func testValidateLegacyAddress() {
         // Valid legacy addresses
-        viewModel.sendAddress = "LUxXFcwXFPpRZdMv4aYu6bDwuZ69TGzMjM"
+        viewModel.sendAddress = "MD5f1AVK286TdNLt7shButzJkwxp6R5nid"
         XCTAssertTrue(viewModel.validateSendAddress(), "Should validate correct legacy address")
         
         // With different function
-        XCTAssertTrue(viewModel.validateSendAddressWith(address: "LUxXFcwXFPpRZdMv4aYu6bDwuZ69TGzMjM"), "Should validate correct legacy address with direct function call")
+        XCTAssertTrue(viewModel.validateSendAddressWith(address: "MD5f1AVK286TdNLt7shButzJkwxp6R5nid"), "Should validate correct legacy address with direct function call")
     }
     
     func testInvalidAddresses() {
@@ -72,7 +72,7 @@ class SendViewModelTests: XCTestCase {
     }
     
     func testAddressCaseInsensitivityForSegwit() {
-        let lowercaseAddress = "ltc1qd5wm03tdj98ccc5nnxtejqx5ypgn7nj8sfwmfx"
+        let lowercaseAddress = "ltc1qsj6va3ax8d7lqcpwjxv7m8pw5fh0jq99t0na54"
         let uppercaseAddress = "LTC1QD5WM03TDJ98CCC5NNXTEJQX5YPGN7NJ8SFWMFX"
         
         viewModel.sendAddress = lowercaseAddress
@@ -83,7 +83,7 @@ class SendViewModelTests: XCTestCase {
     }
     
     func testAddressCaseSensitivityForLegacy() {
-        let address = "LUxXFcwXFPpRZdMv4aYu6bDwuZ69TGzMjM"
+        let address = "MD5f1AVK286TdNLt7shButzJkwxp6R5nid"
         
         viewModel.sendAddress = address
         XCTAssertTrue(viewModel.validateSendAddress(), "Legacy address should be valid")
@@ -169,12 +169,12 @@ class SendViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.validateSendData(), "Should not validate with invalid address")
         
         // Valid address but invalid amount
-        viewModel.sendAddress = "LUxXFcwXFPpRZdMv4aYu6bDwuZ69TGzMjM"
+        viewModel.sendAddress = "MD5f1AVK286TdNLt7shButzJkwxp6R5nid"
         viewModel.sendAmount = 1.5 // More than balance
         XCTAssertFalse(viewModel.validateSendData(), "Should not validate with amount exceeding balance")
         
         // Valid address and amount but invalid memo
-        viewModel.sendAddress = "LUxXFcwXFPpRZdMv4aYu6bDwuZ69TGzMjM"
+        viewModel.sendAddress = "MD5f1AVK286TdNLt7shButzJkwxp6R5nid"
         viewModel.sendAmount = 0.5
         viewModel.memo = String(repeating: "a", count: 256) // 256 characters
         XCTAssertFalse(viewModel.validateSendData(), "Should not validate with memo exceeding 255 characters")
@@ -197,10 +197,10 @@ class SendViewModelTests: XCTestCase {
         }
         
         let testViewModel = TestSendViewModel(store: mockStore)
-        testViewModel.mockPasteboardString = "LUxXFcwXFPpRZdMv4aYu6bDwuZ69TGzMjM"
+        testViewModel.mockPasteboardString = "MD5f1AVK286TdNLt7shButzJkwxp6R5nid"
         
         testViewModel.userDidTapPaste()
-        XCTAssertEqual(testViewModel.sendAddress, "LUxXFcwXFPpRZdMv4aYu6bDwuZ69TGzMjM", "Should set send address to pasteboard content")
+        XCTAssertEqual(testViewModel.sendAddress, "MD5f1AVK286TdNLt7shButzJkwxp6R5nid", "Should set send address to pasteboard content")
     }
     
     func testUserDidTapPasteWithEmptyData() {

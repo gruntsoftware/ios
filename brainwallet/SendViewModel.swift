@@ -39,15 +39,15 @@ class SendViewModel: ObservableObject, Subscriber {
     
     func validateSendAddress() -> Bool {
         let isSegwitValid = NSPredicate(format: "SELF MATCHES %@", "^ltc1[0-9a-z]{39,59}$").evaluate(with: sendAddress.lowercased())
-        let isLTCValid = NSPredicate(format: "SELF MATCHES %@", "^L[a-zA-Z0-9]{26,33}$").evaluate(with: sendAddress)
-        
+        let isLTCValid = NSPredicate(format: "SELF MATCHES %@", "^[LM][a-zA-Z0-9]{26,33}$").evaluate(with: sendAddress)
+         
         let validAddtressStatus = isSegwitValid || isLTCValid
         return validAddtressStatus
     }
     
     func validateSendAddressWith(address: String) -> Bool {
         let isSegwitValid = NSPredicate(format: "SELF MATCHES %@", "^ltc1[0-9a-z]{39,59}$").evaluate(with: address.lowercased())
-        let isLTCValid = NSPredicate(format: "SELF MATCHES %@", "^L[a-zA-Z0-9]{26,33}$").evaluate(with: address)
+        let isLTCValid = NSPredicate(format: "SELF MATCHES %@", "^[LM][a-zA-Z0-9]{26,33}$").evaluate(with: address)
         
         let validAddtressStatus = isSegwitValid || isLTCValid
         return validAddtressStatus

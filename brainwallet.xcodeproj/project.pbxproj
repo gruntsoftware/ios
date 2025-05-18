@@ -386,13 +386,11 @@
 		C312D5082D7DC28E00BB97A4 /* LockScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4EE2D7DC28E00BB97A4 /* LockScreenTests.swift */; };
 		C312D5092D7DC28E00BB97A4 /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4F22D7DC28E00BB97A4 /* APITests.swift */; };
 		C312D50A2D7DC28E00BB97A4 /* SpendingLimitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E82D7DC28E00BB97A4 /* SpendingLimitTests.swift */; };
-		C312D50B2D7DC28E00BB97A4 /* LanguageSelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4DD2D7DC28E00BB97A4 /* LanguageSelectionTests.swift */; };
 		C312D50C2D7DC28E00BB97A4 /* PaymentRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E62D7DC28E00BB97A4 /* PaymentRequestTests.swift */; };
 		C312D50D2D7DC28E00BB97A4 /* BRAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E02D7DC28E00BB97A4 /* BRAddressTests.swift */; };
 		C312D50E2D7DC28E00BB97A4 /* BuyWKWebVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4D52D7DC28E00BB97A4 /* BuyWKWebVCTests.swift */; };
 		C312D50F2D7DC28E00BB97A4 /* ConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4D92D7DC28E00BB97A4 /* ConstantsTests.swift */; };
 		C312D5102D7DC28E00BB97A4 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4F42D7DC28E00BB97A4 /* TestHelpers.swift */; };
-		C312D5112D7DC28E00BB97A4 /* UnstoppableDomainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4D72D7DC28E00BB97A4 /* UnstoppableDomainViewModelTests.swift */; };
 		C312D5122D7DC28E00BB97A4 /* WalletInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4EC2D7DC28E00BB97A4 /* WalletInfoTest.swift */; };
 		C312D5142D7DC2EA00BB97A4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C312D5132D7DC2EA00BB97A4 /* PrivacyInfo.xcprivacy */; };
 		C32369FF2D7DD431007039A1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32369FE2D7DD431007039A1 /* LoginViewController.swift */; };
@@ -930,10 +928,8 @@
 		C312D4D42D7DC28E00BB97A4 /* ApplicationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationControllerTests.swift; sourceTree = "<group>"; };
 		C312D4D52D7DC28E00BB97A4 /* BuyWKWebVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyWKWebVCTests.swift; sourceTree = "<group>"; };
 		C312D4D62D7DC28E00BB97A4 /* TabBarViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewControllerTests.swift; sourceTree = "<group>"; };
-		C312D4D72D7DC28E00BB97A4 /* UnstoppableDomainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnstoppableDomainViewModelTests.swift; sourceTree = "<group>"; };
 		C312D4D92D7DC28E00BB97A4 /* ConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsTests.swift; sourceTree = "<group>"; };
 		C312D4DB2D7DC28E00BB97A4 /* FileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTests.swift; sourceTree = "<group>"; };
-		C312D4DD2D7DC28E00BB97A4 /* LanguageSelectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionTests.swift; sourceTree = "<group>"; };
 		C312D4DE2D7DC28E00BB97A4 /* LocaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleTests.swift; sourceTree = "<group>"; };
 		C312D4E02D7DC28E00BB97A4 /* BRAddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAddressTests.swift; sourceTree = "<group>"; };
 		C312D4E12D7DC28E00BB97A4 /* BRAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAPIClientTests.swift; sourceTree = "<group>"; };
@@ -1893,7 +1889,6 @@
 				C312D4D52D7DC28E00BB97A4 /* BuyWKWebVCTests.swift */,
 				24C71E9F2DDA894700AB6394 /* SendViewTests.swift */,
 				C312D4D62D7DC28E00BB97A4 /* TabBarViewControllerTests.swift */,
-				C312D4D72D7DC28E00BB97A4 /* UnstoppableDomainViewModelTests.swift */,
 			);
 			path = "Class Tests";
 			sourceTree = "<group>";
@@ -1917,7 +1912,6 @@
 		C312D4DF2D7DC28E00BB97A4 /* Language Selection Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C312D4DD2D7DC28E00BB97A4 /* LanguageSelectionTests.swift */,
 				C312D4DE2D7DC28E00BB97A4 /* LocaleTests.swift */,
 			);
 			path = "Language Selection Tests";
@@ -2316,13 +2310,11 @@
 				C312D5082D7DC28E00BB97A4 /* LockScreenTests.swift in Sources */,
 				C312D5092D7DC28E00BB97A4 /* APITests.swift in Sources */,
 				C312D50A2D7DC28E00BB97A4 /* SpendingLimitTests.swift in Sources */,
-				C312D50B2D7DC28E00BB97A4 /* LanguageSelectionTests.swift in Sources */,
 				C312D50C2D7DC28E00BB97A4 /* PaymentRequestTests.swift in Sources */,
 				C312D50D2D7DC28E00BB97A4 /* BRAddressTests.swift in Sources */,
 				C312D50E2D7DC28E00BB97A4 /* BuyWKWebVCTests.swift in Sources */,
 				C312D50F2D7DC28E00BB97A4 /* ConstantsTests.swift in Sources */,
 				C312D5102D7DC28E00BB97A4 /* TestHelpers.swift in Sources */,
-				C312D5112D7DC28E00BB97A4 /* UnstoppableDomainViewModelTests.swift in Sources */,
 				C312D5122D7DC28E00BB97A4 /* WalletInfoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
