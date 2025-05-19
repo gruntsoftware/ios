@@ -12,13 +12,23 @@ import SwiftUI
 
 class SendHostingController: UIHostingController<SendView> {
       
-    var store: Store?
-
-    init(store: Store) {
+    private let store: Store
+    private let sender: Sender
+    private let walletManager: WalletManager
+    private let keyValueStore: BRReplicatedKVStore
+    
+    init?(store: Store,
+         sender: Sender,
+         walletManager: WalletManager) {
         
-        self.store = store
+       self.store = store
+       self.sender = sender
+       self.walletManager = walletManager
         
-        let viewModel = SendViewModel(store: store)
+        guard let kvStore = walletManager.apiClient?.kv else { return nil }
+        self.keyValueStore = kvStore
+         
+    let viewModel = SendViewModel(store: self.store, sender: Sender(walletManager: self.walletManager, kvStore: self.keyValueStore, store: store), walletManager: walletManager)
         super.init(rootView: SendView(viewModel: viewModel))
     }
  

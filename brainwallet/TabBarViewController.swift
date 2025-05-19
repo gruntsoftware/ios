@@ -410,17 +410,17 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
             }
         }
         else {
-            
             // DEV: This happens because it relies on the tab in the storyboard tag
             displayContentController(contentController: viewControllers[item.tag])
         }
-        
-
 	}
     
     func presentNewSendModal() {
         guard let store = store else { return }
-        let sendHostingVC = SendHostingController(store: store)
+        guard let walletManager = walletManager else { return }
+        guard let kvStore = walletManager.apiClient?.kv else { return }
+        guard let sendHostingVC = SendHostingController(store: store, sender: Sender(walletManager: walletManager, kvStore: kvStore, store: store), walletManager: walletManager) else { return }
+        
         addChild(sendHostingVC)
         sendHostingVC.view.frame = containerView.frame
         view.addSubview(sendHostingVC.view)

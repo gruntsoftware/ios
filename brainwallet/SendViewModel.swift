@@ -6,11 +6,16 @@
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
  
-import AVFoundation
 import Foundation
 import SwiftUI
-import UIKit
- 
+import BRCore
+import FirebaseAnalytics
+import KeychainAccess
+//import LocalAuthentication
+import SwiftUI
+//import UIKit
+
+
 class SendViewModel: ObservableObject, Subscriber {
     // MARK: - Combine Variables
     @Published
@@ -21,11 +26,34 @@ class SendViewModel: ObservableObject, Subscriber {
 
     @Published
     var memo: String = ""
+    
+    @Published
+    var currencyButtonTitle: String = ""
       
-    var store: Store?
+    let store: Store
+    let sender: Sender
+    let walletManager: WalletManager
+    private var balance: UInt64 = 0
+    private var amount: Satoshis?
+    var initialAddress: String?
+    private let initialRequest: PaymentRequest?
+    private var feeType: FeeType?
 
-    init(store: Store) {
+
+    init(store: Store, sender: Sender, walletManager: WalletManager, initialAddress: String? = nil, initialRequest: PaymentRequest? = nil) {
         self.store = store
+        self.sender = sender
+        self.walletManager = walletManager
+        self.initialAddress = initialAddress
+        self.initialRequest = initialRequest
+        
+        currencyButtonTitle = ""
+        switch store.state.maxDigits {
+        case 2: currencyButtonTitle = "photons (mł)"
+        case 5: currencyButtonTitle = "lites (ł)"
+        case 8: currencyButtonTitle = "LTC (Ł)"
+        default: currencyButtonTitle = "lites (ł)"
+        }
     }
     
     func userDidTapPaste() {
@@ -36,35 +64,17 @@ class SendViewModel: ObservableObject, Subscriber {
             sendAddress = ""
         }
     }
-    
-    func validateSendAddress() -> Bool {
-        let isSegwitValid = NSPredicate(format: "SELF MATCHES %@", "^ltc1[0-9a-z]{39,59}$").evaluate(with: sendAddress.lowercased())
-        let isLTCValid = NSPredicate(format: "SELF MATCHES %@", "^[LM][a-zA-Z0-9]{26,33}$").evaluate(with: sendAddress)
-         
-        let validAddtressStatus = isSegwitValid || isLTCValid
-        return validAddtressStatus
-    }
-    
-    func validateSendAddressWith(address: String) -> Bool {
-        let isSegwitValid = NSPredicate(format: "SELF MATCHES %@", "^ltc1[0-9a-z]{39,59}$").evaluate(with: address.lowercased())
-        let isLTCValid = NSPredicate(format: "SELF MATCHES %@", "^[LM][a-zA-Z0-9]{26,33}$").evaluate(with: address)
-        
-        let validAddtressStatus = isSegwitValid || isLTCValid
-        return validAddtressStatus
-    }
-    
-    func validateSendAmount() -> Bool {
-        guard let balance = store?.state.walletState.balance else { return false }
-        let validAmountStatus = UInt64(sendAmount) <= balance
-        return validAmountStatus
-    }
-    
-    func validateMemoLength() -> Bool {
-        return memo.count <= 255
-    }
-    
-    func validateSendData() -> Bool {
-        let validStatus = validateSendAmount() && validateSendAddress() && validateMemoLength()
-        return validStatus
-    }
 }
+
+/////ViewModel Candidates
+//private let keyValueStore: BRReplicatedKVStore
+//private var feeType: FeeType?
+//private let initialRequest: PaymentRequest
+////    private var balance: UInt64 = 0
+////    private var amount: Satoshis?
+////    self.initialRequest = initialRequest
+////
+////    initialAddress: String? = nil,
+////    initialRequest: PaymentRequest? = nil
+
+ 

@@ -86,6 +86,7 @@
 		24C71E9C2DDA46BC00AB6394 /* NewImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C71E9B2DDA46B000AB6394 /* NewImagePicker.swift */; };
 		24C71E9E2DDA65B300AB6394 /* NewScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C71E9D2DDA65A700AB6394 /* NewScannerViewController.swift */; };
 		24C71EA02DDA894700AB6394 /* SendViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C71E9F2DDA894700AB6394 /* SendViewTests.swift */; };
+		24C71EA22DDB309A00AB6394 /* SendViewModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C71EA12DDB308D00AB6394 /* SendViewModelExtension.swift */; };
 		24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */; };
 		24D7AE562DCFF6870078252E /* NewConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE552DCFF6830078252E /* NewConfirmView.swift */; };
 		24D7AE582DCFF72D0078252E /* NewConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */; };
@@ -622,6 +623,7 @@
 		24C71E9B2DDA46B000AB6394 /* NewImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewImagePicker.swift; sourceTree = "<group>"; };
 		24C71E9D2DDA65A700AB6394 /* NewScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScannerViewController.swift; sourceTree = "<group>"; };
 		24C71E9F2DDA894700AB6394 /* SendViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewTests.swift; sourceTree = "<group>"; };
+		24C71EA12DDB308D00AB6394 /* SendViewModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModelExtension.swift; sourceTree = "<group>"; };
 		24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmHostingController.swift; sourceTree = "<group>"; };
 		24D7AE552DCFF6830078252E /* NewConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmView.swift; sourceTree = "<group>"; };
 		24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmViewModel.swift; sourceTree = "<group>"; };
@@ -1615,6 +1617,7 @@
 				24C71E9D2DDA65A700AB6394 /* NewScannerViewController.swift */,
 				241A983C2DD8CF6F00087F95 /* SendHostingController.swift */,
 				241A983E2DD8CFA000087F95 /* SendViewModel.swift */,
+				24C71EA12DDB308D00AB6394 /* SendViewModelExtension.swift */,
 				241A98402DD8CFB700087F95 /* SendView.swift */,
 				241B477E2DCEA05D00279954 /* Localizations */,
 				24D7AE522DCFF6350078252E /* New Onboarding */,
@@ -2596,6 +2599,7 @@
 				C312D45B2D7DC27700BB97A4 /* StartHostingController.swift in Sources */,
 				C312D45C2D7DC27700BB97A4 /* HostingTransactionCell.swift in Sources */,
 				C312D4602D7DC27700BB97A4 /* LanguageSelectionViewModel.swift in Sources */,
+				24C71EA22DDB309A00AB6394 /* SendViewModelExtension.swift in Sources */,
 				C312D4612D7DC27700BB97A4 /* UIViewController+Alerts.swift in Sources */,
 				C312D4622D7DC27700BB97A4 /* UIViewController+BRWAdditions.swift in Sources */,
 				C312D4632D7DC27700BB97A4 /* PinPadCells.swift in Sources */,

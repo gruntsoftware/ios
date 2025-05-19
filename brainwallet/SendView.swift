@@ -223,12 +223,37 @@ struct SendView: View {
                         .frame(height: qrImageSize + 10.0)
                         .padding(.all, 10.0)
                         .padding([.leading,.trailing], 10.0)
+                        
+                        Button(action: {
+                            //Currency Switch
+                        }) {
+                            VStack {
+                                Image(systemName: "qrcode.viewfinder")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: qrImageSize,
+                                           height: qrImageSize,
+                                           alignment: .center)
+                                    .foregroundColor(BrainwalletColor.content)
+                                
+                                Text("SCAN")
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .font(subHeaderFont)
+                                    .frame(width: 140, alignment: .center)
+                                    .padding(.top, 2.0)
+                                    .padding([.leading,.trailing], 10.0)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .frame(height: qrImageSize + 10.0)
+                        .padding(.all, 10.0)
+                        .padding([.leading,.trailing], 10.0)
                     }
                     .padding([.bottom], 24.0)
                     .opacity(fieldIsFocused ? 0.0 : 1.0)
                     
                     Button(action: {
-                        if viewModel.validateSendData() {
+                        if viewModel.validateSendData(store: viewModel.store) {
                            ////Send
                         }
                         else {
@@ -290,15 +315,5 @@ struct SendView: View {
                 }
             }
         }
-    }
-}
-
-
-
-struct SendView_Previews: PreviewProvider {
-    static let viewModel = SendViewModel(store: Store())
-
-    static var previews: some View {
-        SendView(viewModel: viewModel)
     }
 }
