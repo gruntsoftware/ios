@@ -87,6 +87,7 @@
 		24C71E9E2DDA65B300AB6394 /* NewScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C71E9D2DDA65A700AB6394 /* NewScannerViewController.swift */; };
 		24C71EA02DDA894700AB6394 /* SendViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C71E9F2DDA894700AB6394 /* SendViewTests.swift */; };
 		24C71EA22DDB309A00AB6394 /* SendViewModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C71EA12DDB308D00AB6394 /* SendViewModelExtension.swift */; };
+		24C71EA42DDBC33A00AB6394 /* LTCType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C71EA32DDBC33300AB6394 /* LTCType.swift */; };
 		24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */; };
 		24D7AE562DCFF6870078252E /* NewConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE552DCFF6830078252E /* NewConfirmView.swift */; };
 		24D7AE582DCFF72D0078252E /* NewConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */; };
@@ -624,6 +625,7 @@
 		24C71E9D2DDA65A700AB6394 /* NewScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScannerViewController.swift; sourceTree = "<group>"; };
 		24C71E9F2DDA894700AB6394 /* SendViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewTests.swift; sourceTree = "<group>"; };
 		24C71EA12DDB308D00AB6394 /* SendViewModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewModelExtension.swift; sourceTree = "<group>"; };
+		24C71EA32DDBC33300AB6394 /* LTCType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTCType.swift; sourceTree = "<group>"; };
 		24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmHostingController.swift; sourceTree = "<group>"; };
 		24D7AE552DCFF6830078252E /* NewConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmView.swift; sourceTree = "<group>"; };
 		24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmViewModel.swift; sourceTree = "<group>"; };
@@ -1668,6 +1670,7 @@
 				C312D07D2D7DC27700BB97A4 /* UINavigationController+Extension.swift */,
 				C312D07E2D7DC27700BB97A4 /* UIScreen+Additions.swift */,
 				C312D07F2D7DC27700BB97A4 /* UISlider+Gradient.swift */,
+				24C71EA32DDBC33300AB6394 /* LTCType.swift */,
 				C312D0802D7DC27700BB97A4 /* UITableView+Additions.swift */,
 				C312D0812D7DC27700BB97A4 /* UIView+AnimationAdditions.swift */,
 				C312D0822D7DC27700BB97A4 /* UIView+BRWAdditions.swift */,
@@ -2390,6 +2393,7 @@
 				C312D30E2D7DC27700BB97A4 /* TransactionCellViewModel.swift in Sources */,
 				C312D3102D7DC27700BB97A4 /* UpdatingLabel.swift in Sources */,
 				C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */,
+				24C71EA42DDBC33A00AB6394 /* LTCType.swift in Sources */,
 				C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */,
 				C312D3132D7DC27700BB97A4 /* UserDefaultsUpdater.swift in Sources */,
 				C312D3152D7DC27700BB97A4 /* UILabel+BRWAdditions.swift in Sources */,

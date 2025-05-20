@@ -41,3 +41,81 @@ extension SendViewModel {
     }
 }
 
+struct FormattedLTCAmount {
+    let amount: Litoshis
+    let state: ReduxState
+    let selectedRate: Rate?
+    let minimumFractionDigits: Int?
+
+    var description: String {
+        return selectedRate != nil ? fiatDescription : litecoinDescription
+    }
+
+    var combinedDescription: String {
+        return state.isLtcSwapped ? "\(fiatDescription) (\(litecoinDescription))" : "\(litecoinDescription) (\(fiatDescription))"
+    }
+
+    private var fiatDescription: String {
+        guard let rate = selectedRate ?? state.currentRate else { return "" }
+        guard let string = localFormat.string(from: Double(amount.rawValue) / Double(litoshisPerLitecoin) * rate.rate as NSNumber) else { return "" }
+        return string
+    }
+
+    private var litecoinDescription: String {
+        var decimal = Decimal(self.amount.rawValue)
+        var amount: Decimal = 0.0
+        NSDecimalMultiplyByPowerOf10(&amount, &decimal, Int16(-state.maxDigits), .up)
+        let number = NSDecimalNumber(decimal: amount)
+        guard let string = ltcFormat.string(from: number) else { return "" }
+        return string
+    }
+
+    var localFormat: NumberFormatter {
+        let format = NumberFormatter()
+        format.isLenient = true
+        format.numberStyle = .currency
+        format.generatesDecimalNumbers = true
+        format.negativePrefix = "-"
+        if let rate = selectedRate {
+            format.currencySymbol = rate.currencySymbol
+        } else if let rate = state.currentRate {
+            format.currencySymbol = rate.currencySymbol
+        }
+        if let minimumFractionDigits = minimumFractionDigits {
+            format.minimumFractionDigits = minimumFractionDigits
+        }
+        return format
+    }
+
+    var ltcFormat: NumberFormatter {
+        let format = NumberFormatter()
+        format.isLenient = true
+        format.numberStyle = .currency
+        format.generatesDecimalNumbers = true
+        format.negativePrefix = "-"
+        format.currencyCode = "LTC"
+
+        switch state.maxDigits {
+        case 2:
+            format.currencySymbol = "mł  "
+            format.maximum = NSNumber(value: (maximumLitoshis / litoshisPerLitecoin) * 100_000)
+        case 5:
+            format.currencySymbol = "ł  "
+            format.maximum = NSNumber(value: (maximumLitoshis / litoshisPerLitecoin) * 1000)
+        case 8:
+            format.currencySymbol = "Ł "
+            format.maximum = NSNumber(value: maximumLitoshis / litoshisPerLitecoin)
+        default:
+            format.currencySymbol = "ł  "
+        }
+
+        format.maximumFractionDigits = state.maxDigits
+        if let minimumFractionDigits = minimumFractionDigits {
+            format.minimumFractionDigits = minimumFractionDigits
+        }
+        format.maximum = NSDecimalNumber(decimal: Decimal(maximumLitoshis) / pow(10 as Decimal, state.maxDigits))
+
+        return format
+    }
+}
+

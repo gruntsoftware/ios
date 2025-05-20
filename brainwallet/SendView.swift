@@ -32,7 +32,7 @@ struct SendView: View {
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
-    let fieldHeight: CGFloat = 50.0
+    let fieldHeight: CGFloat = 30.0
     let headerFont: Font = .barlowBold(size: 24.0)
     let subHeaderFont: Font = .barlowSemiBold(size: 19.0)
     let detailFont: Font = .barlowRegular(size: 17.0)
@@ -65,7 +65,7 @@ struct SendView: View {
                         .background(BrainwalletColor.nearBlack)
                     
                     HStack {
-                        Text("Enter LTC Address:")
+                        Text("Address:")
                             .frame(width: width * 0.3, height: fieldHeight, alignment: .leading)
                             .font(subHeaderFont)
                             .foregroundColor(BrainwalletColor.content)
@@ -74,7 +74,7 @@ struct SendView: View {
                         Spacer()
                         
                         VStack {
-                            TextField("", text: $viewModel.sendAddress)
+                            TextField("ltc1... or L... or M...", text: $viewModel.sendAddress)
                                 .textFieldStyle(.roundedBorder)
                                 .foregroundColor(BrainwalletColor.content)
                                 .font(textFieldFont)
@@ -93,7 +93,7 @@ struct SendView: View {
                     .padding([.leading,.trailing], 16.0)
                     
                     HStack {
-                        Text("Send amount:")
+                        Text("Amount:")
                             .frame(width: width * 0.3, height: fieldHeight, alignment: .leading)
                             .font(subHeaderFont)
                             .foregroundColor(BrainwalletColor.content)
@@ -116,11 +116,34 @@ struct SendView: View {
                         }
                         .frame(height: fieldHeight, alignment: .leading)
                         .padding(.top, 1.0)
+                        
+                        Button(action: {
+                            viewModel.userPrefersShowLTC.toggle()
+                        }) {
+                            ZStack {
+                                Text(viewModel.userPrefersShowLTC ? viewModel.currencyLTCTitle : viewModel.currencyCodeString)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .font(detailFont)
+                                    .frame(width: width * 0.15,
+                                           height: fieldHeight,
+                                           alignment: .center)
+                                    .padding(.all, 5.0)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 4.0)
+                                            .stroke(BrainwalletColor.content, lineWidth: 1.0)
+                                            .frame(width: width * 0.15,
+                                                   height: fieldHeight,
+                                                   alignment: .center)
+
+                                    )
+                            }
+                        }
+                        .frame(width: width * 0.2, height: qrImageSize + 10.0)
                     }
-                    .padding([.leading,.trailing], 10.0)
+                    .padding([.leading,.trailing], 16.0)
                     
                     HStack {
-                        Text("Send details:")
+                        Text("Details:")
                             .frame(width: width * 0.3, height: fieldHeight, alignment: .leading)
                             .frame(maxHeight: .infinity, alignment: .top)
                             .font(subHeaderFont)
@@ -133,7 +156,7 @@ struct SendView: View {
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .frame(height: fieldHeight / 2)
-                            Text("$0.04 + $0.34")
+                            Text(viewModel.networkFees + viewModel.serviceFees)
                                 .font(detailFont)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -186,9 +209,8 @@ struct SendView: View {
                                     .padding([.leading,.trailing], 10.0)
                             }
                         }
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: qrImageSize + 5.0)
-                        .padding([.leading,.trailing], 10.0)
+                        .frame(width: 140.0, height: qrImageSize + 10.0)
+                        .padding(.leading, 10.0)
                         
                         Button(action: {
                             #if targetEnvironment(simulator)
@@ -219,36 +241,11 @@ struct SendView: View {
                                     .padding([.leading,.trailing], 10.0)
                             }
                         }
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: qrImageSize + 10.0)
+                        .frame(width: 140.0, height: qrImageSize + 10.0)
                         .padding(.all, 10.0)
-                        .padding([.leading,.trailing], 10.0)
                         
-                        Button(action: {
-                            //Currency Switch
-                        }) {
-                            VStack {
-                                Image(systemName: "qrcode.viewfinder")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: qrImageSize,
-                                           height: qrImageSize,
-                                           alignment: .center)
-                                    .foregroundColor(BrainwalletColor.content)
-                                
-                                Text("SCAN")
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .font(subHeaderFont)
-                                    .frame(width: 140, alignment: .center)
-                                    .padding(.top, 2.0)
-                                    .padding([.leading,.trailing], 10.0)
-                            }
-                        }
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: qrImageSize + 10.0)
-                        .padding(.all, 10.0)
-                        .padding([.leading,.trailing], 10.0)
                     }
+                    .frame(width: width * 0.6, alignment: .center)
                     .padding([.bottom], 24.0)
                     .opacity(fieldIsFocused ? 0.0 : 1.0)
                     

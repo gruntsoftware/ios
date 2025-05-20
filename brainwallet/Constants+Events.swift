@@ -4,6 +4,7 @@ let π: CGFloat = .pi
 let customUserAgent: String = "brainwallet-ios"
 let swiftUICellPadding = 12.0
 let bigButtonCornerRadius = 15.0
+let litoshis: UInt64 = 100_000_000
 
 struct BrainwalletSupport {
 	static let dashboard = "https://brainwallet.co/"

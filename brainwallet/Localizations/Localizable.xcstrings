@@ -207,9 +207,6 @@
         }
       }
     },
-    "$0.04 + $0.34" : {
-
-    },
     "$43,000,000.99" : {
       "shouldTranslate" : false
     },
@@ -422,6 +419,9 @@
     "Address Already Used\n\n Litecoin addresses are intended for single use only.\n\nRe-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn't directly control the address." : {
 
     },
+    "Address:" : {
+
+    },
     "Always require passcode" : {
       "localizations" : {
         "ar" : {
@@ -621,6 +621,9 @@
           }
         }
       }
+    },
+    "Amount:" : {
+
     },
     "Bad Payment Request" : {
       "localizations" : {
@@ -2728,6 +2731,9 @@
         }
       }
     },
+    "Details:" : {
+
+    },
     "DO NOT LOSE IT!" : {
       "localizations" : {
         "ar" : {
@@ -3430,9 +3436,6 @@
           }
         }
       }
-    },
-    "Enter LTC Address:" : {
-
     },
     "Enter PIN" : {
       "localizations" : {
@@ -5546,6 +5549,9 @@
           }
         }
       }
+    },
+    "ltc1... or L... or M..." : {
+
     },
     "Manage" : {
       "localizations" : {
@@ -8770,12 +8776,6 @@
           }
         }
       }
-    },
-    "Send amount:" : {
-
-    },
-    "Send details:" : {
-
     },
     "Send Error" : {
 
