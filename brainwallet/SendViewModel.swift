@@ -103,7 +103,7 @@ class SendViewModel: ObservableObject, Subscriber {
     ///   - enteredAmount: UInt64 value in Litoshis
     ///   - rate: Rate
     /// - Returns: Tuple (String? , String?)
-    private func fetchTotalSendAmountofBalanceAndFees(enteredAmount: Litoshis?) -> (String?, String?) {
+    func fetchTotalSendAmountofBalanceAndFees(enteredAmount: Litoshis?) -> (String?, String?) {
 
         let balanceAmount = FormattedLTCAmount(amount: Litoshis(rawValue: balance),
                                           state: store.state,
@@ -147,6 +147,15 @@ class SendViewModel: ObservableObject, Subscriber {
                 serviceFeeAmount,
                 totalFeeAmount
             )
+            
+           // print("|||1 \(balanceAmount) ")
+            print("|||2 \(sendAmount)  \(networkFeeAmount)  \(serviceFeeAmount) \(totalFeeAmount) \(combinedFeesOutput)")
+//            print("|||3 \(networkFeeAmount)  \(serviceFeeAmount) \(totalFeeAmount) \(combinedFeesOutput)")
+//            print("|||4 \(serviceFeeAmount) \(totalFeeAmount) \(combinedFeesOutput)")
+//            print("|||5 \(totalFeeAmount) \(combinedFeesOutput)")
+//            print("|||6 \(combinedFeesOutput)")
+
+
         }
         return ( balanceOutput, combinedFeesOutput)
     }

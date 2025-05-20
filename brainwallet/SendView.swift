@@ -26,8 +26,8 @@ struct SendView: View {
     private var showError: Bool = false
     
     @State private var scannedCode: String?
+    
 
-        
     let qrImageSize: CGFloat = 35.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
@@ -310,6 +310,18 @@ struct SendView: View {
                         }
                     }
                 }
+                .onChange(of: viewModel.sendAmount, perform: { _ in
+                    if viewModel.sendAmount > 0.0  && viewModel.sendAmount.isNumericWithOptionalDecimal {
+                        //convert to Litoshis from fiat or LTC
+                        guard let currentRate = viewModel.store.state.currentRate else { return }
+                        
+                        let litoshisPerFiat = Litoshis(value: viewModel.sendAmount, rate: currentRate )
+                        
+                        //Calculate
+                        viewModel.fetchTotalSendAmountofBalanceAndFees(enteredAmount: litoshisPerFiat)
+                        
+                    }
+                })
             }
         }
     }

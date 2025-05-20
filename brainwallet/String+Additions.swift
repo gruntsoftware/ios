@@ -179,4 +179,9 @@ extension String {
 		let range = index(endIndex, offsetBy: -4) ..< endIndex
 		return replacingOccurrences(of: ".00)", with: ".10)", options: .literal, range: range)
 	}
+    
+    func isNumericWithOptionalDecimal() -> Bool {
+            let pattern = #"^\d+(\.\d+)?$"#
+            return self.range(of: pattern, options: .regularExpression) != nil
+        }
 }
