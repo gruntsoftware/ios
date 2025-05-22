@@ -54,7 +54,7 @@ enum PromptType {
 
 	var body: String {
 		switch self {
-		case .biometrics: return LAContext.biometricType() == .face ? "Tap here to enable Face ID"  : "Tap here to enable Touch ID" 
+		case .biometrics: return LAContext.biometricType() == .face ? String(localized: "Tap here to enable Face ID")  : String(localized: "Tap here to enable Touch ID")
 		case .paperKey: return "S.Prompts.PaperKey.body"
 		case .upgradePin: return "S.Prompts.SetPin.body"
 		case .recommendRescan: return "S.Prompts.RecommendRescan.body"
