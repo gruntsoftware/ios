@@ -181,7 +181,7 @@ extension String {
 	}
     
     func isNumericWithOptionalDecimal() -> Bool {
-            let pattern = #"^\d+(\.\d+)?$"#
-            return self.range(of: pattern, options: .regularExpression) != nil
-        }
+        let pattern = #"^\d*\.?\d*$"#
+        return self.range(of: pattern, options: .regularExpression) != nil
+    }
 }

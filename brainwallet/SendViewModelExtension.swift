@@ -28,7 +28,8 @@ extension SendViewModel {
     
     func validateSendAmount(store: Store) -> Bool {
         let balance = store.state.walletState.balance ?? 0
-        let validAmountStatus = UInt64(sendAmount) <= balance
+        let sentAmountUInt64 = UInt64(sendAmountString) ?? 0
+        let validAmountStatus = sentAmountUInt64 <= balance
         return validAmountStatus
     }
     
@@ -51,22 +52,21 @@ struct FormattedLTCAmount {
         return selectedRate != nil ? fiatDescription : litecoinDescription
     }
 
-    var combinedDescription: String {
-        return state.isLtcSwapped ? "\(fiatDescription) (\(litecoinDescription))" : "\(litecoinDescription) (\(fiatDescription))"
-    }
-
-    private var fiatDescription: String {
+    var fiatDescription: String {
         guard let rate = selectedRate ?? state.currentRate else { return "" }
         guard let string = localFormat.string(from: Double(amount.rawValue) / Double(litoshisPerLitecoin) * rate.rate as NSNumber) else { return "" }
+        print("||| fiatDescription \(string)")
         return string
     }
 
-    private var litecoinDescription: String {
+   var litecoinDescription: String {
         var decimal = Decimal(self.amount.rawValue)
         var amount: Decimal = 0.0
         NSDecimalMultiplyByPowerOf10(&amount, &decimal, Int16(-state.maxDigits), .up)
         let number = NSDecimalNumber(decimal: amount)
         guard let string = ltcFormat.string(from: number) else { return "" }
+       print("|||  litecoinDescription \(string)")
+
         return string
     }
 

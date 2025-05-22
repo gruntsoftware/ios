@@ -107,6 +107,9 @@
         }
       }
     },
+    "%@" : {
+
+    },
     "%lld" : {
       "localizations" : {
         "ar" : {
@@ -5654,9 +5657,6 @@
       }
     },
     "Memo:" : {
-
-    },
-    "Network + Service Fee:" : {
 
     },
     "New Confirm View" : {
@@ -11485,6 +11485,9 @@
           }
         }
       }
+    },
+    "Total Fees: %@" : {
+
     },
     "Touch ID" : {
       "localizations" : {

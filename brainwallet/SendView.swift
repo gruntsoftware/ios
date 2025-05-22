@@ -25,8 +25,11 @@ struct SendView: View {
     @State
     private var showError: Bool = false
     
-    @State private var scannedCode: String?
+    @State
+    private var scannedCode: String?
     
+    @State
+    private var symbol = "Ł"
 
     let qrImageSize: CGFloat = 35.0
     let squareImageSize: CGFloat = 25.0
@@ -100,9 +103,15 @@ struct SendView: View {
                             .padding(.top, 1.0)
                         Spacer()
                         
+                        Text(viewModel.userPrefersToShowLTC ? viewModel.currencyLTCTitle : viewModel.store.state.currentRate?.currencySymbol ?? "")
+                            .frame(height: fieldHeight, alignment: .trailing)
+                            .font(detailFont)
+                            .frame(width: 9.0, alignment: .leading)
+                            .foregroundColor(BrainwalletColor.content)
+                            .padding(.trailing, 1.0)
+                        
                         VStack {
-                            TextField("", value: $viewModel.sendAmount,
-                                      formatter: NumberFormatter())
+                            TextField("", text: $viewModel.sendAmountString)
                             .foregroundColor(BrainwalletColor.content)
                             .font(textFieldFont)
                             .frame(maxWidth: .infinity)
@@ -118,10 +127,12 @@ struct SendView: View {
                         .padding(.top, 1.0)
                         
                         Button(action: {
-                            viewModel.userPrefersShowLTC.toggle()
+                            viewModel.userPrefersToShowLTC.toggle()
+                            viewModel.updateAmountValue()
+                            
                         }) {
                             ZStack {
-                                Text(viewModel.userPrefersShowLTC ? viewModel.currencyLTCTitle : viewModel.currencyCodeString)
+                                Text(viewModel.userPrefersToShowLTC ? viewModel.currencyLTCTitle : viewModel.currencyCodeString)
                                     .foregroundColor(BrainwalletColor.content)
                                     .font(detailFont)
                                     .frame(width: width * 0.15,
@@ -144,26 +155,23 @@ struct SendView: View {
                     
                     HStack {
                         Text("Details:")
-                            .frame(width: width * 0.3, height: fieldHeight, alignment: .leading)
+                            .frame(width: width * 0.2, height: fieldHeight, alignment: .leading)
                             .frame(maxHeight: .infinity, alignment: .top)
                             .font(subHeaderFont)
                             .foregroundColor(BrainwalletColor.content)
                         Spacer()
                         
                         VStack {
-                            Text("Network + Service Fee:")
+                            Text("Total Fees: \(viewModel.totalFees)")
                                 .font(detailFont)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .frame(height: fieldHeight / 2)
-                            Text(viewModel.networkFees + viewModel.serviceFees)
+                            Text("\(viewModel.remainingBalance)")
                                 .font(detailFont)
-                                .foregroundColor(BrainwalletColor.content)
+                                .foregroundColor(viewModel.remainingBalance == "OVER BALANCE" ? BrainwalletColor.error : BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .frame(height: fieldHeight / 2)
-                            Spacer()
                         }
-                        .frame(height: fieldHeight, alignment: .leading)
+                        .frame(alignment: .leading)
                     }
                     .padding([.leading,.trailing], 16.0)
                     
@@ -174,8 +182,7 @@ struct SendView: View {
                             .foregroundColor(BrainwalletColor.content)
                         Spacer()
                         VStack {
-                            TextField("", value: $viewModel.memo,
-                                      formatter: NumberFormatter())
+                            TextField("", text: $viewModel.memo)
                             .foregroundColor(BrainwalletColor.content)
                             .font(textFieldFont)
                             .frame(maxWidth: .infinity)
@@ -310,17 +317,8 @@ struct SendView: View {
                         }
                     }
                 }
-                .onChange(of: viewModel.sendAmount, perform: { _ in
-                    if viewModel.sendAmount > 0.0  && viewModel.sendAmount.isNumericWithOptionalDecimal {
-                        //convert to Litoshis from fiat or LTC
-                        guard let currentRate = viewModel.store.state.currentRate else { return }
-                        
-                        let litoshisPerFiat = Litoshis(value: viewModel.sendAmount, rate: currentRate )
-                        
-                        //Calculate
-                        viewModel.fetchTotalSendAmountofBalanceAndFees(enteredAmount: litoshisPerFiat)
-                        
-                    }
+                .onChange(of: viewModel.sendAmountString, perform: { _ in
+                    viewModel.updateAmountValue()
                 })
             }
         }

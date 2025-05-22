@@ -22,37 +22,29 @@ class SendViewModel: ObservableObject, Subscriber {
     var sendAddress: String = ""
     
     @Published
-    var sendAmount: Double = 0.0
+    var sendAmountString: String = ""
 
     @Published
     var memo: String = ""
     
     @Published
-    var networkFees: String = ""
+    var totalFees: String = ""
     
     @Published
-    var serviceFees: String = ""
+    var remainingBalance: String = ""
     
     @Published
     var totalAmountToSend: String = ""
     
     @Published
-    var currencyCodeString: String = "USD ($)"
+    var currencyCodeString: String = "USD($)"
     
     @Published
     var currencyLTCTitle: String = ""
     
-    
     @Published
-    var userPrefersShowLTC: Bool = false
-    
-    var newAmount: Satoshis?
-    var balanceTextForAmount: ((Satoshis?, Rate?) -> (NSAttributedString?, NSAttributedString?)?)?
-    
-//    enteredAmount, rate in
-//        self?.balanceTextForAmountWithFormattedFees(enteredAmount: enteredAmount, rate: rate)
-//    }
-    
+    var userPrefersToShowLTC: Bool = false
+     
     let store: Store
     let sender: Sender
     let walletManager: WalletManager
@@ -69,8 +61,20 @@ class SendViewModel: ObservableObject, Subscriber {
         self.walletManager = walletManager
         self.initialAddress = initialAddress
         self.initialRequest = initialRequest
-        
+        self.balance = self.walletManager.wallet?.balance ?? 0
         setCurrencySwitchTitles()
+        
+        store.subscribe(self, selector: { $0.walletState.balance != $1.walletState.balance },
+                        callback: {
+                            if let balance = $0.walletState.balance {
+                                self.balance = balance
+                            }
+                        })
+    }
+    
+    deinit {
+        store.unsubscribe(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func setCurrencySwitchTitles() {
@@ -81,10 +85,24 @@ class SendViewModel: ObservableObject, Subscriber {
         currencyCodeString = "\(currentCode) (\(symbol))"
         
         switch store.state.maxDigits {
-        case 2: self.currencyLTCTitle = "photons (mł)"
-        case 5: self.currencyLTCTitle = "lites (ł)"
-        case 8: self.currencyLTCTitle = "LTC (Ł)"
-        default: self.currencyLTCTitle = "lites (ł)"
+        case 2: self.currencyLTCTitle = "mł"
+        case 5: self.currencyLTCTitle = "ł"
+        case 8: self.currencyLTCTitle = "Ł"
+        default: self.currencyLTCTitle = "ł"
+        }
+    }
+    
+    func updateAmountValue() {
+        if sendAmountString.isNumericWithOptionalDecimal() {
+            
+            //convert string to uint64
+            guard let amountValueUInt64 = UInt64(sendAmountString) else { return }
+            
+            // Update fees string
+            updateTotalSendAmountofBalanceAndFees(enteredAmount: Litoshis(amountValueUInt64))
+        }
+        else {
+            sendAmountString = ""
         }
     }
     
@@ -101,144 +119,62 @@ class SendViewModel: ObservableObject, Subscriber {
     /// Description: Recalculated the send amount based on network and service fees
     /// - Parameters:
     ///   - enteredAmount: UInt64 value in Litoshis
-    ///   - rate: Rate
-    /// - Returns: Tuple (String? , String?)
-    func fetchTotalSendAmountofBalanceAndFees(enteredAmount: Litoshis?) -> (String?, String?) {
+    ///  - Updates  totalFees
+    ///  - Updates  remainingBalance
+    ///  - Updates  totalAmountToSend
+    /// - Returns: Void
+    func updateTotalSendAmountofBalanceAndFees(enteredAmount: Litoshis?) {
 
-        let balanceAmount = FormattedLTCAmount(amount: Litoshis(rawValue: balance),
-                                          state: store.state,
-                                          selectedRate: store.state.currentRate,
-                                          minimumFractionDigits: 2)
-        
-        let balanceText = balanceAmount.description
-        let balanceOutput = String(format: "Balance: %1$@" , balanceText)
-        var combinedFeesOutput = ""
-        
-        if let currentRate = store.state.currentRate,
-           let enteredAmount = enteredAmount,
+        if let enteredAmount = enteredAmount,
            enteredAmount > 0
         {
+            ///  All values in Litoshis
             let tieredOpsFee = tieredOpsFee(amount: enteredAmount.rawValue)
-
-            let totalAmountToCalculateFees = (enteredAmount.rawValue + tieredOpsFee)
-
-            let networkFee = sender.feeForTx(amount: totalAmountToCalculateFees)
-            let totalFees = (networkFee + tieredOpsFee)
-            let sendTotal = balance + totalFees
-            let networkFeeAmount = FormattedLTCAmount(amount:Litoshis(rawValue: networkFee),
-                                              state: store.state,
-                                              selectedRate: store.state.currentRate,
-                               minimumFractionDigits: 2).description
-
-            let serviceFeeAmount = FormattedLTCAmount(amount:Litoshis(rawValue: tieredOpsFee),
-                                                      state: store.state,
-                                                      selectedRate: store.state.currentRate,
-                                       minimumFractionDigits: 2).description
+            let amountAndFees = (enteredAmount.rawValue + tieredOpsFee)
+            let networkFee = sender.feeForTx(amount: amountAndFees)
+            let sendAmountInSats = amountAndFees + networkFee
             
+            if userPrefersToShowLTC {
+                
+            ///  All values in LTC
+            let tieredOpsFeeInLTC = Double(tieredOpsFee / litoshisPerLitecoin)
+            let amountAndFeesInLTC  = amountAndFees / litoshisPerLitecoin
+            let networkFeeInLTC  = networkFee / litoshisPerLitecoin
+            let sendAmountInSatsInLTC  = sendAmountInSats / litoshisPerLitecoin
+                print("||| \(tieredOpsFeeInLTC)" + "\(amountAndFeesInLTC)" + "\(networkFeeInLTC)" + "\(sendAmountInSatsInLTC)")
+                totalFees = "\(tieredOpsFeeInLTC)" + "\(amountAndFeesInLTC)" + "\(networkFeeInLTC)" + "\(sendAmountInSatsInLTC)"
+                
+                if sendAmountInSats < balance {
+//                    remainingBalance =
+//                    remainingBalance = String(format: "Remaining balance: %1$@" , remainingBalance)
+                }
+                else {
+                    remainingBalance = "OVER BALANCE"
+                }
+            }
+            else {
+                
+                guard let rateValue = store.state.currentRate?.rate else { return }
 
-            let totalFeeAmount = FormattedLTCAmount(amount:Litoshis(rawValue: networkFee + tieredOpsFee),
-                                                    state: store.state,
-                                                    selectedRate: store.state.currentRate,
-                                     minimumFractionDigits: 2).description
-            
-            let combinedFeesOutput = String(
-                format: String(localized: "(Network fee + Service fee):", bundle: .main),
-                networkFeeAmount,
-                serviceFeeAmount,
-                totalFeeAmount
-            )
-            
-           // print("|||1 \(balanceAmount) ")
-            print("|||2 \(sendAmount)  \(networkFeeAmount)  \(serviceFeeAmount) \(totalFeeAmount) \(combinedFeesOutput)")
-//            print("|||3 \(networkFeeAmount)  \(serviceFeeAmount) \(totalFeeAmount) \(combinedFeesOutput)")
-//            print("|||4 \(serviceFeeAmount) \(totalFeeAmount) \(combinedFeesOutput)")
-//            print("|||5 \(totalFeeAmount) \(combinedFeesOutput)")
-//            print("|||6 \(combinedFeesOutput)")
-
-
+            ///  All values in LocalFiat
+            let tieredOpsFeeInLocalFiat = Double(tieredOpsFee / litoshisPerLitecoin) * Double(rateValue)
+            let amountAndFeesInLocalFiat = Double(amountAndFees / litoshisPerLitecoin) * Double(rateValue)
+            let networkFeeInLocalFiat = Double(networkFee / litoshisPerLitecoin) * Double(rateValue)
+            let sendAmountInSatsInLocalFiat = Double(sendAmountInSats / litoshisPerLitecoin) * Double(rateValue)
+                
+                
+                totalFees = ""
+                print("||| \(tieredOpsFeeInLocalFiat)" + "\(amountAndFeesInLocalFiat)" + "\(networkFeeInLocalFiat)" + "\(sendAmountInSatsInLocalFiat)")
+                
+                if sendAmountInSats < balance {
+//                    remainingBalance =
+//                    remainingBalance = String(format: "Remaining balance: %1$@" , remainingBalance)
+                }
+                else {
+                    remainingBalance = "OVER BALANCE"
+                }
+            }
         }
-        return ( balanceOutput, combinedFeesOutput)
     }
     
-    
-    
-        
-  
-//    private func balanceTextForAmountWithFormattedFees(enteredAmount: Satoshis?, rate: Rate?) -> (NSAttributedString?, NSAttributedString?) {
-//        var currentRate  = store.state.currentRate
-//
-//        let balanceAmount = DisplayAmount(amount: Satoshis(rawValue: balance),
-//                                          state: store.state,
-//                                          selectedRate: currentRate,
-//                                          minimumFractionDigits: 2)
-//
-//        let balanceText = balanceAmount.description
-//
-//        let balanceOutput = String(format: "Balance: %1$@" , balanceText)
-//        var combinedFeesOutput = ""
-//        var balanceColor: UIColor = BrainwalletUIColor.content
-//
-//        /// Check the amount is greater than zero and amount satoshis are not nil
-//        if let currentRate = currentRate,
-//           let enteredAmount = enteredAmount,
-//           enteredAmount > 0
-//        {
-//            let tieredOpsFee = tieredOpsFee(amount: enteredAmount.rawValue)
-//
-//            let totalAmountToCalculateFees = (enteredAmount.rawValue + tieredOpsFee)
-//
-//            let networkFee = sender.feeForTx(amount: totalAmountToCalculateFees)
-//            let totalFees = (networkFee + tieredOpsFee)
-//            let sendTotal = balance + totalFees
-//            let networkFeeAmount = DisplayAmount(amount: Satoshis(rawValue: networkFee),
-//                                                 state: store.state,
-//                                                 selectedRate: currentRate,
-//                                                 minimumFractionDigits: 2).description
-//
-//            let serviceFeeAmount = DisplayAmount(amount: Satoshis(rawValue: tieredOpsFee),
-//                                                 state: store.state,
-//                                                 selectedRate: currentRate,
-//                                                 minimumFractionDigits: 2).description
-//
-//            let totalFeeAmount = DisplayAmount(amount: Satoshis(rawValue: networkFee + tieredOpsFee),
-//                                               state: store.state,
-//                                               selectedRate: currentRate,
-//                                               minimumFractionDigits: 2).description
-//            
-//            let combinedFeesOutput = String(
-//                format: String(localized: "(Network fee + Service fee):", bundle: .main),
-//                networkFeeAmount,
-//                serviceFeeAmount,
-//                totalFeeAmount
-//            )
-//            
-//            if sendTotal > balance {
-//                balanceColor = BrainwalletUIColor.error
-//            }
-//            else {
-//                balanceColor = BrainwalletUIColor.content
-//            }
-//        }
-//
-//        let balanceStyle = [
-//            NSAttributedString.Key.font: UIFont.customBody(size: 14.0),
-//            NSAttributedString.Key.foregroundColor: balanceColor
-//        ]
-//
-//        return (NSAttributedString(string: balanceOutput, attributes: balanceStyle), NSAttributedString(string: combinedFeesOutput, attributes: balanceStyle))
-//    }
-
 }
-
-/////ViewModel Candidates
-//private let keyValueStore: BRReplicatedKVStore
-//private var feeType: FeeType?
-//private let initialRequest: PaymentRequest
-////    private var balance: UInt64 = 0
-////    private var amount: Satoshis?
-////    self.initialRequest = initialRequest
-////
-////    initialAddress: String? = nil,
-////    initialRequest: PaymentRequest? = nil
-
- 
