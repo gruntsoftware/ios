@@ -41,30 +41,6 @@ struct LockScreenFooterView: View {
                         }
                         .frame(minWidth: width * 0.20, minHeight: 40.0,
                                alignment: .center)
-
-                        VStack {
-                            Spacer()
-                            Button(action: {
-                                viewModel.userWantsToDelete.toggle()
-                            }) {
-                                Text("Forgot seed phrase?")
-                                    .font(.barlowSemiBold(size: 19.0))
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .frame(width: width * 0.4,
-                                           alignment: .center)
-                                    .foregroundColor(BrainwalletColor.content)
-                            }
-                            .frame(minWidth: width * 0.20, minHeight: 40.0,
-                                   alignment: .center)
-                            .padding(.top, 8.0)
-
-                            Text(AppVersion.string)
-                                .font(.barlowLight(size: 11.0))
-                                .frame(width: width * 0.4,
-                                       alignment: .center)
-                                .foregroundColor(BrainwalletColor.content)
-                                .padding(.all, 4.0)
-                        }
                         
                         Button(action: {
                             viewModel.userDidTapQR = true

@@ -384,27 +384,41 @@ class ModalPresenter: Subscriber, Trackable {
 			],
 			"Wallet":
 				[
-					Setting(title: "Wipe wallet" , callback: { [weak self] in
+					Setting(title: "Delete my data" , callback: { [weak self] in
 						guard let myself = self else { return }
 						guard let walletManager = myself.walletManager else { return }
-						let nc = ModalNavigationController()
-						nc.setClearNavbar()
-						nc.setWhiteStyle()
-						nc.delegate = myself.wipeNavigationDelegate
-						let start = StartWipeWalletViewController {
-							let recover = EnterPhraseViewController(store: myself.store, walletManager: walletManager, reason: .validateForWipingWallet {
-								myself.wipeWallet()
-							})
-							nc.pushViewController(recover, animated: true)
-						}
-						start.addCloseNavigationItem(tintColor: .white)
-						start.navigationItem.title = "Wipe wallet"
-						nc.viewControllers = [start]
-						settingsNav.dismiss(animated: true, completion: {
-							myself.topViewController?.present(nc, animated: true, completion: nil)
-						})
+                        let alert = UIAlertController(title: String(localized: "Delete my data"), message: String(localized: "Are you sure you want to delete this wallet & all its data?"), preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title:  String(localized: "Cancel")  , style: .default, handler: { _ in
+                            alert.dismiss(animated: true)
+                        }))
+                        alert.addAction(UIAlertAction(title: String(localized: "Delete all") , style: .default, handler: { _ in
+                            let group = DispatchGroup()
+                            
+                            _ = walletManager.peerManager?.disconnect()
+                            LWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
+                            group.enter()
+                            DispatchQueue.walletQueue.async {
+                                _ = walletManager.wipeWallet(pin: "forceWipe")
+                                group.leave()
+                            }
+
+                            group.enter()
+                            DispatchQueue.walletQueue.asyncAfter(deadline: .now() + 1.0) {
+                                _ = walletManager.deleteWalletDatabase(pin: "forceWipe")
+                                group.leave()
+                            }
+
+                            group.notify(queue: .main) {
+                                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                    UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                                }
+                            }
+                            
+                        }))
+                        self?.topViewController?.present(alert, animated: true)
+						 
 					}),
-					Setting(title: "Show seed words" , callback: { [weak self] in
+					Setting(title: String(localized: "Show seed words") , callback: { [weak self] in
 
 						guard let myself = self else { return }
 						guard let walletManager = myself.walletManager else { return }
@@ -416,7 +430,7 @@ class ModalPresenter: Subscriber, Trackable {
 					}),
 				],
 			"Manage": [
-				Setting(title: LAContext.biometricType() == .face ?"Face ID Spending Limit"  : "Touch ID Spending Limit" , accessoryText: { [weak self] in
+				Setting(title: LAContext.biometricType() == .face ?String(localized: "Face ID Spending Limit")  : String(localized: "Touch ID Spending Limit") , accessoryText: { [weak self] in
 					guard let myself = self else { return "" }
 					guard let rate = myself.store.state.currentRate else { return "" }
 					let amount = Amount(amount: walletManager.spendingLimit, rate: rate, maxDigits: myself.store.state.maxDigits)
@@ -424,7 +438,7 @@ class ModalPresenter: Subscriber, Trackable {
 				}, callback: {
 					self.pushBiometricsSpendingLimit(onNc: settingsNav)
 				}),
-				Setting(title: "Currency" , accessoryText: {
+				Setting(title: String(localized: "Currency") , accessoryText: {
 					let code = self.store.state.defaultCurrencyCode
 					let components: [String: String] = [NSLocale.Key.currencyCode.rawValue: code]
 					let identifier = Locale.identifier(fromComponents: components)
@@ -433,7 +447,7 @@ class ModalPresenter: Subscriber, Trackable {
 					guard let wm = self.walletManager else { debugPrint(":::NO WALLET MANAGER!"); return }
 					settingsNav.pushViewController(DefaultCurrencyViewController(walletManager: wm, store: self.store), animated: true)
 				}),
-				Setting(title: "Locale" , accessoryText: {
+				Setting(title: String(localized: "Locale") , accessoryText: {
 					// Get the current locale
 					let currentLocale = Locale.current
 
@@ -449,12 +463,12 @@ class ModalPresenter: Subscriber, Trackable {
 					let localeView = UIHostingController(rootView: LocaleChangeView(viewModel: LocaleChangeViewModel()))
 					settingsNav.pushViewController(localeView, animated: true)
 				}),
-				Setting(title: "Sync" , callback: {
-					let alert = UIAlertController(title: "Sync with Blockchain?" , message: "You will not be able to send money while syncing.", preferredStyle: .alert)
-					alert.addAction(UIAlertAction(title:  "Cancel"  , style: .default, handler: { _ in
+				Setting(title: String(localized: "Sync") , callback: {
+					let alert = UIAlertController(title: String(localized: "Sync with Blockchain?") , message: String(localized: "You will not be able to send money while syncing."), preferredStyle: .alert)
+					alert.addAction(UIAlertAction(title:  String(localized: "Cancel")  , style: .default, handler: { _ in
 						alert.dismiss(animated: true)
 					}))
-					alert.addAction(UIAlertAction(title: "Sync" , style: .default, handler: { _ in
+					alert.addAction(UIAlertAction(title: String(localized: "Sync") , style: .default, handler: { _ in
 						self.store.trigger(name: .rescan)
 						LWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
 						alert.dismiss(animated: true)
@@ -462,11 +476,11 @@ class ModalPresenter: Subscriber, Trackable {
 					}))
 					self.topViewController?.present(alert, animated: true)
 				}),
-				Setting(title: "Update PIN" , callback: strongify(self) { myself in
+				Setting(title: String(localized: "Update PIN") , callback: strongify(self) { myself in
 					let updatePin = UpdatePinViewController(store: myself.store, walletManager: walletManager, type: .update)
 					settingsNav.pushViewController(updatePin, animated: true)
 				}),
-                Setting(title: "Share data" , callback: {
+                Setting(title: String(localized: "Share data") , callback: {
                     settingsNav.pushViewController(ShareDataViewController(store: self.store), animated: true)
                 }),
 			]
@@ -534,7 +548,7 @@ class ModalPresenter: Subscriber, Trackable {
 	private func pushBiometricsSpendingLimit(onNc: UINavigationController) {
 		guard let walletManager = walletManager else { return }
 
-		let verify = VerifyPinViewController(bodyText: "Please enter your PIN to continue." , pinLength: store.state.pinLength, callback: { [weak self] pin, vc in
+		let verify = VerifyPinViewController(bodyText: String(localized: "Please enter your PIN to continue.") , pinLength: store.state.pinLength, callback: { [weak self] pin, vc in
 			guard let myself = self else { return false }
 			if walletManager.authenticate(pin: pin) {
 				vc.dismiss(animated: true, completion: {
@@ -560,12 +574,12 @@ class ModalPresenter: Subscriber, Trackable {
 		paperPhraseNavigationController.modalPresentationStyle = .overFullScreen
 		let start = StartPaperPhraseViewController(store: store, callback: { [weak self] in
 			guard let myself = self else { return }
-			let verify = VerifyPinViewController(bodyText: "Please enter your PIN to continue.", pinLength: myself.store.state.pinLength, callback: { pin, vc in
+			let verify = VerifyPinViewController(bodyText: String(localized: "Please enter your PIN to continue."), pinLength: myself.store.state.pinLength, callback: { pin, vc in
 				if walletManager.authenticate(pin: pin) {
 					var write: WritePaperPhraseViewController?
 					write = WritePaperPhraseViewController(store: myself.store, walletManager: walletManager, pin: pin, callback: { [weak self] in
 						guard let myself = self else { return }
-						let confirmVC = UIStoryboard(name: "Phrase", bundle: nil).instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController") as? ConfirmPaperPhraseViewController
+						let confirmVC = UIStoryboard(name: String(localized: "Phrase"), bundle: nil).instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController") as? ConfirmPaperPhraseViewController
 						confirmVC?.store = myself.store
 						confirmVC?.walletManager = myself.walletManager
 						confirmVC?.pin = pin
@@ -613,11 +627,11 @@ class ModalPresenter: Subscriber, Trackable {
 
 	private func wipeWallet() {
 		let group = DispatchGroup()
-		let alert = UIAlertController(title: "Wipe Wallet?", message: "Are you sure you want to delete this wallet?" , preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title:  "Cancel"  , style: .default, handler: nil))
-		alert.addAction(UIAlertAction(title: "Wipe" , style: .default, handler: { _ in
+		let alert = UIAlertController(title: String(localized: "Delete my wallet & data?"), message: String(localized: "Are you sure you want to delete this wallet & all its data? You will not be able to recover your seed words or any other data."), preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title:  String(localized: "Cancel")  , style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: String(localized: "Delete All") , style: .default, handler: { _ in
 			self.topViewController?.dismiss(animated: true, completion: {
-				let activity = BRActivityViewController(message: "Wiping..." )
+				let activity = BRActivityViewController(message: String(localized: "Deleting...") )
 				self.topViewController?.present(activity, animated: true, completion: nil)
 
 				group.enter()
@@ -640,8 +654,8 @@ class ModalPresenter: Subscriber, Trackable {
 							})
 						})
 					} else {
-						let failure = UIAlertController(title: "Failed" , message: "Failed to wipe wallet.", preferredStyle: .alert)
-						failure.addAction(UIAlertAction(title: "Ok" , style: .default, handler: nil))
+						let failure = UIAlertController(title: String(localized: "Failed") , message: String(localized: "Failed to wipe wallet."), preferredStyle: .alert)
+						failure.addAction(UIAlertAction(title: String(localized: "Ok") , style: .default, handler: nil))
 						self.topViewController?.present(failure, animated: true, completion: nil)
 					}
 				}
@@ -667,11 +681,11 @@ class ModalPresenter: Subscriber, Trackable {
 
 	private func handleCopyAddresses(success: String?, error _: String?) {
 		guard let walletManager = walletManager else { return }
-		let alert = UIAlertController(title: "Copy Wallet Addresses" , message: "Copy wallet addresses to clipboard?" , preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title:  "Cancel"  , style: .cancel, handler: nil))
-		alert.addAction(UIAlertAction(title: "Copy" , style: .default, handler: { [weak self] _ in
+		let alert = UIAlertController(title: String(localized: "Copy Wallet Addresses") , message: String(localized: "Copy wallet addresses to clipboard?") , preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title:  String(localized: "Cancel")  , style: .cancel, handler: nil))
+		alert.addAction(UIAlertAction(title: String(localized: "Copy") , style: .default, handler: { [weak self] _ in
 			guard let myself = self else { return }
-			let verify = VerifyPinViewController(bodyText:"Authorize to copy wallet address to clipboard" , pinLength: myself.store.state.pinLength, callback: { [weak self] pin, view in
+			let verify = VerifyPinViewController(bodyText: String(localized: "Authorize to copy wallet address to clipboard") , pinLength: myself.store.state.pinLength, callback: { [weak self] pin, view in
 				if walletManager.authenticate(pin: pin) {
 					self?.copyAllAddressesToClipboard()
 					view.dismiss(animated: true, completion: {
@@ -709,7 +723,7 @@ class ModalPresenter: Subscriber, Trackable {
 
 	private func showNotReachable() {
 		guard notReachableAlert == nil else { return }
-		let alert = InAppAlert(message: "No internet connection found. Check your connection and try again." , image: #imageLiteral(resourceName: "BrokenCloud"))
+		let alert = InAppAlert(message: String(localized: "No internet connection found. Check your connection and try again.") , image: #imageLiteral(resourceName: "BrokenCloud"))
 		notReachableAlert = alert
 		guard let window = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first
 		else {

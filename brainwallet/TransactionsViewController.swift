@@ -400,12 +400,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		                	guard let _ = self.walletManager?.peerManager
 		                	else {
-		                		assertionFailure("::: PEER MANAGER Not initialized")
 		                		return
 		                	}
-            debugPrint("::: TransactionViewController subscription syncState")
-
-
 
 		                	if reduxState.walletState.syncState == .syncing {
 		                		self.shouldBeSyncing = true
