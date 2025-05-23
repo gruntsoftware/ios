@@ -175,7 +175,7 @@ class Sender {
 					if let error = error {
 						completion(.publishFailure(error))
 					} else {
-						myself.setMetaData()
+						myself.saveTransactionMetadataToDeviceDB()
 						completion(.success)
 					}
 				}
@@ -183,8 +183,8 @@ class Sender {
 		}
 	}
 
-	/// Set transaction metadata
-	private func setMetaData() {
+	/// saveTransactionMetadataToDeviceDB
+	private func saveTransactionMetadataToDeviceDB() {
 		// Fires an event if the rate is not set
 		guard let rate = rate
 		else {

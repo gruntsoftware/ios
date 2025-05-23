@@ -107,9 +107,6 @@
         }
       }
     },
-    "%@" : {
-
-    },
     "%lld" : {
       "localizations" : {
         "ar" : {
@@ -624,6 +621,9 @@
           }
         }
       }
+    },
+    "Amount:" : {
+
     },
     "Are you sure you want to delete this wallet & all its data?" : {
 
@@ -5397,6 +5397,9 @@
     "Memo:" : {
 
     },
+    "Network + Service Fees:" : {
+
+    },
     "New Confirm View" : {
       "shouldTranslate" : false
     },
@@ -7618,6 +7621,9 @@
         }
       }
     },
+    "Remaining:" : {
+
+    },
     "Remember this PIN. If you forget it, you won't be able to access your Litecoin." : {
       "localizations" : {
         "ar" : {
@@ -8624,10 +8630,7 @@
         }
       }
     },
-    "Send LTC" : {
-
-    },
-    "Send View" : {
+    "Send Litecoin" : {
 
     },
     "Set app PIN" : {
@@ -11242,7 +11245,7 @@
         }
       }
     },
-    "Total Fees: %@" : {
+    "Total sending:" : {
 
     },
     "Touch ID" : {

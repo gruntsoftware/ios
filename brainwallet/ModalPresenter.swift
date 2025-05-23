@@ -628,7 +628,9 @@ class ModalPresenter: Subscriber, Trackable {
 
 	private func wipeWallet() {
 		let group = DispatchGroup()
-		let alert = UIAlertController(title: String(localized: "Delete my wallet & data?"), message: String(localized: "Are you sure you want to delete this wallet & all its data? You will not be able to recover your seed words or any other data."), preferredStyle: .alert)
+		let alert = UIAlertController(title: String(localized: "Delete my wallet & data?"),
+                                      message: String(localized: "Are you sure you want to delete this wallet & all its data? You will not be able to recover your seed words or any other data."),
+                                      preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title:  String(localized: "Cancel")  , style: .default, handler: nil))
 		alert.addAction(UIAlertAction(title: String(localized: "Delete All") , style: .default, handler: { _ in
 			self.topViewController?.dismiss(animated: true, completion: {
@@ -655,8 +657,11 @@ class ModalPresenter: Subscriber, Trackable {
 							})
 						})
 					} else {
-						let failure = UIAlertController(title: String(localized: "Failed") , message: String(localized: "Failed to wipe wallet."), preferredStyle: .alert)
-						failure.addAction(UIAlertAction(title: String(localized: "Ok") , style: .default, handler: nil))
+						let failure = UIAlertController(title: String(localized: "Failed") ,
+                                                        message: String(localized: "Failed to wipe wallet."),
+                                                        preferredStyle: .alert)
+						failure.addAction(UIAlertAction(title: String(localized: "Ok") ,
+                                                        style: .default, handler: nil))
 						self.topViewController?.present(failure, animated: true, completion: nil)
 					}
 				}

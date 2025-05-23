@@ -23,6 +23,9 @@ struct SendView: View {
     private var didTapScan: Bool = false
     
     @State
+    private var userCanSend: Bool = false
+    
+    @State
     private var showError: Bool = false
     
     @State
@@ -31,14 +34,16 @@ struct SendView: View {
     @State
     private var symbol = "Ł"
 
-    let qrImageSize: CGFloat = 35.0
+    let qrImageSize: CGFloat = 22.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
+    let largeButtonHeight: CGFloat = 45.0
     let fieldHeight: CGFloat = 30.0
     let headerFont: Font = .barlowBold(size: 24.0)
-    let subHeaderFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowRegular(size: 17.0)
+    let subHeaderFont: Font = .barlowSemiBold(size: 17.0)
+    let detailFont: Font = .barlowSemiBold(size: 15.0)
+    let subDetailFont: Font = .barlowRegular(size: 14.0)
+
     let textFieldFont: Font = .barlowRegular(size: 15.0)
     
     
@@ -58,10 +63,10 @@ struct SendView: View {
                 
                 VStack {
                     
-                    Text("Send View")
+                    Text("Send Litecoin")
                         .foregroundColor(BrainwalletColor.content)
                         .font(headerFont)
-                        .padding(.all, 10.0)
+                        .padding(.all, 8.0)
                         .frame(maxWidth: .infinity, alignment: .center)
                     Divider()
                         .frame(minHeight: 2.0)
@@ -69,12 +74,10 @@ struct SendView: View {
                     
                     HStack {
                         Text("Address:")
-                            .frame(width: width * 0.3, height: fieldHeight, alignment: .leading)
+                            .frame(width: width * 0.2, height: fieldHeight, alignment: .leading)
                             .font(subHeaderFont)
                             .foregroundColor(BrainwalletColor.content)
-                            .padding(.top, 1.0)
-                            
-                        Spacer()
+                       Spacer()
                         
                         VStack {
                             TextField("ltc1... or L... or M...", text: $viewModel.sendAddress)
@@ -82,49 +85,106 @@ struct SendView: View {
                                 .foregroundColor(BrainwalletColor.content)
                                 .font(textFieldFont)
                                 .truncationMode(.middle)
-                                .frame(maxWidth: .infinity)
-                                .frame(alignment: .leading)
                                 .focused($fieldIsFocused)
-                                .padding(.top, 1.0)
                                 .tint(BrainwalletColor.content)
                                 .keyboardType(.namePhonePad)
                         }
-                        .frame(height: fieldHeight, alignment: .trailing)
-                        .padding(.top, 1.0)
-                        
                     }
                     .padding([.leading,.trailing], 16.0)
+                    .frame(height: fieldHeight)
+                    .padding([.top,.bottom], 4.0)
+
                     
                     HStack {
+                        Spacer()
+                        Button(action: {
+                            viewModel.userDidTapPaste()
+                        }) {
+                            ZStack {
+                                Capsule()
+                                    .stroke(BrainwalletColor.content, lineWidth: 1.5)
+                                    .background(BrainwalletColor.surface)
+                                    .frame(width: width * 0.15,
+                                           height: fieldHeight,
+                                           alignment: .center)
+                                    .clipShape(Capsule())
+                                    .shadow(color: BrainwalletColor.gray, radius: 0.5, x: 2, y: 2)
+                                
+                                Text("PASTE")
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .font(detailFont)
+                                    .frame(width: width * 0.15,
+                                           height: fieldHeight,
+                                           alignment: .center)
+                                    .padding(.all, 5.0)
+                                    .clipShape(Capsule())
+                            }
+                        }
+                        .frame(width: 45.0, height: fieldHeight, alignment: .center)
+                        .padding(.trailing, 20.0)
+
+                        Button(action: {
+                            #if targetEnvironment(simulator)
+                                debugPrint(" No camera in simulator")
+                            #else
+                            CameraPermission.checkCameraAuthorization { granted in
+                                               if granted {
+                                                       didTapScan.toggle()
+                                               }
+                                           }
+                            
+                            #endif
+                        }) {
+                            ZStack {
+                                Capsule()
+                                    .stroke(BrainwalletColor.content, lineWidth: 1.5)
+                                    .background(BrainwalletColor.surface)
+                                    .frame(width: width * 0.15,
+                                           height: fieldHeight,
+                                           alignment: .center)
+                                    .clipShape(Capsule())
+                                    .shadow(color: BrainwalletColor.gray, radius: 0.5, x: 2, y: 2)
+                                
+                                Text("SCAN")
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .font(detailFont)
+                                    .frame(width: width * 0.15,
+                                           height: fieldHeight,
+                                           alignment: .center)
+                                    .clipShape(Capsule())
+
+                            }
+                        }
+                        .frame(width: 45.0, height: fieldHeight, alignment: .center)
+
+                    }
+                    .padding([.leading,.trailing], 16.0)
+                    .frame(height: fieldHeight)
+                    .padding([.top,.bottom], 4.0)
+
+
+                    HStack {
                         Text("Amount:")
-                            .frame(width: width * 0.3, height: fieldHeight, alignment: .leading)
+                            .frame(width: width * 0.25, height: fieldHeight, alignment: .leading)
                             .font(subHeaderFont)
                             .foregroundColor(BrainwalletColor.content)
                             .padding(.top, 1.0)
                         Spacer()
                         
-                        Text(viewModel.userPrefersToShowLTC ? viewModel.currencyLTCTitle : viewModel.store.state.currentRate?.currencySymbol ?? "")
-                            .frame(height: fieldHeight, alignment: .trailing)
-                            .font(detailFont)
-                            .frame(width: 9.0, alignment: .leading)
-                            .foregroundColor(BrainwalletColor.content)
-                            .padding(.trailing, 1.0)
-                        
                         VStack {
                             TextField("", text: $viewModel.sendAmountString)
                             .foregroundColor(BrainwalletColor.content)
                             .font(textFieldFont)
-                            .frame(maxWidth: .infinity)
+                            .frame(width: width * 0.35, alignment: .trailing)
                             .frame(alignment: .trailing)
+                            .padding(.trailing, 20.0)
                             .textFieldStyle(.roundedBorder)
                             .focused($fieldIsFocused)
-                            .padding(.top, 1.0)
                             .tint(BrainwalletColor.content)
                             .keyboardType(.decimalPad)
                             
                         }
                         .frame(height: fieldHeight, alignment: .leading)
-                        .padding(.top, 1.0)
                         
                         Button(action: {
                             viewModel.userPrefersToShowLTC.toggle()
@@ -132,46 +192,70 @@ struct SendView: View {
                             
                         }) {
                             ZStack {
-                                Text(viewModel.userPrefersToShowLTC ? viewModel.currencyLTCTitle : viewModel.currencyCodeString)
+                                
+                                Capsule()
+                                    .stroke(BrainwalletColor.content, lineWidth: 1.5)
+                                    .background(BrainwalletColor.surface)
+                                    .frame(width: width * 0.15,
+                                           height: fieldHeight,
+                                           alignment: .center)
+                                    .clipShape(Capsule())
+                                    .shadow(color: BrainwalletColor.gray, radius: 0.5, x: 2, y: 2)
+                                
+                                Text(viewModel.currencyCodeString)
                                     .foregroundColor(BrainwalletColor.content)
                                     .font(detailFont)
                                     .frame(width: width * 0.15,
                                            height: fieldHeight,
                                            alignment: .center)
-                                    .padding(.all, 5.0)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 4.0)
-                                            .stroke(BrainwalletColor.content, lineWidth: 1.0)
-                                            .frame(width: width * 0.15,
-                                                   height: fieldHeight,
-                                                   alignment: .center)
-
-                                    )
+                                    .padding(.all, 9.0)
+                                    .clipShape(Capsule())
                             }
+                            
                         }
-                        .frame(width: width * 0.2, height: qrImageSize + 10.0)
+                        .frame(width: 45.0, height: fieldHeight, alignment: .center)
                     }
                     .padding([.leading,.trailing], 16.0)
-                    
+                    .frame(height: fieldHeight)
+                    .padding([.top,.bottom], 4.0)
+
+
                     HStack {
-                        Text("Details:")
-                            .frame(width: width * 0.2, height: fieldHeight, alignment: .leading)
-                            .frame(maxHeight: .infinity, alignment: .top)
-                            .font(subHeaderFont)
-                            .foregroundColor(BrainwalletColor.content)
-                        Spacer()
+                            VStack {
+                                Text("Network + Service Fees:")
+                                    .font(subDetailFont)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Text("Total sending:")
+                                    .font(subDetailFont)
+                                    .foregroundColor(viewModel.isOverBalance ? BrainwalletColor.error : BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Text("Remaining:")
+                                    .font(subDetailFont)
+                                    .foregroundColor(viewModel.isOverBalance ? BrainwalletColor.error : BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Spacer()
+                            }
+                            .frame(width: width * 0.4, alignment: .topLeading)
+                           
+                            VStack {
+                                Text(viewModel.totalFees)
+                                    .font(subDetailFont)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Text(viewModel.totalAmountToSend)
+                                    .font(subDetailFont)
+                                    .foregroundColor(viewModel.isOverBalance ? BrainwalletColor.error : BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Text(viewModel.remainingBalance)
+                                    .font(subDetailFont)
+                                    .foregroundColor(viewModel.isOverBalance ? BrainwalletColor.error : BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Spacer()
+                            }
+                            .frame(width: width * 0.4, alignment: .topLeading)
                         
-                        VStack {
-                            Text("Total Fees: \(viewModel.totalFees)")
-                                .font(detailFont)
-                                .foregroundColor(BrainwalletColor.content)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Text("\(viewModel.remainingBalance)")
-                                .font(detailFont)
-                                .foregroundColor(viewModel.remainingBalance == "OVER BALANCE" ? BrainwalletColor.error : BrainwalletColor.content)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                        .frame(alignment: .leading)
+                            Spacer()
                     }
                     .padding([.leading,.trailing], 16.0)
                     
@@ -196,96 +280,33 @@ struct SendView: View {
                     
                     Spacer()
                     
-                    HStack {
-                        Button(action: {
-                            viewModel.userDidTapPaste()
-                        }) {
-                            VStack {
-                                Image(systemName: "document.on.document")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: qrImageSize,
-                                           height: qrImageSize,
-                                           alignment: .center)
-                                    .foregroundColor(BrainwalletColor.content)
-                                Text("PASTE")
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .font(subHeaderFont)
-                                    .frame(width: 140, alignment: .center)
-                                    .padding(.top, 2.0)
-                                    .padding([.leading,.trailing], 10.0)
-                            }
-                        }
-                        .frame(width: 140.0, height: qrImageSize + 10.0)
-                        .padding(.leading, 10.0)
-                        
-                        Button(action: {
-                            #if targetEnvironment(simulator)
-                                debugPrint(" No camera in simulator")
-                            #else
-                            CameraPermission.checkCameraAuthorization { granted in
-                                               if granted {
-                                                       didTapScan.toggle()
-                                               }
-                                           }
-                            
-                            #endif
-                        }) {
-                            VStack {
-                                Image(systemName: "qrcode.viewfinder")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: qrImageSize,
-                                           height: qrImageSize,
-                                           alignment: .center)
-                                    .foregroundColor(BrainwalletColor.content)
-                                
-                                Text("SCAN")
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .font(subHeaderFont)
-                                    .frame(width: 140, alignment: .center)
-                                    .padding(.top, 2.0)
-                                    .padding([.leading,.trailing], 10.0)
-                            }
-                        }
-                        .frame(width: 140.0, height: qrImageSize + 10.0)
-                        .padding(.all, 10.0)
-                        
-                    }
-                    .frame(width: width * 0.6, alignment: .center)
-                    .padding([.bottom], 24.0)
-                    .opacity(fieldIsFocused ? 0.0 : 1.0)
                     
                     Button(action: {
-                        if viewModel.validateSendData(store: viewModel.store) {
-                           ////Send
-                        }
-                        else {
-                            self.showError.toggle()
-                        }
+                        viewModel.sendLTC()
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                 .frame(width: width * 0.6, height: largeButtonHeight, alignment: .center)
                                 .foregroundColor(BrainwalletColor.surface)
                             
-                            Text("Send LTC")
+                            Text("Send")
                                 .frame(width: width * 0.6, height: largeButtonHeight, alignment: .center)
                                 .font(subHeaderFont)
-                                .foregroundColor(BrainwalletColor.content)
+                                .foregroundColor(userCanSend ? BrainwalletColor.content : BrainwalletColor.content.opacity(0.2))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
-                                        .stroke(BrainwalletColor.content, lineWidth: 2.0)
+                                        .stroke(userCanSend ? BrainwalletColor.content : BrainwalletColor.content.opacity(0.2), lineWidth: 2.0)
                                 )
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     .frame(height: largeButtonHeight)
                     .padding(.all, 10.0)
+                    .disabled(!userCanSend)
                     
                     
                 }
-                .frame(width: width * 0.9, height: isExpanded ? height * 0.8 : height * 0.1, alignment: .top)
+                .frame(width: width * 0.9, height: isExpanded ? height * 0.75 : height * 0.1, alignment: .top)
                 .opacity(isExpanded ? 1.0 : 0.0)
                 .background(BrainwalletColor.surface)
                 .onAppear {
@@ -310,7 +331,7 @@ struct SendView: View {
                     NewCameraScannerView { code in
                         if code.split(separator: ":").count == 2 {
                             let rawCode = String(code.split(separator: ":")[1])
-                            if viewModel.validateSendAddressWith(address: rawCode) {
+                            if viewModel.validateLitecoinAddress(rawCode) {
                                 viewModel.sendAddress = rawCode
                                 didTapScan.toggle()
                             }
@@ -319,6 +340,25 @@ struct SendView: View {
                 }
                 .onChange(of: viewModel.sendAmountString, perform: { _ in
                     viewModel.updateAmountValue()
+                    
+                    let amountGreaterThanZero: Bool = (Double(viewModel.sendAmountString) ?? 0.0) > 0 ? true : false
+                    if (!viewModel.isOverBalance && amountGreaterThanZero && viewModel.validateLitecoinAddress(viewModel.sendAddress)) {
+                        userCanSend = true
+                    }
+                    else {
+                        userCanSend = false
+                    }
+                    debugPrint("||| userCanSend |  sendAmountString \(userCanSend)")
+                })
+                .onChange(of: viewModel.sendAddress, perform: { _ in
+                    let amountGreaterThanZero: Bool = (Double(viewModel.sendAmountString) ?? 0.0) > 0 ? true : false
+                    if (!viewModel.isOverBalance && amountGreaterThanZero && viewModel.validateLitecoinAddress(viewModel.sendAddress)) {
+                        userCanSend = true
+                    }
+                    else {
+                        userCanSend = false
+                    }
+                    debugPrint("||| userCanSend |  sendAddress \(userCanSend)")
                 })
             }
         }

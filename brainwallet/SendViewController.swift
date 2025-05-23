@@ -373,25 +373,15 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 				                 buttonLabel: "Ok" )
 			}
 
-			/// Set Ops or Single Output
-			if hasActivatedInlineFees {
-				guard let bareAmt = bareAmount?.rawValue,
+			
+            guard let bareAmt = bareAmount?.rawValue,
 				      sender.createTransactionWithOpsOutputs(amount: bareAmt, to: address)
 				else {
 					return showAlert(title: "Error" ,
 					                 message: "Could not create transaction." ,
 					                 buttonLabel: "Ok")
-				}
-			} else {
-				guard let bareAmt = bareAmount?.rawValue,
-				      sender.createTransaction(amount: bareAmt, to: address)
-				else {
-					return showAlert(title: "Error",
-					                 message: "Could not create transaction." ,
-					                 buttonLabel: "Ok")
-				}
-			}
-
+            }
+			
 			let confirm = ConfirmationViewController(amount: bareAmount ?? Satoshis(0),
 			                                         txFee: feeInSatoshis,
 			                                         opsFee: opsFeeAmount,

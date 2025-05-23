@@ -10,20 +10,22 @@ import SwiftUI
 
 extension SendViewModel {
     
-    func validateSendAddress() -> Bool {
-        let isSegwitValid = NSPredicate(format: "SELF MATCHES %@", "^ltc1[0-9a-z]{39,59}$").evaluate(with: sendAddress.lowercased())
-        let isLTCValid = NSPredicate(format: "SELF MATCHES %@", "^[LM][a-zA-Z0-9]{26,33}$").evaluate(with: sendAddress)
-         
-        let validAddtressStatus = isSegwitValid || isLTCValid
-        return validAddtressStatus
-    }
-    
-    func validateSendAddressWith(address: String) -> Bool {
-        let isSegwitValid = NSPredicate(format: "SELF MATCHES %@", "^ltc1[0-9a-z]{39,59}$").evaluate(with: address.lowercased())
-        let isLTCValid = NSPredicate(format: "SELF MATCHES %@", "^[LM][a-zA-Z0-9]{26,33}$").evaluate(with: address)
+    func validateLitecoinAddress(_ address: String) -> Bool {
+        let trimmedAddress = address.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        let validAddtressStatus = isSegwitValid || isLTCValid
-        return validAddtressStatus
+        guard !trimmedAddress.isEmpty else { return false }
+        
+        // Bech32 validation (native SegWit)
+        let bech32Pattern = "^ltc1[qpzry9x8gf2tvdw0s3jn54khce6mua7l]{38,58}$"
+        let isBech32Valid = NSPredicate(format: "SELF MATCHES %@", bech32Pattern).evaluate(with: trimmedAddress.lowercased())
+        
+        // Legacy address validation (P2PKH and P2SH)
+        // Uses Base58 character set excluding 0, O, I, l to avoid confusion
+        let legacyPattern = "^[LM][1-9A-HJ-NP-Za-km-z]{25,33}$"
+        let isLegacyValid = NSPredicate(format: "SELF MATCHES %@", legacyPattern).evaluate(with: trimmedAddress)
+       
+        let isAddressValid = (isBech32Valid || isLegacyValid)
+        return isAddressValid
     }
     
     func validateSendAmount(store: Store) -> Bool {
@@ -36,10 +38,7 @@ extension SendViewModel {
     func validateMemoLength() -> Bool {
         return memo.count <= 255
     }
-    
-    func validateSendData(store: Store) -> Bool {
-        return validateSendAmount(store: store) && validateSendAddress() && validateMemoLength()
-    }
+
 }
 
 struct FormattedLTCAmount {
