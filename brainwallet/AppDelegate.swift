@@ -67,6 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set global themse
 		thisWindow.tintColor = BrainwalletUIColor.surface
         thisWindow.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: userDidPreferDarkModeKey) ? .dark: .light
+        
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = BrainwalletUIColor.content
+        
             
 		UIView.swizzleSetFrame()
 

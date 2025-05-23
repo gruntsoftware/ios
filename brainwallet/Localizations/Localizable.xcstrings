@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "shouldTranslate" : false
     },
     " Make sure the send address is valid, the amount is not zero, & you have enough LTC in your Brainwallet" : {
 
@@ -625,7 +625,13 @@
         }
       }
     },
-    "Amount:" : {
+    "Are you sure you want to delete this wallet & all its data?" : {
+
+    },
+    "Are you sure you want to delete this wallet & all its data? You will not be able to recover your seed words or any other data." : {
+
+    },
+    "Authorize to copy wallet address to clipboard" : {
 
     },
     "Bad Payment Request" : {
@@ -1834,6 +1840,9 @@
         }
       }
     },
+    "Copy" : {
+
+    },
     "Copy all details" : {
       "localizations" : {
         "ar" : {
@@ -1933,6 +1942,12 @@
           }
         }
       }
+    },
+    "Copy Wallet Addresses" : {
+
+    },
+    "Copy wallet addresses to clipboard?" : {
+
     },
     "Could not create transaction." : {
       "localizations" : {
@@ -2534,6 +2549,21 @@
         }
       }
     },
+    "Delete all" : {
+
+    },
+    "Delete All" : {
+
+    },
+    "Delete my data" : {
+
+    },
+    "Delete my wallet & data?" : {
+
+    },
+    "Deleting..." : {
+
+    },
     "Delivery: 2.5 - 5+  minutes" : {
       "localizations" : {
         "ar" : {
@@ -2730,109 +2760,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "儲值LTC地址"
-          }
-        }
-      }
-    },
-    "Details:" : {
-
-    },
-    "DO NOT LOSE IT!" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "لا تفقده!"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "VERLIEREN SIE ES NICHT!"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡NO LO PIERDAS!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NE LE PERDEZ PAS !"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "इसे खोए नहीं!"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "JANGAN SAMPAI HILANG!"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NON PERDERLO!"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "なくさないように！"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "놓치지 마세요!"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NÃO O PERCA!"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "НЕ ТЕРЯЙТЕ ЕГО!"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tappa inte bort det!"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SAKIN KAYBETMEYIN!"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "НЕ ВТРАТИ ЙОГО!"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "不要丢失它！"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "不要丟失它！"
           }
         }
       }
@@ -4440,6 +4367,15 @@
         }
       }
     },
+    "Face ID Spending Limit" : {
+
+    },
+    "Failed" : {
+
+    },
+    "Failed to wipe wallet." : {
+
+    },
     "Fees: " : {
       "localizations" : {
         "ar" : {
@@ -4536,106 +4472,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "費用："
-          }
-        }
-      }
-    },
-    "Forgot seed phrase?" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "نسيت عبارة الاسترداد؟"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Samenphrase vergessen?"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Olvidaste la frase de recuperación?"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Phrase de graine oubliée ?"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "बीज वाक्यांश भूल गए?"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lupa frasa benih?"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hai dimenticato la frase iniziale?"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "シードフレーズを忘れましたか?"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "시드 문구를 잊으셨나요?"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esqueceu a frase-semente?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Забыли фразу о семенах?"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Glömt seedfras?"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tohum ifadesini mi unuttunuz?"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Забули початкову фразу?"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "忘记助记词？"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "忘記種子短語？"
           }
         }
       }
@@ -5152,107 +4988,6 @@
     "Ł1233.994" : {
       "shouldTranslate" : false
     },
-    "Languages" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "اللغات"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sprachen"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Idiomas"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Traduction"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "बोली"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bahasa"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lingue"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "言語"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "언어"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Idiomas"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Языки"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Språk"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diller"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Мови"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "语言"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "語言"
-          }
-        }
-      }
-    },
     "Litecoin Display Unit" : {
       "localizations" : {
         "ar" : {
@@ -5452,6 +5187,9 @@
           }
         }
       }
+    },
+    "Locale" : {
+
     },
     "Locale: %@" : {
       "localizations" : {
@@ -5667,6 +5405,9 @@
     },
     "New Send" : {
       "shouldTranslate" : false
+    },
+    "No internet connection found. Check your connection and try again." : {
+
     },
     "Ok" : {
       "localizations" : {
@@ -6473,6 +6214,9 @@
           }
         }
       }
+    },
+    "Please enter your PIN to continue." : {
+
     },
     "Please find a private place to write down your PIN and seed phrase." : {
       "localizations" : {
@@ -9386,6 +9130,9 @@
         }
       }
     },
+    "Share data" : {
+
+    },
     "Share data?" : {
       "localizations" : {
         "ar" : {
@@ -9485,6 +9232,9 @@
           }
         }
       }
+    },
+    "Show seed words" : {
+
     },
     "Social links" : {
       "localizations" : {
@@ -10485,6 +10235,12 @@
           }
         }
       }
+    },
+    "Tap here to enable Face ID" : {
+
+    },
+    "Tap here to enable Touch ID" : {
+
     },
     "Text message" : {
       "localizations" : {
@@ -11588,6 +11344,9 @@
           }
         }
       }
+    },
+    "Touch ID Spending Limit" : {
+
     },
     "Transaction amount detail" : {
       "localizations" : {
@@ -13288,9 +13047,6 @@
           }
         }
       }
-    },
-    "Your Brainwallet is empty. Resetting will delete the old private key and wipe the app data.\n\nAfter the reset, be prepared to record the new 12 words and keep them in a very secure place.\n\nNo Brainwallet developers can retrieve this seed for you." : {
-
     },
     "Your current wallet will be removed from this device. If you wish to restore it in the future, you will need to enter your Paper Key." : {
       "localizations" : {

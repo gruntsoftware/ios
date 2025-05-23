@@ -397,29 +397,27 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		store.subscribe(self, selector: { $0.walletState.syncState != $1.walletState.syncState },
 		                callback: { reduxState in
 
-                guard let _ = self.walletManager?.peerManager
-                else {
-                    assertionFailure("::: PEER MANAGER Not initialized")
-                    return
-                }
-                
-                if reduxState.walletState.syncState == .syncing {
-                    self.shouldBeSyncing = true
-                       
-                                self.initSyncingHeaderView(reduxState: reduxState, completion: {
-                                self.syncingHeaderView?.isRescanning = reduxState.walletState.isRescanning
-                                self.syncingHeaderView?.progress = 0.02
-                                self.syncingHeaderView?.headerMessage = reduxState.walletState.syncState
-                                self.syncingHeaderView?.noSendImageView.alpha = 1.0
-                                self.syncingHeaderView?.timestamp = reduxState.walletState.lastBlockTimestamp
-                            })
-                }
+		                	guard let _ = self.walletManager?.peerManager
+		                	else {
+		                		return
+		                	}
 
-                if reduxState.walletState.syncState == .success {
-                    self.shouldBeSyncing = false
-                    self.syncingHeaderView = nil
-                }
-                self.reload()
+		                	if reduxState.walletState.syncState == .syncing {
+		                		self.shouldBeSyncing = true
+		                		self.initSyncingHeaderView(reduxState: reduxState, completion: {
+		                			self.syncingHeaderView?.isRescanning = reduxState.walletState.isRescanning
+		                			self.syncingHeaderView?.progress = 0.02
+		                			self.syncingHeaderView?.headerMessage = reduxState.walletState.syncState
+		                			self.syncingHeaderView?.noSendImageView.alpha = 1.0
+		                			self.syncingHeaderView?.timestamp = reduxState.walletState.lastBlockTimestamp
+		                		})
+		                	}
+
+		                	if reduxState.walletState.syncState == .success {
+		                		self.shouldBeSyncing = false
+		                		self.syncingHeaderView = nil
+		                	}
+		                	self.reload()
 		                })
 
 		// MARK: - Subscription:  Recommend Rescan

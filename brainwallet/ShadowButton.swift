@@ -225,7 +225,7 @@ class ShadowButton: UIControl {
 		case .boldWarning:
 			label.font = UIFont.customBold(size: 15.0)
             container.backgroundColor = BrainwalletUIColor.surface
-            label.textColor = BrainwalletUIColor.warn
+            label.textColor = BrainwalletUIColor.error
 			container.layer.borderColor = BrainwalletUIColor.border.cgColor
 			container.layer.borderWidth = 1.0
             shadowView.layer.shadowColor = BrainwalletUIColor.gray.cgColor

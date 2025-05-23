@@ -248,5 +248,8 @@ enum CustomEvent: String {
     /// Did change theme preference
     case _20250504_DCTP = "did_change_theme_preference"
     
+    /// Did delete all data
+    case _20250522_DDAD = "did_delete_all_data"
+    
     
 }
