@@ -104,6 +104,9 @@
         }
       }
     },
+    "%@ = 1Ł" : {
+
+    },
     "%lld" : {
       "localizations" : {
         "ar" : {
@@ -2341,6 +2344,7 @@
       }
     },
     "Current Litecoin value in = %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -11625,6 +11629,7 @@
 
     },
     "Unlocked" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
