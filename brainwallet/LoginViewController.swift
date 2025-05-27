@@ -202,16 +202,17 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 
 		if walletManager != nil {
 			addChildViewController(pinPadViewController, layout: {
-				pinPadBottom = pinPadViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -160)
-				pinPadViewController.view.constrain([
-					pinPadViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-					pinPadViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-					pinPadBottom,
-					pinPadViewController.view.heightAnchor.constraint(equalToConstant: pinPadViewController.height),
-				])
+				pinPadBottom = pinPadViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -180)
+                    
+                    pinPadViewController.view.constrain([
+                        pinPadViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                        pinPadViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                        pinPadBottom,
+                        pinPadViewController.view.heightAnchor.constraint(equalToConstant: pinPadViewController.height),
+                    ])
 			})
 		}
-		pinViewContainer.constrain(toSuperviewEdges: nil)
+        pinViewContainer.constrain(toSuperviewEdges: nil)
 
 		if walletManager != nil {
 			pinPadBackground.constrain([

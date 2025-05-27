@@ -35,7 +35,7 @@ struct LockScreenHeaderView: View {
                     Image("bw-logotype")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: width * 0.75)
+                        .frame(width: width * 0.65)
                         .padding(.top, 40.0)
                         .padding(10.0)
                 }

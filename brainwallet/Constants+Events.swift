@@ -10,7 +10,7 @@ let kPinDigitConstant = 4
 
 
 struct BrainwalletSupport {
-	static let dashboard = "https://brainwallet.co/"
+	static let dashboard = "https://brainwallet.co/support.html"
 }
 
 struct BrainwalletSocials {
@@ -19,9 +19,9 @@ struct BrainwalletSocials {
 
 struct APIServer {
 	static let baseUrl = "https://api.grunt.ltd/"
-    static let mp_pk_live = "pk_test_TkkY0OEGaffToUWhjdUDP2ysWeWyzqc"
+    static let mp_pk_live = "pk_live_ylGsCKkktryFS138bWkR51M7QV0Q92ph"
     static let mp_widget_debug_prefix = "https://buy-sandbox.moonpay.com/"
-    static let mp_widget_prod_prefix = "https://https://buy.moonpay.com/"
+    static let mp_widget_prod_prefix = "https://buy.moonpay.com/"
 }
 
 struct Padding {
