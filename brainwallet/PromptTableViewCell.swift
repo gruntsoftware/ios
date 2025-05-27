@@ -32,12 +32,12 @@ enum PromptType {
 
 	var title: String {
 		switch self {
-		case .biometrics: return LAContext.biometricType() == .face ? "Enable Face ID" : "Enable Touch ID" 
-		case .paperKey: return "Action Required" 
-		case .upgradePin: return "Set PIN" 
-		case .recommendRescan: return "Transaction Rejected" 
-		case .noPasscode: return "Turn device passcode on" 
-		case .shareData: return "Share Anonymous Data"
+		case .biometrics: return LAContext.biometricType() == .face ?  String(localized: "Enable Face ID") :  String(localized: "Enable Touch ID")
+		case .paperKey: return String(localized: "Action Required")
+		case .upgradePin: return String(localized: "Set PIN")
+		case .recommendRescan: return String(localized: "Transaction Rejected")
+		case .noPasscode: return String(localized: "Turn device passcode on")
+		case .shareData: return String(localized: "Share Anonymous Data")
 		}
 	}
 
@@ -55,11 +55,11 @@ enum PromptType {
 	var body: String {
 		switch self {
 		case .biometrics: return LAContext.biometricType() == .face ? String(localized: "Tap here to enable Face ID")  : String(localized: "Tap here to enable Touch ID")
-		case .paperKey: return "S.Prompts.PaperKey.body"
-		case .upgradePin: return "S.Prompts.SetPin.body"
-		case .recommendRescan: return "S.Prompts.RecommendRescan.body"
-		case .noPasscode: return "S.Prompts.NoPasscode.body"
-		case .shareData: return "S.Prompts.ShareData.body"
+		case .paperKey: return String(localized: "Tap here to verify your 12 word seed phrase")
+		case .upgradePin: return String(localized: "Tap here to update your PIN")
+		case .recommendRescan: return String(localized: "Tap here to perform a rescan")
+		case .noPasscode: return String(localized: "Tap here to turn on passcode")
+		case .shareData: return String(localized: "Tap here to share analytics data anonymously")
 		}
 	}
 
