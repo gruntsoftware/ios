@@ -3563,6 +3563,7 @@
       }
     },
     "Enter your current PIN" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

@@ -169,7 +169,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		])
 
 		pinView.constrain([
-			pinView.centerYAnchor.constraint(equalTo: pinPadViewController.view.topAnchor, constant: -150),
+			pinView.centerYAnchor.constraint(equalTo: pinPadViewController.view.topAnchor, constant: -110),
 			pinView.centerXAnchor.constraint(equalTo: pinViewContainer.centerXAnchor),
 			pinView.widthAnchor.constraint(equalToConstant: pinView.width),
 			pinView.heightAnchor.constraint(equalToConstant: pinView.itemSize),
