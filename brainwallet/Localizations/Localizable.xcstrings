@@ -6698,6 +6698,7 @@
       }
     },
     "Processing time: These transactions will take minutes to process." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -6798,6 +6799,7 @@
       }
     },
     "Processing time: This transaction will take 2.5-5 minutes to process." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -6898,6 +6900,7 @@
       }
     },
     "Processing time: This transaction will take 5+ minutes to process." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -11611,6 +11614,15 @@
           }
         }
       }
+    },
+    "Transaction will take 2.5-5 mins to process." : {
+
+    },
+    "Transaction will take 5+ mins to process." : {
+
+    },
+    "Transactions take ~5 mins to process." : {
+
     },
     "Unlocked" : {
       "localizations" : {

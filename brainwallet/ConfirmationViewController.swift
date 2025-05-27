@@ -179,11 +179,11 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 		switch feeType {
 		case .luxury:
             
-            processingTime.text = String(localized: "Processing time: This transaction will take 2.5-5 minutes to process.", bundle: .main)
+            processingTime.text = String(localized: "Transaction will take 2.5-5 mins to process.", bundle: .main)
 		case .regular:
-			processingTime.text = String(localized: "Processing time: This transaction will take 2.5-5 minutes to process.", bundle: .main)
+			processingTime.text = String(localized: "Transaction will take 2.5-5 mins to process.", bundle: .main)
 		case .economy:
-			processingTime.text  = String(localized: "Processing time: This transaction will take 5+ minutes to process.", bundle: .main)
+			processingTime.text  = String(localized: "Transaction will take 5+ mins to process.", bundle: .main)
 		}
 
 		let displayAmount = DisplayAmount(amount: amount, state: state, selectedRate: selectedRate, minimumFractionDigits: 2)
@@ -192,7 +192,7 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 
         toLabel.text = String(localized: "to", bundle: .main)
         feeLabel.text = String(localized: "Fees: ", bundle: .main)
-		sendLabel.text = String(localized: "Processing time: These transactions will take minutes to process.", bundle: .main)
+		sendLabel.text = String(localized: "Transactions take ~5 mins to process.", bundle: .main)
         totalLabel.text = String(localized: "Total Cost:", bundle: .main)
 
 		amountLabel.text = displayAmount.combinedDescription
