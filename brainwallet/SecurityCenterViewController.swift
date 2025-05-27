@@ -37,7 +37,7 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 	fileprivate var shield = UIImageView(image: #imageLiteral(resourceName: "shield"))
 	private let scrollView = UIScrollView()
 	private let info = UILabel(font: .customBody(size: 16.0))
-	private let pinCell = SecurityCenterCell(title: "6-Digit PIN" , descriptionText: "Protects your Brainwallet from unauthorized users." )
+	private let pinCell = SecurityCenterCell(title: "4-Digit PIN" , descriptionText: "Protects your Brainwallet from unauthorized users." )
 	private let biometricsCell = SecurityCenterCell(title: LAContext.biometricType() == .face ? "Face ID"  : "Touch ID" , descriptionText: "Conveniently unlock your Brainwallet and send money up to a set limit." )
 	private let paperKeyCell = SecurityCenterCell(title: "Paper Key" , descriptionText: "The only way to access your Litecoin if you lose or upgrade your phone." )
     private var separator = UIView(color: BrainwalletUIColor.gray)
@@ -169,7 +169,7 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 	}
 
 	private func setPinAndPhraseChecks() {
-		pinCell.isCheckHighlighted = store.state.pinLength == 6
+		pinCell.isCheckHighlighted = store.state.pinLength == kPinDigitConstant
 		paperKeyCell.isCheckHighlighted = !UserDefaults.walletRequiresBackup
 	}
 

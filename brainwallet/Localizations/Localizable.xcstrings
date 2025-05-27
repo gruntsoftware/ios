@@ -104,6 +104,9 @@
         }
       }
     },
+    "%@ = 1Ł" : {
+
+    },
     "%lld" : {
       "localizations" : {
         "ar" : {
@@ -409,6 +412,9 @@
           }
         }
       }
+    },
+    "Action Required" : {
+
     },
     "ACTIVITY %lld" : {
       "shouldTranslate" : false
@@ -2341,6 +2347,7 @@
       }
     },
     "Current Litecoin value in = %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -3158,6 +3165,9 @@
         }
       }
     },
+    "Enable Face ID" : {
+
+    },
     "Enable Face ID for Brainwallet" : {
       "localizations" : {
         "ar" : {
@@ -3257,6 +3267,9 @@
           }
         }
       }
+    },
+    "Enable Touch ID" : {
+
     },
     "Enable Touch ID for Brainwallet" : {
       "localizations" : {
@@ -3559,6 +3572,7 @@
       }
     },
     "Enter your current PIN" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -6698,6 +6712,7 @@
       }
     },
     "Processing time: These transactions will take minutes to process." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -6798,6 +6813,7 @@
       }
     },
     "Processing time: This transaction will take 2.5-5 minutes to process." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -6898,6 +6914,7 @@
       }
     },
     "Processing time: This transaction will take 5+ minutes to process." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -8997,6 +9014,9 @@
         }
       }
     },
+    "Share Anonymous Data" : {
+
+    },
     "Share anonymous data?" : {
       "localizations" : {
         "ar" : {
@@ -10207,6 +10227,21 @@
 
     },
     "Tap here to enable Touch ID" : {
+
+    },
+    "Tap here to perform a rescan" : {
+
+    },
+    "Tap here to share analytics data anonymously" : {
+
+    },
+    "Tap here to turn on passcode" : {
+
+    },
+    "Tap here to update your PIN" : {
+
+    },
+    "Tap here to verify your 12 word seed phrase" : {
 
     },
     "Text message" : {
@@ -11612,7 +11647,23 @@
         }
       }
     },
+    "Transaction Rejected" : {
+
+    },
+    "Transaction will take 2.5-5 mins to process." : {
+
+    },
+    "Transaction will take 5+ mins to process." : {
+
+    },
+    "Transactions take ~5 mins to process." : {
+
+    },
+    "Turn device passcode on" : {
+
+    },
     "Unlocked" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

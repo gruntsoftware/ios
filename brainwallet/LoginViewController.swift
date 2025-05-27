@@ -169,7 +169,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		])
 
 		pinView.constrain([
-			pinView.centerYAnchor.constraint(equalTo: pinPadViewController.view.topAnchor, constant: -70),
+			pinView.centerYAnchor.constraint(equalTo: pinPadViewController.view.topAnchor, constant: -110),
 			pinView.centerXAnchor.constraint(equalTo: pinViewContainer.centerXAnchor),
 			pinView.widthAnchor.constraint(equalToConstant: pinView.width),
 			pinView.heightAnchor.constraint(equalToConstant: pinView.itemSize),
@@ -202,16 +202,17 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 
 		if walletManager != nil {
 			addChildViewController(pinPadViewController, layout: {
-				pinPadBottom = pinPadViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -140)
-				pinPadViewController.view.constrain([
-					pinPadViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-					pinPadViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-					pinPadBottom,
-					pinPadViewController.view.heightAnchor.constraint(equalToConstant: pinPadViewController.height),
-				])
+				pinPadBottom = pinPadViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -180)
+                    
+                    pinPadViewController.view.constrain([
+                        pinPadViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                        pinPadViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                        pinPadBottom,
+                        pinPadViewController.view.heightAnchor.constraint(equalToConstant: pinPadViewController.height),
+                    ])
 			})
 		}
-		pinViewContainer.constrain(toSuperviewEdges: nil)
+        pinViewContainer.constrain(toSuperviewEdges: nil)
 
 		if walletManager != nil {
 			pinPadBackground.constrain([
@@ -235,7 +236,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
             footerView.view.heightAnchor.constraint(equalToConstant: 60.0),
         ])
 
-		enterPINLabel.text = String(localized: "Enter PIN", bundle: .main)
+		enterPINLabel.text = ""
 	}
 
 	private func addPinPadCallback() {
@@ -273,7 +274,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		saveEvent("login.success")
 		let label = UILabel(font: enterPINLabel.font)
         label.textColor = BrainwalletUIColor.content
-		label.text = String(localized: "Unlocked", bundle: .main)
+		label.text = ""
 		let lock = UIImageView(image: #imageLiteral(resourceName: "unlock"))
 		lock.transform = .init(scaleX: 0.6, y: 0.6)
 

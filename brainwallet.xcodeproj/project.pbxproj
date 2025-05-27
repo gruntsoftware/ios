@@ -41,6 +41,10 @@
 		241D22452DB526C9000302C8 /* InputWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22442DB526C5000302C8 /* InputWordsView.swift */; };
 		241D22472DB526D7000302C8 /* YourSeedProveItView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22462DB526D4000302C8 /* YourSeedProveItView.swift */; };
 		241D22492DB526E9000302C8 /* YourSeedWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22482DB526E7000302C8 /* YourSeedWordsView.swift */; };
+		2428717B2DE5C1060035DE48 /* GenericPinPadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428717A2DE5C1030035DE48 /* GenericPinPadCell.swift */; };
+		2428717D2DE5C2230035DE48 /* ClearNumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428717C2DE5C2210035DE48 /* ClearNumberPad.swift */; };
+		2428717F2DE5C25F0035DE48 /* ClearDecimalPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428717E2DE5C25D0035DE48 /* ClearDecimalPad.swift */; };
+		242871812DE5C28B0035DE48 /* WhiteNumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871802DE5C27F0035DE48 /* WhiteNumberPad.swift */; };
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
@@ -460,6 +464,10 @@
 		241D22442DB526C5000302C8 /* InputWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWordsView.swift; sourceTree = "<group>"; };
 		241D22462DB526D4000302C8 /* YourSeedProveItView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSeedProveItView.swift; sourceTree = "<group>"; };
 		241D22482DB526E7000302C8 /* YourSeedWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSeedWordsView.swift; sourceTree = "<group>"; };
+		2428717A2DE5C1030035DE48 /* GenericPinPadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericPinPadCell.swift; sourceTree = "<group>"; };
+		2428717C2DE5C2210035DE48 /* ClearNumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearNumberPad.swift; sourceTree = "<group>"; };
+		2428717E2DE5C25D0035DE48 /* ClearDecimalPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearDecimalPad.swift; sourceTree = "<group>"; };
+		242871802DE5C27F0035DE48 /* WhiteNumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNumberPad.swift; sourceTree = "<group>"; };
 		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
@@ -1077,6 +1085,58 @@
 			path = "Your Seed Words";
 			sourceTree = "<group>";
 		};
+		242871822DE5C4E10035DE48 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				C312D0872D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift */,
+				C312D0882D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift */,
+				C312D07A2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift */,
+				C312D07E2D7DC27700BB97A4 /* UIScreen+Additions.swift */,
+				C312D0802D7DC27700BB97A4 /* UITableView+Additions.swift */,
+				C312D0812D7DC27700BB97A4 /* UIView+AnimationAdditions.swift */,
+				C312D0842D7DC27700BB97A4 /* UIView+InitAdditions.swift */,
+				C312D0862D7DC27700BB97A4 /* UIViewController+BRWAdditions.swift */,
+				C312D0892D7DC27700BB97A4 /* UserDefaults+Additions.swift */,
+				C312D0752D7DC27700BB97A4 /* String+Additions.swift */,
+				C312D07C2D7DC27700BB97A4 /* UILabel+BRWAdditions.swift */,
+				C312D0762D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift */,
+				C312D0772D7DC27700BB97A4 /* UIButton+BRWAdditions.swift */,
+				C312D0702D7DC27700BB97A4 /* Date+Additions.swift */,
+				C312D06D2D7DC27700BB97A4 /* CGContext+Additions.swift */,
+				C312D0712D7DC27700BB97A4 /* DispatchQueue+Additions.swift */,
+				C312D0732D7DC27700BB97A4 /* NumberFormatter+Additions.swift */,
+				C312D06E2D7DC27700BB97A4 /* CGRect+Additions.swift */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		242871832DE5C5300035DE48 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C312D0A62D7DC27700BB97A4 /* Extensions.swift */,
+				C312D22A2D7DC27700BB97A4 /* BundleExtension.swift */,
+				C312D2B02D7DC27700BB97A4 /* StoreReview+Extension.swift */,
+				C312D2992D7DC27700BB97A4 /* SafariServices+Extension.swift */,
+				C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */,
+				C312D2852D7DC27700BB97A4 /* NSNotificationNameExtension.swift */,
+				C312D2B92D7DC27700BB97A4 /* TextView+Extension.swift */,
+				C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */,
+				C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */,
+				C312D2C72D7DC27700BB97A4 /* View+Extension.swift */,
+				C312D07D2D7DC27700BB97A4 /* UINavigationController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		242871842DE5C59B0035DE48 /* CoreResources */ = {
+			isa = PBXGroup;
+			children = (
+				2492829B2DAC22B00088528E /* BIP39Words.plist */,
+				C312D0A72D7DC27700BB97A4 /* module.modulemap */,
+			);
+			path = CoreResources;
+			sourceTree = "<group>";
+		};
 		248D87B92DB4E3C900745552 /* Colors */ = {
 			isa = PBXGroup;
 			children = (
@@ -1565,13 +1625,6 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		C312D1A22D7DC27700BB97A4 /* Strings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Strings;
-			sourceTree = "<group>";
-		};
 		C312D1D52D7DC27700BB97A4 /* AnimatedIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -1585,6 +1638,10 @@
 			isa = PBXGroup;
 			children = (
 				C312D1D62D7DC27700BB97A4 /* PinPadCells.swift */,
+				2428717A2DE5C1030035DE48 /* GenericPinPadCell.swift */,
+				242871802DE5C27F0035DE48 /* WhiteNumberPad.swift */,
+				2428717E2DE5C25D0035DE48 /* ClearDecimalPad.swift */,
+				2428717C2DE5C2210035DE48 /* ClearNumberPad.swift */,
 			);
 			path = PinPadCells;
 			sourceTree = "<group>";
@@ -1627,41 +1684,23 @@
 				C312D0962D7DC27700BB97A4 /* Fonts */,
 				C312D0C72D7DC27700BB97A4 /* Sounds */,
 				C312D18E2D7DC27700BB97A4 /* Storyboards */,
-				C312D1A22D7DC27700BB97A4 /* Strings */,
 				24DF5CBD2D934E29009A426C /* launch-resources */,
 				C312D1D52D7DC27700BB97A4 /* AnimatedIcons */,
 				C312D1D72D7DC27700BB97A4 /* PinPadCells */,
+				242871822DE5C4E10035DE48 /* Additions */,
+				242871832DE5C5300035DE48 /* Extensions */,
+				242871842DE5C59B0035DE48 /* CoreResources */,
 				24618EE92D90435200A878AC /* BRCore.swift */,
 				C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */,
 				C312D06C2D7DC27700BB97A4 /* Async.swift */,
-				C312D06D2D7DC27700BB97A4 /* CGContext+Additions.swift */,
-				C312D06E2D7DC27700BB97A4 /* CGRect+Additions.swift */,
 				C312D06F2D7DC27700BB97A4 /* CustomTitleView.swift */,
-				C312D0702D7DC27700BB97A4 /* Date+Additions.swift */,
-				C312D0712D7DC27700BB97A4 /* DispatchQueue+Additions.swift */,
 				C312D0722D7DC27700BB97A4 /* LAContext+Extensions.swift */,
-				C312D0732D7DC27700BB97A4 /* NumberFormatter+Additions.swift */,
-				C312D0752D7DC27700BB97A4 /* String+Additions.swift */,
-				C312D0762D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift */,
-				C312D0772D7DC27700BB97A4 /* UIButton+BRWAdditions.swift */,
 				C312D0792D7DC27700BB97A4 /* UIControl+Callback.swift */,
-				C312D07A2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift */,
-				2492829B2DAC22B00088528E /* BIP39Words.plist */,
 				C312D07B2D7DC27700BB97A4 /* UIImage+Utils.swift */,
-				C312D07C2D7DC27700BB97A4 /* UILabel+BRWAdditions.swift */,
-				C312D07D2D7DC27700BB97A4 /* UINavigationController+Extension.swift */,
-				C312D07E2D7DC27700BB97A4 /* UIScreen+Additions.swift */,
 				C312D07F2D7DC27700BB97A4 /* UISlider+Gradient.swift */,
-				C312D0802D7DC27700BB97A4 /* UITableView+Additions.swift */,
-				C312D0812D7DC27700BB97A4 /* UIView+AnimationAdditions.swift */,
 				C312D0822D7DC27700BB97A4 /* UIView+BRWAdditions.swift */,
 				C312D0832D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift */,
-				C312D0842D7DC27700BB97A4 /* UIView+InitAdditions.swift */,
 				C312D0852D7DC27700BB97A4 /* UIViewController+Alerts.swift */,
-				C312D0862D7DC27700BB97A4 /* UIViewController+BRWAdditions.swift */,
-				C312D0872D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift */,
-				C312D0882D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift */,
-				C312D0892D7DC27700BB97A4 /* UserDefaults+Additions.swift */,
 				C312D1B62D7DC27700BB97A4 /* AboutViewController.swift */,
 				C312D1B72D7DC27700BB97A4 /* AmountViewController.swift */,
 				C312D1B82D7DC27700BB97A4 /* BiometricsSettingsViewController.swift */,
@@ -1677,8 +1716,6 @@
 				C312D1AC2D7DC27700BB97A4 /* SecurityCenterViewController.swift */,
 				C312D1AD2D7DC27700BB97A4 /* UpdatePinViewController.swift */,
 				C312D1AF2D7DC27700BB97A4 /* DismissLoginAnimator.swift */,
-				C312D0A62D7DC27700BB97A4 /* Extensions.swift */,
-				C312D0A72D7DC27700BB97A4 /* module.modulemap */,
 				C312D0A82D7DC27700BB97A4 /* TxMetaData.swift */,
 				C312D0A92D7DC27700BB97A4 /* WalletInfo.swift */,
 				C312D1B02D7DC27700BB97A4 /* DismissModalAnimator.swift */,
@@ -1742,7 +1779,6 @@
 				C312D2022D7DC27700BB97A4 /* ArticleIds.swift */,
 				C312D2032D7DC27700BB97A4 /* Assets.xcassets */,
 				C312D2042D7DC27700BB97A4 /* AssociatedObject.swift */,
-				C312D22A2D7DC27700BB97A4 /* BundleExtension.swift */,
 				C312D22C2D7DC27700BB97A4 /* BuyHostingController.swift */,
 				C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */,
 				C312D2312D7DC27700BB97A4 /* BuyWKWebViewController.swift */,
@@ -1795,7 +1831,6 @@
 				C312D2812D7DC27700BB97A4 /* MockSeeds.swift */,
 				C312D2822D7DC27700BB97A4 /* ModalPresenter.swift */,
 				C312D2832D7DC27700BB97A4 /* MoonpayHelper.swift */,
-				C312D2852D7DC27700BB97A4 /* NSNotificationNameExtension.swift */,
 				C312D2862D7DC27700BB97A4 /* PartnerData.swift */,
 				C312D2872D7DC27700BB97A4 /* PartnersView.swift */,
 				C312D2882D7DC27700BB97A4 /* PartnersViewModel.swift */,
@@ -1813,7 +1848,6 @@
 				C312D2962D7DC27700BB97A4 /* RemoteConfigHelper.swift */,
 				C312D2972D7DC27700BB97A4 /* RequestAmountViewController.swift */,
 				C312D2982D7DC27700BB97A4 /* RetryTimer.swift */,
-				C312D2992D7DC27700BB97A4 /* SafariServices+Extension.swift */,
 				C312D29A2D7DC27700BB97A4 /* ScanViewController.swift */,
 				C312D29B2D7DC27700BB97A4 /* SeedPhraseStepView.swift */,
 				C312D29C2D7DC27700BB97A4 /* SeedViewModel.swift */,
@@ -1830,27 +1864,21 @@
 				C312D2A82D7DC27700BB97A4 /* SignupWebViewModel.swift */,
 				C312D2A92D7DC27700BB97A4 /* SimpleRedux.swift */,
 				C312D2AA2D7DC27700BB97A4 /* StandardDividerView.swift */,
-				C312D2B02D7DC27700BB97A4 /* StoreReview+Extension.swift */,
 				C312D2B22D7DC27700BB97A4 /* SupportLFViewModel.swift */,
 				C312D2B52D7DC27700BB97A4 /* SupportSafariViewModel.swift */,
 				C312D2B62D7DC27700BB97A4 /* SyncProgressHeaderView.swift */,
 				C312D2B72D7DC27700BB97A4 /* TabBarViewController.swift */,
 				C312D2B82D7DC27700BB97A4 /* TestnetData.swift */,
-				C312D2B92D7DC27700BB97A4 /* TextView+Extension.swift */,
 				C312D2BA2D7DC27700BB97A4 /* TransactionCellView.swift */,
 				C312D2BB2D7DC27700BB97A4 /* TransactionCellViewModel.swift */,
 				C312D2BC2D7DC27700BB97A4 /* TransactionManager.swift */,
 				C312D2BD2D7DC27700BB97A4 /* TransactionModalView.swift */,
 				C312D2BE2D7DC27700BB97A4 /* TransactionsViewController.swift */,
 				C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */,
-				C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */,
 				C3236A002D7DE34D007039A1 /* URLController.swift */,
-				C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */,
-				C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */,
 				C312D2C42D7DC27700BB97A4 /* UnstoppableDomainView.swift */,
 				C312D2C52D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift */,
 				C312D2C62D7DC27700BB97A4 /* UserDefaultsUpdater.swift */,
-				C312D2C72D7DC27700BB97A4 /* View+Extension.swift */,
 				C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */,
 				C312D2C92D7DC27700BB97A4 /* WalletManager.swift */,
 				C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */,
@@ -2365,6 +2393,7 @@
 				C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */,
 				C312D2F72D7DC27700BB97A4 /* ArticleIds.swift in Sources */,
 				C312D2F82D7DC27700BB97A4 /* BiometricsSettingsViewController.swift in Sources */,
+				242871812DE5C28B0035DE48 /* WhiteNumberPad.swift in Sources */,
 				C312D2FA2D7DC27700BB97A4 /* SendButtonView.swift in Sources */,
 				C312D2FC2D7DC27700BB97A4 /* GradientView.swift in Sources */,
 				C312D3002D7DC27700BB97A4 /* SendViewController.swift in Sources */,
@@ -2418,6 +2447,7 @@
 				C312D35D2D7DC27700BB97A4 /* LoginTransitionDelegate.swift in Sources */,
 				C312D3602D7DC27700BB97A4 /* Circle.swift in Sources */,
 				C312D3612D7DC27700BB97A4 /* ConfirmationViewController.swift in Sources */,
+				2428717B2DE5C1060035DE48 /* GenericPinPadCell.swift in Sources */,
 				C312D3632D7DC27700BB97A4 /* SignupWebView.swift in Sources */,
 				C312D3642D7DC27700BB97A4 /* SearchHeaderView.swift in Sources */,
 				C312D3652D7DC27700BB97A4 /* Async.swift in Sources */,
@@ -2441,6 +2471,7 @@
 				2416CE762DA90D0D00FFBD10 /* BRAPIClient+Wallet.swift in Sources */,
 				2416CE772DA90D0D00FFBD10 /* BRActivityView.swift in Sources */,
 				2416CE782DA90D0D00FFBD10 /* BRAddressExtension.swift in Sources */,
+				2428717F2DE5C25F0035DE48 /* ClearDecimalPad.swift in Sources */,
 				2416CE792DA90D0D00FFBD10 /* BRCoding.swift in Sources */,
 				2416CE7A2DA90D0D00FFBD10 /* BRKeyExtension.swift in Sources */,
 				2416CE7C2DA90D0D00FFBD10 /* BRCalculationExtension.swift in Sources */,
@@ -2490,6 +2521,7 @@
 				C312D3BE2D7DC27700BB97A4 /* AddressCell.swift in Sources */,
 				C312D3BF2D7DC27700BB97A4 /* SendButtonHostingController.swift in Sources */,
 				C312D3C22D7DC27700BB97A4 /* BundleExtension.swift in Sources */,
+				2428717D2DE5C2230035DE48 /* ClearNumberPad.swift in Sources */,
 				C312D3C32D7DC27700BB97A4 /* FailedAlertView.swift in Sources */,
 				C312D3C42D7DC27700BB97A4 /* EmptyTableViewCell.swift in Sources */,
 				C312D3C62D7DC27700BB97A4 /* View+Extension.swift in Sources */,
