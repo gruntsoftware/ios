@@ -166,48 +166,21 @@ extension WalletManager: WalletAuthenticator {
 			if let pin: String = try keychainItem(key: KeychainKey.pin) {
 				return pin.utf8.count
 			} else {
-				return 6
+				return kPinDigitConstant
 			}
 		} catch {
 			debugPrint(":::Pin keychain error: \(error)")
-			return 6
+			return kPinDigitConstant
 		}
 	}
 
 	// true if pin is correct
 	func authenticate(pin: String) -> Bool {
 		do {
-			let secureTime = Date().timeIntervalSince1970 // TODO: XXX use secure time from https request
-			var failCount: Int64 = try keychainItem(key: KeychainKey.pinFailCount) ?? 0
-			if failCount >= 3 {
-				let failTime: Int64 = try keychainItem(key: KeychainKey.pinFailTime) ?? 0
-
-				if secureTime < Double(failTime) + pow(6, Double(failCount - 3)) * 60 { // locked out
-					return false
-				}
-			}
-
-			if !WalletManager.failedPins.contains(pin) { // count unique attempts before checking success
-				failCount += 1
-				try setKeychainItem(key: KeychainKey.pinFailCount, item: failCount)
-			}
-
-			if try pin == keychainItem(key: KeychainKey.pin) { // successful pin attempt
+			if try pin == keychainItem(key: KeychainKey.pin) {
 				try authenticationSuccess()
 				return true
-			} else if !WalletManager.failedPins.contains(pin) { // unique failed attempt
-				WalletManager.failedPins.append(pin)
-
-				if failCount >= 8 { // wipe wallet after 8 failed pin attempts and 24+ hours of lockout
-					if !wipeWallet() { return false }
-					return false
-				}
-				let pinFailTime: Int64 = try keychainItem(key: KeychainKey.pinFailTime) ?? 0
-				if secureTime > Double(pinFailTime) {
-					try setKeychainItem(key: KeychainKey.pinFailTime, item: Int64(secureTime))
-				}
 			}
-
 			return false
 		} catch {
 			assertionFailure("Error: \(error)")

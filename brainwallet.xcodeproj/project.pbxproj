@@ -45,7 +45,12 @@
 		2428717D2DE5C2230035DE48 /* ClearNumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428717C2DE5C2210035DE48 /* ClearNumberPad.swift */; };
 		2428717F2DE5C25F0035DE48 /* ClearDecimalPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428717E2DE5C25D0035DE48 /* ClearDecimalPad.swift */; };
 		242871812DE5C28B0035DE48 /* WhiteNumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871802DE5C27F0035DE48 /* WhiteNumberPad.swift */; };
+		242871862DE5D2580035DE48 /* NewSyncProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871852DE5D2550035DE48 /* NewSyncProgressView.swift */; };
+		242871882DE5D36F0035DE48 /* NewSyncProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */; };
+		2428718A2DE5E2920035DE48 /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871892DE5E2900035DE48 /* Untitled.swift */; };
+		2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */; };
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
+		244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244520332DE70310003AFFDF /* LockScreenHostingController.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
@@ -290,7 +295,7 @@
 		C312D4512D7DC27700BB97A4 /* PromptModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D28F2D7DC27700BB97A4 /* PromptModalViewController.swift */; };
 		C312D4522D7DC27700BB97A4 /* CheckboxesStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2342D7DC27700BB97A4 /* CheckboxesStepView.swift */; };
 		C312D4552D7DC27700BB97A4 /* BuyHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D22C2D7DC27700BB97A4 /* BuyHostingController.swift */; };
-		C312D4562D7DC27700BB97A4 /* LockScreenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2772D7DC27700BB97A4 /* LockScreenHeaderView.swift */; };
+		C312D4562D7DC27700BB97A4 /* LockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2772D7DC27700BB97A4 /* LockScreenView.swift */; };
 		C312D4572D7DC27700BB97A4 /* KeyboardNotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0972D7DC27700BB97A4 /* KeyboardNotificationInfo.swift */; };
 		C312D4582D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0882D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift */; };
 		C312D45B2D7DC27700BB97A4 /* StartHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2AC2D7DC27700BB97A4 /* StartHostingController.swift */; };
@@ -468,7 +473,12 @@
 		2428717C2DE5C2210035DE48 /* ClearNumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearNumberPad.swift; sourceTree = "<group>"; };
 		2428717E2DE5C25D0035DE48 /* ClearDecimalPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearDecimalPad.swift; sourceTree = "<group>"; };
 		242871802DE5C27F0035DE48 /* WhiteNumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNumberPad.swift; sourceTree = "<group>"; };
+		242871852DE5D2550035DE48 /* NewSyncProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressView.swift; sourceTree = "<group>"; };
+		242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressViewModel.swift; sourceTree = "<group>"; };
+		242871892DE5E2900035DE48 /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
+		2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncHostingController.swift; sourceTree = "<group>"; };
 		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
+		244520332DE70310003AFFDF /* LockScreenHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHostingController.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
@@ -845,7 +855,7 @@
 		C312D2622D7DC27700BB97A4 /* LocaleChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleChangeView.swift; sourceTree = "<group>"; };
 		C312D2632D7DC27700BB97A4 /* LocaleChangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleChangeViewModel.swift; sourceTree = "<group>"; };
 		C312D2762D7DC27700BB97A4 /* LocalWebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalWebViewModel.swift; sourceTree = "<group>"; };
-		C312D2772D7DC27700BB97A4 /* LockScreenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHeaderView.swift; sourceTree = "<group>"; };
+		C312D2772D7DC27700BB97A4 /* LockScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenView.swift; sourceTree = "<group>"; };
 		C312D2792D7DC27700BB97A4 /* LockScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenViewModel.swift; sourceTree = "<group>"; };
 		C312D27A2D7DC27700BB97A4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C312D27C2D7DC27700BB97A4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -992,9 +1002,10 @@
 		240204682DC7F37B00EC8E99 /* New Lock Screen Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C312D2772D7DC27700BB97A4 /* LockScreenHeaderView.swift */,
+				C312D2772D7DC27700BB97A4 /* LockScreenView.swift */,
 				C312D2792D7DC27700BB97A4 /* LockScreenViewModel.swift */,
 				2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */,
+				244520332DE70310003AFFDF /* LockScreenHostingController.swift */,
 			);
 			path = "New Lock Screen Classes";
 			sourceTree = "<group>";
@@ -1135,6 +1146,13 @@
 				C312D0A72D7DC27700BB97A4 /* module.modulemap */,
 			);
 			path = CoreResources;
+			sourceTree = "<group>";
+		};
+		244520352DE716A7003AFFDF /* Animation Effects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Animation Effects";
 			sourceTree = "<group>";
 		};
 		248D87B92DB4E3C900745552 /* Colors */ = {
@@ -1444,7 +1462,11 @@
 			children = (
 				24B065382DC6282100B5E000 /* NewMainView.swift */,
 				24B0653A2DC6433000B5E000 /* SimpleHeaderView.swift */,
+				2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */,
 				24B065362DC6281D00B5E000 /* NewMainViewModel.swift */,
+				242871852DE5D2550035DE48 /* NewSyncProgressView.swift */,
+				242871892DE5E2900035DE48 /* Untitled.swift */,
+				242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */,
 				24B065342DC627E500B5E000 /* NewMainHostingController.swift */,
 			);
 			path = "New Main Classes";
@@ -1660,6 +1682,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				244520352DE716A7003AFFDF /* Animation Effects */,
 				241B477E2DCEA05D00279954 /* Localizations */,
 				24D7AE522DCFF6350078252E /* New Onboarding */,
 				24A404212DC92F1F006CD076 /* New Buy Webview */,
@@ -2392,12 +2415,14 @@
 				C312D2ED2D7DC27700BB97A4 /* LoginViewModel.swift in Sources */,
 				C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */,
 				C312D2F72D7DC27700BB97A4 /* ArticleIds.swift in Sources */,
+				242871882DE5D36F0035DE48 /* NewSyncProgressViewModel.swift in Sources */,
 				C312D2F82D7DC27700BB97A4 /* BiometricsSettingsViewController.swift in Sources */,
 				242871812DE5C28B0035DE48 /* WhiteNumberPad.swift in Sources */,
 				C312D2FA2D7DC27700BB97A4 /* SendButtonView.swift in Sources */,
 				C312D2FC2D7DC27700BB97A4 /* GradientView.swift in Sources */,
 				C312D3002D7DC27700BB97A4 /* SendViewController.swift in Sources */,
 				C3236A012D7DE355007039A1 /* URLController.swift in Sources */,
+				2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */,
 				C312D3012D7DC27700BB97A4 /* WelcomeViewController.swift in Sources */,
 				C312D3072D7DC27700BB97A4 /* CGRect+Additions.swift in Sources */,
 				C312D30A2D7DC27700BB97A4 /* SupportLFViewModel.swift in Sources */,
@@ -2484,6 +2509,7 @@
 				C312D3772D7DC27700BB97A4 /* UserDefaults+Additions.swift in Sources */,
 				C312D3782D7DC27700BB97A4 /* PinTransitioningDelegate.swift in Sources */,
 				C312D3792D7DC27700BB97A4 /* ReScanViewController.swift in Sources */,
+				244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */,
 				C312D37A2D7DC27700BB97A4 /* NumberFormatter+Additions.swift in Sources */,
 				241D22452DB526C9000302C8 /* InputWordsView.swift in Sources */,
 				C312D37F2D7DC27700BB97A4 /* Amount.swift in Sources */,
@@ -2573,6 +2599,7 @@
 				C312D41B2D7DC27700BB97A4 /* SupportSafariViewModel.swift in Sources */,
 				C312D41C2D7DC27700BB97A4 /* CreateStepTabView.swift in Sources */,
 				C312D41D2D7DC27700BB97A4 /* ModalNavigationController.swift in Sources */,
+				242871862DE5D2580035DE48 /* NewSyncProgressView.swift in Sources */,
 				C312D41E2D7DC27700BB97A4 /* UnstoppableDomainView.swift in Sources */,
 				C312D41F2D7DC27700BB97A4 /* AboutViewController.swift in Sources */,
 				C312D4222D7DC27700BB97A4 /* ModalDisplayable.swift in Sources */,
@@ -2597,6 +2624,7 @@
 				C312D4422D7DC27700BB97A4 /* WalletManager.swift in Sources */,
 				C312D4432D7DC27700BB97A4 /* ReceiveViewController.swift in Sources */,
 				C312D4452D7DC27700BB97A4 /* BlinkingView.swift in Sources */,
+				2428718A2DE5E2920035DE48 /* Untitled.swift in Sources */,
 				C312D4492D7DC27700BB97A4 /* AlertView.swift in Sources */,
 				C312D44E2D7DC27700BB97A4 /* StartView.swift in Sources */,
 				C312D44F2D7DC27700BB97A4 /* LWActivityIndicator.swift in Sources */,
@@ -2606,7 +2634,7 @@
 				C312D4522D7DC27700BB97A4 /* CheckboxesStepView.swift in Sources */,
 				24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */,
 				C312D4552D7DC27700BB97A4 /* BuyHostingController.swift in Sources */,
-				C312D4562D7DC27700BB97A4 /* LockScreenHeaderView.swift in Sources */,
+				C312D4562D7DC27700BB97A4 /* LockScreenView.swift in Sources */,
 				C312D4572D7DC27700BB97A4 /* KeyboardNotificationInfo.swift in Sources */,
 				C312D4582D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift in Sources */,
 				C312D45B2D7DC27700BB97A4 /* StartHostingController.swift in Sources */,
@@ -2785,7 +2813,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250522.1;
+				CURRENT_PROJECT_VERSION = 250527.1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -2800,7 +2828,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.0;
+				MARKETING_VERSION = 3.2.0;
 				ONLY_ACTIVE_ARCH = YES;
 				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "initial-resources speakTag";
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
@@ -3083,7 +3111,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250522.1;
+				CURRENT_PROJECT_VERSION = 250527.1;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
@@ -3097,7 +3125,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.0;
+				MARKETING_VERSION = 3.2.0;
 				ONLY_ACTIVE_ARCH = YES;
 				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "initial-resources speakTag";
 				OTHER_SWIFT_FLAGS = "$(inherited)";

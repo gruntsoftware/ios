@@ -211,6 +211,7 @@
       "shouldTranslate" : false
     },
     "1 LTC = %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
