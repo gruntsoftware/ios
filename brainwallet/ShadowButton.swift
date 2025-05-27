@@ -170,7 +170,7 @@ class ShadowButton: UIControl {
 			imageView?.tintColor = BrainwalletUIColor.surface
 		case .flatWhiteBorder:
 			container.backgroundColor = BrainwalletUIColor.surface
-			label.textColor = BrainwalletUIColor.surface
+			label.textColor = BrainwalletUIColor.error
             container.layer.borderColor = BrainwalletUIColor.content.cgColor
 			container.layer.borderWidth = 1.0
 			imageView?.tintColor = BrainwalletUIColor.surface

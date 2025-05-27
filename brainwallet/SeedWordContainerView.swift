@@ -65,9 +65,10 @@ struct SeedWordContainerView: View {
 						Spacer()
 					} else {
 						HStack {
-							SecureField("Enter your current PIN",
+							SecureField("Enter PIN",
 							            text: $enteredPIN)
 								.keyboardType(.numberPad)
+                                .textFieldStyle(.roundedBorder)
 								.multilineTextAlignment(.center)
 								.toolbar {
 									ToolbarItemGroup(placement: .keyboard) {
@@ -78,11 +79,12 @@ struct SeedWordContainerView: View {
                                         .foregroundColor(BrainwalletColor.content)
                                     }
 								}
-								.frame(width: width - largePad,
+                                .frame(width: width * 0.3,
                                        height: secureFieldHeight, alignment: .center)
                                 .background(BrainwalletColor.surface)
-								.padding()
-						}
+                        }
+                        .frame(height: secureFieldHeight, alignment: .top)
+                        .padding(.top, 32.0)
 					}
 					Spacer()
 				}

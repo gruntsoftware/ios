@@ -25,7 +25,7 @@ class FeeSelector: UIView {
 	private let header = UILabel(font: .barlowMedium(size: 16.0), color: BrainwalletUIColor.content)
 	private let subheader = UILabel(font: .barlowRegular(size: 14.0), color: BrainwalletUIColor.content)
     private let feeMessageLabel = UILabel.wrapping(font: .barlowSemiBold(size: 14.0), color: BrainwalletUIColor.content)
-	private let control = UISegmentedControl(items: ["S.FeeSelector.regular" , "S.FeeSelector.economy" , "S.FeeSelector.luxury" ])
+	private let control = UISegmentedControl(items: ["Regular" , "Economy" , "Luxury" ])
 	private var bottomConstraint: NSLayoutConstraint?
 
 	private func setupViews() {

@@ -348,8 +348,7 @@ class ModalPresenter: Subscriber, Trackable {
 		let present = presentScan(parent: top)
 		store.perform(action: RootModalActions.Present(modal: .none))
 		present { paymentRequest in
-			guard let request = paymentRequest else { return }
-			self.currentRequest = request
+			self.currentRequest = paymentRequest
 			self.presentModal(.send)
 		}
 	}
@@ -492,32 +491,32 @@ class ModalPresenter: Subscriber, Trackable {
 		top.present(settingsNav, animated: true, completion: nil)
 	}
 
-	private func presentScan(parent: UIViewController) -> PresentScan {
+    private func presentScan(parent: UIViewController) -> PresentScan {
         return { [weak parent] scanCompletion in
-            guard ScanViewController.isCameraAllowed
-            else {
-                if let parent = parent {
-                    ScanViewController.presentCameraUnavailableAlert(fromRoot: parent)
-                }
-                else if let parent = parent {
-                    let vc = ScanViewController(completion: { paymentRequest in
-                      //  scanCompletion(paymentRequest)
-                        parent.view.isFrameChangeBlocked = false
-                    }, isValidURI: { address in
-                        address.isValidAddress
-                    })
-                    
-                    parent.view.isFrameChangeBlocked = true
-                    parent.present(vc, animated: true, completion: {})
-                    ScanViewController.presentCameraUnavailableAlert(fromRoot: parent)
-                }
+            guard let parent = parent else { return }
+            guard ScanViewController.isCameraAllowed else {
+                ScanViewController.presentCameraUnavailableAlert(fromRoot: parent)
                 return
             }
-		}
-	}
-
-
-    
+            
+            // Camera is allowed, present the scanner
+            let vc = ScanViewController(completion: { paymentRequest in
+                
+                guard let request = paymentRequest else {
+                    assertionFailure("Invalid payment request type: \(String(describing: paymentRequest))")
+                    return
+                }
+                scanCompletion(request)
+                parent.view.isFrameChangeBlocked = false
+                
+            }, isValidURI: { address in
+                return address.isValidAddress
+            })
+            
+            parent.view.isFrameChangeBlocked = true
+            parent.present(vc, animated: true, completion: {})
+        }
+    }
 
 	private func presentSecurityCenter() {
 		guard let walletManager = walletManager else { return }

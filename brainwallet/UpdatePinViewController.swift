@@ -66,7 +66,7 @@ class UpdatePinViewController: UIViewController, Subscriber {
 		return type != .update
 	}
 
-	private let newPinLength = 6
+	private let newPinLength = kPinDigitConstant
 	private let showsBackButton: Bool
 
 	private enum Step {

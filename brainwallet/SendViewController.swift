@@ -5,7 +5,7 @@ import LocalAuthentication
 import SwiftUI
 import UIKit
 
-typealias PresentScan = (ScanCompletion) -> Void
+typealias PresentScan = (@escaping (PaymentRequest) -> Void) -> Void
 
 class SendViewController: UIViewController, Subscriber, ModalPresentable, Trackable {
 	// MARK: - Public
@@ -66,7 +66,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			keychainPreferences["has-accepted-fees"] = "true"
 		}
 
-		amountView = AmountViewController(store: store, isPinPadExpandedAtLaunch: false, hasAcceptedFees: hasActivatedInlineFees)
+        amountView = AmountViewController(store: store, isPinPadExpandedAtLaunch: false, hasAcceptedFees: hasActivatedInlineFees)
 
 		LWAnalytics.logEventWithParameters(itemName: ._20191105_VSC)
 
@@ -108,10 +108,10 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			memoCell.accessoryView.constraint(.width, constant: 0.0),
 		])
 		addChildViewController(amountView, layout: {
-			amountView.view.constrain([
-				amountView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-				amountView.view.topAnchor.constraint(equalTo: memoCell.bottomAnchor),
-				amountView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            amountView.view.constrain([
+                amountView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                amountView.view.topAnchor.constraint(equalTo: memoCell.bottomAnchor),
+                amountView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			])
 		})
 
@@ -137,7 +137,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		if initialAddress != nil {
-			amountView.expandPinPad()
+            amountView.expandPinPad()
 		} else if let initialRequest = initialRequest {
 			handleRequest(initialRequest)
 		}
@@ -153,16 +153,16 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			self?.amountView.closePinPad()
 		}
 
-		// MARK: - AmountView Callbacks
+		// MARK: - amountView Callbacks
 
-		amountView.balanceTextForAmount = { [weak self] enteredAmount, rate in
+        amountView.balanceTextForAmount = { [weak self] enteredAmount, rate in
 			self?.balanceTextForAmountWithFormattedFees(enteredAmount: enteredAmount, rate: rate)
 		}
 
-		amountView.didUpdateAmount = { [weak self] amount in
+        amountView.didUpdateAmount = { [weak self] amount in
 			self?.amount = amount
 		}
-		amountView.didUpdateFee = strongify(self) { myself, feeType in
+        amountView.didUpdateFee = strongify(self) { myself, feeType in
 			myself.feeType = feeType
 			let fees = myself.store.state.fees
 
@@ -175,7 +175,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			myself.amountView.updateBalanceLabel()
 		}
 
-		amountView.didChangeFirstResponder = { [weak self] isFirstResponder in
+        amountView.didChangeFirstResponder = { [weak self] isFirstResponder in
 			if isFirstResponder {
 				self?.memoCell.textView.resignFirstResponder()
 				self?.sendAddressCell.textField.resignFirstResponder()
@@ -307,10 +307,10 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		memoCell.textView.resignFirstResponder()
 
 		presentScan? { [weak self] paymentRequest in
-			guard let request = paymentRequest else { return }
-			guard let destinationAddress = paymentRequest?.toAddress else { return }
+			//guard let request = paymentRequest else { return }
+            guard let destinationAddress = paymentRequest.toAddress else { return }
 
-			self?.handleRequest(request)
+			self?.handleRequest(paymentRequest)
 			self?.sendAddressCell.textField.text = destinationAddress
 		}
 	}
@@ -426,7 +426,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		case .local:
 
 			if let amount = request.amount {
-				amountView.forceUpdateAmount(amount: amount)
+                amountView.forceUpdateAmount(amount: amount)
 			}
 			if request.label != nil {
 				memoCell.content = request.label
@@ -542,7 +542,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		}
 
 		if requestAmount > 0 {
-			amountView.forceUpdateAmount(amount: requestAmount)
+            amountView.forceUpdateAmount(amount: requestAmount)
 		}
 		memoCell.content = protoReq.details.memo
 

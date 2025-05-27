@@ -37,7 +37,7 @@ extension ReduxState {
 		                  maxDigits: UserDefaults.maxDigits,
 		                  isPushNotificationsEnabled: UserDefaults.pushToken != nil,
 		                  isPromptingBiometrics: false,
-		                  pinLength: 6,
+		                  pinLength: kPinDigitConstant,
 		                  fees: Fees.usingDefaultValues)
 	}
 }

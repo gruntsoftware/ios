@@ -8,9 +8,7 @@ struct LockScreenHeaderView: View {
 
 	@State
 	private var fiatValue = ""
-
-	@State
-	private var currentFiatValue = "Current Litecoin value in"
+ 
 
 	init(viewModel: LockScreenViewModel) {
 		self.viewModel = viewModel
@@ -27,28 +25,24 @@ struct LockScreenHeaderView: View {
                 
                 VStack {
                     Spacer()
-                    Text(fiatValue)
-                        .font(Font(UIFont.barlowSemiBold(size: 16.0)))
-                        .foregroundColor(BrainwalletColor.content)
-                    
-                    Text(currentFiatValue)
-                        .font(Font(UIFont.barlowRegular(size: 14.0)))
-                        .foregroundColor(BrainwalletColor.content)
-                        .padding(.bottom, 10)
-                    Divider().background(BrainwalletColor.gray)
-                    
+                    HStack {
+                        Text(fiatValue)
+                            .font(Font(UIFont.barlowLight(size: 16.0)))
+                            .foregroundColor(BrainwalletColor.content)
+                            .frame(width: width * 0.9, alignment: .trailing)
+                            .padding(.trailing, 16.0)
+                    }
                     Image("bw-logotype")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: width * 0.75)
+                        .frame(width: width * 0.65)
                         .padding(.top, 40.0)
                         .padding(10.0)
                 }
                 .frame(height: 180)
                 .onAppear {
                     Task {
-                        fiatValue = String(format: String(localized: "1 LTC = %@"), viewModel.currentValueInFiat)
-                        currentFiatValue = String(format: String(localized: "Current Litecoin value in = %@"), viewModel.currentValueInFiat)
+                        fiatValue = String(format: String(localized: "%@ = 1Ł"), viewModel.currentValueInFiat)
                     }
                 }
                 .onChange(of: viewModel.currentValueInFiat) { newValue in
