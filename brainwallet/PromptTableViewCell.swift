@@ -82,7 +82,7 @@ enum PromptType {
 		case .paperKey:
 			return UserDefaults.walletRequiresBackup
 		case .upgradePin:
-			return walletManager.pinLength != 6
+			return walletManager.pinLength != kPinDigitConstant
 		case .recommendRescan:
 			return state.recommendRescan
 		case .noPasscode:
