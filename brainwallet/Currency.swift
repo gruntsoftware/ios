@@ -54,6 +54,27 @@ enum CurrencySelection: Int, CaseIterable, Equatable, Identifiable {
         case .TRY: return "₺"
         }
     }
+    
+    var code: String {
+        switch self {
+        case .USD: return "USD"
+        case .EUR: return "EUR"
+        case .GBP: return "GBP"
+        case .SGD: return "SGD"
+        case .CAD: return "CAD"
+        case .AUD: return "AUD"
+        case .RUB: return "RUB"
+        case .KRW: return "KRW"
+        case .MXN: return "MXN"
+        case .SAR: return "SAR"
+        case .UAH: return "UAH"
+        case .NGN: return "NGN"
+        case .JPY: return "JPY"
+        case .CNY: return "CNY"
+        case .IDR: return "IDR"
+        case .TRY: return "TRY"
+        }
+    }
 
     var fullCurrencyName: String {
         switch self {

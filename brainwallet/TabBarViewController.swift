@@ -19,10 +19,11 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	private var regularConstraints: [NSLayoutConstraint] = []
 	private var swappedConstraints: [NSLayoutConstraint] = []
 	private let currencyTapView = UIView()
-	private let storyboardNames: [String] = ["Transactions", "Send", "Receive", "Buy"]
-	var storyboardIDs: [String] = ["TransactionsViewController", "SendLTCViewController", "ReceiveLTCViewController", "BuyHostingController"]
+	private let storyboardNames: [String] = ["Transactions", "Send", "Receive"]
+	var storyboardIDs: [String] = ["TransactionsViewController", "SendLTCViewController", "ReceiveLTCViewController"]
 	var viewControllers: [UIViewController] = []
 	var activeController: UIViewController?
+    var receiveHostingController: ReceiveHostingController?
 	var updateTimer: Timer?
 	var store: Store?
 	var walletManager: WalletManager?
@@ -324,13 +325,14 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			NSLog("ERROR: no items found")
 			return
 		}
+        
+        let canUserBuyLTC = UserDefaults.standard.bool(forKey: userCurrentLocaleMPApprovedKey)
 
 		for item in array {
 			switch item.tag {
-			case 0: item.title = "History"
-			case 1: item.title = "Send"
-			case 2: item.title = "Receive"
-			case 3: item.title = "Buy"
+			case 0: item.title = String(localized: "History")
+			case 1: item.title = String(localized: "Send")
+            case 2: item.title = canUserBuyLTC ? String(localized: "Receive / Buy") : String(localized: "Receive")
 			default:
 				item.title = "NO-TITLE"
 				NSLog("ERROR: UITabbar item count is wrong")
@@ -358,13 +360,6 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			transactionVC.walletManager = walletManager
 			transactionVC.isLtcSwapped = store?.state.isLtcSwapped
 
-		case "brainwallet.BuyHostingController":
-            guard let buyHC = contentController as? BuyHostingController
-            else {
-                return
-            }
-            buyHC.isLoaded = true
-            
         case "brainwallet.SendLTCViewController":
 			guard let sendVC = contentController as? SendLTCViewController
 			else {
@@ -402,10 +397,33 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		if let tempActiveController = activeController {
 			hideContentController(contentController: tempActiveController)
 		}
-
-		// DEV: This happens because it relies on the tab in the storyboard tag
-		displayContentController(contentController: viewControllers[item.tag])
+        
+        //New Receive SwiftUI HC
+        if item.tag == 2 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.presentNewReceiveModal()
+                self.tabBar.selectedItem = item
+            }
+        }
+        else {
+            // DEV: This happens because it relies on the tab in the storyboard tag
+            displayContentController(contentController: viewControllers[item.tag])
+        }
 	}
+    
+    
+    func presentNewReceiveModal() {
+        guard let store = store,
+              let walletManager = walletManager else { return }
+        
+        let receiveVC = ReceiveHostingController(store: store, walletManager: walletManager)
+        
+        addChild(receiveVC)
+        receiveVC.view.frame = containerView.frame
+        view.addSubview(receiveVC.view)
+        receiveVC.didMove(toParent: self)
+    }
+    
 }
 
 extension TabBarViewController {

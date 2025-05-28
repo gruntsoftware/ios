@@ -107,6 +107,9 @@
     "%@ = 1Ł" : {
 
     },
+    "%lf Ł" : {
+
+    },
     "%lld" : {
       "localizations" : {
         "ar" : {
@@ -1037,6 +1040,9 @@
     "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)." : {
 
     },
+    "Buy LTC from MoonPay" : {
+
+    },
     "Buy with MoonPay" : {
       "localizations" : {
         "ar" : {
@@ -1939,6 +1945,9 @@
           }
         }
       }
+    },
+    "Copy LTC Address" : {
+
     },
     "Copy Wallet Addresses" : {
 
@@ -4587,6 +4596,9 @@
         }
       }
     },
+    "History" : {
+
+    },
     "Ignore" : {
       "localizations" : {
         "ar" : {
@@ -5397,9 +5409,6 @@
       }
     },
     "New Confirm View" : {
-      "shouldTranslate" : false
-    },
-    "New Receive View" : {
       "shouldTranslate" : false
     },
     "New Send" : {
@@ -7413,6 +7422,9 @@
           }
         }
       }
+    },
+    "Receive / Buy" : {
+
     },
     "Recover" : {
       "localizations" : {

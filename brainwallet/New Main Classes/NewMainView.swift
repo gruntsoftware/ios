@@ -63,12 +63,6 @@ struct NewMainView: View {
                                 }
                                 .toolbar(.visible, for: .tabBar)
                                 .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
-                            NewReceiveView(viewModel: newMainViewModel)
-                                .tabItem {
-                                    Label("Receive", systemImage: "square.and.arrow.down")
-                                }
-                                .toolbar(.visible, for: .tabBar)
-                                .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
                         }
                         .frame(minHeight: 350.0,
                                 maxHeight: height * 0.50,

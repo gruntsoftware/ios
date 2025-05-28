@@ -16,8 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		requestResourceWith(tag: ["initial-resources", "speakTag"]) { [self] in
 
 			// Language
-			updateCurrentUserLocale(localeId: Locale.current.identifier)
+            let currentLocaleID = Locale.current.identifier
+            
+			updateCurrentUserLocale(localeId: currentLocaleID)
 			Bundle.setLanguage(UserDefaults.selectedLanguage)
+            
+          
+            let _ = NetworkHelper.init().fetchCurrenciesCountries(completion:  { countryData  in
+                let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == currentLocaleID }.first
+                
+                if let buyIsAllowed = currentMoonPayCountry?.isBuyAllowed {
+                    UserDefaults.standard.set(buyIsAllowed, forKey: userCurrentLocaleMPApprovedKey)
+                }
+                else {
+                    UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
+                }
+                
+                UserDefaults.standard.synchronize()
+            })
 
 			// Ops
 			let startDate = Partner.partnerKeyPath(name: .walletStart)

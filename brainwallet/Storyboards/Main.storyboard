@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -79,21 +79,18 @@
                                     <constraint firstAttribute="height" constant="98" id="5jX-Bm-pRG"/>
                                 </constraints>
                                 <items>
+                                    <tabBarItem tag="1" title="Send" id="RIS-fI-9CG" userLabel="Send">
+                                        <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="default"/>
+                                        <imageReference key="selectedImage" image="square.and.arrow.up" catalog="system" symbolScale="default"/>
+                                    </tabBarItem>
                                     <tabBarItem title="History" id="bcE-8M-dwp" userLabel="History">
                                         <imageReference key="image" image="deskclock" catalog="system" symbolScale="default"/>
                                         <color key="badgeColor" name="brainwalletContent"/>
                                         <imageReference key="selectedImage" image="deskclock" catalog="system" symbolScale="default"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="Send" id="RIS-fI-9CG" userLabel="Send">
-                                        <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="default"/>
-                                        <imageReference key="selectedImage" image="square.and.arrow.up" catalog="system" symbolScale="default"/>
-                                    </tabBarItem>
                                     <tabBarItem tag="2" title="Receive" id="MWM-XE-gE7" userLabel="Receive">
                                         <imageReference key="image" image="square.and.arrow.down" catalog="system" symbolScale="default"/>
                                         <imageReference key="selectedImage" image="square.and.arrow.down" catalog="system" symbolScale="default"/>
-                                    </tabBarItem>
-                                    <tabBarItem tag="3" title="Buy" image="litecoin_cutout24" selectedImage="litecoin_cutout24" id="Pzx-4b-zDZ" userLabel="Buy">
-                                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
                                     </tabBarItem>
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -153,7 +150,6 @@
     <resources>
         <image name="deskclock" catalog="system" width="128" height="125"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
-        <image name="litecoin_cutout24" width="24" height="24"/>
         <image name="square.and.arrow.down" catalog="system" width="114" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
         <namedColor name="brainwalletContent">
@@ -163,7 +159,7 @@
             <color red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
