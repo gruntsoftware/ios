@@ -338,36 +338,23 @@
 		C312D49A2D7DC27700BB97A4 /* Receive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1892D7DC27700BB97A4 /* Receive.storyboard */; };
 		C312D49E2D7DC27700BB97A4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D18B2D7DC27700BB97A4 /* Settings.storyboard */; };
 		C312D4A12D7DC27700BB97A4 /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C312D2522D7DC27700BB97A4 /* Icon.xcassets */; };
-		C312D4A32D7DC27700BB97A4 /* Es.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0B42D7DC27700BB97A4 /* Es.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
 		C312D4A42D7DC27700BB97A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1872D7DC27700BB97A4 /* Main.storyboard */; };
-		C312D4A52D7DC27700BB97A4 /* Id.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0B82D7DC27700BB97A4 /* Id.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
-		C312D4A62D7DC27700BB97A4 /* Uk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0C12D7DC27700BB97A4 /* Uk.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
 		C312D4A82D7DC27700BB97A4 /* POSTBouncer.html in Resources */ = {isa = PBXBuildFile; fileRef = C312D28D2D7DC27700BB97A4 /* POSTBouncer.html */; };
-		C312D4A92D7DC27700BB97A4 /* Pt.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0BD2D7DC27700BB97A4 /* Pt.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
-		C312D4AA2D7DC27700BB97A4 /* 日本語.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0C62D7DC27700BB97A4 /* 日本語.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
 		C312D4AB2D7DC27700BB97A4 /* BarlowSemiCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0902D7DC27700BB97A4 /* BarlowSemiCondensed-Bold.ttf */; };
-		C312D4AD2D7DC27700BB97A4 /* Ru.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0BE2D7DC27700BB97A4 /* Ru.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
 		C312D4AE2D7DC27700BB97A4 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = C312D2332D7DC27700BB97A4 /* CHANGELOG.md */; };
 		C312D4AF2D7DC27700BB97A4 /* Animate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1852D7DC27700BB97A4 /* Animate.storyboard */; };
-		C312D4B12D7DC27700BB97A4 /* Tr.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0BF2D7DC27700BB97A4 /* Tr.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
 		C312D4B22D7DC27700BB97A4 /* SyncProgressHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C312D1822D7DC27700BB97A4 /* SyncProgressHeaderView.xib */; };
 		C312D4B42D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0942D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf */; };
 		C312D4B52D7DC27700BB97A4 /* Transactions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D18C2D7DC27700BB97A4 /* Transactions.storyboard */; };
 		C312D4B72D7DC27700BB97A4 /* WarningConfirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D18D2D7DC27700BB97A4 /* WarningConfirmation.storyboard */; };
-		C312D4B82D7DC27700BB97A4 /* En.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0B22D7DC27700BB97A4 /* En.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
-		C312D4BA2D7DC27700BB97A4 /* De.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0B02D7DC27700BB97A4 /* De.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
 		C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */ = {isa = PBXBuildFile; fileRef = C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */; };
-		C312D4BC2D7DC27700BB97A4 /* 中國人.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0C52D7DC27700BB97A4 /* 中國人.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
 		C312D4BD2D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0932D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf */; };
 		C312D4BF2D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0912D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf */; };
-		C312D4C12D7DC27700BB97A4 /* Fr.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0B62D7DC27700BB97A4 /* Fr.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
 		C312D4C22D7DC27700BB97A4 /* general.css in Resources */ = {isa = PBXBuildFile; fileRef = C312D24F2D7DC27700BB97A4 /* general.css */; };
-		C312D4C32D7DC27700BB97A4 /* Ko.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0BB2D7DC27700BB97A4 /* Ko.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
 		C312D4C42D7DC27700BB97A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C312D2032D7DC27700BB97A4 /* Assets.xcassets */; };
 		C312D4C52D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0922D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf */; };
 		C312D4CA2D7DC27700BB97A4 /* Buy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1862D7DC27700BB97A4 /* Buy.storyboard */; };
 		C312D4CC2D7DC27700BB97A4 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1842D7DC27700BB97A4 /* Alerts.storyboard */; };
-		C312D4CD2D7DC27700BB97A4 /* It.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C312D0B92D7DC27700BB97A4 /* It.mp3 */; settings = {ASSET_TAGS = (speakTag, ); }; };
 		C312D4CE2D7DC27700BB97A4 /* Phrase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1882D7DC27700BB97A4 /* Phrase.storyboard */; };
 		C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0952D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf */; };
 		C312D4F82D7DC28E00BB97A4 /* NSDataExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E52D7DC28E00BB97A4 /* NSDataExtensionTests.swift */; };
@@ -709,20 +696,6 @@
 		C312D0AB2D7DC27700BB97A4 /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		C312D0AC2D7DC27700BB97A4 /* ReduxState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduxState.swift; sourceTree = "<group>"; };
 		C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = coinflip.aiff; sourceTree = "<group>"; };
-		C312D0B02D7DC27700BB97A4 /* De.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = De.mp3; sourceTree = "<group>"; };
-		C312D0B22D7DC27700BB97A4 /* En.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = En.mp3; sourceTree = "<group>"; };
-		C312D0B42D7DC27700BB97A4 /* Es.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Es.mp3; sourceTree = "<group>"; };
-		C312D0B62D7DC27700BB97A4 /* Fr.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fr.mp3; sourceTree = "<group>"; };
-		C312D0B82D7DC27700BB97A4 /* Id.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Id.mp3; sourceTree = "<group>"; };
-		C312D0B92D7DC27700BB97A4 /* It.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = It.mp3; sourceTree = "<group>"; };
-		C312D0BB2D7DC27700BB97A4 /* Ko.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ko.mp3; sourceTree = "<group>"; };
-		C312D0BD2D7DC27700BB97A4 /* Pt.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pt.mp3; sourceTree = "<group>"; };
-		C312D0BE2D7DC27700BB97A4 /* Ru.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ru.mp3; sourceTree = "<group>"; };
-		C312D0BF2D7DC27700BB97A4 /* Tr.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Tr.mp3; sourceTree = "<group>"; };
-		C312D0C12D7DC27700BB97A4 /* Uk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Uk.mp3; sourceTree = "<group>"; };
-		C312D0C42D7DC27700BB97A4 /* 한국인.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "한국인.mp3"; sourceTree = "<group>"; };
-		C312D0C52D7DC27700BB97A4 /* 中國人.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "中國人.mp3"; sourceTree = "<group>"; };
-		C312D0C62D7DC27700BB97A4 /* 日本語.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "日本語.mp3"; sourceTree = "<group>"; };
 		C312D1822D7DC27700BB97A4 /* SyncProgressHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncProgressHeaderView.xib; sourceTree = "<group>"; };
 		C312D1842D7DC27700BB97A4 /* Alerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alerts.storyboard; sourceTree = "<group>"; };
 		C312D1852D7DC27700BB97A4 /* Animate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Animate.storyboard; sourceTree = "<group>"; };
@@ -1602,20 +1575,6 @@
 			isa = PBXGroup;
 			children = (
 				C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */,
-				C312D0B02D7DC27700BB97A4 /* De.mp3 */,
-				C312D0B22D7DC27700BB97A4 /* En.mp3 */,
-				C312D0B42D7DC27700BB97A4 /* Es.mp3 */,
-				C312D0B62D7DC27700BB97A4 /* Fr.mp3 */,
-				C312D0B82D7DC27700BB97A4 /* Id.mp3 */,
-				C312D0B92D7DC27700BB97A4 /* It.mp3 */,
-				C312D0BB2D7DC27700BB97A4 /* Ko.mp3 */,
-				C312D0BD2D7DC27700BB97A4 /* Pt.mp3 */,
-				C312D0BE2D7DC27700BB97A4 /* Ru.mp3 */,
-				C312D0BF2D7DC27700BB97A4 /* Tr.mp3 */,
-				C312D0C12D7DC27700BB97A4 /* Uk.mp3 */,
-				C312D0C42D7DC27700BB97A4 /* 한국인.mp3 */,
-				C312D0C52D7DC27700BB97A4 /* 中國人.mp3 */,
-				C312D0C62D7DC27700BB97A4 /* 日本語.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -2200,42 +2159,29 @@
 				24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */,
 				C312D49E2D7DC27700BB97A4 /* Settings.storyboard in Resources */,
 				C312D4A12D7DC27700BB97A4 /* Icon.xcassets in Resources */,
-				C312D4A32D7DC27700BB97A4 /* Es.mp3 in Resources */,
 				C312D4A42D7DC27700BB97A4 /* Main.storyboard in Resources */,
 				2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */,
-				C312D4A52D7DC27700BB97A4 /* Id.mp3 in Resources */,
 				24FEB8BB2DD2425A00D60036 /* InfoPlist.strings in Resources */,
-				C312D4A62D7DC27700BB97A4 /* Uk.mp3 in Resources */,
 				C312D4A82D7DC27700BB97A4 /* POSTBouncer.html in Resources */,
-				C312D4A92D7DC27700BB97A4 /* Pt.mp3 in Resources */,
-				C312D4AA2D7DC27700BB97A4 /* 日本語.mp3 in Resources */,
 				C312D4AB2D7DC27700BB97A4 /* BarlowSemiCondensed-Bold.ttf in Resources */,
-				C312D4AD2D7DC27700BB97A4 /* Ru.mp3 in Resources */,
 				C312D4AE2D7DC27700BB97A4 /* CHANGELOG.md in Resources */,
 				C312D4AF2D7DC27700BB97A4 /* Animate.storyboard in Resources */,
-				C312D4B12D7DC27700BB97A4 /* Tr.mp3 in Resources */,
 				C312D4B22D7DC27700BB97A4 /* SyncProgressHeaderView.xib in Resources */,
 				C312D4B42D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf in Resources */,
 				C312D4B52D7DC27700BB97A4 /* Transactions.storyboard in Resources */,
 				C312D4B72D7DC27700BB97A4 /* WarningConfirmation.storyboard in Resources */,
-				C312D4B82D7DC27700BB97A4 /* En.mp3 in Resources */,
 				241B47802DCEA08000279954 /* Localizable.xcstrings in Resources */,
 				C312D5142D7DC2EA00BB97A4 /* PrivacyInfo.xcprivacy in Resources */,
-				C312D4BA2D7DC27700BB97A4 /* De.mp3 in Resources */,
 				C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */,
-				C312D4BC2D7DC27700BB97A4 /* 中國人.mp3 in Resources */,
 				C312D4BD2D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf in Resources */,
 				C312D4BF2D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf in Resources */,
-				C312D4C12D7DC27700BB97A4 /* Fr.mp3 in Resources */,
 				C312D4C22D7DC27700BB97A4 /* general.css in Resources */,
 				2416CE7E2DA90DB000FFBD10 /* remote-config-defaults.plist in Resources */,
-				C312D4C32D7DC27700BB97A4 /* Ko.mp3 in Resources */,
 				249C45DC2D93F23F00E9C3B0 /* service-data.plist in Resources */,
 				C312D4C42D7DC27700BB97A4 /* Assets.xcassets in Resources */,
 				C312D4C52D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf in Resources */,
 				C312D4CA2D7DC27700BB97A4 /* Buy.storyboard in Resources */,
 				C312D4CC2D7DC27700BB97A4 /* Alerts.storyboard in Resources */,
-				C312D4CD2D7DC27700BB97A4 /* It.mp3 in Resources */,
 				C312D4CE2D7DC27700BB97A4 /* Phrase.storyboard in Resources */,
 				2414B00B2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit in Resources */,
 				C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */,

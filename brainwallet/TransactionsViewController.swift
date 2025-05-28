@@ -3,7 +3,7 @@ import SwiftUI
 import UIKit
 
 let kNormalTransactionCellHeight: CGFloat = 65.0
-let kProgressHeaderHeight: CGFloat = 50.0
+let kProgressHeaderHeight: CGFloat = 75.0
 let kDormantHeaderHeight: CGFloat = 1.0
 let kPromptCellHeight: CGFloat = 120.0
 let kQRImageSide: CGFloat = 110.0
@@ -246,11 +246,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	}
 
 	func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		var sectionHeight = 0.0
+        var sectionHeight = 0.0
 		switch section {
 		case 0:
-			sectionHeight = Double(shouldBeSyncing ? kProgressHeaderHeight : kDormantHeaderHeight)
-			return CGFloat(sectionHeight)
+			sectionHeight = CGFloat(shouldBeSyncing ? kProgressHeaderHeight : kDormantHeaderHeight)
+			return sectionHeight
 		default: return 0.0
 		}
 	}
@@ -361,7 +361,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                 syncView.viewModel.dateTimestamp = reduxState.walletState.lastBlockTimestamp
                                 debugPrint("::: transactions.count) \(reduxState.walletState.transactions.count)")
                                 syncView.viewModel.blockHeightString = reduxState.walletState.transactions.first?.blockHeight ?? ""
-                                debugPrint("::: transaction block height) \(reduxState.walletState.transactions.first?.blockHeight)")
+                                debugPrint("||| transaction block blockHeightString) \(syncView.viewModel.blockHeightString)")
 
 		                		self.shouldBeSyncing = true
 

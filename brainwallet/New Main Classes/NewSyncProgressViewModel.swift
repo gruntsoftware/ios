@@ -11,17 +11,14 @@ import Foundation
 import SwiftUI
 import UIKit
 
-class NewSyncProgressViewModel: ObservableObject {
+class NewSyncProgressViewModel: ObservableObject, Subscriber {
     // MARK: - Combine Variables
 
     @Published
     var formattedTimestamp = ""
     
     @Published
-    var latestTxHash = "TXID"
-    
-    @Published
-    var blockHeightString = "2333032"
+    var blockHeightString = "--"
 
     // MARK: - Public Variables
     
@@ -52,6 +49,7 @@ class NewSyncProgressViewModel: ObservableObject {
     init(store: Store, walletManager: WalletManager) {
         self.store = store
         self.walletManager = walletManager
+        setSubscriptions()
     }
 
 ///    dateFormatter.string(from: Date(timeIntervalSince1970: Double(timestamp)))
@@ -90,5 +88,14 @@ class NewSyncProgressViewModel: ObservableObject {
                                             object: nil,
                                             userInfo: nil)
         }
+    }
+    private func setSubscriptions() {
+//        guard let walletManager = self.walletManager,
+//              let store = self.store else { return }
+        
+        self.store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
+                        callback: { _ in
+            
+        })
     }
 }

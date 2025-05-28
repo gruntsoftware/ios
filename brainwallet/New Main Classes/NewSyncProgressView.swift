@@ -29,7 +29,7 @@ struct NewSyncProgressView: View {
     
     private let progressViewHeight: CGFloat = 55.0
     private let progressBarHeight: CGFloat = 14.0
-    private let noSendSize: CGFloat = 22.0
+    private let progressIconSize: CGFloat = 16.0
 
     
     init(viewModel: NewSyncProgressViewModel) {
@@ -39,7 +39,6 @@ struct NewSyncProgressView: View {
         GeometryReader { geometry in
             
             let width = geometry.size.width
-            let height = geometry.size.height
             
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
@@ -48,53 +47,67 @@ struct NewSyncProgressView: View {
                         ProgressView(value: viewModel.progress)
                             .progressViewStyle(.linear)
                             .accentColor(BrainwalletColor.background)
-                            .background(BrainwalletColor.background)
                             .frame(height: progressBarHeight)
-                            .padding(.all, 8.0)
+                            .padding([.leading,.trailing], 8.0)
                     }
                     .frame(height: progressBarHeight)
-
                     HStack {
                         VStack {
-                            Text(viewModel.formattedTimestamp)
-                                .font(.footnote)
-                                .multilineTextAlignment(.leading)
+                            Text(String(localized:"Block timestamp: ") + viewModel.formattedTimestamp)
+                                .font(.caption)
+                                .frame(width: 240.0, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)
-                            Text(viewModel.latestTxHash)
-                                .font(.footnote)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(BrainwalletColor.content)
-                            Text(viewModel.blockHeightString)
-                                .font(.footnote)
-                                .multilineTextAlignment(.leading)
+                            Text(String(localized:"Last block: ") + viewModel.blockHeightString)
+                                .font(.caption)
+                                .frame(width: 240.0, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)
                             Spacer()
                         }
                         .padding(.leading, 8.0)
-                        .padding(.top, 8.0)
+
                         
                         Spacer()
-                        
-                        Image(systemName: "nosign")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: noSendSize,
-                                   height: noSendSize,
-                                   alignment: .trailing)
-                            .foregroundColor(BrainwalletColor.content)
-                            .padding(.trailing, 8.0)
-                            .padding(.top, 8.0)
-
+                        VStack {
+                            HStack {
+                                Text("SEND")
+                                    .font(.caption)
+                                    .frame(width: 120.0, alignment: .trailing)
+                                    .foregroundColor(BrainwalletColor.content)
+                                Image(systemName: "nosign")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: progressIconSize,
+                                           height: progressIconSize,
+                                           alignment: .trailing)
+                                    .foregroundColor(BrainwalletColor.error)
+                            }
+                            HStack {
+                                Text("RECEIVE")
+                                    .font(.caption)
+                                    .frame(width: 120.0, alignment: .trailing)
+                                    .foregroundColor(BrainwalletColor.content)
+                                Image(systemName: "square.and.arrow.down")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: progressIconSize,
+                                           height: progressIconSize,
+                                           alignment: .trailing)
+                                    .foregroundColor(BrainwalletColor.affirm)
+                            }
+                            Spacer()
+                        }
+                        .padding(.trailing, 8.0)
                     }
-                    .padding(.all, 16.0)
-
+                    Divider()
+                        .frame(height: 2.0)
+                        .background(BrainwalletColor.nearBlack.opacity(0.8))
                 }
                 .frame(width: width, height: progressViewHeight)
             }
         }
     }
 }
-//
+
 //
 //import UIKit
 //
