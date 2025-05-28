@@ -67,11 +67,16 @@
 		247D74F32DA907FB00855B14 /* BRSet.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45972D936D5900E9C3B0 /* BRSet.c */; };
 		247D74F42DA907FB00855B14 /* BRTransaction.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45992D936D5900E9C3B0 /* BRTransaction.c */; };
 		247D74F52DA907FB00855B14 /* BRWallet.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C459B2D936D5900E9C3B0 /* BRWallet.c */; };
+		248E5C3F2DE77E88003F232F /* moon_pay_buy_status.txt in Resources */ = {isa = PBXBuildFile; fileRef = 248E5C3E2DE77E88003F232F /* moon_pay_buy_status.txt */; };
+		248E5C422DE78653003F232F /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E5C412DE7863C003F232F /* NetworkHelper.swift */; };
 		2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2492829B2DAC22B00088528E /* BIP39Words.plist */; };
 		249C45DC2D93F23F00E9C3B0 /* service-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 249C45DB2D93F23F00E9C3B0 /* service-data.plist */; };
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
 		249DDE422DCD573700B2B275 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249DDE412DCD572F00B2B275 /* SettingsView.swift */; };
 		24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A404222DC92F35006CD076 /* WebBuyView.swift */; };
+		24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */; };
+		24AAB31D2DE79ECC00F0C18C /* NewReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */; };
+		24AAB31F2DE79EE300F0C18C /* NewReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31E2DE79EE200F0C18C /* NewReceiveViewModel.swift */; };
 		24B0652A2DC6135900B5E000 /* WalletBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065292DC6134C00B5E000 /* WalletBalanceView.swift */; };
 		24B0652E2DC61E2F00B5E000 /* NewTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0652D2DC61E2100B5E000 /* NewTransactionsView.swift */; };
 		24B065352DC627F000B5E000 /* NewMainHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065342DC627E500B5E000 /* NewMainHostingController.swift */; };
@@ -80,7 +85,6 @@
 		24B0653B2DC6433800B5E000 /* SimpleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653A2DC6433000B5E000 /* SimpleHeaderView.swift */; };
 		24B0653D2DC6476A00B5E000 /* NewSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653C2DC6476700B5E000 /* NewSendView.swift */; };
 		24B065402DC647F400B5E000 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653F2DC647F000B5E000 /* GameView.swift */; };
-		24B065422DC6484900B5E000 /* NewReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065412DC6484300B5E000 /* NewReceiveView.swift */; };
 		24BEBB972DCDE4D4001E1F1F /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		24BEF7E12DCCCD6C00CA2EEC /* BrainwalletiOSStorekit in Frameworks */ = {isa = PBXBuildFile; productRef = 24BEF7E02DCCCD6C00CA2EEC /* BrainwalletiOSStorekit */; };
 		24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */; };
@@ -475,6 +479,8 @@
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
+		248E5C3E2DE77E88003F232F /* moon_pay_buy_status.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = moon_pay_buy_status.txt; sourceTree = "<group>"; };
+		248E5C412DE7863C003F232F /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		2492829B2DAC22B00088528E /* BIP39Words.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BIP39Words.plist; sourceTree = "<group>"; };
 		249C450E2D936D5900E9C3B0 /* ax_jni_include_dir.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_jni_include_dir.m4; sourceTree = "<group>"; };
 		249C450F2D936D5900E9C3B0 /* ax_prog_cc_for_build.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_prog_cc_for_build.m4; sourceTree = "<group>"; };
@@ -610,6 +616,9 @@
 		249C45DB2D93F23F00E9C3B0 /* service-data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "service-data.plist"; sourceTree = "<group>"; };
 		249DDE412DCD572F00B2B275 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		24A404222DC92F35006CD076 /* WebBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBuyView.swift; sourceTree = "<group>"; };
+		24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveHostingController.swift; sourceTree = "<group>"; };
+		24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveView.swift; sourceTree = "<group>"; };
+		24AAB31E2DE79EE200F0C18C /* NewReceiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveViewModel.swift; sourceTree = "<group>"; };
 		24B065292DC6134C00B5E000 /* WalletBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalanceView.swift; sourceTree = "<group>"; };
 		24B0652D2DC61E2100B5E000 /* NewTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionsView.swift; sourceTree = "<group>"; };
 		24B065342DC627E500B5E000 /* NewMainHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainHostingController.swift; sourceTree = "<group>"; };
@@ -618,7 +627,6 @@
 		24B0653A2DC6433000B5E000 /* SimpleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleHeaderView.swift; sourceTree = "<group>"; };
 		24B0653C2DC6476700B5E000 /* NewSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSendView.swift; sourceTree = "<group>"; };
 		24B0653F2DC647F000B5E000 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		24B065412DC6484300B5E000 /* NewReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveView.swift; sourceTree = "<group>"; };
 		24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
 		24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmHostingController.swift; sourceTree = "<group>"; };
 		24D7AE552DCFF6830078252E /* NewConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmView.swift; sourceTree = "<group>"; };
@@ -1145,6 +1153,14 @@
 			path = Colors;
 			sourceTree = "<group>";
 		};
+		248E5C402DE78625003F232F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				248E5C412DE7863C003F232F /* NetworkHelper.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		249C45112D936D5900E9C3B0 /* m4 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1421,6 +1437,16 @@
 			path = "New Buy Webview";
 			sourceTree = "<group>";
 		};
+		24AAB3192DE79E6E00F0C18C /* New Receive Classes */ = {
+			isa = PBXGroup;
+			children = (
+				24AAB31E2DE79EE200F0C18C /* NewReceiveViewModel.swift */,
+				24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */,
+				24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */,
+			);
+			path = "New Receive Classes";
+			sourceTree = "<group>";
+		};
 		24B065252DC6121A00B5E000 /* Wallet Balance Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1458,14 +1484,6 @@
 			path = "Game Classes";
 			sourceTree = "<group>";
 		};
-		24B065432DC6484C00B5E000 /* Receive Cells */ = {
-			isa = PBXGroup;
-			children = (
-				24B065412DC6484300B5E000 /* NewReceiveView.swift */,
-			);
-			path = "Receive Cells";
-			sourceTree = "<group>";
-		};
 		24C639C82DC69E940014E6DD /* Settings Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1487,6 +1505,7 @@
 		24DF5CBD2D934E29009A426C /* launch-resources */ = {
 			isa = PBXGroup;
 			children = (
+				248E5C3E2DE77E88003F232F /* moon_pay_buy_status.txt */,
 				2416CE7F2DA90DE300FFBD10 /* GoogleService-Info.plist */,
 				2416CE7D2DA90DB000FFBD10 /* remote-config-defaults.plist */,
 				249C45DB2D93F23F00E9C3B0 /* service-data.plist */,
@@ -1660,6 +1679,8 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				24AAB3192DE79E6E00F0C18C /* New Receive Classes */,
+				248E5C402DE78625003F232F /* Networking */,
 				241B477E2DCEA05D00279954 /* Localizations */,
 				24D7AE522DCFF6350078252E /* New Onboarding */,
 				24A404212DC92F1F006CD076 /* New Buy Webview */,
@@ -1676,7 +1697,6 @@
 				24F64C212DAFBE49001DC9B6 /* Lottie Data */,
 				24F64C1B2DAFB362001DC9B6 /* Start Welcome Classes */,
 				24B065252DC6121A00B5E000 /* Wallet Balance Classes */,
-				24B065432DC6484C00B5E000 /* Receive Cells */,
 				24B065332DC627D200B5E000 /* New Main Classes */,
 				24B065262DC6130200B5E000 /* Transactions Classes */,
 				2416CE552DA90C8B00FFBD10 /* Legacy BRClasses */,
@@ -2178,6 +2198,7 @@
 				C312D49E2D7DC27700BB97A4 /* Settings.storyboard in Resources */,
 				C312D4A12D7DC27700BB97A4 /* Icon.xcassets in Resources */,
 				C312D4A32D7DC27700BB97A4 /* Es.mp3 in Resources */,
+				248E5C3F2DE77E88003F232F /* moon_pay_buy_status.txt in Resources */,
 				C312D4A42D7DC27700BB97A4 /* Main.storyboard in Resources */,
 				2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */,
 				C312D4A52D7DC27700BB97A4 /* Id.mp3 in Resources */,
@@ -2374,6 +2395,7 @@
 				2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */,
 				C312D2D62D7DC27700BB97A4 /* RecoverWalletView.swift in Sources */,
 				C312D2D72D7DC27700BB97A4 /* Date+Additions.swift in Sources */,
+				24AAB31D2DE79ECC00F0C18C /* NewReceiveView.swift in Sources */,
 				C312D2D92D7DC27700BB97A4 /* LockScreenViewModel.swift in Sources */,
 				C312D2DA2D7DC27700BB97A4 /* LFModalReceiveQRViewController.swift in Sources */,
 				C312D2DC2D7DC27700BB97A4 /* PresentModalAnimator.swift in Sources */,
@@ -2563,6 +2585,7 @@
 				C312D4062D7DC27700BB97A4 /* IntroStepView.swift in Sources */,
 				241D22412DB526AE000302C8 /* SetPasscodeView.swift in Sources */,
 				C312D4072D7DC27700BB97A4 /* WipeEmptyWalletViewController.swift in Sources */,
+				24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */,
 				C312D40A2D7DC27700BB97A4 /* EnterPhraseView.swift in Sources */,
 				C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */,
 				C312D40F2D7DC27700BB97A4 /* Environment.swift in Sources */,
@@ -2582,6 +2605,7 @@
 				C312D42D2D7DC27700BB97A4 /* LWAnalytics.swift in Sources */,
 				C312D4312D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift in Sources */,
 				C312D4322D7DC27700BB97A4 /* SecurityCenterCell.swift in Sources */,
+				24AAB31F2DE79EE300F0C18C /* NewReceiveViewModel.swift in Sources */,
 				24D7AE582DCFF72D0078252E /* NewConfirmViewModel.swift in Sources */,
 				C312D4332D7DC27700BB97A4 /* RemoteConfigHelper.swift in Sources */,
 				C312D4342D7DC27700BB97A4 /* TextView+Extension.swift in Sources */,
@@ -2616,7 +2640,6 @@
 				C312D4622D7DC27700BB97A4 /* UIViewController+BRWAdditions.swift in Sources */,
 				C312D4632D7DC27700BB97A4 /* PinPadCells.swift in Sources */,
 				C312D4662D7DC27700BB97A4 /* PaymentRequest.swift in Sources */,
-				24B065422DC6484900B5E000 /* NewReceiveView.swift in Sources */,
 				C312D4672D7DC27700BB97A4 /* SendAmountCell.swift in Sources */,
 				C312D4692D7DC27700BB97A4 /* CGContext+Additions.swift in Sources */,
 				C312D46D2D7DC27700BB97A4 /* DismissLoginAnimator.swift in Sources */,
@@ -2643,6 +2666,7 @@
 				245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */,
 				C312D4872D7DC27700BB97A4 /* Transaction.swift in Sources */,
 				C312D48A2D7DC27700BB97A4 /* MenuButtonType.swift in Sources */,
+				248E5C422DE78653003F232F /* NetworkHelper.swift in Sources */,
 				C312D48B2D7DC27700BB97A4 /* CreateWalletView.swift in Sources */,
 				C312D48F2D7DC27700BB97A4 /* SimpleRedux.swift in Sources */,
 				C312D4902D7DC27700BB97A4 /* SendAddressCellView.swift in Sources */,
