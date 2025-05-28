@@ -26,7 +26,7 @@ struct NewConfirmView: View {
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {
-                    Text("New Confirm View")
+                    Text("")
                 }
             }
         }

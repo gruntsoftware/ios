@@ -134,7 +134,7 @@ struct SeedCapsuleView: View {
                         .foregroundColor(BrainwalletColor.content)
                         .padding(.leading, 8.0)
                         .frame(width: 24.0)
-                    TextField("12345678",text: $word)
+                    TextField("",text: $word) //DEV12345678
                         .font(.footnote)
                         .fontWeight(.semibold)
                         .foregroundColor(BrainwalletColor.content)

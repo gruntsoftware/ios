@@ -42,10 +42,10 @@ struct TransactionRowView: View {
                             .padding()
                     }
                     VStack {
-                        Text("In progress: %1$@")
+                        Text("")
                             .font(.title2)
                             .foregroundColor(BrainwalletColor.content)
-                        Text("IS PROGRESSING...")
+                        Text("")
                             .font(.title2)
                             .foregroundColor(BrainwalletColor.content)
                     }
