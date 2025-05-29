@@ -84,7 +84,7 @@ struct PINRowView: View {
                 )
 
             }
-            .frame(maxWidth: 260.0, alignment: .center)
+            .frame(maxWidth: 280.0, alignment: .center)
             .onChange(of: pinState ) { _ in
                 updatePIN()
             }.onAppear {

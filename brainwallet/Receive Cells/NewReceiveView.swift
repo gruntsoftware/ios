@@ -25,7 +25,7 @@ struct NewReceiveView: View {
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {
-                    Text("New Receive View")
+                    Text("")
                 }
             }
         }

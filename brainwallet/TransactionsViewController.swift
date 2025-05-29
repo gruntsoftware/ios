@@ -3,7 +3,7 @@ import SwiftUI
 import UIKit
 
 let kNormalTransactionCellHeight: CGFloat = 65.0
-let kProgressHeaderHeight: CGFloat = 50.0
+let kProgressHeaderHeight: CGFloat = 75.0
 let kDormantHeaderHeight: CGFloat = 1.0
 let kPromptCellHeight: CGFloat = 120.0
 let kQRImageSide: CGFloat = 110.0
@@ -15,9 +15,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 	var store: Store?
 	var walletManager: WalletManager?
-	var shouldBeSyncing: Bool = false
-	var syncingHeaderView: SyncProgressHeaderView?
-
+    var shouldBeSyncing: Bool = false
+    var newSyncingHeaderView: NewSyncHostingController?
+      
 	private var transactions: [Transaction] = []
 	private var allTransactions: [Transaction] = [] {
 		didSet {
@@ -64,11 +64,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
             debugPrint("::: ERROR: reduxState Not initialized")
 			return
 		}
-        debugPrint(":::: TransactionViewController setup: transactions count: \(walletManager?.wallet?.transactions.count)")
         
-        debugPrint(":::: TransactionViewController walletState: balance : \(reduxState.walletState.balance)")
-
-
 		tableView.register(HostingTransactionCell<TransactionCellView>.self, forCellReuseIdentifier: "HostingTransactionCell<TransactionCellView>")
 		transactions = TransactionManager.sharedInstance.transactions
 		rate = TransactionManager.sharedInstance.rate
@@ -82,36 +78,32 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	///   - reduxState: Current ReduxState
 	///   - completion: Signals the initialzation of the view
 	private func initSyncingHeaderView(reduxState: ReduxState, completion: @escaping () -> Void) {
-		syncingHeaderView = Bundle.main.loadNibNamed("SyncProgressHeaderView",
-		                                             owner: self,
-		                                             options: nil)?
-            .first as? SyncProgressHeaderView
-		syncingHeaderView?.isRescanning = reduxState.walletState.isRescanning
-		syncingHeaderView?.progress = 0.02
-		syncingHeaderView?.headerMessage = reduxState.walletState.syncState
-		syncingHeaderView?.noSendImageView.alpha = 1.0
-		syncingHeaderView?.timestamp = reduxState.walletState.lastBlockTimestamp
-        syncingHeaderView?.blockNumberString = reduxState.walletState.transactions.first?.blockHeight ?? ""
+        
+        guard let walletManager = walletManager,
+        let store = store else {
+            NSLog("::: ERROR: WalletManager or Store not initialized")
+            return
+        }
+        
+        newSyncingHeaderView = NewSyncHostingController(store: store, walletManager: walletManager)
+        newSyncingHeaderView?.viewModel.isRescanning = reduxState.walletState.isRescanning
+        newSyncingHeaderView?.viewModel.progress = 0.02
+        newSyncingHeaderView?.viewModel.headerMessage = reduxState.walletState.syncState
+        newSyncingHeaderView?.viewModel.dateTimestamp = reduxState.walletState.lastBlockTimestamp
+        newSyncingHeaderView?.viewModel.blockHeightString = reduxState.walletState.transactions.first?.blockHeight ?? ""
 		completion()
 	}
 
 	private func attemptShowPrompt() {
-		guard let walletManager = walletManager else {
-			NSLog("::: ERROR: WalletManager not initialized")
+		guard let walletManager = walletManager,
+        let store = store else {
+			NSLog("::: ERROR: WalletManager or Store not initialized")
 			return
 		}
-		guard let store = store
-		else {
-			NSLog("::: ERROR: Store not initialized")
-			return
-		}
-        debugPrint(":::: TransactionViewController attemptShowPrompt WalletManager \(walletManager.wallet?.transactions.count)")
-
+		  
 		let types = PromptType.defaultOrder
 		if let type = types.first(where: { $0.shouldPrompt(walletManager: walletManager, state: store.state) }) {
 			saveEvent("prompt.\(type.name).displayed")
-            debugPrint("::: TransactionViewController attemptShowPrompt currentPromptType: \(String(describing: currentPromptType)) tx count: \(walletManager.wallet?.transactions.count)")
-
 			currentPromptType = type
 			if type == .biometrics {
 				UserDefaults.hasPromptedBiometrics = true
@@ -120,7 +112,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 				UserDefaults.hasPromptedShareData = true
 			}
 		} else {
-            debugPrint("::: TransactionViewController attemptShowPrompt currentPromptType (nil): \(String(describing: currentPromptType)) tx count: \(walletManager.wallet?.transactions.count)")
 			currentPromptType = nil
 		}
 	}
@@ -249,17 +240,17 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 	func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		if shouldBeSyncing, section == 0 {
-			return syncingHeaderView
+            return newSyncingHeaderView?.view
 		}
 		return nil
 	}
 
 	func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		var sectionHeight = 0.0
+        var sectionHeight = 0.0
 		switch section {
 		case 0:
-			sectionHeight = Double(shouldBeSyncing ? kProgressHeaderHeight : kDormantHeaderHeight)
-			return CGFloat(sectionHeight)
+			sectionHeight = CGFloat(shouldBeSyncing ? kProgressHeaderHeight : kDormantHeaderHeight)
+			return sectionHeight
 		default: return 0.0
 		}
 	}
@@ -274,7 +265,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		} else {
 			if !transactions.isEmpty {
 				tableView.backgroundView = nil
-               // debugPrint("::: TransactionViewController numberOfRowsInSection: \(transactions.count)")
 				return transactions.count
 			} else {
 				tableView.backgroundView = emptyMessageView()
@@ -361,23 +351,24 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		store.subscribe(self, selector: { $0.walletState.lastBlockTimestamp != $1.walletState.lastBlockTimestamp },
 		                callback: { reduxState in
            
-		                	guard let syncView = self.syncingHeaderView else { return }
+		                	guard let syncView = self.newSyncingHeaderView else { return }
 
-		                	syncView.isRescanning = reduxState.walletState.isRescanning
-		                	if syncView.isRescanning || (reduxState.walletState.syncState == .syncing) {
-		                		syncView.progress = CGFloat(self.updateProgressView(syncProgress:
+            syncView.viewModel.isRescanning = reduxState.walletState.isRescanning
+		                	if syncView.viewModel.isRescanning || (reduxState.walletState.syncState == .syncing) {
+                                syncView.viewModel.progress = CGFloat(self.updateProgressView(syncProgress:
 		                			CGFloat(reduxState.walletState.syncProgress), lastBlockTimestamp: Double(reduxState.walletState.lastBlockTimestamp)))
-		                		syncView.headerMessage = reduxState.walletState.syncState
-		                		syncView.noSendImageView.alpha = 1.0
-		                		syncView.timestamp = reduxState.walletState.lastBlockTimestamp
+                                syncView.viewModel.headerMessage = reduxState.walletState.syncState
+                                syncView.viewModel.dateTimestamp = reduxState.walletState.lastBlockTimestamp
                                 debugPrint("::: transactions.count) \(reduxState.walletState.transactions.count)")
-                                syncView.blockNumberString = reduxState.walletState.transactions.first?.blockHeight ?? ""
+                                syncView.viewModel.blockHeightString = reduxState.walletState.transactions.first?.blockHeight ?? ""
+                                debugPrint("||| transaction block blockHeightString) \(syncView.viewModel.blockHeightString)")
 
 		                		self.shouldBeSyncing = true
 
 		                		if reduxState.walletState.syncProgress >= 0.99 {
+                                    ///DEV HACK To Show
 		                			self.shouldBeSyncing = false
-		                			self.syncingHeaderView = nil
+		                			self.newSyncingHeaderView = nil
 		                		}
 		                	}
 
@@ -406,17 +397,17 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		                	if reduxState.walletState.syncState == .syncing {
 		                		self.shouldBeSyncing = true
 		                		self.initSyncingHeaderView(reduxState: reduxState, completion: {
-		                			self.syncingHeaderView?.isRescanning = reduxState.walletState.isRescanning
-		                			self.syncingHeaderView?.progress = 0.02
-		                			self.syncingHeaderView?.headerMessage = reduxState.walletState.syncState
-		                			self.syncingHeaderView?.noSendImageView.alpha = 1.0
-		                			self.syncingHeaderView?.timestamp = reduxState.walletState.lastBlockTimestamp
+//		                			self.syncingHeaderView?.isRescanning = reduxState.walletState.isRescanning
+//		                			self.syncingHeaderView?.progress = 0.02
+//		                			self.syncingHeaderView?.headerMessage = reduxState.walletState.syncState
+//		                			self.syncingHeaderView?.noSendImageView.alpha = 1.0
+//		                			self.syncingHeaderView?.timestamp = reduxState.walletState.lastBlockTimestamp
 		                		})
 		                	}
 
 		                	if reduxState.walletState.syncState == .success {
 		                		self.shouldBeSyncing = false
-		                		self.syncingHeaderView = nil
+//		                		self.syncingHeaderView = nil
 		                	}
 		                	self.reload()
 		                })

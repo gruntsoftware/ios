@@ -68,7 +68,7 @@ class PinView: UIView {
 	private var filled: [Circle]
 	private let style: PinViewStyle
 	private let length: Int
-
+    private let leadingTrailingConstant = 16.0
 	private func toRadian(value: Int) -> CGFloat {
 		return CGFloat(Double(value) / 180.0 * .pi)
 	}
@@ -84,9 +84,9 @@ class PinView: UIView {
 			addSubview(circle)
 			let leadingConstraint: NSLayoutConstraint?
 			if index == 0 {
-				leadingConstraint = circle.constraint(.leading, toView: self, constant: 0.0)
+                leadingConstraint = circle.constraint(.leading, toView: self, constant: -leadingTrailingConstant)
 			} else {
-				leadingConstraint = NSLayoutConstraint(item: circle, attribute: .leading, relatedBy: .equal, toItem: circles[index - 1], attribute: .trailing, multiplier: 1.0, constant: 16.0)
+				leadingConstraint = NSLayoutConstraint(item: circle, attribute: .leading, relatedBy: .equal, toItem: circles[index - 1], attribute: .trailing, multiplier: 1.0, constant: leadingTrailingConstant)
 			}
 			circle.constrain([
 				circle.constraint(.width, constant: itemSize),

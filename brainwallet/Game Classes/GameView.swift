@@ -26,7 +26,7 @@ struct GameView: View {
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {
-                    Text("Game View")
+                    Text("")
                 }
             }
         }

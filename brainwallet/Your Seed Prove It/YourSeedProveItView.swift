@@ -48,7 +48,6 @@ var body: some View {
                                 .frame(width: squareImageSize,
                                        height: squareImageSize,
                                        alignment: .center)
-                            
                                 .foregroundColor(BrainwalletColor.content)
                             Spacer()
                         }

@@ -73,13 +73,17 @@ struct StartView: View {
                             Image("bw-logotype")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: width * 0.8,
+                                .frame(maxWidth: width * 0.65,
                                        alignment: .center)
                                 .padding([.top,.bottom], verticalPadding)
                             
                             WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
                                 .frame(width: width * 0.9, height: height * 0.4, alignment: .center)
+                                .padding(.top, verticalPadding)
+
                         }
+                        
+                        Spacer()
                         HStack {
                             ZStack {
                                 Group {
@@ -133,7 +137,6 @@ struct StartView: View {
 						.frame(width: width * 0.9,
 						       height: height * 0.1,
 						       alignment: .center)
-						Spacer()
 
                         Button(action: {
                                  startViewModel.didTapCreate!()
