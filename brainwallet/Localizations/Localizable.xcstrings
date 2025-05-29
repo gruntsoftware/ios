@@ -931,6 +931,9 @@
     "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)." : {
 
     },
+    "Buy / Receive" : {
+
+    },
     "Buy LTC from MoonPay" : {
 
     },
@@ -4988,12 +4991,6 @@
         }
       }
     },
-    "New Confirm View" : {
-      "shouldTranslate" : false
-    },
-    "New Send" : {
-      "shouldTranslate" : false
-    },
     "No internet connection found. Check your connection and try again." : {
 
     },
@@ -6601,6 +6598,7 @@
       }
     },
     "Receive" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -6700,7 +6698,7 @@
         }
       }
     },
-    "Receive / Buy" : {
+    "RECEIVE" : {
 
     },
     "Recover" : {

@@ -51,6 +51,7 @@
 		2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */; };
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
 		244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244520332DE70310003AFFDF /* LockScreenHostingController.swift */; };
+		244A8D932DE84C890024D356 /* BrainwalletShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
@@ -470,6 +471,7 @@
 		2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncHostingController.swift; sourceTree = "<group>"; };
 		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
 		244520332DE70310003AFFDF /* LockScreenHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHostingController.swift; sourceTree = "<group>"; };
+		244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainwalletShapes.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
@@ -1129,11 +1131,12 @@
 			path = CoreResources;
 			sourceTree = "<group>";
 		};
-		244520352DE716A7003AFFDF /* Animation Effects */ = {
+		244A8D912DE84C710024D356 /* Brainwallet Custom Shapes */ = {
 			isa = PBXGroup;
 			children = (
+				244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */,
 			);
-			path = "Animation Effects";
+			path = "Brainwallet Custom Shapes";
 			sourceTree = "<group>";
 		};
 		248D87B92DB4E3C900745552 /* Colors */ = {
@@ -1660,6 +1663,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				244A8D912DE84C710024D356 /* Brainwallet Custom Shapes */,
 				24AAB3192DE79E6E00F0C18C /* New Receive Classes */,
 				248E5C402DE78625003F232F /* Networking */,
 				241B477E2DCEA05D00279954 /* Localizations */,
@@ -2178,7 +2182,6 @@
 				24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */,
 				C312D49E2D7DC27700BB97A4 /* Settings.storyboard in Resources */,
 				C312D4A12D7DC27700BB97A4 /* Icon.xcassets in Resources */,
-				C312D4A32D7DC27700BB97A4 /* Es.mp3 in Resources */,
 				248E5C3F2DE77E88003F232F /* moon_pay_buy_status.txt in Resources */,
 				C312D4A42D7DC27700BB97A4 /* Main.storyboard in Resources */,
 				2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */,
@@ -2431,7 +2434,6 @@
 				C312D3492D7DC27700BB97A4 /* StartNavigationDelegate.swift in Sources */,
 				C312D34C2D7DC27700BB97A4 /* AssociatedObject.swift in Sources */,
 				C312D34D2D7DC27700BB97A4 /* StartViewController.swift in Sources */,
-				248E5C3D2DE76612003F232F /* BrainwalletShapes.swift in Sources */,
 				C312D34F2D7DC27700BB97A4 /* DispatchQueue+Additions.swift in Sources */,
 				C312D3512D7DC27700BB97A4 /* DataValidation.swift in Sources */,
 				C312D3532D7DC27700BB97A4 /* TransactionModalView.swift in Sources */,
@@ -2565,6 +2567,7 @@
 				C312D4102D7DC27700BB97A4 /* CustomTitleView.swift in Sources */,
 				C312D4122D7DC27700BB97A4 /* SecurityCenterViewController.swift in Sources */,
 				C312D4152D7DC27700BB97A4 /* VerifyPinViewController.swift in Sources */,
+				244A8D932DE84C890024D356 /* BrainwalletShapes.swift in Sources */,
 				C312D4192D7DC27700BB97A4 /* MoonpayHelper.swift in Sources */,
 				C312D41B2D7DC27700BB97A4 /* SupportSafariViewModel.swift in Sources */,
 				C312D41C2D7DC27700BB97A4 /* CreateStepTabView.swift in Sources */,

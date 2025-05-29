@@ -20,8 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
 			updateCurrentUserLocale(localeId: currentLocaleID)
 			Bundle.setLanguage(UserDefaults.selectedLanguage)
-            
-          
+    
             let _ = NetworkHelper.init().fetchCurrenciesCountries(completion:  { countryData  in
                 let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == currentLocaleID }.first
                 
