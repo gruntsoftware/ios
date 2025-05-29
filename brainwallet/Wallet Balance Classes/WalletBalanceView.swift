@@ -35,7 +35,7 @@ struct WalletBalanceView: View {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 HStack {
                     VStack {
-                        Text("BALANCE")
+                        Text("")//DEV BALANCE
                             .font(.barlowSemiBold(size: 20.0))
                             .frame(maxWidth: .infinity,
                                    alignment: .leading)
@@ -43,13 +43,13 @@ struct WalletBalanceView: View {
                         
                         Group {
                             if didTapPriceGroup {
-                                Text("$43,000,000.99")
+                                Text("")//DEV $43,000,000.99
                                     .font( .barlowBold(size: 50.0))
                                     .frame(maxWidth: .infinity,
                                            alignment: .leading)
                                     .foregroundColor(BrainwalletColor.content)
                                     .animation(.bouncy(), value: didTapPriceGroup)
-                                Text("Ł1233.994")
+                                Text("")//DEV "Ł1233.994"
                                     .font(.barlowLight(size: 20.0))
                                     .frame(maxWidth: .infinity,
                                            alignment: .leading)
@@ -58,14 +58,14 @@ struct WalletBalanceView: View {
                                 
                             }
                             else {
-                                Text("Ł1233.994")
+                                Text("")//DEV "Ł1233.994"
                                     .font(.barlowBold(size: 50.0))
                                     .frame(maxWidth: .infinity,
                                            alignment: .leading)
                                     .offset(y: didTapPriceGroup ? swapOffest : 0)
                                     .foregroundColor(BrainwalletColor.content)
                                     .animation(.bouncy(), value: didTapPriceGroup)
-                                Text("$43,000,000.99")
+                                Text("")//DEV $43,000,000.99
                                     .font( .barlowLight(size: 20.0))
                                     .frame(maxWidth: .infinity,
                                            alignment: .leading)

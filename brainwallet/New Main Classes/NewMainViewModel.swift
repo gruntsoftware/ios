@@ -124,11 +124,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         
         guard let walletManager = self.walletManager else { return }
         guard let store = self.store else { return }
-        
-        store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
-                        callback: { _ in
-                          //  self.tabBar.selectedItem = self.tabBar.items?.first
-                        })
 
         store.lazySubscribe(self,
                             selector: { $0.isLtcSwapped != $1.isLtcSwapped },

@@ -44,7 +44,7 @@ struct NewTransactionsView: View {
                 BrainwalletColor.affirm.edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
-                        Text("ACTIVITY \(filterMode.rawValue)")
+                        Text("\(filterMode.rawValue)")
                         Spacer()
                         Button(action: {
                             if modeState < 2 {
