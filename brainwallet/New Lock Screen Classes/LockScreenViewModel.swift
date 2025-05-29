@@ -1,11 +1,4 @@
-import AVFoundation
-import Foundation
 import SwiftUI
-import UIKit
-
-enum VoidQRState {
-    
-}
 
 class LockScreenViewModel: ObservableObject, Subscriber {
 	// MARK: - Combine Variables
@@ -20,10 +13,15 @@ class LockScreenViewModel: ObservableObject, Subscriber {
     var userPrefersDarkMode = false
     
     @Published
-    var userWantsToDelete = false
+    var userDidTapQR: Bool?
     
     @Published
-    var userDidTapQR: Bool?
+    var authenticationFailed =  false
+    
+    @Published
+    var pinDigits = [Int(),Int(),Int(),Int()]
+    
+    var userSubmittedPIN: ((String) -> Void)?
     
 
 	// MARK: - Public Variables
@@ -60,9 +58,10 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 			return
 		}
 
-		store.subscribe(self, selector: { $0.currentRate != $1.currentRate },
+		store
+            .subscribe(self,
+                        selector: { $0.currentRate != $1.currentRate },
 		                callback: { _ in
-            
 		                	self.fetchCurrentPrice()
 		                })
 	}
