@@ -61,8 +61,8 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 		store
             .subscribe(self,
                         selector: { $0.currentRate != $1.currentRate },
-		                callback: { _ in
-		                	self.fetchCurrentPrice()
+		                callback: { [weak self] _ in
+		                	self?.fetchCurrentPrice()
 		                })
 	}
 }
