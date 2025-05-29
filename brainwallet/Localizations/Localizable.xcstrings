@@ -104,10 +104,17 @@
         }
       }
     },
-    "%@ = 1Ł" : {
-
+    "%@       %@ (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@       %2$@ (%3$@)"
+          }
+        }
+      }
     },
-    "%lf Ł" : {
+    "%@ = 1Ł" : {
 
     },
     "%lld" : {
@@ -928,13 +935,19 @@
         }
       }
     },
+    "Brainwallet generates a new address after each transaction sent" : {
+
+    },
     "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)." : {
 
     },
     "Buy / Receive" : {
 
     },
-    "Buy LTC from MoonPay" : {
+    "BUY / RECEIVE" : {
+
+    },
+    "Buy LTC" : {
 
     },
     "Buy with MoonPay" : {
@@ -1840,9 +1853,6 @@
         }
       }
     },
-    "Copy LTC Address" : {
-
-    },
     "Copy Wallet Addresses" : {
 
     },
@@ -2465,6 +2475,7 @@
       }
     },
     "Deposit LTC Address" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -6598,7 +6609,6 @@
       }
     },
     "Receive" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

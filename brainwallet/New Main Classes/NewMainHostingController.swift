@@ -11,15 +11,16 @@ import SwiftUI
 
 class NewMainHostingController: UIHostingController<NewMainView> {
     
-    var viewModel: NewMainViewModel
-    var store: Store
+    var store: Store?
     var walletManager: WalletManager?
     
     init(store: Store, walletManager: WalletManager) {
         self.store = store
         self.walletManager = walletManager
-        viewModel = NewMainViewModel(store: store, walletManager: walletManager)
-        super.init(rootView: NewMainView(viewModel: viewModel))
+        
+        let receiveViewModel = NewReceiveViewModel(store: store, walletManager: walletManager)
+        let mainViewModel = NewMainViewModel(store: store, walletManager: walletManager)
+        super.init(rootView: NewMainView(viewModel: mainViewModel, receiveViewModel: receiveViewModel))
     }
      
     // MARK: - Private

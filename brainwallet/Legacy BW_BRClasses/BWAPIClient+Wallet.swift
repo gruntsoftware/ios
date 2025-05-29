@@ -1,6 +1,6 @@
 import Foundation
 
-extension BRAPIClient {
+extension BWAPIClient {
 	func feePerKb(_ handler: @escaping (_ fees: Fees, _ error: String?) -> Void) {
         
         guard let url = URL(string: APIServer.baseUrl + "v1/fee-per-kb") else {

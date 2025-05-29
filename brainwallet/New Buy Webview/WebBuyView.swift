@@ -9,6 +9,8 @@ import SwiftUI
   
 struct WebBuyView: View {
     
+    private var signedURL: String? = ""
+    
     private var receiveAddress: String = ""
     
     @State
@@ -29,17 +31,14 @@ struct WebBuyView: View {
         #endif
     }()
     
-    init(receiveAddress: String) {
-        
-        ///TEMP USAGE:  After launch integrate api server
-        self.urlString = "https://brainwallet.co/mobile-top-up.html"
+    init(signedURL: String?, receiveAddress: String) {
         
         self.receiveAddress = receiveAddress
         
-        ///TBD:  After launch integrate api server
-        let signUrlString = mpPrefix + "?apiKey=" + APIServer.mp_pk_live + "&address=\(receiveAddress)&uid=\(UUID().uuidString)"
-
-        if let url = URL(string: urlString) {
+        ///TEMP USAGE:  After launch integrate api server
+        let tempURL = mpPrefix + "?apiKey=" + APIServer.mp_pk_live + "&address=\(receiveAddress)&uid=\(UUID().uuidString)"
+        
+        if let url = URL(string: tempURL) {
             self.url = url
         }
     }
@@ -53,45 +52,7 @@ struct WebBuyView: View {
                 VStack {
                     WebView(url: url!, scrollToSignup: $shouldScroll)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    
-                    Button(action: {
-                        UIPasteboard.general.string = receiveAddress
-                        shouldShowCopied.toggle()
-                    }) {
-                        HStack {
-                            Image(systemName: "doc.on.clipboard")
-                                .foregroundColor(BrainwalletColor.content)
-                            
-                            
-                            VStack {
-                                
-                                Text("Deposit LTC Address")
-                                    .font(.caption)
-                                    .multilineTextAlignment(.leading)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .foregroundColor(BrainwalletColor.content)
-                                Text(receiveAddress)
-                                    .font(.footnote)
-                                    .multilineTextAlignment(.leading)
-                                    .truncationMode(.middle)
-                                    .frame(maxWidth: width * 0.8, alignment: .leading)
-                                    .foregroundColor(BrainwalletColor.content)
-                            }
-                            if shouldShowCopied {
-                                Text("Copied")
-                                    .font(.footnote)
-                                    .multilineTextAlignment(.trailing)
-                                    .frame(maxWidth: 60.0, alignment: .trailing)
-                                    .foregroundColor(BrainwalletColor.content).onAppear {
-                                        delay(2.0) {
-                                            self.shouldShowCopied = false
-                                        }
-                                    }
-                            }
-                        }
-                        .padding(10.0)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: 44.0)
+                        .padding(4.0)
                 }
                 .frame(maxWidth: .infinity)
                 .padding([.leading, .trailing], 8.0)
@@ -99,8 +60,4 @@ struct WebBuyView: View {
         }
     }
 }
-struct WebBuyView_Previews: PreviewProvider {
-    static var previews: some View {
-        WebBuyView(receiveAddress: "")
-    }
-}
+

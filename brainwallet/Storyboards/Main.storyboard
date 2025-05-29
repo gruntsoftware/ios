@@ -79,12 +79,12 @@
                                     <constraint firstAttribute="height" constant="98" id="5jX-Bm-pRG"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="Send" id="RIS-fI-9CG" userLabel="Send">
+                                    <tabBarItem title="Send" id="RIS-fI-9CG" userLabel="Send">
                                         <imageReference key="image" image="arrow.up.right" catalog="system" symbolScale="default"/>
                                         <color key="badgeColor" name="brainwalletContent"/>
                                         <imageReference key="selectedImage" image="arrow.up.right" catalog="system" symbolScale="default"/>
                                     </tabBarItem>
-                                    <tabBarItem title="History" id="bcE-8M-dwp" userLabel="History">
+                                    <tabBarItem tag="1" title="History" id="bcE-8M-dwp" userLabel="History">
                                         <imageReference key="image" image="deskclock" catalog="system" symbolScale="default"/>
                                         <color key="badgeColor" name="brainwalletContent"/>
                                         <imageReference key="selectedImage" image="deskclock" catalog="system" symbolScale="default"/>
@@ -161,7 +161,7 @@
             <color red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

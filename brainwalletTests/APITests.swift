@@ -3,11 +3,11 @@ import XCTest
 
 class APITests: XCTestCase {
 	var apiServer: APIServer!
-	var apiClient: BRAPIClient!
+	var apiClient: BWAPIClient!
 
 	override func setUpWithError() throws {
 		apiServer = APIServer()
-		apiClient = brainwallet.BRAPIClient(authenticator: NoAuthAuthenticator())
+		apiClient = brainwallet.BWAPIClient(authenticator: NoAuthAuthenticator())
 	}
 
 	override func tearDownWithError() throws {

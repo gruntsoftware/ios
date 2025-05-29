@@ -43,7 +43,8 @@ struct LockScreenFooterView: View {
                                alignment: .center)
                         
                         Button(action: {
-                            viewModel.userDidTapQR = true
+                            viewModel.userDidTapQR?()
+                            viewModel.shouldShowQR.toggle()
                         }) {
                             Image(systemName:"qrcode")
                                 .resizable()

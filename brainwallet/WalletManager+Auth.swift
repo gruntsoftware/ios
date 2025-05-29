@@ -373,7 +373,7 @@ extension WalletManager: WalletAuthenticator {
 			if let bundleId = Bundle.main.bundleIdentifier {
 				UserDefaults.standard.removePersistentDomain(forName: bundleId)
 			}
-			try BRAPIClient(authenticator: self).kv?.rmdb()
+			try BWAPIClient(authenticator: self).kv?.rmdb()
 			try? FileManager.default.removeItem(atPath: dbPath)
 			try? FileManager.default.removeItem(at: BRReplicatedKVStore.dbPath)
 			try setKeychainItem(key: KeychainKey.apiAuthKey, item: nil as Data?)
@@ -406,7 +406,7 @@ extension WalletManager: WalletAuthenticator {
 			if let bundleId = Bundle.main.bundleIdentifier {
 				UserDefaults.standard.removePersistentDomain(forName: bundleId)
 			}
-			try BRAPIClient(authenticator: self).kv?.rmdb()
+			try BWAPIClient(authenticator: self).kv?.rmdb()
 			try? FileManager.default.removeItem(atPath: dbPath)
 			try? FileManager.default.removeItem(at: BRReplicatedKVStore.dbPath)
 			NotificationCenter.default.post(name: .didDeleteWalletDBNotification, object: nil)

@@ -10,7 +10,6 @@ class StartHostingController: UIHostingController<StartView> {
         startViewModel = StartViewModel(store: store, walletManager: walletManager)
         
         let newMainViewModel = NewMainViewModel(store: store, walletManager: walletManager)
-        
         super.init(rootView: StartView(startViewModel: startViewModel, newMainViewModel: newMainViewModel))
 	}
 	// MARK: - Private

@@ -17,16 +17,16 @@
 		2415FFDF2DBD8505002A2199 /* SeedWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */; };
 		2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE612DA90D0D00FFBD10 /* BRMasterKeyExtension.swift */; };
 		2416CE6B2DA90D0D00FFBD10 /* BRSocketHelpers.c in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE652DA90D0D00FFBD10 /* BRSocketHelpers.c */; };
-		2416CE6C2DA90D0D00FFBD10 /* BRAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE582DA90D0D00FFBD10 /* BRAPIClient.swift */; };
+		2416CE6C2DA90D0D00FFBD10 /* BWAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE582DA90D0D00FFBD10 /* BWAPIClient.swift */; };
 		2416CE6D2DA90D0D00FFBD10 /* BRTar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE662DA90D0D00FFBD10 /* BRTar.swift */; };
 		2416CE6E2DA90D0D00FFBD10 /* BRPeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE622DA90D0D00FFBD10 /* BRPeerManager.swift */; };
 		2416CE6F2DA90D0D00FFBD10 /* BRTxOutputExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE682DA90D0D00FFBD10 /* BRTxOutputExtension.swift */; };
-		2416CE702DA90D0D00FFBD10 /* BRAPIClient+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5A2DA90D0D00FFBD10 /* BRAPIClient+Events.swift */; };
+		2416CE702DA90D0D00FFBD10 /* BWAPIClient+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5A2DA90D0D00FFBD10 /* BWAPIClient+Events.swift */; };
 		2416CE712DA90D0D00FFBD10 /* BRWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE692DA90D0D00FFBD10 /* BRWallet.swift */; };
 		2416CE722DA90D0D00FFBD10 /* BRTxInputExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE672DA90D0D00FFBD10 /* BRTxInputExtension.swift */; };
 		2416CE742DA90D0D00FFBD10 /* BRReplicatedKVStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE632DA90D0D00FFBD10 /* BRReplicatedKVStore.swift */; };
-		2416CE752DA90D0D00FFBD10 /* BRAPIClient+KV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5C2DA90D0D00FFBD10 /* BRAPIClient+KV.swift */; };
-		2416CE762DA90D0D00FFBD10 /* BRAPIClient+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5D2DA90D0D00FFBD10 /* BRAPIClient+Wallet.swift */; };
+		2416CE752DA90D0D00FFBD10 /* BWAPIClient+KV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5C2DA90D0D00FFBD10 /* BWAPIClient+KV.swift */; };
+		2416CE762DA90D0D00FFBD10 /* BWAPIClient+Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5D2DA90D0D00FFBD10 /* BWAPIClient+Wallet.swift */; };
 		2416CE772DA90D0D00FFBD10 /* BRActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */; };
 		2416CE782DA90D0D00FFBD10 /* BRAddressExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE572DA90D0D00FFBD10 /* BRAddressExtension.swift */; };
 		2416CE792DA90D0D00FFBD10 /* BRCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5F2DA90D0D00FFBD10 /* BRCoding.swift */; };
@@ -99,6 +99,8 @@
 		24D7AE582DCFF72D0078252E /* NewConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */; };
 		24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D91D0A2166923E0077A619 /* UserNotifications.framework */; };
 		24EE3F1F2DCF5A560017472B /* TopUpSetAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE3F1E2DCF5A560017472B /* TopUpSetAmountView.swift */; };
+		24F377FF2DE869A700A388AB /* BWAPIClient+MoonPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F377FE2DE8699600A388AB /* BWAPIClient+MoonPay.swift */; };
+		24F378022DE89C7800A388AB /* MoonPayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F378012DE89C6600A388AB /* MoonPayHelper.swift */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
 		24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */; };
@@ -299,7 +301,6 @@
 		C312D4502D7DC27700BB97A4 /* TransactionDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D12D7DC27700BB97A4 /* TransactionDirection.swift */; };
 		C312D4512D7DC27700BB97A4 /* PromptModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D28F2D7DC27700BB97A4 /* PromptModalViewController.swift */; };
 		C312D4522D7DC27700BB97A4 /* CheckboxesStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2342D7DC27700BB97A4 /* CheckboxesStepView.swift */; };
-		C312D4552D7DC27700BB97A4 /* BuyHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D22C2D7DC27700BB97A4 /* BuyHostingController.swift */; };
 		C312D4562D7DC27700BB97A4 /* LockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2772D7DC27700BB97A4 /* LockScreenView.swift */; };
 		C312D4572D7DC27700BB97A4 /* KeyboardNotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0972D7DC27700BB97A4 /* KeyboardNotificationInfo.swift */; };
 		C312D4582D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0882D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift */; };
@@ -371,7 +372,7 @@
 		C312D4FE2D7DC28E00BB97A4 /* BRReplicatedKVStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E32D7DC28E00BB97A4 /* BRReplicatedKVStoreTests.swift */; };
 		C312D4FF2D7DC28E00BB97A4 /* BRCoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E22D7DC28E00BB97A4 /* BRCoderTests.swift */; };
 		C312D5002D7DC28E00BB97A4 /* SeedWordsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4F02D7DC28E00BB97A4 /* SeedWordsTests.swift */; };
-		C312D5012D7DC28E00BB97A4 /* BRAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E12D7DC28E00BB97A4 /* BRAPIClientTests.swift */; };
+		C312D5012D7DC28E00BB97A4 /* BWAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E12D7DC28E00BB97A4 /* BWAPIClientTests.swift */; };
 		C312D5022D7DC28E00BB97A4 /* TabBarViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4D62D7DC28E00BB97A4 /* TabBarViewControllerTests.swift */; };
 		C312D5032D7DC28E00BB97A4 /* LocaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4DE2D7DC28E00BB97A4 /* LocaleTests.swift */; };
 		C312D5042D7DC28E00BB97A4 /* WalletManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4F52D7DC28E00BB97A4 /* WalletManagerTests.swift */; };
@@ -436,10 +437,10 @@
 		2415FFF22DBE2CA4002A2199 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRActivityView.swift; sourceTree = "<group>"; };
 		2416CE572DA90D0D00FFBD10 /* BRAddressExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAddressExtension.swift; sourceTree = "<group>"; };
-		2416CE582DA90D0D00FFBD10 /* BRAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAPIClient.swift; sourceTree = "<group>"; };
-		2416CE5A2DA90D0D00FFBD10 /* BRAPIClient+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+Events.swift"; sourceTree = "<group>"; };
-		2416CE5C2DA90D0D00FFBD10 /* BRAPIClient+KV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+KV.swift"; sourceTree = "<group>"; };
-		2416CE5D2DA90D0D00FFBD10 /* BRAPIClient+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAPIClient+Wallet.swift"; sourceTree = "<group>"; };
+		2416CE582DA90D0D00FFBD10 /* BWAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWAPIClient.swift; sourceTree = "<group>"; };
+		2416CE5A2DA90D0D00FFBD10 /* BWAPIClient+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWAPIClient+Events.swift"; sourceTree = "<group>"; };
+		2416CE5C2DA90D0D00FFBD10 /* BWAPIClient+KV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWAPIClient+KV.swift"; sourceTree = "<group>"; };
+		2416CE5D2DA90D0D00FFBD10 /* BWAPIClient+Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWAPIClient+Wallet.swift"; sourceTree = "<group>"; };
 		2416CE5E2DA90D0D00FFBD10 /* BRCalculationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCalculationExtension.swift; sourceTree = "<group>"; };
 		2416CE5F2DA90D0D00FFBD10 /* BRCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCoding.swift; sourceTree = "<group>"; };
 		2416CE602DA90D0D00FFBD10 /* BRKeyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRKeyExtension.swift; sourceTree = "<group>"; };
@@ -632,6 +633,8 @@
 		24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmViewModel.swift; sourceTree = "<group>"; };
 		24D91D0A2166923E0077A619 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		24EE3F1E2DCF5A560017472B /* TopUpSetAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpSetAmountView.swift; sourceTree = "<group>"; };
+		24F377FE2DE8699600A388AB /* BWAPIClient+MoonPay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWAPIClient+MoonPay.swift"; sourceTree = "<group>"; };
+		24F378012DE89C6600A388AB /* MoonPayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPayHelper.swift; sourceTree = "<group>"; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
 		24FEB8BA2DD2425A00D60036 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -797,7 +800,6 @@
 		C312D2032D7DC27700BB97A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C312D2042D7DC27700BB97A4 /* AssociatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssociatedObject.swift; sourceTree = "<group>"; };
 		C312D22A2D7DC27700BB97A4 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
-		C312D22C2D7DC27700BB97A4 /* BuyHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyHostingController.swift; sourceTree = "<group>"; };
 		C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTileView.swift; sourceTree = "<group>"; };
 		C312D2312D7DC27700BB97A4 /* BuyWKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyWKWebViewController.swift; sourceTree = "<group>"; };
 		C312D2332D7DC27700BB97A4 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -925,7 +927,7 @@
 		C312D4DD2D7DC28E00BB97A4 /* LanguageSelectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionTests.swift; sourceTree = "<group>"; };
 		C312D4DE2D7DC28E00BB97A4 /* LocaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleTests.swift; sourceTree = "<group>"; };
 		C312D4E02D7DC28E00BB97A4 /* BRAddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAddressTests.swift; sourceTree = "<group>"; };
-		C312D4E12D7DC28E00BB97A4 /* BRAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAPIClientTests.swift; sourceTree = "<group>"; };
+		C312D4E12D7DC28E00BB97A4 /* BWAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWAPIClientTests.swift; sourceTree = "<group>"; };
 		C312D4E22D7DC28E00BB97A4 /* BRCoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCoderTests.swift; sourceTree = "<group>"; };
 		C312D4E32D7DC28E00BB97A4 /* BRReplicatedKVStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRReplicatedKVStoreTests.swift; sourceTree = "<group>"; };
 		C312D4E42D7DC28E00BB97A4 /* DefaultFiatCurrencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFiatCurrencyTests.swift; sourceTree = "<group>"; };
@@ -993,15 +995,16 @@
 			path = "New Lock Screen Classes";
 			sourceTree = "<group>";
 		};
-		2416CE552DA90C8B00FFBD10 /* Legacy BRClasses */ = {
+		2416CE552DA90C8B00FFBD10 /* Legacy BW_BRClasses */ = {
 			isa = PBXGroup;
 			children = (
+				24F377FE2DE8699600A388AB /* BWAPIClient+MoonPay.swift */,
 				2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */,
 				2416CE572DA90D0D00FFBD10 /* BRAddressExtension.swift */,
-				2416CE582DA90D0D00FFBD10 /* BRAPIClient.swift */,
-				2416CE5A2DA90D0D00FFBD10 /* BRAPIClient+Events.swift */,
-				2416CE5C2DA90D0D00FFBD10 /* BRAPIClient+KV.swift */,
-				2416CE5D2DA90D0D00FFBD10 /* BRAPIClient+Wallet.swift */,
+				2416CE582DA90D0D00FFBD10 /* BWAPIClient.swift */,
+				2416CE5A2DA90D0D00FFBD10 /* BWAPIClient+Events.swift */,
+				2416CE5C2DA90D0D00FFBD10 /* BWAPIClient+KV.swift */,
+				2416CE5D2DA90D0D00FFBD10 /* BWAPIClient+Wallet.swift */,
 				2416CE5E2DA90D0D00FFBD10 /* BRCalculationExtension.swift */,
 				2416CE5F2DA90D0D00FFBD10 /* BRCoding.swift */,
 				2416CE602DA90D0D00FFBD10 /* BRKeyExtension.swift */,
@@ -1015,7 +1018,7 @@
 				2416CE682DA90D0D00FFBD10 /* BRTxOutputExtension.swift */,
 				2416CE692DA90D0D00FFBD10 /* BRWallet.swift */,
 			);
-			path = "Legacy BRClasses";
+			path = "Legacy BW_BRClasses";
 			sourceTree = "<group>";
 		};
 		241B477E2DCEA05D00279954 /* Localizations */ = {
@@ -1511,6 +1514,14 @@
 			path = "launch-resources";
 			sourceTree = "<group>";
 		};
+		24F378002DE89C5B00A388AB /* MoonPay Helper */ = {
+			isa = PBXGroup;
+			children = (
+				24F378012DE89C6600A388AB /* MoonPayHelper.swift */,
+			);
+			path = "MoonPay Helper";
+			sourceTree = "<group>";
+		};
 		24F64C1B2DAFB362001DC9B6 /* Start Welcome Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1663,6 +1674,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				24F378002DE89C5B00A388AB /* MoonPay Helper */,
 				244A8D912DE84C710024D356 /* Brainwallet Custom Shapes */,
 				24AAB3192DE79E6E00F0C18C /* New Receive Classes */,
 				248E5C402DE78625003F232F /* Networking */,
@@ -1684,7 +1696,7 @@
 				24B065252DC6121A00B5E000 /* Wallet Balance Classes */,
 				24B065332DC627D200B5E000 /* New Main Classes */,
 				24B065262DC6130200B5E000 /* Transactions Classes */,
-				2416CE552DA90C8B00FFBD10 /* Legacy BRClasses */,
+				2416CE552DA90C8B00FFBD10 /* Legacy BW_BRClasses */,
 				C312D1DB2D7DC27700BB97A4 /* SendViewCells */,
 				C312D0962D7DC27700BB97A4 /* Fonts */,
 				C312D0C72D7DC27700BB97A4 /* Sounds */,
@@ -1784,7 +1796,6 @@
 				C312D2022D7DC27700BB97A4 /* ArticleIds.swift */,
 				C312D2032D7DC27700BB97A4 /* Assets.xcassets */,
 				C312D2042D7DC27700BB97A4 /* AssociatedObject.swift */,
-				C312D22C2D7DC27700BB97A4 /* BuyHostingController.swift */,
 				C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */,
 				C312D2312D7DC27700BB97A4 /* BuyWKWebViewController.swift */,
 				C312D2332D7DC27700BB97A4 /* CHANGELOG.md */,
@@ -1942,7 +1953,7 @@
 			isa = PBXGroup;
 			children = (
 				C312D4E02D7DC28E00BB97A4 /* BRAddressTests.swift */,
-				C312D4E12D7DC28E00BB97A4 /* BRAPIClientTests.swift */,
+				C312D4E12D7DC28E00BB97A4 /* BWAPIClientTests.swift */,
 				C312D4E22D7DC28E00BB97A4 /* BRCoderTests.swift */,
 				C312D4E32D7DC28E00BB97A4 /* BRReplicatedKVStoreTests.swift */,
 				C312D4E42D7DC28E00BB97A4 /* DefaultFiatCurrencyTests.swift */,
@@ -2308,7 +2319,7 @@
 				C312D4FE2D7DC28E00BB97A4 /* BRReplicatedKVStoreTests.swift in Sources */,
 				C312D4FF2D7DC28E00BB97A4 /* BRCoderTests.swift in Sources */,
 				C312D5002D7DC28E00BB97A4 /* SeedWordsTests.swift in Sources */,
-				C312D5012D7DC28E00BB97A4 /* BRAPIClientTests.swift in Sources */,
+				C312D5012D7DC28E00BB97A4 /* BWAPIClientTests.swift in Sources */,
 				C312D5022D7DC28E00BB97A4 /* TabBarViewControllerTests.swift in Sources */,
 				C312D5032D7DC28E00BB97A4 /* LocaleTests.swift in Sources */,
 				C312D5042D7DC28E00BB97A4 /* WalletManagerTests.swift in Sources */,
@@ -2452,19 +2463,19 @@
 				C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */,
 				2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */,
 				2416CE6B2DA90D0D00FFBD10 /* BRSocketHelpers.c in Sources */,
-				2416CE6C2DA90D0D00FFBD10 /* BRAPIClient.swift in Sources */,
+				2416CE6C2DA90D0D00FFBD10 /* BWAPIClient.swift in Sources */,
 				2416CE6D2DA90D0D00FFBD10 /* BRTar.swift in Sources */,
 				2416CE6E2DA90D0D00FFBD10 /* BRPeerManager.swift in Sources */,
 				2416CE6F2DA90D0D00FFBD10 /* BRTxOutputExtension.swift in Sources */,
-				2416CE702DA90D0D00FFBD10 /* BRAPIClient+Events.swift in Sources */,
+				2416CE702DA90D0D00FFBD10 /* BWAPIClient+Events.swift in Sources */,
 				241D22472DB526D7000302C8 /* YourSeedProveItView.swift in Sources */,
 				2416CE712DA90D0D00FFBD10 /* BRWallet.swift in Sources */,
 				24B065372DC6281D00B5E000 /* NewMainViewModel.swift in Sources */,
 				2416CE722DA90D0D00FFBD10 /* BRTxInputExtension.swift in Sources */,
 				2416CE742DA90D0D00FFBD10 /* BRReplicatedKVStore.swift in Sources */,
 				249DDE422DCD573700B2B275 /* SettingsView.swift in Sources */,
-				2416CE752DA90D0D00FFBD10 /* BRAPIClient+KV.swift in Sources */,
-				2416CE762DA90D0D00FFBD10 /* BRAPIClient+Wallet.swift in Sources */,
+				2416CE752DA90D0D00FFBD10 /* BWAPIClient+KV.swift in Sources */,
+				2416CE762DA90D0D00FFBD10 /* BWAPIClient+Wallet.swift in Sources */,
 				2416CE772DA90D0D00FFBD10 /* BRActivityView.swift in Sources */,
 				2416CE782DA90D0D00FFBD10 /* BRAddressExtension.swift in Sources */,
 				2428717F2DE5C25F0035DE48 /* ClearDecimalPad.swift in Sources */,
@@ -2513,6 +2524,7 @@
 				24B0653D2DC6476A00B5E000 /* NewSendView.swift in Sources */,
 				C312D3B72D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift in Sources */,
 				C312D3B92D7DC27700BB97A4 /* MenuButton.swift in Sources */,
+				24F378022DE89C7800A388AB /* MoonPayHelper.swift in Sources */,
 				C312D3BB2D7DC27700BB97A4 /* TransactionsViewModel.swift in Sources */,
 				C312D3BC2D7DC27700BB97A4 /* Constants+Events.swift in Sources */,
 				C312D3BE2D7DC27700BB97A4 /* AddressCell.swift in Sources */,
@@ -2525,6 +2537,7 @@
 				C312D3C72D7DC27700BB97A4 /* Sender.swift in Sources */,
 				C312D3CA2D7DC27700BB97A4 /* BuyWKWebViewController.swift in Sources */,
 				C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */,
+				24F377FF2DE869A700A388AB /* BWAPIClient+MoonPay.swift in Sources */,
 				C312D3CD2D7DC27700BB97A4 /* AlertFailureView.swift in Sources */,
 				C312D3CE2D7DC27700BB97A4 /* TestnetData.swift in Sources */,
 				C312D3D12D7DC27700BB97A4 /* RequestAmountViewController.swift in Sources */,
@@ -2607,7 +2620,6 @@
 				C312D4512D7DC27700BB97A4 /* PromptModalViewController.swift in Sources */,
 				C312D4522D7DC27700BB97A4 /* CheckboxesStepView.swift in Sources */,
 				24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */,
-				C312D4552D7DC27700BB97A4 /* BuyHostingController.swift in Sources */,
 				C312D4562D7DC27700BB97A4 /* LockScreenView.swift in Sources */,
 				C312D4572D7DC27700BB97A4 /* KeyboardNotificationInfo.swift in Sources */,
 				C312D4582D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift in Sources */,

@@ -17,18 +17,15 @@ class ReceiveHostingController: UIHostingController<NewReceiveView> {
     var store: Store?
     
     var walletManager: WalletManager?
-
-
+     
+      
     init(store: Store, walletManager: WalletManager) {
-        
-        self.store = store
-        
-        let viewModel = NewReceiveViewModel(store: store)
+        let viewModel = NewReceiveViewModel(store: store, walletManager: walletManager)
         super.init(rootView: NewReceiveView(viewModel: viewModel))
     }
  
     @available(*, unavailable)
     @MainActor dynamic required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
 }
