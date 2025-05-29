@@ -326,13 +326,21 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			return
 		}
         
-        let canUserBuyLTC = UserDefaults.standard.bool(forKey: userCurrentLocaleMPApprovedKey)
-
+        var thirdTabItemTitle = ""
+        /// To show all more compex state (Buy or Receive)
+        #if targetEnvironment(simulator)
+        let canUserBuyLTC = true
+        thirdTabItemTitle = String(localized: "Buy / Receive")
+        #else
+        let canUserBuyLTC = UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
+        thirdTabItemTitle = String(localized: "Receive")
+        #endif
+                
 		for item in array {
 			switch item.tag {
 			case 0: item.title = String(localized: "History")
 			case 1: item.title = String(localized: "Send")
-            case 2: item.title = canUserBuyLTC ? String(localized: "Receive / Buy") : String(localized: "Receive")
+            case 2: item.title = thirdTabItemTitle
 			default:
 				item.title = "NO-TITLE"
 				NSLog("ERROR: UITabbar item count is wrong")

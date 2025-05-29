@@ -80,8 +80,9 @@
                                 </constraints>
                                 <items>
                                     <tabBarItem tag="1" title="Send" id="RIS-fI-9CG" userLabel="Send">
-                                        <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="default"/>
-                                        <imageReference key="selectedImage" image="square.and.arrow.up" catalog="system" symbolScale="default"/>
+                                        <imageReference key="image" image="arrow.up.right" catalog="system" symbolScale="default"/>
+                                        <color key="badgeColor" name="brainwalletContent"/>
+                                        <imageReference key="selectedImage" image="arrow.up.right" catalog="system" symbolScale="default"/>
                                     </tabBarItem>
                                     <tabBarItem title="History" id="bcE-8M-dwp" userLabel="History">
                                         <imageReference key="image" image="deskclock" catalog="system" symbolScale="default"/>
@@ -89,8 +90,9 @@
                                         <imageReference key="selectedImage" image="deskclock" catalog="system" symbolScale="default"/>
                                     </tabBarItem>
                                     <tabBarItem tag="2" title="Receive" id="MWM-XE-gE7" userLabel="Receive">
-                                        <imageReference key="image" image="square.and.arrow.down" catalog="system" symbolScale="default"/>
-                                        <imageReference key="selectedImage" image="square.and.arrow.down" catalog="system" symbolScale="default"/>
+                                        <imageReference key="image" image="arrow.down.left" catalog="system" symbolScale="default"/>
+                                        <color key="badgeColor" name="brainwalletContent"/>
+                                        <imageReference key="selectedImage" image="arrow.down.left" catalog="system" symbolScale="default"/>
                                     </tabBarItem>
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -148,10 +150,10 @@
     </scenes>
     <color key="tintColor" red="0.27058823529999998" green="0.23529411759999999" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
+        <image name="arrow.down.left" catalog="system" width="128" height="112"/>
+        <image name="arrow.up.right" catalog="system" width="128" height="112"/>
         <image name="deskclock" catalog="system" width="128" height="125"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
-        <image name="square.and.arrow.down" catalog="system" width="114" height="128"/>
-        <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
         <namedColor name="brainwalletContent">
             <color red="0.058823525905609131" green="0.031372550874948502" blue="0.32156863808631897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

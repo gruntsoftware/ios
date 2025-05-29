@@ -55,8 +55,6 @@ struct NewReceiveView: View {
     
     init(viewModel: NewReceiveViewModel) {
         self.viewModel = viewModel
-        
-        canUserBuyLTC = UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
     }
     
     var body: some View {
@@ -203,6 +201,13 @@ struct NewReceiveView: View {
                     .opacity(isExpanded ? 1.0 : 0.0)
                     .background(BrainwalletColor.surface)
                     .onAppear {
+                        
+                        /// To show all more compex state (Buyt or Receive)
+                        #if targetEnvironment(simulator)
+                        canUserBuyLTC = true
+                        #else
+                        canUserBuyLTC = UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
+                        #endif
                         withAnimation(.easeInOut(duration: 0.2)) {
                             self.isExpanded = true
                         }
