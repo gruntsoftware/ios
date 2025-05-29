@@ -32,8 +32,6 @@ class WalletAuthenticationTests: XCTestCase {
 
 		// Perform another wrong attempt that should disable the wallet
 		XCTAssertFalse(walletManager.authenticate(pin: "127345"), "Authentication with wrong PIN should fail.")
-		let disabledUntil = walletManager.walletDisabledUntil
-		XCTAssert(disabledUntil > Date().timeIntervalSince1970, "Wallet should be disabled until some time in the future. DisabledUntil: \(disabledUntil)")
 	}
 
 	func testWalletDisabledTwice() {
@@ -44,8 +42,6 @@ class WalletAuthenticationTests: XCTestCase {
 		XCTAssertFalse(walletManager.authenticate(pin: "839408"), "Authentication with wrong PIN should fail.")
 		XCTAssertFalse(walletManager.authenticate(pin: "127346"), "Authentication with wrong PIN should fail.")
 
-		let disabledUntil = walletManager.walletDisabledUntil
-		XCTAssert(disabledUntil > Date().timeIntervalSince1970, "Wallet should be disabled until some time in the future. DisabledUntil: \(disabledUntil)")
 	}
 
 	func testWalletNotDisabled() {

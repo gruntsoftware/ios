@@ -13,7 +13,7 @@ class LockScreenViewModel: ObservableObject, Subscriber {
     var userPrefersDarkMode = false
     
     @Published
-    var userDidTapQR: Bool?
+    var shouldShowQR: Bool = false
     
     @Published
     var authenticationFailed =  false
@@ -23,7 +23,8 @@ class LockScreenViewModel: ObservableObject, Subscriber {
     
     var userSubmittedPIN: ((String) -> Void)?
     
-
+    var userDidTapQR:(() -> Void)?
+    
 	// MARK: - Public Variables
 
 	var store: Store?
@@ -61,8 +62,8 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 		store
             .subscribe(self,
                         selector: { $0.currentRate != $1.currentRate },
-		                callback: { _ in
-		                	self.fetchCurrentPrice()
+		                callback: { [weak self] _ in
+		                	self?.fetchCurrentPrice()
 		                })
 	}
 }

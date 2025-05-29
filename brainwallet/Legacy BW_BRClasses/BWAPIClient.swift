@@ -1,7 +1,7 @@
 import BRCore
 import Foundation
 
-let BRAPIClientErrorDomain = "BRApiClientErrorDomain"
+let BWAPIClientErrorDomain = "BRApiClientErrorDomain"
 
 // these flags map to api feature flag name values
 // eg "buy-bitcoin-with-cash" is a persistent name in the /me/features list
@@ -18,8 +18,8 @@ let BRAPIClientErrorDomain = "BRApiClientErrorDomain"
 public typealias URLSessionTaskHandler = (Data?, HTTPURLResponse?, NSError?) -> Void
 public typealias URLSessionChallengeHandler = (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
 
-// an object which implements BRAPIAdaptor can execute API Requests on the current wallet's behalf
-public protocol BRAPIAdaptor {
+// an object which implements BWAPIAdaptor can execute API Requests on the current wallet's behalf
+public protocol BWAPIAdaptor {
 	// execute an API request against the current wallet
 	func dataTaskWithRequest(
 		_ request: URLRequest, authenticated: Bool, retryCount: Int,
@@ -29,7 +29,7 @@ public protocol BRAPIAdaptor {
 	func url(_ path: String, args: [String: String]?) -> URL
 }
 
-open class BRAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BRAPIAdaptor {
+open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BWAPIAdaptor {
 	private var authenticator: WalletAuthenticator
 
 	// whether or not to emit log messages from this instance of the client
@@ -208,7 +208,7 @@ open class BRAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BR
 		}
 		guard let authKey = authKey
 		else {
-			return handler(NSError(domain: BRAPIClientErrorDomain, code: 500, userInfo: [
+			return handler(NSError(domain: BWAPIClientErrorDomain, code: 500, userInfo: [
 				NSLocalizedDescriptionKey: "Wallet not ready",
 			]))
 		}
@@ -234,7 +234,7 @@ open class BRAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BR
 			log("JSON Serialization error \(e)")
 			isFetchingAuth = false
 			authFetchGroup.leave()
-			return handler(NSError(domain: BRAPIClientErrorDomain, code: 500, userInfo: [
+			return handler(NSError(domain: BWAPIClientErrorDomain, code: 500, userInfo: [
 				NSLocalizedDescriptionKey: "JSON Serialization Error",
 			]))
 		}
@@ -248,7 +248,7 @@ open class BRAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BR
 						}
 						self.isFetchingAuth = false
 						self.authFetchGroup.leave()
-						return handler(NSError(domain: BRAPIClientErrorDomain, code: httpResp.statusCode, userInfo: [
+						return handler(NSError(domain: BWAPIClientErrorDomain, code: httpResp.statusCode, userInfo: [
 							NSLocalizedDescriptionKey: "JSON Token Error",
 						]))
 					}

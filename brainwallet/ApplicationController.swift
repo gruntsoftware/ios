@@ -29,7 +29,7 @@ class ApplicationController: Subscriber, Trackable {
 	private var urlController: URLController?
 	private var defaultsUpdater: UserDefaultsUpdater?
 	private var reachability = ReachabilityMonitor()
-	private let noAuthApiClient = BRAPIClient(authenticator: NoAuthAuthenticator())
+	private let noAuthApiClient = BWAPIClient(authenticator: NoAuthAuthenticator())
 	private var fetchCompletionHandler: ((UIBackgroundFetchResult) -> Void)?
 	private var launchURL: URL?
 	private var hasPerformedWalletDependentInitialization = false

@@ -2,4 +2,4 @@
 import XCTest
 
 private var walletManager: WalletManager?
-private var client: BRAPIClient?
+private var client: BWAPIClient?

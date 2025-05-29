@@ -119,7 +119,7 @@ struct StartView: View {
                                         
                                         Picker("", selection: $pickedCurrency) {
                                             ForEach(startViewModel.currencies, id: \.self) {
-                                                Text($0.fullCurrencyName)
+                                                Text("\($0.fullCurrencyName)       \($0.code) (\($0.symbol))")
                                                     .font(selectorFont)
                                                     .foregroundColor(BrainwalletColor.content)
                                             }

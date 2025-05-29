@@ -16,6 +16,7 @@ struct BrainwalletHexagon: Shape {
         let centerY = rect.midY
                 
         // Calculate hexagon points (flat-top orientation)
+        // system shape: hexagon.fill
         let radius = min(width, height) / 2
                 
         var path = Path()

@@ -36,6 +36,9 @@ struct NewReceiveView: View {
     private var canUserBuyLTC = false
     
     @State
+    private var userIsBuying = false
+    
+    @State
     private var symbol = "Ł"
 
     let qrImageSize: CGFloat = 80.0
@@ -43,7 +46,8 @@ struct NewReceiveView: View {
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 45.0
     let fieldHeight: CGFloat = 30.0
-    let headerFont: Font = .barlowBold(size: 28.0)
+    let headerFont: Font = .barlowBold(size: 26.0)
+    let ginormousFont: Font = .barlowSemiBold(size: 22.0)
     let subHeaderFont: Font = .barlowSemiBold(size: 17.0)
     let detailFont: Font = .barlowSemiBold(size: 15.0)
     let subDetailFont: Font = .barlowRegular(size: 14.0)
@@ -52,9 +56,11 @@ struct NewReceiveView: View {
     
     let qrPlaceholder: UIImage = UIImage(systemName: "qrcode")!
     
-    
-    init(viewModel: NewReceiveViewModel) {
+    let buyVStackFactor: CGFloat = 0.0
+
+    init(viewModel: NewReceiveViewModel, canUserBuyLTC: Binding<Bool>? = nil) {
         self.viewModel = viewModel
+        self.canUserBuyLTC = (canUserBuyLTC != nil)
     }
     
     var body: some View {
@@ -64,164 +70,170 @@ struct NewReceiveView: View {
             let width = geometry.size.width
             let height = geometry.size.height
             
+            let modalWidth = geometry.size.width * 0.9
+            let modalHeight = geometry.size.height * 0.9
+            
+            let modalReceiveViewHeight = height * 0.35
+            let modalBuyViewHeight = height * 0.95
+
             ZStack {
                 
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                
-                    VStack {
-                        HStack {
-                            Image(uiImage: viewModel.newReceiveAddressQR ?? qrPlaceholder)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: width * 0.35, height: width * 0.35)
-                                .padding(.all, 5.0)
-                            
-                            Text(viewModel.newReceiveAddress)
-                                .font(headerFont)
-                                .tracking(2)
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .frame(width: width * 0.35, height: width * 0.35)
-                                .foregroundColor(BrainwalletColor.nearBlack)
-                                .padding(.all, 5.0)
+                VStack {
+                    Spacer()
+                    if userIsBuying {
+                        VStack {
+                            WebBuyView(signedURL: "", receiveAddress: viewModel.newReceiveAddress)
                         }
-                        .frame(height: width * 0.4)
-
-                                
-                        HStack {
-                            Picker("", selection: $pickedAmount) {
-                                ForEach(viewModel.fiatAmounts, id: \.self) { amount in
-                                    Text("\(amount)")
-                                        .font(.subheadline)
-                                        .foregroundColor(BrainwalletColor.content)
-                                }
-                            }
-                            .pickerStyle(.wheel)
-                            .frame(width: 70.0, alignment: .top)
-                            .onChange(of: $pickedAmount.wrappedValue) { _ in
-                                viewModel.pickedAmount = pickedAmount
-                            }
-                            .padding(.trailing, 1.0)
+                        .frame(width: width * 0.95,
+                               height: height * 0.95,alignment: .top)
+                        .opacity(isExpanded ? 1.0 : 0.0)
+                        .background(BrainwalletColor.surface)
+                        .cornerRadius(largeButtonHeight/2)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: largeButtonHeight/2)
+                                .stroke(BrainwalletColor.content, lineWidth: 2)
+                                .frame(width: width * 0.95, height: height * 0.95, alignment: .top)
+                                .padding(.bottom, 5.0)
                             
-                            Picker("", selection: $pickedCurrency) {
-                                ForEach(viewModel.currencies, id: \.self) { currency in
-                                    Text(currency.code)
-                                        .font(.subheadline)
+                        }
+                        .padding(.bottom, 5.0)
+                    }
+                    else {
+                        VStack {
+                            
+                            HStack {
+                                    Text(canUserBuyLTC ? "BUY / RECEIVE" : "RECEIVE")
+                                        .font(headerFont)
                                         .foregroundColor(BrainwalletColor.content)
+                                        .padding(.all, 4.0)
+
+                            }
+                            .frame(width: modalWidth, height: 40.0, alignment: .top)
+                            .padding([.leading, .trailing,.top], 8.0)
+                            
+                            HStack {
+                                VStack {
+                                    Image(uiImage: viewModel.newReceiveAddressQR ?? qrPlaceholder)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: width * 0.4, height: width * 0.4)
+                                    Spacer()
                                 }
+                                .frame(height: height * 0.3)
+
+                                Spacer()
+                                VStack {
+                                    Text(viewModel.newReceiveAddress)
+                                        .font(ginormousFont)
+                                        .kerning(0.3)
+                                        .lineLimit(3)
+                                        .multilineTextAlignment(.leading)
+                                        .frame(width: width * 0.35, height: width * 0.2)
+                                        .foregroundColor(BrainwalletColor.content)
+                                    
+                                    HStack {
+                                        Text("Brainwallet generates a new address after each transaction sent")
+                                            .font(subDetailFont)
+                                            .kerning(0.3)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            .frame(width: width * 0.25)
+                                            .foregroundColor(BrainwalletColor.content)
+                                        Button(action: {
+                                            UIPasteboard.general.string = viewModel.newReceiveAddress
+                                        }) {
+                                            ZStack {
+                                                Ellipse()
+                                                    .foregroundColor(BrainwalletColor.background)
+                                                    .frame(width: 38, height: 38)
+                                                    .padding(10.0)
+
+                                                Image(systemName: "document.on.document")
+                                                    .resizable()
+                                                    .frame(width: 23, height: 23)
+                                                    .foregroundColor(BrainwalletColor.content)
+                                            }
+                                        }
+                                        .frame(width: width * 0.1)
+                                    }
+                                    Spacer()
+                                }
+                                .frame(height: height * 0.3, alignment: .top)
                             }
-                            .pickerStyle(.wheel)
-                            .frame(width: 70.0, alignment: .top)
-                            .onChange(of: $pickedCurrency.wrappedValue) { _ in
-                                viewModel.currentFiat = pickedCurrency.code
-                                pickedSymbol = pickedCurrency.symbol
-                            }
-                            .padding(.leading, 1.0)
-                            VStack {
-                                Text("\(viewModel.convertedLTC) Ł")
-                                    .font(headerFont)
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .frame(width: width * 0.4, alignment: .leading)
-                                    .padding(.all, 3.0)
-                                
-                                Text(viewModel.fetchedTimestamp)
-                                    .font(.footnote)
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .frame(width: width * 0.4, alignment: .leading)
-                                    .padding(.all, 3.0)
+                            .frame(width: modalWidth, height: height * 0.3, alignment: .top)
+                            .foregroundColor(.red)
+
+
+                            HStack {
                                 
                                 Button(action: {
-                                    ///
+                                    userIsBuying.toggle()
                                 }) {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                             .frame(height: largeButtonHeight, alignment: .center)
-                                            .frame(width: width * 0.4 + squareImageSize)
+                                            .frame(width: width * 0.25)
                                             .foregroundColor(BrainwalletColor.surface)
                                         
                                         HStack {
-                                            Text("Buy LTC from MoonPay")
+                                            Text("Buy LTC")
                                                 .frame(height: largeButtonHeight, alignment: .center)
-                                                .frame(width: width * 0.4)
+                                                .frame(width: width * 0.25)
                                                 .font(subHeaderFont)
                                                 .foregroundColor(BrainwalletColor.content)
                                                 .overlay(
                                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                                         .stroke(BrainwalletColor.content)
                                                 )
-                                                .padding(.all, 10.0)
+                                                .padding(.all, 8.0)
                                         }
                                     }
                                 }
-                                .frame(width: width * 0.4)
+                                .frame(width: width * 0.25)
                                 .frame(height: largeButtonHeight)
                                 .padding(.all, 10.0)
                                 .opacity(canUserBuyLTC ? 1.0 : 0.0)
+                                .background(.pink)
                             }
-                            .frame(height: height * 0.2, alignment: .top)
+                            .frame(height: canUserBuyLTC ? height * 0.3 : 0.0, alignment: .top)
+                            .opacity(canUserBuyLTC ? 1.0 : 0.0)
+                            .background(.red)
+//
+//                            Spacer()
+//                            HStack {
+//
+//                            }
+//                            .frame(width: modalWidth, height: 60.0)
+//                            .padding(.bottom, 5.0)
+                            
                         }
-                        .opacity(canUserBuyLTC ? 1.0 : 0.0)
-                        .frame(height: canUserBuyLTC ? height * 0.2 : 0.0, alignment: .top)
-
-                        
-                        Spacer()
-                        HStack {
-                            VStack {
-
-                                
-                                
-                                Button(action: {
-                                    UIPasteboard.general.string = viewModel.newReceiveAddress
-                                }) {
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: largeButtonHeight/2)
-                                            .frame(width: width * 0.6, height: largeButtonHeight, alignment: .center)
-                                            .foregroundColor(BrainwalletColor.surface)
-                                        HStack {
-                                            Text("Copy LTC Address")
-                                                .frame(width: width * 0.6, height: largeButtonHeight, alignment: .center)
-                                                .font(subHeaderFont)
-                                                .foregroundColor(BrainwalletColor.content)
-                                                .overlay(
-                                                    RoundedRectangle(cornerRadius: largeButtonHeight/2)
-                                                        .stroke(BrainwalletColor.content)
-                                                )
-                                        }
-                                    }
-                                }
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .frame(height: largeButtonHeight)
-                                .padding(.all, 10.0)
+                        .frame(width: width * 0.95,
+                               height: (canUserBuyLTC && isExpanded) ? modalBuyViewHeight : modalReceiveViewHeight,
+                               alignment: .top)
+                        .opacity(isExpanded ? 1.0 : 0.0)
+                        .background(BrainwalletColor.surface)
+                        .onAppear {
+                            /// To show all more compex state (Buy or Receive)
+                            #if targetEnvironment(simulator)
+                            canUserBuyLTC = false
+                            #else
+                            canUserBuyLTC = UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
+                            #endif
+                            withAnimation(.easeInOut(duration: 0.2)) {
+                                self.isExpanded = true
                             }
                         }
-                        .frame(height: height * 0.3)
+                        .cornerRadius(largeButtonHeight/2)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: largeButtonHeight/2)
+                                .stroke(BrainwalletColor.content, lineWidth: 2)
+                                .frame(width: width * 0.95, height: canUserBuyLTC ? modalBuyViewHeight : modalReceiveViewHeight, alignment: .top)
+                                .padding(.bottom, 5.0)
+                            
+                        }
                         .padding(.bottom, 5.0)
-
                     }
-                    .frame(width: width * 0.9, height: canUserBuyLTC ? height * 0.75 : height * 0.6, alignment: .top)
-                    .opacity(isExpanded ? 1.0 : 0.0)
-                    .background(BrainwalletColor.surface)
-                    .onAppear {
-                        
-                        /// To show all more compex state (Buyt or Receive)
-                        #if targetEnvironment(simulator)
-                        canUserBuyLTC = true
-                        #else
-                        canUserBuyLTC = UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
-                        #endif
-                        withAnimation(.easeInOut(duration: 0.2)) {
-                            self.isExpanded = true
-                        }
-                    }
-                    .cornerRadius(largeButtonHeight/2)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: largeButtonHeight/2)
-                            .stroke(BrainwalletColor.content, lineWidth: 2)
-                    }
-                    .onChange(of: viewModel.newReceiveAddress, perform: { _ in
-                    })
-                    .onChange(of: viewModel.newReceiveAddressQR, perform: { _ in
-                        
-                    })
+            }
             }
         }
     }

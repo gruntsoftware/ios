@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDelegate {
-	let kInitialChildViewControllerIndex = 0 // TransactionsViewController
+	let kInitialChildViewControllerIndex = 2 // Buy / Receive
 	@IBOutlet var headerView: UIView!
 	@IBOutlet var containerView: UIView!
 	@IBOutlet var tabBar: UITabBar!
@@ -19,8 +19,8 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	private var regularConstraints: [NSLayoutConstraint] = []
 	private var swappedConstraints: [NSLayoutConstraint] = []
 	private let currencyTapView = UIView()
-	private let storyboardNames: [String] = ["Transactions", "Send", "Receive"]
-	var storyboardIDs: [String] = ["TransactionsViewController", "SendLTCViewController", "ReceiveLTCViewController"]
+	private let storyboardNames: [String] = ["Send","Transactions","Receive"]
+	var storyboardIDs: [String] = ["SendLTCViewController", "TransactionsViewController", "ReceiveLTCViewController"]
 	var viewControllers: [UIViewController] = []
 	var activeController: UIViewController?
     var receiveHostingController: ReceiveHostingController?
@@ -90,14 +90,10 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 	func addViewControllers() {
 		for (index, storyboardID) in storyboardIDs.enumerated() {
-			if storyboardID == "BuyHostingController" {
-				let hostingController = BuyHostingController()
-				viewControllers.append(hostingController)
-			} else {
-				let controller = UIStoryboard(name: storyboardNames[index], bundle: nil).instantiateViewController(withIdentifier: storyboardID)
+				let controller = UIStoryboard(name: storyboardNames[index], bundle: nil)
+                .instantiateViewController(withIdentifier: storyboardID)
 				viewControllers.append(controller)
-			}
-		}
+        } 
 	}
 
 	private func setupModels() {
@@ -207,7 +203,6 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 		store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
                         callback: { _ in
-            self.tabBar.selectedItem = self.tabBar.items?.first
                     if let rate = store.state.currentRate {
                         let maxDigits = store.state.maxDigits
                         let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: maxDigits)
@@ -338,8 +333,8 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
                 
 		for item in array {
 			switch item.tag {
-			case 0: item.title = String(localized: "History")
-			case 1: item.title = String(localized: "Send")
+			case 0: item.title = String(localized: "Send")
+			case 1: item.title = String(localized: "History")
             case 2: item.title = thirdTabItemTitle
 			default:
 				item.title = "NO-TITLE"
@@ -406,11 +401,12 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			hideContentController(contentController: tempActiveController)
 		}
         
+        self.tabBar.selectedItem = item
+
         //New Receive SwiftUI HC
         if item.tag == 2 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.presentNewReceiveModal()
-                self.tabBar.selectedItem = item
             }
         }
         else {
