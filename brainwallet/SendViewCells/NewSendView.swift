@@ -25,7 +25,7 @@ struct NewSendView: View {
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {
-                    Text("New Send")
+                    Text("")
                 }
             }
         }

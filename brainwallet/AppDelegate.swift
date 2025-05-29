@@ -114,7 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return applicationController.open(url: url)
 	}
 
-	func application(_: UIApplication, shouldSaveApplicationState _: NSCoder) -> Bool {
+	func application(_: UIApplication, shouldSaveSecureApplicationState _: NSCoder) -> Bool {
 		return true
 	}
 
