@@ -342,8 +342,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		// MARK: - Wallet State:  Max Digits
 
-		store.subscribe(self, selector: { $0.maxDigits != $1.maxDigits }, callback: { _ in
-			self.reload()
+		store.subscribe(self, selector: { $0.maxDigits != $1.maxDigits }, callback: { [weak self] _ in
+			self?.reload()
 		})
 
 		// MARK: - Wallet State:  Sync Progress
@@ -414,42 +414,42 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		// MARK: - Subscription:  Recommend Rescan
 
-		store.subscribe(self, selector: { $0.recommendRescan != $1.recommendRescan }, callback: { _ in
-			self.attemptShowPrompt()
+		store.subscribe(self, selector: { $0.recommendRescan != $1.recommendRescan }, callback: { [weak self] _ in
+			self?.attemptShowPrompt()
 		})
 
 		// MARK: - Subscription:  Did Upgrade PIN
 
-		store.subscribe(self, name: .didUpgradePin, callback: { _ in
-			if self.currentPromptType == .upgradePin {
-				self.currentPromptType = nil
+		store.subscribe(self, name: .didUpgradePin, callback: {  [weak self] _ in
+			if self?.currentPromptType == .upgradePin {
+				self?.currentPromptType = nil
 			}
 		})
 
 		// MARK: - Subscription:  Did Enable Share Data
 
-		store.subscribe(self, name: .didEnableShareData, callback: { _ in
-			if self.currentPromptType == .shareData {
-				self.currentPromptType = nil
+		store.subscribe(self, name: .didEnableShareData, callback: { [weak self] _ in
+			if self?.currentPromptType == .shareData {
+				self?.currentPromptType = nil
 			}
 		})
 
 		// MARK: - Subscription:  Did Write Paper Key
 
-		store.subscribe(self, name: .didWritePaperKey, callback: { _ in
-			if self.currentPromptType == .paperKey {
-				self.currentPromptType = nil
+		store.subscribe(self, name: .didWritePaperKey, callback: { [weak self] _ in
+			if self?.currentPromptType == .paperKey {
+				self?.currentPromptType = nil
 			}
 		})
 
 		// MARK: - Subscription:  Memo Updated
 
-		store.subscribe(self, name: .txMemoUpdated(""), callback: {
+		store.subscribe(self, name: .txMemoUpdated(""), callback: { [weak self] in
 
 			guard let trigger = $0 else { return }
             
 			if case let .txMemoUpdated(txHash) = trigger {
-				self.updateTransactions(txHash: txHash)
+				self?.updateTransactions(txHash: txHash)
 			}
 		})
 

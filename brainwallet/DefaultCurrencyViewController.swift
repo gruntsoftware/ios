@@ -46,8 +46,8 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 			self.defaultCurrencyCode = $0.defaultCurrencyCode
 
 		})
-		store.subscribe(self, selector: { $0.maxDigits != $1.maxDigits }, callback: { _ in
-			self.setExchangeRateLabel()
+		store.subscribe(self, selector: { $0.maxDigits != $1.maxDigits }, callback: { [weak self] _ in
+			self?.setExchangeRateLabel()
 		})
         litecoinUnitSwitch.backgroundColor = BrainwalletUIColor.gray
 		tableView.sectionHeaderHeight = UITableView.automaticDimension
