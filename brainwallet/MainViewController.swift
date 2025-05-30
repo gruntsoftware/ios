@@ -137,16 +137,19 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		NotificationCenter.default.addObserver(forName: UIScene.didActivateNotification, object: nil, queue: nil) { _ in
 			UIView.animate(withDuration: 0.1, animations: {
 				self.blurView.alpha = 0.0
-			}, completion: { _ in
-				self.blurView.removeFromSuperview()
+			}, completion: { [weak self] _ in
+				self?.blurView.removeFromSuperview()
 			})
 		}
 
-		NotificationCenter.default.addObserver(forName: UIScene.willDeactivateNotification, object: nil, queue: nil) { _ in
-			if !self.isLoginRequired, !self.store.state.isPromptingBiometrics {
-				self.blurView.alpha = 1.0
-				self.view.addSubview(self.blurView)
-				self.blurView.constrain(toSuperviewEdges: nil)
+		NotificationCenter.default.addObserver(forName: UIScene.willDeactivateNotification, object: nil, queue: nil) { [weak self] _ in
+            
+            
+			if let mySelf = self,
+               !mySelf.isLoginRequired, !mySelf.store.state.isPromptingBiometrics {
+                mySelf.blurView.alpha = 1.0
+                mySelf.view.addSubview(mySelf.blurView)
+                mySelf.blurView.constrain(toSuperviewEdges: nil)
 			}
 		}
 	}
