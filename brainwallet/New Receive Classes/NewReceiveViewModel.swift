@@ -49,28 +49,25 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     let currencies: [CurrencySelection] = CurrencySelection.allCases
 
 
-    init(store: Store, walletManager: WalletManager) {
+    init(store: Store, walletManager: WalletManager, canUserBuy: Bool) {
         self.store = store
         self.walletManager = walletManager
+        self.canUserBuyLTC = canUserBuy
         
+        //Fetch Fresh Address
         newReceiveAddress = self.walletManager.wallet?.receiveAddress ?? "----"
 
+        // Set Rate
         setCurrencyAndRate(code: currentFiatCode)
-       let canUserBuyLTC = UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
-        /// To show all more compex state (Buyt or Receive)
-        #if targetEnvironment(simulator)
-            generateQRCode()
-            fetchRates()
-            fetchLimits()
-            fetchBuyQuote()
-        #else
+        
+        /// To show all more compex state (Buy or Receive)
+        generateQRCode()
+        
         if canUserBuyLTC {
-            generateQRCode()
             fetchRates()
             fetchLimits()
             fetchBuyQuote()
         }
-        #endif
     }
     
     

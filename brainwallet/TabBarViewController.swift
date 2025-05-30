@@ -14,6 +14,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	private let largeFontSize: CGFloat = 24.0
 	private let smallFontSize: CGFloat = 12.0
 	private var hasInitialized = false
+    private var canUserBuy = false
 	private let dateFormatter = DateFormatter()
 	private let equalsLabel = UILabel(font: .barlowMedium(size: 12), color: BrainwalletUIColor.content)
 	private var regularConstraints: [NSLayoutConstraint] = []
@@ -110,6 +111,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			secondaryBalanceLabel = UpdatingLabel(formatter: NumberFormatter())
 			primaryBalanceLabel = UpdatingLabel(formatter: NumberFormatter())
 		}
+        
 	}
 
 	private func setupViews() {
@@ -321,21 +323,13 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			return
 		}
         
-        var thirdTabItemTitle = ""
-        /// To show all more compex state (Buy or Receive)
-        #if targetEnvironment(simulator)
-        let canUserBuyLTC = true
-        thirdTabItemTitle = String(localized: "Buy / Receive")
-        #else
-        let canUserBuyLTC = UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
-        thirdTabItemTitle = String(localized: "Receive")
-        #endif
-                
+        /// To show all more compex state (Buy or Receive) toggle here for dev
+        canUserBuy = true //UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
 		for item in array {
 			switch item.tag {
 			case 0: item.title = String(localized: "Send")
 			case 1: item.title = String(localized: "History")
-            case 2: item.title = thirdTabItemTitle
+            case 2: item.title = canUserBuy ? String(localized: "Buy / Receive") : String(localized: "Receive")
 			default:
 				item.title = "NO-TITLE"
 				NSLog("ERROR: UITabbar item count is wrong")
@@ -420,7 +414,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
         guard let store = store,
               let walletManager = walletManager else { return }
         
-        let receiveVC = ReceiveHostingController(store: store, walletManager: walletManager)
+        let receiveVC = ReceiveHostingController(store: store, walletManager: walletManager, canUserBuy: self.canUserBuy)
         
         addChild(receiveVC)
         receiveVC.view.frame = containerView.frame
