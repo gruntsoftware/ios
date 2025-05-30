@@ -22,7 +22,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     var currentFiatCode = "USD"
     
     @Published
-    var fiatAmounts: [Int] = [20,21,23]
+    var fiatAmounts: [Int] = [20,21,23,24,25,26,27,28,29,30]
      
     @Published
     var pickedAmount: Int = 0
@@ -41,14 +41,21 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     var canUserBuyLTC: Bool = false
     
     @Published
-    var fetchedTimestamp = "22 DEC 2025 1:00"
+    var fetchedTimestamp = iso8601.string(from: Date()).capitalized
+        
+    static let iso8601: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.locale = Locale.current
+            formatter.dateFormat = "dd MMM yyyy HH:mm:ss"
+            return formatter
+        }()
+ 
     
     var store: Store
     var walletManager: WalletManager
     
     let currencies: [CurrencySelection] = CurrencySelection.allCases
-
-
+    
     init(store: Store, walletManager: WalletManager, canUserBuy: Bool) {
         self.store = store
         self.walletManager = walletManager

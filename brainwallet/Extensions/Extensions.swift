@@ -431,10 +431,9 @@ public extension Date {
 
 	fileprivate static func asctimeDateFormatter() -> DateFormatter {
 		return cachedThreadLocalObjectWithKey("asctimeDateFormatter") {
-			let locale = Locale(identifier: "en_US")
 			let timeZone = TimeZone(identifier: "GMT")
 			let dateFormatter = DateFormatter()
-			dateFormatter.locale = locale // need locale for some iOS 9 verision, will not select correct default locale
+			dateFormatter.locale = Locale()
 			dateFormatter.timeZone = timeZone
 			dateFormatter.dateFormat = "EEE MMM d HH:mm:ss yyyy"
 			return dateFormatter

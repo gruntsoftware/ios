@@ -324,7 +324,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		}
         
         /// To show all more compex state (Buy or Receive) toggle here for dev
-        canUserBuy = true //UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
+        canUserBuy = false //UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
 		for item in array {
 			switch item.tag {
 			case 0: item.title = String(localized: "Send")
