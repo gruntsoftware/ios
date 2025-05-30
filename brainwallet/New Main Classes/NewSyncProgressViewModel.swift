@@ -90,11 +90,8 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
         }
     }
     private func setSubscriptions() {
-//        guard let walletManager = self.walletManager,
-//              let store = self.store else { return }
-        
         self.store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
-                        callback: { _ in
+                        callback: { [weak self] _ in
             
         })
     }

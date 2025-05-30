@@ -76,6 +76,7 @@
 		248E5C3F2DE77E88003F232F /* moon_pay_buy_status.txt in Resources */ = {isa = PBXBuildFile; fileRef = 248E5C3E2DE77E88003F232F /* moon_pay_buy_status.txt */; };
 		248E5C422DE78653003F232F /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E5C412DE7863C003F232F /* NetworkHelper.swift */; };
 		2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2492829B2DAC22B00088528E /* BIP39Words.plist */; };
+		24952E442DE8B6D400ADEE10 /* OpsFeesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24952E432DE8B6D200ADEE10 /* OpsFeesTests.swift */; };
 		249C45DC2D93F23F00E9C3B0 /* service-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 249C45DB2D93F23F00E9C3B0 /* service-data.plist */; };
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
 		249DDE422DCD573700B2B275 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249DDE412DCD572F00B2B275 /* SettingsView.swift */; };
@@ -482,6 +483,7 @@
 		248E5C3E2DE77E88003F232F /* moon_pay_buy_status.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = moon_pay_buy_status.txt; sourceTree = "<group>"; };
 		248E5C412DE7863C003F232F /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		2492829B2DAC22B00088528E /* BIP39Words.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BIP39Words.plist; sourceTree = "<group>"; };
+		24952E432DE8B6D200ADEE10 /* OpsFeesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpsFeesTests.swift; sourceTree = "<group>"; };
 		249C450E2D936D5900E9C3B0 /* ax_jni_include_dir.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_jni_include_dir.m4; sourceTree = "<group>"; };
 		249C450F2D936D5900E9C3B0 /* ax_prog_cc_for_build.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_prog_cc_for_build.m4; sourceTree = "<group>"; };
 		249C45102D936D5900E9C3B0 /* bitcoin_secp.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = bitcoin_secp.m4; sourceTree = "<group>"; };
@@ -1156,6 +1158,13 @@
 				248E5C412DE7863C003F232F /* NetworkHelper.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		24952E452DE8B6D700ADEE10 /* Amounts Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Amounts Tests";
 			sourceTree = "<group>";
 		};
 		249C45112D936D5900E9C3B0 /* m4 */ = {
@@ -1988,6 +1997,8 @@
 		C312D4F62D7DC28E00BB97A4 /* brainwalletTests */ = {
 			isa = PBXGroup;
 			children = (
+				24952E452DE8B6D700ADEE10 /* Amounts Tests */,
+				24952E432DE8B6D200ADEE10 /* OpsFeesTests.swift */,
 				C312D4D82D7DC28E00BB97A4 /* Class Tests */,
 				C312D4DA2D7DC28E00BB97A4 /* Constants Tests */,
 				C312D4DC2D7DC28E00BB97A4 /* File Tests */,
@@ -2312,6 +2323,7 @@
 			files = (
 				C312D4F82D7DC28E00BB97A4 /* NSDataExtensionTests.swift in Sources */,
 				C312D4F92D7DC28E00BB97A4 /* TouchIdEnabledTests.swift in Sources */,
+				24952E442DE8B6D400ADEE10 /* OpsFeesTests.swift in Sources */,
 				C312D4FA2D7DC28E00BB97A4 /* WalletCreationTests.swift in Sources */,
 				C312D4FB2D7DC28E00BB97A4 /* WalletAuthenticationTests.swift in Sources */,
 				C312D4FC2D7DC28E00BB97A4 /* DefaultFiatCurrencyTests.swift in Sources */,

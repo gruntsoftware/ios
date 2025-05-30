@@ -46,29 +46,29 @@ class ModalPresenter: Subscriber, Trackable {
 		                callback: { self.handleAlertChange($0.alert) })
 
 		// Subscribe to prompt actions
-		store.subscribe(self, name: .promptUpgradePin, callback: { _ in
-			self.presentUpgradePin()
+		store.subscribe(self, name: .promptUpgradePin, callback: { [weak self] _ in
+			self?.presentUpgradePin()
 		})
-		store.subscribe(self, name: .promptPaperKey, callback: { _ in
-			self.presentWritePaperKey()
+		store.subscribe(self, name: .promptPaperKey, callback: { [weak self]  _ in
+            self?.presentWritePaperKey()
 		})
-		store.subscribe(self, name: .promptBiometrics, callback: { _ in
-			self.presentBiometricsSetting()
+		store.subscribe(self, name: .promptBiometrics, callback: { [weak self] _ in
+            self?.presentBiometricsSetting()
 		})
-		store.subscribe(self, name: .promptShareData, callback: { _ in
-			self.promptShareData()
+		store.subscribe(self, name: .promptShareData, callback: { [weak self] _ in
+            self?.promptShareData()
 		})
-		store.subscribe(self, name: .recommendRescan, callback: { _ in
-			self.presentRescan()
+		store.subscribe(self, name: .recommendRescan, callback: { [weak self] _ in
+            self?.presentRescan()
 		})
 
-		store.subscribe(self, name: .scanQr, callback: { _ in
-			self.handleScanQrURL()
+		store.subscribe(self, name: .scanQr, callback: { [weak self]  _ in
+            self?.handleScanQrURL()
 		})
-		store.subscribe(self, name: .copyWalletAddresses(nil, nil), callback: {
+		store.subscribe(self, name: .copyWalletAddresses(nil, nil), callback: { [weak self] in
 			guard let trigger = $0 else { return }
 			if case let .copyWalletAddresses(success, error) = trigger {
-				self.handleCopyAddresses(success: success, error: error)
+				self?.handleCopyAddresses(success: success, error: error)
 			}
 		})
 		reachability.didChange = { isReachable in
@@ -462,25 +462,25 @@ class ModalPresenter: Subscriber, Trackable {
 					let localeView = UIHostingController(rootView: LocaleChangeView(viewModel: LocaleChangeViewModel()))
 					settingsNav.pushViewController(localeView, animated: true)
 				}),
-				Setting(title: String(localized: "Sync") , callback: {
+				Setting(title: String(localized: "Sync") , callback: { [weak self] in
 					let alert = UIAlertController(title: String(localized: "Sync with Blockchain?") , message: String(localized: "You will not be able to send money while syncing."), preferredStyle: .alert)
 					alert.addAction(UIAlertAction(title:  String(localized: "Cancel")  , style: .default, handler: { _ in
 						alert.dismiss(animated: true)
 					}))
-					alert.addAction(UIAlertAction(title: String(localized: "Sync") , style: .default, handler: { _ in
-						self.store.trigger(name: .rescan)
+					alert.addAction(UIAlertAction(title: String(localized: "Sync") , style: .default, handler: {  [weak self] _ in
+						self?.store.trigger(name: .rescan)
 						LWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
 						alert.dismiss(animated: true)
-						self.topViewController?.dismiss(animated: true)
+						self?.topViewController?.dismiss(animated: true)
 					}))
-					self.topViewController?.present(alert, animated: true)
+					self?.topViewController?.present(alert, animated: true)
 				}),
 				Setting(title: String(localized: "Update PIN") , callback: strongify(self) { myself in
 					let updatePin = UpdatePinViewController(store: myself.store, walletManager: walletManager, type: .update)
 					settingsNav.pushViewController(updatePin, animated: true)
 				}),
-                Setting(title: String(localized: "Share data") , callback: {
-                    settingsNav.pushViewController(ShareDataViewController(store: self.store), animated: true)
+                Setting(title: String(localized: "Share data")  , callback: strongify(self) { myself in
+                    settingsNav.pushViewController(ShareDataViewController(store: myself.store), animated: true)
                 }),
 			]
 		]
