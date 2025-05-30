@@ -66,6 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //					}
 				}
 			})
+            
+            // Fetch Locale for MP
+            
 
 		} onFailure: { error in
 

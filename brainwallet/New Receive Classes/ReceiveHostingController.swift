@@ -19,8 +19,8 @@ class ReceiveHostingController: UIHostingController<NewReceiveView> {
     var walletManager: WalletManager?
      
       
-    init(store: Store, walletManager: WalletManager) {
-        let viewModel = NewReceiveViewModel(store: store, walletManager: walletManager)
+    init(store: Store, walletManager: WalletManager ,canUserBuy: Bool) {
+        let viewModel = NewReceiveViewModel(store: store, walletManager: walletManager, canUserBuy: canUserBuy)
         super.init(rootView: NewReceiveView(viewModel: viewModel))
     }
  

@@ -33,9 +33,6 @@ struct NewReceiveView: View {
     private var scannedCode: String?
     
     @State
-    private var canUserBuyLTC = false
-    
-    @State
     private var userIsBuying = false
     
     @State
@@ -44,7 +41,7 @@ struct NewReceiveView: View {
     let qrImageSize: CGFloat = 80.0
     let squareImageSize: CGFloat = 16.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 45.0
+    let modalCorner: CGFloat = 60.0
     let fieldHeight: CGFloat = 30.0
     let headerFont: Font = .barlowBold(size: 26.0)
     let ginormousFont: Font = .barlowSemiBold(size: 22.0)
@@ -58,9 +55,8 @@ struct NewReceiveView: View {
     
     let buyVStackFactor: CGFloat = 0.0
 
-    init(viewModel: NewReceiveViewModel, canUserBuyLTC: Binding<Bool>? = nil) {
+    init(viewModel: NewReceiveViewModel) {
         self.viewModel = viewModel
-        self.canUserBuyLTC = (canUserBuyLTC != nil)
     }
     
     var body: some View {
@@ -89,9 +85,9 @@ struct NewReceiveView: View {
                                height: height * 0.95,alignment: .top)
                         .opacity(isExpanded ? 1.0 : 0.0)
                         .background(BrainwalletColor.surface)
-                        .cornerRadius(largeButtonHeight/2)
+                        .cornerRadius(modalCorner/2)
                         .overlay {
-                            RoundedRectangle(cornerRadius: largeButtonHeight/2)
+                            RoundedRectangle(cornerRadius: modalCorner/2)
                                 .stroke(BrainwalletColor.content, lineWidth: 2)
                                 .frame(width: width * 0.95, height: height * 0.95, alignment: .top)
                                 .padding(.bottom, 5.0)
@@ -103,7 +99,7 @@ struct NewReceiveView: View {
                         VStack {
                             
                             HStack {
-                                    Text(canUserBuyLTC ? "BUY / RECEIVE" : "RECEIVE")
+                                Text(viewModel.canUserBuyLTC ? "BUY / RECEIVE" : "RECEIVE")
                                         .font(headerFont)
                                         .foregroundColor(BrainwalletColor.content)
                                         .padding(.all, 4.0)
@@ -170,19 +166,19 @@ struct NewReceiveView: View {
                                     userIsBuying.toggle()
                                 }) {
                                     ZStack {
-                                        RoundedRectangle(cornerRadius: largeButtonHeight/2)
-                                            .frame(height: largeButtonHeight, alignment: .center)
+                                        RoundedRectangle(cornerRadius: modalCorner/2)
+                                            .frame(height: modalCorner, alignment: .center)
                                             .frame(width: width * 0.25)
                                             .foregroundColor(BrainwalletColor.surface)
                                         
                                         HStack {
                                             Text("Buy LTC")
-                                                .frame(height: largeButtonHeight, alignment: .center)
+                                                .frame(height: modalCorner, alignment: .center)
                                                 .frame(width: width * 0.25)
                                                 .font(subHeaderFont)
                                                 .foregroundColor(BrainwalletColor.content)
                                                 .overlay(
-                                                    RoundedRectangle(cornerRadius: largeButtonHeight/2)
+                                                    RoundedRectangle(cornerRadius: modalCorner/2)
                                                         .stroke(BrainwalletColor.content)
                                                 )
                                                 .padding(.all, 8.0)
@@ -190,13 +186,13 @@ struct NewReceiveView: View {
                                     }
                                 }
                                 .frame(width: width * 0.25)
-                                .frame(height: largeButtonHeight)
+                                .frame(height: modalCorner)
                                 .padding(.all, 10.0)
-                                .opacity(canUserBuyLTC ? 1.0 : 0.0)
+                                .opacity(viewModel.canUserBuyLTC ? 1.0 : 0.0)
                                 .background(.pink)
                             }
-                            .frame(height: canUserBuyLTC ? height * 0.3 : 0.0, alignment: .top)
-                            .opacity(canUserBuyLTC ? 1.0 : 0.0)
+                            .frame(height: viewModel.canUserBuyLTC ? height * 0.3 : 0.0, alignment: .top)
+                            .opacity(viewModel.canUserBuyLTC ? 1.0 : 0.0)
                             .background(.red)
 //
 //                            Spacer()
@@ -208,26 +204,20 @@ struct NewReceiveView: View {
                             
                         }
                         .frame(width: width * 0.95,
-                               height: (canUserBuyLTC && isExpanded) ? modalBuyViewHeight : modalReceiveViewHeight,
+                               height: (viewModel.canUserBuyLTC && isExpanded) ? modalBuyViewHeight : modalReceiveViewHeight,
                                alignment: .top)
                         .opacity(isExpanded ? 1.0 : 0.0)
                         .background(BrainwalletColor.surface)
                         .onAppear {
-                            /// To show all more compex state (Buy or Receive)
-                            #if targetEnvironment(simulator)
-                            canUserBuyLTC = false
-                            #else
-                            canUserBuyLTC = UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
-                            #endif
                             withAnimation(.easeInOut(duration: 0.2)) {
                                 self.isExpanded = true
                             }
                         }
-                        .cornerRadius(largeButtonHeight/2)
+                        .cornerRadius(modalCorner/2)
                         .overlay {
-                            RoundedRectangle(cornerRadius: largeButtonHeight/2)
+                            RoundedRectangle(cornerRadius: modalCorner/2)
                                 .stroke(BrainwalletColor.content, lineWidth: 2)
-                                .frame(width: width * 0.95, height: canUserBuyLTC ? modalBuyViewHeight : modalReceiveViewHeight, alignment: .top)
+                                .frame(width: width * 0.95, height: viewModel.canUserBuyLTC ? modalBuyViewHeight : modalReceiveViewHeight, alignment: .top)
                                 .padding(.bottom, 5.0)
                             
                         }
