@@ -104,12 +104,25 @@
         }
       }
     },
+    "%@" : {
+
+    },
     "%@       %@ (%@)" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$@       %2$@ (%3$@)"
+          }
+        }
+      }
+    },
+    "%@ (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$@)"
           }
         }
       }
@@ -216,6 +229,9 @@
           }
         }
       }
+    },
+    "%lld Ł" : {
+
     },
     "About" : {
       "localizations" : {
@@ -947,7 +963,7 @@
     "BUY / RECEIVE" : {
 
     },
-    "Buy LTC" : {
+    "BUY LTC" : {
 
     },
     "Buy with MoonPay" : {
