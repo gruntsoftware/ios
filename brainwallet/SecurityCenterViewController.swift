@@ -94,8 +94,8 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 			self.biometricsCell.isCheckHighlighted = $0.isBiometricsEnabled
 		})
 		store.subscribe(self, selector: { $1.alert == .paperKeySet(callback: {})
-		}, callback: { _ in
-			self.setPinAndPhraseChecks() // When paper phrase is confirmed, we need to update the check mark status
+		}, callback: { [weak self] _ in
+			self?.setPinAndPhraseChecks() // When paper phrase is confirmed, we need to update the check mark status
 		})
 	}
 

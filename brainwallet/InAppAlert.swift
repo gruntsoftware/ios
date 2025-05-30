@@ -55,8 +55,8 @@ class InAppAlert: UIView {
 		UIView.animate(withDuration: C.animationDuration, animations: {
 			self.bottomConstraint?.constant = 0.0
 			self.superview?.layoutIfNeeded()
-		}, completion: { _ in
-			self.removeFromSuperview()
+		}, completion: { [weak self] _ in
+			self?.removeFromSuperview()
 		})
 	}
 

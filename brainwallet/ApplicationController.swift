@@ -247,10 +247,10 @@ class ApplicationController: Subscriber, Trackable {
 	}
 
 	private func addWalletCreationListener() {
-		store.subscribe(self, name: .didCreateOrRecoverWallet, callback: { _ in
-			self.modalPresenter?.walletManager = self.walletManager
-			self.startDataFetchers()
-			self.mainViewController?.didUnlockLogin()
+		store.subscribe(self, name: .didCreateOrRecoverWallet, callback: { [weak self] _ in
+			self?.modalPresenter?.walletManager = self?.walletManager
+			self?.startDataFetchers()
+			self?.mainViewController?.didUnlockLogin()
 		})
 	}
 

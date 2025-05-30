@@ -29,9 +29,9 @@ class StartFlowPresenter: Subscriber {
 		                    selector: { $0.isLoginRequired != $1.isLoginRequired },
 		                    callback: { self.handleLoginRequiredChange(state: $0) })
 		store.subscribe(self, name: .lock,
-		                callback: { _ in
+		                callback: { [weak self] _ in
 		                	Task { @MainActor in
-		                		self.presentLoginFlow(isPresentedForLock: true)
+		                		self?.presentLoginFlow(isPresentedForLock: true)
 		                	}
 		                })
 	}
