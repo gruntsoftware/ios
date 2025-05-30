@@ -16,13 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		requestResourceWith(tag: ["initial-resources", "speakTag"]) { [self] in
 
 			// Language
-            let currentLocaleID = Locale.current.identifier
+            Bundle.setLanguage(UserDefaults.selectedLanguage)
+
             
+            // Locale and fetch access
+            // DEV: Break here to test Locale/Matrix
+            let currentLocaleID = Locale.current.region?.identifier ?? "RU"
 			updateCurrentUserLocale(localeId: currentLocaleID)
-			Bundle.setLanguage(UserDefaults.selectedLanguage)
     
             let _ = NetworkHelper.init().fetchCurrenciesCountries(completion:  { countryData  in
-                let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == currentLocaleID }.first
+                
+                let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == currentLocaleID }.first //
                 
                 if let buyIsAllowed = currentMoonPayCountry?.isBuyAllowed {
                     UserDefaults.standard.set(buyIsAllowed, forKey: userCurrentLocaleMPApprovedKey)
