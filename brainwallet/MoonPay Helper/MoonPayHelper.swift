@@ -35,3 +35,42 @@ public struct MoonpayCountryData: Codable, Hashable {
     var countryName: String
     var isAllowedInCountry: Bool
 }
+
+
+/// - Returns: MoonpayBuyLimits
+public struct MoonpayBuyLimits: Codable, Hashable {
+    var areFeesIncluded: Bool = true
+    var fiatCode: String = "USD"
+    var maxBuyAmount: Int = 0
+    var minBuyAmount: Int = 0
+    var paymentMethod: String = ""
+    var quoteCurrency: String = ""
+    var cryptoCode: String = "ltc"
+    var cryptoMaxBuyAmount: Double = 0.0
+    var cryptoMinBuyAmount: Double = 0.0
+}
+
+/// - Returns: MoonpayBuyQuote
+public struct MoonpayBuyQuote: Codable, Hashable {
+    var quoteTimestamp: String = ""
+    var fiatCode: String = "USD"
+    var maxBuyAmount: Int = 20000
+    var minBuyAmount: Int = 20
+    var fiatCodeIconUrl: String = ""
+    var cryptoCode: String = "ltc"
+    var fiatBuyAmount: Int = 200
+    var quotedLTCAmount: Double = 0.0
+}
+
+/// - Returns: MoonpaySignedURL
+public struct MoonpaySignedURL: Codable, Hashable {
+    var areFeesIncluded: Bool = true
+    var fiatCode: String = "USD"
+    var maxBuyAmount: Int = 0
+    var minBuyAmount: Int = 0
+    var paymentMethod: String = ""
+    var quoteCurrency: String = ""
+    var cryptoCode: String = "ltc"
+    var cryptoMaxBuyAmount: Double = 0.0
+    var cryptoMinBuyAmount: Double = 0.0
+}

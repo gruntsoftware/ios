@@ -9,6 +9,8 @@
 import Foundation
 import SwiftUI
 
+
+@MainActor
 class NewReceiveViewModel: ObservableObject, Subscriber {
     // MARK: - Combine Variables
     
@@ -17,103 +19,100 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     
     @Published
     var newReceiveAddressQR: UIImage?
+      
+    @Published
+    var pickedAmount: Int = 210
     
     @Published
-    var currentFiatCode = "USD"
+    var fiatMinAmount: Int = 20
     
     @Published
-    var fiatAmounts: [Int] = [20,21,23,24,25,26,27,28,29,30]
-     
-    @Published
-    var pickedAmount: Int = 0
+    var fiatTenXAmount: Int = 200
     
     @Published
-    var convertedLTC = 0.0
+    var fiatMaxAmount: Int = 20000
+      
+    @Published
+    var quotedLTCAmount: Double = 0.0
     
     @Published
-    var fiatPerLTCRate: Double = 0.0
-    
-    @Published
-    var currentFiat: CurrencySelection = .USD
-    
+    var currentFiat: SupportedFiatCurrencies = .USD
     
     @Published
     var canUserBuyLTC: Bool = false
     
     @Published
-    var fetchedTimestamp = iso8601.string(from: Date()).capitalized
-        
-    static let iso8601: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.locale = Locale.current
-            formatter.dateFormat = "dd MMM yyyy HH:mm:ss"
-            return formatter
-        }()
+    var quotedTimestamp = ""
+    
+    @Published
+    var didFetchData: Bool = false
+
+    let ISO8601DateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateFormat = "dd MMM yyyy HH:mm:ss"
+        return formatter
+    }()
  
     
     var store: Store
     var walletManager: WalletManager
+    var ltcToFiatRate: Double = 0.0
     
-    let currencies: [CurrencySelection] = CurrencySelection.allCases
+    let currencies: [SupportedFiatCurrencies] = SupportedFiatCurrencies.allCases
     
     init(store: Store, walletManager: WalletManager, canUserBuy: Bool) {
         self.store = store
         self.walletManager = walletManager
         self.canUserBuyLTC = canUserBuy
         
+        let userPreferredCodeString: String = UserDefaults.userPreferredCurrency
+        let fallbackFiat = SupportedFiatCurrencies.USD
+        self.currentFiat = SupportedFiatCurrencies.from(code: userPreferredCodeString) ?? fallbackFiat
+          
         //Fetch Fresh Address
         newReceiveAddress = self.walletManager.wallet?.receiveAddress ?? "----"
-
-        // Set Rate
-        setCurrencyAndRate(code: currentFiatCode)
-        
-        /// To show all more compex state (Buy or Receive)
         generateQRCode()
         
         if canUserBuyLTC {
-            fetchRates()
-            fetchLimits()
-            fetchBuyQuote()
+            // fetch buy quote
+            fetchBuyQuoteLimits(buyAmount: pickedAmount, baseCurrencyCode: currentFiat)
         }
     }
     
-    
-    func setCurrencyAndRate(code: String) {
-        UserDefaults.defaultCurrencyCode = code
-        UserDefaults.standard.synchronize()
-        Bundle.setLanguage(code)
-        
-        currentFiatCode = code
-        
-        fetchRates()
-
-        DispatchQueue.main.async {
-            NotificationCenter.default.post(name: .preferredCurrencyChangedNotification,
-                                            object: nil,
-                                            userInfo: nil)
-        }
-    }
-    
-    func fetchRates() {
-        convertedLTC = store.state.currentRate?.rate ?? 0.0
-        
-    }
-    
-    func fetchLimits(baseCurrencyCode: String? = "USD") {
-        
-        
-        
-    }
-    
-    func fetchBuyQuote() {
-        
+    func fetchBuyQuoteLimits(buyAmount: Int, baseCurrencyCode: SupportedFiatCurrencies = .USD) {
+        self.didFetchData = true
+          
+        let _ = NetworkHelper.init().fetchBuyQuote(baseCurrencyAmount: buyAmount, baseCurrency: baseCurrencyCode, completion: { mpData in
+           
+                DispatchQueue.main.sync {
+                    //quoted buy segments
+                    self.fiatMinAmount = mpData.minBuyAmount
+                    self.fiatTenXAmount = mpData.minBuyAmount * 10
+                    self.fiatMaxAmount = mpData.maxBuyAmount
+                    
+                    print("::::\(baseCurrencyCode.code) self.fiatMinAmount ::::\(self.fiatMinAmount)")
+                    print(":::: self.fiatTenXAmount ::::\(self.fiatTenXAmount)")
+                    print(":::: self.fiatMaxAmount ::::\(self.fiatMaxAmount)\n\n")
+                    //quoted qty
+                    self.quotedLTCAmount = mpData.quotedLTCAmount
+                    
+                    // timestamp
+                    let quoteTimestampString: String = mpData.quoteTimestamp
+                    let quoteDate = self.ISO8601DateFormatter.date(from: quoteTimestampString) ?? Date()
+                    self.quotedTimestamp = self.ISO8601DateFormatter.string(from: quoteDate).capitalized
+                    
+                    // update state
+                    self.didFetchData = false
+                } 
+        })
     }
     
     func fetchMoonpaySignedUrl() {
         
     }
     
-    func generateQRCode() {
+    private func generateQRCode() {
         if let data = newReceiveAddress.data(using: .utf8),
            let image = UIImage
             .qrCode(data: data,
@@ -139,62 +138,3 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
 //        .toString()
 //}
 
-
-//suspend fun fetchRates(): List<CurrencyEntity>
-//
-//    suspend fun fetchFeePerKb(): Fee
-//
-//    suspend fun fetchLimits(baseCurrencyCode: String): MoonpayCurrencyLimit
-//
-//    suspend fun fetchBuyQuote(params: Map<String, String>): GetMoonpayBuyQuoteResponse
-//
-//    suspend fun fetchMoonpaySignedUrl(params: Map<String, String>): String
-//
-//    class Impl(
-//        private val context: Context,
-//        private val remoteApiSource: RemoteApiSource,
-//        private val currencyDataSource: CurrencyDataSource,
-//        private val sharedPreferences: SharedPreferences,
-//    ) : LtcRepository {
-//        
-//        //todo: make it offline first here later, currently just using CurrencyDataSource.getAllCurrencies
-//        override suspend fun fetchRates(): List<CurrencyEntity> {
-//            return runCatching {
-//                val rates = remoteApiSource.getRates()
-//                
-//                //legacy logic
-//                FeeManager.updateFeePerKb(context)
-//                val selectedISO = BRSharedPrefs.getIsoSymbol(context)
-//                rates.forEachIndexed { index, currencyEntity ->
-//                    if (currencyEntity.code.equals(selectedISO, ignoreCase = true)) {
-//                        BRSharedPrefs.putIso(context, currencyEntity.code)
-//                        BRSharedPrefs.putCurrencyListPosition(context, index - 1)
-//                    }
-//                }
-//                
-//                //save to local
-//                currencyDataSource.putCurrencies(rates)
-//                return rates
-//            }.getOrElse { currencyDataSource.getAllCurrencies(true) }
-//            
-//        }
-//        
-//        /**
-//         * for now we just using [Fee.Default]
-//         * will move to [RemoteApiSource.getFeePerKb] after fix the calculation when we do send
-//         *
-//         * maybe need updaete core if we need to use dynamic fee?
-//         */
-//        override suspend fun fetchFeePerKb(): Fee = Fee.Default //using static fee
-//        
-//        override suspend fun fetchLimits(baseCurrencyCode: String): MoonpayCurrencyLimit {
-//            return sharedPreferences.fetchWithCache(
-//                key = "${PREF_KEY_BUY_LIMITS_PREFIX}${baseCurrencyCode.lowercase()}",
-//                cachedAtKey = "${PREF_KEY_BUY_LIMITS_PREFIX_CACHED_AT}${baseCurrencyCode.lowercase()}",
-//                cacheTimeMs = 5 * 60 * 1000, //5 minutes
-//                fetchData = {
-//                    remoteApiSource.getMoonpayCurrencyLimit(baseCurrencyCode)
-//                }
-//            )
-//        }
-        

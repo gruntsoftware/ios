@@ -11,9 +11,9 @@ import SwiftUI
 
 
 enum PresetMultiples : Int, CaseIterable {
-    case minValue = 0
-    case texXMinValue
-    case maxValue
+    case minFiatValue = 0
+    case tenXMinValue
+    case maxFiatValue
 }
 
 
@@ -30,7 +30,7 @@ struct NewReceiveView: View {
     private var showError: Bool = false
     
     @State
-    private var pickedCurrency: CurrencySelection = .USD
+    private var pickedCurrency: SupportedFiatCurrencies = .USD
     
     @State
     private var pickedPreset = 0
@@ -38,8 +38,21 @@ struct NewReceiveView: View {
     @State
     private var pickedSymbol = "$"
     
+    
     @State
-    private var pickedAmount: Int = 20
+    private var pickedAmountString = "0"
+     
+    @State
+    private var pickedAmount: Int = 210
+    
+    @State
+    private var fiatMinAmount: Int = 20
+    
+    @State
+    private var fiatTenXAmount: Int = 200
+    
+    @State
+    private var fiatMaxAmount: Int = 20000
     
     @State
     private var scannedCode: String?
@@ -54,15 +67,27 @@ struct NewReceiveView: View {
     private var newAddress = ""
     
     @State
-    private var fetchedTimestamp = ""
+    private var quotedTimestamp = "--------"
+        
+    @State
+    private var didFetchData = false
     
     @State
-    private var symbol = "Ł"
+    private var quotedLTCAmount = 0.0
+    
+    @State
+    private var userWantsCustomAmount = false
+
+   @FocusState
+    private var keyboardFocused: Bool
+    
+    @State
+    private var pickedSegment = 1
 
     let buyButtonSize: CGFloat = 80.0
     let squareImageSize: CGFloat = 16.0
     let themeBorderSize: CGFloat = 44.0
-    let modalCorner: CGFloat = 60.0
+    let modalCorner: CGFloat = 55.0
     let buttonCorner: CGFloat = 26.0
     let headerFont: Font = .barlowBold(size: 26.0)
     let ginormousFont: Font = .barlowSemiBold(size: 22.0)
@@ -70,9 +95,6 @@ struct NewReceiveView: View {
     let detailFont: Font = .barlowSemiBold(size: 15.0)
     let subDetailFont: Font = .barlowRegular(size: 14.0)
     let lightDetailFont: Font = .barlowLight(size: 15.0)
-
-
-    let presetAmounts  = ["22", "210", "230542"]
 
     let textFieldFont: Font = .barlowRegular(size: 15.0)
     
@@ -85,18 +107,17 @@ struct NewReceiveView: View {
     }
     
     var body: some View {
-        
+             
         GeometryReader { geometry in
             
             let width = geometry.size.width
             let height = geometry.size.height
             
             let modalWidth = geometry.size.width * 0.9
-            let modalHeight = geometry.size.height * 0.9
             
             let modalReceiveViewHeight = height * 0.4
             let modalBuyViewHeight = height * 0.95
-
+            
             ZStack {
                 
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
@@ -125,10 +146,10 @@ struct NewReceiveView: View {
                             
                             HStack {
                                 Text(canUserBuyLTC ? "BUY / RECEIVE" : "RECEIVE")
-                                        .font(headerFont)
-                                        .foregroundColor(BrainwalletColor.content)
-                                        .padding(.all, 4.0)
-
+                                    .font(headerFont)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .padding(.all, 4.0)
+                                
                             }
                             .frame(width: modalWidth, height: 44.0, alignment: .top)
                             .padding([.leading, .trailing,.top], 8.0)
@@ -151,14 +172,14 @@ struct NewReceiveView: View {
                                         .foregroundColor(BrainwalletColor.content)
                                     
                                     VStack {
-                                    HStack {
-                                        
+                                        HStack {
+                                            
                                             Text("Brainwallet generates a new address after each transaction sent")
                                                 .font(subDetailFont)
                                                 .lineLimit(3)
                                                 .multilineTextAlignment(.leading)
                                                 .foregroundColor(BrainwalletColor.content)
-
+                                            
                                             Button(action: {
                                                 UIPasteboard.general.string = viewModel.newReceiveAddress
                                             }) {
@@ -186,96 +207,164 @@ struct NewReceiveView: View {
                                     Spacer()
                                 }
                                 .frame(alignment: .top)
-
+                                .onChange(of: viewModel.newReceiveAddress) { address in
+                                    newAddress = address
+                                }
+                                
                             }
-                            .frame(width: modalWidth, height: height * 0.3, alignment: .top)
+                            .frame(width: modalWidth, height: keyboardFocused ? height * 0.01 : height * 0.3, alignment: .top)
+                            .opacity(keyboardFocused ? 0 : 1)
+                            
                             Divider()
                                 .background(BrainwalletColor.nearBlack)
                                 .padding([.leading, .trailing], 12.0)
-
-                          
-                            HStack {
-                                Picker("", selection: $pickedAmount) {
-                                    ForEach(viewModel.fiatAmounts, id: \.self) { amount in
-                                        Text("\(amount)")
-                                            .font(subHeaderFont)
-                                            .foregroundColor(BrainwalletColor.content)
-                                            .padding(4.0)
-                                        
-                                    }
-                                }
-                                .onChange(of: $pickedAmount.wrappedValue) { _ in
-                                    viewModel.pickedAmount = pickedAmount
-                                    viewModel.fetchRates()
-                                }
-                                .pickerStyle(.wheel)
-                                .frame(width: modalWidth * 0.3 , height: 80, alignment: .leading)
-
-                                Picker("", selection: $pickedCurrency) {
-                                    ForEach(viewModel.currencies, id: \.self) {
-                                        Text("\($0.code) (\($0.symbol))")
-                                            .font(subHeaderFont)
-                                            .foregroundColor(BrainwalletColor.content)
-                                            .padding(4.0)
-                                    }
-                                }
-                                .onChange(of: $pickedCurrency.wrappedValue) { _ in
-                                    viewModel.currentFiatCode = pickedCurrency.code
-                                    viewModel.setCurrencyAndRate(code: pickedCurrency.code)
-                                    viewModel.fetchRates()
-                                }
-                                .pickerStyle(.wheel)
-                                .frame(width: modalWidth * 0.3 , height: 80, alignment: .leading)
-
+                            
+                            ZStack {
+                                 
                                 VStack {
-                                    Text("\(pickedAmount) Ł")
-                                        .font(headerFont)
-                                        .kerning(0.3)
-                                        .foregroundColor(BrainwalletColor.content)
-
-                                    Text("\(fetchedTimestamp)")
-                                        .font(lightDetailFont)
-                                        .kerning(0.4)
-                                        .foregroundColor(BrainwalletColor.content)
+                                    HStack {
+                                        
+                                        Picker("", selection: $pickedCurrency) {
+                                            ForEach(viewModel.currencies, id: \.self) {
+                                                Text("\($0.code) (\($0.symbol))")
+                                                    .font(subHeaderFont)
+                                                    .foregroundColor(BrainwalletColor.content)
+                                                    .padding(4.0)
+                                            }
+                                        }
+                                        .onChange(of: $pickedCurrency.wrappedValue) { _ in
+                                           viewModel.fetchBuyQuoteLimits(buyAmount: pickedAmount, baseCurrencyCode: pickedCurrency)
+                                            quotedLTCAmount = viewModel.quotedLTCAmount
+                                            fiatMinAmount = viewModel.fiatMinAmount
+                                            fiatTenXAmount = viewModel.fiatTenXAmount
+                                            fiatMaxAmount = viewModel.fiatMaxAmount
+                                        }
+                                        .pickerStyle(.wheel)
+                                        .frame(width: modalWidth * 0.25 , height: 85, alignment: .leading)
+                                        
+                                        VStack {
+                                            
+                                            Text(String(format: "~ %.3f Ł",quotedLTCAmount))
+                                                .font(ginormousFont)
+                                                .kerning(0.3)
+                                                .foregroundColor(BrainwalletColor.content)
+                                            
+                                            Text("\(quotedTimestamp)")
+                                                .font(lightDetailFont)
+                                                .kerning(0.4)
+                                                .foregroundColor(BrainwalletColor.content)
+                                        }
+                                        .frame(width: modalWidth * 0.38 , height: 85, alignment: .center)
+                                        .padding(.trailing, 20.0)
+                                        .onChange(of: viewModel.quotedTimestamp) { newValue in
+                                            quotedTimestamp = newValue
+                                        }
+                                    }
+                                    HStack {
+                                        Picker("", selection: $pickedSegment) {
+                                            Text("\(fiatMinAmount) (\(pickedCurrency.code))")
+                                                .font(lightDetailFont)
+                                                .foregroundColor(BrainwalletColor.content)
+                                                .padding(4.0)
+                                                .tag(0)
+                                            Text("\(fiatTenXAmount) (\(pickedCurrency.code))")
+                                                .font(lightDetailFont)
+                                                .foregroundColor(BrainwalletColor.content)
+                                                .padding(4.0)
+                                                .tag(1)
+                                            Text("\(fiatMaxAmount) (\(pickedCurrency.code))")
+                                                .font(lightDetailFont)
+                                                .foregroundColor(BrainwalletColor.content)
+                                                .padding(4.0)
+                                                .tag(2)
+                                        }
+                                        .pickerStyle(.segmented)
+                                        .onChange(of: pickedSegment) { tag in
+                                            
+                                            let selected = PresetMultiples(rawValue:tag)
+                                            
+                                            switch selected {
+                                            case .minFiatValue:
+                                                pickedAmount = fiatMinAmount
+                                            case .tenXMinValue:
+                                                pickedAmount = fiatTenXAmount
+                                            case .maxFiatValue:
+                                                pickedAmount = fiatMaxAmount
+                                            case .none:
+                                                pickedAmount = 21
+                                            }
+                                            viewModel.fetchBuyQuoteLimits(buyAmount: pickedAmount, baseCurrencyCode: pickedCurrency)
+                                            quotedLTCAmount = viewModel.quotedLTCAmount
+                                            keyboardFocused = false
+                                        }
+                                    }
+                                    .frame(width: modalWidth, height: 35.0)
+                                    HStack {
+                                        Spacer()
+                                        Text("Set custom amount:")
+                                            .font(subHeaderFont)
+                                            .foregroundColor(BrainwalletColor.content)
+                                            .padding(4.0)
+                                        TextField(String(localized:" \(pickedCurrency.symbol) "),
+                                                  text: $pickedAmountString)
+                                        .font(subHeaderFont)
+                                        .keyboardType(.numberPad)
+                                        .textFieldStyle(.roundedBorder)
+                                        .focused($keyboardFocused)
+                                        .frame(width: 120, alignment: .center)
+                                    }
+                                    .frame(width: modalWidth, height: 35.0)
+                                    .padding(.bottom, 5.0)
+                                    .onChange(of: pickedAmountString) { newValue in
+                                        let pickedIntValue = Int(newValue) ?? 0
+                                        viewModel.fetchBuyQuoteLimits(buyAmount: pickedIntValue, baseCurrencyCode: pickedCurrency)
+                                        quotedLTCAmount = viewModel.quotedLTCAmount
+                                        keyboardFocused = false
+                                    }
                                 }
-                                .frame(width: modalWidth * 0.4 , height: 80, alignment: .trailing)
-                                .padding(.trailing, 8.0)
-
-
+                                .frame(width: modalWidth, height: 155.0)
+                                .blur(radius: didFetchData ? 3.0 : 0.0)
+                                .padding(.bottom, 5.0)
+                                HStack {
+                                    ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle(tint: BrainwalletColor.content))
+                                        .frame(width: 50, height: 50)
+                                }
+                                .frame(width: modalWidth, height: 155.0)
+                                .background(.white.opacity(0.3))
+                                .padding(.bottom, 5.0)
+                                .opacity(didFetchData ? 1.0 : 0.0)
                             }
-                            .frame(width: modalWidth, height: 60.0)
-                            .padding(.bottom, 5.0)
+                            
                             Divider()
                                 .background(BrainwalletColor.nearBlack)
                                 .padding([.leading, .trailing], 12.0)
                             
                             Spacer()
-
-                                Button(action: {
-                                    userIsBuying.toggle()
-                                }) {
-                                    VStack {
-                                            Text("BUY LTC")
-                                            .frame(width: width * 0.9, alignment: .center)
-                                                .font(ginormousFont)
-                                                .foregroundColor(BrainwalletColor.content)
-                                                
-                                        
-                                            Image("mp-lockup")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: width * 0.9, height: 18, alignment: .top)
-                                    }
+                            
+                            Button(action: {
+                                userIsBuying.toggle()
+                            }) {
+                                VStack {
+                                    Text("BUY LTC")
+                                        .frame(width: width * 0.85, alignment: .center)
+                                        .font(ginormousFont)
+                                        .foregroundColor(BrainwalletColor.content)
                                     
-                                    .frame(height: buyButtonSize)
-                                    .background(BrainwalletColor.background)
-                                    .cornerRadius(buttonCorner/2)
-                                    .padding(.all, 10.0)
-
+                                    Image("mp-lockup")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: width * 0.85, height: 18, alignment: .top)
                                 }
+                                
+                                .frame(height: buyButtonSize)
+                                .background(BrainwalletColor.background)
+                                .cornerRadius(modalCorner/2)
                                 .padding(.all, 10.0)
-                                .opacity(viewModel.canUserBuyLTC ? 1.0 : 0.0)
-                       
+                                
+                            }
+                            .padding(.all, 10.0)
+                            .opacity(viewModel.canUserBuyLTC ? 1.0 : 0.0)
                             
                         }
                         .frame(width: width * 0.95,
@@ -294,24 +383,35 @@ struct NewReceiveView: View {
                                 .stroke(BrainwalletColor.content, lineWidth: 2)
                                 .frame(width: width * 0.95, height: viewModel.canUserBuyLTC ? modalBuyViewHeight : modalReceiveViewHeight, alignment: .top)
                                 .padding(.bottom, 5.0)
-                            
                         }
                         .padding(.bottom, 5.0)
                     }
                 }
-                .onReceive(viewModel.$pickedAmount) { newAmount in
-                    pickedAmount = newAmount
-                }
-                .onReceive(viewModel.$canUserBuyLTC) { canBuy in
+                .onChange(of: viewModel.canUserBuyLTC) { canBuy in
                     canUserBuyLTC = canBuy
                 }
-                .onReceive(viewModel.$newReceiveAddress) { newAdd in
-                    newAddress = newAdd
+                .onChange(of: viewModel.fiatMinAmount) { _ in
+                    quotedLTCAmount = viewModel.quotedLTCAmount
+                    fiatMinAmount = viewModel.fiatMinAmount
+                    fiatTenXAmount = viewModel.fiatTenXAmount
+                    fiatMaxAmount = viewModel.fiatMaxAmount
                 }
-                .onReceive(viewModel.$fetchedTimestamp) { time in
-                    fetchedTimestamp = time
+                .onChange(of: viewModel.didFetchData) { newValue in
+                    didFetchData = newValue
+                }
+                .onAppear {
+                    newAddress = viewModel.newReceiveAddress
+                    viewModel.fetchBuyQuoteLimits(buyAmount: pickedAmount, baseCurrencyCode: pickedCurrency)
+                }
+                .onTapGesture {
+                    keyboardFocused.toggle()
                 }
             }
         }
     }
 }
+
+
+//    .onChange(of: viewModel.quotedLTCAmount) { newValue in
+//        quotedLTCAmount = newValue
+//    }

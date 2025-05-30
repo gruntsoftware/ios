@@ -4,6 +4,9 @@
     "" : {
       "shouldTranslate" : false
     },
+    " %@ " : {
+
+    },
     "(Network fee + Service fee):" : {
       "localizations" : {
         "ar" : {
@@ -230,8 +233,15 @@
         }
       }
     },
-    "%lld Ł" : {
-
+    "%lld (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld (%2$@)"
+          }
+        }
+      }
     },
     "About" : {
       "localizations" : {
@@ -8029,6 +8039,9 @@
           }
         }
       }
+    },
+    "Set custom amount:" : {
+
     },
     "Set PIN" : {
       "localizations" : {

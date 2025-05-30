@@ -3,6 +3,7 @@ import Foundation
 private let defaults = UserDefaults.standard
 private let isBiometricsEnabledKey = "isbiometricsenabled"
 private let defaultCurrencyCodeKey = "defaultcurrency"
+private let userPreferredCurrencyKey = "userPreferredCurrency"
 private let hasAquiredShareDataPermissionKey = "has_acquired_permission"
 private let legacyWalletNeedsBackupKey = "WALLET_NEEDS_BACKUP"
 private let writePaperPhraseDateKey = "writepaperphrasedatekey"
@@ -53,16 +54,24 @@ extension UserDefaults {
 			} else {
 				currencyCode = defaults.string(forKey: defaultCurrencyCodeKey)!
 			}
-			let acceptedCurrencyCodes = ["USD", "EUR", "JPY", "GBP", "CHF", "TRY", "AUD", "CAD", "CNY", "IDR", "KRW", "MXN", "SGD",]
-
-			if !(acceptedCurrencyCodes.contains(currencyCode)) {
-				return "USD"
-			}
-
 			return currencyCode
 		}
 		set { defaults.set(newValue, forKey: defaultCurrencyCodeKey) }
 	}
+    
+    static var userPreferredCurrency: String {
+        get {
+            var currencyCode = "USD"
+            if defaults.object(forKey: userPreferredCurrencyKey) == nil {
+                currencyCode = "USD"
+            } else {
+                currencyCode = defaults.string(forKey: userPreferredCurrencyKey)!
+            }
+            return currencyCode
+        }
+        set { defaults.set(newValue, forKey: userPreferredCurrencyKey) }
+    }
+    
 
 	static var hasAquiredShareDataPermission: Bool {
 		get { return defaults.bool(forKey: hasAquiredShareDataPermissionKey) }
