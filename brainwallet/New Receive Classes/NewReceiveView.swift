@@ -10,12 +10,6 @@ import Foundation
 import SwiftUI
 
 
-enum PresetMultiples : Int, CaseIterable {
-    case minFiatValue = 0
-    case tenXMinValue
-    case maxFiatValue
-}
-
 let defaultLaunchAmount = 210
 let maxLaunchAmount = 20000
 
@@ -140,7 +134,7 @@ struct NewReceiveView: View {
                     Spacer()
                     if userIsBuying {
                         VStack {
-                            WebBuyView(signedURL: "", receiveAddress: viewModel.newReceiveAddress)
+                            WebBuyView(signingData: viewModel.buildUnsignedMoonPayUrl(), viewModel: viewModel)
                         }
                         .frame(width: width * 0.95,
                                height: height * 0.95,alignment: .top)
@@ -291,17 +285,14 @@ struct NewReceiveView: View {
                                         .pickerStyle(.segmented)
                                         .onChange(of: pickedSegment) { tag in
                                             
-                                            let selected = PresetMultiples(rawValue:tag)
-                                            
-                                            switch selected {
-                                            case .minFiatValue:
+                                            if tag == 0 {
                                                 pickedAmount = fiatMinAmount
-                                            case .tenXMinValue:
+                                            }
+                                            else if tag == 1 {
                                                 pickedAmount = fiatTenXAmount
-                                            case .maxFiatValue:
+                                            }
+                                            else {
                                                 pickedAmount = fiatMaxAmount
-                                            case .none:
-                                                pickedAmount = defaultLaunchAmount
                                             }
                                             
                                             updateFiatAmounts()
@@ -359,6 +350,8 @@ struct NewReceiveView: View {
                             /// Buy LTC Button Group
                             Button(action: {
                                 userIsBuying.toggle()
+                                let signingData = viewModel.buildUnsignedMoonPayUrl()
+                                viewModel.fetchMoonpaySignedUrl(signingData: signingData)
                             }) {
                                 VStack {
                                     Text("BUY LTC")
@@ -381,14 +374,10 @@ struct NewReceiveView: View {
                             .opacity(viewModel.canUserBuyLTC ? 1.0 : 0.0)
                             /// Buy LTC Button Group
                             
-                            
-                            
                             /// Set Amount Button
                             if keyboardFocused {
                                 HStack {
-                                    
                                     Spacer()
-                                    
                                     Button(action: {
                                         pickedAmount = Int(pickedAmountString) ?? fiatTenXAmount
                                         updateFiatAmounts()
@@ -415,7 +404,6 @@ struct NewReceiveView: View {
                                             pickedAmountString = "\(fiatMinAmount)"
                                         }
                                     }
-                                    
                                 }
                                 .frame(height: keyboardFocused ? setAmountSize : 0, alignment: .bottom)
                                 .opacity(keyboardFocused ? 1 : 0)

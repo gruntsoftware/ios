@@ -62,15 +62,15 @@ public struct MoonpayBuyQuote: Codable, Hashable {
     var quotedLTCAmount: Double = 0.0
 }
 
-/// - Returns: MoonpaySignedURL
-public struct MoonpaySignedURL: Codable, Hashable {
-    var areFeesIncluded: Bool = true
-    var fiatCode: String = "USD"
-    var maxBuyAmount: Int = 0
-    var minBuyAmount: Int = 0
-    var paymentMethod: String = ""
-    var quoteCurrency: String = ""
-    var cryptoCode: String = "ltc"
-    var cryptoMaxBuyAmount: Double = 0.0
-    var cryptoMinBuyAmount: Double = 0.0
+/// - Returns: MoonpaySigningData
+public struct MoonpaySigningData: Codable, Hashable {
+    var baseCurrencyCode: String = ""
+    var baseCurrencyAmount: String = ""
+    var language: String = "en"
+    var walletAddress: String = ""
+    var defaultCurrencyCode: String = ""
+    var externalTransactionId: String = "en"
+    var currencyCode: String = ""
+    var themeId: String = ""
+    var theme: String = "en"
 }

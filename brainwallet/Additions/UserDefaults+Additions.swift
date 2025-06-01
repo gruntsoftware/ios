@@ -58,6 +58,17 @@ extension UserDefaults {
 		}
 		set { defaults.set(newValue, forKey: defaultCurrencyCodeKey) }
 	}
+     
+    static var userPreferredDarkTheme: Bool {
+        get {
+            guard defaults.object(forKey: userDidPreferDarkModeKey) != nil
+            else {
+                return false
+            }
+            return defaults.bool(forKey: userDidPreferDarkModeKey)
+        }
+        set { defaults.set(newValue, forKey: userDidPreferDarkModeKey) }
+    }
     
     static var userPreferredCurrency: String {
         get {
