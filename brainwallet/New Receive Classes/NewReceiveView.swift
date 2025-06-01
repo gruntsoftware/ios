@@ -16,6 +16,8 @@ enum PresetMultiples : Int, CaseIterable {
     case maxFiatValue
 }
 
+let defaultLaunchAmount = 210
+let maxLaunchAmount = 20000
 
 struct NewReceiveView: View {
     
@@ -40,19 +42,19 @@ struct NewReceiveView: View {
     
     
     @State
-    private var pickedAmountString = "0"
+    private var pickedAmountString = ""
      
     @State
-    private var pickedAmount: Int = 210
+    private var pickedAmount: Int = defaultLaunchAmount
     
     @State
-    private var fiatMinAmount: Int = 20
+    private var fiatMinAmount: Int = Int(defaultLaunchAmount / 10)
     
     @State
-    private var fiatTenXAmount: Int = 200
+    private var fiatTenXAmount: Int = defaultLaunchAmount
     
     @State
-    private var fiatMaxAmount: Int = 20000
+    private var fiatMaxAmount: Int = maxLaunchAmount
     
     @State
     private var scannedCode: String?
@@ -86,7 +88,7 @@ struct NewReceiveView: View {
 
     let buyButtonSize: CGFloat = 80.0
     let squareImageSize: CGFloat = 16.0
-    let themeBorderSize: CGFloat = 44.0
+    let setAmountSize: CGFloat = 60.0
     let modalCorner: CGFloat = 55.0
     let buttonCorner: CGFloat = 26.0
     let headerFont: Font = .barlowBold(size: 26.0)
@@ -104,6 +106,19 @@ struct NewReceiveView: View {
 
     init(viewModel: NewReceiveViewModel) {
         self.viewModel = viewModel
+        
+        UISegmentedControl.appearance().selectedSegmentTintColor = BrainwalletUIColor.surface
+        UISegmentedControl.appearance().backgroundColor = BrainwalletUIColor.background
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color.primary)], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color.secondary)], for: .normal)
+    }
+    
+    func updateFiatAmounts() {
+        viewModel.fetchBuyQuoteLimits(buyAmount: pickedAmount, baseCurrencyCode: pickedCurrency)
+        quotedLTCAmount = viewModel.quotedLTCAmount
+        fiatMinAmount = viewModel.fiatMinAmount
+        fiatTenXAmount = viewModel.fiatTenXAmount
+        fiatMaxAmount = viewModel.fiatMaxAmount
     }
     
     var body: some View {
@@ -143,7 +158,7 @@ struct NewReceiveView: View {
                     }
                     else {
                         VStack {
-                            
+                            /// Header Group
                             HStack {
                                 Text(canUserBuyLTC ? "BUY / RECEIVE" : "RECEIVE")
                                     .font(headerFont)
@@ -153,7 +168,9 @@ struct NewReceiveView: View {
                             }
                             .frame(width: modalWidth, height: 44.0, alignment: .top)
                             .padding([.leading, .trailing,.top], 8.0)
+                            /// Header Group
                             
+                            /// Receive Address Group
                             HStack {
                                 VStack {
                                     Image(uiImage: viewModel.newReceiveAddressQR ?? qrPlaceholder)
@@ -214,16 +231,15 @@ struct NewReceiveView: View {
                             }
                             .frame(width: modalWidth, height: keyboardFocused ? height * 0.01 : height * 0.3, alignment: .top)
                             .opacity(keyboardFocused ? 0 : 1)
-                            
+                            /// Receive Address Group
                             Divider()
                                 .background(BrainwalletColor.nearBlack)
                                 .padding([.leading, .trailing], 12.0)
                             
+                            /// Set Amount Group
                             ZStack {
-                                 
                                 VStack {
                                     HStack {
-                                        
                                         Picker("", selection: $pickedCurrency) {
                                             ForEach(viewModel.currencies, id: \.self) {
                                                 Text("\($0.code) (\($0.symbol))")
@@ -233,18 +249,14 @@ struct NewReceiveView: View {
                                             }
                                         }
                                         .onChange(of: $pickedCurrency.wrappedValue) { _ in
-                                           viewModel.fetchBuyQuoteLimits(buyAmount: pickedAmount, baseCurrencyCode: pickedCurrency)
-                                            quotedLTCAmount = viewModel.quotedLTCAmount
-                                            fiatMinAmount = viewModel.fiatMinAmount
-                                            fiatTenXAmount = viewModel.fiatTenXAmount
-                                            fiatMaxAmount = viewModel.fiatMaxAmount
+                                            updateFiatAmounts()
                                         }
                                         .pickerStyle(.wheel)
-                                        .frame(width: modalWidth * 0.25 , height: 85, alignment: .leading)
+                                        .frame(height: 85, alignment: .leading)
                                         
                                         VStack {
                                             
-                                            Text(String(format: "~ %.3f Ł",quotedLTCAmount))
+                                            Text(String(format: "~ %.3f Ł", quotedLTCAmount))
                                                 .font(ginormousFont)
                                                 .kerning(0.3)
                                                 .foregroundColor(BrainwalletColor.content)
@@ -254,28 +266,26 @@ struct NewReceiveView: View {
                                                 .kerning(0.4)
                                                 .foregroundColor(BrainwalletColor.content)
                                         }
-                                        .frame(width: modalWidth * 0.38 , height: 85, alignment: .center)
+                                        .frame(height: 85, alignment: .center)
                                         .padding(.trailing, 20.0)
                                         .onChange(of: viewModel.quotedTimestamp) { newValue in
                                             quotedTimestamp = newValue
+                                            quotedLTCAmount = viewModel.quotedLTCAmount
                                         }
                                     }
                                     HStack {
                                         Picker("", selection: $pickedSegment) {
                                             Text("\(fiatMinAmount) (\(pickedCurrency.code))")
                                                 .font(lightDetailFont)
-                                                .foregroundColor(BrainwalletColor.content)
-                                                .padding(4.0)
+                                                .padding(8.0)
                                                 .tag(0)
                                             Text("\(fiatTenXAmount) (\(pickedCurrency.code))")
                                                 .font(lightDetailFont)
-                                                .foregroundColor(BrainwalletColor.content)
-                                                .padding(4.0)
+                                                .padding(8.0)
                                                 .tag(1)
                                             Text("\(fiatMaxAmount) (\(pickedCurrency.code))")
                                                 .font(lightDetailFont)
-                                                .foregroundColor(BrainwalletColor.content)
-                                                .padding(4.0)
+                                                .padding(8.0)
                                                 .tag(2)
                                         }
                                         .pickerStyle(.segmented)
@@ -291,12 +301,16 @@ struct NewReceiveView: View {
                                             case .maxFiatValue:
                                                 pickedAmount = fiatMaxAmount
                                             case .none:
-                                                pickedAmount = 21
+                                                pickedAmount = defaultLaunchAmount
                                             }
-                                            viewModel.fetchBuyQuoteLimits(buyAmount: pickedAmount, baseCurrencyCode: pickedCurrency)
-                                            quotedLTCAmount = viewModel.quotedLTCAmount
+                                            
+                                            updateFiatAmounts()
+                                            pickedAmountString = String(format: "%d", pickedAmount)
                                             keyboardFocused = false
                                         }
+                                        .tint(.orange)
+                                        .padding(.all, 10.0)
+
                                     }
                                     .frame(width: modalWidth, height: 35.0)
                                     HStack {
@@ -312,15 +326,14 @@ struct NewReceiveView: View {
                                         .textFieldStyle(.roundedBorder)
                                         .focused($keyboardFocused)
                                         .frame(width: 120, alignment: .center)
+                                        .onChange(of: pickedAmountString) { newValue in
+                                            if newValue.count > 6 {
+                                                pickedAmountString = "\(fiatMaxAmount)"
+                                            }
+                                        }
                                     }
                                     .frame(width: modalWidth, height: 35.0)
                                     .padding(.bottom, 5.0)
-                                    .onChange(of: pickedAmountString) { newValue in
-                                        let pickedIntValue = Int(newValue) ?? 0
-                                        viewModel.fetchBuyQuoteLimits(buyAmount: pickedIntValue, baseCurrencyCode: pickedCurrency)
-                                        quotedLTCAmount = viewModel.quotedLTCAmount
-                                        keyboardFocused = false
-                                    }
                                 }
                                 .frame(width: modalWidth, height: 155.0)
                                 .blur(radius: didFetchData ? 3.0 : 0.0)
@@ -335,6 +348,7 @@ struct NewReceiveView: View {
                                 .padding(.bottom, 5.0)
                                 .opacity(didFetchData ? 1.0 : 0.0)
                             }
+                            /// Set Amount Group
                             
                             Divider()
                                 .background(BrainwalletColor.nearBlack)
@@ -342,6 +356,7 @@ struct NewReceiveView: View {
                             
                             Spacer()
                             
+                            /// Buy LTC Button Group
                             Button(action: {
                                 userIsBuying.toggle()
                             }) {
@@ -356,16 +371,58 @@ struct NewReceiveView: View {
                                         .scaledToFit()
                                         .frame(width: width * 0.85, height: 18, alignment: .top)
                                 }
-                                
                                 .frame(height: buyButtonSize)
                                 .background(BrainwalletColor.background)
                                 .cornerRadius(modalCorner/2)
                                 .padding(.all, 10.0)
-                                
+                                .disabled(keyboardFocused ? true : false)
                             }
                             .padding(.all, 10.0)
                             .opacity(viewModel.canUserBuyLTC ? 1.0 : 0.0)
+                            /// Buy LTC Button Group
                             
+                            
+                            
+                            /// Set Amount Button
+                            if keyboardFocused {
+                                HStack {
+                                    
+                                    Spacer()
+                                    
+                                    Button(action: {
+                                        pickedAmount = Int(pickedAmountString) ?? fiatTenXAmount
+                                        updateFiatAmounts()
+                                        keyboardFocused = false
+                                    }) {
+                                        HStack {
+                                            Text(" Done ")
+                                                .font(subHeaderFont)
+                                                .foregroundColor(BrainwalletColor.surface)
+                                                .padding(.all, 8.0)
+                                            Text(pickedAmountString + " \(pickedCurrency.code)")
+                                                .font(subHeaderFont)
+                                                .foregroundColor(BrainwalletColor.surface)
+                                                .padding(.all, 8.0)
+                                            
+                                        }
+                                        .frame(width: width * 0.3)
+                                        .background(BrainwalletColor.content)
+                                        .cornerRadius(setAmountSize/2)
+                                    }
+                                    .onAppear {
+                                        withAnimation(.easeInOut(duration: 0.5)) {
+                                            self.keyboardFocused = true
+                                            pickedAmountString = "\(fiatMinAmount)"
+                                        }
+                                    }
+                                    
+                                }
+                                .frame(height: keyboardFocused ? setAmountSize : 0, alignment: .bottom)
+                                .opacity(keyboardFocused ? 1 : 0)
+                                .padding(.all, 8.0)
+                            }
+                            /// Set Amount Button
+
                         }
                         .frame(width: width * 0.95,
                                height: (viewModel.canUserBuyLTC && isExpanded) ? modalBuyViewHeight : modalReceiveViewHeight,
@@ -387,31 +444,17 @@ struct NewReceiveView: View {
                         .padding(.bottom, 5.0)
                     }
                 }
-                .onChange(of: viewModel.canUserBuyLTC) { canBuy in
-                    canUserBuyLTC = canBuy
-                }
-                .onChange(of: viewModel.fiatMinAmount) { _ in
-                    quotedLTCAmount = viewModel.quotedLTCAmount
-                    fiatMinAmount = viewModel.fiatMinAmount
-                    fiatTenXAmount = viewModel.fiatTenXAmount
-                    fiatMaxAmount = viewModel.fiatMaxAmount
-                }
                 .onChange(of: viewModel.didFetchData) { newValue in
                     didFetchData = newValue
                 }
                 .onAppear {
                     newAddress = viewModel.newReceiveAddress
-                    viewModel.fetchBuyQuoteLimits(buyAmount: pickedAmount, baseCurrencyCode: pickedCurrency)
-                }
-                .onTapGesture {
-                    keyboardFocused.toggle()
+                    canUserBuyLTC = viewModel.canUserBuyLTC
+                    if canUserBuyLTC {
+                        updateFiatAmounts()
+                    }
                 }
             }
         }
     }
 }
-
-
-//    .onChange(of: viewModel.quotedLTCAmount) { newValue in
-//        quotedLTCAmount = newValue
-//    }

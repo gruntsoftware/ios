@@ -23,11 +23,7 @@ struct SeedWordsGridView: View {
     var body: some View {
         GeometryReader { geometry in
             
-            let width = geometry.size.width
-            let height = geometry.size.height
-            
             ZStack {
-              //  BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {
                     
                         Grid(horizontalSpacing: elementSpacing, verticalSpacing: elementSpacing) {
@@ -66,7 +62,6 @@ struct SeedWordsGridView: View {
                                         GeometryReader { geometry in
                                             
                                             let width = geometry.size.width
-                                            let height = geometry.size.height
                                             
                                             ZStack {
                                                 Capsule()
@@ -118,7 +113,6 @@ struct SeedCapsuleView: View {
         GeometryReader { geometry in
             
             let width = geometry.size.width
-            let height = geometry.size.height
             
             ZStack {
                 Capsule()
