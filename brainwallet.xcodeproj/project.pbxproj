@@ -50,6 +50,7 @@
 		2428718A2DE5E2920035DE48 /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871892DE5E2900035DE48 /* Untitled.swift */; };
 		2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */; };
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
+		24360B012DED120500E1E115 /* NewReceiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24360B002DED11D900E1E115 /* NewReceiveTests.swift */; };
 		244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244520332DE70310003AFFDF /* LockScreenHostingController.swift */; };
 		244A8D932DE84C890024D356 /* BrainwalletShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
@@ -472,6 +473,7 @@
 		242871892DE5E2900035DE48 /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
 		2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncHostingController.swift; sourceTree = "<group>"; };
 		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
+		24360B002DED11D900E1E115 /* NewReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveTests.swift; sourceTree = "<group>"; };
 		244520332DE70310003AFFDF /* LockScreenHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHostingController.swift; sourceTree = "<group>"; };
 		244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainwalletShapes.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
@@ -1134,6 +1136,14 @@
 				C312D0A72D7DC27700BB97A4 /* module.modulemap */,
 			);
 			path = CoreResources;
+			sourceTree = "<group>";
+		};
+		24360AFF2DED11B700E1E115 /* Buy Receive Tests */ = {
+			isa = PBXGroup;
+			children = (
+				24360B002DED11D900E1E115 /* NewReceiveTests.swift */,
+			);
+			path = "Buy Receive Tests";
 			sourceTree = "<group>";
 		};
 		244A8D912DE84C710024D356 /* Brainwallet Custom Shapes */ = {
@@ -1997,6 +2007,7 @@
 		C312D4F62D7DC28E00BB97A4 /* brainwalletTests */ = {
 			isa = PBXGroup;
 			children = (
+				24360AFF2DED11B700E1E115 /* Buy Receive Tests */,
 				24952E452DE8B6D700ADEE10 /* Amounts Tests */,
 				24952E432DE8B6D200ADEE10 /* OpsFeesTests.swift */,
 				C312D4D82D7DC28E00BB97A4 /* Class Tests */,
@@ -2341,6 +2352,7 @@
 				C312D5082D7DC28E00BB97A4 /* LockScreenTests.swift in Sources */,
 				C312D5092D7DC28E00BB97A4 /* APITests.swift in Sources */,
 				C312D50A2D7DC28E00BB97A4 /* SpendingLimitTests.swift in Sources */,
+				24360B012DED120500E1E115 /* NewReceiveTests.swift in Sources */,
 				C312D50B2D7DC28E00BB97A4 /* LanguageSelectionTests.swift in Sources */,
 				C312D50C2D7DC28E00BB97A4 /* PaymentRequestTests.swift in Sources */,
 				C312D50D2D7DC28E00BB97A4 /* BRAddressTests.swift in Sources */,

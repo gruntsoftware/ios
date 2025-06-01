@@ -175,13 +175,13 @@ class NetworkHelper: ObservableObject {
                     if let jsonData = try? JSONSerialization.jsonObject(with: data ?? Data(), options: []),
                        let signedUrlDict = jsonData as? [String: AnyObject],
                         let signedUrl = signedUrlDict["signedUrl"] {
-                        print(":::||\(signedUrl):::")
-
                         signedURLString = signedUrl as? String ?? fallbackURLString
                         completion(signedURLString)
                     }
                     else {
                         completion(fallbackURLString)
+                        let fetchError: [String: String] = ["error": "signed_url_invalid"]
+                        LWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
                     }
                 }
             } else {

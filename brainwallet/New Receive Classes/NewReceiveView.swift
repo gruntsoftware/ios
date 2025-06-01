@@ -134,7 +134,29 @@ struct NewReceiveView: View {
                     Spacer()
                     if userIsBuying {
                         VStack {
-                            WebBuyView(signingData: viewModel.buildUnsignedMoonPayUrl(), viewModel: viewModel)
+                            ZStack {
+                                WebBuyView(signingData: viewModel.buildUnsignedMoonPayUrl(), viewModel: viewModel)
+                                VStack {
+                                    HStack {
+                                        Spacer()
+                                        Button(action: {
+                                            userIsBuying.toggle()
+                                        }) {
+                                            
+                                            Image(systemName: "xmark")
+                                                .resizable()
+                                                .frame(width: 25, height: 25)
+                                                .foregroundColor(BrainwalletColor.content)
+                                                .padding(12.0)
+                                            
+                                            
+                                        }
+                                        .frame(width: 40.0, height: 40.0, alignment: .bottom)
+                                        .padding(12.0)
+                                    }
+                                  Spacer()
+                                }
+                            }
                         }
                         .frame(width: width * 0.95,
                                height: height * 0.95,alignment: .top)
