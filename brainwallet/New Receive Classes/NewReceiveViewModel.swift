@@ -18,6 +18,9 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     var newReceiveAddress = ""
     
     @Published
+    var signedURLString = ""
+    
+    @Published
     var newReceiveAddressQR: UIImage?
       
     @Published
@@ -46,6 +49,10 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     
     @Published
     var didFetchData: Bool = false
+     
+    @Published
+    var didFetchURLString: Bool = false
+     
 
     let ISO8601DateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -54,7 +61,6 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
         return formatter
     }()
  
-    
     var store: Store
     var walletManager: WalletManager
     var ltcToFiatRate: Double = 0.0
@@ -91,9 +97,6 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
                     self.fiatTenXAmount = mpData.minBuyAmount * 10
                     self.fiatMaxAmount = mpData.maxBuyAmount
                     
-                    print("::::\(baseCurrencyCode.code) self.fiatMinAmount ::::\(self.fiatMinAmount)")
-                    print(":::: self.fiatTenXAmount ::::\(self.fiatTenXAmount)")
-                    print(":::: self.fiatMaxAmount ::::\(self.fiatMaxAmount)\n\n")
                     //quoted qty
                     self.quotedLTCAmount = mpData.quotedLTCAmount
                     
@@ -108,8 +111,35 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
         })
     }
     
-    func fetchMoonpaySignedUrl() {
+    func buildUnsignedMoonPayUrl() -> MoonpaySigningData {
         
+        let currentDevice: String = UIDevice.current.model
+        let currentName: String = UIDevice.current.name
+        let externalID: String = "Brainwallet-iOS-" + currentDevice.urlEscapedString + currentName.urlEscapedString
+
+        let currentLocaleLanguage = Locale.current.language.languageCode?.identifier ?? "en"
+        let userTheme = UserDefaults.userPreferredDarkTheme ? "dark" : "light"
+
+        let moonpaySigningData = MoonpaySigningData(baseCurrencyCode: currentFiat.code,
+                                                    baseCurrencyAmount: String(Double(pickedAmount)),
+                                                    language: currentLocaleLanguage,
+                                                    walletAddress: newReceiveAddress,
+                                                    defaultCurrencyCode: "ltc",
+                                                    externalTransactionId: externalID,
+                                                    currencyCode: "ltc",
+                                                    themeId: "main-v1.0.0",
+                                                    theme: userTheme)
+        return moonpaySigningData
+    }
+    
+    func fetchMoonpaySignedUrl(signingData: MoonpaySigningData) {
+        
+        let _ = NetworkHelper.init().fetchSignedURL(moonPaySigningData: signingData, completion: {  signedString in
+            DispatchQueue.main.async {
+                self.signedURLString = signedString
+                self.didFetchURLString = true
+            }
+         })
     }
     
     private func generateQRCode() {
@@ -124,17 +154,3 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
         }
     }
 }
-
-//override suspend fun fetchMoonpaySignedUrl(params: Map<String, String>): String {
-//    return remoteApiSource.getMoonpaySignedUrl(params)
-//        .signedUrl.toUri()
-//        .buildUpon()
-//        .apply {
-//            if (BuildConfig.DEBUG) {
-//                authority("buy-sandbox.moonpay.com")//replace base url from buy.moonpay.com
-//            }
-//        }
-//        .build()
-//        .toString()
-//}
-

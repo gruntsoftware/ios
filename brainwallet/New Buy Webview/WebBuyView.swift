@@ -9,38 +9,29 @@ import SwiftUI
   
 struct WebBuyView: View {
     
-    private var signedURL: String? = ""
-    
-    private var receiveAddress: String = ""
-    
+    @ObservedObject
+    var viewModel: NewReceiveViewModel
+      
     @State
     private var shouldScroll: Bool = false
     
     @State
     private var shouldShowCopied: Bool = false
     
-    private var uuidString = UUID().uuidString
+    @State
+    private var didFetchURLString: Bool = false
     
-    private var urlString = ""
+    private let signedURLString = ""
+    
+    @State
     private var url: URL?
-    private var mpPrefix = {
-        #if DEBUG
-            return APIServer.mp_widget_debug_prefix
-        #else
-            return APIServer.mp_widget_prod_prefix
-        #endif
-    }()
     
-    init(signedURL: String?, receiveAddress: String) {
+    private var signingData: MoonpaySigningData
+
+    init(signingData: MoonpaySigningData, viewModel: NewReceiveViewModel) {
         
-        self.receiveAddress = receiveAddress
-        
-        ///TEMP USAGE:  After launch integrate api server
-        let tempURL = mpPrefix + "?apiKey=" + APIServer.mp_pk_live + "&address=\(receiveAddress)&uid=\(UUID().uuidString)"
-        
-        if let url = URL(string: tempURL) {
-            self.url = url
-        }
+        self.signingData = signingData
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -49,12 +40,31 @@ struct WebBuyView: View {
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {
-                    WebView(url: url!, scrollToSignup: $shouldScroll)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .padding(4.0)
+                    if didFetchURLString {
+                        WebView(url: self.url!, scrollToSignup: $shouldScroll)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .padding(4.0)
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 .padding([.leading, .trailing], 8.0)
+            }
+            .onChange(of: viewModel.didFetchURLString) { didFetchURL in
+                
+                if didFetchURL {
+                 
+                     if let url = URL(string: viewModel.signedURLString) {
+                         self.url = url
+                         didFetchURLString = true
+                     }
+                     else {
+                         self.url = URL(string: "https://brainwallet.co/mobile-top-up.html")
+                         let fetchError: [String: String] = ["error": "signed_url_invalid"]
+                         LWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
+                         didFetchURLString = true
+                     }
+                    
+                }
             }
         }
     }
