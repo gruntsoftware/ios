@@ -2,7 +2,7 @@ import Foundation
 
 private var kvKey: UInt8 = 0
 
-extension BRAPIClient {
+extension BWAPIClient {
 	var kv: BRReplicatedKVStore? {
 		return lazyAssociatedObject(self, key: &kvKey) {
 			var kv: BRReplicatedKVStore?
@@ -15,9 +15,9 @@ extension BRAPIClient {
 }
 
 private class KVStoreAdaptor: BRRemoteKVStoreAdaptor {
-	let client: BRAPIClient
+	let client: BWAPIClient
 
-	init(client: BRAPIClient) {
+	init(client: BWAPIClient) {
 		self.client = client
 	}
 

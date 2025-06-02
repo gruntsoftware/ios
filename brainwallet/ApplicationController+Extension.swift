@@ -10,6 +10,10 @@ extension ApplicationController {
         if UserDefaults.standard.object(forKey: userDidPreferDarkModeKey) == nil {
             UserDefaults.standard.set(false, forKey: userDidPreferDarkModeKey)
         }
+        
+        if UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) == nil {
+            UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
+        }
 	}
 
 	func countLaunches() {

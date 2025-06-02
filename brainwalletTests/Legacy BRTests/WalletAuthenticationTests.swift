@@ -29,6 +29,9 @@ class WalletAuthenticationTests: XCTestCase {
 		XCTAssertFalse(walletManager.authenticate(pin: "654321"), "Authentication with wrong PIN should fail.")
 		XCTAssertFalse(walletManager.authenticate(pin: "839405"), "Authentication with wrong PIN should fail.")
 		XCTAssert(walletManager.walletDisabledUntil == 0, "Wallet should not be disabled after 2 wrong pin attempts")
+
+		// Perform another wrong attempt that should disable the wallet
+		XCTAssertFalse(walletManager.authenticate(pin: "127345"), "Authentication with wrong PIN should fail.")
 	}
 
 	func testWalletDisabledTwice() {

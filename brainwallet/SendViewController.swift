@@ -22,7 +22,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 	// MARK: - Private
 
-	private let store: Store
+    var store: Store?
 	private let sender: Sender
 	private let walletManager: WalletManager
 	private let amountView: AmountViewController
@@ -76,11 +76,22 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	// MARK: - Private
 
 	deinit {
+        guard let store = store else {
+            debugPrint("::: ERROR: Store not initialized")
+            return
+        }
+        
 		store.unsubscribe(self)
 		NotificationCenter.default.removeObserver(self)
 	}
 
 	override func viewDidLoad() {
+        
+        guard let store = store else {
+            debugPrint("::: ERROR: Store not initialized")
+            return
+        }
+        
 		view.backgroundColor = BrainwalletUIColor.surface
 
 		// set as regular at didLoad
@@ -144,6 +155,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	}
 
 	private func addButtonActions() {
+        
 		// MARK: - MemoCell Callbacks
 
 		memoCell.didReturn = { textView in
@@ -163,13 +175,21 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			self?.amount = amount
 		}
         amountView.didUpdateFee = strongify(self) { myself, feeType in
+            guard let store = myself.store else {
+                debugPrint("::: ERROR: Store not initialized")
+                return
+            }
+            
 			myself.feeType = feeType
-			let fees = myself.store.state.fees
+            let fees = myself.store?.state.fees
+            guard let reg = fees?.regular,
+                  let econ = fees?.economy,
+                  let lux = fees?.luxury else { return }
 
 			switch feeType {
-			case .regular: myself.walletManager.wallet?.feePerKb = fees.regular
-			case .economy: myself.walletManager.wallet?.feePerKb = fees.economy
-			case .luxury: myself.walletManager.wallet?.feePerKb = fees.luxury
+            case .regular: myself.walletManager.wallet?.feePerKb = reg
+			case .economy: myself.walletManager.wallet?.feePerKb = econ
+			case .luxury: myself.walletManager.wallet?.feePerKb = lux
 			}
 
 			myself.amountView.updateBalanceLabel()
@@ -219,6 +239,12 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		/// DEV: KCW 12-FEB-24
 		// The results of this output is doing double duty and the method is a nightmare.
 		// The parent view controller uses the numbers and the text is used in this View Controller
+        
+        guard let store = store else {
+            debugPrint("::: ERROR: Store not initialized")
+            return (nil, nil)
+        }
+        
 		var currentRate: Rate?
 
 		if rate == nil {
@@ -316,6 +342,12 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	}
 
 	@objc private func sendTapped() {
+        
+        guard let store = store else {
+            debugPrint("::: ERROR: Store not initialized")
+            return
+        }
+        
 		if sendAddressCell.textField.isFirstResponder {
 			sendAddressCell.textField.resignFirstResponder()
 		}
@@ -450,8 +482,14 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	}
 
 	private func send() {
-		guard let rate = store.state.currentRate else { return }
-		guard let feePerKb = walletManager.wallet?.feePerKb else { return }
+        
+        
+        guard let store = store,
+        let rate = store.state.currentRate,
+        let feePerKb = walletManager.wallet?.feePerKb else {
+            debugPrint("::: ERROR: Store Rate feePerKb not initialized")
+            return
+        }
 
 		sender.send(biometricsMessage: "Authorize this transaction" ,
 		            rate: rate,
@@ -473,9 +511,9 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		            	case .success:
 		            		self?.dismiss(animated: true, completion: {
 		            			guard let myself = self else { return }
-		            			myself.store.trigger(name: .showStatusBar)
+		            			myself.store?.trigger(name: .showStatusBar)
 		            			if myself.isPresentedFromLock {
-		            				myself.store.trigger(name: .loginFromSend)
+		            				myself.store?.trigger(name: .loginFromSend)
 		            			}
 		            			myself.onPublishSuccess?()
 		            		})
@@ -498,8 +536,14 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	}
 
 	func confirmProtocolRequest(protoReq: PaymentProtocolRequest) {
-		guard let firstOutput = protoReq.details.outputs.first else { return }
-		guard let wallet = walletManager.wallet else { return }
+        
+        guard let firstOutput = protoReq.details.outputs.first,
+        let wallet = walletManager.wallet,
+        let feePerKb = walletManager.wallet?.feePerKb,
+        let store = store else {
+            debugPrint("::: ERROR: First Output, wallet or feePerKb not initialized")
+            return
+        }
 
 		let address = firstOutput.updatedSwiftAddress
 		let isValid = protoReq.isValid()

@@ -44,7 +44,7 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
     var store: Store
     var walletManager: WalletManager
     
-    let currencies: [CurrencySelection] = CurrencySelection.allCases
+    let currencies: [SupportedFiatCurrencies] = SupportedFiatCurrencies.allCases
 
     init(store: Store, walletManager: WalletManager) {
         self.store = store

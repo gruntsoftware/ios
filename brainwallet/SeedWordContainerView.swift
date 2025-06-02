@@ -24,6 +24,8 @@ struct SeedWordContainerView: View {
 
 	@State
 	private var didEnterPINCode = false
+    
+    
 
 	@ObservedObject
 	var seedViewModel = SeedViewModel(enteredPIN: .constant(""))

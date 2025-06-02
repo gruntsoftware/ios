@@ -14,9 +14,7 @@ struct CreateStepTabView: View {
 	}
 
 	var body: some View {
-		GeometryReader { geometry in
-			let width = geometry.size.width
-			let height = geometry.size.height
+		GeometryReader { geometry in 
 
 			VStack {
 				ZStack {

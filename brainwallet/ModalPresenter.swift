@@ -7,7 +7,7 @@ class ModalPresenter: Subscriber, Trackable {
 	// MARK: - Public
 
 	var walletManager: WalletManager?
-	init(store: Store, walletManager: WalletManager, window: UIWindow, apiClient: BRAPIClient) {
+	init(store: Store, walletManager: WalletManager, window: UIWindow, apiClient: BWAPIClient) {
 		self.store = store
 		self.window = window
 		self.walletManager = walletManager
@@ -26,7 +26,7 @@ class ModalPresenter: Subscriber, Trackable {
 	private let messagePresenter = MessageUIPresenter()
 	private let securityCenterNavigationDelegate = SecurityCenterNavigationDelegate()
 	private let verifyPinTransitionDelegate = TransitioningDelegate()
-	private let noAuthApiClient: BRAPIClient
+	private let noAuthApiClient: BWAPIClient
 
 	private var currentRequest: PaymentRequest?
 	private var reachability = ReachabilityMonitor()

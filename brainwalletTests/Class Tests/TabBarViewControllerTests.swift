@@ -18,9 +18,9 @@ class TabBarViewControllerTests: XCTestCase {
 	}
 
 	func testTabBarItemCount() throws {
-		// There should be 4 tabs in this version for all users
+		// There should be 3 tabs in this version for all users
 
-		XCTAssertTrue(viewController.tabBar.items?.count == 4)
+		XCTAssertTrue(viewController.tabBar.items?.count == 3)
 	}
 
 	func testTabBarItemRange() throws {
@@ -31,7 +31,5 @@ class TabBarViewControllerTests: XCTestCase {
 		XCTAssertTrue(viewController.tabBar.items?[1].tag == 1)
 
 		XCTAssertTrue(viewController.tabBar.items?[2].tag == 2)
-
-		XCTAssertTrue(viewController.tabBar.items?[3].tag == 3)
 	}
 }

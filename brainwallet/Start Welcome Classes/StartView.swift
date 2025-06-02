@@ -48,7 +48,7 @@ struct StartView: View {
 	private var animationAmount = 0.0
     
     @State
-    private var pickedCurrency: CurrencySelection = .USD
+    private var pickedCurrency: SupportedFiatCurrencies = .USD
 
 	@State
 	private var didContinue: Bool = false
@@ -119,15 +119,15 @@ struct StartView: View {
                                         
                                         Picker("", selection: $pickedCurrency) {
                                             ForEach(startViewModel.currencies, id: \.self) {
-                                                Text($0.fullCurrencyName)
+                                                Text("\($0.fullCurrencyName)       \($0.code) (\($0.symbol))")
                                                     .font(selectorFont)
                                                     .foregroundColor(BrainwalletColor.content)
                                             }
                                         }
                                         .pickerStyle(.wheel)
                                         .frame(width: width * 0.6)
-                                        .onChange(of: $pickedCurrency.wrappedValue) { _ in
-                                            startViewModel.currentFiat = pickedCurrency
+                                        .onChange(of: $pickedCurrency.wrappedValue) { newSupportedCurrency in
+                                            startViewModel.userDidSetCurrencyPreference(currency: newSupportedCurrency)
                                             selectedFiat = true
                                         }.padding(.trailing, width * 0.1)
                                     }

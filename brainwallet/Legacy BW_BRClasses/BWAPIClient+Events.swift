@@ -24,8 +24,8 @@ extension Trackable {
 
 private var emKey: UInt8 = 1
 
-// EventManager is attached to BRAPIClient
-extension BRAPIClient {
+// EventManager is attached to BWAPIClient
+extension BWAPIClient {
 	var events: EventManager? {
 		return lazyAssociatedObject(self, key: &emKey) {
 			EventManager(adaptor: self)
@@ -56,7 +56,7 @@ class EventManager {
 		"background": UIScene.didEnterBackgroundNotification,
 	]
 	private var buffer = [Event]()
-	private let adaptor: BRAPIAdaptor
+	private let adaptor: BWAPIAdaptor
 
 	struct Event {
 		let sessionId: String
@@ -72,7 +72,7 @@ class EventManager {
 		}
 	}
 
-	init(adaptor: BRAPIAdaptor) {
+	init(adaptor: BWAPIAdaptor) {
 		self.adaptor = adaptor
 		queue.maxConcurrentOperationCount = 1
 	}
@@ -137,7 +137,6 @@ class EventManager {
 	private func pushEvent(eventName: String, attributes: [String: String]) {
 		queue.addOperation { [weak self] in
 			guard let myself = self else { return }
-			debugPrint(":::[EventManager] pushEvent name=\(eventName) attributes=\(attributes)")
 			myself.buffer.append(Event(sessionId: myself.sessionId,
 			                           time: Date().timeIntervalSince1970 * 1000.0,
 			                           eventName: eventName,

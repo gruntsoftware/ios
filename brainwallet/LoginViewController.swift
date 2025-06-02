@@ -45,13 +45,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
             self?.updateTheme(shouldBeDark: newValue)
         }.store(in: &cancellables)
         
-        lockScreenView.viewModel.$userDidTapQR.sink { [weak self] didTap in
-            if let didTap = didTap {
-                self?.showLTCAddress()
-            }
-        }.store(in: &cancellables)
-        
-        addLockScreenHostingControllerCallback()
+        addLockScreenHostingControllerCallbacks()
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -68,12 +62,17 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		unlockTimer?.invalidate()
 	}
     
-    private func addLockScreenHostingControllerCallback() {
+    private func addLockScreenHostingControllerCallbacks() {
         lockScreenView.didEnterPIN = { [weak self] pin in
             guard let myself = self else { return }
             if pin.count == myself.store.state.pinLength {
                 self?.authenticate(pin: pin)
             }
+        }
+        
+        lockScreenView.didTapQR = { [weak self]  in
+            guard let myself = self else { return }
+            myself.showLTCAddress()
         }
     }
 
@@ -119,6 +118,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
     private func authenticationFailed() {
         saveEvent("login.failed")
         lockScreenView.viewModel.authenticationFailed = true
+        // TBD  Add Animation
         //		pinView.shake { [weak self] in
         //			self?.pinPadViewController.view.isUserInteractionEnabled = true
         //		}
@@ -156,7 +156,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
     
 	@objc func showLTCAddress() {
 		store.perform(action: RootModalActions.Present(modal: .loginAddress))
-        self.lockScreenView.viewModel.userDidTapQR = nil
+        self.lockScreenView.viewModel.shouldShowQR = false
 	}
 
 	private var isWalletDisabled: Bool {

@@ -39,14 +39,14 @@ class FakeAuthenticator: WalletAuthenticator {
 }
 
 // This test will test against the live API at api.grunt.ltd
-class BRAPIClientTests: XCTestCase {
+class BWAPIClientTests: XCTestCase {
 	var authenticator: WalletAuthenticator!
-	var client: BRAPIClient!
+	var client: BWAPIClient!
 
 	override func setUp() {
 		super.setUp()
 		authenticator = FakeAuthenticator() // each test will get its own account
-		client = BRAPIClient(authenticator: authenticator)
+		client = BWAPIClient(authenticator: authenticator)
 	}
 
 	override func tearDown() {
