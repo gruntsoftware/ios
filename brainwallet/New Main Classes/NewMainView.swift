@@ -12,9 +12,14 @@ struct NewMainView: View {
     
     @ObservedObject
     var newMainViewModel: NewMainViewModel
+    
+    @ObservedObject
+    var newReceiveViewModel: NewReceiveViewModel
      
-    init(viewModel: NewMainViewModel) {
+    init(viewModel: NewMainViewModel,
+         receiveViewModel: NewReceiveViewModel) {
         newMainViewModel = viewModel
+        newReceiveViewModel = receiveViewModel
     }
     var body: some View {
         GeometryReader { geometry in
@@ -35,7 +40,6 @@ struct NewMainView: View {
                 .transition(.opacity)
                     
                 VStack {
-                    Group {
                         SimpleHeaderView(viewModel: newMainViewModel)
                             .frame(minHeight: 60.0,
                                     maxHeight: height * 0.10,
@@ -63,14 +67,15 @@ struct NewMainView: View {
                                 }
                                 .toolbar(.visible, for: .tabBar)
                                 .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
-                            NewReceiveView(viewModel: newMainViewModel)
+                            
+                            NewReceiveView(viewModel: newReceiveViewModel)
                                 .tabItem {
                                     Label("Receive", systemImage: "square.and.arrow.down")
                                 }
                                 .toolbar(.visible, for: .tabBar)
                                 .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
-                        }
-                        .frame(minHeight: 350.0,
+                            }
+                            .frame(minHeight: 350.0,
                                 maxHeight: height * 0.50,
                                 alignment: .bottom)
                         
@@ -84,7 +89,6 @@ struct NewMainView: View {
                 }
             }
         }
-    }
 }
 
 

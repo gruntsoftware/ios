@@ -17,10 +17,7 @@ struct NewSendView: View {
         newMainViewModel = viewModel
     }
     var body: some View {
-        GeometryReader { geometry in
-            
-            let width = geometry.size.width
-            let height = geometry.size.height
+        GeometryReader { geometry in 
             
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)

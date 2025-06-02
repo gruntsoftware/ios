@@ -7,6 +7,8 @@ let timeSinceLastExitKey = "TimeSinceLastExit"
 let shouldRequireLoginTimeoutKey = "ShouldRequireLoginTimeoutKey"
 let numberOfBrainwalletLaunches = "NumberOfBrainwalletLaunches"
 let userDidPreferDarkModeKey = "UserDidPreferDarkMode"
+let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
+
 
 class ApplicationController: Subscriber, Trackable {
 	// Ideally the window would be private, but is unfortunately required
@@ -27,7 +29,7 @@ class ApplicationController: Subscriber, Trackable {
 	private var urlController: URLController?
 	private var defaultsUpdater: UserDefaultsUpdater?
 	private var reachability = ReachabilityMonitor()
-	private let noAuthApiClient = BRAPIClient(authenticator: NoAuthAuthenticator())
+	private let noAuthApiClient = BWAPIClient(authenticator: NoAuthAuthenticator())
 	private var fetchCompletionHandler: ((UIBackgroundFetchResult) -> Void)?
 	private var launchURL: URL?
 	private var hasPerformedWalletDependentInitialization = false

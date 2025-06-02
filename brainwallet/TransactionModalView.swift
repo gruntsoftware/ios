@@ -16,9 +16,7 @@ struct TransactionModalView: View {
 
 	var body: some View {
         
-        GeometryReader { geometry in
-            
-            let width = geometry.size.width
+        GeometryReader { geometry in 
             
             let buttonSize = 30.0
             ZStack {

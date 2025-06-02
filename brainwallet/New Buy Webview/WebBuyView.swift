@@ -9,98 +9,64 @@ import SwiftUI
   
 struct WebBuyView: View {
     
-    private var receiveAddress: String = ""
-    
+    @ObservedObject
+    var viewModel: NewReceiveViewModel
+      
     @State
     private var shouldScroll: Bool = false
     
     @State
     private var shouldShowCopied: Bool = false
     
-    private var uuidString = UUID().uuidString
+    @State
+    private var didFetchURLString: Bool = false
     
-    private var urlString = ""
+    private let signedURLString = ""
+    
+    @State
     private var url: URL?
-    private var mpPrefix = {
-        #if DEBUG
-            return APIServer.mp_widget_debug_prefix
-        #else
-            return APIServer.mp_widget_prod_prefix
-        #endif
-    }()
     
-    init(receiveAddress: String) {
-        
-        ///TEMP USAGE:  After launch integrate api server
-        self.urlString = "https://brainwallet.co/mobile-top-up.html"
-        
-        self.receiveAddress = receiveAddress
-        
-        ///TBD:  After launch integrate api server
-        let signUrlString = mpPrefix + "?apiKey=" + APIServer.mp_pk_live + "&address=\(receiveAddress)&uid=\(UUID().uuidString)"
+    private var signingData: MoonpaySigningData
 
-        if let url = URL(string: urlString) {
-            self.url = url
-        }
+    init(signingData: MoonpaySigningData, viewModel: NewReceiveViewModel) {
+        
+        self.signingData = signingData
+        self.viewModel = viewModel
     }
     
     var body: some View {
         GeometryReader { geometry in
-            let width = geometry.size.width
-            let height = geometry.size.height
+
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {
-                    WebView(url: url!, scrollToSignup: $shouldScroll)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    
-                    Button(action: {
-                        UIPasteboard.general.string = receiveAddress
-                        shouldShowCopied.toggle()
-                    }) {
-                        HStack {
-                            Image(systemName: "doc.on.clipboard")
-                                .foregroundColor(BrainwalletColor.content)
-                            
-                            
-                            VStack {
-                                
-                                Text("Deposit LTC Address")
-                                    .font(.caption)
-                                    .multilineTextAlignment(.leading)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .foregroundColor(BrainwalletColor.content)
-                                Text(receiveAddress)
-                                    .font(.footnote)
-                                    .multilineTextAlignment(.leading)
-                                    .truncationMode(.middle)
-                                    .frame(maxWidth: width * 0.8, alignment: .leading)
-                                    .foregroundColor(BrainwalletColor.content)
-                            }
-                            if shouldShowCopied {
-                                Text("Copied")
-                                    .font(.footnote)
-                                    .multilineTextAlignment(.trailing)
-                                    .frame(maxWidth: 60.0, alignment: .trailing)
-                                    .foregroundColor(BrainwalletColor.content).onAppear {
-                                        delay(2.0) {
-                                            self.shouldShowCopied = false
-                                        }
-                                    }
-                            }
-                        }
-                        .padding(10.0)
+                    if didFetchURLString {
+                        WebView(url: self.url!, scrollToSignup: $shouldScroll)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .padding(4.0)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: 44.0)
                 }
                 .frame(maxWidth: .infinity)
                 .padding([.leading, .trailing], 8.0)
             }
+            .onChange(of: viewModel.didFetchURLString) { didFetchURL in
+                
+                if didFetchURL {
+                 
+                     if let url = URL(string: viewModel.signedURLString) {
+                         self.url = url
+                         didFetchURLString = true
+                     }
+                     else {
+                         self.url = URL(string: "https://brainwallet.co/mobile-top-up.html")
+                         let fetchError: [String: String] = ["error": "signed_url_invalid"]
+                         LWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
+                         didFetchURLString = true
+                     }
+                    
+                }
+            }
         }
     }
 }
-struct WebBuyView_Previews: PreviewProvider {
-    static var previews: some View {
-        WebBuyView(receiveAddress: "")
-    }
-}
+

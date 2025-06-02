@@ -57,7 +57,7 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 		return wallet
 	}
 
-	var apiClient: BRAPIClient? {
+	var apiClient: BWAPIClient? {
 		guard masterPubKey != BRMasterPubKey() else { return nil }
 		return lazyAPIClient
 	}
@@ -82,9 +82,9 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 	                                          masterPubKey: self.masterPubKey,
 	                                          listener: self)
 
-	private lazy var lazyAPIClient: BRAPIClient? = {
+	private lazy var lazyAPIClient: BWAPIClient? = {
 		guard let wallet = self.wallet else { return nil }
-		return BRAPIClient(authenticator: self)
+		return BWAPIClient(authenticator: self)
 	}()
 
 	var wordList: [NSString]? {

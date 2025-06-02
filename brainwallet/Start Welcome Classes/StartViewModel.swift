@@ -7,7 +7,7 @@ class StartViewModel: ObservableObject {
 	// MARK: - Combine Variables
     
     @Published
-    var currentFiat: CurrencySelection = .USD
+    var currentFiat: SupportedFiatCurrencies = .USD
     
     @Published
     var userPrefersDarkMode: Bool = false
@@ -29,7 +29,7 @@ class StartViewModel: ObservableObject {
 	var store: Store
 	var walletManager: WalletManager
     
-    let currencies: [CurrencySelection] = CurrencySelection.allCases
+    let currencies: [SupportedFiatCurrencies] = SupportedFiatCurrencies.allCases
 
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store
@@ -84,10 +84,14 @@ class StartViewModel: ObservableObject {
 //		}
 //	}
     
-    func setCurrency(code: String) {
+    func userDidSetCurrencyPreference(currency: SupportedFiatCurrencies) {
+        
+        /// Legacy definition of default currency code....copiying here
+        /// Will normallize in refactor
+        let code = currency.code
+        UserDefaults.userPreferredCurrency = code
         UserDefaults.defaultCurrencyCode = code
         UserDefaults.standard.synchronize()
-        Bundle.setLanguage(code)
 
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: .preferredCurrencyChangedNotification,

@@ -4,6 +4,12 @@
     "" : {
       "shouldTranslate" : false
     },
+    " %@ " : {
+
+    },
+    " Done " : {
+
+    },
     "(Network fee + Service fee):" : {
       "localizations" : {
         "ar" : {
@@ -100,6 +106,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "（網路費+服務費）："
+          }
+        }
+      }
+    },
+    "%@" : {
+
+    },
+    "%@       %@ (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@       %2$@ (%3$@)"
+          }
+        }
+      }
+    },
+    "%@ (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$@)"
           }
         }
       }
@@ -203,6 +232,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld"
+          }
+        }
+      }
+    },
+    "%lld (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld (%2$@)"
           }
         }
       }
@@ -925,7 +964,19 @@
         }
       }
     },
+    "Brainwallet generates a new address after each transaction sent" : {
+
+    },
     "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)." : {
+
+    },
+    "Buy / Receive" : {
+
+    },
+    "BUY / RECEIVE" : {
+
+    },
+    "BUY LTC" : {
 
     },
     "Buy with MoonPay" : {
@@ -2453,6 +2504,7 @@
       }
     },
     "Deposit LTC Address" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -4269,6 +4321,9 @@
           }
         }
       }
+    },
+    "History" : {
+
     },
     "Ignore" : {
       "localizations" : {
@@ -7987,6 +8042,9 @@
           }
         }
       }
+    },
+    "Set custom amount:" : {
+
     },
     "Set PIN" : {
       "localizations" : {

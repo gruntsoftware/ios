@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDelegate {
-	let kInitialChildViewControllerIndex = 0 // TransactionsViewController
+	let kInitialChildViewControllerIndex = 2 // Buy / Receive
 	@IBOutlet var headerView: UIView!
 	@IBOutlet var containerView: UIView!
 	@IBOutlet var tabBar: UITabBar!
@@ -14,15 +14,17 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	private let largeFontSize: CGFloat = 24.0
 	private let smallFontSize: CGFloat = 12.0
 	private var hasInitialized = false
+    private var canUserBuy = false
 	private let dateFormatter = DateFormatter()
 	private let equalsLabel = UILabel(font: .barlowMedium(size: 12), color: BrainwalletUIColor.content)
 	private var regularConstraints: [NSLayoutConstraint] = []
 	private var swappedConstraints: [NSLayoutConstraint] = []
 	private let currencyTapView = UIView()
-	private let storyboardNames: [String] = ["Transactions", "Send", "Receive", "Buy"]
-	var storyboardIDs: [String] = ["TransactionsViewController", "SendLTCViewController", "ReceiveLTCViewController", "BuyHostingController"]
+	private let storyboardNames: [String] = ["Send","Transactions","Receive"]
+	var storyboardIDs: [String] = ["SendLTCViewController", "TransactionsViewController", "ReceiveLTCViewController"]
 	var viewControllers: [UIViewController] = []
 	var activeController: UIViewController?
+    var receiveHostingController: ReceiveHostingController?
 	var updateTimer: Timer?
 	var store: Store?
 	var walletManager: WalletManager?
@@ -89,14 +91,10 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 	func addViewControllers() {
 		for (index, storyboardID) in storyboardIDs.enumerated() {
-			if storyboardID == "BuyHostingController" {
-				let hostingController = BuyHostingController()
-				viewControllers.append(hostingController)
-			} else {
-				let controller = UIStoryboard(name: storyboardNames[index], bundle: nil).instantiateViewController(withIdentifier: storyboardID)
+				let controller = UIStoryboard(name: storyboardNames[index], bundle: nil)
+                .instantiateViewController(withIdentifier: storyboardID)
 				viewControllers.append(controller)
-			}
-		}
+        } 
 	}
 
 	private func setupModels() {
@@ -113,6 +111,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			secondaryBalanceLabel = UpdatingLabel(formatter: NumberFormatter())
 			primaryBalanceLabel = UpdatingLabel(formatter: NumberFormatter())
 		}
+        
 	}
 
 	private func setupViews() {
@@ -206,7 +205,6 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 		store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
                         callback: { _ in
-            self.tabBar.selectedItem = self.tabBar.items?.first
                     if let rate = store.state.currentRate {
                         let maxDigits = store.state.maxDigits
                         let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: maxDigits)
@@ -324,13 +322,14 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			NSLog("ERROR: no items found")
 			return
 		}
-
+        
+        /// To show all more compex state (Buy or Receive) toggle here for dev
+        canUserBuy = UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
 		for item in array {
 			switch item.tag {
-			case 0: item.title = "History"
-			case 1: item.title = "Send"
-			case 2: item.title = "Receive"
-			case 3: item.title = "Buy"
+			case 0: item.title = String(localized: "Send")
+			case 1: item.title = String(localized: "History")
+            case 2: item.title = canUserBuy ? String(localized: "Buy / Receive") : String(localized: "Receive")
 			default:
 				item.title = "NO-TITLE"
 				NSLog("ERROR: UITabbar item count is wrong")
@@ -358,13 +357,6 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			transactionVC.walletManager = walletManager
 			transactionVC.isLtcSwapped = store?.state.isLtcSwapped
 
-		case "brainwallet.BuyHostingController":
-            guard let buyHC = contentController as? BuyHostingController
-            else {
-                return
-            }
-            buyHC.isLoaded = true
-            
         case "brainwallet.SendLTCViewController":
 			guard let sendVC = contentController as? SendLTCViewController
 			else {
@@ -402,10 +394,34 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		if let tempActiveController = activeController {
 			hideContentController(contentController: tempActiveController)
 		}
+        
+        self.tabBar.selectedItem = item
 
-		// DEV: This happens because it relies on the tab in the storyboard tag
-		displayContentController(contentController: viewControllers[item.tag])
+        //New Receive SwiftUI HC
+        if item.tag == 2 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.presentNewReceiveModal()
+            }
+        }
+        else {
+            // DEV: This happens because it relies on the tab in the storyboard tag
+            displayContentController(contentController: viewControllers[item.tag])
+        }
 	}
+    
+    
+    func presentNewReceiveModal() {
+        guard let store = store,
+              let walletManager = walletManager else { return }
+        
+        let receiveVC = ReceiveHostingController(store: store, walletManager: walletManager, canUserBuy: self.canUserBuy)
+        
+        addChild(receiveVC)
+        receiveVC.view.frame = containerView.frame
+        view.addSubview(receiveVC.view)
+        receiveVC.didMove(toParent: self)
+    }
+    
 }
 
 extension TabBarViewController {

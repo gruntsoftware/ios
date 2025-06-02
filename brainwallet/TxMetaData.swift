@@ -78,7 +78,7 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 			super.init(key: txKey, version: ver, lastModified: date, deleted: del, data: bytesDat)
 			return
 		} catch let e {
-			debugPrint(":::[BRTxMetadataObject] Unable to initialize BRTxMetadataObject: \(String(describing: e))")
+			//debugPrint(":::[BRTxMetadataObject] Unable to initialize BRTxMetadataObject: \(String(describing: e))")
 		}
 
 		return nil
@@ -108,7 +108,6 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 	override func dataWasSet(_ value: Data) {
 		guard let s: TxMetaData = BRKeyedUnarchiver.unarchiveObjectWithData(value)
 		else {
-			debugPrint(":::[BRTxMetadataObject] unable to deserialise tx metadata")
 			return
 		}
 		blockHeight = s.blockHeight
