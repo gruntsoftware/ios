@@ -12,7 +12,7 @@ jobs:
       xcode: 15.3.0
     #parallelism: 2  Does not work of open source macOS
     resource_class: macos.m1.medium.gen1
-    working_directory: ~/litewallet-ios/
+    working_directory: ~/ios/
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: all_unit_tests
@@ -26,11 +26,11 @@ jobs:
           name: "Setup env files"
           command: |
             echo 'export $GOOGLE_SERVICES_PLIST="$GOOGLE_SERVICES_PLIST"' >> $BASH_ENV
-            echo "$GOOGLE_SERVICES_PLIST" | base64 --decode > litewallet/GoogleService-Info.plist
+            echo "$GOOGLE_SERVICES_PLIST" | base64 --decode > brainwallet/launch-resources/GoogleService-Info.plist
             echo 'export $REMOTE_CONFIG_DEFAULTS="$REMOTE_CONFIG_DEFAULTS"' >> $BASH_ENV
-            echo "$REMOTE_CONFIG_DEFAULTS" | base64 --decode > litewallet/remote-config-defaults.plist
-            echo 'export $DEBUG_PARTNER_KEYS="$DEBUG_PARTNER_KEYS"' >> $BASH_ENV
-            echo "$DEBUG_PARTNER_KEYS" | base64 --decode > litewallet/partner-keys.plist
+            echo "$REMOTE_CONFIG_DEFAULTS" | base64 --decode > brainwallet/launch-resources/remote-config-defaults.plist
+            echo 'export $DEBUG_SERVICE_DATA="$DEBUG_SERVICE_DATA"' >> $BASH_ENV
+            echo "$DEBUG_SERVICE_DATA" | base64 --decode > brainwallet/launch-resources/service-data.plist
       - restore_cache:
           name: Restore SPM Cache
           keys:
@@ -54,7 +54,7 @@ jobs:
   beta:
     macos:
       xcode: 14.0.1
-    working_directory: ~/litewallet-ios/
+    working_directory: ~/ios/
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: beta
@@ -66,7 +66,7 @@ jobs:
           name: Fastlane
           command: cd ios; bundle exec fastlane $FASTLANE_LANE
       - store_artifacts:
-          path: output/litewallet.ipa
+          path: output/brainwallet.ipa
 
 workflows:
   version: 2
