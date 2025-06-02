@@ -15,13 +15,45 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios all_unit_tests_old
+
+```sh
+[bundle exec] fastlane ios all_unit_tests_old
+```
+
+Run all the unit tests kcw
+
+### ios run_scan
+
+```sh
+[bundle exec] fastlane ios run_scan
+```
+
+use Gemfile
+
+### ios single_unit_test_all
+
+```sh
+[bundle exec] fastlane ios single_unit_test_all
+```
+
+Run all the unit tests - iPhone 15 Pro Max
+
 ### ios all_unit_tests
 
 ```sh
 [bundle exec] fastlane ios all_unit_tests
 ```
 
-Run all the unit tests
+Run all the unit tests ai
+
+### ios debug_tests
+
+```sh
+[bundle exec] fastlane ios debug_tests
+```
+
+
 
 ### ios build_and_archive
 

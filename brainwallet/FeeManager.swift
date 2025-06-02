@@ -79,7 +79,7 @@ class FeeUpdater: Trackable {
 	@objc func intervalRefresh() {
 		refresh(completion: {})
 		exchangeUpdater.refresh(completion: {
-			/// DEV: For testing
+			
 		})
 	}
 }

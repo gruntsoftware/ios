@@ -132,12 +132,3 @@ struct InputWordsView: View {
         }
     }
 }
-
-struct InputWordsView_Previews: PreviewProvider {
-    static var previews: some View {
-        let walletManager = (try? WalletManager(store: Store(), dbPath: nil))!
-        let viewModel = StartViewModel(store: Store(), walletManager: walletManager)
-             
-        //InputWordsView(viewModel: viewModel, path: .constant([.]))
-    }
-}

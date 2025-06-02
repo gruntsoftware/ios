@@ -175,10 +175,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			self?.amount = amount
 		}
         amountView.didUpdateFee = strongify(self) { myself, feeType in
-            guard let store = myself.store else {
-                debugPrint("::: ERROR: Store not initialized")
-                return
-            }
             
 			myself.feeType = feeType
             let fees = myself.store?.state.fees
@@ -261,7 +257,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		let balanceText = balanceAmount.description
 
 		let balanceOutput = String(format: "Balance: %1$@" , balanceText)
-		var combinedFeesOutput = ""
+        let combinedFeesOutput = ""
         var balanceColor: UIColor = BrainwalletUIColor.content
 
 		/// Check the amount is greater than zero and amount satoshis are not nil
@@ -291,7 +287,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			                                   selectedRate: currentRate,
 			                                   minimumFractionDigits: 2).description
             
-            let combinedFeesOutput = String(
+            _ = String(
                 format: String(localized: "(Network fee + Service fee):", bundle: .main),
                 networkFeeAmount,
                 serviceFeeAmount,

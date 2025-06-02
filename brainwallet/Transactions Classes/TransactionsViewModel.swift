@@ -99,7 +99,7 @@ class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
 
         // MARK: - Wallet State:  Max Digits
 
-        store.subscribe(self, selector: { $0.maxDigits != $1.maxDigits }, callback: { [weak self] _ in
+        store.subscribe(self, selector: { $0.maxDigits != $1.maxDigits }, callback: { _ in
         })
 
         // MARK: - Wallet State:  Sync Progress
@@ -142,32 +142,25 @@ class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
 
         // MARK: - Subscription:  Recommend Rescan
 
-        store.subscribe(self, selector: { $0.recommendRescan != $1.recommendRescan }, callback: { [weak self] _ in
-          //  self.attemptShowPrompt()
+        store.subscribe(self, selector: { $0.recommendRescan != $1.recommendRescan }, callback: { _ in
         })
 
         // MARK: - Subscription:  Did Upgrade PIN
 
-        store.subscribe(self, name: .didUpgradePin, callback: { [weak self] _ in
-//            if self?.currentPromptType == .upgradePin {
-//                self?.currentPromptType = nil
-//            }
+        store.subscribe(self, name: .didUpgradePin, callback: { _ in
+
         })
 
         // MARK: - Subscription:  Did Enable Share Data
 
-        store.subscribe(self, name: .didEnableShareData, callback: { [weak self] _ in
-//            if self?.currentPromptType == .shareData {
-//                self?.currentPromptType = nil
-//            }
+        store.subscribe(self, name: .didEnableShareData, callback: { _ in
+
         })
 
         // MARK: - Subscription:  Did Write Paper Key
 
-        store.subscribe(self, name: .didWritePaperKey, callback: { [weak self] _ in
-//            if self?.currentPromptType == .paperKey {
-//                self?.currentPromptType = nil
-//            }
+        store.subscribe(self, name: .didWritePaperKey, callback: { _ in
+
         })
 
         // MARK: - Subscription:  Memo Updated

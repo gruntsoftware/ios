@@ -93,7 +93,7 @@ class SignupWebView: WKWebView, WKNavigationDelegate {
 
 			let result = value as? String
 
-			print(value)
+			debugPrint(result)
 		})
 	}
 }

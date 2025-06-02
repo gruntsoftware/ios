@@ -16,7 +16,6 @@ struct CheckboxesStepView: View {
 		GeometryReader { geometry in
 
 			let width = geometry.size.width
-			let height = geometry.size.height
 
 			ZStack {
 				CreateStepConfig

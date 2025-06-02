@@ -64,7 +64,6 @@ class WelcomeViewController: UIViewController, ContentBoxPresenter {
 	}
 
 	private func setBodyText() {
-		let bodyText = String(localized: "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł).", bundle: .main)
 		let attributedString = NSMutableAttributedString(string: String(localized: "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł).", bundle: .main))
 		body.attributedText = attributedString
 	}
