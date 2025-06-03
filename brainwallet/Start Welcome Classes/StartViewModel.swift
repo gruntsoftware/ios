@@ -3,11 +3,14 @@ import Foundation
 import SwiftUI
 import UIKit
 
-class StartViewModel: ObservableObject {
+class StartViewModel: ObservableObject, Subscriber {
 	// MARK: - Combine Variables
     
     @Published
     var currentFiat: SupportedFiatCurrencies = .USD
+    
+    @Published
+    var currentValueInFiat = ""
     
     @Published
     var userPrefersDarkMode: Bool = false
@@ -17,16 +20,13 @@ class StartViewModel: ObservableObject {
 
 	@Published
 	var walletCreationDidFail: Bool = false
-  
-	@Published
-	var headerTitle = "S.CreateStep.MainTitle.intro"
 
 	// MARK: - Public Variables
 
 	var staticTagline = ""
 	var didTapCreate: (() -> Void)?
 	var didTapRecover: (() -> Void)?
-	var store: Store
+    var store: Store?
 	var walletManager: WalletManager
     
     let currencies: [SupportedFiatCurrencies] = SupportedFiatCurrencies.allCases
@@ -34,8 +34,42 @@ class StartViewModel: ObservableObject {
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store
 		self.walletManager = walletManager
+        fetchCurrentPrice()
 	}
+    private func fetchCurrentPrice() {
+         
+        guard let store = store,
+              let rate = store.state.currentRate?.rate,
+              let code = store.state.currentRate?.code
+        else {
+            debugPrint("::: Error: Rate not fetched ")
+            return
+        }
 
+        // Price Label
+        let fiatRate = Double(round(100000 * rate / 100000))
+        let formattedFiatString = String(format: "%3.2f", fiatRate)
+        let currencySymbol = Currency.getSymbolForCurrencyCode(code: code) ?? ""
+        currentValueInFiat = String(currencySymbol + formattedFiatString)
+    }
+    
+    // MARK: - Add Subscriptions
+
+    private func addSubscriptions() {
+        guard let store = store
+        else {
+            debugPrint("::: ERROR: Store not initialized")
+            return
+        }
+
+        store
+            .subscribe(self,
+                        selector: { $0.currentRate != $1.currentRate },
+                        callback: { [weak self] _ in
+                            self?.fetchCurrentPrice()
+                        })
+    }
+    
 	/// Completion Handler process
 	///  1. Create a closure var
 	///  2. Create an func with an escaping closure and the signature should match the one in step 1
@@ -89,7 +123,7 @@ class StartViewModel: ObservableObject {
         /// Legacy definition of default currency code....copiying here
         /// Will normallize in refactor
         let code = currency.code
-        UserDefaults.userPreferredCurrency = code
+        UserDefaults.userPreferredBuyCurrency = code
         UserDefaults.defaultCurrencyCode = code
         UserDefaults.standard.synchronize()
 

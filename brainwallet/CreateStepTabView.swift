@@ -36,7 +36,7 @@ struct CreateStepTabView: View {
 					}
 
 					HStack {
-						Text(viewModel.headerTitle)
+						Text("Create Wallet")///TBD naming
 							.font(.barlowBold(size: 30.0))
                             .foregroundColor(BrainwalletColor.content)
 							.padding([.bottom, .top], 10.00)

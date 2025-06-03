@@ -48,6 +48,9 @@ struct StartView: View {
 	private var animationAmount = 0.0
     
     @State
+    private var currentValueInFiat = ""
+    
+    @State
     private var pickedCurrency: SupportedFiatCurrencies = .USD
 
 	@State
@@ -70,6 +73,12 @@ struct StartView: View {
                     VStack {
                         
                         Group {
+                            Text(currentValueInFiat)
+                                .font(Font(UIFont.barlowLight(size: 16.0)))
+                                .foregroundColor(BrainwalletColor.content)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .padding(.all, 6.0)
+                        
                             Image("bw-logotype")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -250,6 +259,11 @@ struct StartView: View {
                     }
                 }
             })
+            .onAppear {
+                Task {
+                    currentValueInFiat = String(format: String(localized: "%@ = 1Ł"), startViewModel.currentValueInFiat)
+                }
+            }
         }
     }
 }
