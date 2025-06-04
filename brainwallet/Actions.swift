@@ -173,9 +173,15 @@ enum DefaultCurrency {
 		let reduce: Reducer
 		init(_ defaultCurrencyCode: String) {
 			UserDefaults.defaultCurrencyCode = defaultCurrencyCode
+            UserDefaults.standard.synchronize()
 			reduce = { $0.clone(defaultCurrencyCode: defaultCurrencyCode) }
-			saveEvent("event.setDefaultCurrency", attributes: ["code": defaultCurrencyCode])
-		}
+            
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .preferredCurrencyChangedNotification,
+                                                object: nil,
+                                                userInfo: nil)
+            }
+ 		}
 	}
 }
 
