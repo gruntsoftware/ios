@@ -40,7 +40,7 @@ class StartViewModel: ObservableObject, Subscriber {
          
         guard let store = store,
               let rate = store.state.currentRate?.rate,
-              let code = store.state.currentRate?.code
+              let code: String = store.state.currentRate?.code
         else {
             debugPrint("::: Error: Rate not fetched ")
             return
@@ -49,8 +49,8 @@ class StartViewModel: ObservableObject, Subscriber {
         // Price Label
         let fiatRate = Double(round(100000 * rate / 100000))
         let formattedFiatString = String(format: "%3.2f", fiatRate)
-        let currencySymbol = Currency.getSymbolForCurrencyCode(code: code) ?? ""
-        currentValueInFiat = String(currencySymbol + formattedFiatString)
+        
+        currentValueInFiat = String(formattedFiatString + code)
     }
     
     // MARK: - Add Subscriptions
