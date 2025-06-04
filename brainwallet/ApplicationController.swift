@@ -57,8 +57,13 @@ class ApplicationController: Subscriber, Trackable {
         
         _ = walletManager?.wallet // attempt to initialize wallet
 
+        ///Init exchange sooner
+        exchangeUpdater = ExchangeUpdater(store: store, walletManager: tempWalletManager)
+        exchangeUpdater?.fetchRates {
+            //
+        }
         
-		DispatchQueue.main.async {
+        DispatchQueue.main.async {
 			self.didInitWallet = true
 			if !self.hasPerformedWalletDependentInitialization {
 				self.didInitWalletManager()
@@ -128,7 +133,6 @@ class ApplicationController: Subscriber, Trackable {
 		}
 		exchangeUpdater?.refresh(completion: {})
 		feeUpdater?.refresh()
-		// walletManager.apiClient?.kv?.syncAllKeys { debugPrint(":::KV finished syncing. err: \(String(describing: $0))") }
 		if modalPresenter?.walletManager == nil {
 			modalPresenter?.walletManager = walletManager
 		}
@@ -142,7 +146,6 @@ class ApplicationController: Subscriber, Trackable {
 		}
 		exchangeUpdater?.refresh(completion: {})
 		feeUpdater?.refresh()
-		// walletManager.apiClient?.kv?.syncAllKeys { debugPrint(":::KV finished syncing. err: \(String(describing: $0))") }
 		if modalPresenter?.walletManager == nil {
 			modalPresenter?.walletManager = walletManager
 		}
@@ -158,7 +161,6 @@ class ApplicationController: Subscriber, Trackable {
 		if !store.state.isLoginRequired {
 			UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: timeSinceLastExitKey)
 		}
-		// walletManager?.apiClient?.kv?.syncAllKeys { debugPrint(":::KV finished syncing. err: \(String(describing: $0))") }
 	}
 
 	func performFetch(_ completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

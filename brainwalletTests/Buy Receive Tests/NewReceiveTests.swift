@@ -17,14 +17,14 @@ class NewReceiveViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Clear UserDefaults before each test
-        UserDefaults.standard.removeObject(forKey: "userPreferredCurrency")
+        UserDefaults.standard.removeObject(forKey: "userPreferredBuyCurrency")
         UserDefaults.standard.removeObject(forKey: "userPreferredDarkTheme")
     }
     
     override func tearDown() {
         sut = nil
         // Clean up UserDefaults after each test
-        UserDefaults.standard.removeObject(forKey: "userPreferredCurrency")
+        UserDefaults.standard.removeObject(forKey: "userPreferredBuyCurrency")
         UserDefaults.standard.removeObject(forKey: "userPreferredDarkTheme")
         super.tearDown()
     }
@@ -81,20 +81,20 @@ class NewReceiveViewModelTests: XCTestCase {
     
     // MARK: - UserDefaults Integration Tests
     
-    func testUserPreferredCurrencyDefault() {
+    func testUserPreferredBuyCurrencyDefault() {
         // Test UserDefaults extension behavior
-        UserDefaults.standard.removeObject(forKey: "userPreferredCurrency")
+        UserDefaults.standard.removeObject(forKey: "userPreferredBuyCurrency")
         
-        let defaultCurrency = UserDefaults.userPreferredCurrency
+        let defaultCurrency = UserDefaults.userPreferredBuyCurrency
         
         XCTAssertEqual(defaultCurrency, "USD") // Should default to USD
     }
     
-    func testUserPreferredCurrencySetting() {
+    func testUserPreferredBuyCurrencySetting() {
         // Test setting and getting currency preference
-        UserDefaults.userPreferredCurrency = "EUR"
+        UserDefaults.userPreferredBuyCurrency = "EUR"
         
-        let retrievedCurrency = UserDefaults.userPreferredCurrency
+        let retrievedCurrency = UserDefaults.userPreferredBuyCurrency
         
         XCTAssertEqual(retrievedCurrency, "EUR")
     }
@@ -304,12 +304,12 @@ class NewReceiveViewModelTests: XCTestCase {
 // MARK: - UserDefaults Extension for Testing
 
 extension UserDefaults {
-    static var userPreferredCurrency: String {
+    static var userPreferredBuyCurrency: String {
         get {
-            return UserDefaults.standard.string(forKey: "userPreferredCurrency") ?? "USD"
+            return UserDefaults.standard.string(forKey: "userPreferredBuyCurrency") ?? "USD"
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: "userPreferredCurrency")
+            UserDefaults.standard.set(newValue, forKey: "userPreferredBuyCurrency")
         }
     }
     

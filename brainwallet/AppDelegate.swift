@@ -61,18 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 				debugPrint(settings.debugDescription)
 				if settings.authorizationStatus == .denied {
-//					self.pushNotifications.clearAllState {
-//						LWAnalytics.logEventWithParameters(itemName: ._20240506_DPN)
-//					}
-//
-//					self.pushNotifications.stop {
-//						LWAnalytics.logEventWithParameters(itemName: ._20240510_SPN)
-//					}
 				}
 			})
-            
-            // Fetch Locale for MP
-            
 
 		} onFailure: { error in
 
