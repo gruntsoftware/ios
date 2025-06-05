@@ -12,6 +12,11 @@ struct LockScreenFooterView: View {
     
     @ObservedObject
     var viewModel: LockScreenViewModel
+    
+    @State
+    private var shoulShowWipeAlert: Bool = false
+    
+    
 
     init(viewModel: LockScreenViewModel) {
         self.viewModel = viewModel
@@ -31,43 +36,67 @@ struct LockScreenFooterView: View {
                         Button(action: {
                             viewModel.userPrefersDarkMode.toggle()
                         }) {
-                            Image(systemName: viewModel.userPrefersDarkMode ? "sun.max.circle" : "moon.circle")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: buttonSize, height: buttonSize,
-                                       alignment: .center)
-                                .foregroundColor(BrainwalletColor.content)
-                                
+                            VStack {
+                                Spacer()
+                                Image(systemName: viewModel.userPrefersDarkMode ? "sun.max.circle" : "moon.circle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: buttonSize, height: buttonSize,
+                                           alignment: .bottom)
+                                    .foregroundColor(BrainwalletColor.content)
+                            }
+                            
                         }
                         .frame(minWidth: width * 0.20, minHeight: 40.0,
-                               alignment: .center)
+                               alignment: .bottom)
                         
                         Button(action: {
                             viewModel.userDidTapQR?()
                             viewModel.shouldShowQR.toggle()
                         }) {
-                            Image(systemName:"qrcode")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: buttonSize, height: buttonSize,
-                                       alignment: .center)
-                                .foregroundColor(BrainwalletColor.content)
-                                .tint(BrainwalletColor.surface)
+                            VStack {
+                                Spacer()
+                                Image(systemName:"qrcode")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: buttonSize * 1.4, height: buttonSize * 1.4,
+                                           alignment: .bottom)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .tint(BrainwalletColor.surface)
+                            }
+                        }
+                        .frame(minWidth: width * 0.20, minHeight: 70.0,
+                               alignment: .bottom)
+                        .padding(8.0)
+                        
+                        Button(action: {
+                            shoulShowWipeAlert.toggle()
+                        }) {
+                            VStack {
+                                Spacer()
+                                Image(systemName:"trash")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: buttonSize, height: buttonSize,
+                                           alignment: .bottom)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .tint(BrainwalletColor.surface)
+                            }
                         }
                         .frame(minWidth: width * 0.20, minHeight: 40.0,
-                               alignment: .center) 
+                               alignment: .bottom)
                     }
-                    .frame(height: 60.0, alignment: .center)
+                    .frame(height: 55.0, alignment: .center)
                     .frame(maxWidth: .infinity)
                     .padding([.leading, .trailing], 8.0)
+                    .sheet(isPresented: $shoulShowWipeAlert) {
+                        WipeWalletView(viewModel: viewModel, shouldDismiss: $shoulShowWipeAlert, didCompleteWipe: $viewModel.didCompleteWipingWallet)
+                    }
+                    .onChange(of: viewModel.didCompleteWipingWallet) { newValue in
+                        shoulShowWipeAlert.toggle()
+                    }
                 }
             }
         }
-    }
-}
-struct LockScreenFooterView_Previews: PreviewProvider {
-    static let viewModel = LockScreenViewModel(store: Store())
-    static var previews: some View {
-        LockScreenFooterView(viewModel: viewModel)
     }
 }

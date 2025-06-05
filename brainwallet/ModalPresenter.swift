@@ -408,9 +408,7 @@ class ModalPresenter: Subscriber, Trackable {
                             }
 
                             group.notify(queue: .main) {
-                                DispatchQueue.main.asyncAfter(deadline: .now()) {
-                                    UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-                                }
+                                NotificationCenter.default.post(name: .walletDidWipeNotification, object: nil)
                             }
                             
                         }))

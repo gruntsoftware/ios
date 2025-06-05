@@ -19,6 +19,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		self.store = store
 		self.walletManager = walletManager
 		self.isPresentedForLock = isPresentedForLock
+        
         lockScreenView = LockScreenHostingController(store: self.store)
 		super.init(nibName: nil, bundle: nil)
 	}
@@ -74,6 +75,14 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
             guard let myself = self else { return }
             myself.showLTCAddress()
         }
+        
+        lockScreenView.didTapWipeWallet = { [weak self] userWantsToDelete in
+            guard let myself = self else { return }
+            
+            if userWantsToDelete {
+                myself.wipeWallet()
+            }
+        }
     }
 
 	private func addSubviews() {
@@ -90,6 +99,39 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
             lockScreenView.view.heightAnchor.constraint(equalToConstant: view.frame.height),
 		])
 	}
+    
+    private func wipeWallet() {
+                guard let walletManager = walletManager else {
+                    return
+                }
+        
+                let group = DispatchGroup()
+        
+                group.enter()
+                DispatchQueue.walletQueue.async {
+                    _ = walletManager.peerManager?.disconnect()
+                    LWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
+                    group.leave()
+                }
+
+                group.enter()
+                DispatchQueue.walletQueue.async {
+                    _ = walletManager.wipeWallet(pin: "forceWipe")
+                    group.leave()
+                }
+        
+                group.enter()
+                DispatchQueue.walletQueue.asyncAfter(deadline: .now() + 1.0) {
+                    _ = walletManager.deleteWalletDatabase(pin: "forceWipe")
+                    group.leave()
+                }
+        
+                group.notify(queue: .main) {
+                    self.lockScreenView.walletWiped()
+                    NotificationCenter.default.post(name: .walletDidWipeNotification, object: nil)
+                }
+    }
+    
 
 	private func authenticate(pin: String) {
 		guard let walletManager = walletManager else { return }

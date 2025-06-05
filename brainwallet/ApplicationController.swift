@@ -11,42 +11,40 @@ let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
 
 
 class ApplicationController: Subscriber, Trackable {
-	// Ideally the window would be private, but is unfortunately required
-	// by the UIApplicationDelegate Protocol
-
-	var window: UIWindow?
-	fileprivate let store = Store()
-	private var startFlowController: StartFlowPresenter?
-	private var modalPresenter: ModalPresenter?
-	fileprivate var walletManager: WalletManager?
-	private var walletCoordinator: WalletCoordinator?
-	private var exchangeUpdater: ExchangeUpdater?
-	private var feeUpdater: FeeUpdater?
-	private let transitionDelegate: ModalTransitionDelegate
-	private var kvStoreCoordinator: KVStoreCoordinator?
-	private var mainViewController: MainViewController?
-	fileprivate var application: UIApplication?
-	private var urlController: URLController?
-	private var defaultsUpdater: UserDefaultsUpdater?
-	private var reachability = ReachabilityMonitor()
-	private let noAuthApiClient = BWAPIClient(authenticator: NoAuthAuthenticator())
-	private var fetchCompletionHandler: ((UIBackgroundFetchResult) -> Void)?
-	private var launchURL: URL?
-	private var hasPerformedWalletDependentInitialization = false
-	private var didInitWallet = false
-
-	init() {
-		transitionDelegate = ModalTransitionDelegate(type: .transactionDetail, store: store)
-		DispatchQueue.walletQueue.async {
-			guardProtected(queue: DispatchQueue.walletQueue) {
-				self.initWallet()
-			}
-		}
-	}
-
-	private func initWallet() {
-	//walletManager = try? WalletManager(store: store, dbPath: nil)
-	//	_ = walletManager?.wallet // attempt to initialize wallet
+    // Ideally the window would be private, but is unfortunately required
+    // by the UIApplicationDelegate Protocol
+    
+    var window: UIWindow?
+    fileprivate let store = Store()
+    private var startFlowController: StartFlowPresenter?
+    private var modalPresenter: ModalPresenter?
+    fileprivate var walletManager: WalletManager?
+    private var walletCoordinator: WalletCoordinator?
+    private var exchangeUpdater: ExchangeUpdater?
+    private var feeUpdater: FeeUpdater?
+    private var transitionDelegate: ModalTransitionDelegate
+    private var kvStoreCoordinator: KVStoreCoordinator?
+    private var mainViewController: MainViewController?
+    fileprivate var application: UIApplication?
+    private var urlController: URLController?
+    private var defaultsUpdater: UserDefaultsUpdater?
+    private var reachability = ReachabilityMonitor()
+    private let noAuthApiClient = BWAPIClient(authenticator: NoAuthAuthenticator())
+    private var fetchCompletionHandler: ((UIBackgroundFetchResult) -> Void)?
+    private var launchURL: URL?
+    private var hasPerformedWalletDependentInitialization = false
+    private var didInitWallet = false
+    
+    init() {
+        transitionDelegate = ModalTransitionDelegate(type: .transactionDetail, store: store)
+        DispatchQueue.walletQueue.async {
+            guardProtected(queue: DispatchQueue.walletQueue) {
+                self.initWallet()
+            }
+        }
+    }
+    
+    private func initWallet() {
         
         guard let tempWalletManager = try? WalletManager(store: store, dbPath: nil) else {
             assertionFailure("WalletManager no initialized")
@@ -56,21 +54,19 @@ class ApplicationController: Subscriber, Trackable {
         walletManager = tempWalletManager
         
         _ = walletManager?.wallet // attempt to initialize wallet
-
+        
         ///Init exchange sooner
         exchangeUpdater = ExchangeUpdater(store: store, walletManager: tempWalletManager)
-        exchangeUpdater?.fetchRates {
-            //
-        }
+        exchangeUpdater?.fetchRates {}
         
         DispatchQueue.main.async {
-			self.didInitWallet = true
-			if !self.hasPerformedWalletDependentInitialization {
-				self.didInitWalletManager()
-			}
-		}
-	}
-
+            self.didInitWallet = true
+            if !self.hasPerformedWalletDependentInitialization {
+                self.didInitWalletManager()
+            }
+        }
+    }
+    
 	func launch(application: UIApplication, window: UIWindow?) {
 		self.application = application
 		self.window = window
@@ -93,7 +89,7 @@ class ApplicationController: Subscriber, Trackable {
 	private func setup() {
 		setupDefaults()
 		countLaunches()
-		setupRootViewController()
+        setupRootViewController()
 		window?.makeKeyAndVisible()
 		offMainInitialization()
 		store.subscribe(self, name: .reinitWalletManager(nil), callback: {

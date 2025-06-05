@@ -78,6 +78,9 @@ struct NewReceiveView: View {
     private var shouldAnimateMPLogo = false
     
     @State
+    private var didCopyAddress = false
+    
+    @State
     private var showMPLogo = true
     
    @FocusState
@@ -143,20 +146,20 @@ struct NewReceiveView: View {
                             ZStack {
                                 WebBuyView(signingData: viewModel.buildUnsignedMoonPayUrl(), viewModel: viewModel)
                                 
-                                    Image("moonpay-symbol-prp")
-                                        .resizable()
-                                        .frame(width: 50.0, height: 50.0)
-                                        .offset(x: shouldAnimateMPLogo ? 20 : 0, y: shouldAnimateMPLogo ? -20 : 0)
-                                        .onAppear() {
-                                            
-                                            withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
-                                                shouldAnimateMPLogo = true
-                                            }
-                                            delay(2.0) {
-                                                showMPLogo = false
-                                            }
+                                Image("moonpay-symbol-prp")
+                                    .resizable()
+                                    .frame(width: 50.0, height: 50.0)
+                                    .offset(x: shouldAnimateMPLogo ? 20 : 0, y: shouldAnimateMPLogo ? -20 : 0)
+                                    .onAppear() {
+                                        
+                                        withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                                            shouldAnimateMPLogo = true
                                         }
-                                        .opacity(showMPLogo ? 1.0 : 0.0)
+                                        delay(2.0) {
+                                            showMPLogo = false
+                                        }
+                                    }
+                                    .opacity(showMPLogo ? 1.0 : 0.0)
                             }
                         }
                         .frame(width: width * 0.95,
@@ -196,19 +199,20 @@ struct NewReceiveView: View {
                                     Spacer()
                                 }
                                 .frame(alignment: .top)
+                                
                                 VStack {
                                     Text(newAddress)
                                         .font(ginormousFont)
                                         .kerning(0.3)
                                         .lineLimit(3)
                                         .multilineTextAlignment(.leading)
-                                        .frame(height: 100)
+                                        .frame(height: 60.0)
                                         .foregroundColor(BrainwalletColor.content)
                                     
                                     VStack {
                                         HStack {
                                             
-                                            Text("Brainwallet generates a new address after each transaction sent")
+                                            Text("Copy address: ")
                                                 .font(subDetailFont)
                                                 .lineLimit(3)
                                                 .multilineTextAlignment(.leading)
@@ -216,6 +220,7 @@ struct NewReceiveView: View {
                                             
                                             Button(action: {
                                                 UIPasteboard.general.string = viewModel.newReceiveAddress
+                                                didCopyAddress.toggle()
                                             }) {
                                                 ZStack {
                                                     Ellipse()
@@ -246,7 +251,7 @@ struct NewReceiveView: View {
                                 }
                                 
                             }
-                            .frame(width: modalWidth, height: keyboardFocused ? height * 0.01 : height * 0.3, alignment: .top)
+                            .frame(width: modalWidth, height: keyboardFocused ? height * 0.01 : height * 0.25, alignment: .top)
                             .opacity(keyboardFocused ? 0 : 1)
                             /// Receive Address Group
                             Divider()
@@ -273,7 +278,7 @@ struct NewReceiveView: View {
                                         
                                         VStack {
                                             
-                                            Text(String(format: "~ %.3f Ł", quotedLTCAmount))
+                                            Text(String(format: "%.3f Ł", quotedLTCAmount))
                                                 .font(ginormousFont)
                                                 .kerning(0.3)
                                                 .foregroundColor(BrainwalletColor.content)
@@ -324,7 +329,7 @@ struct NewReceiveView: View {
                                         }
                                         .tint(.orange)
                                         .padding(.all, 10.0)
-
+                                        
                                     }
                                     .frame(width: modalWidth, height: 35.0)
                                     HStack {
@@ -433,7 +438,7 @@ struct NewReceiveView: View {
                                 .padding(.all, 8.0)
                             }
                             /// Set Amount Button
-
+                            
                         }
                         .frame(width: width * 0.95,
                                height: (viewModel.canUserBuyLTC && isExpanded) ? modalBuyViewHeight : modalReceiveViewHeight,
@@ -468,6 +473,14 @@ struct NewReceiveView: View {
                     pickedCurrency = viewModel.pickedCurrency
                     updateFiatAmounts()
                 }
+                .alert("Address Copied", isPresented: $didCopyAddress,
+                       actions: {
+                    HStack {
+                        Button("Ok" , role: .cancel) {
+                            didCopyAddress.toggle()
+                        }
+                    }
+                })
             }
         }
     }
