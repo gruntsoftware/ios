@@ -42,7 +42,10 @@ struct WipeWalletView: View {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    
+                    Capsule().foregroundColor(BrainwalletColor.gray)
+                        .frame(width: 50.0, height: 5.0, alignment: .center)
+                        .padding(.all, 20.0)
+
                     Text("Wipe Brainwallet")
                         .font(Font(UIFont.barlowBold(size: 32.0)))
                         .foregroundColor(BrainwalletColor.content)

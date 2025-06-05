@@ -26,6 +26,8 @@ struct LockScreenFooterView: View {
         GeometryReader { geometry in
             
             let width = geometry.size.width
+            let height = geometry.size.height
+
             
             let buttonSize = 30.0
             ZStack {
@@ -90,7 +92,9 @@ struct LockScreenFooterView: View {
                     .frame(maxWidth: .infinity)
                     .padding([.leading, .trailing], 8.0)
                     .sheet(isPresented: $shoulShowWipeAlert) {
-                        WipeWalletView(viewModel: viewModel, shouldDismiss: $shoulShowWipeAlert, didCompleteWipe: $viewModel.didCompleteWipingWallet)
+                        WipeWalletView(viewModel: viewModel,
+                                       shouldDismiss: $shoulShowWipeAlert,
+                                       didCompleteWipe: $viewModel.didCompleteWipingWallet)
                     }
                     .onChange(of: viewModel.didCompleteWipingWallet) { newValue in
                         shoulShowWipeAlert.toggle()

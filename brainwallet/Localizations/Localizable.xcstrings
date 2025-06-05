@@ -346,9 +346,6 @@
         }
       }
     },
-    "Action Required" : {
-
-    },
     "Address Already Used\n\n Litecoin addresses are intended for single use only.\n\nRe-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn't directly control the address." : {
 
     },
@@ -7545,6 +7542,9 @@
           }
         }
       }
+    },
+    "Save your 12 words" : {
+
     },
     "Scan" : {
       "localizations" : {
