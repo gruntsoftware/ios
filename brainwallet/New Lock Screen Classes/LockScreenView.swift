@@ -2,12 +2,18 @@ import SwiftUI
 
 struct LockScreenView: View {
 	// MARK: - Combine Variables
+    
+    let versionFont: Font = .barlowLight(size: 15.0)
+
 
 	@ObservedObject
 	var viewModel: LockScreenViewModel
 
 	@State
 	private var fiatValue = ""
+    
+    @State
+    private var debugLocale = ""
  
     @State
     private var pinState: [Bool] = [false,false,false,false]
@@ -22,6 +28,19 @@ struct LockScreenView: View {
 		self.viewModel = viewModel
 	}
 
+    func updateLocaleLabel() {
+        // Get current locale
+        let currentLocale = Locale.current
+        // Print locale identifier in native language
+        if let localeIdentifier = currentLocale.identifier as String? {
+            #if DEBUG || targetEnvironment(simulator)
+            let nativeLocaleName = currentLocale.localizedString(forIdentifier: localeIdentifier)
+            let nativeLocaleString = nativeLocaleName?.capitalized ?? localeIdentifier
+            debugLocale = "| " + nativeLocaleString
+            #endif
+        }
+    }
+    
 	var body: some View {
         
         GeometryReader { geometry in
@@ -68,15 +87,23 @@ struct LockScreenView: View {
                         .frame(width: width, height: 55.0, alignment: .center)
                         .padding(.bottom, 20.0)
                     
-                    Text(AppVersion.string)
-                        .font(Font(UIFont.barlowLight(size: 15.0)))
-                        .foregroundColor(BrainwalletColor.content)
-                        .frame(alignment: .center)
-                        .padding(.all, 10.0)
+                    HStack {
+                        Text(AppVersion.string)
+                            .frame(alignment: .center)
+                            .font(versionFont)
+                            .foregroundColor(BrainwalletColor.content)
+                            .padding(.all, 5.0)
+                        Text("\(debugLocale)")
+                            .frame(alignment: .center)
+                            .font(versionFont)
+                            .foregroundColor(BrainwalletColor.chili.opacity(0.4))
+                            .padding(.all, 5.0)
+                    }
                 }
                 .onAppear {
                     Task {
                         fiatValue = String(format: String(localized: "%@ = 1Ł"), viewModel.currentValueInFiat)
+                        updateLocaleLabel()
                     }
                 }
                 .onChange(of: viewModel.currentValueInFiat) { newValue in

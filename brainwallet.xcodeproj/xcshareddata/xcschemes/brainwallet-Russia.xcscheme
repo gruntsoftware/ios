@@ -65,7 +65,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "fr"
+      language = "en"
       region = "RU"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
@@ -84,7 +84,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <LocationScenarioReference
-         identifier = "San Francisco, CA, USA"
+         identifier = "Moscow, Russia"
          referenceType = "1">
       </LocationScenarioReference>
    </LaunchAction>
