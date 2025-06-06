@@ -18,9 +18,6 @@ class NewConfirmViewModel: ObservableObject, Subscriber {
     
     @Published
     var currencyCode: String = ""
-    //UserDefaults.writePaperPhraseDate = Date()
-    //store.trigger(name: .didWritePaperKey)
-    //didCompleteConfirmation?()
     
     var store: Store?
 

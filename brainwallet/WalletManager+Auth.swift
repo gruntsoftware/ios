@@ -385,7 +385,6 @@ extension WalletManager: WalletAuthenticator {
 			try setKeychainItem(key: KeychainKey.masterPubKey, item: nil as Data?)
 			try setKeychainItem(key: KeychainKey.seed, item: nil as Data?)
 			try setKeychainItem(key: KeychainKey.mnemonic, item: nil as String?, authenticated: true)
-			NotificationCenter.default.post(name: .walletDidWipeNotification, object: nil)
 			return true
 		} catch {
 			debugPrint(":::Wipe wallet error: \(error)")

@@ -7,7 +7,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
-	let applicationController = ApplicationController()
+	var applicationController = ApplicationController()
 	var remoteConfigurationHelper: RemoteConfigHelper?
 
 	var resourceRequest: NSBundleResourceRequest?

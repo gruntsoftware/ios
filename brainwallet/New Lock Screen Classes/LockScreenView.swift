@@ -46,8 +46,8 @@ struct LockScreenView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: width * 0.65)
-                        .padding(.top, 40.0)
-                        .padding(10.0)
+                        .padding(.top, 25.0)
+                        .padding(8.0)
                     
                     Spacer()
                     
@@ -65,14 +65,14 @@ struct LockScreenView: View {
                     
                     
                     LockScreenFooterView(viewModel: viewModel)
-                        .frame(width: width, height: 60.0, alignment: .center)
+                        .frame(width: width, height: 55.0, alignment: .center)
                         .padding(.bottom, 20.0)
                     
                     Text(AppVersion.string)
                         .font(Font(UIFont.barlowLight(size: 15.0)))
                         .foregroundColor(BrainwalletColor.content)
                         .frame(alignment: .center)
-                        .padding(.bottom, 10.0)
+                        .padding(.all, 10.0)
                 }
                 .onAppear {
                     Task {
@@ -98,11 +98,4 @@ struct LockScreenView: View {
             }
         }
 	}
-}
-
-struct LockScreenView_Previews: PreviewProvider {
-    static let viewModel = LockScreenViewModel(store: Store())
-    static var previews: some View {
-        LockScreenView(viewModel: viewModel)
-    }
 }

@@ -34,7 +34,42 @@ class StartFlowPresenter: Subscriber {
 		                		self?.presentLoginFlow(isPresentedForLock: true)
 		                	}
 		                })
+        
+        NotificationCenter.default.addObserver(self,
+                         selector: #selector(relaunchStartFlow),
+                         name: .walletDidWipeNotification,
+                         object: nil)
 	}
+    
+    @objc private func relaunchStartFlow() {
+        loginViewController = nil
+       // self.presentStartFlow()
+//    
+//        let startHostingController = StartHostingController(store: store,
+//                                                            walletManager: walletManager)
+//
+//    startHostingController.startViewModel.userWantsToCreate {
+//            self.pushPinCreationViewControllerForNewWallet()
+//        }
+//
+//        startHostingController.startViewModel.userWantsToRecover {
+//            let recoverIntro = RecoverWalletIntroViewController(didTapNext: self.pushRecoverWalletView)
+//            self.navigationController?.setClearNavbar()
+//            self.navigationController?.modalPresentationStyle = .fullScreen
+//            self.navigationController?.setNavigationBarHidden(false, animated: false)
+//            self.navigationController?.pushViewController(recoverIntro, animated: true)
+//        }
+//
+//        navigationController = ModalNavigationController(rootViewController: startHostingController)
+//        navigationController?.delegate = navigationControllerDelegate
+//        navigationController?.modalPresentationStyle = .fullScreen
+//    
+//
+//    if let startFlow = navigationController {
+//        startFlow.setNavigationBarHidden(true, animated: false)
+//        rootViewController.present(startFlow, animated: false, completion: nil)
+//    }
+    }
 
 	private func handleStartFlowChange(state: ReduxState) {
 		if state.isStartFlowVisible {
