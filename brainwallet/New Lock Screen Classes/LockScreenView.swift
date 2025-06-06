@@ -93,11 +93,13 @@ struct LockScreenView: View {
                             .font(versionFont)
                             .foregroundColor(BrainwalletColor.content)
                             .padding(.all, 5.0)
-                        Text("\(debugLocale)")
-                            .frame(alignment: .center)
-                            .font(versionFont)
-                            .foregroundColor(BrainwalletColor.chili.opacity(0.4))
-                            .padding(.all, 5.0)
+                        if !debugLocale.isEmpty {
+                            Text("\(debugLocale)")
+                                .frame(alignment: .center)
+                                .font(versionFont)
+                                .foregroundColor(BrainwalletColor.chili.opacity(0.8))
+                                .padding(.all, 5.0)
+                        }
                     }
                 }
                 .onAppear {

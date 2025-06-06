@@ -456,10 +456,7 @@ class ModalPresenter: Subscriber, Trackable {
 						return ""
 					}
 
-				}, callback: {
-					let localeView = UIHostingController(rootView: LocaleChangeView(viewModel: LocaleChangeViewModel()))
-					settingsNav.pushViewController(localeView, animated: true)
-				}),
+                }, callback: {}),
 				Setting(title: String(localized: "Sync") , callback: { [weak self] in
 					let alert = UIAlertController(title: String(localized: "Sync with Blockchain?") , message: String(localized: "You will not be able to send money while syncing."), preferredStyle: .alert)
 					alert.addAction(UIAlertAction(title:  String(localized: "Cancel")  , style: .default, handler: { _ in
