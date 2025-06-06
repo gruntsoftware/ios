@@ -13,7 +13,7 @@ struct StartView: View {
     let squareImageSize: CGFloat = 25.0
     let themeButtonSize: CGFloat = 28.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
+    let largeButtonHeight: CGFloat = 60.0
     let lottieFileName: String = "welcomeemoji20250212.json"
     
     
@@ -76,7 +76,7 @@ struct StartView: View {
                             Text(currentValueInFiat)
                                 .font(Font(UIFont.barlowLight(size: 16.0)))
                                 .foregroundColor(BrainwalletColor.content)
-                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .frame(maxWidth: .infinity, maxHeight: 20.0, alignment: .trailing)
                                 .padding(.all, 6.0)
                         
                             Image("bw-logotype")
@@ -87,8 +87,9 @@ struct StartView: View {
                                 .padding([.top,.bottom], verticalPadding)
                             
                             WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
-                                .frame(width: width * 0.9, height: height * 0.4, alignment: .center)
+                                .frame(height: height * 0.35, alignment: .center)
                                 .padding(.top, verticalPadding)
+                            ///width: width * 0.9,
 
                         }
                         
