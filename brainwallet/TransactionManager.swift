@@ -19,8 +19,6 @@ class TransactionManager: NSObject, Subscriber {
 
 		store.subscribe(self, selector: { $0.walletState.transactions != $1.walletState.transactions },
 		                callback: { state in
-            debugPrint(":::: TransactionManager subscribe walletState.transactions \(state.walletState.transactions.count)")
-
 		                	self.transactions = state.walletState.transactions
 		                })
 

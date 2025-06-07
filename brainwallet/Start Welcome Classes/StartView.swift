@@ -51,6 +51,9 @@ struct StartView: View {
     private var currentValueInFiat = ""
     
     @State
+    private var debugLocale = ""
+    
+    @State
     private var pickedCurrency: SupportedFiatCurrencies = .USD
 
 	@State
@@ -60,6 +63,19 @@ struct StartView: View {
         self.startViewModel = startViewModel
         self.newMainViewModel = newMainViewModel
 	}
+    
+    func updateLocaleLabel() {
+        // Get current locale
+        let currentLocale = Locale.current
+         //Print locale identifier in native language
+        if let localeIdentifier = currentLocale.identifier as String? {
+            #if DEBUG || targetEnvironment(simulator)
+            let nativeLocaleName = currentLocale.localizedString(forIdentifier: localeIdentifier)
+            let nativeLocaleString = nativeLocaleName?.capitalized ?? localeIdentifier
+            debugLocale = "| " + nativeLocaleString
+            #endif
+        }
+    }
 
     var body: some View {
         GeometryReader { geometry in
@@ -191,12 +207,20 @@ struct StartView: View {
                             }
                             .padding(.all, 8.0)
                         }
-                        
-                        Text(AppVersion.string)
-                            .frame(alignment: .center)
-                            .font(versionFont)
-                            .foregroundColor(BrainwalletColor.content)
-                            .padding(.all, 5.0)
+                        HStack {
+                            Text(AppVersion.string)
+                                .frame(alignment: .center)
+                                .font(versionFont)
+                                .foregroundColor(BrainwalletColor.content)
+                                .padding(.all, 5.0)
+                            if !debugLocale.isEmpty {
+                                Text("\(debugLocale)")
+                                    .frame(alignment: .center)
+                                    .font(versionFont)
+                                    .foregroundColor(BrainwalletColor.chili.opacity(0.8))
+                                    .padding(.all, 5.0)
+                            }
+                        }
                     }
                 }
                 .padding(.all, swiftUICellPadding)
@@ -263,6 +287,7 @@ struct StartView: View {
             .onAppear {
                 Task {
                     currentValueInFiat = String(format: String(localized: "%@ = 1Ł"), startViewModel.currentValueInFiat)
+                    updateLocaleLabel()
                 }
             }
         }

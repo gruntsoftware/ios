@@ -203,11 +203,11 @@ struct NewReceiveView: View {
                                 VStack {
                                     Text(newAddress)
                                         .font(ginormousFont)
-                                        .kerning(0.3)
                                         .lineLimit(3)
-                                        .multilineTextAlignment(.leading)
-                                        .frame(height: 60.0)
+                                        .multilineTextAlignment(.center)
+                                        .frame(height: 90.0)
                                         .foregroundColor(BrainwalletColor.content)
+                                        .padding(8.0)
                                     
                                     VStack {
                                         HStack {
@@ -367,6 +367,7 @@ struct NewReceiveView: View {
                                 .padding(.bottom, 5.0)
                                 .opacity(didFetchData ? 1.0 : 0.0)
                             }
+                            .opacity(viewModel.canUserBuyLTC ? 1.0 : 0.0)
                             /// Set Amount Group
                             
                             Divider()
