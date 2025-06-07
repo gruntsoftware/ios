@@ -443,8 +443,7 @@ class ModalPresenter: Subscriber, Trackable {
 					let currentLocale = Locale.current
 
                     if let regionCodeID = currentLocale.region?.identifier,
-					   let displayName = currentLocale.localizedString(forRegionCode: regionCodeID)
-					{
+					   let displayName = currentLocale.localizedString(forRegionCode: regionCodeID) {
 						return displayName
 					} else {
 						return ""
