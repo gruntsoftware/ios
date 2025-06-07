@@ -25,7 +25,7 @@ struct InputWordsView: View {
 
     let arrowSize: CGFloat = 60.0
     
-    ///Reuse the seed grid for yourr seedwords
+    /// Reuse the seed grid for yourr seedwords
     private let isRestore = true
     
     init(viewModel: StartViewModel, path: Binding<[Onboarding]>) {
@@ -80,14 +80,12 @@ struct InputWordsView: View {
                         .padding(.top, 2.0)
                         .padding([.leading, .trailing], 20.0)
                     
-                    
                     SeedWordsGridView(isRestore: isRestore)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.3, alignment: .center)
                         .padding(.all, 2.0)
                     
                     Spacer()
-               
                     
                         Text( "Don’t guess.\n\nIt would take you 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries.")
                             .font(detailerFont)
@@ -103,8 +101,6 @@ struct InputWordsView: View {
                             .frame(height: height * 0.04, alignment: .center)
                             .foregroundColor(BrainwalletColor.content)
                             .padding(.all, 5.0)
-                        
-                   
                     
                     Button(action: {
                        // path.append(.setPasscodeView(isRestore: isRestore))
@@ -130,14 +126,5 @@ struct InputWordsView: View {
                 .ignoresSafeArea(.keyboard) 
             }
         }
-    }
-}
-
-struct InputWordsView_Previews: PreviewProvider {
-    static var previews: some View {
-        let walletManager = (try? WalletManager(store: Store(), dbPath: nil))!
-        let viewModel = StartViewModel(store: Store(), walletManager: walletManager)
-             
-        //InputWordsView(viewModel: viewModel, path: .constant([.]))
     }
 }

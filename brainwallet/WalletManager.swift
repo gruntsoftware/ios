@@ -126,8 +126,7 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 	     earliestKeyTime: TimeInterval,
 	     dbPath: String? = nil,
 	     store: Store,
-	     fpRate: Double) throws
-	{
+	     fpRate: Double) throws {
 		self.masterPubKey = masterPubKey
 		self.earliestKeyTime = earliestKeyTime
 		self.dbPath = try dbPath ??
@@ -138,8 +137,7 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 
 		// open sqlite database
 		if sqlite3_open_v2(self.dbPath, &db,
-		                   SQLITE_OPEN_FULLMUTEX | SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE, nil) != SQLITE_OK
-		{
+		                   SQLITE_OPEN_FULLMUTEX | SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE, nil) != SQLITE_OK {
 			print(String(cString: sqlite3_errmsg(db)))
 			let properties: [String: String] = ["ERROR_MESSAGE": String(cString: sqlite3_errmsg(db)), "ERROR_CODE": String(describing: sqlite3_errcode(db))]
 			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
@@ -151,8 +149,7 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 				try FileManager.default.removeItem(atPath: self.dbPath)
 
 				if sqlite3_open_v2(self.dbPath, &db,
-				                   SQLITE_OPEN_FULLMUTEX | SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE, nil) != SQLITE_OK
-				{
+				                   SQLITE_OPEN_FULLMUTEX | SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE, nil) != SQLITE_OK {
 					throw WalletManagerError.sqliteError(errorCode: sqlite3_errcode(db),
 					                                     description: String(cString: sqlite3_errmsg(db)))
 				}
@@ -242,9 +239,7 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 
 		while sqlite3_step(sql) == SQLITE_ROW {
 			let name = String(cString: sqlite3_column_text(sql, 1))
-			if name == "BRTxMetadataEntity" { txEnt = sqlite3_column_int(sql, 0) }
-			else if name == "BRMerkleBlockEntity" { blockEnt = sqlite3_column_int(sql, 0) }
-			else if name == "BRPeerEntity" { peerEnt = sqlite3_column_int(sql, 0) }
+			if name == "BRTxMetadataEntity" { txEnt = sqlite3_column_int(sql, 0) } else if name == "BRMerkleBlockEntity" { blockEnt = sqlite3_column_int(sql, 0) } else if name == "BRPeerEntity" { peerEnt = sqlite3_column_int(sql, 0) }
 		}
 
 		if sqlite3_errcode(db) != SQLITE_DONE { print(String(cString: sqlite3_errmsg(db))) }

@@ -28,10 +28,8 @@ struct NewTransactionsView: View {
     @State
     private var modeState = 0
     
-    
     init(viewModel: NewMainViewModel) {
         newMainViewModel = viewModel
-        
         
     }
     var body: some View {
@@ -48,13 +46,11 @@ struct NewTransactionsView: View {
                         Spacer()
                         Button(action: {
                             if modeState < 2 {
-                                modeState = modeState + 1
-                            }
-                            else {
+                                modeState += 1
+                            } else {
                                 modeState = 0
                             }
                             filterMode = FilterTransactionMode(rawValue: modeState)!
-                            
                             
                         }) {
                             Image(systemName: "slider.horizontal.3")
@@ -68,7 +64,7 @@ struct NewTransactionsView: View {
                     }
                     .frame(height: 30.0, alignment: .center)
                     .padding([.leading, .trailing], 8.0)
-                    ScrollViewReader { proxy in
+                    ScrollViewReader { _ in
                         VStack {
                             List(transactions, id: \.hash) { tx in
                                 TransactionRowView(transaction: tx)

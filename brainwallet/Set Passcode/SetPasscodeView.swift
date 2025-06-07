@@ -1,7 +1,5 @@
-
 import SwiftUI
 struct SetPasscodeView: View {
-    
     
     @Binding
     var path: [Onboarding]

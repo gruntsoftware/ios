@@ -1,7 +1,7 @@
 import BRCore
 import Foundation
 
-//struct SimpleUTXO {
+// struct SimpleUTXO {
 //	let hash: UInt256
 //	let index: UInt32
 //	let script: [UInt8]
@@ -20,4 +20,4 @@ import Foundation
 //		script = [UInt8](scriptData)
 //		self.satoshis = satoshis
 //	}
-//}
+// }

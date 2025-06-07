@@ -27,10 +27,11 @@ Package.pins
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
  SourcePackages/
 
-# SwiftFormat
+# SwiftLinter
 BuildTools/.build
 BuildTools/.swiftpm
-
+SwiftlintBaseline.json
+Baseline.json
 # Sensitive Partner API 
 *.gpx
 remote-config-defaults.plist
@@ -41,8 +42,7 @@ GoogleService-Info.plist
 /brainwallet/launch-resources/GoogleService-Info.plist
 /brainwallet/launch-resources/remote-config-defaults.plist
 /brainwallet/launch-resources/service-data.plist
-
 # Storekit
 /Storekit
-*.storekit
+*.storekit 
 Brainwallet-StoreKit-v1.storekit

@@ -13,6 +13,7 @@
 		22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9631DF61FE7000F0016 /* Security.framework */; };
 		22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9651DF61FEE000F0016 /* WebKit.framework */; };
 		2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */; };
+		2412BA7E2DF4660300AC40BB /* ReceiveAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */; };
 		2414B00B2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */; };
 		2415FFDF2DBD8505002A2199 /* SeedWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */; };
 		2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE612DA90D0D00FFBD10 /* BRMasterKeyExtension.swift */; };
@@ -56,7 +57,6 @@
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
 		24718BE12DF0689500FA5F1B /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24718BE02DF0689500FA5F1B /* remote-config-defaults.plist */; };
-		24718BE32DF068A000FA5F1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24718BE22DF068A000FA5F1B /* GoogleService-Info.plist */; };
 		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
 		247D74E62DA907FB00855B14 /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45792D936D5900E9C3B0 /* BRAddress.c */; };
 		247D74E72DA907FB00855B14 /* BRBase58.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457C2D936D5900E9C3B0 /* BRBase58.c */; };
@@ -75,6 +75,7 @@
 		247D74F42DA907FB00855B14 /* BRTransaction.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45992D936D5900E9C3B0 /* BRTransaction.c */; };
 		247D74F52DA907FB00855B14 /* BRWallet.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C459B2D936D5900E9C3B0 /* BRWallet.c */; };
 		2480B5832DF2016300653403 /* PromptHostingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2480B5822DF2015B00653403 /* PromptHostingCell.swift */; };
+		2489E05C2DF0A23700630888 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2489E05B2DF0A23700630888 /* GoogleService-Info.plist */; };
 		248E5C3F2DE77E88003F232F /* moon_pay_buy_status.txt in Resources */ = {isa = PBXBuildFile; fileRef = 248E5C3E2DE77E88003F232F /* moon_pay_buy_status.txt */; };
 		248E5C422DE78653003F232F /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E5C412DE7863C003F232F /* NetworkHelper.swift */; };
 		2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2492829B2DAC22B00088528E /* BIP39Words.plist */; };
@@ -438,7 +439,8 @@
 		22A9A9651DF61FEE000F0016 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		22A9A9671DF61FF8000F0016 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenFooterView.swift; sourceTree = "<group>"; };
-		2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Brainwallet-StoreKit-v1.storekit"; path = "brainwallet/Launch Resources/Brainwallet-StoreKit-v1.storekit"; sourceTree = SOURCE_ROOT; };
+		2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveAddressView.swift; sourceTree = "<group>"; };
+		2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Brainwallet-StoreKit-v1.storekit"; sourceTree = SOURCE_ROOT; };
 		2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordsGridView.swift; sourceTree = "<group>"; };
 		2415FFF22DBE2CA4002A2199 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRActivityView.swift; sourceTree = "<group>"; };
@@ -484,9 +486,10 @@
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24718BE02DF0689500FA5F1B /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "remote-config-defaults.plist"; sourceTree = "<group>"; };
-		24718BE22DF068A000FA5F1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
 		2480B5822DF2015B00653403 /* PromptHostingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptHostingCell.swift; sourceTree = "<group>"; };
+		2489E05B2DF0A23700630888 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2489E05D2DF0A24E00630888 /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "remote-config-defaults.plist"; sourceTree = "<group>"; };
 		248E5C3E2DE77E88003F232F /* moon_pay_buy_status.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = moon_pay_buy_status.txt; sourceTree = "<group>"; };
 		248E5C412DE7863C003F232F /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		2492829B2DAC22B00088528E /* BIP39Words.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BIP39Words.plist; sourceTree = "<group>"; };
@@ -1008,7 +1011,7 @@
 			path = "New Lock Screen Classes";
 			sourceTree = "<group>";
 		};
-		2416CE552DA90C8B00FFBD10 /* Legacy BW_BRClasses */ = {
+		2416CE552DA90C8B00FFBD10 /* Legacy_BW_BRClasses */ = {
 			isa = PBXGroup;
 			children = (
 				2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */,
@@ -1030,7 +1033,7 @@
 				2416CE682DA90D0D00FFBD10 /* BRTxOutputExtension.swift */,
 				2416CE692DA90D0D00FFBD10 /* BRWallet.swift */,
 			);
-			path = "Legacy BW_BRClasses";
+			path = Legacy_BW_BRClasses;
 			sourceTree = "<group>";
 		};
 		241B477E2DCEA05D00279954 /* Localizations */ = {
@@ -1464,6 +1467,7 @@
 		24AAB3192DE79E6E00F0C18C /* New Receive Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */,
 				24AAB31E2DE79EE200F0C18C /* NewReceiveViewModel.swift */,
 				24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */,
 				24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */,
@@ -1537,7 +1541,8 @@
 				C312D24F2D7DC27700BB97A4 /* general.css */,
 				24718BE02DF0689500FA5F1B /* remote-config-defaults.plist */,
 				248E5C3E2DE77E88003F232F /* moon_pay_buy_status.txt */,
-				24718BE22DF068A000FA5F1B /* GoogleService-Info.plist */,
+				2489E05D2DF0A24E00630888 /* remote-config-defaults.plist */,
+				2489E05B2DF0A23700630888 /* GoogleService-Info.plist */,
 				C312D2032D7DC27700BB97A4 /* Assets.xcassets */,
 				249C45DB2D93F23F00E9C3B0 /* service-data.plist */,
 				C312D2942D7DC27700BB97A4 /* RELEASE_NOTES.md */,
@@ -1745,7 +1750,7 @@
 				24B065252DC6121A00B5E000 /* Wallet Balance Classes */,
 				24B065332DC627D200B5E000 /* New Main Classes */,
 				24B065262DC6130200B5E000 /* Transactions Classes */,
-				2416CE552DA90C8B00FFBD10 /* Legacy BW_BRClasses */,
+				2416CE552DA90C8B00FFBD10 /* Legacy_BW_BRClasses */,
 				C312D1DB2D7DC27700BB97A4 /* SendViewCells */,
 				C312D0962D7DC27700BB97A4 /* Fonts */,
 				C312D0C72D7DC27700BB97A4 /* Sounds */,
@@ -2103,6 +2108,7 @@
 			buildConfigurationList = 75A2A7E31DA5934400A983D8 /* Build configuration list for PBXNativeTarget "brainwallet" */;
 			buildPhases = (
 				75A2A78C1DA5934300A983D8 /* Sources */,
+				2489E05F2DF0A6DE00630888 /* Run Swiftlint & Swiftlint - fix */,
 				75A2A78D1DA5934300A983D8 /* Frameworks */,
 				75A2A78E1DA5934300A983D8 /* Resources */,
 				C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */,
@@ -2139,7 +2145,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = "";
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 1630;
 				ORGANIZATIONNAME = "Grunt Software, LTD";
 				TargetAttributes = {
 					2465873523A5AAD000A32E9E = {
@@ -2203,7 +2209,6 @@
 				C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
 				24F64C1C2DAFBD0F001DC9B6 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				24D196012DBE69CC0052501D /* XCRemoteSwiftPackageReference "SwiftFormat" */,
 				24BEF7DF2DCCCD6C00CA2EEC /* XCRemoteSwiftPackageReference "BrainwalletiOSStorekit" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -2252,7 +2257,7 @@
 				C312D4C22D7DC27700BB97A4 /* general.css in Resources */,
 				249C45DC2D93F23F00E9C3B0 /* service-data.plist in Resources */,
 				C312D4C42D7DC27700BB97A4 /* Assets.xcassets in Resources */,
-				24718BE32DF068A000FA5F1B /* GoogleService-Info.plist in Resources */,
+				2489E05C2DF0A23700630888 /* GoogleService-Info.plist in Resources */,
 				C312D4C52D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf in Resources */,
 				C312D4CA2D7DC27700BB97A4 /* Buy.storyboard in Resources */,
 				C312D4CC2D7DC27700BB97A4 /* Alerts.storyboard in Resources */,
@@ -2267,6 +2272,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		245F189D2DD1F92000D20715 /* Collect and Send dSYMs to Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2288,8 +2294,28 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
+		2489E05F2DF0A6DE00630888 /* Run Swiftlint & Swiftlint - fix */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Swiftlint & Swiftlint - fix";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint && swiftlint --fix\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+		};
 		58A9FE4C291BC37400B75825 /* Count number of swift lines */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2308,6 +2334,7 @@
 		};
 		C3A3FFB526FE46E8000FE955 /* Mark Dev Notes */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2322,10 +2349,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# http://www.benzado.com/blog/post/329/make-xcode-nag-you-about-unfinished-todos\necho \"make-xcode-nag-you-about-unfinished-todos for swift files only\"\nKEYWORDS=\"DEV:|TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | \\\nxargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | \\\nperl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
+			shellScript = "# http://www.benzado.com/blog/post/329/make-xcode-nag-you-about-unfinished-todos\n# echo \"make-xcode-nag-you-about-unfinished-todos for swift files only\"\n# KEYWORDS=\"DEV:|TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\n# find \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | \\\n# xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | \\\n# perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
 		};
 		C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2617,6 +2645,7 @@
 				241D22412DB526AE000302C8 /* SetPasscodeView.swift in Sources */,
 				C312D4072D7DC27700BB97A4 /* WipeEmptyWalletViewController.swift in Sources */,
 				24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */,
+				2412BA7E2DF4660300AC40BB /* ReceiveAddressView.swift in Sources */,
 				C312D40A2D7DC27700BB97A4 /* EnterPhraseView.swift in Sources */,
 				C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */,
 				C312D40F2D7DC27700BB97A4 /* Environment.swift in Sources */,
@@ -3236,14 +3265,6 @@
 			requirement = {
 				kind = upToNextMinorVersion;
 				minimumVersion = 1.0.0;
-			};
-		};
-		24D196012DBE69CC0052501D /* XCRemoteSwiftPackageReference "SwiftFormat" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/nicklockwood/SwiftFormat";
-			requirement = {
-				kind = exactVersion;
-				version = 0.55.5;
 			};
 		};
 		24F64C1C2DAFBD0F001DC9B6 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {

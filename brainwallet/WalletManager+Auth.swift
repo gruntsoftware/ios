@@ -19,7 +19,7 @@ public protocol WalletAuthenticator {
 struct NoAuthAuthenticator: WalletAuthenticator {
 	let noWallet = true
 	let apiAuthKey: String? = nil
-	var userAccount: [AnyHashable: Any]? = nil
+	var userAccount: [AnyHashable: Any]?
 }
 
 enum BiometricsResult {
@@ -71,8 +71,7 @@ extension WalletManager: WalletAuthenticator {
 
 		var earliestKeyTime = BIP39CreationTime
 		if let creationTime: Data = try keychainItem(key: KeychainKey.creationTime),
-		   creationTime.count == MemoryLayout<TimeInterval>.stride
-		{
+		   creationTime.count == MemoryLayout<TimeInterval>.stride {
 			creationTime.withUnsafeBytes { earliestKeyTime = $0.pointee }
 		}
 

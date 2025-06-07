@@ -14,7 +14,7 @@ struct CreateStepTabView: View {
 	}
 
 	var body: some View {
-		GeometryReader { geometry in 
+		GeometryReader { _ in 
 
 			VStack {
 				ZStack {
@@ -36,7 +36,7 @@ struct CreateStepTabView: View {
 					}
 
 					HStack {
-						Text("Create Wallet")///TBD naming
+						Text("Create Wallet")/// TBD naming
 							.font(.barlowBold(size: 30.0))
                             .foregroundColor(BrainwalletColor.content)
 							.padding([.bottom, .top], 10.00)

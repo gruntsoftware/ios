@@ -58,8 +58,7 @@ struct SignupWebViewRepresentable: UIViewRepresentable {
 		webView.evaluateJavaScript("document.getElementById('submit-email').value") { response, _ in
 
 			if let resultString = response as? String,
-			   resultString.contains("Please")
-			{
+			   resultString.contains("Please") {
 				userAction = true
 
 				let signupDict: [String: String] = ["date_accepted": Date().ISO8601Format()]
@@ -75,8 +74,7 @@ struct SignupWebViewRepresentable: UIViewRepresentable {
 	class Coordinator: NSObject,
 		WKNavigationDelegate,
 		WKUIDelegate,
-		WKScriptMessageHandler
-	{
+		WKScriptMessageHandler {
 		func userContentController(_: WKUserContentController, didReceive message: WKScriptMessage) {
 		}
 

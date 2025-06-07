@@ -13,7 +13,6 @@ class BuyViewModel: ObservableObject {
     
     @Published
     var signedURlString: String = ""
-    
 
 	@Published
 	var selectedCode: String = "USD"
@@ -40,15 +39,13 @@ class BuyViewModel: ObservableObject {
 			if error == nil {
 				DispatchQueue.main.sync {
 					if let jsonData = try? JSONSerialization.jsonObject(with: data ?? Data(), options: []),
-					   let jsonArray = jsonData as? [[String: Any]]
-					{
+					   let jsonArray = jsonData as? [[String: Any]] {
 						var dataArray: [MoonpayCountryData] = []
 
 						/// Filters allowed currencies and the top ranked currencies
 						for element in jsonArray {
 							if element["isBuyAllowed"] as? Bool == true &&
-								element["isAllowed"] as? Bool == true
-							{
+								element["isAllowed"] as? Bool == true {
 								let alpha2 = element["alpha2"] as? String
 								let alpha3 = element["alpha3"] as? String
 								let name = element["name"] as? String

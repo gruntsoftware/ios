@@ -35,6 +35,5 @@ extension ApplicationController {
 		}
 	}
 
-	func willResignActive()
-	{}
+	func willResignActive() {}
 }

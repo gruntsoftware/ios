@@ -33,8 +33,6 @@ struct BrainwalletHexagon: Shape {
     }
 }
 
-
-
 struct TestShapeView: View {
     
        @State
@@ -50,7 +48,6 @@ struct TestShapeView: View {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                
                 VStack {
-                    
                     
                     ZStack {
                         BrainwalletHexagon()

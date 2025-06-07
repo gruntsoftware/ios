@@ -35,7 +35,6 @@ class SettingsViewController: UITableViewController {
 	override func viewDidLoad() {
 		let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 48.0))
 
-
         headerView.backgroundColor = BrainwalletUIColor.surface
 		tableView.backgroundColor = BrainwalletUIColor.surface
         titleLabel = UILabel(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
@@ -47,11 +46,7 @@ class SettingsViewController: UITableViewController {
 		tableView.tableFooterView = UIView()
 		tableView.separatorStyle = .none
 
-		//addCustomTitle()
-	}
-
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
+		// addCustomTitle()
 	}
 
 	override func numberOfSections(in _: UITableView) -> Int {
@@ -113,12 +108,12 @@ class SettingsViewController: UITableViewController {
 			separator.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			separator.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 			separator.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			separator.heightAnchor.constraint(equalToConstant: 1.0),
+			separator.heightAnchor.constraint(equalToConstant: 1.0)
 		])
 
 		label.constrain([
 			label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: C.padding[2]),
-			label.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -4.0),
+			label.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -4.0)
 		])
 
 		return view
