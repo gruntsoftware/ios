@@ -67,7 +67,7 @@ struct StartView: View {
     func updateLocaleLabel() {
         // Get current locale
         let currentLocale = Locale.current
-        // Print locale identifier in native language
+         //Print locale identifier in native language
         if let localeIdentifier = currentLocale.identifier as String? {
             #if DEBUG || targetEnvironment(simulator)
             let nativeLocaleName = currentLocale.localizedString(forIdentifier: localeIdentifier)

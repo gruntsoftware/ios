@@ -448,14 +448,13 @@ class ModalPresenter: Subscriber, Trackable {
 					// Get the current locale
 					let currentLocale = Locale.current
 
-					if let regionCode = currentLocale.regionCode,
+                    if let regionCode = currentLocale.region?.identifier,
 					   let displayName = currentLocale.localizedString(forRegionCode: regionCode)
 					{
 						return displayName
 					} else {
 						return ""
 					}
-
                 }, callback: {}),
 				Setting(title: String(localized: "Sync") , callback: { [weak self] in
 					let alert = UIAlertController(title: String(localized: "Sync with Blockchain?") , message: String(localized: "You will not be able to send money while syncing."), preferredStyle: .alert)
