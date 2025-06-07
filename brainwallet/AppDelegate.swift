@@ -7,7 +7,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
-	let applicationController = ApplicationController()
+	var applicationController = ApplicationController()
 	var remoteConfigurationHelper: RemoteConfigHelper?
 
 	var resourceRequest: NSBundleResourceRequest?
@@ -21,15 +21,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Locale and fetch access
             // DEV: Break here to test Locale/Matrix
-            let currentLocaleID = Locale.current.region?.identifier ?? "RU"
-			updateCurrentUserLocale(localeId: currentLocaleID)
-    
+            let countryRussia = MoonpayCountryData(alphaCode2Char: "RU",
+                                                   alphaCode3Char: "RUS",
+                                                   isBuyAllowed: false,
+                                                   isSellAllowed: false,
+                                                   countryName: "Russia",
+                                                   isAllowedInCountry: false)
+
+            let currentLocaleID = Locale.current.region?.identifier ?? countryRussia.alphaCode2Char
+            debugPrint(":::::: Current Locale ID: \(currentLocaleID)")
             let _ = NetworkHelper.init().fetchCurrenciesCountries(completion:  { countryData  in
                 
-                let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == currentLocaleID }.first //
+                let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == currentLocaleID }.first ?? countryRussia
                 
-                if let buyIsAllowed = currentMoonPayCountry?.isBuyAllowed {
-                    UserDefaults.standard.set(buyIsAllowed, forKey: userCurrentLocaleMPApprovedKey)
+                let isBuyAllowed = currentMoonPayCountry.isBuyAllowed
+                if isBuyAllowed {
+                    UserDefaults.standard.set(isBuyAllowed, forKey: userCurrentLocaleMPApprovedKey)
+                    debugPrint(":::::: buyIsAllowed: \(isBuyAllowed)")
                 }
                 else {
                     UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
@@ -61,18 +69,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 				debugPrint(settings.debugDescription)
 				if settings.authorizationStatus == .denied {
-//					self.pushNotifications.clearAllState {
-//						LWAnalytics.logEventWithParameters(itemName: ._20240506_DPN)
-//					}
-//
-//					self.pushNotifications.stop {
-//						LWAnalytics.logEventWithParameters(itemName: ._20240510_SPN)
-//					}
 				}
 			})
-            
-            // Fetch Locale for MP
-            
 
 		} onFailure: { error in
 
@@ -159,16 +157,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 	}
 
-	/// Check Locale
-	func updateCurrentUserLocale(localeId: String) {
-		let suffix = String(localeId.suffix(3))
-
-		if suffix == "_US" {
-			UserDefaults.userIsInUSA = true
-		} else {
-			UserDefaults.userIsInUSA = false
-		}
-	}
     
     /// Update Theme
     func updatePreferredTheme() {

@@ -72,6 +72,15 @@ struct NewReceiveView: View {
     @State
     private var userWantsCustomAmount = false
 
+    @State
+    private var shouldAnimateMPLogo = false
+    
+    @State
+    private var didCopyAddress = false
+    
+    @State
+    private var showMPLogo = true
+    
    @FocusState
     var keyboardFocused: Bool
     
@@ -136,26 +145,21 @@ struct NewReceiveView: View {
                         VStack {
                             ZStack {
                                 WebBuyView(signingData: viewModel.buildUnsignedMoonPayUrl(), viewModel: viewModel)
-                                VStack {
-                                    HStack {
-                                        Spacer()
-                                        Button(action: {
-                                            userIsBuying.toggle()
-                                        }) {
-                                            
-                                            Image(systemName: "xmark")
-                                                .resizable()
-                                                .frame(width: 25, height: 25)
-                                                .foregroundColor(BrainwalletColor.content)
-                                                .padding(12.0)
-                                            
-                                            
+                                
+                                Image("moonpay-symbol-prp")
+                                    .resizable()
+                                    .frame(width: 50.0, height: 50.0)
+                                    .offset(x: shouldAnimateMPLogo ? 20 : 0, y: shouldAnimateMPLogo ? -20 : 0)
+                                    .onAppear() {
+                                        
+                                        withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                                            shouldAnimateMPLogo = true
                                         }
-                                        .frame(width: 40.0, height: 40.0, alignment: .bottom)
-                                        .padding(12.0)
+                                        delay(2.0) {
+                                            showMPLogo = false
+                                        }
                                     }
-                                  Spacer()
-                                }
+                                    .opacity(showMPLogo ? 1.0 : 0.0)
                             }
                         }
                         .frame(width: width * 0.95,
@@ -268,7 +272,7 @@ struct NewReceiveView: View {
                                                     .padding(4.0)
                                             }
                                         }
-                                        .onChange(of: $pickedCurrency.wrappedValue) { _ in
+                                        .onChange(of: pickedCurrency) { _ in
                                             updateFiatAmounts()
                                         }
                                         .pickerStyle(.wheel)
@@ -276,7 +280,7 @@ struct NewReceiveView: View {
                                         
                                         VStack {
                                             
-                                            Text(String(format: "~ %.3f Ł", quotedLTCAmount))
+                                            Text(String(format: "%.3f Ł", quotedLTCAmount))
                                                 .font(ginormousFont)
                                                 .kerning(0.3)
                                                 .foregroundColor(BrainwalletColor.content)
@@ -295,15 +299,15 @@ struct NewReceiveView: View {
                                     }
                                     HStack {
                                         Picker("", selection: $pickedSegment) {
-                                            Text("\(fiatMinAmount) (\(pickedCurrency.code))")
+                                            Text("\(pickedCurrency.symbol) \(fiatMinAmount)")
                                                 .font(lightDetailFont)
                                                 .padding(8.0)
                                                 .tag(0)
-                                            Text("\(fiatTenXAmount) (\(pickedCurrency.code))")
+                                            Text("\(pickedCurrency.symbol) \(fiatTenXAmount)")
                                                 .font(lightDetailFont)
                                                 .padding(8.0)
                                                 .tag(1)
-                                            Text("\(fiatMaxAmount) (\(pickedCurrency.code))")
+                                            Text("\(pickedCurrency.symbol) \(fiatMaxAmount)")
                                                 .font(lightDetailFont)
                                                 .padding(8.0)
                                                 .tag(2)
@@ -327,7 +331,7 @@ struct NewReceiveView: View {
                                         }
                                         .tint(.orange)
                                         .padding(.all, 10.0)
-
+                                        
                                     }
                                     .frame(width: modalWidth, height: 35.0)
                                     HStack {
@@ -365,6 +369,7 @@ struct NewReceiveView: View {
                                 .padding(.bottom, 5.0)
                                 .opacity(didFetchData ? 1.0 : 0.0)
                             }
+                            .opacity(viewModel.canUserBuyLTC ? 1.0 : 0.0)
                             /// Set Amount Group
                             
                             Divider()
@@ -436,7 +441,7 @@ struct NewReceiveView: View {
                                 .padding(.all, 8.0)
                             }
                             /// Set Amount Button
-
+                            
                         }
                         .frame(width: width * 0.95,
                                height: (viewModel.canUserBuyLTC && isExpanded) ? modalBuyViewHeight : modalReceiveViewHeight,
@@ -461,13 +466,24 @@ struct NewReceiveView: View {
                 .onChange(of: viewModel.didFetchData) { newValue in
                     didFetchData = newValue
                 }
+                .onChange(of: viewModel.pickedCurrency) { _ in
+                    viewModel.updatePublishables()
+                    pickedCurrency = viewModel.pickedCurrency
+                }
                 .onAppear {
                     newAddress = viewModel.newReceiveAddress
                     canUserBuyLTC = viewModel.canUserBuyLTC
-                    if canUserBuyLTC {
-                        updateFiatAmounts()
-                    }
+                    pickedCurrency = viewModel.pickedCurrency
+                    updateFiatAmounts()
                 }
+                .alert("Address Copied", isPresented: $didCopyAddress,
+                       actions: {
+                    HStack {
+                        Button("Ok" , role: .cancel) {
+                            didCopyAddress.toggle()
+                        }
+                    }
+                })
             }
         }
     }

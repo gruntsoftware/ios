@@ -10,5 +10,9 @@ public extension NSNotification.Name {
 	static let didDeleteWalletDBNotification = NSNotification.Name("DidDeleteDatabase")
 	static let languageChangedNotification = Notification.Name("languageChanged")
     static let preferredCurrencyChangedNotification = Notification.Name("currencyChanged")
+    static let userTapsClosePromptNotification = Notification.Name("userTapClosePrompt")
+    static let userTapsContinuePromptNotification = Notification.Name("userTapContinuePrompt")
+
+
 
 }

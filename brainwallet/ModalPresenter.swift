@@ -408,9 +408,7 @@ class ModalPresenter: Subscriber, Trackable {
                             }
 
                             group.notify(queue: .main) {
-                                DispatchQueue.main.asyncAfter(deadline: .now()) {
-                                    UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-                                }
+                                NotificationCenter.default.post(name: .walletDidWipeNotification, object: nil)
                             }
                             
                         }))
@@ -450,18 +448,14 @@ class ModalPresenter: Subscriber, Trackable {
 					// Get the current locale
 					let currentLocale = Locale.current
 
-					if let regionCode = currentLocale.regionCode,
+                    if let regionCode = currentLocale.region?.identifier,
 					   let displayName = currentLocale.localizedString(forRegionCode: regionCode)
 					{
 						return displayName
 					} else {
 						return ""
 					}
-
-				}, callback: {
-					let localeView = UIHostingController(rootView: LocaleChangeView(viewModel: LocaleChangeViewModel()))
-					settingsNav.pushViewController(localeView, animated: true)
-				}),
+                }, callback: {}),
 				Setting(title: String(localized: "Sync") , callback: { [weak self] in
 					let alert = UIAlertController(title: String(localized: "Sync with Blockchain?") , message: String(localized: "You will not be able to send money while syncing."), preferredStyle: .alert)
 					alert.addAction(UIAlertAction(title:  String(localized: "Cancel")  , style: .default, handler: { _ in

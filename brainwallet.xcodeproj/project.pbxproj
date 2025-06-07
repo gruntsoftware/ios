@@ -56,6 +56,8 @@
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
+		24718BE12DF0689500FA5F1B /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24718BE02DF0689500FA5F1B /* remote-config-defaults.plist */; };
+		24718BE32DF068A000FA5F1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24718BE22DF068A000FA5F1B /* GoogleService-Info.plist */; };
 		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
 		247D74E62DA907FB00855B14 /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45792D936D5900E9C3B0 /* BRAddress.c */; };
 		247D74E72DA907FB00855B14 /* BRBase58.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457C2D936D5900E9C3B0 /* BRBase58.c */; };
@@ -75,6 +77,7 @@
 		247D74F52DA907FB00855B14 /* BRWallet.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C459B2D936D5900E9C3B0 /* BRWallet.c */; };
 		2489E05C2DF0A23700630888 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2489E05B2DF0A23700630888 /* GoogleService-Info.plist */; };
 		2489E05E2DF0A24E00630888 /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2489E05D2DF0A24E00630888 /* remote-config-defaults.plist */; };
+		2480B5832DF2016300653403 /* PromptHostingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2480B5822DF2015B00653403 /* PromptHostingCell.swift */; };
 		248E5C3F2DE77E88003F232F /* moon_pay_buy_status.txt in Resources */ = {isa = PBXBuildFile; fileRef = 248E5C3E2DE77E88003F232F /* moon_pay_buy_status.txt */; };
 		248E5C422DE78653003F232F /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E5C412DE7863C003F232F /* NetworkHelper.swift */; };
 		2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2492829B2DAC22B00088528E /* BIP39Words.plist */; };
@@ -95,14 +98,17 @@
 		24B0653D2DC6476A00B5E000 /* NewSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653C2DC6476700B5E000 /* NewSendView.swift */; };
 		24B065402DC647F400B5E000 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653F2DC647F000B5E000 /* GameView.swift */; };
 		24BEBB972DCDE4D4001E1F1F /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		24BEC6072DF0B53000140AAD /* WipeWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BEC6062DF0B52600140AAD /* WipeWalletView.swift */; };
 		24BEF7E12DCCCD6C00CA2EEC /* BrainwalletiOSStorekit in Frameworks */ = {isa = PBXBuildFile; productRef = 24BEF7E02DCCCD6C00CA2EEC /* BrainwalletiOSStorekit */; };
 		24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */; };
+		24C73FBC2DF2CA4100042B01 /* PromptTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */; };
 		24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */; };
 		24D7AE562DCFF6870078252E /* NewConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE552DCFF6830078252E /* NewConfirmView.swift */; };
 		24D7AE582DCFF72D0078252E /* NewConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */; };
 		24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D91D0A2166923E0077A619 /* UserNotifications.framework */; };
+		24E078A82DF1F9A9004B5958 /* PromptCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E078A72DF1F997004B5958 /* PromptCellView.swift */; };
+		24E078AA2DF1F9AE004B5958 /* PromptCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E078A92DF1F9AC004B5958 /* PromptCellViewModel.swift */; };
 		24EE3F1F2DCF5A560017472B /* TopUpSetAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE3F1E2DCF5A560017472B /* TopUpSetAmountView.swift */; };
-		24F377FF2DE869A700A388AB /* BWAPIClient+MoonPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F377FE2DE8699600A388AB /* BWAPIClient+MoonPay.swift */; };
 		24F378022DE89C7800A388AB /* MoonPayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F378012DE89C6600A388AB /* MoonPayHelper.swift */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
@@ -308,7 +314,7 @@
 		C312D4572D7DC27700BB97A4 /* KeyboardNotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0972D7DC27700BB97A4 /* KeyboardNotificationInfo.swift */; };
 		C312D4582D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0882D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift */; };
 		C312D45B2D7DC27700BB97A4 /* StartHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2AC2D7DC27700BB97A4 /* StartHostingController.swift */; };
-		C312D45C2D7DC27700BB97A4 /* HostingTransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2512D7DC27700BB97A4 /* HostingTransactionCell.swift */; };
+		C312D45C2D7DC27700BB97A4 /* HostingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2512D7DC27700BB97A4 /* HostingCell.swift */; };
 		C312D4602D7DC27700BB97A4 /* LanguageSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2572D7DC27700BB97A4 /* LanguageSelectionViewModel.swift */; };
 		C312D4612D7DC27700BB97A4 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0852D7DC27700BB97A4 /* UIViewController+Alerts.swift */; };
 		C312D4622D7DC27700BB97A4 /* UIViewController+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0862D7DC27700BB97A4 /* UIViewController+BRWAdditions.swift */; };
@@ -481,9 +487,12 @@
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		24718BE02DF0689500FA5F1B /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "remote-config-defaults.plist"; sourceTree = "<group>"; };
+		24718BE22DF068A000FA5F1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
 		2489E05B2DF0A23700630888 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2489E05D2DF0A24E00630888 /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "remote-config-defaults.plist"; sourceTree = "<group>"; };
+		2480B5822DF2015B00653403 /* PromptHostingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptHostingCell.swift; sourceTree = "<group>"; };
 		248E5C3E2DE77E88003F232F /* moon_pay_buy_status.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = moon_pay_buy_status.txt; sourceTree = "<group>"; };
 		248E5C412DE7863C003F232F /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		2492829B2DAC22B00088528E /* BIP39Words.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BIP39Words.plist; sourceTree = "<group>"; };
@@ -633,13 +642,16 @@
 		24B0653A2DC6433000B5E000 /* SimpleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleHeaderView.swift; sourceTree = "<group>"; };
 		24B0653C2DC6476700B5E000 /* NewSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSendView.swift; sourceTree = "<group>"; };
 		24B0653F2DC647F000B5E000 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		24BEC6062DF0B52600140AAD /* WipeWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipeWalletView.swift; sourceTree = "<group>"; };
 		24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
+		24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTypeEnum.swift; sourceTree = "<group>"; };
 		24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmHostingController.swift; sourceTree = "<group>"; };
 		24D7AE552DCFF6830078252E /* NewConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmView.swift; sourceTree = "<group>"; };
 		24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmViewModel.swift; sourceTree = "<group>"; };
 		24D91D0A2166923E0077A619 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		24E078A72DF1F997004B5958 /* PromptCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCellView.swift; sourceTree = "<group>"; };
+		24E078A92DF1F9AC004B5958 /* PromptCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCellViewModel.swift; sourceTree = "<group>"; };
 		24EE3F1E2DCF5A560017472B /* TopUpSetAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpSetAmountView.swift; sourceTree = "<group>"; };
-		24F377FE2DE8699600A388AB /* BWAPIClient+MoonPay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWAPIClient+MoonPay.swift"; sourceTree = "<group>"; };
 		24F378012DE89C6600A388AB /* MoonPayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPayHelper.swift; sourceTree = "<group>"; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
@@ -834,7 +846,7 @@
 		C312D24D2D7DC27700BB97A4 /* ForgotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotView.swift; sourceTree = "<group>"; };
 		C312D24E2D7DC27700BB97A4 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		C312D24F2D7DC27700BB97A4 /* general.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = general.css; sourceTree = "<group>"; };
-		C312D2512D7DC27700BB97A4 /* HostingTransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingTransactionCell.swift; sourceTree = "<group>"; };
+		C312D2512D7DC27700BB97A4 /* HostingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingCell.swift; sourceTree = "<group>"; };
 		C312D2522D7DC27700BB97A4 /* Icon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icon.xcassets; sourceTree = "<group>"; };
 		C312D2532D7DC27700BB97A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C312D2542D7DC27700BB97A4 /* IntroStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroStepView.swift; sourceTree = "<group>"; };
@@ -995,6 +1007,7 @@
 			children = (
 				C312D2772D7DC27700BB97A4 /* LockScreenView.swift */,
 				C312D2792D7DC27700BB97A4 /* LockScreenViewModel.swift */,
+				24BEC6062DF0B52600140AAD /* WipeWalletView.swift */,
 				2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */,
 				244520332DE70310003AFFDF /* LockScreenHostingController.swift */,
 			);
@@ -1004,7 +1017,6 @@
 		2416CE552DA90C8B00FFBD10 /* Legacy_BW_BRClasses */ = {
 			isa = PBXGroup;
 			children = (
-				24F377FE2DE8699600A388AB /* BWAPIClient+MoonPay.swift */,
 				2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */,
 				2416CE572DA90D0D00FFBD10 /* BRAddressExtension.swift */,
 				2416CE582DA90D0D00FFBD10 /* BWAPIClient.swift */,
@@ -1525,15 +1537,38 @@
 			path = "New Onboarding";
 			sourceTree = "<group>";
 		};
-		24DF5CBD2D934E29009A426C /* launch-resources */ = {
+		24DF5CBD2D934E29009A426C /* Launch Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */,
+				C312D24F2D7DC27700BB97A4 /* general.css */,
+				24718BE02DF0689500FA5F1B /* remote-config-defaults.plist */,
 				248E5C3E2DE77E88003F232F /* moon_pay_buy_status.txt */,
 				2489E05D2DF0A24E00630888 /* remote-config-defaults.plist */,
 				2489E05B2DF0A23700630888 /* GoogleService-Info.plist */,
+				C312D2032D7DC27700BB97A4 /* Assets.xcassets */,
 				249C45DB2D93F23F00E9C3B0 /* service-data.plist */,
+				C312D2942D7DC27700BB97A4 /* RELEASE_NOTES.md */,
+				C312D5132D7DC2EA00BB97A4 /* PrivacyInfo.xcprivacy */,
+				C312D2522D7DC27700BB97A4 /* Icon.xcassets */,
+				C312D2332D7DC27700BB97A4 /* CHANGELOG.md */,
+				C312D28D2D7DC27700BB97A4 /* POSTBouncer.html */,
 			);
-			path = "launch-resources";
+			path = "Launch Resources";
+			sourceTree = "<group>";
+		};
+		24E078A62DF1F915004B5958 /* New Table Hosting Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C312D2BA2D7DC27700BB97A4 /* TransactionCellView.swift */,
+				C312D2BB2D7DC27700BB97A4 /* TransactionCellViewModel.swift */,
+				C312D2512D7DC27700BB97A4 /* HostingCell.swift */,
+				2480B5822DF2015B00653403 /* PromptHostingCell.swift */,
+				24E078A72DF1F997004B5958 /* PromptCellView.swift */,
+				24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */,
+				24E078A92DF1F9AC004B5958 /* PromptCellViewModel.swift */,
+			);
+			path = "New Table Hosting Classes";
 			sourceTree = "<group>";
 		};
 		24F378002DE89C5B00A388AB /* MoonPay Helper */ = {
@@ -1568,7 +1603,6 @@
 		75A2A7871DA5934300A983D8 = {
 			isa = PBXGroup;
 			children = (
-				2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */,
 				C312D2CD2D7DC27700BB97A4 /* brainwallet */,
 				C312D4F62D7DC28E00BB97A4 /* brainwalletTests */,
 				75B6F52F1DA71DCC0031A93F /* Modules */,
@@ -1696,6 +1730,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				24E078A62DF1F915004B5958 /* New Table Hosting Classes */,
 				24F378002DE89C5B00A388AB /* MoonPay Helper */,
 				244A8D912DE84C710024D356 /* Brainwallet Custom Shapes */,
 				24AAB3192DE79E6E00F0C18C /* New Receive Classes */,
@@ -1723,7 +1758,7 @@
 				C312D0962D7DC27700BB97A4 /* Fonts */,
 				C312D0C72D7DC27700BB97A4 /* Sounds */,
 				C312D18E2D7DC27700BB97A4 /* Storyboards */,
-				24DF5CBD2D934E29009A426C /* launch-resources */,
+				24DF5CBD2D934E29009A426C /* Launch Resources */,
 				C312D1D52D7DC27700BB97A4 /* AnimatedIcons */,
 				C312D1D72D7DC27700BB97A4 /* PinPadCells */,
 				242871822DE5C4E10035DE48 /* Additions */,
@@ -1810,17 +1845,14 @@
 				C312D1CB2D7DC27700BB97A4 /* VerifyPinViewController.swift */,
 				C312D1CC2D7DC27700BB97A4 /* WelcomeViewController.swift */,
 				C312D1CD2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift */,
-				C312D5132D7DC2EA00BB97A4 /* PrivacyInfo.xcprivacy */,
 				C312D1FD2D7DC27700BB97A4 /* AddressFieldView.swift */,
 				C312D1FE2D7DC27700BB97A4 /* AlertFailureView.swift */,
 				C312D2002D7DC27700BB97A4 /* AppDelegate.swift */,
 				C312D2012D7DC27700BB97A4 /* ApplicationController.swift */,
 				C312D2022D7DC27700BB97A4 /* ArticleIds.swift */,
-				C312D2032D7DC27700BB97A4 /* Assets.xcassets */,
 				C312D2042D7DC27700BB97A4 /* AssociatedObject.swift */,
 				C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */,
 				C312D2312D7DC27700BB97A4 /* BuyWKWebViewController.swift */,
-				C312D2332D7DC27700BB97A4 /* CHANGELOG.md */,
 				C312D2342D7DC27700BB97A4 /* CheckboxesStepView.swift */,
 				C312D2352D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift */,
 				C312D2382D7DC27700BB97A4 /* Constants+Events.swift */,
@@ -1845,9 +1877,6 @@
 				C312D24C2D7DC27700BB97A4 /* ForgotAlertViewModel.swift */,
 				C312D24D2D7DC27700BB97A4 /* ForgotView.swift */,
 				C312D24E2D7DC27700BB97A4 /* Functions.swift */,
-				C312D24F2D7DC27700BB97A4 /* general.css */,
-				C312D2512D7DC27700BB97A4 /* HostingTransactionCell.swift */,
-				C312D2522D7DC27700BB97A4 /* Icon.xcassets */,
 				C312D2532D7DC27700BB97A4 /* Info.plist */,
 				24FEB8B92DD2425A00D60036 /* InfoPlist.strings */,
 				C312D2542D7DC27700BB97A4 /* IntroStepView.swift */,
@@ -1876,13 +1905,11 @@
 				C312D28A2D7DC27700BB97A4 /* PaymentRequest.swift */,
 				C312D28B2D7DC27700BB97A4 /* PinDigitView.swift */,
 				C312D28C2D7DC27700BB97A4 /* PINFieldView.swift */,
-				C312D28D2D7DC27700BB97A4 /* POSTBouncer.html */,
 				C312D28F2D7DC27700BB97A4 /* PromptModalViewController.swift */,
 				C312D2902D7DC27700BB97A4 /* PromptTableViewCell.swift */,
 				C312D2912D7DC27700BB97A4 /* ReachabilityMonitor.swift */,
 				C312D2922D7DC27700BB97A4 /* ReceiveLTCViewController.swift */,
 				C312D2932D7DC27700BB97A4 /* RecoverWalletView.swift */,
-				C312D2942D7DC27700BB97A4 /* RELEASE_NOTES.md */,
 				C312D2962D7DC27700BB97A4 /* RemoteConfigHelper.swift */,
 				C312D2972D7DC27700BB97A4 /* RequestAmountViewController.swift */,
 				C312D2982D7DC27700BB97A4 /* RetryTimer.swift */,
@@ -1907,8 +1934,6 @@
 				C312D2B62D7DC27700BB97A4 /* SyncProgressHeaderView.swift */,
 				C312D2B72D7DC27700BB97A4 /* TabBarViewController.swift */,
 				C312D2B82D7DC27700BB97A4 /* TestnetData.swift */,
-				C312D2BA2D7DC27700BB97A4 /* TransactionCellView.swift */,
-				C312D2BB2D7DC27700BB97A4 /* TransactionCellViewModel.swift */,
 				C312D2BC2D7DC27700BB97A4 /* TransactionManager.swift */,
 				C312D2BD2D7DC27700BB97A4 /* TransactionModalView.swift */,
 				C312D2BE2D7DC27700BB97A4 /* TransactionsViewController.swift */,
@@ -2122,10 +2147,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = "";
-				KnownAssetTags = (
-					"initial-resources",
-					speakTag,
-				);
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1620;
 				ORGANIZATIONNAME = "Grunt Software, LTD";
@@ -2217,6 +2238,7 @@
 				C312D49A2D7DC27700BB97A4 /* Receive.storyboard in Resources */,
 				24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */,
 				C312D49E2D7DC27700BB97A4 /* Settings.storyboard in Resources */,
+				24718BE12DF0689500FA5F1B /* remote-config-defaults.plist in Resources */,
 				C312D4A12D7DC27700BB97A4 /* Icon.xcassets in Resources */,
 				248E5C3F2DE77E88003F232F /* moon_pay_buy_status.txt in Resources */,
 				C312D4A42D7DC27700BB97A4 /* Main.storyboard in Resources */,
@@ -2427,6 +2449,7 @@
 				C312D2D72D7DC27700BB97A4 /* Date+Additions.swift in Sources */,
 				24AAB31D2DE79ECC00F0C18C /* NewReceiveView.swift in Sources */,
 				C312D2D92D7DC27700BB97A4 /* LockScreenViewModel.swift in Sources */,
+				24C73FBC2DF2CA4100042B01 /* PromptTypeEnum.swift in Sources */,
 				C312D2DA2D7DC27700BB97A4 /* LFModalReceiveQRViewController.swift in Sources */,
 				C312D2DC2D7DC27700BB97A4 /* PresentModalAnimator.swift in Sources */,
 				2415FFDF2DBD8505002A2199 /* SeedWordsGridView.swift in Sources */,
@@ -2450,6 +2473,7 @@
 				C312D2FA2D7DC27700BB97A4 /* SendButtonView.swift in Sources */,
 				C312D2FC2D7DC27700BB97A4 /* GradientView.swift in Sources */,
 				C312D3002D7DC27700BB97A4 /* SendViewController.swift in Sources */,
+				24E078AA2DF1F9AE004B5958 /* PromptCellViewModel.swift in Sources */,
 				C3236A012D7DE355007039A1 /* URLController.swift in Sources */,
 				2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */,
 				C312D3012D7DC27700BB97A4 /* WelcomeViewController.swift in Sources */,
@@ -2486,6 +2510,7 @@
 				C312D33F2D7DC27700BB97A4 /* ModalTransitionDelegate.swift in Sources */,
 				C312D3402D7DC27700BB97A4 /* WarningConfirmationViewController.swift in Sources */,
 				C312D3422D7DC27700BB97A4 /* Functions.swift in Sources */,
+				24BEC6072DF0B53000140AAD /* WipeWalletView.swift in Sources */,
 				C312D3452D7DC27700BB97A4 /* EmailValidation.swift in Sources */,
 				C312D3472D7DC27700BB97A4 /* WalletManager+Auth.swift in Sources */,
 				C312D3482D7DC27700BB97A4 /* FeeManager.swift in Sources */,
@@ -2584,7 +2609,6 @@
 				C312D3C72D7DC27700BB97A4 /* Sender.swift in Sources */,
 				C312D3CA2D7DC27700BB97A4 /* BuyWKWebViewController.swift in Sources */,
 				C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */,
-				24F377FF2DE869A700A388AB /* BWAPIClient+MoonPay.swift in Sources */,
 				C312D3CD2D7DC27700BB97A4 /* AlertFailureView.swift in Sources */,
 				C312D3CE2D7DC27700BB97A4 /* TestnetData.swift in Sources */,
 				C312D3D12D7DC27700BB97A4 /* RequestAmountViewController.swift in Sources */,
@@ -2626,6 +2650,7 @@
 				C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */,
 				C312D40F2D7DC27700BB97A4 /* Environment.swift in Sources */,
 				C312D4102D7DC27700BB97A4 /* CustomTitleView.swift in Sources */,
+				2480B5832DF2016300653403 /* PromptHostingCell.swift in Sources */,
 				C312D4122D7DC27700BB97A4 /* SecurityCenterViewController.swift in Sources */,
 				C312D4152D7DC27700BB97A4 /* VerifyPinViewController.swift in Sources */,
 				244A8D932DE84C890024D356 /* BrainwalletShapes.swift in Sources */,
@@ -2672,7 +2697,7 @@
 				C312D4572D7DC27700BB97A4 /* KeyboardNotificationInfo.swift in Sources */,
 				C312D4582D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift in Sources */,
 				C312D45B2D7DC27700BB97A4 /* StartHostingController.swift in Sources */,
-				C312D45C2D7DC27700BB97A4 /* HostingTransactionCell.swift in Sources */,
+				C312D45C2D7DC27700BB97A4 /* HostingCell.swift in Sources */,
 				C312D4602D7DC27700BB97A4 /* LanguageSelectionViewModel.swift in Sources */,
 				C312D4612D7DC27700BB97A4 /* UIViewController+Alerts.swift in Sources */,
 				C312D4622D7DC27700BB97A4 /* UIViewController+BRWAdditions.swift in Sources */,
@@ -2680,6 +2705,7 @@
 				C312D4662D7DC27700BB97A4 /* PaymentRequest.swift in Sources */,
 				C312D4672D7DC27700BB97A4 /* SendAmountCell.swift in Sources */,
 				C312D4692D7DC27700BB97A4 /* CGContext+Additions.swift in Sources */,
+				24E078A82DF1F9A9004B5958 /* PromptCellView.swift in Sources */,
 				C312D46D2D7DC27700BB97A4 /* DismissLoginAnimator.swift in Sources */,
 				C312D46E2D7DC27700BB97A4 /* SeedWordContainerView.swift in Sources */,
 				C312D46F2D7DC27700BB97A4 /* SignupWebViewModel.swift in Sources */,
@@ -2847,7 +2873,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250601.1;
+				CURRENT_PROJECT_VERSION = 250608.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -2862,9 +2888,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.3.0;
+				MARKETING_VERSION = 3.3.1;
 				ONLY_ACTIVE_ARCH = YES;
-				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "initial-resources speakTag";
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
 				PRODUCT_MODULE_NAME = brainwallet;
@@ -3145,7 +3170,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250601.1;
+				CURRENT_PROJECT_VERSION = 250608.0;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
@@ -3159,9 +3184,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.3.0;
+				MARKETING_VERSION = 3.3.1;
 				ONLY_ACTIVE_ARCH = YES;
-				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "initial-resources speakTag";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
 				PRODUCT_MODULE_NAME = brainwallet;

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-final class HostingTransactionCell<Content: View>: UITableViewCell {
+final class HostingCell<Content: View>: UITableViewCell {
 	private let hostingController = UIHostingController<Content?>(rootView: nil)
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
