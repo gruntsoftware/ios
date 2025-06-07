@@ -122,7 +122,9 @@ class WalletCoordinator: Subscriber, Trackable {
 
 		Task {
 			do {
-				guard let wallet = self.walletManager.wallet else {
+				guard (self.store.state.currentRate != nil),
+                      (self.kvStore != nil),
+                    let wallet = self.walletManager.wallet else {
 					debugPrint("Wallet not found!")
 					return
 				}
@@ -146,14 +148,16 @@ class WalletCoordinator: Subscriber, Trackable {
 	}
 
 	func makeTransactionViewModels(transactions: [BRTxRef?], walletManager: WalletManager, kvStore: BRReplicatedKVStore?, rate: Rate?) async throws -> [Transaction] {
+        
+        precondition(kvStore != nil, "KVStore must be valid")
+        precondition(rate != nil, "rate must be valid")
+        
 		guard let kvStore = kvStore else {
-			// throw MakeTransactionError.replicatedKVStoreNotFound
-			return []
+			throw MakeTransactionError.replicatedKVStoreNotFound
 		}
 
 		guard let rate = rate else {
-			// throw MakeTransactionError.rateNotFound
-			return []
+			throw MakeTransactionError.rateNotFound
 		}
 
 		return transactions.compactMap { $0 }.sorted {

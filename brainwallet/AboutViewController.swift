@@ -10,7 +10,6 @@ class AboutViewController: UIViewController {
 	private let privacy = UIButton(type: .system)
     private let footer = UILabel(font: .customBody(size: 13.0), color: BrainwalletUIColor.content)
 	override func viewDidLoad() {
-
         
         titleLabel.textColor = BrainwalletUIColor.content
         privacy.tintColor = BrainwalletUIColor.background
@@ -35,37 +34,37 @@ class AboutViewController: UIViewController {
 	private func addConstraints() {
 		titleLabel.constrain([
 			titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: C.padding[2]),
-			titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: C.padding[2]),
+			titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: C.padding[2])
 		])
 		logoBackground.constrain([
 			logoBackground.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			logoBackground.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: C.padding[3]),
 			logoBackground.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2),
-			logoBackground.heightAnchor.constraint(equalTo: logoBackground.widthAnchor, multiplier: 1.0),
+			logoBackground.heightAnchor.constraint(equalTo: logoBackground.widthAnchor, multiplier: 1.0)
 		])
 		blog.constrain([
 			blog.topAnchor.constraint(equalTo: logoBackground.bottomAnchor, constant: C.padding[2]),
 			blog.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			blog.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			blog.trailingAnchor.constraint(equalTo: view.trailingAnchor)
 		])
 		twitter.constrain([
 			twitter.topAnchor.constraint(equalTo: blog.bottomAnchor, constant: C.padding[2]),
 			twitter.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			twitter.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			twitter.trailingAnchor.constraint(equalTo: view.trailingAnchor)
 		])
         bluesky.constrain([
             bluesky.topAnchor.constraint(equalTo: twitter.bottomAnchor, constant: C.padding[2]),
             bluesky.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bluesky.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bluesky.trailingAnchor.constraint(equalTo: view.trailingAnchor)
 		])
 		privacy.constrain([
 			privacy.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			privacy.topAnchor.constraint(equalTo: bluesky.bottomAnchor, constant: C.padding[2]),
+			privacy.topAnchor.constraint(equalTo: bluesky.bottomAnchor, constant: C.padding[2])
 		])
 		footer.constrain([
 			footer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			footer.topAnchor.constraint(equalTo: privacy.bottomAnchor),
-			footer.heightAnchor.constraint(equalToConstant: 80),
+			footer.heightAnchor.constraint(equalToConstant: 80)
 		])
 	}
 

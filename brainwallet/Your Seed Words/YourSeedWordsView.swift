@@ -15,7 +15,6 @@ struct YourSeedWordsView: View {
     @ObservedObject
     var viewModel: StartViewModel
     
-    
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0

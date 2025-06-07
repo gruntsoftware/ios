@@ -21,14 +21,12 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
     var blockHeightString = "--"
 
     // MARK: - Public Variables
-    
 
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.setLocalizedDateFormatFromTemplate("MMM d, yyyy h a")
         return df
     }()
-    
     
     var isRescanning: Bool = false
     var headerMessage: SyncState = .success
@@ -39,7 +37,6 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
             formattedTimestamp = dateFormatter.string(from: Date(timeIntervalSince1970: Double(dateTimestamp)))
         }
     }
-    
     
     var store: Store
     var walletManager: WalletManager

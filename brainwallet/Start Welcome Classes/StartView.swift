@@ -13,9 +13,8 @@ struct StartView: View {
     let squareImageSize: CGFloat = 25.0
     let themeButtonSize: CGFloat = 28.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
+    let largeButtonHeight: CGFloat = 60.0
     let lottieFileName: String = "welcomeemoji20250212.json"
-    
     
     @State
     private var isShowingOnboardView: Bool = true
@@ -48,6 +47,12 @@ struct StartView: View {
 	private var animationAmount = 0.0
     
     @State
+    private var currentValueInFiat = ""
+    
+    @State
+    private var debugLocale = ""
+    
+    @State
     private var pickedCurrency: SupportedFiatCurrencies = .USD
 
 	@State
@@ -57,6 +62,19 @@ struct StartView: View {
         self.startViewModel = startViewModel
         self.newMainViewModel = newMainViewModel
 	}
+    
+    func updateLocaleLabel() {
+        // Get current locale
+        let currentLocale = Locale.current
+         // Print locale identifier in native language
+        if let localeIdentifier = currentLocale.identifier as String? {
+            #if DEBUG || targetEnvironment(simulator)
+            let nativeLocaleName = currentLocale.localizedString(forIdentifier: localeIdentifier)
+            let nativeLocaleString = nativeLocaleName?.capitalized ?? localeIdentifier
+            debugLocale = "| " + nativeLocaleString
+            #endif
+        }
+    }
 
     var body: some View {
         GeometryReader { geometry in
@@ -70,6 +88,12 @@ struct StartView: View {
                     VStack {
                         
                         Group {
+                            Text(currentValueInFiat)
+                                .font(Font(UIFont.barlowLight(size: 16.0)))
+                                .foregroundColor(BrainwalletColor.content)
+                                .frame(maxWidth: .infinity, maxHeight: 20.0, alignment: .trailing)
+                                .padding(.all, 6.0)
+                        
                             Image("bw-logotype")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -78,8 +102,9 @@ struct StartView: View {
                                 .padding([.top,.bottom], verticalPadding)
                             
                             WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
-                                .frame(width: width * 0.9, height: height * 0.4, alignment: .center)
+                                .frame(height: height * 0.35, alignment: .center)
                                 .padding(.top, verticalPadding)
+                            /// width: width * 0.9,
 
                         }
                         
@@ -140,8 +165,8 @@ struct StartView: View {
 
                         Button(action: {
                                  startViewModel.didTapCreate!()
-                                //path.append(.inputWordsView)
-                                //path.append(.readyView)
+                                // path.append(.inputWordsView)
+                                // path.append(.readyView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
@@ -181,12 +206,20 @@ struct StartView: View {
                             }
                             .padding(.all, 8.0)
                         }
-                        
-                        Text(AppVersion.string)
-                            .frame(alignment: .center)
-                            .font(versionFont)
-                            .foregroundColor(BrainwalletColor.content)
-                            .padding(.all, 5.0)
+                        HStack {
+                            Text(AppVersion.string)
+                                .frame(alignment: .center)
+                                .font(versionFont)
+                                .foregroundColor(BrainwalletColor.content)
+                                .padding(.all, 5.0)
+                            if !debugLocale.isEmpty {
+                                Text("\(debugLocale)")
+                                    .frame(alignment: .center)
+                                    .font(versionFont)
+                                    .foregroundColor(BrainwalletColor.chili.opacity(0.8))
+                                    .padding(.all, 5.0)
+                            }
+                        }
                     }
                 }
                 .padding(.all, swiftUICellPadding)
@@ -205,7 +238,7 @@ struct StartView: View {
                            SetPasscodeView(path: $path)
                                 .navigationBarBackButtonHidden()
                         }
-                    case .confirmPasscodeView (let pinDigits):
+                    case .confirmPasscodeView(let pinDigits):
                         ZStack {
                             ConfirmPasscodeView(pinDigits: pinDigits, viewModel: startViewModel, path: $path)
                                .navigationBarBackButtonHidden()
@@ -250,6 +283,12 @@ struct StartView: View {
                     }
                 }
             })
+            .onAppear {
+                Task {
+                    currentValueInFiat = String(format: String(localized: "%@ = 1Ł"), startViewModel.currentValueInFiat)
+                    updateLocaleLabel()
+                }
+            }
         }
     }
 }

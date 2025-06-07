@@ -151,7 +151,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		headerView.addSubview(currencyTapView)
 
 		secondaryLabel.constrain([
-			secondaryLabel.constraint(.firstBaseline, toView: primaryLabel, constant: 0.0),
+			secondaryLabel.constraint(.firstBaseline, toView: primaryLabel, constant: 0.0)
 		])
 
 		equalsLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -161,7 +161,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			primaryLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: C.padding[1] * 1.25),
 			equalsLabel.firstBaselineAnchor.constraint(equalTo: primaryLabel.firstBaselineAnchor, constant: 0),
 			equalsLabel.leadingAnchor.constraint(equalTo: primaryLabel.trailingAnchor, constant: C.padding[1] / 2.0),
-			secondaryLabel.leadingAnchor.constraint(equalTo: equalsLabel.trailingAnchor, constant: C.padding[1] / 2.0),
+			secondaryLabel.leadingAnchor.constraint(equalTo: equalsLabel.trailingAnchor, constant: C.padding[1] / 2.0)
 		]
 
 		swappedConstraints = [
@@ -169,7 +169,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			secondaryLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: C.padding[1] * 1.25),
 			equalsLabel.firstBaselineAnchor.constraint(equalTo: secondaryLabel.firstBaselineAnchor, constant: 0),
 			equalsLabel.leadingAnchor.constraint(equalTo: secondaryLabel.trailingAnchor, constant: C.padding[1] / 2.0),
-			primaryLabel.leadingAnchor.constraint(equalTo: equalsLabel.trailingAnchor, constant: C.padding[1] / 2.0),
+			primaryLabel.leadingAnchor.constraint(equalTo: equalsLabel.trailingAnchor, constant: C.padding[1] / 2.0)
 		]
 
 		if let isLTCSwapped = isLtcSwapped {
@@ -180,73 +180,11 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			currencyTapView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 0),
 			currencyTapView.trailingAnchor.constraint(equalTo: settingsButton.leadingAnchor, constant: -C.padding[5]),
 			currencyTapView.topAnchor.constraint(equalTo: primaryLabel.topAnchor, constant: 0),
-			currencyTapView.bottomAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: C.padding[1]),
+			currencyTapView.bottomAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: C.padding[1])
 		])
 
 		let gr = UITapGestureRecognizer(target: self, action: #selector(currencySwitchTapped))
 		currencyTapView.addGestureRecognizer(gr)
-	}
-
-	// MARK: - Adding Subscriptions
-
-	private func addSubscriptions() {
-		guard let store = store
-		else {
-			debugPrint("::: ERROR - Store not passed")
-			return
-		}
-
-		guard let primaryLabel = primaryBalanceLabel,
-		      let secondaryLabel = secondaryBalanceLabel
-		else {
-            debugPrint("::: ERROR: Price labels not initialized")
-			return
-		}
-
-		store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
-                        callback: { _ in
-                    if let rate = store.state.currentRate {
-                        let maxDigits = store.state.maxDigits
-                        let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: maxDigits)
-                        secondaryLabel.formatter = placeholderAmount.localFormat
-                        primaryLabel.formatter = placeholderAmount.ltcFormat
-                        self.exchangeRate = rate
-                    }
-        })
-
-		store.lazySubscribe(self,
-		                    selector: { $0.isLtcSwapped != $1.isLtcSwapped },
-		                    callback: { self.isLtcSwapped = $0.isLtcSwapped })
-		store.lazySubscribe(self,
-		                    selector: { $0.currentRate != $1.currentRate },
-		                    callback: {
-		                    	if let rate = $0.currentRate {
-		                    		let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
-		                    		secondaryLabel.formatter = placeholderAmount.localFormat
-		                    		primaryLabel.formatter = placeholderAmount.ltcFormat
-		                    	}
-		                    	self.exchangeRate = $0.currentRate
-		                    })
-
-		store.lazySubscribe(self,
-		                    selector: { $0.maxDigits != $1.maxDigits },
-		                    callback: {
-		                    	if let rate = $0.currentRate {
-		                    		let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
-		                    		secondaryLabel.formatter = placeholderAmount.localFormat
-		                    		primaryLabel.formatter = placeholderAmount.ltcFormat
-		                    		self.setBalances()
-		                    	}
-		                    })
-
-		store.subscribe(self,
-		                selector: { $0.walletState.balance != $1.walletState.balance },
-		                callback: { state in
-		                	if let balance = state.walletState.balance {
-		                		self.balance = balance
-		                		self.setBalances()
-		                	}
-		                })
 	}
 
 	/// This is called when the price changes
@@ -397,18 +335,16 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
         
         self.tabBar.selectedItem = item
 
-        //New Receive SwiftUI HC
+        // New Receive SwiftUI HC
         if item.tag == 2 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.presentNewReceiveModal()
             }
-        }
-        else {
+        } else {
             // DEV: This happens because it relies on the tab in the storyboard tag
             displayContentController(contentController: viewControllers[item.tag])
         }
 	}
-    
     
     func presentNewReceiveModal() {
         guard let store = store,
@@ -425,6 +361,69 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 }
 
 extension TabBarViewController {
+    
+    // MARK: - Adding Subscriptions
+
+    private func addSubscriptions() {
+        guard let store = store
+        else {
+            debugPrint("::: ERROR - Store not passed")
+            return
+        }
+
+        guard let primaryLabel = primaryBalanceLabel,
+              let secondaryLabel = secondaryBalanceLabel
+        else {
+            debugPrint("::: ERROR: Price labels not initialized")
+            return
+        }
+
+        store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
+                        callback: { _ in
+                    if let rate = store.state.currentRate {
+                        let maxDigits = store.state.maxDigits
+                        let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: maxDigits)
+                        secondaryLabel.formatter = placeholderAmount.localFormat
+                        primaryLabel.formatter = placeholderAmount.ltcFormat
+                        self.exchangeRate = rate
+                    }
+        })
+
+        store.lazySubscribe(self,
+                            selector: { $0.isLtcSwapped != $1.isLtcSwapped },
+                            callback: { self.isLtcSwapped = $0.isLtcSwapped })
+        store.lazySubscribe(self,
+                            selector: { $0.currentRate != $1.currentRate },
+                            callback: {
+                                if let rate = $0.currentRate {
+                                    let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
+                                    secondaryLabel.formatter = placeholderAmount.localFormat
+                                    primaryLabel.formatter = placeholderAmount.ltcFormat
+                                }
+                                self.exchangeRate = $0.currentRate
+                            })
+
+        store.lazySubscribe(self,
+                            selector: { $0.maxDigits != $1.maxDigits },
+                            callback: {
+                                if let rate = $0.currentRate {
+                                    let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
+                                    secondaryLabel.formatter = placeholderAmount.localFormat
+                                    primaryLabel.formatter = placeholderAmount.ltcFormat
+                                    self.setBalances()
+                                }
+                            })
+
+        store.subscribe(self,
+                        selector: { $0.walletState.balance != $1.walletState.balance },
+                        callback: { state in
+                            if let balance = state.walletState.balance {
+                                self.balance = balance
+                                self.setBalances()
+                            }
+                        })
+    }
+
 	@objc private func currencySwitchTapped() {
 		view.layoutIfNeeded()
 		guard let store = store else { return }

@@ -91,7 +91,6 @@ class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
                            
                         })
 
-
         // MARK: - Wallet State:  CurrentRate
 
         store.subscribe(self, selector: { $0.currentRate != $1.currentRate },
@@ -115,7 +114,7 @@ class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
         // MARK: - Wallet State:  Sync State
 
         store.subscribe(self, selector: { $0.walletState.syncState != $1.walletState.syncState },
-                        callback: { reduxState in
+                        callback: { _ in
 
             guard let _ = self.walletManager.peerManager
                             else {

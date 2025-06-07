@@ -9,13 +9,11 @@
 import Foundation
 import SwiftUI
 
-
 let defaultLaunchAmount = 210
 let maxLaunchAmount = 20000
 
 struct NewReceiveView: View {
     
-
     @ObservedObject
     var viewModel: NewReceiveViewModel
       
@@ -33,7 +31,6 @@ struct NewReceiveView: View {
     
     @State
     private var pickedSymbol = "$"
-    
     
     @State
     private var pickedAmountString = ""
@@ -74,11 +71,23 @@ struct NewReceiveView: View {
     @State
     private var userWantsCustomAmount = false
 
+    @State
+    private var shouldAnimateMPLogo = false
+    
+    @State
+    private var didCopyAddress = false
+    
+    @State
+    private var showMPLogo = true
+    
    @FocusState
-    private var keyboardFocused: Bool
+    var keyboardFocused: Bool
     
     @State
     private var pickedSegment = 1
+    
+    @State
+    private var qrPlaceholder: UIImage = UIImage(systemName: "qrcode")!
 
     let buyButtonSize: CGFloat = 80.0
     let squareImageSize: CGFloat = 16.0
@@ -93,8 +102,6 @@ struct NewReceiveView: View {
     let lightDetailFont: Font = .barlowLight(size: 15.0)
 
     let textFieldFont: Font = .barlowRegular(size: 15.0)
-    
-    let qrPlaceholder: UIImage = UIImage(systemName: "qrcode")!
     
     let buyVStackFactor: CGFloat = 0.0
 
@@ -136,26 +143,21 @@ struct NewReceiveView: View {
                         VStack {
                             ZStack {
                                 WebBuyView(signingData: viewModel.buildUnsignedMoonPayUrl(), viewModel: viewModel)
-                                VStack {
-                                    HStack {
-                                        Spacer()
-                                        Button(action: {
-                                            userIsBuying.toggle()
-                                        }) {
-                                            
-                                            Image(systemName: "xmark")
-                                                .resizable()
-                                                .frame(width: 25, height: 25)
-                                                .foregroundColor(BrainwalletColor.content)
-                                                .padding(12.0)
-                                            
-                                            
+                                
+                                Image("moonpay-symbol-prp")
+                                    .resizable()
+                                    .frame(width: 50.0, height: 50.0)
+                                    .offset(x: shouldAnimateMPLogo ? 20 : 0, y: shouldAnimateMPLogo ? -20 : 0)
+                                    .onAppear {
+                                        
+                                        withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                                            shouldAnimateMPLogo = true
                                         }
-                                        .frame(width: 40.0, height: 40.0, alignment: .bottom)
-                                        .padding(12.0)
+                                        delay(2.0) {
+                                            showMPLogo = false
+                                        }
                                     }
-                                  Spacer()
-                                }
+                                    .opacity(showMPLogo ? 1.0 : 0.0)
                             }
                         }
                         .frame(width: width * 0.95,
@@ -171,8 +173,7 @@ struct NewReceiveView: View {
                             
                         }
                         .padding(.bottom, 5.0)
-                    }
-                    else {
+                    } else {
                         VStack {
                             /// Header Group
                             HStack {
@@ -187,67 +188,14 @@ struct NewReceiveView: View {
                             /// Header Group
                             
                             /// Receive Address Group
-                            HStack {
-                                VStack {
-                                    Image(uiImage: viewModel.newReceiveAddressQR ?? qrPlaceholder)
-                                        .resizable()
-                                        .scaledToFit()
-                                    Spacer()
-                                }
-                                .frame(alignment: .top)
-                                VStack {
-                                    Text(newAddress)
-                                        .font(ginormousFont)
-                                        .kerning(0.3)
-                                        .lineLimit(3)
-                                        .multilineTextAlignment(.leading)
-                                        .frame(height: 100)
-                                        .foregroundColor(BrainwalletColor.content)
-                                    
-                                    VStack {
-                                        HStack {
-                                            
-                                            Text("Brainwallet generates a new address after each transaction sent")
-                                                .font(subDetailFont)
-                                                .lineLimit(3)
-                                                .multilineTextAlignment(.leading)
-                                                .foregroundColor(BrainwalletColor.content)
-                                            
-                                            Button(action: {
-                                                UIPasteboard.general.string = viewModel.newReceiveAddress
-                                            }) {
-                                                ZStack {
-                                                    Ellipse()
-                                                        .frame(width: 40,
-                                                               height: 40)
-                                                        .overlay (
-                                                            Ellipse()
-                                                                .stroke(BrainwalletColor.content, lineWidth: 1)
-                                                                .frame(width: 40,
-                                                                       height: 40)
-                                                        )
-                                                    
-                                                    Image(systemName: "document.on.document")
-                                                        .resizable()
-                                                        .frame(width: 23, height: 23)
-                                                        .foregroundColor(BrainwalletColor.content)
-                                                }
-                                            }
-                                        }
-                                        
-                                        Spacer()
-                                    }
-                                    Spacer()
-                                }
-                                .frame(alignment: .top)
-                                .onChange(of: viewModel.newReceiveAddress) { address in
-                                    newAddress = address
-                                }
-                                
-                            }
-                            .frame(width: modalWidth, height: keyboardFocused ? height * 0.01 : height * 0.3, alignment: .top)
-                            .opacity(keyboardFocused ? 0 : 1)
+                            ReceiveAddressView(viewModel: viewModel,
+                                               newAddress: $newAddress,
+                                               qrPlaceholder: $qrPlaceholder,
+                                               keyboardFocused: $keyboardFocused)
+                                .frame(width: modalWidth, height: keyboardFocused ? height * 0.01 : height * 0.3, alignment: .top)
+                                .opacity(keyboardFocused ? 0 : 1)
                             /// Receive Address Group
+                        
                             Divider()
                                 .background(BrainwalletColor.nearBlack)
                                 .padding([.leading, .trailing], 12.0)
@@ -264,7 +212,7 @@ struct NewReceiveView: View {
                                                     .padding(4.0)
                                             }
                                         }
-                                        .onChange(of: $pickedCurrency.wrappedValue) { _ in
+                                        .onChange(of: pickedCurrency) { _ in
                                             updateFiatAmounts()
                                         }
                                         .pickerStyle(.wheel)
@@ -272,7 +220,7 @@ struct NewReceiveView: View {
                                         
                                         VStack {
                                             
-                                            Text(String(format: "~ %.3f Ł", quotedLTCAmount))
+                                            Text(String(format: "%.3f Ł", quotedLTCAmount))
                                                 .font(ginormousFont)
                                                 .kerning(0.3)
                                                 .foregroundColor(BrainwalletColor.content)
@@ -291,15 +239,15 @@ struct NewReceiveView: View {
                                     }
                                     HStack {
                                         Picker("", selection: $pickedSegment) {
-                                            Text("\(fiatMinAmount) (\(pickedCurrency.code))")
+                                            Text("\(pickedCurrency.symbol) \(fiatMinAmount)")
                                                 .font(lightDetailFont)
                                                 .padding(8.0)
                                                 .tag(0)
-                                            Text("\(fiatTenXAmount) (\(pickedCurrency.code))")
+                                            Text("\(pickedCurrency.symbol) \(fiatTenXAmount)")
                                                 .font(lightDetailFont)
                                                 .padding(8.0)
                                                 .tag(1)
-                                            Text("\(fiatMaxAmount) (\(pickedCurrency.code))")
+                                            Text("\(pickedCurrency.symbol) \(fiatMaxAmount)")
                                                 .font(lightDetailFont)
                                                 .padding(8.0)
                                                 .tag(2)
@@ -309,11 +257,9 @@ struct NewReceiveView: View {
                                             
                                             if tag == 0 {
                                                 pickedAmount = fiatMinAmount
-                                            }
-                                            else if tag == 1 {
+                                            } else if tag == 1 {
                                                 pickedAmount = fiatTenXAmount
-                                            }
-                                            else {
+                                            } else {
                                                 pickedAmount = fiatMaxAmount
                                             }
                                             
@@ -323,7 +269,7 @@ struct NewReceiveView: View {
                                         }
                                         .tint(.orange)
                                         .padding(.all, 10.0)
-
+                                        
                                     }
                                     .frame(width: modalWidth, height: 35.0)
                                     HStack {
@@ -361,6 +307,7 @@ struct NewReceiveView: View {
                                 .padding(.bottom, 5.0)
                                 .opacity(didFetchData ? 1.0 : 0.0)
                             }
+                            .opacity(viewModel.canUserBuyLTC ? 1.0 : 0.0)
                             /// Set Amount Group
                             
                             Divider()
@@ -432,7 +379,7 @@ struct NewReceiveView: View {
                                 .padding(.all, 8.0)
                             }
                             /// Set Amount Button
-
+                            
                         }
                         .frame(width: width * 0.95,
                                height: (viewModel.canUserBuyLTC && isExpanded) ? modalBuyViewHeight : modalReceiveViewHeight,
@@ -457,13 +404,24 @@ struct NewReceiveView: View {
                 .onChange(of: viewModel.didFetchData) { newValue in
                     didFetchData = newValue
                 }
+                .onChange(of: viewModel.pickedCurrency) { _ in
+                    viewModel.updatePublishables()
+                    pickedCurrency = viewModel.pickedCurrency
+                }
                 .onAppear {
                     newAddress = viewModel.newReceiveAddress
                     canUserBuyLTC = viewModel.canUserBuyLTC
-                    if canUserBuyLTC {
-                        updateFiatAmounts()
-                    }
+                    pickedCurrency = viewModel.pickedCurrency
+                    updateFiatAmounts()
                 }
+                .alert("Address Copied", isPresented: $didCopyAddress,
+                       actions: {
+                    HStack {
+                        Button("Ok" , role: .cancel) {
+                            didCopyAddress.toggle()
+                        }
+                    }
+                })
             }
         }
     }

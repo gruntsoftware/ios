@@ -10,10 +10,6 @@ class Currency {
 	}
 }
 
-import Foundation
-import UIKit
-
-/// 12  Currencies (Verified 1748766322)
 enum SupportedFiatCurrencies: Int, CaseIterable, Equatable, Identifiable {
     case USD = 0
     case EUR

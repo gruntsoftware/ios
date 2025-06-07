@@ -18,7 +18,7 @@ struct NewConfirmView: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
         
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)

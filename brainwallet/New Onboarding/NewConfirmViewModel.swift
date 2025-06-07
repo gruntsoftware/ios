@@ -8,8 +8,6 @@
 import Foundation
 import SwiftUI
 
-
-
 class NewConfirmViewModel: ObservableObject, Subscriber {
     // MARK: - Combine Variables
     
@@ -18,9 +16,6 @@ class NewConfirmViewModel: ObservableObject, Subscriber {
     
     @Published
     var currencyCode: String = ""
-    //UserDefaults.writePaperPhraseDate = Date()
-    //store.trigger(name: .didWritePaperKey)
-    //didCompleteConfirmation?()
     
     var store: Store?
 

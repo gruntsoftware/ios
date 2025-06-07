@@ -33,8 +33,7 @@ extension BWAPIClient {
         #endif
 		dataTaskWithRequest(request) { data, _, error in
 			if error == nil, let data = data,
-			   let parsedData = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
-			{
+			   let parsedData = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
                 guard let array = parsedData as? [Any] else {
                     let properties = ["error_message": "rates_parsed_data_fail"]
                     LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
@@ -42,8 +41,7 @@ extension BWAPIClient {
                     return handler([], "/rates didn't return an array")
                 }
                 handler(array.compactMap { Rate(data: $0) }, nil)
-			}
-            else {
+			} else {
                 let properties = ["error_message": "rates_parsed_data_fail"]
                 LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
                 debugPrint("::: ERROR: else rates_parsed_data_fail")

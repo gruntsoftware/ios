@@ -49,8 +49,7 @@ class Sender {
 	}
 
 	func createTransactionWithOpsOutputs(amount: UInt64,
-	                                     to: String) -> Bool
-	{
+	                                     to: String) -> Bool {
 		transaction = walletManager.wallet?.createOpsTransaction(forAmount: amount,
 		                                                         toAddress: to,
 		                                                         opsFee: tieredOpsFee(amount: amount),
@@ -77,8 +76,7 @@ class Sender {
 	          feePerKb: UInt64,
 	          verifyPinFunction:
 	          @escaping (@escaping (String) -> Bool) -> Void,
-	          completion: @escaping (SendResult) -> Void)
-	{
+	          completion: @escaping (SendResult) -> Void) {
 		guard let tx = transaction
 		else {
 			return completion(.creationError("Could not create transaction." ))
@@ -89,8 +87,7 @@ class Sender {
 		self.feePerKb = feePerKb
 
 		if UserDefaults.isBiometricsEnabled,
-		   walletManager.canUseBiometrics(forTx: tx)
-		{
+		   walletManager.canUseBiometrics(forTx: tx) {
 			DispatchQueue.walletQueue.async { [weak self] in
 				guard let myself = self else { return }
 				myself
@@ -127,8 +124,7 @@ class Sender {
 	// VerifyPIN and VerifyTX
 	private func verifyPin(tx: BRTxRef,
 	                       withFunction: (@escaping (String) -> Bool) -> Void,
-	                       completion: @escaping (SendResult) -> Void)
-	{
+	                       completion: @escaping (SendResult) -> Void) {
 		withFunction { pin in
 			var success = false
 			let group = DispatchGroup()

@@ -4,7 +4,6 @@ class Circle: UIView {
     private let circleForegroundColor: UIColor
     private let circleBorderColor: UIColor
 
-
     static let defaultSize: CGFloat = 64.0
 
     init(circleForegroundColor: UIColor,

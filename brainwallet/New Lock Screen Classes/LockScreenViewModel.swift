@@ -19,21 +19,31 @@ class LockScreenViewModel: ObservableObject, Subscriber {
     var authenticationFailed =  false
     
     @Published
+    var didCompleteWipingWallet = false
+    
+    @Published
     var pinDigits = [Int(),Int(),Int(),Int()]
     
     var userSubmittedPIN: ((String) -> Void)?
     
-    var userDidTapQR:(() -> Void)?
+    var userDidTapQR: (() -> Void)?
     
+    var didTapWipeWallet: ((Bool) -> Void)?
+      
 	// MARK: - Public Variables
 
 	var store: Store?
-
+    
 	init(store: Store) {
 		self.store = store
+        
 		addSubscriptions()
 		fetchCurrentPrice()
 	}
+    
+    func startWipeProcess() {
+        didTapWipeWallet?(true)
+    }
 
 	private func fetchCurrentPrice() {
 		guard let currentRate = store?.state.currentRate
@@ -66,4 +76,5 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 		                	self?.fetchCurrentPrice()
 		                })
 	}
+    
 }

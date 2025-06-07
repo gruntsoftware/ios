@@ -2,12 +2,17 @@ import SwiftUI
 
 struct LockScreenView: View {
 	// MARK: - Combine Variables
+    
+    let versionFont: Font = .barlowLight(size: 15.0)
 
 	@ObservedObject
 	var viewModel: LockScreenViewModel
 
 	@State
 	private var fiatValue = ""
+    
+    @State
+    private var debugLocale = ""
  
     @State
     private var pinState: [Bool] = [false,false,false,false]
@@ -22,6 +27,19 @@ struct LockScreenView: View {
 		self.viewModel = viewModel
 	}
 
+    func updateLocaleLabel() {
+        // Get current locale
+        let currentLocale = Locale.current
+         // Print locale identifier in native language
+        if let localeIdentifier = currentLocale.identifier as String? {
+            #if DEBUG || targetEnvironment(simulator)
+            let nativeLocaleName = currentLocale.localizedString(forIdentifier: localeIdentifier)
+            let nativeLocaleString = nativeLocaleName?.capitalized ?? localeIdentifier
+            debugLocale = "| " + nativeLocaleString
+            #endif
+        }
+    }
+    
 	var body: some View {
         
         GeometryReader { geometry in
@@ -46,8 +64,8 @@ struct LockScreenView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: width * 0.65)
-                        .padding(.top, 40.0)
-                        .padding(10.0)
+                        .padding(.top, 25.0)
+                        .padding(8.0)
                     
                     Spacer()
                     
@@ -57,26 +75,34 @@ struct LockScreenView: View {
                         .padding([.top,.bottom], 20.0)
                     
                     Spacer()
-
                     
                     PasscodeGridView(digits: $pinDigits)
                         .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
                         .padding(.bottom, 10.0)
                     
-                    
                     LockScreenFooterView(viewModel: viewModel)
-                        .frame(width: width, height: 60.0, alignment: .center)
+                        .frame(width: width, height: 55.0, alignment: .center)
                         .padding(.bottom, 20.0)
                     
-                    Text(AppVersion.string)
-                        .font(Font(UIFont.barlowLight(size: 15.0)))
-                        .foregroundColor(BrainwalletColor.content)
-                        .frame(alignment: .center)
-                        .padding(.bottom, 10.0)
+                    HStack {
+                        Text(AppVersion.string)
+                            .frame(alignment: .center)
+                            .font(versionFont)
+                            .foregroundColor(BrainwalletColor.content)
+                            .padding(.all, 5.0)
+                        if !debugLocale.isEmpty {
+                            Text("\(debugLocale)")
+                                .frame(alignment: .center)
+                                .font(versionFont)
+                                .foregroundColor(BrainwalletColor.chili.opacity(0.8))
+                                .padding(.all, 5.0)
+                        }
+                    }
                 }
                 .onAppear {
                     Task {
                         fiatValue = String(format: String(localized: "%@ = 1Ł"), viewModel.currentValueInFiat)
+                        updateLocaleLabel()
                     }
                 }
                 .onChange(of: viewModel.currentValueInFiat) { newValue in
@@ -98,11 +124,4 @@ struct LockScreenView: View {
             }
         }
 	}
-}
-
-struct LockScreenView_Previews: PreviewProvider {
-    static let viewModel = LockScreenViewModel(store: Store())
-    static var previews: some View {
-        LockScreenView(viewModel: viewModel)
-    }
 }

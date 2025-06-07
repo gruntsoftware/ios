@@ -13,8 +13,7 @@ class LFModalReceiveQRViewController: UIViewController {
 		dismissQRModalAction?()
 	}
 
-	override func viewWillAppear(_: Bool)
-	{}
+	override func viewWillAppear(_: Bool) {}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

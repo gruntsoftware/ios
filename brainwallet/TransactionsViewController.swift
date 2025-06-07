@@ -65,12 +65,18 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 			return
 		}
         
-		tableView.register(HostingTransactionCell<TransactionCellView>.self, forCellReuseIdentifier: "HostingTransactionCell<TransactionCellView>")
+		tableView.register(HostingCell<TransactionCellView>.self, forCellReuseIdentifier: "HostingCell<TransactionCellView>")
+        tableView.register(PromptHostingCell<PromptCellView>.self, forCellReuseIdentifier: "PromptHostingCell<PromptCellView>")
+
 		transactions = TransactionManager.sharedInstance.transactions
 		rate = TransactionManager.sharedInstance.rate
 		tableView.backgroundColor = BrainwalletUIColor.surface
 		initSyncingHeaderView(reduxState: reduxState, completion: {})
 		attemptShowPrompt()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(userTappedPromptClose), name: .userTapsClosePromptNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(userTappedPromptContinue), name: .userTapsContinuePromptNotification, object: nil)
 	}
 
 	/// Calls the Syncing HeaderView
@@ -93,7 +99,26 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         newSyncingHeaderView?.viewModel.blockHeightString = reduxState.walletState.transactions.first?.blockHeight ?? ""
 		completion()
 	}
-
+    
+    @objc
+    private func userTappedPromptClose() {
+        /// do close
+        self.currentPromptType = nil
+        self.reload()
+    }
+    
+    @objc
+    private func userTappedPromptContinue() {
+        /// do continue
+         if let store = self.store,
+            let trigger = self.currentPromptType?.trigger {
+                store.trigger(name: trigger)
+            }
+        
+        self.currentPromptType = nil
+        self.reload()
+    }
+    
 	private func attemptShowPrompt() {
 		guard let walletManager = walletManager,
         let store = store else {
@@ -182,7 +207,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 			let transaction = transactions[indexPath.row]
             debugPrint("::: TransactionViewController tableView transaction blockHeight: \(transaction.blockHeight)")
 
-			guard let cell = tableView.dequeueReusableCell(withIdentifier: "HostingTransactionCell<TransactionCellView>", for: indexPath) as? HostingTransactionCell<TransactionCellView>
+			guard let cell = tableView.dequeueReusableCell(withIdentifier: "HostingCell<TransactionCellView>", for: indexPath) as? HostingCell<TransactionCellView>
 			else {
 				debugPrint("::: ERROR No cell found")
 				return UITableViewCell()
@@ -190,13 +215,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 			if let rate = rate,
 			   let store = store,
-			   let isLtcSwapped = isLtcSwapped
-			{
+			   let isLtcSwapped = isLtcSwapped {
 				let viewModel = TransactionCellViewModel(transaction: transaction, isLtcSwapped: isLtcSwapped, rate: rate, maxDigits: store.state.maxDigits, isSyncing: store.state.walletState.syncState != .success)
 				cell.set(rootView: TransactionCellView(viewModel: viewModel), parentController: self)
 				cell.selectionStyle = .default
-			}
-            else {
+			} else {
                 debugPrint("::: ERROR Rate, Store, isLtcSwapped not set")
             }
 
@@ -210,8 +233,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
           
 			if let rate = rate,
 			   let store = store,
-			   let isLtcSwapped = isLtcSwapped
-			{
+			   let isLtcSwapped = isLtcSwapped {
 				let viewModel = TransactionCellViewModel(transaction: transaction, isLtcSwapped: isLtcSwapped, rate: rate, maxDigits: store.state.maxDigits, isSyncing: store.state.walletState.syncState != .success)
 
 				let hostingController = UIHostingController(rootView: TransactionModalView(viewModel: viewModel))
@@ -277,34 +299,19 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 	// MARK: - UITableView Support Methods
 
-	private func configurePromptCell(promptType: PromptType?, indexPath: IndexPath) -> PromptTableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: "PromptTVC2", for: indexPath) as? PromptTableViewCell
+	private func configurePromptCell(promptType: PromptType?, indexPath: IndexPath) -> UITableViewCell {
+
+        guard let promptCell = tableView.dequeueReusableCell(withIdentifier: "PromptHostingCell<PromptCellView>", for: indexPath) as? PromptHostingCell<PromptCellView>
 		else {
 			NSLog("ERROR No cell found")
-			return PromptTableViewCell()
+			return UITableViewCell()
 		}
-
-		cell.type = promptType
-		cell.titleLabel.text = promptType?.title
-		cell.bodyLabel.text = promptType?.body
-		cell.didClose = { [weak self] in
-			self?.saveEvent("prompt.\(String(describing: promptType?.name)).dismissed")
-			self?.currentPromptType = nil
-			self?.reload()
-		}
-
-		cell.didTap = { [weak self] in
-
-			if let store = self?.store,
-			   let trigger = self?.currentPromptType?.trigger
-			{
-				store.trigger(name: trigger)
-			}
-			self?.saveEvent("prompt.\(String(describing: self?.currentPromptType?.name)).trigger")
-			self?.currentPromptType = nil
-		}
-
-		return cell
+        
+        guard let promptType = promptType  else {
+            return UITableViewCell()
+        }
+        
+		return promptCell
 	}
 
 	private func reload() {
@@ -366,7 +373,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		                		self.shouldBeSyncing = true
 
 		                		if reduxState.walletState.syncProgress >= 0.99 {
-                                    ///DEV HACK To Show
+                                    /// DEV HACK To Show
 		                			self.shouldBeSyncing = false
 		                			self.newSyncingHeaderView = nil
 		                		}
@@ -379,7 +386,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		store.subscribe(self, name: .showStatusBar) { _ in
 			// DEV: May refactor where the action view persists after confirming pin
-
             
 			self.reload()
 		}

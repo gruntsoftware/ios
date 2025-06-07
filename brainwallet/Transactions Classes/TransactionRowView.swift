@@ -26,8 +26,7 @@ struct TransactionRowView: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
-             
+        GeometryReader { _ in
             
             ZStack {
                 BrainwalletColor.affirm.edgesIgnoringSafeArea(.all)

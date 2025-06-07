@@ -30,7 +30,6 @@ struct NewSyncProgressView: View {
     private let progressViewHeight: CGFloat = 55.0
     private let progressBarHeight: CGFloat = 14.0
     private let progressIconSize: CGFloat = 16.0
-
     
     init(viewModel: NewSyncProgressViewModel) {
         self.viewModel = viewModel
@@ -46,32 +45,31 @@ struct NewSyncProgressView: View {
                     HStack {
                         ProgressView(value: viewModel.progress)
                             .progressViewStyle(.linear)
-                            .accentColor(BrainwalletColor.background)
+                            .accentColor(BrainwalletColor.grape)
                             .frame(height: progressBarHeight)
                             .padding([.leading,.trailing], 8.0)
                     }
                     .frame(height: progressBarHeight)
                     HStack {
                         VStack {
-                            Text(String(localized:"Block timestamp: ") + viewModel.formattedTimestamp)
+                            Text(String(localized:"Block time: ") + viewModel.formattedTimestamp)
                                 .font(.caption)
-                                .frame(width: 240.0, alignment: .leading)
+                                .frame(width: 210.0, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)
                             Text(String(localized:"Last block: ") + viewModel.blockHeightString)
                                 .font(.caption)
-                                .frame(width: 240.0, alignment: .leading)
+                                .frame(width: 210.0, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)
                             Spacer()
                         }
                         .padding(.leading, 8.0)
-
                         
                         Spacer()
                         VStack {
                             HStack {
                                 Text("SEND")
                                     .font(.caption)
-                                    .frame(width: 120.0, alignment: .trailing)
+                                    .frame(width: 70.0, alignment: .trailing)
                                     .foregroundColor(BrainwalletColor.content)
                                 Image(systemName: "nosign")
                                     .resizable()
@@ -84,8 +82,9 @@ struct NewSyncProgressView: View {
                             HStack {
                                 Text("RECEIVE")
                                     .font(.caption)
-                                    .frame(width: 120.0, alignment: .trailing)
-                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(width: 70.0, alignment: .trailing)
+                                    .foregroundColor(BrainwalletColor.content) 
+
                                 Image(systemName: "square.and.arrow.down")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -100,7 +99,7 @@ struct NewSyncProgressView: View {
                     }
                     Divider()
                         .frame(height: 2.0)
-                        .background(BrainwalletColor.nearBlack.opacity(0.8))
+                        .background(BrainwalletColor.midnight.opacity(0.8))
                 }
                 .frame(width: width, height: progressViewHeight)
             }
@@ -109,9 +108,9 @@ struct NewSyncProgressView: View {
 }
 
 //
-//import UIKit
+// import UIKit
 //
-//class SyncProgressHeaderView: UITableViewCell, Subscriber {
+// class SyncProgressHeaderView: UITableViewCell, Subscriber {
 //    @IBOutlet var headerLabel: UILabel!
 //    @IBOutlet var timestampLabel: UILabel!
 //    @IBOutlet var blockheightLabel: UILabel!
@@ -197,4 +196,4 @@ struct NewSyncProgressView: View {
 //    override func setSelected(_ selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)
 //    }
-//}
+// }

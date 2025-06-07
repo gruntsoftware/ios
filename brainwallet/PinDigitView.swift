@@ -37,8 +37,6 @@ struct PinDigitView: View {
 
 /// Inspired by https://stackoverflow.com/questions/72926965/creating-an-ios-passcode-view-with-swiftui-how-to-hide-a-textview
 
-import SwiftUI
-
 struct PasscodeView: View {
 	@EnvironmentObject
 	var viewModel: StartViewModel

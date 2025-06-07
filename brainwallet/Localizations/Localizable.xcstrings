@@ -133,6 +133,16 @@
         }
       }
     },
+    "%@ %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$lld"
+          }
+        }
+      }
+    },
     "%@ = 1Ł" : {
 
     },
@@ -232,16 +242,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld"
-          }
-        }
-      }
-    },
-    "%lld (%@)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld (%2$@)"
           }
         }
       }
@@ -346,10 +346,10 @@
         }
       }
     },
-    "Action Required" : {
+    "Address Already Used\n\n Litecoin addresses are intended for single use only.\n\nRe-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn't directly control the address." : {
 
     },
-    "Address Already Used\n\n Litecoin addresses are intended for single use only.\n\nRe-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn't directly control the address." : {
+    "Address Copied" : {
 
     },
     "Always require passcode" : {
@@ -761,7 +761,7 @@
         }
       }
     },
-    "Block timestamp: " : {
+    "Block time: " : {
 
     },
     "Blockchain" : {
@@ -963,9 +963,6 @@
           }
         }
       }
-    },
-    "Brainwallet generates a new address after each transaction sent" : {
-
     },
     "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)." : {
 
@@ -1782,6 +1779,9 @@
     "Copy" : {
 
     },
+    "Copy Address: " : {
+
+    },
     "Copy all details" : {
       "localizations" : {
         "ar" : {
@@ -2187,6 +2187,9 @@
           }
         }
       }
+    },
+    "Create Wallet" : {
+
     },
     "Currency" : {
       "localizations" : {
@@ -7540,6 +7543,9 @@
         }
       }
     },
+    "Save your 12 words" : {
+
+    },
     "Scan" : {
       "localizations" : {
         "ar" : {
@@ -8754,6 +8760,9 @@
           }
         }
       }
+    },
+    "Start over by swiping up and restarting the app." : {
+
     },
     "Starting or recovering another wallet allows you to access and manage a different Brainwallet wallet on this device." : {
       "localizations" : {
@@ -10176,6 +10185,12 @@
         }
       }
     },
+    "This will allow you to send and receive from your previous balance. You will need to set a new PIN" : {
+
+    },
+    "This will erase your PIN, data & memos. This cannot be undone." : {
+
+    },
     "to" : {
       "localizations" : {
         "ar" : {
@@ -11394,6 +11409,9 @@
         }
       }
     },
+    "Wallet is deleted" : {
+
+    },
     "Warning" : {
       "localizations" : {
         "ar" : {
@@ -11594,6 +11612,12 @@
         }
       }
     },
+    "Wipe Brainwallet" : {
+
+    },
+    "Wipe my Brainwallet & Data" : {
+
+    },
     "Write down each word in order and store it in a safe place." : {
       "localizations" : {
         "ar" : {
@@ -11793,6 +11817,9 @@
           }
         }
       }
+    },
+    "You can start over by tapping RESTORE then entering your previously saved 12 seed words." : {
+
     },
     "You didn’t forget did you? Enter it again. Or, go back to start over." : {
       "localizations" : {

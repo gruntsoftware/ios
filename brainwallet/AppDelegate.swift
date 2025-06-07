@@ -7,7 +7,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
-	let applicationController = ApplicationController()
+	var applicationController = ApplicationController()
 	var remoteConfigurationHelper: RemoteConfigHelper?
 
 	var resourceRequest: NSBundleResourceRequest?
@@ -17,21 +17,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 			// Language
             Bundle.setLanguage(UserDefaults.selectedLanguage)
-
             
             // Locale and fetch access
             // DEV: Break here to test Locale/Matrix
-            let currentLocaleID = Locale.current.region?.identifier ?? "RU"
-			updateCurrentUserLocale(localeId: currentLocaleID)
-    
-            let _ = NetworkHelper.init().fetchCurrenciesCountries(completion:  { countryData  in
+            let countryRussia = MoonpayCountryData(alphaCode2Char: "RU",
+                                                   alphaCode3Char: "RUS",
+                                                   isBuyAllowed: false,
+                                                   isSellAllowed: false,
+                                                   countryName: "Russia",
+                                                   isAllowedInCountry: false)
+
+            let currentLocaleID = Locale.current.region?.identifier ?? countryRussia.alphaCode2Char
+            debugPrint(":::::: Current Locale ID: \(currentLocaleID)")
+            _ = NetworkHelper.init().fetchCurrenciesCountries(completion:  { countryData  in
                 
-                let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == currentLocaleID }.first //
+                let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == currentLocaleID }.first ?? countryRussia
                 
-                if let buyIsAllowed = currentMoonPayCountry?.isBuyAllowed {
-                    UserDefaults.standard.set(buyIsAllowed, forKey: userCurrentLocaleMPApprovedKey)
-                }
-                else {
+                let isBuyAllowed = currentMoonPayCountry.isBuyAllowed
+                if isBuyAllowed {
+                    UserDefaults.standard.set(isBuyAllowed, forKey: userCurrentLocaleMPApprovedKey)
+                    debugPrint(":::::: buyIsAllowed: \(isBuyAllowed)")
+                } else {
                     UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
                 }
                 
@@ -54,25 +60,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			// Remote Config
 			self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
 
-
 			let current = UNUserNotificationCenter.current()
 
 			current.getNotificationSettings(completionHandler: { settings in
 
 				debugPrint(settings.debugDescription)
 				if settings.authorizationStatus == .denied {
-//					self.pushNotifications.clearAllState {
-//						LWAnalytics.logEventWithParameters(itemName: ._20240506_DPN)
-//					}
-//
-//					self.pushNotifications.stop {
-//						LWAnalytics.logEventWithParameters(itemName: ._20240510_SPN)
-//					}
 				}
 			})
-            
-            // Fetch Locale for MP
-            
 
 		} onFailure: { error in
 
@@ -88,7 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         thisWindow.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: userDidPreferDarkModeKey) ? .dark: .light
         
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = BrainwalletUIColor.content
-        
             
 		UIView.swizzleSetFrame()
 
@@ -135,8 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func application(_: UIApplication, didReceiveRemoteNotification _: [AnyHashable: Any],
-	                 fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void)
-	{}
+	                 fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void) {}
 
 	/// Sets the correct Google Services  plist file
 	private func setFirebaseConfiguration() {
@@ -158,17 +151,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			assertionFailure("Couldn't load Firebase config file")
 		}
 	}
-
-	/// Check Locale
-	func updateCurrentUserLocale(localeId: String) {
-		let suffix = String(localeId.suffix(3))
-
-		if suffix == "_US" {
-			UserDefaults.userIsInUSA = true
-		} else {
-			UserDefaults.userIsInUSA = false
-		}
-	}
     
     /// Update Theme
     func updatePreferredTheme() {
@@ -182,8 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	/// Inspired by https://www.youtube.com/watch?v=B5RV8p4-9a8&t=178s
 	func requestResourceWith(tag: [String],
 	                         onSuccess: @escaping () -> Void,
-	                         onFailure _: @escaping (NSError) -> Void)
-	{
+	                         onFailure _: @escaping (NSError) -> Void) {
 		resourceRequest = NSBundleResourceRequest(tags: Set(tag))
 
 		guard let request = resourceRequest else { return }
