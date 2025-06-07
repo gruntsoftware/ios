@@ -33,7 +33,6 @@ struct SettingsView: View {
             VStack {
                 List {
                     
-                    
                     Text("Security" )
                         .padding()
                     

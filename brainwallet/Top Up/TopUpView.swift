@@ -111,7 +111,7 @@ struct TopUpView: View {
     }
 }
 
-//struct TopUpView_Previews: PreviewProvider {
+// struct TopUpView_Previews: PreviewProvider {
 //    typealias Previews = <#type#>
 //    
 //    static let walletManager = (try? WalletManager(store: Store(), dbPath: nil))!
@@ -120,6 +120,4 @@ struct TopUpView: View {
 ////    static var previews: some View {
 ////       TopUpView(viewModel: viewModel, path: .constant([.topUpView]))
 ////    }
-//}
-
-
+// }

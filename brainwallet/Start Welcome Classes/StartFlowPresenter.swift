@@ -111,7 +111,6 @@ class StartFlowPresenter: Subscriber {
             navigationController = ModalNavigationController(rootViewController: startHostingController)
             navigationController?.delegate = navigationControllerDelegate
             navigationController?.modalPresentationStyle = .fullScreen
-        
 
         if let startFlow = navigationController {
             startFlow.setNavigationBarHidden(true, animated: false)
@@ -175,7 +174,7 @@ class StartFlowPresenter: Subscriber {
 
 		navigationController?.navigationBar.titleTextAttributes = [
 			NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
-			NSAttributedString.Key.font: UIFont.customBold(size: 17.0),
+			NSAttributedString.Key.font: UIFont.customBold(size: 17.0)
 		]
 		navigationController?.pushViewController(paperPhraseViewController, animated: true)
 	}

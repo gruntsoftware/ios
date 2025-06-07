@@ -82,7 +82,6 @@ extension UserDefaults {
         }
         set { defaults.set(newValue, forKey: userPreferredBuyCurrencyKey) }
     }
-    
 
 	static var hasAquiredShareDataPermission: Bool {
 		get { return defaults.bool(forKey: hasAquiredShareDataPermissionKey) }

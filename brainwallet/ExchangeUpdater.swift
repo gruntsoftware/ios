@@ -9,7 +9,6 @@ class ExchangeUpdater: Subscriber {
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store
 		self.walletManager = walletManager
-        
 
 		store.subscribe(self,
 		                selector: { $0.defaultCurrencyCode != $1.defaultCurrencyCode },

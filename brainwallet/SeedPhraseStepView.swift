@@ -22,7 +22,7 @@ struct SeedPhraseStepView: View {
 		GridItem(.flexible(minimum: seedViewWidth)),
 		GridItem(.flexible(minimum: seedViewWidth)),
 		GridItem(.flexible(minimum: seedViewWidth)),
-		GridItem(.flexible(minimum: seedViewWidth)),
+		GridItem(.flexible(minimum: seedViewWidth))
 	]
 
 	var body: some View {

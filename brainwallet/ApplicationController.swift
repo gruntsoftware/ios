@@ -9,7 +9,6 @@ let numberOfBrainwalletLaunches = "NumberOfBrainwalletLaunches"
 let userDidPreferDarkModeKey = "UserDidPreferDarkMode"
 let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
 
-
 class ApplicationController: Subscriber, Trackable {
     // Ideally the window would be private, but is unfortunately required
     // by the UIApplicationDelegate Protocol
@@ -55,7 +54,7 @@ class ApplicationController: Subscriber, Trackable {
         
         _ = walletManager?.wallet // attempt to initialize wallet
         
-        ///Init exchange sooner
+        /// Init exchange sooner
         exchangeUpdater = ExchangeUpdater(store: store, walletManager: tempWalletManager)
         exchangeUpdater?.fetchRates {}
         
@@ -314,7 +313,7 @@ class ApplicationController: Subscriber, Trackable {
 		Async.parallel(callbacks: [
 			{ self.exchangeUpdater?.refresh(completion: $0) },
 			{ self.feeUpdater?.refresh(completion: $0) },
-			{ self.walletManager?.apiClient?.events?.sync(completion: $0) },
+			{ self.walletManager?.apiClient?.events?.sync(completion: $0) }
 		], completion: {
 			LWAnalytics.logEventWithParameters(itemName: ._20200111_DLDG)
 			group.leave()

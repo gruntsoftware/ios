@@ -6,6 +6,8 @@
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
 
+import Foundation
+import SwiftUI
 
 struct ReceiveAddressView: View {
     
@@ -19,11 +21,10 @@ struct ReceiveAddressView: View {
     
     @FocusState.Binding
     var keyboardFocused: Bool
-
      
     let ginormousFont: Font = .barlowSemiBold(size: 22.0)
     let subDetailFont: Font = .barlowRegular(size: 14.0)
-    
+    let padding = 8.0
     init(viewModel: NewReceiveViewModel, newAddress: Binding<String>, qrPlaceholder: Binding<UIImage>, keyboardFocused: FocusState<Bool>.Binding) {
         self.viewModel = viewModel
         _newAddress = newAddress
@@ -34,18 +35,16 @@ struct ReceiveAddressView: View {
         GeometryReader { geometry in
             let width = geometry.size.width
             let height = geometry.size.height
-            
-            let modalWidth = geometry.size.width * 0.9
-            
+                        
             ZStack {
                 HStack {
                     VStack {
                         Image(uiImage: viewModel.newReceiveAddressQR ?? qrPlaceholder)
                             .resizable()
                             .scaledToFit()
-                        Spacer()
+                            .frame(width: (width / 2) - padding)
                     }
-                    .frame(alignment: .top)
+                    .frame(width: width / 2, alignment: .top)
                     VStack {
                         Text(newAddress)
                             .font(ginormousFont)
@@ -58,7 +57,7 @@ struct ReceiveAddressView: View {
                         VStack {
                             HStack {
                                 
-                                Text("Brainwallet generates a new address after each transaction sent")
+                                Text("Copy Address: ")
                                     .font(subDetailFont)
                                     .lineLimit(3)
                                     .multilineTextAlignment(.leading)
@@ -71,7 +70,7 @@ struct ReceiveAddressView: View {
                                         Ellipse()
                                             .frame(width: 40,
                                                    height: 40)
-                                            .overlay (
+                                            .overlay(
                                                 Ellipse()
                                                     .stroke(BrainwalletColor.content, lineWidth: 1)
                                                     .frame(width: 40,
@@ -90,13 +89,13 @@ struct ReceiveAddressView: View {
                         }
                         Spacer()
                     }
-                    .frame(alignment: .top)
+                    .frame(width: width / 2, alignment: .top)
                     .onChange(of: viewModel.newReceiveAddress) { address in
                         newAddress = address
                     }
                     
                 }
-                .frame(width: modalWidth, height: keyboardFocused ? height * 0.01 : height * 0.3, alignment: .top)
+                .frame(width: width, height: height, alignment: .top)
                 .opacity(keyboardFocused ? 0 : 1)
             }
         }

@@ -33,23 +33,23 @@ class ReScanViewController: UIViewController, Subscriber {
 		header.constrain([
 			header.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: C.padding[2]),
 			header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: C.padding[2]),
-			header.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: C.padding[-2]),
+			header.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: C.padding[-2])
 		])
 		body.constrain([
 			body.leadingAnchor.constraint(equalTo: header.leadingAnchor),
 			body.topAnchor.constraint(equalTo: header.bottomAnchor, constant: C.padding[2]),
-			body.trailingAnchor.constraint(equalTo: header.trailingAnchor),
+			body.trailingAnchor.constraint(equalTo: header.trailingAnchor)
 		])
 		footer.constrain([
 			footer.leadingAnchor.constraint(equalTo: header.leadingAnchor),
 			footer.trailingAnchor.constraint(equalTo: header.trailingAnchor),
-			footer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -C.padding[3]),
+			footer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -C.padding[3])
 		])
 		button.constrain([
 			button.leadingAnchor.constraint(equalTo: footer.leadingAnchor),
 			button.trailingAnchor.constraint(equalTo: footer.trailingAnchor),
 			button.bottomAnchor.constraint(equalTo: footer.topAnchor, constant: -C.padding[2]),
-			button.heightAnchor.constraint(equalToConstant: C.Sizes.buttonHeight),
+			button.heightAnchor.constraint(equalToConstant: C.Sizes.buttonHeight)
 		])
 	}
 

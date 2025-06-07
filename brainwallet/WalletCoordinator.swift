@@ -152,7 +152,6 @@ class WalletCoordinator: Subscriber, Trackable {
         precondition(kvStore != nil, "KVStore must be valid")
         precondition(rate != nil, "rate must be valid")
         
-        
 		guard let kvStore = kvStore else {
 			throw MakeTransactionError.replicatedKVStoreNotFound
 		}

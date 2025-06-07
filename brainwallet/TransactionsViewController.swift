@@ -99,18 +99,17 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         newSyncingHeaderView?.viewModel.blockHeightString = reduxState.walletState.transactions.first?.blockHeight ?? ""
 		completion()
 	}
-
     
     @objc
     private func userTappedPromptClose() {
-        ///do close
+        /// do close
         self.currentPromptType = nil
         self.reload()
     }
     
     @objc
     private func userTappedPromptContinue() {
-        ///do continue
+        /// do continue
          if let store = self.store,
             let trigger = self.currentPromptType?.trigger {
                 store.trigger(name: trigger)
@@ -216,13 +215,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 			if let rate = rate,
 			   let store = store,
-			   let isLtcSwapped = isLtcSwapped
-			{
+			   let isLtcSwapped = isLtcSwapped {
 				let viewModel = TransactionCellViewModel(transaction: transaction, isLtcSwapped: isLtcSwapped, rate: rate, maxDigits: store.state.maxDigits, isSyncing: store.state.walletState.syncState != .success)
 				cell.set(rootView: TransactionCellView(viewModel: viewModel), parentController: self)
 				cell.selectionStyle = .default
-			}
-            else {
+			} else {
                 debugPrint("::: ERROR Rate, Store, isLtcSwapped not set")
             }
 
@@ -236,8 +233,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
           
 			if let rate = rate,
 			   let store = store,
-			   let isLtcSwapped = isLtcSwapped
-			{
+			   let isLtcSwapped = isLtcSwapped {
 				let viewModel = TransactionCellViewModel(transaction: transaction, isLtcSwapped: isLtcSwapped, rate: rate, maxDigits: store.state.maxDigits, isSyncing: store.state.walletState.syncState != .success)
 
 				let hostingController = UIHostingController(rootView: TransactionModalView(viewModel: viewModel))
@@ -377,7 +373,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		                		self.shouldBeSyncing = true
 
 		                		if reduxState.walletState.syncProgress >= 0.99 {
-                                    ///DEV HACK To Show
+                                    /// DEV HACK To Show
 		                			self.shouldBeSyncing = false
 		                			self.newSyncingHeaderView = nil
 		                		}
@@ -390,7 +386,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		store.subscribe(self, name: .showStatusBar) { _ in
 			// DEV: May refactor where the action view persists after confirming pin
-
             
 			self.reload()
 		}

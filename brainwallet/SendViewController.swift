@@ -59,8 +59,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 		/// User Preference
 		if let opsPreference = keychainPreferences["hasAcceptedFees"],
-		   opsPreference == "false"
-		{
+		   opsPreference == "false" {
 			hasActivatedInlineFees = false
 		} else {
 			keychainPreferences["has-accepted-fees"] = "true"
@@ -113,16 +112,16 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			memoCell.widthAnchor.constraint(equalTo: sendAddressCell.widthAnchor),
 			memoCell.topAnchor.constraint(equalTo: sendAddressCell.bottomAnchor),
 			memoCell.leadingAnchor.constraint(equalTo: sendAddressCell.leadingAnchor),
-            memoCell.constraint(.height, constant: 44.0),
+            memoCell.constraint(.height, constant: 44.0)
 		])
 		memoCell.accessoryView.constrain([
-			memoCell.accessoryView.constraint(.width, constant: 0.0),
+			memoCell.accessoryView.constraint(.width, constant: 0.0)
 		])
 		addChildViewController(amountView, layout: {
             amountView.view.constrain([
                 amountView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 amountView.view.topAnchor.constraint(equalTo: memoCell.bottomAnchor),
-                amountView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                amountView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor)
 			])
 		})
 
@@ -133,7 +132,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			sendButtonCell.view.constraint(.height, constant: C.Sizes.sendButtonHeight),
 			sendButtonCell.view
 				.bottomAnchor
-				.constraint(equalTo: view.bottomAnchor, constant: -C.padding[8]),
+				.constraint(equalTo: view.bottomAnchor, constant: -C.padding[8])
 		])
 
 		addButtonActions()
@@ -224,8 +223,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 		sendButtonCell.rootView.doSendTransaction = {
 			if let sendAddress = self.sendAddressCell.address,
-			   sendAddress.isValidAddress
-			{
+			   sendAddress.isValidAddress {
 				self.sendTapped()
 			} else {
 				self.showAlert(title: "Error" ,
@@ -267,8 +265,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		/// Check the amount is greater than zero and amount satoshis are not nil
 		if let currentRate = currentRate,
 		   let enteredAmount = enteredAmount,
-		   enteredAmount > 0
-		{
+		   enteredAmount > 0 {
 			let tieredOpsFee = tieredOpsFee(amount: enteredAmount.rawValue)
 
 			let totalAmountToCalculateFees = (enteredAmount.rawValue + tieredOpsFee)
@@ -300,8 +297,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
             
 			if sendTotal > balance {
                 balanceColor = BrainwalletUIColor.error
-			}
-            else {
+			} else {
                 balanceColor = BrainwalletUIColor.content
             }
 		}
@@ -333,7 +329,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		memoCell.textView.resignFirstResponder()
 
 		presentScan? { [weak self] paymentRequest in
-			//guard let request = paymentRequest else { return }
+			// guard let request = paymentRequest else { return }
             guard let destinationAddress = paymentRequest.toAddress else { return }
 
 			self?.handleRequest(paymentRequest)
@@ -482,7 +478,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	}
 
 	private func send() {
-        
         
         guard let store = store,
         let rate = store.state.currentRate,

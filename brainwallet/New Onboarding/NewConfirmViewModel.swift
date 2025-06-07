@@ -8,8 +8,6 @@
 import Foundation
 import SwiftUI
 
-
-
 class NewConfirmViewModel: ObservableObject, Subscriber {
     // MARK: - Combine Variables
     

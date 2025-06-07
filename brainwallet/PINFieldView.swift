@@ -32,8 +32,7 @@ struct PINFieldView: UIViewRepresentable {
 
 	init(pinText: Binding<String>,
 	     pinIsFilled: Binding<Bool>,
-	     viewRect: Binding<CGRect>)
-	{
+	     viewRect: Binding<CGRect>) {
 		_pinText = pinText
 		_pinIsFilled = pinIsFilled
 		_viewRect = viewRect
@@ -51,7 +50,7 @@ struct PINFieldView: UIViewRepresentable {
 		textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
 			NSAttributedString.Key.kern: 15.0,
             NSAttributedString.Key.foregroundColor: BrainwalletUIColor.affirm,
-			NSAttributedString.Key.font: UIFont.barlowBold(size: 17.0),
+			NSAttributedString.Key.font: UIFont.barlowBold(size: 17.0)
 		])
 		viewRect = textField.bounds
 		return textField

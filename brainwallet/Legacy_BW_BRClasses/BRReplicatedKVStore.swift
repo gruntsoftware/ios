@@ -149,7 +149,7 @@ open class BRReplicatedKVStore: NSObject {
 					"   thetime         BIGINT  NOT NULL, " + // server unix timestamp in MS
 					"   deleted         BOOL    NOT NULL, " +
 					"   PRIMARY KEY (key, version) " +
-					");",
+					");"
 			]
 			for cmd in commands {
 				var stmt: OpaquePointer?
@@ -511,8 +511,7 @@ open class BRReplicatedKVStore: NSObject {
 
 	/// Sync an individual key. Normally this is only called internally and you should call syncAllKeys
 	func syncKey(_ key: String, remoteVersion: UInt64? = nil, remoteTime: Date? = nil,
-	             remoteErr: BRRemoteKVStoreError? = nil, completionHandler: @escaping (BRReplicatedKVStoreError?) -> Void) throws
-	{
+	             remoteErr: BRRemoteKVStoreError? = nil, completionHandler: @escaping (BRReplicatedKVStoreError?) -> Void) throws {
 		try checkKey(key)
 		if syncRunning {
 			throw BRReplicatedKVStoreError.alreadyReplicating
@@ -536,8 +535,7 @@ open class BRReplicatedKVStore: NSObject {
 	// the syncKey kernel - this is provided so syncAllKeys can provide get a bunch of key versions at once
 	// and fan out the _syncKey operations
 	fileprivate func _syncKey(_ key: String, remoteVer: UInt64, remoteTime: Date, remoteErr: BRRemoteKVStoreError?,
-	                          completionHandler: @escaping (BRReplicatedKVStoreError?) -> Void) throws
-	{
+	                          completionHandler: @escaping (BRReplicatedKVStoreError?) -> Void) throws {
 		// this is a basic last-write-wins strategy. data loss is possible but in general
 		// we will attempt to sync before making any local modifications to the data
 		// and concurrency will be so low that we don't really need a fancier solution than this.
@@ -709,8 +707,7 @@ open class BRReplicatedKVStore: NSObject {
 	// this MUST be called from within the dbQueue
 	fileprivate func checkErr(_ e: Int32, s: String, r: Int32 = SQLITE_NULL) throws {
 		if r == SQLITE_NULL, e != SQLITE_OK, e != SQLITE_DONE, e != SQLITE_ROW,
-		   e != SQLITE_NULL, e != r
-		{
+		   e != SQLITE_NULL, e != r {
 			let es = NSString(cString: sqlite3_errstr(e), encoding: String.Encoding.utf8.rawValue)
 			let em = NSString(cString: sqlite3_errmsg(db), encoding: String.Encoding.utf8.rawValue)
 			log("\(s): errcode=\(e) errstr=\(String(describing: es)) errmsg=\(String(describing: em))")
@@ -720,7 +717,7 @@ open class BRReplicatedKVStore: NSObject {
 
 	// validates the key. keys can not start with a _
 	fileprivate func checkKey(_ key: String) throws {
-		let m = keyRegex.matches(in: key, options: [], range: NSMakeRange(0, key.count))
+		let m = keyRegex.matches(in: key, options: [], range: NSRange(location: 0, length: key.count))
 		if m.count != 1 {
 			throw BRReplicatedKVStoreError.invalidKey
 		}

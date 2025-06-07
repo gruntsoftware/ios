@@ -85,7 +85,7 @@ class StartViewModel: ObservableObject, Subscriber {
 		didTapRecover = completion
 	}
     
-    func userDidChangeDarkMode(state: Bool){
+    func userDidChangeDarkMode(state: Bool) {
          
         (UIApplication.shared.connectedScenes.first as?
                       UIWindowScene)?.windows.first!.overrideUserInterfaceStyle = state ?   .dark : .light

@@ -9,7 +9,6 @@ import SwiftUI
 import Foundation
 import Network
 
-
 class NetworkHelper: ObservableObject {
     
     func fetchCurrenciesCountries(completion: @escaping ([MoonpayCountryData]) -> Void) {
@@ -27,15 +26,13 @@ class NetworkHelper: ObservableObject {
             if error == nil {
                 DispatchQueue.main.sync {
                     if let jsonData = try? JSONSerialization.jsonObject(with: data ?? Data(), options: []),
-                       let jsonArray = jsonData as? [[String: Any]]
-                    {
+                       let jsonArray = jsonData as? [[String: Any]] {
                         var dataArray: [MoonpayCountryData] = []
 
                         /// Filters allowed currencies and the top ranked currencies
                         for element in jsonArray {
                             if element["isBuyAllowed"] as? Bool == true &&
-                                element["isAllowed"] as? Bool == true
-                            {
+                                element["isAllowed"] as? Bool == true {
                                 let alpha2 = element["alpha2"] as? String
                                 let alpha3 = element["alpha3"] as? String
                                 let name = element["name"] as? String
@@ -66,19 +63,18 @@ class NetworkHelper: ObservableObject {
     }
     
     func fetchBuyQuote(baseCurrencyAmount: Int, baseCurrency: SupportedFiatCurrencies, completion: @escaping (MoonpayBuyQuote) -> Void) {
-        let cryptoCurrencyCode: String = "ltc"//Default and only crypto atm
+        let cryptoCurrencyCode: String = "ltc"// Default and only crypto atm
         let baseURL = APIServer.baseUrl
         let suffix = "v1/moonpay/buy-quote"
         let baseCode = baseCurrency.code.lowercased()
-        let baseAmount = Double(baseCurrencyAmount)//User purchase amount
+        let baseAmount = Double(baseCurrencyAmount)// User purchase amount
         let codeSuffix = "?currencyCode=\(cryptoCurrencyCode)&baseCurrencyCode=\(baseCode)&baseCurrencyAmount=\(baseAmount)"
 
         var request: URLRequest
         
         if let url = URL(string: baseURL + suffix + codeSuffix) {
             request = URLRequest(url: url)
-        }
-        else {
+        } else {
             fatalError("Invalid URL")
         }
         #if targetEnvironment(simulator)
@@ -98,7 +94,6 @@ class NetworkHelper: ObservableObject {
                     if let jsonData = try? JSONSerialization.jsonObject(with: data ?? Data(), options: []),
                        let jsonDict = jsonData as? [String: AnyObject],
                        let topElement = jsonDict["data"] as? [String: AnyObject] {
-                        
                         
                         let quoteCurrencyDict = topElement["quoteCurrency"] as? [String: AnyObject]
                         let baseCurrencyDict = topElement["baseCurrency"] as? [String: AnyObject]
@@ -121,8 +116,7 @@ class NetworkHelper: ObservableObject {
                                                           fiatBuyAmount: fiatBuyAmount,
                                                           quotedLTCAmount: quotedLTCAmount)
                         completion(moonpayBuyQuoteObject)
-                    }
-                    else {
+                    } else {
                         completion(moonpayBuyQuoteObject)
                     }
                 }
@@ -153,8 +147,7 @@ class NetworkHelper: ObservableObject {
 
         if let url = URL(string: urlString) {
             request = URLRequest(url: url)
-        }
-        else {
+        } else {
             fatalError("Invalid URL")
         }
         #if targetEnvironment(simulator)
@@ -177,8 +170,7 @@ class NetworkHelper: ObservableObject {
                         let signedUrl = signedUrlDict["signedUrl"] {
                         signedURLString = signedUrl as? String ?? fallbackURLString
                         completion(signedURLString)
-                    }
-                    else {
+                    } else {
                         completion(fallbackURLString)
                         let fetchError: [String: String] = ["error": "signed_url_invalid"]
                         LWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
@@ -192,7 +184,6 @@ class NetworkHelper: ObservableObject {
         task.resume()
     }
     
-    
     func fetchFiatLimits(code: String, completion: @escaping (MoonpayBuyLimits) -> Void) {
         let baseURL = APIServer.baseUrl
         let suffix = "v1/moonpay/ltc-to-fiat-limits"
@@ -202,8 +193,7 @@ class NetworkHelper: ObservableObject {
         
         if let url = URL(string: baseURL + suffix + codeSuffix) {
             request = URLRequest(url: url)
-        }
-        else {
+        } else {
             fatalError("Invalid URL")
         }
         #if targetEnvironment(simulator)
@@ -245,8 +235,7 @@ class NetworkHelper: ObservableObject {
                                                      cryptoMaxBuyAmount: cryptoMaxBuyAmount,
                                                      cryptoMinBuyAmount: cryptoMinBuyAmount)
                         completion(moonpayBuyLimits)
-                    }
-                    else {
+                    } else {
                         completion(moonpayBuyLimits)
                     }
                 }

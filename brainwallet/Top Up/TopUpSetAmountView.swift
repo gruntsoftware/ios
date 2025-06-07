@@ -87,7 +87,7 @@ struct TopUpSetAmountView: View {
                     
                     Spacer(minLength: 20.0)
                         Button(action: {
-                            //path.append(.setTopUpAmount)
+                            // path.append(.setTopUpAmount)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
@@ -110,4 +110,3 @@ struct TopUpSetAmountView: View {
             }
     }
 }
-

@@ -116,8 +116,7 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
 		if let tokenData = authenticator.userAccount,
 		   let token = tokenData["token"] as? String,
 		   let authKey = authKey,
-		   let signingData = mutableRequest.signingString.data(using: .utf8)
-		{
+		   let signingData = mutableRequest.signingString.data(using: .utf8) {
 			let sig = signingData.sha256_2.compactSign(key: authKey)
 			let hval = "Brainwallet \(token):\(sig.base58)"
 			mutableRequest.setValue(hval, forHTTPHeaderField: "Authorization")
@@ -134,8 +133,7 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
 	}
 
 	public func dataTaskWithRequest(_ request: URLRequest, authenticated: Bool = false,
-	                                retryCount: Int = 0, handler: @escaping URLSessionTaskHandler) -> URLSessionDataTask
-	{
+	                                retryCount: Int = 0, handler: @escaping URLSessionTaskHandler) -> URLSessionDataTask {
 		let start = Date()
 		var logLine = ""
 		if let meth = request.httpMethod, let u = request.url {
@@ -209,7 +207,7 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
 		guard let authKey = authKey
 		else {
 			return handler(NSError(domain: BWAPIClientErrorDomain, code: 500, userInfo: [
-				NSLocalizedDescriptionKey: "Wallet not ready",
+				NSLocalizedDescriptionKey: "Wallet not ready"
 			]))
 		}
 		let authPubKey = authKey.publicKey
@@ -225,7 +223,7 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
 		req.setValue("application/json", forHTTPHeaderField: "Accept")
 		let reqJson = [
 			"pubKey": authPubKey.base58,
-			"deviceID": deviceId,
+			"deviceID": deviceId
 		]
 		do {
 			let dat = try JSONSerialization.data(withJSONObject: reqJson, options: [])
@@ -235,7 +233,7 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
 			isFetchingAuth = false
 			authFetchGroup.leave()
 			return handler(NSError(domain: BWAPIClientErrorDomain, code: 500, userInfo: [
-				NSLocalizedDescriptionKey: "JSON Serialization Error",
+				NSLocalizedDescriptionKey: "JSON Serialization Error"
 			]))
 		}
 		session.dataTask(with: req, completionHandler: { data, resp, err in
@@ -249,7 +247,7 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
 						self.isFetchingAuth = false
 						self.authFetchGroup.leave()
 						return handler(NSError(domain: BWAPIClientErrorDomain, code: httpResp.statusCode, userInfo: [
-							NSLocalizedDescriptionKey: "JSON Token Error",
+							NSLocalizedDescriptionKey: "JSON Token Error"
 						]))
 					}
 				}
@@ -258,14 +256,13 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
 						let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
 						self.log("POST /token json response: \(json)")
 						if let topObj = json as? [String: Any],
-						   let tok = topObj["token"] as? String,
-						   let uid = topObj["userID"] as? String
-						{
+						   let token = topObj["token"] as? String,
+						   let userID = topObj["userID"] as? String {
 							// success! store it in the keychain
-							var kcData = self.authenticator.userAccount ?? [AnyHashable: Any]()
-							kcData["token"] = tok
-							kcData["userID"] = uid
-							self.authenticator.userAccount = kcData
+                               var kcData = self.authenticator.userAccount ?? [AnyHashable: Any]()
+							       kcData["token"] = token
+							       kcData["userID"] = userID
+							            self.authenticator.userAccount = kcData
 						}
 					} catch let e {
 						self.log("JSON Deserialization error \(e)")
@@ -337,7 +334,7 @@ private extension URLRequest {
 			"",
 			allHTTPHeaderFields?.get(lowercasedKey: "content-type") ?? "",
 			allHTTPHeaderFields?.get(lowercasedKey: "date") ?? "",
-			url?.resourceString ?? "",
+			url?.resourceString ?? ""
 		]
 		if let meth = httpMethod {
 			switch meth {
@@ -355,8 +352,7 @@ private extension URLRequest {
 private extension HTTPURLResponse {
 	var isBreadChallenge: Bool {
 		if let headers = allHeaderFields as? [String: String],
-		   let challenge = headers.get(lowercasedKey: "www-authenticate")
-		{
+		   let challenge = headers.get(lowercasedKey: "www-authenticate") {
 			if challenge.lowercased().hasPrefix("Brainwallet") {
 				return true
 			}

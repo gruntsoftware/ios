@@ -6,9 +6,6 @@ let swiftUICellPadding = 12.0
 let bigButtonCornerRadius = 15.0
 let kPinDigitConstant = 4
 
-
-
-
 struct BrainwalletSupport {
 	static let dashboard = "https://brainwallet.co/support.html"
 }
@@ -256,6 +253,5 @@ enum CustomEvent: String {
     
     /// Did delete all data
     case _20250522_DDAD = "did_delete_all_data"
-    
     
 }

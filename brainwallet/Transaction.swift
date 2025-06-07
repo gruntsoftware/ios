@@ -33,8 +33,7 @@ class Transaction {
 
 		let outputAddress = opsAddressSet.intersection(outputAddresses).first
 		if let targetAddress = outputAddress,
-		   let opsOutput = tx.outputs.filter({ $0.updatedSwiftAddress == targetAddress }).first
-		{
+		   let opsOutput = tx.outputs.filter({ $0.updatedSwiftAddress == targetAddress }).first {
 			opsAmount = opsOutput.amount
 		}
 
@@ -45,8 +44,7 @@ class Transaction {
         var amountSent =  UInt64(0)
         if opsAmount > wallet.amountSentByTx(tx) {
           amountSent = wallet.amountSentByTx(tx)
-        }
-        else {
+        } else {
             amountSent = wallet.amountSentByTx(tx) - opsAmount
         }
             

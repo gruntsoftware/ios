@@ -96,7 +96,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
             lockScreenView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             lockScreenView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             lockScreenView.view.topAnchor.constraint(equalTo: backgroundView.topAnchor),
-            lockScreenView.view.heightAnchor.constraint(equalToConstant: view.frame.height),
+            lockScreenView.view.heightAnchor.constraint(equalToConstant: view.frame.height)
 		])
 	}
     
@@ -131,7 +131,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
                     NotificationCenter.default.post(name: .walletDidWipeNotification, object: nil)
                 }
     }
-    
 
 	private func authenticate(pin: String) {
 		guard let walletManager = walletManager else { return }

@@ -52,7 +52,6 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
      
     @Published
     var didFetchURLString: Bool = false
-     
 
     let ISO8601DateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -96,12 +95,12 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     
     @objc func updatePublishables() {
         
-        //Fetch Preferred Fiat
+        // Fetch Preferred Fiat
         let globalCurrencyCode = UserDefaults.defaultCurrencyCode
         let defaultFiat = SupportedFiatCurrencies.USD
         self.pickedCurrency = SupportedFiatCurrencies.from(code: globalCurrencyCode) ?? defaultFiat
         
-        //Fetch Fresh Address
+        // Fetch Fresh Address
         newReceiveAddress = self.walletManager.wallet?.receiveAddress ?? "----"
         generateQRCode()
     }
@@ -109,15 +108,18 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     func fetchBuyQuoteLimits(buyAmount: Int, baseCurrencyCode: SupportedFiatCurrencies = .USD) {
         self.didFetchData = true
           
-        let _ = NetworkHelper.init().fetchBuyQuote(baseCurrencyAmount: buyAmount, baseCurrency: baseCurrencyCode, completion: { mpData in
+        NetworkHelper.init()
+            .fetchBuyQuote(baseCurrencyAmount: buyAmount,
+                           baseCurrency: baseCurrencyCode,
+                           completion: { mpData in
            
                 DispatchQueue.main.sync {
-                    //quoted buy segments
+                    // quoted buy segments
                     self.fiatMinAmount = mpData.minBuyAmount
                     self.fiatTenXAmount = mpData.minBuyAmount * 10
                     self.fiatMaxAmount = mpData.maxBuyAmount
                     
-                    //quoted qty
+                    // quoted qty
                     self.quotedLTCAmount = mpData.quotedLTCAmount
                     
                     // timestamp
@@ -154,7 +156,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     
     func fetchMoonpaySignedUrl(signingData: MoonpaySigningData) {
         
-        let _ = NetworkHelper.init().fetchSignedURL(moonPaySigningData: signingData, completion: {  signedString in
+        NetworkHelper.init().fetchSignedURL(moonPaySigningData: signingData, completion: {  signedString in
             DispatchQueue.main.async {
                 self.signedURLString = signedString
                 self.didFetchURLString = true
@@ -168,8 +170,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
             .qrCode(data: data,
                     color: .black)?
             .resize(CGSize(width: kQRImageSide,
-                           height: kQRImageSide))
-        {
+                           height: kQRImageSide)) {
             newReceiveAddressQR = image
         }
     }

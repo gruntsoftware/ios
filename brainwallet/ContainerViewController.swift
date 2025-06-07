@@ -2,8 +2,7 @@ import Foundation
 import UIKit
 
 class ContainerViewController: UIViewController {
-	override func viewDidLoad()
-	{}
+	override func viewDidLoad() {}
 }
 
 extension ContainerViewController: ModalDisplayable {
