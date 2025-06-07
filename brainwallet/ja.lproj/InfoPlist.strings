@@ -1,0 +1,30 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "ブレインウォレット";
+
+/* Bundle name */
+"CFBundleName" = "ブレインウォレット";
+
+/* No comment provided by engineer. */
+"Litecoin Payment" = "ライトコイン支払い";
+
+/* No comment provided by engineer. */
+"Litecoin Payment ACK" = "ライトコイン支払い確認";
+
+/* No comment provided by engineer. */
+"Litecoin Payment Request" = "ライトコイン支払いリクエスト";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "バーコードをスキャンするために使用されます";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "アプリのロック解除と支払いの承認に使用";
+
+/* Privacy - Location Always Usage Description */
+"NSLocationAlwaysUsageDescription" = "最も近いノードを特定するために使用されます - 記録または誰かと共有されることはありません";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "最も近いノードを特定するために使用されます - 記録または誰かと共有されることはありません";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "バーコードをスキャンするために使用されます";
+

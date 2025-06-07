@@ -1,0 +1,30 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "腦錢包";
+
+/* Bundle name */
+"CFBundleName" = "腦錢包";
+
+/* No comment provided by engineer. */
+"Litecoin Payment" = "萊特幣支付";
+
+/* No comment provided by engineer. */
+"Litecoin Payment ACK" = "萊特幣支付確認";
+
+/* No comment provided by engineer. */
+"Litecoin Payment Request" = "萊特幣付款請求";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "用於掃描條碼";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "用於解鎖應用程式和授權付款";
+
+/* Privacy - Location Always Usage Description */
+"NSLocationAlwaysUsageDescription" = "用於確定離您最近的節點 - 永遠不會記錄或與任何人共享";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "用於確定離您最近的節點 - 永遠不會記錄或與任何人共享";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "用於掃描條碼";
+

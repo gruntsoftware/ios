@@ -1,0 +1,30 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "محفظة الدماغ";
+
+/* Bundle name */
+"CFBundleName" = "محفظة الدماغ";
+
+/* No comment provided by engineer. */
+"Litecoin Payment" = "دفع لايتكوين";
+
+/* No comment provided by engineer. */
+"Litecoin Payment ACK" = "إقرار دفع لايتكوين";
+
+/* No comment provided by engineer. */
+"Litecoin Payment Request" = "طلب دفع لايتكوين";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "تُستخدم لمسح الباركود";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "يُستخدم لفتح التطبيق وتفويض المدفوعات";
+
+/* Privacy - Location Always Usage Description */
+"NSLocationAlwaysUsageDescription" = "يُستخدم لتحديد أقرب عقدة إليك - لا يتم تسجيله أو مشاركته مع أي شخص.";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "يستخدم لتحديد أقرب عقدة إليك - لا يتم تسجيله أو مشاركته مع أي شخص";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "تُستخدم لمسح الرموز الشريطية";
+

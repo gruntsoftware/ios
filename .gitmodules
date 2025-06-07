@@ -1,0 +1,3 @@
+[submodule "Modules/core"]
+	path = Modules/core
+	url = https://github.com/gruntsoftware/core.git
