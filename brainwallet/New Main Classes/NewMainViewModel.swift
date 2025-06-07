@@ -124,7 +124,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
         store.lazySubscribe(self,
                             selector: { $0.isLtcSwapped != $1.isLtcSwapped },
-                            callback: {_ in
+                            callback: { _ in
                         })
         store.lazySubscribe(self,
                             selector: { $0.currentRate != $1.currentRate },

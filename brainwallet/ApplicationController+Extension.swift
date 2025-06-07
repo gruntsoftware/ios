@@ -21,8 +21,6 @@ extension ApplicationController {
 			launchNumber += 1
 			UserDefaults.standard.set(NSNumber(value: launchNumber), forKey: numberOfBrainwalletLaunches)
 			if launchNumber == 5 {
-				SKStoreReviewController.requestReview()
-
 				SKStoreReviewController.requestReviewInCurrentScene()
 
 				// iOSAppStoreURLFormat = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d";

@@ -433,7 +433,7 @@ class ModalPresenter: Subscriber, Trackable {
 					let code = self.store.state.defaultCurrencyCode
 					let components: [String: String] = [NSLocale.Key.currencyCode.rawValue: code]
 					let identifier = Locale.identifier(fromComponents: components)
-					return Locale(identifier: identifier).currencyCode ?? ""
+                    return Locale(identifier: identifier).currency?.identifier ?? ""
 				}, callback: {
 					guard let wm = self.walletManager else { debugPrint(":::NO WALLET MANAGER!"); return }
 					settingsNav.pushViewController(DefaultCurrencyViewController(walletManager: wm, store: self.store), animated: true)
@@ -442,8 +442,8 @@ class ModalPresenter: Subscriber, Trackable {
 					// Get the current locale
 					let currentLocale = Locale.current
 
-                    if let regionCode = currentLocale.region?.identifier,
-					   let displayName = currentLocale.localizedString(forRegionCode: regionCode) {
+                    if let regionCodeID = currentLocale.region?.identifier,
+					   let displayName = currentLocale.localizedString(forRegionCode: regionCodeID) {
 						return displayName
 					} else {
 						return ""

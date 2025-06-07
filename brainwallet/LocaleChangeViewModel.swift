@@ -9,8 +9,8 @@ class LocaleChangeViewModel: ObservableObject {
 	init() {
 		let currentLocale = Locale.current
 
-		if let regionCode = currentLocale.regionCode,
-		   let name = currentLocale.localizedString(forRegionCode: regionCode) {
+        if let regionCodeID = currentLocale.region?.identifier,
+		   let name = currentLocale.localizedString(forRegionCode: regionCodeID) {
 			displayName = name
 		} else {
 			displayName = "-"

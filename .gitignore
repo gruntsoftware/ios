@@ -44,5 +44,6 @@ GoogleService-Info.plist
 /brainwallet/launch-resources/service-data.plist
 # Storekit
 /Storekit
-*.storekit 
+*.storekit
 Brainwallet-StoreKit-v1.storekit
+fastlane/report.xml

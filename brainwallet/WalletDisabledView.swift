@@ -22,7 +22,7 @@ class WalletDisabledView: UIView {
 	func hide(completion: @escaping () -> Void) {
 		UIView.animate(withDuration: C.animationDuration, animations: {
 			self.blur.effect = nil
-		}, completion: { [weak self] _ in
+		}, completion: { _ in
 			completion()
 		})
 	}
