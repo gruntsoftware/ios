@@ -68,7 +68,7 @@ class ReScanViewController: UIViewController, Subscriber {
 		alert.addAction(UIAlertAction(title: String(localized: "Cancel", bundle: .main), style: .default, handler: nil))
 		alert.addAction(UIAlertAction(title:String(localized: "Sync", bundle: .main) , style: .default, handler: { [weak self] _ in
 			self?.store.trigger(name: .rescan)
-			LWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
+			BWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
 
 			self?.dismiss(animated: true, completion: nil)
 		}))

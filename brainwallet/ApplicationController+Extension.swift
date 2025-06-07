@@ -26,7 +26,7 @@ extension ApplicationController {
 				// iOSAppStoreURLFormat = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d";
 				// [NSURL URLWithString:[NSString stringWithFormat:([[UIDevice currentDevice].systemVersion floatValue] >= 7.0f)? iOS7AppStoreURLFormat: iOSAppStoreURLFormat, YOUR_APP_STORE_ID]]; // Would contain the right link
 
-				LWAnalytics.logEventWithParameters(itemName: ._20200125_DSRR)
+				BWAnalytics.logEventWithParameters(itemName: ._20200125_DSRR)
 			}
 		} else {
 			UserDefaults.standard.set(NSNumber(value: 1), forKey: numberOfBrainwalletLaunches)

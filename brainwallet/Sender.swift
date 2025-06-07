@@ -142,7 +142,7 @@ class Sender {
 					["ERROR_TX": "\(tx.txHash)",
 					 "ERROR_BLOCKHEIGHT": "\(tx.blockHeight)"]
 
-				LWAnalytics.logEventWithParameters(itemName:
+				BWAnalytics.logEventWithParameters(itemName:
 					._20200112_ERR,
 					properties: properties)
 
@@ -184,21 +184,21 @@ class Sender {
 		// Fires an event if the rate is not set
 		guard let rate = rate
 		else {
-			LWAnalytics.logEventWithParameters(itemName: ._20200111_RNI)
+			BWAnalytics.logEventWithParameters(itemName: ._20200111_RNI)
 			return
 		}
 
 		// Fires an event if the transaction is not set
 		guard let tx = transaction
 		else {
-			LWAnalytics.logEventWithParameters(itemName: ._20200111_TNI)
+			BWAnalytics.logEventWithParameters(itemName: ._20200111_TNI)
 			return
 		}
 
 		// Fires an event if the feePerKb is not set
 		guard let feePerKb = feePerKb
 		else {
-			LWAnalytics.logEventWithParameters(itemName: ._20200111_FNI)
+			BWAnalytics.logEventWithParameters(itemName: ._20200111_FNI)
 			return
 		}
 
@@ -211,7 +211,7 @@ class Sender {
 		do {
 			_ = try kvStore.set(metaData)
 		} catch {
-			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
+			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
 			                                   properties: ["error":
 			                                   	String(describing: error)])
 		}

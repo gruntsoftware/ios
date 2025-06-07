@@ -67,7 +67,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
         amountView = AmountViewController(store: store, isPinPadExpandedAtLaunch: false, hasAcceptedFees: hasActivatedInlineFees)
 
-		LWAnalytics.logEventWithParameters(itemName: ._20191105_VSC)
+		BWAnalytics.logEventWithParameters(itemName: ._20191105_VSC)
 
 		super.init(nibName: nil, bundle: nil)
 	}
@@ -155,16 +155,12 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 	private func addButtonActions() {
         
-		// MARK: - MemoCell Callbacks
-
 		memoCell.didReturn = { textView in
 			textView.resignFirstResponder()
 		}
 		memoCell.didBeginEditing = { [weak self] in
 			self?.amountView.closePinPad()
 		}
-
-		// MARK: - amountView Callbacks
 
         amountView.balanceTextForAmount = { [weak self] enteredAmount, rate in
 			self?.balanceTextForAmountWithFormattedFees(enteredAmount: enteredAmount, rate: rate)
@@ -198,8 +194,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			}
 		}
 
-		// MARK: - SendAddressView Model Callbacks / Actions
-
 		sendAddressCell.paste.addTarget(self, action: #selector(SendViewController.pasteTapped), for: .touchUpInside)
 		sendAddressCell.scan.addTarget(self, action: #selector(SendViewController.scanTapped), for: .touchUpInside)
 
@@ -215,8 +209,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			self?.handleRequest(request)
 		}
 
-		// MARK: - SendButton Model Callbacks / Actions
-
 		sendButtonCell.rootView.doSendTransaction = {
 			if let sendAddress = self.sendAddressCell.address,
 			   sendAddress.isValidAddress {
@@ -231,8 +223,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 	private func balanceTextForAmountWithFormattedFees(enteredAmount: Satoshis?, rate: Rate?) -> (NSAttributedString?, NSAttributedString?) {
 		/// DEV: KCW 12-FEB-24
-		// The results of this output is doing double duty and the method is a nightmare.
-		// The parent view controller uses the numbers and the text is used in this View Controller
         
         guard let store = store else {
             debugPrint("::: ERROR: Store not initialized")
@@ -511,7 +501,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		            		self?.saveEvent("send.success")
 		            		self?.sendAddressCell.textField.text = ""
 		            		self?.memoCell.textView.text = ""
-		            		LWAnalytics.logEventWithParameters(itemName: ._20191105_DSL)
+		            		BWAnalytics.logEventWithParameters(itemName: ._20191105_DSL)
 
 		            	case let .creationError(message):
 		            		self?.showAlert(title: String(localized: "Could not create transaction." , bundle: .main), message: message, buttonLabel:  String(localized: "Ok", bundle: .main))

@@ -89,7 +89,7 @@ class FeeSelector: UIView {
 				myself.didUpdateFee?(.regular)
 				myself.subheader.text = String(localized: "Estimated Delivery: 2.5 - 5+ minutes", bundle: .main)
 				myself.feeMessageLabel.text = ""
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["FEE_MANAGER": "DID_USE_DEFAULT"])
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["FEE_MANAGER": "DID_USE_DEFAULT"])
 			}
 		}
 

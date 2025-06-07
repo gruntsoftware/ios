@@ -126,8 +126,7 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
 
 	private func decorateRequest(_ request: URLRequest) -> URLRequest {
 		var actualRequest = request
-		actualRequest.setValue("\(E.isTestnet ? 1 : 0)", forHTTPHeaderField: "X-Litecoin-Testnet")
-		actualRequest.setValue("\((E.isTestFlight || E.isDebug) ? 1 : 0)", forHTTPHeaderField: "X-Testflight")
+        actualRequest.setValue("Brainwallet-iOS-\(AppVersion.string)".urlEscapedString, forHTTPHeaderField: "Mobile-Client")
 		actualRequest.setValue(Locale.current.identifier, forHTTPHeaderField: "Accept-Language")
 		return actualRequest
 	}

@@ -1,7 +1,7 @@
 import FirebaseAnalytics
 import Foundation
 
-class LWAnalytics {
+class BWAnalytics {
 	class func logEventWithParameters(itemName: CustomEvent, properties: [String: String]? = nil) {
 		var parameters = [
 			AnalyticsParameterItemID: "id-\(itemName.hashValue)",

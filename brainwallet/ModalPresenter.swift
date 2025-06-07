@@ -318,7 +318,7 @@ class ModalPresenter: Subscriber, Trackable {
 
 				guard let url = URL(string: urlString) else { return }
 
-				LWAnalytics.logEventWithParameters(itemName: ._20201118_DTS)
+				BWAnalytics.logEventWithParameters(itemName: ._20201118_DTS)
 
 				let vc = SFSafariViewController(url: url)
 				self?.topViewController?.present(vc, animated: true, completion: nil)
@@ -369,7 +369,7 @@ class ModalPresenter: Subscriber, Trackable {
             }, callback: {
                 let urlString = BrainwalletSocials.linktree
                 guard let url = URL(string: urlString) else { return }
-                LWAnalytics.logEventWithParameters(itemName: ._20250504_DTSM)
+                BWAnalytics.logEventWithParameters(itemName: ._20250504_DTSM)
                 let vc = SFSafariViewController(url: url)
                 settingsNav.pushViewController(vc, animated: true)
 			})
@@ -388,7 +388,7 @@ class ModalPresenter: Subscriber, Trackable {
                             let group = DispatchGroup()
                             
                             _ = walletManager.peerManager?.disconnect()
-                            LWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
+                            BWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
                             group.enter()
                             DispatchQueue.walletQueue.async {
                                 _ = walletManager.wipeWallet(pin: "forceWipe")
@@ -456,7 +456,7 @@ class ModalPresenter: Subscriber, Trackable {
 					}))
 					alert.addAction(UIAlertAction(title: String(localized: "Sync") , style: .default, handler: {  [weak self] _ in
 						self?.store.trigger(name: .rescan)
-						LWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
+						BWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
 						alert.dismiss(animated: true)
 						self?.topViewController?.dismiss(animated: true)
 					}))
@@ -652,7 +652,7 @@ class ModalPresenter: Subscriber, Trackable {
 		if topViewController is MainViewController || topViewController is LoginViewController {
 			presentLoginScan()
 		} else {
-			LWAnalytics.logEventWithParameters(itemName: ._20210427_HCIEEH)
+			BWAnalytics.logEventWithParameters(itemName: ._20210427_HCIEEH)
 			if let presented = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.rootViewController?.presentedViewController {
 				presented.dismiss(animated: true, completion: {
 					self.presentLoginScan()

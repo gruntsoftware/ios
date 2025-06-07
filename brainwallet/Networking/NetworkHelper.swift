@@ -55,7 +55,7 @@ class NetworkHelper: ObservableObject {
                 }
             } else {
                 let currencyError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: currencyError)
+                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: currencyError)
                 completion([])
             }
         }
@@ -122,7 +122,7 @@ class NetworkHelper: ObservableObject {
                 }
             } else {
                 let fetchError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
+                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
             }
         }
         task.resume()
@@ -174,12 +174,12 @@ class NetworkHelper: ObservableObject {
                     } else {
                         completion(fallbackURLString)
                         let fetchError: [String: String] = ["error": "signed_url_invalid"]
-                        LWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
+                        BWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
                     }
                 }
             } else {
                 let fetchError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
+                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
             }
         }
         task.resume()
@@ -242,7 +242,7 @@ class NetworkHelper: ObservableObject {
                 }
             } else {
                 let fetchError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
+                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
             }
         }
         task.resume()

@@ -59,7 +59,7 @@ struct WebBuyView: View {
                      } else {
                          self.url = URL(string: "https://brainwallet.co/mobile-top-up.html")
                          let fetchError: [String: String] = ["error": "signed_url_invalid"]
-                         LWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
+                         BWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
                          didFetchURLString = true
                      }
                     

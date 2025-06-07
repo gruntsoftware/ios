@@ -20,6 +20,9 @@ class StartViewModel: ObservableObject, Subscriber {
 
 	@Published
 	var walletCreationDidFail: Bool = false
+    
+    @Published
+    var rates: Bool = false
 
 	// MARK: - Public Variables
 
@@ -34,13 +37,32 @@ class StartViewModel: ObservableObject, Subscriber {
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store
 		self.walletManager = walletManager
-        fetchCurrentPrice()
+        fetchCurrentPrice(walletManager: walletManager)
 	}
-    private func fetchCurrentPrice() {
-         
-        guard let store = store,
-              let rate = store.state.currentRate?.rate,
-              let code: String = store.state.currentRate?.code
+    private func fetchCurrentPrice(walletManager: WalletManager) {
+        
+        guard let store = store
+        else {
+            debugPrint("::: Error: Rate not fetched ")
+            return
+        }
+        
+//        let rate = rates[indexPath.row]
+//                store.perform(action: DefaultCurrency.setDefault(rate.code))
+        
+        /// Init exchange sooner
+        let exchangeUpdater = ExchangeUpdater(store: store, walletManager: walletManager)
+        exchangeUpdater.fetchRates { rates in
+            
+            if !rates.isEmpty {
+                for rate in rates {
+                    print("::: Rate: \(String(describing: rate?.currencySymbol))")
+                }
+            } else {
+                self.recallFetchCurrentPrice()
+            }
+            
+        guard let rate = store.state.currentRate?.rate
         else {
             debugPrint("::: Error: Rate not fetched ")
             return
@@ -50,9 +72,22 @@ class StartViewModel: ObservableObject, Subscriber {
         let fiatRate = Double(round(100000 * rate / 100000))
         let formattedFiatString = String(format: "%3.2f", fiatRate)
         
-        currentValueInFiat = String(formattedFiatString + code)
+        guard let code: String = store.state.currentRate?.code
+        else {
+            debugPrint("::: Error: Rate not fetched ")
+            return
+        }
+        
+            self.currentValueInFiat = String(formattedFiatString + code)
+        
+        }
+        
     }
-    
+    private func recallFetchCurrentPrice() {
+        delay(3.0) {
+            self.fetchCurrentPrice(walletManager: self.walletManager)
+        }
+    }
     // MARK: - Add Subscriptions
 
     private func addSubscriptions() {
@@ -65,9 +100,16 @@ class StartViewModel: ObservableObject, Subscriber {
         store
             .subscribe(self,
                         selector: { $0.currentRate != $1.currentRate },
-                        callback: { [weak self] _ in
-                            self?.fetchCurrentPrice()
-                        })
+                       callback: { [weak self] _ in
+                
+                guard let myself = self else {
+                    return
+                }
+                
+                let wallet = myself.walletManager
+                
+                self?.fetchCurrentPrice(walletManager: wallet)
+            })
     }
     
 	/// Completion Handler process
@@ -105,7 +147,7 @@ class StartViewModel: ObservableObject, Subscriber {
 //		guard walletManager.setRandomSeedPhrase() != nil else {
 //			walletCreationDidFail = true
 //			let properties = ["error_message": "wallet_creation_fail"]
-//			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
+//			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
 //			return
 //		}
 //

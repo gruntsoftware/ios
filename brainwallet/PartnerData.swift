@@ -32,7 +32,7 @@ struct Partner {
 		                                         ofType: "plist")
 		else {
 			let errorDescription = "service_data_missing"
-			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 			return "error: FILE-NOT-FOUND"
 		}
 		filePath = releasePath
@@ -46,7 +46,7 @@ struct Partner {
 				return key
 			} else {
 				let errorDescription = "error_wallet_opskey"
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 				return errorDescription
 			}
 
@@ -57,7 +57,7 @@ struct Partner {
 				return key
 			} else {
 				let errorDescription = "error_brainwallet_start_key"
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 				return errorDescription
 			}
 
@@ -68,7 +68,7 @@ struct Partner {
 				return key
 			} else {
 				let errorDescription = "error_afprod_id_key"
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 				return errorDescription
 			}
 		}
@@ -82,7 +82,7 @@ struct Partner {
 
 		else {
 			let errorDescription = "service_data_missing"
-			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 
 			return [""]
 		}

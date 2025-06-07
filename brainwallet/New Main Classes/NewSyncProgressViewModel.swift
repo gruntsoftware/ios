@@ -61,7 +61,7 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
 //        guard walletManager.setRandomSeedPhrase() != nil else {
 //            walletCreationDidFail = true
 //            let properties = ["error_message": "wallet_creation_fail"]
-//            LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
+//            BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
 //            return
 //        }
 //

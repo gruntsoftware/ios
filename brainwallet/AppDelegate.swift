@@ -13,70 +13,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var resourceRequest: NSBundleResourceRequest?
       
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		requestResourceWith(tag: ["initial-resources", "speakTag"]) { [self] in
 
-			// Language
-            Bundle.setLanguage(UserDefaults.selectedLanguage)
-            
-            // Locale and fetch access
-            // DEV: Break here to test Locale/Matrix
-            let countryRussia = MoonpayCountryData(alphaCode2Char: "RU",
-                                                   alphaCode3Char: "RUS",
-                                                   isBuyAllowed: false,
-                                                   isSellAllowed: false,
-                                                   countryName: "Russia",
-                                                   isAllowedInCountry: false)
+        // Language
+        Bundle.setLanguage(UserDefaults.selectedLanguage)
 
-            let currentLocaleID = Locale.current.region?.identifier ?? countryRussia.alphaCode2Char
-            debugPrint(":::::: Current Locale ID: \(currentLocaleID)")
-            _ = NetworkHelper.init().fetchCurrenciesCountries(completion:  { countryData  in
-                
-                let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == currentLocaleID }.first ?? countryRussia
-                
-                let isBuyAllowed = currentMoonPayCountry.isBuyAllowed
-                if isBuyAllowed {
-                    UserDefaults.standard.set(isBuyAllowed, forKey: userCurrentLocaleMPApprovedKey)
-                    debugPrint(":::::: buyIsAllowed: \(isBuyAllowed)")
-                } else {
-                    UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
-                }
-                
-                UserDefaults.standard.synchronize()
-            })
+        // Locale and fetch access
+        // DEV: Break here to test Locale/Matrix
+        let countryRussia = MoonpayCountryData(alphaCode2Char: "RU",
+                                       alphaCode3Char: "RUS",
+                                       isBuyAllowed: false,
+                                       isSellAllowed: false,
+                                       countryName: "Russia",
+                                       isAllowedInCountry: false)
 
-			// Ops
-			let startDate = Partner.partnerKeyPath(name: .walletStart)
-			if startDate == "error-brainwallet-start-key" {
-				let errorDescription = "partnerkey_data_missing"
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
-			}
-			// Firebase
-			self.setFirebaseConfiguration()
+        let currentLocaleID = Locale.current.region?.identifier ?? countryRussia.alphaCode2Char
 
-			// AF
-			AppsFlyerLib.shared().appsFlyerDevKey = Partner.partnerKeyPath(name: .prodAF)
-			AppsFlyerLib.shared().appleAppID = "6444157498"
+        NetworkHelper.init().fetchCurrenciesCountries(completion:  { countryData  in
+    
+            let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == currentLocaleID }.first ?? countryRussia
+    
+            let isBuyAllowed = currentMoonPayCountry.isBuyAllowed
+            if isBuyAllowed {
+                UserDefaults.standard.set(isBuyAllowed, forKey: userCurrentLocaleMPApprovedKey)
+                     debugPrint(":::::: buyIsAllowed: \(isBuyAllowed)")
+            } else {
+            UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
+            }
+    
+            UserDefaults.standard.synchronize()
+        })
 
-			// Remote Config
-			self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
+        // Ops
+        let startDate = Partner.partnerKeyPath(name: .walletStart)
+            if startDate == "error-brainwallet-start-key" {
+                let errorDescription = "partnerkey_data_missing"
+                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+            }
+        // Firebase
+        self.setFirebaseConfiguration()
 
-			let current = UNUserNotificationCenter.current()
+        // AF
+        AppsFlyerLib.shared().appsFlyerDevKey = Partner.partnerKeyPath(name: .prodAF)
+        AppsFlyerLib.shared().appleAppID = BrainwalletAppStore.adamIDString
 
-			current.getNotificationSettings(completionHandler: { settings in
+        // Remote Config
+        self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
 
-				debugPrint(settings.debugDescription)
-				if settings.authorizationStatus == .denied {
-				}
-			})
+        let current = UNUserNotificationCenter.current()
 
-		} onFailure: { error in
+        current.getNotificationSettings(completionHandler: { settings in
 
-			let properties: [String: String] = ["error_type": "on_demand_resources_not_found",
-			                                    "error_description": "\(error.debugDescription)"]
-			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
-			                                   properties: properties)
-		}
-        
+            debugPrint(settings.debugDescription)
+            if settings.authorizationStatus == .denied {}
+        })
+
 		guard let thisWindow = window else { return false }
         // Set global themse
 		thisWindow.tintColor = BrainwalletUIColor.surface
@@ -88,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		applicationController.launch(application: application, window: thisWindow)
 
-		LWAnalytics.logEventWithParameters(itemName: ._20191105_AL)
+		BWAnalytics.logEventWithParameters(itemName: ._20191105_AL)
 
 		return true
 	}
@@ -125,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken _: Data) {
 		let acceptanceDict: [String: String] = ["did_accept": "true",
 		                                        "date_accepted": Date().ISO8601Format()]
-		LWAnalytics.logEventWithParameters(itemName: ._20231225_UAP, properties: acceptanceDict)
+		BWAnalytics.logEventWithParameters(itemName: ._20231225_UAP, properties: acceptanceDict)
 	}
 
 	func application(_: UIApplication, didReceiveRemoteNotification _: [AnyHashable: Any],
@@ -136,17 +126,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		guard let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") else {
 			let properties = ["error_message": "gs_info_file_missing"]
-			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
+			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
 			                                   properties: properties)
 			assertionFailure("Couldn't load google services file")
 			return
 		}
 
 		if let fboptions = FirebaseOptions(contentsOfFile: filePath) {
-			FirebaseApp.configure(options: fboptions)
+            FirebaseApp.configure(options: fboptions)
+            #if DEBUG
+                Analytics.setUserProperty("debug", forName: "user_type")
+            #endif
 		} else {
 			let properties = ["error_message": "firebase_config_failed"]
-			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
+			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
 			                                   properties: properties)
 			assertionFailure("Couldn't load Firebase config file")
 		}
@@ -179,7 +172,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 						guard error != nil else {
 							let properties: [String: String] = ["error_type": "on_demand_resources_not_found",
 							                                    "error_description": "\(error.debugDescription)"]
-							LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
+							BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
 							                                   properties: properties)
 
 							return

@@ -56,7 +56,9 @@ class ApplicationController: Subscriber, Trackable {
         
         /// Init exchange sooner
         exchangeUpdater = ExchangeUpdater(store: store, walletManager: tempWalletManager)
-        exchangeUpdater?.fetchRates {}
+        exchangeUpdater?.fetchRates { rates in
+            debugPrint(rates)
+        }
         
         DispatchQueue.main.async {
             self.didInitWallet = true
@@ -219,7 +221,7 @@ class ApplicationController: Subscriber, Trackable {
 
 			exchangeUpdater?.refresh(completion: {
 				let properties = ["application_controller": "rate_was_updated"]
-				LWAnalytics.logEventWithParameters(itemName: ._20240315_AI, properties: properties)
+				BWAnalytics.logEventWithParameters(itemName: ._20240315_AI, properties: properties)
 			})
 		}
 	}
@@ -257,21 +259,21 @@ class ApplicationController: Subscriber, Trackable {
 		guard let kvStore = walletManager?.apiClient?.kv
 		else {
 			let properties = ["applications_info": "kvstore_not_initialized"]
-			LWAnalytics.logEventWithParameters(itemName: ._20240315_AI, properties: properties)
+			BWAnalytics.logEventWithParameters(itemName: ._20240315_AI, properties: properties)
 			return
 		}
 
 		guard kvStoreCoordinator == nil
 		else {
 			let properties = ["applications_info": "kvstorecoordinator_not_initialized"]
-			LWAnalytics.logEventWithParameters(itemName: ._20240315_AI, properties: properties)
+			BWAnalytics.logEventWithParameters(itemName: ._20240315_AI, properties: properties)
 			return
 		}
 
 		kvStore.syncAllKeys { error in
 			let properties = ["error_message": "kv_finished_syning",
 			                  "error": "\(String(describing: error))"]
-			LWAnalytics.logEventWithParameters(itemName: ._20240315_AI, properties: properties)
+			BWAnalytics.logEventWithParameters(itemName: ._20240315_AI, properties: properties)
 			self.walletCoordinator?.kvStore = kvStore
 			self.kvStoreCoordinator = KVStoreCoordinator(store: self.store, kvStore: kvStore)
 			self.kvStoreCoordinator?.retreiveStoredWalletInfo()
@@ -290,7 +292,7 @@ class ApplicationController: Subscriber, Trackable {
 		let group = DispatchGroup()
 		if let peerManager = walletManager?.peerManager, peerManager.syncProgress(fromStartHeight: peerManager.lastBlockHeight) < 1.0 {
 			group.enter()
-			LWAnalytics.logEventWithParameters(itemName: ._20200111_DEDG)
+			BWAnalytics.logEventWithParameters(itemName: ._20200111_DEDG)
 
 			store.lazySubscribe(self, selector: { $0.walletState.syncState != $1.walletState.syncState }, callback: { state in
 				if self.fetchCompletionHandler != nil {
@@ -299,7 +301,7 @@ class ApplicationController: Subscriber, Trackable {
 							peerManager.disconnect()
 							self.saveEvent("appController.peerDisconnect")
 							DispatchQueue.main.async {
-								LWAnalytics.logEventWithParameters(itemName: ._20200111_DLDG)
+								BWAnalytics.logEventWithParameters(itemName: ._20200111_DLDG)
 								group.leave()
 							}
 						}
@@ -309,13 +311,13 @@ class ApplicationController: Subscriber, Trackable {
 		}
 
 		group.enter()
-		LWAnalytics.logEventWithParameters(itemName: ._20200111_DEDG)
+		BWAnalytics.logEventWithParameters(itemName: ._20200111_DEDG)
 		Async.parallel(callbacks: [
 			{ self.exchangeUpdater?.refresh(completion: $0) },
 			{ self.feeUpdater?.refresh(completion: $0) },
 			{ self.walletManager?.apiClient?.events?.sync(completion: $0) }
 		], completion: {
-			LWAnalytics.logEventWithParameters(itemName: ._20200111_DLDG)
+			BWAnalytics.logEventWithParameters(itemName: ._20200111_DLDG)
 			group.leave()
 		})
 
