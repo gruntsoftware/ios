@@ -48,7 +48,7 @@ struct NewTransactionsView: View {
                         Spacer()
                         Button(action: {
                             if modeState < 2 {
-                                modeState = modeState + 1
+                                modeState += 1
                             }
                             else {
                                 modeState = 0

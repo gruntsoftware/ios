@@ -155,13 +155,16 @@ class StartFlowPresenter: Subscriber {
 	}
 
 	private func pushConfirmPaperPhraseViewController(pin: String) {
-		let confirmVC = UIStoryboard(name: String(localized: "Phrase", bundle: .main), bundle: nil).instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController") as? ConfirmPaperPhraseViewController
+		let confirmVC = UIStoryboard(name: String(localized: "Phrase", bundle: .main),
+                                     bundle: nil)
+                .instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController")
+                   as? ConfirmPaperPhraseViewController
 		confirmVC?.store = store
 		confirmVC?.walletManager = walletManager
 		confirmVC?.pin = pin
 		confirmVC?.didCompleteConfirmation = { [weak self] in
 			guard let myself = self else { return }
-			
+
             confirmVC?.dismiss(animated: true, completion: {
                 myself.store.perform(action: SimpleReduxAlert.Show(.paperKeySet(callback: {
                     myself.store.perform(action: HideStartFlow())

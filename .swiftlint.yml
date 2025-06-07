@@ -4,9 +4,9 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - colon
   - comma
   - control_statement
-opt_in_rules: # some rules are turned off by default, so you need to opt-in
-  - empty_count # find all the available rules by running: `swiftlint rules`
-
+#opt_in_rules: # some rules are turned off by default, so you need to opt-in
+# - empty_count # find all the available rules by running: `swiftlint rules`
+# - trailing_whitespace
 # Alternatively, specify all rules explicitly by uncommenting this option:
 # only_rules: # delete `disabled_rules` & `opt_in_rules` if using this
 #   - empty_parameters
@@ -19,8 +19,13 @@ analyzer_rules: # rules run by `swiftlint analyze`
 # command line will be ignored.
 included: 
   - brainwallet
-  - brainwalletTests
 excluded: # case-sensitive paths to ignore during linting. Takes precedence over `included`
+  - brainwallet/BR*.swift
+  - brainwalletTests/*.swift
+  - /brainwallet/Legacy_BW_BRClasses
+  - BuildTools/*
+  - /SourcePackages
+  - ios/DerivedData/SourcePackages
   - Frameworks
   - Modules
   - Products 
@@ -35,10 +40,10 @@ strict: false
 lenient: false
 
 # The path to a baseline file, which will be used to filter out detected violations.
-baseline: Baseline.json
+baseline: SwiftlintBaseline.json
 
 # The path to save detected violations to as a new baseline.
-write_baseline: Baseline.json
+write_baseline: SwiftlintBaseline.json
 
 # If true, SwiftLint will check for updates after linting or analyzing.
 check_for_updates: true
@@ -50,6 +55,10 @@ force_try:
   severity: warning # explicitly
 # rules that have both warning and error levels, can set just the warning level
 # implicitly
+opt_in_rules:
+  - indentation_width
+
+indentation_width: 4
 line_length: 110
 # they can set both implicitly with an array
 type_body_length:
@@ -77,6 +86,9 @@ identifier_name:
     - GlobalAPIKey
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, codeclimate, junit, html, emoji, sonarqube, markdown, github-actions-logging, summary)
 
+
+
+  
 # Default Airbnb swiftlint
 # only_rules:
 #   - fatal_error_message

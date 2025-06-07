@@ -65,7 +65,7 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
 	}
 
 	// prints whatever you give it if logEnabled is true
-	func log(_ s: String) {
+	func log(_ string: String) {
 		if !logEnabled {
 			return
 		}

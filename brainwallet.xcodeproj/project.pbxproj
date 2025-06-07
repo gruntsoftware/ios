@@ -999,7 +999,7 @@
 			path = "New Lock Screen Classes";
 			sourceTree = "<group>";
 		};
-		2416CE552DA90C8B00FFBD10 /* Legacy BW_BRClasses */ = {
+		2416CE552DA90C8B00FFBD10 /* Legacy_BW_BRClasses */ = {
 			isa = PBXGroup;
 			children = (
 				24F377FE2DE8699600A388AB /* BWAPIClient+MoonPay.swift */,
@@ -1022,7 +1022,7 @@
 				2416CE682DA90D0D00FFBD10 /* BRTxOutputExtension.swift */,
 				2416CE692DA90D0D00FFBD10 /* BRWallet.swift */,
 			);
-			path = "Legacy BW_BRClasses";
+			path = Legacy_BW_BRClasses;
 			sourceTree = "<group>";
 		};
 		241B477E2DCEA05D00279954 /* Localizations */ = {
@@ -1715,7 +1715,7 @@
 				24B065252DC6121A00B5E000 /* Wallet Balance Classes */,
 				24B065332DC627D200B5E000 /* New Main Classes */,
 				24B065262DC6130200B5E000 /* Transactions Classes */,
-				2416CE552DA90C8B00FFBD10 /* Legacy BW_BRClasses */,
+				2416CE552DA90C8B00FFBD10 /* Legacy_BW_BRClasses */,
 				C312D1DB2D7DC27700BB97A4 /* SendViewCells */,
 				C312D0962D7DC27700BB97A4 /* Fonts */,
 				C312D0C72D7DC27700BB97A4 /* Sounds */,
@@ -2083,7 +2083,7 @@
 			buildConfigurationList = 75A2A7E31DA5934400A983D8 /* Build configuration list for PBXNativeTarget "brainwallet" */;
 			buildPhases = (
 				75A2A78C1DA5934300A983D8 /* Sources */,
-				2489E05F2DF0A6DE00630888 /* Run Swiftlint */,
+				2489E05F2DF0A6DE00630888 /* Run Swiftlint & Swiftlint - fix */,
 				75A2A78D1DA5934300A983D8 /* Frameworks */,
 				75A2A78E1DA5934300A983D8 /* Resources */,
 				C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */,
@@ -2180,6 +2180,7 @@
 				tr,
 				uk,
 				"es-419",
+				Base,
 			);
 			mainGroup = 75A2A7871DA5934300A983D8;
 			packageReferences = (
@@ -2271,7 +2272,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
-		2489E05F2DF0A6DE00630888 /* Run Swiftlint */ = {
+		2489E05F2DF0A6DE00630888 /* Run Swiftlint & Swiftlint - fix */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -2281,14 +2282,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Run Swiftlint";
+			name = "Run Swiftlint & Swiftlint - fix";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
 		};
 		58A9FE4C291BC37400B75825 /* Count number of swift lines */ = {
 			isa = PBXShellScriptBuildPhase;
