@@ -128,25 +128,26 @@ class NetworkHelper: ObservableObject {
         task.resume()
     }
     
-    func fetchSignedURL(moonPaySigningData: MoonpaySigningData, completion: @escaping (String) -> Void) {
+    func fetchSignedURL(mpData: MoonpaySigningData, completion: @escaping (String) -> Void) {
         let baseURL = APIServer.baseUrl
         let suffix = "v1/moonpay/sign-url"
-        let baseCurrencyCode = moonPaySigningData.baseCurrencyCode
-        let baseCurrencyAmount = moonPaySigningData.baseCurrencyAmount
-        let language = moonPaySigningData.language
-        let walletAddress = moonPaySigningData.walletAddress
-        let defaultCurrencyCode = moonPaySigningData.defaultCurrencyCode
-        let externalTransactionId = moonPaySigningData.externalTransactionId
-        let currencyCode = moonPaySigningData.currencyCode
-        let themeId = moonPaySigningData.themeId
-        let theme = moonPaySigningData.theme
-        
         var request: URLRequest
         
-        let urlString = "\(baseURL)\(suffix)?baseCurrencyCode=\(baseCurrencyCode)&baseCurrencyAmount=\(baseCurrencyAmount)&language=\(language)&walletAddress=\(walletAddress)&defaultCurrencyCode=\(defaultCurrencyCode)&externalTransactionId=\(externalTransactionId)&currencyCode=\(currencyCode)&themeId=\(themeId)&theme=\(theme)"
-
-        if let url = URL(string: urlString) {
-            request = URLRequest(url: url)
+        let urlString = """
+        \(baseURL)\(suffix)?\
+        baseCurrencyCode=\(mpData.baseCurrencyCode)&\
+        baseCurrencyAmount=\(mpData.baseCurrencyAmount)&\
+        language=\(mpData.language)&\
+        walletAddress=\(mpData.walletAddress)&\
+        defaultCurrencyCode=\(mpData.defaultCurrencyCode)&\
+        externalTransactionId=\(mpData.externalTransactionId)&\
+        currencyCode=\(mpData.currencyCode)&\
+        themeId=\(mpData.themeId)&\
+        theme=\(mpData.theme)
+        """
+        
+        if let createdURL = URL(string: urlString) {
+            request = URLRequest(url: createdURL)
         } else {
             fatalError("Invalid URL")
         }

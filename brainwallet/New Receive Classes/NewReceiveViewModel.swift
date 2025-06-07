@@ -156,7 +156,9 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     
     func fetchMoonpaySignedUrl(signingData: MoonpaySigningData) {
         
-        NetworkHelper.init().fetchSignedURL(moonPaySigningData: signingData, completion: {  signedString in
+        NetworkHelper
+            .init()
+            .fetchSignedURL(mpData: signingData, completion: {  signedString in
             DispatchQueue.main.async {
                 self.signedURLString = signedString
                 self.didFetchURLString = true
