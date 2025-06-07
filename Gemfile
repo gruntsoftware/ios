@@ -1,10 +1,12 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
+ruby ">= 2.6.0"
 
-gem 'rb-readline'
+gem "fastlane", ">= 2.212.0"
+gem "bundler", "1.17.2"
 
-# Gemfile specifies dependencies
-gem "fastlane", "~> 2.219"
-gem "bundler", "~> 2.4"
+# iOS specific gems
+gem "xcode-install"
 
-ruby '3.3.1'
+# Testing and code quality
+gem "scan" 
