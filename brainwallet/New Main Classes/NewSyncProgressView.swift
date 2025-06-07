@@ -30,7 +30,6 @@ struct NewSyncProgressView: View {
     private let progressViewHeight: CGFloat = 55.0
     private let progressBarHeight: CGFloat = 14.0
     private let progressIconSize: CGFloat = 16.0
-
     
     init(viewModel: NewSyncProgressViewModel) {
         self.viewModel = viewModel
@@ -64,7 +63,6 @@ struct NewSyncProgressView: View {
                             Spacer()
                         }
                         .padding(.leading, 8.0)
-
                         
                         Spacer()
                         VStack {
@@ -110,9 +108,9 @@ struct NewSyncProgressView: View {
 }
 
 //
-//import UIKit
+// import UIKit
 //
-//class SyncProgressHeaderView: UITableViewCell, Subscriber {
+// class SyncProgressHeaderView: UITableViewCell, Subscriber {
 //    @IBOutlet var headerLabel: UILabel!
 //    @IBOutlet var timestampLabel: UILabel!
 //    @IBOutlet var blockheightLabel: UILabel!
@@ -198,4 +196,4 @@ struct NewSyncProgressView: View {
 //    override func setSelected(_ selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)
 //    }
-//}
+// }

@@ -85,10 +85,8 @@ struct NewMainView: View {
                                     alignment: .bottom)
                     }
                     .offset(x: newMainViewModel.shouldShowSettings ? width - 90.0: 0)
-                    .animation(.easeInOut(duration: 0.25))
+
                 }
             }
         }
 }
-
-

@@ -40,8 +40,7 @@ class TransactionCellViewModel: ObservableObject {
 	     isLtcSwapped: Bool,
 	     rate: Rate,
 	     maxDigits: Int,
-	     isSyncing: Bool)
-	{
+	     isSyncing: Bool) {
 		self.transaction = transaction
 		self.isLtcSwapped = isLtcSwapped
 		self.rate = rate
@@ -97,8 +96,7 @@ class TransactionCellViewModel: ObservableObject {
 		   .qrCode(data: data,
                    color: .gray)?
 		   .resize(CGSize(width: kQRImageSide,
-		                  height: kQRImageSide))
-		{
+		                  height: kQRImageSide)) {
 			qrImage = image
 		}
 

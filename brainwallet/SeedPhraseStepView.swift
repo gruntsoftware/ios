@@ -22,14 +22,13 @@ struct SeedPhraseStepView: View {
 		GridItem(.flexible(minimum: seedViewWidth)),
 		GridItem(.flexible(minimum: seedViewWidth)),
 		GridItem(.flexible(minimum: seedViewWidth)),
-		GridItem(.flexible(minimum: seedViewWidth)),
+		GridItem(.flexible(minimum: seedViewWidth))
 	]
 
 	var body: some View {
 		GeometryReader { geometry in
 
 			let width = geometry.size.width
-			let height = geometry.size.height
 
 			ZStack {
 				CreateStepConfig

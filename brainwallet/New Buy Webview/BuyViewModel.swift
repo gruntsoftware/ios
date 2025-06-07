@@ -21,7 +21,6 @@ class BuyViewModel: ObservableObject {
     
     @Published
     var signedURlString: String = ""
-    
 
     @Published
     var selectedCode: String = "USD"

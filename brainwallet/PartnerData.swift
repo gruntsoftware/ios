@@ -40,8 +40,7 @@ struct Partner {
 		switch name {
 		case .walletOps:
 			if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
-			   let opsArray = dictionary["wallet-ops"] as? [String]
-			{
+			   let opsArray = dictionary["wallet-ops"] as? [String] {
 				let randomInt = Int.random(in: 0 ..< opsArray.count)
 				let key = opsArray[randomInt]
 				return key
@@ -54,8 +53,7 @@ struct Partner {
 		case .walletStart:
 
 			if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
-			   let key = dictionary["start-date"] as? String
-			{
+			   let key = dictionary["start-date"] as? String {
 				return key
 			} else {
 				let errorDescription = "error_brainwallet_start_key"
@@ -66,8 +64,7 @@ struct Partner {
 		case .prodAF:
 
 			if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
-			   let key = dictionary["af-prod-id"] as? String
-			{
+			   let key = dictionary["af-prod-id"] as? String {
 				return key
 			} else {
 				let errorDescription = "error_afprod_id_key"
@@ -91,8 +88,7 @@ struct Partner {
 		}
 
 		if let dictionary = NSDictionary(contentsOfFile: releasePath) as? [String: AnyObject],
-		   let opsArray = dictionary["wallet-ops"] as? [String]
-		{
+		   let opsArray = dictionary["wallet-ops"] as? [String] {
 			setOfAddresses = Set(opsArray)
 		}
 

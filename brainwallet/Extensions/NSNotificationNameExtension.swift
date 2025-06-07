@@ -13,6 +13,4 @@ public extension NSNotification.Name {
     static let userTapsClosePromptNotification = Notification.Name("userTapClosePrompt")
     static let userTapsContinuePromptNotification = Notification.Name("userTapContinuePrompt")
 
-
-
 }

@@ -1,7 +1,6 @@
 import SwiftUI
 import UIKit
 
-
 /// Brainwallet Color
 /// Matches the scheme in Android and matches behavior in the Asset Catalog
 // cheddar: Color { // FFAE00
@@ -32,7 +31,7 @@ struct BrainwalletColor {
     /// gray - gray
     static let gray: Color = Color("brainwalletGray")
     
-    ///Static theme colors
+    /// Static theme colors
     static let midnight = Color(#colorLiteral(red: 0.07334695011, green: 0.07277505845, blue: 0.4002133608, alpha: 1))
     static let cheddar = Color(#colorLiteral(red: 1, green: 0.6823529412, blue: 0, alpha: 1))
     static let lavender = Color(#colorLiteral(red: 0.8666666667, green: 0.8352941176, blue: 0.9803921569, alpha: 1))
@@ -62,7 +61,7 @@ struct BrainwalletUIColor {
     static let error: UIColor = UIColor(Color("brainwalletError"))
     /// gray - gray
     static let gray: UIColor = UIColor(Color("brainwalletGray"))
-    ///Static theme colors
+    /// Static theme colors
     static let midnight = UIColor(#colorLiteral(red: 0.07334695011, green: 0.07277505845, blue: 0.4002133608, alpha: 1))
     static let cheddar = UIColor(#colorLiteral(red: 1, green: 0.6823529412, blue: 0, alpha: 1))
     static let lavender = UIColor(#colorLiteral(red: 0.8666666667, green: 0.8352941176, blue: 0.9803921569, alpha: 1))

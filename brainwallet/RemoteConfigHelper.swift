@@ -42,8 +42,8 @@ class RemoteConfigHelper: NSObject {
 		fetchAndActivateRemoteConfig()
 
 		/// Update based on remote changes
-		remoteConfig.addOnConfigUpdateListener { configUpdate, error in
-			guard let configUpdate, error == nil else {
+		remoteConfig.addOnConfigUpdateListener { _, error in
+			guard error != nil else {
 				let errorDict: [String: String] = ["error": error?.localizedDescription ?? ""]
 				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: errorDict)
 				return

@@ -16,12 +16,11 @@ struct TransactionModalView: View {
 
 	var body: some View {
         
-        GeometryReader { geometry in 
+        GeometryReader { _ in 
             
             let buttonSize = 30.0
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                
                 
                 VStack(spacing: 1.0) {
                     HStack {
@@ -227,6 +226,6 @@ struct TransactionModalView: View {
 	}
 }
 
-//struct TransactionModalView_Previews: PreviewProvider {
+// struct TransactionModalView_Previews: PreviewProvider {
 //
-//}
+// }

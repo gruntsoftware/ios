@@ -16,7 +16,6 @@ struct StartView: View {
     let largeButtonHeight: CGFloat = 60.0
     let lottieFileName: String = "welcomeemoji20250212.json"
     
-    
     @State
     private var isShowingOnboardView: Bool = true
     
@@ -67,7 +66,7 @@ struct StartView: View {
     func updateLocaleLabel() {
         // Get current locale
         let currentLocale = Locale.current
-         //Print locale identifier in native language
+         // Print locale identifier in native language
         if let localeIdentifier = currentLocale.identifier as String? {
             #if DEBUG || targetEnvironment(simulator)
             let nativeLocaleName = currentLocale.localizedString(forIdentifier: localeIdentifier)
@@ -105,7 +104,7 @@ struct StartView: View {
                             WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
                                 .frame(height: height * 0.35, alignment: .center)
                                 .padding(.top, verticalPadding)
-                            ///width: width * 0.9,
+                            /// width: width * 0.9,
 
                         }
                         
@@ -166,8 +165,8 @@ struct StartView: View {
 
                         Button(action: {
                                  startViewModel.didTapCreate!()
-                                //path.append(.inputWordsView)
-                                //path.append(.readyView)
+                                // path.append(.inputWordsView)
+                                // path.append(.readyView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
@@ -239,7 +238,7 @@ struct StartView: View {
                            SetPasscodeView(path: $path)
                                 .navigationBarBackButtonHidden()
                         }
-                    case .confirmPasscodeView (let pinDigits):
+                    case .confirmPasscodeView(let pinDigits):
                         ZStack {
                             ConfirmPasscodeView(pinDigits: pinDigits, viewModel: startViewModel, path: $path)
                                .navigationBarBackButtonHidden()

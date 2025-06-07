@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "C5977BF5-9CA3-4A68-BC70-F3938AF8C2DB",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:brainwallet.xcodeproj",
+      "identifier" : "75A2A78F1DA5934300A983D8",
+      "name" : "brainwallet"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:brainwallet.xcodeproj",
+        "identifier" : "2465873523A5AAD000A32E9E",
+        "name" : "brainwalletTests"
+      }
+    }
+  ],
+  "version" : 1
+}

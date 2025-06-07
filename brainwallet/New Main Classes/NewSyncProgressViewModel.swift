@@ -21,14 +21,12 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
     var blockHeightString = "--"
 
     // MARK: - Public Variables
-    
 
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.setLocalizedDateFormatFromTemplate("MMM d, yyyy h a")
         return df
     }()
-    
     
     var isRescanning: Bool = false
     var headerMessage: SyncState = .success
@@ -39,7 +37,6 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
             formattedTimestamp = dateFormatter.string(from: Date(timeIntervalSince1970: Double(dateTimestamp)))
         }
     }
-    
     
     var store: Store
     var walletManager: WalletManager
@@ -53,8 +50,7 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
     }
 
 ///    dateFormatter.string(from: Date(timeIntervalSince1970: Double(timestamp)))
-
-    /// DEV: For checking wallet
+/// DEV: For checking wallet
 //    private func checkForWalletAndSync() {
 //        /// Test seed count
 //        guard seedWords.count == 12 else { return }
@@ -90,6 +86,9 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
         }
     }
     private func setSubscriptions() {
-        
+        self.store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
+                        callback: { _ in
+            
+        })
     }
 }

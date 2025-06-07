@@ -10,7 +10,6 @@ import SwiftUI
 
 struct YourSeedProveItView: View {
 
-
 @Binding var path: [Onboarding]
 
 @ObservedObject
