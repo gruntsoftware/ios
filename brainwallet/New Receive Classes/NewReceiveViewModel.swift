@@ -132,10 +132,15 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     }
     
     func buildUnsignedMoonPayUrl() -> MoonpaySigningData {
-        
-        let currentDevice: String = UIDevice.current.model
-        let currentName: String = UIDevice.current.name
-        let externalID: String = "Brainwallet-iOS-" + currentDevice.urlEscapedString + currentName.urlEscapedString
+         
+        let deviceName: String = UIDevice.current.name
+        let iOSMajor: String = ProcessInfo.processInfo.operatingSystemVersion.majorVersion.description
+        let iOSMinor: String = ProcessInfo.processInfo.operatingSystemVersion.minorVersion.description
+        let iOSVersion = iOSMajor + "." + iOSMinor
+        let formattedExternalID = String(format: "brainwallet-ios,%@,%@-iOS%@",AppVersion.string,
+                                         deviceName, iOSVersion)
+       
+        let obfuscatedExternalID: String = Utility().encryptMessageRSA2048(formattedExternalID)
 
         let currentLocaleLanguage = Locale.current.language.languageCode?.identifier ?? "en"
         let userTheme = UserDefaults.userPreferredDarkTheme ? "dark" : "light"
@@ -145,7 +150,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
                                                     language: currentLocaleLanguage,
                                                     walletAddress: newReceiveAddress,
                                                     defaultCurrencyCode: "ltc",
-                                                    externalTransactionId: externalID,
+                                                    externalTransactionId: obfuscatedExternalID,
                                                     currencyCode: "ltc",
                                                     themeId: "main-v1.0.0",
                                                     theme: userTheme)

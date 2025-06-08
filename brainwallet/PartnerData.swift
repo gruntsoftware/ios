@@ -4,6 +4,7 @@ import UIKit
 enum PartnerName {
 	case walletOps
 	case walletStart
+    case agentPubKey
 	case prodAF
 }
 
@@ -62,7 +63,19 @@ struct Partner {
 				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 				return errorDescription
 			}
+            
+        case .agentPubKey:
 
+            if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
+               let key = dictionary["agent-base64-pubkey"] as? String
+            {
+                return key
+            } else {
+                let errorDescription = "error_agent-base64-pubkey"
+                LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+                return errorDescription
+            }
+            
 		case .prodAF:
 
 			if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
