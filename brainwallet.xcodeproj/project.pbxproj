@@ -14,7 +14,6 @@
 		22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9651DF61FEE000F0016 /* WebKit.framework */; };
 		2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */; };
 		2412BA7E2DF4660300AC40BB /* ReceiveAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */; };
-		2414B00B2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */; };
 		2415FFDF2DBD8505002A2199 /* SeedWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */; };
 		2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE612DA90D0D00FFBD10 /* BRMasterKeyExtension.swift */; };
 		2416CE6B2DA90D0D00FFBD10 /* BRSocketHelpers.c in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE652DA90D0D00FFBD10 /* BRSocketHelpers.c */; };
@@ -51,6 +50,7 @@
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
 		24360B012DED120500E1E115 /* NewReceiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24360B002DED11D900E1E115 /* NewReceiveTests.swift */; };
 		244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244520332DE70310003AFFDF /* LockScreenHostingController.swift */; };
+		244895E32DF57D1900CA8BA2 /* Brainwallet-StoreKit-v1.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 244895E22DF57D1900CA8BA2 /* Brainwallet-StoreKit-v1.storekit */; };
 		244A8D932DE84C890024D356 /* BrainwalletShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
@@ -479,6 +479,7 @@
 		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
 		24360B002DED11D900E1E115 /* NewReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveTests.swift; sourceTree = "<group>"; };
 		244520332DE70310003AFFDF /* LockScreenHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHostingController.swift; sourceTree = "<group>"; };
+		244895E22DF57D1900CA8BA2 /* Brainwallet-StoreKit-v1.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Brainwallet-StoreKit-v1.storekit"; sourceTree = "<group>"; };
 		244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainwalletShapes.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
@@ -1537,6 +1538,7 @@
 		24DF5CBD2D934E29009A426C /* Launch Resources */ = {
 			isa = PBXGroup;
 			children = (
+				244895E22DF57D1900CA8BA2 /* Brainwallet-StoreKit-v1.storekit */,
 				C312D24F2D7DC27700BB97A4 /* general.css */,
 				24E06FC42DF4790B00719B6C /* remote-config-defaults.plist */,
 				248E5C3E2DE77E88003F232F /* moon_pay_buy_status.txt */,
@@ -2245,6 +2247,7 @@
 				C312D4AB2D7DC27700BB97A4 /* BarlowSemiCondensed-Bold.ttf in Resources */,
 				C312D4AE2D7DC27700BB97A4 /* CHANGELOG.md in Resources */,
 				C312D4AF2D7DC27700BB97A4 /* Animate.storyboard in Resources */,
+				244895E32DF57D1900CA8BA2 /* Brainwallet-StoreKit-v1.storekit in Resources */,
 				24E06FC72DF4792800719B6C /* service-data.plist in Resources */,
 				C312D4B22D7DC27700BB97A4 /* SyncProgressHeaderView.xib in Resources */,
 				C312D4B42D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf in Resources */,
@@ -2262,7 +2265,6 @@
 				C312D4CA2D7DC27700BB97A4 /* Buy.storyboard in Resources */,
 				C312D4CC2D7DC27700BB97A4 /* Alerts.storyboard in Resources */,
 				C312D4CE2D7DC27700BB97A4 /* Phrase.storyboard in Resources */,
-				2414B00B2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit in Resources */,
 				C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

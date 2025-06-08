@@ -139,20 +139,20 @@ struct StartView: View {
                                         }
                                         .frame(width: width * 0.1)
                                         
-                                        Picker("", selection: $pickedCurrency) {
-                                            ForEach(startViewModel.globalCurrencies, id: \.self) {
-                                                Text("\($0.name)       \($0.code) (\($0.symbol))")
-                                                    .font(selectorFont)
-                                                    .foregroundColor(BrainwalletColor.content)
-                                            }
-                                            
-                                        }
-                                        .pickerStyle(.wheel)
-                                        .frame(width: width * 0.6)
-                                        .onChange(of: pickedCurrency) { newDefaultCurrency in
-                                            startViewModel.userDidSetCurrencyPreference(currency: newDefaultCurrency)
-                                            selectedFiat = true
-                                        }.padding(.trailing, width * 0.1)
+//                                        Picker("", selection: $pickedCurrency) {
+//                                            ForEach(startViewModel.globalCurrencies, id: \.self) {
+//                                                Text("\($0.name)       \($0.code) (\($0.symbol))")
+//                                                    .font(selectorFont)
+//                                                    .foregroundColor(BrainwalletColor.content)
+//                                            }
+//                                            
+//                                        }
+//                                        .pickerStyle(.wheel)
+//                                        .frame(width: width * 0.6)
+//                                        .onChange(of: pickedCurrency) { newDefaultCurrency in
+//                                            startViewModel.userDidSetCurrencyPreference(currency: newDefaultCurrency)
+//                                            selectedFiat = true
+//                                        }.padding(.trailing, width * 0.1)
                                     }
                                 }
                             }

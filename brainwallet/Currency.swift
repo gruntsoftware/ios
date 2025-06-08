@@ -82,7 +82,6 @@ enum SupportedFiatCurrencies: Int, CaseIterable, Equatable, Identifiable {
     }
 }
 
-
 enum GlobalCurrencies: Int, CaseIterable, Equatable, Identifiable {
     // Major World Currencies
     case USD = 0
