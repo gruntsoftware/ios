@@ -241,10 +241,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 				hostingController.modalPresentationStyle = .formSheet
 
 				present(hostingController, animated: true) {
-					// Notes of bugfix:
-					// Refactored the class to have two section and make sure the row never extends outside the transaction count.
-
-					if indexPath.row < self.transactions.count {
+                    if indexPath.row < self.transactions.count {
 						tableView.cellForRow(at: indexPath)?.isSelected = false
 					}
 				}
@@ -297,11 +294,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		}
 	}
 
-	// MARK: - UITableView Support Methods
+	// MARK: - UITableView Legacy Prompt
 
 	private func configurePromptCell(promptType: PromptType?, indexPath: IndexPath) -> UITableViewCell {
 
-        guard let promptCell = tableView.dequeueReusableCell(withIdentifier: "PromptHostingCell<PromptCellView>", for: indexPath) as? PromptHostingCell<PromptCellView>
+        guard let promptCell = tableView.dequeueReusableCell(withIdentifier: "PromptHostingCell<PromptCellView>",
+                                                             for: indexPath) as? PromptHostingCell<PromptCellView>
 		else {
 			NSLog("ERROR No cell found")
 			return UITableViewCell()
@@ -363,17 +361,14 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
             syncView.viewModel.isRescanning = reduxState.walletState.isRescanning
 		                	if syncView.viewModel.isRescanning || (reduxState.walletState.syncState == .syncing) {
                                 syncView.viewModel.progress = CGFloat(self.updateProgressView(syncProgress:
-		                			CGFloat(reduxState.walletState.syncProgress), lastBlockTimestamp: Double(reduxState.walletState.lastBlockTimestamp)))
+		                			CGFloat(reduxState.walletState.syncProgress),lastBlockTimestamp: Double(reduxState.walletState.lastBlockTimestamp)))
                                 syncView.viewModel.headerMessage = reduxState.walletState.syncState
                                 syncView.viewModel.dateTimestamp = reduxState.walletState.lastBlockTimestamp
-                                debugPrint("::: transactions.count) \(reduxState.walletState.transactions.count)")
                                 syncView.viewModel.blockHeightString = reduxState.walletState.transactions.first?.blockHeight ?? ""
-                                debugPrint("||| transaction block blockHeightString) \(syncView.viewModel.blockHeightString)")
 
 		                		self.shouldBeSyncing = true
 
 		                		if reduxState.walletState.syncProgress >= 0.99 {
-                                    /// DEV HACK To Show
 		                			self.shouldBeSyncing = false
 		                			self.newSyncingHeaderView = nil
 		                		}
@@ -385,8 +380,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		// MARK: - Wallet State:  Show Status Bar
 
 		store.subscribe(self, name: .showStatusBar) { _ in
-			// DEV: May refactor where the action view persists after confirming pin
-            
 			self.reload()
 		}
 
@@ -402,25 +395,18 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		                	if reduxState.walletState.syncState == .syncing {
 		                		self.shouldBeSyncing = true
-		                		self.initSyncingHeaderView(reduxState: reduxState, completion: {
-//		                			self.syncingHeaderView?.isRescanning = reduxState.walletState.isRescanning
-//		                			self.syncingHeaderView?.progress = 0.02
-//		                			self.syncingHeaderView?.headerMessage = reduxState.walletState.syncState
-//		                			self.syncingHeaderView?.noSendImageView.alpha = 1.0
-//		                			self.syncingHeaderView?.timestamp = reduxState.walletState.lastBlockTimestamp
-		                		})
 		                	}
 
 		                	if reduxState.walletState.syncState == .success {
 		                		self.shouldBeSyncing = false
-//		                		self.syncingHeaderView = nil
 		                	}
 		                	self.reload()
 		                })
 
 		// MARK: - Subscription:  Recommend Rescan
 
-		store.subscribe(self, selector: { $0.recommendRescan != $1.recommendRescan }, callback: { [weak self] _ in
+		store.subscribe(self, selector: { $0.recommendRescan != $1.recommendRescan },
+                        callback: { [weak self] _ in
 			self?.attemptShowPrompt()
 		})
 

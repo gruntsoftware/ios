@@ -22,7 +22,7 @@ extension String {
 	}
 
 	func ltrim(_ chars: Set<Character>) -> String {
-		if let index = index(where: { !chars.contains($0) }) {
+        if let index = firstIndex(where: { !chars.contains($0) }) {
 			return String(self[index ..< endIndex])
 		} else {
 			return ""
@@ -30,7 +30,7 @@ extension String {
 	}
 
 	func rtrim(_ chars: Set<Character>) -> String {
-		if let index = reversed().index(where: { !chars.contains($0) }) {
+        if let index = reversed().firstIndex(where: { !chars.contains($0) }) {
 			return String(self[startIndex ... self.index(before: index.base)])
 		} else {
 			return ""
@@ -93,7 +93,7 @@ extension String {
 
 	static func localizedString(for key: String,
 	                            locale: Locale = .current) -> String {
-		let language = locale.languageCode
+        let language = locale.language.languageCode?.identifier
 		let path = Bundle.main.path(forResource: language, ofType: "lproj")!
 		let bundle = Bundle(path: path)!
 		let localizedString = NSLocalizedString(key, bundle: bundle, comment: "")

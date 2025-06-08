@@ -578,7 +578,7 @@ open class BRReplicatedKVStore: NSObject {
 				do {
 					_ = try setRemoteVersion(key: key, localVer: localVer, remoteVer: remoteVer)
 				} catch let e where e is BRReplicatedKVStoreError {
-					return completionHandler(e as! BRReplicatedKVStoreError)
+                    return completionHandler(e as? BRReplicatedKVStoreError)
 				} catch {
 					return completionHandler(.replicationError)
 				}
@@ -621,7 +621,7 @@ open class BRReplicatedKVStore: NSObject {
 					           	do {
 					           		_ = try self.setRemoteVersion(key: key, localVer: localVer, remoteVer: newRemoteVer)
 					           	} catch let e where e is BRReplicatedKVStoreError {
-					           		return completionHandler(e as! BRReplicatedKVStoreError)
+                                    return completionHandler(e as? BRReplicatedKVStoreError)
 					           	} catch {
 					           		return completionHandler(.replicationError)
 					           	}
@@ -640,7 +640,7 @@ open class BRReplicatedKVStore: NSObject {
 					} catch BRReplicatedKVStoreError.notFound {
 						// well a deleted key isn't found, so why do we care
 					} catch let e where e is BRReplicatedKVStoreError {
-						return completionHandler(e as! BRReplicatedKVStoreError)
+                        return completionHandler(e as? BRReplicatedKVStoreError)
 					} catch {
 						return completionHandler(.replicationError)
 					}
@@ -662,7 +662,7 @@ open class BRReplicatedKVStore: NSObject {
 							_ = try? self.del(key, localVer: localVer)
 							return completionHandler(BRReplicatedKVStoreError.malformedData)
 						} catch let e where e is BRReplicatedKVStoreError {
-							return completionHandler(e as! BRReplicatedKVStoreError)
+                            return completionHandler(e as? BRReplicatedKVStoreError)
 						} catch {
 							return completionHandler(.replicationError)
 						}

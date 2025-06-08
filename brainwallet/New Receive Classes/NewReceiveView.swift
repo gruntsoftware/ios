@@ -253,11 +253,11 @@ struct NewReceiveView: View {
                                                 .tag(2)
                                         }
                                         .pickerStyle(.segmented)
-                                        .onChange(of: pickedSegment) { tag in
+                                        .onChange(of: pickedSegment) { segmentTag in
                                             
-                                            if tag == 0 {
+                                            if segmentTag == 0 {
                                                 pickedAmount = fiatMinAmount
-                                            } else if tag == 1 {
+                                            } else if segmentTag == 1 {
                                                 pickedAmount = fiatTenXAmount
                                             } else {
                                                 pickedAmount = fiatMaxAmount

@@ -69,10 +69,9 @@ class SignupWebView: WKWebView, WKNavigationDelegate {
 		scriptContent += "document.getElementsByTagName('head')[0].appendChild(meta);"
 		scriptContent += "document.body.scrollHeight;"
 
-		webView.evaluateJavaScript(scriptContent, completionHandler: { height, error in
+		webView.evaluateJavaScript(scriptContent, completionHandler: { height, _ in
 
-			print(height)
-			print(error)
+            print(height ?? 0.0)
 		})
 
 		webView.evaluateJavaScript("document.body.innerHTML", completionHandler: { (value: Any!, error: Error!) in
@@ -93,7 +92,7 @@ class SignupWebView: WKWebView, WKNavigationDelegate {
 
 			let result = value as? String
 
-			debugPrint(result)
+            debugPrint(result ?? "")
 		})
 	}
 }

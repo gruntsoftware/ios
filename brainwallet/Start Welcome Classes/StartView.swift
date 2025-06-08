@@ -138,23 +138,23 @@ struct StartView: View {
                                             }
                                         }
                                         .frame(width: width * 0.1)
-                                        
-                                        
-                                        
-//                                        Picker("", selection: $pickedCurrency) {
-//                                            ForEach(startViewModel.globalCurrencies, id: \.self) {
-//                                                Text("\($0.name)       \($0.code) (\($0.symbol))")
-//                                                    .font(selectorFont)
-//                                                    .foregroundColor(BrainwalletColor.content)
-//                                            }
-//                                            
-//                                        }
-//                                        .pickerStyle(.wheel)
-//                                        .frame(width: width * 0.6)
-//                                        .onChange(of: pickedCurrency) { newDefaultCurrency in
-//                                            startViewModel.userDidSetCurrencyPreference(currency: newDefaultCurrency)
-//                                            selectedFiat = true
-//                                        }.padding(.trailing, width * 0.1)
+
+                                        Picker("", selection: $pickedCurrency) {
+                                            ForEach(startViewModel.globalCurrencies, id: \.self) {
+                                                Text("\($0.fullCurrencyName)   \($0.code) (\($0.symbol))")
+                                                    .font(selectorFont)
+                                                    .foregroundColor(BrainwalletColor.content)
+                                            }
+                                            
+                                        }
+                                        .pickerStyle(.wheel)
+                                        .frame(width: width * 0.6)
+                                        .onChange(of: pickedCurrency) { newFiat in
+                                            startViewModel.pickedGlobalCurrency = newFiat
+                                            startViewModel.fetchCurrentPrice()
+                                            startViewModel.userDidSetCurrencyPreference(currency: newFiat)
+                                            selectedFiat = true
+                                        }.padding(.trailing, width * 0.1)
                                     }
                                 }
                             }
@@ -225,6 +225,10 @@ struct StartView: View {
                 .padding(.all, swiftUICellPadding)
                 .scrollContentBackground(.hidden)
                 .background(BrainwalletColor.surface)
+                .onChange(of: startViewModel.pickedGlobalCurrency) { _ in
+                    currentValueInFiat = String(format: String(localized: "%@ = 1Ł"),
+                                                startViewModel.currentValueInFiat)
+                }
                 .navigationDestination(for: Onboarding.self) { onboard in
                     switch onboard {
                     case .restoreView:

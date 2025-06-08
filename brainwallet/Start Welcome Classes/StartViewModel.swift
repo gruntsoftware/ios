@@ -7,9 +7,6 @@ class StartViewModel: ObservableObject, Subscriber {
 	// MARK: - Combine Variables
     
     @Published
-    var currentFiat: SupportedFiatCurrencies = .USD
-    
-    @Published
     var currentValueInFiat = ""
     
     @Published
@@ -20,9 +17,6 @@ class StartViewModel: ObservableObject, Subscriber {
 
 	@Published
 	var walletCreationDidFail: Bool = false
-    
-    @Published
-    var fetchedRates: [Rate?] = []
 
 	// MARK: - Public Variables
 
@@ -31,18 +25,18 @@ class StartViewModel: ObservableObject, Subscriber {
 	var didTapRecover: (() -> Void)?
     var store: Store?
 	var walletManager: WalletManager
+    var pickedGlobalCurrency: GlobalCurrencies = .USD
+
+    private var fetchedRates: [Rate?] = []
     
     let globalCurrencies: [GlobalCurrencies] = GlobalCurrencies.allCases
-    
-    let supportedCurrencies: [SupportedFiatCurrencies] = SupportedFiatCurrencies.allCases
-
 
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store
 		self.walletManager = walletManager
-        fetchCurrentPrice(walletManager: walletManager)
+        fetchCurrentPrice()
 	}
-    private func fetchCurrentPrice(walletManager: WalletManager) {
+    func fetchCurrentPrice() {
         
         guard let store = store
         else {
@@ -50,45 +44,32 @@ class StartViewModel: ObservableObject, Subscriber {
             return
         }
         
-//        let rate = rates[indexPath.row]
-//                store.perform(action: DefaultCurrency.setDefault(rate.code))
-        
         /// Init exchange sooner
-        let exchangeUpdater = ExchangeUpdater(store: store, walletManager: walletManager)
+        let exchangeUpdater = ExchangeUpdater(store: store, walletManager: self.walletManager)
         exchangeUpdater.fetchRates { rates in
-            
+            var fetchedRate: Double = 0.0
             if !rates.isEmpty {
                 self.fetchedRates = rates
-            } else {
-                self.recallFetchCurrentPrice()
+                guard let rateObject = self.fetchedRates.filter({ $0?.code != self.pickedGlobalCurrency.code }).first,
+                let rateValue = rateObject?.rate
+                        else {
+                            return
+                        }
+                fetchedRate = rateValue
             }
-            
-        guard let rate = store.state.currentRate?.rate
-        else {
-            debugPrint("::: Error: Rate not fetched ")
-            return
-        }
 
         // Price Label
-        let fiatRate = Double(round(100000 * rate / 100000))
+        let fiatRate = Double(round(100000 * fetchedRate / 100000))
         let formattedFiatString = String(format: "%3.2f", fiatRate)
+        self.currentValueInFiat = String(formattedFiatString + self.pickedGlobalCurrency.code)
         
-        guard let code: String = store.state.currentRate?.code
-        else {
-            debugPrint("::: Error: Rate not fetched ")
-            return
-        }
-        
-            self.currentValueInFiat = String(formattedFiatString + code)
+        // Set Default Currency
+        store.perform(action: DefaultCurrency.setDefault(self.pickedGlobalCurrency.code))
         
         }
         
     }
-    private func recallFetchCurrentPrice() {
-        delay(3.0) {
-            self.fetchCurrentPrice(walletManager: self.walletManager)
-        }
-    }
+
     // MARK: - Add Subscriptions
 
     private func addSubscriptions() {
@@ -109,7 +90,7 @@ class StartViewModel: ObservableObject, Subscriber {
                 
                 let wallet = myself.walletManager
                 
-                self?.fetchCurrentPrice(walletManager: wallet)
+                self?.fetchCurrentPrice()
             })
     }
     
@@ -161,7 +142,7 @@ class StartViewModel: ObservableObject, Subscriber {
 //		}
 //	}
     
-    func userDidSetCurrencyPreference(currency: SupportedFiatCurrencies) {
+    func userDidSetCurrencyPreference(currency: GlobalCurrencies) {
         
         /// Legacy definition of default currency code....copiying here
         /// Will normallize in refactor
@@ -170,7 +151,7 @@ class StartViewModel: ObservableObject, Subscriber {
         UserDefaults.defaultCurrencyCode = code
         UserDefaults.standard.synchronize()
         
-        self.fetchCurrentPrice(walletManager: self.walletManager)
+        self.fetchCurrentPrice()
 
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: .preferredCurrencyChangedNotification,
