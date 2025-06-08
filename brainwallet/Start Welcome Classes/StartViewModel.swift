@@ -33,6 +33,9 @@ class StartViewModel: ObservableObject, Subscriber {
 	var walletManager: WalletManager
     
     let globalCurrencies: [GlobalCurrencies] = GlobalCurrencies.allCases
+    
+    let supportedCurrencies: [SupportedFiatCurrencies] = SupportedFiatCurrencies.allCases
+
 
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store

@@ -139,6 +139,8 @@ struct StartView: View {
                                         }
                                         .frame(width: width * 0.1)
                                         
+                                        
+                                        
 //                                        Picker("", selection: $pickedCurrency) {
 //                                            ForEach(startViewModel.globalCurrencies, id: \.self) {
 //                                                Text("\($0.name)       \($0.code) (\($0.symbol))")
