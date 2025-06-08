@@ -53,7 +53,7 @@ struct StartView: View {
     private var debugLocale = ""
     
     @State
-    private var pickedCurrency: SupportedFiatCurrencies = .USD
+    private var pickedCurrency: GlobalCurrencies = .USD
 
 	@State
 	private var didContinue: Bool = false
@@ -86,7 +86,6 @@ struct StartView: View {
                     BrainwalletColor.surface.ignoresSafeArea()
                     
                     VStack {
-                        
                         Group {
                             Text(currentValueInFiat)
                                 .font(Font(UIFont.barlowLight(size: 16.0)))
@@ -104,8 +103,6 @@ struct StartView: View {
                             WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
                                 .frame(height: height * 0.35, alignment: .center)
                                 .padding(.top, verticalPadding)
-                            /// width: width * 0.9,
-
                         }
                         
                         Spacer()
@@ -143,16 +140,17 @@ struct StartView: View {
                                         .frame(width: width * 0.1)
                                         
                                         Picker("", selection: $pickedCurrency) {
-                                            ForEach(startViewModel.currencies, id: \.self) {
-                                                Text("\($0.fullCurrencyName)       \($0.code) (\($0.symbol))")
+                                            ForEach(startViewModel.globalCurrencies, id: \.self) {
+                                                Text("\($0.name)       \($0.code) (\($0.symbol))")
                                                     .font(selectorFont)
                                                     .foregroundColor(BrainwalletColor.content)
                                             }
+                                            
                                         }
                                         .pickerStyle(.wheel)
                                         .frame(width: width * 0.6)
-                                        .onChange(of: $pickedCurrency.wrappedValue) { newSupportedCurrency in
-                                            startViewModel.userDidSetCurrencyPreference(currency: newSupportedCurrency)
+                                        .onChange(of: pickedCurrency) { newDefaultCurrency in
+                                            startViewModel.userDidSetCurrencyPreference(currency: newDefaultCurrency)
                                             selectedFiat = true
                                         }.padding(.trailing, width * 0.1)
                                     }

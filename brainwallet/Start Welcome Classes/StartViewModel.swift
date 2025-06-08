@@ -22,7 +22,7 @@ class StartViewModel: ObservableObject, Subscriber {
 	var walletCreationDidFail: Bool = false
     
     @Published
-    var rates: Bool = false
+    var fetchedRates: [Rate?] = []
 
 	// MARK: - Public Variables
 
@@ -32,7 +32,7 @@ class StartViewModel: ObservableObject, Subscriber {
     var store: Store?
 	var walletManager: WalletManager
     
-    let currencies: [SupportedFiatCurrencies] = SupportedFiatCurrencies.allCases
+    let globalCurrencies: [GlobalCurrencies] = GlobalCurrencies.allCases
 
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store
@@ -55,9 +55,7 @@ class StartViewModel: ObservableObject, Subscriber {
         exchangeUpdater.fetchRates { rates in
             
             if !rates.isEmpty {
-                for rate in rates {
-                    print("::: Rate: \(String(describing: rate?.currencySymbol))")
-                }
+                self.fetchedRates = rates
             } else {
                 self.recallFetchCurrentPrice()
             }
@@ -168,6 +166,8 @@ class StartViewModel: ObservableObject, Subscriber {
         UserDefaults.userPreferredBuyCurrency = code
         UserDefaults.defaultCurrencyCode = code
         UserDefaults.standard.synchronize()
+        
+        self.fetchCurrentPrice(walletManager: self.walletManager)
 
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: .preferredCurrencyChangedNotification,
