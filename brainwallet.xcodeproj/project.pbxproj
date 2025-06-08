@@ -56,6 +56,9 @@
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
+		246A9A072DF5F54C002480CB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A9A062DF5F532002480CB /* Utility.swift */; };
+		24718BE12DF0689500FA5F1B /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24718BE02DF0689500FA5F1B /* remote-config-defaults.plist */; };
+		24718BE32DF068A000FA5F1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24718BE22DF068A000FA5F1B /* GoogleService-Info.plist */; };
 		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
 		247D74E62DA907FB00855B14 /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45792D936D5900E9C3B0 /* BRAddress.c */; };
 		247D74E72DA907FB00855B14 /* BRBase58.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457C2D936D5900E9C3B0 /* BRBase58.c */; };
@@ -485,6 +488,9 @@
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		246A9A062DF5F532002480CB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		24718BE02DF0689500FA5F1B /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "remote-config-defaults.plist"; sourceTree = "<group>"; };
+		24718BE22DF068A000FA5F1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
 		2480B5822DF2015B00653403 /* PromptHostingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptHostingCell.swift; sourceTree = "<group>"; };
 		2489E05B2DF0A23700630888 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "brainwallet/Launch Resources/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -1569,6 +1575,7 @@
 		24F378002DE89C5B00A388AB /* MoonPay Helper */ = {
 			isa = PBXGroup;
 			children = (
+				246A9A062DF5F532002480CB /* Utility.swift */,
 				24F378012DE89C6600A388AB /* MoonPayHelper.swift */,
 			);
 			path = "MoonPay Helper";
@@ -2524,6 +2531,7 @@
 				C312D34F2D7DC27700BB97A4 /* DispatchQueue+Additions.swift in Sources */,
 				C312D3512D7DC27700BB97A4 /* DataValidation.swift in Sources */,
 				C312D3532D7DC27700BB97A4 /* TransactionModalView.swift in Sources */,
+				246A9A072DF5F54C002480CB /* Utility.swift in Sources */,
 				C312D3572D7DC27700BB97A4 /* ModalPresenter.swift in Sources */,
 				C312D3592D7DC27700BB97A4 /* StartViewModel.swift in Sources */,
 				C312D35A2D7DC27700BB97A4 /* LaunchCardHostingController.swift in Sources */,
