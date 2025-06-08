@@ -24,7 +24,7 @@ struct NewReceiveView: View {
     private var showError: Bool = false
     
     @State
-    private var pickedCurrency: SupportedFiatCurrencies = .USD
+    private var pickedCurrency: SupportedFiatCurrency = .USD
     
     @State
     private var pickedPreset = 0

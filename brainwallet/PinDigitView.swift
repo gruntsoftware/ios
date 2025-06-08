@@ -72,25 +72,8 @@ struct PasscodeView: View {
 			}
 		}
 		.padding()
-		.onChange(of: enteredPasscode) { newValue in
-			if newValue.count == viewModel.walletManager.pinLength {
-				keyboardFocused = false
-			}
-		}
-		//        .onChange(of: enteredPasscode) { _ in
-		//            guard enteredPasscode.count == maxDigits else { return }
-//
-		//            passcodeValidation()
-		//        }
-	}
+		.onChange(of: enteredPasscode) { _ in
 
-	//    func passcodeValidation() {
-	//        if enteredPasscode == userPasscode {
-	//            viewModel.isUnlocked = true
-	//            dismiss()
-	//        } else {
-	//            enteredPasscode = ""
-	//            showAlert = true
-	//        }
-	//    }
+		}
+	}
 }

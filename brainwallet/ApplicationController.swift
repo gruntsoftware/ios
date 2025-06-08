@@ -57,7 +57,7 @@ class ApplicationController: Subscriber, Trackable {
         /// Init exchange sooner
         exchangeUpdater = ExchangeUpdater(store: store, walletManager: tempWalletManager)
         exchangeUpdater?.fetchRates { rates in
-            debugPrint(rates)
+            debugPrint("::::\(rates) \n:::\(Date())::::")
         }
         
         DispatchQueue.main.async {

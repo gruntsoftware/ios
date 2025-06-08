@@ -4831,9 +4831,6 @@
         }
       }
     },
-    "Locale" : {
-
-    },
     "Locale: %@" : {
       "localizations" : {
         "ar" : {

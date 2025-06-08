@@ -10,7 +10,7 @@ class Currency {
 	}
 }
 
-enum SupportedFiatCurrencies: Int, CaseIterable, Equatable, Identifiable {
+enum SupportedFiatCurrency: Int, CaseIterable, Equatable, Identifiable {
     case USD = 0
     case EUR
     case GBP
@@ -24,11 +24,11 @@ enum SupportedFiatCurrencies: Int, CaseIterable, Equatable, Identifiable {
     case TRY
     case ZAR
     
-    static func from(code: String) -> SupportedFiatCurrencies? {
+    static func from(code: String) -> SupportedFiatCurrency? {
             return allCases.first { $0.code == code }
     }
     
-    var id: SupportedFiatCurrencies { self }
+    var id: SupportedFiatCurrency { self }
 
     var symbol: String {
         switch self {
@@ -82,8 +82,8 @@ enum SupportedFiatCurrencies: Int, CaseIterable, Equatable, Identifiable {
     }
 }
 
-enum GlobalCurrencies: Int, CaseIterable, Equatable, Identifiable {
-    // Major World Currencies
+enum GlobalCurrency: Int, CaseIterable, Equatable, Identifiable {
+
     case USD = 0
     case EUR
     case JPY
@@ -94,8 +94,6 @@ enum GlobalCurrencies: Int, CaseIterable, Equatable, Identifiable {
     case CNY
     case HKD
     case NZD
-    
-    // Other Important Currencies
     case SEK
     case NOK
     case DKK
@@ -115,8 +113,6 @@ enum GlobalCurrencies: Int, CaseIterable, Equatable, Identifiable {
     case BDT
     case LKR
     case NPR
-    
-    // Middle East & Africa
     case AED
     case SAR
     case QAR
@@ -134,8 +130,6 @@ enum GlobalCurrencies: Int, CaseIterable, Equatable, Identifiable {
     case MAD
     case TND
     case DZD
-    
-    // Americas
     case MXN
     case BRL
     case ARS
@@ -156,8 +150,6 @@ enum GlobalCurrencies: Int, CaseIterable, Equatable, Identifiable {
     case TTD
     case BBD
     case XCD
-    
-    // Europe (Non-Euro)
     case RON
     case BGN
     case HRK
@@ -177,8 +169,6 @@ enum GlobalCurrencies: Int, CaseIterable, Equatable, Identifiable {
     case TJS
     case TMT
     case ISK
-    
-    // Additional Asian Currencies
     case AFN
     case BND
     case BTN
@@ -194,8 +184,8 @@ enum GlobalCurrencies: Int, CaseIterable, Equatable, Identifiable {
     case VUV
     case WST
     
-    var id: GlobalCurrencies { self }
-    static func from(code: String) -> GlobalCurrencies? {
+    var id: GlobalCurrency { self }
+    static func from(code: String) -> GlobalCurrency? {
             return allCases.first { $0.code == code }
     }
     

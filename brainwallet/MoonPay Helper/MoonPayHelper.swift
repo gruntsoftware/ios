@@ -73,5 +73,3 @@ public struct MoonpaySigningData: Codable, Hashable {
     var themeId: String = ""
     var theme: String = "en"
 }
-
-

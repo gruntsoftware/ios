@@ -39,7 +39,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     var quotedLTCAmount: Double = 0.0
     
     @Published
-    var pickedCurrency: SupportedFiatCurrencies = .USD
+    var pickedCurrency: SupportedFiatCurrency = .USD
     
     @Published
     var canUserBuyLTC: Bool = false
@@ -64,7 +64,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     var walletManager: WalletManager
     var ltcToFiatRate: Double = 0.0
     
-    let currencies: [SupportedFiatCurrencies] = SupportedFiatCurrencies.allCases
+    let currencies: [SupportedFiatCurrency] = SupportedFiatCurrency.allCases
     
     init(store: Store, walletManager: WalletManager, canUserBuy: Bool) {
         self.store = store
@@ -97,15 +97,15 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
         
         // Fetch Preferred Fiat
         let globalCurrencyCode = UserDefaults.defaultCurrencyCode
-        let defaultFiat = SupportedFiatCurrencies.USD
-        self.pickedCurrency = SupportedFiatCurrencies.from(code: globalCurrencyCode) ?? defaultFiat
+        let defaultFiat = SupportedFiatCurrency.USD
+        self.pickedCurrency = SupportedFiatCurrency.from(code: globalCurrencyCode) ?? defaultFiat
         
         // Fetch Fresh Address
         newReceiveAddress = self.walletManager.wallet?.receiveAddress ?? "----"
         generateQRCode()
     }
     
-    func fetchBuyQuoteLimits(buyAmount: Int, baseCurrencyCode: SupportedFiatCurrencies = .USD) {
+    func fetchBuyQuoteLimits(buyAmount: Int, baseCurrencyCode: SupportedFiatCurrency = .USD) {
         self.didFetchData = true
           
         NetworkHelper.init()

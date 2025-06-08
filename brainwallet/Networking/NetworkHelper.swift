@@ -62,7 +62,7 @@ class NetworkHelper: ObservableObject {
         task.resume()
     }
     
-    func fetchBuyQuote(baseCurrencyAmount: Int, baseCurrency: SupportedFiatCurrencies, completion: @escaping (MoonpayBuyQuote) -> Void) {
+    func fetchBuyQuote(baseCurrencyAmount: Int, baseCurrency: SupportedFiatCurrency, completion: @escaping (MoonpayBuyQuote) -> Void) {
         let cryptoCurrencyCode: String = "ltc"// Default and only crypto atm
         let baseURL = APIServer.baseUrl
         let suffix = "v1/moonpay/buy-quote"
