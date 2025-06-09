@@ -70,7 +70,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         self.walletManager = walletManager
         
         addSubscriptions()
-       
 
         updateTimer = Timer
             .scheduledTimer(withTimeInterval: timerPeriod,
@@ -89,7 +88,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         NotificationCenter.default.removeObserver(self, name: .languageChangedNotification, object: nil)
         self.updateTimer = nil
     }
-    
     
     @objc private func languageChanged() {
     
@@ -122,12 +120,11 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     
     private func addSubscriptions() {
         
-        guard let walletManager = self.walletManager else { return }
         guard let store = self.store else { return }
 
         store.lazySubscribe(self,
                             selector: { $0.isLtcSwapped != $1.isLtcSwapped },
-                            callback: {[weak self] _ in
+                            callback: { _ in
                         })
         store.lazySubscribe(self,
                             selector: { $0.currentRate != $1.currentRate },

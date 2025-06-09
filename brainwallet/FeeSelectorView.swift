@@ -47,26 +47,26 @@ class FeeSelector: UIView {
 		header.constrain([
 			header.leadingAnchor.constraint(equalTo: leadingAnchor, constant: C.padding[2]),
 			header.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -C.padding[2]),
-			header.topAnchor.constraint(equalTo: topAnchor, constant: C.padding[1]),
+			header.topAnchor.constraint(equalTo: topAnchor, constant: C.padding[1])
 		])
 		subheader.constrain([
 			subheader.leadingAnchor.constraint(equalTo: header.leadingAnchor),
 			subheader.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -C.padding[2]),
-			subheader.topAnchor.constraint(equalTo: header.bottomAnchor),
+			subheader.topAnchor.constraint(equalTo: header.bottomAnchor)
 		])
 
 		bottomConstraint = feeMessageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -C.padding[1])
 		feeMessageLabel.constrain([
 			feeMessageLabel.leadingAnchor.constraint(equalTo: subheader.leadingAnchor),
 			feeMessageLabel.topAnchor.constraint(equalTo: control.bottomAnchor, constant: 4.0),
-			feeMessageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -C.padding[2]),
+			feeMessageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -C.padding[2])
 		])
 		header.text =  String(localized: "Processing Speed", bundle: .main)
 		subheader.text = String(localized: "Estimated Delivery: 2.5 - 5+ minutes", bundle: .main)
 		control.constrain([
 			control.leadingAnchor.constraint(equalTo: feeMessageLabel.leadingAnchor),
 			control.topAnchor.constraint(equalTo: subheader.bottomAnchor, constant: 4.0),
-			control.widthAnchor.constraint(equalTo: widthAnchor, constant: -C.padding[4]),
+			control.widthAnchor.constraint(equalTo: widthAnchor, constant: -C.padding[4])
 		])
 
 		control.valueChanged = strongify(self) { myself in
@@ -89,7 +89,7 @@ class FeeSelector: UIView {
 				myself.didUpdateFee?(.regular)
 				myself.subheader.text = String(localized: "Estimated Delivery: 2.5 - 5+ minutes", bundle: .main)
 				myself.feeMessageLabel.text = ""
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["FEE_MANAGER": "DID_USE_DEFAULT"])
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["FEE_MANAGER": "DID_USE_DEFAULT"])
 			}
 		}
 

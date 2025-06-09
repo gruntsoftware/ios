@@ -113,12 +113,12 @@
     "%@" : {
 
     },
-    "%@       %@ (%@)" : {
+    "%@   %@ (%@)" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "%1$@       %2$@ (%3$@)"
+            "value" : "%1$@   %2$@ (%3$@)"
           }
         }
       }
@@ -1779,7 +1779,7 @@
     "Copy" : {
 
     },
-    "Copy address: " : {
+    "Copy Address: " : {
 
     },
     "Copy all details" : {
@@ -4830,9 +4830,6 @@
           }
         }
       }
-    },
-    "Locale" : {
-
     },
     "Locale: %@" : {
       "localizations" : {

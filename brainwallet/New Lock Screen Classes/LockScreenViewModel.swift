@@ -18,7 +18,6 @@ class LockScreenViewModel: ObservableObject, Subscriber {
     @Published
     var authenticationFailed =  false
     
-    
     @Published
     var didCompleteWipingWallet = false
     
@@ -34,7 +33,6 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 	// MARK: - Public Variables
 
 	var store: Store?
-
     
 	init(store: Store) {
 		self.store = store
@@ -61,7 +59,6 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 		let currencySymbol = Currency.getSymbolForCurrencyCode(code: currencyCode) ?? ""
 		currentValueInFiat = String(currencySymbol + formattedFiatString)
 	}
-    
 
 	// MARK: - Add Subscriptions
 
@@ -79,6 +76,5 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 		                	self?.fetchCurrentPrice()
 		                })
 	}
-    
     
 }

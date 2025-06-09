@@ -1,5 +1,5 @@
 {
-  "originHash" : "e5b6a466a87b019b7d1221f784d7ba537285e5cb7dcab2b52c838f4f2228821e",
+  "originHash" : "1fae515ecb077b020404ba96ab97a952faae66bc0ab8f22de14421a303e179c1",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -152,15 +152,6 @@
       "state" : {
         "revision" : "d72aed98f8253ec1aa9ea1141e28150f408cf17f",
         "version" : "1.29.0"
-      }
-    },
-    {
-      "identity" : "swiftformat",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/nicklockwood/SwiftFormat",
-      "state" : {
-        "revision" : "468a7d32dedc8d352c191594b3b45d9fd8ba291b",
-        "version" : "0.55.5"
       }
     }
   ],

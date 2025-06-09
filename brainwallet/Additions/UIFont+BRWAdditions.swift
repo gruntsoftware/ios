@@ -45,14 +45,14 @@ extension UIFont {
 	static var regularAttributes: [NSAttributedString.Key: Any] {
 		return [
 			.font: UIFont.customBody(size: 14.0),
-			.foregroundColor: BrainwalletUIColor.content,
+			.foregroundColor: BrainwalletUIColor.content
 		]
 	}
 
 	static var boldAttributes: [NSAttributedString.Key: Any] {
 		return [
 			.font: UIFont.customBold(size: 14.0),
-			.foregroundColor: BrainwalletUIColor.content,
+			.foregroundColor: BrainwalletUIColor.content
 		]
 	}
 }

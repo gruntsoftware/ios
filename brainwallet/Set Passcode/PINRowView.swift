@@ -7,7 +7,6 @@
 //
 import SwiftUI
 
-
 struct PINRowView: View {
     
     @Binding var pinState: [Bool]
@@ -43,7 +42,7 @@ struct PINRowView: View {
                 .frame(width: dotSize,
                    height: dotSize)
                 .foregroundColor(digitOneEmpty ? BrainwalletColor.content.opacity(0.9) : BrainwalletColor.content.opacity(0.1))
-                .overlay (
+                .overlay(
                     Ellipse()
                         .stroke(BrainwalletColor.content, lineWidth: 1)
                         .frame(width: dotSize,
@@ -54,7 +53,7 @@ struct PINRowView: View {
                 .frame(width: dotSize,
                        height: dotSize)
                 .foregroundColor( digitTwoEmpty ? BrainwalletColor.content.opacity(0.9) : BrainwalletColor.content.opacity(0.1))
-                .overlay (
+                .overlay(
                     Ellipse()
                         .stroke(BrainwalletColor.content, lineWidth: 1)
                         .frame(width: dotSize,
@@ -65,7 +64,7 @@ struct PINRowView: View {
                 .frame(width: dotSize,
                        height: dotSize)
                 .foregroundColor(digitThreeEmpty ? BrainwalletColor.content.opacity(0.9) : BrainwalletColor.content.opacity(0.1))
-                .overlay (
+                .overlay(
                     Ellipse()
                         .stroke(BrainwalletColor.content, lineWidth: 1)
                         .frame(width: dotSize,
@@ -76,7 +75,7 @@ struct PINRowView: View {
                 .frame(width: dotSize,
                        height: dotSize)
                 .foregroundColor(digitFourEmpty ? BrainwalletColor.content.opacity(0.9) : BrainwalletColor.content.opacity(0.1))
-                .overlay (
+                .overlay(
                     Ellipse()
                         .stroke(BrainwalletColor.content, lineWidth: 1)
                         .frame(width: dotSize,

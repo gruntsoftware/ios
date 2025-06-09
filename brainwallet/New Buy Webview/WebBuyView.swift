@@ -35,7 +35,7 @@ struct WebBuyView: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
 
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
@@ -56,11 +56,10 @@ struct WebBuyView: View {
                      if let url = URL(string: viewModel.signedURLString) {
                          self.url = url
                          didFetchURLString = true
-                     }
-                     else {
+                     } else {
                          self.url = URL(string: "https://brainwallet.co/mobile-top-up.html")
                          let fetchError: [String: String] = ["error": "signed_url_invalid"]
-                         LWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
+                         BWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
                          didFetchURLString = true
                      }
                     
@@ -69,4 +68,3 @@ struct WebBuyView: View {
         }
     }
 }
-

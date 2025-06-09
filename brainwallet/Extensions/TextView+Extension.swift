@@ -11,8 +11,7 @@ struct TextView: UIViewRepresentable {
 
 	init(text: Binding<String>,
 	     didStartEditing: Binding<Bool>,
-	     placeholderString: String)
-	{
+	     placeholderString: String) {
 		_text = text
 		_didStartEditing = didStartEditing
 		placeholder = placeholderString

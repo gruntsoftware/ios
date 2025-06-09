@@ -1,4 +1,3 @@
-
 import SwiftUI
 struct ConfirmPasscodeView: View {
     
@@ -33,7 +32,6 @@ struct ConfirmPasscodeView: View {
     let largeButtonHeight: CGFloat = 65.0
     
     let arrowSize: CGFloat = 60.0
-    
 
     init(pinDigits: [Int], viewModel: StartViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
@@ -42,7 +40,6 @@ struct ConfirmPasscodeView: View {
         self.pinDigits = pinDigits
         isRestore = true
     }
-    
     
     var body: some View {
         
@@ -114,7 +111,7 @@ struct ConfirmPasscodeView: View {
                                 path.append(.yourSeedWordsView)
                         case nil :
                                 path.append(.tempSettingsView)
-                        case .some(_):
+                        case .some:
                                     path.append(.tempSettingsView)
                         }
                     }

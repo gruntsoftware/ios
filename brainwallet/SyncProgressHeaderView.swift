@@ -20,7 +20,6 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
 			progressView.setNeedsDisplay()
 		}
 	}
-    
 
 	var headerMessage: SyncState = .success {
 		didSet {
@@ -54,7 +53,6 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
         }
     }
 
-
 	var isRescanning: Bool = false {
 		didSet {
 			if isRescanning {
@@ -81,9 +79,5 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
         noSendImageView.tintColor = BrainwalletUIColor.content
         noSendImageView.backgroundColor = BrainwalletUIColor.surface
         self.backgroundColor = BrainwalletUIColor.surface
-	}
-
-	override func setSelected(_ selected: Bool, animated: Bool) {
-		super.setSelected(selected, animated: animated)
 	}
 }

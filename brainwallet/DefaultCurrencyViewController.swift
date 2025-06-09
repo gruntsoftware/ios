@@ -6,7 +6,7 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 		self.store = store
 		rates = store.state.rates.filter { $0.code != C.ltcCurrencyCode }
         
-        ////Notfications
+        //// Notfications
                   
 		super.init(style: .plain)
 	}
@@ -115,22 +115,22 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 
 		rateLabelTitle.constrain([
 			rateLabelTitle.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: C.padding[2]),
-			rateLabelTitle.topAnchor.constraint(equalTo: header.topAnchor, constant: C.padding[1]),
+			rateLabelTitle.topAnchor.constraint(equalTo: header.topAnchor, constant: C.padding[1])
 		])
 		rateLabel.constrain([
 			rateLabel.leadingAnchor.constraint(equalTo: rateLabelTitle.leadingAnchor),
-			rateLabel.topAnchor.constraint(equalTo: rateLabelTitle.bottomAnchor),
+			rateLabel.topAnchor.constraint(equalTo: rateLabelTitle.bottomAnchor)
 		])
 
 		litecoinLabel.constrain([
 			litecoinLabel.leadingAnchor.constraint(equalTo: rateLabelTitle.leadingAnchor),
-			litecoinLabel.topAnchor.constraint(equalTo: rateLabel.bottomAnchor, constant: C.padding[2]),
+			litecoinLabel.topAnchor.constraint(equalTo: rateLabel.bottomAnchor, constant: C.padding[2])
 		])
 		litecoinUnitSwitch.constrain([
 			litecoinUnitSwitch.leadingAnchor.constraint(equalTo: litecoinLabel.leadingAnchor),
 			litecoinUnitSwitch.topAnchor.constraint(equalTo: litecoinLabel.bottomAnchor, constant: C.padding[1]),
 			litecoinUnitSwitch.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -C.padding[2]),
-			litecoinUnitSwitch.widthAnchor.constraint(equalTo: header.widthAnchor, constant: -C.padding[4]),
+			litecoinUnitSwitch.widthAnchor.constraint(equalTo: header.widthAnchor, constant: -C.padding[4])
 		])
 
 		let settingSegment = store.state.maxDigits

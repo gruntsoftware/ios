@@ -34,7 +34,6 @@ struct SeedWordsGridView: View {
                             }
                             .frame(minHeight: fieldHeight)
                             
-                            
                             GridRow {
                                 SeedCapsuleView(index: 4, word: $seedWords[3])
                                 SeedCapsuleView(index: 5, word: $seedWords[4])
@@ -95,7 +94,6 @@ struct SeedWordsGridView: View {
     }
 }
 
-
 struct SeedCapsuleView: View {
     let buttonSize = 70.0
     let detailFont: Font = .barlowRegular(size: 28.0)
@@ -128,7 +126,7 @@ struct SeedCapsuleView: View {
                         .foregroundColor(BrainwalletColor.content)
                         .padding(.leading, 8.0)
                         .frame(width: 24.0)
-                    TextField("",text: $word) //DEV12345678
+                    TextField("",text: $word) // DEV12345678
                         .font(.footnote)
                         .fontWeight(.semibold)
                         .foregroundColor(BrainwalletColor.content)
@@ -149,7 +147,6 @@ struct SeedWordsGridView_Previews: PreviewProvider {
         SeedWordsGridView(isRestore: true)
     }
 }
-
 
 //        TextField("", text: .constant(""))
 //            .opacity(0.0)

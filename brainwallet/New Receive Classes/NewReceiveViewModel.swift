@@ -39,7 +39,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     var quotedLTCAmount: Double = 0.0
     
     @Published
-    var pickedCurrency: SupportedFiatCurrencies = .USD
+    var pickedCurrency: SupportedFiatCurrency = .USD
     
     @Published
     var canUserBuyLTC: Bool = false
@@ -52,7 +52,6 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
      
     @Published
     var didFetchURLString: Bool = false
-     
 
     let ISO8601DateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -65,7 +64,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     var walletManager: WalletManager
     var ltcToFiatRate: Double = 0.0
     
-    let currencies: [SupportedFiatCurrencies] = SupportedFiatCurrencies.allCases
+    let currencies: [SupportedFiatCurrency] = SupportedFiatCurrency.allCases
     
     init(store: Store, walletManager: WalletManager, canUserBuy: Bool) {
         self.store = store
@@ -96,28 +95,31 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     
     @objc func updatePublishables() {
         
-        //Fetch Preferred Fiat
+        // Fetch Preferred Fiat
         let globalCurrencyCode = UserDefaults.defaultCurrencyCode
-        let defaultFiat = SupportedFiatCurrencies.USD
-        self.pickedCurrency = SupportedFiatCurrencies.from(code: globalCurrencyCode) ?? defaultFiat
+        let defaultFiat = SupportedFiatCurrency.USD
+        self.pickedCurrency = SupportedFiatCurrency.from(code: globalCurrencyCode) ?? defaultFiat
         
-        //Fetch Fresh Address
+        // Fetch Fresh Address
         newReceiveAddress = self.walletManager.wallet?.receiveAddress ?? "----"
         generateQRCode()
     }
     
-    func fetchBuyQuoteLimits(buyAmount: Int, baseCurrencyCode: SupportedFiatCurrencies = .USD) {
+    func fetchBuyQuoteLimits(buyAmount: Int, baseCurrencyCode: SupportedFiatCurrency = .USD) {
         self.didFetchData = true
           
-        let _ = NetworkHelper.init().fetchBuyQuote(baseCurrencyAmount: buyAmount, baseCurrency: baseCurrencyCode, completion: { mpData in
+        NetworkHelper.init()
+            .fetchBuyQuote(baseCurrencyAmount: buyAmount,
+                           baseCurrency: baseCurrencyCode,
+                           completion: { mpData in
            
                 DispatchQueue.main.sync {
-                    //quoted buy segments
+                    // quoted buy segments
                     self.fiatMinAmount = mpData.minBuyAmount
                     self.fiatTenXAmount = mpData.minBuyAmount * 10
                     self.fiatMaxAmount = mpData.maxBuyAmount
                     
-                    //quoted qty
+                    // quoted qty
                     self.quotedLTCAmount = mpData.quotedLTCAmount
                     
                     // timestamp
@@ -159,7 +161,9 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     
     func fetchMoonpaySignedUrl(signingData: MoonpaySigningData) {
         
-        let _ = NetworkHelper.init().fetchSignedURL(moonPaySigningData: signingData, completion: {  signedString in
+        NetworkHelper
+            .init()
+            .fetchSignedURL(mpData: signingData, completion: {  signedString in
             DispatchQueue.main.async {
                 self.signedURLString = signedString
                 self.didFetchURLString = true
@@ -173,8 +177,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
             .qrCode(data: data,
                     color: .black)?
             .resize(CGSize(width: kQRImageSide,
-                           height: kQRImageSide))
-        {
+                           height: kQRImageSide)) {
             newReceiveAddressQR = image
         }
     }

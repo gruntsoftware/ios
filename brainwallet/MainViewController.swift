@@ -45,7 +45,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		navigationController?.navigationBar.tintColor = BrainwalletUIColor.surface
 		navigationController?.navigationBar.titleTextAttributes = [
 			NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
-			NSAttributedString.Key.font: UIFont.customBold(size: 17.0),
+			NSAttributedString.Key.font: UIFont.customBold(size: 17.0)
 		]
 
 		navigationController?.navigationBar.isTranslucent = false
@@ -54,10 +54,8 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
 		NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification,
 		                                       object: nil,
-		                                       queue: nil)
-		{ _ in
-			if UserDefaults.writePaperPhraseDate != nil
-			{
+		                                       queue: nil) { _ in
+			if UserDefaults.writePaperPhraseDate != nil {
                 
             }
 		}
@@ -96,7 +94,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         }) { _ in
             NSLog("US MainView Controller presented")
         }
-        
         
 // STASH FOR NEW UI
 //        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
@@ -143,7 +140,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		}
 
 		NotificationCenter.default.addObserver(forName: UIScene.willDeactivateNotification, object: nil, queue: nil) { [weak self] _ in
-            
             
 			if let mySelf = self,
                !mySelf.isLoginRequired, !mySelf.store.state.isPromptingBiometrics {

@@ -226,18 +226,6 @@ class NewReceiveViewModelTests: XCTestCase {
         XCTAssertEqual(expectedTenXAmount, 500)
     }
     
-    func testThemeStringConversion() {
-        // Test theme boolean to string conversion logic
-        let darkTheme = true
-        let lightTheme = false
-        
-        let darkThemeString = darkTheme ? "dark" : "light"
-        let lightThemeString = lightTheme ? "dark" : "light"
-        
-        XCTAssertEqual(darkThemeString, "dark")
-        XCTAssertEqual(lightThemeString, "light")
-    }
-    
     func testAmountToStringConversion() {
         // Test integer amount to string conversion
         let intAmount = 150

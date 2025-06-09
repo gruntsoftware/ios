@@ -12,35 +12,100 @@ jobs:
       xcode: 15.3.0
     #parallelism: 2  Does not work of open source macOS
     resource_class: macos.m1.medium.gen1
-    working_directory: ~/litewallet-ios/
+    working_directory: ~/ios/
     environment:
       FL_OUTPUT_DIR: output
-      FASTLANE_LANE: all_unit_tests
+      FASTLANE_LANE: single_unit_test_all
     shell: /bin/bash --login -o pipefail
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g"
       - checkout
+      - run:
+          name: Setup SSH for private repos (ssh-ed25519 key added)
+          command: |
+            echo 'github.com ssh-rsa SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g' >> ~/.ssh/known_hosts
+            ssh-add -D
+            ssh-add ~/.ssh/id_rsa_*
       - run:
           name: "Initialize submodule(s)"  
           command: "git submodule init && git submodule update --init --recursive"
       - run:
-          name: "Setup env files"
+          name: Setup env files
           command: |
+            echo 'export $BRAINWALLET_IOS_STOREKIT_V1_0_FILE="$BRAINWALLET_IOS_STOREKIT_V1_0_FILE"' >> $BASH_ENV
+            echo "$BRAINWALLET_IOS_STOREKIT_V1_0_FILE" | base64 --decode > Brainwallet-StoreKit-v1.storekit
             echo 'export $GOOGLE_SERVICES_PLIST="$GOOGLE_SERVICES_PLIST"' >> $BASH_ENV
-            echo "$GOOGLE_SERVICES_PLIST" | base64 --decode > litewallet/GoogleService-Info.plist
+            echo "$GOOGLE_SERVICES_PLIST" | base64 --decode > GoogleService-Info.plist
             echo 'export $REMOTE_CONFIG_DEFAULTS="$REMOTE_CONFIG_DEFAULTS"' >> $BASH_ENV
-            echo "$REMOTE_CONFIG_DEFAULTS" | base64 --decode > litewallet/remote-config-defaults.plist
-            echo 'export $DEBUG_PARTNER_KEYS="$DEBUG_PARTNER_KEYS"' >> $BASH_ENV
-            echo "$DEBUG_PARTNER_KEYS" | base64 --decode > litewallet/partner-keys.plist
+            echo "$REMOTE_CONFIG_DEFAULTS" | base64 --decode > remote-config-defaults.plist
+            echo 'export $DEBUG_SERVICE_DATA="$DEBUG_SERVICE_DATA"' >> $BASH_ENV
+            echo "$DEBUG_SERVICE_DATA" | base64 --decode > service-data.plist
+      - run:
+          name: Validate configuration files
+          command: |
+            echo "Validating decoded plist files..."
+            ls -la *.plist *.storekit || echo "No plist/storekit files found"
+            plutil -lint GoogleService-Info.plist || echo "GoogleService-Info.plist invalid or missing"
+            plutil -lint remote-config-defaults.plist || echo "remote-config-defaults.plist invalid or missing"
+            plutil -lint service-data.plist || echo "service-data.plist invalid or missing"
+            plutil -lint Brainwallet-StoreKit-v1.storekit || echo "StoreKit file invalid or missing"	
+      - run:
+		  name: Clean derived data
+          command: |
+            echo "Cleaning derived data..."
+            rm -rf ~/Library/Developer/Xcode/DerivedData
+            rm -rf ./DerivedData
       - restore_cache:
           name: Restore SPM Cache
           keys:
             - spm-cache-{{ checksum "Package.resolved" }}
+      - run:
+          name: List available devices and simulators
+          command: |
+            echo "Available simulators:"
+            xcrun simctl list devices available | grep iPhone || echo "No iPhone simulators found"
+            echo "Build destinations for scheme:"
+            xcodebuild -showdestinations -scheme brainwalletTests -project *.xcodeproj || xcodebuild -showdestinations -scheme brainwalletTests -workspace *.xcworkspace || echo "Could not determine build destinations"
+      - run:
+          name: Boot simulator if needed
+          command: |
+            echo "Attempting to boot iPhone 15 simulator..."
+            SIMULATOR_ID=$(xcrun simctl list devices available | grep "iPhone 15 (" | head -1 | grep -o "([A-F0-9-]*)" | tr -d "()")
+            if [ ! -z "$SIMULATOR_ID" ]; then
+              echo "Found simulator ID: $SIMULATOR_ID"
+              xcrun simctl boot "$SIMULATOR_ID" || echo "Simulator already booted or failed to boot"
+              xcrun simctl list devices | grep "$SIMULATOR_ID"
+            else
+              echo "No iPhone 15 simulator found, using available simulators:"
+              xcrun simctl list devices available | grep iPhone | head -5
+            fi
       - run: 
           name: Install Bundler
-          command: gem install bundler:1.17.2; bundle update --bundler; bundle install
+          command: gem install bundler:2.6.9; bundle update --bundler; bundle install
+      - run:
+          name: Validate project structure
+          command: |
+            echo "Project structure validation:"
+            ls -la *.xcodeproj *.xcworkspace || echo "No Xcode project/workspace found"
+            echo "Scheme validation:"
+            xcodebuild -list -project *.xcodeproj || xcodebuild -list -workspace *.xcworkspace || echo "Could not list schemes"
+            echo "Build settings for test scheme:"
+            xcodebuild -showBuildSettings -scheme brainwalletTests -project *.xcodeproj || xcodebuild -showBuildSettings -scheme brainwalletTests -workspace *.xcworkspace || echo "Could not show build settings"
       - run:
           name: Fastlane
           command: bundle exec fastlane $FASTLANE_LANE
+      - run:
+          name: Capture crash logs
+          command: |
+            echo "Searching for crash logs..."
+            find ~/Library/Logs/DiagnosticReports -name "*Brainwallet*" -type f -exec echo "Found crash log: {}" \; -exec cat {} \; || echo "No crash logs found in DiagnosticReports"
+            echo "Checking simulator crash logs..."
+            find ~/Library/Developer/CoreSimulator/Devices/*/data/Library/Logs/CrashReporter/ -name "*Brainwallet*" -type f -exec echo "Found simulator crash log: {}" \; -exec cat {} \; || echo "No simulator crash logs found"
+            echo "Checking system logs for Brainwallet..."
+            log show --predicate 'process == "Brainwallet"' --last 10m || echo "No system logs found for Brainwallet"
+          when: on_fail
       - save_cache:
           name: Save SPM Cache
           key: spm-cache-{{ checksum "Package.resolved" }}
@@ -50,11 +115,14 @@ jobs:
           path: output
       - store_test_results:
           path: output/scan
-
+      - store_artifacts:
+          path: ~/Library/Logs/DiagnosticReports
+          destination: crash-logs
+          when: on_fail
   beta:
     macos:
       xcode: 14.0.1
-    working_directory: ~/litewallet-ios/
+    working_directory: ~/ios/
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: beta
@@ -66,7 +134,7 @@ jobs:
           name: Fastlane
           command: cd ios; bundle exec fastlane $FASTLANE_LANE
       - store_artifacts:
-          path: output/litewallet.ipa
+          path: output/brainwallet.ipa
 
 workflows:
   version: 2

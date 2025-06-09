@@ -11,8 +11,7 @@ class EnterPhraseViewModel: ObservableObject {
 
 	init(store: Store,
 	     walletManager: WalletManager,
-	     reason: PhraseEntryReason)
-	{
+	     reason: PhraseEntryReason) {
 		self.store = store
 		self.walletManager = walletManager
 		self.reason = reason

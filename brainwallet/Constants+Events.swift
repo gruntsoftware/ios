@@ -6,11 +6,13 @@ let swiftUICellPadding = 12.0
 let bigButtonCornerRadius = 15.0
 let kPinDigitConstant = 4
 
-
-
-
 struct BrainwalletSupport {
 	static let dashboard = "https://brainwallet.co/support.html"
+}
+
+struct BrainwalletAppStore {
+    static let adamIDString = "6444157498"
+    static let reviewLink = "https://apps.apple.com/us/app/brainwallet/id6444157498?action=write-review"
 }
 
 struct BrainwalletSocials {
@@ -55,8 +57,6 @@ struct C {
 	static let maxMemoLength = 250
 	static let feedbackEmail = "feedback@brainwallet.co"
 	static let supportEmail = "support@brainwallet.co"
-
-	static let reviewLink = "https://apps.apple.com/us/app/brainwallet/id6444157498?action=write-review"
 
 	static var standardPort: Int {
 		return E.isTestnet ? 19335 : 9333
@@ -256,6 +256,5 @@ enum CustomEvent: String {
     
     /// Did delete all data
     case _20250522_DDAD = "did_delete_all_data"
-    
     
 }

@@ -70,8 +70,7 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 
 		NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification,
 		                                       object: nil,
-		                                       queue: nil)
-		{ [weak self] _ in
+		                                       queue: nil) { [weak self] _ in
 			self?.dismiss(animated: true,
 			              completion: nil)
 		}
@@ -177,8 +176,7 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 		if firstWordCell.confirmPhraseView?.textField.text == words[fourIndices.0] &&
 			secondWordCell.confirmPhraseView?.textField.text == words[fourIndices.1] &&
 			thirdWordCell.confirmPhraseView?.textField.text == words[fourIndices.2] &&
-			fourthWordCell.confirmPhraseView?.textField.text == words[fourIndices.3]
-		{
+			fourthWordCell.confirmPhraseView?.textField.text == words[fourIndices.3] {
 			UserDefaults.writePaperPhraseDate = Date()
 			store.trigger(name: .didWritePaperKey)
 			didCompleteConfirmation?()
@@ -194,13 +192,4 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 
 class ConfirmPhraseTableViewCell: UITableViewCell {
 	var confirmPhraseView: ConfirmPhrase?
-	override func awakeFromNib() {
-		super.awakeFromNib()
-	}
-
-	override func setSelected(_ selected: Bool, animated: Bool) {
-		super.setSelected(selected, animated: animated)
-	}
 }
-
-

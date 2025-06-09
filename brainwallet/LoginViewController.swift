@@ -96,7 +96,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
             lockScreenView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             lockScreenView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             lockScreenView.view.topAnchor.constraint(equalTo: backgroundView.topAnchor),
-            lockScreenView.view.heightAnchor.constraint(equalToConstant: view.frame.height),
+            lockScreenView.view.heightAnchor.constraint(equalToConstant: view.frame.height)
 		])
 	}
     
@@ -110,7 +110,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
                 group.enter()
                 DispatchQueue.walletQueue.async {
                     _ = walletManager.peerManager?.disconnect()
-                    LWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
+                    BWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
                     group.leave()
                 }
 
@@ -131,7 +131,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
                     NotificationCenter.default.post(name: .walletDidWipeNotification, object: nil)
                 }
     }
-    
 
 	private func authenticate(pin: String) {
 		guard let walletManager = walletManager else { return }
@@ -139,12 +138,10 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
             return authenticationFailed()
         }
 		authenticationSucceded()
-		LWAnalytics.logEventWithParameters(itemName: ._20200217_DUWP)
+		BWAnalytics.logEventWithParameters(itemName: ._20200217_DUWP)
 	}
 
 	private func authenticationSucceded() {
-		saveEvent("login.success")
-
 		UIView.spring(0.6, delay: 0.4, animations: {
 			self.view.layoutIfNeeded()
 		}) { _ in
@@ -181,7 +178,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		walletManager?.authenticate(biometricsPrompt: "Unlock your Brainwallet." , completion: { result in
 			if result == .success {
 				self.authenticationSucceded()
-				LWAnalytics.logEventWithParameters(itemName: ._20200217_DUWB)
+				BWAnalytics.logEventWithParameters(itemName: ._20200217_DUWB)
 			}
 		})
 	}

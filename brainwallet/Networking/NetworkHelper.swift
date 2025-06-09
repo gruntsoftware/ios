@@ -9,7 +9,6 @@ import SwiftUI
 import Foundation
 import Network
 
-
 class NetworkHelper: ObservableObject {
     
     func fetchCurrenciesCountries(completion: @escaping ([MoonpayCountryData]) -> Void) {
@@ -27,15 +26,13 @@ class NetworkHelper: ObservableObject {
             if error == nil {
                 DispatchQueue.main.sync {
                     if let jsonData = try? JSONSerialization.jsonObject(with: data ?? Data(), options: []),
-                       let jsonArray = jsonData as? [[String: Any]]
-                    {
+                       let jsonArray = jsonData as? [[String: Any]] {
                         var dataArray: [MoonpayCountryData] = []
 
                         /// Filters allowed currencies and the top ranked currencies
                         for element in jsonArray {
                             if element["isBuyAllowed"] as? Bool == true &&
-                                element["isAllowed"] as? Bool == true
-                            {
+                                element["isAllowed"] as? Bool == true {
                                 let alpha2 = element["alpha2"] as? String
                                 let alpha3 = element["alpha3"] as? String
                                 let name = element["name"] as? String
@@ -58,27 +55,26 @@ class NetworkHelper: ObservableObject {
                 }
             } else {
                 let currencyError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: currencyError)
+                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: currencyError)
                 completion([])
             }
         }
         task.resume()
     }
     
-    func fetchBuyQuote(baseCurrencyAmount: Int, baseCurrency: SupportedFiatCurrencies, completion: @escaping (MoonpayBuyQuote) -> Void) {
-        let cryptoCurrencyCode: String = "ltc"//Default and only crypto atm
+    func fetchBuyQuote(baseCurrencyAmount: Int, baseCurrency: SupportedFiatCurrency, completion: @escaping (MoonpayBuyQuote) -> Void) {
+        let cryptoCurrencyCode: String = "ltc"// Default and only crypto atm
         let baseURL = APIServer.baseUrl
         let suffix = "v1/moonpay/buy-quote"
         let baseCode = baseCurrency.code.lowercased()
-        let baseAmount = Double(baseCurrencyAmount)//User purchase amount
+        let baseAmount = Double(baseCurrencyAmount)// User purchase amount
         let codeSuffix = "?currencyCode=\(cryptoCurrencyCode)&baseCurrencyCode=\(baseCode)&baseCurrencyAmount=\(baseAmount)"
 
         var request: URLRequest
         
         if let url = URL(string: baseURL + suffix + codeSuffix) {
             request = URLRequest(url: url)
-        }
-        else {
+        } else {
             fatalError("Invalid URL")
         }
         #if targetEnvironment(simulator)
@@ -98,7 +94,6 @@ class NetworkHelper: ObservableObject {
                     if let jsonData = try? JSONSerialization.jsonObject(with: data ?? Data(), options: []),
                        let jsonDict = jsonData as? [String: AnyObject],
                        let topElement = jsonDict["data"] as? [String: AnyObject] {
-                        
                         
                         let quoteCurrencyDict = topElement["quoteCurrency"] as? [String: AnyObject]
                         let baseCurrencyDict = topElement["baseCurrency"] as? [String: AnyObject]
@@ -121,40 +116,39 @@ class NetworkHelper: ObservableObject {
                                                           fiatBuyAmount: fiatBuyAmount,
                                                           quotedLTCAmount: quotedLTCAmount)
                         completion(moonpayBuyQuoteObject)
-                    }
-                    else {
+                    } else {
                         completion(moonpayBuyQuoteObject)
                     }
                 }
             } else {
                 let fetchError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
+                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
             }
         }
         task.resume()
     }
     
-    func fetchSignedURL(moonPaySigningData: MoonpaySigningData, completion: @escaping (String) -> Void) {
+    func fetchSignedURL(mpData: MoonpaySigningData, completion: @escaping (String) -> Void) {
         let baseURL = APIServer.baseUrl
         let suffix = "v1/moonpay/sign-url"
-        let baseCurrencyCode = moonPaySigningData.baseCurrencyCode
-        let baseCurrencyAmount = moonPaySigningData.baseCurrencyAmount
-        let language = moonPaySigningData.language
-        let walletAddress = moonPaySigningData.walletAddress
-        let defaultCurrencyCode = moonPaySigningData.defaultCurrencyCode
-        let externalTransactionId = moonPaySigningData.externalTransactionId
-        let currencyCode = moonPaySigningData.currencyCode
-        let themeId = moonPaySigningData.themeId
-        let theme = moonPaySigningData.theme
-        
         var request: URLRequest
         
-        let urlString = "\(baseURL)\(suffix)?baseCurrencyCode=\(baseCurrencyCode)&baseCurrencyAmount=\(baseCurrencyAmount)&language=\(language)&walletAddress=\(walletAddress)&defaultCurrencyCode=\(defaultCurrencyCode)&externalTransactionId=\(externalTransactionId)&currencyCode=\(currencyCode)&themeId=\(themeId)&theme=\(theme)"
-
-        if let url = URL(string: urlString) {
-            request = URLRequest(url: url)
-        }
-        else {
+        let urlString = """
+        \(baseURL)\(suffix)?\
+        baseCurrencyCode=\(mpData.baseCurrencyCode)&\
+        baseCurrencyAmount=\(mpData.baseCurrencyAmount)&\
+        language=\(mpData.language)&\
+        walletAddress=\(mpData.walletAddress)&\
+        defaultCurrencyCode=\(mpData.defaultCurrencyCode)&\
+        externalTransactionId=\(mpData.externalTransactionId)&\
+        currencyCode=\(mpData.currencyCode)&\
+        themeId=\(mpData.themeId)&\
+        theme=\(mpData.theme)
+        """
+        
+        if let createdURL = URL(string: urlString) {
+            request = URLRequest(url: createdURL)
+        } else {
             fatalError("Invalid URL")
         }
         #if targetEnvironment(simulator)
@@ -177,21 +171,19 @@ class NetworkHelper: ObservableObject {
                         let signedUrl = signedUrlDict["signedUrl"] {
                         signedURLString = signedUrl as? String ?? fallbackURLString
                         completion(signedURLString)
-                    }
-                    else {
+                    } else {
                         completion(fallbackURLString)
                         let fetchError: [String: String] = ["error": "signed_url_invalid"]
-                        LWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
+                        BWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
                     }
                 }
             } else {
                 let fetchError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
+                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
             }
         }
         task.resume()
     }
-    
     
     func fetchFiatLimits(code: String, completion: @escaping (MoonpayBuyLimits) -> Void) {
         let baseURL = APIServer.baseUrl
@@ -202,8 +194,7 @@ class NetworkHelper: ObservableObject {
         
         if let url = URL(string: baseURL + suffix + codeSuffix) {
             request = URLRequest(url: url)
-        }
-        else {
+        } else {
             fatalError("Invalid URL")
         }
         #if targetEnvironment(simulator)
@@ -245,14 +236,13 @@ class NetworkHelper: ObservableObject {
                                                      cryptoMaxBuyAmount: cryptoMaxBuyAmount,
                                                      cryptoMinBuyAmount: cryptoMinBuyAmount)
                         completion(moonpayBuyLimits)
-                    }
-                    else {
+                    } else {
                         completion(moonpayBuyLimits)
                     }
                 }
             } else {
                 let fetchError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
+                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
             }
         }
         task.resume()

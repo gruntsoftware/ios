@@ -139,10 +139,10 @@ class WalletCoordinator: Subscriber, Trackable {
 						self.store.perform(action: WalletChange.setTransactions(transactions))
 					}
 				} else {
-					LWAnalytics.logEventWithParameters(itemName: ._20240214_TI, properties: ["transactions_info": "no_txs_found_in_wallet"])
+					BWAnalytics.logEventWithParameters(itemName: ._20240214_TI, properties: ["transactions_info": "no_txs_found_in_wallet"])
 				}
 			} catch {
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error_message": error.localizedDescription])
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error_message": error.localizedDescription])
 			}
 		}
 	}
@@ -151,7 +151,6 @@ class WalletCoordinator: Subscriber, Trackable {
         
         precondition(kvStore != nil, "KVStore must be valid")
         precondition(rate != nil, "rate must be valid")
-        
         
 		guard let kvStore = kvStore else {
 			throw MakeTransactionError.replicatedKVStoreNotFound

@@ -19,9 +19,9 @@ extension UIViewController {
 		close.tap = { [weak self] in
 			self?.dismiss(animated: true, completion: nil)
 		}
-		if let color = tintColor {
-			close.tintColor = UIColor.black
-		}
+		 
+		close.tintColor = UIColor.black
+		 
 		navigationItem.leftBarButtonItems = [UIBarButtonItem.negativePadding, UIBarButtonItem(customView: close)]
 	}
 

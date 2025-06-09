@@ -42,7 +42,6 @@ class LockScreenHostingController: UIHostingController<LockScreenView> {
     func walletWiped() {
         viewModel.didCompleteWipingWallet = true
     }
-    
 
     @available(*, unavailable)
     @MainActor dynamic required init?(coder _: NSCoder) {

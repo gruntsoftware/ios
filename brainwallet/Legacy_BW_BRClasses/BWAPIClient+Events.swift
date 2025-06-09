@@ -10,14 +10,14 @@ public protocol Trackable {
 extension Trackable {
 	func saveEvent(_ eventName: String) {
 		NotificationCenter.default.post(name: EventManager.eventNotification, object: nil, userInfo: [
-			EventManager.eventNameKey: eventName,
+			EventManager.eventNameKey: eventName
 		])
 	}
 
 	func saveEvent(_ eventName: String, attributes: [String: String]) {
 		NotificationCenter.default.post(name: EventManager.eventNotification, object: nil, userInfo: [
 			EventManager.eventNameKey: eventName,
-			EventManager.eventAttributesKey: attributes,
+			EventManager.eventAttributesKey: attributes
 		])
 	}
 }
@@ -53,7 +53,7 @@ class EventManager {
 	private var isSubscribed = false
 	private let eventToNotifications: [String: NSNotification.Name] = [
 		"foreground": UIScene.willEnterForegroundNotification,
-		"background": UIScene.didEnterBackgroundNotification,
+		"background": UIScene.didEnterBackgroundNotification
 	]
 	private var buffer = [Event]()
 	private let adaptor: BWAPIAdaptor

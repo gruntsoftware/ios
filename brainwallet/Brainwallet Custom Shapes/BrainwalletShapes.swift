@@ -34,21 +34,18 @@ struct BrainwalletHexagon: Shape {
     }
 }
 
-
-
 struct TestShapeView: View {
     
        @State
        private var progress = 0.0
     
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
             
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                
                 VStack {
-                    
                     
                     ZStack {
                         BrainwalletHexagon()
