@@ -8,7 +8,6 @@
 import SwiftUI
 struct PasscodeGridView: View {
     
-    
     let detailFont: Font = .barlowRegular(size: 28.0)
     let elementSpacing = 5.0
   
@@ -61,8 +60,7 @@ struct CodeButton: View {
             
             if index >= 0 && digits.count < 4 {
                 $digits.wrappedValue.append(index)
-            }
-            else if index == -2 && digits.count > 0 {
+            } else if index == -2 && digits.count > 0 {
                 digits.removeLast()
             }
             

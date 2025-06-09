@@ -19,8 +19,6 @@ final class PromptHostingCell<Content: View>: UITableViewCell {
     
     var promptCellViewModel: PromptCellViewModel?
     
-   
-    
     private let hostingController = UIHostingController<Content?>(rootView: nil)
  
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -35,11 +33,7 @@ final class PromptHostingCell<Content: View>: UITableViewCell {
                                             object: nil,
                                             userInfo: nil)
             
-            
-            
         }
-        
-  
         
         NotificationCenter.default.post(name: .userTapsContinuePromptNotification,
                                         object: nil,

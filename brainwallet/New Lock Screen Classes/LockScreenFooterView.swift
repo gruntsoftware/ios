@@ -15,8 +15,6 @@ struct LockScreenFooterView: View {
     
     @State
     private var shoulShowWipeAlert: Bool = false
-    
-    
 
     init(viewModel: LockScreenViewModel) {
         self.viewModel = viewModel
@@ -26,8 +24,6 @@ struct LockScreenFooterView: View {
         GeometryReader { geometry in
             
             let width = geometry.size.width
-            let height = geometry.size.height
-
             
             let buttonSize = 30.0
             ZStack {
@@ -96,7 +92,7 @@ struct LockScreenFooterView: View {
                                        shouldDismiss: $shoulShowWipeAlert,
                                        didCompleteWipe: $viewModel.didCompleteWipingWallet)
                     }
-                    .onChange(of: viewModel.didCompleteWipingWallet) { newValue in
+                    .onChange(of: viewModel.didCompleteWipingWallet) { _ in
                         shoulShowWipeAlert.toggle()
                     }
                 }

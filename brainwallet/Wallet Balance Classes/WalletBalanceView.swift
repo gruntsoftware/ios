@@ -26,13 +26,13 @@ struct WalletBalanceView: View {
         newMainViewModel = viewModel
     }
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
               
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 HStack {
                     VStack {
-                        Text("")//DEV BALANCE
+                        Text("")// DEV BALANCE
                             .font(.barlowSemiBold(size: 20.0))
                             .frame(maxWidth: .infinity,
                                    alignment: .leading)
@@ -40,29 +40,28 @@ struct WalletBalanceView: View {
                         
                         Group {
                             if didTapPriceGroup {
-                                Text("")//DEV $43,000,000.99
+                                Text("")// DEV $43,000,000.99
                                     .font( .barlowBold(size: 50.0))
                                     .frame(maxWidth: .infinity,
                                            alignment: .leading)
                                     .foregroundColor(BrainwalletColor.content)
                                     .animation(.bouncy(), value: didTapPriceGroup)
-                                Text("")//DEV "Ł1233.994"
+                                Text("")// DEV "Ł1233.994"
                                     .font(.barlowLight(size: 20.0))
                                     .frame(maxWidth: .infinity,
                                            alignment: .leading)
                                     .foregroundColor(BrainwalletColor.content)
                                     .animation(.bouncy(), value: didTapPriceGroup)
                                 
-                            }
-                            else {
-                                Text("")//DEV "Ł1233.994"
+                            } else {
+                                Text("")// DEV "Ł1233.994"
                                     .font(.barlowBold(size: 50.0))
                                     .frame(maxWidth: .infinity,
                                            alignment: .leading)
                                     .offset(y: didTapPriceGroup ? swapOffest : 0)
                                     .foregroundColor(BrainwalletColor.content)
                                     .animation(.bouncy(), value: didTapPriceGroup)
-                                Text("")//DEV $43,000,000.99
+                                Text("")// DEV $43,000,000.99
                                     .font( .barlowLight(size: 20.0))
                                     .frame(maxWidth: .infinity,
                                            alignment: .leading)

@@ -38,21 +38,21 @@ class AddressCell: UIView {
 		textField.constrain([
 			textField.constraint(.leading, toView: self, constant: 11.0),
 			textField.constraint(.centerY, toView: self),
-			textField.trailingAnchor.constraint(equalTo: paste.leadingAnchor, constant: -C.padding[1]),
+			textField.trailingAnchor.constraint(equalTo: paste.leadingAnchor, constant: -C.padding[1])
 		])
 		scan.constrain([
 			scan.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -C.padding[2]),
-			scan.centerYAnchor.constraint(equalTo: centerYAnchor),
+			scan.centerYAnchor.constraint(equalTo: centerYAnchor)
 		])
 		paste.constrain([
 			paste.centerYAnchor.constraint(equalTo: centerYAnchor),
-			paste.trailingAnchor.constraint(equalTo: scan.leadingAnchor, constant: -C.padding[0.625]),
+			paste.trailingAnchor.constraint(equalTo: scan.leadingAnchor, constant: -C.padding[0.625])
 		])
 		dividerView.constrain([
 			dividerView.leadingAnchor.constraint(equalTo: leadingAnchor),
 			dividerView.bottomAnchor.constraint(equalTo: bottomAnchor),
 			dividerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-			dividerView.heightAnchor.constraint(equalToConstant: 1.0),
+			dividerView.heightAnchor.constraint(equalToConstant: 1.0)
 		])
 	}
 

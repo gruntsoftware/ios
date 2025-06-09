@@ -11,7 +11,6 @@ import Security
 
 class Utility : NSObject {
     
-    
     override init() {
         
     }
@@ -66,7 +65,6 @@ class Utility : NSObject {
                     return "ERROR-CANNOT-INVALID-PUBLIC-KEY-SPEC"
                 }
                 
-                
                 guard let messageData = message.data(using: .utf8) else {
                     debugPrint("::: ERROR: Could not convert message to data")
                     return "ERROR-MESSAGE-TO-DATA-CONVERSION"
@@ -82,7 +80,6 @@ class Utility : NSObject {
                     if let encryptError = encryptError?.takeRetainedValue() {
                         let errorDescription = CFErrorCopyDescription(encryptError)
                         debugPrint("::: ERROR: Encryption failed: \(String(describing: errorDescription))")
-                        
                         
                         let errorCode = CFErrorGetCode(encryptError)
                         switch errorCode {

@@ -9,7 +9,6 @@ class ExchangeUpdater: Subscriber {
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store
 		self.walletManager = walletManager
-        
 
 		store.subscribe(self,
 		                selector: { $0.defaultCurrencyCode != $1.defaultCurrencyCode },
@@ -37,12 +36,16 @@ class ExchangeUpdater: Subscriber {
 		}
 	}
     
-    func fetchRates(completion: @escaping () -> Void) {
+    func fetchRates(completion: @escaping ([Rate?]) -> Void) {
         
         let apiClient = BWAPIClient(authenticator: NoAuthAuthenticator())
         apiClient.exchangeRates { rates, _ in
-            guard let currentRate = rates.first(where: { $0.code == self.store.state.defaultCurrencyCode }) else { completion(); return }
-            self.store.perform(action: ExchangeRates.setRates(currentRate: currentRate, rates: rates))
+            
+            if let currentRate = rates.first(where: { $0.code == self.store.state.defaultCurrencyCode }) {
+                self.store.perform(action: ExchangeRates.setRates(currentRate: currentRate, rates: rates))
+            }
+           
+         return completion(rates)
         }
     }
 

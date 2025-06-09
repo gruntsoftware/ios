@@ -74,7 +74,6 @@ enum PromptType {
         case .shareData: return "square.and.arrow.up"
         }
     }
-    
 
     func shouldPrompt(walletManager: WalletManager, state: ReduxState) -> Bool {
         switch self {

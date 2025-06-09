@@ -13,7 +13,6 @@ struct WipeWalletView: View {
     @ObservedObject
     var viewModel: LockScreenViewModel
     
-    
     @Binding
      var shouldDismiss: Bool
     
@@ -81,8 +80,7 @@ struct WipeWalletView: View {
                             .foregroundColor(BrainwalletColor.content)
                             .tint(BrainwalletColor.surface)
                             .padding(.all, 20.0)
-                    }
-                    else {
+                    } else {
                         Text("Wallet is deleted")
                             .font(regularFont)
                             .foregroundColor(BrainwalletColor.content)

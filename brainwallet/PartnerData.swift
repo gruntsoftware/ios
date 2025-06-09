@@ -33,7 +33,7 @@ struct Partner {
 		                                         ofType: "plist")
 		else {
 			let errorDescription = "service_data_missing"
-			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 			return "error: FILE-NOT-FOUND"
 		}
 		filePath = releasePath
@@ -41,50 +41,46 @@ struct Partner {
 		switch name {
 		case .walletOps:
 			if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
-			   let opsArray = dictionary["wallet-ops"] as? [String]
-			{
+			   let opsArray = dictionary["wallet-ops"] as? [String] {
 				let randomInt = Int.random(in: 0 ..< opsArray.count)
-				let key = opsArray[randomInt]
-				return key
+				let keyString = opsArray[randomInt]
+				return keyString
 			} else {
 				let errorDescription = "error_wallet_opskey"
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 				return errorDescription
 			}
 
 		case .walletStart:
 
 			if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
-			   let key = dictionary["start-date"] as? String
-			{
-				return key
+                let keyString = dictionary["start-date"] as? String {
+                    return keyString
 			} else {
 				let errorDescription = "error_brainwallet_start_key"
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 				return errorDescription
 			}
             
         case .agentPubKey:
 
             if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
-               let key = dictionary["agent-base64-pubkey"] as? String
-            {
-                return key
+               let keyString = dictionary["agent-base64-pubkey"] as? String {
+                return keyString
             } else {
                 let errorDescription = "error_agent-base64-pubkey"
-                LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
                 return errorDescription
             }
             
 		case .prodAF:
 
 			if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
-			   let key = dictionary["af-prod-id"] as? String
-			{
-				return key
+			   let keyString = dictionary["af-prod-id"] as? String {
+				return keyString
 			} else {
 				let errorDescription = "error_afprod_id_key"
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 				return errorDescription
 			}
 		}
@@ -98,14 +94,13 @@ struct Partner {
 
 		else {
 			let errorDescription = "service_data_missing"
-			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 
 			return [""]
 		}
 
 		if let dictionary = NSDictionary(contentsOfFile: releasePath) as? [String: AnyObject],
-		   let opsArray = dictionary["wallet-ops"] as? [String]
-		{
+		   let opsArray = dictionary["wallet-ops"] as? [String] {
 			setOfAddresses = Set(opsArray)
 		}
 

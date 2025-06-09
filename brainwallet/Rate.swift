@@ -1,12 +1,13 @@
 import Foundation
 import UIKit
 
-struct Rate {
+struct Rate: Codable, Hashable {
+    
 	let code: String
 	let name: String
 	let rate: Double
 	let lastTimestamp: Date
-
+    
 	var currencySymbol: String {
 		if let symbol = Rate.symbolMap[code] {
 			return symbol
@@ -59,7 +60,7 @@ extension Rate {
 		return [
 			"code": code,
 			"name": name,
-			"n": rate,
+			"n": rate
 		]
 	}
 }

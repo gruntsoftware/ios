@@ -16,7 +16,6 @@ struct StartView: View {
     let largeButtonHeight: CGFloat = 60.0
     let lottieFileName: String = "welcomeemoji20250212.json"
     
-    
     @State
     private var isShowingOnboardView: Bool = true
     
@@ -48,13 +47,10 @@ struct StartView: View {
 	private var animationAmount = 0.0
     
     @State
-    private var currentValueInFiat = ""
-    
-    @State
     private var debugLocale = ""
     
     @State
-    private var pickedCurrency: SupportedFiatCurrencies = .USD
+    private var pickedCurrency: GlobalCurrency = .USD
 
 	@State
 	private var didContinue: Bool = false
@@ -67,7 +63,7 @@ struct StartView: View {
     func updateLocaleLabel() {
         // Get current locale
         let currentLocale = Locale.current
-         //Print locale identifier in native language
+         // Print locale identifier in native language
         if let localeIdentifier = currentLocale.identifier as String? {
             #if DEBUG || targetEnvironment(simulator)
             let nativeLocaleName = currentLocale.localizedString(forIdentifier: localeIdentifier)
@@ -87,14 +83,7 @@ struct StartView: View {
                     BrainwalletColor.surface.ignoresSafeArea()
                     
                     VStack {
-                        
                         Group {
-                            Text(currentValueInFiat)
-                                .font(Font(UIFont.barlowLight(size: 16.0)))
-                                .foregroundColor(BrainwalletColor.content)
-                                .frame(maxWidth: .infinity, maxHeight: 20.0, alignment: .trailing)
-                                .padding(.all, 6.0)
-                        
                             Image("bw-logotype")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -105,8 +94,6 @@ struct StartView: View {
                             WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
                                 .frame(height: height * 0.35, alignment: .center)
                                 .padding(.top, verticalPadding)
-                            ///width: width * 0.9,
-
                         }
                         
                         Spacer()
@@ -142,18 +129,19 @@ struct StartView: View {
                                             }
                                         }
                                         .frame(width: width * 0.1)
-                                        
+
                                         Picker("", selection: $pickedCurrency) {
-                                            ForEach(startViewModel.currencies, id: \.self) {
-                                                Text("\($0.fullCurrencyName)       \($0.code) (\($0.symbol))")
+                                            ForEach(startViewModel.globalCurrencies, id: \.self) {
+                                                Text("\($0.fullCurrencyName)   \($0.code) (\($0.symbol))")
                                                     .font(selectorFont)
                                                     .foregroundColor(BrainwalletColor.content)
                                             }
+                                            
                                         }
                                         .pickerStyle(.wheel)
                                         .frame(width: width * 0.6)
-                                        .onChange(of: $pickedCurrency.wrappedValue) { newSupportedCurrency in
-                                            startViewModel.userDidSetCurrencyPreference(currency: newSupportedCurrency)
+                                        .onChange(of: pickedCurrency) { newFiat in
+                                            startViewModel.userDidSetCurrencyPreference(currency: newFiat)
                                             selectedFiat = true
                                         }.padding(.trailing, width * 0.1)
                                     }
@@ -166,8 +154,8 @@ struct StartView: View {
 
                         Button(action: {
                                  startViewModel.didTapCreate!()
-                                //path.append(.inputWordsView)
-                                //path.append(.readyView)
+                                // path.append(.inputWordsView)
+                                // path.append(.readyView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
@@ -239,7 +227,7 @@ struct StartView: View {
                            SetPasscodeView(path: $path)
                                 .navigationBarBackButtonHidden()
                         }
-                    case .confirmPasscodeView (let pinDigits):
+                    case .confirmPasscodeView(let pinDigits):
                         ZStack {
                             ConfirmPasscodeView(pinDigits: pinDigits, viewModel: startViewModel, path: $path)
                                .navigationBarBackButtonHidden()
@@ -286,7 +274,6 @@ struct StartView: View {
             })
             .onAppear {
                 Task {
-                    currentValueInFiat = String(format: String(localized: "%@ = 1Ł"), startViewModel.currentValueInFiat)
                     updateLocaleLabel()
                 }
             }

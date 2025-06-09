@@ -28,26 +28,26 @@ class WelcomeViewController: UIViewController, ContentBoxPresenter {
 		contentBox.constrain([
 			contentBox.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			contentBox.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-			contentBox.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -C.padding[6]),
+			contentBox.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -C.padding[6])
 		])
 		header.constrainTopCorners(height: 44.0)
 		titleLabel.constrain([
 			titleLabel.leadingAnchor.constraint(equalTo: contentBox.leadingAnchor, constant: C.padding[2]),
 			titleLabel.topAnchor.constraint(equalTo: header.bottomAnchor, constant: C.padding[2]),
-			titleLabel.trailingAnchor.constraint(equalTo: contentBox.trailingAnchor, constant: -C.padding[2]),
+			titleLabel.trailingAnchor.constraint(equalTo: contentBox.trailingAnchor, constant: -C.padding[2])
 		])
 
 		body.constrain([
 			body.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
 			body.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: C.padding[2]),
-			body.trailingAnchor.constraint(equalTo: contentBox.trailingAnchor, constant: -C.padding[2]),
+			body.trailingAnchor.constraint(equalTo: contentBox.trailingAnchor, constant: -C.padding[2])
 		])
 
 		button.constrain([
 			button.leadingAnchor.constraint(equalTo: body.leadingAnchor),
 			button.topAnchor.constraint(equalTo: body.bottomAnchor, constant: C.padding[2]),
 			button.trailingAnchor.constraint(equalTo: body.trailingAnchor),
-			button.bottomAnchor.constraint(equalTo: contentBox.bottomAnchor, constant: -C.padding[2]),
+			button.bottomAnchor.constraint(equalTo: contentBox.bottomAnchor, constant: -C.padding[2])
 		])
 	}
 
@@ -64,7 +64,6 @@ class WelcomeViewController: UIViewController, ContentBoxPresenter {
 	}
 
 	private func setBodyText() {
-		let bodyText = String(localized: "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł).", bundle: .main)
 		let attributedString = NSMutableAttributedString(string: String(localized: "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł).", bundle: .main))
 		body.attributedText = attributedString
 	}

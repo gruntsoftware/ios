@@ -33,8 +33,7 @@ class Transaction {
 
 		let outputAddress = opsAddressSet.intersection(outputAddresses).first
 		if let targetAddress = outputAddress,
-		   let opsOutput = tx.outputs.filter({ $0.updatedSwiftAddress == targetAddress }).first
-		{
+		   let opsOutput = tx.outputs.filter({ $0.updatedSwiftAddress == targetAddress }).first {
 			opsAmount = opsOutput.amount
 		}
 
@@ -45,8 +44,7 @@ class Transaction {
         var amountSent =  UInt64(0)
         if opsAmount > wallet.amountSentByTx(tx) {
           amountSent = wallet.amountSentByTx(tx)
-        }
-        else {
+        } else {
             amountSent = wallet.amountSentByTx(tx) - opsAmount
         }
             
@@ -189,7 +187,7 @@ class Transaction {
 
 			guard let toAddress = toAddressOutput?.updatedSwiftAddress else {
 				let properties = ["error": "no_sent_address_found"]
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
 				                                   properties: properties)
 				return "---ERROR---"
 			}
@@ -203,7 +201,7 @@ class Transaction {
 
 			guard let fromAddress = toAddressOutput?.updatedSwiftAddress else {
 				let properties = ["error": "no_received_address_found"]
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
 				                                   properties: properties)
 				return "---ERROR---"
 			}
@@ -214,7 +212,7 @@ class Transaction {
 				self.wallet.containsAddress(output.updatedSwiftAddress)
 			}).first else {
 				let properties = ["error": "no_moved_address_found"]
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
 				                                   properties: properties)
 				return "---ERROR---"
 			}

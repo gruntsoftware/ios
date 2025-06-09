@@ -2,9 +2,6 @@ import SwiftUI
 import UIKit
 
 extension UINavigationController {
-	override open func viewDidLoad() {
-		super.viewDidLoad()
-	}
 
 	func setDefaultStyle() {
 		setClearNavbar()
@@ -15,7 +12,7 @@ extension UINavigationController {
 		navigationBar.tintColor = .white
 		navigationBar.titleTextAttributes = [
 			NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
-			NSAttributedString.Key.font: UIFont.customBold(size: 17.0),
+			NSAttributedString.Key.font: UIFont.customBold(size: 17.0)
 		]
 		setTintableBackArrow()
 	}

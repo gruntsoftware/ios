@@ -4,8 +4,6 @@ import SwiftUI
 import UIKit
 
 class ModalPresenter: Subscriber, Trackable {
-	// MARK: - Public
-
 	var walletManager: WalletManager?
 	init(store: Store, walletManager: WalletManager, window: UIWindow, apiClient: BWAPIClient) {
 		self.store = store
@@ -16,8 +14,6 @@ class ModalPresenter: Subscriber, Trackable {
 		noAuthApiClient = apiClient
 		addSubscriptions()
 	}
-
-	// MARK: - Private
 
 	private let store: Store
 	private let window: UIWindow
@@ -34,9 +30,7 @@ class ModalPresenter: Subscriber, Trackable {
 	private let wipeNavigationDelegate: StartNavigationDelegate
 
 	private func addSubscriptions() {
-		store.subscribe(self,
-		                selector: { $0.rootModal != $1.rootModal },
-		                callback: { state in
+		store.subscribe(self, selector: { $0.rootModal != $1.rootModal }, callback: { state in
 		                	Task { @MainActor in
 		                		self.presentModal(state.rootModal)
 		                	}
@@ -45,7 +39,6 @@ class ModalPresenter: Subscriber, Trackable {
 		                selector: { $0.alert != $1.alert && $1.alert != nil },
 		                callback: { self.handleAlertChange($0.alert) })
 
-		// Subscribe to prompt actions
 		store.subscribe(self, name: .promptUpgradePin, callback: { [weak self] _ in
 			self?.presentUpgradePin()
 		})
@@ -93,8 +86,6 @@ class ModalPresenter: Subscriber, Trackable {
 			}
 		})
 	}
-
-	// MARK: - Prompts
 
 	private func presentRescan() {
 		let vc = ReScanViewController(store: store)
@@ -172,7 +163,6 @@ class ModalPresenter: Subscriber, Trackable {
 		let alertView = AlertView(type: type)
 		guard let window = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first
 		else {
-			saveEvent("ERROR: Window not found in the UIApplication window stack")
 			return
 		}
 
@@ -184,7 +174,7 @@ class ModalPresenter: Subscriber, Trackable {
 			alertView.constraint(.width, constant: size.width),
 			alertView.constraint(.height, constant: alertHeight + 25.0),
 			alertView.constraint(.leading, toView: window, constant: nil),
-			topConstraint,
+			topConstraint
 		])
 		window.layoutIfNeeded()
 
@@ -324,7 +314,7 @@ class ModalPresenter: Subscriber, Trackable {
 
 				guard let url = URL(string: urlString) else { return }
 
-				LWAnalytics.logEventWithParameters(itemName: ._20201118_DTS)
+				BWAnalytics.logEventWithParameters(itemName: ._20201118_DTS)
 
 				let vc = SFSafariViewController(url: url)
 				self?.topViewController?.present(vc, animated: true, completion: nil)
@@ -354,33 +344,21 @@ class ModalPresenter: Subscriber, Trackable {
 	}
 
 	private func presentSettings() {
-		guard let top = topViewController else { return }
-		guard let walletManager = walletManager else { return }
+		guard let topVC = topViewController,
+              let walletManager = walletManager else { return }
 		let settingsNav = UINavigationController()
 		let sections = ["About", "Wallet", "Manage"]
 
 		let rows = [
-			"About": [Setting(title: "Version", accessoryText: {
-				AppVersion.string
-			}, callback: {}),
-			Setting(title: "Environment" , accessoryText: {
-				var envName = "Release"
-				#if Debug || Testflight
-					envName = "Debug"
-				#endif
-				return envName
-			}, callback: {}),
-			Setting(title: "Social links" , accessoryText: {
+			"About": [Setting(title: "Social links" ,
+                              accessoryText: {
                 return "linktr.ee/brainwallet"
             }, callback: {
                 let urlString = BrainwalletSocials.linktree
                 guard let url = URL(string: urlString) else { return }
-                LWAnalytics.logEventWithParameters(itemName: ._20250504_DTSM)
+                BWAnalytics.logEventWithParameters(itemName: ._20250504_DTSM)
                 let vc = SFSafariViewController(url: url)
-                settingsNav.pushViewController(vc, animated: true)
-			}),
-
-			],
+                settingsNav.pushViewController(vc, animated: true)})],
 			"Wallet":
 				[
 					Setting(title: "Delete my data" , callback: { [weak self] in
@@ -394,23 +372,20 @@ class ModalPresenter: Subscriber, Trackable {
                             let group = DispatchGroup()
                             
                             _ = walletManager.peerManager?.disconnect()
-                            LWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
+                            BWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
                             group.enter()
                             DispatchQueue.walletQueue.async {
                                 _ = walletManager.wipeWallet(pin: "forceWipe")
                                 group.leave()
                             }
-
                             group.enter()
                             DispatchQueue.walletQueue.asyncAfter(deadline: .now() + 1.0) {
                                 _ = walletManager.deleteWalletDatabase(pin: "forceWipe")
                                 group.leave()
                             }
-
                             group.notify(queue: .main) {
                                 NotificationCenter.default.post(name: .walletDidWipeNotification, object: nil)
                             }
-                            
                         }))
                         self?.topViewController?.present(alert, animated: true)
 						 
@@ -419,12 +394,10 @@ class ModalPresenter: Subscriber, Trackable {
 
 						guard let myself = self else { return }
 						guard let walletManager = myself.walletManager else { return }
-
 						let showSeedsView = UIHostingController(rootView:
 							SeedWordContainerView(walletManager: walletManager))
 						settingsNav.pushViewController(showSeedsView, animated: true)
-
-					}),
+					})
 				],
 			"Manage": [
 				Setting(title: LAContext.biometricType() == .face ?String(localized: "Face ID Spending Limit")  : String(localized: "Touch ID Spending Limit") , accessoryText: { [weak self] in
@@ -439,23 +412,11 @@ class ModalPresenter: Subscriber, Trackable {
 					let code = self.store.state.defaultCurrencyCode
 					let components: [String: String] = [NSLocale.Key.currencyCode.rawValue: code]
 					let identifier = Locale.identifier(fromComponents: components)
-					return Locale(identifier: identifier).currencyCode ?? ""
+                    return Locale(identifier: identifier).currency?.identifier ?? ""
 				}, callback: {
 					guard let wm = self.walletManager else { debugPrint(":::NO WALLET MANAGER!"); return }
 					settingsNav.pushViewController(DefaultCurrencyViewController(walletManager: wm, store: self.store), animated: true)
 				}),
-				Setting(title: String(localized: "Locale") , accessoryText: {
-					// Get the current locale
-					let currentLocale = Locale.current
-
-                    if let regionCode = currentLocale.region?.identifier,
-					   let displayName = currentLocale.localizedString(forRegionCode: regionCode)
-					{
-						return displayName
-					} else {
-						return ""
-					}
-                }, callback: {}),
 				Setting(title: String(localized: "Sync") , callback: { [weak self] in
 					let alert = UIAlertController(title: String(localized: "Sync with Blockchain?") , message: String(localized: "You will not be able to send money while syncing."), preferredStyle: .alert)
 					alert.addAction(UIAlertAction(title:  String(localized: "Cancel")  , style: .default, handler: { _ in
@@ -463,7 +424,7 @@ class ModalPresenter: Subscriber, Trackable {
 					}))
 					alert.addAction(UIAlertAction(title: String(localized: "Sync") , style: .default, handler: {  [weak self] _ in
 						self?.store.trigger(name: .rescan)
-						LWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
+						BWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
 						alert.dismiss(animated: true)
 						self?.topViewController?.dismiss(animated: true)
 					}))
@@ -475,14 +436,14 @@ class ModalPresenter: Subscriber, Trackable {
 				}),
                 Setting(title: String(localized: "Share data")  , callback: strongify(self) { myself in
                     settingsNav.pushViewController(ShareDataViewController(store: myself.store), animated: true)
-                }),
+                })
 			]
 		]
 
 		let settings = SettingsViewController(sections: sections, rows: rows)
 		settings.addCloseNavigationItem()
 		settingsNav.viewControllers = [settings]
-		top.present(settingsNav, animated: true, completion: nil)
+        topVC.present(settingsNav, animated: true, completion: nil)
 	}
 
     private func presentScan(parent: UIViewController) -> PresentScan {
@@ -493,7 +454,6 @@ class ModalPresenter: Subscriber, Trackable {
                 return
             }
             
-            // Camera is allowed, present the scanner
             let vc = ScanViewController(completion: { paymentRequest in
                 
                 guard let request = paymentRequest else {
@@ -584,14 +544,11 @@ class ModalPresenter: Subscriber, Trackable {
 								})))
 							})
 						}
-						// write?.navigationItem.title = S.SecurityCenter.Cells.paperKeyTitle
 						if let confirm = confirmVC {
 							paperPhraseNavigationController.pushViewController(confirm, animated: true)
 						}
 					})
 					write?.hideCloseNavigationItem()
-					/// write?.navigationItem.title = S.SecurityCenter.Cells.paperKeyTitle
-
 					vc.dismiss(animated: true, completion: {
 						guard let write = write else { return }
 						paperPhraseNavigationController.pushViewController(write, animated: true)
@@ -640,8 +597,7 @@ class ModalPresenter: Subscriber, Trackable {
 
 				group.notify(queue: .main) {
 					if let canForceWipeWallet = (self.walletManager?.wipeWallet(pin: "forceWipe")),
-					   canForceWipeWallet
-					{
+					   canForceWipeWallet {
 						self.store.trigger(name: .reinitWalletManager {
 							activity.dismiss(animated: true, completion: {
 							})
@@ -663,11 +619,9 @@ class ModalPresenter: Subscriber, Trackable {
 		if topViewController is MainViewController || topViewController is LoginViewController {
 			presentLoginScan()
 		} else {
-			LWAnalytics.logEventWithParameters(itemName: ._20210427_HCIEEH)
+			BWAnalytics.logEventWithParameters(itemName: ._20210427_HCIEEH)
 			if let presented = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.rootViewController?.presentedViewController {
-				presented.dismiss(animated: true, completion: {
-					self.presentLoginScan()
-				})
+				presented.dismiss(animated: true, completion: { self.presentLoginScan() })
 			}
 		}
 	}
@@ -720,7 +674,6 @@ class ModalPresenter: Subscriber, Trackable {
 		notReachableAlert = alert
 		guard let window = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first
 		else {
-			saveEvent("ERROR: Window not found in the UIApplication window stack")
 			return
 		}
 		let size = window.bounds.size
@@ -729,8 +682,7 @@ class ModalPresenter: Subscriber, Trackable {
 		alert.constrain([
 			alert.constraint(.width, constant: size.width),
 			alert.constraint(.height, constant: InAppAlert.height),
-			alert.constraint(.leading, toView: window, constant: nil),
-			bottomConstraint,
+			alert.constraint(.leading, toView: window, constant: nil),bottomConstraint
 		])
 		window.layoutIfNeeded()
 		alert.bottomConstraint = bottomConstraint
@@ -758,14 +710,13 @@ class ModalPresenter: Subscriber, Trackable {
 
 		guard let view = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first
 		else {
-			saveEvent("ERROR: Window not found in the UIApplication window stack")
 			return
 		}
 
 		view.addSubview(alert)
 		alert.constrain([
 			alert.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			alert.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+			alert.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 		])
 		alert.background.effect = nil
 		UIView.animate(withDuration: 0.6, animations: {
@@ -777,37 +728,5 @@ class ModalPresenter: Subscriber, Trackable {
 				alert.removeFromSuperview()
 			})
 		})
-	}
-}
-
-class SecurityCenterNavigationDelegate: NSObject, UINavigationControllerDelegate {
-	func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated _: Bool) {
-		guard let coordinator = navigationController.topViewController?.transitionCoordinator else { return }
-
-		if coordinator.isInteractive {
-			coordinator.notifyWhenInteractionChanges { context in
-				// We only want to style the view controller if the
-				// pop animation wasn't cancelled
-				if !context.isCancelled {
-					self.setStyle(navigationController: navigationController, viewController: viewController)
-				}
-			}
-		} else {
-			setStyle(navigationController: navigationController, viewController: viewController)
-		}
-	}
-
-	func setStyle(navigationController: UINavigationController, viewController: UIViewController) {
-		if viewController is SecurityCenterViewController {
-			navigationController.isNavigationBarHidden = true
-		} else {
-			navigationController.isNavigationBarHidden = false
-		}
-
-		if viewController is BiometricsSettingsViewController {
-			navigationController.setWhiteStyle()
-		} else {
-			navigationController.setDefaultStyle()
-		}
 	}
 }

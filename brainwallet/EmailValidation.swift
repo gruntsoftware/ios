@@ -7,8 +7,7 @@ class EmailValidation {
 			.firstMatch(in: emailString,
 			            options: [],
 			            range: NSRange(location: 0,
-			                           length: emailString.count)) == nil
-		{
+			                           length: emailString.count)) == nil {
 			return false
 		} else {
 			return true
