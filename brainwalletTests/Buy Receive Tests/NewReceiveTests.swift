@@ -64,7 +64,7 @@ class NewReceiveViewModelTests: XCTestCase {
     
     func testSupportedFiatCurrenciesEnum() {
         // Test that the enum has expected cases
-        let allCurrencies = SupportedFiatCurrencies.allCases
+        let allCurrencies = SupportedFiatCurrency.allCases
         
         XCTAssertTrue(allCurrencies.contains(.USD))
         XCTAssertGreaterThan(allCurrencies.count, 0)
@@ -72,8 +72,8 @@ class NewReceiveViewModelTests: XCTestCase {
     
     func testCurrencyFromCode() {
         // Test the from(code:) method if it exists on SupportedFiatCurrencies
-        let usdCurrency = SupportedFiatCurrencies.from(code: "USD")
-        let invalidCurrency = SupportedFiatCurrencies.from(code: "INVALID")
+        let usdCurrency = SupportedFiatCurrency.from(code: "USD")
+        let invalidCurrency = SupportedFiatCurrency.from(code: "INVALID")
         
         XCTAssertEqual(usdCurrency, .USD)
         XCTAssertNil(invalidCurrency)
