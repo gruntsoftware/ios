@@ -7,9 +7,6 @@
     " %@ " : {
 
     },
-    " Done " : {
-
-    },
     "(Network fee + Service fee):" : {
       "localizations" : {
         "ar" : {
@@ -970,9 +967,6 @@
     "Buy / Receive" : {
 
     },
-    "BUY / RECEIVE" : {
-
-    },
     "BUY LTC" : {
 
     },
@@ -1779,7 +1773,7 @@
     "Copy" : {
 
     },
-    "Copy Address: " : {
+    "COPY / SHARE" : {
 
     },
     "Copy all details" : {
@@ -5031,6 +5025,12 @@
         }
       }
     },
+    "Menu" : {
+
+    },
+    "New address copied" : {
+
+    },
     "No internet connection found. Check your connection and try again." : {
 
     },
@@ -7039,6 +7039,9 @@
           }
         }
       }
+    },
+    "Request" : {
+
     },
     "Rescanning..." : {
       "localizations" : {

@@ -42,7 +42,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     var pickedCurrency: SupportedFiatCurrency = .USD
     
     @Published
-    var canUserBuyLTC: Bool = false
+    var canUserBuy: Bool = false
     
     @Published
     var quotedTimestamp = ""
@@ -64,16 +64,18 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     var walletManager: WalletManager
     var ltcToFiatRate: Double = 0.0
     
+    var dismissReceiveModal: (() -> Void)?
+    
     let currencies: [SupportedFiatCurrency] = SupportedFiatCurrency.allCases
     
     init(store: Store, walletManager: WalletManager, canUserBuy: Bool) {
         self.store = store
         self.walletManager = walletManager
-        self.canUserBuyLTC = canUserBuy
+        self.canUserBuy = canUserBuy
         
         updatePublishables()
         
-        if canUserBuyLTC {
+        if canUserBuy {
             // fetch buy quote
             fetchBuyQuoteLimits(buyAmount: pickedAmount, baseCurrencyCode: pickedCurrency)
         }
@@ -91,6 +93,10 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
             .removeObserver(self,
                             name: .preferredCurrencyChangedNotification,
                             object: nil)
+    }
+    
+    func shouldDismissTheView() {
+        dismissReceiveModal?()
     }
     
     @objc func updatePublishables() {
