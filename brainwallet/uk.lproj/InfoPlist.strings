@@ -1,0 +1,30 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "Мозковий гаманець";
+
+/* Bundle name */
+"CFBundleName" = "Мозковий гаманець";
+
+/* No comment provided by engineer. */
+"Litecoin Payment" = "Оплата Litecoin";
+
+/* No comment provided by engineer. */
+"Litecoin Payment ACK" = "Підтвердження платежу Litecoin";
+
+/* No comment provided by engineer. */
+"Litecoin Payment Request" = "Запит на оплату Litecoin";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Використовується для сканування штрих-кодів";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Використовується для розблокування програми та авторизації платежів";
+
+/* Privacy - Location Always Usage Description */
+"NSLocationAlwaysUsageDescription" = "Використовується для визначення найближчого до вас вузла — ніколи не записується та нікому не передається";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "Використовується для визначення найближчого до вас вузла — ніколи не записується та нікому не передається";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "Використовується для сканування штрих-кодів";
+
