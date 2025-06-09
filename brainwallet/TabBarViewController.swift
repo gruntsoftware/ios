@@ -349,13 +349,28 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
     func presentNewReceiveModal() {
         guard let store = store,
               let walletManager = walletManager else { return }
-        
-        let receiveVC = ReceiveHostingController(store: store, walletManager: walletManager, canUserBuy: self.canUserBuy)
-        
-        addChild(receiveVC)
-        receiveVC.view.frame = containerView.frame
-        view.addSubview(receiveVC.view)
-        receiveVC.didMove(toParent: self)
+        let canUserBuy = UserDefaults.standard
+            .object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
+
+        if canUserBuy {
+            let buyReceiveVC = BuyReceiveHostingController(store: store,
+                                                        walletManager: walletManager,
+                                                        isModalMode: true)
+            
+            addChild(buyReceiveVC)
+            buyReceiveVC.view.frame = containerView.frame
+            view.addSubview(buyReceiveVC.view)
+            buyReceiveVC.didMove(toParent: self)
+        } else {
+            
+            let receiveVC = ReceiveHostingController(store: store,
+                                                     walletManager: walletManager,
+                                                     isModalMode: true)
+            addChild(receiveVC)
+            receiveVC.view.frame = containerView.frame
+            view.addSubview(receiveVC.view)
+            receiveVC.didMove(toParent: self)
+        }
     }
     
 }

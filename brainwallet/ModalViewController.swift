@@ -16,9 +16,10 @@ class ModalViewController: UIViewController, Subscriber {
 	// MARK: - Private
 
 	private let modalInfo: ModalDisplayable
-	private let headerHeight: CGFloat = 49.0
-	fileprivate let header: ModalHeaderView
-	private let tapGestureRecognizer = UITapGestureRecognizer()
+    private let headerHeight: CGFloat = 50.0
+    fileprivate let header: ModalHeaderView
+    private let swipeGestureRecognizer = UISwipeGestureRecognizer()
+
 	private let store: Store
 	private let scrollView = UIScrollView()
 	private let scrollViewContent = UIView()
@@ -34,7 +35,7 @@ class ModalViewController: UIViewController, Subscriber {
 	}
 
 	private func addSubviews() {
-		view.addSubview(header)
+        view.addSubview(header)
 		view.addSubview(scrollView)
 		scrollView.addSubview(scrollViewContent)
 		addChild(childViewController)
@@ -88,15 +89,15 @@ class ModalViewController: UIViewController, Subscriber {
 			modalPresentable.parentView = view
 		}
 
-		tapGestureRecognizer.delegate = self
-		tapGestureRecognizer.addTarget(self, action: #selector(didTap))
-		view.addGestureRecognizer(tapGestureRecognizer)
+        swipeGestureRecognizer.delegate = self
+        swipeGestureRecognizer.addTarget(self, action: #selector(didSwipe)) 
+		view.addGestureRecognizer(swipeGestureRecognizer)
 		store.subscribe(self, name: .blockModalDismissal, callback: { [weak self] _ in
-			self?.tapGestureRecognizer.isEnabled = false
+			self?.swipeGestureRecognizer.isEnabled = false
 		})
 
 		store.subscribe(self, name: .unblockModalDismissal, callback: { _ in
-			self.tapGestureRecognizer.isEnabled = true
+			self.swipeGestureRecognizer.isEnabled = true
 		})
 		addTopCorners()
 		header.closeCallback = { [weak self] in
@@ -116,9 +117,6 @@ class ModalViewController: UIViewController, Subscriber {
 		view.layer.shadowOffset = .zero
 	}
 
-	// Even though the status bar is hidden for this view,
-	// it still needs to be set to light as it will temporarily
-	// transition to black when this view gets presented
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return .lightContent
 	}
@@ -126,15 +124,16 @@ class ModalViewController: UIViewController, Subscriber {
 	override var prefersStatusBarHidden: Bool {
 		return true
 	}
-
-	@objc private func didTap() {
-		guard let modalTransitionDelegate = transitioningDelegate as? ModalTransitionDelegate else { return }
-		modalTransitionDelegate.reset()
-		dismiss(animated: true, completion: nil)
-	}
+  
+    @objc
+    private func didSwipe() {
+        guard let modalTransitionDelegate = transitioningDelegate as? ModalTransitionDelegate else { return }
+        modalTransitionDelegate.reset()
+        dismiss(animated: true, completion: nil)
+    }
 
 	private func addTopCorners() {
-		let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 6.0, height: 6.0)).cgPath
+		let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: modalCorner / 2 , height: modalCorner / 2 )).cgPath
 		let maskLayer = CAShapeLayer()
 		maskLayer.path = path
 		header.layer.mask = maskLayer
@@ -149,7 +148,7 @@ class ModalViewController: UIViewController, Subscriber {
 extension ModalViewController: UIGestureRecognizerDelegate {
 	func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
 		let location = gestureRecognizer.location(in: view)
-		if location.y < header.frame.minY {
+        if location.y < self.view.frame.minY {
 			return true
 		} else {
 			return false

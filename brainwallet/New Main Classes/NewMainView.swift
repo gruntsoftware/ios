@@ -68,7 +68,7 @@ struct NewMainView: View {
                                 .toolbar(.visible, for: .tabBar)
                                 .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
                             
-                            NewReceiveView(viewModel: newReceiveViewModel)
+                            NewReceiveView(viewModel: newReceiveViewModel, isModalMode: nil)
                                 .tabItem {
                                     Label("Receive", systemImage: "square.and.arrow.down")
                                 }
