@@ -1,0 +1,30 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "Portafoglio cerebrale";
+
+/* Bundle name */
+"CFBundleName" = "Portafoglio cerebrale";
+
+/* No comment provided by engineer. */
+"Litecoin Payment" = "Pagamento Litecoin";
+
+/* No comment provided by engineer. */
+"Litecoin Payment ACK" = "Pagamento Litecoin ACK";
+
+/* No comment provided by engineer. */
+"Litecoin Payment Request" = "Richiesta di pagamento Litecoin";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Utilizzato per la scansione dei codici a barre";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Utilizzato per sbloccare l'app e autorizzare i pagamenti";
+
+/* Privacy - Location Always Usage Description */
+"NSLocationAlwaysUsageDescription" = "Utilizzato per determinare il nodo più vicino a te - mai registrato o condiviso con nessuno";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "Utilizzato per determinare il nodo più vicino a te - mai registrato o condiviso con nessuno";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "Utilizzato per la scansione dei codici a barre";
+
