@@ -139,7 +139,7 @@ class NetworkHelper: ObservableObject {
         baseCurrencyAmount=\(mpData.baseCurrencyAmount)&\
         language=\(mpData.language)&\
         walletAddress=\(mpData.walletAddress)&\
-        defaultCurrencyCode=\(mpData.defaultCurrencyCode)&\
+        userPreferredCurrencyCode=\(mpData.userPreferredCurrencyCode)&\
         externalTransactionId=\(mpData.externalTransactionId)&\
         currencyCode=\(mpData.currencyCode)&\
         themeId=\(mpData.themeId)&\

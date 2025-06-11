@@ -33,7 +33,7 @@ class FeeUpdater: Trackable {
 	private let walletManager: WalletManager
 	private let store: Store
 	private var timer: Timer?
-	private let feeUpdateInterval: TimeInterval = 3
+    private let rateUpdateInterval: TimeInterval
 	private var exchangeUpdater: ExchangeUpdater
 
 	// MARK: - Public
@@ -42,6 +42,12 @@ class FeeUpdater: Trackable {
 		self.walletManager = walletManager
 		self.store = store
 		self.exchangeUpdater = exchangeUpdater
+        
+        #if targetEnvironment(simulator)
+        rateUpdateInterval = 2.0
+        #else
+        rateUpdateInterval = 30.0
+        #endif
 	}
 
 	func refresh(completion: @escaping () -> Void) {
@@ -65,7 +71,7 @@ class FeeUpdater: Trackable {
 		}
 
 		if timer == nil {
-			timer = Timer.scheduledTimer(timeInterval: feeUpdateInterval,
+			timer = Timer.scheduledTimer(timeInterval: rateUpdateInterval,
 			                             target: self,
 			                             selector: #selector(intervalRefresh),
 			                             userInfo: nil, repeats: true)
