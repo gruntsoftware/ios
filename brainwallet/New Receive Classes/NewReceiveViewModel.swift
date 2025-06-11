@@ -102,7 +102,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     @objc func updatePublishables() {
         
         // Fetch Preferred Fiat
-        let globalCurrencyCode = UserDefaults.defaultCurrencyCode
+        let globalCurrencyCode = UserDefaults.userPreferredCurrencyCode
         let defaultFiat = SupportedFiatCurrency.USD
         self.pickedCurrency = SupportedFiatCurrency.from(code: globalCurrencyCode) ?? defaultFiat
         
@@ -157,7 +157,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
                                                     baseCurrencyAmount: String(Double(pickedAmount)),
                                                     language: currentLocaleLanguage,
                                                     walletAddress: newReceiveAddress,
-                                                    defaultCurrencyCode: "ltc",
+                                                    userPreferredCurrencyCode: "ltc",
                                                     externalTransactionId: obfuscatedExternalID,
                                                     currencyCode: "ltc",
                                                     themeId: "main-v1.0.0",

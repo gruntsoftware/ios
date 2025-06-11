@@ -126,7 +126,7 @@ class NewReceiveViewModelTests: XCTestCase {
             baseCurrencyAmount: "100.0",
             language: "en",
             walletAddress: "LTCTestAddress123",
-            defaultCurrencyCode: "ltc",
+            userPreferredCurrencyCode: "ltc",
             externalTransactionId: "test-external-id",
             currencyCode: "ltc",
             themeId: "main-v1.0.0",
@@ -137,7 +137,7 @@ class NewReceiveViewModelTests: XCTestCase {
         XCTAssertEqual(signingData.baseCurrencyAmount, "100.0")
         XCTAssertEqual(signingData.language, "en")
         XCTAssertEqual(signingData.walletAddress, "LTCTestAddress123")
-        XCTAssertEqual(signingData.defaultCurrencyCode, "ltc")
+        XCTAssertEqual(signingData.userPreferredCurrencyCode, "ltc")
         XCTAssertEqual(signingData.externalTransactionId, "test-external-id")
         XCTAssertEqual(signingData.currencyCode, "ltc")
         XCTAssertEqual(signingData.themeId, "main-v1.0.0")
