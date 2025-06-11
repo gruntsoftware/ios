@@ -43,7 +43,7 @@ class ApplicationController: Subscriber, Trackable {
         }
     }
     
-    private func initWallet() {
+    func initWallet() {
         
         guard let tempWalletManager = try? WalletManager(store: store, dbPath: nil) else {
             assertionFailure("WalletManager no initialized")
@@ -56,9 +56,7 @@ class ApplicationController: Subscriber, Trackable {
         
         /// Init exchange sooner
         exchangeUpdater = ExchangeUpdater(store: store, walletManager: tempWalletManager)
-        exchangeUpdater?.fetchRates { rates in
-            debugPrint("::::\(rates) \n:::\(Date())::::")
-        }
+        exchangeUpdater?.fetchRates { _ in }
         
         DispatchQueue.main.async {
             self.didInitWallet = true
@@ -125,28 +123,29 @@ class ApplicationController: Subscriber, Trackable {
 		if shouldRequireLogin() {
 			store.perform(action: RequireLogin())
 		}
-		DispatchQueue.walletQueue.async {
-			walletManager.peerManager?.connect()
-		}
-		exchangeUpdater?.refresh(completion: {})
-		feeUpdater?.refresh()
-		if modalPresenter?.walletManager == nil {
-			modalPresenter?.walletManager = walletManager
-		}
+        resetLaunchObjectsAndRates()
 	}
 
 	func retryAfterIsReachable() {
 		guard let walletManager = walletManager else { return }
 		guard !walletManager.noWallet else { return }
-		DispatchQueue.walletQueue.async {
-			walletManager.peerManager?.connect()
-		}
-		exchangeUpdater?.refresh(completion: {})
-		feeUpdater?.refresh()
-		if modalPresenter?.walletManager == nil {
-			modalPresenter?.walletManager = walletManager
-		}
+        resetLaunchObjectsAndRates()
 	}
+    
+    private func resetLaunchObjectsAndRates() {
+        guard let walletManager = walletManager else { return }
+        guard !walletManager.noWallet else { return }
+        DispatchQueue.walletQueue.async {
+            walletManager.peerManager?.connect()
+        }
+        exchangeUpdater?.refresh(completion: {
+            
+        })
+        feeUpdater?.refresh()
+        if modalPresenter?.walletManager == nil {
+            modalPresenter?.walletManager = walletManager
+        }
+    }
 
 	func didEnterBackground() {
 		if store.state.walletState.syncState == .success {
@@ -206,8 +205,8 @@ class ApplicationController: Subscriber, Trackable {
 				modalPresenter?.walletManager = walletManager
 				DispatchQueue.walletQueue.async {
 					walletManager.peerManager?.connect()
+                    self.startDataFetchers()
 				}
-				startDataFetchers()
 			}
 
 			// For when watch app launches app in background
@@ -244,7 +243,9 @@ class ApplicationController: Subscriber, Trackable {
 		defaultsUpdater?.refresh()
 		walletManager?.apiClient?.events?.up()
 
-		exchangeUpdater?.refresh(completion: {})
+		exchangeUpdater?.refresh(completion: {
+            
+        })
 	}
 
 	private func addWalletCreationListener() {

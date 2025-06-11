@@ -135,8 +135,10 @@ class ModalPresenter: Subscriber, Trackable {
                             BWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
                             group.enter()
                             DispatchQueue.walletQueue.async {
-                                _ = walletManager.wipeWallet(pin: "forceWipe")
-                                group.leave()
+                                delay(3.0) {
+                                    _ = walletManager.wipeWallet(pin: "forceWipe")
+                                    group.leave()
+                                }
                             }
                             group.enter()
                             DispatchQueue.walletQueue.asyncAfter(deadline: .now() + 1.0) {
@@ -169,13 +171,13 @@ class ModalPresenter: Subscriber, Trackable {
 					self.pushBiometricsSpendingLimit(onNc: settingsNav)
 				}),
 				Setting(title: String(localized: "Currency") , accessoryText: {
-					let code = self.store.state.defaultCurrencyCode
+					let code = self.store.state.userPreferredCurrencyCode
 					let components: [String: String] = [NSLocale.Key.currencyCode.rawValue: code]
 					let identifier = Locale.identifier(fromComponents: components)
                     return Locale(identifier: identifier).currency?.identifier ?? ""
 				}, callback: {
 					guard let wm = self.walletManager else { debugPrint(":::NO WALLET MANAGER!"); return }
-					settingsNav.pushViewController(DefaultCurrencyViewController(walletManager: wm, store: self.store), animated: true)
+					settingsNav.pushViewController(UserPreferredCurrencyViewController(walletManager: wm, store: self.store), animated: true)
 				}),
 				Setting(title: String(localized: "Sync") , callback: { [weak self] in
 					let alert = UIAlertController(title: String(localized: "Sync with Blockchain?") , message: String(localized: "You will not be able to send money while syncing."), preferredStyle: .alert)

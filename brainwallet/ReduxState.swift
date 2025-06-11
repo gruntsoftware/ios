@@ -10,7 +10,7 @@ struct ReduxState {
 	let rates: [Rate]
 	let alert: AlertType?
 	let isBiometricsEnabled: Bool
-	let defaultCurrencyCode: String
+	let userPreferredCurrencyCode: String
 	let recommendRescan: Bool
 	let isLoadingTransactions: Bool
 	let maxDigits: Int
@@ -31,7 +31,7 @@ extension ReduxState {
 		                  rates: [],
 		                  alert: nil,
 		                  isBiometricsEnabled: UserDefaults.isBiometricsEnabled,
-		                  defaultCurrencyCode: UserDefaults.defaultCurrencyCode,
+		                  userPreferredCurrencyCode: UserDefaults.userPreferredCurrencyCode,
 		                  recommendRescan: false,
 		                  isLoadingTransactions: false,
 		                  maxDigits: UserDefaults.maxDigits,
