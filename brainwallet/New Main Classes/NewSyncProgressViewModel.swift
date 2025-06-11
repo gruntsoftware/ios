@@ -75,7 +75,7 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
 //    }
     
     func setCurrency(code: String) {
-        UserDefaults.defaultCurrencyCode = code
+        UserDefaults.userPreferredCurrencyCode = code
         UserDefaults.standard.synchronize()
         Bundle.setLanguage(code)
 
