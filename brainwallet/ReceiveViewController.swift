@@ -271,11 +271,8 @@ class ReceiveViewController: UIViewController, Subscriber, Trackable {
 }
 
 extension ReceiveViewController: ModalDisplayable {
-	var faqArticleId: String? {
-		return ArticleIds.nothing
-	}
 
 	var modalTitle: String {
-		return "Receive"
+		return String(localized: "Receive")
 	}
 }

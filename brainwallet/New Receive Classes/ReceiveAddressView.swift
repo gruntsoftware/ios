@@ -21,10 +21,20 @@ struct ReceiveAddressView: View {
     
     @FocusState.Binding
     var keyboardFocused: Bool
+    
+    @State
+    private var didCopyAddress = false
      
     let ginormousFont: Font = .barlowSemiBold(size: 22.0)
     let subDetailFont: Font = .barlowRegular(size: 14.0)
-    let padding = 8.0
+    let lightDetailFont: Font = .barlowLight(size: 15.0)
+    let buttonFont: Font = .barlowBold(size: 20.0)
+    let buttonCorner: CGFloat = 26.0
+    let toastFont: Font = .barlowLight(size: 30.0)
+    let opacityFactor: CGFloat = 0.8
+    let padding = 18.0
+    let minimumDragFactor: CGFloat = 250.0
+
     init(viewModel: NewReceiveViewModel, newAddress: Binding<String>, qrPlaceholder: Binding<UIImage>, keyboardFocused: FocusState<Bool>.Binding) {
         self.viewModel = viewModel
         _newAddress = newAddress
@@ -38,66 +48,115 @@ struct ReceiveAddressView: View {
                         
             ZStack {
                 HStack {
-                    VStack {
-                        Image(uiImage: viewModel.newReceiveAddressQR ?? qrPlaceholder)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: (width / 2) - padding)
-                    }
-                    .frame(width: width / 2, alignment: .top)
-                    VStack {
-                        Text(newAddress)
-                            .font(ginormousFont)
-                            .kerning(0.3)
-                            .lineLimit(3)
-                            .multilineTextAlignment(.leading)
-                            .frame(height: 100)
-                            .foregroundColor(BrainwalletColor.content)
-                        
-                        VStack {
-                            HStack {
-                                
-                                Text("Copy Address: ")
-                                    .font(subDetailFont)
-                                    .lineLimit(3)
-                                    .multilineTextAlignment(.leading)
-                                    .foregroundColor(BrainwalletColor.content)
-                                
-                                Button(action: {
-                                    UIPasteboard.general.string = viewModel.newReceiveAddress
-                                }) {
-                                    ZStack {
-                                        Ellipse()
-                                            .frame(width: 40,
-                                                   height: 40)
-                                            .overlay(
-                                                Ellipse()
-                                                    .stroke(BrainwalletColor.content, lineWidth: 1)
-                                                    .frame(width: 40,
-                                                           height: 40)
-                                            )
-                                        
-                                        Image(systemName: "document.on.document")
-                                            .resizable()
-                                            .frame(width: 23, height: 23)
-                                            .foregroundColor(BrainwalletColor.content)
-                                    }
-                                }
-                            }
-                            
-                            Spacer()
-                        }
-                        Spacer()
-                    }
-                    .frame(width: width / 2, alignment: .top)
-                    .onChange(of: viewModel.newReceiveAddress) { address in
-                        newAddress = address
-                    }
-                    
+                    RoundedRectangle(cornerRadius: buttonCorner)
+                        .foregroundColor(BrainwalletColor.content
+                            .opacity(0.03))
+                        .frame(width: width, height: height, alignment: .center)
                 }
-                .frame(width: width, height: height, alignment: .top)
-                .opacity(keyboardFocused ? 0 : 1)
+                .frame(width: width, height: height, alignment: .center)
+                
+                Button(action: {
+                    UIPasteboard.general.string = viewModel.newReceiveAddress
+                    didCopyAddress = true
+                }) {
+                    
+                    HStack {
+                        VStack {
+                            Spacer()
+
+                             ZStack {
+                                RoundedRectangle(cornerRadius: buttonCorner / 4)
+                                    .foregroundColor(.white)
+                                    .frame(width: (width / 2) - padding,
+                                           height: (width / 2) - padding)
+                                    .background(.thinMaterial, in: RoundedRectangle(cornerRadius: buttonCorner / 4))
+                                Image(uiImage: viewModel.newReceiveAddressQR ?? qrPlaceholder)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: (width / 2) - padding)
+                            }
+                            Spacer()
+
+                        }
+                        .frame(width: width / 2, alignment: .trailing)
+                        VStack {
+                            Spacer()
+                            Text(newAddress)
+                                .font(lightDetailFont)
+                                .multilineTextAlignment(.center)
+                                .lineLimit(3)
+                                .foregroundColor(BrainwalletColor.content.opacity(opacityFactor))
+                                .padding(.all, 16.0)
+                            Text("COPY / SHARE")
+                                .font(buttonFont)
+                                .multilineTextAlignment(.center)
+                                .lineLimit(2)
+                                .foregroundColor(BrainwalletColor.content.opacity(opacityFactor))
+                                .padding(.all, 8.0)
+                            Spacer()
+
+                        }
+                        .frame(width: width / 2, alignment: .leading)
+                        .onChange(of: viewModel.newReceiveAddress) { address in
+                            newAddress = address
+                        }
+                    }
+                    .frame(width: width, height: height, alignment: .top)
+                    .opacity(keyboardFocused ? 0 : 1)
+                }
+                .simultaneousGesture(
+                    DragGesture()
+                        .onChanged { value in
+                            
+                            /// Dismiss after 2 button sizes
+                            let transX = value.translation.width
+                            let transY = value.translation.height
+                            let hypotenuse = sqrt(transX * transX + transY * transY)
+                        
+                            if hypotenuse > minimumDragFactor {
+                                viewModel.shouldDismissTheView()
+                            }
+                        }
+                )
+                VStack {
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: buttonCorner)
+                            .foregroundColor(BrainwalletColor.surface
+                                .opacity(0.95))
+                            .frame(width: width, height: height, alignment: .center)
+                        
+                        Text("New address copied")
+                            .font(toastFont)
+                            .kerning(0.4)
+                            .foregroundColor(BrainwalletColor.content)
+                     }
+                }
+                .opacity(didCopyAddress ? 1.0 : 0.0)
+                .onChange(of: didCopyAddress) { _ in
+                    withAnimation(.easeInOut(duration: 1.0)) {
+                        delay(1.0) {
+                            didCopyAddress = false
+                        }
+                    }
+                }
             }
         }
     }
 }
+
+// VStack {
+//    HStack {
+//          
+//        Button(action: {
+//            UIPasteboard.general.string = viewModel.newReceiveAddress
+//        }) {
+//            ZStack {
+//               
+//            }
+//        }
+//    }
+//    
+//    Spacer()
+// }
+// Spacer()

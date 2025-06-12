@@ -25,7 +25,7 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store
 		self.walletManager = walletManager
-		header = ModalHeaderView(title: "Security" , style: .light, faqInfo: (store, ArticleIds.nothing))
+		header = ModalHeaderView(title: "Security" , style: .light)
         shield.tintColor = BrainwalletUIColor.background
         headerBackground.backgroundColor = BrainwalletUIColor.surface
 		super.init(nibName: nil, bundle: nil)

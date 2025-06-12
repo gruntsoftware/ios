@@ -95,6 +95,8 @@
 		24B0653B2DC6433800B5E000 /* SimpleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653A2DC6433000B5E000 /* SimpleHeaderView.swift */; };
 		24B0653D2DC6476A00B5E000 /* NewSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653C2DC6476700B5E000 /* NewSendView.swift */; };
 		24B065402DC647F400B5E000 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653F2DC647F000B5E000 /* GameView.swift */; };
+		24B7D75B2DF6E92F0031F129 /* BuyReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7D75A2DF6E91D0031F129 /* BuyReceiveView.swift */; };
+		24B7D75D2DF6FA0C0031F129 /* ModalPresenter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7D75C2DF6F9F60031F129 /* ModalPresenter+Extension.swift */; };
 		24BEBB972DCDE4D4001E1F1F /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		24BEC6072DF0B53000140AAD /* WipeWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BEC6062DF0B52600140AAD /* WipeWalletView.swift */; };
 		24BEF7E12DCCCD6C00CA2EEC /* BrainwalletiOSStorekit in Frameworks */ = {isa = PBXBuildFile; productRef = 24BEF7E02DCCCD6C00CA2EEC /* BrainwalletiOSStorekit */; };
@@ -640,6 +642,8 @@
 		24B0653A2DC6433000B5E000 /* SimpleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleHeaderView.swift; sourceTree = "<group>"; };
 		24B0653C2DC6476700B5E000 /* NewSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSendView.swift; sourceTree = "<group>"; };
 		24B0653F2DC647F000B5E000 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		24B7D75A2DF6E91D0031F129 /* BuyReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyReceiveView.swift; sourceTree = "<group>"; };
+		24B7D75C2DF6F9F60031F129 /* ModalPresenter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModalPresenter+Extension.swift"; sourceTree = "<group>"; };
 		24BEC6062DF0B52600140AAD /* WipeWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipeWalletView.swift; sourceTree = "<group>"; };
 		24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
 		24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTypeEnum.swift; sourceTree = "<group>"; };
@@ -1468,6 +1472,7 @@
 			children = (
 				2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */,
 				24AAB31E2DE79EE200F0C18C /* NewReceiveViewModel.swift */,
+				24B7D75A2DF6E91D0031F129 /* BuyReceiveView.swift */,
 				24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */,
 				24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */,
 			);
@@ -1907,6 +1912,7 @@
 				C312D2802D7DC27700BB97A4 /* MessageUIPresenter.swift */,
 				C312D2812D7DC27700BB97A4 /* MockSeeds.swift */,
 				C312D2822D7DC27700BB97A4 /* ModalPresenter.swift */,
+				24B7D75C2DF6F9F60031F129 /* ModalPresenter+Extension.swift */,
 				C312D2832D7DC27700BB97A4 /* MoonpayHelper.swift */,
 				C312D2862D7DC27700BB97A4 /* PartnerData.swift */,
 				C312D2872D7DC27700BB97A4 /* PartnersView.swift */,
@@ -2570,6 +2576,7 @@
 				2416CE782DA90D0D00FFBD10 /* BRAddressExtension.swift in Sources */,
 				2428717F2DE5C25F0035DE48 /* ClearDecimalPad.swift in Sources */,
 				2416CE792DA90D0D00FFBD10 /* BRCoding.swift in Sources */,
+				24B7D75B2DF6E92F0031F129 /* BuyReceiveView.swift in Sources */,
 				2416CE7A2DA90D0D00FFBD10 /* BRKeyExtension.swift in Sources */,
 				2416CE7C2DA90D0D00FFBD10 /* BRCalculationExtension.swift in Sources */,
 				C312D36E2D7DC27700BB97A4 /* PinPadViewController.swift in Sources */,
@@ -2738,6 +2745,7 @@
 				C312D47A2D7DC27700BB97A4 /* PhraseView.swift in Sources */,
 				241D22432DB526B7000302C8 /* TopUpView.swift in Sources */,
 				C312D47B2D7DC27700BB97A4 /* PartnersViewModel.swift in Sources */,
+				24B7D75D2DF6FA0C0031F129 /* ModalPresenter+Extension.swift in Sources */,
 				C312D47C2D7DC27700BB97A4 /* PartnersView.swift in Sources */,
 				C312D47F2D7DC27700BB97A4 /* Extensions.swift in Sources */,
 				C312D4812D7DC27700BB97A4 /* DismissModalAnimator.swift in Sources */,
@@ -2891,7 +2899,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250609.0;
+				CURRENT_PROJECT_VERSION = 250612.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3189,7 +3197,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250609.0;
+				CURRENT_PROJECT_VERSION = 250612.0;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;

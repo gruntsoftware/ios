@@ -597,11 +597,8 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 }
 
 extension SendViewController: ModalDisplayable {
-	var faqArticleId: String? {
-		return ArticleIds.nothing
-	}
 
 	var modalTitle: String {
-		return "Send" 
+		return String(localized: "Send")
 	}
 }
