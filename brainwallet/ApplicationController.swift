@@ -3,12 +3,6 @@ import StoreKit
 import SwiftUI
 import UIKit
 
-let timeSinceLastExitKey = "TimeSinceLastExit"
-let shouldRequireLoginTimeoutKey = "ShouldRequireLoginTimeoutKey"
-let numberOfBrainwalletLaunches = "NumberOfBrainwalletLaunches"
-let userDidPreferDarkModeKey = "UserDidPreferDarkMode"
-let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
-
 class ApplicationController: Subscriber, Trackable {
     // Ideally the window would be private, but is unfortunately required
     // by the UIApplicationDelegate Protocol
