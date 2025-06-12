@@ -113,11 +113,8 @@ class WipeEmptyWalletViewController: UIViewController, Subscriber, Trackable {
 }
 
 extension WipeEmptyWalletViewController: ModalDisplayable {
-	var faqArticleId: String? {
-		return nil
-	}
 
 	var modalTitle: String {
-		return "Delete my data"
+		return String(localized: "Delete my data")
 	}
 }

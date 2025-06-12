@@ -42,7 +42,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     var pickedCurrency: SupportedFiatCurrency = .USD
     
     @Published
-    var canUserBuyLTC: Bool = false
+    var canUserBuy: Bool = false
     
     @Published
     var quotedTimestamp = ""
@@ -64,16 +64,18 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     var walletManager: WalletManager
     var ltcToFiatRate: Double = 0.0
     
+    var dismissReceiveModal: (() -> Void)?
+    
     let currencies: [SupportedFiatCurrency] = SupportedFiatCurrency.allCases
     
     init(store: Store, walletManager: WalletManager, canUserBuy: Bool) {
         self.store = store
         self.walletManager = walletManager
-        self.canUserBuyLTC = canUserBuy
+        self.canUserBuy = canUserBuy
         
         updatePublishables()
         
-        if canUserBuyLTC {
+        if canUserBuy {
             // fetch buy quote
             fetchBuyQuoteLimits(buyAmount: pickedAmount, baseCurrencyCode: pickedCurrency)
         }
@@ -93,10 +95,14 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
                             object: nil)
     }
     
+    func shouldDismissTheView() {
+        dismissReceiveModal?()
+    }
+    
     @objc func updatePublishables() {
         
         // Fetch Preferred Fiat
-        let globalCurrencyCode = UserDefaults.defaultCurrencyCode
+        let globalCurrencyCode = UserDefaults.userPreferredCurrencyCode
         let defaultFiat = SupportedFiatCurrency.USD
         self.pickedCurrency = SupportedFiatCurrency.from(code: globalCurrencyCode) ?? defaultFiat
         
@@ -151,7 +157,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
                                                     baseCurrencyAmount: String(Double(pickedAmount)),
                                                     language: currentLocaleLanguage,
                                                     walletAddress: newReceiveAddress,
-                                                    defaultCurrencyCode: "ltc",
+                                                    userPreferredCurrencyCode: "ltc",
                                                     externalTransactionId: obfuscatedExternalID,
                                                     currencyCode: "ltc",
                                                     themeId: "main-v1.0.0",

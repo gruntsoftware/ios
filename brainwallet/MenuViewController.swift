@@ -63,11 +63,7 @@ class MenuViewController: UIViewController, Trackable {
 }
 
 extension MenuViewController: ModalDisplayable {
-	var faqArticleId: String? {
-		return nil
-	}
-
 	var modalTitle: String {
-		return "Menu"
+		return String(localized: "Menu")
 	}
 }
