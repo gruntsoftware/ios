@@ -6,10 +6,6 @@ class ContainerViewController: UIViewController {
 }
 
 extension ContainerViewController: ModalDisplayable {
-	var faqArticleId: String? {
-		return nil
-	}
-
 	var modalTitle: String {
 		return ""
 	}

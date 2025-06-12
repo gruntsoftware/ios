@@ -11,26 +11,20 @@ import Security
 
 class Utility : NSObject {
     
-    override init() {
-        
-    }
-    
+    override init() {}
+    let keySize = 2048
     func encryptMessageRSA2048(_ message: String) -> String {
         
         do {
-            
             let pubkey = Partner.partnerKeyPath(name: .agentPubKey)
             var keyBytes: Data
                 
                 do {
-                   
                     guard let pemBytes = Data(base64Encoded: pubkey) else {
-                        debugPrint("::: ERROR: Invalid base64 public key format")
                         return "ERROR-CANNOT-KEYBYTES-DO-CONVERSION"
                     }
                     
                     guard let pemString = String(data: pemBytes, encoding: .utf8) else {
-                        debugPrint("::: ERROR: Could not convert PEM bytes to string")
                         return "ERROR-CANNOT-KEYBYTES-DO-CONVERSION"
                     }
                     
@@ -40,21 +34,15 @@ class Utility : NSObject {
                         .replacingOccurrences(of: "\\s+", with: "", options: .regularExpression)
                     
                     guard let cleanKeyBytes = Data(base64Encoded: keyData) else {
-                        debugPrint("::: ERROR: Invalid cleaned base64 key data")
                         return "ERROR-CANNOT-KEYBYTES-DO-CONVERSION"
                     }
-                    
                     keyBytes = cleanKeyBytes
-                    
-                } catch let error {
-                    debugPrint("::: ERROR: Invalid base64 public key format: \(error)")
-                    return "ERROR-CANNOT-KEYBYTES-DO-CONVERSION"
                 }
                 
                 let keyAttributes: [String: Any] = [
                     kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
                     kSecAttrKeyClass as String: kSecAttrKeyClassPublic,
-                    kSecAttrKeySizeInBits as String: 2048
+                    kSecAttrKeySizeInBits as String: keySize
                 ]
                 
                 var error: Unmanaged<CFError>?
@@ -66,7 +54,6 @@ class Utility : NSObject {
                 }
                 
                 guard let messageData = message.data(using: .utf8) else {
-                    debugPrint("::: ERROR: Could not convert message to data")
                     return "ERROR-MESSAGE-TO-DATA-CONVERSION"
                 }
                 
@@ -91,16 +78,8 @@ class Utility : NSObject {
                     }
                     return "ERROR-ENCRYPTION-FAILED"
                 }
-                
-                // Convert encrypted data to base64 string
                 let encryptedDataSwift = encryptedData as Data
                 return encryptedDataSwift.base64EncodedString()
-                
-            } catch let error {
-                // Catch any unexpected exceptions
-                debugPrint("::: ERROR: Unexpected error during encryption: \(error)")
-                return "ERROR-UNEXPECTED-DURING-ENCRYPTION"
             }
     }
-    
 }
