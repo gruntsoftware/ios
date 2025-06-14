@@ -21,6 +21,9 @@ class LockScreenHostingController: UIHostingController<LockScreenView> {
      
     init(store: Store) {
         viewModel = LockScreenViewModel(store: store)
+        
+        let userPrefersDarkMode = UserDefaults.userPrefersDarkTheme
+        
        super.init(rootView: LockScreenView(viewModel: viewModel))
         
         viewModel.userSubmittedPIN = { [weak self] pin in

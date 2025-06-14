@@ -10,7 +10,7 @@ class ShareDataViewController: UIViewController {
 	private let titleLabel = UILabel(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
 	private let body = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private let label = UILabel(font: .customBold(size: 16.0), color: BrainwalletUIColor.content)
-	private let toggle = GradientSwitch()
+	private let toggle = UISwitch()
 	private let separator = UIView(color: BrainwalletUIColor.content)
 
 	override func viewDidLoad() {

@@ -32,6 +32,4 @@ extension ApplicationController {
 			UserDefaults.standard.set(NSNumber(value: 1), forKey: numberOfBrainwalletLaunches)
 		}
 	}
-
-	func willResignActive() {}
 }

@@ -88,6 +88,8 @@ class AlertView: UIView, SolidColorDrawable {
 		super.init(frame: .zero)
 		layer.cornerRadius = 6.0
 		layer.masksToBounds = true
+        self.layer.backgroundColor = BrainwalletUIColor.background.cgColor
+        self.layer.opacity = 0.95
 		setupSubviews()
 	}
 
@@ -144,10 +146,6 @@ class AlertView: UIView, SolidColorDrawable {
 			subheader.constraint(.trailing, toView: self, constant: -C.padding[2]),
 			subheader.constraint(toBottom: icon, constant: C.padding[3])
 		])
-	}
-
-	override func draw(_ rect: CGRect) {
-        drawColor(color: BrainwalletUIColor.surface, rect)
 	}
 
 	@available(*, unavailable)
