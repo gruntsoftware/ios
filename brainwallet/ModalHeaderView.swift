@@ -38,8 +38,8 @@ class ModalHeaderView: UIView {
         if showCloseButton {
             addSubview(close)
             close.constrain([
-                close.constraint(.leading, toView: self, constant: 0.0),
-                close.constraint(.centerY, toView: self, constant: 0.0),
+                close.constraint(.leading, toView: self, constant: 10.0),
+                close.constraint(.centerY, toView: self, constant: 10.0),
                 close.constraint(.height, constant: buttonSize),
                 close.constraint(.width, constant: buttonSize)
             ])

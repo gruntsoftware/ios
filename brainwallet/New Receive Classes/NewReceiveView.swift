@@ -69,13 +69,6 @@ struct NewReceiveView: View {
                 
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                     VStack {
-                        RoundedRectangle(cornerRadius: buttonCorner)
-                            .foregroundColor(BrainwalletColor.content
-                                .opacity(0.03))
-                            .frame(width: modalWidth * 0.75)
-                    }
-                    
-                    VStack {
                         
                         Button(action: {
                             UIPasteboard.general.string = viewModel.newReceiveAddress
