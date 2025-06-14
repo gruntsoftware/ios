@@ -19,7 +19,7 @@ class BiometricsSettingsViewController: UIViewController, Subscriber {
 	private var spendingButton = ShadowButton(title: "-", type: .secondary)
 	private var dismissButton = UIButton()
 
-	private let toggle = GradientSwitch()
+	private let toggle = UISwitch()
     private let separator = UIView(color: BrainwalletUIColor.content)
 	private let walletManager: WalletManager
 	private let store: Store

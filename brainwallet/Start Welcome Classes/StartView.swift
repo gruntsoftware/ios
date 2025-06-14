@@ -11,7 +11,7 @@ struct StartView: View {
     let verticalPadding: CGFloat = 20.0
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
-    let themeButtonSize: CGFloat = 28.0
+    let themeButtonSize: CGFloat = 32.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 60.0
     let lottieFileName: String = "welcomeemoji20250212.json"
@@ -38,7 +38,7 @@ struct StartView: View {
 	private var delayedSelect: Bool = false
     
     @State
-    private var userPrefersDarkMode: Bool = false
+    private var userPrefersDarkMode: Bool = true
 
 	@State
 	private var currentTagline = ""
@@ -60,7 +60,7 @@ struct StartView: View {
         self.newMainViewModel = newMainViewModel
 	}
     
-    func updateLocaleLabel() {
+    func updateVersionLabel() {
         // Get current locale
         let currentLocale = Locale.current
          // Print locale identifier in native language
@@ -80,7 +80,7 @@ struct StartView: View {
             let height = geometry.size.height
             NavigationStack(path: $path) {
                 ZStack {
-                    BrainwalletColor.surface.ignoresSafeArea()
+                    BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                     
                     VStack {
                         Group {
@@ -103,32 +103,22 @@ struct StartView: View {
                                     HStack {
                                         Button(action: {
                                             userPrefersDarkMode.toggle()
-                                            startViewModel.userDidChangeDarkMode(state: userPrefersDarkMode)
                                         }) {
                                             ZStack {
-                                                Ellipse()
+                                                Image(systemName: userPrefersDarkMode ?
+                                                    "moon.circle" : "sun.max.circle")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
                                                     .frame(width: themeBorderSize,
                                                            height: themeBorderSize,
                                                            alignment: .center)
-                                                    .overlay {
-                                                        Ellipse()
-                                                            .frame(width: themeBorderSize,
-                                                                   height: themeBorderSize,
-                                                                   alignment: .center)
-                                                            .foregroundColor(BrainwalletColor.midnight)
-                                                    }
-                                                
-                                                Image(systemName: userPrefersDarkMode ?  "rays" : "moon")
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(width: themeButtonSize,
-                                                           height: themeButtonSize,
-                                                           alignment: .center)
-                                                    .foregroundColor( userPrefersDarkMode ?  BrainwalletColor.warn : BrainwalletColor.surface)
-                                                
+                                                    .foregroundColor(BrainwalletColor.content)
                                             }
                                         }
                                         .frame(width: width * 0.1)
+                                        .onChange(of: userPrefersDarkMode) { preference in
+                                            startViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
+                                        }
 
                                         Picker("", selection: $pickedCurrency) {
                                             ForEach(startViewModel.globalCurrencies, id: \.self) {
@@ -140,8 +130,7 @@ struct StartView: View {
                                         }
                                         .pickerStyle(.wheel)
                                         .frame(width: width * 0.6)
-                                        .onChange(of: pickedCurrency) { newFiat in
-                                            startViewModel.userDidSetCurrencyPreference(currency: newFiat)
+                                        .onChange(of: pickedCurrency) { _ in
                                             selectedFiat = true
                                         }.padding(.trailing, width * 0.1)
                                     }
@@ -274,9 +263,11 @@ struct StartView: View {
             })
             .onAppear {
                 Task {
-                    updateLocaleLabel()
+                    userPrefersDarkMode = UserDefaults.userPrefersDarkTheme
+                    updateVersionLabel()
                 }
             }
+            
         }
     }
 }

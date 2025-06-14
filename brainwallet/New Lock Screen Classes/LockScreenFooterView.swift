@@ -15,38 +15,44 @@ struct LockScreenFooterView: View {
     
     @State
     private var shoulShowWipeAlert: Bool = false
+    
+    @Binding
+    var userPrefersDarkMode: Bool
 
-    init(viewModel: LockScreenViewModel) {
+    init(viewModel: LockScreenViewModel, userPrefersDarkMode: Binding<Bool>) {
         self.viewModel = viewModel
-    } 
+        _userPrefersDarkMode = userPrefersDarkMode
+    }
     
     var body: some View {
         GeometryReader { geometry in
             
             let width = geometry.size.width
             
-            let buttonSize = 30.0
+            let buttonSize = 35.0
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {
                     Spacer()
                     HStack {
                         Button(action: {
-                            viewModel.userPrefersDarkMode.toggle()
+                            userPrefersDarkMode.toggle()
                         }) {
                             VStack {
                                 Spacer()
-                                Image(systemName: viewModel.userPrefersDarkMode ? "sun.max.circle" : "moon.circle")
+                                Image(systemName: userPrefersDarkMode ? "sun.max.circle" : "moon.circle")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: buttonSize, height: buttonSize,
-                                           alignment: .bottom)
+                                        alignment: .center)
                                     .foregroundColor(BrainwalletColor.content)
+                                Spacer()
                             }
                             
                         }
-                        .frame(minWidth: width * 0.20, minHeight: 40.0,
-                               alignment: .bottom)
+                        .frame(minWidth: width * 0.20,
+                            minHeight: 40.0,
+                            alignment: .center)
                         
                         Button(action: {
                             viewModel.userDidTapQR?()
@@ -57,14 +63,16 @@ struct LockScreenFooterView: View {
                                 Image(systemName:"qrcode")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: buttonSize * 1.4, height: buttonSize * 1.4,
-                                           alignment: .bottom)
+                                    .frame(width: buttonSize * 1.2, height: buttonSize * 1.2,
+                                        alignment: .center)
                                     .foregroundColor(BrainwalletColor.content)
                                     .tint(BrainwalletColor.surface)
+                                Spacer()
                             }
                         }
-                        .frame(minWidth: width * 0.20, minHeight: 70.0,
-                               alignment: .bottom)
+                        .frame(minWidth: width * 0.20,
+                            minHeight: 40.0,
+                            alignment: .center)
                         .padding(8.0)
                         
                         Button(action: {
@@ -76,13 +84,15 @@ struct LockScreenFooterView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: buttonSize, height: buttonSize,
-                                           alignment: .bottom)
+                                        alignment: .center)
                                     .foregroundColor(BrainwalletColor.content)
                                     .tint(BrainwalletColor.surface)
+                                Spacer()
                             }
                         }
-                        .frame(minWidth: width * 0.20, minHeight: 40.0,
-                               alignment: .bottom)
+                        .frame(minWidth: width * 0.20,
+                            minHeight: 40.0,
+                            alignment: .center)
                     }
                     .frame(height: 55.0, alignment: .center)
                     .frame(maxWidth: .infinity)
