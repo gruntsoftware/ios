@@ -22,86 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self,
             selector: #selector(restartAfterWipedWallet),
             name: .didDeleteWalletDBNotification,
-            object: nil
-        )
-
-//        // Language
-//        Bundle.setLanguage(UserDefaults.selectedLanguage)
-//
-//        // Locale and fetch access
-//        // DEV: Break here to test Locale/Matrix
-//        let countryRussia = MoonpayCountryData(alphaCode2Char: "RU",
-//                                       alphaCode3Char: "RUS",
-//                                       isBuyAllowed: false,
-//                                       isSellAllowed: false,
-//                                       countryName: "Russia",
-//                                       isAllowedInCountry: false)
-//
-//        let currentLocaleID = Locale.current.region?.identifier ?? countryRussia.alphaCode2Char
-//
-//        NetworkHelper.init().fetchCurrenciesCountries(completion:  { countryData  in
-//    
-//            let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == currentLocaleID }.first ?? countryRussia
-//    
-//            let isBuyAllowed = currentMoonPayCountry.isBuyAllowed
-//            if isBuyAllowed {
-//                UserDefaults.standard.set(isBuyAllowed, forKey: userCurrentLocaleMPApprovedKey)
-//                     debugPrint(":::::: buyIsAllowed: \(isBuyAllowed)")
-//            } else {
-//            UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
-//            }
-//    
-//            UserDefaults.standard.synchronize()
-//        })
-//
-//        // Ops
-//        let startDate = Partner.partnerKeyPath(name: .walletStart)
-//            if startDate == "error-brainwallet-start-key" {
-//                let errorDescription = "partnerkey_data_missing"
-//                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
-//            }
-//        // Firebase
-//        self.setFirebaseConfiguration()
-//
-//        // AF
-//        AppsFlyerLib.shared().appsFlyerDevKey = Partner.partnerKeyPath(name: .prodAF)
-//        AppsFlyerLib.shared().appleAppID = BrainwalletAppStore.adamIDString
-//
-//        // Remote Config
-//        self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
-//
-//        let current = UNUserNotificationCenter.current()
-//        current.getNotificationSettings(completionHandler: { settings in
-//
-//            debugPrint(settings.debugDescription)
-//            if settings.authorizationStatus == .denied {}
-//        })
-//        
-//        // Wipe restart
-//        // Register for system notifications
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(restartAfterWipedWallet),
-//            name: .didDeleteWalletDBNotification,
-//            object: nil
-//        )
-//
-//		guard let thisWindow = window else { return false }
-//        // Set global themes
-//		thisWindow.tintColor = BrainwalletUIColor.surface
-//        thisWindow.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: userDidPreferDarkModeKey) ? .dark: .light
-//        
-//		applicationController.launch(application: application, window: thisWindow)
-//
-//		BWAnalytics.logEventWithParameters(itemName: ._20191105_AL)
-
+            object: nil)
+        
 		return true
 	}
 
     private func preSetupSteps() {
-
-        // Language
-        Bundle.setLanguage(UserDefaults.selectedLanguage)
 
         // Locale and fetch access
         // DEV: Break here to test Locale/Matrix
@@ -125,7 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let isBuyAllowed = currentMoonPayCountry.isBuyAllowed
             if isBuyAllowed {
                 UserDefaults.standard.set(isBuyAllowed, forKey: userCurrentLocaleMPApprovedKey)
-                     debugPrint(":::::: buyIsAllowed: \(isBuyAllowed)")
             } else {
             UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
             }
@@ -160,10 +85,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
 
         guard let thisWindow = window else { return }
+        
         // Set global themes
-        thisWindow.tintColor = BrainwalletUIColor.surface
-        thisWindow.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: userDidPreferDarkModeKey) ? .dark: .light
+        debugPrint("::: AP UserDefaults.userPrefersDarkTheme \(UserDefaults.userPrefersDarkTheme)")
 
+        thisWindow.overrideUserInterfaceStyle = UserDefaults.userPrefersDarkTheme ? .dark: .light
+        
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = BrainwalletUIColor.content
 
         UIView.swizzleSetFrame()
@@ -223,7 +150,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Clear the root view controller
             thisWindow.rootViewController = nil
             self.preSetupSteps()
-
+        }
+    }
+    
+    @objc
+    func updateUserThemePreference() {
+        let fetchThemePreference = UserDefaults.userPrefersDarkTheme
+        DispatchQueue.main.async {
+            guard let thisWindow = self.window else { return }
+            thisWindow.overrideUserInterfaceStyle = UserDefaults.userPrefersDarkTheme ? .dark : .light
         }
     }
 
@@ -255,7 +190,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func updatePreferredTheme() {
         guard let window = window else { return }
         // Set global theme
-        window.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: userDidPreferDarkModeKey) ? .dark: .light
+        window.overrideUserInterfaceStyle = UserDefaults.userPrefersDarkTheme ? .dark: .light
     }
 
 	/// On Demand Resources

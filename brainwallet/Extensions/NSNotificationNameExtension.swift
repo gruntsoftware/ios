@@ -12,5 +12,6 @@ public extension NSNotification.Name {
     static let preferredCurrencyChangedNotification = Notification.Name("currencyChanged")
     static let userTapsClosePromptNotification = Notification.Name("userTapClosePrompt")
     static let userTapsContinuePromptNotification = Notification.Name("userTapContinuePrompt")
+    static let changedThemePreferenceNotification = Notification.Name("changedThemePreference")
 
 }

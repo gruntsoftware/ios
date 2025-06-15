@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct LockScreenView: View {
-	// MARK: - Combine Variables
-
     let versionFont: Font = .barlowLight(size: 15.0)
 
 	@ObservedObject
@@ -22,12 +20,15 @@ struct LockScreenView: View {
 
     @State
     private var didFillPIN: Bool = false
-
+    
+    @State
+    private var userPrefersDarkMode: Bool = true
+    
 	init(viewModel: LockScreenViewModel) {
 		self.viewModel = viewModel
-	}
+    }
 
-    func updateLocaleLabel() {
+    func updateVersionLabel() {
         // Get current locale
         let currentLocale = Locale.current
          // Print locale identifier in native language
@@ -65,25 +66,30 @@ struct LockScreenView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: width * 0.65)
                         .padding(.top, 25.0)
-                        .padding(8.0)
-
+                        .padding(4.0)
+                    
                     Spacer()
-
+                        .frame(minHeight: height * 0.05)
+                    
                     PINRowView(pinState: $pinState)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: 40.0)
-                        .padding([.top,.bottom], 20.0)
-
+                        .padding([.top,.bottom], 5.0)
+                
                     Spacer()
-
+                        .frame(minHeight: height * 0.05)
+                    
                     PasscodeGridView(digits: $pinDigits)
                         .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
-                        .padding(.bottom, 10.0)
-
-                    LockScreenFooterView(viewModel: viewModel)
-                        .frame(width: width, height: 55.0, alignment: .center)
+                        .padding(.bottom, 5.0)
+                    
+                    LockScreenFooterView(viewModel: viewModel,
+                                         userPrefersDarkMode: $userPrefersDarkMode)
+                        .frame(width: width, height: 50.0, alignment: .center)
+                        .padding(.top, 20.0)
                         .padding(.bottom, 20.0)
 
+                    Spacer()
                     HStack {
                         Text(AppVersion.string)
                             .frame(alignment: .center)
@@ -97,12 +103,6 @@ struct LockScreenView: View {
                                 .foregroundColor(BrainwalletColor.chili.opacity(0.8))
                                 .padding(.all, 5.0)
                         }
-                    }
-                }
-                .onAppear {
-                    Task {
-                        fiatValue = String(format: String(localized: "%@ = 1Ł"), viewModel.currentValueInFiat)
-                        updateLocaleLabel()
                     }
                 }
                 .onChange(of: viewModel.currentValueInFiat) { newValue in
@@ -121,6 +121,15 @@ struct LockScreenView: View {
                         viewModel.userSubmittedPIN?(pinString)
                     }
                 }
+            }
+            .background(BrainwalletColor.surface)
+            .onChange(of: userPrefersDarkMode) { preference in
+                viewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
+            }
+            .onAppear {
+                userPrefersDarkMode = UserDefaults.userPrefersDarkTheme
+                fiatValue = String(format: String(localized: "%@ = 1Ł"), viewModel.currentValueInFiat)
+                updateVersionLabel()
             }
         }
 	}

@@ -7,10 +7,10 @@
 //
 import SwiftUI
 struct PasscodeGridView: View {
-
-    let detailFont: Font = .barlowRegular(size: 28.0)
-    let elementSpacing = 5.0
-
+    
+    let detailFont: Font = .barlowRegular(size: 24.0)
+    let elementSpacing = 2.0
+  
     @Binding var digits: [Int]
 
     var body: some View {
@@ -44,7 +44,7 @@ struct PasscodeGridView: View {
 }
 
 struct CodeButton: View {
-    let buttonSize = 70.0
+    let buttonSize = 60.0
     let detailFont: Font = .barlowRegular(size: 28.0)
     var index: Int
     @Binding var digits: [Int]
@@ -87,7 +87,7 @@ struct CodeButton: View {
                 }
             }
         }
-        .padding(.all, 5.0)
+        .padding(.all, 2.0)
         .disabled(index == -1)
     }
 }
