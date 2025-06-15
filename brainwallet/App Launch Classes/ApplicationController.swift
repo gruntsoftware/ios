@@ -6,7 +6,7 @@ import UIKit
 class ApplicationController: Subscriber, Trackable {
     // Ideally the window would be private, but is unfortunately required
     // by the UIApplicationDelegate Protocol
-    
+
     var window: UIWindow?
     fileprivate let store = Store()
     private var startFlowController: StartFlowPresenter?
@@ -27,7 +27,7 @@ class ApplicationController: Subscriber, Trackable {
     private var launchURL: URL?
     private var hasPerformedWalletDependentInitialization = false
     private var didInitWallet = false
-    
+
     init() {
         transitionDelegate = ModalTransitionDelegate(type: .transactionDetail, store: store)
         DispatchQueue.walletQueue.async {
@@ -36,22 +36,22 @@ class ApplicationController: Subscriber, Trackable {
             }
         }
     }
-    
+
     func initWallet() {
-        
+
         guard let tempWalletManager = try? WalletManager(store: store, dbPath: nil) else {
             assertionFailure("WalletManager no initialized")
             return
         }
-        
+
         walletManager = tempWalletManager
-        
+
         _ = walletManager?.wallet // attempt to initialize wallet
-        
+
         /// Init exchange sooner
         exchangeUpdater = ExchangeUpdater(store: store, walletManager: tempWalletManager)
         exchangeUpdater?.fetchRates { _ in }
-        
+
         DispatchQueue.main.async {
             self.didInitWallet = true
             if !self.hasPerformedWalletDependentInitialization {
@@ -59,7 +59,7 @@ class ApplicationController: Subscriber, Trackable {
             }
         }
     }
-    
+
 	func launch(application: UIApplication, window: UIWindow?) {
 		self.application = application
 		self.window = window
@@ -125,7 +125,7 @@ class ApplicationController: Subscriber, Trackable {
 		guard !walletManager.noWallet else { return }
         resetLaunchObjectsAndRates()
 	}
-    
+
     private func resetLaunchObjectsAndRates() {
         guard let walletManager = walletManager else { return }
         guard !walletManager.noWallet else { return }
@@ -133,7 +133,7 @@ class ApplicationController: Subscriber, Trackable {
             walletManager.peerManager?.connect()
         }
         exchangeUpdater?.refresh(completion: {
-            
+
         })
         feeUpdater?.refresh()
         if modalPresenter?.walletManager == nil {
@@ -222,8 +222,8 @@ class ApplicationController: Subscriber, Trackable {
 	private func shouldRequireLogin() -> Bool {
 		let then = UserDefaults.standard.double(forKey: timeSinceLastExitKey)
 		let timeout = UserDefaults.standard.double(forKey: shouldRequireLoginTimeoutKey)
-		let now = Date().timeIntervalSince1970
-		return now - then > timeout
+		let dateNow = Date().timeIntervalSince1970
+		return dateNow - then > timeout
 	}
 
 	private func setupRootViewController() {
@@ -238,7 +238,7 @@ class ApplicationController: Subscriber, Trackable {
 		walletManager?.apiClient?.events?.up()
 
 		exchangeUpdater?.refresh(completion: {
-            
+
         })
 	}
 
@@ -327,4 +327,34 @@ class ApplicationController: Subscriber, Trackable {
 			self.fetchCompletionHandler = nil
 		}
 	}
+
+    func setupDefaults() {
+        if UserDefaults.standard.object(forKey: shouldRequireLoginTimeoutKey) == nil {
+            UserDefaults.standard.set(60.0 * 3.0, forKey: shouldRequireLoginTimeoutKey) // Default 3 min timeout
+        }
+
+        if UserDefaults.standard.object(forKey: userDidPreferDarkModeKey) == nil {
+            UserDefaults.standard.set(false, forKey: userDidPreferDarkModeKey)
+        }
+
+        if UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) == nil {
+            UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
+        }
+    }
+
+    func countLaunches() {
+        if var launchNumber = UserDefaults.standard.object(forKey: numberOfBrainwalletLaunches) as? Int {
+            launchNumber += 1
+            UserDefaults.standard.set(NSNumber(value: launchNumber), forKey: numberOfBrainwalletLaunches)
+            if launchNumber == 5 {
+                SKStoreReviewController.requestReviewInCurrentScene()
+                BWAnalytics.logEventWithParameters(itemName: ._20200125_DSRR)
+            }
+        } else {
+            UserDefaults.standard.set(NSNumber(value: 1),
+                                      forKey: numberOfBrainwalletLaunches)
+        }
+    }
+
+    func willResignActive() {}
 }

@@ -42,7 +42,7 @@ class FeeUpdater: Trackable {
 		self.walletManager = walletManager
 		self.store = store
 		self.exchangeUpdater = exchangeUpdater
-        
+
         #if targetEnvironment(simulator)
         rateUpdateInterval = 2.0
         #else
@@ -85,7 +85,7 @@ class FeeUpdater: Trackable {
 	@objc func intervalRefresh() {
 		refresh(completion: {})
 		exchangeUpdater.refresh(completion: {
-			
+
 		})
 	}
 }

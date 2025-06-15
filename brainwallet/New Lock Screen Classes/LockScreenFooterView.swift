@@ -7,15 +7,15 @@
 //
 
 import SwiftUI
-  
+
 struct LockScreenFooterView: View {
-    
+
     @ObservedObject
     var viewModel: LockScreenViewModel
-    
+
     @State
     private var shoulShowWipeAlert: Bool = false
-    
+
     @Binding
     var userPrefersDarkMode: Bool
 
@@ -23,12 +23,12 @@ struct LockScreenFooterView: View {
         self.viewModel = viewModel
         _userPrefersDarkMode = userPrefersDarkMode
     }
-    
+
     var body: some View {
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
-            
+
             let buttonSize = 35.0
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
@@ -48,12 +48,12 @@ struct LockScreenFooterView: View {
                                     .foregroundColor(BrainwalletColor.content)
                                 Spacer()
                             }
-                            
+
                         }
                         .frame(minWidth: width * 0.20,
                             minHeight: 40.0,
                             alignment: .center)
-                        
+
                         Button(action: {
                             viewModel.userDidTapQR?()
                             viewModel.shouldShowQR.toggle()
@@ -74,7 +74,7 @@ struct LockScreenFooterView: View {
                             minHeight: 40.0,
                             alignment: .center)
                         .padding(8.0)
-                        
+
                         Button(action: {
                             shoulShowWipeAlert.toggle()
                         }) {

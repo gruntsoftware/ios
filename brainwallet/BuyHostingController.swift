@@ -36,7 +36,7 @@ class BuyHostingController: UIHostingController<WebBuyView> {
 	var contentView: WebBuyView
 
 	var isLoaded: Bool = false
-    
+
     init() {
         // HACK TO Widget
         let buyViewModel = BuyViewModel()

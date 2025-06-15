@@ -14,7 +14,7 @@ struct CreateStepTabView: View {
 	}
 
 	var body: some View {
-		GeometryReader { _ in 
+		GeometryReader { _ in
 
 			VStack {
 				ZStack {

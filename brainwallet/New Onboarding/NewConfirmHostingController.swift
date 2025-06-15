@@ -10,20 +10,20 @@ import Foundation
 import SwiftUI
 
 class NewConfirmHostingController: UIHostingController<NewConfirmView> {
-    
+
     // MARK: - Private
     var didCompleteConfirmation: (() -> Void)?
-    
+
     var store: Store?
 
     init(store: Store) {
-        
+
         self.store = store
-        
+
         let viewModel = NewConfirmViewModel(store: store)
         super.init(rootView: NewConfirmView(viewModel: viewModel))
     }
- 
+
     @available(*, unavailable)
     @MainActor dynamic required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")

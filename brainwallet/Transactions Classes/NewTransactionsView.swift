@@ -13,30 +13,30 @@ enum FilterTransactionMode: Int, CaseIterable {
     case sent = 1
     case received = 2
 }
- 
+
 struct NewTransactionsView: View {
-    
+
     @ObservedObject
     var newMainViewModel: NewMainViewModel
-    
+
     @State
     private var transactions: [Transaction] = []
-    
+
     @State
     private var filterMode: FilterTransactionMode = .all
-    
+
     @State
     private var modeState = 0
-    
+
     init(viewModel: NewMainViewModel) {
         newMainViewModel = viewModel
-        
+
     }
     var body: some View {
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
-            
+
             ZStack {
                 BrainwalletColor.affirm.edgesIgnoringSafeArea(.all)
                 VStack {
@@ -50,7 +50,7 @@ struct NewTransactionsView: View {
                                 modeState = 0
                             }
                             filterMode = FilterTransactionMode(rawValue: modeState)!
-                            
+
                         }) {
                             Image(systemName: "slider.horizontal.3")
                                 .resizable()

@@ -90,7 +90,7 @@ class ModalViewController: UIViewController, Subscriber {
 		}
 
         swipeGestureRecognizer.delegate = self
-        swipeGestureRecognizer.addTarget(self, action: #selector(didSwipe)) 
+        swipeGestureRecognizer.addTarget(self, action: #selector(didSwipe))
 		view.addGestureRecognizer(swipeGestureRecognizer)
 		store.subscribe(self, name: .blockModalDismissal, callback: { [weak self] _ in
 			self?.swipeGestureRecognizer.isEnabled = false
@@ -124,7 +124,7 @@ class ModalViewController: UIViewController, Subscriber {
 	override var prefersStatusBarHidden: Bool {
 		return true
 	}
-  
+
     @objc
     private func didSwipe() {
         guard let modalTransitionDelegate = transitioningDelegate as? ModalTransitionDelegate else { return }

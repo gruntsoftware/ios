@@ -7,7 +7,7 @@ class WritePaperPhraseViewController: UIViewController {
 	private let label = UILabel.wrapping(font: UIFont.customBody(size: 16.0))
 	private let stepLabel = UILabel.wrapping(font: UIFont.customMedium(size: 16.0))
 	private let header = UIView()
- 
+
 	private lazy var phraseViews: [PhraseView] = {
 		guard let phraseString = self.walletManager.seedPhrase(pin: self.pin) else { return [] }
 		let words = phraseString.components(separatedBy: " ")

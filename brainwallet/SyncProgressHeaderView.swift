@@ -44,7 +44,7 @@ class SyncProgressHeaderView: UITableViewCell, Subscriber {
 			timestampLabel.setNeedsDisplay()
 		}
 	}
-    
+
     var blockNumberString = "" {
         didSet {
             blockheightLabel.text = blockNumberString

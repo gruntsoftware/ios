@@ -9,15 +9,15 @@
 import SwiftUI
 
 struct NewSendView: View {
-    
+
     @ObservedObject var newMainViewModel: NewMainViewModel
-    
+
     init(viewModel: NewMainViewModel) {
         newMainViewModel = viewModel
     }
     var body: some View {
-        GeometryReader { _ in 
-            
+        GeometryReader { _ in
+
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {

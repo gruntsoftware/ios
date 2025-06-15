@@ -27,12 +27,12 @@ class ModalPresenter: Subscriber, Trackable {
     var reachability = ReachabilityMonitor()
     var notReachableAlert: InAppAlert?
     let wipeNavigationDelegate: StartNavigationDelegate
-    
+
     func newBuyOrReceiveView() -> UIViewController? {
-        
+
         guard let walletManager = walletManager else { return nil }
         var root : ModalViewController
-        
+
         var canUserBuy = UserDefaults
             .standard
                 .object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
@@ -41,14 +41,14 @@ class ModalPresenter: Subscriber, Trackable {
             let buyReceiveVC = BuyReceiveHostingController(store: self.store, walletManager: walletManager, isModalMode: true)
             buyReceiveVC.view.translatesAutoresizingMaskIntoConstraints = false
             root = ModalViewController(childViewController: buyReceiveVC, store: store)
-            
+
             let heightFactor: CGFloat = 0.8
             NSLayoutConstraint.activate([
                 buyReceiveVC.view.heightAnchor
                     .constraint(equalToConstant:
                         window.frame.height * heightFactor)
             ])
-            
+
             buyReceiveVC.dismissBuyReceiveModal = strongify(self) { _ in
                 root.dismiss(animated: true, completion: nil)
             }
@@ -63,12 +63,12 @@ class ModalPresenter: Subscriber, Trackable {
                     .constraint(equalToConstant:
                         window.frame.height * heightFactor)
             ])
-            
+
             receiveVC.dismissReceiveModal = strongify(self) { _ in
                 root.dismiss(animated: true, completion: nil)
             }
         }
-          
+
         return root
     }
 
@@ -130,7 +130,7 @@ class ModalPresenter: Subscriber, Trackable {
                         }))
                         alert.addAction(UIAlertAction(title: String(localized: "Delete all") , style: .default, handler: { _ in
                             let group = DispatchGroup()
-                            
+
                             _ = walletManager.peerManager?.disconnect()
                             BWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
                             group.enter()
@@ -150,7 +150,7 @@ class ModalPresenter: Subscriber, Trackable {
                             }
                         }))
                         self?.topViewController?.present(alert, animated: true)
-						 
+
 					}),
 					Setting(title: String(localized: "Show seed words") , callback: { [weak self] in
 
@@ -215,20 +215,20 @@ class ModalPresenter: Subscriber, Trackable {
                 ScanViewController.presentCameraUnavailableAlert(fromRoot: parent)
                 return
             }
-            
+
             let vc = ScanViewController(completion: { paymentRequest in
-                
+
                 guard let request = paymentRequest else {
                     assertionFailure("Invalid payment request type: \(String(describing: paymentRequest))")
                     return
                 }
                 scanCompletion(request)
                 parent.view.isFrameChangeBlocked = false
-                
+
             }, isValidURI: { address in
                 return address.isValidAddress
             })
-            
+
             parent.view.isFrameChangeBlocked = true
             parent.present(vc, animated: true, completion: {})
         }
@@ -373,7 +373,7 @@ class ModalPresenter: Subscriber, Trackable {
 		}))
 		topViewController?.present(alert, animated: true, completion: nil)
 	}
-    
+
     func receiveView(isRequestAmountVisible: Bool) -> UIViewController? {
         guard let wallet = walletManager?.wallet else { return nil }
         let receiveVC = ReceiveViewController(wallet: wallet, store: store, isRequestAmountVisible: isRequestAmountVisible)

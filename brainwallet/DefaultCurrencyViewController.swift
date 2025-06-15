@@ -5,9 +5,9 @@ class UserPreferredCurrencyViewController: UITableViewController, Subscriber {
 		self.walletManager = walletManager
 		self.store = store
 		rates = store.state.rates.filter { $0.code != C.ltcCurrencyCode }
-        
+
         //// Notfications
-                  
+
 		super.init(style: .plain)
 	}
 

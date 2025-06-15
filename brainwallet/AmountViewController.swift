@@ -61,16 +61,14 @@ class AmountViewController: UIViewController, Trackable {
 		self.store = store
 		self.isPinPadExpandedAtLaunch = isPinPadExpandedAtLaunch
 		self.isRequesting = isRequesting
-        
         var currencyButtonTitle = ""
-          
+
         switch  store.state.maxDigits {
             case 2: currencyButtonTitle = "photons (mł)"
             case 5: currencyButtonTitle = "lites (ł)"
             case 8: currencyButtonTitle = "LTC (Ł)"
             default: currencyButtonTitle = "lites (ł)"
         }
-         
 		if let rate = store.state.currentRate, store.state.isLtcSwapped {
 			currencyToggleButton = ShadowButton(title: "\(rate.code)(\(rate.currencySymbol))", type: .tertiary)
 		} else {
@@ -81,10 +79,7 @@ class AmountViewController: UIViewController, Trackable {
         pinPad = PinPadViewController(style: .whitePinPadStyle, keyboardType: .decimalPad, maxDigits: store.state.maxDigits)
 		super.init(nibName: nil, bundle: nil)
 	}
-    
-    func setCurrencyButton() {
-        
-    }
+    func setCurrencyButton() {}
 
 	func forceUpdateAmount(amount: Satoshis) {
 		self.amount = amount
@@ -98,7 +93,7 @@ class AmountViewController: UIViewController, Trackable {
 	}
 
 	override func viewDidLoad() {
-	
+
 		placeholder.textColor = BrainwalletUIColor.gray
         amountLabel.textColor = BrainwalletUIColor.content
 
@@ -106,7 +101,7 @@ class AmountViewController: UIViewController, Trackable {
 		addConstraints()
 		setInitialData()
 	}
-    
+
     private func currencyButtonTitle(maxDigits: Int) -> String {
         switch maxDigits {
             case 2:
@@ -276,7 +271,7 @@ class AmountViewController: UIViewController, Trackable {
 
 	private func handlePinPadUpdate(output: String) {
 		let currencyDecimalSeparator = NumberFormatter().currencyDecimalSeparator ?? "."
-		placeholder.isHidden = output.utf8.count > 0 ? true : false
+		placeholder.isHidden = !output.utf8.isEmpty ? true : false
 		minimumFractionDigits = 0 // set default
 		if let decimalLocation = output.range(of: currencyDecimalSeparator)?.upperBound {
 			let locationValue = output.distance(from: output.endIndex, to: decimalLocation)
@@ -325,7 +320,7 @@ class AmountViewController: UIViewController, Trackable {
 			output = output.appending(NumberFormatter().currencyDecimalSeparator)
 		}
 		amountLabel.text = output
-		placeholder.isHidden = output.utf8.count > 0 ? true : false
+		placeholder.isHidden = !output.utf8.isEmpty ? true : false
 	}
 
 	func updateBalanceLabel() {
@@ -417,7 +412,7 @@ class AmountViewController: UIViewController, Trackable {
 			didShowFiat?(true)
 		}
 	}
-    
+
 	@available(*, unavailable)
 	required init?(coder _: NSCoder) {
 		fatalError("init(coder:) has not been implemented")

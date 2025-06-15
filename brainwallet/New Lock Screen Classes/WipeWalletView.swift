@@ -12,13 +12,13 @@ struct WipeWalletView: View {
 
     @ObservedObject
     var viewModel: LockScreenViewModel
-    
+
     @Binding
      var shouldDismiss: Bool
-    
+
     @State
      var isWipingWallet: Bool = false
-    
+
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
@@ -32,14 +32,14 @@ struct WipeWalletView: View {
     }
 
     var body: some View {
-        
+
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
-            
+
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                
+
                 VStack {
                     Capsule().foregroundColor(BrainwalletColor.gray)
                         .frame(width: 50.0, height: 5.0, alignment: .center)
@@ -50,7 +50,7 @@ struct WipeWalletView: View {
                         .foregroundColor(BrainwalletColor.content)
                         .frame(alignment: .center)
                         .padding(.bottom, 10.0)
-                    
+
                     Spacer()
 
                     if !isWipingWallet {
@@ -59,19 +59,19 @@ struct WipeWalletView: View {
                             .foregroundColor(BrainwalletColor.content)
                             .frame(alignment: .center)
                             .padding(.all, 20.0)
-                        
+
                         Text("You can start over by tapping RESTORE then entering your previously saved 12 seed words.")
                             .font(regularFont)
                             .foregroundColor(BrainwalletColor.content)
                             .frame(alignment: .center)
                             .padding(.all, 20.0)
-                        
+
                         Text("This will allow you to send and receive from your previous balance. You will need to set a new PIN")
                             .font(regularFont)
                             .foregroundColor(BrainwalletColor.content)
                             .frame(alignment: .center)
                             .padding(.all, 20.0)
-                         
+
                         Image(systemName:"trash")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -86,7 +86,7 @@ struct WipeWalletView: View {
                             .foregroundColor(BrainwalletColor.content)
                             .frame(alignment: .center)
                             .padding(.all, 20.0)
-                        
+
                         Text("Start over by swiping up and restarting the app.")
                             .font(regularFont)
                             .foregroundColor(BrainwalletColor.content)
@@ -105,7 +105,7 @@ struct WipeWalletView: View {
                             RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .foregroundColor(BrainwalletColor.surface)
-                            
+
                             Text(String(localized: "Wipe my Brainwallet & Data"))
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .font(largeButtonFont)
@@ -117,7 +117,7 @@ struct WipeWalletView: View {
                         }
                         .padding(.all, 8.0)
                     }
-                    
+
                     Button(action: {
                         shouldDismiss.toggle()
                     }) {
@@ -125,7 +125,7 @@ struct WipeWalletView: View {
                             RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .foregroundColor(BrainwalletColor.surface)
-                            
+
                             Text("Cancel")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .font(largeButtonFont)

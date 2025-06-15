@@ -177,7 +177,7 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 
 		switch feeType {
 		case .luxury:
-            
+
             processingTime.text = String(localized: "Transaction will take 2.5-5 mins to process.", bundle: .main)
 		case .regular:
 			processingTime.text = String(localized: "Transaction will take 2.5-5 mins to process.", bundle: .main)

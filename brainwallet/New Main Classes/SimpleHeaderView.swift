@@ -7,24 +7,24 @@
 //
 
 import SwiftUI
-  
+
 struct SimpleHeaderView: View {
-    
+
     @ObservedObject
     var newMainViewModel: NewMainViewModel
-    
+
     @State
     var shouldShowSettings: Bool = false
-    
+
     @State
     private var formattedTimestamp = ""
-    
+
     init(viewModel: NewMainViewModel) {
         newMainViewModel = viewModel
     }
     var body: some View {
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)

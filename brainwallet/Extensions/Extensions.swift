@@ -40,7 +40,8 @@ public extension String {
 
 		var result = Data(count: 128 / 8)
 		let resultCount = result.count
-		return result.withUnsafeMutableBytes { (resultBytes: UnsafeMutablePointer<CUnsignedChar>) -> String in
+		return result.withUnsafeMutableBytes {
+            (resultBytes: UnsafeMutablePointer<CUnsignedChar>) -> String in
 			data.withUnsafeBytes { dataBytes in
 				BRMD5(resultBytes, dataBytes, data.count)
 			}
