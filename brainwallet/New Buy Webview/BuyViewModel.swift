@@ -32,4 +32,3 @@ class BuyViewModel: ObservableObject {
         receivingAddress = WalletManager.sharedInstance.wallet?.receiveAddress ?? ""
     }
 }
-

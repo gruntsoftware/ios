@@ -21,8 +21,7 @@ class SendAmountCell: SendCell {
 		didSet {
 			textField.text = content
 			textField.sendActions(for: .editingChanged)
-			guard let count = content?.count else { return }
-			textField.font = !isEmpty ? textFieldFont : placeholderFont
+            textField.font = ((content?.isEmpty) != nil) ? textFieldFont : placeholderFont
 		}
 	}
 
