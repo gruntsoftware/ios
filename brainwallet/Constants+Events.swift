@@ -257,4 +257,7 @@ enum CustomEvent: String {
     /// Did delete all data
     case _20250522_DDAD = "did_delete_all_data"
     
+    /// User Did complete sync
+    case _20250615_UDCS = "user_did_complete_sync"
+    
 }
