@@ -83,6 +83,7 @@ identifier_name:
     - id
     - URL
     - GlobalAPIKey
+  allowed_symbols: ["_"] # these are allowed in variable names
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, codeclimate, junit, html, emoji, sonarqube, markdown, github-actions-logging, summary)
 
 

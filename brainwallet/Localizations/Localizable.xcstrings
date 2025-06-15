@@ -758,7 +758,7 @@
         }
       }
     },
-    "Block time: " : {
+    "Block: " : {
 
     },
     "Blockchain" : {
@@ -4621,9 +4621,6 @@
           }
         }
       }
-    },
-    "Last block: " : {
-
     },
     "Litecoin Display Unit" : {
       "localizations" : {
@@ -10189,6 +10186,9 @@
 
     },
     "This will erase your PIN, data & memos. This cannot be undone." : {
+
+    },
+    "Timestamp: " : {
 
     },
     "to" : {

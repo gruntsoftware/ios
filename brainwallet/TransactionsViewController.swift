@@ -1,6 +1,7 @@
 import LocalAuthentication
 import SwiftUI
 import UIKit
+import Firebase
 
 let kNormalTransactionCellHeight: CGFloat = 65.0
 let kProgressHeaderHeight: CGFloat = 75.0
@@ -17,6 +18,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	var walletManager: WalletManager?
     var shouldBeSyncing: Bool = false
     var newSyncingHeaderView: NewSyncHostingController?
+    var syncStartTime = Date()
       
 	private var transactions: [Transaction] = []
 	private var allTransactions: [Transaction] = [] {
@@ -183,8 +185,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		var progressValue: CGFloat = 0.0
 		let num = lastBlockTimestamp - kFiveYears
 		let den = kTodaysEpochTime - kFiveYears
-		if syncProgress == 0.05 {
+        if  syncProgress < 0.02 {
 			progressValue = abs(CGFloat(num) / CGFloat(den))
+            syncStartTime = Date()
 		} else {
 			progressValue = syncProgress
 		}
@@ -318,7 +321,20 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		}
 	}
 
-	// MARK: - Subscription Methods
+    // MARK: - Sync Measurement
+    
+    private func measureSyncTimes(startSync: Date, endSync: Date) {
+        let duration = endSync.timeIntervalSince(startSync)
+        let uuid = UUID().uuidString
+        Analytics.logEvent(CustomEvent._20250615_UDCS.rawValue,
+            parameters: [
+            "start_timestamp": startSync,
+            "end_timestamp": endSync,
+            "duration_seconds": duration,
+            "uuid": uuid
+        ])
+    }
+    // MARK: - Subscription Methods
 
 	private func addSubscriptions() {
 		guard let store = store
@@ -368,9 +384,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		                		self.shouldBeSyncing = true
 
-		                		if reduxState.walletState.syncProgress >= 0.99 {
+		                		if reduxState.walletState.syncProgress == 0.999 {
 		                			self.shouldBeSyncing = false
 		                			self.newSyncingHeaderView = nil
+                                     
+                                    self.measureSyncTimes(startSync: self.syncStartTime, endSync: Date())
 		                		}
 		                	}
 
