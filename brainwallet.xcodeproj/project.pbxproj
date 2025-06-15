@@ -326,7 +326,6 @@
 		C312D46D2D7DC27700BB97A4 /* DismissLoginAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1AF2D7DC27700BB97A4 /* DismissLoginAnimator.swift */; };
 		C312D46E2D7DC27700BB97A4 /* SeedWordContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D29D2D7DC27700BB97A4 /* SeedWordContainerView.swift */; };
 		C312D46F2D7DC27700BB97A4 /* SignupWebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A82D7DC27700BB97A4 /* SignupWebViewModel.swift */; };
-		C312D4712D7DC27700BB97A4 /* ApplicationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */; };
 		C312D4732D7DC27700BB97A4 /* DefaultCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E22D7DC27700BB97A4 /* DefaultCurrencyViewController.swift */; };
 		C312D4742D7DC27700BB97A4 /* SeedPhraseStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D29B2D7DC27700BB97A4 /* SeedPhraseStepView.swift */; };
 		C312D4752D7DC27700BB97A4 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2012D7DC27700BB97A4 /* ApplicationController.swift */; };
@@ -444,7 +443,6 @@
 		2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenFooterView.swift; sourceTree = "<group>"; };
 		2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveAddressView.swift; sourceTree = "<group>"; };
 		2413E4152DF6451D00DFE7EE /* SecurityCenterNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCenterNavigationDelegate.swift; sourceTree = "<group>"; };
-		2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Brainwallet-StoreKit-v1.storekit"; sourceTree = SOURCE_ROOT; };
 		2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordsGridView.swift; sourceTree = "<group>"; };
 		2415FFF22DBE2CA4002A2199 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRActivityView.swift; sourceTree = "<group>"; };
@@ -684,7 +682,6 @@
 		C312D0672D7DC27700BB97A4 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		C312D0682D7DC27700BB97A4 /* MenuButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonType.swift; sourceTree = "<group>"; };
 		C312D0692D7DC27700BB97A4 /* SegmentedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedButton.swift; sourceTree = "<group>"; };
-		C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApplicationController+Extension.swift"; sourceTree = "<group>"; };
 		C312D06C2D7DC27700BB97A4 /* Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		C312D06D2D7DC27700BB97A4 /* CGContext+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGContext+Additions.swift"; sourceTree = "<group>"; };
 		C312D06E2D7DC27700BB97A4 /* CGRect+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Additions.swift"; sourceTree = "<group>"; };
@@ -1571,7 +1568,7 @@
 			path = "New Table Hosting Classes";
 			sourceTree = "<group>";
 		};
-		24F05E782DF9627000E25829 /* BWAPIClient Classes */ = {
+		24F05E782DF9627000E25829 /* BWAPIClientClasses */ = {
 			isa = PBXGroup;
 			children = (
 				2416CE582DA90D0D00FFBD10 /* BWAPIClient.swift */,
@@ -1579,7 +1576,7 @@
 				2416CE5C2DA90D0D00FFBD10 /* BWAPIClient+KV.swift */,
 				2416CE5D2DA90D0D00FFBD10 /* BWAPIClient+FiatLTCRates.swift */,
 			);
-			path = "BWAPIClient Classes";
+			path = BWAPIClientClasses;
 			sourceTree = "<group>";
 		};
 		24F378002DE89C5B00A388AB /* MoonPay Helper */ = {
@@ -1612,6 +1609,15 @@
 			path = "Lottie Data";
 			sourceTree = "<group>";
 		};
+		24FF004F2DFD7903006AC70E /* App Launch Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C312D2002D7DC27700BB97A4 /* AppDelegate.swift */,
+				C312D2012D7DC27700BB97A4 /* ApplicationController.swift */,
+			);
+			path = "App Launch Classes";
+			sourceTree = "<group>";
+		};
 		75A2A7871DA5934300A983D8 = {
 			isa = PBXGroup;
 			children = (
@@ -1622,7 +1628,6 @@
 				75A2A7F11DA5935F00A983D8 /* Frameworks */,
 				75A2A7911DA5934300A983D8 /* Products */,
 				249DDE402DCD55D700B2B275 /* Recovered References */,
-				2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1744,7 +1749,8 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
-				24F05E782DF9627000E25829 /* BWAPIClient Classes */,
+				24FF004F2DFD7903006AC70E /* App Launch Classes */,
+				24F05E782DF9627000E25829 /* BWAPIClientClasses */,
 				24E078A62DF1F915004B5958 /* New Table Hosting Classes */,
 				24F378002DE89C5B00A388AB /* MoonPay Helper */,
 				244A8D912DE84C710024D356 /* Brainwallet Custom Shapes */,
@@ -1780,7 +1786,6 @@
 				242871832DE5C5300035DE48 /* Extensions */,
 				242871842DE5C59B0035DE48 /* CoreResources */,
 				24618EE92D90435200A878AC /* BRCore.swift */,
-				C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */,
 				C312D06C2D7DC27700BB97A4 /* Async.swift */,
 				C312D06F2D7DC27700BB97A4 /* CustomTitleView.swift */,
 				C312D0722D7DC27700BB97A4 /* LAContext+Extensions.swift */,
@@ -1863,8 +1868,6 @@
 				C312D1CD2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift */,
 				C312D1FD2D7DC27700BB97A4 /* AddressFieldView.swift */,
 				C312D1FE2D7DC27700BB97A4 /* AlertFailureView.swift */,
-				C312D2002D7DC27700BB97A4 /* AppDelegate.swift */,
-				C312D2012D7DC27700BB97A4 /* ApplicationController.swift */,
 				C312D2022D7DC27700BB97A4 /* ArticleIds.swift */,
 				C312D2042D7DC27700BB97A4 /* AssociatedObject.swift */,
 				C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */,
@@ -2733,7 +2736,6 @@
 				C312D46D2D7DC27700BB97A4 /* DismissLoginAnimator.swift in Sources */,
 				C312D46E2D7DC27700BB97A4 /* SeedWordContainerView.swift in Sources */,
 				C312D46F2D7DC27700BB97A4 /* SignupWebViewModel.swift in Sources */,
-				C312D4712D7DC27700BB97A4 /* ApplicationController+Extension.swift in Sources */,
 				24B065392DC6282100B5E000 /* NewMainView.swift in Sources */,
 				C312D4732D7DC27700BB97A4 /* DefaultCurrencyViewController.swift in Sources */,
 				C312D4742D7DC27700BB97A4 /* SeedPhraseStepView.swift in Sources */,

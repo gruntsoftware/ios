@@ -5,7 +5,7 @@ import UIKit
 
 class StartViewModel: ObservableObject, Subscriber {
 	// MARK: - Combine Variables
-    
+
     @Published
     var userPrefersDarkMode: Bool = false
 
@@ -20,13 +20,13 @@ class StartViewModel: ObservableObject, Subscriber {
 	var didTapCreate: (() -> Void)?
 	var didTapRecover: (() -> Void)?
     var store: Store?
-    
+
     let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
 
 	init(store: Store) {
 		self.store = store
 	}
-    
+
 	func userWantsToCreate(completion: @escaping () -> Void) {
 		didTapCreate = completion
 	}
@@ -34,24 +34,24 @@ class StartViewModel: ObservableObject, Subscriber {
 	func userWantsToRecover(completion: @escaping () -> Void) {
 		didTapRecover = completion
 	}
-    
+
     func userDidChangeDarkMode(state: Bool) {
-         
+
         (UIApplication.shared.connectedScenes.first as?
                       UIWindowScene)?.windows.first!.overrideUserInterfaceStyle = state ?   .dark : .light
         UserDefaults.standard.set(state, forKey: userDidPreferDarkModeKey)
-        
+
         UserDefaults.standard.synchronize()
     }
-    
+
     func userDidSetCurrencyPreference(currency: GlobalCurrency) {
-        
+
         guard let store = store
         else {
             debugPrint("::: Error: Rate not fetched")
             return
         }
-        
+
         let code = currency.code
         let isUnsupportedFiat = SupportedFiatCurrency.allCases.first(where: { $0.code == code }) == nil
         // Preferred currency might not be supported for purchase
@@ -62,7 +62,7 @@ class StartViewModel: ObservableObject, Subscriber {
         }
         UserDefaults.userPreferredCurrencyCode = code
         UserDefaults.standard.synchronize()
-        
+
         // Set Default Currency
         store.perform(action: UserPreferredCurrency.setDefault(code))
 

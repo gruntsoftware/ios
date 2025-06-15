@@ -43,9 +43,9 @@ class MenuViewController: UIViewController, Trackable {
 		previousButton?.constrain([
 			previousButton?.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -C.padding[2])
 		])
-		
+
 			view.backgroundColor = BrainwalletUIColor.surface
-		
+
 	}
 
 	@objc private func didTapButton(button: MenuButton) {

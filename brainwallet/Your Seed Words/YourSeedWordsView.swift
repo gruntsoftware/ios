@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct YourSeedWordsView: View {
-    
+
     @Binding var path: [Onboarding]
-    
+
     @ObservedObject
     var viewModel: StartViewModel
-    
+
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
@@ -25,13 +25,13 @@ struct YourSeedWordsView: View {
         self.viewModel = viewModel
         _path = path
     }
-                                
+
     var body: some View {
-        
+
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
-            
+
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {
@@ -46,7 +46,7 @@ struct YourSeedWordsView: View {
                                     .frame(width: squareImageSize,
                                            height: squareImageSize,
                                            alignment: .center)
-                                
+
                                     .foregroundColor(BrainwalletColor.content)
                                 Spacer()
                             }
@@ -54,9 +54,9 @@ struct YourSeedWordsView: View {
                     }
                     .frame(height: squareImageSize)
                     .padding(.all, 20.0)
-                    
+
                     Text("Your seed words ")
-                    
+
                     Button(action: {
                         path.append(.yourSeedProveView)
                     }) {
@@ -64,7 +64,7 @@ struct YourSeedWordsView: View {
                             RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .foregroundColor(BrainwalletColor.surface)
-                            
+
                             Text("Setup app passcode")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .font(largeButtonFont)

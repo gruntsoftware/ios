@@ -46,7 +46,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		self.walletManager = walletManager
 		self.initialAddress = initialAddress
 		self.initialRequest = initialRequest
-        
+
         var currencyButtonTitle = ""
         switch store.state.maxDigits {
                     case 2: currencyButtonTitle = "photons (mł)"
@@ -79,18 +79,18 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
             debugPrint("::: ERROR: Store not initialized")
             return
         }
-        
+
 		store.unsubscribe(self)
 		NotificationCenter.default.removeObserver(self)
 	}
 
 	override func viewDidLoad() {
-        
+
         guard let store = store else {
             debugPrint("::: ERROR: Store not initialized")
             return
         }
-        
+
 		view.backgroundColor = BrainwalletUIColor.surface
 
 		// set as regular at didLoad
@@ -154,7 +154,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	}
 
 	private func addButtonActions() {
-        
+
 		memoCell.didReturn = { textView in
 			textView.resignFirstResponder()
 		}
@@ -170,7 +170,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			self?.amount = amount
 		}
         amountView.didUpdateFee = strongify(self) { myself, feeType in
-            
+
 			myself.feeType = feeType
             let fees = myself.store?.state.fees
             guard let reg = fees?.regular,
@@ -223,12 +223,12 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 
 	private func balanceTextForAmountWithFormattedFees(enteredAmount: Satoshis?, rate: Rate?) -> (NSAttributedString?, NSAttributedString?) {
 		/// DEV: KCW 12-FEB-24
-        
+
         guard let store = store else {
             debugPrint("::: ERROR: Store not initialized")
             return (nil, nil)
         }
-        
+
 		var currentRate: Rate?
 
 		if rate == nil {
@@ -273,14 +273,14 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			                                   state: store.state,
 			                                   selectedRate: currentRate,
 			                                   minimumFractionDigits: 2).description
-            
+
             _ = String(
                 format: String(localized: "(Network fee + Service fee):", bundle: .main),
                 networkFeeAmount,
                 serviceFeeAmount,
                 totalFeeAmount
             )
-            
+
 			if sendTotal > balance {
                 balanceColor = BrainwalletUIColor.error
 			} else {
@@ -324,12 +324,12 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	}
 
 	@objc private func sendTapped() {
-        
+
         guard let store = store else {
             debugPrint("::: ERROR: Store not initialized")
             return
         }
-        
+
 		if sendAddressCell.textField.isFirstResponder {
 			sendAddressCell.textField.resignFirstResponder()
 		}
@@ -464,7 +464,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	}
 
 	private func send() {
-        
+
         guard let store = store,
         let rate = store.state.currentRate,
         let feePerKb = walletManager.wallet?.feePerKb else {
@@ -517,7 +517,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	}
 
 	func confirmProtocolRequest(protoReq: PaymentProtocolRequest) {
-        
+
         guard let firstOutput = protoReq.details.outputs.first,
         let wallet = walletManager.wallet,
         let feePerKb = walletManager.wallet?.feePerKb,

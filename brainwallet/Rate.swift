@@ -2,12 +2,12 @@ import Foundation
 import UIKit
 
 struct Rate: Codable, Hashable {
-    
+
 	let code: String
 	let name: String
 	let rate: Double
 	let lastTimestamp: Date
-    
+
 	var currencySymbol: String {
 		if let symbol = Rate.symbolMap[code] {
 			return symbol

@@ -175,7 +175,7 @@ enum UserPreferredCurrency {
 			UserDefaults.userPreferredCurrencyCode = userPreferredCurrencyCode
             UserDefaults.standard.synchronize()
 			reduce = { $0.clone(userPreferredCurrencyCode: userPreferredCurrencyCode) }
-            
+
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .preferredCurrencyChangedNotification,
                                                 object: nil,

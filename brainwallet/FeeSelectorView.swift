@@ -36,7 +36,7 @@ class FeeSelector: UIView {
 
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: BrainwalletUIColor.surface]
         let normalTitleTextAttributes = [NSAttributedString.Key.foregroundColor: BrainwalletUIColor.gray]
- 
+
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes(normalTitleTextAttributes, for: .normal)
 
