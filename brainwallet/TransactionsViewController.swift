@@ -163,7 +163,14 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     private func emptyMessageView() -> UILabel {
 		let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: tableView.bounds.size.width, height: tableView.bounds.size.height))
 		let messageLabel = UILabel(frame: rect)
-        messageLabel.text = "www.brainwallet.co"
+        var messageString = "www.brainwallet.co"
+        if let walletManager = walletManager {
+            if walletManager.wallet?.balance != UInt64(0) {
+                messageString =  String(localized: "Fetching your transactions...")
+            }
+        }
+        
+        messageLabel.text = messageString
 		messageLabel.textColor = BrainwalletUIColor.content
 		messageLabel.numberOfLines = 0
 		messageLabel.textAlignment = .center

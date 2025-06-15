@@ -32,7 +32,7 @@ struct LockScreenView: View {
         let currentLocale = Locale.current
          // Print locale identifier in native language
         if let localeIdentifier = currentLocale.identifier as String? {
-            #if DEBUG || targetEnvironment(simulator)
+            #if targetEnvironment(simulator)
             let nativeLocaleName = currentLocale.localizedString(forIdentifier: localeIdentifier)
             let nativeLocaleString = nativeLocaleName?.capitalized ?? localeIdentifier
             debugLocale = "| " + nativeLocaleString
