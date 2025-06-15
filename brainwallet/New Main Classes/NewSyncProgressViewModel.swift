@@ -48,31 +48,6 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
         self.walletManager = walletManager
         setSubscriptions()
     }
-
-///    dateFormatter.string(from: Date(timeIntervalSince1970: Double(timestamp)))
-/// DEV: For checking wallet
-//    private func checkForWalletAndSync() {
-//        /// Test seed count
-//        guard seedWords.count == 12 else { return }
-//
-//        /// Set for default.  This model needs a initial value
-//        walletManager.forceSetPin(newPin: Partner.partnerKeyPath(name: .brainwalletStart))
-//
-//        guard walletManager.setRandomSeedPhrase() != nil else {
-//            walletCreationDidFail = true
-//            let properties = ["error_message": "wallet_creation_fail"]
-//            BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
-//            return
-//        }
-//
-//        store.perform(action: WalletChange.setWalletCreationDate(Date()))
-//        DispatchQueue.walletQueue.async {
-//            self.walletManager.peerManager?.connect()
-//            DispatchQueue.main.async {
-//                self.store.trigger(name: .didCreateOrRecoverWallet)
-//            }
-//        }
-//    }
     
     func setCurrency(code: String) {
         UserDefaults.userPreferredCurrencyCode = code
@@ -86,9 +61,10 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
         }
     }
     private func setSubscriptions() {
-        self.store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
-                        callback: { _ in
-            
-        })
+        // TODO: Model all calculations to here from TransactionsViewController
+        //        self.store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
+        //                        callback: { _ in
+        //
+        //        })
     }
 }
