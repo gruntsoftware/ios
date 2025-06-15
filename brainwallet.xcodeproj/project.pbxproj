@@ -83,6 +83,7 @@
 		24952E442DE8B6D400ADEE10 /* OpsFeesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24952E432DE8B6D200ADEE10 /* OpsFeesTests.swift */; };
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
 		249DDE422DCD573700B2B275 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249DDE412DCD572F00B2B275 /* SettingsView.swift */; };
+		249E72D12DFEB88300E1348A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249E72D02DFEB87800E1348A /* SceneDelegate.swift */; };
 		24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A404222DC92F35006CD076 /* WebBuyView.swift */; };
 		24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */; };
 		24AAB31D2DE79ECC00F0C18C /* NewReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */; };
@@ -137,7 +138,6 @@
 		C312D2E42D7DC27700BB97A4 /* KVStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2552D7DC27700BB97A4 /* KVStoreCoordinator.swift */; };
 		C312D2E52D7DC27700BB97A4 /* TransactionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2BA2D7DC27700BB97A4 /* TransactionCellView.swift */; };
 		C312D2E72D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2352D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift */; };
-		C312D2EA2D7DC27700BB97A4 /* ForgotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24D2D7DC27700BB97A4 /* ForgotView.swift */; };
 		C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D32D7DC27700BB97A4 /* AnimatableIcon.swift */; };
 		C312D2ED2D7DC27700BB97A4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D27C2D7DC27700BB97A4 /* LoginViewModel.swift */; };
 		C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */; };
@@ -628,6 +628,7 @@
 		249C459E2D936D5900E9C3B0 /* test.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
 		249C45DA2D936DA600E9C3B0 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = ../core/module.modulemap; sourceTree = SOURCE_ROOT; };
 		249DDE412DCD572F00B2B275 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		249E72D02DFEB87800E1348A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		24A404222DC92F35006CD076 /* WebBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBuyView.swift; sourceTree = "<group>"; };
 		24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveHostingController.swift; sourceTree = "<group>"; };
 		24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveView.swift; sourceTree = "<group>"; };
@@ -653,7 +654,7 @@
 		24E06FC62DF4792800719B6C /* service-data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "service-data.plist"; path = "brainwallet/Launch Resources/service-data.plist"; sourceTree = SOURCE_ROOT; };
 		24E078A72DF1F997004B5958 /* PromptCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCellView.swift; sourceTree = "<group>"; };
 		24E078A92DF1F9AC004B5958 /* PromptCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCellViewModel.swift; sourceTree = "<group>"; };
-		24E52B412DEDD4AB009E3E35 /* brainwalletTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = brainwalletTests.xctestplan; path = brainwalletTests/brainwalletTests.xctestplan; sourceTree = "<group>"; };
+		24E52B412DEDD4AB009E3E35 /* brainwalletTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = brainwalletTests.xctestplan; sourceTree = "<group>"; };
 		24EE3F1E2DCF5A560017472B /* TopUpSetAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpSetAmountView.swift; sourceTree = "<group>"; };
 		24F378012DE89C6600A388AB /* MoonPayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPayHelper.swift; sourceTree = "<group>"; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
@@ -844,7 +845,6 @@
 		C312D24A2D7DC27700BB97A4 /* FeeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeSelectorView.swift; sourceTree = "<group>"; };
 		C312D24B2D7DC27700BB97A4 /* FinishedStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedStepView.swift; sourceTree = "<group>"; };
 		C312D24C2D7DC27700BB97A4 /* ForgotAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotAlertViewModel.swift; sourceTree = "<group>"; };
-		C312D24D2D7DC27700BB97A4 /* ForgotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotView.swift; sourceTree = "<group>"; };
 		C312D24E2D7DC27700BB97A4 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		C312D24F2D7DC27700BB97A4 /* general.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = general.css; sourceTree = "<group>"; };
 		C312D2512D7DC27700BB97A4 /* HostingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingCell.swift; sourceTree = "<group>"; };
@@ -1612,6 +1612,7 @@
 		24FF004F2DFD7903006AC70E /* App Launch Classes */ = {
 			isa = PBXGroup;
 			children = (
+				249E72D02DFEB87800E1348A /* SceneDelegate.swift */,
 				C312D2002D7DC27700BB97A4 /* AppDelegate.swift */,
 				C312D2012D7DC27700BB97A4 /* ApplicationController.swift */,
 			);
@@ -1621,7 +1622,6 @@
 		75A2A7871DA5934300A983D8 = {
 			isa = PBXGroup;
 			children = (
-				24E52B412DEDD4AB009E3E35 /* brainwalletTests.xctestplan */,
 				C312D2CD2D7DC27700BB97A4 /* brainwallet */,
 				C312D4F62D7DC28E00BB97A4 /* brainwalletTests */,
 				75B6F52F1DA71DCC0031A93F /* Modules */,
@@ -1749,6 +1749,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				C312D2532D7DC27700BB97A4 /* Info.plist */,
 				24FF004F2DFD7903006AC70E /* App Launch Classes */,
 				24F05E782DF9627000E25829 /* BWAPIClientClasses */,
 				24E078A62DF1F915004B5958 /* New Table Hosting Classes */,
@@ -1893,9 +1894,7 @@
 				C312D24A2D7DC27700BB97A4 /* FeeSelectorView.swift */,
 				C312D24B2D7DC27700BB97A4 /* FinishedStepView.swift */,
 				C312D24C2D7DC27700BB97A4 /* ForgotAlertViewModel.swift */,
-				C312D24D2D7DC27700BB97A4 /* ForgotView.swift */,
 				C312D24E2D7DC27700BB97A4 /* Functions.swift */,
-				C312D2532D7DC27700BB97A4 /* Info.plist */,
 				24FEB8B92DD2425A00D60036 /* InfoPlist.strings */,
 				C312D2542D7DC27700BB97A4 /* IntroStepView.swift */,
 				C312D2552D7DC27700BB97A4 /* KVStoreCoordinator.swift */,
@@ -2054,6 +2053,7 @@
 		C312D4F62D7DC28E00BB97A4 /* brainwalletTests */ = {
 			isa = PBXGroup;
 			children = (
+				24E52B412DEDD4AB009E3E35 /* brainwalletTests.xctestplan */,
 				24360AFF2DED11B700E1E115 /* Buy Receive Tests */,
 				24952E452DE8B6D700ADEE10 /* Amounts Tests */,
 				24952E432DE8B6D200ADEE10 /* OpsFeesTests.swift */,
@@ -2488,7 +2488,6 @@
 				C312D2E42D7DC27700BB97A4 /* KVStoreCoordinator.swift in Sources */,
 				C312D2E52D7DC27700BB97A4 /* TransactionCellView.swift in Sources */,
 				C312D2E72D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift in Sources */,
-				C312D2EA2D7DC27700BB97A4 /* ForgotView.swift in Sources */,
 				C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */,
 				C312D2ED2D7DC27700BB97A4 /* LoginViewModel.swift in Sources */,
 				C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */,
@@ -2542,6 +2541,7 @@
 				C312D3482D7DC27700BB97A4 /* FeeManager.swift in Sources */,
 				C312D3492D7DC27700BB97A4 /* StartNavigationDelegate.swift in Sources */,
 				C312D34C2D7DC27700BB97A4 /* AssociatedObject.swift in Sources */,
+				249E72D12DFEB88300E1348A /* SceneDelegate.swift in Sources */,
 				C312D34D2D7DC27700BB97A4 /* StartViewController.swift in Sources */,
 				C312D34F2D7DC27700BB97A4 /* DispatchQueue+Additions.swift in Sources */,
 				C312D3512D7DC27700BB97A4 /* DataValidation.swift in Sources */,

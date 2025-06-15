@@ -9,7 +9,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	var applicationController = ApplicationController()
 	var remoteConfigurationHelper: RemoteConfigHelper?
-
 	var resourceRequest: NSBundleResourceRequest?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
