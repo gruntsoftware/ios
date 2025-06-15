@@ -43,11 +43,11 @@ class LockScreenViewModel: ObservableObject, Subscriber {
     func startWipeProcess() {
         didTapWipeWallet?(true)
     }
-    
+
     func userDidSetThemePreference(userPrefersDarkMode: Bool) {
-        
-        UserDefaults.userPrefersDarkTheme = userPrefersDarkMode
-        
+
+        UserDefaults.userPreferredDarkTheme = userPrefersDarkMode
+
         NotificationCenter
             .default
             .post(name: .changedThemePreferenceNotification,
@@ -68,7 +68,7 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 		let currencySymbol = Currency.getSymbolForCurrencyCode(code: currencyCode) ?? ""
 		currentValueInFiat = String(currencySymbol + formattedFiatString)
 	}
-    
+
 	// MARK: - Add Subscriptions
 
 	private func addSubscriptions() {

@@ -34,10 +34,10 @@ class StartViewModel: ObservableObject, Subscriber {
 	func userWantsToRecover(completion: @escaping () -> Void) {
 		didTapRecover = completion
 	}
-    
+
     func userDidSetThemePreference(userPrefersDarkMode: Bool) {
-        
-        UserDefaults.userPrefersDarkTheme = userPrefersDarkMode
+
+        UserDefaults.userPreferredDarkTheme = userPrefersDarkMode
 
         NotificationCenter
             .default

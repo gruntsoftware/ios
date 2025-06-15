@@ -59,7 +59,7 @@ struct StartView: View {
         self.startViewModel = startViewModel
         self.newMainViewModel = newMainViewModel
 	}
-    
+
     func updateVersionLabel() {
         // Get current locale
         let currentLocale = Locale.current
@@ -81,7 +81,7 @@ struct StartView: View {
             NavigationStack(path: $path) {
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                    
+
                     VStack {
                         Group {
                             Image("bw-logotype")
@@ -263,11 +263,11 @@ struct StartView: View {
             })
             .onAppear {
                 Task {
-                    userPrefersDarkMode = UserDefaults.userPrefersDarkTheme
+                    userPrefersDarkMode = UserDefaults.userPreferredDarkTheme
                     updateVersionLabel()
                 }
             }
-            
+
         }
     }
 }

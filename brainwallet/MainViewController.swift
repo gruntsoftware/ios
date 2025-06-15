@@ -104,7 +104,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	private func addTemporaryStartupViews() {
 		guardProtected(queue: DispatchQueue.main) {
 			if !WalletManager.staticNoWallet {
-				
+
 			} else {
 				// Adds a  card view the hides work while thread finishes
 				let launchView = LaunchCardHostingController()

@@ -20,10 +20,10 @@ struct LockScreenView: View {
 
     @State
     private var didFillPIN: Bool = false
-    
+
     @State
     private var userPrefersDarkMode: Bool = true
-    
+
 	init(viewModel: LockScreenViewModel) {
 		self.viewModel = viewModel
     }
@@ -67,22 +67,22 @@ struct LockScreenView: View {
                         .frame(width: width * 0.65)
                         .padding(.top, 25.0)
                         .padding(4.0)
-                    
+
                     Spacer()
                         .frame(minHeight: height * 0.05)
-                    
+
                     PINRowView(pinState: $pinState)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: 40.0)
                         .padding([.top,.bottom], 5.0)
-                
+
                     Spacer()
                         .frame(minHeight: height * 0.05)
-                    
+
                     PasscodeGridView(digits: $pinDigits)
                         .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
                         .padding(.bottom, 5.0)
-                    
+
                     LockScreenFooterView(viewModel: viewModel,
                                          userPrefersDarkMode: $userPrefersDarkMode)
                         .frame(width: width, height: 50.0, alignment: .center)
@@ -127,7 +127,7 @@ struct LockScreenView: View {
                 viewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
             }
             .onAppear {
-                userPrefersDarkMode = UserDefaults.userPrefersDarkTheme
+                userPrefersDarkMode = UserDefaults.userPreferredDarkTheme
                 fiatValue = String(format: String(localized: "%@ = 1Ł"), viewModel.currentValueInFiat)
                 updateVersionLabel()
             }

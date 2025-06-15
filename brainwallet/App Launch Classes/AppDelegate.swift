@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             selector: #selector(restartAfterWipedWallet),
             name: .didDeleteWalletDBNotification,
             object: nil)
-        
+
 		return true
 	}
 
@@ -85,12 +85,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
 
         guard let thisWindow = window else { return }
-        
-        // Set global themes
-        debugPrint("::: AP UserDefaults.userPrefersDarkTheme \(UserDefaults.userPrefersDarkTheme)")
 
-        thisWindow.overrideUserInterfaceStyle = UserDefaults.userPrefersDarkTheme ? .dark: .light
-        
+        // Set global themes
+        debugPrint("::: AP UserDefaults.userPreferredDarkTheme \(UserDefaults.userPreferredDarkTheme)")
+
+        thisWindow.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark: .light
+
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = BrainwalletUIColor.content
 
         UIView.swizzleSetFrame()
@@ -152,13 +152,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.preSetupSteps()
         }
     }
-    
+
     @objc
     func updateUserThemePreference() {
-        let fetchThemePreference = UserDefaults.userPrefersDarkTheme
+        let fetchThemePreference = UserDefaults.userPreferredDarkTheme
         DispatchQueue.main.async {
             guard let thisWindow = self.window else { return }
-            thisWindow.overrideUserInterfaceStyle = UserDefaults.userPrefersDarkTheme ? .dark : .light
+            thisWindow.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark : .light
         }
     }
 
@@ -190,7 +190,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func updatePreferredTheme() {
         guard let window = window else { return }
         // Set global theme
-        window.overrideUserInterfaceStyle = UserDefaults.userPrefersDarkTheme ? .dark: .light
+        window.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark: .light
     }
 
 	/// On Demand Resources
