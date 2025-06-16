@@ -146,16 +146,6 @@ struct BuyReceiveView: View {
                 VStack {
                     if userIsBuying {
                         VStack {
-                            HStack {
-                                Capsule()
-                                    .frame(width: 100.0, height: 2.0, alignment: .top)
-                                    .foregroundColor(BrainwalletColor.content.opacity(0.5))
-                            }
-                            .frame(height: 20.0, alignment: .top)
-                            .padding(8.0)
-                            .onTapGesture {
-                                viewModel.shouldDismissTheView()
-                            }
                             ZStack {
                                 WebBuyView(signingData: viewModel.buildUnsignedMoonPayUrl(), viewModel: viewModel)
 
@@ -183,22 +173,16 @@ struct BuyReceiveView: View {
                         .padding(.bottom, 5.0)
                     } else {
                         VStack {
-                            HStack {
-                                Capsule()
-                                    .frame(width: 100.0, height: 2.0, alignment: .top)
-                                    .foregroundColor(BrainwalletColor.content.opacity(0.5))
-                            }
-                            .frame(height: 20.0, alignment: .top)
-                            .padding(8.0)
-                            .onTapGesture {
-                                viewModel.shouldDismissTheView()
-                            }
+
                             /// Receive Address Group
                             ReceiveAddressView(viewModel: viewModel,
                                                newAddress: $newAddress,
                                                qrPlaceholder: $qrPlaceholder,
                                                keyboardFocused: $keyboardFocused)
-                                .frame(width: modalWidth, height: keyboardFocused ? height * 0.01 : height * 0.3, alignment: .top)
+                                .frame(width: modalWidth, height: keyboardFocused ?
+                                    height * 0.01 :
+                                        height * 0.22,
+                                       alignment: .top)
                                 .opacity(keyboardFocused ? 0 : 1)
                                 .padding(.top, 1.0)
                             /// Receive Address Group
@@ -283,7 +267,7 @@ struct BuyReceiveView: View {
                             .blur(radius: didFetchData ? 3.0 : 0.0)
                             HStack {
                                 Spacer()
-                                Text("Set custom amount:")
+                                Text("Set amount:")
                                     .font(subHeaderFont)
                                     .foregroundColor(BrainwalletColor.content)
                                     .padding(4.0)
@@ -293,17 +277,12 @@ struct BuyReceiveView: View {
                                 .keyboardType(.numberPad)
                                 .textFieldStyle(.roundedBorder)
                                 .focused($keyboardFocused)
-                                .frame(width: 120, alignment: .center)
+                                .frame(width: 80, alignment: .center)
                                 .onChange(of: pickedAmountString) { newValue in
                                     if newValue.count > 6 {
                                         pickedAmountString = "\(fiatMaxAmount)"
                                     }
                                 }
-                            }
-                            .frame(height: 40.0, alignment: .center)
-                            .padding(.bottom, 5.0)
-                            .blur(radius: didFetchData ? 3.0 : 0.0)
-                            HStack {
                                 Spacer()
                                 Button(action: {
                                     pickedAmount = Int(pickedAmountString) ?? fiatTenXAmount
@@ -315,12 +294,11 @@ struct BuyReceiveView: View {
                                             .font(subHeaderFont)
                                             .foregroundColor(BrainwalletColor.surface)
                                             .padding(.all, 8.0)
-                                        Text(pickedAmountString + " \(pickedCurrency.code)")
+                                        Text("\(pickedCurrency.symbol)" + pickedAmountString)
                                             .font(subHeaderFont)
                                             .foregroundColor(BrainwalletColor.surface)
                                             .padding(.all, 8.0)
                                     }
-                                    .frame(width: width * 0.4)
                                     .background(BrainwalletColor.content)
                                     .cornerRadius(8.0)
                                 }
@@ -329,6 +307,7 @@ struct BuyReceiveView: View {
                                 }
                             }
                             .frame(height: 40.0, alignment: .center)
+                            .padding(.all, 10.0)
                             .blur(radius: didFetchData ? 3.0 : 0.0)
                             /// Set Amount Group
 
@@ -345,13 +324,13 @@ struct BuyReceiveView: View {
                                         .frame(width: 120, alignment: .center)
                                         .font(liveQuoteFont)
                                         .foregroundColor(BrainwalletColor.content)
-                                        .padding(10.0)
-                                    Spacer()
+                                    Text("via")
+                                        .font(subDetailFont)
+                                        .foregroundColor(BrainwalletColor.content)
                                     Image("moonpay-logo-type")
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 120, alignment: .center)
-                                        .padding(10.0)
 
                                 }
                                 .frame(width: 300, height: modalCorner)
