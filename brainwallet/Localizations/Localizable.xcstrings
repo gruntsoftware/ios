@@ -7949,6 +7949,9 @@
         }
       }
     },
+    "Set amount:" : {
+
+    },
     "Set app PIN" : {
       "localizations" : {
         "ar" : {
@@ -8048,9 +8051,6 @@
           }
         }
       }
-    },
-    "Set custom amount:" : {
-
     },
     "Set PIN" : {
       "localizations" : {
@@ -11311,6 +11311,9 @@
           }
         }
       }
+    },
+    "via" : {
+
     },
     "Wallet" : {
       "localizations" : {

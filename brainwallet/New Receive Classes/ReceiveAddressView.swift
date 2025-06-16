@@ -27,7 +27,7 @@ struct ReceiveAddressView: View {
 
     let ginormousFont: Font = .barlowSemiBold(size: 22.0)
     let subDetailFont: Font = .barlowRegular(size: 14.0)
-    let lightDetailFont: Font = .barlowLight(size: 15.0)
+    let lightDetailFont: Font = .barlowLight(size: 18.0)
     let buttonFont: Font = .barlowBold(size: 20.0)
     let buttonCorner: CGFloat = 26.0
     let toastFont: Font = .barlowLight(size: 30.0)
@@ -45,6 +45,7 @@ struct ReceiveAddressView: View {
         GeometryReader { geometry in
             let width = geometry.size.width
             let height = geometry.size.height
+            let qrWidth = geometry.size.width * 0.4
 
             ZStack {
                 HStack {
@@ -67,36 +68,35 @@ struct ReceiveAddressView: View {
                              ZStack {
                                 RoundedRectangle(cornerRadius: buttonCorner / 4)
                                     .foregroundColor(.white)
-                                    .frame(width: (width / 2) - padding,
-                                           height: (width / 2) - padding)
+                                    .frame(width: qrWidth - padding,
+                                           height: qrWidth - padding)
                                     .background(.thinMaterial, in: RoundedRectangle(cornerRadius: buttonCorner / 4))
                                 Image(uiImage: viewModel.newReceiveAddressQR ?? qrPlaceholder)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: (width / 2) - padding)
+                                    .frame(width: qrWidth - padding)
                             }
                             Spacer()
 
                         }
-                        .frame(width: width / 2, alignment: .trailing)
+                        .frame(width: qrWidth, alignment: .trailing)
+                        Spacer()
                         VStack {
                             Spacer()
                             Text(newAddress)
                                 .font(lightDetailFont)
                                 .multilineTextAlignment(.center)
-                                .lineLimit(3)
+                                .truncationMode(.middle)
                                 .foregroundColor(BrainwalletColor.content.opacity(opacityFactor))
-                                .padding(.all, 16.0)
+                                .padding(.all, 8.0)
                             Text("COPY / SHARE")
                                 .font(buttonFont)
                                 .multilineTextAlignment(.center)
-                                .lineLimit(2)
                                 .foregroundColor(BrainwalletColor.content.opacity(opacityFactor))
                                 .padding(.all, 8.0)
                             Spacer()
-
                         }
-                        .frame(width: width / 2, alignment: .leading)
+                        .frame(width: qrWidth, alignment: .leading)
                         .onChange(of: viewModel.newReceiveAddress) { address in
                             newAddress = address
                         }
@@ -144,19 +144,3 @@ struct ReceiveAddressView: View {
         }
     }
 }
-
-// VStack {
-//    HStack {
-//          
-//        Button(action: {
-//            UIPasteboard.general.string = viewModel.newReceiveAddress
-//        }) {
-//            ZStack {
-//               
-//            }
-//        }
-//    }
-//    
-//    Spacer()
-// }
-// Spacer()
