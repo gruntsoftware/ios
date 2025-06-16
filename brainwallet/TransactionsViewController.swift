@@ -19,7 +19,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     var shouldBeSyncing: Bool = false
     var newSyncingHeaderView: NewSyncHostingController?
     var syncStartTime = Date()
-      
+
 	private var transactions: [Transaction] = []
 	private var allTransactions: [Transaction] = [] {
 		didSet {
@@ -66,7 +66,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
             debugPrint("::: ERROR: reduxState Not initialized")
 			return
 		}
-        
+
 		tableView.register(HostingCell<TransactionCellView>.self, forCellReuseIdentifier: "HostingCell<TransactionCellView>")
         tableView.register(PromptHostingCell<PromptCellView>.self, forCellReuseIdentifier: "PromptHostingCell<PromptCellView>")
 
@@ -75,9 +75,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		tableView.backgroundColor = BrainwalletUIColor.surface
 		initSyncingHeaderView(reduxState: reduxState, completion: {})
 		attemptShowPrompt()
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(userTappedPromptClose), name: .userTapsClosePromptNotification, object: nil)
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(userTappedPromptContinue), name: .userTapsContinuePromptNotification, object: nil)
 	}
 
@@ -86,13 +86,13 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	///   - reduxState: Current ReduxState
 	///   - completion: Signals the initialzation of the view
 	private func initSyncingHeaderView(reduxState: ReduxState, completion: @escaping () -> Void) {
-        
+
         guard let walletManager = walletManager,
         let store = store else {
             NSLog("::: ERROR: WalletManager or Store not initialized")
             return
         }
-        
+
         newSyncingHeaderView = NewSyncHostingController(store: store, walletManager: walletManager)
         newSyncingHeaderView?.viewModel.isRescanning = reduxState.walletState.isRescanning
         newSyncingHeaderView?.viewModel.progress = 0.02
@@ -101,14 +101,14 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         newSyncingHeaderView?.viewModel.blockHeightString = reduxState.walletState.transactions.first?.blockHeight ?? ""
 		completion()
 	}
-    
+
     @objc
     private func userTappedPromptClose() {
         /// do close
         self.currentPromptType = nil
         self.reload()
     }
-    
+
     @objc
     private func userTappedPromptContinue() {
         /// do continue
@@ -116,18 +116,18 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
             let trigger = self.currentPromptType?.trigger {
                 store.trigger(name: trigger)
             }
-        
+
         self.currentPromptType = nil
         self.reload()
     }
-    
+
 	private func attemptShowPrompt() {
 		guard let walletManager = walletManager,
         let store = store else {
 			NSLog("::: ERROR: WalletManager or Store not initialized")
 			return
 		}
-		  
+
 		let types = PromptType.defaultOrder
 		if let type = types.first(where: { $0.shouldPrompt(walletManager: walletManager, state: store.state) }) {
 			saveEvent("prompt.\(type.name).displayed")
@@ -166,15 +166,15 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         var messageString = "www.brainwallet.co"
         if let walletManager = walletManager {
             if walletManager.wallet?.balance != UInt64(0) {
-                messageString =  String(localized: "Fetching your transactions...")
+                messageString =  String(localized: "Fetching your transaction history...")
             }
         }
-        
+
         messageLabel.text = messageString
 		messageLabel.textColor = BrainwalletUIColor.content
 		messageLabel.numberOfLines = 0
 		messageLabel.textAlignment = .center
-		messageLabel.font = UIFont.barlowMedium(size: 24)
+		messageLabel.font = UIFont.barlowMedium(size: 20)
 		messageLabel.sizeToFit()
 		tableView.backgroundView = messageLabel
 		tableView.separatorStyle = .none
@@ -205,7 +205,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	// MARK: - Table view data / delegate source
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
 		switch indexPath.section {
 		case 0:
 			if currentPromptType != nil {
@@ -240,7 +240,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if indexPath.section == 1 {
 			let transaction = transactions[indexPath.row]
-          
+
 			if let rate = rate,
 			   let store = store,
 			   let isLtcSwapped = isLtcSwapped {
@@ -314,11 +314,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 			NSLog("ERROR No cell found")
 			return UITableViewCell()
 		}
-        
+
         guard let promptType = promptType  else {
             return UITableViewCell()
         }
-        
+
 		return promptCell
 	}
 
@@ -329,7 +329,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	}
 
     // MARK: - Sync Measurement
-    
+
     private func measureSyncTimes(startSync: Date, endSync: Date) {
         let duration = endSync.timeIntervalSince(startSync)
         let uuid = UUID().uuidString
@@ -378,7 +378,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		store.subscribe(self, selector: { $0.walletState.lastBlockTimestamp != $1.walletState.lastBlockTimestamp },
 		                callback: { reduxState in
-           
+
 		                	guard let syncView = self.newSyncingHeaderView else { return }
 
             syncView.viewModel.isRescanning = reduxState.walletState.isRescanning
@@ -394,7 +394,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		                		if reduxState.walletState.syncProgress == 0.999 {
 		                			self.shouldBeSyncing = false
 		                			self.newSyncingHeaderView = nil
-                                     
+
                                     self.measureSyncTimes(startSync: self.syncStartTime, endSync: Date())
 		                		}
 		                	}
@@ -464,7 +464,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		store.subscribe(self, name: .txMemoUpdated(""), callback: { [weak self] in
 
 			guard let trigger = $0 else { return }
-            
+
 			if case let .txMemoUpdated(txHash) = trigger {
 				self?.updateTransactions(txHash: txHash)
 			}

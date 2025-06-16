@@ -10,10 +10,10 @@ import Foundation
 import SwiftUI
 
 class NewMainHostingController: UIHostingController<NewMainView> {
-    
+
     var store: Store?
     var walletManager: WalletManager?
-    
+
     init(store: Store, walletManager: WalletManager) {
         self.store = store
         self.walletManager = walletManager
@@ -22,7 +22,7 @@ class NewMainHostingController: UIHostingController<NewMainView> {
         let mainViewModel = NewMainViewModel(store: store, walletManager: walletManager)
         super.init(rootView: NewMainView(viewModel: mainViewModel, receiveViewModel: receiveViewModel))
     }
-     
+
     // MARK: - Private
     @available(*, unavailable)
     @MainActor dynamic required init?(coder _: NSCoder) {

@@ -10,21 +10,21 @@ import Foundation
 import SwiftUI
 
 struct ReceiveAddressView: View {
-    
+
     @ObservedObject var viewModel: NewReceiveViewModel
-    
+
     @Binding
     var newAddress: String
-    
+
     @Binding
     var  qrPlaceholder: UIImage
-    
+
     @FocusState.Binding
     var keyboardFocused: Bool
-    
+
     @State
     private var didCopyAddress = false
-     
+
     let ginormousFont: Font = .barlowSemiBold(size: 22.0)
     let subDetailFont: Font = .barlowRegular(size: 14.0)
     let lightDetailFont: Font = .barlowLight(size: 15.0)
@@ -45,7 +45,7 @@ struct ReceiveAddressView: View {
         GeometryReader { geometry in
             let width = geometry.size.width
             let height = geometry.size.height
-                        
+
             ZStack {
                 HStack {
                     RoundedRectangle(cornerRadius: buttonCorner)
@@ -54,12 +54,12 @@ struct ReceiveAddressView: View {
                         .frame(width: width, height: height, alignment: .center)
                 }
                 .frame(width: width, height: height, alignment: .center)
-                
+
                 Button(action: {
                     UIPasteboard.general.string = viewModel.newReceiveAddress
                     didCopyAddress = true
                 }) {
-                    
+
                     HStack {
                         VStack {
                             Spacer()
@@ -107,25 +107,25 @@ struct ReceiveAddressView: View {
                 .simultaneousGesture(
                     DragGesture()
                         .onChanged { value in
-                            
+
                             /// Dismiss after 2 button sizes
                             let transX = value.translation.width
                             let transY = value.translation.height
                             let hypotenuse = sqrt(transX * transX + transY * transY)
-                        
+
                             if hypotenuse > minimumDragFactor {
                                 viewModel.shouldDismissTheView()
                             }
                         }
                 )
                 VStack {
-                    
+
                     ZStack {
                         RoundedRectangle(cornerRadius: buttonCorner)
                             .foregroundColor(BrainwalletColor.surface
                                 .opacity(0.95))
                             .frame(width: width, height: height, alignment: .center)
-                        
+
                         Text("New address copied")
                             .font(toastFont)
                             .kerning(0.4)

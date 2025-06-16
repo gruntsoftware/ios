@@ -41,7 +41,7 @@ struct SeedWordContainerView: View {
 			let height = geometry.size.height
 			let wordViewWidth = width / CGFloat(wordViewWidthRoot) - wordPad
 			ZStack {
-                
+
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 				VStack {
 					HStack {

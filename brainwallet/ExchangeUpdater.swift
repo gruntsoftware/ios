@@ -19,13 +19,13 @@ class ExchangeUpdater: Subscriber {
 	}
 
 	func refresh(completion: @escaping () -> Void) {
-        
+
         guard let walletManager = walletManager
         else {
             debugPrint("::: ERROR: WalletManager not initialized")
             return
         }
-        
+
 		if walletManager.store.state.walletState.syncState != .syncing {
 			walletManager.apiClient?.exchangeRates { rates, _ in
                 debugPrint(":::: Exchange rates refreshed \n:::\(Date()):::: \n")
@@ -42,9 +42,9 @@ class ExchangeUpdater: Subscriber {
             debugPrint(":::: Exchange rates walletState.syncState \n:::\(walletManager.store.state.walletState.syncState):::: \n")
         }
 	}
-    
+
     func fetchRates(completion: @escaping ([Rate?]) -> Void) {
-        
+
         let apiClient = BWAPIClient(authenticator: NoAuthAuthenticator())
         apiClient.exchangeRates { rates, _ in
             debugPrint(":::: Exchange rates fetched \n:::\(Date()):::: \n")
@@ -53,7 +53,7 @@ class ExchangeUpdater: Subscriber {
             if let currentRate = rates.first(where: { $0.code == self.store.state.userPreferredCurrencyCode }) {
                 self.store.perform(action: ExchangeRates.setRates(currentRate: currentRate, rates: rates))
             }
-           
+
          return completion(rates)
         }
     }

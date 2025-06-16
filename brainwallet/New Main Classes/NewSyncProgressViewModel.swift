@@ -16,7 +16,7 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
 
     @Published
     var formattedTimestamp = ""
-    
+
     @Published
     var blockHeightString = "--"
 
@@ -27,7 +27,7 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
         df.setLocalizedDateFormatFromTemplate("MMM d, yyyy h a")
         return df
     }()
-    
+
     var isRescanning: Bool = false
     var headerMessage: SyncState = .success
     var progress: CGFloat = 0.0
@@ -37,10 +37,10 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
             formattedTimestamp = dateFormatter.string(from: Date(timeIntervalSince1970: Double(dateTimestamp)))
         }
     }
-    
+
     var store: Store
     var walletManager: WalletManager
-    
+
     let currencies: [SupportedFiatCurrency] = SupportedFiatCurrency.allCases
 
     init(store: Store, walletManager: WalletManager) {
@@ -48,7 +48,7 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
         self.walletManager = walletManager
         setSubscriptions()
     }
-    
+
     func setCurrency(code: String) {
         UserDefaults.userPreferredCurrencyCode = code
         UserDefaults.standard.synchronize()

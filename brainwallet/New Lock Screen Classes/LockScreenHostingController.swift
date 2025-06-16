@@ -10,35 +10,35 @@ import Foundation
 import SwiftUI
 
 class LockScreenHostingController: UIHostingController<LockScreenView> {
-    
+
     var viewModel: LockScreenViewModel
-    
+
     var didEnterPIN: ((String) -> Void)?
-    
+
     var didTapQR: (() -> Void)?
-    
+
     var didTapWipeWallet: ((Bool) -> Void)?
-     
+
     init(store: Store) {
         viewModel = LockScreenViewModel(store: store)
        super.init(rootView: LockScreenView(viewModel: viewModel))
-        
+
         viewModel.userSubmittedPIN = { [weak self] pin in
             self?.didEnterPIN?(pin)
         }
-        
+
         viewModel.userDidTapQR = { [weak self] in
             self?.didTapQR?()
         }
-        
+
         viewModel.didTapWipeWallet = { [weak self] userWantsToDelete in
-            
+
             if userWantsToDelete {
                 self?.didTapWipeWallet?(userWantsToDelete)
             }
         }
     }
-    
+
     func walletWiped() {
         viewModel.didCompleteWipingWallet = true
     }

@@ -2,7 +2,7 @@ import Foundation
 
 extension BWAPIClient {
 	func feePerKb(_ handler: @escaping (_ fees: Fees, _ error: String?) -> Void) {
-        
+
         guard let url = URL(string: APIServer.baseUrl + "v1/fee-per-kb") else {
             assertionFailure("APIServer call for fee-per-kb failed")
             return
@@ -19,22 +19,22 @@ extension BWAPIClient {
 	}
 
 	func exchangeRates( _ handler: @escaping (_ rates: [Rate], _ error: String?) -> Void) {
-        
+
         guard let urlObject = URL(string: APIServer.baseUrl + "v1/rates") else {
             let properties = ["error_message": "rates_url_failed"]
             BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
             debugPrint("::: ERROR: rates_url_failed")
             return
         }
-        
+
         var request = URLRequest(url: urlObject)
         #if targetEnvironment(simulator)
             request.assumesHTTP3Capable = false
         #endif
         debugPrint(request.debugDescription)
-        
+
 		dataTaskWithRequest(request) { data, response, error in
-            
+
             if let error = error as NSError? {
                 if error.domain == NSURLErrorDomain {
                     switch error.code {
@@ -68,7 +68,7 @@ extension BWAPIClient {
 			}
 		}.resume()
 	}
-    
+
     func performRequestWithRetry(urlObject: URL, maxRetries: Int = 3) -> [Rate]? {
         var retryCount = 0
         var rates: [Rate]?

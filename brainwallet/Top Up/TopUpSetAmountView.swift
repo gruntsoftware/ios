@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TopUpSetAmountView: View {
-    
+
     @Binding var path: [Onboarding]
 
     @ObservedObject
@@ -28,23 +28,23 @@ struct TopUpSetAmountView: View {
     let versionFont: Font = .barlowSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
     let themeButtonSize: CGFloat = 28.0
-    
+
     let arrowSize: CGFloat = 60.0
 
     init(viewModel: StartViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
         _path = path
     }
-    
+
     var body: some View {
-        
+
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
-            
+
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                
+
                 VStack {
                     HStack {
                         Button(action: {
@@ -57,7 +57,7 @@ struct TopUpSetAmountView: View {
                                     .frame(width: squareImageSize,
                                            height: squareImageSize,
                                            alignment: .center)
-                                
+
                                     .foregroundColor(BrainwalletColor.content)
                                 Spacer()
                             }
@@ -65,7 +65,7 @@ struct TopUpSetAmountView: View {
                         Spacer()
                     }
                     .padding(.all, 20.0)
-                    
+
                     Spacer()
                     HStack {
                         Image(systemName: "arrow.down.right")
@@ -74,7 +74,7 @@ struct TopUpSetAmountView: View {
                             .frame(width: arrowSize,
                                    alignment: .center)
                             .padding(.leading, 20.0)
-                        
+
                         Spacer()
                     }
                     .frame(maxHeight: .infinity, alignment: .bottomLeading)
@@ -84,7 +84,7 @@ struct TopUpSetAmountView: View {
                     }
                     .padding(.bottom, 40.0)
                     .padding(.leading, 20.0)
-                    
+
                     Spacer(minLength: 20.0)
                         Button(action: {
                             // path.append(.setTopUpAmount)
@@ -93,7 +93,7 @@ struct TopUpSetAmountView: View {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
-                                
+
                                 Text("Buy with MoonPay")
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(largeButtonFont)

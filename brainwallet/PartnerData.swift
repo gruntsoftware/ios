@@ -61,7 +61,7 @@ struct Partner {
 				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 				return errorDescription
 			}
-            
+
         case .agentPubKey:
 
             if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
@@ -72,7 +72,7 @@ struct Partner {
                 BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
                 return errorDescription
             }
-            
+
 		case .prodAF:
 
 			if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],

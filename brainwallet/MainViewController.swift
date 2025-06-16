@@ -18,7 +18,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	var walletManager: WalletManager? {
 		didSet {
 			guard let walletManager = walletManager else { return }
-            
+
 			if !walletManager.noWallet {
 				loginView.walletManager = walletManager
 				loginView.transitioningDelegate = loginTransitionDelegate
@@ -56,7 +56,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		                                       object: nil,
 		                                       queue: nil) { _ in
 			if UserDefaults.writePaperPhraseDate != nil {
-                
+
             }
 		}
 
@@ -66,12 +66,12 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	}
 
 	func didUnlockLogin() {
-        
+
         guard let walletManager = self.walletManager
          else {
             return
         }
-        
+
         guard let tabVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "TabBarViewController")
             as? TabBarViewController
@@ -82,7 +82,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
         tabVC.store = store
         tabVC.walletManager = walletManager
-         
+
         addChildViewController(tabVC, layout: {
             tabVC.view.constrain(toSuperviewEdges: nil)
             tabVC.view.alpha = 0
@@ -94,7 +94,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         }) { _ in
             NSLog("US MainView Controller presented")
         }
-        
+
 // STASH FOR NEW UI
 //        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
 //
@@ -140,7 +140,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		}
 
 		NotificationCenter.default.addObserver(forName: UIScene.willDeactivateNotification, object: nil, queue: nil) { [weak self] _ in
-            
+
 			if let mySelf = self,
                !mySelf.isLoginRequired, !mySelf.store.state.isPromptingBiometrics {
                 mySelf.blurView.alpha = 1.0
