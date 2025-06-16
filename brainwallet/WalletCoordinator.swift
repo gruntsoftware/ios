@@ -149,10 +149,10 @@ class WalletCoordinator: Subscriber, Trackable {
 	}
 
 	func makeTransactionViewModels(transactions: [BRTxRef?], walletManager: WalletManager, kvStore: BRReplicatedKVStore?, rate: Rate?) async throws -> [Transaction] {
-        
+
         precondition(kvStore != nil, "KVStore must be valid")
         precondition(rate != nil, "rate must be valid")
-        
+
 		guard let kvStore = kvStore else {
 			throw MakeTransactionError.replicatedKVStoreNotFound
 		}

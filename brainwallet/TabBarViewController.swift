@@ -8,7 +8,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	@IBOutlet var tabBar: UITabBar!
 	@IBOutlet var settingsButton: UIButton!
 	@IBOutlet var walletBalanceLabel: UILabel!
-    
+
 	var primaryBalanceLabel: UpdatingLabel?
 	var secondaryBalanceLabel: UpdatingLabel?
 	private let largeFontSize: CGFloat = 24.0
@@ -62,7 +62,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		updateTimer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { _ in
 			self.setBalances()
 		}
-        
+
 		guard let array = tabBar.items
 		else {
 			NSLog("ERROR: no items found")
@@ -94,7 +94,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 				let controller = UIStoryboard(name: storyboardNames[index], bundle: nil)
                 .instantiateViewController(withIdentifier: storyboardID)
 				viewControllers.append(controller)
-        } 
+        }
 	}
 
 	private func setupModels() {
@@ -111,12 +111,12 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			secondaryBalanceLabel = UpdatingLabel(formatter: NumberFormatter())
 			primaryBalanceLabel = UpdatingLabel(formatter: NumberFormatter())
 		}
-        
+
 	}
 
 	private func setupViews() {
 		walletBalanceLabel.text = String(localized: "Balance :", bundle: .main)
-        
+
         settingsButton.imageView?.tintColor = BrainwalletUIColor.content
 
 		headerView.backgroundColor = BrainwalletUIColor.surface
@@ -260,7 +260,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			NSLog("ERROR: no items found")
 			return
 		}
-        
+
         /// To show all more compex state (Buy or Receive) toggle here for dev
         canUserBuy = UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
 		for item in array {
@@ -332,7 +332,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		if let tempActiveController = activeController {
 			hideContentController(contentController: tempActiveController)
 		}
-        
+
         self.tabBar.selectedItem = item
 
         // New Receive SwiftUI HC
@@ -345,7 +345,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
             displayContentController(contentController: viewControllers[item.tag])
         }
 	}
-    
+
     func presentNewReceiveModal() {
         guard let store = store,
               let walletManager = walletManager else { return }
@@ -356,13 +356,13 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
             let buyReceiveVC = BuyReceiveHostingController(store: store,
                                                         walletManager: walletManager,
                                                         isModalMode: true)
-            
+
             addChild(buyReceiveVC)
             buyReceiveVC.view.frame = containerView.frame
             view.addSubview(buyReceiveVC.view)
             buyReceiveVC.didMove(toParent: self)
         } else {
-            
+
             let receiveVC = ReceiveHostingController(store: store,
                                                      walletManager: walletManager,
                                                      isModalMode: true)
@@ -372,11 +372,11 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
             receiveVC.didMove(toParent: self)
         }
     }
-    
+
 }
 
 extension TabBarViewController {
-    
+
     // MARK: - Adding Subscriptions
 
     private func addSubscriptions() {

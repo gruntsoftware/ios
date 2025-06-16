@@ -9,36 +9,36 @@
 import SwiftUI
 
 struct NewSyncProgressView: View {
-    
+
     @ObservedObject
     var viewModel: NewSyncProgressViewModel
-    
+
     @State
     private var headerText  = ""
-    
+
     @State
     private var timestampText  = ""
     @State
     private var blockheightText  = ""
-    
+
     @State
     private var progressValue: Float = 0.0
-    
+
     @State
     private var isSendAvailable: Bool = false
-    
+
     private let progressViewHeight: CGFloat = 55.0
     private let progressBarHeight: CGFloat = 14.0
     private let progressIconSize: CGFloat = 16.0
-    
+
     init(viewModel: NewSyncProgressViewModel) {
         self.viewModel = viewModel
     }
     var body: some View {
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
-            
+
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {
@@ -63,7 +63,7 @@ struct NewSyncProgressView: View {
                             Spacer()
                         }
                         .padding(.leading, 8.0)
-                        
+
                         Spacer()
                         VStack {
                             HStack {
@@ -83,7 +83,7 @@ struct NewSyncProgressView: View {
                                 Text("RECEIVE")
                                     .font(.caption)
                                     .frame(width: 70.0, alignment: .trailing)
-                                    .foregroundColor(BrainwalletColor.content) 
+                                    .foregroundColor(BrainwalletColor.content)
 
                                 Image(systemName: "square.and.arrow.down")
                                     .resizable()

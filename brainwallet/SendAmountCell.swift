@@ -21,8 +21,11 @@ class SendAmountCell: SendCell {
 		didSet {
 			textField.text = content
 			textField.sendActions(for: .editingChanged)
-			guard let count = content?.count else { return }
-			textField.font = count > 0 ? textFieldFont : placeholderFont
+            var isEmpty: Bool = true
+			if (content != nil) {
+                isEmpty = false
+            }
+            textField.font = isEmpty ? placeholderFont : textFieldFont
 		}
 	}
 
@@ -32,7 +35,7 @@ class SendAmountCell: SendCell {
 	}
 
 	func setAmountLabel(text: String) {
-		textField.isHidden = text.utf8.count > 0 // Textfield should be hidden if amount label has text
+		textField.isHidden = !text.utf8.isEmpty // Textfield should be hidden if amount label has text
 		cursor.isHidden = !textField.isHidden
 		amountLabel.text = text
 	}

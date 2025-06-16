@@ -23,11 +23,11 @@ enum SupportedFiatCurrency: Int, CaseIterable, Equatable, Identifiable {
     case NGN
     case TRY
     case ZAR
-    
+
     static func from(code: String) -> SupportedFiatCurrency? {
             return allCases.first { $0.code == code }
     }
-    
+
     var id: SupportedFiatCurrency { self }
 
     var symbol: String {
@@ -46,7 +46,7 @@ enum SupportedFiatCurrency: Int, CaseIterable, Equatable, Identifiable {
         case .ZAR: return "R"
         }
     }
-    
+
     var code: String {
         switch self {
         case .USD: return "USD"
@@ -183,12 +183,12 @@ enum GlobalCurrency: Int, CaseIterable, Equatable, Identifiable {
     case TOP
     case VUV
     case WST
-    
+
     var id: GlobalCurrency { self }
     static func from(code: String) -> GlobalCurrency? {
             return allCases.first { $0.code == code }
     }
-    
+
     var symbol: String {
         switch self {
         case .USD: return "$"
@@ -292,7 +292,7 @@ enum GlobalCurrency: Int, CaseIterable, Equatable, Identifiable {
         case .WST: return "WS$"
         }
     }
-    
+
     var code: String {
         switch self {
         case .USD: return "USD"
@@ -396,7 +396,7 @@ enum GlobalCurrency: Int, CaseIterable, Equatable, Identifiable {
         case .WST: return "WST"
         }
     }
-    
+
     var fullCurrencyName: String {
         switch self {
         case .USD: return "US Dollar"

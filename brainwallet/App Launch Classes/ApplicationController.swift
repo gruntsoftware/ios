@@ -12,7 +12,7 @@ let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
 class ApplicationController: Subscriber, Trackable {
     // Ideally the window would be private, but is unfortunately required
     // by the UIApplicationDelegate Protocol
-    
+
     var window: UIWindow?
     fileprivate let store = Store()
     private var startFlowController: StartFlowPresenter?
@@ -33,7 +33,7 @@ class ApplicationController: Subscriber, Trackable {
     private var launchURL: URL?
     private var hasPerformedWalletDependentInitialization = false
     private var didInitWallet = false
-    
+
     init() {
         transitionDelegate = ModalTransitionDelegate(type: .transactionDetail, store: store)
         DispatchQueue.walletQueue.async {
@@ -42,22 +42,22 @@ class ApplicationController: Subscriber, Trackable {
             }
         }
     }
-    
+
     func initWallet() {
-        
+
         guard let tempWalletManager = try? WalletManager(store: store, dbPath: nil) else {
             assertionFailure("WalletManager no initialized")
             return
         }
-        
+
         walletManager = tempWalletManager
-        
+
         _ = walletManager?.wallet // attempt to initialize wallet
-        
+
         /// Init exchange sooner
         exchangeUpdater = ExchangeUpdater(store: store, walletManager: tempWalletManager)
         exchangeUpdater?.fetchRates { _ in }
-        
+
         DispatchQueue.main.async {
             self.didInitWallet = true
             if !self.hasPerformedWalletDependentInitialization {
@@ -65,7 +65,7 @@ class ApplicationController: Subscriber, Trackable {
             }
         }
     }
-    
+
 	func launch(application: UIApplication, window: UIWindow?) {
 		self.application = application
 		self.window = window
@@ -131,7 +131,7 @@ class ApplicationController: Subscriber, Trackable {
 		guard !walletManager.noWallet else { return }
         resetLaunchObjectsAndRates()
 	}
-    
+
     private func resetLaunchObjectsAndRates() {
         guard let walletManager = walletManager else { return }
         guard !walletManager.noWallet else { return }
@@ -139,7 +139,7 @@ class ApplicationController: Subscriber, Trackable {
             walletManager.peerManager?.connect()
         }
         exchangeUpdater?.refresh(completion: {
-            
+
         })
         feeUpdater?.refresh()
         if modalPresenter?.walletManager == nil {
@@ -244,7 +244,7 @@ class ApplicationController: Subscriber, Trackable {
 		walletManager?.apiClient?.events?.up()
 
 		exchangeUpdater?.refresh(completion: {
-            
+
         })
 	}
 

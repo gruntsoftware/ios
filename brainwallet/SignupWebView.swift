@@ -42,9 +42,9 @@ struct SignupWebViewRepresentable: UIViewRepresentable {
 		_wkwebview.allowsBackForwardNavigationGestures = false
 		_wkwebview.scrollView.isScrollEnabled = false
         _wkwebview.backgroundColor = BrainwalletUIColor.surface
-        
+
         var request = URLRequest(url: URL(string: urlString)!)
-        
+
         #if targetEnvironment(simulator)
             request.assumesHTTP3Capable = false
         #endif
