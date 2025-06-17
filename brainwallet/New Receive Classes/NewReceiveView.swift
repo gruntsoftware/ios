@@ -12,31 +12,31 @@ import SwiftUI
 let modalCorner: CGFloat = 55.0
 
 struct NewReceiveView: View {
-    
+
     @ObservedObject
     var viewModel: NewReceiveViewModel
-      
+
     @State
     private var isExpanded: Bool = false
-    
+
     @State
     private var showError: Bool = false
-    
+
     @State
     private var scannedCode: String?
 
     @State
     private var newAddress = ""
-    
+
     @State
     private var didCopyAddress = false
-    
+
     @State
     private var isModalMode: Bool = false
-    
+
     @FocusState
      var keyboardFocused: Bool
-    
+
     @State
     private var qrPlaceholder: UIImage = UIImage(systemName: "qrcode")!
 
@@ -47,7 +47,7 @@ struct NewReceiveView: View {
     let buttonFont: Font = .barlowBold(size: 20.0)
     let toastFont: Font = .barlowLight(size: 30.0)
     let lightDetailFont: Font = .barlowLight(size: 15.0)
-    
+
     let minimumDragFactor: CGFloat = 250.0
     let opacityFactor: CGFloat = 0.8
 
@@ -57,19 +57,19 @@ struct NewReceiveView: View {
     }
 
     var body: some View {
-             
+
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
             let height = geometry.size.height
-            
+
             let modalWidth = geometry.size.width * 0.9
-              
+
             ZStack {
-                
+
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                     VStack {
-                        
+
                         Button(action: {
                             UIPasteboard.general.string = viewModel.newReceiveAddress
                             didCopyAddress = true
@@ -82,7 +82,7 @@ struct NewReceiveView: View {
                                         .opacity(opacityFactor))
                                     .frame(width: 35, height: 35)
                                     .padding([.top,.bottom], 10)
-                                
+
                                 ZStack {
                                     RoundedRectangle(cornerRadius: buttonCorner / 4)
                                         .foregroundColor(.white)
@@ -93,7 +93,7 @@ struct NewReceiveView: View {
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: width * 0.4, height: width * 0.4)
                                 }
-                                
+
                                 Text("\(viewModel.newReceiveAddress)")
                                    .font(lightDetailFont)
                                    .multilineTextAlignment(.center)
@@ -101,7 +101,7 @@ struct NewReceiveView: View {
                                    .foregroundColor(BrainwalletColor.content.opacity(opacityFactor))
                                    .frame(width: width * 0.4, height: height * 0.1)
                                    .padding(.all, 8.0)
-                                
+
                                 Text("COPY / SHARE")
                                    .font(buttonFont)
                                    .foregroundColor(BrainwalletColor.content.opacity(opacityFactor))
@@ -112,12 +112,12 @@ struct NewReceiveView: View {
                         .simultaneousGesture(
                             DragGesture()
                                 .onChanged { value in
-                                    
+
                                     /// Dismiss after 2 button sizes
                                     let transX = value.translation.width
                                     let transY = value.translation.height
                                     let hypotenuse = sqrt(transX * transX + transY * transY)
-                                
+
                                     if hypotenuse > minimumDragFactor {
                                         viewModel.shouldDismissTheView()
                                     }
@@ -131,12 +131,12 @@ struct NewReceiveView: View {
                     .gesture(
                         DragGesture()
                             .onChanged { value in
-                                
+
                                 /// Dismiss after 2 button sizes
                                 let transX = value.translation.width
                                 let transY = value.translation.height
                                 let hypotenuse = sqrt(transX * transX + transY * transY)
-                            
+
                                 if hypotenuse > minimumDragFactor {
                                     viewModel.shouldDismissTheView()
                                 }
@@ -144,13 +144,13 @@ struct NewReceiveView: View {
                     )
 
                     VStack {
-                        
+
                         ZStack {
                             RoundedRectangle(cornerRadius: buttonCorner)
                                 .foregroundColor(BrainwalletColor.surface
                                     .opacity(opacityFactor))
                                 .frame(width: modalWidth * 0.75)
-                            
+
                             Text("New address copied")
                                 .font(toastFont)
                                 .kerning(2.0)

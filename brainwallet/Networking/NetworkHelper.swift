@@ -10,7 +10,7 @@ import Foundation
 import Network
 
 class NetworkHelper: ObservableObject {
-    
+
     func fetchCurrenciesCountries(completion: @escaping ([MoonpayCountryData]) -> Void) {
         let url = URL(string: "https://api.moonpay.com/v3/countries")!
         var request = URLRequest(url: url)
@@ -61,7 +61,7 @@ class NetworkHelper: ObservableObject {
         }
         task.resume()
     }
-    
+
     func fetchBuyQuote(baseCurrencyAmount: Int, baseCurrency: SupportedFiatCurrency, completion: @escaping (MoonpayBuyQuote) -> Void) {
         let cryptoCurrencyCode: String = "ltc"// Default and only crypto atm
         let baseURL = APIServer.baseUrl
@@ -71,7 +71,7 @@ class NetworkHelper: ObservableObject {
         let codeSuffix = "?currencyCode=\(cryptoCurrencyCode)&baseCurrencyCode=\(baseCode)&baseCurrencyAmount=\(baseAmount)"
 
         var request: URLRequest
-        
+
         if let url = URL(string: baseURL + suffix + codeSuffix) {
             request = URLRequest(url: url)
         } else {
@@ -94,10 +94,10 @@ class NetworkHelper: ObservableObject {
                     if let jsonData = try? JSONSerialization.jsonObject(with: data ?? Data(), options: []),
                        let jsonDict = jsonData as? [String: AnyObject],
                        let topElement = jsonDict["data"] as? [String: AnyObject] {
-                        
+
                         let quoteCurrencyDict = topElement["quoteCurrency"] as? [String: AnyObject]
                         let baseCurrencyDict = topElement["baseCurrency"] as? [String: AnyObject]
-                        
+
                         let quoteTimestamp = quoteCurrencyDict?["updatedAt"] as? String ?? Date().description
                         let fiatCode = baseCurrencyDict?["code"] as? String ?? ""
                         let maxBuyAmount = baseCurrencyDict?["maxBuyAmount"] as? Int ?? 0
@@ -127,12 +127,12 @@ class NetworkHelper: ObservableObject {
         }
         task.resume()
     }
-    
+
     func fetchSignedURL(mpData: MoonpaySigningData, completion: @escaping (String) -> Void) {
         let baseURL = APIServer.baseUrl
         let suffix = "v1/moonpay/sign-url"
         var request: URLRequest
-        
+
         let urlString = """
         \(baseURL)\(suffix)?\
         baseCurrencyCode=\(mpData.baseCurrencyCode)&\
@@ -145,7 +145,7 @@ class NetworkHelper: ObservableObject {
         themeId=\(mpData.themeId)&\
         theme=\(mpData.theme)
         """
-        
+
         if let createdURL = URL(string: urlString) {
             request = URLRequest(url: createdURL)
         } else {
@@ -184,14 +184,14 @@ class NetworkHelper: ObservableObject {
         }
         task.resume()
     }
-    
+
     func fetchFiatLimits(code: String, completion: @escaping (MoonpayBuyLimits) -> Void) {
         let baseURL = APIServer.baseUrl
         let suffix = "v1/moonpay/ltc-to-fiat-limits"
         let codeSuffix = "?baseCurrencyCode=\(code)"
 
         var request: URLRequest
-        
+
         if let url = URL(string: baseURL + suffix + codeSuffix) {
             request = URLRequest(url: url)
         } else {
@@ -214,7 +214,7 @@ class NetworkHelper: ObservableObject {
                     if let jsonData = try? JSONSerialization.jsonObject(with: data ?? Data(), options: []),
                        let jsonDict = jsonData as? [String: AnyObject],
                        let topElement = jsonDict["data"] as? [String: AnyObject] {
-                        
+
                         let intToBool: Bool = (topElement["areFeesIncluded"] as? Int == 0) ? false : true
                         let areFeesIncluded = intToBool
                         let baseCurrency = topElement["baseCurrency"] as? [String: AnyObject]
@@ -226,7 +226,7 @@ class NetworkHelper: ObservableObject {
                         let cryptoCode = quoteCurrency?["code"] as? String ?? "ltc"
                         let cryptoMaxBuyAmount = quoteCurrency?["maxBuyAmount"] as? Double ?? 0.0
                         let cryptoMinBuyAmount = quoteCurrency?["minBuyAmount"] as? Double ?? 0.0
-                        
+
                         moonpayBuyLimits = MoonpayBuyLimits(areFeesIncluded: areFeesIncluded,
                                                      fiatCode: fiatCode,
                                                      maxBuyAmount: maxBuyAmount,

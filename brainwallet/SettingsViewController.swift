@@ -73,7 +73,7 @@ class SettingsViewController: UITableViewController {
 			}
 
             cell.textLabel?.textColor = BrainwalletUIColor.content
-			
+
 		}
 		return cell
 	}
@@ -82,7 +82,7 @@ class SettingsViewController: UITableViewController {
 		let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 44))
 		let label = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.content)
 		let separator = UIView()
-        
+
         view.backgroundColor = BrainwalletUIColor.surface
 
 		view.addSubview(label)
@@ -102,7 +102,7 @@ class SettingsViewController: UITableViewController {
 		}
 
         separator.backgroundColor = BrainwalletUIColor.gray
-        
+
 		view.addSubview(separator)
 		separator.constrain([
 			separator.leadingAnchor.constraint(equalTo: view.leadingAnchor),

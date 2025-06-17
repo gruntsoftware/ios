@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
+
     @Binding var path: [Onboarding]
-    
+
     @ObservedObject
     var viewModel: StartViewModel
-    
+
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
@@ -24,14 +24,14 @@ struct SettingsView: View {
         self.viewModel = viewModel
         _path = path
     }
-                                
+
     var body: some View {
-        
+
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
             let height = geometry.size.height
-            
+
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {
@@ -46,7 +46,7 @@ struct SettingsView: View {
                                     .frame(width: squareImageSize,
                                            height: squareImageSize,
                                            alignment: .center)
-                                
+
                                     .foregroundColor(BrainwalletColor.content)
                                 Spacer()
                             }
@@ -54,9 +54,9 @@ struct SettingsView: View {
                     }
                     .frame(height: squareImageSize)
                     .padding(.all, 20.0)
-                    
+
                     Text("TEMP Settings View")
-                    
+
                     Button(action: {
                         //
                     }) {
@@ -64,7 +64,7 @@ struct SettingsView: View {
                             RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .foregroundColor(BrainwalletColor.surface)
-                            
+
                             Text(S.Onboarding.readyNextButton.localize())
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .font(largeButtonFont)

@@ -8,22 +8,22 @@ struct LockScreenView: View {
 
 	@State
 	private var fiatValue = ""
-    
+
     @State
     private var debugLocale = ""
- 
+
     @State
     private var pinState: [Bool] = [false,false,false,false]
-    
+
     @State
     private var pinDigits: [Int] = []
-    
+
     @State
     private var didFillPIN: Bool = false
-    
+
     @State
     private var userPrefersDarkMode: Bool = true
-    
+
 	init(viewModel: LockScreenViewModel) {
 		self.viewModel = viewModel
     }
@@ -40,11 +40,11 @@ struct LockScreenView: View {
             #endif
         }
     }
-    
+
 	var body: some View {
-        
+
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
             let height = geometry.size.height
 
@@ -60,29 +60,29 @@ struct LockScreenView: View {
                             .padding(.trailing, 16.0)
                     }
                     .padding(.top, 16.0)
-                    
+
                     Image("bw-logotype")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: width * 0.65)
                         .padding(.top, 25.0)
                         .padding(4.0)
-                    
+
                     Spacer()
                         .frame(minHeight: height * 0.05)
-                    
+
                     PINRowView(pinState: $pinState)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: 40.0)
                         .padding([.top,.bottom], 5.0)
-                
+
                     Spacer()
                         .frame(minHeight: height * 0.05)
-                    
+
                     PasscodeGridView(digits: $pinDigits)
                         .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
                         .padding(.bottom, 5.0)
-                    
+
                     LockScreenFooterView(viewModel: viewModel,
                                          userPrefersDarkMode: $userPrefersDarkMode)
                         .frame(width: width, height: 50.0, alignment: .center)
@@ -109,13 +109,13 @@ struct LockScreenView: View {
                     fiatValue = String(format: String(localized: "%@ = 1Ł"), newValue)
                 }
                 .onChange(of: pinDigits) { _ in
-                    
+
                     pinState = (0..<4).map { $0 < pinDigits.count }
-                    
+
                     didFillPIN  = pinState.allSatisfy { $0 == true }
-                    
+
                     let pinString = pinDigits.map(String.init).joined()
-                    
+
                     if didFillPIN {
                         viewModel.pinDigits = pinDigits
                         viewModel.userSubmittedPIN?(pinString)

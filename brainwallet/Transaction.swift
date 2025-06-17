@@ -13,12 +13,12 @@ class Transaction {
 	// MARK: - Public
 
 	private let opsAddressSet: Set<String> = Partner.walletOpsSet()
-	
+
 	init?(_ tx: BRTxRef, walletManager: WalletManager, kvStore: BRReplicatedKVStore?, rate: Rate?) {
-        
+
 		guard let wallet = walletManager.wallet else { return nil }
 		guard let peerManager = walletManager.peerManager else { return nil }
-        
+
 		self.tx = tx
 		self.wallet = wallet
 		self.kvStore = kvStore
@@ -40,14 +40,14 @@ class Transaction {
 		self.fee = fee + opsAmount
 
 		let amountReceived = wallet.amountReceivedFromTx(tx)
-		
+
         var amountSent =  UInt64(0)
         if opsAmount > wallet.amountSentByTx(tx) {
           amountSent = wallet.amountSentByTx(tx)
         } else {
             amountSent = wallet.amountSentByTx(tx) - opsAmount
         }
-            
+
 		if amountSent > 0, (amountReceived + fee) == amountSent {
 			direction = .moved
 			satoshis = amountSent

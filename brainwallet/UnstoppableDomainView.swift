@@ -25,7 +25,7 @@ struct UnstoppableDomainView: View {
 
     var body: some View {
         GeometryReader { _ in
-            
+
             ZStack {
                 VStack {
                     //					Spacer()

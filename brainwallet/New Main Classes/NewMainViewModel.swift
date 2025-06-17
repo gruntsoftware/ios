@@ -13,45 +13,45 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     @Published
     var store: Store?
-    
+
     @Published
     var walletManager: WalletManager?
-      
+
     @Published
     var exchangeRate: Rate?
-    
+
     @Published
     var currentFiatValue = ""
-     
+
     @Published
     var currencyCode = ""
-    
+
     @Published
     var currentLanguage = Locale.current.identifier
-    
+
     @Published
     var walletAmount: Amount?
-    
+
     @Published
     var localFormatter: NumberFormatter?
-    
+
     @Published
     var ltcFormatter: NumberFormatter?
-    
+
     @Published
     var dateFormatter: DateFormatter?
-    
+
     var updateTimer: Timer?
-    
+
     @Published
     var wasLTCFiatSwapped = false
-    
+
     @Published
     var shouldShowSettings = false
-  
+
     private
     var walletHasInitialized: Bool = false
-    
+
     private
     let timerPeriod: Double = {
         #if DEBUG
@@ -60,15 +60,15 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             return 20.0
         #endif
     }()
-    
+
     private var balance: UInt64 = 0 {
         didSet { setBalances() }
     }
-    
+
     init(store: Store, walletManager: WalletManager) {
         self.store = store
         self.walletManager = walletManager
-        
+
         addSubscriptions()
 
         updateTimer = Timer
@@ -77,38 +77,38 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             self.fetchCurrentPrice()
             self.setBalances()
         }
-        
+
         dateFormatter = DateFormatter()
         dateFormatter!.setLocalizedDateFormatFromTemplate("dd MMM hh:mm:ss a")
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: .languageChangedNotification, object: nil)
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self, name: .languageChangedNotification, object: nil)
         self.updateTimer = nil
     }
-    
+
     @objc private func languageChanged() {
-    
+
     }
-    
+
     private func fetchCurrentPrice() {
         guard let currentRate = store?.state.currentRate
         else {
             return
         }
-    
+
         let fiatRate = Double(round(100000 * currentRate.rate / 100000))
         let formattedFiatString = String(format: "%3.2f", fiatRate)
         currencyCode = currentRate.code
         let currencySymbol = Currency.getSymbolForCurrencyCode(code: currencyCode) ?? ""
         currentFiatValue = String(currencySymbol+formattedFiatString + " = Ł1")
     }
-    
+
     private func setBalances() {
         guard let store = self.store else { return }
-    
+
         if let rate = store.state.currentRate,
            let balance = store.state.walletState.balance,
            walletHasInitialized {
@@ -117,9 +117,9 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             walletHasInitialized = true
         }
     }
-    
+
     private func addSubscriptions() {
-        
+
         guard let store = self.store else { return }
 
         store.lazySubscribe(self,
@@ -157,7 +157,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
                                 self.setBalances()
                             }
                         })
-         
+
     }
 
 }
