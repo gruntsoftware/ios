@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SeedWordsGridView: View {
-    
+
     @State private var seedWords: [String] = ["","","","","","","","","","","",""]
 
     private let isRestore: Bool
@@ -17,15 +17,15 @@ struct SeedWordsGridView: View {
     let fieldHeight: CGFloat = 40.0
 
     init(isRestore: Bool) {
-        self.isRestore = isRestore 
+        self.isRestore = isRestore
     }
-    
+
     var body: some View {
         GeometryReader { geometry in
-            
+
             ZStack {
                 VStack {
-                    
+
                         Grid(horizontalSpacing: elementSpacing, verticalSpacing: elementSpacing) {
                             GridRow {
                                 SeedCapsuleView(index: 1, word: $seedWords[0])
@@ -33,14 +33,14 @@ struct SeedWordsGridView: View {
                                 SeedCapsuleView(index: 3, word: $seedWords[2])
                             }
                             .frame(minHeight: fieldHeight)
-                            
+
                             GridRow {
                                 SeedCapsuleView(index: 4, word: $seedWords[3])
                                 SeedCapsuleView(index: 5, word: $seedWords[4])
                                 SeedCapsuleView(index: 6, word: $seedWords[5])
                             }
                             .frame(minHeight: fieldHeight)
-                            
+
                             GridRow {
                                 SeedCapsuleView(index: 7, word: $seedWords[6])
                                 SeedCapsuleView(index: 8, word: $seedWords[7])
@@ -59,15 +59,15 @@ struct SeedWordsGridView: View {
                                 }) {
                                     ZStack {
                                         GeometryReader { geometry in
-                                            
+
                                             let width = geometry.size.width
-                                            
+
                                             ZStack {
                                                 Capsule()
                                                     .fill(BrainwalletColor.content.opacity(0.3))
                                                     .frame(height: fieldHeight)
                                                     .frame(width: width * 0.3)
-                                                
+
                                                 HStack {
                                                     Spacer()
                                                     Text("Clear")
@@ -78,7 +78,7 @@ struct SeedWordsGridView: View {
                                                     Spacer()
                                                 }
                                                 .frame(maxWidth: .infinity, alignment: .center)
-                                                
+
                                             }
                                             .frame(minHeight:fieldHeight)
                                         }
@@ -99,9 +99,9 @@ struct SeedCapsuleView: View {
     let detailFont: Font = .barlowRegular(size: 28.0)
     var index: Int
     let fieldHeight: CGFloat = 40.0
-      
+
     @Binding var word: String
-     
+
     init (index: Int, word: Binding<String>) {
         _word = word
         self.index = index
@@ -109,15 +109,15 @@ struct SeedCapsuleView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
-            
+
             ZStack {
                 Capsule()
                     .fill(BrainwalletColor.content.opacity(0.3))
                     .frame(height: fieldHeight)
                     .frame(width: width)
-                
+
                 HStack {
                     Text("\(index)")
                         .font(.footnote)
@@ -133,13 +133,13 @@ struct SeedCapsuleView: View {
                         .frame(minHeight: fieldHeight)
                         .disableAutocorrection(true)
                  }
-                
+
             }
             .frame(minHeight:fieldHeight)
 
         }
     }
-        
+
 }
 
 struct SeedWordsGridView_Previews: PreviewProvider {

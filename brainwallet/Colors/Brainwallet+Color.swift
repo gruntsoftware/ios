@@ -30,7 +30,7 @@ struct BrainwalletColor {
     static let error: Color = Color("brainwalletError")
     /// gray - gray
     static let gray: Color = Color("brainwalletGray")
-    
+
     /// Static theme colors
     static let midnight = Color(#colorLiteral(red: 0.07334695011, green: 0.07277505845, blue: 0.4002133608, alpha: 1))
     static let cheddar = Color(#colorLiteral(red: 1, green: 0.6823529412, blue: 0, alpha: 1))

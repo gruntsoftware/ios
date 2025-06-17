@@ -11,7 +11,7 @@ import SwiftUI
 import UIKit
 
 extension ModalPresenter {
-    
+
     func presentModal(_ type: RootModal, configuration: ((UIViewController) -> Void)? = nil) {
         guard type != .loginScan else { return presentLoginScan() }
         guard let viewC = rootModalViewController(type)
@@ -73,7 +73,7 @@ extension ModalPresenter {
             })
         })
     }
-    
+
     func handleScanQrURL() {
         guard !store.state.isLoginRequired else { presentLoginScan(); return }
 
@@ -86,7 +86,7 @@ extension ModalPresenter {
             }
         }
     }
-    
+
     func wipeEmptyView() -> UIViewController? {
         guard let walletManager = walletManager else { return nil }
 
@@ -133,7 +133,7 @@ extension ModalPresenter {
         }
         return root
     }
-    
+
     func presentBiometricsSetting() {
         guard let walletManager = walletManager else { return }
         let biometricsSettings = BiometricsSettingsViewController(walletManager: walletManager, store: store)
@@ -173,7 +173,7 @@ extension ModalPresenter {
         updatePin.addCloseNavigationItem()
         topViewController?.present(nc, animated: true, completion: nil)
     }
-    
+
     func presentRescan() {
         let rescanVC = ReScanViewController(store: store)
         let navC = UINavigationController(rootViewController: rescanVC)
@@ -181,7 +181,7 @@ extension ModalPresenter {
         rescanVC.addCloseNavigationItem()
         topViewController?.present(navC, animated: true, completion: nil)
     }
-    
+
     func menuViewController() -> UIViewController? {
         let menu = MenuViewController()
         let root = ModalViewController(childViewController: menu, store: store)
@@ -222,7 +222,7 @@ extension ModalPresenter {
             self.presentModal(.send)
         }
     }
-    
+
     func handleCopyAddresses(success: String?, error _: String?) {
         guard let walletManager = walletManager else { return }
         let alert = UIAlertController(title: String(localized: "Copy Wallet Addresses") , message: String(localized: "Copy wallet addresses to clipboard?") , preferredStyle: .alert)
@@ -253,7 +253,7 @@ extension ModalPresenter {
         }))
         topViewController?.present(alert, animated: true, completion: nil)
     }
-    
+
     func addSubscriptions() {
         store.subscribe(self, selector: { $0.rootModal != $1.rootModal }, callback: { state in
                             Task { @MainActor in

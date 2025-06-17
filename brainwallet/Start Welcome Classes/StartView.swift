@@ -6,7 +6,7 @@ struct StartView: View {
     let buttonLightFont: Font = .barlowLight(size: 16.0)
     let regularButtonFont: Font = .barlowRegular(size: 24.0)
     let largeButtonFont: Font = .barlowBold(size: 24.0)
-    
+
     let versionFont: Font = .barlowSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
     let squareButtonSize: CGFloat = 55.0
@@ -15,28 +15,28 @@ struct StartView: View {
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 60.0
     let lottieFileName: String = "welcomeemoji20250212.json"
-    
+
     @State
     private var isShowingOnboardView: Bool = true
-    
+
 	@ObservedObject
 	var startViewModel: StartViewModel
-    
+
     @ObservedObject
     var newMainViewModel: NewMainViewModel
-    
+
     @State
     private var path: [Onboarding] = []
 
 	@State
 	private var selectedLang: Bool = false
-    
+
     @State
     private var selectedFiat: Bool = false
 
 	@State
 	private var delayedSelect: Bool = false
-    
+
     @State
     private var userPrefersDarkMode: Bool = true
 
@@ -45,21 +45,21 @@ struct StartView: View {
 
 	@State
 	private var animationAmount = 0.0
-    
+
     @State
     private var debugLocale = ""
-    
+
     @State
     private var pickedCurrency: GlobalCurrency = .USD
 
 	@State
 	private var didContinue: Bool = false
-    
+
     init(startViewModel: StartViewModel, newMainViewModel: NewMainViewModel) {
         self.startViewModel = startViewModel
         self.newMainViewModel = newMainViewModel
 	}
-    
+
     func updateVersionLabel() {
         // Get current locale
         let currentLocale = Locale.current
@@ -75,13 +75,13 @@ struct StartView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
             let height = geometry.size.height
             NavigationStack(path: $path) {
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                    
+
                     VStack {
                         Group {
                             Image("bw-logotype")
@@ -90,12 +90,12 @@ struct StartView: View {
                                 .frame(maxWidth: width * 0.65,
                                        alignment: .center)
                                 .padding([.top,.bottom], verticalPadding)
-                            
+
                             WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
                                 .frame(height: height * 0.35, alignment: .center)
                                 .padding(.top, verticalPadding)
                         }
-                        
+
                         Spacer()
                         HStack {
                             ZStack {
@@ -126,7 +126,7 @@ struct StartView: View {
                                                     .font(selectorFont)
                                                     .foregroundColor(BrainwalletColor.content)
                                             }
-                                            
+
                                         }
                                         .pickerStyle(.wheel)
                                         .frame(width: width * 0.6)
@@ -150,7 +150,7 @@ struct StartView: View {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
-                                
+
                                 Text( "Ready" )
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(largeButtonFont)
@@ -162,7 +162,7 @@ struct StartView: View {
                             }
                             .padding(.all, 8.0)
                         }
-                        
+
                         Button(action: {
                                  startViewModel.didTapRecover!()
                                 // path.append(.restoreView)
@@ -172,7 +172,7 @@ struct StartView: View {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
-                                
+
                                 Text("Restore")
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(regularButtonFont)
@@ -267,7 +267,7 @@ struct StartView: View {
                     updateVersionLabel()
                 }
             }
-            
+
         }
     }
 }

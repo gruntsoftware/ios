@@ -63,7 +63,7 @@ enum PromptType {
         case .shareData: return .promptShareData
         }
     }
-     
+
     var systemImageName: String? {
         switch self {
         case .biometrics: return "faceid"

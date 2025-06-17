@@ -1,32 +1,32 @@
 import Foundation
 
 class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
-    
+
     @Published
     var transactions: [Transaction] = []
-    
+
     private var allTransactions: [Transaction] = [] {
         didSet {
             transactions = allTransactions
         }
     }
-    
+
     @Published
     var currentFiatValue = ""
-     
+
     @Published
     var currencyCode = ""
-    
+
     @Published
     var shouldBeSyncing: Bool = false
-    
+
 	var store: Store?
 
 	var walletManager: WalletManager
-    
+
     private var rate: Rate? {
         didSet {
-            
+
         }
     }
 
@@ -35,15 +35,15 @@ class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
 		self.walletManager = walletManager
         fetchAllTransactions()
 	}
-    
+
     func fetchAllTransactions() {
-        
+
     }
-    
+
     /// Update displayed transactions. Used mainly when the database needs an update
     /// - Parameter txHash: String reprsentation of the TX
     private func updateTransactions(txHash: String) { }
-    
+
     /// Dyanmic Update Progress View: Advances the progress bar
     /// - Parameters:
     ///   - syncProgress: The state of the initial Sync Progress
@@ -63,7 +63,7 @@ class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
 
         return progressValue
     }
-    
+
     // MARK: - Subscription Methods
 
     private func addSubscriptions() {
@@ -78,7 +78,7 @@ class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
         store.subscribe(self, selector: { $0.walletState.transactions != $1.walletState.transactions },
                         callback: { state in
                             self.allTransactions = state.walletState.transactions
-                           
+
                         })
 
         // MARK: - Wallet State:  CurrentRate

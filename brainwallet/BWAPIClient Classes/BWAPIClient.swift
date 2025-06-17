@@ -48,7 +48,7 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
 
 	// used when requests are waiting for authentication to be fetched
 	private var authFetchGroup = DispatchGroup()
-    
+
     private let configuration: URLSessionConfiguration = {
         #if targetEnvironment(simulator)
         let configuration = URLSessionConfiguration.default
@@ -63,7 +63,7 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
         configuration.allowsCellularAccess = true
         configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
         #endif
-        
+
         return configuration
     }()
 
@@ -178,7 +178,7 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
 
 					self.log("\(logLine) -> status=\(httpResp.statusCode) duration=\(dur)ms errStr=\(errStr)")
                     handler(data, httpResp, err as NSError?)
-					
+
 				} else {
 					self.log("\(logLine) encountered connection error \(String(describing: err))")
 					handler(data, nil, err as NSError?)
@@ -186,7 +186,7 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
 			}
 		})
 	}
-    
+
 	// MARK: URLSession Delegate
 
 	public func urlSession(_: URLSession, task _: URLSessionTask, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {

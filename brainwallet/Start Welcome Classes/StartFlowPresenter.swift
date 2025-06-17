@@ -34,13 +34,13 @@ class StartFlowPresenter: Subscriber {
 		                		self?.presentLoginFlow(isPresentedForLock: true)
 		                	}
 		                })
-        
+
         NotificationCenter.default.addObserver(self,
                          selector: #selector(relaunchStartFlow),
                          name: .walletDidWipeNotification,
                          object: nil)
 	}
-    
+
     @objc private func relaunchStartFlow() {
         loginViewController = nil
        // self.presentStartFlow()
@@ -90,9 +90,9 @@ class StartFlowPresenter: Subscriber {
 	}
 
 	// MARK: - SwiftUI Start Flow
-    
+
     private func presentStartFlow() {
-        
+
             let startHostingController = StartHostingController(store: store,
                                                                 walletManager: walletManager)
 
@@ -117,7 +117,7 @@ class StartFlowPresenter: Subscriber {
             rootViewController.present(startFlow, animated: false, completion: nil)
         }
     }
-    
+
 	private var pushRecoverWalletView: () -> Void {
 		return { [weak self] in
 			guard let myself = self else { return }
@@ -205,7 +205,7 @@ class StartFlowPresenter: Subscriber {
                 })))
             })
 		}
-        
+
 		navigationController?.navigationBar.tintColor = BrainwalletUIColor.surface
 		if let confirmVC = confirmVC {
 			navigationController?.pushViewController(confirmVC, animated: true)

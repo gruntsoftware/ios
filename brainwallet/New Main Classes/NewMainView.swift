@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct NewMainView: View {
-    
+
     @ObservedObject
     var newMainViewModel: NewMainViewModel
-    
+
     @ObservedObject
     var newReceiveViewModel: NewReceiveViewModel
-     
+
     init(viewModel: NewMainViewModel,
          receiveViewModel: NewReceiveViewModel) {
         newMainViewModel = viewModel
@@ -23,22 +23,22 @@ struct NewMainView: View {
     }
     var body: some View {
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
             let height = geometry.size.height
-            
+
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                
+
                 VStack {
-                   
+
                 }
                 .frame(width: width,
                        alignment: .center)
                     .background(BrainwalletColor.warn)
                 .opacity(newMainViewModel.shouldShowSettings ? 1.0 : 0.0)
                 .transition(.opacity)
-                    
+
                 VStack {
                         SimpleHeaderView(viewModel: newMainViewModel)
                             .frame(minHeight: 60.0,
@@ -67,7 +67,7 @@ struct NewMainView: View {
                                 }
                                 .toolbar(.visible, for: .tabBar)
                                 .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
-                            
+
                             NewReceiveView(viewModel: newReceiveViewModel, isModalMode: nil)
                                 .tabItem {
                                     Label("Receive", systemImage: "square.and.arrow.down")
@@ -78,7 +78,7 @@ struct NewMainView: View {
                             .frame(minHeight: 350.0,
                                 maxHeight: height * 0.50,
                                 alignment: .bottom)
-                        
+
                         NewTransactionsView(viewModel: newMainViewModel)
                             .frame(minHeight: height * 0.10,
                                     maxHeight: 100,

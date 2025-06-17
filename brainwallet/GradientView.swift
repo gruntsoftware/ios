@@ -40,12 +40,12 @@ protocol SolidColorDrawable {
 
 extension UIView {
     func drawColor(color _: UIColor = BrainwalletUIColor.surface, _: CGRect) {
-        
+
         let imageView = UIImageView(image: #imageLiteral(resourceName: "Microsoft"))
         imageView.contentMode = .scaleToFill
         addSubview(imageView)
         imageView.constrain(toSuperviewEdges: nil)
         sendSubviewToBack(imageView)
-        
+
 	}
 }

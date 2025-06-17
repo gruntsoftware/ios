@@ -7,18 +7,18 @@ class URLController: Trackable {
         self.store = store
         self.walletManager = walletManager
     }
-    
+
     private let store: Store
     private let walletManager: WalletManager
     private var xSource, xSuccess, xError, uri: String?
-    
+
     func handleUrl(_ url: URL) -> Bool {
         saveEvent("send.handleURL", attributes: [
             "scheme": url.scheme ?? C.null,
             "host": url.host ?? C.null,
             "path": url.path
         ])
-        
+
         switch url.scheme ?? "" {
             case "loaf":
                 if let query = url.query {
@@ -42,7 +42,7 @@ class URLController: Trackable {
                         }
                     }
                 }
-                
+
                 if url.host == "scanqr" || url.path == "/scanqr" {
                     store.trigger(name: .scanQr)
                 } else if url.host == "addresslist" || url.path == "/addresslist" {
@@ -53,12 +53,12 @@ class URLController: Trackable {
                     }
                 }
                 return true
-                
+
             default:
                 return false
         }
     }
-    
+
     private func copyAddress(callback: String) {
         if let url = URL(string: callback), let wallet = walletManager.wallet {
             let queryLength = url.query?.utf8.count ?? 0
@@ -68,7 +68,7 @@ class URLController: Trackable {
             }
         }
     }
-    
+
     private func present(alert: UIAlertController) {
         store.trigger(name: .showAlert(alert))
     }
