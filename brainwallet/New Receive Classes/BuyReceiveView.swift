@@ -13,82 +13,82 @@ let defaultLaunchAmount = 210
 let maxLaunchAmount = 20000
 
 struct BuyReceiveView: View {
-    
+
     @ObservedObject
     var viewModel: NewReceiveViewModel
-      
+
     @State
     private var isExpanded: Bool = false
-    
+
     @State
     private var showError: Bool = false
-    
+
     @State
     private var pickedCurrency: SupportedFiatCurrency = .USD
-    
+
     @State
     private var pickedPreset = 0
-    
+
     @State
     private var pickedSymbol = "$"
-    
+
     @State
     private var pickedAmountString = ""
-     
+
     @State
     private var pickedAmount: Int = defaultLaunchAmount
-    
+
     @State
     private var fiatMinAmount: Int = Int(defaultLaunchAmount / 10)
-    
+
     @State
     private var fiatTenXAmount: Int = defaultLaunchAmount
-    
+
     @State
     private var fiatMaxAmount: Int = maxLaunchAmount
-    
+
     @State
     private var scannedCode: String?
-    
+
     @State
     private var userIsBuying = false
-    
+
     @State
     private var canUserBuy = false
 
     @State
     private var newAddress = ""
-    
+
     @State
     private var quotedTimestamp = "--------"
-        
+
     @State
     private var didFetchData = false
-    
+
     @State
     private var quotedLTCAmount = 0.0
-    
+
     @State
     private var userWantsCustomAmount = false
 
     @State
     private var shouldAnimateMPLogo = false
-    
+
     @State
     private var didCopyAddress = false
-    
+
     @State
     private var showMPLogo = true
-    
+
     @State
     private var isModalMode: Bool = false
-    
+
     @FocusState
     var keyboardFocused: Bool
-    
+
     @State
     private var pickedSegment = 1
-    
+
     @State
     private var qrPlaceholder: UIImage = UIImage(systemName: "qrcode")!
 
@@ -100,26 +100,26 @@ struct BuyReceiveView: View {
     let headerFont: Font = .barlowBold(size: 26.0)
     let liveQuoteFont: Font = .barlowSemiBold(size: 25.0)
     let subHeaderFont: Font = .barlowSemiBold(size: 17.0)
- 
+
     let detailFont: Font = .barlowSemiBold(size: 15.0)
     let subDetailFont: Font = .barlowRegular(size: 14.0)
     let lightDetailFont: Font = .barlowLight(size: 15.0)
 
     let textFieldFont: Font = .barlowRegular(size: 15.0)
-    
+
     let buyVStackFactor: CGFloat = 0.0
     let minimumDragFactor: CGFloat = 400.0
     let opacityFactor: CGFloat = 0.8
     init(viewModel: NewReceiveViewModel, isModalMode: Bool?) {
         self.viewModel = viewModel
         self.isModalMode = isModalMode ?? false
-        
+
         UISegmentedControl.appearance().selectedSegmentTintColor = BrainwalletUIColor.surface
         UISegmentedControl.appearance().backgroundColor = BrainwalletUIColor.background
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color.primary)], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color.secondary)], for: .normal)
     }
-    
+
     func updateFiatAmounts() {
         viewModel.fetchBuyQuoteLimits(buyAmount: pickedAmount, baseCurrencyCode: pickedCurrency)
         quotedLTCAmount = viewModel.quotedLTCAmount
@@ -127,34 +127,34 @@ struct BuyReceiveView: View {
         fiatTenXAmount = viewModel.fiatTenXAmount
         fiatMaxAmount = viewModel.fiatMaxAmount
     }
-    
+
     var body: some View {
-             
+
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
             let height = geometry.size.height
-            
+
             let modalWidth = geometry.size.width * 0.9
-            
+
             let modalReceiveViewHeight = height * 0.9
             let modalBuyViewHeight = height * 0.95
-            
+
             ZStack {
-                
+
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {
                     if userIsBuying {
                         VStack {
                             ZStack {
                                 WebBuyView(signingData: viewModel.buildUnsignedMoonPayUrl(), viewModel: viewModel)
-                                
+
                                 Image("moonpay-symbol-prp")
                                     .resizable()
                                     .frame(width: 50.0, height: 50.0)
                                     .offset(x: shouldAnimateMPLogo ? 20 : 0, y: shouldAnimateMPLogo ? -20 : 0)
                                     .onAppear {
-                                        
+
                                         withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
                                             shouldAnimateMPLogo = true
                                         }
@@ -173,7 +173,7 @@ struct BuyReceiveView: View {
                         .padding(.bottom, 5.0)
                     } else {
                         VStack {
-                            
+
                             /// Receive Address Group
                             ReceiveAddressView(viewModel: viewModel,
                                                newAddress: $newAddress,
@@ -186,7 +186,7 @@ struct BuyReceiveView: View {
                                 .opacity(keyboardFocused ? 0 : 1)
                                 .padding(.top, 1.0)
                             /// Receive Address Group
-                            
+
                             /// Set Amount Group
                             HStack {
                                 Spacer()
@@ -204,7 +204,7 @@ struct BuyReceiveView: View {
                                 }
                                 .pickerStyle(.wheel)
                                 .frame(width: width * 0.3, height: 70, alignment: .center)
-                                
+
                                 VStack {
                                     Spacer()
                                     Text(String(format: "%.3f Ł", quotedLTCAmount))
@@ -212,7 +212,7 @@ struct BuyReceiveView: View {
                                         .kerning(0.3)
                                         .foregroundColor(BrainwalletColor.content)
                                         .frame(alignment: .leading)
-                                    
+
                                     Text("\(quotedTimestamp)")
                                         .font(lightDetailFont)
                                         .foregroundColor(BrainwalletColor.content)
@@ -246,7 +246,7 @@ struct BuyReceiveView: View {
                                 }
                                 .pickerStyle(.segmented)
                                 .onChange(of: pickedSegment) { segmentTag in
-                                    
+
                                     if segmentTag == 0 {
                                         pickedAmount = fiatMinAmount
                                     } else if segmentTag == 1 {
@@ -254,14 +254,14 @@ struct BuyReceiveView: View {
                                     } else {
                                         pickedAmount = fiatMaxAmount
                                     }
-                                    
+
                                     updateFiatAmounts()
                                     pickedAmountString = String(format: "%d", pickedAmount)
                                     keyboardFocused = false
                                 }
                                 .frame(height: 85, alignment: .center)
                                 .padding(.all, 10.0)
-                                
+
                             }
                             .frame(height: 44.0, alignment: .center)
                             .blur(radius: didFetchData ? 3.0 : 0.0)
@@ -310,9 +310,9 @@ struct BuyReceiveView: View {
                             .padding(.all, 10.0)
                             .blur(radius: didFetchData ? 3.0 : 0.0)
                             /// Set Amount Group
-                            
+
                             Spacer()
-                            
+
                             /// Buy LTC Button Group
                             Button(action: {
                                 userIsBuying.toggle()
@@ -380,12 +380,12 @@ struct BuyReceiveView: View {
                 .gesture(
                     DragGesture()
                         .onChanged { value in
-                            
+
                             /// Dismiss after 2 button sizes
                             let transX = value.translation.width
                             let transY = value.translation.height
                             let hypotenuse = sqrt(transX * transX + transY * transY)
-                        
+
                             if hypotenuse > minimumDragFactor {
                                 viewModel.shouldDismissTheView()
                             }

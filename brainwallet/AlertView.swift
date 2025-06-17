@@ -24,7 +24,7 @@ enum AlertType {
 			return "Success"
 		// Failure(s)
 		case .failedResolution:
-			return "Send failed" 
+			return "Send failed"
 		}
 	}
 

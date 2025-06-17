@@ -9,25 +9,25 @@
 import SwiftUI
 
 struct WalletBalanceView: View {
-    
+
     @ObservedObject
     var newMainViewModel: NewMainViewModel
-    
+
     @State
     private var didTapPriceGroup: Bool = false
-    
+
     @State
     private var shouldShowBalance: Bool = true
-    
+
     @State
     private var swapOffest: CGFloat = 60.0
-    
+
     init(viewModel: NewMainViewModel) {
         newMainViewModel = viewModel
     }
     var body: some View {
         GeometryReader { _ in
-              
+
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 HStack {
@@ -37,7 +37,7 @@ struct WalletBalanceView: View {
                             .frame(maxWidth: .infinity,
                                    alignment: .leading)
                             .foregroundColor(BrainwalletColor.content)
-                        
+
                         Group {
                             if didTapPriceGroup {
                                 Text("")// DEV $43,000,000.99
@@ -52,7 +52,7 @@ struct WalletBalanceView: View {
                                            alignment: .leading)
                                     .foregroundColor(BrainwalletColor.content)
                                     .animation(.bouncy(), value: didTapPriceGroup)
-                                
+
                             } else {
                                 Text("")// DEV "Ł1233.994"
                                     .font(.barlowBold(size: 50.0))

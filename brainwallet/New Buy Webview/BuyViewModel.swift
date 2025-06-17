@@ -18,7 +18,7 @@ class BuyViewModel: ObservableObject {
 
     @Published
     var urlString: String = ""
-    
+
     @Published
     var signedURlString: String = ""
 
@@ -32,4 +32,4 @@ class BuyViewModel: ObservableObject {
         receivingAddress = WalletManager.sharedInstance.wallet?.receiveAddress ?? ""
     }
 }
- 
+

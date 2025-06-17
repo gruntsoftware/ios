@@ -12,9 +12,9 @@ import LocalAuthentication
 class PromptCellViewModel: ObservableObject {
 
     @Published var promptType: PromptType = .recommendRescan
-    
+
     init(promptType: PromptType) {
         self.promptType = promptType
     }
-    
+
 }

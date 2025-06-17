@@ -10,11 +10,11 @@ class AboutViewController: UIViewController {
 	private let privacy = UIButton(type: .system)
     private let footer = UILabel(font: .customBody(size: 13.0), color: BrainwalletUIColor.content)
 	override func viewDidLoad() {
-        
+
         titleLabel.textColor = BrainwalletUIColor.content
         privacy.tintColor = BrainwalletUIColor.background
         view.backgroundColor = BrainwalletUIColor.surface
-        
+
 		addSubviews()
 		addConstraints()
 		setData()
