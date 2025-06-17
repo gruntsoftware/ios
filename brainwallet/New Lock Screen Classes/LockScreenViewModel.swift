@@ -36,13 +36,22 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 
 	init(store: Store) {
 		self.store = store
-
 		addSubscriptions()
 		fetchCurrentPrice()
 	}
 
     func startWipeProcess() {
         didTapWipeWallet?(true)
+    }
+
+    func userDidSetThemePreference(userPrefersDarkMode: Bool) {
+
+        UserDefaults.userPrefersDarkTheme = userPrefersDarkMode
+
+        NotificationCenter
+            .default
+            .post(name: .changedThemePreferenceNotification,
+                object: nil)
     }
 
 	private func fetchCurrentPrice() {

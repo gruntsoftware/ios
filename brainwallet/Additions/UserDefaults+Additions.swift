@@ -19,6 +19,12 @@ private let didSeeTransactionCorruption = "DidSeeTransactionCorruption"
 private let userIsInUSAKey = "userIsInUSAKey"
 private let selectedLanguageKey = "selectedLanguage"
 
+let timeSinceLastExitKey = "TimeSinceLastExit"
+let shouldRequireLoginTimeoutKey = "ShouldRequireLoginTimeoutKey"
+let numberOfBrainwalletLaunches = "NumberOfBrainwalletLaunches"
+let userDidPreferDarkModeKey = "UserDidPreferDarkMode"
+let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
+
 extension UserDefaults {
 	static var selectedLanguage: String {
 		get {

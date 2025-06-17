@@ -61,10 +61,9 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
         }
     }
     private func setSubscriptions() {
-        // TODO: Model all calculations to here from TransactionsViewController
-        //        self.store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
-        //                        callback: { _ in
-        //
-        //        })
+        self.store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
+                        callback: { _ in
+
+        })
     }
 }

@@ -10,7 +10,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 	private var isLoginRequired = false
 	private let loginView: LoginViewController
-	private let tempLoginView: LoginViewController
 	private let loginTransitionDelegate = LoginTransitionDelegate()
 
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -26,7 +25,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 				loginView.modalPresentationCapturesStatusBarAppearance = true
 				loginView.shouldSelfDismiss = true
 				present(loginView, animated: false, completion: {
-					self.tempLoginView.remove()
 				})
 			}
 		}
@@ -35,7 +33,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	init(store: Store) {
 		self.store = store
 		loginView = LoginViewController(store: store, isPresentedForLock: false)
-		tempLoginView = LoginViewController(store: store, isPresentedForLock: false)
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -107,11 +104,9 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	private func addTemporaryStartupViews() {
 		guardProtected(queue: DispatchQueue.main) {
 			if !WalletManager.staticNoWallet {
-				self.addChildViewController(self.tempLoginView, layout: {
-					self.tempLoginView.view.constrain(toSuperviewEdges: nil)
-				})
+
 			} else {
-				// Adds a brainwalletBlue card view the hides work while thread finishes
+				// Adds a  card view the hides work while thread finishes
 				let launchView = LaunchCardHostingController()
 				self.addChildViewController(launchView, layout: {
 					launchView.view.constrain(toSuperviewEdges: nil)

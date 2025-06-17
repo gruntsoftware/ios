@@ -35,13 +35,14 @@ class StartViewModel: ObservableObject, Subscriber {
 		didTapRecover = completion
 	}
 
-    func userDidChangeDarkMode(state: Bool) {
+    func userDidSetThemePreference(userPrefersDarkMode: Bool) {
 
-        (UIApplication.shared.connectedScenes.first as?
-                      UIWindowScene)?.windows.first!.overrideUserInterfaceStyle = state ?   .dark : .light
-        UserDefaults.standard.set(state, forKey: userDidPreferDarkModeKey)
+        UserDefaults.userPrefersDarkTheme = userPrefersDarkMode
 
-        UserDefaults.standard.synchronize()
+        NotificationCenter
+            .default
+            .post(name: .changedThemePreferenceNotification,
+                object: nil)
     }
 
     func userDidSetCurrencyPreference(currency: GlobalCurrency) {

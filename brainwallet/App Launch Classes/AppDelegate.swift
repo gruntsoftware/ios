@@ -30,9 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func preSetupSteps() {
 
-        // Language
-        Bundle.setLanguage(UserDefaults.selectedLanguage)
-
         // Locale and fetch access
         // DEV: Break here to test Locale/Matrix
 
@@ -55,7 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let isBuyAllowed = currentMoonPayCountry.isBuyAllowed
             if isBuyAllowed {
                 UserDefaults.standard.set(isBuyAllowed, forKey: userCurrentLocaleMPApprovedKey)
-                     debugPrint(":::::: buyIsAllowed: \(isBuyAllowed)")
             } else {
             UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
             }
@@ -90,9 +86,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
 
         guard let thisWindow = window else { return }
+
         // Set global themes
-        thisWindow.tintColor = BrainwalletUIColor.surface
-        thisWindow.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: userDidPreferDarkModeKey) ? .dark: .light
+        debugPrint("::: AP UserDefaults.userPrefersDarkTheme \(UserDefaults.userPrefersDarkTheme)")
+
+        thisWindow.overrideUserInterfaceStyle = UserDefaults.userPrefersDarkTheme ? .dark: .light
 
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = BrainwalletUIColor.content
 
@@ -152,7 +150,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Clear the root view controller
             thisWindow.rootViewController = nil
             self.preSetupSteps()
+        }
+    }
 
+    @objc
+    func updateUserThemePreference() {
+        let fetchThemePreference = UserDefaults.userPrefersDarkTheme
+        DispatchQueue.main.async {
+            guard let thisWindow = self.window else { return }
+            thisWindow.overrideUserInterfaceStyle = UserDefaults.userPrefersDarkTheme ? .dark : .light
         }
     }
 
@@ -184,7 +190,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func updatePreferredTheme() {
         guard let window = window else { return }
         // Set global theme
-        window.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: userDidPreferDarkModeKey) ? .dark: .light
+        window.overrideUserInterfaceStyle = UserDefaults.userPrefersDarkTheme ? .dark: .light
     }
 
 	/// On Demand Resources
