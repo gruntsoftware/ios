@@ -88,14 +88,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let thisWindow = window else { return }
 
         // Set global themes
-        debugPrint("::: AP UserDefaults.userPrefersDarkTheme \(UserDefaults.userPrefersDarkTheme)")
+        debugPrint("::: AP UserDefaults.userPreferredDarkTheme \(UserDefaults.userPreferredDarkTheme)")
 
-        thisWindow.overrideUserInterfaceStyle = UserDefaults.userPrefersDarkTheme ? .dark: .light
+        thisWindow.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark: .light
 
-        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = BrainwalletUIColor.content
+        UIView.appearance(whenContainedInInstancesOf:
+            [UIAlertController.self])
+                .tintColor = BrainwalletUIColor.content
 
         UIView.swizzleSetFrame()
-
         self.applicationController.launch(application: UIApplication.shared, window: thisWindow)
     }
 
@@ -155,10 +156,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     @objc
     func updateUserThemePreference() {
-        let fetchThemePreference = UserDefaults.userPrefersDarkTheme
+        let fetchThemePreference = UserDefaults.userPreferredDarkTheme
         DispatchQueue.main.async {
             guard let thisWindow = self.window else { return }
-            thisWindow.overrideUserInterfaceStyle = UserDefaults.userPrefersDarkTheme ? .dark : .light
+            thisWindow.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark : .light
         }
     }
 
@@ -190,7 +191,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func updatePreferredTheme() {
         guard let window = window else { return }
         // Set global theme
-        window.overrideUserInterfaceStyle = UserDefaults.userPrefersDarkTheme ? .dark: .light
+        window.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark: .light
     }
 
 	/// On Demand Resources
