@@ -21,11 +21,7 @@ class SendAmountCell: SendCell {
 		didSet {
 			textField.text = content
 			textField.sendActions(for: .editingChanged)
-            var isEmpty: Bool = true
-			if (content != nil) {
-                isEmpty = false
-            }
-            textField.font = isEmpty ? placeholderFont : textFieldFont
+            textField.font = textFieldFont
 		}
 	}
 
