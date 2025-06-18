@@ -70,7 +70,7 @@ class RemoteConfigHelper: NSObject {
 	}
 
 	func getString(key: String) -> String {
-		return remoteConfig[key].stringValue ?? "value_not_found"
+        return remoteConfig[key].stringValue
 	}
 
 	func getNumber(key: String) -> NSNumber {

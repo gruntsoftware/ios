@@ -33,7 +33,7 @@ class ModalPresenter: Subscriber, Trackable {
         guard let walletManager = walletManager else { return nil }
         var root : ModalViewController
 
-        var canUserBuy = UserDefaults
+        let canUserBuy = UserDefaults
             .standard
                 .object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
 
@@ -409,7 +409,10 @@ class ModalPresenter: Subscriber, Trackable {
 		guard notReachableAlert == nil else { return }
 		let alert = InAppAlert(message: String(localized: "No internet connection found. Check your connection and try again.") , image: #imageLiteral(resourceName: "BrokenCloud"))
 		notReachableAlert = alert
-		guard let window = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first
+		guard let window = UIApplication.shared.connectedScenes
+                               .compactMap({ $0 as? UIWindowScene })
+                               .flatMap({ $0.windows })
+                               .first(where: { $0.isKeyWindow })
 		else {
 			return
 		}

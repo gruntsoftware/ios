@@ -444,7 +444,6 @@
 		2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenFooterView.swift; sourceTree = "<group>"; };
 		2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveAddressView.swift; sourceTree = "<group>"; };
 		2413E4152DF6451D00DFE7EE /* SecurityCenterNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCenterNavigationDelegate.swift; sourceTree = "<group>"; };
-		2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Brainwallet-StoreKit-v1.storekit"; sourceTree = SOURCE_ROOT; };
 		2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordsGridView.swift; sourceTree = "<group>"; };
 		2415FFF22DBE2CA4002A2199 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRActivityView.swift; sourceTree = "<group>"; };
@@ -1622,7 +1621,6 @@
 				75A2A7F11DA5935F00A983D8 /* Frameworks */,
 				75A2A7911DA5934300A983D8 /* Products */,
 				249DDE402DCD55D700B2B275 /* Recovered References */,
-				2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */,
 			);
 			sourceTree = "<group>";
 		};
