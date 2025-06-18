@@ -49,8 +49,14 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     @Published
     var shouldShowSettings = false
 
-    private
-    var walletHasInitialized: Bool = false
+    @Published
+    var walletBalanceFiat = ""
+
+    @Published
+    var walletBalanceLitecoin = ""
+
+    @Published
+    var transactions: [Transaction]?
 
     private
     let timerPeriod: Double = {
@@ -64,6 +70,8 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     private var balance: UInt64 = 0 {
         didSet { setBalances() }
     }
+
+    private var rate: Rate?
 
     init(store: Store, walletManager: WalletManager) {
         self.store = store
@@ -80,17 +88,14 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
         dateFormatter = DateFormatter()
         dateFormatter!.setLocalizedDateFormatFromTemplate("dd MMM hh:mm:ss a")
+        setBalances()
+        updateTransactions()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: .languageChangedNotification, object: nil)
     }
 
     deinit {
         NotificationCenter.default.removeObserver(self, name: .languageChangedNotification, object: nil)
         self.updateTimer = nil
-    }
-
-    @objc private func languageChanged() {
-
     }
 
     private func fetchCurrentPrice() {
@@ -110,12 +115,32 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         guard let store = self.store else { return }
 
         if let rate = store.state.currentRate,
-           let balance = store.state.walletState.balance,
-           walletHasInitialized {
+           let balance = store.state.walletState.balance {
             exchangeRate = rate
             walletAmount = Amount(amount: balance, rate: exchangeRate!, maxDigits: store.state.maxDigits)
-            walletHasInitialized = true
+            let ltcBalanceDouble = Double(balance) / Double(100_000_000)
+            let fiatBalanceDouble = ltcBalanceDouble * Double(rate.rate)
+            walletBalanceFiat = String(format: "%@%8.2f", rate.currencySymbol, fiatBalanceDouble)
+            walletBalanceLitecoin = String(format: "Ł%8.6f", ltcBalanceDouble)
         }
+    }
+
+    func updateTransactions() {
+        guard let _ = walletManager
+        else {
+            debugPrint("::: ERROR: Wallet manager Not initialized")
+            BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR)
+            return
+        }
+
+        guard let reduxState = store?.state
+        else {
+            debugPrint("::: ERROR: reduxState Not initialized")
+            return
+        }
+
+        transactions = TransactionManager.sharedInstance.transactions
+        rate = TransactionManager.sharedInstance.rate
     }
 
     private func addSubscriptions() {
@@ -128,14 +153,15 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
                         })
         store.lazySubscribe(self,
                             selector: { $0.currentRate != $1.currentRate },
-                            callback: {
+                            callback: { [weak self] in
                                 if let rate = $0.currentRate {
                                     let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
-                                    self.localFormatter = placeholderAmount.localFormat
-                                    self.ltcFormatter = placeholderAmount.ltcFormat
+                                    self?.localFormatter = placeholderAmount.localFormat
+                                    self?.ltcFormatter = placeholderAmount.ltcFormat
                                 }
-                                self.exchangeRate = $0.currentRate
-                                self.fetchCurrentPrice()
+                                self?.exchangeRate = $0.currentRate
+                                self?.fetchCurrentPrice()
+                                self?.updateTransactions()
                             })
 
         store.lazySubscribe(self,

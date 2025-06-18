@@ -658,6 +658,9 @@
         }
       }
     },
+    "BALANCE" : {
+
+    },
     "Balance :" : {
       "localizations" : {
         "ar" : {

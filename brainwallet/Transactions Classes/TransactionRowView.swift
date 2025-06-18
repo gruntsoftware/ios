@@ -14,7 +14,7 @@ struct TransactionRowView: View {
     private var isReceived: Bool = false
 
     @State
-    private var filterMode: FilterTransactionMode = .all
+    private var filterMode: TransactionFilterState = .allTransactions
 
     @State
     private var modeState = 0
@@ -23,6 +23,7 @@ struct TransactionRowView: View {
 
     init(transaction: Transaction) {
         self.transaction = transaction
+        isReceived = (transaction.direction == .received) ? true : false
     }
 
     var body: some View {
@@ -35,14 +36,10 @@ struct TransactionRowView: View {
                         Image(systemName: isReceived ? "arrow.up.circlepath" : "arrow.down.circlepath")
                             .resizable()
                             .frame(width: 40, height: 40)
-                            .foregroundColor(isReceived ? BrainwalletColor.affirm : BrainwalletColor.content)
                             .padding()
                     }
                     VStack {
-                        Text("")
-                            .font(.title2)
-                            .foregroundColor(BrainwalletColor.content)
-                        Text("")
+                        Text(String(format: transaction.direction.addressTextFormat, transaction.toAddress ?? "---ERROR---"))
                             .font(.title2)
                             .foregroundColor(BrainwalletColor.content)
                     }
@@ -53,3 +50,8 @@ struct TransactionRowView: View {
     }
 
 }
+// amountText = transaction.descriptionString(isLtcSwapped: isLtcSwapped, rate: rate, maxDigits: maxDigits).string
+//
+// feeText = transaction.amountDetails(isLtcSwapped: isLtcSwapped, rate: rate, rates: [rate], maxDigits: maxDigits)
+//
+// addressText = String(format: transaction.direction.addressTextFormat, transaction.toAddress ?? "---ERROR---")
