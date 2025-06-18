@@ -58,6 +58,9 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     @Published
     var transactions: [Transaction]?
 
+    @Published
+    var transactionCount = 0
+
     private
     let timerPeriod: Double = {
         #if DEBUG
@@ -140,6 +143,9 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         }
 
         transactions = TransactionManager.sharedInstance.transactions
+        guard let transactions = transactions else { return }
+        transactionCount = transactions.count
+
         rate = TransactionManager.sharedInstance.rate
     }
 

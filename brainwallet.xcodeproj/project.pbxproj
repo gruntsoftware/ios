@@ -46,7 +46,6 @@
 		242871812DE5C28B0035DE48 /* WhiteNumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871802DE5C27F0035DE48 /* WhiteNumberPad.swift */; };
 		242871862DE5D2580035DE48 /* NewSyncProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871852DE5D2550035DE48 /* NewSyncProgressView.swift */; };
 		242871882DE5D36F0035DE48 /* NewSyncProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */; };
-		2428718A2DE5E2920035DE48 /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871892DE5E2900035DE48 /* Untitled.swift */; };
 		2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */; };
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
 		24360B012DED120500E1E115 /* NewReceiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24360B002DED11D900E1E115 /* NewReceiveTests.swift */; };
@@ -477,7 +476,6 @@
 		242871802DE5C27F0035DE48 /* WhiteNumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNumberPad.swift; sourceTree = "<group>"; };
 		242871852DE5D2550035DE48 /* NewSyncProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressView.swift; sourceTree = "<group>"; };
 		242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressViewModel.swift; sourceTree = "<group>"; };
-		242871892DE5E2900035DE48 /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
 		2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncHostingController.swift; sourceTree = "<group>"; };
 		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
 		24360B002DED11D900E1E115 /* NewReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveTests.swift; sourceTree = "<group>"; };
@@ -1504,7 +1502,6 @@
 				2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */,
 				24B065362DC6281D00B5E000 /* NewMainViewModel.swift */,
 				242871852DE5D2550035DE48 /* NewSyncProgressView.swift */,
-				242871892DE5E2900035DE48 /* Untitled.swift */,
 				242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */,
 				24B065342DC627E500B5E000 /* NewMainHostingController.swift */,
 			);
@@ -2706,7 +2703,6 @@
 				C312D4422D7DC27700BB97A4 /* WalletManager.swift in Sources */,
 				C312D4432D7DC27700BB97A4 /* ReceiveViewController.swift in Sources */,
 				C312D4452D7DC27700BB97A4 /* BlinkingView.swift in Sources */,
-				2428718A2DE5E2920035DE48 /* Untitled.swift in Sources */,
 				C312D4492D7DC27700BB97A4 /* AlertView.swift in Sources */,
 				C312D44E2D7DC27700BB97A4 /* StartView.swift in Sources */,
 				C312D44F2D7DC27700BB97A4 /* LWActivityIndicator.swift in Sources */,

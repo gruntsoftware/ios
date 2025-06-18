@@ -86,19 +86,19 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             tabVC.view.layoutIfNeeded()
         })
 
-        UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
-            tabVC.view.alpha = 1
-        }) { _ in
-            NSLog("US MainView Controller presented")
-        }
+//        UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
+//            tabVC.view.alpha = 1
+//        }) { _ in
+//            NSLog("US MainView Controller presented")
+//        }
 
 // STASH FOR NEW UI
-//        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
-//
-//        addChildViewController(newMainViewHostingController, layout: {
-//            newMainViewHostingController.view.constrain(toSuperviewEdges: nil)
-//            newMainViewHostingController.view.layoutIfNeeded()
-//        })
+        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
+
+        addChildViewController(newMainViewHostingController, layout: {
+            newMainViewHostingController.view.constrain(toSuperviewEdges: nil)
+            newMainViewHostingController.view.layoutIfNeeded()
+        })
 	}
 
 	private func addTemporaryStartupViews() {
