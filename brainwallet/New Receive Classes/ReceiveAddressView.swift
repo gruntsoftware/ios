@@ -46,7 +46,6 @@ struct ReceiveAddressView: View {
             let width = geometry.size.width
             let height = geometry.size.height
             let qrWidth = geometry.size.width * 0.4
-
             ZStack {
                 HStack {
                     RoundedRectangle(cornerRadius: buttonCorner)

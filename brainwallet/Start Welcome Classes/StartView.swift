@@ -263,7 +263,7 @@ struct StartView: View {
             })
             .onAppear {
                 Task {
-                    userPrefersDarkMode = UserDefaults.userPrefersDarkTheme
+                    userPrefersDarkMode = UserDefaults.userPreferredDarkTheme
                     updateVersionLabel()
                 }
             }

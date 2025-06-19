@@ -173,7 +173,6 @@ struct BuyReceiveView: View {
                         .padding(.bottom, 5.0)
                     } else {
                         VStack {
-
                             /// Receive Address Group
                             ReceiveAddressView(viewModel: viewModel,
                                                newAddress: $newAddress,

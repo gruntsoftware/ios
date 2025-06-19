@@ -46,7 +46,6 @@
 		242871812DE5C28B0035DE48 /* WhiteNumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871802DE5C27F0035DE48 /* WhiteNumberPad.swift */; };
 		242871862DE5D2580035DE48 /* NewSyncProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871852DE5D2550035DE48 /* NewSyncProgressView.swift */; };
 		242871882DE5D36F0035DE48 /* NewSyncProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */; };
-		2428718A2DE5E2920035DE48 /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871892DE5E2900035DE48 /* Untitled.swift */; };
 		2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */; };
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
 		24360B012DED120500E1E115 /* NewReceiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24360B002DED11D900E1E115 /* NewReceiveTests.swift */; };
@@ -444,7 +443,6 @@
 		2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenFooterView.swift; sourceTree = "<group>"; };
 		2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveAddressView.swift; sourceTree = "<group>"; };
 		2413E4152DF6451D00DFE7EE /* SecurityCenterNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCenterNavigationDelegate.swift; sourceTree = "<group>"; };
-		2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Brainwallet-StoreKit-v1.storekit"; sourceTree = SOURCE_ROOT; };
 		2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordsGridView.swift; sourceTree = "<group>"; };
 		2415FFF22DBE2CA4002A2199 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRActivityView.swift; sourceTree = "<group>"; };
@@ -478,7 +476,6 @@
 		242871802DE5C27F0035DE48 /* WhiteNumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNumberPad.swift; sourceTree = "<group>"; };
 		242871852DE5D2550035DE48 /* NewSyncProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressView.swift; sourceTree = "<group>"; };
 		242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressViewModel.swift; sourceTree = "<group>"; };
-		242871892DE5E2900035DE48 /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
 		2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncHostingController.swift; sourceTree = "<group>"; };
 		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
 		24360B002DED11D900E1E115 /* NewReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveTests.swift; sourceTree = "<group>"; };
@@ -1168,6 +1165,16 @@
 			path = "Brainwallet Custom Shapes";
 			sourceTree = "<group>";
 		};
+		2466FECB2DFFE4ED00A1ACC2 /* App Launch Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */,
+				C312D2002D7DC27700BB97A4 /* AppDelegate.swift */,
+				C312D2012D7DC27700BB97A4 /* ApplicationController.swift */,
+			);
+			path = "App Launch Classes";
+			sourceTree = "<group>";
+		};
 		248D87B92DB4E3C900745552 /* Colors */ = {
 			isa = PBXGroup;
 			children = (
@@ -1505,7 +1512,6 @@
 				2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */,
 				24B065362DC6281D00B5E000 /* NewMainViewModel.swift */,
 				242871852DE5D2550035DE48 /* NewSyncProgressView.swift */,
-				242871892DE5E2900035DE48 /* Untitled.swift */,
 				242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */,
 				24B065342DC627E500B5E000 /* NewMainHostingController.swift */,
 			);
@@ -1622,7 +1628,6 @@
 				75A2A7F11DA5935F00A983D8 /* Frameworks */,
 				75A2A7911DA5934300A983D8 /* Products */,
 				249DDE402DCD55D700B2B275 /* Recovered References */,
-				2414B00A2DD0E2BE00091B72 /* Brainwallet-StoreKit-v1.storekit */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1744,6 +1749,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				2466FECB2DFFE4ED00A1ACC2 /* App Launch Classes */,
 				24F05E782DF9627000E25829 /* BWAPIClient Classes */,
 				24E078A62DF1F915004B5958 /* New Table Hosting Classes */,
 				24F378002DE89C5B00A388AB /* MoonPay Helper */,
@@ -1780,7 +1786,6 @@
 				242871832DE5C5300035DE48 /* Extensions */,
 				242871842DE5C59B0035DE48 /* CoreResources */,
 				24618EE92D90435200A878AC /* BRCore.swift */,
-				C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */,
 				C312D06C2D7DC27700BB97A4 /* Async.swift */,
 				C312D06F2D7DC27700BB97A4 /* CustomTitleView.swift */,
 				C312D0722D7DC27700BB97A4 /* LAContext+Extensions.swift */,
@@ -1863,8 +1868,6 @@
 				C312D1CD2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift */,
 				C312D1FD2D7DC27700BB97A4 /* AddressFieldView.swift */,
 				C312D1FE2D7DC27700BB97A4 /* AlertFailureView.swift */,
-				C312D2002D7DC27700BB97A4 /* AppDelegate.swift */,
-				C312D2012D7DC27700BB97A4 /* ApplicationController.swift */,
 				C312D2022D7DC27700BB97A4 /* ArticleIds.swift */,
 				C312D2042D7DC27700BB97A4 /* AssociatedObject.swift */,
 				C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */,
@@ -2708,7 +2711,6 @@
 				C312D4422D7DC27700BB97A4 /* WalletManager.swift in Sources */,
 				C312D4432D7DC27700BB97A4 /* ReceiveViewController.swift in Sources */,
 				C312D4452D7DC27700BB97A4 /* BlinkingView.swift in Sources */,
-				2428718A2DE5E2920035DE48 /* Untitled.swift in Sources */,
 				C312D4492D7DC27700BB97A4 /* AlertView.swift in Sources */,
 				C312D44E2D7DC27700BB97A4 /* StartView.swift in Sources */,
 				C312D44F2D7DC27700BB97A4 /* LWActivityIndicator.swift in Sources */,
@@ -2899,7 +2901,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250613.0;
+				CURRENT_PROJECT_VERSION = 250617.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3197,7 +3199,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250613.0;
+				CURRENT_PROJECT_VERSION = 250617.0;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;

@@ -52,13 +52,13 @@ struct NewSyncProgressView: View {
                     .frame(height: progressBarHeight)
                     HStack {
                         VStack {
-                            Text(String(localized:"Block time: ") + viewModel.formattedTimestamp)
+                            Text(String(localized:"Timestamp: ") + viewModel.formattedTimestamp)
                                 .font(.caption)
-                                .frame(width: 210.0, alignment: .leading)
+                                .frame(width: 230.0, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)
-                            Text(String(localized:"Last block: ") + viewModel.blockHeightString)
+                            Text(String(localized:"Block: ") + viewModel.blockHeightString)
                                 .font(.caption)
-                                .frame(width: 210.0, alignment: .leading)
+                                .frame(width: 230.0, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)
                             Spacer()
                         }

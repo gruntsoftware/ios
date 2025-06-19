@@ -37,7 +37,7 @@ class StartViewModel: ObservableObject, Subscriber {
 
     func userDidSetThemePreference(userPrefersDarkMode: Bool) {
 
-        UserDefaults.userPrefersDarkTheme = userPrefersDarkMode
+        UserDefaults.userPreferredDarkTheme = userPrefersDarkMode
 
         NotificationCenter
             .default
