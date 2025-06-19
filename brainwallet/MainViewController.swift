@@ -100,7 +100,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         guard let settingsHC = settingsViewController else { return }
 
         /// Settings constant setup
-        settingsViewPlacement = self.view.frame.width
+        settingsViewPlacement = -self.view.frame.width
         showSettingsConstant = 0
 
         addChildViewController(settingsHC, layout: {
@@ -135,22 +135,23 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
                 mySelf.settingsLeadingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
                 mySelf.settingsTrailingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
 
-                UIView.animate(withDuration: 0.4, delay: 0.1, options: .curveEaseIn, animations: {
+                UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseIn, animations: {
                     mySelf.view.layoutIfNeeded() // Animate the constraint changes
+                    playSound 
                 }) { _ in
                     mySelf.shouldShowSettings = false
                 }
 
             } else {
                 // Hide settings (slide out to right)
-                mySelf.settingsViewPlacement = mySelf.view.frame.width
+                mySelf.settingsViewPlacement = -mySelf.view.frame.width
                 mySelf.showSettingsConstant = 0
 
                 // Update existing constraints
                 mySelf.settingsLeadingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
                 mySelf.settingsTrailingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
 
-                UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.2, delay: 0.1, options: .curveEaseOut, animations: {
                     mySelf.view.layoutIfNeeded() // Animate the constraint changes
                 }) { _ in
                     mySelf.shouldShowSettings = true
