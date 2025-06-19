@@ -1,5 +1,5 @@
 //
-//  SettingsExpandingSecView.swift
+//  SettingsExpandingBlockLTCView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 19/06/2025.
@@ -7,7 +7,7 @@
 //
 import SwiftUI
 
-struct SettingsExpandingSecView: View {
+struct SettingsExpandingBlockLTCView: View {
 
     @ObservedObject
     var viewModel: NewMainViewModel
@@ -44,32 +44,35 @@ struct SettingsExpandingSecView: View {
                                     .padding(.leading, 16.0)
                                 Spacer()
                             }
-                            .frame(height: 30.0)
+
+                            Spacer()
+
                                 Button(action: {
                                     shouldExpandSecurity.toggle()
+                                    withAnimation(.easeInOut(duration: 0.3)) {
                                         if shouldExpandSecurity {
-                                            rotationAngle += 90
-                                        } else {
                                             rotationAngle -= 90
+                                        } else {
+                                            rotationAngle += 90
                                         }
+                                    }
+
                                 }) {
-                                        Image(systemName: "chevron.right")
+                                        Image(systemName: "chevron.left")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 30.0,
                                                    height: 30.0)
                                             .foregroundColor(BrainwalletColor.content)
-                                            .rotationEffect(Angle(degrees: rotationAngle))
-
                                 }
-                                .animation(.easeInOut(duration: 3.0), value: rotationAngle)
-                                .frame(width: 30.0,
-                                       height: 30.0)
+                                .rotationEffect(Angle(degrees: rotationAngle))
+                                .frame(width: 30.0, height: 30.0)
                         }
                         .frame(height: closedRowHeight, alignment: .top)
-//                        if shouldExpandSecurity {
-//                            securityListView
-//                        }
+                        if shouldExpandSecurity {
+                            securityListView
+                        }
+                        Spacer()
                     }
                 }
             }

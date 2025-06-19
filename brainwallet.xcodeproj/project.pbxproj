@@ -120,6 +120,11 @@
 		24F5BD4C2E0450B80010D340 /* SettingsExpandingSecView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4B2E0450B80010D340 /* SettingsExpandingSecView.swift */; };
 		24F5BD4E2E0452670010D340 /* SettingsActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4D2E0452670010D340 /* SettingsActionView.swift */; };
 		24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4F2E0460C90010D340 /* SecurityListView.swift */; };
+		24F5BD522E04708F0010D340 /* SettingsExpandingCurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD512E04708F0010D340 /* SettingsExpandingCurView.swift */; };
+		24F5BD542E0470B10010D340 /* SettingsExpandingGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD532E0470B10010D340 /* SettingsExpandingGamesView.swift */; };
+		24F5BD562E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */; };
+		24F5BD582E04711E0010D340 /* CurrencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD572E04711E0010D340 /* CurrencyListView.swift */; };
+		24F5BD5A2E04714C0010D340 /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD592E04714C0010D340 /* GamesListView.swift */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
 		24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */; };
@@ -674,6 +679,11 @@
 		24F5BD4B2E0450B80010D340 /* SettingsExpandingSecView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingSecView.swift; sourceTree = "<group>"; };
 		24F5BD4D2E0452670010D340 /* SettingsActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionView.swift; sourceTree = "<group>"; };
 		24F5BD4F2E0460C90010D340 /* SecurityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityListView.swift; sourceTree = "<group>"; };
+		24F5BD512E04708F0010D340 /* SettingsExpandingCurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingCurView.swift; sourceTree = "<group>"; };
+		24F5BD532E0470B10010D340 /* SettingsExpandingGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingGamesView.swift; sourceTree = "<group>"; };
+		24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingBlockLTCView.swift; sourceTree = "<group>"; };
+		24F5BD572E04711E0010D340 /* CurrencyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListView.swift; sourceTree = "<group>"; };
+		24F5BD592E04714C0010D340 /* GamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListView.swift; sourceTree = "<group>"; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
 		24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
@@ -1544,9 +1554,14 @@
 			children = (
 				249DDE412DCD572F00B2B275 /* SettingsView.swift */,
 				24F5BD4F2E0460C90010D340 /* SecurityListView.swift */,
+				24F5BD572E04711E0010D340 /* CurrencyListView.swift */,
+				24F5BD592E04714C0010D340 /* GamesListView.swift */,
 				24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */,
 				24F5BD4D2E0452670010D340 /* SettingsActionView.swift */,
 				24F5BD4B2E0450B80010D340 /* SettingsExpandingSecView.swift */,
+				24F5BD512E04708F0010D340 /* SettingsExpandingCurView.swift */,
+				24F5BD532E0470B10010D340 /* SettingsExpandingGamesView.swift */,
+				24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */,
 				24F5BD492E0442D00010D340 /* SettingsFooterView.swift */,
 			);
 			path = "Settings Classes";
@@ -2547,6 +2562,7 @@
 				C312D3292D7DC27700BB97A4 /* MainViewController.swift in Sources */,
 				C312D32A2D7DC27700BB97A4 /* UINavigationController+Extension.swift in Sources */,
 				C312D32E2D7DC27700BB97A4 /* StoreReview+Extension.swift in Sources */,
+				24F5BD562E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift in Sources */,
 				C312D32F2D7DC27700BB97A4 /* UISlider+Gradient.swift in Sources */,
 				C312D3302D7DC27700BB97A4 /* UIControl+Callback.swift in Sources */,
 				24618EEA2D90436500A878AC /* BRCore.swift in Sources */,
@@ -2565,6 +2581,7 @@
 				24BEC6072DF0B53000140AAD /* WipeWalletView.swift in Sources */,
 				C312D3452D7DC27700BB97A4 /* EmailValidation.swift in Sources */,
 				C312D3472D7DC27700BB97A4 /* WalletManager+Auth.swift in Sources */,
+				24F5BD582E04711E0010D340 /* CurrencyListView.swift in Sources */,
 				C312D3482D7DC27700BB97A4 /* FeeManager.swift in Sources */,
 				C312D3492D7DC27700BB97A4 /* StartNavigationDelegate.swift in Sources */,
 				C312D34C2D7DC27700BB97A4 /* AssociatedObject.swift in Sources */,
@@ -2676,6 +2693,7 @@
 				C312D3DC2D7DC27700BB97A4 /* ConfirmPhrase.swift in Sources */,
 				C312D3DD2D7DC27700BB97A4 /* ReceiveLTCViewController.swift in Sources */,
 				C312D3DF2D7DC27700BB97A4 /* EnterPhraseViewController.swift in Sources */,
+				24F5BD5A2E04714C0010D340 /* GamesListView.swift in Sources */,
 				C312D3E42D7DC27700BB97A4 /* LoginView.swift in Sources */,
 				C312D3E52D7DC27700BB97A4 /* LocalWebViewModel.swift in Sources */,
 				C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */,
@@ -2700,6 +2718,7 @@
 				241D22412DB526AE000302C8 /* SetPasscodeView.swift in Sources */,
 				C312D4072D7DC27700BB97A4 /* WipeEmptyWalletViewController.swift in Sources */,
 				24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */,
+				24F5BD542E0470B10010D340 /* SettingsExpandingGamesView.swift in Sources */,
 				2412BA7E2DF4660300AC40BB /* ReceiveAddressView.swift in Sources */,
 				C312D40A2D7DC27700BB97A4 /* EnterPhraseView.swift in Sources */,
 				C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */,
@@ -2795,6 +2814,7 @@
 				C312D48F2D7DC27700BB97A4 /* SimpleRedux.swift in Sources */,
 				C312D4902D7DC27700BB97A4 /* SendAddressCellView.swift in Sources */,
 				241D22492DB526E9000302C8 /* YourSeedWordsView.swift in Sources */,
+				24F5BD522E04708F0010D340 /* SettingsExpandingCurView.swift in Sources */,
 				C312D4912D7DC27700BB97A4 /* ForgotAlertViewModel.swift in Sources */,
 				C312D4942D7DC27700BB97A4 /* RetryTimer.swift in Sources */,
 				C312D4952D7DC27700BB97A4 /* RadialGradientView.swift in Sources */,
