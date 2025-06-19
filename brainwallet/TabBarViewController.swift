@@ -40,13 +40,17 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		didSet { setBalances() }
 	}
 
+    var didTapSettingsButton: (() -> Void)?
+
 	@IBAction func showSettingsAction(_: Any) {
-		guard let store = store
-		else {
-			debugPrint("::: ERROR: Store not set")
-			return
-		}
-		store.perform(action: RootModalActions.Present(modal: .menu))
+//		guard let store = store
+//		else {
+//			debugPrint("::: ERROR: Store not set")
+//			return
+//		}
+//		store.perform(action: RootModalActions.Present(modal: .menu))
+
+        didTapSettingsButton?()
 	}
 
 	override func viewDidLoad() {

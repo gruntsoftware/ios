@@ -10,7 +10,11 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 	private var isLoginRequired = false
 	private let loginView: LoginViewController
+    private var settingsViewController: SettingsHostingController?
 	private let loginTransitionDelegate = LoginTransitionDelegate()
+    var showSettingsConstant: CGFloat = 0.0
+    var settingsViewPlacement: CGFloat = 0.0
+    var shouldShowSettings: Bool = true
 
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -62,16 +66,16 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		addTemporaryStartupViews()
 	}
 
-	func didUnlockLogin() {
+    func didUnlockLogin() {
 
         guard let walletManager = self.walletManager
-         else {
+        else {
             return
         }
 
         guard let tabVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "TabBarViewController")
-            as? TabBarViewController
+                as? TabBarViewController
         else {
             NSLog("TabBarViewController not intialized")
             return
@@ -81,25 +85,89 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         tabVC.walletManager = walletManager
 
         addChildViewController(tabVC, layout: {
-            tabVC.view.constrain(toSuperviewEdges: nil)
+            // Setup constraints
+            tabVC.view.translatesAutoresizingMaskIntoConstraints = false
+                   NSLayoutConstraint.activate([
+                    tabVC.view.topAnchor.constraint(equalTo: view.topAnchor),
+                    tabVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+                    tabVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+                    tabVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+                   ])
             tabVC.view.alpha = 0
             tabVC.view.layoutIfNeeded()
         })
 
-//        UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
-//            tabVC.view.alpha = 1
-//        }) { _ in
-//            NSLog("US MainView Controller presented")
-//        }
+        settingsViewController = SettingsHostingController(store: store, walletManager: walletManager)
+        guard let settingsHC = settingsViewController else {
+            return
+        }
 
-// STASH FOR NEW UI
-        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
-
-        addChildViewController(newMainViewHostingController, layout: {
-            newMainViewHostingController.view.constrain(toSuperviewEdges: nil)
-            newMainViewHostingController.view.layoutIfNeeded()
+        settingsViewPlacement = self.view.frame.width
+        showSettingsConstant = 0
+        addChildViewController(settingsHC, layout: {
+            settingsHC.view.translatesAutoresizingMaskIntoConstraints = false
+                   NSLayoutConstraint.activate([
+                    settingsHC.view.topAnchor.constraint(equalTo: view.topAnchor),
+                    settingsHC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:  -settingsViewPlacement - showSettingsConstant),
+                    settingsHC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -settingsViewPlacement - showSettingsConstant),
+                    settingsHC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+                   ])
+            settingsHC.view.layoutIfNeeded()
         })
-	}
+
+        tabVC.didTapSettingsButton = { [weak self]  in
+            guard let mySelf = self else { return }
+            guard let settingsHC = mySelf.settingsViewController else { return }
+            if mySelf.shouldShowSettings {
+                mySelf.showSettingsConstant = 90.0
+                mySelf.settingsViewPlacement = 0
+                debugPrint("::: didTap (\(mySelf.shouldShowSettings)) constant: \(mySelf.showSettingsConstant) settinngsPlacement: \(mySelf.settingsViewPlacement)")
+
+                UIView.animate(withDuration: 0.9, delay: 0.1, options: .curveEaseInOut, animations: {
+                    NSLayoutConstraint.activate([
+                        settingsHC.view.topAnchor.constraint(equalTo: mySelf.view.topAnchor),
+                        settingsHC.view.leadingAnchor.constraint(equalTo: mySelf.view.leadingAnchor,
+                                                                 constant: mySelf.settingsViewPlacement - mySelf.showSettingsConstant),
+                        settingsHC.view.trailingAnchor.constraint(equalTo: mySelf.view.trailingAnchor,
+                                                                  constant:  mySelf.settingsViewPlacement - mySelf.showSettingsConstant),
+                        settingsHC.view.bottomAnchor.constraint(equalTo: mySelf.view.bottomAnchor)
+                    ])
+                    settingsHC.view.layoutIfNeeded()
+                }) { _ in
+                    mySelf.shouldShowSettings = false
+                }
+            } else {
+                mySelf.showSettingsConstant = 0.0
+                mySelf.settingsViewPlacement = mySelf.view.frame.width
+                debugPrint("::: didTap (\(mySelf.shouldShowSettings)) constant: \(mySelf.showSettingsConstant) settinngsPlacement: \(mySelf.settingsViewPlacement)")
+                UIView.animate(withDuration: 0.9, delay: 0.1, options: .curveEaseInOut, animations: {
+                    NSLayoutConstraint.activate([
+                        settingsHC.view.topAnchor.constraint(equalTo: mySelf.view.topAnchor),
+                        settingsHC.view.leadingAnchor.constraint(equalTo: mySelf.view.leadingAnchor,
+                                                                 constant: -mySelf.settingsViewPlacement - mySelf.showSettingsConstant),
+                        settingsHC.view.trailingAnchor.constraint(equalTo: mySelf.view.trailingAnchor,
+                                                                  constant: -mySelf.settingsViewPlacement - mySelf.showSettingsConstant),
+                        settingsHC.view.bottomAnchor.constraint(equalTo: mySelf.view.bottomAnchor)
+                    ])
+                    settingsHC.view.layoutIfNeeded()
+                }) { _ in
+                    mySelf.shouldShowSettings = true
+                }
+            }
+        }
+
+        UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
+            tabVC.view.alpha = 1
+        }) { _ in
+        }
+        // STASH FOR NEW UI
+        //        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
+        //
+        //        addChildViewController(newMainViewHostingController, layout: {
+        //            newMainViewHostingController.view.constrain(toSuperviewEdges: nil)
+        //            newMainViewHostingController.view.layoutIfNeeded()
+        //        }}
+    }
 
 	private func addTemporaryStartupViews() {
 		guardProtected(queue: DispatchQueue.main) {

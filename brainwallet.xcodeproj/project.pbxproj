@@ -114,6 +114,7 @@
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
 		24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */; };
+		24FBB86A2E035E10002B5F84 /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */; };
 		24FEB8BB2DD2425A00D60036 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24FEB8B92DD2425A00D60036 /* InfoPlist.strings */; };
 		759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 755CD9D11DAA197C0075898E /* libBRCore.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		C312D2CF2D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C22D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift */; };
@@ -657,6 +658,7 @@
 		24F378012DE89C6600A388AB /* MoonPayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPayHelper.swift; sourceTree = "<group>"; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
+		24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
 		24FEB8BA2DD2425A00D60036 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24FEB8BC2DD2449600D60036 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24FEB8BD2DD244B100D60036 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1504,6 +1506,7 @@
 				242871852DE5D2550035DE48 /* NewSyncProgressView.swift */,
 				242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */,
 				24B065342DC627E500B5E000 /* NewMainHostingController.swift */,
+				24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */,
 			);
 			path = "New Main Classes";
 			sourceTree = "<group>";
@@ -2687,6 +2690,7 @@
 				C312D42D2D7DC27700BB97A4 /* LWAnalytics.swift in Sources */,
 				C312D4312D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift in Sources */,
 				C312D4322D7DC27700BB97A4 /* SecurityCenterCell.swift in Sources */,
+				24FBB86A2E035E10002B5F84 /* SettingsHostingController.swift in Sources */,
 				24AAB31F2DE79EE300F0C18C /* NewReceiveViewModel.swift in Sources */,
 				24D7AE582DCFF72D0078252E /* NewConfirmViewModel.swift in Sources */,
 				C312D4332D7DC27700BB97A4 /* RemoteConfigHelper.swift in Sources */,
