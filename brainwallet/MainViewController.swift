@@ -15,6 +15,8 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
     var showSettingsConstant: CGFloat = 0.0
     var settingsViewPlacement: CGFloat = 0.0
     var shouldShowSettings: Bool = true
+    var settingsLeadingConstraint: NSLayoutConstraint!
+    var settingsTrailingConstraint: NSLayoutConstraint!
 
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -68,16 +70,12 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
     func didUnlockLogin() {
 
-        guard let walletManager = self.walletManager
-        else {
-            return
-        }
-
         guard let tabVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "TabBarViewController")
-                as? TabBarViewController
+                as? TabBarViewController,
+              let walletManager = self.walletManager
         else {
-            NSLog("TabBarViewController not intialized")
+            NSLog("TabBarViewController or wallet not intialized")
             return
         }
 
@@ -97,56 +95,63 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             tabVC.view.layoutIfNeeded()
         })
 
-        settingsViewController = SettingsHostingController(store: store, walletManager: walletManager)
-        guard let settingsHC = settingsViewController else {
-            return
-        }
+        settingsViewController = SettingsHostingController(store: store,
+                                                           walletManager: walletManager)
+        guard let settingsHC = settingsViewController else { return }
 
+        /// Settings constant setup
         settingsViewPlacement = self.view.frame.width
         showSettingsConstant = 0
+
         addChildViewController(settingsHC, layout: {
             settingsHC.view.translatesAutoresizingMaskIntoConstraints = false
-                   NSLayoutConstraint.activate([
-                    settingsHC.view.topAnchor.constraint(equalTo: view.topAnchor),
-                    settingsHC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:  settingsViewPlacement - showSettingsConstant),
-                    settingsHC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: settingsViewPlacement - showSettingsConstant),
-                    settingsHC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-                   ])
+
+            // Create and store constraint references
+            settingsLeadingConstraint = settingsHC.view.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: settingsViewPlacement - showSettingsConstant
+            )
+            settingsTrailingConstraint = settingsHC.view.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: settingsViewPlacement - showSettingsConstant
+            )
+
+            NSLayoutConstraint.activate([
+                settingsHC.view.topAnchor.constraint(equalTo: view.topAnchor),
+                settingsLeadingConstraint,
+                settingsTrailingConstraint,
+                settingsHC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
             settingsHC.view.layoutIfNeeded()
         })
 
         tabVC.didTapSettingsButton = { [weak self]  in
             guard let mySelf = self else { return }
-            guard let settingsHC = mySelf.settingsViewController else { return }
             if mySelf.shouldShowSettings {
                 mySelf.showSettingsConstant = 70.0
                 mySelf.settingsViewPlacement = 0
-                UIView.animate(withDuration: 0.9, delay: 0.1, options: .curveEaseInOut, animations: {
-                    NSLayoutConstraint.activate([
-                        settingsHC.view.topAnchor.constraint(equalTo: mySelf.view.topAnchor),
-                        settingsHC.view.leadingAnchor.constraint(equalTo: mySelf.view.leadingAnchor,
-                                                                 constant: mySelf.settingsViewPlacement - mySelf.showSettingsConstant),
-                        settingsHC.view.trailingAnchor.constraint(equalTo: mySelf.view.trailingAnchor,
-                                                                  constant:  mySelf.settingsViewPlacement - mySelf.showSettingsConstant),
-                        settingsHC.view.bottomAnchor.constraint(equalTo: mySelf.view.bottomAnchor)
-                    ])
-                    settingsHC.view.layoutIfNeeded()
+
+                // Update existing constraints
+                mySelf.settingsLeadingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
+                mySelf.settingsTrailingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
+
+                UIView.animate(withDuration: 0.4, delay: 0.1, options: .curveEaseIn, animations: {
+                    mySelf.view.layoutIfNeeded() // Animate the constraint changes
                 }) { _ in
                     mySelf.shouldShowSettings = false
                 }
+
             } else {
+                // Hide settings (slide out to right)
                 mySelf.settingsViewPlacement = mySelf.view.frame.width
                 mySelf.showSettingsConstant = 0
-                UIView.animate(withDuration: 0.9, delay: 0.1, options: .curveEaseInOut, animations: {
-                    NSLayoutConstraint.activate([
-                        settingsHC.view.topAnchor.constraint(equalTo: mySelf.view.topAnchor),
-                        settingsHC.view.leadingAnchor.constraint(equalTo: mySelf.view.leadingAnchor,
-                                                                 constant: mySelf.settingsViewPlacement - mySelf.showSettingsConstant),
-                        settingsHC.view.trailingAnchor.constraint(equalTo: mySelf.view.trailingAnchor,
-                                                                  constant: mySelf.settingsViewPlacement - mySelf.showSettingsConstant),
-                        settingsHC.view.bottomAnchor.constraint(equalTo: mySelf.view.bottomAnchor)
-                    ])
-                    settingsHC.view.layoutIfNeeded()
+
+                // Update existing constraints
+                mySelf.settingsLeadingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
+                mySelf.settingsTrailingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
+
+                UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseOut, animations: {
+                    mySelf.view.layoutIfNeeded() // Animate the constraint changes
                 }) { _ in
                     mySelf.shouldShowSettings = true
                 }
@@ -157,6 +162,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             tabVC.view.alpha = 1
         }) { _ in
         }
+
         // STASH FOR NEW UI
         //        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
         //
