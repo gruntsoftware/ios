@@ -69,7 +69,6 @@ struct NewReceiveView: View {
 
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                     VStack {
-
                         Button(action: {
                             UIPasteboard.general.string = viewModel.newReceiveAddress
                             didCopyAddress = true

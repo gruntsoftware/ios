@@ -774,7 +774,7 @@
         }
       }
     },
-    "Block time: " : {
+    "Block: " : {
 
     },
     "Blockchain" : {
@@ -4241,7 +4241,7 @@
         }
       }
     },
-    "Games" : {
+    "Fetching your transaction history..." : {
 
     },
     "Help improve Brainwallet by sharing your anonymous data with us to improve the app. We respect your privacy." : {
@@ -4646,9 +4646,6 @@
           }
         }
       }
-    },
-    "Last block: " : {
-
     },
     "Litecoin Display Unit" : {
       "localizations" : {
@@ -10227,6 +10224,9 @@
 
     },
     "This will erase your PIN, data & memos. This cannot be undone." : {
+
+    },
+    "Timestamp: " : {
 
     },
     "to" : {

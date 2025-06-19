@@ -222,8 +222,8 @@ class ApplicationController: Subscriber, Trackable {
 	private func shouldRequireLogin() -> Bool {
 		let then = UserDefaults.standard.double(forKey: timeSinceLastExitKey)
 		let timeout = UserDefaults.standard.double(forKey: shouldRequireLoginTimeoutKey)
-		let now = Date().timeIntervalSince1970
-		return now - then > timeout
+		let nowTime = Date().timeIntervalSince1970
+		return nowTime - then > timeout
 	}
 
 	private func setupRootViewController() {

@@ -1195,6 +1195,16 @@
 			path = "Brainwallet Custom Shapes";
 			sourceTree = "<group>";
 		};
+		2466FECB2DFFE4ED00A1ACC2 /* App Launch Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */,
+				C312D2002D7DC27700BB97A4 /* AppDelegate.swift */,
+				C312D2012D7DC27700BB97A4 /* ApplicationController.swift */,
+			);
+			path = "App Launch Classes";
+			sourceTree = "<group>";
+		};
 		248D87B92DB4E3C900745552 /* Colors */ = {
 			isa = PBXGroup;
 			children = (
@@ -1785,6 +1795,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				2466FECB2DFFE4ED00A1ACC2 /* App Launch Classes */,
 				24F05E782DF9627000E25829 /* BWAPIClient Classes */,
 				24E078A62DF1F915004B5958 /* New Table Hosting Classes */,
 				24F378002DE89C5B00A388AB /* MoonPay Helper */,
@@ -1821,7 +1832,6 @@
 				242871832DE5C5300035DE48 /* Extensions */,
 				242871842DE5C59B0035DE48 /* CoreResources */,
 				24618EE92D90435200A878AC /* BRCore.swift */,
-				C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */,
 				C312D06C2D7DC27700BB97A4 /* Async.swift */,
 				C312D06F2D7DC27700BB97A4 /* CustomTitleView.swift */,
 				C312D0722D7DC27700BB97A4 /* LAContext+Extensions.swift */,
@@ -1904,8 +1914,6 @@
 				C312D1CD2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift */,
 				C312D1FD2D7DC27700BB97A4 /* AddressFieldView.swift */,
 				C312D1FE2D7DC27700BB97A4 /* AlertFailureView.swift */,
-				C312D2002D7DC27700BB97A4 /* AppDelegate.swift */,
-				C312D2012D7DC27700BB97A4 /* ApplicationController.swift */,
 				C312D2022D7DC27700BB97A4 /* ArticleIds.swift */,
 				C312D2042D7DC27700BB97A4 /* AssociatedObject.swift */,
 				C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */,
@@ -2953,7 +2961,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250613.0;
+				CURRENT_PROJECT_VERSION = 250617.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3251,7 +3259,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250613.0;
+				CURRENT_PROJECT_VERSION = 250617.0;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
