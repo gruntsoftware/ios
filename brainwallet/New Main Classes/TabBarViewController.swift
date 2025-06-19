@@ -17,9 +17,9 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
     private var canUserBuy = false
 	private let dateFormatter = DateFormatter()
 	private let equalsLabel = UILabel(font: .barlowMedium(size: 12), color: BrainwalletUIColor.content)
-	private var regularConstraints: [NSLayoutConstraint] = []
-	private var swappedConstraints: [NSLayoutConstraint] = []
-	private let currencyTapView = UIView()
+	var regularConstraints: [NSLayoutConstraint] = []
+	var swappedConstraints: [NSLayoutConstraint] = []
+	let currencyTapView = UIView()
 	private let storyboardNames: [String] = ["Send","Transactions","Receive"]
 	var storyboardIDs: [String] = ["SendLTCViewController", "TransactionsViewController", "ReceiveLTCViewController"]
 	var viewControllers: [UIViewController] = []
@@ -32,7 +32,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		didSet { setBalances() }
 	}
 
-	private var balance: UInt64 = 0 {
+	var balance: UInt64 = 0 {
 		didSet { setBalances() }
 	}
 
@@ -43,13 +43,6 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
     var didTapSettingsButton: (() -> Void)?
 
 	@IBAction func showSettingsAction(_: Any) {
-//		guard let store = store
-//		else {
-//			debugPrint("::: ERROR: Store not set")
-//			return
-//		}
-//		store.perform(action: RootModalActions.Present(modal: .menu))
-
         didTapSettingsButton?()
 	}
 
@@ -118,10 +111,31 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 	}
 
+    @objc func buttonTouchDown() {
+        UIView.animate(withDuration: 0.1) {
+            self.settingsButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
+    }
+
+    @objc func buttonTouchUp() {
+        UIView.animate(withDuration: 0.1) {
+            self.settingsButton.transform = CGAffineTransform.identity
+        }
+    }
+
 	private func setupViews() {
 		walletBalanceLabel.text = String(localized: "Balance :", bundle: .main)
 
-        settingsButton.imageView?.tintColor = BrainwalletUIColor.content
+        settingsButton.imageView?.contentMode = .scaleAspectFit
+
+        let originalImage = UIImage(systemName: "line.3.horizontal")
+        let resizedImage = originalImage?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+        settingsButton.setImage(resizedImage, for: .normal)
+        settingsButton.tintColor = BrainwalletUIColor.content
+
+        // Add target for touch events
+        settingsButton.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
+        settingsButton.addTarget(self, action: #selector(buttonTouchUp), for: [.touchUpInside, .touchUpOutside, .touchCancel])
 
 		headerView.backgroundColor = BrainwalletUIColor.surface
         tabBar.barTintColor = BrainwalletUIColor.content.withAlphaComponent(0.01)
@@ -192,7 +206,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	}
 
 	/// This is called when the price changes
-	private func setBalances() {
+    func setBalances() {
 		guard let rate = exchangeRate, let store = store, let isLTCSwapped = isLtcSwapped
 		else {
 			NSLog("ERROR: Rate, Store not initialized")
@@ -244,7 +258,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	/// Transform LTC and Fiat  Balances
 	/// - Parameter forView: Views
 	/// - Returns: the inverse transform
-	private func transform(forView: UIView) -> CGAffineTransform {
+	func transform(forView: UIView) -> CGAffineTransform {
 		forView.transform = .identity
 		let scaleFactor: CGFloat = smallFontSize / largeFontSize
 		let deltaX = forView.frame.width * (1 - scaleFactor)
@@ -377,90 +391,4 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
         }
     }
 
-}
-
-extension TabBarViewController {
-
-    // MARK: - Adding Subscriptions
-
-    private func addSubscriptions() {
-        guard let store = store
-        else {
-            debugPrint("::: ERROR - Store not passed")
-            return
-        }
-
-        guard let primaryLabel = primaryBalanceLabel,
-              let secondaryLabel = secondaryBalanceLabel
-        else {
-            debugPrint("::: ERROR: Price labels not initialized")
-            return
-        }
-
-        store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
-                        callback: { _ in
-                    if let rate = store.state.currentRate {
-                        let maxDigits = store.state.maxDigits
-                        let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: maxDigits)
-                        secondaryLabel.formatter = placeholderAmount.localFormat
-                        primaryLabel.formatter = placeholderAmount.ltcFormat
-                        self.exchangeRate = rate
-                    }
-        })
-
-        store.lazySubscribe(self,
-                            selector: { $0.isLtcSwapped != $1.isLtcSwapped },
-                            callback: { self.isLtcSwapped = $0.isLtcSwapped })
-        store.lazySubscribe(self,
-                            selector: { $0.currentRate != $1.currentRate },
-                            callback: {
-                                if let rate = $0.currentRate {
-                                    let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
-                                    secondaryLabel.formatter = placeholderAmount.localFormat
-                                    primaryLabel.formatter = placeholderAmount.ltcFormat
-                                }
-                                self.exchangeRate = $0.currentRate
-                            })
-
-        store.lazySubscribe(self,
-                            selector: { $0.maxDigits != $1.maxDigits },
-                            callback: {
-                                if let rate = $0.currentRate {
-                                    let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
-                                    secondaryLabel.formatter = placeholderAmount.localFormat
-                                    primaryLabel.formatter = placeholderAmount.ltcFormat
-                                    self.setBalances()
-                                }
-                            })
-
-        store.subscribe(self,
-                        selector: { $0.walletState.balance != $1.walletState.balance },
-                        callback: { state in
-                            if let balance = state.walletState.balance {
-                                self.balance = balance
-                                self.setBalances()
-                            }
-                        })
-    }
-
-	@objc private func currencySwitchTapped() {
-		view.layoutIfNeeded()
-		guard let store = store else { return }
-		guard let isLTCSwapped = isLtcSwapped else { return }
-		guard let primaryLabel = primaryBalanceLabel,
-		      let secondaryLabel = secondaryBalanceLabel
-		else {
-			NSLog("ERROR: Price labels not initialized")
-			return
-		}
-
-		UIView.spring(0.7, animations: {
-			primaryLabel.transform = primaryLabel.transform.isIdentity ? self.transform(forView: primaryLabel) : .identity
-			secondaryLabel.transform = secondaryLabel.transform.isIdentity ? self.transform(forView: secondaryLabel) : .identity
-			NSLayoutConstraint.deactivate(!isLTCSwapped ? self.regularConstraints : self.swappedConstraints)
-			NSLayoutConstraint.activate(!isLTCSwapped ? self.swappedConstraints : self.regularConstraints)
-			self.view.layoutIfNeeded()
-		}) { _ in }
-		store.perform(action: CurrencyChange.toggle())
-	}
 }

@@ -4232,6 +4232,12 @@
         }
       }
     },
+    "Footer" : {
+
+    },
+    "Games" : {
+
+    },
     "Help improve Brainwallet by sharing your anonymous data with us to improve the app. We respect your privacy." : {
       "localizations" : {
         "ar" : {
@@ -4937,6 +4943,9 @@
           }
         }
       }
+    },
+    "Lock" : {
+
     },
     "Manage" : {
       "localizations" : {
@@ -8166,6 +8175,7 @@
       }
     },
     "Settings View" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -8572,6 +8582,9 @@
       }
     },
     "Show seed words" : {
+
+    },
+    "Social" : {
 
     },
     "Social links" : {

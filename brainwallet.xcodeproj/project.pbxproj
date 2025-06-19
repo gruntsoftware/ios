@@ -111,6 +111,11 @@
 		24E078AA2DF1F9AE004B5958 /* PromptCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E078A92DF1F9AC004B5958 /* PromptCellViewModel.swift */; };
 		24EE3F1F2DCF5A560017472B /* TopUpSetAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE3F1E2DCF5A560017472B /* TopUpSetAmountView.swift */; };
 		24F378022DE89C7800A388AB /* MoonPayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F378012DE89C6600A388AB /* MoonPayHelper.swift */; };
+		24F5BD3C2E042A040010D340 /* clicksound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 24F5BD3B2E042A040010D340 /* clicksound.wav */; };
+		24F5BD422E042E840010D340 /* clicksound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 24F5BD412E042E840010D340 /* clicksound.aiff */; };
+		24F5BD442E042F1D0010D340 /* clicksound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 24F5BD432E042F1D0010D340 /* clicksound.mp3 */; };
+		24F5BD462E0436BF0010D340 /* TabBarViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD452E0436AD0010D340 /* TabBarViewController+Extension.swift */; };
+		24F5BD482E043C2A0010D340 /* SettingsLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
 		24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */; };
@@ -656,6 +661,11 @@
 		24E52B412DEDD4AB009E3E35 /* brainwalletTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = brainwalletTests.xctestplan; path = brainwalletTests/brainwalletTests.xctestplan; sourceTree = "<group>"; };
 		24EE3F1E2DCF5A560017472B /* TopUpSetAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpSetAmountView.swift; sourceTree = "<group>"; };
 		24F378012DE89C6600A388AB /* MoonPayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPayHelper.swift; sourceTree = "<group>"; };
+		24F5BD3B2E042A040010D340 /* clicksound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clicksound.wav; sourceTree = "<group>"; };
+		24F5BD412E042E840010D340 /* clicksound.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = clicksound.aiff; sourceTree = "<group>"; };
+		24F5BD432E042F1D0010D340 /* clicksound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clicksound.mp3; sourceTree = "<group>"; };
+		24F5BD452E0436AD0010D340 /* TabBarViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBarViewController+Extension.swift"; sourceTree = "<group>"; };
+		24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelView.swift; sourceTree = "<group>"; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
 		24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
@@ -1507,6 +1517,8 @@
 				242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */,
 				24B065342DC627E500B5E000 /* NewMainHostingController.swift */,
 				24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */,
+				C312D2B72D7DC27700BB97A4 /* TabBarViewController.swift */,
+				24F5BD452E0436AD0010D340 /* TabBarViewController+Extension.swift */,
 			);
 			path = "New Main Classes";
 			sourceTree = "<group>";
@@ -1523,6 +1535,7 @@
 			isa = PBXGroup;
 			children = (
 				249DDE412DCD572F00B2B275 /* SettingsView.swift */,
+				24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */,
 			);
 			path = "Settings Classes";
 			sourceTree = "<group>";
@@ -1675,6 +1688,9 @@
 		C312D0C72D7DC27700BB97A4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				24F5BD3B2E042A040010D340 /* clicksound.wav */,
+				24F5BD412E042E840010D340 /* clicksound.aiff */,
+				24F5BD432E042F1D0010D340 /* clicksound.mp3 */,
 				C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */,
 			);
 			path = Sounds;
@@ -1946,7 +1962,6 @@
 				C312D2B22D7DC27700BB97A4 /* SupportLFViewModel.swift */,
 				C312D2B52D7DC27700BB97A4 /* SupportSafariViewModel.swift */,
 				C312D2B62D7DC27700BB97A4 /* SyncProgressHeaderView.swift */,
-				C312D2B72D7DC27700BB97A4 /* TabBarViewController.swift */,
 				C312D2B82D7DC27700BB97A4 /* TestnetData.swift */,
 				C312D2BC2D7DC27700BB97A4 /* TransactionManager.swift */,
 				C312D2BD2D7DC27700BB97A4 /* TransactionModalView.swift */,
@@ -2263,6 +2278,7 @@
 				C312D4AE2D7DC27700BB97A4 /* CHANGELOG.md in Resources */,
 				C312D4AF2D7DC27700BB97A4 /* Animate.storyboard in Resources */,
 				244895E32DF57D1900CA8BA2 /* Brainwallet-StoreKit-v1.storekit in Resources */,
+				24F5BD3C2E042A040010D340 /* clicksound.wav in Resources */,
 				24E06FC72DF4792800719B6C /* service-data.plist in Resources */,
 				C312D4B22D7DC27700BB97A4 /* SyncProgressHeaderView.xib in Resources */,
 				C312D4B42D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf in Resources */,
@@ -2274,7 +2290,9 @@
 				C312D4BD2D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf in Resources */,
 				C312D4BF2D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf in Resources */,
 				C312D4C22D7DC27700BB97A4 /* general.css in Resources */,
+				24F5BD422E042E840010D340 /* clicksound.aiff in Resources */,
 				C312D4C42D7DC27700BB97A4 /* Assets.xcassets in Resources */,
+				24F5BD442E042F1D0010D340 /* clicksound.mp3 in Resources */,
 				2489E05C2DF0A23700630888 /* GoogleService-Info.plist in Resources */,
 				C312D4C52D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf in Resources */,
 				C312D4CA2D7DC27700BB97A4 /* Buy.storyboard in Resources */,
@@ -2681,6 +2699,7 @@
 				C312D41C2D7DC27700BB97A4 /* CreateStepTabView.swift in Sources */,
 				C312D41D2D7DC27700BB97A4 /* ModalNavigationController.swift in Sources */,
 				242871862DE5D2580035DE48 /* NewSyncProgressView.swift in Sources */,
+				24F5BD482E043C2A0010D340 /* SettingsLabelView.swift in Sources */,
 				C312D41E2D7DC27700BB97A4 /* UnstoppableDomainView.swift in Sources */,
 				C312D41F2D7DC27700BB97A4 /* AboutViewController.swift in Sources */,
 				C312D4222D7DC27700BB97A4 /* ModalDisplayable.swift in Sources */,
@@ -2715,6 +2734,7 @@
 				C312D4512D7DC27700BB97A4 /* PromptModalViewController.swift in Sources */,
 				C312D4522D7DC27700BB97A4 /* CheckboxesStepView.swift in Sources */,
 				24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */,
+				24F5BD462E0436BF0010D340 /* TabBarViewController+Extension.swift in Sources */,
 				C312D4562D7DC27700BB97A4 /* LockScreenView.swift in Sources */,
 				C312D4572D7DC27700BB97A4 /* KeyboardNotificationInfo.swift in Sources */,
 				C312D4582D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift in Sources */,

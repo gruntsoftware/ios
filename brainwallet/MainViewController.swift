@@ -1,4 +1,5 @@
 import BRCore
+import AudioToolbox
 import MachO
 import SwiftUI
 import UIKit
@@ -17,7 +18,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
     var shouldShowSettings: Bool = true
     var settingsLeadingConstraint: NSLayoutConstraint!
     var settingsTrailingConstraint: NSLayoutConstraint!
-
+    private let clickSound = "click_sound"
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 	var walletManager: WalletManager? {
@@ -75,7 +76,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
                 as? TabBarViewController,
               let walletManager = self.walletManager
         else {
-            NSLog("TabBarViewController or wallet not intialized")
+            debugPrint("::: ERROR: TabBarViewController or wallet not intialized")
             return
         }
 
@@ -128,16 +129,17 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         tabVC.didTapSettingsButton = { [weak self]  in
             guard let mySelf = self else { return }
             if mySelf.shouldShowSettings {
-                mySelf.showSettingsConstant = 70.0
+                mySelf.showSettingsConstant = 65.0
                 mySelf.settingsViewPlacement = 0
 
                 // Update existing constraints
                 mySelf.settingsLeadingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
                 mySelf.settingsTrailingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
 
-                UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseIn, animations: {
-                    mySelf.view.layoutIfNeeded() // Animate the constraint changes
-                    playSound 
+                UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+                    mySelf.view.layoutIfNeeded()
+                    // TBD: Sound not ideal..in progress
+                    // mySelf.playSound(filename: "clicksound", type: "mp3")
                 }) { _ in
                     mySelf.shouldShowSettings = false
                 }
@@ -151,8 +153,10 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
                 mySelf.settingsLeadingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
                 mySelf.settingsTrailingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
 
-                UIView.animate(withDuration: 0.2, delay: 0.1, options: .curveEaseOut, animations: {
-                    mySelf.view.layoutIfNeeded() // Animate the constraint changes
+                UIView.animate(withDuration: 0.1, delay: 0.1, options: .curveEaseOut, animations: {
+                    mySelf.view.layoutIfNeeded()
+                    // TBD: Sound not ideal..in progress
+                    // mySelf.playSound(filename: "clicksound", type: "mp3")
                 }) { _ in
                     mySelf.shouldShowSettings = true
                 }
@@ -216,6 +220,18 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 			}
 		}
 	}
+    private func playSound(filename: String, type: String = "mp3") {
+        if let url = Bundle.main.url(forResource: filename, withExtension: type) {
+            var id: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(url as CFURL, &id)
+            AudioServicesAddSystemSoundCompletion(id, nil, nil, { soundId, _ in
+                AudioServicesDisposeSystemSoundID(soundId)
+            }, nil)
+            AudioServicesPlaySystemSound(id)
+        } else {
+            debugPrint("::: ERROR: NO AUDIO FILE FOUND")
+        }
+    }
 
 	override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
 		return .fade

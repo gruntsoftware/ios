@@ -15,6 +15,8 @@ struct SettingsView: View {
 
     @Binding var path: [Onboarding]
 
+    let closedRowHeight: CGFloat = 55.0
+
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
@@ -29,21 +31,47 @@ struct SettingsView: View {
     var body: some View {
 
         NavigationStack {
+            GeometryReader { geometry in
 
-            VStack {
-                List {
-
-                    Text("Security" )
-                        .padding()
-
-                    Text("Settings View")
-                        .padding()
+                let width = geometry.size.width
+                ZStack {
+                    BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
+                    HStack {
+                        Spacer()
+                        VStack {
+                            List {
+                                Section(footer: Text("Footer")) {
+                                    SettingsLabelView(title: String(localized: "Security"),
+                                                      detailText: "")
+                                    .frame(height: closedRowHeight)
+                                    SettingsLabelView(title: String(localized: "Currency"),
+                                                      detailText: "")
+                                    .frame(height: closedRowHeight)
+                                    SettingsLabelView(title: String(localized: "Games"),
+                                                      detailText: "")
+                                    .frame(height: closedRowHeight)
+                                    SettingsLabelView(title: String(localized: "Blockchain: Litecoin"),
+                                                      detailText: "")
+                                    .frame(height: closedRowHeight)
+                                    SettingsLabelView(title: String(localized: "Social"),
+                                                      detailText: "linktr.ee/brainwallet")
+                                    .frame(height: closedRowHeight)
+                                    SettingsLabelView(title: String(localized: "Support"),
+                                                      detailText: "suppor.brainwallet.co")
+                                    .frame(height: closedRowHeight)
+                                    SettingsLabelView(title: String(localized: "Lock"),
+                                                      detailText: "")
+                                    .frame(height: closedRowHeight)
+                                }
+                            }
+                            .listStyle(.plain)
+                            Spacer()
+                        }
+                        .frame(width: width * 0.9)
+                    }
 
                 }
-                .listStyle(.plain)
-                Spacer()
             }
-            .background(BrainwalletColor.surface.opacity(0.5))
         }
     }
 }
