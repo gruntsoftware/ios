@@ -34,43 +34,16 @@ struct SettingsExpandingSecView: View {
         NavigationStack {
             GeometryReader { _ in
                 ZStack {
-                    VStack {
-                        HStack {
-                            VStack {
-                                Text(title)
-                                    .font(largeFont)
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.leading, 16.0)
-                                Spacer()
+                        Image(systemName: "chevron.right")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(BrainwalletColor.content)
+                            .frame(width: 30.0, height: 30.0)
+                            .rotationEffect(Angle(degrees: shouldExpandSecurity ? 90 : 0))
+                            .animation(.easeInOut(duration: 0.4), value: shouldExpandSecurity)
+                            .onTapGesture {
+                                shouldExpandSecurity.toggle()
                             }
-                            .frame(height: 30.0)
-                                Button(action: {
-                                    shouldExpandSecurity.toggle()
-                                        if shouldExpandSecurity {
-                                            rotationAngle += 90
-                                        } else {
-                                            rotationAngle -= 90
-                                        }
-                                }) {
-                                        Image(systemName: "chevron.right")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 30.0,
-                                                   height: 30.0)
-                                            .foregroundColor(BrainwalletColor.content)
-                                            .rotationEffect(Angle(degrees: rotationAngle))
-
-                                }
-                                .animation(.easeInOut(duration: 3.0), value: rotationAngle)
-                                .frame(width: 30.0,
-                                       height: 30.0)
-                        }
-                        .frame(height: closedRowHeight, alignment: .top)
-//                        if shouldExpandSecurity {
-//                            securityListView
-//                        }
-                    }
                 }
             }
         }

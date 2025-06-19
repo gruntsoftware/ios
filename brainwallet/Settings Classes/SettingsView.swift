@@ -84,7 +84,7 @@ struct SettingsView: View {
                             List {
                                 SettingsExpandingSecView(title: String(localized: "Security"),
                                      viewModel: newMainViewModel, shouldExpandSecurity: $shouldExpandSecurity)
-                                          .frame(height: shouldExpandSecurity ? expandedRowHeight : closedRowHeight)
+                                          .frame(height: closedRowHeight)
                                 SettingsLabelView(title: String(localized: "Currency"),
                                                   detailText: "")
                                 .frame(height: closedRowHeight)
