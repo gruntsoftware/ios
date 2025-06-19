@@ -119,10 +119,8 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             guard let mySelf = self else { return }
             guard let settingsHC = mySelf.settingsViewController else { return }
             if mySelf.shouldShowSettings {
-                mySelf.showSettingsConstant = 90.0
+                mySelf.showSettingsConstant = 70.0
                 mySelf.settingsViewPlacement = 0
-                debugPrint("::: didTap (\(mySelf.shouldShowSettings)) constant: \(mySelf.showSettingsConstant) settinngsPlacement: \(mySelf.settingsViewPlacement)")
-
                 UIView.animate(withDuration: 0.9, delay: 0.1, options: .curveEaseInOut, animations: {
                     NSLayoutConstraint.activate([
                         settingsHC.view.topAnchor.constraint(equalTo: mySelf.view.topAnchor),
@@ -137,9 +135,8 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
                     mySelf.shouldShowSettings = false
                 }
             } else {
-                mySelf.showSettingsConstant = 0.0
                 mySelf.settingsViewPlacement = mySelf.view.frame.width
-                debugPrint("::: didTap (\(mySelf.shouldShowSettings)) constant: \(mySelf.showSettingsConstant) settinngsPlacement: \(mySelf.settingsViewPlacement)")
+                mySelf.showSettingsConstant = 0
                 UIView.animate(withDuration: 0.9, delay: 0.1, options: .curveEaseInOut, animations: {
                     NSLayoutConstraint.activate([
                         settingsHC.view.topAnchor.constraint(equalTo: mySelf.view.topAnchor),
