@@ -116,6 +116,7 @@
 		24F5BD442E042F1D0010D340 /* clicksound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 24F5BD432E042F1D0010D340 /* clicksound.mp3 */; };
 		24F5BD462E0436BF0010D340 /* TabBarViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD452E0436AD0010D340 /* TabBarViewController+Extension.swift */; };
 		24F5BD482E043C2A0010D340 /* SettingsLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */; };
+		24F5BD4A2E0442D00010D340 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD492E0442D00010D340 /* SettingsFooterView.swift */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
 		24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */; };
@@ -666,6 +667,7 @@
 		24F5BD432E042F1D0010D340 /* clicksound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clicksound.mp3; sourceTree = "<group>"; };
 		24F5BD452E0436AD0010D340 /* TabBarViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBarViewController+Extension.swift"; sourceTree = "<group>"; };
 		24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelView.swift; sourceTree = "<group>"; };
+		24F5BD492E0442D00010D340 /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
 		24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
@@ -1536,6 +1538,7 @@
 			children = (
 				249DDE412DCD572F00B2B275 /* SettingsView.swift */,
 				24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */,
+				24F5BD492E0442D00010D340 /* SettingsFooterView.swift */,
 			);
 			path = "Settings Classes";
 			sourceTree = "<group>";
@@ -2621,6 +2624,7 @@
 				C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */,
 				C312D3902D7DC27700BB97A4 /* GradientSwitch.swift in Sources */,
 				C312D3932D7DC27700BB97A4 /* EnterPhraseHostingController.swift in Sources */,
+				24F5BD4A2E0442D00010D340 /* SettingsFooterView.swift in Sources */,
 				C312D3962D7DC27700BB97A4 /* LAContext+Extensions.swift in Sources */,
 				C312D39A2D7DC27700BB97A4 /* PinDigitView.swift in Sources */,
 				C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */,

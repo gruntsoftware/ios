@@ -16,6 +16,7 @@ struct SettingsView: View {
     @Binding var path: [Onboarding]
 
     let closedRowHeight: CGFloat = 55.0
+    let footerRowHeight: CGFloat = 55.0
 
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
@@ -40,32 +41,34 @@ struct SettingsView: View {
                         Spacer()
                         VStack {
                             List {
-                                Section(footer: Text("Footer")) {
-                                    SettingsLabelView(title: String(localized: "Security"),
-                                                      detailText: "")
-                                    .frame(height: closedRowHeight)
-                                    SettingsLabelView(title: String(localized: "Currency"),
-                                                      detailText: "")
-                                    .frame(height: closedRowHeight)
-                                    SettingsLabelView(title: String(localized: "Games"),
-                                                      detailText: "")
-                                    .frame(height: closedRowHeight)
-                                    SettingsLabelView(title: String(localized: "Blockchain: Litecoin"),
-                                                      detailText: "")
-                                    .frame(height: closedRowHeight)
-                                    SettingsLabelView(title: String(localized: "Social"),
-                                                      detailText: "linktr.ee/brainwallet")
-                                    .frame(height: closedRowHeight)
-                                    SettingsLabelView(title: String(localized: "Support"),
-                                                      detailText: "suppor.brainwallet.co")
-                                    .frame(height: closedRowHeight)
-                                    SettingsLabelView(title: String(localized: "Lock"),
-                                                      detailText: "")
-                                    .frame(height: closedRowHeight)
-                                }
+                                SettingsLabelView(title: String(localized: "Security"),
+                                                  detailText: "")
+                                .frame(height: closedRowHeight)
+                                SettingsLabelView(title: String(localized: "Currency"),
+                                                  detailText: "")
+                                .frame(height: closedRowHeight)
+                                SettingsLabelView(title: String(localized: "Games"),
+                                                  detailText: "")
+                                .frame(height: closedRowHeight)
+                                SettingsLabelView(title: String(localized: "Blockchain: Litecoin"),
+                                                  detailText: "")
+                                .frame(height: closedRowHeight)
+                                SettingsLabelView(title: String(localized: "Social"),
+                                                  detailText: "linktr.ee/brainwallet")
+                                .frame(height: closedRowHeight)
+                                SettingsLabelView(title: String(localized: "Support"),
+                                                  detailText: "suppor.brainwallet.co")
+                                .frame(height: closedRowHeight)
+                                SettingsLabelView(title: String(localized: "Lock"),
+                                                  detailText: "")
+                                .frame(height: closedRowHeight)
+
                             }
                             .listStyle(.plain)
-                            Spacer()
+                            SettingsFooterView()
+                                .frame(width: width * 0.9,
+                                       height: footerRowHeight)
+                                .padding(.bottom, 1.0)
                         }
                         .frame(width: width * 0.9)
                     }
