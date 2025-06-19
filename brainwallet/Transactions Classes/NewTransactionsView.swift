@@ -16,6 +16,12 @@ struct NewTransactionsView: View {
     @State
     private var transactions: [Transaction] = []
 
+    @State
+    private var filterMode: TransactionFilterState = .allTransactions
+
+    @State
+    private var modeState = 0
+
     init(viewModel: NewMainViewModel) {
         newMainViewModel = viewModel
     }
