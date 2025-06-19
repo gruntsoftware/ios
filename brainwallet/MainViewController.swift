@@ -108,8 +108,8 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             settingsHC.view.translatesAutoresizingMaskIntoConstraints = false
                    NSLayoutConstraint.activate([
                     settingsHC.view.topAnchor.constraint(equalTo: view.topAnchor),
-                    settingsHC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:  -settingsViewPlacement - showSettingsConstant),
-                    settingsHC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -settingsViewPlacement - showSettingsConstant),
+                    settingsHC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:  settingsViewPlacement - showSettingsConstant),
+                    settingsHC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: settingsViewPlacement - showSettingsConstant),
                     settingsHC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
                    ])
             settingsHC.view.layoutIfNeeded()
@@ -144,9 +144,9 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
                     NSLayoutConstraint.activate([
                         settingsHC.view.topAnchor.constraint(equalTo: mySelf.view.topAnchor),
                         settingsHC.view.leadingAnchor.constraint(equalTo: mySelf.view.leadingAnchor,
-                                                                 constant: -mySelf.settingsViewPlacement - mySelf.showSettingsConstant),
+                                                                 constant: mySelf.settingsViewPlacement - mySelf.showSettingsConstant),
                         settingsHC.view.trailingAnchor.constraint(equalTo: mySelf.view.trailingAnchor,
-                                                                  constant: -mySelf.settingsViewPlacement - mySelf.showSettingsConstant),
+                                                                  constant: mySelf.settingsViewPlacement - mySelf.showSettingsConstant),
                         settingsHC.view.bottomAnchor.constraint(equalTo: mySelf.view.bottomAnchor)
                     ])
                     settingsHC.view.layoutIfNeeded()
