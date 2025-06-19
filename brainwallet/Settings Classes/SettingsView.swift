@@ -67,7 +67,7 @@ struct SettingsView: View {
         self.newMainViewModel = viewModel
         _path = path
 
-        userPrefersDarkMode = UserDefaults.userPrefersDarkTheme
+        userPrefersDarkMode = UserDefaults.userPreferredDarkTheme
     }
 
     var body: some View {

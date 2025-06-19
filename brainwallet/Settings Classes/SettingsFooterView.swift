@@ -15,7 +15,7 @@ struct SettingsFooterView: View {
     private let lightBackgroundColor: Color = BrainwalletColor.grape
     private var setBackgroundColor: Color = BrainwalletColor.grape
 
-    let userPreferredDarkMode = UserDefaults.userPrefersDarkTheme
+    let userPreferredDarkMode = UserDefaults.userPreferredDarkTheme
     init() {
         setBackgroundColor = userPreferredDarkMode ? darkBackgroundColor : lightBackgroundColor
     }
