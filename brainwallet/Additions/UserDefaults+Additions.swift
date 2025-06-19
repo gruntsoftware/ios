@@ -69,7 +69,7 @@ extension UserDefaults {
 		set { defaults.set(newValue, forKey: userPreferredCurrencyCodeKey) }
 	}
 
-    static var userPrefersDarkTheme: Bool {
+    static var userPreferredDarkTheme: Bool {
         get {
             guard defaults.object(forKey: userDidPreferDarkModeKey) != nil
             else {
