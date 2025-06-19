@@ -24,6 +24,7 @@ struct SettingsView: View {
     init(viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.newMainViewModel = viewModel
         _path = path
+
     }
 
     var body: some View {

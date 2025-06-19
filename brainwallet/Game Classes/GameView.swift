@@ -10,7 +10,8 @@ import SwiftUI
 
 struct GameView: View {
 
-    @ObservedObject var newMainViewModel: NewMainViewModel
+    @ObservedObject
+    var newMainViewModel: NewMainViewModel
 
     init(viewModel: NewMainViewModel) {
         newMainViewModel = viewModel
@@ -19,7 +20,7 @@ struct GameView: View {
         GeometryReader { _ in
 
             ZStack {
-                BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
+                BrainwalletColor.chili.edgesIgnoringSafeArea(.all)
                 VStack {
                     Text("")
                 }

@@ -10,7 +10,13 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 	private var isLoginRequired = false
 	private let loginView: LoginViewController
+    private var settingsViewController: SettingsHostingController?
 	private let loginTransitionDelegate = LoginTransitionDelegate()
+    var showSettingsConstant: CGFloat = 0.0
+    var settingsViewPlacement: CGFloat = 0.0
+    var shouldShowSettings: Bool = true
+    var settingsLeadingConstraint: NSLayoutConstraint!
+    var settingsTrailingConstraint: NSLayoutConstraint!
 
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -62,18 +68,14 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		addTemporaryStartupViews()
 	}
 
-	func didUnlockLogin() {
-
-        guard let walletManager = self.walletManager
-         else {
-            return
-        }
+    func didUnlockLogin() {
 
         guard let tabVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "TabBarViewController")
-            as? TabBarViewController
+                as? TabBarViewController,
+              let walletManager = self.walletManager
         else {
-            NSLog("TabBarViewController not intialized")
+            NSLog("TabBarViewController or wallet not intialized")
             return
         }
 
@@ -81,30 +83,98 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         tabVC.walletManager = walletManager
 
         addChildViewController(tabVC, layout: {
-            tabVC.view.constrain(toSuperviewEdges: nil)
+            // Setup constraints
+            tabVC.view.translatesAutoresizingMaskIntoConstraints = false
+                   NSLayoutConstraint.activate([
+                    tabVC.view.topAnchor.constraint(equalTo: view.topAnchor),
+                    tabVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+                    tabVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+                    tabVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+                   ])
             tabVC.view.alpha = 0
             tabVC.view.layoutIfNeeded()
         })
 
+        settingsViewController = SettingsHostingController(store: store,
+                                                           walletManager: walletManager)
+        guard let settingsHC = settingsViewController else { return }
+
+        /// Settings constant setup
+        settingsViewPlacement = -self.view.frame.width
+        showSettingsConstant = 0
+
+        addChildViewController(settingsHC, layout: {
+            settingsHC.view.translatesAutoresizingMaskIntoConstraints = false
+
+            // Create and store constraint references
+            settingsLeadingConstraint = settingsHC.view.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: settingsViewPlacement - showSettingsConstant
+            )
+            settingsTrailingConstraint = settingsHC.view.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: settingsViewPlacement - showSettingsConstant
+            )
+
+            NSLayoutConstraint.activate([
+                settingsHC.view.topAnchor.constraint(equalTo: view.topAnchor),
+                settingsLeadingConstraint,
+                settingsTrailingConstraint,
+                settingsHC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
+            settingsHC.view.layoutIfNeeded()
+        })
+
+        tabVC.didTapSettingsButton = { [weak self]  in
+            guard let mySelf = self else { return }
+            if mySelf.shouldShowSettings {
+                mySelf.showSettingsConstant = 70.0
+                mySelf.settingsViewPlacement = 0
+
+                // Update existing constraints
+                mySelf.settingsLeadingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
+                mySelf.settingsTrailingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
+
+                UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseIn, animations: {
+                    mySelf.view.layoutIfNeeded() // Animate the constraint changes
+                }) { _ in
+                    mySelf.shouldShowSettings = false
+                }
+
+            } else {
+                // Hide settings (slide out to right)
+                mySelf.settingsViewPlacement = -mySelf.view.frame.width
+                mySelf.showSettingsConstant = 0
+
+                // Update existing constraints
+                mySelf.settingsLeadingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
+                mySelf.settingsTrailingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
+
+                UIView.animate(withDuration: 0.2, delay: 0.1, options: .curveEaseOut, animations: {
+                    mySelf.view.layoutIfNeeded() // Animate the constraint changes
+                }) { _ in
+                    mySelf.shouldShowSettings = true
+                }
+            }
+        }
+
         UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
             tabVC.view.alpha = 1
         }) { _ in
-            NSLog("US MainView Controller presented")
         }
 
-// STASH FOR NEW UI
-//        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
-//
-//        addChildViewController(newMainViewHostingController, layout: {
-//            newMainViewHostingController.view.constrain(toSuperviewEdges: nil)
-//            newMainViewHostingController.view.layoutIfNeeded()
-//        })
-	}
+        // STASH FOR NEW UI
+        //        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
+        //
+        //        addChildViewController(newMainViewHostingController, layout: {
+        //            newMainViewHostingController.view.constrain(toSuperviewEdges: nil)
+        //            newMainViewHostingController.view.layoutIfNeeded()
+        //        }}
+    }
 
 	private func addTemporaryStartupViews() {
 		guardProtected(queue: DispatchQueue.main) {
 			if !WalletManager.staticNoWallet {
-
 			} else {
 				// Adds a  card view the hides work while thread finishes
 				let launchView = LaunchCardHostingController()

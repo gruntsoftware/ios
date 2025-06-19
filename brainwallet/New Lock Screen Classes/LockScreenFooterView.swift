@@ -23,12 +23,10 @@ struct LockScreenFooterView: View {
         self.viewModel = viewModel
         _userPrefersDarkMode = userPrefersDarkMode
     }
-
     var body: some View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
-
             let buttonSize = 35.0
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
@@ -53,7 +51,6 @@ struct LockScreenFooterView: View {
                         .frame(minWidth: width * 0.20,
                             minHeight: 40.0,
                             alignment: .center)
-
                         Button(action: {
                             viewModel.userDidTapQR?()
                             viewModel.shouldShowQR.toggle()

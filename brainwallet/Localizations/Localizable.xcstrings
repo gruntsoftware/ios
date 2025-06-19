@@ -143,6 +143,16 @@
     "%@ = 1Ł" : {
 
     },
+    "%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@"
+          }
+        }
+      }
+    },
     "%lld" : {
       "localizations" : {
         "ar" : {
@@ -657,6 +667,9 @@
           }
         }
       }
+    },
+    "BALANCE" : {
+
     },
     "Balance :" : {
       "localizations" : {
@@ -11010,6 +11023,9 @@
 
     },
     "Turn device passcode on" : {
+
+    },
+    "Tx Count: " : {
 
     },
     "Update PIN" : {

@@ -40,13 +40,17 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		didSet { setBalances() }
 	}
 
+    var didTapSettingsButton: (() -> Void)?
+
 	@IBAction func showSettingsAction(_: Any) {
-		guard let store = store
-		else {
-			debugPrint("::: ERROR: Store not set")
-			return
-		}
-		store.perform(action: RootModalActions.Present(modal: .menu))
+//		guard let store = store
+//		else {
+//			debugPrint("::: ERROR: Store not set")
+//			return
+//		}
+//		store.perform(action: RootModalActions.Present(modal: .menu))
+
+        didTapSettingsButton?()
 	}
 
 	override func viewDidLoad() {
@@ -183,8 +187,8 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			currencyTapView.bottomAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: C.padding[1])
 		])
 
-		let gr = UITapGestureRecognizer(target: self, action: #selector(currencySwitchTapped))
-		currencyTapView.addGestureRecognizer(gr)
+		let gesture = UITapGestureRecognizer(target: self, action: #selector(currencySwitchTapped))
+		currencyTapView.addGestureRecognizer(gesture)
 	}
 
 	/// This is called when the price changes

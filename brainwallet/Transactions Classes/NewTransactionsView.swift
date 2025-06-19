@@ -8,12 +8,6 @@
 
 import SwiftUI
 
-enum FilterTransactionMode: Int, CaseIterable {
-    case all = 0
-    case sent = 1
-    case received = 2
-}
-
 struct NewTransactionsView: View {
 
     @ObservedObject
@@ -22,15 +16,8 @@ struct NewTransactionsView: View {
     @State
     private var transactions: [Transaction] = []
 
-    @State
-    private var filterMode: FilterTransactionMode = .all
-
-    @State
-    private var modeState = 0
-
     init(viewModel: NewMainViewModel) {
         newMainViewModel = viewModel
-
     }
     var body: some View {
         GeometryReader { geometry in
@@ -38,31 +25,8 @@ struct NewTransactionsView: View {
             let width = geometry.size.width
 
             ZStack {
-                BrainwalletColor.affirm.edgesIgnoringSafeArea(.all)
-                VStack {
-                    HStack {
-                        Text("\(filterMode.rawValue)")
-                        Spacer()
-                        Button(action: {
-                            if modeState < 2 {
-                                modeState += 1
-                            } else {
-                                modeState = 0
-                            }
-                            filterMode = FilterTransactionMode(rawValue: modeState)!
+                BrainwalletColor.lavender.edgesIgnoringSafeArea(.all)
 
-                        }) {
-                            Image(systemName: "slider.horizontal.3")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30.0, height: 30.0,
-                                       alignment: .center)
-                                .foregroundColor(BrainwalletColor.content)
-                        }
-                        .frame(width: 30.0, height: 30.0)
-                    }
-                    .frame(height: 30.0, alignment: .center)
-                    .padding([.leading, .trailing], 8.0)
                     ScrollViewReader { _ in
                         VStack {
                             List(transactions, id: \.hash) { tx in
@@ -72,8 +36,10 @@ struct NewTransactionsView: View {
                         }
                     }
                     .frame(maxWidth: .infinity)
-                }
-                .frame(maxWidth: .infinity)
+                    .frame(height: 88.0)
+            }.onAppear {
+                guard let fetchedTransactions = newMainViewModel.transactions else { return }
+                transactions = fetchedTransactions
             }
         }
     }
