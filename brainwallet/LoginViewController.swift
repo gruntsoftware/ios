@@ -41,11 +41,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		addConstraints()
         self.view.backgroundColor = BrainwalletUIColor.surface
         backgroundView.backgroundColor = BrainwalletUIColor.surface
-
-        lockScreenView.viewModel.$userPrefersDarkMode.sink { [weak self] newValue in
-            self?.updateTheme(shouldBeDark: newValue)
-        }.store(in: &cancellables)
-
         addLockScreenHostingControllerCallbacks()
 	}
 
@@ -82,6 +77,10 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
             if userWantsToDelete {
                 myself.wipeWallet()
             }
+        }
+        lockScreenView.userDidPreferDarkMode = { [weak self] userDidPreferDarkMode in
+            guard let myself = self else { return }
+            myself.updateTheme(shouldBeDark: userDidPreferDarkMode)
         }
     }
 
@@ -184,13 +183,11 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 	}
 
     @objc func updateTheme(shouldBeDark: Bool) {
-        UserDefaults.standard.set(shouldBeDark, forKey: userDidPreferDarkModeKey)
-        UserDefaults.standard.synchronize()
-
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        appDelegate.updatePreferredTheme()
+        UserDefaults.userPreferredDarkTheme = shouldBeDark
+        NotificationCenter
+            .default
+            .post(name: .changedThemePreferenceNotification,
+                object: nil)
     }
 
 	@objc func showLTCAddress() {

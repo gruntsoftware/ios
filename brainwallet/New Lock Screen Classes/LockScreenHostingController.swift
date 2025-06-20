@@ -19,6 +19,8 @@ class LockScreenHostingController: UIHostingController<LockScreenView> {
 
     var didTapWipeWallet: ((Bool) -> Void)?
 
+    var userDidPreferDarkMode: ((Bool) -> Void)?
+
     init(store: Store) {
         viewModel = LockScreenViewModel(store: store)
 
@@ -39,6 +41,10 @@ class LockScreenHostingController: UIHostingController<LockScreenView> {
             if userWantsToDelete {
                 self?.didTapWipeWallet?(userWantsToDelete)
             }
+        }
+
+        viewModel.userDidPreferDarkMode = { [weak self] userPrefersDarkMode in
+            self?.userDidPreferDarkMode?(userPrefersDarkMode)
         }
     }
 

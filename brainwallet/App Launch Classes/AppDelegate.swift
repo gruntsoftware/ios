@@ -193,13 +193,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 	}
 
-    /// Update Theme
-    func updatePreferredTheme() {
-        guard let window = window else { return }
-        // Set global theme
-        window.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark: .light
-    }
-
 	/// On Demand Resources
 	/// Use for another resource heavy view
 	/// Inspired by https://www.youtube.com/watch?v=B5RV8p4-9a8&t=178s
