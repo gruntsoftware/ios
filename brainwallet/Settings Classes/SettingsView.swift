@@ -55,6 +55,9 @@ struct SettingsView: View {
     @State
     private var shouldExpandSecurity: Bool = false
 
+    @State
+    private var expandedRowHeight: CGFloat = 44.0
+
     let footerRowHeight: CGFloat = 55.0
 
     let squareButtonSize: CGFloat = 55.0
@@ -82,9 +85,10 @@ struct SettingsView: View {
                         Spacer()
                         VStack {
                             List {
+
                                 SettingsExpandingSecView(title: String(localized: "Security"),
                                      viewModel: newMainViewModel, shouldExpandSecurity: $shouldExpandSecurity)
-                                          .frame(height: closedRowHeight)
+                                .frame(height: shouldExpandSecurity ? 200 : 44.0)
                                 SettingsLabelView(title: String(localized: "Currency"),
                                                   detailText: "")
                                 .frame(height: closedRowHeight)
@@ -100,13 +104,13 @@ struct SettingsView: View {
                                 SettingsLabelView(title: String(localized: "Support"),
                                                   detailText: "support.brainwallet.co")
                                 .frame(height: closedRowHeight)
-                                SettingsActionView(title: String(localized: "Dark Mode"),
-                                    detailText: "", action: .preferDarkMode,
-                                                   isSelected: $userPrefersDarkMode)
+                                SettingsActionThemeView(title: String(localized: "Dark Mode"),
+                                                        detailText: "",
+                                                        action: .preferDarkMode, userPrefersDark: $userPrefersDarkMode)
                                             .frame(height: closedRowHeight)
-                                SettingsActionView(title: String(localized: "Lock"),
+                                SettingsActionLockView(title: String(localized: "Lock"),
                                     detailText: "", action: .lock,
-                                         isSelected: $isLocked)
+                                                       isLocked: $isLocked)
                                              .frame(height: closedRowHeight)
 
                             }
@@ -118,6 +122,12 @@ struct SettingsView: View {
                                 .padding(.bottom, 1.0)
                         }
                         .frame(width: width * 0.9)
+                        .onChange(of: userPrefersDarkMode) { hasDarkPreference in
+                            newMainViewModel.updateTheme(shouldBeDark: hasDarkPreference)
+                        }
+                        .onChange(of: isLocked) { _ in
+                            newMainViewModel.lockBrainwallet()
+                        }
                     }
 
                 }

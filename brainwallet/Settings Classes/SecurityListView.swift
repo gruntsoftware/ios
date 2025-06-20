@@ -41,22 +41,22 @@ struct SecurityListView: View {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                     VStack {
                         List {
-                            SettingsActionView(title: String(localized: "Update PIN"),
-                                detailText: "PIN", action: .lock,
-                                     isSelected: $isLocked)
-                                         .frame(height: closedRowHeight)
-                            SettingsActionView(title: String(localized: "Seed Phrase"),
-                                detailText: "", action: .preferDarkMode,
-                                               isSelected: $userPrefersDarkMode)
-                                        .frame(height: closedRowHeight)
-                            SettingsActionView(title: String(localized: "Brainwallet Phrase"),
-                                detailText: "", action: .lock,
-                                     isSelected: $isLocked)
-                                         .frame(height: closedRowHeight)
-                            SettingsActionView(title: String(localized: "Share Data"),
-                                detailText: "", action: .lock,
-                                     isSelected: $isLocked)
-                                         .frame(height: closedRowHeight)
+//                            SettingsActionView(title: String(localized: "Update PIN"),
+//                                detailText: "PIN", action: .lock,
+//                                     isSelected: $isLocked)
+//                                         .frame(height: closedRowHeight)
+//                            SettingsActionView(title: String(localized: "Seed Phrase"),
+//                                detailText: "", action: .preferDarkMode,
+//                                               isSelected: $userPrefersDarkMode)
+//                                        .frame(height: closedRowHeight)
+//                            SettingsActionView(title: String(localized: "Brainwallet Phrase"),
+//                                detailText: "", action: .lock,
+//                                     isSelected: $isLocked)
+//                                         .frame(height: closedRowHeight)
+//                            SettingsActionView(title: String(localized: "Share Data"),
+//                                detailText: "", action: .lock,
+//                                     isSelected: $isLocked)
+//                                         .frame(height: closedRowHeight)
 
                         }
                         .listStyle(.plain)

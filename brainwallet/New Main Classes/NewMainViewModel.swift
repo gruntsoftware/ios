@@ -128,6 +128,20 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         }
     }
 
+    func updateTheme(shouldBeDark: Bool) {
+        UserDefaults.userPreferredDarkTheme = shouldBeDark
+        NotificationCenter
+            .default
+            .post(name: .changedThemePreferenceNotification,
+                object: nil)
+    }
+
+    func lockBrainwallet() {
+        delay(0.6) {
+            self.store?.trigger(name: .lock)
+        }
+    }
+
     func updateTransactions() {
         guard let _ = walletManager
         else {

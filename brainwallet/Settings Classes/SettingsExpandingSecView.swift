@@ -34,26 +34,40 @@ struct SettingsExpandingSecView: View {
         NavigationStack {
             GeometryReader { _ in
                 ZStack {
-                    HStack {
-                        Text(title)
-                            .font(largeFont)
-                            .foregroundColor(BrainwalletColor.content)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading, 16.0)
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundColor(BrainwalletColor.content)
-                            .frame(width: 30.0, height: 30.0)
-                            .rotationEffect(Angle(degrees: shouldExpandSecurity ? 90 : 0))
-                            .animation(.easeInOut(duration:0.3), value: shouldExpandSecurity)
-                            .onTapGesture {
-                                shouldExpandSecurity.toggle()
-                            }
-                            .padding(.trailing, 20.0)
+                    VStack {
+                        HStack {
+                            Text(title)
+                                .font(largeFont)
+                                .foregroundColor(BrainwalletColor.content)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.leading, 16.0)
+                            Spacer()
 
+                            Image(systemName: "chevron.right")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(BrainwalletColor.content)
+                                .frame(width: 30.0, height: 30.0)
+                                .rotationEffect(Angle(degrees: shouldExpandSecurity ? 90 : 0))
+                                .animation(.easeInOut(duration:0.3), value: shouldExpandSecurity)
+                                .onTapGesture {
+                                    shouldExpandSecurity.toggle()
+                                }
+                                .padding(.trailing, 20.0)
+                        }
+                        .frame(height: 44.0)
+                        .padding(.top, 1.0)
+
+                        if shouldExpandSecurity {
+                            Rectangle()
+                                .fill(Color.red.opacity(0.1))
+                                .fixedSize(horizontal: false, vertical: true)
+                                                                    .transition(.opacity)
+                                                                    .transition(.slide)
+                        }
+                        Spacer()
                     }
+
                 }
             }
         }

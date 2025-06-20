@@ -105,6 +105,8 @@
 		24D7AE562DCFF6870078252E /* NewConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE552DCFF6830078252E /* NewConfirmView.swift */; };
 		24D7AE582DCFF72D0078252E /* NewConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */; };
 		24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D91D0A2166923E0077A619 /* UserNotifications.framework */; };
+		24DB05E22E05CC4B00C57FE9 /* SettingsRowExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05E12E05CC4500C57FE9 /* SettingsRowExpandableView.swift */; };
+		24DB05E42E05D5E800C57FE9 /* SettingsActionThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05E32E05D5E800C57FE9 /* SettingsActionThemeView.swift */; };
 		24E06FC52DF4790B00719B6C /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24E06FC42DF4790B00719B6C /* remote-config-defaults.plist */; };
 		24E06FC72DF4792800719B6C /* service-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24E06FC62DF4792800719B6C /* service-data.plist */; };
 		24E078A82DF1F9A9004B5958 /* PromptCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E078A72DF1F997004B5958 /* PromptCellView.swift */; };
@@ -663,6 +665,8 @@
 		24D7AE552DCFF6830078252E /* NewConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmView.swift; sourceTree = "<group>"; };
 		24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmViewModel.swift; sourceTree = "<group>"; };
 		24D91D0A2166923E0077A619 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		24DB05E12E05CC4500C57FE9 /* SettingsRowExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowExpandableView.swift; sourceTree = "<group>"; };
+		24DB05E32E05D5E800C57FE9 /* SettingsActionThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionThemeView.swift; sourceTree = "<group>"; };
 		24E06FC42DF4790B00719B6C /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "remote-config-defaults.plist"; path = "brainwallet/Launch Resources/remote-config-defaults.plist"; sourceTree = SOURCE_ROOT; };
 		24E06FC62DF4792800719B6C /* service-data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "service-data.plist"; path = "brainwallet/Launch Resources/service-data.plist"; sourceTree = SOURCE_ROOT; };
 		24E078A72DF1F997004B5958 /* PromptCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCellView.swift; sourceTree = "<group>"; };
@@ -1568,7 +1572,9 @@
 				24F5BD592E04714C0010D340 /* GamesListView.swift */,
 				24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */,
 				24F5BD4D2E0452670010D340 /* SettingsActionView.swift */,
+				24DB05E32E05D5E800C57FE9 /* SettingsActionThemeView.swift */,
 				24F5BD4B2E0450B80010D340 /* SettingsExpandingSecView.swift */,
+				24DB05E12E05CC4500C57FE9 /* SettingsRowExpandableView.swift */,
 				24F5BD512E04708F0010D340 /* SettingsExpandingCurView.swift */,
 				24F5BD532E0470B10010D340 /* SettingsExpandingGamesView.swift */,
 				24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */,
@@ -2512,6 +2518,7 @@
 			files = (
 				245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */,
 				C312D2CF2D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift in Sources */,
+				24DB05E22E05CC4B00C57FE9 /* SettingsRowExpandableView.swift in Sources */,
 				C312D2D02D7DC27700BB97A4 /* ReachabilityMonitor.swift in Sources */,
 				C312D2D12D7DC27700BB97A4 /* CopyButtonView.swift in Sources */,
 				24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */,
@@ -2688,6 +2695,7 @@
 				C312D3C42D7DC27700BB97A4 /* EmptyTableViewCell.swift in Sources */,
 				C312D3C62D7DC27700BB97A4 /* View+Extension.swift in Sources */,
 				C312D3C72D7DC27700BB97A4 /* Sender.swift in Sources */,
+				24DB05E42E05D5E800C57FE9 /* SettingsActionThemeView.swift in Sources */,
 				C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */,
 				C312D3CD2D7DC27700BB97A4 /* AlertFailureView.swift in Sources */,
 				C312D3CE2D7DC27700BB97A4 /* TestnetData.swift in Sources */,
