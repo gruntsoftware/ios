@@ -1,5 +1,7 @@
 import AppsFlyerLib
 import Firebase
+import FirebaseCore
+import FirebaseAnalytics
 import LocalAuthentication
 import SwiftUI
 import UIKit
@@ -22,6 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self,
             selector: #selector(restartAfterWipedWallet),
             name: .didDeleteWalletDBNotification,
+            object: nil
+        )
+
+        // Set User theme preference
+        // Register for system notifications
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateUserThemePreference),
+            name: .changedThemePreferenceNotification,
             object: nil
         )
 
@@ -88,8 +99,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let thisWindow = window else { return }
 
         // Set global themes
-        debugPrint("::: AP UserDefaults.userPreferredDarkTheme \(UserDefaults.userPreferredDarkTheme)")
-
         thisWindow.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark: .light
 
         UIView.appearance(whenContainedInInstancesOf:
@@ -156,7 +165,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     @objc
     func updateUserThemePreference() {
-        let fetchThemePreference = UserDefaults.userPreferredDarkTheme
         DispatchQueue.main.async {
             guard let thisWindow = self.window else { return }
             thisWindow.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark : .light
@@ -177,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if let fboptions = FirebaseOptions(contentsOfFile: filePath) {
             FirebaseApp.configure(options: fboptions)
             #if DEBUG
-                Analytics.setUserProperty("debug", forName: "user_type")
+            Analytics.setUserProperty("debug", forName: "user_type")
             #endif
 		} else {
 			let properties = ["error_message": "firebase_config_failed"]
@@ -186,13 +194,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			assertionFailure("Couldn't load Firebase config file")
 		}
 	}
-
-    /// Update Theme
-    func updatePreferredTheme() {
-        guard let window = window else { return }
-        // Set global theme
-        window.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark: .light
-    }
 
 	/// On Demand Resources
 	/// Use for another resource heavy view

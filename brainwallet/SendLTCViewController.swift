@@ -14,6 +14,8 @@ class SendLTCViewController: UIViewController {
 			return
 		}
 
+        view.backgroundColor = BrainwalletUIColor.surface
+
 		store.perform(action: RootModalActions.Present(modal: .send))
 	}
 }

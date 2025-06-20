@@ -53,6 +53,8 @@ class ReceiveHostingController: UIHostingController<NewReceiveView> {
 
     let isModalMode: Bool
 
+    let hostingControllerName = "receive"
+
     init(store: Store, walletManager: WalletManager, isModalMode: Bool) {
         self.isModalMode = isModalMode
         let viewModel = NewReceiveViewModel(store: store, walletManager: walletManager, canUserBuy: false)

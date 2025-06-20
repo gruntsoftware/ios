@@ -9,9 +9,9 @@
 import SwiftUI
 
 enum FilterTransactionMode: Int, CaseIterable {
-    case all = 0
-    case sent = 1
-    case received = 2
+    case allTransactions = 0
+    case sentTransactions = 1
+    case receivedTransactions = 2
 }
 
 struct NewTransactionsView: View {
@@ -23,7 +23,7 @@ struct NewTransactionsView: View {
     private var transactions: [Transaction] = []
 
     @State
-    private var filterMode: FilterTransactionMode = .all
+    private var filterMode: FilterTransactionMode = .allTransactions
 
     @State
     private var modeState = 0
