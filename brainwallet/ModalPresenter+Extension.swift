@@ -128,6 +128,45 @@ extension ModalPresenter {
         return ModalViewController(childViewController: wipeEmptyvc, store: store)
     }
 
+    func wipeWallet() {
+        let group = DispatchGroup()
+        let alert = UIAlertController(title: String(localized: "Delete my wallet & data?"),
+                                      message: String(localized: "Are you sure you want to delete this wallet & all its data? You will not be able to recover your seed words or any other data."), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:  String(localized: "Cancel")  , style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: String(localized: "Delete All") , style: .default, handler: { _ in
+            self.topViewController?.dismiss(animated: true, completion: {
+                let activity = BRActivityViewController(message: String(localized: "Deleting...") )
+                self.topViewController?.present(activity, animated: true, completion: nil)
+
+                group.enter()
+                DispatchQueue.walletQueue.async {
+                    self.walletManager?.peerManager?.disconnect()
+                    group.leave()
+                }
+
+                group.enter()
+                DispatchQueue.walletQueue.asyncAfter(deadline: .now() + 2.0) {
+                    group.leave()
+                }
+
+                group.notify(queue: .main) {
+                    if let canForceWipeWallet = (self.walletManager?.wipeWallet(pin: "forceWipe")),
+                       canForceWipeWallet {
+                        self.store.trigger(name: .reinitWalletManager {
+                            activity.dismiss(animated: true, completion: {
+                            })
+                        })
+                    } else {
+                        let failure = UIAlertController(title: String(localized: "Failed") , message: String(localized: "Failed to wipe wallet."), preferredStyle: .alert)
+                        failure.addAction(UIAlertAction(title: String(localized: "Ok") , style: .default, handler: nil))
+                        self.topViewController?.present(failure, animated: true, completion: nil)
+                    }
+                }
+            })
+        }))
+        topViewController?.present(alert, animated: true, completion: nil)
+    }
+
     func makeSendView() -> UIViewController? {
         guard !store.state.walletState.isRescanning
         else {

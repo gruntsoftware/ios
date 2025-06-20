@@ -1,4 +1,5 @@
 import AppsFlyerLib
+import Firebase
 import FirebaseCore
 import FirebaseAnalytics
 import LocalAuthentication

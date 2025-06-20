@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import SwiftUI
 
 class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDelegate {
 	let kInitialChildViewControllerIndex = 2 // Buy / Receive
@@ -25,6 +26,8 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	var viewControllers: [UIViewController] = []
 	var activeController: UIViewController?
     var receiveHostingController: ReceiveHostingController?
+    var buyReceiveHostingController: BuyReceiveHostingController?
+
 	var updateTimer: Timer?
 	var store: Store?
 	var walletManager: WalletManager?
@@ -357,24 +360,49 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
         let canUserBuy = UserDefaults.standard
             .object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
 
+        receiveHostingController = nil
+        buyReceiveHostingController = nil
+
         if canUserBuy {
-            let buyReceiveVC = BuyReceiveHostingController(store: store,
+            self.children
+                .compactMap { $0 as? UIHostingController<BuyReceiveView> }
+                .forEach { buyReceiveHostingController in
+                    buyReceiveHostingController.willMove(toParent: nil)
+                    buyReceiveHostingController.view.removeFromSuperview()
+                    buyReceiveHostingController.removeFromParent()
+                }
+
+            buyReceiveHostingController = BuyReceiveHostingController(store: store,
                                                         walletManager: walletManager,
                                                         isModalMode: true)
 
-            addChild(buyReceiveVC)
-            buyReceiveVC.view.frame = containerView.frame
-            view.addSubview(buyReceiveVC.view)
-            buyReceiveVC.didMove(toParent: self)
+            guard let buyRecvHC = buyReceiveHostingController else { return }
+
+            addChild(buyRecvHC)
+            buyRecvHC.view.frame = containerView.frame
+            view.addSubview(buyRecvHC.view)
+            buyRecvHC.didMove(toParent: self)
+
         } else {
 
-            let receiveVC = ReceiveHostingController(store: store,
+            self.children
+                .compactMap { $0 as? UIHostingController<NewReceiveView> }
+                .forEach { receiveHostingController in
+                    receiveHostingController.willMove(toParent: nil)
+                    receiveHostingController.view.removeFromSuperview()
+                    receiveHostingController.removeFromParent()
+                }
+
+            receiveHostingController = ReceiveHostingController(store: store,
                                                      walletManager: walletManager,
                                                      isModalMode: true)
-            addChild(receiveVC)
-            receiveVC.view.frame = containerView.frame
-            view.addSubview(receiveVC.view)
-            receiveVC.didMove(toParent: self)
+
+            guard let recvHC = receiveHostingController else { return }
+
+            addChild(recvHC)
+            recvHC.view.frame = containerView.frame
+            view.addSubview(recvHC.view)
+            recvHC.didMove(toParent: self)
         }
     }
 
