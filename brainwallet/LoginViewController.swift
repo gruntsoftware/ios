@@ -78,6 +78,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
                 myself.wipeWallet()
             }
         }
+
         lockScreenView.userDidPreferDarkMode = { [weak self] userDidPreferDarkMode in
             guard let myself = self else { return }
             myself.updateTheme(shouldBeDark: userDidPreferDarkMode)

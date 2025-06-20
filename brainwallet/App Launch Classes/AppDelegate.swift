@@ -1,5 +1,6 @@
 import AppsFlyerLib
-import Firebase
+import FirebaseCore
+import FirebaseAnalytics
 import LocalAuthentication
 import SwiftUI
 import UIKit
@@ -183,7 +184,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if let fboptions = FirebaseOptions(contentsOfFile: filePath) {
             FirebaseApp.configure(options: fboptions)
             #if DEBUG
-                Analytics.setUserProperty("debug", forName: "user_type")
+            Analytics.setUserProperty("debug", forName: "user_type")
             #endif
 		} else {
 			let properties = ["error_message": "firebase_config_failed"]
