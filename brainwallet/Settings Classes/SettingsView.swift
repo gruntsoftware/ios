@@ -89,31 +89,54 @@ struct SettingsView: View {
                                 SettingsExpandingSecView(title: String(localized: "Security"),
                                      viewModel: newMainViewModel, shouldExpandSecurity: $shouldExpandSecurity)
                                 .frame(height: shouldExpandSecurity ? 200 : 44.0)
+                                .background(BrainwalletColor.surface)
+                                .listRowBackground(BrainwalletColor.surface)
+
                                 SettingsLabelView(title: String(localized: "Currency"),
                                                   detailText: "")
                                 .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.surface)
+                                .listRowBackground(BrainwalletColor.surface)
+
                                 SettingsLabelView(title: String(localized: "Games"),
                                                   detailText: "")
                                 .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.surface)
+                                .listRowBackground(BrainwalletColor.surface)
+
                                 SettingsLabelView(title: String(localized: "Blockchain: Litecoin"),
                                                   detailText: "")
                                 .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.surface)
+                                .listRowBackground(BrainwalletColor.surface)
+
                                 SettingsLabelView(title: String(localized: "Social"),
                                                   detailText: "linktr.ee/brainwallet")
                                 .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.surface)
+                                .listRowBackground(BrainwalletColor.surface)
+
                                 SettingsLabelView(title: String(localized: "Support"),
                                                   detailText: "support.brainwallet.co")
                                 .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.surface)
+                                .listRowBackground(BrainwalletColor.surface)
+
                                 SettingsActionThemeView(title: String(localized: "Dark Mode"),
                                                         detailText: "",
                                                         action: .preferDarkMode, userPrefersDark: $userPrefersDarkMode)
-                                            .frame(height: closedRowHeight)
+                                .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.surface)
+                                .listRowBackground(BrainwalletColor.surface)
+
                                 SettingsActionLockView(title: String(localized: "Lock"),
-                                    detailText: "", action: .lock,
-                                                       isLocked: $isLocked)
-                                             .frame(height: closedRowHeight)
+                                    detailText: "", action: .lock, isLocked: $isLocked)
+                                .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.surface)
+                                .listRowBackground(BrainwalletColor.surface)
 
                             }
+                            .background(BrainwalletColor.surface)
                             .listStyle(.plain)
                             .buttonStyle(PlainButtonStyle())
                             SettingsFooterView()
