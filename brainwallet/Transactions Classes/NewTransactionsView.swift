@@ -8,6 +8,12 @@
 
 import SwiftUI
 
+enum FilterTransactionMode: Int, CaseIterable {
+    case allTransactions = 0
+    case sentTransactions = 1
+    case receivedTransactions = 2
+}
+
 struct NewTransactionsView: View {
 
     @ObservedObject
@@ -17,7 +23,7 @@ struct NewTransactionsView: View {
     private var transactions: [Transaction] = []
 
     @State
-    private var filterMode: TransactionFilterState = .allTransactions
+    private var filterMode: FilterTransactionMode = .allTransactions
 
     @State
     private var modeState = 0

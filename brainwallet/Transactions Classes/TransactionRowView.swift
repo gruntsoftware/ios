@@ -14,7 +14,7 @@ struct TransactionRowView: View {
     private var isReceived: Bool = false
 
     @State
-    private var filterMode: TransactionFilterState = .allTransactions
+    private var filterMode: FilterTransactionMode = .allTransactions
 
     @State
     private var modeState = 0

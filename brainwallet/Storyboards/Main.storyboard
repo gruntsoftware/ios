@@ -92,7 +92,9 @@
                                         <imageReference key="selectedImage" image="arrow.down.left" catalog="system" symbolScale="default"/>
                                     </tabBarItem>
                                 </items>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" name="brainwalletContent"/>
+                                <color key="barTintColor" name="brainwalletContent"/>
+                                <color key="selectedImageTintColor" name="brainwalletContent"/>
                                 <connections>
                                     <outlet property="delegate" destination="cEo-Qi-bYI" id="64Z-Sm-Ogb"/>
                                 </connections>
@@ -158,7 +160,7 @@
             <color red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
