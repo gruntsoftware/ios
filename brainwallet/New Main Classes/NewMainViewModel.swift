@@ -76,6 +76,8 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     private var rate: Rate?
 
+    var resetSettingsDrawer: (() -> Void)?
+
     init(store: Store, walletManager: WalletManager) {
         self.store = store
         self.walletManager = walletManager
@@ -138,7 +140,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     func lockBrainwallet() {
         delay(0.6) {
-            self.store?.trigger(name: .lock)
+            self.resetSettingsDrawer?()
         }
     }
 

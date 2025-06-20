@@ -16,8 +16,8 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
     var showSettingsConstant: CGFloat = 0.0
     var settingsViewPlacement: CGFloat = 0.0
     var shouldShowSettings: Bool = true
-    var settingsLeadingConstraint: NSLayoutConstraint!
-    var settingsTrailingConstraint: NSLayoutConstraint!
+    var settingsLeadingConstraint = NSLayoutConstraint()
+    var settingsTrailingConstraint = NSLayoutConstraint()
     private let clickSound = "click_sound"
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -67,6 +67,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		addSubscriptions()
 		addAppLifecycleNotificationEvents()
 		addTemporaryStartupViews()
+        activateSettingsDrawer(shouldClose: false)
 	}
 
     func didUnlockLogin() {
@@ -100,6 +101,12 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
                                                            walletManager: walletManager)
         guard let settingsHC = settingsViewController else { return }
 
+        /// Reset the settings so when lock happens drawer is closed
+        settingsHC.resetSettingsDrawer = { [weak self] in
+            self?.activateSettingsDrawer(shouldClose: false)
+            self?.store.trigger(name: .lock)
+        }
+
         /// Settings constant setup
         settingsViewPlacement = -self.view.frame.width
         showSettingsConstant = 0
@@ -127,40 +134,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         })
 
         tabVC.didTapSettingsButton = { [weak self]  in
-            guard let mySelf = self else { return }
-            if mySelf.shouldShowSettings {
-                mySelf.showSettingsConstant = 65.0
-                mySelf.settingsViewPlacement = 0
-
-                // Update existing constraints
-                mySelf.settingsLeadingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
-                mySelf.settingsTrailingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
-
-                UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
-                    mySelf.view.layoutIfNeeded()
-                    // TBD: Sound not ideal..in progress
-                    // mySelf.playSound(filename: "clicksound", type: "mp3")
-                }) { _ in
-                    mySelf.shouldShowSettings = false
-                }
-
-            } else {
-                // Hide settings (slide out to right)
-                mySelf.settingsViewPlacement = -mySelf.view.frame.width
-                mySelf.showSettingsConstant = 0
-
-                // Update existing constraints
-                mySelf.settingsLeadingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
-                mySelf.settingsTrailingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
-
-                UIView.animate(withDuration: 0.1, delay: 0.1, options: .curveEaseOut, animations: {
-                    mySelf.view.layoutIfNeeded()
-                    // TBD: Sound not ideal..in progress
-                    // mySelf.playSound(filename: "clicksound", type: "mp3")
-                }) { _ in
-                    mySelf.shouldShowSettings = true
-                }
-            }
+            self?.activateSettingsDrawer()
         }
 
         UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
@@ -175,6 +149,43 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         //            newMainViewHostingController.view.constrain(toSuperviewEdges: nil)
         //            newMainViewHostingController.view.layoutIfNeeded()
         //        }}
+    }
+
+    func activateSettingsDrawer(shouldClose: Bool? = nil) {
+        var shouldShow = shouldShowSettings
+        if let closeState = shouldClose {
+            shouldShow = closeState
+        }
+
+        if shouldShow {
+            self.showSettingsConstant = 65.0
+            self.settingsViewPlacement = 0
+
+            // Update existing constraints
+            self.settingsLeadingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
+            self.settingsTrailingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
+
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+                self.view.layoutIfNeeded()
+                // TBD: Sound not ideal..in progress
+                // mySelf.playSound(filename: "clicksound", type: "mp3")
+            }) { _ in self.shouldShowSettings = false }
+
+        } else {
+            // Hide settings (slide out to right)
+            self.settingsViewPlacement = -self.view.frame.width
+            self.showSettingsConstant = 0
+
+            // Update existing constraints
+            self.settingsLeadingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
+            self.settingsTrailingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
+
+            UIView.animate(withDuration: 0.1, delay: 0.1, options: .curveEaseOut, animations: {
+                self.view.layoutIfNeeded()
+                // TBD: Sound not ideal..in progress
+                // mySelf.playSound(filename: "clicksound", type: "mp3")
+            }) { _ in self.shouldShowSettings = true }
+        }
     }
 
 	private func addTemporaryStartupViews() {

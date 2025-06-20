@@ -14,7 +14,7 @@ class SettingsHostingController: UIHostingController<SettingsView> {
     var store: Store?
     var walletManager: WalletManager?
 
-    var didTapShowSettings: ((Bool) -> Void)?
+    var resetSettingsDrawer: (() -> Void)?
 
     init(store: Store, walletManager: WalletManager) {
         self.store = store
@@ -22,6 +22,10 @@ class SettingsHostingController: UIHostingController<SettingsView> {
         /// Migrate CanUserBuy when ready
         let mainViewModel = NewMainViewModel(store: store, walletManager: walletManager)
         super.init(rootView: SettingsView(viewModel: mainViewModel, path: .constant([.tempSettingsView])))
+
+        mainViewModel.resetSettingsDrawer = {
+            self.resetSettingsDrawer?()
+        }
     }
 
     // MARK: - Private
