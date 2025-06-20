@@ -27,81 +27,61 @@ class ModalPresenter: Subscriber, Trackable {
     var reachability = ReachabilityMonitor()
     var notReachableAlert: InAppAlert?
     let wipeNavigationDelegate: StartNavigationDelegate
+    var receiveHostingController: ReceiveHostingController?
+    var buyReceiveHostingController: BuyReceiveHostingController?
 
     func newBuyOrReceiveView() -> UIViewController? {
 
         guard let walletManager = walletManager else { return nil }
-        var root : ModalViewController
+        var root : ModalViewController?
 
-        var canUserBuy = UserDefaults
+        let canUserBuy = UserDefaults
             .standard
                 .object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
 
+        receiveHostingController = nil
+        buyReceiveHostingController = nil
+
         if canUserBuy {
-            let buyReceiveVC = BuyReceiveHostingController(store: self.store, walletManager: walletManager, isModalMode: true)
-            buyReceiveVC.view.translatesAutoresizingMaskIntoConstraints = false
-            root = ModalViewController(childViewController: buyReceiveVC, store: store)
+            buyReceiveHostingController = BuyReceiveHostingController(store: self.store, walletManager: walletManager, isModalMode: true)
+            if let buyReceiveVC = buyReceiveHostingController {
+                buyReceiveVC.view.translatesAutoresizingMaskIntoConstraints = false
+                root = ModalViewController(childViewController: buyReceiveVC, store: store)
 
-            let heightFactor: CGFloat = 0.8
-            NSLayoutConstraint.activate([
-                buyReceiveVC.view.heightAnchor
-                    .constraint(equalToConstant:
-                        window.frame.height * heightFactor)
-            ])
+                let heightFactor: CGFloat = 0.8
+                NSLayoutConstraint.activate([
+                    buyReceiveVC.view.heightAnchor
+                        .constraint(equalToConstant:
+                                        window.frame.height * heightFactor)
+                ])
 
-            buyReceiveVC.dismissBuyReceiveModal = strongify(self) { _ in
-                root.dismiss(animated: true, completion: nil)
+                buyReceiveVC.dismissBuyReceiveModal = strongify(self) { _ in
+                    guard let root = root else { return }
+                    root.dismiss(animated: true, completion: nil)
+                }
             }
         } else {
-            let receiveVC = ReceiveHostingController(store: self.store, walletManager: walletManager, isModalMode: true)
-            receiveVC.view.translatesAutoresizingMaskIntoConstraints = false
-            root = ModalViewController(childViewController: receiveVC, store: store)
+            receiveHostingController = ReceiveHostingController(store: self.store, walletManager: walletManager, isModalMode: true)
+            if let receiveVC = receiveHostingController {
+                receiveVC.view.translatesAutoresizingMaskIntoConstraints = false
+                root = ModalViewController(childViewController: receiveVC, store: store)
 
-            let heightFactor: CGFloat = 0.4
-            NSLayoutConstraint.activate([
-                receiveVC.view.heightAnchor
-                    .constraint(equalToConstant:
-                        window.frame.height * heightFactor)
-            ])
+                let heightFactor: CGFloat = 0.4
+                NSLayoutConstraint.activate([
+                    receiveVC.view.heightAnchor
+                        .constraint(equalToConstant:
+                                        window.frame.height * heightFactor)
+                ])
 
-            receiveVC.dismissReceiveModal = strongify(self) { _ in
-                root.dismiss(animated: true, completion: nil)
+                receiveVC.dismissReceiveModal = strongify(self) { _ in
+                    guard let root = root else { return }
+                    root.dismiss(animated: true, completion: nil)
+                }
             }
         }
 
         return root
     }
-
-    func rootModalViewController(_ type: RootModal) -> UIViewController? {
-		switch type {
-		case .none:
-			return nil
-		case .send:
-			return makeSendView()
-		case .receive:
-			return newBuyOrReceiveView() // receiveView(isRequestAmountVisible: true)
-		case .menu:
-			return menuViewController()
-		case .loginScan:
-			return nil // The scan view needs a custom presentation
-		case .loginAddress:
-			return  newBuyOrReceiveView() // receiveView(isRequestAmountVisible: false)
-		case .wipeEmptyWallet:
-			return wipeEmptyView()
-		case .requestAmount:
-			guard let wallet = walletManager?.wallet else { return nil }
-			let requestVc = RequestAmountViewController(wallet: wallet, store: store)
-			requestVc.presentEmail = { [weak self] bitcoinURL, image in
-				self?.messagePresenter.presenter = self?.topViewController
-				self?.messagePresenter.presentMailCompose(bitcoinURL: bitcoinURL, image: image)
-			}
-			requestVc.presentText = { [weak self] bitcoinURL, image in
-				self?.messagePresenter.presenter = self?.topViewController
-				self?.messagePresenter.presentMessageCompose(bitcoinURL: bitcoinURL, image: image)
-			}
-			return ModalViewController(childViewController: requestVc, store: store)
-		}
-	}
 
     func presentSettings() {
 		guard let topVC = topViewController,
@@ -335,45 +315,6 @@ class ModalPresenter: Subscriber, Trackable {
 		vc.present(paperPhraseNavigationController, animated: true, completion: nil)
 	}
 
-    func wipeWallet() {
-		let group = DispatchGroup()
-		let alert = UIAlertController(title: String(localized: "Delete my wallet & data?"),
-                                      message: String(localized: "Are you sure you want to delete this wallet & all its data? You will not be able to recover your seed words or any other data."), preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title:  String(localized: "Cancel")  , style: .default, handler: nil))
-		alert.addAction(UIAlertAction(title: String(localized: "Delete All") , style: .default, handler: { _ in
-			self.topViewController?.dismiss(animated: true, completion: {
-				let activity = BRActivityViewController(message: String(localized: "Deleting...") )
-				self.topViewController?.present(activity, animated: true, completion: nil)
-
-				group.enter()
-				DispatchQueue.walletQueue.async {
-					self.walletManager?.peerManager?.disconnect()
-					group.leave()
-				}
-
-				group.enter()
-				DispatchQueue.walletQueue.asyncAfter(deadline: .now() + 2.0) {
-					group.leave()
-				}
-
-				group.notify(queue: .main) {
-					if let canForceWipeWallet = (self.walletManager?.wipeWallet(pin: "forceWipe")),
-					   canForceWipeWallet {
-						self.store.trigger(name: .reinitWalletManager {
-							activity.dismiss(animated: true, completion: {
-							})
-						})
-					} else {
-						let failure = UIAlertController(title: String(localized: "Failed") , message: String(localized: "Failed to wipe wallet."), preferredStyle: .alert)
-						failure.addAction(UIAlertAction(title: String(localized: "Ok") , style: .default, handler: nil))
-						self.topViewController?.present(failure, animated: true, completion: nil)
-					}
-				}
-			})
-		}))
-		topViewController?.present(alert, animated: true, completion: nil)
-	}
-
     func receiveView(isRequestAmountVisible: Bool) -> UIViewController? {
         guard let wallet = walletManager?.wallet else { return nil }
         let receiveVC = ReceiveViewController(wallet: wallet, store: store, isRequestAmountVisible: isRequestAmountVisible)
@@ -409,7 +350,10 @@ class ModalPresenter: Subscriber, Trackable {
 		guard notReachableAlert == nil else { return }
 		let alert = InAppAlert(message: String(localized: "No internet connection found. Check your connection and try again.") , image: #imageLiteral(resourceName: "BrokenCloud"))
 		notReachableAlert = alert
-		guard let window = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first
+		guard let window = UIApplication.shared.connectedScenes
+                               .compactMap({ $0 as? UIWindowScene })
+                               .flatMap({ $0.windows })
+                               .first(where: { $0.isKeyWindow })
 		else {
 			return
 		}

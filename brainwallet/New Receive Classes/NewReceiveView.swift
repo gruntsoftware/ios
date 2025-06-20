@@ -51,6 +51,8 @@ struct NewReceiveView: View {
     let minimumDragFactor: CGFloat = 250.0
     let opacityFactor: CGFloat = 0.8
 
+    let viewName = "buy_receive"
+
     init(viewModel: NewReceiveViewModel, isModalMode: Bool?) {
         self.viewModel = viewModel
         self.isModalMode = isModalMode ?? false

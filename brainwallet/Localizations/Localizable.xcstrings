@@ -143,6 +143,16 @@
     "%@ = 1Ł" : {
 
     },
+    "%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@"
+          }
+        }
+      }
+    },
     "%lld" : {
       "localizations" : {
         "ar" : {
@@ -549,6 +559,9 @@
         }
       }
     },
+    "App Version:" : {
+
+    },
     "Are you sure you want to delete this wallet & all its data?" : {
 
     },
@@ -657,6 +670,9 @@
           }
         }
       }
+    },
+    "BALANCE" : {
+
     },
     "Balance :" : {
       "localizations" : {
@@ -962,6 +978,9 @@
       }
     },
     "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)." : {
+
+    },
+    "Brainwallet Phrase" : {
 
     },
     "Buy / Receive" : {
@@ -2384,6 +2403,9 @@
           }
         }
       }
+    },
+    "Dark Mode" : {
+
     },
     "Delete all" : {
 
@@ -4222,6 +4244,9 @@
     "Fetching your transaction history..." : {
 
     },
+    "Games" : {
+
+    },
     "Help improve Brainwallet by sharing your anonymous data with us to improve the app. We respect your privacy." : {
       "localizations" : {
         "ar" : {
@@ -4924,6 +4949,9 @@
           }
         }
       }
+    },
+    "Lock" : {
+
     },
     "Manage" : {
       "localizations" : {
@@ -7746,6 +7774,9 @@
         }
       }
     },
+    "Seed Phrase" : {
+
+    },
     "Send" : {
       "localizations" : {
         "ar" : {
@@ -8153,6 +8184,7 @@
       }
     },
     "Settings View" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -8458,6 +8490,9 @@
     "Share data" : {
 
     },
+    "Share Data" : {
+
+    },
     "Share data?" : {
       "localizations" : {
         "ar" : {
@@ -8559,6 +8594,9 @@
       }
     },
     "Show seed words" : {
+
+    },
+    "Social" : {
 
     },
     "Social links" : {
@@ -11010,6 +11048,9 @@
 
     },
     "Turn device passcode on" : {
+
+    },
+    "Tx Count: " : {
 
     },
     "Update PIN" : {

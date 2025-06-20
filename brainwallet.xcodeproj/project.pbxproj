@@ -111,9 +111,24 @@
 		24E078AA2DF1F9AE004B5958 /* PromptCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E078A92DF1F9AC004B5958 /* PromptCellViewModel.swift */; };
 		24EE3F1F2DCF5A560017472B /* TopUpSetAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE3F1E2DCF5A560017472B /* TopUpSetAmountView.swift */; };
 		24F378022DE89C7800A388AB /* MoonPayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F378012DE89C6600A388AB /* MoonPayHelper.swift */; };
+		24F5BD3C2E042A040010D340 /* clicksound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 24F5BD3B2E042A040010D340 /* clicksound.wav */; };
+		24F5BD422E042E840010D340 /* clicksound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 24F5BD412E042E840010D340 /* clicksound.aiff */; };
+		24F5BD442E042F1D0010D340 /* clicksound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 24F5BD432E042F1D0010D340 /* clicksound.mp3 */; };
+		24F5BD462E0436BF0010D340 /* TabBarViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD452E0436AD0010D340 /* TabBarViewController+Extension.swift */; };
+		24F5BD482E043C2A0010D340 /* SettingsLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */; };
+		24F5BD4A2E0442D00010D340 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD492E0442D00010D340 /* SettingsFooterView.swift */; };
+		24F5BD4C2E0450B80010D340 /* SettingsExpandingSecView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4B2E0450B80010D340 /* SettingsExpandingSecView.swift */; };
+		24F5BD4E2E0452670010D340 /* SettingsActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4D2E0452670010D340 /* SettingsActionView.swift */; };
+		24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4F2E0460C90010D340 /* SecurityListView.swift */; };
+		24F5BD522E04708F0010D340 /* SettingsExpandingCurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD512E04708F0010D340 /* SettingsExpandingCurView.swift */; };
+		24F5BD542E0470B10010D340 /* SettingsExpandingGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD532E0470B10010D340 /* SettingsExpandingGamesView.swift */; };
+		24F5BD562E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */; };
+		24F5BD582E04711E0010D340 /* CurrencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD572E04711E0010D340 /* CurrencyListView.swift */; };
+		24F5BD5A2E04714C0010D340 /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD592E04714C0010D340 /* GamesListView.swift */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
 		24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */; };
+		24FBB86A2E035E10002B5F84 /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */; };
 		24FEB8BB2DD2425A00D60036 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24FEB8B92DD2425A00D60036 /* InfoPlist.strings */; };
 		759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 755CD9D11DAA197C0075898E /* libBRCore.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		C312D2CF2D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C22D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift */; };
@@ -655,8 +670,23 @@
 		24E52B412DEDD4AB009E3E35 /* brainwalletTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = brainwalletTests.xctestplan; path = brainwalletTests/brainwalletTests.xctestplan; sourceTree = "<group>"; };
 		24EE3F1E2DCF5A560017472B /* TopUpSetAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpSetAmountView.swift; sourceTree = "<group>"; };
 		24F378012DE89C6600A388AB /* MoonPayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPayHelper.swift; sourceTree = "<group>"; };
+		24F5BD3B2E042A040010D340 /* clicksound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clicksound.wav; sourceTree = "<group>"; };
+		24F5BD412E042E840010D340 /* clicksound.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = clicksound.aiff; sourceTree = "<group>"; };
+		24F5BD432E042F1D0010D340 /* clicksound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clicksound.mp3; sourceTree = "<group>"; };
+		24F5BD452E0436AD0010D340 /* TabBarViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBarViewController+Extension.swift"; sourceTree = "<group>"; };
+		24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelView.swift; sourceTree = "<group>"; };
+		24F5BD492E0442D00010D340 /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
+		24F5BD4B2E0450B80010D340 /* SettingsExpandingSecView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingSecView.swift; sourceTree = "<group>"; };
+		24F5BD4D2E0452670010D340 /* SettingsActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionView.swift; sourceTree = "<group>"; };
+		24F5BD4F2E0460C90010D340 /* SecurityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityListView.swift; sourceTree = "<group>"; };
+		24F5BD512E04708F0010D340 /* SettingsExpandingCurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingCurView.swift; sourceTree = "<group>"; };
+		24F5BD532E0470B10010D340 /* SettingsExpandingGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingGamesView.swift; sourceTree = "<group>"; };
+		24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingBlockLTCView.swift; sourceTree = "<group>"; };
+		24F5BD572E04711E0010D340 /* CurrencyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListView.swift; sourceTree = "<group>"; };
+		24F5BD592E04714C0010D340 /* GamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListView.swift; sourceTree = "<group>"; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
+		24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
 		24FEB8BA2DD2425A00D60036 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24FEB8BC2DD2449600D60036 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24FEB8BD2DD244B100D60036 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1514,6 +1544,9 @@
 				242871852DE5D2550035DE48 /* NewSyncProgressView.swift */,
 				242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */,
 				24B065342DC627E500B5E000 /* NewMainHostingController.swift */,
+				24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */,
+				C312D2B72D7DC27700BB97A4 /* TabBarViewController.swift */,
+				24F5BD452E0436AD0010D340 /* TabBarViewController+Extension.swift */,
 			);
 			path = "New Main Classes";
 			sourceTree = "<group>";
@@ -1530,6 +1563,16 @@
 			isa = PBXGroup;
 			children = (
 				249DDE412DCD572F00B2B275 /* SettingsView.swift */,
+				24F5BD4F2E0460C90010D340 /* SecurityListView.swift */,
+				24F5BD572E04711E0010D340 /* CurrencyListView.swift */,
+				24F5BD592E04714C0010D340 /* GamesListView.swift */,
+				24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */,
+				24F5BD4D2E0452670010D340 /* SettingsActionView.swift */,
+				24F5BD4B2E0450B80010D340 /* SettingsExpandingSecView.swift */,
+				24F5BD512E04708F0010D340 /* SettingsExpandingCurView.swift */,
+				24F5BD532E0470B10010D340 /* SettingsExpandingGamesView.swift */,
+				24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */,
+				24F5BD492E0442D00010D340 /* SettingsFooterView.swift */,
 			);
 			path = "Settings Classes";
 			sourceTree = "<group>";
@@ -1682,6 +1725,9 @@
 		C312D0C72D7DC27700BB97A4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				24F5BD3B2E042A040010D340 /* clicksound.wav */,
+				24F5BD412E042E840010D340 /* clicksound.aiff */,
+				24F5BD432E042F1D0010D340 /* clicksound.mp3 */,
 				C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */,
 			);
 			path = Sounds;
@@ -1951,7 +1997,6 @@
 				C312D2B22D7DC27700BB97A4 /* SupportLFViewModel.swift */,
 				C312D2B52D7DC27700BB97A4 /* SupportSafariViewModel.swift */,
 				C312D2B62D7DC27700BB97A4 /* SyncProgressHeaderView.swift */,
-				C312D2B72D7DC27700BB97A4 /* TabBarViewController.swift */,
 				C312D2B82D7DC27700BB97A4 /* TestnetData.swift */,
 				C312D2BC2D7DC27700BB97A4 /* TransactionManager.swift */,
 				C312D2BD2D7DC27700BB97A4 /* TransactionModalView.swift */,
@@ -2268,6 +2313,7 @@
 				C312D4AE2D7DC27700BB97A4 /* CHANGELOG.md in Resources */,
 				C312D4AF2D7DC27700BB97A4 /* Animate.storyboard in Resources */,
 				244895E32DF57D1900CA8BA2 /* Brainwallet-StoreKit-v1.storekit in Resources */,
+				24F5BD3C2E042A040010D340 /* clicksound.wav in Resources */,
 				24E06FC72DF4792800719B6C /* service-data.plist in Resources */,
 				C312D4B22D7DC27700BB97A4 /* SyncProgressHeaderView.xib in Resources */,
 				C312D4B42D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf in Resources */,
@@ -2279,7 +2325,9 @@
 				C312D4BD2D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf in Resources */,
 				C312D4BF2D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf in Resources */,
 				C312D4C22D7DC27700BB97A4 /* general.css in Resources */,
+				24F5BD422E042E840010D340 /* clicksound.aiff in Resources */,
 				C312D4C42D7DC27700BB97A4 /* Assets.xcassets in Resources */,
+				24F5BD442E042F1D0010D340 /* clicksound.mp3 in Resources */,
 				2489E05C2DF0A23700630888 /* GoogleService-Info.plist in Resources */,
 				C312D4C52D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf in Resources */,
 				C312D4CA2D7DC27700BB97A4 /* Buy.storyboard in Resources */,
@@ -2522,6 +2570,7 @@
 				C312D3292D7DC27700BB97A4 /* MainViewController.swift in Sources */,
 				C312D32A2D7DC27700BB97A4 /* UINavigationController+Extension.swift in Sources */,
 				C312D32E2D7DC27700BB97A4 /* StoreReview+Extension.swift in Sources */,
+				24F5BD562E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift in Sources */,
 				C312D32F2D7DC27700BB97A4 /* UISlider+Gradient.swift in Sources */,
 				C312D3302D7DC27700BB97A4 /* UIControl+Callback.swift in Sources */,
 				24618EEA2D90436500A878AC /* BRCore.swift in Sources */,
@@ -2534,11 +2583,13 @@
 				C312D33B2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift in Sources */,
 				C312D33E2D7DC27700BB97A4 /* StartFlowPresenter.swift in Sources */,
 				C312D33F2D7DC27700BB97A4 /* ModalTransitionDelegate.swift in Sources */,
+				24F5BD4C2E0450B80010D340 /* SettingsExpandingSecView.swift in Sources */,
 				C312D3402D7DC27700BB97A4 /* WarningConfirmationViewController.swift in Sources */,
 				C312D3422D7DC27700BB97A4 /* Functions.swift in Sources */,
 				24BEC6072DF0B53000140AAD /* WipeWalletView.swift in Sources */,
 				C312D3452D7DC27700BB97A4 /* EmailValidation.swift in Sources */,
 				C312D3472D7DC27700BB97A4 /* WalletManager+Auth.swift in Sources */,
+				24F5BD582E04711E0010D340 /* CurrencyListView.swift in Sources */,
 				C312D3482D7DC27700BB97A4 /* FeeManager.swift in Sources */,
 				C312D3492D7DC27700BB97A4 /* StartNavigationDelegate.swift in Sources */,
 				C312D34C2D7DC27700BB97A4 /* AssociatedObject.swift in Sources */,
@@ -2586,6 +2637,7 @@
 				C312D36F2D7DC27700BB97A4 /* EnterPhraseCell.swift in Sources */,
 				C312D3712D7DC27700BB97A4 /* SeedViewModel.swift in Sources */,
 				C32369FF2D7DD431007039A1 /* LoginViewController.swift in Sources */,
+				24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */,
 				C312D3732D7DC27700BB97A4 /* AboutCell.swift in Sources */,
 				C312D3762D7DC27700BB97A4 /* AddressFieldView.swift in Sources */,
 				C312D3772D7DC27700BB97A4 /* UserDefaults+Additions.swift in Sources */,
@@ -2608,6 +2660,7 @@
 				C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */,
 				C312D3902D7DC27700BB97A4 /* GradientSwitch.swift in Sources */,
 				C312D3932D7DC27700BB97A4 /* EnterPhraseHostingController.swift in Sources */,
+				24F5BD4A2E0442D00010D340 /* SettingsFooterView.swift in Sources */,
 				C312D3962D7DC27700BB97A4 /* LAContext+Extensions.swift in Sources */,
 				C312D39A2D7DC27700BB97A4 /* PinDigitView.swift in Sources */,
 				C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */,
@@ -2648,6 +2701,7 @@
 				C312D3DC2D7DC27700BB97A4 /* ConfirmPhrase.swift in Sources */,
 				C312D3DD2D7DC27700BB97A4 /* ReceiveLTCViewController.swift in Sources */,
 				C312D3DF2D7DC27700BB97A4 /* EnterPhraseViewController.swift in Sources */,
+				24F5BD5A2E04714C0010D340 /* GamesListView.swift in Sources */,
 				C312D3E42D7DC27700BB97A4 /* LoginView.swift in Sources */,
 				C312D3E52D7DC27700BB97A4 /* LocalWebViewModel.swift in Sources */,
 				C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */,
@@ -2672,6 +2726,7 @@
 				241D22412DB526AE000302C8 /* SetPasscodeView.swift in Sources */,
 				C312D4072D7DC27700BB97A4 /* WipeEmptyWalletViewController.swift in Sources */,
 				24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */,
+				24F5BD542E0470B10010D340 /* SettingsExpandingGamesView.swift in Sources */,
 				2412BA7E2DF4660300AC40BB /* ReceiveAddressView.swift in Sources */,
 				C312D40A2D7DC27700BB97A4 /* EnterPhraseView.swift in Sources */,
 				C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */,
@@ -2686,6 +2741,7 @@
 				C312D41C2D7DC27700BB97A4 /* CreateStepTabView.swift in Sources */,
 				C312D41D2D7DC27700BB97A4 /* ModalNavigationController.swift in Sources */,
 				242871862DE5D2580035DE48 /* NewSyncProgressView.swift in Sources */,
+				24F5BD482E043C2A0010D340 /* SettingsLabelView.swift in Sources */,
 				C312D41E2D7DC27700BB97A4 /* UnstoppableDomainView.swift in Sources */,
 				C312D41F2D7DC27700BB97A4 /* AboutViewController.swift in Sources */,
 				C312D4222D7DC27700BB97A4 /* ModalDisplayable.swift in Sources */,
@@ -2695,6 +2751,8 @@
 				C312D42D2D7DC27700BB97A4 /* LWAnalytics.swift in Sources */,
 				C312D4312D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift in Sources */,
 				C312D4322D7DC27700BB97A4 /* SecurityCenterCell.swift in Sources */,
+				24F5BD4E2E0452670010D340 /* SettingsActionView.swift in Sources */,
+				24FBB86A2E035E10002B5F84 /* SettingsHostingController.swift in Sources */,
 				24AAB31F2DE79EE300F0C18C /* NewReceiveViewModel.swift in Sources */,
 				24D7AE582DCFF72D0078252E /* NewConfirmViewModel.swift in Sources */,
 				C312D4332D7DC27700BB97A4 /* RemoteConfigHelper.swift in Sources */,
@@ -2719,6 +2777,7 @@
 				C312D4512D7DC27700BB97A4 /* PromptModalViewController.swift in Sources */,
 				C312D4522D7DC27700BB97A4 /* CheckboxesStepView.swift in Sources */,
 				24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */,
+				24F5BD462E0436BF0010D340 /* TabBarViewController+Extension.swift in Sources */,
 				C312D4562D7DC27700BB97A4 /* LockScreenView.swift in Sources */,
 				C312D4572D7DC27700BB97A4 /* KeyboardNotificationInfo.swift in Sources */,
 				C312D4582D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift in Sources */,
@@ -2763,6 +2822,7 @@
 				C312D48F2D7DC27700BB97A4 /* SimpleRedux.swift in Sources */,
 				C312D4902D7DC27700BB97A4 /* SendAddressCellView.swift in Sources */,
 				241D22492DB526E9000302C8 /* YourSeedWordsView.swift in Sources */,
+				24F5BD522E04708F0010D340 /* SettingsExpandingCurView.swift in Sources */,
 				C312D4912D7DC27700BB97A4 /* ForgotAlertViewModel.swift in Sources */,
 				C312D4942D7DC27700BB97A4 /* RetryTimer.swift in Sources */,
 				C312D4952D7DC27700BB97A4 /* RadialGradientView.swift in Sources */,
@@ -2901,7 +2961,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250619.0;
+				CURRENT_PROJECT_VERSION = 250620.2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -2917,7 +2977,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.4.0;
+				MARKETING_VERSION = 3.4.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
@@ -3199,7 +3259,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250619.0;
+				CURRENT_PROJECT_VERSION = 250620.2;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
@@ -3214,7 +3274,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.4.0;
+				MARKETING_VERSION = 3.4.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
@@ -3310,7 +3370,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = exactVersion;
-				version = 11.9.0;
+				version = 11.13.0;
 			};
 		};
 		C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
