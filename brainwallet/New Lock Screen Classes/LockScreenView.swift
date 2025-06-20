@@ -128,7 +128,6 @@ struct LockScreenView: View {
             }
             .onAppear {
                 userPrefersDarkMode = UserDefaults.userPreferredDarkTheme
-                debugPrint("::: userPreferredDarkTheme \(UserDefaults.userPreferredDarkTheme)")
                 fiatValue = String(format: String(localized: "%@ = 1Ł"), viewModel.currentValueInFiat)
                 updateVersionLabel()
             }
