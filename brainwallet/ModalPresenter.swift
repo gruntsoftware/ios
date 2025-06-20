@@ -72,37 +72,6 @@ class ModalPresenter: Subscriber, Trackable {
         return root
     }
 
-    func rootModalViewController(_ type: RootModal) -> UIViewController? {
-		switch type {
-		case .none:
-			return nil
-		case .send:
-			return makeSendView()
-		case .receive:
-			return newBuyOrReceiveView() // receiveView(isRequestAmountVisible: true)
-		case .menu:
-			return menuViewController()
-		case .loginScan:
-			return nil // The scan view needs a custom presentation
-		case .loginAddress:
-			return  newBuyOrReceiveView() // receiveView(isRequestAmountVisible: false)
-		case .wipeEmptyWallet:
-			return wipeEmptyView()
-		case .requestAmount:
-			guard let wallet = walletManager?.wallet else { return nil }
-			let requestVc = RequestAmountViewController(wallet: wallet, store: store)
-			requestVc.presentEmail = { [weak self] bitcoinURL, image in
-				self?.messagePresenter.presenter = self?.topViewController
-				self?.messagePresenter.presentMailCompose(bitcoinURL: bitcoinURL, image: image)
-			}
-			requestVc.presentText = { [weak self] bitcoinURL, image in
-				self?.messagePresenter.presenter = self?.topViewController
-				self?.messagePresenter.presentMessageCompose(bitcoinURL: bitcoinURL, image: image)
-			}
-			return ModalViewController(childViewController: requestVc, store: store)
-		}
-	}
-
     func presentSettings() {
 		guard let topVC = topViewController,
               let walletManager = walletManager else { return }
