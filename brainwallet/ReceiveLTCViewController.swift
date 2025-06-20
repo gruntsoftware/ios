@@ -9,7 +9,7 @@ class ReceiveLTCViewController: UIViewController {
 			NSLog("ERROR: Store is not initialized")
 			return
 		}
-
+        view.backgroundColor = BrainwalletUIColor.surface
 		store.perform(action: RootModalActions.Present(modal: .receive))
 	}
 }
