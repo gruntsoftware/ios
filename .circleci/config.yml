@@ -52,7 +52,7 @@ jobs:
             plutil -lint service-data.plist || echo "service-data.plist invalid or missing"
             plutil -lint Brainwallet-StoreKit-v1.storekit || echo "StoreKit file invalid or missing"	
       - run:
-		  name: Clean derived data
+          name: Clean derived data
           command: |
             echo "Cleaning derived data..."
             rm -rf ~/Library/Developer/Xcode/DerivedData
