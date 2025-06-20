@@ -25,6 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             object: nil
         )
 
+        // Set User theme preferenc
+        // Register for system notifications
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateUserThemePreference),
+            name: .changedThemePreferenceNotification,
+            object: nil
+        )
+
 		return true
 	}
 
@@ -88,8 +97,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let thisWindow = window else { return }
 
         // Set global themes
-        debugPrint("::: AP UserDefaults.userPreferredDarkTheme \(UserDefaults.userPreferredDarkTheme)")
-
         thisWindow.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark: .light
 
         UIView.appearance(whenContainedInInstancesOf:
@@ -156,7 +163,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     @objc
     func updateUserThemePreference() {
-        let fetchThemePreference = UserDefaults.userPreferredDarkTheme
         DispatchQueue.main.async {
             guard let thisWindow = self.window else { return }
             thisWindow.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark : .light
