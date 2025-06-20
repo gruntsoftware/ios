@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             object: nil
         )
 
-        // Set User theme preferenc
+        // Set User theme preference
         // Register for system notifications
         NotificationCenter.default.addObserver(
             self,

@@ -120,7 +120,12 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
         settingsButton.imageView?.tintColor = BrainwalletUIColor.content
 
 		headerView.backgroundColor = BrainwalletUIColor.surface
-        tabBar.barTintColor = BrainwalletUIColor.content.withAlphaComponent(0.01)
+
+        tabBar.barTintColor = BrainwalletUIColor.surface
+        tabBar.backgroundColor = BrainwalletUIColor.surface
+        tabBar.tintColor = BrainwalletUIColor.content
+        tabBar.unselectedItemTintColor = BrainwalletUIColor.content.withAlphaComponent(0.3)
+
 		containerView.backgroundColor = BrainwalletUIColor.surface
 		view.backgroundColor = BrainwalletUIColor.surface
 	}
