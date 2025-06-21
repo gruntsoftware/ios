@@ -15,6 +15,9 @@ struct SettingsExpandingCurrencyView: View {
     var shouldExpandCurrency: Bool
 
     @State
+    private var selectedFiat: Bool = false
+
+    @State
     private var rotationAngle: Double = 0
 
     private var title: String
@@ -65,10 +68,10 @@ struct SettingsExpandingCurrencyView: View {
                         .frame(height: 44.0)
                         .padding(.top, 1.0)
 
-                        SecurityListView(viewModel: viewModel)
+                        CurrencyPickerView(viewModel: viewModel)
                             .transition(.opacity)
                             .transition(.slide)
-                            .animation(.easeInOut(duration: 0.7))
+                            .animation(.easeInOut(duration: 0.2))
                             .frame(height: shouldExpandCurrency ? 200.0 : 0.1)
 
                         Spacer()

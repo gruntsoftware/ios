@@ -1,5 +1,5 @@
 //
-//  CurrencyListView.swift
+//  CurrencyPickerView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 08/05/2025.
@@ -8,27 +8,25 @@
 //
 import SwiftUI
 
-struct CurrencyListView: View {
+struct CurrencyPickerView: View {
 
     @ObservedObject
-    var newMainViewModel: NewMainViewModel
+    var viewModel: NewMainViewModel
 
     @State
-    private var isLocked: Bool = false
+    private var pickedCurrency: GlobalCurrency = .USD
 
     @State
-    private var userPrefersDarkMode: Bool = false
+    private var selectedFiat: Bool = false
 
-    let footerRowHeight: CGFloat = 55.0
+    let selectorFont: Font = .barlowRegular(size: 18.0)
+    let symbolFont: Font = .barlowLight(size: 16.0)
 
-    let squareButtonSize: CGFloat = 55.0
-    let squareImageSize: CGFloat = 25.0
-    let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
+    let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
+    let checkSize: CGFloat = 16.0
 
     init(viewModel: NewMainViewModel) {
-        self.newMainViewModel = viewModel
+        self.viewModel = viewModel
     }
 
     var body: some View {
@@ -39,30 +37,59 @@ struct CurrencyListView: View {
                 let width = geometry.size.width
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                    VStack {
-                        List {
-//                            SettingsActionView(title: String(localized: "Update PIN"),
-//                                detailText: "PIN", action: .lock,
-//                                     isSelected: $isLocked)
-//                                         .frame(height: closedRowHeight)
-//                            SettingsActionView(title: String(localized: "Seed Phrase"),
-//                                detailText: "", action: .preferDarkMode,
-//                                               isSelected: $userPrefersDarkMode)
-//                                        .frame(height: closedRowHeight)
-//                            SettingsActionView(title: String(localized: "Brainwallet Phrase"),
-//                                detailText: "", action: .lock,
-//                                     isSelected: $isLocked)
-//                                         .frame(height: closedRowHeight)
-//                            SettingsActionView(title: String(localized: "Share Data"),
-//                                detailText: "", action: .lock,
-//                                     isSelected: $isLocked)
-//                                         .frame(height: closedRowHeight)
-
+                    HStack {
+                        VStack {
+                            Picker("", selection: $pickedCurrency) {
+                                ForEach(globalCurrencies, id: \.self) {
+                                    Text("\($0.fullCurrencyName)   (\($0.code))")
+                                        .font(selectorFont)
+                                        .foregroundColor(BrainwalletColor.content)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .padding(16.0)
+                                }
+                            }
+                            .pickerStyle(.wheel)
+                            .frame(width: width * 0.75, height: 140.0, alignment: .leading)
+                            .onChange(of: pickedCurrency) { _ in
+                               // selectedFiat = true
+                                // selectedFiat.toggle()
+                            }
+                            .padding(.leading, rowLeadingPad)
+                            .padding(.top, rowLeadingPad)
                         }
-                        .listStyle(.plain)
+                        Spacer()
+                        VStack {
+                            Button(action: {
+                                selectedFiat.toggle()
+                            }) {
+                                VStack {
+                                    ZStack {
+                                        Ellipse()
+                                            .frame(width: checkSize * 2,
+                                               height: checkSize * 2)
+                                            .foregroundColor(selectedFiat ? BrainwalletColor.grape.opacity(0.9) : BrainwalletColor.grape.opacity(0.1))
+                                            .overlay(
+                                                Ellipse()
+                                                    .stroke(BrainwalletColor.midnight, lineWidth: 2.0)
+                                                    .frame(width: checkSize * 2,
+                                                       height: checkSize * 2)
+                                            )
+                                        Image(systemName: "checkmark")
+                                            .frame(width: checkSize,
+                                                   height: checkSize)
+                                            .foregroundColor(selectedFiat ? .white : BrainwalletColor.gray)
+                                    }
+                                }
+                            }
+                            .frame(width: 30.0, height: 30.0)
+                        }
+                        .frame(width: width * 0.1, height: 140.0, alignment: .leading)
+                        .padding(.trailing, rowLeadingPad)
+                        .padding(.top, rowLeadingPad)
+
                     }
 
-                }
+                }.background(.red)
             }
         }
     }
