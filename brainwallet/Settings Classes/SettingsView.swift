@@ -102,7 +102,7 @@ struct SettingsView: View {
                                 .background(BrainwalletColor.surface)
                                 .listRowBackground(BrainwalletColor.surface)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                                SettingsExpandingCurrencyView(title: String(localized: "Currency"),
+                                SettingsExpandingCurrencyView(title: String(localized: "Fiat Currency"),
                                     viewModel: newMainViewModel, shouldExpandCurrency: $shouldExpandCurrency)
                                 .frame(height: shouldExpandCurrency ? 200 : 44.0)
                                 .background(BrainwalletColor.surface)
@@ -132,10 +132,6 @@ struct SettingsView: View {
                                 .background(BrainwalletColor.surface)
                                 .listRowBackground(BrainwalletColor.surface)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                                SettingsSpacerView()
-                                    .background(BrainwalletColor.surface)
-                                    .listRowBackground(BrainwalletColor.surface)
-                                    .listRowSeparatorTint(BrainwalletColor.content)
                                 SettingsActionThemeView(title:
                                     userPrefersDarkMode ?
                                     String(localized: "Dark Mode")

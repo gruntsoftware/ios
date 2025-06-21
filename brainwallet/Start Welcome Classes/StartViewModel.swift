@@ -53,6 +53,7 @@ class StartViewModel: ObservableObject, Subscriber {
             return
         }
 
+        //  Check if preferred currency can be used for purchase
         let code = currency.code
         let isUnsupportedFiat = SupportedFiatCurrency.allCases.first(where: { $0.code == code }) == nil
         // Preferred currency might not be supported for purchase
@@ -62,15 +63,9 @@ class StartViewModel: ObservableObject, Subscriber {
             UserDefaults.userPreferredBuyCurrency = code
         }
         UserDefaults.userPreferredCurrencyCode = code
-        UserDefaults.standard.synchronize()
 
-        // Set Default Currency
+        // Set Preferred Currency
         store.perform(action: UserPreferredCurrency.setDefault(code))
 
-        DispatchQueue.main.async {
-            NotificationCenter.default.post(name: .preferredCurrencyChangedNotification,
-                                            object: nil,
-                                            userInfo: nil)
-        }
     }
 }

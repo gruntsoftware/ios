@@ -20,9 +20,12 @@ struct SettingsExpandingCurrencyView: View {
     @State
     private var rotationAngle: Double = 0
 
+    @State
+    private var pickedCurrency: GlobalCurrency = .USD
+
     private var title: String
     let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 18.0)
+    let detailFont: Font = .barlowLight(size: 14.0)
 
     var securityListView: SecurityListView
 
@@ -39,11 +42,22 @@ struct SettingsExpandingCurrencyView: View {
                 ZStack {
                     VStack {
                         HStack {
-                            Text(title)
-                                .font(largeFont)
-                                .foregroundColor(BrainwalletColor.content)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading, rowLeadingPad)
+                            VStack {
+                                Text(title)
+                                    .font(largeFont)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.leading, rowLeadingPad)
+                                    .padding(.bottom, 1.0)
+                                Text("\(pickedCurrency.fullCurrencyName) (\(pickedCurrency.symbol))")
+                                    .font(detailFont)
+                                    .kerning(0.6)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.leading, rowLeadingPad)
+                                    .padding(.bottom, 1.0)
+                            }
+
                             Spacer()
 
                             VStack {
@@ -68,11 +82,11 @@ struct SettingsExpandingCurrencyView: View {
                         .frame(height: 44.0)
                         .padding(.top, 1.0)
 
-                        CurrencyPickerView(viewModel: viewModel)
+                        CurrencyPickerView(viewModel: viewModel, pickedCurrency: $pickedCurrency)
                             .transition(.opacity)
                             .transition(.slide)
                             .animation(.easeInOut(duration: 0.2))
-                            .frame(height: shouldExpandCurrency ? 200.0 : 0.1)
+                            .frame(height: shouldExpandCurrency ? 100.0 : 0.1)
 
                         Spacer()
                     }

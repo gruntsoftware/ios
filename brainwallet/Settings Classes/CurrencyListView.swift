@@ -13,20 +13,21 @@ struct CurrencyPickerView: View {
     @ObservedObject
     var viewModel: NewMainViewModel
 
-    @State
-    private var pickedCurrency: GlobalCurrency = .USD
+    @Binding
+    var pickedCurrency: GlobalCurrency
 
     @State
     private var selectedFiat: Bool = false
 
-    let selectorFont: Font = .barlowRegular(size: 18.0)
+    let selectorFont: Font = .barlowRegular(size: 16.0)
     let symbolFont: Font = .barlowLight(size: 16.0)
 
     let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
     let checkSize: CGFloat = 16.0
 
-    init(viewModel: NewMainViewModel) {
+    init(viewModel: NewMainViewModel, pickedCurrency: Binding<GlobalCurrency>) {
         self.viewModel = viewModel
+        _pickedCurrency = pickedCurrency
     }
 
     var body: some View {
@@ -49,41 +50,37 @@ struct CurrencyPickerView: View {
                                 }
                             }
                             .pickerStyle(.wheel)
-                            .frame(width: width * 0.75, height: 140.0, alignment: .leading)
+                            .frame(width: width * 0.82, height: 100.0, alignment: .leading)
                             .onChange(of: pickedCurrency) { _ in
-                               // selectedFiat = true
-                                // selectedFiat.toggle()
+                               selectedFiat = false
+                                delay(0.4) {
+                                    selectedFiat = true
+                                    viewModel.userDidSetCurrencyPreference(currency: pickedCurrency)
+                                }
                             }
                             .padding(.leading, rowLeadingPad)
                             .padding(.top, rowLeadingPad)
                         }
                         Spacer()
                         VStack {
-                            Button(action: {
-                                selectedFiat.toggle()
-                            }) {
-                                VStack {
-                                    ZStack {
+                            ZStack {
+                                Ellipse()
+                                    .frame(width: checkSize * 2,
+                                       height: checkSize * 2)
+                                    .foregroundColor(selectedFiat ? BrainwalletColor.grape.opacity(0.9) : BrainwalletColor.grape.opacity(0.1))
+                                    .overlay(
                                         Ellipse()
+                                            .stroke(selectedFiat ? BrainwalletColor.midnight.opacity(0.9) : BrainwalletColor.grape, lineWidth: 2.0)
                                             .frame(width: checkSize * 2,
                                                height: checkSize * 2)
-                                            .foregroundColor(selectedFiat ? BrainwalletColor.grape.opacity(0.9) : BrainwalletColor.grape.opacity(0.1))
-                                            .overlay(
-                                                Ellipse()
-                                                    .stroke(BrainwalletColor.midnight, lineWidth: 2.0)
-                                                    .frame(width: checkSize * 2,
-                                                       height: checkSize * 2)
-                                            )
-                                        Image(systemName: "checkmark")
-                                            .frame(width: checkSize,
-                                                   height: checkSize)
-                                            .foregroundColor(selectedFiat ? .white : BrainwalletColor.gray)
-                                    }
-                                }
+                                    )
+                                Image(systemName: "checkmark")
+                                    .frame(width: checkSize,
+                                           height: checkSize)
+                                    .foregroundColor(selectedFiat ? .white : BrainwalletColor.gray)
                             }
-                            .frame(width: 30.0, height: 30.0)
                         }
-                        .frame(width: width * 0.1, height: 140.0, alignment: .leading)
+                        .frame(width: width * 0.1, height: 100.0, alignment: .leading)
                         .padding(.trailing, rowLeadingPad)
                         .padding(.top, rowLeadingPad)
 
