@@ -64,13 +64,11 @@ struct SettingsExpandingGamesView: View {
                         }
                         .frame(height: 44.0)
                         .padding(.top, 1.0)
-
-                        SecurityListView(viewModel: viewModel)
+                        GamesListView(viewModel: viewModel)
                             .transition(.opacity)
                             .transition(.slide)
                             .animation(.easeInOut(duration: 0.7))
-                            .frame(height: shouldExpandGames ? 200.0 : 0.1)
-
+                            .frame(height: shouldExpandGames ? 110.0 : 0.1)
                         Spacer()
                     }
 
