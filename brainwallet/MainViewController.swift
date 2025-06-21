@@ -1,12 +1,9 @@
 import BRCore
-import AudioToolbox
 import MachO
 import SwiftUI
 import UIKit
 
 class MainViewController: UIViewController, Subscriber, LoginViewControllerDelegate {
-	// MARK: - Private
-
 	private let store: Store
 	private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 	private var isLoginRequired = false
@@ -16,8 +13,9 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
     var showSettingsConstant: CGFloat = 0.0
     var settingsViewPlacement: CGFloat = 0.0
     var shouldShowSettings: Bool = true
-    var settingsLeadingConstraint: NSLayoutConstraint!
-    var settingsTrailingConstraint: NSLayoutConstraint!
+    var barShouldBeHidden = false
+    var settingsLeadingConstraint = NSLayoutConstraint()
+    var settingsTrailingConstraint = NSLayoutConstraint()
     private let clickSound = "click_sound"
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -44,33 +42,23 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	}
 
 	override func viewDidLoad() {
+        loginView.delegate = self
+        /// Set colors
 		view.backgroundColor = BrainwalletUIColor.surface
-
 		navigationController?.navigationBar.tintColor = BrainwalletUIColor.surface
 		navigationController?.navigationBar.titleTextAttributes = [
 			NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
 			NSAttributedString.Key.font: UIFont.customBold(size: 17.0)
 		]
-
 		navigationController?.navigationBar.isTranslucent = false
 		navigationController?.navigationBar.barTintColor = BrainwalletUIColor.surface
-		loginView.delegate = self
-
-		NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification,
-		                                       object: nil,
-		                                       queue: nil) { _ in
-			if UserDefaults.writePaperPhraseDate != nil {
-
-            }
-		}
-
 		addSubscriptions()
 		addAppLifecycleNotificationEvents()
 		addTemporaryStartupViews()
+        activateSettingsDrawer(shouldClose: false)
 	}
 
     func didUnlockLogin() {
-
         guard let tabVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "TabBarViewController")
                 as? TabBarViewController,
@@ -82,7 +70,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
         tabVC.store = store
         tabVC.walletManager = walletManager
-
         addChildViewController(tabVC, layout: {
             // Setup constraints
             tabVC.view.translatesAutoresizingMaskIntoConstraints = false
@@ -99,6 +86,12 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         settingsViewController = SettingsHostingController(store: store,
                                                            walletManager: walletManager)
         guard let settingsHC = settingsViewController else { return }
+
+        /// Reset the settings so when lock happens drawer is closed
+        settingsHC.resetSettingsDrawer = { [weak self] in
+            self?.activateSettingsDrawer(shouldClose: false)
+            self?.store.trigger(name: .lock)
+        }
 
         /// Settings constant setup
         settingsViewPlacement = -self.view.frame.width
@@ -127,40 +120,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         })
 
         tabVC.didTapSettingsButton = { [weak self]  in
-            guard let mySelf = self else { return }
-            if mySelf.shouldShowSettings {
-                mySelf.showSettingsConstant = 65.0
-                mySelf.settingsViewPlacement = 0
-
-                // Update existing constraints
-                mySelf.settingsLeadingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
-                mySelf.settingsTrailingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
-
-                UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
-                    mySelf.view.layoutIfNeeded()
-                    // TBD: Sound not ideal..in progress
-                    // mySelf.playSound(filename: "clicksound", type: "mp3")
-                }) { _ in
-                    mySelf.shouldShowSettings = false
-                }
-
-            } else {
-                // Hide settings (slide out to right)
-                mySelf.settingsViewPlacement = -mySelf.view.frame.width
-                mySelf.showSettingsConstant = 0
-
-                // Update existing constraints
-                mySelf.settingsLeadingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
-                mySelf.settingsTrailingConstraint.constant = mySelf.settingsViewPlacement - mySelf.showSettingsConstant
-
-                UIView.animate(withDuration: 0.1, delay: 0.1, options: .curveEaseOut, animations: {
-                    mySelf.view.layoutIfNeeded()
-                    // TBD: Sound not ideal..in progress
-                    // mySelf.playSound(filename: "clicksound", type: "mp3")
-                }) { _ in
-                    mySelf.shouldShowSettings = true
-                }
-            }
+            self?.activateSettingsDrawer()
         }
 
         UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
@@ -170,18 +130,55 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
         // STASH FOR NEW UI
         //        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
-        //
         //        addChildViewController(newMainViewHostingController, layout: {
         //            newMainViewHostingController.view.constrain(toSuperviewEdges: nil)
         //            newMainViewHostingController.view.layoutIfNeeded()
         //        }}
     }
 
+    func activateSettingsDrawer(shouldClose: Bool? = nil) {
+        var shouldShow = shouldShowSettings
+
+        if let closeState = shouldClose {
+            shouldShow = closeState
+        }
+
+        if shouldShow {
+            self.showSettingsConstant = 65.0
+            self.settingsViewPlacement = 0
+            self.barShouldBeHidden = true
+            self.setNeedsStatusBarAppearanceUpdate()
+            // Update existing constraints
+            self.settingsLeadingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
+            self.settingsTrailingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
+
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+                self.view.layoutIfNeeded()
+                // TBD: Sound not ideal..in progress
+                // _ = SoundsHelper.play(filename: "clicksound", type: "mp3")
+            }) { _ in self.shouldShowSettings = false }
+
+        } else {
+            // Hide settings (slide out to right)
+            self.settingsViewPlacement = -self.view.frame.width
+            self.showSettingsConstant = 0
+            self.barShouldBeHidden = false
+            self.setNeedsStatusBarAppearanceUpdate()
+            // Update existing constraints
+            self.settingsLeadingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
+            self.settingsTrailingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
+
+            UIView.animate(withDuration: 0.1, delay: 0.1, options: .curveEaseOut, animations: {
+                self.view.layoutIfNeeded()
+                // TBD: Sound not ideal..in progress
+                // _ = SoundsHelper.play(filename: "clicksound", type: "mp3")
+            }) { _ in self.shouldShowSettings = true }
+        }
+    }
+
 	private func addTemporaryStartupViews() {
 		guardProtected(queue: DispatchQueue.main) {
-			if !WalletManager.staticNoWallet {
-
-			} else {
+			if WalletManager.staticNoWallet {
 				// Adds a  card view the hides work while thread finishes
 				let launchView = LaunchCardHostingController()
 				self.addChildViewController(launchView, layout: {
@@ -220,26 +217,14 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 			}
 		}
 	}
-    private func playSound(filename: String, type: String = "mp3") {
-        if let url = Bundle.main.url(forResource: filename, withExtension: type) {
-            var id: SystemSoundID = 0
-            AudioServicesCreateSystemSoundID(url as CFURL, &id)
-            AudioServicesAddSystemSoundCompletion(id, nil, nil, { soundId, _ in
-                AudioServicesDisposeSystemSoundID(soundId)
-            }, nil)
-            AudioServicesPlaySystemSound(id)
-        } else {
-            debugPrint("::: ERROR: NO AUDIO FILE FOUND")
-        }
-    }
 
 	override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
 		return .fade
 	}
 
-	override var preferredStatusBarStyle: UIStatusBarStyle {
-		return .lightContent
-	}
+    override var prefersStatusBarHidden: Bool {
+        return barShouldBeHidden
+    }
 
 	@available(*, unavailable)
 	required init?(coder _: NSCoder) {

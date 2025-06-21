@@ -76,6 +76,8 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     private var rate: Rate?
 
+    var resetSettingsDrawer: (() -> Void)?
+
     init(store: Store, walletManager: WalletManager) {
         self.store = store
         self.walletManager = walletManager
@@ -125,6 +127,43 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             let fiatBalanceDouble = ltcBalanceDouble * Double(rate.rate)
             walletBalanceFiat = String(format: "%@%8.2f", rate.currencySymbol, fiatBalanceDouble)
             walletBalanceLitecoin = String(format: "Ł%8.6f", ltcBalanceDouble)
+        }
+    }
+
+    func userDidSetCurrencyPreference(currency: GlobalCurrency) {
+
+        guard let store = store
+        else {
+            debugPrint("::: Error: Rate not fetched")
+            return
+        }
+
+        //  Check if preferred currency can be used for purchase
+        let code = currency.code
+        let isUnsupportedFiat = SupportedFiatCurrency.allCases.first(where: { $0.code == code }) == nil
+        // Preferred currency might not be supported for purchase
+        if isUnsupportedFiat {
+            UserDefaults.userPreferredBuyCurrency = "USD"
+        } else {
+            UserDefaults.userPreferredBuyCurrency = code
+        }
+        UserDefaults.userPreferredCurrencyCode = code
+
+        // Set Preferred Currency
+        store.perform(action: UserPreferredCurrency.setDefault(code))
+    }
+
+    func updateTheme(shouldBeDark: Bool) {
+        UserDefaults.userPreferredDarkTheme = shouldBeDark
+        NotificationCenter
+            .default
+            .post(name: .changedThemePreferenceNotification,
+                object: nil)
+    }
+
+    func lockBrainwallet() {
+        delay(0.6) {
+            self.resetSettingsDrawer?()
         }
     }
 

@@ -12,31 +12,34 @@ struct SettingsLabelView: View {
     private let title: String
     private let detailText: String
     let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 18.0)
+    let detailFont: Font = .barlowLight(size: 19.0)
+    let rowBackgroundColor: Color
 
-    init(title: String, detailText: String) {
+    init(title: String, detailText: String, rowBackgroundColor: Color? = nil) {
         self.title = title
         self.detailText = detailText
+        self.rowBackgroundColor = rowBackgroundColor ?? BrainwalletColor.surface
     }
 
     var body: some View {
         NavigationStack {
             GeometryReader { _ in
                 ZStack {
-                    BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
+                    rowBackgroundColor.edgesIgnoringSafeArea(.all)
                     VStack {
                         Text(title)
                             .font(largeFont)
                             .foregroundColor(BrainwalletColor.content)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading, 16.0)
+                            .padding(.leading, rowLeadingPad)
+                            .padding(.bottom, 1.0)
                         Text(detailText)
                             .font(detailFont)
+                            .kerning(0.6)
                             .foregroundColor(BrainwalletColor.content)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding([.top, .bottom], 1.0)
-                            .padding(.leading, 16.0)
-                        Spacer()
+                            .padding(.leading, rowLeadingPad)
+                            .padding(.bottom, 1.0)
                     }
                 }
             }

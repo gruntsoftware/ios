@@ -1,5 +1,5 @@
 //
-//  SettingsExpandingGamesView.swift
+//  SettingsExpandingBlockchainView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 19/06/2025.
@@ -7,12 +7,12 @@
 //
 import SwiftUI
 
-struct SettingsExpandingGamesView: View {
+struct SettingsExpandingBlockchainView: View {
 
     @ObservedObject
     var viewModel: NewMainViewModel
     @Binding
-    var shouldExpandGames: Bool
+    var shouldExpandBlockchain: Bool
 
     @State
     private var rotationAngle: Double = 0
@@ -23,9 +23,9 @@ struct SettingsExpandingGamesView: View {
 
     var securityListView: SecurityListView
 
-    init(title: String, viewModel: NewMainViewModel, shouldExpandGames: Binding <Bool>) {
+    init(title: String, viewModel: NewMainViewModel, shouldExpandBlockchain: Binding <Bool>) {
         self.title = title
-        _shouldExpandGames = shouldExpandGames
+        _shouldExpandBlockchain = shouldExpandBlockchain
         self.viewModel = viewModel
         self.securityListView = SecurityListView(viewModel: viewModel)
     }
@@ -45,7 +45,7 @@ struct SettingsExpandingGamesView: View {
 
                             VStack {
                                 Button(action: {
-                                    shouldExpandGames.toggle()
+                                    shouldExpandBlockchain.toggle()
                                 }) {
                                     VStack {
                                         HStack {
@@ -54,7 +54,7 @@ struct SettingsExpandingGamesView: View {
                                                 .aspectRatio(contentMode: .fit)
                                                 .frame(width: expandArrowSize, height: expandArrowSize)
                                                 .foregroundColor(BrainwalletColor.content)
-                                                .rotationEffect(Angle(degrees: shouldExpandGames ? 90 : 0))
+                                                .rotationEffect(Angle(degrees: shouldExpandBlockchain ? 90 : 0))
                                         }
                                     }
                                     .frame(width: 30.0, height: 30.0)
@@ -64,11 +64,13 @@ struct SettingsExpandingGamesView: View {
                         }
                         .frame(height: 44.0)
                         .padding(.top, 1.0)
-                        GamesListView(viewModel: viewModel)
+
+                        SecurityListView(viewModel: viewModel)
                             .transition(.opacity)
                             .transition(.slide)
                             .animation(.easeInOut(duration: 0.7))
-                            .frame(height: shouldExpandGames ? 110.0 : 0.1)
+                            .frame(height: shouldExpandBlockchain ? 200.0 : 0.1)
+
                         Spacer()
                     }
 

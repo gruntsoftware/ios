@@ -13,19 +13,7 @@ struct GamesListView: View {
     @ObservedObject
     var newMainViewModel: NewMainViewModel
 
-    @State
-    private var isLocked: Bool = false
-
-    @State
-    private var userPrefersDarkMode: Bool = false
-
-    let footerRowHeight: CGFloat = 55.0
-
-    let squareButtonSize: CGFloat = 55.0
-    let squareImageSize: CGFloat = 25.0
-    let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
+    let rowBackground: Color = BrainwalletColor.background
 
     init(viewModel: NewMainViewModel) {
         self.newMainViewModel = viewModel
@@ -41,23 +29,34 @@ struct GamesListView: View {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                     VStack {
                         List {
-                            SettingsActionView(title: String(localized: "Update PIN"),
-                                detailText: "PIN", action: .lock,
-                                     isSelected: $isLocked)
-                                         .frame(height: closedRowHeight)
-                            SettingsActionView(title: String(localized: "Seed Phrase"),
-                                detailText: "", action: .preferDarkMode,
-                                               isSelected: $userPrefersDarkMode)
-                                        .frame(height: closedRowHeight)
-                            SettingsActionView(title: String(localized: "Brainwallet Phrase"),
-                                detailText: "", action: .lock,
-                                     isSelected: $isLocked)
-                                         .frame(height: closedRowHeight)
-                            SettingsActionView(title: String(localized: "Share Data"),
-                                detailText: "", action: .lock,
-                                     isSelected: $isLocked)
-                                         .frame(height: closedRowHeight)
-
+                            SettingsLabelView(title: String(localized: "Game 1"),
+                                detailText: String(localized: "Coming soon... 🤩"),
+                                    rowBackgroundColor: rowBackground)
+                                    .frame(height: closedRowHeight)
+                                    .background(BrainwalletColor.background)
+                                    .listRowBackground(BrainwalletColor.background)
+                                    .listRowSeparatorTint(BrainwalletColor.content)
+                            SettingsLabelView(title: String(localized: "Game 2"),
+                                detailText: String(localized: "Coming soon... 🍔"),
+                                    rowBackgroundColor: rowBackground)
+                                    .frame(height: closedRowHeight)
+                                    .background(BrainwalletColor.background)
+                                    .listRowBackground(BrainwalletColor.background)
+                                    .listRowSeparatorTint(BrainwalletColor.content)
+                            SettingsLabelView(title: String(localized: "Game 3"),
+                                detailText: String(localized: "Coming soon... 🪲"),
+                                    rowBackgroundColor: rowBackground)
+                                    .frame(height: closedRowHeight)
+                                    .background(BrainwalletColor.background)
+                                    .listRowBackground(BrainwalletColor.background)
+                                    .listRowSeparatorTint(BrainwalletColor.content)
+                            SettingsLabelView(title: String(localized: "Game 4"),
+                                detailText: String(localized: "Coming soon... 👺"),
+                                    rowBackgroundColor: rowBackground)
+                                    .frame(height: closedRowHeight)
+                                    .background(BrainwalletColor.background)
+                                    .listRowBackground(BrainwalletColor.background)
+                                    .listRowSeparatorTint(BrainwalletColor.content)
                         }
                         .listStyle(.plain)
                     }

@@ -26,7 +26,7 @@ struct SecurityListView: View {
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
     let largeButtonFont: Font = .barlowBold(size: 24.0)
-
+    let rowBackground: Color = BrainwalletColor.background
     init(viewModel: NewMainViewModel) {
         self.newMainViewModel = viewModel
     }
@@ -41,25 +41,42 @@ struct SecurityListView: View {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                     VStack {
                         List {
-                            SettingsActionView(title: String(localized: "Update PIN"),
-                                detailText: "PIN", action: .lock,
-                                     isSelected: $isLocked)
-                                         .frame(height: closedRowHeight)
-                            SettingsActionView(title: String(localized: "Seed Phrase"),
-                                detailText: "", action: .preferDarkMode,
-                                               isSelected: $userPrefersDarkMode)
-                                        .frame(height: closedRowHeight)
-                            SettingsActionView(title: String(localized: "Brainwallet Phrase"),
-                                detailText: "", action: .lock,
-                                     isSelected: $isLocked)
-                                         .frame(height: closedRowHeight)
-                            SettingsActionView(title: String(localized: "Share Data"),
-                                detailText: "", action: .lock,
-                                     isSelected: $isLocked)
-                                         .frame(height: closedRowHeight)
-
+                            SettingsLabelView(title:
+                                String(localized: "Update PIN"),
+                                detailText: "PIN",
+                                rowBackgroundColor: rowBackground)
+                                .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.background)
+                                .listRowBackground(BrainwalletColor.background)
+                                .listRowSeparatorTint(BrainwalletColor.content)
+                            SettingsLabelView(title:
+                                String(localized: "Seed Phrase"),
+                                detailText: "",
+                                rowBackgroundColor: rowBackground)
+                                .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.background)
+                                .listRowBackground(BrainwalletColor.background)
+                                .listRowSeparatorTint(BrainwalletColor.content)
+                            SettingsLabelView(title:
+                                String(localized: "Brainwallet Phrase"),
+                                detailText: "",
+                                rowBackgroundColor: rowBackground)
+                                .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.background)
+                                .listRowBackground(BrainwalletColor.background)
+                                .listRowSeparatorTint(BrainwalletColor.content)
+                            SettingsLabelView(title:
+                                String(localized: "Share Data"),
+                                detailText: "",
+                                rowBackgroundColor: rowBackground)
+                                .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.background)
+                                .listRowBackground(BrainwalletColor.background)
+                                .listRowSeparatorTint(BrainwalletColor.content)
                         }
                         .listStyle(.plain)
+                        .scrollIndicators(.hidden)
+
                     }
 
                 }

@@ -30,7 +30,7 @@ struct SettingsFooterView: View {
                             .foregroundColor(.white)
                             .font(titleFont)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading, 30.0)
+                            .padding(.leading, 44.0)
                         Spacer()
                         Text("\(AppVersion.string)")
                             .foregroundColor(.white)

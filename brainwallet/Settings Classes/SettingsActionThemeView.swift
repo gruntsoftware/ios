@@ -1,5 +1,5 @@
 //
-//  SettingsActionLockView.swift
+//  SettingsActionThemeView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 19/06/2025.
@@ -7,7 +7,7 @@
 //
 import SwiftUI
 
-struct SettingsActionLockView: View {
+struct SettingsActionThemeView: View {
 
     private let title: String
     private let detailText: String
@@ -16,13 +16,13 @@ struct SettingsActionLockView: View {
     let action: SettingsAction
 
     @Binding
-    var isLocked: Bool
+    var userPrefersDark: Bool
 
-    init(title: String, detailText: String, action: SettingsAction, isLocked: Binding<Bool>) {
+    init(title: String, detailText: String, action: SettingsAction, userPrefersDark: Binding<Bool>) {
         self.title = title
         self.detailText = detailText
         self.action = action
-        _isLocked = isLocked
+        _userPrefersDark = userPrefersDark
     }
 
     var body: some View {
@@ -47,11 +47,9 @@ struct SettingsActionLockView: View {
 
                         Spacer()
                         VStack {
-                            Button(action: {
-                                    isLocked.toggle()
-                            }) {
+                            Button(action: { userPrefersDark.toggle() }) {
                                 VStack {
-                                    Image(systemName: isLocked ? action.isOnSystemImage : action.isOffSystemImage)
+                                    Image(systemName: userPrefersDark ? action.isOffSystemImage : action.isOnSystemImage)
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 30.0,
@@ -63,6 +61,8 @@ struct SettingsActionLockView: View {
                             }
                             .frame(width: 30.0, height: 30.0)
                         }
+                    }.onAppear {
+                        userPrefersDark = UserDefaults.userPreferredDarkTheme
                     }
                 }
             }
