@@ -41,7 +41,7 @@ struct SettingsRowExpandableView: View {
                                 .font(titleFont)
                                 .foregroundColor( BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading, 16.0)
+                                .padding(.leading, rowLeadingPad)
                             Spacer()
                             Button(action: {
                                 withAnimation(.easeInOut(duration: 0.2)) {

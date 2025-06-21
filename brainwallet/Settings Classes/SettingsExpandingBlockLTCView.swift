@@ -41,7 +41,7 @@ struct SettingsExpandingBlockLTCView: View {
                                     .font(largeFont)
                                     .foregroundColor(BrainwalletColor.content)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.leading, 16.0)
+                                    .padding(.leading, rowLeadingPad)
                                 Spacer()
                             }
 

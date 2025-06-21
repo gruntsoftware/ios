@@ -108,6 +108,10 @@
 		24DB05E22E05CC4B00C57FE9 /* SettingsRowExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05E12E05CC4500C57FE9 /* SettingsRowExpandableView.swift */; };
 		24DB05E42E05D5E800C57FE9 /* SettingsActionThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05E32E05D5E800C57FE9 /* SettingsActionThemeView.swift */; };
 		24DB05E62E06059000C57FE9 /* SoundsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05E52E06054B00C57FE9 /* SoundsHelper.swift */; };
+		24DB05E82E06B44700C57FE9 /* SettingsExpandingBlockchainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05E72E06B44700C57FE9 /* SettingsExpandingBlockchainView.swift */; };
+		24DB05EA2E06B49B00C57FE9 /* SettingsExpandingGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05E92E06B49B00C57FE9 /* SettingsExpandingGamesView.swift */; };
+		24DB05EC2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05EB2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift */; };
+		24DB05EE2E06C34A00C57FE9 /* SettingsSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05ED2E06C34A00C57FE9 /* SettingsSpacerView.swift */; };
 		24E06FC52DF4790B00719B6C /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24E06FC42DF4790B00719B6C /* remote-config-defaults.plist */; };
 		24E06FC72DF4792800719B6C /* service-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24E06FC62DF4792800719B6C /* service-data.plist */; };
 		24E078A82DF1F9A9004B5958 /* PromptCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E078A72DF1F997004B5958 /* PromptCellView.swift */; };
@@ -120,11 +124,9 @@
 		24F5BD462E0436BF0010D340 /* TabBarViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD452E0436AD0010D340 /* TabBarViewController+Extension.swift */; };
 		24F5BD482E043C2A0010D340 /* SettingsLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */; };
 		24F5BD4A2E0442D00010D340 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD492E0442D00010D340 /* SettingsFooterView.swift */; };
-		24F5BD4C2E0450B80010D340 /* SettingsExpandingSecView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4B2E0450B80010D340 /* SettingsExpandingSecView.swift */; };
+		24F5BD4C2E0450B80010D340 /* SettingsExpandingSecurityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4B2E0450B80010D340 /* SettingsExpandingSecurityView.swift */; };
 		24F5BD4E2E0452670010D340 /* SettingsActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4D2E0452670010D340 /* SettingsActionView.swift */; };
 		24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4F2E0460C90010D340 /* SecurityListView.swift */; };
-		24F5BD522E04708F0010D340 /* SettingsExpandingCurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD512E04708F0010D340 /* SettingsExpandingCurView.swift */; };
-		24F5BD542E0470B10010D340 /* SettingsExpandingGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD532E0470B10010D340 /* SettingsExpandingGamesView.swift */; };
 		24F5BD562E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */; };
 		24F5BD582E04711E0010D340 /* CurrencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD572E04711E0010D340 /* CurrencyListView.swift */; };
 		24F5BD5A2E04714C0010D340 /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD592E04714C0010D340 /* GamesListView.swift */; };
@@ -669,6 +671,10 @@
 		24DB05E12E05CC4500C57FE9 /* SettingsRowExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowExpandableView.swift; sourceTree = "<group>"; };
 		24DB05E32E05D5E800C57FE9 /* SettingsActionThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionThemeView.swift; sourceTree = "<group>"; };
 		24DB05E52E06054B00C57FE9 /* SoundsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsHelper.swift; sourceTree = "<group>"; };
+		24DB05E72E06B44700C57FE9 /* SettingsExpandingBlockchainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingBlockchainView.swift; sourceTree = "<group>"; };
+		24DB05E92E06B49B00C57FE9 /* SettingsExpandingGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingGamesView.swift; sourceTree = "<group>"; };
+		24DB05EB2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingCurrencyView.swift; sourceTree = "<group>"; };
+		24DB05ED2E06C34A00C57FE9 /* SettingsSpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSpacerView.swift; sourceTree = "<group>"; };
 		24E06FC42DF4790B00719B6C /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "remote-config-defaults.plist"; path = "brainwallet/Launch Resources/remote-config-defaults.plist"; sourceTree = SOURCE_ROOT; };
 		24E06FC62DF4792800719B6C /* service-data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "service-data.plist"; path = "brainwallet/Launch Resources/service-data.plist"; sourceTree = SOURCE_ROOT; };
 		24E078A72DF1F997004B5958 /* PromptCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCellView.swift; sourceTree = "<group>"; };
@@ -682,11 +688,9 @@
 		24F5BD452E0436AD0010D340 /* TabBarViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBarViewController+Extension.swift"; sourceTree = "<group>"; };
 		24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelView.swift; sourceTree = "<group>"; };
 		24F5BD492E0442D00010D340 /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
-		24F5BD4B2E0450B80010D340 /* SettingsExpandingSecView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingSecView.swift; sourceTree = "<group>"; };
+		24F5BD4B2E0450B80010D340 /* SettingsExpandingSecurityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingSecurityView.swift; sourceTree = "<group>"; };
 		24F5BD4D2E0452670010D340 /* SettingsActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionView.swift; sourceTree = "<group>"; };
 		24F5BD4F2E0460C90010D340 /* SecurityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityListView.swift; sourceTree = "<group>"; };
-		24F5BD512E04708F0010D340 /* SettingsExpandingCurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingCurView.swift; sourceTree = "<group>"; };
-		24F5BD532E0470B10010D340 /* SettingsExpandingGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingGamesView.swift; sourceTree = "<group>"; };
 		24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingBlockLTCView.swift; sourceTree = "<group>"; };
 		24F5BD572E04711E0010D340 /* CurrencyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListView.swift; sourceTree = "<group>"; };
 		24F5BD592E04714C0010D340 /* GamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListView.swift; sourceTree = "<group>"; };
@@ -1573,12 +1577,14 @@
 				24F5BD572E04711E0010D340 /* CurrencyListView.swift */,
 				24F5BD592E04714C0010D340 /* GamesListView.swift */,
 				24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */,
+				24DB05ED2E06C34A00C57FE9 /* SettingsSpacerView.swift */,
 				24F5BD4D2E0452670010D340 /* SettingsActionView.swift */,
 				24DB05E32E05D5E800C57FE9 /* SettingsActionThemeView.swift */,
-				24F5BD4B2E0450B80010D340 /* SettingsExpandingSecView.swift */,
+				24F5BD4B2E0450B80010D340 /* SettingsExpandingSecurityView.swift */,
+				24DB05EB2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift */,
+				24DB05E92E06B49B00C57FE9 /* SettingsExpandingGamesView.swift */,
+				24DB05E72E06B44700C57FE9 /* SettingsExpandingBlockchainView.swift */,
 				24DB05E12E05CC4500C57FE9 /* SettingsRowExpandableView.swift */,
-				24F5BD512E04708F0010D340 /* SettingsExpandingCurView.swift */,
-				24F5BD532E0470B10010D340 /* SettingsExpandingGamesView.swift */,
 				24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */,
 				24F5BD492E0442D00010D340 /* SettingsFooterView.swift */,
 			);
@@ -2593,10 +2599,11 @@
 				C312D33B2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift in Sources */,
 				C312D33E2D7DC27700BB97A4 /* StartFlowPresenter.swift in Sources */,
 				C312D33F2D7DC27700BB97A4 /* ModalTransitionDelegate.swift in Sources */,
-				24F5BD4C2E0450B80010D340 /* SettingsExpandingSecView.swift in Sources */,
+				24F5BD4C2E0450B80010D340 /* SettingsExpandingSecurityView.swift in Sources */,
 				C312D3402D7DC27700BB97A4 /* WarningConfirmationViewController.swift in Sources */,
 				C312D3422D7DC27700BB97A4 /* Functions.swift in Sources */,
 				24BEC6072DF0B53000140AAD /* WipeWalletView.swift in Sources */,
+				24DB05EE2E06C34A00C57FE9 /* SettingsSpacerView.swift in Sources */,
 				C312D3452D7DC27700BB97A4 /* EmailValidation.swift in Sources */,
 				C312D3472D7DC27700BB97A4 /* WalletManager+Auth.swift in Sources */,
 				24F5BD582E04711E0010D340 /* CurrencyListView.swift in Sources */,
@@ -2738,7 +2745,6 @@
 				241D22412DB526AE000302C8 /* SetPasscodeView.swift in Sources */,
 				C312D4072D7DC27700BB97A4 /* WipeEmptyWalletViewController.swift in Sources */,
 				24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */,
-				24F5BD542E0470B10010D340 /* SettingsExpandingGamesView.swift in Sources */,
 				2412BA7E2DF4660300AC40BB /* ReceiveAddressView.swift in Sources */,
 				C312D40A2D7DC27700BB97A4 /* EnterPhraseView.swift in Sources */,
 				C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */,
@@ -2811,6 +2817,7 @@
 				C312D4732D7DC27700BB97A4 /* DefaultCurrencyViewController.swift in Sources */,
 				C312D4742D7DC27700BB97A4 /* SeedPhraseStepView.swift in Sources */,
 				C312D4752D7DC27700BB97A4 /* ApplicationController.swift in Sources */,
+				24DB05E82E06B44700C57FE9 /* SettingsExpandingBlockchainView.swift in Sources */,
 				C312D4772D7DC27700BB97A4 /* NSNotificationNameExtension.swift in Sources */,
 				C312D4782D7DC27700BB97A4 /* ContainerViewController.swift in Sources */,
 				C312D4792D7DC27700BB97A4 /* SafariServices+Extension.swift in Sources */,
@@ -2826,6 +2833,8 @@
 				C312D4832D7DC27700BB97A4 /* GradientCircle.swift in Sources */,
 				C312D4842D7DC27700BB97A4 /* ModalViewController.swift in Sources */,
 				245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */,
+				24DB05EA2E06B49B00C57FE9 /* SettingsExpandingGamesView.swift in Sources */,
+				24DB05EC2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift in Sources */,
 				2413E4162DF6452200DFE7EE /* SecurityCenterNavigationDelegate.swift in Sources */,
 				C312D4872D7DC27700BB97A4 /* Transaction.swift in Sources */,
 				C312D48A2D7DC27700BB97A4 /* MenuButtonType.swift in Sources */,
@@ -2834,7 +2843,6 @@
 				C312D48F2D7DC27700BB97A4 /* SimpleRedux.swift in Sources */,
 				C312D4902D7DC27700BB97A4 /* SendAddressCellView.swift in Sources */,
 				241D22492DB526E9000302C8 /* YourSeedWordsView.swift in Sources */,
-				24F5BD522E04708F0010D340 /* SettingsExpandingCurView.swift in Sources */,
 				C312D4912D7DC27700BB97A4 /* ForgotAlertViewModel.swift in Sources */,
 				C312D4942D7DC27700BB97A4 /* RetryTimer.swift in Sources */,
 				C312D4952D7DC27700BB97A4 /* RadialGradientView.swift in Sources */,

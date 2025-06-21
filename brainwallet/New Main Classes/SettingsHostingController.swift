@@ -22,7 +22,6 @@ class SettingsHostingController: UIHostingController<SettingsView> {
         /// Migrate CanUserBuy when ready
         let mainViewModel = NewMainViewModel(store: store, walletManager: walletManager)
         super.init(rootView: SettingsView(viewModel: mainViewModel, path: .constant([.tempSettingsView])))
-
         mainViewModel.resetSettingsDrawer = {
             self.resetSettingsDrawer?()
         }

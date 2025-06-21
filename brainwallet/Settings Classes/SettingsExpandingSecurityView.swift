@@ -1,5 +1,5 @@
 //
-//  SettingsExpandingSecView.swift
+//  SettingsExpandingSecurityView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 19/06/2025.
@@ -7,7 +7,7 @@
 //
 import SwiftUI
 
-struct SettingsExpandingSecView: View {
+struct SettingsExpandingSecurityView: View {
 
     @ObservedObject
     var viewModel: NewMainViewModel
@@ -40,31 +40,37 @@ struct SettingsExpandingSecView: View {
                                 .font(largeFont)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading, 16.0)
+                                .padding(.leading, rowLeadingPad)
                             Spacer()
 
-                            Image(systemName: "chevron.right")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .foregroundColor(BrainwalletColor.content)
-                                .frame(width: 30.0, height: 30.0)
-                                .rotationEffect(Angle(degrees: shouldExpandSecurity ? 90 : 0))
-                                .animation(.easeInOut(duration:0.3), value: shouldExpandSecurity)
-                                .onTapGesture {
+                            VStack {
+                                Button(action: {
                                     shouldExpandSecurity.toggle()
+                                }) {
+                                    VStack {
+                                        HStack {
+                                            Image(systemName: "chevron.right")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: expandArrowSize, height: expandArrowSize)
+                                                .foregroundColor(BrainwalletColor.content)
+                                                .rotationEffect(Angle(degrees: shouldExpandSecurity ? 90 : 0))
+                                        }
+                                    }
+                                    .frame(width: 30.0, height: 30.0)
                                 }
-                                .padding(.trailing, 20.0)
+                                .frame(width: 30.0, height: 30.0)
+                            }
                         }
                         .frame(height: 44.0)
                         .padding(.top, 1.0)
 
-                        if shouldExpandSecurity {
-                            Rectangle()
-                                .fill(Color.red.opacity(0.1))
-                                .fixedSize(horizontal: false, vertical: true)
-                                                                    .transition(.opacity)
-                                                                    .transition(.slide)
-                        }
+                        SecurityListView(viewModel: viewModel)
+                            .transition(.opacity)
+                            .transition(.slide)
+                            .animation(.easeInOut(duration: 0.7))
+                            .frame(height: shouldExpandSecurity ? 200.0 : 0.1)
+
                         Spacer()
                     }
 

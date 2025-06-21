@@ -1,5 +1,5 @@
 //
-//  SettingsExpandingGamesView.swift
+//  SettingsExpandingCurrencyView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 19/06/2025.
@@ -7,12 +7,12 @@
 //
 import SwiftUI
 
-struct SettingsExpandingGamesView: View {
+struct SettingsExpandingCurrencyView: View {
 
     @ObservedObject
     var viewModel: NewMainViewModel
     @Binding
-    var shouldExpandGames: Bool
+    var shouldExpandCurrency: Bool
 
     @State
     private var rotationAngle: Double = 0
@@ -23,9 +23,9 @@ struct SettingsExpandingGamesView: View {
 
     var securityListView: SecurityListView
 
-    init(title: String, viewModel: NewMainViewModel, shouldExpandGames: Binding <Bool>) {
+    init(title: String, viewModel: NewMainViewModel, shouldExpandCurrency: Binding <Bool>) {
         self.title = title
-        _shouldExpandGames = shouldExpandGames
+        _shouldExpandCurrency = shouldExpandCurrency
         self.viewModel = viewModel
         self.securityListView = SecurityListView(viewModel: viewModel)
     }
@@ -45,7 +45,7 @@ struct SettingsExpandingGamesView: View {
 
                             VStack {
                                 Button(action: {
-                                    shouldExpandGames.toggle()
+                                    shouldExpandCurrency.toggle()
                                 }) {
                                     VStack {
                                         HStack {
@@ -54,7 +54,7 @@ struct SettingsExpandingGamesView: View {
                                                 .aspectRatio(contentMode: .fit)
                                                 .frame(width: expandArrowSize, height: expandArrowSize)
                                                 .foregroundColor(BrainwalletColor.content)
-                                                .rotationEffect(Angle(degrees: shouldExpandGames ? 90 : 0))
+                                                .rotationEffect(Angle(degrees: shouldExpandCurrency ? 90 : 0))
                                         }
                                     }
                                     .frame(width: 30.0, height: 30.0)
@@ -69,7 +69,7 @@ struct SettingsExpandingGamesView: View {
                             .transition(.opacity)
                             .transition(.slide)
                             .animation(.easeInOut(duration: 0.7))
-                            .frame(height: shouldExpandGames ? 200.0 : 0.1)
+                            .frame(height: shouldExpandCurrency ? 200.0 : 0.1)
 
                         Spacer()
                     }

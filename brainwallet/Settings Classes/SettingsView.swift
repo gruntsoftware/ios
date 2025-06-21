@@ -10,6 +10,8 @@ import SwiftUI
 
 let closedRowHeight: CGFloat = 50.0
 let expandedRowHeight: CGFloat = 240.0
+let rowLeadingPad: CGFloat = 30.0
+let expandArrowSize: CGFloat = 20.0
 
 enum SettingsAction: CaseIterable {
     case preferDarkMode
@@ -56,6 +58,15 @@ struct SettingsView: View {
     private var shouldExpandSecurity: Bool = false
 
     @State
+    private var shouldExpandCurrency: Bool = false
+
+    @State
+    private var shouldExpandGames: Bool = false
+
+    @State
+    private var shouldExpandBlockchain: Bool = false
+
+    @State
     private var expandedRowHeight: CGFloat = 44.0
 
     let footerRowHeight: CGFloat = 55.0
@@ -85,59 +96,69 @@ struct SettingsView: View {
                         Spacer()
                         VStack {
                             List {
-
-                                SettingsExpandingSecView(title: String(localized: "Security"),
+                                SettingsExpandingSecurityView(title: String(localized: "Security"),
                                      viewModel: newMainViewModel, shouldExpandSecurity: $shouldExpandSecurity)
                                 .frame(height: shouldExpandSecurity ? 200 : 44.0)
                                 .background(BrainwalletColor.surface)
                                 .listRowBackground(BrainwalletColor.surface)
-
-                                SettingsLabelView(title: String(localized: "Currency"),
-                                                  detailText: "")
-                                .frame(height: closedRowHeight)
+                                .listRowSeparatorTint(BrainwalletColor.content)
+                                SettingsExpandingCurrencyView(title: String(localized: "Currency"),
+                                    viewModel: newMainViewModel, shouldExpandCurrency: $shouldExpandCurrency)
+                                .frame(height: shouldExpandCurrency ? 200 : 44.0)
                                 .background(BrainwalletColor.surface)
                                 .listRowBackground(BrainwalletColor.surface)
-
-                                SettingsLabelView(title: String(localized: "Games"),
-                                                  detailText: "")
-                                .frame(height: closedRowHeight)
+                                .listRowSeparatorTint(BrainwalletColor.content)
+                                SettingsExpandingGamesView(title: String(localized: "Games"),
+                                    viewModel: newMainViewModel, shouldExpandGames: $shouldExpandGames)
+                                .frame(height: shouldExpandGames ? 200 : 44.0)
                                 .background(BrainwalletColor.surface)
                                 .listRowBackground(BrainwalletColor.surface)
-
-                                SettingsLabelView(title: String(localized: "Blockchain: Litecoin"),
-                                                  detailText: "")
-                                .frame(height: closedRowHeight)
+                                .listRowSeparatorTint(BrainwalletColor.content)
+                                SettingsExpandingBlockchainView(title: String(localized: "Blockchain: Litecoin"),
+                                    viewModel: newMainViewModel, shouldExpandBlockchain: $shouldExpandBlockchain)
+                                .frame(height: shouldExpandBlockchain ? 200 : 44.0)
                                 .background(BrainwalletColor.surface)
                                 .listRowBackground(BrainwalletColor.surface)
-
+                                .listRowSeparatorTint(BrainwalletColor.content)
                                 SettingsLabelView(title: String(localized: "Social"),
                                                   detailText: "linktr.ee/brainwallet")
                                 .frame(height: closedRowHeight)
                                 .background(BrainwalletColor.surface)
                                 .listRowBackground(BrainwalletColor.surface)
-
+                                .listRowSeparatorTint(BrainwalletColor.content)
                                 SettingsLabelView(title: String(localized: "Support"),
                                                   detailText: "support.brainwallet.co")
                                 .frame(height: closedRowHeight)
                                 .background(BrainwalletColor.surface)
                                 .listRowBackground(BrainwalletColor.surface)
-
-                                SettingsActionThemeView(title: String(localized: "Dark Mode"),
-                                                        detailText: "",
-                                                        action: .preferDarkMode, userPrefersDark: $userPrefersDarkMode)
-                                .frame(height: closedRowHeight)
-                                .background(BrainwalletColor.surface)
-                                .listRowBackground(BrainwalletColor.surface)
+                                .listRowSeparatorTint(BrainwalletColor.content)
+                                SettingsSpacerView()
+                                    .background(BrainwalletColor.surface)
+                                    .listRowBackground(BrainwalletColor.surface)
+                                    .listRowSeparatorTint(BrainwalletColor.content)
+                                SettingsActionThemeView(title:
+                                    userPrefersDarkMode ?
+                                    String(localized: "Dark Mode")
+                                    : String(localized: "Light Mode"),
+                                    detailText: "",
+                                    action: .preferDarkMode,
+                                    userPrefersDark: $userPrefersDarkMode)
+                                        .frame(height: closedRowHeight)
+                                        .background(BrainwalletColor.surface)
+                                        .listRowBackground(BrainwalletColor.surface)
+                                        .listRowSeparatorTint(BrainwalletColor.content)
 
                                 SettingsActionLockView(title: String(localized: "Lock"),
                                     detailText: "", action: .lock, isLocked: $isLocked)
                                 .frame(height: closedRowHeight)
                                 .background(BrainwalletColor.surface)
                                 .listRowBackground(BrainwalletColor.surface)
+                                .listRowSeparatorTint(BrainwalletColor.content)
 
                             }
                             .background(BrainwalletColor.surface)
                             .listStyle(.plain)
+                            .scrollIndicators(.hidden)
                             .buttonStyle(PlainButtonStyle())
                             SettingsFooterView()
                                 .frame(width: width * 0.9,
@@ -151,9 +172,12 @@ struct SettingsView: View {
                         .onChange(of: isLocked) { _ in
                             newMainViewModel.lockBrainwallet()
                         }
+                        Divider()
+                            .frame(width: 1.5)
+                            .overlay(BrainwalletColor.content)
                     }
-
                 }
+
             }
         }
     }

@@ -13,6 +13,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
     var showSettingsConstant: CGFloat = 0.0
     var settingsViewPlacement: CGFloat = 0.0
     var shouldShowSettings: Bool = true
+    var barShouldBeHidden = false
     var settingsLeadingConstraint = NSLayoutConstraint()
     var settingsTrailingConstraint = NSLayoutConstraint()
     private let clickSound = "click_sound"
@@ -137,6 +138,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
     func activateSettingsDrawer(shouldClose: Bool? = nil) {
         var shouldShow = shouldShowSettings
+
         if let closeState = shouldClose {
             shouldShow = closeState
         }
@@ -144,7 +146,8 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         if shouldShow {
             self.showSettingsConstant = 65.0
             self.settingsViewPlacement = 0
-
+            self.barShouldBeHidden = true
+            self.setNeedsStatusBarAppearanceUpdate()
             // Update existing constraints
             self.settingsLeadingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
             self.settingsTrailingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
@@ -159,7 +162,8 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             // Hide settings (slide out to right)
             self.settingsViewPlacement = -self.view.frame.width
             self.showSettingsConstant = 0
-
+            self.barShouldBeHidden = false
+            self.setNeedsStatusBarAppearanceUpdate()
             // Update existing constraints
             self.settingsLeadingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
             self.settingsTrailingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
@@ -218,9 +222,9 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		return .fade
 	}
 
-	override var preferredStatusBarStyle: UIStatusBarStyle {
-		return .lightContent
-	}
+    override var prefersStatusBarHidden: Bool {
+        return barShouldBeHidden
+    }
 
 	@available(*, unavailable)
 	required init?(coder _: NSCoder) {

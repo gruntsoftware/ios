@@ -980,6 +980,9 @@
     "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)." : {
 
     },
+    "Brainwallet Phrase" : {
+
+    },
     "Buy / Receive" : {
 
     },
@@ -4647,6 +4650,9 @@
         }
       }
     },
+    "Light Mode" : {
+
+    },
     "Litecoin Display Unit" : {
       "localizations" : {
         "ar" : {
@@ -7771,6 +7777,9 @@
         }
       }
     },
+    "Seed Phrase" : {
+
+    },
     "Send" : {
       "localizations" : {
         "ar" : {
@@ -8482,6 +8491,9 @@
       }
     },
     "Share data" : {
+
+    },
+    "Share Data" : {
 
     },
     "Share data?" : {
