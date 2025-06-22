@@ -413,7 +413,7 @@ private func makeStatus(_ txRef: BRTxRef, wallet: BRWallet, peerManager: BRPeerM
 		} else if confirms > 2 {
 			percentageString = "100%"
 		}
-		let format = direction == .sent ? "In progress: %1$@"  : "In progress: %1$@"
+		let format = direction == .sent ? String(localized: "In progress: %1$@")  : String(localized: "In progress: %1$@")
 		return String(format: format, percentageString)
 	} else {
 		return String(localized: "Complete", bundle: .main)

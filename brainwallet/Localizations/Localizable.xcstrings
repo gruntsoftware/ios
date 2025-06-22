@@ -1708,6 +1708,9 @@
         }
       }
     },
+    "at %1$@" : {
+
+    },
     "Authorize to copy wallet address to clipboard" : {
       "localizations" : {
         "ar" : {
@@ -8894,6 +8897,9 @@
         }
       }
     },
+    "In progress: %1$@" : {
+
+    },
     "Invalid" : {
       "localizations" : {
         "ar" : {
@@ -9791,6 +9797,9 @@
       }
     },
     "Money Sent!" : {
+
+    },
+    "Moved <b>%1@</b>" : {
 
     },
     "New address copied" : {
@@ -12823,6 +12832,12 @@
         }
       }
     },
+    "Received <b>%1@</b>" : {
+
+    },
+    "Received at this Address" : {
+
+    },
     "Recover" : {
       "localizations" : {
         "ar" : {
@@ -14620,6 +14635,12 @@
           }
         }
       }
+    },
+    "Sent <b>%1@</b>" : {
+
+    },
+    "Sent to this Address" : {
+
     },
     "Set amount:" : {
       "localizations" : {
@@ -19554,6 +19575,9 @@
           }
         }
       }
+    },
+    "to %1$@" : {
+
     },
     "To make sure everything was written down correctly, please enter the following words from your paper key." : {
       "localizations" : {
