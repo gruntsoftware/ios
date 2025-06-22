@@ -66,9 +66,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		}
 
         amountView = AmountViewController(store: store, isPinPadExpandedAtLaunch: false, hasAcceptedFees: hasActivatedInlineFees)
-
 		BWAnalytics.logEventWithParameters(itemName: ._20191105_VSC)
-
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -230,7 +228,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
         }
 
 		var currentRate: Rate?
-
 		if rate == nil {
 			currentRate = store.state.currentRate
 		} else {
@@ -243,8 +240,8 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		                                  minimumFractionDigits: 2)
 
 		let balanceText = balanceAmount.description
-
-		let balanceOutput = String(format: "Balance: %1$@" , balanceText)
+        let balanceLocalized = String(localized: "Balance")
+		let balanceOutput = String(format: "%@: %1$@" , balanceLocalized, balanceText)
         let combinedFeesOutput = ""
         var balanceColor: UIColor = BrainwalletUIColor.content
 

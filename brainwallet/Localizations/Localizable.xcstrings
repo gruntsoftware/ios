@@ -1257,6 +1257,9 @@
         }
       }
     },
+    "Addresses Copied" : {
+
+    },
     "Always require passcode" : {
       "localizations" : {
         "ar" : {
@@ -1817,6 +1820,9 @@
         }
       }
     },
+    "Awesome!" : {
+
+    },
     "Bad Payment Request" : {
       "localizations" : {
         "ar" : {
@@ -1928,6 +1934,9 @@
           }
         }
       }
+    },
+    "Balance" : {
+
     },
     "Balance :" : {
       "localizations" : {
@@ -6863,6 +6872,9 @@
         }
       }
     },
+    "Enter Paper Key" : {
+
+    },
     "Enter PIN" : {
       "localizations" : {
         "ar" : {
@@ -7870,6 +7882,9 @@
           }
         }
       }
+    },
+    "Face ID Not Set Up" : {
+
     },
     "Face ID Spending Limit" : {
       "localizations" : {
@@ -9775,6 +9790,9 @@
         }
       }
     },
+    "Money Sent!" : {
+
+    },
     "New address copied" : {
       "localizations" : {
         "ar" : {
@@ -10334,6 +10352,9 @@
           }
         }
       }
+    },
+    "Paper Key Set" : {
+
     },
     "Paste" : {
       "localizations" : {
@@ -11006,6 +11027,9 @@
           }
         }
       }
+    },
+    "PIN Set" : {
+
     },
     "Please enter the recipient's address." : {
       "localizations" : {
@@ -13583,6 +13607,9 @@
         }
       }
     },
+    "Resolved" : {
+
+    },
     "Restore" : {
       "localizations" : {
         "ar" : {
@@ -14478,6 +14505,9 @@
           }
         }
       }
+    },
+    "Send Confirmation" : {
+
     },
     "Send failed" : {
       "localizations" : {
@@ -16606,6 +16636,12 @@
           }
         }
       }
+    },
+    "Success" : {
+
+    },
+    "Successfully imported wallet." : {
+
     },
     "Support" : {
       "localizations" : {
@@ -19967,6 +20003,9 @@
         }
       }
     },
+    "Touch ID Not Set Up" : {
+
+    },
     "Touch ID Spending Limit" : {
       "localizations" : {
         "ar" : {
@@ -22878,6 +22917,12 @@
           }
         }
       }
+    },
+    "You have not set up Face ID on this device. Go to Settings->Face ID & Passcode to set it up now." : {
+
+    },
+    "You have not set up Touch ID on this device. Go to Settings->Touch ID & Passcode to set it up now." : {
+
     },
     "You last wrote down your paper key on %1$@" : {
       "localizations" : {

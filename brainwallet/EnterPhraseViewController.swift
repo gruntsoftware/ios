@@ -128,7 +128,7 @@ class EnterPhraseViewController: UIViewController, UIScrollViewDelegate, CustomT
 		enterPhrase.didFinishPhraseEntry = { [weak self] phrase in
 			self?.validatePhrase(phrase)
 		}
-		instruction.text = "Enter Paper Key"
+		instruction.text = String(localized: "Enter Paper Key")
 
 		switch reason {
 		case .setSeed:
