@@ -1,14 +1,14 @@
 /* Bundle display name */
-"CFBundleDisplayName" = "Brainwallet";
+"CFBundleDisplayName" = "Брейнваллет";
 
 /* Bundle name */
-"CFBundleName" = "Brainwallet";
+"CFBundleName" = "Брейнваллет";
 
 /* No comment provided by engineer. */
 "Litecoin Payment" = "Оплата Litecoin";
 
 /* No comment provided by engineer. */
-"Litecoin Payment ACK" = "Litecoin Payment ACK";
+"Litecoin Payment ACK" = "Подтверждение платежа Litecoin";
 
 /* No comment provided by engineer. */
 "Litecoin Payment Request" = "Запрос на выплату Litecoin";
