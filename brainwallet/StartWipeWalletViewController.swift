@@ -11,7 +11,7 @@ class StartWipeWalletViewController: UIViewController {
 	private let illustration = UIImageView(image: #imageLiteral(resourceName: "RestoreIllustration"))
 	private let message = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private let warning = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
-	private let button = ShadowButton(title: "Next" , type: .primary)
+	private let button = ShadowButton(title: String(localized: "Next"), type: .primary)
 	private let bullet = UIImageView(image: #imageLiteral(resourceName: "deletecircle"))
 
 	override func viewDidLoad() {

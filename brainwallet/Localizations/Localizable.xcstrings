@@ -243,6 +243,9 @@
         }
       }
     },
+    "4-Digit PIN" : {
+
+    },
     "About" : {
       "localizations" : {
         "ar" : {
@@ -961,6 +964,9 @@
         }
       }
     },
+    "Brainwallet is not allowed to access the camera" : {
+
+    },
     "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)." : {
 
     },
@@ -1069,6 +1075,9 @@
           }
         }
       }
+    },
+    "Camera Flash" : {
+
     },
     "Cancel" : {
       "localizations" : {
@@ -1470,6 +1479,9 @@
         }
       }
     },
+    "Confirmation" : {
+
+    },
     "Connecting..." : {
       "localizations" : {
         "ar" : {
@@ -1569,6 +1581,9 @@
           }
         }
       }
+    },
+    "Conveniently unlock your Brainwallet and send money up to a set limit." : {
+
     },
     "Copied" : {
       "localizations" : {
@@ -2395,6 +2410,9 @@
 
     },
     "Delete my wallet & data?" : {
+
+    },
+    "Delete wallet & all data" : {
 
     },
     "Deleting..." : {
@@ -4222,6 +4240,9 @@
     "Fetching your transaction history..." : {
 
     },
+    "Go to Settings to allow camera access." : {
+
+    },
     "Help improve Brainwallet by sharing your anonymous data with us to improve the app. We respect your privacy." : {
       "localizations" : {
         "ar" : {
@@ -4925,6 +4946,9 @@
         }
       }
     },
+    "Lock" : {
+
+    },
     "Manage" : {
       "localizations" : {
         "ar" : {
@@ -5029,6 +5053,9 @@
 
     },
     "New address copied" : {
+
+    },
+    "Next" : {
 
     },
     "No internet connection found. Check your connection and try again." : {
@@ -5434,6 +5461,9 @@
         }
       }
     },
+    "Pending" : {
+
+    },
     "Phrase" : {
       "localizations" : {
         "ar" : {
@@ -5834,6 +5864,9 @@
         }
       }
     },
+    "Please enter your PIN to authorize this transaction." : {
+
+    },
     "Please enter your PIN to continue." : {
 
     },
@@ -6137,6 +6170,9 @@
         }
       }
     },
+    "Previous" : {
+
+    },
     "Privacy policy" : {
       "localizations" : {
         "ar" : {
@@ -6336,6 +6372,9 @@
           }
         }
       }
+    },
+    "Protects your Brainwallet from unauthorized users." : {
+
     },
     "Re-Enter PIN" : {
       "localizations" : {
@@ -6740,6 +6779,9 @@
     "RECEIVE" : {
 
     },
+    "Received" : {
+
+    },
     "Recover" : {
       "localizations" : {
         "ar" : {
@@ -7041,6 +7083,9 @@
       }
     },
     "Request" : {
+
+    },
+    "Request an Amount" : {
 
     },
     "Rescanning..." : {
@@ -8152,6 +8197,9 @@
         }
       }
     },
+    "Settings" : {
+
+    },
     "Settings View" : {
       "localizations" : {
         "ar" : {
@@ -8351,6 +8399,9 @@
           }
         }
       }
+    },
+    "Share" : {
+
     },
     "Share Anonymous Data" : {
 
@@ -8764,6 +8815,9 @@
     "Start over by swiping up and restarting the app." : {
 
     },
+    "Start Sync" : {
+
+    },
     "Starting or recovering another wallet allows you to access and manage a different Brainwallet wallet on this device." : {
       "localizations" : {
         "ar" : {
@@ -8863,6 +8917,9 @@
           }
         }
       }
+    },
+    "Submit" : {
+
     },
     "Support" : {
       "localizations" : {
@@ -9884,6 +9941,12 @@
           }
         }
       }
+    },
+    "The only way to access your Litecoin if you lose or upgrade your phone." : {
+
+    },
+    "The words entered do not match your paper key. Please try again." : {
+
     },
     "These are your seed words. If you show them to anyone, they can take your Litecoin" : {
       "localizations" : {
@@ -11624,6 +11687,9 @@
     "Wipe my Brainwallet & Data" : {
 
     },
+    "Word" : {
+
+    },
     "Write down each word in order and store it in a safe place." : {
       "localizations" : {
         "ar" : {
@@ -11723,6 +11789,12 @@
           }
         }
       }
+    },
+    "Write Down Paper Key" : {
+
+    },
+    "Write Down Paper Key Again" : {
+
     },
     "You can get back from where you started" : {
       "localizations" : {

@@ -27,10 +27,10 @@ class ReceiveViewController: UIViewController, Subscriber, Trackable {
 	private let qrCode = UIImageView()
 	private let address = UILabel(font: .customBody(size: 14.0))
 	private let addressPopout = InViewAlert(type: .primary)
-	private let share = ShadowButton(title: "Share" , type: .tertiary, image: #imageLiteral(resourceName: "Share"))
+	private let share = ShadowButton(title: String(localized: "Share") , type: .tertiary, image: #imageLiteral(resourceName: "Share"))
 	private let sharePopout = InViewAlert(type: .secondary)
 	private let border = UIView()
-	private let request = ShadowButton(title: "Request an Amount" , type: .flatLitecoinBlue)
+	private let request = ShadowButton(title: String(localized: "Request an Amount") , type: .flatLitecoinBlue)
 	private let addressButton = UIButton(type: .system)
 	private var topSharePopoutConstraint: NSLayoutConstraint?
 	private let wallet: BRWallet
