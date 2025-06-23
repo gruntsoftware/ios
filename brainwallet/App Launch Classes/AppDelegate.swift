@@ -35,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             name: .changedThemePreferenceNotification,
             object: nil
         )
-
 		return true
 	}
 

@@ -1,5 +1,5 @@
 //
-//  SettingsExpandingGamesView.swift
+//  SettingsExpandingCurrencyView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 19/06/2025.
@@ -7,25 +7,31 @@
 //
 import SwiftUI
 
-struct SettingsExpandingGamesView: View {
+struct SettingsExpandingCurrencyView: View {
 
     @ObservedObject
     var viewModel: NewMainViewModel
     @Binding
-    var shouldExpandGames: Bool
+    var shouldExpandCurrency: Bool
+
+    @State
+    private var selectedFiat: Bool = false
 
     @State
     private var rotationAngle: Double = 0
 
+    @State
+    private var pickedCurrency: GlobalCurrency = .USD
+
     private var title: String
     let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 18.0)
+    let detailFont: Font = .barlowLight(size: 14.0)
 
     var securityListView: SecurityListView
 
-    init(title: String, viewModel: NewMainViewModel, shouldExpandGames: Binding <Bool>) {
+    init(title: String, viewModel: NewMainViewModel, shouldExpandCurrency: Binding <Bool>) {
         self.title = title
-        _shouldExpandGames = shouldExpandGames
+        _shouldExpandCurrency = shouldExpandCurrency
         self.viewModel = viewModel
         self.securityListView = SecurityListView(viewModel: viewModel)
     }
@@ -36,16 +42,27 @@ struct SettingsExpandingGamesView: View {
                 ZStack {
                     VStack {
                         HStack {
-                            Text(title)
-                                .font(largeFont)
-                                .foregroundColor(BrainwalletColor.content)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading, rowLeadingPad)
+                            VStack {
+                                Text(title)
+                                    .font(largeFont)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.leading, rowLeadingPad)
+                                    .padding(.bottom, 1.0)
+                                Text("\(pickedCurrency.fullCurrencyName) (\(pickedCurrency.symbol))")
+                                    .font(detailFont)
+                                    .kerning(0.6)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.leading, rowLeadingPad)
+                                    .padding(.bottom, 1.0)
+                            }
+
                             Spacer()
 
                             VStack {
                                 Button(action: {
-                                    shouldExpandGames.toggle()
+                                    shouldExpandCurrency.toggle()
                                 }) {
                                     VStack {
                                         HStack {
@@ -54,7 +71,7 @@ struct SettingsExpandingGamesView: View {
                                                 .aspectRatio(contentMode: .fit)
                                                 .frame(width: expandArrowSize, height: expandArrowSize)
                                                 .foregroundColor(BrainwalletColor.content)
-                                                .rotationEffect(Angle(degrees: shouldExpandGames ? 90 : 0))
+                                                .rotationEffect(Angle(degrees: shouldExpandCurrency ? 90 : 0))
                                         }
                                     }
                                     .frame(width: 30.0, height: 30.0)
@@ -64,11 +81,13 @@ struct SettingsExpandingGamesView: View {
                         }
                         .frame(height: 44.0)
                         .padding(.top, 1.0)
-                        GamesListView(viewModel: viewModel)
+
+                        CurrencyPickerView(viewModel: viewModel, pickedCurrency: $pickedCurrency)
                             .transition(.opacity)
                             .transition(.slide)
-                            .animation(.easeInOut(duration: 0.7))
-                            .frame(height: shouldExpandGames ? 110.0 : 0.1)
+                            .animation(.easeInOut(duration: 0.2))
+                            .frame(height: shouldExpandCurrency ? 100.0 : 0.1)
+
                         Spacer()
                     }
 

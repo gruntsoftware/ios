@@ -110,6 +110,16 @@
     "%@" : {
 
     },
+    "%@   (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@   (%2$@)"
+          }
+        }
+      }
+    },
     "%@   %@ (%@)" : {
       "localizations" : {
         "en" : {
@@ -1288,6 +1298,18 @@
           }
         }
       }
+    },
+    "Coming soon... 🍔" : {
+
+    },
+    "Coming soon... 👺" : {
+
+    },
+    "Coming soon... 🤩" : {
+
+    },
+    "Coming soon... 🪲" : {
+
     },
     "Complete" : {
       "localizations" : {
@@ -4244,6 +4266,21 @@
     "Fetching your transaction history..." : {
 
     },
+    "Fiat Currency" : {
+
+    },
+    "Game 1" : {
+
+    },
+    "Game 2" : {
+
+    },
+    "Game 3" : {
+
+    },
+    "Game 4" : {
+
+    },
     "Games" : {
 
     },
@@ -4649,6 +4686,9 @@
           }
         }
       }
+    },
+    "Light Mode" : {
+
     },
     "Litecoin Display Unit" : {
       "localizations" : {
