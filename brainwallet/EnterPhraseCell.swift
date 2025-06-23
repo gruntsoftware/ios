@@ -96,7 +96,7 @@ class EnterPhraseCell: UICollectionViewCell {
 		label.textAlignment = .center
 		previousField.tintColor = BrainwalletUIColor.content
 		nextField.tintColor = BrainwalletUIColor.content
-		done.setTitle("Done" , for: .normal)
+		done.setTitle(String(localized: "Done") , for: .normal)
 	}
 
 	private var accessoryView: UIView {

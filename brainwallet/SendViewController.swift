@@ -66,9 +66,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		}
 
         amountView = AmountViewController(store: store, isPinPadExpandedAtLaunch: false, hasAcceptedFees: hasActivatedInlineFees)
-
 		BWAnalytics.logEventWithParameters(itemName: ._20191105_VSC)
-
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -230,7 +228,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
         }
 
 		var currentRate: Rate?
-
 		if rate == nil {
 			currentRate = store.state.currentRate
 		} else {
@@ -243,8 +240,8 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		                                  minimumFractionDigits: 2)
 
 		let balanceText = balanceAmount.description
-
-		let balanceOutput = String(format: "Balance: %1$@" , balanceText)
+        let balanceLocalized = String(localized: "Balance")
+		let balanceOutput = String(format: "%@: %1$@" , balanceLocalized, balanceText)
         let combinedFeesOutput = ""
         var balanceColor: UIColor = BrainwalletUIColor.content
 
@@ -477,16 +474,16 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		            comment: memoCell.textView.text,
 		            feePerKb: feePerKb,
 		            verifyPinFunction: { [weak self] pinValidationCallback in
-		            	self?.presentVerifyPin?("Please enter your PIN to authorize this transaction." ) { [weak self] pin, vc in
-		            		if pinValidationCallback(pin) {
-		            			vc.dismiss(animated: true, completion: {
-		            				self?.parent?.view.isFrameChangeBlocked = false
-		            			})
-		            			return true
-		            		} else {
-		            			return false
-		            		}
-		            	}
+		            	self?.presentVerifyPin?(String(localized: "Please enter your PIN to authorize this transaction.")) { [weak self] passcode, viewController in
+		            		     if pinValidationCallback(passcode) {
+                                     viewController.dismiss(animated: true, completion: {
+		            				 self?.parent?.view.isFrameChangeBlocked = false
+		            			 })
+                                     return true
+		            		     } else {
+		            			     return false
+		            		     }
+		            	    }
 		            }, completion: { [weak self] result in
 		            	switch result {
 		            	case .success:

@@ -15,13 +15,13 @@ class SettingsViewController: UITableViewController {
 			self.rows = rows
 		} else {
 			var tempRows = rows
-			let biometricsLimit = LAContext.biometricType() == .face ? "Face ID Spending Limit" : "Touch ID Spending Limit"
+			let biometricsLimit = LAContext.biometricType() == .face ?  String(localized: "Face ID Spending Limit") :  String(localized: "Touch ID Spending Limit")
 			tempRows["Manage"] = tempRows["Manage"]?.filter { $0.title != biometricsLimit }
 			self.rows = tempRows
 		}
 
-		customTitle = "Settings"
-		titleLabel.text = "Settings"
+		customTitle =  String(localized: "Settings")
+		titleLabel.text =  String(localized: "Settings")
 		super.init(style: .plain)
 	}
 

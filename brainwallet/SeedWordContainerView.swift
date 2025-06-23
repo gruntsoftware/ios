@@ -73,7 +73,7 @@ struct SeedWordContainerView: View {
 								.toolbar {
 									ToolbarItemGroup(placement: .keyboard) {
 										Spacer()
-										Button("Done" ) {
+										Button("Done") {
 											didEnterPINCode.toggle()
                                         }
                                         .foregroundColor(BrainwalletColor.content)
