@@ -66,9 +66,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		}
 
         amountView = AmountViewController(store: store, isPinPadExpandedAtLaunch: false, hasAcceptedFees: hasActivatedInlineFees)
-
 		BWAnalytics.logEventWithParameters(itemName: ._20191105_VSC)
-
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -79,13 +77,11 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
             debugPrint("::: ERROR: Store not initialized")
             return
         }
-
 		store.unsubscribe(self)
 		NotificationCenter.default.removeObserver(self)
 	}
 
 	override func viewDidLoad() {
-
         guard let store = store else {
             debugPrint("::: ERROR: Store not initialized")
             return
