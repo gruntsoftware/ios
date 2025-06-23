@@ -11,8 +11,7 @@ class BRPeerManager {
 	      earliestKeyTime: TimeInterval,
 	      blocks: [BRBlockRef?], peers: [BRPeer],
 	      listener: BRPeerManagerListener,
-	      fpRate: Double)
-	{
+	      fpRate: Double) {
 		var blockRefs = blocks
         guard let cPointer = BRPeerManagerNew(mainNetParams, wallet.cPointer, UInt32(earliestKeyTime + NSTimeIntervalSince1970),
 		                                  &blockRefs, blockRefs.count, peers, peers.count, fpRate) else { return nil }

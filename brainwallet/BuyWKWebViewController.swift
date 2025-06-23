@@ -86,8 +86,7 @@ extension BuyWKWebViewController {
 	// MARK: - WK Navigation Delegate
 
 	open func webView(_: WKWebView, decidePolicyFor _: WKNavigationAction,
-	                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void)
-	{
+	                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 		return decisionHandler(.allow)
 	}
 
