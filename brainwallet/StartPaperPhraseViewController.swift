@@ -4,7 +4,7 @@ class StartPaperPhraseViewController: UIViewController {
 	init(store: Store, callback: @escaping () -> Void) {
 		self.store = store
 		self.callback = callback
-		let buttonTitle = UserDefaults.walletRequiresBackup ? "Write Down Paper Key" : "Write Down Paper Key Again"
+        let buttonTitle = UserDefaults.walletRequiresBackup ? String(localized: "Write Down Paper Key") : String(localized: "Write Down Paper Key Again")
 		button = ShadowButton(title: buttonTitle, type: .flatLitecoinBlue)
 		super.init(nibName: nil, bundle: nil)
 		explanation.textColor = BrainwalletUIColor.content
