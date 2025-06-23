@@ -9,11 +9,10 @@ let numberOfBrainwalletLaunches = "NumberOfBrainwalletLaunches"
 let userDidPreferDarkModeKey = "UserDidPreferDarkMode"
 let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
 
-
 class ApplicationController: Subscriber, Trackable {
     // Ideally the window would be private, but is unfortunately required
     // by the UIApplicationDelegate Protocol
-    
+
     var window: UIWindow?
     fileprivate let store = Store()
     private var startFlowController: StartFlowPresenter?
@@ -34,7 +33,7 @@ class ApplicationController: Subscriber, Trackable {
     private var launchURL: URL?
     private var hasPerformedWalletDependentInitialization = false
     private var didInitWallet = false
-    
+
     init() {
         transitionDelegate = ModalTransitionDelegate(type: .transactionDetail, store: store)
         DispatchQueue.walletQueue.async {
@@ -43,22 +42,22 @@ class ApplicationController: Subscriber, Trackable {
             }
         }
     }
-    
+
     private func initWallet() {
-        
+
         guard let tempWalletManager = try? WalletManager(store: store, dbPath: nil) else {
             assertionFailure("WalletManager no initialized")
             return
         }
-        
+
         walletManager = tempWalletManager
-        
+
         _ = walletManager?.wallet // attempt to initialize wallet
-        
-        ///Init exchange sooner
+
+        /// Init exchange sooner
         exchangeUpdater = ExchangeUpdater(store: store, walletManager: tempWalletManager)
         exchangeUpdater?.fetchRates {}
-        
+
         DispatchQueue.main.async {
             self.didInitWallet = true
             if !self.hasPerformedWalletDependentInitialization {
@@ -66,7 +65,7 @@ class ApplicationController: Subscriber, Trackable {
             }
         }
     }
-    
+
 	func launch(application: UIApplication, window: UIWindow?) {
 		self.application = application
 		self.window = window
@@ -228,8 +227,8 @@ class ApplicationController: Subscriber, Trackable {
 	private func shouldRequireLogin() -> Bool {
 		let then = UserDefaults.standard.double(forKey: timeSinceLastExitKey)
 		let timeout = UserDefaults.standard.double(forKey: shouldRequireLoginTimeoutKey)
-		let now = Date().timeIntervalSince1970
-		return now - then > timeout
+		let nowDate = Date().timeIntervalSince1970
+		return nowDate - then > timeout
 	}
 
 	private func setupRootViewController() {
@@ -314,7 +313,7 @@ class ApplicationController: Subscriber, Trackable {
 		Async.parallel(callbacks: [
 			{ self.exchangeUpdater?.refresh(completion: $0) },
 			{ self.feeUpdater?.refresh(completion: $0) },
-			{ self.walletManager?.apiClient?.events?.sync(completion: $0) },
+			{ self.walletManager?.apiClient?.events?.sync(completion: $0) }
 		], completion: {
 			LWAnalytics.logEventWithParameters(itemName: ._20200111_DLDG)
 			group.leave()

@@ -2,9 +2,6 @@ import UIKit
 
 class ReceiveLTCViewController: UIViewController {
 	var store: Store?
-	override func viewDidLoad() {
-		super.viewDidLoad()
-	}
 
 	override func viewWillAppear(_: Bool) {
 		guard let store = store
@@ -12,7 +9,7 @@ class ReceiveLTCViewController: UIViewController {
 			NSLog("ERROR: Store is not initialized")
 			return
 		}
-
+        view.backgroundColor = BrainwalletUIColor.surface
 		store.perform(action: RootModalActions.Present(modal: .receive))
 	}
 }

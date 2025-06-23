@@ -5,7 +5,7 @@ class SendAmountCell: SendCell {
 		super.init()
 		let attributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
-			NSAttributedString.Key.font: placeholderFont,
+			NSAttributedString.Key.font: placeholderFont
 		]
 		textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: attributes)
 		textField.delegate = self
@@ -21,8 +21,7 @@ class SendAmountCell: SendCell {
 		didSet {
 			textField.text = content
 			textField.sendActions(for: .editingChanged)
-			guard let count = content?.count else { return }
-			textField.font = count > 0 ? textFieldFont : placeholderFont
+            textField.font = textFieldFont
 		}
 	}
 
@@ -32,7 +31,7 @@ class SendAmountCell: SendCell {
 	}
 
 	func setAmountLabel(text: String) {
-		textField.isHidden = text.utf8.count > 0 // Textfield should be hidden if amount label has text
+		textField.isHidden = !text.utf8.isEmpty // Textfield should be hidden if amount label has text
 		cursor.isHidden = !textField.isHidden
 		amountLabel.text = text
 	}
@@ -54,24 +53,24 @@ class SendAmountCell: SendCell {
 			textField.constraint(.leading, toView: self, constant: C.padding[2]),
 			textField.centerYAnchor.constraint(equalTo: accessoryView.centerYAnchor),
 			textField.heightAnchor.constraint(greaterThanOrEqualToConstant: 30.0),
-			textField.constraint(toLeading: accessoryView, constant: 0.0),
+			textField.constraint(toLeading: accessoryView, constant: 0.0)
 		])
 		label.constrain([
 			label.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
 			label.topAnchor.constraint(equalTo: amountLabel.bottomAnchor, constant: C.padding[2]),
 			label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -C.padding[2]),
-			label.bottomAnchor.constraint(equalTo: bottomAnchor),
+			label.bottomAnchor.constraint(equalTo: bottomAnchor)
 		])
 		amountLabel.constrain([
 			amountLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
 			amountLabel.topAnchor.constraint(equalTo: textField.topAnchor),
-			amountLabel.bottomAnchor.constraint(equalTo: textField.bottomAnchor),
+			amountLabel.bottomAnchor.constraint(equalTo: textField.bottomAnchor)
 		])
 		cursor.constrain([
 			cursor.leadingAnchor.constraint(equalTo: amountLabel.trailingAnchor, constant: 2.0),
 			cursor.heightAnchor.constraint(equalTo: amountLabel.heightAnchor, constant: -4.0),
 			cursor.centerYAnchor.constraint(equalTo: amountLabel.centerYAnchor),
-			cursor.widthAnchor.constraint(equalToConstant: 2.0),
+			cursor.widthAnchor.constraint(equalToConstant: 2.0)
 		])
 
 		label.numberOfLines = 0

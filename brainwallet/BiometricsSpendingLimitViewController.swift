@@ -26,9 +26,8 @@ class BiometricsSpendingLimitViewController: UITableViewController, Subscriber {
 		tableView.estimatedSectionHeaderHeight = 50.0
         tableView.backgroundColor = BrainwalletUIColor.surface
 		tableView.separatorStyle = .none
-
         let titleLabel = UILabel(font: .customBold(size: 17.0), color: BrainwalletUIColor.content)
-		let biometricsTitle = LAContext.biometricType() == .face ? "Face ID Spending Limit" : "Touch ID Spending Limit"
+		let biometricsTitle = LAContext.biometricType() == .face ? String(localized: "Face ID Spending Limit") : String(localized: "Touch ID Spending Limit")
 		titleLabel.text = biometricsTitle
 		titleLabel.sizeToFit()
 		navigationItem.titleView = titleLabel
@@ -81,7 +80,7 @@ class BiometricsSpendingLimitViewController: UITableViewController, Subscriber {
 		walletManager.spendingLimit = newLimit
 		amount.isHidden = true
 		amount.constrain([
-			amount.heightAnchor.constraint(equalToConstant: 0.0),
+			amount.heightAnchor.constraint(equalToConstant: 0.0)
 		])
 		tableView.reloadData()
 	}
@@ -96,7 +95,7 @@ class BiometricsSpendingLimitViewController: UITableViewController, Subscriber {
 			body.leadingAnchor.constraint(equalTo: amount.leadingAnchor),
 			body.topAnchor.constraint(equalTo: amount.bottomAnchor),
 			body.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -C.padding[2]),
-			body.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -C.padding[2]),
+			body.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -C.padding[2])
 		])
 		self.header = header
 		return header

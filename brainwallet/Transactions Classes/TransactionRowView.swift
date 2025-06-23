@@ -7,28 +7,27 @@
 //
 
 import SwiftUI
- 
+
 struct TransactionRowView: View {
-    
+
     @State
     private var isReceived: Bool = false
-    
+
     @State
-    private var filterMode: FilterTransactionMode = .all
-    
+    private var filterMode: FilterTransactionMode = .allTransactions
+
     @State
     private var modeState = 0
-    
+
     let transaction: Transaction
-    
+
     init(transaction: Transaction) {
         self.transaction = transaction
     }
-    
+
     var body: some View {
-        GeometryReader { geometry in
-             
-            
+        GeometryReader { _ in
+
             ZStack {
                 BrainwalletColor.affirm.edgesIgnoringSafeArea(.all)
                 HStack {
@@ -52,5 +51,5 @@ struct TransactionRowView: View {
             }
         }
     }
-    
+
 }

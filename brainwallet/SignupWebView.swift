@@ -42,9 +42,9 @@ struct SignupWebViewRepresentable: UIViewRepresentable {
 		_wkwebview.allowsBackForwardNavigationGestures = false
 		_wkwebview.scrollView.isScrollEnabled = false
         _wkwebview.backgroundColor = BrainwalletUIColor.surface
-        
+
         var request = URLRequest(url: URL(string: urlString)!)
-        
+
         #if targetEnvironment(simulator)
             request.assumesHTTP3Capable = false
         #endif
@@ -58,12 +58,11 @@ struct SignupWebViewRepresentable: UIViewRepresentable {
 		webView.evaluateJavaScript("document.getElementById('submit-email').value") { response, _ in
 
 			if let resultString = response as? String,
-			   resultString.contains("Please")
-			{
+			   resultString.contains("Please") {
 				userAction = true
 
 				let signupDict: [String: String] = ["date_accepted": Date().ISO8601Format()]
-				LWAnalytics.logEventWithParameters(itemName: ._20240101_US, properties: signupDict)
+				BWAnalytics.logEventWithParameters(itemName: ._20240101_US, properties: signupDict)
 			}
 		}
 	}
@@ -75,8 +74,7 @@ struct SignupWebViewRepresentable: UIViewRepresentable {
 	class Coordinator: NSObject,
 		WKNavigationDelegate,
 		WKUIDelegate,
-		WKScriptMessageHandler
-	{
+		WKScriptMessageHandler {
 		func userContentController(_: WKUserContentController, didReceive message: WKScriptMessage) {
 		}
 

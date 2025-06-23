@@ -11,14 +11,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var remoteConfigurationHelper: RemoteConfigHelper?
 
 	var resourceRequest: NSBundleResourceRequest?
-      
+
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		requestResourceWith(tag: ["initial-resources", "speakTag"]) { [self] in
 
 			// Language
             Bundle.setLanguage(UserDefaults.selectedLanguage)
 
-            
             // Locale and fetch access
             // DEV: Break here to test Locale/Matrix
             let countryRussia = MoonpayCountryData(alphaCode2Char: "RU",
@@ -30,19 +29,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             let currentLocaleID = Locale.current.region?.identifier ?? countryRussia.alphaCode2Char
             debugPrint(":::::: Current Locale ID: \(currentLocaleID)")
-            let _ = NetworkHelper.init().fetchCurrenciesCountries(completion:  { countryData  in
-                
+            _ = NetworkHelper.init().fetchCurrenciesCountries(completion:  { countryData  in
+
                 let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == currentLocaleID }.first ?? countryRussia
-                
+
                 let isBuyAllowed = currentMoonPayCountry.isBuyAllowed
                 if isBuyAllowed {
                     UserDefaults.standard.set(isBuyAllowed, forKey: userCurrentLocaleMPApprovedKey)
                     debugPrint(":::::: buyIsAllowed: \(isBuyAllowed)")
-                }
-                else {
+                } else {
                     UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
                 }
-                
+
                 UserDefaults.standard.synchronize()
             })
 
@@ -62,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			// Remote Config
 			self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
 
-
 			let current = UNUserNotificationCenter.current()
 
 			current.getNotificationSettings(completionHandler: { settings in
@@ -79,15 +76,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
 			                                   properties: properties)
 		}
-        
+
 		guard let thisWindow = window else { return false }
         // Set global themse
 		thisWindow.tintColor = BrainwalletUIColor.surface
         thisWindow.overrideUserInterfaceStyle = UserDefaults.standard.bool(forKey: userDidPreferDarkModeKey) ? .dark: .light
-        
+
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = BrainwalletUIColor.content
-        
-            
+
 		UIView.swizzleSetFrame()
 
 		applicationController.launch(application: application, window: thisWindow)
@@ -133,8 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func application(_: UIApplication, didReceiveRemoteNotification _: [AnyHashable: Any],
-	                 fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void)
-	{}
+	                 fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void) {}
 
 	/// Sets the correct Google Services  plist file
 	private func setFirebaseConfiguration() {
@@ -157,7 +152,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 	}
 
-    
     /// Update Theme
     func updatePreferredTheme() {
         guard let window = window else { return }
@@ -170,8 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	/// Inspired by https://www.youtube.com/watch?v=B5RV8p4-9a8&t=178s
 	func requestResourceWith(tag: [String],
 	                         onSuccess: @escaping () -> Void,
-	                         onFailure _: @escaping (NSError) -> Void)
-	{
+	                         onFailure _: @escaping (NSError) -> Void) {
 		resourceRequest = NSBundleResourceRequest(tags: Set(tag))
 
 		guard let request = resourceRequest else { return }

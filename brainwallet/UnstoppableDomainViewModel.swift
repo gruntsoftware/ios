@@ -60,7 +60,7 @@ class UnstoppableDomainViewModel: ObservableObject {
 //		// Added timing peroformance probes to see what the average time is
 //		let timestamp: String = dateFormatter?.string(from: Date()) ?? ""
 //
-//		LWAnalytics.logEventWithParameters(itemName:
+//		BWAnalytics.logEventWithParameters(itemName:
 //			CustomEvent._20201121_SIL,
 //			properties:
 //			["start_time": timestamp])
@@ -87,7 +87,7 @@ class UnstoppableDomainViewModel: ObservableObject {
 //
 //				let timestamp: String = self.dateFormatter?.string(from: Date()) ?? ""
 //
-//				LWAnalytics.logEventWithParameters(itemName:
+//				BWAnalytics.logEventWithParameters(itemName:
 //					CustomEvent._20201121_DRIA,
 //					properties:
 //					["success_time": timestamp])
@@ -102,7 +102,7 @@ class UnstoppableDomainViewModel: ObservableObject {
 //				let errorMessage = DomainResolutionFailure().messageWith(error: error)
 //				let timestamp: String = self.dateFormatter?.string(from: Date()) ?? ""
 //
-//				LWAnalytics.logEventWithParameters(itemName:
+//				BWAnalytics.logEventWithParameters(itemName:
 //					CustomEvent._20201121_FRIA,
 //					properties:
 //					["failure_time": timestamp,

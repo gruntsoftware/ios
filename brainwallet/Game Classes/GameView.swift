@@ -6,20 +6,18 @@
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
 
-
 import SwiftUI
 
 struct GameView: View {
-    
+
     @ObservedObject var newMainViewModel: NewMainViewModel
-    
-    
+
     init(viewModel: NewMainViewModel) {
         newMainViewModel = viewModel
     }
     var body: some View {
-        GeometryReader { geometry in
-              
+        GeometryReader { _ in
+
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {

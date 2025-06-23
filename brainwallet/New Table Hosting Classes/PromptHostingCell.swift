@@ -12,43 +12,37 @@ import SwiftUI
 final class PromptHostingCell<Content: View>: UITableViewCell {
     // MARK: - Private
     var didTapClose: (() -> Void)?
-    
+
     var didTapContinue: (() -> Void)?
-    
+
     var promptType: PromptType? = .recommendRescan
-    
+
     var promptCellViewModel: PromptCellViewModel?
-    
-   
-    
+
     private let hostingController = UIHostingController<Content?>(rootView: nil)
- 
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         hostingController.view.backgroundColor = .clear
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         viewModelCallbacks()
     }
-    
+
     func viewModelCallbacks() {
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: .userTapsClosePromptNotification,
                                             object: nil,
                                             userInfo: nil)
-            
-            
-            
+
         }
-        
-  
-        
+
         NotificationCenter.default.post(name: .userTapsContinuePromptNotification,
                                         object: nil,
                                         userInfo: nil)
-        
+
         guard let promptType = self.promptType else { return }
         promptCellViewModel = PromptCellViewModel(promptType: promptType)
     }
-         
+
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -75,5 +69,5 @@ final class PromptHostingCell<Content: View>: UITableViewCell {
         if requiresControllerMove {
             hostingController.didMove(toParent: parentController)
         }
-    } 
+    }
 }

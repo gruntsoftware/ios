@@ -49,8 +49,7 @@ class Sender {
 	}
 
 	func createTransactionWithOpsOutputs(amount: UInt64,
-	                                     to: String) -> Bool
-	{
+	                                     to: String) -> Bool {
 		transaction = walletManager.wallet?.createOpsTransaction(forAmount: amount,
 		                                                         toAddress: to,
 		                                                         opsFee: tieredOpsFee(amount: amount),
@@ -77,8 +76,7 @@ class Sender {
 	          feePerKb: UInt64,
 	          verifyPinFunction:
 	          @escaping (@escaping (String) -> Bool) -> Void,
-	          completion: @escaping (SendResult) -> Void)
-	{
+	          completion: @escaping (SendResult) -> Void) {
 		guard let tx = transaction
 		else {
 			return completion(.creationError("Could not create transaction." ))
@@ -89,8 +87,7 @@ class Sender {
 		self.feePerKb = feePerKb
 
 		if UserDefaults.isBiometricsEnabled,
-		   walletManager.canUseBiometrics(forTx: tx)
-		{
+		   walletManager.canUseBiometrics(forTx: tx) {
 			DispatchQueue.walletQueue.async { [weak self] in
 				guard let myself = self else { return }
 				myself
@@ -127,8 +124,7 @@ class Sender {
 	// VerifyPIN and VerifyTX
 	private func verifyPin(tx: BRTxRef,
 	                       withFunction: (@escaping (String) -> Bool) -> Void,
-	                       completion: @escaping (SendResult) -> Void)
-	{
+	                       completion: @escaping (SendResult) -> Void) {
 		withFunction { pin in
 			var success = false
 			let group = DispatchGroup()
@@ -146,7 +142,7 @@ class Sender {
 					["ERROR_TX": "\(tx.txHash)",
 					 "ERROR_BLOCKHEIGHT": "\(tx.blockHeight)"]
 
-				LWAnalytics.logEventWithParameters(itemName:
+				BWAnalytics.logEventWithParameters(itemName:
 					._20200112_ERR,
 					properties: properties)
 
@@ -188,21 +184,21 @@ class Sender {
 		// Fires an event if the rate is not set
 		guard let rate = rate
 		else {
-			LWAnalytics.logEventWithParameters(itemName: ._20200111_RNI)
+			BWAnalytics.logEventWithParameters(itemName: ._20200111_RNI)
 			return
 		}
 
 		// Fires an event if the transaction is not set
 		guard let tx = transaction
 		else {
-			LWAnalytics.logEventWithParameters(itemName: ._20200111_TNI)
+			BWAnalytics.logEventWithParameters(itemName: ._20200111_TNI)
 			return
 		}
 
 		// Fires an event if the feePerKb is not set
 		guard let feePerKb = feePerKb
 		else {
-			LWAnalytics.logEventWithParameters(itemName: ._20200111_FNI)
+			BWAnalytics.logEventWithParameters(itemName: ._20200111_FNI)
 			return
 		}
 
@@ -215,7 +211,7 @@ class Sender {
 		do {
 			_ = try kvStore.set(metaData)
 		} catch {
-			LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
+			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
 			                                   properties: ["error":
 			                                   	String(describing: error)])
 		}

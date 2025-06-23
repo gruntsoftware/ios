@@ -90,7 +90,7 @@ extension BRKey {
 	mutating func sign(md: UInt256) -> [UInt8]? {
 		var sig = [UInt8](repeating: 0, count: 73)
 		let count = BRKeySign(&self, &sig, sig.count, md)
-		guard count > 0 else { return nil }
+		guard !isEmpty else { return nil }
 		if count < sig.count { sig.removeSubrange(sig.count...) }
 		return sig
 	}

@@ -9,7 +9,7 @@ protocol LoginViewControllerDelegate {
 }
 
 class LoginViewController: UIViewController, Subscriber, Trackable {
-    
+
 	var walletManager: WalletManager?
 	var shouldSelfDismiss = false
     var lockScreenView: LockScreenHostingController
@@ -19,7 +19,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		self.store = store
 		self.walletManager = walletManager
 		self.isPresentedForLock = isPresentedForLock
-        
+
         lockScreenView = LockScreenHostingController(store: self.store)
 		super.init(nibName: nil, bundle: nil)
 	}
@@ -41,11 +41,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		addConstraints()
         self.view.backgroundColor = BrainwalletUIColor.surface
         backgroundView.backgroundColor = BrainwalletUIColor.surface
-          
-        lockScreenView.viewModel.$userPrefersDarkMode.sink { [weak self] newValue in
-            self?.updateTheme(shouldBeDark: newValue)
-        }.store(in: &cancellables)
-        
         addLockScreenHostingControllerCallbacks()
 	}
 
@@ -62,7 +57,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		super.viewDidDisappear(animated)
 		unlockTimer?.invalidate()
 	}
-    
+
     private func addLockScreenHostingControllerCallbacks() {
         lockScreenView.didEnterPIN = { [weak self] pin in
             guard let myself = self else { return }
@@ -70,18 +65,23 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
                 self?.authenticate(pin: pin)
             }
         }
-        
+
         lockScreenView.didTapQR = { [weak self]  in
             guard let myself = self else { return }
             myself.showLTCAddress()
         }
-        
+
         lockScreenView.didTapWipeWallet = { [weak self] userWantsToDelete in
             guard let myself = self else { return }
-            
+
             if userWantsToDelete {
                 myself.wipeWallet()
             }
+        }
+
+        lockScreenView.userDidPreferDarkMode = { [weak self] userDidPreferDarkMode in
+            guard let myself = self else { return }
+            myself.updateTheme(shouldBeDark: userDidPreferDarkMode)
         }
     }
 
@@ -96,21 +96,21 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
             lockScreenView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             lockScreenView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             lockScreenView.view.topAnchor.constraint(equalTo: backgroundView.topAnchor),
-            lockScreenView.view.heightAnchor.constraint(equalToConstant: view.frame.height),
+            lockScreenView.view.heightAnchor.constraint(equalToConstant: view.frame.height)
 		])
 	}
-    
+
     private func wipeWallet() {
                 guard let walletManager = walletManager else {
                     return
                 }
-        
+
                 let group = DispatchGroup()
-        
+
                 group.enter()
                 DispatchQueue.walletQueue.async {
                     _ = walletManager.peerManager?.disconnect()
-                    LWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
+                    BWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
                     group.leave()
                 }
 
@@ -119,19 +119,18 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
                     _ = walletManager.wipeWallet(pin: "forceWipe")
                     group.leave()
                 }
-        
+
                 group.enter()
                 DispatchQueue.walletQueue.asyncAfter(deadline: .now() + 1.0) {
                     _ = walletManager.deleteWalletDatabase(pin: "forceWipe")
                     group.leave()
                 }
-        
+
                 group.notify(queue: .main) {
                     self.lockScreenView.walletWiped()
                     NotificationCenter.default.post(name: .walletDidWipeNotification, object: nil)
                 }
     }
-    
 
 	private func authenticate(pin: String) {
 		guard let walletManager = walletManager else { return }
@@ -139,12 +138,10 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
             return authenticationFailed()
         }
 		authenticationSucceded()
-		LWAnalytics.logEventWithParameters(itemName: ._20200217_DUWP)
+		BWAnalytics.logEventWithParameters(itemName: ._20200217_DUWP)
 	}
 
 	private func authenticationSucceded() {
-		saveEvent("login.success")
-
 		UIView.spring(0.6, delay: 0.4, animations: {
 			self.view.layoutIfNeeded()
 		}) { _ in
@@ -181,21 +178,19 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		walletManager?.authenticate(biometricsPrompt: "Unlock your Brainwallet." , completion: { result in
 			if result == .success {
 				self.authenticationSucceded()
-				LWAnalytics.logEventWithParameters(itemName: ._20200217_DUWB)
+				BWAnalytics.logEventWithParameters(itemName: ._20200217_DUWB)
 			}
 		})
 	}
 
     @objc func updateTheme(shouldBeDark: Bool) {
-        UserDefaults.standard.set(shouldBeDark, forKey: userDidPreferDarkModeKey)
-        UserDefaults.standard.synchronize()
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        appDelegate.updatePreferredTheme()
+        UserDefaults.userPreferredDarkTheme = shouldBeDark
+        NotificationCenter
+            .default
+            .post(name: .changedThemePreferenceNotification,
+                object: nil)
     }
-    
+
 	@objc func showLTCAddress() {
 		store.perform(action: RootModalActions.Present(modal: .loginAddress))
         self.lockScreenView.viewModel.shouldShowQR = false

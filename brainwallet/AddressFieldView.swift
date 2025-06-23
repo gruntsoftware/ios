@@ -15,8 +15,7 @@ struct AddressFieldView: UIViewRepresentable {
 
 	init(placeholder: String,
 	     text: Binding<String>,
-	     fieldType: LWTextFieldType = .genericType)
-	{
+	     fieldType: LWTextFieldType = .genericType) {
 		self.placeholder = placeholder
 		self.fieldType = fieldType
 		_text = text

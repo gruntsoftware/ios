@@ -1,13 +1,13 @@
 import UIKit
 
-class DefaultCurrencyViewController: UITableViewController, Subscriber {
+class UserPreferredCurrencyViewController: UITableViewController, Subscriber {
 	init(walletManager: WalletManager, store: Store) {
 		self.walletManager = walletManager
 		self.store = store
 		rates = store.state.rates.filter { $0.code != C.ltcCurrencyCode }
-        
-        ////Notfications
-                  
+
+        //// Notfications
+
 		super.init(style: .plain)
 	}
 
@@ -21,10 +21,10 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 		}
 	}
 
-	private var defaultCurrencyCode: String? {
+	private var userPreferredCurrencyCode: String? {
 		didSet {
 			// Grab index paths of new and old rows when the currency changes
-			let paths: [IndexPath] = rates.enumerated().filter { $0.1.code == defaultCurrencyCode || $0.1.code == oldValue }.map { IndexPath(row: $0.0, section: 0) }
+			let paths: [IndexPath] = rates.enumerated().filter { $0.1.code == userPreferredCurrencyCode || $0.1.code == oldValue }.map { IndexPath(row: $0.0, section: 0) }
 			tableView.beginUpdates()
 			tableView.reloadRows(at: paths, with: .automatic)
 			tableView.endUpdates()
@@ -44,8 +44,8 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 
 	override func viewDidLoad() {
 		tableView.register(SeparatorCell.self, forCellReuseIdentifier: cellIdentifier)
-		store.subscribe(self, selector: { $0.defaultCurrencyCode != $1.defaultCurrencyCode }, callback: {
-			self.defaultCurrencyCode = $0.defaultCurrencyCode
+		store.subscribe(self, selector: { $0.userPreferredCurrencyCode != $1.userPreferredCurrencyCode }, callback: {
+			self.userPreferredCurrencyCode = $0.userPreferredCurrencyCode
 
 		})
 		store.subscribe(self, selector: { $0.maxDigits != $1.maxDigits }, callback: { [weak self] _ in
@@ -70,12 +70,16 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 	}
 
 	private func setExchangeRateLabel() {
-		if let currentRate = rates.filter({ $0.code == defaultCurrencyCode }).first {
+		if let currentRate = rates.filter({ $0.code == userPreferredCurrencyCode }).first {
 			let amount = Amount(amount: C.satoshis, rate: currentRate, maxDigits: store.state.maxDigits)
 			let bitsAmount = Amount(amount: C.satoshis, rate: currentRate, maxDigits: store.state.maxDigits)
 			rateLabel.textColor = BrainwalletUIColor.content
 			rateLabel.text = "\(bitsAmount.bits) = \(amount.string(forLocal: currentRate.locale))"
-		}
+		} else { /// fetch rates
+            ExchangeUpdater.init(store: store, walletManager: walletManager).fetchRates { rates in
+                self.rates = rates.compactMap { $0 }
+            }
+        }
 	}
 
 	override func numberOfSections(in _: UITableView) -> Int {
@@ -90,8 +94,8 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 		let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 		let rate = rates[indexPath.row]
 		cell.textLabel?.text = "\(rate.code) (\(rate.currencySymbol))"
-
-		if rate.code == defaultCurrencyCode {
+        cell.textLabel?.textColor = BrainwalletUIColor.content
+		if rate.code == userPreferredCurrencyCode {
 			let check = UIImageView(image: #imageLiteral(resourceName: "CircleCheck").withRenderingMode(.alwaysTemplate))
             check.tintColor = BrainwalletUIColor.affirm
 			cell.accessoryView = check
@@ -115,22 +119,22 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 
 		rateLabelTitle.constrain([
 			rateLabelTitle.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: C.padding[2]),
-			rateLabelTitle.topAnchor.constraint(equalTo: header.topAnchor, constant: C.padding[1]),
+			rateLabelTitle.topAnchor.constraint(equalTo: header.topAnchor, constant: C.padding[1])
 		])
 		rateLabel.constrain([
 			rateLabel.leadingAnchor.constraint(equalTo: rateLabelTitle.leadingAnchor),
-			rateLabel.topAnchor.constraint(equalTo: rateLabelTitle.bottomAnchor),
+			rateLabel.topAnchor.constraint(equalTo: rateLabelTitle.bottomAnchor)
 		])
 
 		litecoinLabel.constrain([
 			litecoinLabel.leadingAnchor.constraint(equalTo: rateLabelTitle.leadingAnchor),
-			litecoinLabel.topAnchor.constraint(equalTo: rateLabel.bottomAnchor, constant: C.padding[2]),
+			litecoinLabel.topAnchor.constraint(equalTo: rateLabel.bottomAnchor, constant: C.padding[2])
 		])
 		litecoinUnitSwitch.constrain([
 			litecoinUnitSwitch.leadingAnchor.constraint(equalTo: litecoinLabel.leadingAnchor),
 			litecoinUnitSwitch.topAnchor.constraint(equalTo: litecoinLabel.bottomAnchor, constant: C.padding[1]),
 			litecoinUnitSwitch.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -C.padding[2]),
-			litecoinUnitSwitch.widthAnchor.constraint(equalTo: header.widthAnchor, constant: -C.padding[4]),
+			litecoinUnitSwitch.widthAnchor.constraint(equalTo: header.widthAnchor, constant: -C.padding[4])
 		])
 
 		let settingSegment = store.state.maxDigits
@@ -165,7 +169,7 @@ class DefaultCurrencyViewController: UITableViewController, Subscriber {
 
 	override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let rate = rates[indexPath.row]
-		store.perform(action: DefaultCurrency.setDefault(rate.code))
+		store.perform(action: UserPreferredCurrency.setDefault(rate.code))
 	}
 
 	@available(*, unavailable)

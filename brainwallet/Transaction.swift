@@ -13,12 +13,12 @@ class Transaction {
 	// MARK: - Public
 
 	private let opsAddressSet: Set<String> = Partner.walletOpsSet()
-	
+
 	init?(_ tx: BRTxRef, walletManager: WalletManager, kvStore: BRReplicatedKVStore?, rate: Rate?) {
-        
+
 		guard let wallet = walletManager.wallet else { return nil }
 		guard let peerManager = walletManager.peerManager else { return nil }
-        
+
 		self.tx = tx
 		self.wallet = wallet
 		self.kvStore = kvStore
@@ -33,23 +33,21 @@ class Transaction {
 
 		let outputAddress = opsAddressSet.intersection(outputAddresses).first
 		if let targetAddress = outputAddress,
-		   let opsOutput = tx.outputs.filter({ $0.updatedSwiftAddress == targetAddress }).first
-		{
+		   let opsOutput = tx.outputs.filter({ $0.updatedSwiftAddress == targetAddress }).first {
 			opsAmount = opsOutput.amount
 		}
 
 		self.fee = fee + opsAmount
 
 		let amountReceived = wallet.amountReceivedFromTx(tx)
-		
+
         var amountSent =  UInt64(0)
         if opsAmount > wallet.amountSentByTx(tx) {
           amountSent = wallet.amountSentByTx(tx)
-        }
-        else {
+        } else {
             amountSent = wallet.amountSentByTx(tx) - opsAmount
         }
-            
+
 		if amountSent > 0, (amountReceived + fee) == amountSent {
 			direction = .moved
 			satoshis = amountSent
@@ -189,7 +187,7 @@ class Transaction {
 
 			guard let toAddress = toAddressOutput?.updatedSwiftAddress else {
 				let properties = ["error": "no_sent_address_found"]
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
 				                                   properties: properties)
 				return "---ERROR---"
 			}
@@ -203,7 +201,7 @@ class Transaction {
 
 			guard let fromAddress = toAddressOutput?.updatedSwiftAddress else {
 				let properties = ["error": "no_received_address_found"]
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
 				                                   properties: properties)
 				return "---ERROR---"
 			}
@@ -214,7 +212,7 @@ class Transaction {
 				self.wallet.containsAddress(output.updatedSwiftAddress)
 			}).first else {
 				let properties = ["error": "no_moved_address_found"]
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
 				                                   properties: properties)
 				return "---ERROR---"
 			}
@@ -415,7 +413,7 @@ private func makeStatus(_ txRef: BRTxRef, wallet: BRWallet, peerManager: BRPeerM
 		} else if confirms > 2 {
 			percentageString = "100%"
 		}
-		let format = direction == .sent ? "In progress: %1$@"  : "In progress: %1$@"
+		let format = direction == .sent ? String(localized: "In progress: %1$@")  : String(localized: "In progress: %1$@")
 		return String(format: format, percentageString)
 	} else {
 		return String(localized: "Complete", bundle: .main)

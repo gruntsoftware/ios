@@ -1,0 +1,30 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "ਬ੍ਰੇਨਵਾਲਿਟ";
+
+/* Bundle name */
+"CFBundleName" = "ਬ੍ਰੇਨਵਾਲਿਟ";
+
+/* No comment provided by engineer. */
+"Litecoin Payment" = "ਲਾਈਟਕੋਇਨ ਭੁਗਤਾਨ";
+
+/* No comment provided by engineer. */
+"Litecoin Payment ACK" = "ਲਾਈਟਕੋਇਨ ਭੁਗਤਾਨ ACK";
+
+/* No comment provided by engineer. */
+"Litecoin Payment Request" = "ਲਾਈਟਕੋਇਨ ਭੁਗਤਾਨ ਬੇਨਤੀ";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "ਬਾਰਕੋਡ ਸਕੈਨ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "ਐਪ ਨੂੰ ਅਨਲੌਕ ਕਰਨ ਅਤੇ ਭੁਗਤਾਨਾਂ ਨੂੰ ਅਧਿਕਾਰਤ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ";
+
+/* Privacy - Location Always Usage Description */
+"NSLocationAlwaysUsageDescription" = "ਤੁਹਾਡੇ ਸਭ ਤੋਂ ਨੇੜੇ ਦੇ ਨੋਡ ਨੂੰ ਨਿਰਧਾਰਤ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ - ਕਦੇ ਵੀ ਰਿਕਾਰਡ ਨਹੀਂ ਕੀਤਾ ਜਾਂਦਾ ਜਾਂ ਕਿਸੇ ਨਾਲ ਸਾਂਝਾ ਨਹੀਂ ਕੀਤਾ ਜਾਂਦਾ";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "ਤੁਹਾਡੇ ਸਭ ਤੋਂ ਨੇੜੇ ਦੇ ਨੋਡ ਨੂੰ ਨਿਰਧਾਰਤ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ - ਕਦੇ ਵੀ ਰਿਕਾਰਡ ਨਹੀਂ ਕੀਤਾ ਜਾਂਦਾ ਜਾਂ ਕਿਸੇ ਨਾਲ ਸਾਂਝਾ ਨਹੀਂ ਕੀਤਾ ਜਾਂਦਾ";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "ਬਾਰਕੋਡ ਸਕੈਨ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ";
+

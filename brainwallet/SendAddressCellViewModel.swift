@@ -12,6 +12,5 @@ class SendAddressCellViewModel: ObservableObject {
 
 	var shouldScanAddress: (() -> Void)?
 
-	init()
-	{}
+	init() {}
 }
