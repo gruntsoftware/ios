@@ -77,13 +77,11 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
             debugPrint("::: ERROR: Store not initialized")
             return
         }
-
 		store.unsubscribe(self)
 		NotificationCenter.default.removeObserver(self)
 	}
 
 	override func viewDidLoad() {
-
         guard let store = store else {
             debugPrint("::: ERROR: Store not initialized")
             return
