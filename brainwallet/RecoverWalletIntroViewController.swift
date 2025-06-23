@@ -12,7 +12,7 @@ class RecoverWalletIntroViewController: UIViewController {
 
 	private let didTapNext: () -> Void
     private let header = RadialGradientView(backgroundColor: BrainwalletUIColor.surface)
-	private let nextButton = ShadowButton(title: "Next" , type: .primary)
+	private let nextButton = ShadowButton(title: String(localized: "Next") , type: .primary)
 	private let label = UILabel(font: .customBody(size: 16.0))
 	private let illustration = UIImageView(image: #imageLiteral(resourceName: "RecoverWalletIllustration"))
 

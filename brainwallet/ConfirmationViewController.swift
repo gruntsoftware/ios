@@ -20,7 +20,7 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 		addressText = address
 		self.isUsingBiometrics = isUsingBiometrics
 
-		header = ModalHeaderView(title: "Confirmation" , style: .dark)
+		header = ModalHeaderView(title: String(localized: "Confirmation") , style: .dark)
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -43,8 +43,8 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 	var cancelCallback: (() -> Void)?
 
 	private var header: ModalHeaderView?
-	private let cancel = ShadowButton(title:  "Cancel"  , type: .flatWhiteBorder)
-	private let sendButton = ShadowButton(title: "Send" , type: .flatLitecoinBlue, image: LAContext.biometricType() == .face ? #imageLiteral(resourceName: "FaceId") : #imageLiteral(resourceName: "TouchId"))
+	private let cancel = ShadowButton(title: String(localized: "Cancel")  , type: .flatWhiteBorder)
+	private let sendButton = ShadowButton(title: String(localized: "Send") , type: .flatLitecoinBlue, image: LAContext.biometricType() == .face ? #imageLiteral(resourceName: "FaceId") : #imageLiteral(resourceName: "TouchId"))
 
 	private let payLabel = UILabel(font: .barlowLight(size: 15.0), color: BrainwalletUIColor.content)
 	private let toLabel = UILabel(font: .barlowLight(size: 15.0), color: BrainwalletUIColor.content)
