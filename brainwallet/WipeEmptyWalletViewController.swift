@@ -17,7 +17,7 @@ class WipeEmptyWalletViewController: UIViewController, Subscriber, Trackable {
 	private let warningDetailTextView = UITextView()
 	private let warningAlertLabel = UILabel()
 	private let border = UIView()
-	private let reset = ShadowButton(title: "Delete wallet & all data", type: .boldWarning)
+	private let reset = ShadowButton(title: String(localized: "Delete wallet & all data"), type: .boldWarning)
 
 	private var topSharePopoutConstraint: NSLayoutConstraint?
 	private let walletManager: WalletManager

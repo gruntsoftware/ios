@@ -25,7 +25,7 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store
 		self.walletManager = walletManager
-		header = ModalHeaderView(title: "Security" , style: .light)
+		header = ModalHeaderView(title: String(localized: "Security") , style: .light)
         shield.tintColor = BrainwalletUIColor.background
         headerBackground.backgroundColor = BrainwalletUIColor.surface
 		super.init(nibName: nil, bundle: nil)
@@ -37,9 +37,9 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 	fileprivate var shield = UIImageView(image: #imageLiteral(resourceName: "shield"))
 	private let scrollView = UIScrollView()
 	private let info = UILabel(font: .customBody(size: 16.0))
-	private let pinCell = SecurityCenterCell(title: "4-Digit PIN" , descriptionText: "Protects your Brainwallet from unauthorized users." )
-	private let biometricsCell = SecurityCenterCell(title: LAContext.biometricType() == .face ? "Face ID"  : "Touch ID" , descriptionText: "Conveniently unlock your Brainwallet and send money up to a set limit." )
-	private let paperKeyCell = SecurityCenterCell(title: "Paper Key" , descriptionText: "The only way to access your Litecoin if you lose or upgrade your phone." )
+	private let pinCell = SecurityCenterCell(title:  String(localized: "4-Digit PIN") , descriptionText:  String(localized: "Protects your Brainwallet from unauthorized users.") )
+	private let biometricsCell = SecurityCenterCell(title: LAContext.biometricType() == .face ?  String(localized: "Face ID")  :  String(localized: "Touch ID") , descriptionText:  String(localized: "Conveniently unlock your Brainwallet and send money up to a set limit.") )
+	private let paperKeyCell = SecurityCenterCell(title:  String(localized: "Paper Key") , descriptionText:  String(localized: "The only way to access your Litecoin if you lose or upgrade your phone.") )
     private var separator = UIView(color: BrainwalletUIColor.gray)
 	private let store: Store
 	private let walletManager: WalletManager

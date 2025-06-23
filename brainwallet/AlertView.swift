@@ -13,18 +13,18 @@ enum AlertType {
 	var header: String {
 		switch self {
 		case .pinSet:
-			return "PIN Set"
+			return  String(localized: "PIN Set")
 		case .paperKeySet:
-			return "Paper Key Set"
+			return String(localized: "Paper Key Set")
 		case .sendSuccess:
-			return "Send Confirmation"
+			return String(localized: "Send Confirmation")
 		case .addressesCopied:
-			return "Addresses Copied"
+			return String(localized: "Addresses Copied")
 		case .sweepSuccess:
-			return "Success"
+			return String(localized: "Success")
 		// Failure(s)
 		case .failedResolution:
-			return "Send failed"
+			return String(localized: "Send failed")
 		}
 	}
 
@@ -33,16 +33,16 @@ enum AlertType {
 		case .pinSet:
 			return ""
 		case .paperKeySet:
-			return "Awesome!"
+			return String(localized: "Awesome!")
 		case .sendSuccess:
-			return "Money Sent!"
+			return String(localized: "Money Sent!")
 		case .addressesCopied:
-			return "Addresses Copied"
+			return String(localized: "Addresses Copied")
 		case .sweepSuccess:
-			return "Successfully imported wallet."
+			return String(localized: "Successfully imported wallet.")
 		// Failure(s)
 		case .failedResolution:
-			return "Resolved"
+			return String(localized: "Resolved")
 		}
 	}
 

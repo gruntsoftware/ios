@@ -16,8 +16,8 @@ class AddressCell: UIView {
 	var didReceivePaymentRequest: ((PaymentRequest) -> Void)?
 
 	let textField = UITextField()
-	let paste = ShadowButton(title:"Paste" , type: .tertiary)
-	let scan = ShadowButton(title: "Scan" , type: .tertiary)
+	let paste = ShadowButton(title: String(localized: "Paste") , type: .tertiary)
+	let scan = ShadowButton(title: String(localized: "Scan") , type: .tertiary)
 	private let dividerView = UIView(color: BrainwalletUIColor.border)
 
 	private func setupViews() {

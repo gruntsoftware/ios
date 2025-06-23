@@ -26,9 +26,8 @@ class BiometricsSpendingLimitViewController: UITableViewController, Subscriber {
 		tableView.estimatedSectionHeaderHeight = 50.0
         tableView.backgroundColor = BrainwalletUIColor.surface
 		tableView.separatorStyle = .none
-
         let titleLabel = UILabel(font: .customBold(size: 17.0), color: BrainwalletUIColor.content)
-		let biometricsTitle = LAContext.biometricType() == .face ? "Face ID Spending Limit" : "Touch ID Spending Limit"
+		let biometricsTitle = LAContext.biometricType() == .face ? String(localized: "Face ID Spending Limit") : String(localized: "Touch ID Spending Limit")
 		titleLabel.text = biometricsTitle
 		titleLabel.sizeToFit()
 		navigationItem.titleView = titleLabel

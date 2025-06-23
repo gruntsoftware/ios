@@ -24,7 +24,7 @@ class RequestAmountViewController: UIViewController {
 	private let qrCode = UIImageView()
 	private let address = UILabel(font: .customBody(size: 14.0))
 	private let addressPopout = InViewAlert(type: .primary)
-	private let share = ShadowButton(title: "Share" , type: .tertiary, image: #imageLiteral(resourceName: "Share"))
+	private let share = ShadowButton(title: String(localized: "Share") , type: .tertiary, image: #imageLiteral(resourceName: "Share"))
 	private let sharePopout = InViewAlert(type: .secondary)
 	private let border = UIView()
 	private var topSharePopoutConstraint: NSLayoutConstraint?

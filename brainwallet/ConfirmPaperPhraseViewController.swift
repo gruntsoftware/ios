@@ -41,11 +41,19 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 		return wordArray
 	}()
 
-	private lazy var confirmFirstPhrase: ConfirmPhrase = .init(text: String(format: "Word #%1$@" , "\(self.fourIndices.0 + 1)"), word: self.words[self.fourIndices.0])
-
-	private lazy var confirmSecondPhrase: ConfirmPhrase = .init(text: String(format: "Word #%1$@" , "\(self.fourIndices.1 + 1)"), word: self.words[self.fourIndices.1])
-	private lazy var confirmThirdPhrase: ConfirmPhrase = .init(text: String(format: "Word #%1$@" , "\(self.fourIndices.2 + 1)"), word: self.words[self.fourIndices.2])
-	private lazy var confirmFourthPhrase: ConfirmPhrase = .init(text: String(format: "Word #%1$@" , "\(self.fourIndices.3 + 1)"), word: self.words[self.fourIndices.3])
+    private let wordLocalized = String(localized: "Word")
+	private lazy var confirmFirstPhrase: ConfirmPhrase = .init(text: String(format: "%@ #%1$@",
+        wordLocalized,"\(self.fourIndices.0 + 1)"),
+        word: self.words[self.fourIndices.0])
+	private lazy var confirmSecondPhrase: ConfirmPhrase = .init(text: String(format: "%@ #%1$@",
+        wordLocalized, "\(self.fourIndices.1 + 1)"),
+        word: self.words[self.fourIndices.1])
+	private lazy var confirmThirdPhrase: ConfirmPhrase = .init(text: String(format: "%@ #%1$@",
+        wordLocalized, "\(self.fourIndices.2 + 1)"),
+        word: self.words[self.fourIndices.2])
+	private lazy var confirmFourthPhrase: ConfirmPhrase = .init(text: String(format: "%@ #%1$@",
+        wordLocalized, "\(self.fourIndices.3 + 1)"),
+        word: self.words[self.fourIndices.3])
 
 	var store: Store?
 	var walletManager: WalletManager?
@@ -119,7 +127,7 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 		))
 
 		backButton.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
-		submitButton.setTitle("Submit" , for: .normal)
+		submitButton.setTitle(String(localized: "Submit") , for: .normal)
 		submitButton.titleLabel?.font = UIFont.barlowBold(size: 18.0)
         submitButton.titleLabel?.textColor = BrainwalletUIColor.content
         submitButton.backgroundColor = BrainwalletUIColor.background
@@ -185,7 +193,7 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 			secondWordCell.confirmPhraseView?.validate()
 			thirdWordCell.confirmPhraseView?.validate()
 			fourthWordCell.confirmPhraseView?.validate()
-			showErrorMessage("The words entered do not match your paper key. Please try again.")
+			showErrorMessage(String(localized: "The words entered do not match your paper key. Please try again."))
 		}
 	}
 }

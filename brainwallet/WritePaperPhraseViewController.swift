@@ -15,8 +15,8 @@ class WritePaperPhraseViewController: UIViewController {
 	}()
 
 	// This is awkwardly named because nextResponder is now named next is swift 3 :(,
-	private let proceed = ShadowButton(title: "Next" , type: .secondary)
-	private let previous = ShadowButton(title: "Previous" , type: .secondary)
+	private let proceed = ShadowButton(title: String(localized: "Next") , type: .secondary)
+	private let previous = ShadowButton(title: String(localized: "Previous") , type: .secondary)
 	private var proceedWidth: NSLayoutConstraint?
 	private var previousWidth: NSLayoutConstraint?
 
