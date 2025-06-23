@@ -474,16 +474,16 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		            comment: memoCell.textView.text,
 		            feePerKb: feePerKb,
 		            verifyPinFunction: { [weak self] pinValidationCallback in
-		            	self?.presentVerifyPin?(String(localized: "Please enter your PIN to authorize this transaction.")) { [weak self] pin, vc in
-		            		if pinValidationCallback(pin) {
-		            			vc.dismiss(animated: true, completion: {
-		            				self?.parent?.view.isFrameChangeBlocked = false
-		            			})
-		            			return true
-		            		} else {
-		            			return false
-		            		}
-		            	}
+		            	self?.presentVerifyPin?(String(localized: "Please enter your PIN to authorize this transaction.")) { [weak self] passcode, viewController in
+		            		     if pinValidationCallback(passcode) {
+                                     viewController.dismiss(animated: true, completion: {
+		            				 self?.parent?.view.isFrameChangeBlocked = false
+		            			 })
+                                     return true
+		            		     } else {
+		            			     return false
+		            		     }
+		            	    }
 		            }, completion: { [weak self] result in
 		            	switch result {
 		            	case .success:

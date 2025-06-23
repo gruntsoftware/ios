@@ -475,6 +475,7 @@
 		242871852DE5D2550035DE48 /* NewSyncProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressView.swift; sourceTree = "<group>"; };
 		242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressViewModel.swift; sourceTree = "<group>"; };
 		2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncHostingController.swift; sourceTree = "<group>"; };
+		242E6CDE2E095AF4002C579A /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
 		24360B002DED11D900E1E115 /* NewReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveTests.swift; sourceTree = "<group>"; };
 		244520332DE70310003AFFDF /* LockScreenHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHostingController.swift; sourceTree = "<group>"; };
@@ -2226,6 +2227,7 @@
 				Base,
 				pa,
 				fa,
+				pl,
 			);
 			mainGroup = 75A2A7871DA5934300A983D8;
 			packageReferences = (
@@ -2831,6 +2833,7 @@
 				24FEB8CA2DD25D9500D60036 /* ko */,
 				24B84F7B2E085BBC0060C2EE /* fa */,
 				24B84F7C2E085CE40060C2EE /* pa */,
+				242E6CDE2E095AF4002C579A /* pl */,
 			);
 			name = InfoPlist.strings;
 			path = brainwallet;

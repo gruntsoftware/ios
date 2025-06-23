@@ -72,6 +72,12 @@
             "value" : " %@ "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " %@ "
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -184,6 +190,12 @@
             "value" : "(ਨੈੱਟਵਰਕ ਫੀਸ + ਸੇਵਾ ਫੀਸ):"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(Opłata sieciowa + opłata za usługę):"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -291,6 +303,12 @@
           }
         },
         "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@"
@@ -414,6 +432,12 @@
             "value" : "%1$@   %2$@ (%3$@)"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@   %2$@ (%3$@)"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -527,6 +551,12 @@
           }
         },
         "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (%2$@)"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ (%2$@)"
@@ -650,6 +680,12 @@
             "value" : "%1$@ %2$ਐਲਐਲਡੀ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$lld"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -757,6 +793,12 @@
           }
         },
         "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ = 1Ł"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ = 1Ł"
@@ -872,6 +914,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%ਐਲਐਲਡੀ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
           }
         },
         "pt-BR" : {
@@ -1098,6 +1146,12 @@
             "value" : "ਬਾਰੇ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1213,6 +1267,12 @@
             "value" : "ਪਤਾ ਕਾਪੀ ਕੀਤਾ ਗਿਆ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adres skopiowany"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1258,7 +1318,14 @@
       }
     },
     "Addresses Copied" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم نسخ العناوين"
+          }
+        }
+      }
     },
     "Always require passcode" : {
       "localizations" : {
@@ -1326,6 +1393,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਹਮੇਸ਼ਾ ਪਾਸਕੋਡ ਦੀ ਲੋੜ ਹੈ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zawsze wymagaj kodu dostępu"
           }
         },
         "pt-BR" : {
@@ -1440,6 +1513,12 @@
             "value" : "ਰਕਮ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kwota"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1550,6 +1629,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਕੀ ਤੁਸੀਂ ਪੱਕਾ ਇਸ ਵਾਲਿਟ ਅਤੇ ਇਸਦੇ ਸਾਰੇ ਡੇਟਾ ਨੂੰ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czy na pewno chcesz usunąć ten portfel i wszystkie jego dane?"
           }
         },
         "pt-BR" : {
@@ -1664,6 +1749,12 @@
             "value" : "ਕੀ ਤੁਸੀਂ ਪੱਕਾ ਇਸ ਵਾਲਿਟ ਅਤੇ ਇਸਦੇ ਸਾਰੇ ਡੇਟਾ ਨੂੰ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ? ਤੁਸੀਂ ਆਪਣੇ ਸੀਡ ਵਰਡਜ਼ ਜਾਂ ਕੋਈ ਹੋਰ ਡੇਟਾ ਰਿਕਵਰ ਨਹੀਂ ਕਰ ਸਕੋਗੇ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czy na pewno chcesz usunąć ten portfel i wszystkie jego dane? Nie będzie można odzyskać słów seed ani żadnych innych danych."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1709,7 +1800,14 @@
       }
     },
     "at %1$@" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "في %1$@"
+          }
+        }
+      }
     },
     "Authorize to copy wallet address to clipboard" : {
       "localizations" : {
@@ -1779,6 +1877,12 @@
             "value" : "ਵਾਲਿਟ ਐਡਰੈੱਸ ਨੂੰ ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਕਰਨ ਲਈ ਅਧਿਕਾਰਤ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoryzacja kopiowania adresu portfela do schowka"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1824,7 +1928,14 @@
       }
     },
     "Awesome!" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رائع!"
+          }
+        }
+      }
     },
     "Bad Payment Request" : {
       "localizations" : {
@@ -1894,6 +2005,12 @@
             "value" : "ਗਲਤ ਭੁਗਤਾਨ ਬੇਨਤੀ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niewłaściwy wniosek o płatność"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1939,7 +2056,14 @@
       }
     },
     "Balance" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "توازن"
+          }
+        }
+      }
     },
     "Balance :" : {
       "localizations" : {
@@ -2007,6 +2131,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਬਕਾਇਆ:"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo :"
           }
         },
         "pt-BR" : {
@@ -2121,6 +2251,12 @@
             "value" : "ਬਲਾਕ: "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blok: "
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2233,6 +2369,12 @@
             "value" : "ਬਲਾਕਚੇਨ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blockchain"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2343,6 +2485,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਬਲਾਕਚੈਨ: ਲਾਈਟਕੋਇਨ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blockchain: Litecoin"
           }
         },
         "pt-BR" : {
@@ -2572,6 +2720,12 @@
             "value" : "ਖਰੀਦੋ / ਪ੍ਰਾਪਤ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kup / Odbierz"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2684,6 +2838,12 @@
             "value" : "LTC ਖਰੀਦੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "KUP LTC"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2794,6 +2954,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਮੂਨਪੇ ਨਾਲ ਖਰੀਦੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kupuj za pomocą MoonPay"
           }
         },
         "pt-BR" : {
@@ -3020,6 +3186,12 @@
             "value" : "ਰੱਦ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anuluj"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3130,6 +3302,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਸਾਫ਼"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyczyść"
           }
         },
         "pt-BR" : {
@@ -3244,6 +3422,12 @@
             "value" : "ਪੂਰਾ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kompletny"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3354,6 +3538,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਪੁਸ਼ਟੀ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potwierdzenie"
           }
         },
         "pt-BR" : {
@@ -3580,6 +3770,12 @@
             "value" : "ਕਨੈਕਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Łączenie..."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3804,6 +4000,12 @@
             "value" : "ਕਾਪੀ ਕੀਤਾ ਗਿਆ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skopiowany"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3914,6 +4116,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਸਭ ਕਾਪੀ ਕੀਤੇ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skopiowano wszystkie"
           }
         },
         "pt-BR" : {
@@ -4028,6 +4236,12 @@
             "value" : "ਕਾਪੀ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopia"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4138,6 +4352,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਕਾਪੀ / ਸਾਂਝਾ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "KOPIUJ / UDOSTĘPNIAJ"
           }
         },
         "pt-BR" : {
@@ -4252,6 +4472,12 @@
             "value" : "ਸਾਰੇ ਵੇਰਵੇ ਕਾਪੀ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopiuj wszystkie szczegóły"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4362,6 +4588,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਵਾਲਿਟ ਪਤੇ ਕਾਪੀ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopiowanie adresów portfela"
           }
         },
         "pt-BR" : {
@@ -4476,6 +4708,12 @@
             "value" : "ਕੀ ਵਾਲਿਟ ਦੇ ਪਤੇ ਕਲਿੱਪਬੋਰਡ 'ਤੇ ਕਾਪੀ ਕਰਨੇ ਹਨ?"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skopiować adresy portfeli do schowka?"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4586,6 +4824,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਲੈਣ-ਦੇਣ ਨਹੀਂ ਬਣਾਇਆ ਜਾ ਸਕਿਆ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie można utworzyć transakcji."
           }
         },
         "pt-BR" : {
@@ -4700,6 +4944,12 @@
             "value" : "ਵਾਲਿਟ ਨਹੀਂ ਬਣਾਇਆ ਜਾ ਸਕਿਆ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie można utworzyć portfela"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4810,6 +5060,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਭੁਗਤਾਨ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie można dokonać płatności"
           }
         },
         "pt-BR" : {
@@ -4924,6 +5180,12 @@
             "value" : "ਵਾਲਿਟ ਬਣਾਓ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utwórz portfel"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5034,6 +5296,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਮੁਦਰਾ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waluta"
           }
         },
         "pt-BR" : {
@@ -5148,6 +5416,12 @@
             "value" : "ਮੌਜੂਦਾ ਖਰਚ ਸੀਮਾ: "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualny limit wydatków: "
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5258,6 +5532,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਸਾਰੇ ਮਿਟਾਓ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń wszystko"
           }
         },
         "pt-BR" : {
@@ -5372,6 +5652,12 @@
             "value" : "ਸਭ ਮਿਟਾਓ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń wszystko"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5484,6 +5770,12 @@
             "value" : "ਮੇਰਾ ਡਾਟਾ ਮਿਟਾਓ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń moje dane"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5594,6 +5886,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਕੀ ਮੇਰਾ ਵਾਲਿਟ ਅਤੇ ਡਾਟਾ ਮਿਟਾਉਣਾ ਹੈ?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usunąć portfel i dane?"
           }
         },
         "pt-BR" : {
@@ -5820,6 +6118,12 @@
             "value" : "ਮਿਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuwanie..."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5932,6 +6236,12 @@
             "value" : "ਡਿਲਿਵਰੀ: 2.5 - 5+ ਮਿੰਟ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dostawa: 2,5 - 5+ minut"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6042,6 +6352,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਇਹ ਤੁਹਾਡੇ ਲਈ ਕਰੋ। ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਇਕੱਲੇ ਕਰੋ। ਇੱਕ ਪੈੱਨ, ਕਾਗਜ਼ ਅਤੇ 5 ਮਿੰਟ ਲਓ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zrób to dla siebie. Proszę, zrób to sam. Weź długopis, papier i 5 minut."
           }
         },
         "pt-BR" : {
@@ -6159,6 +6475,12 @@
             "value" : "ਹੋ ਗਿਆ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gotowe"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6269,6 +6591,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਈਮੇਲ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail"
           }
         },
         "pt-BR" : {
@@ -6383,6 +6711,12 @@
             "value" : "ਵੱਧ ਤੋਂ ਵੱਧ ਸੁਰੱਖਿਆ ਲਈ ਸਾਰੀਆਂ ਸੁਰੱਖਿਆ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącz wszystkie funkcje bezpieczeństwa dla maksymalnej ochrony."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6493,6 +6827,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਚਿਹਰਾ ਆਈਡੀ ਚਾਲੂ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącz Face ID"
           }
         },
         "pt-BR" : {
@@ -6607,6 +6947,12 @@
             "value" : "ਬ੍ਰੇਨਵਾਲਿਟ ਲਈ ਫੇਸ ਆਈਡੀ ਚਾਲੂ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącz identyfikator twarzy dla Brainwallet"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6668,7 +7014,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Activar Touch ID"
+            "value" : "Habilitar Touch ID"
           }
         },
         "fa" : {
@@ -6717,6 +7063,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਟੱਚ ਆਈਡੀ ਚਾਲੂ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącz Touch ID"
           }
         },
         "pt-BR" : {
@@ -6831,6 +7183,12 @@
             "value" : "ਬ੍ਰੇਨਵਾਲਿਟ ਲਈ ਟੱਚ ਆਈਡੀ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącz Touch ID dla Brainwallet"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6876,7 +7234,14 @@
       }
     },
     "Enter Paper Key" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أدخل مفتاح الورقة"
+          }
+        }
+      }
     },
     "Enter PIN" : {
       "localizations" : {
@@ -6944,6 +7309,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਪਿੰਨ ਦਰਜ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź kod PIN"
           }
         },
         "pt-BR" : {
@@ -7058,6 +7429,12 @@
             "value" : "ਉਸ ਵਾਲਿਟ ਦੀ ਕਾਗਜ਼ੀ ਕੁੰਜੀ ਦਰਜ ਕਰੋ ਜਿਸਨੂੰ ਤੁਸੀਂ ਰਿਕਵਰ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź klucz papierowy dla portfela, który chcesz odzyskać."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7168,6 +7545,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਆਪਣਾ ਮੌਜੂਦਾ ਪਿੰਨ ਦਰਜ ਕਰੋ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź aktualny kod PIN."
           }
         },
         "pt-BR" : {
@@ -7282,6 +7665,12 @@
             "value" : "ਆਪਣਾ ਨਵਾਂ ਪਿੰਨ ਦਰਜ ਕਰੋ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź nowy kod PIN."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7392,6 +7781,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਗਲਤੀ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Błąd"
           }
         },
         "pt-BR" : {
@@ -7506,6 +7901,12 @@
             "value" : "ਅਨੁਮਾਨਿਤ ਡਿਲੀਵਰੀ: ~10 ਮਿੰਟ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szacowana dostawa: ~10 minut"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7616,6 +8017,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਅਨੁਮਾਨਿਤ ਡਿਲੀਵਰੀ: 2.5 - 5+ ਮਿੰਟ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szacowana dostawa: 2,5 - 5+ minut"
           }
         },
         "pt-BR" : {
@@ -7730,6 +8137,12 @@
             "value" : "ਐਕਸਚੇਂਜ ਦਰ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurs wymiany"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7842,6 +8255,12 @@
             "value" : "ਚਿਹਰਾ ਆਈ.ਡੀ."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Face ID"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7887,7 +8306,14 @@
       }
     },
     "Face ID Not Set Up" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التعرف على الوجه غير مُعدّ"
+          }
+        }
+      }
     },
     "Face ID Spending Limit" : {
       "localizations" : {
@@ -7955,6 +8381,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਫੇਸ ਆਈਡੀ ਖਰਚ ਸੀਮਾ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limit wydatków na Face ID"
           }
         },
         "pt-BR" : {
@@ -8069,6 +8501,12 @@
             "value" : "ਅਸਫਲ ਰਿਹਾ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie powiodło się"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8181,6 +8619,12 @@
             "value" : "ਵਾਲਿਟ ਸਾਫ਼ ਕਰਨ ਵਿੱਚ ਅਸਫਲ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się wyczyścić portfela."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8190,7 +8634,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Не удалось очистить кошелек."
+            "value" : "Не удалось удалить кошелек."
           }
         },
         "sv" : {
@@ -8291,6 +8735,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਫੀਸ: "
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opłaty: "
           }
         },
         "pt-BR" : {
@@ -8403,6 +8853,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਤੁਹਾਡੇ ਲੈਣ-ਦੇਣ ਦੇ ਇਤਿਹਾਸ ਨੂੰ ਪ੍ਰਾਪਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pobieranie historii transakcji..."
           }
         },
         "pt-BR" : {
@@ -8629,6 +9085,12 @@
             "value" : "ਐਪ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਲਈ ਸਾਡੇ ਨਾਲ ਆਪਣਾ ਅਗਿਆਤ ਡੇਟਾ ਸਾਂਝਾ ਕਰਕੇ ਬ੍ਰੇਨਵਾਲਟ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰੋ। ਅਸੀਂ ਤੁਹਾਡੀ ਨਿੱਜਤਾ ਦਾ ਸਤਿਕਾਰ ਕਰਦੇ ਹਾਂ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pomóż ulepszyć Brainwallet, udostępniając nam swoje anonimowe dane w celu ulepszenia aplikacji. Szanujemy Twoją prywatność."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8739,6 +9201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਇਤਿਹਾਸ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historia"
           }
         },
         "pt-BR" : {
@@ -8853,6 +9321,12 @@
             "value" : "ਅਣਡਿੱਠ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorować"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8898,7 +9372,14 @@
       }
     },
     "In progress: %1$@" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قيد التقدم: %1$@"
+          }
+        }
+      }
     },
     "Invalid" : {
       "localizations" : {
@@ -8966,6 +9447,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਅਵੈਧ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieprawidłowy"
           }
         },
         "pt-BR" : {
@@ -9080,6 +9567,12 @@
             "value" : "ਗਲਤ ਪਤਾ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieprawidłowy adres"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9190,6 +9683,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਲਾਈਟਕੋਇਨ ਡਿਸਪਲੇ ਯੂਨਿਟ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyświetlacz Litecoin"
           }
         },
         "pt-BR" : {
@@ -9304,6 +9803,12 @@
             "value" : "ਵਾਲਿਟ ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ładowanie portfela"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9414,6 +9919,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਸਥਾਨ:%@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokalizacja: %@"
           }
         },
         "pt-BR" : {
@@ -9640,6 +10151,12 @@
             "value" : "ਪ੍ਰਬੰਧਿਤ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zarządzanie"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9752,6 +10269,12 @@
             "value" : "ਮੀਨੂ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9797,10 +10320,24 @@
       }
     },
     "Money Sent!" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم إرسال المال!"
+          }
+        }
+      }
     },
     "Moved <b>%1@</b>" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نُقِل <b>%1@</b>"
+          }
+        }
+      }
     },
     "New address copied" : {
       "localizations" : {
@@ -9868,6 +10405,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਨਵਾਂ ਪਤਾ ਕਾਪੀ ਕੀਤਾ ਗਿਆ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skopiowano nowy adres"
           }
         },
         "pt-BR" : {
@@ -10043,7 +10586,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No se encontró conexión a internet. Verifica tu conexión e intenta de nuevo."
+            "value" : "No se encontró conexión a internet. Verifica tu conexión e inténtalo de nuevo."
           }
         },
         "fa" : {
@@ -10092,6 +10635,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਕੋਈ ਇੰਟਰਨੈੱਟ ਕਨੈਕਸ਼ਨ ਨਹੀਂ ਮਿਲਿਆ। ਆਪਣੇ ਕਨੈਕਸ਼ਨ ਦੀ ਜਾਂਚ ਕਰੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie znaleziono połączenia internetowego. Sprawdź połączenie i spróbuj ponownie."
           }
         },
         "pt-BR" : {
@@ -10206,6 +10755,12 @@
             "value" : "ਠੀਕ ਹੈ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10318,6 +10873,12 @@
             "value" : "ਕਾਗਜ਼ ਦੀ ਚਾਬੀ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klucz do papieru"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10363,7 +10924,14 @@
       }
     },
     "Paper Key Set" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مجموعة مفاتيح الورق"
+          }
+        }
+      }
     },
     "Paste" : {
       "localizations" : {
@@ -10431,6 +10999,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਪੇਸਟ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pasta"
           }
         },
         "pt-BR" : {
@@ -10543,6 +11117,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਪ੍ਰਾਪਤਕਰਤਾ ਦੀ ਪਛਾਣ ਪ੍ਰਮਾਣਿਤ ਨਹੀਂ ਹੈ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tożsamość odbiorcy płatności nie jest potwierdzona."
           }
         },
         "pt-BR" : {
@@ -10769,6 +11349,12 @@
             "value" : "ਵਾਕੰਸ਼"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyrażenie"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10879,6 +11465,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਆਪਣੇ ਬ੍ਰੇਨਵਾਲਿਟ ਨੂੰ ਅਨਲੌਕ ਕਰਨ ਲਈ ਇੱਕ ਪਾਸਕੋਡ ਚੁਣੋ। ਫ਼ੋਨ ਲਾਕ ਕੋਡ ਨਹੀਂ! ਇਸਨੂੰ ਵੱਖਰਾ ਬਣਾਓ। ਇਸਨੂੰ ਠੰਡਾ ਬਣਾਓ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz kod, aby odblokować Brainwallet. Nie kod blokady telefonu! Spraw, by było inaczej. Niech będzie fajnie"
           }
         },
         "pt-BR" : {
@@ -10993,6 +11585,12 @@
             "value" : "ਪਿੰਨ ਲੋੜੀਂਦਾ ਹੈ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wymagany kod PIN"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11038,7 +11636,14 @@
       }
     },
     "PIN Set" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين الرقم السري"
+          }
+        }
+      }
     },
     "Please enter the recipient's address." : {
       "localizations" : {
@@ -11106,6 +11711,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਕਿਰਪਾ ਕਰਕੇ ਪ੍ਰਾਪਤਕਰਤਾ ਦਾ ਪਤਾ ਦਰਜ ਕਰੋ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź adres odbiorcy."
           }
         },
         "pt-BR" : {
@@ -11269,7 +11880,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "يرجى إدخال الرقم السري للمتابعة."
+            "value" : "يرجى إدخال رقم التعريف الشخصي للمتابعة."
           }
         },
         "de" : {
@@ -11330,6 +11941,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਜਾਰੀ ਰੱਖਣ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਪਿੰਨ ਦਰਜ ਕਰੋ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź kod PIN, aby kontynuować."
           }
         },
         "pt-BR" : {
@@ -11444,6 +12061,12 @@
             "value" : "ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਪਿੰਨ ਅਤੇ ਸੀਡ ਵਾਕੰਸ਼ ਲਿਖਣ ਲਈ ਇੱਕ ਨਿੱਜੀ ਜਗ੍ਹਾ ਲੱਭੋ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prosimy o znalezienie prywatnego miejsca do zapisania kodu PIN i frazy inicjującej."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11556,6 +12179,12 @@
             "value" : "ਕਿਰਪਾ ਕਰਕੇ ਪੜ੍ਹੋ!"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PROSZĘ PRZECZYTAĆ!"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11666,6 +12295,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਕਿਰਪਾ ਕਰਕੇ ਇਸਨੂੰ ਲਿਖ ਲਓ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proszę, zapisz to"
           }
         },
         "pt-BR" : {
@@ -11892,6 +12527,12 @@
             "value" : "ਪਰਾਈਵੇਟ ਨੀਤੀ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polityka prywatności"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12002,6 +12643,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਪ੍ਰੋਸੈਸਿੰਗ ਸਪੀਡ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szybkość przetwarzania"
           }
         },
         "pt-BR" : {
@@ -12228,6 +12875,12 @@
             "value" : "ਪਿੰਨ ਦੁਬਾਰਾ ਦਰਜ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponowne wprowadzenie kodu PIN"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12338,6 +12991,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਆਪਣਾ ਨਵਾਂ ਪਿੰਨ ਦੁਬਾਰਾ ਦਰਜ ਕਰੋ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź ponownie nowy kod PIN."
           }
         },
         "pt-BR" : {
@@ -12452,6 +13111,12 @@
             "value" : "ਤਿਆਰ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gotowy"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12564,6 +13229,12 @@
             "value" : "ਪ੍ਰਾਪਤ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odbiór"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12613,7 +13284,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "استلم"
+            "value" : "استلام"
           }
         },
         "de" : {
@@ -12674,6 +13345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਪ੍ਰਾਪਤ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ODBIÓR"
           }
         },
         "pt-BR" : {
@@ -12833,10 +13510,24 @@
       }
     },
     "Received <b>%1@</b>" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم الاستلام <b>%1@</b>"
+          }
+        }
+      }
     },
     "Received at this Address" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم الاستلام في هذا العنوان"
+          }
+        }
+      }
     },
     "Recover" : {
       "localizations" : {
@@ -12904,6 +13595,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਮੁੜ ਪ੍ਰਾਪਤ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odzyskaj"
           }
         },
         "pt-BR" : {
@@ -13018,6 +13715,12 @@
             "value" : "ਆਪਣੀ ਪੇਪਰ ਚਾਬੀ ਨਾਲ ਆਪਣਾ ਬ੍ਰੇਨਵਾਲਿਟ ਮੁੜ ਪ੍ਰਾਪਤ ਕਰੋ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odzyskaj Brainwallet za pomocą papierowego klucza."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13130,6 +13833,12 @@
             "value" : "ਇਸ ਪਿੰਨ ਨੂੰ ਯਾਦ ਰੱਖੋ। ਜੇਕਰ ਤੁਸੀਂ ਇਸਨੂੰ ਭੁੱਲ ਜਾਂਦੇ ਹੋ, ਤਾਂ ਤੁਸੀਂ ਆਪਣੇ Litecoin ਤੱਕ ਪਹੁੰਚ ਨਹੀਂ ਕਰ ਸਕੋਗੇ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapamiętaj ten kod PIN. Jeśli go zapomnisz, nie będziesz mieć dostępu do swoich Litecoinów."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13240,6 +13949,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਬੇਨਤੀ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Żądanie"
           }
         },
         "pt-BR" : {
@@ -13466,6 +14181,12 @@
             "value" : "ਮੁੜ ਸਕੈਨ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponowne skanowanie..."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13578,6 +14299,12 @@
             "value" : "ਪਿੰਨ ਰੀਸੈਟ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset PIN"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13623,7 +14350,14 @@
       }
     },
     "Resolved" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محلول"
+          }
+        }
+      }
     },
     "Restore" : {
       "localizations" : {
@@ -13691,6 +14425,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਰੀਸਟੋਰ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przywracanie"
           }
         },
         "pt-BR" : {
@@ -13805,6 +14545,12 @@
             "value" : "ਆਪਣੀ ਸ਼ਕਤੀ ਬਹਾਲ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przywróć swoją moc"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13915,6 +14661,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਰੀਸਟੋਰ ਕਰੋ!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przywróć!"
           }
         },
         "pt-BR" : {
@@ -14029,6 +14781,12 @@
             "value" : "ਆਪਣੇ 12 ਸ਼ਬਦ ਸੇਵ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapisz swoje 12 słów"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14139,6 +14897,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਸਕੈਨ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skanowanie"
           }
         },
         "pt-BR" : {
@@ -14253,6 +15017,12 @@
             "value" : "ਸੁਰੱਖਿਆ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bezpieczeństwo"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14363,6 +15133,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਭੇਜੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyślij"
           }
         },
         "pt-BR" : {
@@ -14477,6 +15253,12 @@
             "value" : "ਭੇਜੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WYŚLIJ"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14522,7 +15304,14 @@
       }
     },
     "Send Confirmation" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إرسال تأكيد"
+          }
+        }
+      }
     },
     "Send failed" : {
       "localizations" : {
@@ -14592,6 +15381,12 @@
             "value" : "ਭੇਜਣਾ ਅਸਫਲ ਰਿਹਾ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wysyłanie nie powiodło się"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14637,10 +15432,24 @@
       }
     },
     "Sent <b>%1@</b>" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم الإرسال <b>%1@</b>"
+          }
+        }
+      }
     },
     "Sent to this Address" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مرسل إلى هذا العنوان"
+          }
+        }
+      }
     },
     "Set amount:" : {
       "localizations" : {
@@ -14708,6 +15517,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਰਕਮ ਸੈੱਟ ਕਰੋ:"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawiona kwota:"
           }
         },
         "pt-BR" : {
@@ -14822,6 +15637,12 @@
             "value" : "ਐਪ ਪਿੰਨ ਸੈੱਟ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawianie kodu PIN aplikacji"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14932,6 +15753,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਪਿੰਨ ਸੈੱਟ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustaw PIN"
           }
         },
         "pt-BR" : {
@@ -15158,6 +15985,12 @@
             "value" : "ਸੈਟਿੰਗਾਂ ਦ੍ਰਿਸ਼"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widok ustawień"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15268,6 +16101,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਐਪ ਪਾਸਕੋਡ ਸੈੱਟਅੱਪ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konfiguracja kodu aplikacji"
           }
         },
         "pt-BR" : {
@@ -15494,6 +16333,12 @@
             "value" : "ਅਗਿਆਤ ਡੇਟਾ ਸਾਂਝਾ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Udostępnianie anonimowych danych"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15604,6 +16449,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਕੀ ਅਗਿਆਤ ਡੇਟਾ ਸਾਂਝਾ ਕਰਨਾ ਹੈ?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Udostępniać anonimowe dane?"
           }
         },
         "pt-BR" : {
@@ -15718,6 +16569,12 @@
             "value" : "ਡਾਟਾ ਸਾਂਝਾ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Udostępnianie danych"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15828,6 +16685,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਕੀ ਡਾਟਾ ਸਾਂਝਾ ਕਰਨਾ ਹੈ?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Udostępniać dane?"
           }
         },
         "pt-BR" : {
@@ -15942,6 +16805,12 @@
             "value" : "ਬੀਜ ਸ਼ਬਦ ਦਿਖਾਓ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaż słowa zalążkowe"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16052,6 +16921,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਸੋਸ਼ਲ ਲਿੰਕ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Linki społecznościowe"
           }
         },
         "pt-BR" : {
@@ -16166,6 +17041,12 @@
             "value" : "ਇੱਕ ਹੋਰ ਵਾਲਿਟ ਸ਼ੁਰੂ ਕਰੋ ਜਾਂ ਮੁੜ ਪ੍ਰਾਪਤ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uruchomienie lub odzyskanie innego portfela"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16276,6 +17157,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਉੱਪਰ ਵੱਲ ਸਵਾਈਪ ਕਰਕੇ ਅਤੇ ਐਪ ਨੂੰ ਰੀਸਟਾਰਟ ਕਰਕੇ ਦੁਬਾਰਾ ਸ਼ੁਰੂ ਕਰੋ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zacznij od nowa, przesuwając palcem w górę i ponownie uruchamiając aplikację."
           }
         },
         "pt-BR" : {
@@ -16502,6 +17389,12 @@
             "value" : "ਇੱਕ ਹੋਰ ਵਾਲਿਟ ਸ਼ੁਰੂ ਕਰਨ ਜਾਂ ਰਿਕਵਰ ਕਰਨ ਨਾਲ ਤੁਸੀਂ ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਇੱਕ ਵੱਖਰੇ ਬ੍ਰੇਨਵਾਲਿਟ ਵਾਲਿਟ ਤੱਕ ਪਹੁੰਚ ਅਤੇ ਪ੍ਰਬੰਧਨ ਕਰ ਸਕਦੇ ਹੋ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uruchomienie lub odzyskanie innego portfela umożliwia dostęp do innego portfela Brainwallet i zarządzanie nim na tym urządzeniu."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16659,10 +17552,24 @@
       }
     },
     "Success" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نجاح"
+          }
+        }
+      }
     },
     "Successfully imported wallet." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم استيراد المحفظة بنجاح."
+          }
+        }
+      }
     },
     "Support" : {
       "localizations" : {
@@ -16730,6 +17637,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਸਹਿਯੋਗ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wsparcie"
           }
         },
         "pt-BR" : {
@@ -16844,6 +17757,12 @@
             "value" : "ਸਿੰਕ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronizacja"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16954,6 +17873,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਸਿੰਕ ਬਲਾਕਚੈਨ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronizacja łańcucha bloków"
           }
         },
         "pt-BR" : {
@@ -17068,6 +17993,12 @@
             "value" : "ਬਲਾਕਚੈਨ ਨਾਲ ਸਿੰਕ ਕਰਨਾ ਹੈ?"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronizacja z Blockchain?"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17178,6 +18109,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਸਿੰਕ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronizacja..."
           }
         },
         "pt-BR" : {
@@ -17292,6 +18229,12 @@
             "value" : "ਆਪਣੇ Litecoin ਨੂੰ ਸੁਰੱਖਿਅਤ ਕਰਨ ਲਈ ਅਗਲੇ 5 ਮਿੰਟ ਕੱਢੋ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poświęć następne 5 minut na zabezpieczenie swoich Litecoinów."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17404,6 +18347,12 @@
             "value" : "ਹੋਰ ਜਾਣਕਾਰੀ ਲਈ ਇੱਥੇ ਟੈਪ ਕਰੋ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kliknij tutaj, aby uzyskać więcej informacji."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17453,7 +18402,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "اضغط هنا لتمكين التعرف على الوجه"
+            "value" : "اضغط هنا لتمكين خاصية التعرف على الوجه"
           }
         },
         "de" : {
@@ -17514,6 +18463,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਫੇਸ ਆਈਡੀ ਚਾਲੂ ਕਰਨ ਲਈ ਇੱਥੇ ਟੈਪ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stuknij tutaj, aby włączyć Face ID"
           }
         },
         "pt-BR" : {
@@ -17628,6 +18583,12 @@
             "value" : "ਟੱਚ ਆਈਡੀ ਚਾਲੂ ਕਰਨ ਲਈ ਇੱਥੇ ਟੈਪ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stuknij tutaj, aby włączyć Touch ID"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17738,6 +18699,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਮੁੜ-ਸਕੈਨ ਕਰਨ ਲਈ ਇੱਥੇ ਟੈਪ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stuknij tutaj, aby wykonać ponowne skanowanie"
           }
         },
         "pt-BR" : {
@@ -17852,6 +18819,12 @@
             "value" : "ਵਿਸ਼ਲੇਸ਼ਣ ਡੇਟਾ ਨੂੰ ਗੁਮਨਾਮ ਤੌਰ 'ਤੇ ਸਾਂਝਾ ਕਰਨ ਲਈ ਇੱਥੇ ਟੈਪ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kliknij tutaj, aby anonimowo udostępnić dane analityczne"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17962,6 +18935,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਪਾਸਕੋਡ ਚਾਲੂ ਕਰਨ ਲਈ ਇੱਥੇ ਟੈਪ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stuknij tutaj, aby włączyć kod dostępu"
           }
         },
         "pt-BR" : {
@@ -18076,6 +19055,12 @@
             "value" : "ਆਪਣਾ ਪਿੰਨ ਅੱਪਡੇਟ ਕਰਨ ਲਈ ਇੱਥੇ ਟੈਪ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stuknij tutaj, aby zaktualizować kod PIN"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18125,7 +19110,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "اضغط هنا للتحقق من عبارة البذور المكونة من 12 كلمة الخاصة بك"
+            "value" : "اضغط هنا للتحقق من عبارة الاسترداد المكونة من 12 كلمة الخاصة بك"
           }
         },
         "de" : {
@@ -18186,6 +19171,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਆਪਣੇ 12 ਸ਼ਬਦਾਂ ਵਾਲੇ ਸੀਡ ਵਾਕੰਸ਼ ਦੀ ਪੁਸ਼ਟੀ ਕਰਨ ਲਈ ਇੱਥੇ ਟੈਪ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kliknij tutaj, aby zweryfikować 12-słowną frazę początkową"
           }
         },
         "pt-BR" : {
@@ -18300,6 +19291,12 @@
             "value" : "ਟੈਕਸਟ ਸੁਨੇਹਾ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiadomość tekstowa"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18412,6 +19409,12 @@
             "value" : "ਟੈਕਸਟ ਸੁਨੇਹਾ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiadomość tekstowa"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18522,6 +19525,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਮੰਜ਼ਿਲ ਤੁਹਾਡਾ ਆਪਣਾ ਪਤਾ ਹੈ। ਤੁਸੀਂ ਆਪਣੇ ਆਪ ਨੂੰ ਨਹੀਂ ਭੇਜ ਸਕਦੇ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miejscem docelowym jest adres użytkownika. Nie można wysyłać do samego siebie."
           }
         },
         "pt-BR" : {
@@ -18860,6 +19869,12 @@
             "value" : "ਇਹ ਤੁਹਾਡੇ ਬੀਜ ਸ਼ਬਦ ਹਨ। ਜੇਕਰ ਤੁਸੀਂ ਉਹਨਾਂ ਨੂੰ ਕਿਸੇ ਨੂੰ ਦਿਖਾਉਂਦੇ ਹੋ, ਤਾਂ ਉਹ ਤੁਹਾਡਾ Litecoin ਲੈ ਸਕਦੇ ਹਨ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To są twoje słowa zalążkowe. Jeśli pokażesz je komukolwiek, może on zabrać twoje Litecoiny"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18970,6 +19985,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਇਸ ਵਿਕਲਪ ਦੀ ਸਿਫ਼ਾਰਸ਼ ਸਮੇਂ-ਸੰਵੇਦਨਸ਼ੀਲ ਲੈਣ-ਦੇਣ ਲਈ ਨਹੀਂ ਕੀਤੀ ਜਾਂਦੀ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ta opcja nie jest zalecana w przypadku transakcji wrażliwych na czas."
           }
         },
         "pt-BR" : {
@@ -19084,6 +20105,12 @@
             "value" : "ਇਹ ਵਿਕਲਪ ਤੁਹਾਡੇ ਪ੍ਰੀਮੀਅਮ ਦਾ ਭੁਗਤਾਨ ਕਰਦੇ ਸਮੇਂ ਤੁਹਾਡੇ ਲੈਣ-ਦੇਣ ਦੀ ਸਵੀਕ੍ਰਿਤੀ ਦੀ ਅਸਲ ਵਿੱਚ ਗਰੰਟੀ ਦਿੰਦਾ ਹੈ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ta opcja praktycznie gwarantuje akceptację transakcji przy jednoczesnym uiszczeniu premii."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19194,6 +20221,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਇਹ ਤੁਹਾਨੂੰ ਆਪਣੇ ਪਿਛਲੇ ਬਕਾਏ ਤੋਂ ਭੇਜਣ ਅਤੇ ਪ੍ਰਾਪਤ ਕਰਨ ਦੀ ਆਗਿਆ ਦੇਵੇਗਾ। ਤੁਹਾਨੂੰ ਇੱਕ ਨਵਾਂ ਪਿੰਨ ਸੈੱਟ ਕਰਨ ਦੀ ਲੋੜ ਹੋਵੇਗੀ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umożliwi to wysyłanie i odbieranie z poprzedniego salda. Konieczne będzie ustawienie nowego kodu PIN"
           }
         },
         "pt-BR" : {
@@ -19308,6 +20341,12 @@
             "value" : "ਇਹ ਤੁਹਾਡਾ ਪਿੰਨ, ਡੇਟਾ ਅਤੇ ਮੈਮੋ ਮਿਟਾ ਦੇਵੇਗਾ। ਇਸਨੂੰ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spowoduje to usunięcie kodu PIN, danych i notatek. Nie można tego cofnąć."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19418,6 +20457,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਟਾਈਮਸਟੈਂਪ: "
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Znacznik czasu: "
           }
         },
         "pt-BR" : {
@@ -19532,6 +20577,12 @@
             "value" : "ਨੂੰ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "do"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19577,7 +20628,14 @@
       }
     },
     "to %1$@" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إلى %1$@"
+          }
+        }
+      }
     },
     "To make sure everything was written down correctly, please enter the following words from your paper key." : {
       "localizations" : {
@@ -19645,6 +20703,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਇਹ ਯਕੀਨੀ ਬਣਾਉਣ ਲਈ ਕਿ ਸਭ ਕੁਝ ਸਹੀ ਢੰਗ ਨਾਲ ਲਿਖਿਆ ਗਿਆ ਹੈ, ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀ ਪੇਪਰ ਕੀ ਤੋਂ ਹੇਠਾਂ ਦਿੱਤੇ ਸ਼ਬਦ ਦਰਜ ਕਰੋ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aby upewnić się, że wszystko zostało poprawnie zapisane, wpisz następujące słowa z klucza do papieru."
           }
         },
         "pt-BR" : {
@@ -19759,6 +20823,12 @@
             "value" : "ਨਵਾਂ ਵਾਲਿਟ ਸ਼ੁਰੂ ਕਰਨ ਜਾਂ ਮੌਜੂਦਾ ਵਾਲਿਟ ਨੂੰ ਬਹਾਲ ਕਰਨ ਲਈ, ਤੁਹਾਨੂੰ ਪਹਿਲਾਂ ਉਸ ਵਾਲਿਟ ਨੂੰ ਮਿਟਾਉਣਾ ਪਵੇਗਾ ਜੋ ਮੌਜੂਦਾ ਸਮੇਂ ਵਿੱਚ ਸਥਾਪਿਤ ਹੈ। ਜਾਰੀ ਰੱਖਣ ਲਈ, ਮੌਜੂਦਾ ਵਾਲਿਟ ਦੀ ਪੇਪਰ ਕੀ ਦਰਜ ਕਰੋ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aby uruchomić nowy portfel lub przywrócić istniejący portfel, należy najpierw usunąć aktualnie zainstalowany portfel. Aby kontynuować, wprowadź klucz Paper Key bieżącego portfela."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19869,6 +20939,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਕੁੱਲ ਲਾਗਤ:"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Całkowity koszt:"
           }
         },
         "pt-BR" : {
@@ -19983,6 +21059,12 @@
             "value" : "ਟੱਚ ਆਈਡੀ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touch ID"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20028,14 +21110,21 @@
       }
     },
     "Touch ID Not Set Up" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لم يتم إعداد بصمة الإصبع"
+          }
+        }
+      }
     },
     "Touch ID Spending Limit" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "حد الإنفاق لبصمة الإصبع"
+            "value" : "حد الإنفاق باستخدام بصمة الإصبع"
           }
         },
         "de" : {
@@ -20096,6 +21185,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਟੱਚ ਆਈਡੀ ਖਰਚ ਸੀਮਾ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limit wydatków na Touch ID"
           }
         },
         "pt-BR" : {
@@ -20210,6 +21305,12 @@
             "value" : "ਲੈਣ-ਦੇਣ ਦੀ ਰਕਮ ਦਾ ਵੇਰਵਾ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szczegóły kwoty transakcji"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20320,6 +21421,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਲੈਣ-ਦੇਣ ਟਿੱਪਣੀ ਲੇਬਲ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etykieta komentarza do transakcji"
           }
         },
         "pt-BR" : {
@@ -20434,6 +21541,12 @@
             "value" : "ਲੈਣ-ਦੇਣ ਦੇ ਵੇਰਵੇ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szczegóły transakcji"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20544,6 +21657,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਲੈਣ-ਦੇਣ ਅਸਵੀਕਾਰ ਕੀਤਾ ਗਿਆ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transakcja odrzucona"
           }
         },
         "pt-BR" : {
@@ -20658,6 +21777,12 @@
             "value" : "ਲੈਣ-ਦੇਣ ਦੀ ਪ੍ਰਕਿਰਿਆ ਵਿੱਚ 2.5-5 ਮਿੰਟ ਲੱਗਣਗੇ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przetworzenie transakcji zajmie od 2,5 do 5 minut."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20667,7 +21792,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Транзакция займет 2,5-5 минут на обработку."
+            "value" : "Транзакция займет 2,5-5 минут для обработки."
           }
         },
         "sv" : {
@@ -20768,6 +21893,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਲੈਣ-ਦੇਣ ਦੀ ਪ੍ਰਕਿਰਿਆ ਵਿੱਚ 5+ ਮਿੰਟ ਲੱਗਣਗੇ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przetworzenie transakcji zajmie ponad 5 minut."
           }
         },
         "pt-BR" : {
@@ -20882,6 +22013,12 @@
             "value" : "ਲੈਣ-ਦੇਣ ਨੂੰ ਪ੍ਰਕਿਰਿਆ ਕਰਨ ਵਿੱਚ ਲਗਭਗ 5 ਮਿੰਟ ਲੱਗਦੇ ਹਨ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przetwarzanie transakcji trwa około 5 minut."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20994,6 +22131,12 @@
             "value" : "ਡੀਵਾਈਸ ਪਾਸਕੋਡ ਚਾਲੂ ਕਰੋ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włączanie kodu urządzenia"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21003,7 +22146,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Включите код-пароль устройства"
+            "value" : "Включите код доступа устройства"
           }
         },
         "sv" : {
@@ -21104,6 +22247,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਪਿੰਨ ਅੱਪਡੇਟ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualizacja kodu PIN"
           }
         },
         "pt-BR" : {
@@ -21218,6 +22367,12 @@
             "value" : "ਆਪਣੇ ਬ੍ਰੇਨਵਾਲਿਟ ਨੂੰ ਅਨਲੌਕ ਕਰਨ ਲਈ ਆਪਣੇ ਚਿਹਰੇ ਦੀ ਵਰਤੋਂ ਕਰੋ ਅਤੇ ਇੱਕ ਨਿਰਧਾਰਤ ਸੀਮਾ ਤੱਕ ਪੈਸੇ ਭੇਜੋ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Użyj swojej twarzy, aby odblokować Brainwallet i wysłać pieniądze do ustalonego limitu."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21328,6 +22483,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਆਪਣੇ ਬ੍ਰੇਨਵਾਲਿਟ ਨੂੰ ਅਨਲੌਕ ਕਰਨ ਲਈ ਆਪਣੇ ਫਿੰਗਰਪ੍ਰਿੰਟ ਦੀ ਵਰਤੋਂ ਕਰੋ ਅਤੇ ਇੱਕ ਨਿਰਧਾਰਤ ਸੀਮਾ ਤੱਕ ਪੈਸੇ ਭੇਜੋ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Użyj odcisku palca, aby odblokować Brainwallet i wysłać pieniądze do ustalonego limitu."
           }
         },
         "pt-BR" : {
@@ -21442,6 +22603,12 @@
             "value" : "ਰਾਹੀਂ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "za pośrednictwem"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21552,6 +22719,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਬਟੂਆ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portfel"
           }
         },
         "pt-BR" : {
@@ -21666,6 +22839,12 @@
             "value" : "ਵਾਲੇਟ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portfel został usunięty"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21776,6 +22955,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਚੇਤਾਵਨੀ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ostrzeżenie"
           }
         },
         "pt-BR" : {
@@ -21890,6 +23075,12 @@
             "value" : "ਸਵਾਗਤ ਹੈ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Witamy"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22002,6 +23193,12 @@
             "value" : "ਵਾਈਪ ਬ੍ਰੇਨਵਾਲਿਟ"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wipe Brainwallet"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22112,6 +23309,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਮੇਰਾ ਬ੍ਰੇਨਵਾਲਿਟ ਅਤੇ ਡੇਟਾ ਪੂੰਝੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyczyść mój Brainwallet i dane"
           }
         },
         "pt-BR" : {
@@ -22336,6 +23539,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਹਰੇਕ ਸ਼ਬਦ ਨੂੰ ਕ੍ਰਮ ਅਨੁਸਾਰ ਲਿਖੋ ਅਤੇ ਇਸਨੂੰ ਇੱਕ ਸੁਰੱਖਿਅਤ ਜਗ੍ਹਾ 'ਤੇ ਸਟੋਰ ਕਰੋ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapisz każde słowo w kolejności i przechowuj je w bezpiecznym miejscu."
           }
         },
         "pt-BR" : {
@@ -22674,6 +23883,12 @@
             "value" : "ਤੁਸੀਂ ਉੱਥੋਂ ਵਾਪਸ ਆ ਸਕਦੇ ਹੋ ਜਿੱਥੋਂ ਤੁਸੀਂ ਸ਼ੁਰੂ ਕੀਤਾ ਸੀ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Możesz wrócić z miejsca, w którym zacząłeś"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22786,6 +24001,12 @@
             "value" : "ਤੁਸੀਂ \"ਰੀਸਟੋਰ\" 'ਤੇ ਟੈਪ ਕਰਕੇ ਅਤੇ ਫਿਰ ਆਪਣੇ ਪਹਿਲਾਂ ਸੁਰੱਖਿਅਤ ਕੀਤੇ 12 ਸੀਡ ਸ਼ਬਦ ਦਰਜ ਕਰਕੇ ਦੁਬਾਰਾ ਸ਼ੁਰੂਆਤ ਕਰ ਸਕਦੇ ਹੋ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Możesz zacząć od nowa, dotykając przycisku PRZYWRÓĆ, a następnie wprowadzając wcześniej zapisane 12 słów początkowych."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22795,7 +24016,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вы можете начать заново, нажав ВОССТАНОВИТЬ, а затем введя ранее сохраненные 12 слов-семян."
+            "value" : "Вы можете начать заново, нажав ВОССТАНОВИТЬ, а затем введя ранее сохраненные 12 ключевых слов."
           }
         },
         "sv" : {
@@ -22898,6 +24119,12 @@
             "value" : "ਤੁਸੀਂ ਭੁੱਲੇ ਨਹੀਂ, ਕੀ ਤੁਸੀਂ? ਇਸਨੂੰ ਦੁਬਾਰਾ ਦਰਜ ਕਰੋ। ਜਾਂ, ਦੁਬਾਰਾ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਵਾਪਸ ਜਾਓ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie zapomniałeś, prawda? Wprowadź go ponownie. Albo wrócić i zacząć od nowa."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22943,10 +24170,24 @@
       }
     },
     "You have not set up Face ID on this device. Go to Settings->Face ID & Passcode to set it up now." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لم تقم بإعداد خاصية التعرف على الوجه على هذا الجهاز. اذهب إلى الإعدادات -> معرف الوجه وكلمة المرور لإعداده الآن."
+          }
+        }
+      }
     },
     "You have not set up Touch ID on this device. Go to Settings->Touch ID & Passcode to set it up now." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لم تقم بإعداد بصمة الإصبع على هذا الجهاز. اذهب إلى الإعدادات -> بصمة الإصبع وكلمة المرور لتعيينها الآن."
+          }
+        }
+      }
     },
     "You last wrote down your paper key on %1$@" : {
       "localizations" : {
@@ -23014,6 +24255,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਤੁਸੀਂ ਆਖਰੀ ਵਾਰ ਆਪਣੀ ਪੇਪਰ ਕੁੰਜੀ %1$@ 'ਤੇ ਲਿਖੀ ਸੀ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ostatni raz zapisałeś swój klucz do papieru w dniu %1$@"
           }
         },
         "pt-BR" : {
@@ -23128,6 +24375,12 @@
             "value" : "ਤੁਹਾਡੀ ਖਰਚ ਸੀਮਾ ਤੋਂ ਵੱਧ ਕਿਸੇ ਵੀ ਲੈਣ-ਦੇਣ ਨੂੰ ਭੇਜਣ ਲਈ ਤੁਹਾਨੂੰ ਆਪਣਾ 6-ਅੰਕਾਂ ਵਾਲਾ ਪਿੰਨ ਦਰਜ ਕਰਨ ਲਈ ਕਿਹਾ ਜਾਵੇਗਾ, ਅਤੇ ਆਖਰੀ ਵਾਰ ਜਦੋਂ ਤੁਸੀਂ ਆਪਣਾ 6-ਅੰਕਾਂ ਵਾਲਾ ਪਿੰਨ ਦਰਜ ਕੀਤਾ ਸੀ, ਉਸ ਤੋਂ ਬਾਅਦ ਹਰ 48 ਘੰਟਿਆਂ ਬਾਅਦ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Użytkownik zostanie poproszony o wprowadzenie 6-cyfrowego kodu PIN w celu wysłania każdej transakcji przekraczającej limit wydatków, a także co 48 godzin od ostatniego wprowadzenia 6-cyfrowego kodu PIN."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23238,6 +24491,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਬਲਾਕਚੈਨ ਨਾਲ ਸਿੰਕ ਕਰਦੇ ਸਮੇਂ ਤੁਸੀਂ ਪੈਸੇ ਨਹੀਂ ਭੇਜ ਸਕੋਗੇ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie będzie można wysyłać pieniędzy podczas synchronizacji z blockchainem."
           }
         },
         "pt-BR" : {
@@ -23352,6 +24611,12 @@
             "value" : "ਸਿੰਕ ਕਰਦੇ ਸਮੇਂ ਤੁਸੀਂ ਪੈਸੇ ਨਹੀਂ ਭੇਜ ਸਕੋਗੇ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie będzie można wysyłać pieniędzy podczas synchronizacji."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23462,6 +24727,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਤੁਹਾਡਾ ਮੌਜੂਦਾ ਵਾਲਿਟ ਇਸ ਡਿਵਾਈਸ ਤੋਂ ਹਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ। ਜੇਕਰ ਤੁਸੀਂ ਭਵਿੱਖ ਵਿੱਚ ਇਸਨੂੰ ਰੀਸਟੋਰ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ, ਤਾਂ ਤੁਹਾਨੂੰ ਆਪਣੀ ਪੇਪਰ ਕੀ ਦਰਜ ਕਰਨ ਦੀ ਲੋੜ ਹੋਵੇਗੀ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obecny portfel zostanie usunięty z tego urządzenia. Aby przywrócić ją w przyszłości, należy wprowadzić klucz Paper Key."
           }
         },
         "pt-BR" : {
@@ -23579,6 +24850,12 @@
             "value" : "ਤੁਹਾਡੇ ਪਿੰਨ ਦੀ ਵਰਤੋਂ ਤੁਹਾਡੇ ਬ੍ਰੇਨਵਾਲਿਟ ਨੂੰ ਅਨਲੌਕ ਕਰਨ ਅਤੇ ਪੈਸੇ ਭੇਜਣ ਲਈ ਕੀਤੀ ਜਾਵੇਗੀ।"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Twój kod PIN zostanie użyty do odblokowania Brainwallet i wysłania pieniędzy."
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23691,6 +24968,12 @@
             "value" : "ਤੁਹਾਡੇ ਬੀਜ ਸ਼ਬਦ "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Twoje słowa zalążkowe "
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23801,6 +25084,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ਤੁਹਾਡੇ ਬੀਜ ਸ਼ਬਦ, ਸਾਬਤ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Twoje słowa o nasionach, udowodnij to"
           }
         },
         "pt-BR" : {
