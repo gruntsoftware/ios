@@ -145,8 +145,11 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
         let iOSMajor: String = ProcessInfo.processInfo.operatingSystemVersion.majorVersion.description
         let iOSMinor: String = ProcessInfo.processInfo.operatingSystemVersion.minorVersion.description
         let iOSVersion = iOSMajor + "." + iOSMinor
-        let formattedExternalID = String(format: "brainwallet-ios,%@,%@-iOS%@",AppVersion.string,
-                                         deviceName, iOSVersion)
+        let udid = UUID().uuidString
+        let formattedExternalID = String(format: "brainwallet-ios,%@,%@-iOS%@,%@",
+                                         AppVersion.string,
+                                         deviceName,
+                                         iOSVersion, udid)
 
         let obfuscatedExternalID: String = Utility().encryptMessageRSA2048(formattedExternalID)
 
