@@ -64,13 +64,11 @@ struct SettingsExpandingBlockchainView: View {
                         }
                         .frame(height: 44.0)
                         .padding(.top, 1.0)
-
                         SecurityListView(viewModel: viewModel)
                             .transition(.opacity)
                             .transition(.slide)
                             .animation(.easeInOut(duration: 0.7))
                             .frame(height: shouldExpandBlockchain ? 200.0 : 0.1)
-
                         Spacer()
                     }
 

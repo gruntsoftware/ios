@@ -145,7 +145,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
         if shouldShow {
             self.showSettingsConstant = 65.0
-            self.settingsViewPlacement = 0
+            self.settingsViewPlacement = 0.0
             self.barShouldBeHidden = true
             self.setNeedsStatusBarAppearanceUpdate()
             // Update existing constraints

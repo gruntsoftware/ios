@@ -91,9 +91,11 @@ struct SettingsView: View {
 
                 let width = geometry.size.width
                 ZStack {
+                    BrainwalletColor.content.edgesIgnoringSafeArea(.all)
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
+                        .padding(.trailing, 1.0)
+
                     HStack {
-                        Spacer()
                         VStack {
                             List {
                                 SettingsExpandingSecurityView(title: String(localized: "Security"),
@@ -116,6 +118,7 @@ struct SettingsView: View {
                                 .listRowSeparatorTint(BrainwalletColor.content)
                                 SettingsExpandingBlockchainView(title: String(localized: "Blockchain: Litecoin"),
                                     viewModel: newMainViewModel, shouldExpandBlockchain: $shouldExpandBlockchain)
+                                .frame(maxWidth: .infinity)
                                 .frame(height: shouldExpandBlockchain ? 200 : 44.0)
                                 .background(BrainwalletColor.surface)
                                 .listRowBackground(BrainwalletColor.surface)
@@ -152,13 +155,11 @@ struct SettingsView: View {
                                 .listRowSeparatorTint(BrainwalletColor.content)
 
                             }
-                            .background(BrainwalletColor.surface)
                             .listStyle(.plain)
                             .scrollIndicators(.hidden)
                             .buttonStyle(PlainButtonStyle())
                             SettingsFooterView()
-                                .frame(width: width * 0.9,
-                                       height: footerRowHeight)
+                                .frame(height: footerRowHeight)
                                 .padding(.bottom, 1.0)
                         }
                         .frame(width: width * 0.9)
@@ -168,13 +169,19 @@ struct SettingsView: View {
                         .onChange(of: isLocked) { _ in
                             newMainViewModel.lockBrainwallet()
                         }
-                        Divider()
-                            .frame(width: 1.5)
-                            .overlay(BrainwalletColor.content)
                     }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.trailing, 1.0)
+
                 }
 
             }
         }
     }
 }
+
+// .frame(width: width * 0.9)
+//
+// Divider()
+//    .frame(width: 1.5)
+//    .overlay(BrainwalletColor.content)

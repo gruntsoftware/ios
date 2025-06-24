@@ -2088,6 +2088,9 @@
         }
       }
     },
+    "BALANCE" : {
+
+    },
     "Balance :" : {
       "localizations" : {
         "ar" : {
@@ -8946,6 +8949,24 @@
         }
       }
     },
+    "Fiat Currency" : {
+
+    },
+    "Game 1" : {
+
+    },
+    "Game 2" : {
+
+    },
+    "Game 3" : {
+
+    },
+    "Game 4" : {
+
+    },
+    "Games" : {
+
+    },
     "Go to Settings to allow camera access." : {
       "localizations" : {
         "ar" : {
@@ -9057,24 +9078,6 @@
           }
         }
       }
-    },
-    "Fiat Currency" : {
-
-    },
-    "Game 1" : {
-
-    },
-    "Game 2" : {
-
-    },
-    "Game 3" : {
-
-    },
-    "Game 4" : {
-
-    },
-    "Games" : {
-
     },
     "Help improve Brainwallet by sharing your anonymous data with us to improve the app. We respect your privacy." : {
       "localizations" : {

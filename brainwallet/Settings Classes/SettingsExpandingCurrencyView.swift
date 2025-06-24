@@ -81,13 +81,11 @@ struct SettingsExpandingCurrencyView: View {
                         }
                         .frame(height: 44.0)
                         .padding(.top, 1.0)
-
                         CurrencyPickerView(viewModel: viewModel, pickedCurrency: $pickedCurrency)
                             .transition(.opacity)
-                            .transition(.slide)
-                            .animation(.easeInOut(duration: 0.2))
-                            .frame(height: shouldExpandCurrency ? 100.0 : 0.1)
-
+                            .transition(.move(edge: .top))
+                            .animation(.easeInOut(duration: 0.3))
+                            .frame(height: shouldExpandCurrency ? 110.0 : 0.1)
                         Spacer()
                     }
 
