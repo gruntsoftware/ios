@@ -20,7 +20,7 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 		addressText = address
 		self.isUsingBiometrics = isUsingBiometrics
 
-		header = ModalHeaderView(title: "Confirmation" , style: .dark)
+		header = ModalHeaderView(title: String(localized: "Confirmation") , style: .dark)
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -35,7 +35,7 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 	private let isUsingBiometrics: Bool
 
 	// ContentBoxPresenter
-	let contentBox = UIView(color: .white)
+	let contentBox = UIView(color: BrainwalletUIColor.surface)
 	let blurView = UIVisualEffectView()
 	let effect = UIBlurEffect(style: .dark)
 
@@ -43,8 +43,8 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 	var cancelCallback: (() -> Void)?
 
 	private var header: ModalHeaderView?
-	private let cancel = ShadowButton(title:  "Cancel"  , type: .flatWhiteBorder)
-	private let sendButton = ShadowButton(title: "Send" , type: .flatLitecoinBlue, image: LAContext.biometricType() == .face ? #imageLiteral(resourceName: "FaceId") : #imageLiteral(resourceName: "TouchId"))
+	private let cancel = ShadowButton(title: String(localized: "Cancel")  , type: .flatWhiteBorder)
+	private let sendButton = ShadowButton(title: String(localized: "Send") , type: .flatLitecoinBlue, image: LAContext.biometricType() == .face ? #imageLiteral(resourceName: "FaceId") : #imageLiteral(resourceName: "TouchId"))
 
 	private let payLabel = UILabel(font: .barlowLight(size: 15.0), color: BrainwalletUIColor.content)
 	private let toLabel = UILabel(font: .barlowLight(size: 15.0), color: BrainwalletUIColor.content)
@@ -52,9 +52,9 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 	private let address = UILabel(font: .barlowRegular(size: 15.0), color: BrainwalletUIColor.content)
 
 	private let processingTime = UILabel.wrapping(font: .barlowLight(size: 14.0), color: BrainwalletUIColor.content)
-	private let sendLabel = UILabel(font: .barlowLight(size: 14.0), color: .darkGray)
-	private let feeLabel = UILabel(font: .barlowLight(size: 14.0), color: .darkGray)
-	private let totalLabel = UILabel(font: .barlowLight(size: 14.0), color: .darkGray)
+	private let sendLabel = UILabel(font: .barlowLight(size: 14.0), color: BrainwalletUIColor.content)
+	private let feeLabel = UILabel(font: .barlowLight(size: 14.0), color: BrainwalletUIColor.content)
+	private let totalLabel = UILabel(font: .barlowLight(size: 14.0), color: BrainwalletUIColor.content)
 
 	private let send = UILabel(font: .barlowRegular(size: 15.0), color: BrainwalletUIColor.content)
 	private let fee = UILabel(font: .barlowRegular(size: 15.0), color: BrainwalletUIColor.content)
@@ -70,7 +70,7 @@ class ConfirmationViewController: UIViewController, ContentBoxPresenter {
 
 	private func addSubviews() {
 		view.addSubview(contentBox)
-
+        view.backgroundColor = BrainwalletUIColor.surface
 		guard let header = header
 		else {
 			NSLog("ERROR: Header not initialized")

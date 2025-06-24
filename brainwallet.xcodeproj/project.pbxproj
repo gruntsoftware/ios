@@ -33,7 +33,6 @@
 		2416CE792DA90D0D00FFBD10 /* BRCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5F2DA90D0D00FFBD10 /* BRCoding.swift */; };
 		2416CE7A2DA90D0D00FFBD10 /* BRKeyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE602DA90D0D00FFBD10 /* BRKeyExtension.swift */; };
 		2416CE7C2DA90D0D00FFBD10 /* BRCalculationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5E2DA90D0D00FFBD10 /* BRCalculationExtension.swift */; };
-		241B47802DCEA08000279954 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 241B477F2DCEA08000279954 /* Localizable.xcstrings */; };
 		241D223F2DB526A1000302C8 /* ReadyRestoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D223E2DB52699000302C8 /* ReadyRestoreView.swift */; };
 		241D22412DB526AE000302C8 /* SetPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22402DB526AC000302C8 /* SetPasscodeView.swift */; };
 		241D22432DB526B7000302C8 /* TopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22422DB526B6000302C8 /* TopUpView.swift */; };
@@ -96,6 +95,7 @@
 		24B065402DC647F400B5E000 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0653F2DC647F000B5E000 /* GameView.swift */; };
 		24B7D75B2DF6E92F0031F129 /* BuyReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7D75A2DF6E91D0031F129 /* BuyReceiveView.swift */; };
 		24B7D75D2DF6FA0C0031F129 /* ModalPresenter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7D75C2DF6F9F60031F129 /* ModalPresenter+Extension.swift */; };
+		24B84F832E0868370060C2EE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 24B84F822E0868370060C2EE /* Localizable.xcstrings */; };
 		24BEBB972DCDE4D4001E1F1F /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		24BEC6072DF0B53000140AAD /* WipeWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BEC6062DF0B52600140AAD /* WipeWalletView.swift */; };
 		24BEF7E12DCCCD6C00CA2EEC /* BrainwalletiOSStorekit in Frameworks */ = {isa = PBXBuildFile; productRef = 24BEF7E02DCCCD6C00CA2EEC /* BrainwalletiOSStorekit */; };
@@ -411,7 +411,6 @@
 		C312D5082D7DC28E00BB97A4 /* LockScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4EE2D7DC28E00BB97A4 /* LockScreenTests.swift */; };
 		C312D5092D7DC28E00BB97A4 /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4F22D7DC28E00BB97A4 /* APITests.swift */; };
 		C312D50A2D7DC28E00BB97A4 /* SpendingLimitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E82D7DC28E00BB97A4 /* SpendingLimitTests.swift */; };
-		C312D50B2D7DC28E00BB97A4 /* LanguageSelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4DD2D7DC28E00BB97A4 /* LanguageSelectionTests.swift */; };
 		C312D50C2D7DC28E00BB97A4 /* PaymentRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E62D7DC28E00BB97A4 /* PaymentRequestTests.swift */; };
 		C312D50D2D7DC28E00BB97A4 /* BRAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E02D7DC28E00BB97A4 /* BRAddressTests.swift */; };
 		C312D50E2D7DC28E00BB97A4 /* BuyWKWebVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4D52D7DC28E00BB97A4 /* BuyWKWebVCTests.swift */; };
@@ -483,7 +482,6 @@
 		2416CE672DA90D0D00FFBD10 /* BRTxInputExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRTxInputExtension.swift; sourceTree = "<group>"; };
 		2416CE682DA90D0D00FFBD10 /* BRTxOutputExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRTxOutputExtension.swift; sourceTree = "<group>"; };
 		2416CE692DA90D0D00FFBD10 /* BRWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRWallet.swift; sourceTree = "<group>"; };
-		241B477F2DCEA08000279954 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		241D223E2DB52699000302C8 /* ReadyRestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyRestoreView.swift; sourceTree = "<group>"; };
 		241D22402DB526AC000302C8 /* SetPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasscodeView.swift; sourceTree = "<group>"; };
 		241D22422DB526B6000302C8 /* TopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpView.swift; sourceTree = "<group>"; };
@@ -497,6 +495,7 @@
 		242871852DE5D2550035DE48 /* NewSyncProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressView.swift; sourceTree = "<group>"; };
 		242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressViewModel.swift; sourceTree = "<group>"; };
 		2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncHostingController.swift; sourceTree = "<group>"; };
+		242E6CDE2E095AF4002C579A /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
 		24360B002DED11D900E1E115 /* NewReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveTests.swift; sourceTree = "<group>"; };
 		244520332DE70310003AFFDF /* LockScreenHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHostingController.swift; sourceTree = "<group>"; };
@@ -661,6 +660,9 @@
 		24B0653F2DC647F000B5E000 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		24B7D75A2DF6E91D0031F129 /* BuyReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyReceiveView.swift; sourceTree = "<group>"; };
 		24B7D75C2DF6F9F60031F129 /* ModalPresenter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModalPresenter+Extension.swift"; sourceTree = "<group>"; };
+		24B84F7B2E085BBC0060C2EE /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		24B84F7C2E085CE40060C2EE /* pa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pa; path = pa.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		24B84F822E0868370060C2EE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		24BEC6062DF0B52600140AAD /* WipeWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipeWalletView.swift; sourceTree = "<group>"; };
 		24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
 		24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTypeEnum.swift; sourceTree = "<group>"; };
@@ -983,7 +985,6 @@
 		C312D4D72D7DC28E00BB97A4 /* UnstoppableDomainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnstoppableDomainViewModelTests.swift; sourceTree = "<group>"; };
 		C312D4D92D7DC28E00BB97A4 /* ConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsTests.swift; sourceTree = "<group>"; };
 		C312D4DB2D7DC28E00BB97A4 /* FileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTests.swift; sourceTree = "<group>"; };
-		C312D4DD2D7DC28E00BB97A4 /* LanguageSelectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionTests.swift; sourceTree = "<group>"; };
 		C312D4DE2D7DC28E00BB97A4 /* LocaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleTests.swift; sourceTree = "<group>"; };
 		C312D4E02D7DC28E00BB97A4 /* BRAddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAddressTests.swift; sourceTree = "<group>"; };
 		C312D4E12D7DC28E00BB97A4 /* BWAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWAPIClientTests.swift; sourceTree = "<group>"; };
@@ -1079,7 +1080,7 @@
 		241B477E2DCEA05D00279954 /* Localizations */ = {
 			isa = PBXGroup;
 			children = (
-				241B477F2DCEA08000279954 /* Localizable.xcstrings */,
+				24B84F822E0868370060C2EE /* Localizable.xcstrings */,
 			);
 			path = Localizations;
 			sourceTree = "<group>";
@@ -2066,13 +2067,12 @@
 			path = "File Tests";
 			sourceTree = "<group>";
 		};
-		C312D4DF2D7DC28E00BB97A4 /* Language Selection Tests */ = {
+		C312D4DF2D7DC28E00BB97A4 /* Localizations Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C312D4DD2D7DC28E00BB97A4 /* LanguageSelectionTests.swift */,
 				C312D4DE2D7DC28E00BB97A4 /* LocaleTests.swift */,
 			);
-			path = "Language Selection Tests";
+			path = "Localizations Tests";
 			sourceTree = "<group>";
 		};
 		C312D4ED2D7DC28E00BB97A4 /* Legacy BRTests */ = {
@@ -2120,7 +2120,7 @@
 				C312D4D82D7DC28E00BB97A4 /* Class Tests */,
 				C312D4DA2D7DC28E00BB97A4 /* Constants Tests */,
 				C312D4DC2D7DC28E00BB97A4 /* File Tests */,
-				C312D4DF2D7DC28E00BB97A4 /* Language Selection Tests */,
+				C312D4DF2D7DC28E00BB97A4 /* Localizations Tests */,
 				C312D4ED2D7DC28E00BB97A4 /* Legacy BRTests */,
 				C312D4EF2D7DC28E00BB97A4 /* Lock Screen Tests */,
 				C312D4F12D7DC28E00BB97A4 /* Seed Word Tests */,
@@ -2189,6 +2189,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75A2A7E31DA5934400A983D8 /* Build configuration list for PBXNativeTarget "brainwallet" */;
 			buildPhases = (
+				24B84F802E0861560060C2EE /* Check percentage of localization coverage to 80 % */,
 				75A2A78C1DA5934300A983D8 /* Sources */,
 				2489E05F2DF0A6DE00630888 /* Run Swiftlint & Swiftlint - fix */,
 				75A2A78D1DA5934300A983D8 /* Frameworks */,
@@ -2284,6 +2285,9 @@
 				uk,
 				"es-419",
 				Base,
+				pa,
+				fa,
+				pl,
 			);
 			mainGroup = 75A2A7871DA5934300A983D8;
 			packageReferences = (
@@ -2334,11 +2338,11 @@
 				C312D4B42D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf in Resources */,
 				C312D4B52D7DC27700BB97A4 /* Transactions.storyboard in Resources */,
 				C312D4B72D7DC27700BB97A4 /* WarningConfirmation.storyboard in Resources */,
-				241B47802DCEA08000279954 /* Localizable.xcstrings in Resources */,
 				C312D5142D7DC2EA00BB97A4 /* PrivacyInfo.xcprivacy in Resources */,
 				C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */,
 				C312D4BD2D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf in Resources */,
 				C312D4BF2D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf in Resources */,
+				24B84F832E0868370060C2EE /* Localizable.xcstrings in Resources */,
 				C312D4C22D7DC27700BB97A4 /* general.css in Resources */,
 				24F5BD422E042E840010D340 /* clicksound.aiff in Resources */,
 				C312D4C42D7DC27700BB97A4 /* Assets.xcassets in Resources */,
@@ -2398,6 +2402,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Skip this script in CI environment\nif [ \"$CI\" = \"true\" ] || [ \"$CIRCLECI\" = \"true\" ]; then\n    echo \"Skipping script in CI environment\"\n    exit 0\nfi\n\nif [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint && swiftlint --fix\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+		};
+		24B84F802E0861560060C2EE /* Check percentage of localization coverage to 80 % */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Check percentage of localization coverage to 80 %";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#!/bin/bash\n# Run test for coverage    xcrun --sdk macosx15.5 swift $SRCROOT/brainwallet/Localizations/check_localization_coverage.swift\n\nif [ -f \"$SRCROOT/SwiftScripts/check_localization_coverage.swift\" ];\nthen\n    echo \"✅Running localization script... '$SRCROOT'\"\n    xcrun --sdk macosx15.5 swift $SRCROOT/SwiftScripts/check_localization_coverage.swift\nelse\n    echo '⚠️Warning: Localization coverage script not found ⚠️'\n    exit 0\nfi\n";
 		};
 		58A9FE4C291BC37400B75825 /* Count number of swift lines */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2487,7 +2510,6 @@
 				C312D5092D7DC28E00BB97A4 /* APITests.swift in Sources */,
 				C312D50A2D7DC28E00BB97A4 /* SpendingLimitTests.swift in Sources */,
 				24360B012DED120500E1E115 /* NewReceiveTests.swift in Sources */,
-				C312D50B2D7DC28E00BB97A4 /* LanguageSelectionTests.swift in Sources */,
 				C312D50C2D7DC28E00BB97A4 /* PaymentRequestTests.swift in Sources */,
 				C312D50D2D7DC28E00BB97A4 /* BRAddressTests.swift in Sources */,
 				C312D50E2D7DC28E00BB97A4 /* BuyWKWebVCTests.swift in Sources */,
@@ -2889,6 +2911,9 @@
 				24FEB8C82DD25D7200D60036 /* zh-Hans */,
 				24FEB8C92DD25D8300D60036 /* zh-Hant */,
 				24FEB8CA2DD25D9500D60036 /* ko */,
+				24B84F7B2E085BBC0060C2EE /* fa */,
+				24B84F7C2E085CE40060C2EE /* pa */,
+				242E6CDE2E095AF4002C579A /* pl */,
 			);
 			name = InfoPlist.strings;
 			path = brainwallet;
@@ -2981,7 +3006,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250620.2;
+				CURRENT_PROJECT_VERSION = 250623.3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3279,7 +3304,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250620.2;
+				CURRENT_PROJECT_VERSION = 250623.3;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;

@@ -101,7 +101,7 @@ class ModalPresenter: Subscriber, Trackable {
                 settingsNav.pushViewController(vc, animated: true)})],
 			"Wallet":
 				[
-					Setting(title: "Delete my data" , callback: { [weak self] in
+					Setting(title:  String(localized: "Delete my data") , callback: { [weak self] in
 						guard let myself = self else { return }
 						guard let walletManager = myself.walletManager else { return }
                         let alert = UIAlertController(title: String(localized: "Delete my data"), message: String(localized: "Are you sure you want to delete this wallet & all its data?"), preferredStyle: .alert)

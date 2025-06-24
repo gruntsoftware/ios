@@ -148,8 +148,8 @@ class BiometricsSettingsViewController: UIViewController, Subscriber {
 	}
 
 	fileprivate func presentCantUseBiometricsAlert() {
-		let unavailableAlertTitle = LAContext.biometricType() == .face ? "Face ID Not Set Up" : "Touch ID Not Set Up"
-		let unavailableAlertMessage = LAContext.biometricType() == .face ? "You have not set up Face ID on this device. Go to Settings->Face ID & Passcode to set it up now." : "You have not set up Touch ID on this device. Go to Settings->Touch ID & Passcode to set it up now."
+		let unavailableAlertTitle = LAContext.biometricType() == .face ? String(localized: "Face ID Not Set Up") : String(localized: "Touch ID Not Set Up")
+		let unavailableAlertMessage = LAContext.biometricType() == .face ? String(localized: "You have not set up Face ID on this device. Go to Settings->Face ID & Passcode to set it up now.") : String(localized: "You have not set up Touch ID on this device. Go to Settings->Touch ID & Passcode to set it up now.")
 		let alert = UIAlertController(title: unavailableAlertTitle, message: unavailableAlertMessage, preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Ok" , style: .cancel, handler: nil))
 		present(alert, animated: true, completion: nil)

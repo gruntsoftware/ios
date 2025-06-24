@@ -1,0 +1,30 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "بِرِین‌والت";
+
+/* Bundle name */
+"CFBundleName" = "بِرِین‌والت";
+
+/* No comment provided by engineer. */
+"Litecoin Payment" = "پرداخت لایت‌کوین";
+
+/* No comment provided by engineer. */
+"Litecoin Payment ACK" = "تأییدیه پرداخت لایت‌کوین";
+
+/* No comment provided by engineer. */
+"Litecoin Payment Request" = "درخواست پرداخت لایت‌کوین";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "برای اسکن بارکدها استفاده می‌شود";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "برای باز کردن قفل برنامه و تأیید پرداخت‌ها استفاده می‌شود";
+
+/* Privacy - Location Always Usage Description */
+"NSLocationAlwaysUsageDescription" = "برای تعیین نزدیک‌ترین گره به شما استفاده می‌شود - هرگز ثبت نمی‌شود یا با هیچ‌کس به اشتراک گذاشته نمی‌شود";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "برای تعیین نزدیک‌ترین گره به شما استفاده می‌شود - هرگز ثبت یا با هیچ‌کس به اشتراک گذاشته نمی‌شود";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "برای اسکن بارکدها استفاده می‌شود";
+
