@@ -35,13 +35,12 @@ struct SettingsActionLockView: View {
                                 .font(largeFont)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading, rowLeadingPad)
+                                .padding(.top, 4.0)
                             Text(detailText)
                                 .font(detailFont)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding([.top, .bottom], 1.0)
-                                .padding(.leading, rowLeadingPad)
                             Spacer()
                         }
 

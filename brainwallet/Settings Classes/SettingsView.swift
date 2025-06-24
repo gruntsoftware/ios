@@ -8,9 +8,11 @@
 //
 import SwiftUI
 
-let closedRowHeight: CGFloat = 50.0
+let closedRowHeight: CGFloat = 60.0
 let expandedRowHeight: CGFloat = 240.0
-let rowLeadingPad: CGFloat = 30.0
+let rowLeadingPad: CGFloat = 32.0
+let leadRowPad: CGFloat = 40.0
+let trailRowPad: CGFloat = 16.0
 let expandArrowSize: CGFloat = 20.0
 
 enum SettingsAction: CaseIterable {
@@ -67,7 +69,7 @@ struct SettingsView: View {
     private var shouldExpandBlockchain: Bool = false
 
     @State
-    private var expandedRowHeight: CGFloat = 44.0
+    private var tempRowHeight: CGFloat = closedRowHeight
 
     let footerRowHeight: CGFloat = 55.0
 
@@ -88,7 +90,6 @@ struct SettingsView: View {
 
         NavigationStack {
             GeometryReader { geometry in
-
                 let width = geometry.size.width
                 ZStack {
                     BrainwalletColor.content.edgesIgnoringSafeArea(.all)
@@ -100,41 +101,53 @@ struct SettingsView: View {
                             List {
                                 SettingsExpandingSecurityView(title: String(localized: "Security"),
                                      viewModel: newMainViewModel, shouldExpandSecurity: $shouldExpandSecurity)
-                                .frame(height: shouldExpandSecurity ? 200 : 44.0)
-                                .background(BrainwalletColor.surface)
-                                .listRowBackground(BrainwalletColor.surface)
+                                .frame(height: shouldExpandSecurity ? 200 : tempRowHeight)
+                                .listRowBackground(shouldExpandSecurity ? BrainwalletColor.background : BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
                                 SettingsExpandingCurrencyView(title: String(localized: "Fiat Currency"),
                                     viewModel: newMainViewModel, shouldExpandCurrency: $shouldExpandCurrency)
-                                .frame(height: shouldExpandCurrency ? 200 : 44.0)
-                                .background(BrainwalletColor.surface)
-                                .listRowBackground(BrainwalletColor.surface)
+                                .frame(height: shouldExpandCurrency ? 200 : tempRowHeight)
+                                .listRowBackground(shouldExpandCurrency ? BrainwalletColor.background : BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
                                 SettingsExpandingGamesView(title: String(localized: "Games"),
                                     viewModel: newMainViewModel, shouldExpandGames: $shouldExpandGames)
-                                .frame(height: shouldExpandGames ? 200 : 44.0)
-                                .background(BrainwalletColor.surface)
-                                .listRowBackground(BrainwalletColor.surface)
+                                .frame(height: shouldExpandGames ? 200 : tempRowHeight)
+                                .listRowBackground(shouldExpandGames ? BrainwalletColor.background : BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
                                 SettingsExpandingBlockchainView(title: String(localized: "Blockchain: Litecoin"),
                                     viewModel: newMainViewModel, shouldExpandBlockchain: $shouldExpandBlockchain)
                                 .frame(maxWidth: .infinity)
-                                .frame(height: shouldExpandBlockchain ? 200 : 44.0)
-                                .background(BrainwalletColor.surface)
-                                .listRowBackground(BrainwalletColor.surface)
+                                .frame(height: shouldExpandBlockchain ? 200 : tempRowHeight)
+                                .listRowBackground(shouldExpandBlockchain ? BrainwalletColor.background : BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
                                 SettingsLabelView(title: String(localized: "Social"),
                                                   detailText: "linktr.ee/brainwallet")
-                                .frame(height: closedRowHeight)
+                                .frame(height: tempRowHeight)
                                 .background(BrainwalletColor.surface)
-                                .listRowBackground(BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
                                 SettingsLabelView(title: String(localized: "Support"),
                                                   detailText: "support.brainwallet.co")
-                                .frame(height: closedRowHeight)
+                                .frame(height: tempRowHeight)
                                 .background(BrainwalletColor.surface)
-                                .listRowBackground(BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
                                 SettingsActionThemeView(title:
                                     userPrefersDarkMode ?
                                     String(localized: "Dark Mode")
@@ -142,25 +155,31 @@ struct SettingsView: View {
                                     detailText: "",
                                     action: .preferDarkMode,
                                     userPrefersDark: $userPrefersDarkMode)
-                                        .frame(height: closedRowHeight)
+                                        .frame(height: tempRowHeight)
                                         .background(BrainwalletColor.surface)
-                                        .listRowBackground(BrainwalletColor.surface)
+                                        .listRowInsets(EdgeInsets())
                                         .listRowSeparatorTint(BrainwalletColor.content)
+                                        .padding(.leading, leadRowPad)
+                                        .padding(.trailing, trailRowPad)
 
                                 SettingsActionLockView(title: String(localized: "Lock"),
                                     detailText: "", action: .lock, isLocked: $isLocked)
-                                .frame(height: closedRowHeight)
+                                .frame(height: tempRowHeight)
                                 .background(BrainwalletColor.surface)
-                                .listRowBackground(BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
 
                             }
                             .listStyle(.plain)
                             .scrollIndicators(.hidden)
                             .buttonStyle(PlainButtonStyle())
                             SettingsFooterView()
-                                .frame(height: footerRowHeight)
+                                .frame(height: footerRowHeight * 0.4, alignment: .bottom)
                                 .padding(.bottom, 1.0)
+                                .padding(.top, 24.0)
+
                         }
                         .frame(width: width * 0.9)
                         .onChange(of: userPrefersDarkMode) { hasDarkPreference in

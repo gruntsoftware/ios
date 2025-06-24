@@ -40,7 +40,8 @@ struct SettingsExpandingSecurityView: View {
                                 .font(largeFont)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading, rowLeadingPad)
+                                .padding(.top, 4.0)
+
                             Spacer()
 
                             VStack {

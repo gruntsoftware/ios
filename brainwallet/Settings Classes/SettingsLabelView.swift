@@ -31,15 +31,14 @@ struct SettingsLabelView: View {
                             .font(largeFont)
                             .foregroundColor(BrainwalletColor.content)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading, rowLeadingPad)
+                            .padding(.top, 4.0)
                             .padding(.bottom, 1.0)
                         Text(detailText)
                             .font(detailFont)
-                            .kerning(0.6)
+                            .kerning(0.3)
                             .foregroundColor(BrainwalletColor.content)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading, rowLeadingPad)
-                            .padding(.bottom, 1.0)
+                            .padding(.bottom, 8.0)
                     }
                 }
             }

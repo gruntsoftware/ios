@@ -34,13 +34,16 @@ struct SettingsExpandingGamesView: View {
         NavigationStack {
             GeometryReader { _ in
                 ZStack {
+                    // BrainwalletColor.info.edgesIgnoringSafeArea(.all)
+
                     VStack {
                         HStack {
                             Text(title)
                                 .font(largeFont)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading, rowLeadingPad)
+                                .padding(.top, 4.0)
+
                             Spacer()
 
                             VStack {
@@ -69,9 +72,7 @@ struct SettingsExpandingGamesView: View {
                             .transition(.move(edge: .top))
                             .animation(.easeInOut(duration: 0.3))
                             .frame(height: shouldExpandGames ? 110.0 : 0.1)
-                        Spacer()
                     }
-
                 }
             }
         }

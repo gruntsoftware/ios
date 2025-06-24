@@ -40,6 +40,8 @@ struct SettingsExpandingCurrencyView: View {
         NavigationStack {
             GeometryReader { _ in
                 ZStack {
+                    // BrainwalletColor.affirm.edgesIgnoringSafeArea(.all)
+
                     VStack {
                         HStack {
                             VStack {
@@ -47,14 +49,14 @@ struct SettingsExpandingCurrencyView: View {
                                     .font(largeFont)
                                     .foregroundColor(BrainwalletColor.content)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.leading, rowLeadingPad)
                                     .padding(.bottom, 1.0)
+                                    .padding(.top, 4.0)
+
                                 Text("\(pickedCurrency.fullCurrencyName) (\(pickedCurrency.symbol))")
                                     .font(detailFont)
                                     .kerning(0.6)
                                     .foregroundColor(BrainwalletColor.content)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.leading, rowLeadingPad)
                                     .padding(.bottom, 1.0)
                             }
 
@@ -86,6 +88,8 @@ struct SettingsExpandingCurrencyView: View {
                             .transition(.move(edge: .top))
                             .animation(.easeInOut(duration: 0.3))
                             .frame(height: shouldExpandCurrency ? 110.0 : 0.1)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+
                         Spacer()
                     }
 

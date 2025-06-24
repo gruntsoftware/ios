@@ -58,7 +58,6 @@ struct CurrencyPickerView: View {
                                     viewModel.userDidSetCurrencyPreference(currency: pickedCurrency)
                                 }
                             }
-                            .padding(.leading, rowLeadingPad)
                             .padding(.top, rowLeadingPad)
                         }
                         Spacer()
@@ -81,9 +80,7 @@ struct CurrencyPickerView: View {
                             }
                         }
                         .frame(width: width * 0.1, height: 100.0, alignment: .leading)
-                        .padding(.trailing, rowLeadingPad)
                         .padding(.top, rowLeadingPad)
-
                     }
 
                 }.background(.red)

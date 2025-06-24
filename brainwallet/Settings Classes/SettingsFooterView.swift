@@ -38,6 +38,8 @@ struct SettingsFooterView: View {
                             .padding(.trailing, 16.0)
 
                     }
+                    .padding(.top, 8.0)
+
                 }
             }
         }
