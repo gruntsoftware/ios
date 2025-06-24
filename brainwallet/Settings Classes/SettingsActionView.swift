@@ -56,7 +56,6 @@ struct SettingsActionLockView: View {
                                         .frame(width: 30.0,
                                                height: 30.0)
                                         .foregroundColor(BrainwalletColor.content)
-                                        .padding(20.0)
                                     Spacer()
                                 }
                             }

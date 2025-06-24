@@ -36,17 +36,26 @@ struct SettingsExpandingSecurityView: View {
                 ZStack {
                     VStack {
                         HStack {
-                            Text(title)
-                                .font(largeFont)
-                                .foregroundColor(BrainwalletColor.content)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.top, 4.0)
+                            VStack {
+                                Text(title)
+                                    .font(largeFont)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.bottom, 1.0)
+                                    .padding(.top, 8.0)
 
-                            Spacer()
-
+                                Text("")
+                                    .font(detailFont)
+                                    .kerning(0.6)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.bottom, 1.0)
+                            }
                             VStack {
                                 Button(action: {
                                     shouldExpandSecurity.toggle()
+                                    let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                                        impactMed.impactOccurred()
                                 }) {
                                     VStack {
                                         HStack {
@@ -58,12 +67,13 @@ struct SettingsExpandingSecurityView: View {
                                                 .rotationEffect(Angle(degrees: shouldExpandSecurity ? 90 : 0))
                                         }
                                     }
-                                    .frame(width: 30.0, height: 30.0)
+                                    .frame(width: 30.0, height: 30.0, alignment: .top)
+                                    .padding(.top, 8.0)
                                 }
                                 .frame(width: 30.0, height: 30.0)
                             }
                         }
-                        .frame(height: 44.0)
+                        .frame(alignment: .top)
                         .padding(.top, 1.0)
                         SecurityListView(viewModel: viewModel)
                             .transition(.opacity)

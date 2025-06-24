@@ -34,21 +34,29 @@ struct SettingsExpandingGamesView: View {
         NavigationStack {
             GeometryReader { _ in
                 ZStack {
-                    // BrainwalletColor.info.edgesIgnoringSafeArea(.all)
-
                     VStack {
                         HStack {
-                            Text(title)
-                                .font(largeFont)
-                                .foregroundColor(BrainwalletColor.content)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.top, 4.0)
 
+                            VStack {
+                                Text(title)
+                                    .font(largeFont)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.top, 8.0)
+                                Text("")
+                                    .font(detailFont)
+                                    .kerning(0.6)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.bottom, 1.0)
+                            }
                             Spacer()
 
                             VStack {
                                 Button(action: {
                                     shouldExpandGames.toggle()
+                                    let impactSoft = UIImpactFeedbackGenerator(style: .soft)
+                                    impactSoft.impactOccurred()
                                 }) {
                                     VStack {
                                         HStack {
@@ -60,12 +68,12 @@ struct SettingsExpandingGamesView: View {
                                                 .rotationEffect(Angle(degrees: shouldExpandGames ? 90 : 0))
                                         }
                                     }
-                                    .frame(width: 30.0, height: 30.0)
+                                    .frame(width: 30.0, height: 30.0, alignment: .top)
+                                    .padding(.top, 8.0)
                                 }
                                 .frame(width: 30.0, height: 30.0)
                             }
                         }
-                        .frame(height: 44.0)
                         .padding(.top, 1.0)
                         GamesListView(viewModel: viewModel)
                             .transition(.opacity)

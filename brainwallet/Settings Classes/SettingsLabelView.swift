@@ -39,6 +39,7 @@ struct SettingsLabelView: View {
                             .foregroundColor(BrainwalletColor.content)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.bottom, 8.0)
+                        Spacer()
                     }
                 }
             }

@@ -46,6 +46,7 @@
 		242871862DE5D2580035DE48 /* NewSyncProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871852DE5D2550035DE48 /* NewSyncProgressView.swift */; };
 		242871882DE5D36F0035DE48 /* NewSyncProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */; };
 		2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */; };
+		243136FB2E0AFD1700BCBED1 /* SettingsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243136FA2E0AFD1000BCBED1 /* SettingsHelpers.swift */; };
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
 		24360B012DED120500E1E115 /* NewReceiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24360B002DED11D900E1E115 /* NewReceiveTests.swift */; };
 		244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244520332DE70310003AFFDF /* LockScreenHostingController.swift */; };
@@ -105,7 +106,6 @@
 		24D7AE562DCFF6870078252E /* NewConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE552DCFF6830078252E /* NewConfirmView.swift */; };
 		24D7AE582DCFF72D0078252E /* NewConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */; };
 		24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D91D0A2166923E0077A619 /* UserNotifications.framework */; };
-		24DB05E22E05CC4B00C57FE9 /* SettingsRowExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05E12E05CC4500C57FE9 /* SettingsRowExpandableView.swift */; };
 		24DB05E42E05D5E800C57FE9 /* SettingsActionThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05E32E05D5E800C57FE9 /* SettingsActionThemeView.swift */; };
 		24DB05E62E06059000C57FE9 /* SoundsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05E52E06054B00C57FE9 /* SoundsHelper.swift */; };
 		24DB05E82E06B44700C57FE9 /* SettingsExpandingBlockchainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05E72E06B44700C57FE9 /* SettingsExpandingBlockchainView.swift */; };
@@ -128,7 +128,7 @@
 		24F5BD4E2E0452670010D340 /* SettingsActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4D2E0452670010D340 /* SettingsActionView.swift */; };
 		24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4F2E0460C90010D340 /* SecurityListView.swift */; };
 		24F5BD562E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */; };
-		24F5BD582E04711E0010D340 /* CurrencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD572E04711E0010D340 /* CurrencyListView.swift */; };
+		24F5BD582E04711E0010D340 /* CurrencyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */; };
 		24F5BD5A2E04714C0010D340 /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD592E04714C0010D340 /* GamesListView.swift */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
@@ -496,6 +496,7 @@
 		242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressViewModel.swift; sourceTree = "<group>"; };
 		2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncHostingController.swift; sourceTree = "<group>"; };
 		242E6CDE2E095AF4002C579A /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		243136FA2E0AFD1000BCBED1 /* SettingsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHelpers.swift; sourceTree = "<group>"; };
 		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
 		24360B002DED11D900E1E115 /* NewReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveTests.swift; sourceTree = "<group>"; };
 		244520332DE70310003AFFDF /* LockScreenHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHostingController.swift; sourceTree = "<group>"; };
@@ -670,7 +671,6 @@
 		24D7AE552DCFF6830078252E /* NewConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmView.swift; sourceTree = "<group>"; };
 		24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmViewModel.swift; sourceTree = "<group>"; };
 		24D91D0A2166923E0077A619 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		24DB05E12E05CC4500C57FE9 /* SettingsRowExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowExpandableView.swift; sourceTree = "<group>"; };
 		24DB05E32E05D5E800C57FE9 /* SettingsActionThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionThemeView.swift; sourceTree = "<group>"; };
 		24DB05E52E06054B00C57FE9 /* SoundsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsHelper.swift; sourceTree = "<group>"; };
 		24DB05E72E06B44700C57FE9 /* SettingsExpandingBlockchainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingBlockchainView.swift; sourceTree = "<group>"; };
@@ -694,7 +694,7 @@
 		24F5BD4D2E0452670010D340 /* SettingsActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionView.swift; sourceTree = "<group>"; };
 		24F5BD4F2E0460C90010D340 /* SecurityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityListView.swift; sourceTree = "<group>"; };
 		24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingBlockLTCView.swift; sourceTree = "<group>"; };
-		24F5BD572E04711E0010D340 /* CurrencyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListView.swift; sourceTree = "<group>"; };
+		24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerView.swift; sourceTree = "<group>"; };
 		24F5BD592E04714C0010D340 /* GamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListView.swift; sourceTree = "<group>"; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
@@ -1574,8 +1574,9 @@
 			isa = PBXGroup;
 			children = (
 				249DDE412DCD572F00B2B275 /* SettingsView.swift */,
+				243136FA2E0AFD1000BCBED1 /* SettingsHelpers.swift */,
 				24F5BD4F2E0460C90010D340 /* SecurityListView.swift */,
-				24F5BD572E04711E0010D340 /* CurrencyListView.swift */,
+				24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */,
 				24F5BD592E04714C0010D340 /* GamesListView.swift */,
 				24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */,
 				24DB05ED2E06C34A00C57FE9 /* SettingsSpacerView.swift */,
@@ -1585,7 +1586,6 @@
 				24DB05EB2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift */,
 				24DB05E92E06B49B00C57FE9 /* SettingsExpandingGamesView.swift */,
 				24DB05E72E06B44700C57FE9 /* SettingsExpandingBlockchainView.swift */,
-				24DB05E12E05CC4500C57FE9 /* SettingsRowExpandableView.swift */,
 				24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */,
 				24F5BD492E0442D00010D340 /* SettingsFooterView.swift */,
 			);
@@ -2549,7 +2549,6 @@
 			files = (
 				245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */,
 				C312D2CF2D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift in Sources */,
-				24DB05E22E05CC4B00C57FE9 /* SettingsRowExpandableView.swift in Sources */,
 				C312D2D02D7DC27700BB97A4 /* ReachabilityMonitor.swift in Sources */,
 				C312D2D12D7DC27700BB97A4 /* CopyButtonView.swift in Sources */,
 				24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */,
@@ -2628,7 +2627,7 @@
 				24DB05EE2E06C34A00C57FE9 /* SettingsSpacerView.swift in Sources */,
 				C312D3452D7DC27700BB97A4 /* EmailValidation.swift in Sources */,
 				C312D3472D7DC27700BB97A4 /* WalletManager+Auth.swift in Sources */,
-				24F5BD582E04711E0010D340 /* CurrencyListView.swift in Sources */,
+				24F5BD582E04711E0010D340 /* CurrencyPickerView.swift in Sources */,
 				C312D3482D7DC27700BB97A4 /* FeeManager.swift in Sources */,
 				C312D3492D7DC27700BB97A4 /* StartNavigationDelegate.swift in Sources */,
 				C312D34C2D7DC27700BB97A4 /* AssociatedObject.swift in Sources */,
@@ -2752,6 +2751,7 @@
 				C312D3F22D7DC27700BB97A4 /* SegmentedButton.swift in Sources */,
 				C312D3F32D7DC27700BB97A4 /* WalletCoordinator.swift in Sources */,
 				C312D3F42D7DC27700BB97A4 /* EnterPhraseViewModel.swift in Sources */,
+				243136FB2E0AFD1700BCBED1 /* SettingsHelpers.swift in Sources */,
 				C312D3F52D7DC27700BB97A4 /* FeeSelectorView.swift in Sources */,
 				C312D3F72D7DC27700BB97A4 /* UnEditableTextView.swift in Sources */,
 				C312D3FC2D7DC27700BB97A4 /* UIView+InitAdditions.swift in Sources */,

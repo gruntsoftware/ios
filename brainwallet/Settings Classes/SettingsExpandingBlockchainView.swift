@@ -36,14 +36,21 @@ struct SettingsExpandingBlockchainView: View {
                 ZStack {
                     VStack {
                         HStack {
-                            Text(title)
-                                .font(largeFont)
-                                .foregroundColor(BrainwalletColor.content)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.top, 4.0)
+                            VStack {
+                                Text(title)
+                                    .font(largeFont)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.top, 8.0)
+                                Text("")
+                                    .font(detailFont)
+                                    .kerning(0.6)
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.bottom, 1.0)
+                            }
 
                             Spacer()
-
                             VStack {
                                 Button(action: {
                                     shouldExpandBlockchain.toggle()
@@ -58,17 +65,17 @@ struct SettingsExpandingBlockchainView: View {
                                                 .rotationEffect(Angle(degrees: shouldExpandBlockchain ? 90 : 0))
                                         }
                                     }
-                                    .frame(width: 30.0, height: 30.0)
+                                    .frame(width: 30.0, height: 30.0, alignment: .top)
+                                    .padding(.top, 8.0)
                                 }
                                 .frame(width: 30.0, height: 30.0)
                             }
                         }
-                        .frame(height: 44.0)
                         .padding(.top, 1.0)
                         SecurityListView(viewModel: viewModel)
                             .transition(.opacity)
                             .transition(.slide)
-                            .animation(.easeInOut(duration: 0.7))
+                            .animation(.easeInOut(duration: 0.3))
                             .frame(height: shouldExpandBlockchain ? 200.0 : 0.1)
                         Spacer()
                     }

@@ -8,41 +8,6 @@
 //
 import SwiftUI
 
-let closedRowHeight: CGFloat = 60.0
-let expandedRowHeight: CGFloat = 240.0
-let rowLeadingPad: CGFloat = 32.0
-let leadRowPad: CGFloat = 40.0
-let trailRowPad: CGFloat = 16.0
-let expandArrowSize: CGFloat = 20.0
-
-enum SettingsAction: CaseIterable {
-    case preferDarkMode
-    case wipeData
-    case lock
-
-    var isOnSystemImage: String {
-        switch self {
-        case .preferDarkMode:
-            return "moon.circle"
-        case .wipeData:
-            return "trash"
-        case .lock:
-            return "lock"
-        }
-    }
-
-    var isOffSystemImage: String {
-        switch self {
-        case .preferDarkMode:
-            return "sun.max.circle"
-        case .wipeData:
-            return "trash"
-        case .lock:
-            return "lock.open"
-        }
-    }
-}
-
 struct SettingsView: View {
 
     @ObservedObject
@@ -109,7 +74,7 @@ struct SettingsView: View {
                                 .padding(.trailing, trailRowPad)
                                 SettingsExpandingCurrencyView(title: String(localized: "Fiat Currency"),
                                     viewModel: newMainViewModel, shouldExpandCurrency: $shouldExpandCurrency)
-                                .frame(height: shouldExpandCurrency ? 200 : tempRowHeight)
+                                .frame(height: shouldExpandCurrency ? pickerViewHeight : tempRowHeight)
                                 .listRowBackground(shouldExpandCurrency ? BrainwalletColor.background : BrainwalletColor.surface)
                                 .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
@@ -135,7 +100,7 @@ struct SettingsView: View {
                                 SettingsLabelView(title: String(localized: "Social"),
                                                   detailText: "linktr.ee/brainwallet")
                                 .frame(height: tempRowHeight)
-                                .background(BrainwalletColor.surface)
+                                .listRowBackground(BrainwalletColor.surface)
                                 .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
                                 .padding(.leading, leadRowPad)
@@ -143,7 +108,7 @@ struct SettingsView: View {
                                 SettingsLabelView(title: String(localized: "Support"),
                                                   detailText: "support.brainwallet.co")
                                 .frame(height: tempRowHeight)
-                                .background(BrainwalletColor.surface)
+                                .listRowBackground(BrainwalletColor.surface)
                                 .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
                                 .padding(.leading, leadRowPad)
@@ -156,7 +121,7 @@ struct SettingsView: View {
                                     action: .preferDarkMode,
                                     userPrefersDark: $userPrefersDarkMode)
                                         .frame(height: tempRowHeight)
-                                        .background(BrainwalletColor.surface)
+                                        .listRowBackground(BrainwalletColor.surface)
                                         .listRowInsets(EdgeInsets())
                                         .listRowSeparatorTint(BrainwalletColor.content)
                                         .padding(.leading, leadRowPad)
@@ -165,12 +130,11 @@ struct SettingsView: View {
                                 SettingsActionLockView(title: String(localized: "Lock"),
                                     detailText: "", action: .lock, isLocked: $isLocked)
                                 .frame(height: tempRowHeight)
-                                .background(BrainwalletColor.surface)
+                                .listRowBackground(BrainwalletColor.surface)
                                 .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
                                 .padding(.leading, leadRowPad)
                                 .padding(.trailing, trailRowPad)
-
                             }
                             .listStyle(.plain)
                             .scrollIndicators(.hidden)

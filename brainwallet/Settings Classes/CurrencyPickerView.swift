@@ -24,7 +24,7 @@ struct CurrencyPickerView: View {
 
     let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
     let checkSize: CGFloat = 16.0
-
+    let elementsHeight: CGFloat = 90.0
     init(viewModel: NewMainViewModel, pickedCurrency: Binding<GlobalCurrency>) {
         self.viewModel = viewModel
         _pickedCurrency = pickedCurrency
@@ -46,11 +46,12 @@ struct CurrencyPickerView: View {
                                         .font(selectorFont)
                                         .foregroundColor(BrainwalletColor.content)
                                         .frame(maxWidth: .infinity, alignment: .leading)
-                                        .padding(16.0)
+                                        .padding(4.0)
                                 }
                             }
+                            .frame(height: elementsHeight)
                             .pickerStyle(.wheel)
-                            .frame(width: width * 0.82, height: 100.0, alignment: .leading)
+                            .frame(width: width * 0.82, alignment: .leading)
                             .onChange(of: pickedCurrency) { _ in
                                selectedFiat = false
                                 delay(0.4) {
@@ -58,7 +59,7 @@ struct CurrencyPickerView: View {
                                     viewModel.userDidSetCurrencyPreference(currency: pickedCurrency)
                                 }
                             }
-                            .padding(.top, rowLeadingPad)
+                            Spacer()
                         }
                         Spacer()
                         VStack {
@@ -66,24 +67,30 @@ struct CurrencyPickerView: View {
                                 Ellipse()
                                     .frame(width: checkSize * 2,
                                        height: checkSize * 2)
-                                    .foregroundColor(selectedFiat ? BrainwalletColor.grape.opacity(0.9) : BrainwalletColor.grape.opacity(0.1))
+                                    .foregroundColor(selectedFiat ? BrainwalletColor.affirm :
+                                        BrainwalletColor.affirm.opacity(0.1))
                                     .overlay(
                                         Ellipse()
-                                            .stroke(selectedFiat ? BrainwalletColor.midnight.opacity(0.9) : BrainwalletColor.grape, lineWidth: 2.0)
+                                            .stroke(selectedFiat ? BrainwalletColor.affirm.opacity(0.9) :
+                                                BrainwalletColor.gray, lineWidth: 1.5)
                                             .frame(width: checkSize * 2,
                                                height: checkSize * 2)
                                     )
                                 Image(systemName: "checkmark")
+                                    .font(.system(size: 20, weight: .bold))
                                     .frame(width: checkSize,
                                            height: checkSize)
                                     .foregroundColor(selectedFiat ? .white : BrainwalletColor.gray)
                             }
+                            .frame(height: elementsHeight)
+                            Spacer()
                         }
-                        .frame(width: width * 0.1, height: 100.0, alignment: .leading)
-                        .padding(.top, rowLeadingPad)
+                        .frame(width: width * 0.1, alignment: .leading)
+                        .background(BrainwalletColor.background)
                     }
+                    .background(BrainwalletColor.background)
 
-                }.background(.red)
+                }
             }
         }
     }

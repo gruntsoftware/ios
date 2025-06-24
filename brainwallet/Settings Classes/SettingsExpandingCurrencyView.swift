@@ -25,7 +25,7 @@ struct SettingsExpandingCurrencyView: View {
 
     private var title: String
     let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 14.0)
+    let detailFont: Font = .barlowSemiBold(size: 14.0)
 
     var securityListView: SecurityListView
 
@@ -40,8 +40,6 @@ struct SettingsExpandingCurrencyView: View {
         NavigationStack {
             GeometryReader { _ in
                 ZStack {
-                    // BrainwalletColor.affirm.edgesIgnoringSafeArea(.all)
-
                     VStack {
                         HStack {
                             VStack {
@@ -50,7 +48,7 @@ struct SettingsExpandingCurrencyView: View {
                                     .foregroundColor(BrainwalletColor.content)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(.bottom, 1.0)
-                                    .padding(.top, 4.0)
+                                    .padding(.top, 8.0)
 
                                 Text("\(pickedCurrency.fullCurrencyName) (\(pickedCurrency.symbol))")
                                     .font(detailFont)
@@ -65,6 +63,8 @@ struct SettingsExpandingCurrencyView: View {
                             VStack {
                                 Button(action: {
                                     shouldExpandCurrency.toggle()
+                                    let impactRigid = UIImpactFeedbackGenerator(style: .rigid)
+                                    impactRigid.impactOccurred()
                                 }) {
                                     VStack {
                                         HStack {
@@ -74,25 +74,26 @@ struct SettingsExpandingCurrencyView: View {
                                                 .frame(width: expandArrowSize, height: expandArrowSize)
                                                 .foregroundColor(BrainwalletColor.content)
                                                 .rotationEffect(Angle(degrees: shouldExpandCurrency ? 90 : 0))
+
                                         }
+
                                     }
-                                    .frame(width: 30.0, height: 30.0)
+                                    .frame(width: 30.0, height: 30.0, alignment: .top)
+                                    .padding(.top, 8.0)
+
                                 }
                                 .frame(width: 30.0, height: 30.0)
                             }
+
                         }
-                        .frame(height: 44.0)
                         .padding(.top, 1.0)
                         CurrencyPickerView(viewModel: viewModel, pickedCurrency: $pickedCurrency)
                             .transition(.opacity)
-                            .transition(.move(edge: .top))
                             .animation(.easeInOut(duration: 0.3))
-                            .frame(height: shouldExpandCurrency ? 110.0 : 0.1)
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-
+                            .frame(height: shouldExpandCurrency ? pickerViewHeight : 0.1)
+                            .padding(.top, 1.0)
                         Spacer()
                     }
-
                 }
             }
         }
