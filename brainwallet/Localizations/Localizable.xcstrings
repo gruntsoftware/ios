@@ -3265,6 +3265,9 @@
         }
       }
     },
+    "Change PIN" : {
+
+    },
     "Clear" : {
       "localizations" : {
         "ar" : {
@@ -11582,6 +11585,9 @@
         }
       }
     },
+    "PIN" : {
+
+    },
     "PIN Required" : {
       "localizations" : {
         "ar" : {
@@ -16688,9 +16694,6 @@
         }
       }
     },
-    "Share Data" : {
-
-    },
     "Share data?" : {
       "localizations" : {
         "ar" : {
@@ -16808,6 +16811,12 @@
           }
         }
       }
+    },
+    "Show my emojis" : {
+
+    },
+    "Show my seed phrase" : {
+
     },
     "Show seed words" : {
       "localizations" : {

@@ -8,6 +8,8 @@
 import SwiftUI
 
 let closedRowHeight: CGFloat = 65.0
+let toggleRowHeight: CGFloat = 55.0
+let updatePINRowHeight: CGFloat = 120.0
 let expandedRowHeight: CGFloat = 240.0
 let rowLeadingPad: CGFloat = 32.0
 let leadRowPad: CGFloat = 40.0
@@ -19,6 +21,7 @@ enum SettingsAction: CaseIterable {
     case preferDarkMode
     case wipeData
     case lock
+    case toggle
 
     var isOnSystemImage: String {
         switch self {
@@ -28,6 +31,8 @@ enum SettingsAction: CaseIterable {
             return "trash"
         case .lock:
             return "lock"
+        case .toggle:
+            return "lightswitch.on"
         }
     }
 
@@ -39,6 +44,8 @@ enum SettingsAction: CaseIterable {
             return "trash"
         case .lock:
             return "lock.open"
+        case .toggle:
+            return "lightswitch.off"
         }
     }
 }
