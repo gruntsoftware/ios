@@ -21,13 +21,10 @@ struct SettingsExpandingGamesView: View {
     let largeFont: Font = .barlowSemiBold(size: 19.0)
     let detailFont: Font = .barlowLight(size: 18.0)
 
-    var securityListView: SecurityListView
-
     init(title: String, viewModel: NewMainViewModel, shouldExpandGames: Binding <Bool>) {
         self.title = title
         _shouldExpandGames = shouldExpandGames
         self.viewModel = viewModel
-        self.securityListView = SecurityListView(viewModel: viewModel)
     }
 
     var body: some View {

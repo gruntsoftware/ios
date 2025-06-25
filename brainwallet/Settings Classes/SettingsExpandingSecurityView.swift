@@ -79,8 +79,8 @@ struct SettingsExpandingSecurityView: View {
                             .transition(.opacity)
                             .transition(.move(edge: .top))
                             .animation(.easeInOut(duration: 0.3))
-                            .frame(height: shouldExpandSecurity ? 110.0 : 0.1)
-                        Spacer()
+                            .padding(.top, 16.0)
+
                     }
 
                 }

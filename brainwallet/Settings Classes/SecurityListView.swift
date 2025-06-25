@@ -43,10 +43,13 @@ struct SecurityListView: View {
     var body: some View {
 
         NavigationStack {
-            GeometryReader { _ in
+            GeometryReader { geometry in
+
+                    let width = geometry.size.width
+                    let height = geometry.size.height
+
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                    VStack {
                         List {
                             SettingsResetPINView(title: String(localized: "Update PIN"),
                                 detailText: String(localized: "PIN"),
@@ -76,11 +79,10 @@ struct SecurityListView: View {
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.bottom, 44.0)
                         }
                         .listStyle(.plain)
                         .scrollIndicators(.hidden)
-
-                    }
 
                 }
             }

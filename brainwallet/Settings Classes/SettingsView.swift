@@ -66,7 +66,7 @@ struct SettingsView: View {
                             List {
                                 SettingsExpandingSecurityView(title: String(localized: "Security"),
                                      viewModel: newMainViewModel, shouldExpandSecurity: $shouldExpandSecurity)
-                                .frame(height: shouldExpandSecurity ? 200 : tempRowHeight)
+                                .frame(height: shouldExpandSecurity ? 300 : tempRowHeight)
                                 .listRowBackground(shouldExpandSecurity ? BrainwalletColor.background : BrainwalletColor.surface)
                                 .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)

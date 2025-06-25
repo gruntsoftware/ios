@@ -82,12 +82,10 @@ struct StaticPasscodeView: View {
         ZStack {
             HStack {
                 ForEach(0 ..< kPinDigitConstant, id: \.self) { _ in
-                    ZStack {
-                        Image(systemName: "circle")
-                    }
+                    Image(systemName: "circle.fill")
+                        .padding(1.0)
                 }
             }
         }
-        .padding()
     }
 }

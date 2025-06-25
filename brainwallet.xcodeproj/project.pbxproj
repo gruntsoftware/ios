@@ -129,7 +129,6 @@
 		24F5BD4C2E0450B80010D340 /* SettingsExpandingSecurityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4B2E0450B80010D340 /* SettingsExpandingSecurityView.swift */; };
 		24F5BD4E2E0452670010D340 /* SettingsActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4D2E0452670010D340 /* SettingsActionView.swift */; };
 		24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4F2E0460C90010D340 /* SecurityListView.swift */; };
-		24F5BD562E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */; };
 		24F5BD582E04711E0010D340 /* CurrencyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */; };
 		24F5BD5A2E04714C0010D340 /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD592E04714C0010D340 /* GamesListView.swift */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
@@ -697,7 +696,6 @@
 		24F5BD4B2E0450B80010D340 /* SettingsExpandingSecurityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingSecurityView.swift; sourceTree = "<group>"; };
 		24F5BD4D2E0452670010D340 /* SettingsActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionView.swift; sourceTree = "<group>"; };
 		24F5BD4F2E0460C90010D340 /* SecurityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityListView.swift; sourceTree = "<group>"; };
-		24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingBlockLTCView.swift; sourceTree = "<group>"; };
 		24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerView.swift; sourceTree = "<group>"; };
 		24F5BD592E04714C0010D340 /* GamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListView.swift; sourceTree = "<group>"; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
@@ -1592,7 +1590,6 @@
 				24DB05EB2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift */,
 				24DB05E92E06B49B00C57FE9 /* SettingsExpandingGamesView.swift */,
 				24DB05E72E06B44700C57FE9 /* SettingsExpandingBlockchainView.swift */,
-				24F5BD552E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift */,
 				24F5BD492E0442D00010D340 /* SettingsFooterView.swift */,
 			);
 			path = "Settings Classes";
@@ -2613,7 +2610,6 @@
 				C312D3292D7DC27700BB97A4 /* MainViewController.swift in Sources */,
 				C312D32A2D7DC27700BB97A4 /* UINavigationController+Extension.swift in Sources */,
 				C312D32E2D7DC27700BB97A4 /* StoreReview+Extension.swift in Sources */,
-				24F5BD562E0470CB0010D340 /* SettingsExpandingBlockLTCView.swift in Sources */,
 				C312D32F2D7DC27700BB97A4 /* UISlider+Gradient.swift in Sources */,
 				C312D3302D7DC27700BB97A4 /* UIControl+Callback.swift in Sources */,
 				24618EEA2D90436500A878AC /* BRCore.swift in Sources */,

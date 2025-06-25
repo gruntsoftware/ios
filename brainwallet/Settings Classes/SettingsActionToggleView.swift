@@ -53,25 +53,11 @@ struct SettingsActionToggleView: View {
                             .padding(.top, 4.0)
                             Spacer()
                         }
+                        .padding(.trailing, 1.0)
+
                     }
                 }
             }
         }
     }
 }
-
-// VStack {
-//    Text(title)
-//        .font(largeFont)
-//        .foregroundColor(BrainwalletColor.content)
-//        .frame(maxWidth: .infinity, alignment: .leading)
-//        .padding(.bottom, 1.0)
-//        .padding(.top, 8.0)
-//
-//    Text("\(pickedCurrency.fullCurrencyName) (\(pickedCurrency.symbol))")
-//        .font(detailFont)
-//        .kerning(0.6)
-//        .foregroundColor(BrainwalletColor.content)
-//        .frame(maxWidth: .infinity, alignment: .leading)
-//        .padding(.bottom, 1.0)
-// }

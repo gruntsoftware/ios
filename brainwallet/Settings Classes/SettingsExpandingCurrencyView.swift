@@ -27,13 +27,10 @@ struct SettingsExpandingCurrencyView: View {
     let largeFont: Font = .barlowSemiBold(size: 19.0)
     let detailFont: Font = .barlowSemiBold(size: 14.0)
 
-    var securityListView: SecurityListView
-
     init(title: String, viewModel: NewMainViewModel, shouldExpandCurrency: Binding <Bool>) {
         self.title = title
         _shouldExpandCurrency = shouldExpandCurrency
         self.viewModel = viewModel
-        self.securityListView = SecurityListView(viewModel: viewModel)
     }
 
     var body: some View {

@@ -21,13 +21,10 @@ struct SettingsExpandingBlockchainView: View {
     let largeFont: Font = .barlowSemiBold(size: 19.0)
     let detailFont: Font = .barlowLight(size: 18.0)
 
-    var securityListView: SecurityListView
-
     init(title: String, viewModel: NewMainViewModel, shouldExpandBlockchain: Binding <Bool>) {
         self.title = title
         _shouldExpandBlockchain = shouldExpandBlockchain
         self.viewModel = viewModel
-        self.securityListView = SecurityListView(viewModel: viewModel)
     }
 
     var body: some View {
@@ -72,11 +69,11 @@ struct SettingsExpandingBlockchainView: View {
                             }
                         }
                         .padding(.top, 1.0)
-                        SecurityListView(viewModel: viewModel)
-                            .transition(.opacity)
-                            .transition(.slide)
-                            .animation(.easeInOut(duration: 0.3))
-                            .frame(height: shouldExpandBlockchain ? 200.0 : 0.1)
+//                        SecurityListView(viewModel: viewModel)
+//                            .transition(.opacity)
+//                            .transition(.slide)
+//                            .animation(.easeInOut(duration: 0.3))
+//                            .frame(height: shouldExpandBlockchain ? 200.0 : 0.1)
                         Spacer()
                     }
 
