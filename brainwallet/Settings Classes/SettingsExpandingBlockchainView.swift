@@ -17,6 +17,9 @@ struct SettingsExpandingBlockchainView: View {
     @State
     private var rotationAngle: Double = 0
 
+    @State
+    private var willSync: Bool = false
+
     private var title: String
     let largeFont: Font = .barlowSemiBold(size: 19.0)
     let detailFont: Font = .barlowLight(size: 18.0)
@@ -29,7 +32,9 @@ struct SettingsExpandingBlockchainView: View {
 
     var body: some View {
         NavigationStack {
-            GeometryReader { _ in
+            GeometryReader { geometry in
+                    let width = geometry.size.width
+                    let height = geometry.size.height
                 ZStack {
                     VStack {
                         HStack {
@@ -69,11 +74,11 @@ struct SettingsExpandingBlockchainView: View {
                             }
                         }
                         .padding(.top, 1.0)
-//                        SecurityListView(viewModel: viewModel)
-//                            .transition(.opacity)
-//                            .transition(.slide)
-//                            .animation(.easeInOut(duration: 0.3))
-//                            .frame(height: shouldExpandBlockchain ? 200.0 : 0.1)
+                        SettingsLitecoinDetailView(willSync: $willSync)
+                            .transition(.opacity)
+                            .transition(.slide)
+                            .animation(.easeInOut(duration: 0.3))
+                            .frame(height: shouldExpandBlockchain ? 200 : 0.1)
                         Spacer()
                     }
 

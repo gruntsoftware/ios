@@ -83,6 +83,7 @@
 		24952E442DE8B6D400ADEE10 /* OpsFeesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24952E432DE8B6D200ADEE10 /* OpsFeesTests.swift */; };
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
 		249DDE422DCD573700B2B275 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249DDE412DCD572F00B2B275 /* SettingsView.swift */; };
+		24A0ACAB2E0C812C0077E695 /* SettingsLitecoinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */; };
 		24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A404222DC92F35006CD076 /* WebBuyView.swift */; };
 		24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */; };
 		24AAB31D2DE79ECC00F0C18C /* NewReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */; };
@@ -649,6 +650,7 @@
 		249C459E2D936D5900E9C3B0 /* test.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
 		249C45DA2D936DA600E9C3B0 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = ../core/module.modulemap; sourceTree = SOURCE_ROOT; };
 		249DDE412DCD572F00B2B275 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLitecoinDetailView.swift; sourceTree = "<group>"; };
 		24A404222DC92F35006CD076 /* WebBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBuyView.swift; sourceTree = "<group>"; };
 		24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveHostingController.swift; sourceTree = "<group>"; };
 		24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveView.swift; sourceTree = "<group>"; };
@@ -1587,6 +1589,7 @@
 				24F5BD4B2E0450B80010D340 /* SettingsExpandingSecurityView.swift */,
 				243136FC2E0B251900BCBED1 /* SettingsActionToggleView.swift */,
 				24E7591D2E0B407F0065BA02 /* SettingsResetPINView.swift */,
+				24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */,
 				24DB05EB2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift */,
 				24DB05E92E06B49B00C57FE9 /* SettingsExpandingGamesView.swift */,
 				24DB05E72E06B44700C57FE9 /* SettingsExpandingBlockchainView.swift */,
@@ -2762,6 +2765,7 @@
 				C312D3FD2D7DC27700BB97A4 /* LocaleChangeViewModel.swift in Sources */,
 				C312D3FE2D7DC27700BB97A4 /* ReduxState.swift in Sources */,
 				C312D3FF2D7DC27700BB97A4 /* InViewAlert.swift in Sources */,
+				24A0ACAB2E0C812C0077E695 /* SettingsLitecoinDetailView.swift in Sources */,
 				24D7AE562DCFF6870078252E /* NewConfirmView.swift in Sources */,
 				C312D4002D7DC27700BB97A4 /* MessageUIPresenter.swift in Sources */,
 				C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */,
