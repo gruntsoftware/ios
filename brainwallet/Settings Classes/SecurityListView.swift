@@ -44,10 +44,10 @@ struct SecurityListView: View {
     var body: some View {
 
         NavigationStack {
-            GeometryReader { geometry in
+            GeometryReader { _ in
 
-                    let width = geometry.size.width
-                    let height = geometry.size.height
+//                    let width = geometry.size.width
+//                    let height = geometry.size.height
 
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
@@ -59,21 +59,24 @@ struct SecurityListView: View {
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsActionToggleView(title: String(localized: "Seed Phrase"),
+                            SettingsActionSeedPhraseView(title:
+                                String(localized: "Seed Phrase"),
                                 detailText: String(localized: "Show my seed phrase"),
-                                action: .toggle, isOn: $willShowSeedPhrase)
-                                .frame(height: toggleRowHeight)
+                                willShowBrainwalletPhrase: $willShowSeedPhrase)
+                                .frame(height: phraseRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsActionToggleView(title: String(localized: "Brainwallet Phrase"),
+                            SettingsActionBrainwalletPhraseView(title:
+                                String(localized: "Brainwallet Phrase"),
                                 detailText: String(localized: "Show my emojis"),
-                                action: .toggle, isOn: $willShowBrainwalletPhrase)
-                                .frame(height: toggleRowHeight)
+                                willShowBrainwalletPhrase: $willShowBrainwalletPhrase)
+                            .frame(height: phraseRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsActionShareView(title: String(localized: "Share Anonymous Data"),
+                            SettingsActionShareView(title:
+                                String(localized: "Share Anonymous Data"),
                                 detailText: "to improve Brainwallet",
                                 action: .shareData, willShareData: $willShareData)
                                 .frame(height: toggleRowHeight)
@@ -87,14 +90,17 @@ struct SecurityListView: View {
                         .onChange(of: willChangePIN) { _ in
                             newMainViewModel.userWillChangePIN()
                         }
-                        .onChange(of: willShowSeedPhrase) { _ in
-                            newMainViewModel.willShowSeedPhrase()
-                        }
-                        .onChange(of: willShowBrainwalletPhrase) { _ in
-                            newMainViewModel.userWillSeeShowBrainwalletPhrase()
-                        }
                         .onChange(of: willShareData) { _ in
                             newMainViewModel.userWillShareData()
+                        }
+                        .sheet(isPresented: $willShowSeedPhrase) {
+                            if let walletManager = newMainViewModel.walletManager {
+                                SeedWordContainerView(walletManager: walletManager)
+                            }
+
+                        }
+                        .sheet(isPresented: $willShowBrainwalletPhrase) {
+                            // TBD 
                         }
                 }
             }

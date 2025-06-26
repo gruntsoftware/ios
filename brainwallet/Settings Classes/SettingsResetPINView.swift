@@ -91,6 +91,7 @@ struct SettingsResetPINView: View {
 
                         HStack {
                             Button(action: {
+                                isOn.toggle()
                             }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
