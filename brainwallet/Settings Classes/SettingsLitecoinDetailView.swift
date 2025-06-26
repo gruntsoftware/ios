@@ -14,9 +14,9 @@ struct SettingsLitecoinDetailView: View {
     let largeButtonHeight: CGFloat = 45.0
     let dotSize: CGFloat = 12.0
 
-    let litecoinSyncDetailA: String = "Syncing is a process where Brainwallet scans the Litecoin blockchain to see if any transactions that match your seed words (private keys) are in any transactions."
-    let litecoinSyncDetailB: String = "Found transactions are added to your databases and added or subtracted from your balance. There is no Litecoin in any wallet. Litecoin is only found on the network.  Your balance is a simple way to check your transaction history."
-    let litecoinSyncDetailC: String = "This process can take 20 - 45 mins depending on your connectivty to the Litecoin network."
+    let litecoinSyncDetailA: String = String(localized: "Syncing is a process where Brainwallet scans the Litecoin blockchain to see if any transactions that match your seed words (private keys) are in any transactions.")
+    let litecoinSyncDetailB: String = String(localized: "Found transactions are added to the device's database and added or subtracted creating your Brainwallet's balance. There is no Litecoin in any wallet. Litecoin is only found on the network.  Brainwallet is a simple way to check your transaction history and it stores your private keys")
+    let litecoinSyncDetailC: String = String(localized: "This process can take 5 - 45 mins depending on your connectivty to the Litecoin network.")
 
     @Binding
     var willSync: Bool
@@ -34,7 +34,7 @@ struct SettingsLitecoinDetailView: View {
                 ZStack {
                     List {
                         HStack {
-                            Text(String(localized: "Sync Litecoin"))
+                            Text(String(localized: "Sync to the Litecoin Blockchain"))
                                 .font(largeFont)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)

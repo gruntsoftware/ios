@@ -34,6 +34,12 @@ struct SettingsView: View {
     private var shouldExpandBlockchain: Bool = false
 
     @State
+    private var shouldShowSocialSheet: Bool = false
+
+    @State
+    private var shouldShowSupportSheet: Bool = false
+
+    @State
     private var tempRowHeight: CGFloat = closedRowHeight
 
     let footerRowHeight: CGFloat = 55.0
@@ -43,6 +49,10 @@ struct SettingsView: View {
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
     let largeButtonFont: Font = .barlowBold(size: 24.0)
+
+    private let supportURL = URL(string: "https://brainwallet.co/support.html")!
+
+    private let socialsURL = URL(string: "https://linktr.ee/brainwallet")!
 
     init(viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.newMainViewModel = viewModel
@@ -105,6 +115,9 @@ struct SettingsView: View {
                                 .listRowSeparatorTint(BrainwalletColor.content)
                                 .padding(.leading, leadRowPad)
                                 .padding(.trailing, trailRowPad)
+                                .onTapGesture {
+                                    shouldShowSocialSheet.toggle()
+                                }
                                 SettingsLabelView(title: String(localized: "Support"),
                                                   detailText: "support.brainwallet.co")
                                 .frame(height: tempRowHeight)
@@ -113,6 +126,9 @@ struct SettingsView: View {
                                 .listRowSeparatorTint(BrainwalletColor.content)
                                 .padding(.leading, leadRowPad)
                                 .padding(.trailing, trailRowPad)
+                                .onTapGesture {
+                                    shouldShowSupportSheet.toggle()
+                                }
                                 SettingsActionThemeView(title:
                                     userPrefersDarkMode ?
                                     String(localized: "Dark Mode")
@@ -160,11 +176,31 @@ struct SettingsView: View {
 
             }
         }
+        .sheet(isPresented: $shouldShowSocialSheet) {
+            print("Sheet dismissed!")
+        } content: {
+            ZStack {
+                BrainwalletColor.background.edgesIgnoringSafeArea(.all)
+                WebView(url: socialsURL, scrollToSignup: .constant(false))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .cornerRadius(8.0)
+                    .padding(.top, 12.0)
+                    .padding(8.0)
+
+            }
+        }
+        .sheet(isPresented: $shouldShowSupportSheet) {
+            print("Sheet dismissed!")
+        } content: {
+            ZStack {
+                BrainwalletColor.background.edgesIgnoringSafeArea(.all)
+                WebView(url: supportURL, scrollToSignup: .constant(false))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .cornerRadius(8.0)
+                    .padding(.top, 12.0)
+                    .padding(8.0)
+
+            }
+        }
     }
 }
-
-// .frame(width: width * 0.9)
-//
-// Divider()
-//    .frame(width: 1.5)
-//    .overlay(BrainwalletColor.content)
