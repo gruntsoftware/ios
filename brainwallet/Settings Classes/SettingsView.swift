@@ -171,14 +171,10 @@ struct SettingsView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(.trailing, 1.0)
-
                 }
-
             }
         }
         .sheet(isPresented: $shouldShowSocialSheet) {
-            print("Sheet dismissed!")
-        } content: {
             ZStack {
                 BrainwalletColor.background.edgesIgnoringSafeArea(.all)
                 WebView(url: socialsURL, scrollToSignup: .constant(false))
@@ -186,12 +182,9 @@ struct SettingsView: View {
                     .cornerRadius(8.0)
                     .padding(.top, 12.0)
                     .padding(8.0)
-
             }
         }
         .sheet(isPresented: $shouldShowSupportSheet) {
-            print("Sheet dismissed!")
-        } content: {
             ZStack {
                 BrainwalletColor.background.edgesIgnoringSafeArea(.all)
                 WebView(url: supportURL, scrollToSignup: .constant(false))
@@ -199,7 +192,6 @@ struct SettingsView: View {
                     .cornerRadius(8.0)
                     .padding(.top, 12.0)
                     .padding(8.0)
-
             }
         }
     }
