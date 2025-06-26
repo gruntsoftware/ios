@@ -83,7 +83,18 @@ struct SecurityListView: View {
                         }
                         .listStyle(.plain)
                         .scrollIndicators(.hidden)
-
+                        .onChange(of: willChangePIN) { _ in
+                            //
+                        }
+                        .onChange(of: willShowSeedPhrase) { _ in
+                            //
+                        }
+                        .onChange(of: willShowBrainwalletPhrase) { _ in
+                            //
+                        }
+                        .onChange(of: willShareData) { _ in
+                            //
+                        }
                 }
             }
         }
