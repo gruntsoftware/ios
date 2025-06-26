@@ -38,6 +38,7 @@ struct SecurityListView: View {
     let rowBackground: Color = BrainwalletColor.background
     init(viewModel: NewMainViewModel) {
         self.newMainViewModel = viewModel
+        willShareData = UserDefaults.hasAquiredShareDataPermission
     }
 
     var body: some View {
@@ -72,9 +73,9 @@ struct SecurityListView: View {
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsActionToggleView(title: String(localized: "Share Anonymous Data"),
+                            SettingsActionShareView(title: String(localized: "Share Anonymous Data"),
                                 detailText: "to improve Brainwallet",
-                                action: .toggle, isOn: $willShareData)
+                                action: .shareData, willShareData: $willShareData)
                                 .frame(height: toggleRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
@@ -84,16 +85,16 @@ struct SecurityListView: View {
                         .listStyle(.plain)
                         .scrollIndicators(.hidden)
                         .onChange(of: willChangePIN) { _ in
-                            //
+                            newMainViewModel.userWillChangePIN()
                         }
                         .onChange(of: willShowSeedPhrase) { _ in
-                            //
+                            newMainViewModel.willShowSeedPhrase()
                         }
                         .onChange(of: willShowBrainwalletPhrase) { _ in
-                            //
+                            newMainViewModel.userWillSeeShowBrainwalletPhrase()
                         }
                         .onChange(of: willShareData) { _ in
-                            //
+                            newMainViewModel.userWillShareData()
                         }
                 }
             }

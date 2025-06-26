@@ -167,6 +167,82 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         }
     }
 
+    func userWillChangePIN() {
+
+    }
+
+    func willShowSeedPhrase() {
+
+    }
+
+    func userWillSeeShowBrainwalletPhrase() {
+
+    }
+
+    func userWillShareData() {
+        guard let store = self.store else { return }
+        store.trigger(name: .promptShareData)
+    }
+
+//    if UserDefaults.hasAquiredShareDataPermission {
+//        toggle.isOn = true
+//        toggle.sendActions(for: .valueChanged)
+//    }
+//
+//    toggle.valueChanged = strongify(self) { myself in
+//        UserDefaults.hasAquiredShareDataPermission = myself.toggle.isOn
+//        if myself.toggle.isOn {
+//            myself.store.trigger(name: .didEnableShareData)
+//        }
+//    }
+//    
+
+//    var trigger: TriggerName? {
+//        switch self {
+//        case .biometrics: return .promptBiometrics
+//        case .paperKey: return .promptPaperKey
+//        case .upgradePin: return .promptUpgradePin
+//        case .recommendRescan: return .recommendRescan
+//        case .noPasscode: return nil
+//        case .shareData: return .promptShareData
+//        }
+//    }
+//
+//    // MARK: - Subscription:  Did Upgrade PIN
+//
+//    store.subscribe(self, name: .didUpgradePin, callback: {  [weak self] _ in
+//        if self?.currentPromptType == .upgradePin {
+//            self?.currentPromptType = nil
+//        }
+//    })
+//
+//    // MARK: - Subscription:  Did Enable Share Data
+//
+//    store.subscribe(self, name: .didEnableShareData, callback: { [weak self] _ in
+//        if self?.currentPromptType == .shareData {
+//            self?.currentPromptType = nil
+//        }
+//    })
+//
+//    // MARK: - Subscription:  Did Write Paper Key
+//
+//    store.subscribe(self, name: .didWritePaperKey, callback: { [weak self] _ in
+//        if self?.currentPromptType == .paperKey {
+//            self?.currentPromptType = nil
+//        }
+//    })
+//
+//    // MARK: - Subscription:  Memo Updated
+//
+//    store.subscribe(self, name: .txMemoUpdated(""), callback: { [weak self] in
+//
+//        guard let trigger = $0 else { return }
+//
+//        if case let .txMemoUpdated(txHash) = trigger {
+//            self?.updateTransactions(txHash: txHash)
+//        }
+//    })
+
     func updateTransactions() {
         guard let _ = walletManager
         else {

@@ -22,6 +22,7 @@ enum SettingsAction: CaseIterable {
     case wipeData
     case lock
     case toggle
+    case shareData
 
     var isOnSystemImage: String {
         switch self {
@@ -33,6 +34,8 @@ enum SettingsAction: CaseIterable {
             return "lock"
         case .toggle:
             return "lightswitch.on"
+        case .shareData:
+            return "testtube.2"
         }
     }
 
@@ -46,6 +49,8 @@ enum SettingsAction: CaseIterable {
             return "lock.open"
         case .toggle:
             return "lightswitch.off"
+        case .shareData:
+            return "testtube.2"
         }
     }
 }
