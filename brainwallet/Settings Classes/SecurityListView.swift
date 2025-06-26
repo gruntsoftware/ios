@@ -14,7 +14,16 @@ struct SecurityListView: View {
     var newMainViewModel: NewMainViewModel
 
     @State
-    private var isLocked: Bool = false
+    private var willChangePIN: Bool = false
+
+    @State
+    private var willShowSeedPhrase: Bool = false
+
+    @State
+    private var willShowBrainwalletPhrase: Bool = false
+
+    @State
+    private var willShareData: Bool = false
 
     @State
     private var userPrefersDarkMode: Bool = false
@@ -36,49 +45,56 @@ struct SecurityListView: View {
         NavigationStack {
             GeometryReader { geometry in
 
-                let width = geometry.size.width
+                    let width = geometry.size.width
+                    let height = geometry.size.height
+
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                    VStack {
                         List {
-                            SettingsLabelView(title:
-                                String(localized: "Update PIN"),
-                                detailText: "PIN",
-                                rowBackgroundColor: rowBackground)
-                                .frame(height: closedRowHeight)
+                            SettingsResetPINView(title: String(localized: "Update PIN"),
+                                detailText: String(localized: "PIN"),
+                                action: .toggle, isOn: $willChangePIN)
+                                .frame(height: updatePINRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsLabelView(title:
-                                String(localized: "Seed Phrase"),
-                                detailText: "",
-                                rowBackgroundColor: rowBackground)
-                                .frame(height: closedRowHeight)
+                            SettingsActionToggleView(title: String(localized: "Seed Phrase"),
+                                detailText: String(localized: "Show my seed phrase"),
+                                action: .toggle, isOn: $willShowSeedPhrase)
+                                .frame(height: toggleRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsLabelView(title:
-                                String(localized: "Brainwallet Phrase"),
-                                detailText: "",
-                                rowBackgroundColor: rowBackground)
-                                .frame(height: closedRowHeight)
+                            SettingsActionToggleView(title: String(localized: "Brainwallet Phrase"),
+                                detailText: String(localized: "Show my emojis"),
+                                action: .toggle, isOn: $willShowBrainwalletPhrase)
+                                .frame(height: toggleRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsLabelView(title:
-                                String(localized: "Share Data"),
-                                detailText: "",
-                                rowBackgroundColor: rowBackground)
-                                .frame(height: closedRowHeight)
+                            SettingsActionToggleView(title: String(localized: "Share Anonymous Data"),
+                                detailText: "to improve Brainwallet",
+                                action: .toggle, isOn: $willShareData)
+                                .frame(height: toggleRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.bottom, 44.0)
                         }
                         .listStyle(.plain)
                         .scrollIndicators(.hidden)
-
-                    }
-
+                        .onChange(of: willChangePIN) { _ in
+                            //
+                        }
+                        .onChange(of: willShowSeedPhrase) { _ in
+                            //
+                        }
+                        .onChange(of: willShowBrainwalletPhrase) { _ in
+                            //
+                        }
+                        .onChange(of: willShareData) { _ in
+                            //
+                        }
                 }
             }
         }

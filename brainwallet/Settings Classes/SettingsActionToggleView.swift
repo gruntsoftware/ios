@@ -1,28 +1,28 @@
 //
-//  SettingsActionLockView.swift
+//  SettingsActionToggleView.swift
 //  brainwallet
 //
-//  Created by Kerry Washington on 19/06/2025.
+//  Created by Kerry Washington on 24/06/2025.
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
 
-struct SettingsActionLockView: View {
+struct SettingsActionToggleView: View {
 
     private let title: String
     private let detailText: String
     let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 18.0)
+    let detailFont: Font = .barlowLight(size: 15.0)
     let action: SettingsAction
 
     @Binding
-    var isLocked: Bool
+    var isOn: Bool
 
-    init(title: String, detailText: String, action: SettingsAction, isLocked: Binding<Bool>) {
+    init(title: String, detailText: String, action: SettingsAction, isOn: Binding<Bool>) {
         self.title = title
         self.detailText = detailText
         self.action = action
-        _isLocked = isLocked
+        _isOn = isOn
     }
 
     var body: some View {
@@ -38,29 +38,23 @@ struct SettingsActionLockView: View {
                                 .padding(.top, 4.0)
                             Text(detailText)
                                 .font(detailFont)
+                                .kerning(0.6)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding([.top, .bottom], 1.0)
+                                .padding(.bottom, 1.0)
                             Spacer()
                         }
 
                         Spacer()
                         VStack {
-                            Button(action: {
-                                    isLocked.toggle()
-                            }) {
-                                VStack {
-                                    Image(systemName: isLocked ? action.isOnSystemImage : action.isOffSystemImage)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 30.0,
-                                               height: 30.0)
-                                        .foregroundColor(BrainwalletColor.content)
-                                    Spacer()
-                                }
+                            Toggle(isOn: $isOn) {
                             }
-                            .frame(width: 30.0, height: 30.0)
+                            .toggleStyle(.switch)
+                            .padding(.top, 4.0)
+                            Spacer()
                         }
+                        .padding(.trailing, 1.0)
+
                     }
                 }
             }

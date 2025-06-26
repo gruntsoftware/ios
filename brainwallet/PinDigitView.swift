@@ -75,3 +75,17 @@ struct PasscodeView: View {
 		}
 	}
 }
+
+struct StaticPasscodeView: View {
+
+    public var body: some View {
+        ZStack {
+            HStack {
+                ForEach(0 ..< kPinDigitConstant, id: \.self) { _ in
+                    Image(systemName: "circle.fill")
+                        .padding(1.0)
+                }
+            }
+        }
+    }
+}
