@@ -14,7 +14,16 @@ struct SecurityListView: View {
     var newMainViewModel: NewMainViewModel
 
     @State
-    private var isLocked: Bool = false
+    private var willChangePIN: Bool = false
+
+    @State
+    private var willShowSeedPhrase: Bool = false
+
+    @State
+    private var willShowBrainwalletPhrase: Bool = false
+
+    @State
+    private var willShareData: Bool = false
 
     @State
     private var userPrefersDarkMode: Bool = false
@@ -29,56 +38,70 @@ struct SecurityListView: View {
     let rowBackground: Color = BrainwalletColor.background
     init(viewModel: NewMainViewModel) {
         self.newMainViewModel = viewModel
+        willShareData = UserDefaults.hasAquiredShareDataPermission
     }
 
     var body: some View {
 
         NavigationStack {
-            GeometryReader { geometry in
+            GeometryReader { _ in
 
-                let width = geometry.size.width
+//                    let width = geometry.size.width
+//                    let height = geometry.size.height
+
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                    VStack {
                         List {
-                            SettingsLabelView(title:
-                                String(localized: "Update PIN"),
-                                detailText: "PIN",
-                                rowBackgroundColor: rowBackground)
-                                .frame(height: closedRowHeight)
+                            SettingsResetPINView(title: String(localized: "Update PIN"),
+                                detailText: String(localized: "PIN"),
+                                action: .toggle, isOn: $willChangePIN)
+                                .frame(height: updatePINRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsLabelView(title:
+                            SettingsActionSeedPhraseView(title:
                                 String(localized: "Seed Phrase"),
-                                detailText: "",
-                                rowBackgroundColor: rowBackground)
-                                .frame(height: closedRowHeight)
+                                detailText: String(localized: "Show my seed phrase"),
+                                willShowBrainwalletPhrase: $willShowSeedPhrase)
+                                .frame(height: phraseRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsLabelView(title:
+                            SettingsActionBrainwalletPhraseView(title:
                                 String(localized: "Brainwallet Phrase"),
-                                detailText: "",
-                                rowBackgroundColor: rowBackground)
-                                .frame(height: closedRowHeight)
+                                detailText: String(localized: "Show my emojis"),
+                                willShowBrainwalletPhrase: $willShowBrainwalletPhrase)
+                            .frame(height: phraseRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsLabelView(title:
-                                String(localized: "Share Data"),
-                                detailText: "",
-                                rowBackgroundColor: rowBackground)
-                                .frame(height: closedRowHeight)
+                            SettingsActionShareView(title:
+                                String(localized: "Share Anonymous Data"),
+                                detailText: "to improve Brainwallet",
+                                action: .shareData, willShareData: $willShareData)
+                                .frame(height: toggleRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.bottom, 44.0)
                         }
                         .listStyle(.plain)
                         .scrollIndicators(.hidden)
+                        .onChange(of: willChangePIN) { _ in
+                            newMainViewModel.userWillChangePIN()
+                        }
+                        .onChange(of: willShareData) { _ in
+                            newMainViewModel.userWillShareData()
+                        }
+                        .sheet(isPresented: $willShowSeedPhrase) {
+                            if let walletManager = newMainViewModel.walletManager {
+                                SeedWordContainerView(walletManager: walletManager)
+                            }
 
-                    }
-
+                        }
+                        .sheet(isPresented: $willShowBrainwalletPhrase) {
+                            // TBD 
+                        }
                 }
             }
         }

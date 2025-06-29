@@ -30,6 +30,9 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     var currentLanguage = Locale.current.identifier
 
     @Published
+    var currentGlobalFiat: GlobalCurrency = .USD
+
+    @Published
     var walletAmount: Amount?
 
     @Published
@@ -81,12 +84,13 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     init(store: Store, walletManager: WalletManager) {
         self.store = store
         self.walletManager = walletManager
-
+        self.updatePreferred()
         addSubscriptions()
 
         updateTimer = Timer
             .scheduledTimer(withTimeInterval: timerPeriod,
                             repeats: true) { _ in
+            self.updatePreferred()
             self.fetchCurrentPrice()
             self.setBalances()
         }
@@ -95,12 +99,19 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         dateFormatter!.setLocalizedDateFormatFromTemplate("dd MMM hh:mm:ss a")
         setBalances()
         updateTransactions()
-
     }
 
     deinit {
         NotificationCenter.default.removeObserver(self, name: .languageChangedNotification, object: nil)
         self.updateTimer = nil
+    }
+
+    private func updatePreferred() {
+        if let currentFiat = GlobalCurrency.from(code: UserDefaults.userPreferredCurrencyCode) {
+            currentGlobalFiat = currentFiat
+        } else {
+            currentGlobalFiat = .USD
+        }
     }
 
     private func fetchCurrentPrice() {
@@ -167,17 +178,26 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         }
     }
 
+    func userWillSyncBlockchain() {
+        guard let store = self.store else { return }
+        store.trigger(name: .rescan)
+    }
+
+    func userWillChangePIN() {
+        guard let store = self.store else { return }
+        store.trigger(name: .promptUpgradePin)
+    }
+
+    func userWillShareData() {
+        guard let store = self.store else { return }
+        store.trigger(name: .promptShareData)
+    }
+
     func updateTransactions() {
         guard let _ = walletManager
         else {
             debugPrint("::: ERROR: Wallet manager Not initialized")
             BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR)
-            return
-        }
-
-        guard let reduxState = store?.state
-        else {
-            debugPrint("::: ERROR: reduxState Not initialized")
             return
         }
 

@@ -25,15 +25,12 @@ struct SettingsExpandingCurrencyView: View {
 
     private var title: String
     let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 14.0)
-
-    var securityListView: SecurityListView
+    let detailFont: Font = .barlowSemiBold(size: 14.0)
 
     init(title: String, viewModel: NewMainViewModel, shouldExpandCurrency: Binding <Bool>) {
         self.title = title
         _shouldExpandCurrency = shouldExpandCurrency
         self.viewModel = viewModel
-        self.securityListView = SecurityListView(viewModel: viewModel)
     }
 
     var body: some View {
@@ -43,19 +40,12 @@ struct SettingsExpandingCurrencyView: View {
                     VStack {
                         HStack {
                             VStack {
-                                Text(title)
+                                Text("\(title) (\(pickedCurrency.symbol))")
                                     .font(largeFont)
                                     .foregroundColor(BrainwalletColor.content)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.leading, rowLeadingPad)
-                                    .padding(.bottom, 1.0)
-                                Text("\(pickedCurrency.fullCurrencyName) (\(pickedCurrency.symbol))")
-                                    .font(detailFont)
-                                    .kerning(0.6)
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.leading, rowLeadingPad)
-                                    .padding(.bottom, 1.0)
+                                    .padding(.bottom, 8.0)
+                                    .padding(.top, 8.0)
                             }
 
                             Spacer()
@@ -63,6 +53,8 @@ struct SettingsExpandingCurrencyView: View {
                             VStack {
                                 Button(action: {
                                     shouldExpandCurrency.toggle()
+                                    let impactRigid = UIImpactFeedbackGenerator(style: .rigid)
+                                    impactRigid.impactOccurred()
                                 }) {
                                     VStack {
                                         HStack {
@@ -72,23 +64,30 @@ struct SettingsExpandingCurrencyView: View {
                                                 .frame(width: expandArrowSize, height: expandArrowSize)
                                                 .foregroundColor(BrainwalletColor.content)
                                                 .rotationEffect(Angle(degrees: shouldExpandCurrency ? 90 : 0))
+
                                         }
+
                                     }
-                                    .frame(width: 30.0, height: 30.0)
+                                    .frame(width: 30.0, height: 30.0, alignment: .top)
+                                    .padding(.top, 8.0)
+
                                 }
                                 .frame(width: 30.0, height: 30.0)
                             }
+                            .frame(width: 30.0, height: 50.0)
+
                         }
-                        .frame(height: 44.0)
                         .padding(.top, 1.0)
+                        .padding(.bottom, 8.0)
                         CurrencyPickerView(viewModel: viewModel, pickedCurrency: $pickedCurrency)
                             .transition(.opacity)
-                            .transition(.move(edge: .top))
-                            .animation(.easeInOut(duration: 0.3))
-                            .frame(height: shouldExpandCurrency ? 110.0 : 0.1)
+                            .animation(.easeInOut(duration: 0.3), value: shouldExpandCurrency)
+                            .frame(height: shouldExpandCurrency ? pickerViewHeight : 0.1)
                         Spacer()
                     }
-
+                    .onAppear {
+                        pickedCurrency = viewModel.currentGlobalFiat
+                    }
                 }
             }
         }

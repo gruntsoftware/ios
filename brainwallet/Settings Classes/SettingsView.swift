@@ -8,39 +8,6 @@
 //
 import SwiftUI
 
-let closedRowHeight: CGFloat = 50.0
-let expandedRowHeight: CGFloat = 240.0
-let rowLeadingPad: CGFloat = 30.0
-let expandArrowSize: CGFloat = 20.0
-
-enum SettingsAction: CaseIterable {
-    case preferDarkMode
-    case wipeData
-    case lock
-
-    var isOnSystemImage: String {
-        switch self {
-        case .preferDarkMode:
-            return "moon.circle"
-        case .wipeData:
-            return "trash"
-        case .lock:
-            return "lock"
-        }
-    }
-
-    var isOffSystemImage: String {
-        switch self {
-        case .preferDarkMode:
-            return "sun.max.circle"
-        case .wipeData:
-            return "trash"
-        case .lock:
-            return "lock.open"
-        }
-    }
-}
-
 struct SettingsView: View {
 
     @ObservedObject
@@ -49,7 +16,10 @@ struct SettingsView: View {
     @Binding var path: [Onboarding]
 
     @State
-    private var isLocked: Bool = false
+    private var shouldLock: Bool = false
+
+    @State
+    private var didTriggerLock: Bool = false
 
     @State
     private var userPrefersDarkMode: Bool = false
@@ -67,7 +37,13 @@ struct SettingsView: View {
     private var shouldExpandBlockchain: Bool = false
 
     @State
-    private var expandedRowHeight: CGFloat = 44.0
+    private var shouldShowSocialSheet: Bool = false
+
+    @State
+    private var shouldShowSupportSheet: Bool = false
+
+    @State
+    private var tempRowHeight: CGFloat = closedRowHeight
 
     let footerRowHeight: CGFloat = 55.0
 
@@ -76,6 +52,10 @@ struct SettingsView: View {
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
     let largeButtonFont: Font = .barlowBold(size: 24.0)
+
+    private let supportURL = URL(string: "https://brainwallet.co/support.html")!
+
+    private let socialsURL = URL(string: "https://linktr.ee/brainwallet")!
 
     init(viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.newMainViewModel = viewModel
@@ -88,7 +68,6 @@ struct SettingsView: View {
 
         NavigationStack {
             GeometryReader { geometry in
-
                 let width = geometry.size.width
                 ZStack {
                     BrainwalletColor.content.edgesIgnoringSafeArea(.all)
@@ -100,41 +79,59 @@ struct SettingsView: View {
                             List {
                                 SettingsExpandingSecurityView(title: String(localized: "Security"),
                                      viewModel: newMainViewModel, shouldExpandSecurity: $shouldExpandSecurity)
-                                .frame(height: shouldExpandSecurity ? 200 : 44.0)
-                                .background(BrainwalletColor.surface)
-                                .listRowBackground(BrainwalletColor.surface)
+                                .frame(height: shouldExpandSecurity ? 300 : tempRowHeight)
+                                .listRowBackground(shouldExpandSecurity ? BrainwalletColor.background : BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
                                 SettingsExpandingCurrencyView(title: String(localized: "Fiat Currency"),
                                     viewModel: newMainViewModel, shouldExpandCurrency: $shouldExpandCurrency)
-                                .frame(height: shouldExpandCurrency ? 200 : 44.0)
-                                .background(BrainwalletColor.surface)
-                                .listRowBackground(BrainwalletColor.surface)
+                                .frame(height: shouldExpandCurrency ? pickerViewHeight : tempRowHeight)
+                                .listRowBackground(shouldExpandCurrency ? BrainwalletColor.background : BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
                                 SettingsExpandingGamesView(title: String(localized: "Games"),
                                     viewModel: newMainViewModel, shouldExpandGames: $shouldExpandGames)
-                                .frame(height: shouldExpandGames ? 200 : 44.0)
-                                .background(BrainwalletColor.surface)
-                                .listRowBackground(BrainwalletColor.surface)
+                                .frame(height: shouldExpandGames ? 200 : tempRowHeight)
+                                .listRowBackground(shouldExpandGames ? BrainwalletColor.background : BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
                                 SettingsExpandingBlockchainView(title: String(localized: "Blockchain: Litecoin"),
                                     viewModel: newMainViewModel, shouldExpandBlockchain: $shouldExpandBlockchain)
                                 .frame(maxWidth: .infinity)
-                                .frame(height: shouldExpandBlockchain ? 200 : 44.0)
-                                .background(BrainwalletColor.surface)
-                                .listRowBackground(BrainwalletColor.surface)
+                                .frame(height: shouldExpandBlockchain ? 200 : tempRowHeight)
+                                .listRowBackground(shouldExpandBlockchain ? BrainwalletColor.background : BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
                                 SettingsLabelView(title: String(localized: "Social"),
                                                   detailText: "linktr.ee/brainwallet")
-                                .frame(height: closedRowHeight)
-                                .background(BrainwalletColor.surface)
+                                .frame(height: tempRowHeight)
                                 .listRowBackground(BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
+                                .onTapGesture {
+                                    shouldShowSocialSheet.toggle()
+                                }
                                 SettingsLabelView(title: String(localized: "Support"),
                                                   detailText: "support.brainwallet.co")
-                                .frame(height: closedRowHeight)
-                                .background(BrainwalletColor.surface)
+                                .frame(height: tempRowHeight)
                                 .listRowBackground(BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
+                                .onTapGesture {
+                                    shouldShowSupportSheet.toggle()
+                                }
                                 SettingsActionThemeView(title:
                                     userPrefersDarkMode ?
                                     String(localized: "Dark Mode")
@@ -142,46 +139,71 @@ struct SettingsView: View {
                                     detailText: "",
                                     action: .preferDarkMode,
                                     userPrefersDark: $userPrefersDarkMode)
-                                        .frame(height: closedRowHeight)
-                                        .background(BrainwalletColor.surface)
+                                        .frame(height: tempRowHeight)
                                         .listRowBackground(BrainwalletColor.surface)
+                                        .listRowInsets(EdgeInsets())
                                         .listRowSeparatorTint(BrainwalletColor.content)
+                                        .padding(.leading, leadRowPad)
+                                        .padding(.trailing, trailRowPad)
 
                                 SettingsActionLockView(title: String(localized: "Lock"),
-                                    detailText: "", action: .lock, isLocked: $isLocked)
-                                .frame(height: closedRowHeight)
-                                .background(BrainwalletColor.surface)
+                                    detailText: "", action: .lock, didTriggerLock: $didTriggerLock)
+                                .frame(height: tempRowHeight)
                                 .listRowBackground(BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
-
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
                             }
                             .listStyle(.plain)
                             .scrollIndicators(.hidden)
                             .buttonStyle(PlainButtonStyle())
                             SettingsFooterView()
-                                .frame(height: footerRowHeight)
+                                .frame(height: footerRowHeight * 0.4, alignment: .bottom)
                                 .padding(.bottom, 1.0)
+                                .padding(.top, 24.0)
+
                         }
                         .frame(width: width * 0.9)
                         .onChange(of: userPrefersDarkMode) { hasDarkPreference in
                             newMainViewModel.updateTheme(shouldBeDark: hasDarkPreference)
                         }
-                        .onChange(of: isLocked) { _ in
-                            newMainViewModel.lockBrainwallet()
+                        .onChange(of: didTriggerLock) { _ in
+                            shouldLock = true
+                            if shouldLock {
+                                delay(0.9) {
+                                    newMainViewModel.lockBrainwallet()
+                                    delay(1.2) {
+                                        didTriggerLock = false
+                                    }
+                                }
+                            }
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(.trailing, 1.0)
-
                 }
-
+            }
+        }
+        .sheet(isPresented: $shouldShowSocialSheet) {
+            ZStack {
+                BrainwalletColor.background.edgesIgnoringSafeArea(.all)
+                WebView(url: socialsURL, scrollToSignup: .constant(false))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .cornerRadius(8.0)
+                    .padding(.top, 12.0)
+                    .padding(8.0)
+            }
+        }
+        .sheet(isPresented: $shouldShowSupportSheet) {
+            ZStack {
+                BrainwalletColor.background.edgesIgnoringSafeArea(.all)
+                WebView(url: supportURL, scrollToSignup: .constant(false))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .cornerRadius(8.0)
+                    .padding(.top, 12.0)
+                    .padding(8.0)
             }
         }
     }
 }
-
-// .frame(width: width * 0.9)
-//
-// Divider()
-//    .frame(width: 1.5)
-//    .overlay(BrainwalletColor.content)
