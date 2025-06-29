@@ -86,10 +86,12 @@ struct SettingsExpandingCurrencyView: View {
                         .padding(.top, 1.0)
                         CurrencyPickerView(viewModel: viewModel, pickedCurrency: $pickedCurrency)
                             .transition(.opacity)
-                            .animation(.easeInOut(duration: 0.3))
+                            .animation(.easeInOut(duration: 0.3), value: shouldExpandCurrency)
                             .frame(height: shouldExpandCurrency ? pickerViewHeight : 0.1)
                             .padding(.top, 1.0)
                         Spacer()
+                    }.onAppear {
+                        pickedCurrency = viewModel.currentGlobalFiat
                     }
                 }
             }
