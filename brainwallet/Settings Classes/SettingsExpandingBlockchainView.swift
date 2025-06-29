@@ -33,8 +33,6 @@ struct SettingsExpandingBlockchainView: View {
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
-                    let width = geometry.size.width
-                    let height = geometry.size.height
                 ZStack {
                     VStack {
                         HStack {
@@ -62,7 +60,8 @@ struct SettingsExpandingBlockchainView: View {
                                             Image(systemName: "chevron.right")
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fit)
-                                                .frame(width: expandArrowSize, height: expandArrowSize)
+                                                .frame(width: expandArrowSize,
+                                                    height: expandArrowSize)
                                                 .foregroundColor(BrainwalletColor.content)
                                                 .rotationEffect(Angle(degrees: shouldExpandBlockchain ? 90 : 0))
                                         }
@@ -81,7 +80,17 @@ struct SettingsExpandingBlockchainView: View {
                             .frame(height: shouldExpandBlockchain ? 200 : 0.1)
                         Spacer()
                     }
-
+                    .alert(String(localized: "Sync with Blockchain?"),
+                        isPresented: $willSync,
+                        actions: {
+                            Button(String(localized: "Cancel"), role: .cancel) { }
+                            Button( String(localized: "Ok"), role: .destructive) {
+                                viewModel.userWillSyncBlockchain()
+                            }
+                           },
+                           message: {
+                               Text("You will not be able to send Litecoin while syncing. It may take a while.")
+                           })
                 }
             }
         }

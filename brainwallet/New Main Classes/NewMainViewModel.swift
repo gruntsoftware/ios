@@ -167,6 +167,11 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         }
     }
 
+    func userWillSyncBlockchain() {
+        guard let store = self.store else { return }
+        store.trigger(name: .rescan)
+    }
+
     func userWillChangePIN() {
         guard let store = self.store else { return }
         store.trigger(name: .promptUpgradePin)
