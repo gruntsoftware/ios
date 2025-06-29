@@ -54,16 +54,13 @@ class FeeUpdater: Trackable {
 		walletManager.apiClient?.feePerKb { newFees, error in
 			guard error == nil
 			else {
-				let properties: [String: String] = ["ERROR_MESSAGE": String(describing: error),
-				                                    "ERROR_TYPE": "FEE_PER_KB"]
-				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
+				
 				completion()
 				return
 			}
 
 			if newFees == Fees.usingDefaultValues {
-				BWAnalytics.logEventWithParameters(itemName: ._20200301_DUDFPK)
-				self.saveEvent("wallet.didUseDefaultFeePerKB")
+
 			}
 
 			self.store.perform(action: UpdateFees.set(newFees))

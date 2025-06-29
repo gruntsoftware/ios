@@ -96,7 +96,6 @@ class ModalPresenter: Subscriber, Trackable {
             }, callback: {
                 let urlString = BrainwalletSocials.linktree
                 guard let url = URL(string: urlString) else { return }
-                BWAnalytics.logEventWithParameters(itemName: ._20250504_DTSM)
                 let vc = SFSafariViewController(url: url)
                 settingsNav.pushViewController(vc, animated: true)})],
 			"Wallet":
@@ -112,7 +111,6 @@ class ModalPresenter: Subscriber, Trackable {
                             let group = DispatchGroup()
 
                             _ = walletManager.peerManager?.disconnect()
-                            BWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
                             group.enter()
                             DispatchQueue.walletQueue.async {
                                 delay(3.0) {
@@ -166,7 +164,6 @@ class ModalPresenter: Subscriber, Trackable {
 					}))
 					alert.addAction(UIAlertAction(title: String(localized: "Sync") , style: .default, handler: {  [weak self] _ in
 						self?.store.trigger(name: .rescan)
-						BWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
 						alert.dismiss(animated: true)
 						self?.topViewController?.dismiss(animated: true)
 					}))
