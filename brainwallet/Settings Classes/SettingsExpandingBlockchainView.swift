@@ -32,7 +32,7 @@ struct SettingsExpandingBlockchainView: View {
 
     var body: some View {
         NavigationStack {
-            GeometryReader { geometry in
+            GeometryReader { _ in
                 ZStack {
                     VStack {
                         HStack {

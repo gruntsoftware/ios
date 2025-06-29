@@ -16,7 +16,10 @@ struct SettingsView: View {
     @Binding var path: [Onboarding]
 
     @State
-    private var isLocked: Bool = false
+    private var shouldLock: Bool = false
+
+    @State
+    private var didTriggerLock: Bool = false
 
     @State
     private var userPrefersDarkMode: Bool = false
@@ -144,7 +147,7 @@ struct SettingsView: View {
                                         .padding(.trailing, trailRowPad)
 
                                 SettingsActionLockView(title: String(localized: "Lock"),
-                                    detailText: "", action: .lock, isLocked: $isLocked)
+                                    detailText: "", action: .lock, didTriggerLock: $didTriggerLock)
                                 .frame(height: tempRowHeight)
                                 .listRowBackground(BrainwalletColor.surface)
                                 .listRowInsets(EdgeInsets())
@@ -165,8 +168,16 @@ struct SettingsView: View {
                         .onChange(of: userPrefersDarkMode) { hasDarkPreference in
                             newMainViewModel.updateTheme(shouldBeDark: hasDarkPreference)
                         }
-                        .onChange(of: isLocked) { _ in
-                            newMainViewModel.lockBrainwallet()
+                        .onChange(of: didTriggerLock) { _ in
+                            shouldLock = true
+                            if shouldLock {
+                                delay(0.9) {
+                                    newMainViewModel.lockBrainwallet()
+                                    delay(1.2) {
+                                        didTriggerLock = false
+                                    }
+                                }
+                            }
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
