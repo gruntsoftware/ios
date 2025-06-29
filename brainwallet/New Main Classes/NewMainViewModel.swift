@@ -172,14 +172,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         store.trigger(name: .promptUpgradePin)
     }
 
-    func willShowSeedPhrase() {
-
-    }
-
-    func userWillSeeShowBrainwalletPhrase() {
-
-    }
-
     func userWillShareData() {
         guard let store = self.store else { return }
         store.trigger(name: .promptShareData)

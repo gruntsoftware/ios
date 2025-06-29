@@ -52,7 +52,7 @@ struct SettingsActionShareView: View {
                                 VStack {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 8.0)
-                                            .foregroundColor(.white)
+                                            .foregroundColor(BrainwalletColor.surface)
                                             .frame(width: 44.0,
                                                    height: 44.0)
                                             .background(.thinMaterial,

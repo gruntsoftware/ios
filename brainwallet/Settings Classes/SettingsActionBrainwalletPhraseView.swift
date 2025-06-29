@@ -55,7 +55,6 @@ struct SettingsActionBrainwalletPhraseView: View {
                         Spacer()
                         VStack {
                             Button(action: {
-                                willShowBrainwalletPhrase.toggle()
                             }) {
                                 VStack {
                                     ZStack {
