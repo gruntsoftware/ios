@@ -66,7 +66,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		}
 
         amountView = AmountViewController(store: store, isPinPadExpandedAtLaunch: false, hasAcceptedFees: hasActivatedInlineFees)
-		BWAnalytics.logEventWithParameters(itemName: ._20191105_VSC)
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -88,8 +87,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
         }
 
 		view.backgroundColor = BrainwalletUIColor.surface
-
-		// set as regular at didLoad
 		walletManager.wallet?.feePerKb = store.state.fees.regular
 
 		// polish parameters
@@ -496,7 +493,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		            		self?.saveEvent("send.success")
 		            		self?.sendAddressCell.textField.text = ""
 		            		self?.memoCell.textView.text = ""
-		            		BWAnalytics.logEventWithParameters(itemName: ._20191105_DSL)
 
 		            	case let .creationError(message):
 		            		self?.showAlert(title: String(localized: "Could not create transaction." , bundle: .main), message: message, buttonLabel:  String(localized: "Ok", bundle: .main))

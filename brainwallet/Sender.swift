@@ -138,13 +138,6 @@ class Sender {
 			}
 			let result = group.wait(timeout: .now() + 30.0)
 			if result == .timedOut {
-				let properties: [String: String] =
-					["ERROR_TX": "\(tx.txHash)",
-					 "ERROR_BLOCKHEIGHT": "\(tx.blockHeight)"]
-
-				BWAnalytics.logEventWithParameters(itemName:
-					._20200112_ERR,
-					properties: properties)
 
 				let alert = UIAlertController(title: "Corruption Error",
 				                              message: "Your local database is corrupted. Go to Settings > Blockchain: Settings > Delete Database to refresh",
@@ -184,21 +177,18 @@ class Sender {
 		// Fires an event if the rate is not set
 		guard let rate = rate
 		else {
-			BWAnalytics.logEventWithParameters(itemName: ._20200111_RNI)
 			return
 		}
 
 		// Fires an event if the transaction is not set
 		guard let tx = transaction
 		else {
-			BWAnalytics.logEventWithParameters(itemName: ._20200111_TNI)
 			return
 		}
 
 		// Fires an event if the feePerKb is not set
 		guard let feePerKb = feePerKb
 		else {
-			BWAnalytics.logEventWithParameters(itemName: ._20200111_FNI)
 			return
 		}
 
@@ -210,10 +200,8 @@ class Sender {
 		                          comment: comment)
 		do {
 			_ = try kvStore.set(metaData)
-		} catch {
-			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
-			                                   properties: ["error":
-			                                   	String(describing: error)])
+		} catch let error {
+            debugPrint("::: ERROR \(error)")
 		}
 		store.trigger(name: .txMemoUpdated(tx.pointee.txHash.description))
 	}
