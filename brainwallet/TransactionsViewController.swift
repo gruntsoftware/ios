@@ -315,7 +315,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 			return UITableViewCell()
 		}
 
-        guard let promptType = promptType  else {
+        guard (promptType != nil)  else {
             return UITableViewCell()
         }
 

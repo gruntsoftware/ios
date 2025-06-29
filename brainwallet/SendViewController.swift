@@ -186,7 +186,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 			if isFirstResponder {
 				self?.memoCell.textView.resignFirstResponder()
 				self?.sendAddressCell.textField.resignFirstResponder()
-				/// copyKeyboardChangeAnimation(willShow: true, notification: notification)
 			}
 		}
 
@@ -300,7 +299,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		else {
 			return showAlert(title: "Invalid Address" , message: "Please enter the recipient's address." , buttonLabel: "Ok" )
 		}
-
 		handleRequest(request)
 		sendAddressCell.textField.text = pasteboard
 		sendAddressCell.textField.layoutIfNeeded()
@@ -319,7 +317,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 	}
 
 	@objc private func sendTapped() {
-
         guard let store = store else {
             debugPrint("::: ERROR: Store not initialized")
             return

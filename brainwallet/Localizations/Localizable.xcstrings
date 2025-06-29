@@ -358,6 +358,16 @@
         }
       }
     },
+    "%@   (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@   (%2$@)"
+          }
+        }
+      }
+    },
     "%@   %@ (%@)" : {
       "localizations" : {
         "ar" : {
@@ -844,6 +854,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ = 1Ł"
+          }
+        }
+      }
+    },
+    "%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@"
           }
         }
       }
@@ -1563,6 +1583,9 @@
         }
       }
     },
+    "App Version:" : {
+
+    },
     "Are you sure you want to delete this wallet & all its data?" : {
       "localizations" : {
         "ar" : {
@@ -2064,6 +2087,9 @@
           }
         }
       }
+    },
+    "BALANCE" : {
+
     },
     "Balance :" : {
       "localizations" : {
@@ -2650,6 +2676,9 @@
       }
     },
     "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)." : {
+
+    },
+    "Brainwallet Phrase" : {
 
     },
     "Buy / Receive" : {
@@ -3353,6 +3382,18 @@
           }
         }
       }
+    },
+    "Coming soon... 🍔" : {
+
+    },
+    "Coming soon... 👺" : {
+
+    },
+    "Coming soon... 🤩" : {
+
+    },
+    "Coming soon... 🪲" : {
+
     },
     "Complete" : {
       "localizations" : {
@@ -5465,6 +5506,9 @@
           }
         }
       }
+    },
+    "Dark Mode" : {
+
     },
     "Delete all" : {
       "localizations" : {
@@ -8905,6 +8949,24 @@
         }
       }
     },
+    "Fiat Currency" : {
+
+    },
+    "Game 1" : {
+
+    },
+    "Game 2" : {
+
+    },
+    "Game 3" : {
+
+    },
+    "Game 4" : {
+
+    },
+    "Games" : {
+
+    },
     "Go to Settings to allow camera access." : {
       "localizations" : {
         "ar" : {
@@ -9616,6 +9678,9 @@
           }
         }
       }
+    },
+    "Light Mode" : {
+
     },
     "Litecoin Display Unit" : {
       "localizations" : {
@@ -15067,6 +15132,9 @@
         }
       }
     },
+    "Seed Phrase" : {
+
+    },
     "Send" : {
       "localizations" : {
         "ar" : {
@@ -15918,6 +15986,7 @@
       }
     },
     "Settings View" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -16619,6 +16688,9 @@
         }
       }
     },
+    "Share Data" : {
+
+    },
     "Share data?" : {
       "localizations" : {
         "ar" : {
@@ -16854,6 +16926,9 @@
           }
         }
       }
+    },
+    "Social" : {
+
     },
     "Social links" : {
       "localizations" : {
@@ -22180,6 +22255,9 @@
           }
         }
       }
+    },
+    "Tx Count: " : {
+
     },
     "Update PIN" : {
       "localizations" : {

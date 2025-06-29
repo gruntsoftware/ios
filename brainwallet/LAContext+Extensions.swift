@@ -27,19 +27,22 @@ extension LAContext {
 		let context = LAContext()
 		if #available(iOS 11, *) {
 			_ = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
-			switch context.biometryType {
-			case .none:
-				return .none
-			case .touchID:
-				return .touch
-			case .faceID:
-				return .face
-			case .opticID:
-				return .optical
-			}
+            switch context.biometryType {
+			    case .none:
+				    return .none
+			    case .touchID:
+				    return .touch
+			    case .faceID:
+				    return .face
+			    case .opticID:
+				    return .optical
+                @unknown default:
+                    fatalError()
+            }
 		} else {
 			return context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) ? .touch : .none
 		}
+
 	}
 
 	enum BiometricType {

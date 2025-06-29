@@ -22,9 +22,8 @@ struct Rate: Codable, Hashable {
 		var map = [String: String]()
 		for identifier in Locale.availableIdentifiers {
 			let locale = Locale(identifier: identifier)
-			guard let code = locale.currencyCode else { continue }
+            guard let code = locale.currency?.identifier else { continue }
 			guard let symbol = locale.currencySymbol else { continue }
-
 			if let collision = map[code] {
 				if collision.utf8.count > symbol.utf8.count {
 					map[code] = symbol
