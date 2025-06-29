@@ -54,7 +54,7 @@ class FeeUpdater: Trackable {
 		walletManager.apiClient?.feePerKb { newFees, error in
 			guard error == nil
 			else {
-				
+
 				completion()
 				return
 			}

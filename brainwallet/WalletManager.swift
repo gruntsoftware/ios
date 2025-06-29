@@ -477,7 +477,6 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 					sqlite3_exec(self.db, "rollback", nil, nil, nil)
 					return
 				}
-
 				pk = sqlite3_column_int(sql, 0) // get last primary key
 			}
 
@@ -500,7 +499,6 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 					print(String(cString: sqlite3_errmsg(self.db)))
 					return
 				}
-
 				sqlite3_reset(sql2)
 			}
 

@@ -1,7 +1,7 @@
 import LocalAuthentication
 import SwiftUI
 import UIKit
-import Firebase
+import FirebaseAnalytics
 
 let kNormalTransactionCellHeight: CGFloat = 65.0
 let kProgressHeaderHeight: CGFloat = 75.0
@@ -332,7 +332,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     private func measureSyncTimes(startSync: Date, endSync: Date) {
         let duration = endSync.timeIntervalSince(startSync)
         let uuid = UUID().uuidString
-        Analytics.logEvent(CustomEvent._20250615_UDCS.rawValue,
+        Analytics.logEvent("user_did_complete_sync",
             parameters: [
             "start_timestamp": startSync,
             "end_timestamp": endSync,
