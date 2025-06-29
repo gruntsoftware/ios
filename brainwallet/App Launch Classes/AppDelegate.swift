@@ -179,7 +179,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		} else {
             Analytics.logEvent("error_message", parameters: [
               "firebase_config_failed": "launch_error"
-            ])  
+            ])
 			assertionFailure("Couldn't load Firebase config file")
 		}
 	}

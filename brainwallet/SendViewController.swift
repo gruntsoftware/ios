@@ -87,8 +87,6 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
         }
 
 		view.backgroundColor = BrainwalletUIColor.surface
-
-		// set as regular at didLoad
 		walletManager.wallet?.feePerKb = store.state.fees.regular
 
 		// polish parameters
