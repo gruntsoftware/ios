@@ -24,8 +24,6 @@ struct SeedWordContainerView: View {
 
 	@State
 	private var didEnterPINCode = false
-    
-    
 
 	@ObservedObject
 	var seedViewModel = SeedViewModel(enteredPIN: .constant(""))
@@ -43,7 +41,7 @@ struct SeedWordContainerView: View {
 			let height = geometry.size.height
 			let wordViewWidth = width / CGFloat(wordViewWidthRoot) - wordPad
 			ZStack {
-                
+
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 				VStack {
 					HStack {
@@ -75,7 +73,7 @@ struct SeedWordContainerView: View {
 								.toolbar {
 									ToolbarItemGroup(placement: .keyboard) {
 										Spacer()
-										Button("Done" ) {
+										Button("Done") {
 											didEnterPINCode.toggle()
                                         }
                                         .foregroundColor(BrainwalletColor.content)
@@ -98,8 +96,7 @@ struct SeedWordContainerView: View {
 			}
 			.onChange(of: didEnterPINCode) { _ in
 				if let fetchedWords = seedViewModel.fetchWords(walletManager: self.walletManager,
-				                                               appPIN: enteredPIN)
-				{
+				                                               appPIN: enteredPIN) {
 					seedViewModel.seedWords = fetchedWords
 					shouldShowSeedWords = true
 				}
@@ -107,4 +104,3 @@ struct SeedWordContainerView: View {
 		}
 	}
 }
-

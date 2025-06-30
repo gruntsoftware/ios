@@ -1,8 +1,8 @@
 /* Bundle display name */
-"CFBundleDisplayName" = "Brainwallet";
+"CFBundleDisplayName" = "Monedero cerebral";
 
 /* Bundle name */
-"CFBundleName" = "Brainwallet";
+"CFBundleName" = "Monedero cerebral";
 
 /* No comment provided by engineer. */
 "Litecoin Payment" = "Pago con Litecoin";

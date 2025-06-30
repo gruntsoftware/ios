@@ -41,11 +41,19 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 		return wordArray
 	}()
 
-	private lazy var confirmFirstPhrase: ConfirmPhrase = .init(text: String(format: "Word #%1$@" , "\(self.fourIndices.0 + 1)"), word: self.words[self.fourIndices.0])
-
-	private lazy var confirmSecondPhrase: ConfirmPhrase = .init(text: String(format: "Word #%1$@" , "\(self.fourIndices.1 + 1)"), word: self.words[self.fourIndices.1])
-	private lazy var confirmThirdPhrase: ConfirmPhrase = .init(text: String(format: "Word #%1$@" , "\(self.fourIndices.2 + 1)"), word: self.words[self.fourIndices.2])
-	private lazy var confirmFourthPhrase: ConfirmPhrase = .init(text: String(format: "Word #%1$@" , "\(self.fourIndices.3 + 1)"), word: self.words[self.fourIndices.3])
+    private let wordLocalized = String(localized: "Word")
+	private lazy var confirmFirstPhrase: ConfirmPhrase = .init(text: String(format: "%@ #%1$@",
+        wordLocalized,"\(self.fourIndices.0 + 1)"),
+        word: self.words[self.fourIndices.0])
+	private lazy var confirmSecondPhrase: ConfirmPhrase = .init(text: String(format: "%@ #%1$@",
+        wordLocalized, "\(self.fourIndices.1 + 1)"),
+        word: self.words[self.fourIndices.1])
+	private lazy var confirmThirdPhrase: ConfirmPhrase = .init(text: String(format: "%@ #%1$@",
+        wordLocalized, "\(self.fourIndices.2 + 1)"),
+        word: self.words[self.fourIndices.2])
+	private lazy var confirmFourthPhrase: ConfirmPhrase = .init(text: String(format: "%@ #%1$@",
+        wordLocalized, "\(self.fourIndices.3 + 1)"),
+        word: self.words[self.fourIndices.3])
 
 	var store: Store?
 	var walletManager: WalletManager?
@@ -70,8 +78,7 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 
 		NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification,
 		                                       object: nil,
-		                                       queue: nil)
-		{ [weak self] _ in
+		                                       queue: nil) { [weak self] _ in
 			self?.dismiss(animated: true,
 			              completion: nil)
 		}
@@ -120,7 +127,7 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 		))
 
 		backButton.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
-		submitButton.setTitle("Submit" , for: .normal)
+		submitButton.setTitle(String(localized: "Submit") , for: .normal)
 		submitButton.titleLabel?.font = UIFont.barlowBold(size: 18.0)
         submitButton.titleLabel?.textColor = BrainwalletUIColor.content
         submitButton.backgroundColor = BrainwalletUIColor.background
@@ -177,8 +184,7 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 		if firstWordCell.confirmPhraseView?.textField.text == words[fourIndices.0] &&
 			secondWordCell.confirmPhraseView?.textField.text == words[fourIndices.1] &&
 			thirdWordCell.confirmPhraseView?.textField.text == words[fourIndices.2] &&
-			fourthWordCell.confirmPhraseView?.textField.text == words[fourIndices.3]
-		{
+			fourthWordCell.confirmPhraseView?.textField.text == words[fourIndices.3] {
 			UserDefaults.writePaperPhraseDate = Date()
 			store.trigger(name: .didWritePaperKey)
 			didCompleteConfirmation?()
@@ -187,20 +193,11 @@ class ConfirmPaperPhraseViewController: UITableViewController {
 			secondWordCell.confirmPhraseView?.validate()
 			thirdWordCell.confirmPhraseView?.validate()
 			fourthWordCell.confirmPhraseView?.validate()
-			showErrorMessage("The words entered do not match your paper key. Please try again.")
+			showErrorMessage(String(localized: "The words entered do not match your paper key. Please try again."))
 		}
 	}
 }
 
 class ConfirmPhraseTableViewCell: UITableViewCell {
 	var confirmPhraseView: ConfirmPhrase?
-	override func awakeFromNib() {
-		super.awakeFromNib()
-	}
-
-	override func setSelected(_ selected: Bool, animated: Bool) {
-		super.setSelected(selected, animated: animated)
-	}
 }
-
-

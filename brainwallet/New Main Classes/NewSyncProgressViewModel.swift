@@ -16,20 +16,18 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
 
     @Published
     var formattedTimestamp = ""
-    
+
     @Published
     var blockHeightString = "--"
 
     // MARK: - Public Variables
-    
 
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.setLocalizedDateFormatFromTemplate("MMM d, yyyy h a")
         return df
     }()
-    
-    
+
     var isRescanning: Bool = false
     var headerMessage: SyncState = .success
     var progress: CGFloat = 0.0
@@ -39,12 +37,11 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
             formattedTimestamp = dateFormatter.string(from: Date(timeIntervalSince1970: Double(dateTimestamp)))
         }
     }
-    
-    
+
     var store: Store
     var walletManager: WalletManager
-    
-    let currencies: [SupportedFiatCurrencies] = SupportedFiatCurrencies.allCases
+
+    let currencies: [SupportedFiatCurrency] = SupportedFiatCurrency.allCases
 
     init(store: Store, walletManager: WalletManager) {
         self.store = store
@@ -52,34 +49,8 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
         setSubscriptions()
     }
 
-///    dateFormatter.string(from: Date(timeIntervalSince1970: Double(timestamp)))
-
-    /// DEV: For checking wallet
-//    private func checkForWalletAndSync() {
-//        /// Test seed count
-//        guard seedWords.count == 12 else { return }
-//
-//        /// Set for default.  This model needs a initial value
-//        walletManager.forceSetPin(newPin: Partner.partnerKeyPath(name: .brainwalletStart))
-//
-//        guard walletManager.setRandomSeedPhrase() != nil else {
-//            walletCreationDidFail = true
-//            let properties = ["error_message": "wallet_creation_fail"]
-//            LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
-//            return
-//        }
-//
-//        store.perform(action: WalletChange.setWalletCreationDate(Date()))
-//        DispatchQueue.walletQueue.async {
-//            self.walletManager.peerManager?.connect()
-//            DispatchQueue.main.async {
-//                self.store.trigger(name: .didCreateOrRecoverWallet)
-//            }
-//        }
-//    }
-    
     func setCurrency(code: String) {
-        UserDefaults.defaultCurrencyCode = code
+        UserDefaults.userPreferredCurrencyCode = code
         UserDefaults.standard.synchronize()
         Bundle.setLanguage(code)
 
@@ -90,6 +61,9 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
         }
     }
     private func setSubscriptions() {
-        
+        self.store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
+                        callback: { _ in
+
+        })
     }
 }

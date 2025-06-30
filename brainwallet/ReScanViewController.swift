@@ -8,7 +8,7 @@ class ReScanViewController: UIViewController, Subscriber {
 
 	private let header = UILabel(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
 	private let body = UILabel.wrapping(font: .systemFont(ofSize: 15.0))
-	private let button = ShadowButton(title: "Start Sync" , type: .primary)
+	private let button = ShadowButton(title: String(localized: "Start Sync") , type: .primary)
 	private let footer = UILabel.wrapping(font: .customBody(size: 16.0), color: BrainwalletUIColor.content)
 	private let store: Store
 
@@ -33,23 +33,23 @@ class ReScanViewController: UIViewController, Subscriber {
 		header.constrain([
 			header.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: C.padding[2]),
 			header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: C.padding[2]),
-			header.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: C.padding[-2]),
+			header.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: C.padding[-2])
 		])
 		body.constrain([
 			body.leadingAnchor.constraint(equalTo: header.leadingAnchor),
 			body.topAnchor.constraint(equalTo: header.bottomAnchor, constant: C.padding[2]),
-			body.trailingAnchor.constraint(equalTo: header.trailingAnchor),
+			body.trailingAnchor.constraint(equalTo: header.trailingAnchor)
 		])
 		footer.constrain([
 			footer.leadingAnchor.constraint(equalTo: header.leadingAnchor),
 			footer.trailingAnchor.constraint(equalTo: header.trailingAnchor),
-			footer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -C.padding[3]),
+			footer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -C.padding[3])
 		])
 		button.constrain([
 			button.leadingAnchor.constraint(equalTo: footer.leadingAnchor),
 			button.trailingAnchor.constraint(equalTo: footer.trailingAnchor),
 			button.bottomAnchor.constraint(equalTo: footer.topAnchor, constant: -C.padding[2]),
-			button.heightAnchor.constraint(equalToConstant: C.Sizes.buttonHeight),
+			button.heightAnchor.constraint(equalToConstant: C.Sizes.buttonHeight)
 		])
 	}
 
@@ -68,7 +68,7 @@ class ReScanViewController: UIViewController, Subscriber {
 		alert.addAction(UIAlertAction(title: String(localized: "Cancel", bundle: .main), style: .default, handler: nil))
 		alert.addAction(UIAlertAction(title:String(localized: "Sync", bundle: .main) , style: .default, handler: { [weak self] _ in
 			self?.store.trigger(name: .rescan)
-			LWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
+			BWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
 
 			self?.dismiss(animated: true, completion: nil)
 		}))

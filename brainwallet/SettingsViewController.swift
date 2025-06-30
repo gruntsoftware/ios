@@ -15,13 +15,13 @@ class SettingsViewController: UITableViewController {
 			self.rows = rows
 		} else {
 			var tempRows = rows
-			let biometricsLimit = LAContext.biometricType() == .face ? "Face ID Spending Limit" : "Touch ID Spending Limit"
+			let biometricsLimit = LAContext.biometricType() == .face ?  String(localized: "Face ID Spending Limit") :  String(localized: "Touch ID Spending Limit")
 			tempRows["Manage"] = tempRows["Manage"]?.filter { $0.title != biometricsLimit }
 			self.rows = tempRows
 		}
 
-		customTitle = "Settings"
-		titleLabel.text = "Settings"
+		customTitle =  String(localized: "Settings")
+		titleLabel.text =  String(localized: "Settings")
 		super.init(style: .plain)
 	}
 
@@ -35,7 +35,6 @@ class SettingsViewController: UITableViewController {
 	override func viewDidLoad() {
 		let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 48.0))
 
-
         headerView.backgroundColor = BrainwalletUIColor.surface
 		tableView.backgroundColor = BrainwalletUIColor.surface
         titleLabel = UILabel(font: .customBold(size: 26.0), color: BrainwalletUIColor.content)
@@ -47,11 +46,7 @@ class SettingsViewController: UITableViewController {
 		tableView.tableFooterView = UIView()
 		tableView.separatorStyle = .none
 
-		//addCustomTitle()
-	}
-
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
+		// addCustomTitle()
 	}
 
 	override func numberOfSections(in _: UITableView) -> Int {
@@ -78,7 +73,7 @@ class SettingsViewController: UITableViewController {
 			}
 
             cell.textLabel?.textColor = BrainwalletUIColor.content
-			
+
 		}
 		return cell
 	}
@@ -87,7 +82,7 @@ class SettingsViewController: UITableViewController {
 		let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 44))
 		let label = UILabel(font: .customBold(size: 14.0), color: BrainwalletUIColor.content)
 		let separator = UIView()
-        
+
         view.backgroundColor = BrainwalletUIColor.surface
 
 		view.addSubview(label)
@@ -107,18 +102,18 @@ class SettingsViewController: UITableViewController {
 		}
 
         separator.backgroundColor = BrainwalletUIColor.gray
-        
+
 		view.addSubview(separator)
 		separator.constrain([
 			separator.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			separator.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 			separator.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			separator.heightAnchor.constraint(equalToConstant: 1.0),
+			separator.heightAnchor.constraint(equalToConstant: 1.0)
 		])
 
 		label.constrain([
 			label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: C.padding[2]),
-			label.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -4.0),
+			label.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -4.0)
 		])
 
 		return view

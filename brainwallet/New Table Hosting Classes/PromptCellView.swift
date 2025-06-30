@@ -9,27 +9,27 @@
 import SwiftUI
 
 struct PromptCellView: View {
-    
+
     // MARK: - Combine Variables
-    
+
     @ObservedObject
     var viewModel: PromptCellViewModel
-    
+
     @State
     private var userDidTapClose: Bool = false
-    
+
     @State
     private var userDidTapContinue: Bool = false
-    
+
     init(viewModel: PromptCellViewModel) {
         self.viewModel = viewModel
     }
-    
+
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                
+
                 VStack {
                     Spacer()
 
@@ -40,7 +40,7 @@ struct PromptCellView: View {
                             .font(Font(UIFont.barlowSemiBold(size: 20.0)))
                             .foregroundColor(BrainwalletColor.content)
                             .padding(20.0)
-                        
+
                         Spacer()
                         Image(systemName: viewModel.promptType.systemImageName ?? "")
                             .resizable()
@@ -61,7 +61,7 @@ struct PromptCellView: View {
                     }
                     .padding([.leading, .trailing], 10.0)
                     .padding(.bottom, 5.0)
-                    
+
                     HStack(alignment: .top, spacing: 1.0) {
                         Spacer()
                         Button(action: {

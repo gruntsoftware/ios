@@ -1,7 +1,8 @@
 import Foundation
 import UIKit
 
-struct Rate {
+struct Rate: Codable, Hashable {
+
 	let code: String
 	let name: String
 	let rate: Double
@@ -59,7 +60,7 @@ extension Rate {
 		return [
 			"code": code,
 			"name": name,
-			"n": rate,
+			"n": rate
 		]
 	}
 }

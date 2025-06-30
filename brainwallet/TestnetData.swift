@@ -5,5 +5,4 @@ enum Faucets: String {
 	case litecoinTools = "http://testnet.litecointools.com/"
 }
 
-class TestnetData
-{}
+class TestnetData {}

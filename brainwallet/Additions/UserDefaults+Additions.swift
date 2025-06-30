@@ -2,7 +2,7 @@ import Foundation
 
 private let defaults = UserDefaults.standard
 private let isBiometricsEnabledKey = "isbiometricsenabled"
-private let defaultCurrencyCodeKey = "defaultcurrency"
+private let userPreferredCurrencyCodeKey = "defaultcurrency"
 private let userPreferredBuyCurrencyKey = "userPreferredBuyCurrency"
 private let hasAquiredShareDataPermissionKey = "has_acquired_permission"
 private let legacyWalletNeedsBackupKey = "WALLET_NEEDS_BACKUP"
@@ -18,6 +18,12 @@ private let hasPromptedShareDataKey = "hasPromptedShareDataKey"
 private let didSeeTransactionCorruption = "DidSeeTransactionCorruption"
 private let userIsInUSAKey = "userIsInUSAKey"
 private let selectedLanguageKey = "selectedLanguage"
+
+let timeSinceLastExitKey = "TimeSinceLastExit"
+let shouldRequireLoginTimeoutKey = "ShouldRequireLoginTimeoutKey"
+let numberOfBrainwalletLaunches = "NumberOfBrainwalletLaunches"
+let userDidPreferDarkModeKey = "UserDidPreferDarkMode"
+let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
 
 extension UserDefaults {
 	static var selectedLanguage: String {
@@ -46,19 +52,23 @@ extension UserDefaults {
 		set { defaults.set(newValue, forKey: didSeeTransactionCorruption) }
 	}
 
-	static var defaultCurrencyCode: String {
+	static var userPreferredCurrencyCode: String {
 		get {
 			var currencyCode = "USD"
-			if defaults.object(forKey: defaultCurrencyCodeKey) == nil {
-                currencyCode = Locale.current.currency?.identifier ?? "USD"
+
+			if defaults.object(forKey: userPreferredCurrencyCodeKey) == nil {
+                if let localeCode: String = Locale.current.currency?.identifier {
+                    debugPrint(":::: \(localeCode) ")
+                    currencyCode = localeCode
+                }
 			} else {
-				currencyCode = defaults.string(forKey: defaultCurrencyCodeKey)!
+				currencyCode = defaults.string(forKey: userPreferredCurrencyCodeKey)!
 			}
 			return currencyCode
 		}
-		set { defaults.set(newValue, forKey: defaultCurrencyCodeKey) }
+		set { defaults.set(newValue, forKey: userPreferredCurrencyCodeKey) }
 	}
-     
+
     static var userPreferredDarkTheme: Bool {
         get {
             guard defaults.object(forKey: userDidPreferDarkModeKey) != nil
@@ -69,7 +79,7 @@ extension UserDefaults {
         }
         set { defaults.set(newValue, forKey: userDidPreferDarkModeKey) }
     }
-    
+
     static var userPreferredBuyCurrency: String {
         get {
             var currencyCode = "USD"
@@ -82,7 +92,6 @@ extension UserDefaults {
         }
         set { defaults.set(newValue, forKey: userPreferredBuyCurrencyKey) }
     }
-    
 
 	static var hasAquiredShareDataPermission: Bool {
 		get { return defaults.bool(forKey: hasAquiredShareDataPermissionKey) }

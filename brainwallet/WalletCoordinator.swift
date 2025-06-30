@@ -44,7 +44,8 @@ class WalletCoordinator: Subscriber, Trackable {
 
 	@objc private func updateProgress() {
 		DispatchQueue.walletQueue.async {
-			guard let progress = self.walletManager.peerManager?.syncProgress(fromStartHeight: self.lastBlockHeight), let timestamp = self.walletManager.peerManager?.lastBlockTimestamp else { return }
+			guard let progress = self.walletManager.peerManager?.syncProgress(fromStartHeight: self.lastBlockHeight),
+                    let timestamp = self.walletManager.peerManager?.lastBlockTimestamp else { return }
 			DispatchQueue.main.async {
 				self.store.perform(action: WalletChange.setProgress(progress: progress, timestamp: timestamp))
 			}
@@ -139,20 +140,19 @@ class WalletCoordinator: Subscriber, Trackable {
 						self.store.perform(action: WalletChange.setTransactions(transactions))
 					}
 				} else {
-					LWAnalytics.logEventWithParameters(itemName: ._20240214_TI, properties: ["transactions_info": "no_txs_found_in_wallet"])
+					BWAnalytics.logEventWithParameters(itemName: ._20240214_TI, properties: ["transactions_info": "no_txs_found_in_wallet"])
 				}
 			} catch {
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error_message": error.localizedDescription])
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error_message": error.localizedDescription])
 			}
 		}
 	}
 
 	func makeTransactionViewModels(transactions: [BRTxRef?], walletManager: WalletManager, kvStore: BRReplicatedKVStore?, rate: Rate?) async throws -> [Transaction] {
-        
+
         precondition(kvStore != nil, "KVStore must be valid")
         precondition(rate != nil, "rate must be valid")
-        
-        
+
 		guard let kvStore = kvStore else {
 			throw MakeTransactionError.replicatedKVStoreNotFound
 		}

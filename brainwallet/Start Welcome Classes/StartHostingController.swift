@@ -7,8 +7,8 @@ class StartHostingController: UIHostingController<StartView> {
 	var startViewModel: StartViewModel
 
 	init(store: Store, walletManager: WalletManager) {
-        startViewModel = StartViewModel(store: store, walletManager: walletManager)
-        
+        startViewModel = StartViewModel(store: store)
+
         let newMainViewModel = NewMainViewModel(store: store, walletManager: walletManager)
         super.init(rootView: StartView(startViewModel: startViewModel, newMainViewModel: newMainViewModel))
 	}

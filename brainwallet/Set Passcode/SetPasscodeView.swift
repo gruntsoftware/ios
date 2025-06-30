@@ -1,49 +1,47 @@
-
 import SwiftUI
 struct SetPasscodeView: View {
-    
-    
+
     @Binding
     var path: [Onboarding]
-    
+
     @State var pinDigits: [Int] = []
 
     @State
     private var pinState: [Bool] = [false,false,false,false]
 
     private let isRestore: Bool?
-    
+
     @State
     private var didFillPIN: Bool = false
-     
+
     let subTitleFont: Font = .barlowSemiBold(size: 32.0)
     let largeButtonFont: Font = .barlowBold(size: 24.0)
     let detailFont: Font = .barlowRegular(size: 26.0)
-    
+
     let verticalPadding: CGFloat = 20.0
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeButtonSize: CGFloat = 28.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
-    
+
     let arrowSize: CGFloat = 60.0
-    
+
     init(path: Binding<[Onboarding]>) {
         _path = path
         isRestore = true
     }
-    
+
     var body: some View {
-        
+
             GeometryReader { geometry in
-                
+
                 let width = geometry.size.width
                 let height = geometry.size.height
-                
+
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                    
+
                     VStack {
                         HStack {
                                 Button(action: {
@@ -58,7 +56,7 @@ struct SetPasscodeView: View {
                                         .frame(width: squareImageSize,
                                                height: squareImageSize,
                                                alignment: .center)
-                                    
+
                                         .foregroundColor(BrainwalletColor.content)
                                     Spacer()
                                 }
@@ -66,7 +64,7 @@ struct SetPasscodeView: View {
                         }
                         .frame(height: squareImageSize)
                         .padding(.all, 20.0)
-                     
+
                             Text( "Set app PIN" )
                                 .font(subTitleFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
@@ -90,12 +88,12 @@ struct SetPasscodeView: View {
                 }
             }
             .onChange(of: pinDigits) { _ in
-                
+
                 pinState = (0..<4).map { $0 < pinDigits.count }
-                
+
                 didFillPIN  = pinState.allSatisfy { $0 == true }
                 if didFillPIN {
-                
+
                    // path.append(.confirmPasscodeView(isRestore: self.isRestore, pinDigits: pinDigits))
                 }
             }

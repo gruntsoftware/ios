@@ -13,18 +13,18 @@ enum AlertType {
 	var header: String {
 		switch self {
 		case .pinSet:
-			return "PIN Set"
+			return  String(localized: "PIN Set")
 		case .paperKeySet:
-			return "Paper Key Set"
+			return String(localized: "Paper Key Set")
 		case .sendSuccess:
-			return "Send Confirmation"
+			return String(localized: "Send Confirmation")
 		case .addressesCopied:
-			return "Addresses Copied"
+			return String(localized: "Addresses Copied")
 		case .sweepSuccess:
-			return "Success"
+			return String(localized: "Success")
 		// Failure(s)
 		case .failedResolution:
-			return "Send failed" 
+			return String(localized: "Send failed")
 		}
 	}
 
@@ -33,16 +33,16 @@ enum AlertType {
 		case .pinSet:
 			return ""
 		case .paperKeySet:
-			return "Awesome!"
+			return String(localized: "Awesome!")
 		case .sendSuccess:
-			return "Money Sent!"
+			return String(localized: "Money Sent!")
 		case .addressesCopied:
-			return "Addresses Copied"
+			return String(localized: "Addresses Copied")
 		case .sweepSuccess:
-			return "Successfully imported wallet."
+			return String(localized: "Successfully imported wallet.")
 		// Failure(s)
 		case .failedResolution:
-			return "Resolved"
+			return String(localized: "Resolved")
 		}
 	}
 
@@ -88,6 +88,8 @@ class AlertView: UIView, SolidColorDrawable {
 		super.init(frame: .zero)
 		layer.cornerRadius = 6.0
 		layer.masksToBounds = true
+        self.layer.backgroundColor = BrainwalletUIColor.background.cgColor
+        self.layer.opacity = 0.95
 		setupSubviews()
 	}
 
@@ -131,23 +133,19 @@ class AlertView: UIView, SolidColorDrawable {
 			separator.constraint(.height, constant: 1.0),
 			separator.constraint(.width, toView: self, constant: 0.0),
 			separator.constraint(.top, toView: self, constant: separatorYOffset),
-			separator.constraint(.leading, toView: self, constant: nil),
+			separator.constraint(.leading, toView: self, constant: nil)
 		])
 		icon.constrain([
 			icon.constraint(.centerX, toView: self, constant: nil),
 			icon.constraint(.centerY, toView: self, constant: nil),
 			icon.constraint(.width, constant: iconSize),
-			icon.constraint(.height, constant: iconSize),
+			icon.constraint(.height, constant: iconSize)
 		])
 		subheader.constrain([
 			subheader.constraint(.leading, toView: self, constant: C.padding[2]),
 			subheader.constraint(.trailing, toView: self, constant: -C.padding[2]),
-			subheader.constraint(toBottom: icon, constant: C.padding[3]),
+			subheader.constraint(toBottom: icon, constant: C.padding[3])
 		])
-	}
-
-	override func draw(_ rect: CGRect) {
-        drawColor(color: BrainwalletUIColor.surface, rect)
 	}
 
 	@available(*, unavailable)

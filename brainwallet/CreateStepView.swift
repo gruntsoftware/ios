@@ -14,8 +14,8 @@ struct CreateStepView: View {
 	}
 
 	var body: some View {
-		GeometryReader { geometry in
-			ZStack { 
+		GeometryReader { _ in
+			ZStack {
 
 				createStepConfig.backgroundColor
 					.edgesIgnoringSafeArea(.all)

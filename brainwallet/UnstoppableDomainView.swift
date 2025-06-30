@@ -25,7 +25,7 @@ struct UnstoppableDomainView: View {
 
     var body: some View {
         GeometryReader { _ in
-            
+
             ZStack {
                 VStack {
                     //					Spacer()
@@ -87,7 +87,7 @@ struct UnstoppableDomainView: View {
                     //
                     //									UIApplication.shared.open(url, options: [:], completionHandler: nil)
                     //
-                    //									LWAnalytics.logEventWithParameters(itemName: ._20220822_UTOU)
+                    //									BWAnalytics.logEventWithParameters(itemName: ._20220822_UTOU)
                     //								}
                     //						}
                     //						.padding([.leading, .trailing], swiftUICellPadding)

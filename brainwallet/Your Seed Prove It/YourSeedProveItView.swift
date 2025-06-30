@@ -10,7 +10,6 @@ import SwiftUI
 
 struct YourSeedProveItView: View {
 
-
 @Binding var path: [Onboarding]
 
 @ObservedObject
@@ -26,13 +25,13 @@ init(viewModel: StartViewModel, path: Binding<[Onboarding]>) {
     self.viewModel = viewModel
     _path = path
 }
-                            
+
 var body: some View {
-    
+
     GeometryReader { geometry in
-        
+
         let width = geometry.size.width
-        
+
         ZStack {
             BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
             VStack {
@@ -54,9 +53,9 @@ var body: some View {
                 }
                 .frame(height: squareImageSize)
                 .padding(.all, 20.0)
-                
+
                 Text("Your seed words, prove it")
-                
+
                 Button(action: {
                     path.append(.yourSeedProveView)
                 }) {
@@ -64,7 +63,7 @@ var body: some View {
                         RoundedRectangle(cornerRadius: largeButtonHeight/2)
                             .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                             .foregroundColor(BrainwalletColor.surface)
-                        
+
                         Text("Setup app passcode")
                             .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                             .font(largeButtonFont)

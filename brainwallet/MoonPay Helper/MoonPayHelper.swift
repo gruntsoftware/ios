@@ -36,7 +36,6 @@ public struct MoonpayCountryData: Codable, Hashable {
     var isAllowedInCountry: Bool
 }
 
-
 /// - Returns: MoonpayBuyLimits
 public struct MoonpayBuyLimits: Codable, Hashable {
     var areFeesIncluded: Bool = true
@@ -68,7 +67,7 @@ public struct MoonpaySigningData: Codable, Hashable {
     var baseCurrencyAmount: String = ""
     var language: String = "en"
     var walletAddress: String = ""
-    var defaultCurrencyCode: String = ""
+    var userPreferredCurrencyCode: String = ""
     var externalTransactionId: String = "en"
     var currencyCode: String = ""
     var themeId: String = ""
