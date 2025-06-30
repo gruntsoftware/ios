@@ -140,11 +140,9 @@ class WalletCoordinator: Subscriber, Trackable {
 					Task {
 						self.store.perform(action: WalletChange.setTransactions(transactions))
 					}
-				} else {
-					BWAnalytics.logEventWithParameters(itemName: ._20240214_TI, properties: ["transactions_info": "no_txs_found_in_wallet"])
 				}
-			} catch {
-				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error_message": error.localizedDescription])
+			} catch let error {
+                debugPrint("::: ERROR \(error)")
 			}
 		}
 	}

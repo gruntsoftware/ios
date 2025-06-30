@@ -17,13 +17,8 @@ class ModalTransitionDelegate: NSObject, Subscriber {
 	func reset() {
 		isInteractive = false
 		presentedViewController = nil
-		if let panGesture = panGestureRecognizer {
-			BWAnalytics.logEventWithParameters(itemName: ._20210427_HCIEEH)
-            UIApplication.shared.connectedScenes
-                .compactMap { $0 as? UIWindowScene }
-                .flatMap { $0.windows }
-                .first { $0.isKeyWindow }?
-                .removeGestureRecognizer(panGesture)
+		if let panGr = panGestureRecognizer {
+			UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.removeGestureRecognizer(panGr)
 		}
 		store.trigger(name: .showStatusBar)
 	}
@@ -88,15 +83,9 @@ extension ModalTransitionDelegate: UIViewControllerTransitioningDelegate {
 	func animationController(forPresented presented: UIViewController, presenting _: UIViewController, source _: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 		presentedViewController = presented
 		return PresentModalAnimator(shouldCoverBottomGap: type == .regular, completion: {
-			let panGesture = UIPanGestureRecognizer(target: self, action: #selector(ModalTransitionDelegate.didUpdate(gr:)))
-
-			BWAnalytics.logEventWithParameters(itemName: ._20210427_HCIEEH)
-            UIApplication.shared.connectedScenes
-                .compactMap { $0 as? UIWindowScene }
-                .flatMap { $0.windows }
-                .first { $0.isKeyWindow }?
-                .removeGestureRecognizer(panGesture)
-			self.panGestureRecognizer = panGesture
+			let panGr = UIPanGestureRecognizer(target: self, action: #selector(ModalTransitionDelegate.didUpdate(gr:)))
+			UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.removeGestureRecognizer(panGr)
+			self.panGestureRecognizer = panGr
 		})
 	}
 

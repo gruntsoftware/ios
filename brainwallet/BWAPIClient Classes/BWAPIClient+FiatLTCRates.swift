@@ -21,8 +21,6 @@ extension BWAPIClient {
 	func exchangeRates( _ handler: @escaping (_ rates: [Rate], _ error: String?) -> Void) {
 
         guard let urlObject = URL(string: APIServer.baseUrl + "v1/rates") else {
-            let properties = ["error_message": "rates_url_failed"]
-            BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
             debugPrint("::: ERROR: rates_url_failed")
             return
         }
@@ -52,8 +50,6 @@ extension BWAPIClient {
             } else if let data = data,
                 let parsedData = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
                 guard let array = parsedData as? [Any] else {
-                    let properties = ["error_message": "rates_parsed_data_fail"]
-                    BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
                     debugPrint("::: ERROR: rates_parsed_data_fail")
                     return handler([], "/rates didn't return an array")
                 }
@@ -61,8 +57,6 @@ extension BWAPIClient {
 			} else if let response = response {
                 debugPrint("::: RESPONSE: \(String(describing: response))")
             } else {
-                let properties = ["error_message": "rates_parsed_data_fail"]
-            BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
                 debugPrint("::: ERROR: else rates_parsed_data_fail")
                 return handler([], "/rates didn't return an array")
 			}
@@ -86,8 +80,6 @@ extension BWAPIClient {
                 if let data = data,
                    let parsedData = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
                     guard let array = parsedData as? [Any] else {
-                        let properties = ["error_message": "rates_parsed_data_fail"]
-                        BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
                         debugPrint("::: ERROR: rates_parsed_data_fail")
                         return
                     }

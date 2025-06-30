@@ -71,10 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Ops
         let startDate = Partner.partnerKeyPath(name: .walletStart)
-            if startDate == "error-brainwallet-start-key" {
-                let errorDescription = "partnerkey_data_missing"
-                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
-            }
 
         // Firebase
         if FirebaseApp.app() == nil {
@@ -137,11 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return true
 	}
 
-	func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken _: Data) {
-		let acceptanceDict: [String: String] = ["did_accept": "true",
-		                                        "date_accepted": Date().ISO8601Format()]
-		BWAnalytics.logEventWithParameters(itemName: ._20231225_UAP, properties: acceptanceDict)
-	}
+	func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken _: Data) { }
 
 	func application(_: UIApplication, didReceiveRemoteNotification _: [AnyHashable: Any],
 	                 fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void) {}
@@ -174,9 +166,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	private func setFirebaseConfiguration() {
 
 		guard let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") else {
-			let properties = ["error_message": "gs_info_file_missing"]
-			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
-			                                   properties: properties)
 			assertionFailure("Couldn't load google services file")
 			return
 		}
@@ -187,9 +176,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Analytics.setUserProperty("debug", forName: "user_type")
             #endif
 		} else {
-			let properties = ["error_message": "firebase_config_failed"]
-			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
-			                                   properties: properties)
+            Analytics.logEvent("error_message", parameters: [
+              "firebase_config_failed": "launch_error"
+            ])
 			assertionFailure("Couldn't load Firebase config file")
 		}
 	}
@@ -212,11 +201,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				if !areResourcesAvailable {
 					request.beginAccessingResources { error in
 						guard error != nil else {
-							let properties: [String: String] = ["error_type": "on_demand_resources_not_found",
-							                                    "error_description": "\(error.debugDescription)"]
-							BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
-							                                   properties: properties)
-
 							return
 						}
 						onSuccess()

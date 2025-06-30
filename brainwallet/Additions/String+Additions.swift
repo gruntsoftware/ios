@@ -160,7 +160,6 @@ extension String {
 	func replacingZeroFeeWithTenCents() -> String {
 		guard count > 3
 		else {
-			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["ERROR": "STRING_ISSUE"])
 			return self
 		}
 
@@ -171,7 +170,6 @@ extension String {
 	func combinedFeeReplacingZeroFeeWithTenCents() -> String {
 		guard count > 4
 		else {
-			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["ERROR": "STRING_ISSUE"])
 			return self
 		}
 

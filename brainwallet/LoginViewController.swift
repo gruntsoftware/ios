@@ -110,7 +110,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
                 group.enter()
                 DispatchQueue.walletQueue.async {
                     _ = walletManager.peerManager?.disconnect()
-                    BWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
                     group.leave()
                 }
 
@@ -138,7 +137,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
             return authenticationFailed()
         }
 		authenticationSucceded()
-		BWAnalytics.logEventWithParameters(itemName: ._20200217_DUWP)
 	}
 
 	private func authenticationSucceded() {
@@ -178,7 +176,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 		walletManager?.authenticate(biometricsPrompt: "Unlock your Brainwallet." , completion: { result in
 			if result == .success {
 				self.authenticationSucceded()
-				BWAnalytics.logEventWithParameters(itemName: ._20200217_DUWB)
 			}
 		})
 	}
