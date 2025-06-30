@@ -87,15 +87,7 @@ struct UnstoppableDomainView: View {
                     //
                     //									UIApplication.shared.open(url, options: [:], completionHandler: nil)
                     //
-                    //									BWAnalytics.logEventWithParameters(itemName: ._20220822_UTOU)
-                    //								}
-                    //						}
-                    //						.padding([.leading, .trailing], swiftUICellPadding)
-                    //						.padding(.bottom, 4.0)
-                    //					}
-                    //				}
-                    //			}
-                    //			.background(Color.brainwalletGray)
+                    //									
                 }
             }
         }

@@ -186,9 +186,6 @@ class Transaction {
 			}.first
 
 			guard let toAddress = toAddressOutput?.updatedSwiftAddress else {
-				let properties = ["error": "no_sent_address_found"]
-				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
-				                                   properties: properties)
 				return "---ERROR---"
 			}
 			return toAddress
@@ -200,9 +197,6 @@ class Transaction {
 			}.first
 
 			guard let fromAddress = toAddressOutput?.updatedSwiftAddress else {
-				let properties = ["error": "no_received_address_found"]
-				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
-				                                   properties: properties)
 				return "---ERROR---"
 			}
 			return fromAddress
@@ -211,9 +205,6 @@ class Transaction {
 			guard let output = self.tx.outputs.filter({ output in
 				self.wallet.containsAddress(output.updatedSwiftAddress)
 			}).first else {
-				let properties = ["error": "no_moved_address_found"]
-				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR,
-				                                   properties: properties)
 				return "---ERROR---"
 			}
 			return output.updatedSwiftAddress

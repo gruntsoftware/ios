@@ -289,7 +289,6 @@
 		C312D4262D7DC27700BB97A4 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2B72D7DC27700BB97A4 /* TabBarViewController.swift */; };
 		C312D4282D7DC27700BB97A4 /* EnterPhraseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1BC2D7DC27700BB97A4 /* EnterPhraseCollectionViewController.swift */; };
 		C312D4292D7DC27700BB97A4 /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D42D7DC27700BB97A4 /* CheckView.swift */; };
-		C312D42D2D7DC27700BB97A4 /* LWAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D27E2D7DC27700BB97A4 /* LWAnalytics.swift */; };
 		C312D4312D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1BB2D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift */; };
 		C312D4322D7DC27700BB97A4 /* SecurityCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F22D7DC27700BB97A4 /* SecurityCenterCell.swift */; };
 		C312D4332D7DC27700BB97A4 /* RemoteConfigHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2962D7DC27700BB97A4 /* RemoteConfigHelper.swift */; };
@@ -866,7 +865,6 @@
 		C312D27A2D7DC27700BB97A4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C312D27C2D7DC27700BB97A4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C312D27D2D7DC27700BB97A4 /* LWActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWActivityIndicator.swift; sourceTree = "<group>"; };
-		C312D27E2D7DC27700BB97A4 /* LWAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWAnalytics.swift; sourceTree = "<group>"; };
 		C312D27F2D7DC27700BB97A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C312D2802D7DC27700BB97A4 /* MessageUIPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUIPresenter.swift; sourceTree = "<group>"; };
 		C312D2812D7DC27700BB97A4 /* MockSeeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSeeds.swift; sourceTree = "<group>"; };
@@ -1911,7 +1909,6 @@
 				C312D27C2D7DC27700BB97A4 /* LoginViewModel.swift */,
 				C32369FE2D7DD431007039A1 /* LoginViewController.swift */,
 				C312D27D2D7DC27700BB97A4 /* LWActivityIndicator.swift */,
-				C312D27E2D7DC27700BB97A4 /* LWAnalytics.swift */,
 				C312D27F2D7DC27700BB97A4 /* MainViewController.swift */,
 				C312D2802D7DC27700BB97A4 /* MessageUIPresenter.swift */,
 				C312D2812D7DC27700BB97A4 /* MockSeeds.swift */,
@@ -2714,7 +2711,6 @@
 				C312D4262D7DC27700BB97A4 /* TabBarViewController.swift in Sources */,
 				C312D4282D7DC27700BB97A4 /* EnterPhraseCollectionViewController.swift in Sources */,
 				C312D4292D7DC27700BB97A4 /* CheckView.swift in Sources */,
-				C312D42D2D7DC27700BB97A4 /* LWAnalytics.swift in Sources */,
 				C312D4312D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift in Sources */,
 				C312D4322D7DC27700BB97A4 /* SecurityCenterCell.swift in Sources */,
 				24AAB31F2DE79EE300F0C18C /* NewReceiveViewModel.swift in Sources */,

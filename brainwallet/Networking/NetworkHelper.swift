@@ -54,8 +54,6 @@ class NetworkHelper: ObservableObject {
                     }
                 }
             } else {
-                let currencyError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: currencyError)
                 completion([])
             }
         }
@@ -120,9 +118,6 @@ class NetworkHelper: ObservableObject {
                         completion(moonpayBuyQuoteObject)
                     }
                 }
-            } else {
-                let fetchError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
             }
         }
         task.resume()
@@ -173,13 +168,8 @@ class NetworkHelper: ObservableObject {
                         completion(signedURLString)
                     } else {
                         completion(fallbackURLString)
-                        let fetchError: [String: String] = ["error": "signed_url_invalid"]
-                        BWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
                     }
                 }
-            } else {
-                let fetchError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
             }
         }
         task.resume()
@@ -240,9 +230,6 @@ class NetworkHelper: ObservableObject {
                         completion(moonpayBuyLimits)
                     }
                 }
-            } else {
-                let fetchError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
             }
         }
         task.resume()
