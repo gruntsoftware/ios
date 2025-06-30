@@ -1,28 +1,28 @@
 //
-//  SettingsActionThemeView.swift
+//  SettingsActionToggleView.swift
 //  brainwallet
 //
-//  Created by Kerry Washington on 19/06/2025.
+//  Created by Kerry Washington on 24/06/2025.
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
 
-struct SettingsActionThemeView: View {
+struct SettingsActionToggleView: View {
 
     private let title: String
     private let detailText: String
     let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 18.0)
+    let detailFont: Font = .barlowLight(size: 15.0)
     let action: SettingsAction
 
     @Binding
-    var userPrefersDark: Bool
+    var isOn: Bool
 
-    init(title: String, detailText: String, action: SettingsAction, userPrefersDark: Binding<Bool>) {
+    init(title: String, detailText: String, action: SettingsAction, isOn: Binding<Bool>) {
         self.title = title
         self.detailText = detailText
         self.action = action
-        _userPrefersDark = userPrefersDark
+        _isOn = isOn
     }
 
     var body: some View {
@@ -38,30 +38,23 @@ struct SettingsActionThemeView: View {
                                 .padding(.top, 4.0)
                             Text(detailText)
                                 .font(detailFont)
+                                .kerning(0.6)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding([.top, .bottom], 1.0)
+                                .padding(.bottom, 1.0)
                             Spacer()
                         }
 
                         Spacer()
                         VStack {
-                            Button(action: { userPrefersDark.toggle() }) {
-                                VStack {
-                                    Image(systemName: userPrefersDark ? action.isOffSystemImage : action.isOnSystemImage)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 30.0,
-                                               height: 30.0)
-                                        .foregroundColor(BrainwalletColor.content)
-                                        .padding(20.0)
-                                    Spacer()
-                                }
+                            Toggle(isOn: $isOn) {
                             }
-                            .frame(width: 30.0, height: 30.0)
+                            .toggleStyle(.switch)
+                            .padding(.top, 4.0)
+                            Spacer()
                         }
-                    }.onAppear {
-                        userPrefersDark = UserDefaults.userPreferredDarkTheme
+                        .padding(.trailing, 1.0)
+
                     }
                 }
             }

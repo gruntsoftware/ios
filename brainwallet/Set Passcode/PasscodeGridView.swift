@@ -58,7 +58,7 @@ struct CodeButton: View {
     var body: some View {
         Button {
             let digitCount = digits.count
-            if index >= 0 && digitCount < 4 {
+            if index >= 0 && digitCount < kPinDigitConstant {
                 $digits.wrappedValue.append(index)
             } else if index == -2 && digitCount > 0 {
                 digits.removeLast()

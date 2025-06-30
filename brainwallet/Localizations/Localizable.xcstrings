@@ -3265,6 +3265,9 @@
         }
       }
     },
+    "Change PIN" : {
+
+    },
     "Clear" : {
       "localizations" : {
         "ar" : {
@@ -8952,6 +8955,9 @@
     "Fiat Currency" : {
 
     },
+    "Found transactions are added to the device's database and added or subtracted creating your Brainwallet's balance. There is no Litecoin in any wallet. Litecoin is only found on the network.  Brainwallet is a simple way to check your transaction history and it stores your private keys" : {
+
+    },
     "Game 1" : {
 
     },
@@ -11581,6 +11587,9 @@
           }
         }
       }
+    },
+    "PIN" : {
+
     },
     "PIN Required" : {
       "localizations" : {
@@ -16688,9 +16697,6 @@
         }
       }
     },
-    "Share Data" : {
-
-    },
     "Share data?" : {
       "localizations" : {
         "ar" : {
@@ -16808,6 +16814,12 @@
           }
         }
       }
+    },
+    "Show my emojis" : {
+
+    },
+    "Show my seed phrase" : {
+
     },
     "Show seed words" : {
       "localizations" : {
@@ -18000,6 +18012,9 @@
         }
       }
     },
+    "Sync to the Litecoin Blockchain" : {
+
+    },
     "Sync with Blockchain?" : {
       "localizations" : {
         "ar" : {
@@ -18117,6 +18132,9 @@
           }
         }
       }
+    },
+    "Syncing is a process where Brainwallet scans the Litecoin blockchain to see if any transactions that match your seed words (private keys) are in any transactions." : {
+
     },
     "Syncing..." : {
       "localizations" : {
@@ -20229,6 +20247,9 @@
           }
         }
       }
+    },
+    "This process can take 5 - 45 mins depending on your connectivty to the Litecoin network." : {
+
     },
     "This will allow you to send and receive from your previous balance. You will need to set a new PIN" : {
       "localizations" : {
@@ -24502,6 +24523,9 @@
           }
         }
       }
+    },
+    "You will not be able to send Litecoin while syncing. It may take a while." : {
+
     },
     "You will not be able to send money while syncing with the blockchain." : {
       "localizations" : {

@@ -1,5 +1,5 @@
 //
-//  SettingsActionLockView.swift
+//  SettingsActionShareView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 19/06/2025.
@@ -7,7 +7,7 @@
 //
 import SwiftUI
 
-struct SettingsActionLockView: View {
+struct SettingsActionShareView: View {
 
     private let title: String
     private let detailText: String
@@ -16,13 +16,13 @@ struct SettingsActionLockView: View {
     let action: SettingsAction
 
     @Binding
-    var isLocked: Bool
+    var willShareData: Bool
 
-    init(title: String, detailText: String, action: SettingsAction, isLocked: Binding<Bool>) {
+    init(title: String, detailText: String, action: SettingsAction, willShareData: Binding<Bool>) {
         self.title = title
         self.detailText = detailText
         self.action = action
-        _isLocked = isLocked
+        _willShareData = willShareData
     }
 
     var body: some View {
@@ -35,29 +35,38 @@ struct SettingsActionLockView: View {
                                 .font(largeFont)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading, rowLeadingPad)
+                                .padding(.top, 4.0)
                             Text(detailText)
                                 .font(detailFont)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding([.top, .bottom], 1.0)
-                                .padding(.leading, rowLeadingPad)
                             Spacer()
                         }
 
                         Spacer()
                         VStack {
                             Button(action: {
-                                    isLocked.toggle()
+                                willShareData.toggle()
                             }) {
                                 VStack {
-                                    Image(systemName: isLocked ? action.isOnSystemImage : action.isOffSystemImage)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 30.0,
-                                               height: 30.0)
-                                        .foregroundColor(BrainwalletColor.content)
-                                        .padding(20.0)
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 8.0)
+                                            .foregroundColor(BrainwalletColor.surface)
+                                            .frame(width: 44.0,
+                                                   height: 44.0)
+                                            .background(.thinMaterial,
+                                                in: RoundedRectangle(cornerRadius: 8.0))
+                                                .shadow(radius: 1.0, x: 2.0, y: 2.0)
+
+                                        Image(systemName: willShareData ? action.isOnSystemImage : action.isOffSystemImage)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 30.0,
+                                                   height: 30.0)
+                                            .foregroundColor(BrainwalletColor.content)
+                                            .shadow(radius: 1.0, x: 2.0, y: 2.0)
+                                    }
                                     Spacer()
                                 }
                             }

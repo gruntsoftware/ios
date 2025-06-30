@@ -27,38 +27,40 @@ struct GamesListView: View {
                 let width = geometry.size.width
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                    VStack {
-                        List {
-                            SettingsLabelView(title: String(localized: "Game 1"),
-                                detailText: String(localized: "Coming soon... 🤩"),
-                                    rowBackgroundColor: rowBackground)
-                                    .frame(height: closedRowHeight)
-                                    .background(BrainwalletColor.background)
-                                    .listRowBackground(BrainwalletColor.background)
-                                    .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsLabelView(title: String(localized: "Game 2"),
-                                detailText: String(localized: "Coming soon... 🍔"),
-                                    rowBackgroundColor: rowBackground)
-                                    .frame(height: closedRowHeight)
-                                    .background(BrainwalletColor.background)
-                                    .listRowBackground(BrainwalletColor.background)
-                                    .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsLabelView(title: String(localized: "Game 3"),
-                                detailText: String(localized: "Coming soon... 🪲"),
-                                    rowBackgroundColor: rowBackground)
-                                    .frame(height: closedRowHeight)
-                                    .background(BrainwalletColor.background)
-                                    .listRowBackground(BrainwalletColor.background)
-                                    .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsLabelView(title: String(localized: "Game 4"),
-                                detailText: String(localized: "Coming soon... 👺"),
-                                    rowBackgroundColor: rowBackground)
-                                    .frame(height: closedRowHeight)
-                                    .background(BrainwalletColor.background)
-                                    .listRowBackground(BrainwalletColor.background)
-                                    .listRowSeparatorTint(BrainwalletColor.content)
+                    HStack {
+                        VStack {
+                            List {
+                                SettingsLabelView(title: String(localized: "Game 1"),
+                                                  detailText: String(localized: "Coming soon... 🤩"),
+                                                  rowBackgroundColor: rowBackground)
+                                .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.background)
+                                .listRowBackground(BrainwalletColor.background)
+                                .listRowSeparatorTint(BrainwalletColor.content)
+                                SettingsLabelView(title: String(localized: "Game 2"),
+                                                  detailText: String(localized: "Coming soon... 🍔"),
+                                                  rowBackgroundColor: rowBackground)
+                                .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.background)
+                                .listRowBackground(BrainwalletColor.background)
+                                .listRowSeparatorTint(BrainwalletColor.content)
+                                SettingsLabelView(title: String(localized: "Game 3"),
+                                                  detailText: String(localized: "Coming soon... 🪲"),
+                                                  rowBackgroundColor: rowBackground)
+                                .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.background)
+                                .listRowBackground(BrainwalletColor.background)
+                                .listRowSeparatorTint(BrainwalletColor.content)
+                                SettingsLabelView(title: String(localized: "Game 4"),
+                                                  detailText: String(localized: "Coming soon... 👺"),
+                                                  rowBackgroundColor: rowBackground)
+                                .frame(height: closedRowHeight)
+                                .background(BrainwalletColor.background)
+                                .listRowBackground(BrainwalletColor.background)
+                                .listRowSeparatorTint(BrainwalletColor.content)
+                            }
+                            .listStyle(.plain)
                         }
-                        .listStyle(.plain)
                     }
 
                 }

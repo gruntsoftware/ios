@@ -371,10 +371,10 @@ struct BuyReceiveView: View {
                     pickedCurrency = viewModel.pickedCurrency
                     updateFiatAmounts()
                 }
-                .alert("Address Copied", isPresented: $didCopyAddress,
+                .alert(String(localized:"Address Copied"), isPresented: $didCopyAddress,
                        actions: {
                     HStack {
-                        Button("Ok" , role: .cancel) {
+                        Button( String(localized:"Ok"), role: .cancel) {
                             didCopyAddress.toggle()
                         }
                     }

@@ -138,6 +138,14 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
     func activateSettingsDrawer(shouldClose: Bool? = nil) {
         var shouldShow = shouldShowSettings
+        guard let tabVC = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "TabBarViewController")
+                as? TabBarViewController,
+              let walletManager = self.walletManager
+        else {
+            debugPrint("::: ERROR: TabBarViewController or wallet not intialized")
+            return
+        }
 
         if let closeState = shouldClose {
             shouldShow = closeState
@@ -147,6 +155,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             self.showSettingsConstant = 65.0
             self.settingsViewPlacement = 0.0
             self.barShouldBeHidden = true
+
             self.setNeedsStatusBarAppearanceUpdate()
             // Update existing constraints
             self.settingsLeadingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
@@ -163,6 +172,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             self.settingsViewPlacement = -self.view.frame.width
             self.showSettingsConstant = 0
             self.barShouldBeHidden = false
+
             self.setNeedsStatusBarAppearanceUpdate()
             // Update existing constraints
             self.settingsLeadingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant

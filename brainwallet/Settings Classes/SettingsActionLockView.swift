@@ -1,5 +1,5 @@
 //
-//  SettingsActionThemeView.swift
+//  SettingsActionLockView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 19/06/2025.
@@ -7,7 +7,7 @@
 //
 import SwiftUI
 
-struct SettingsActionThemeView: View {
+struct SettingsActionLockView: View {
 
     private let title: String
     private let detailText: String
@@ -16,13 +16,13 @@ struct SettingsActionThemeView: View {
     let action: SettingsAction
 
     @Binding
-    var userPrefersDark: Bool
+    var didTriggerLock: Bool
 
-    init(title: String, detailText: String, action: SettingsAction, userPrefersDark: Binding<Bool>) {
+    init(title: String, detailText: String, action: SettingsAction, didTriggerLock: Binding<Bool>) {
         self.title = title
         self.detailText = detailText
         self.action = action
-        _userPrefersDark = userPrefersDark
+        _didTriggerLock = didTriggerLock
     }
 
     var body: some View {
@@ -46,22 +46,21 @@ struct SettingsActionThemeView: View {
 
                         Spacer()
                         VStack {
-                            Button(action: { userPrefersDark.toggle() }) {
+                            Button(action: {
+                                didTriggerLock.toggle()
+                            }) {
                                 VStack {
-                                    Image(systemName: userPrefersDark ? action.isOffSystemImage : action.isOnSystemImage)
+                                    Image(systemName: didTriggerLock ? action.isOnSystemImage : action.isOffSystemImage)
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 30.0,
                                                height: 30.0)
                                         .foregroundColor(BrainwalletColor.content)
-                                        .padding(20.0)
                                     Spacer()
                                 }
                             }
                             .frame(width: 30.0, height: 30.0)
                         }
-                    }.onAppear {
-                        userPrefersDark = UserDefaults.userPreferredDarkTheme
                     }
                 }
             }

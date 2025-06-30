@@ -1,5 +1,5 @@
 //
-//  SettingsActionThemeView.swift
+//  SettingsActionSeedPhraseView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 19/06/2025.
@@ -7,22 +7,23 @@
 //
 import SwiftUI
 
-struct SettingsActionThemeView: View {
+struct SettingsActionSeedPhraseView: View {
 
     private let title: String
     private let detailText: String
     let largeFont: Font = .barlowSemiBold(size: 19.0)
     let detailFont: Font = .barlowLight(size: 18.0)
-    let action: SettingsAction
 
     @Binding
-    var userPrefersDark: Bool
+    var willShowBrainwalletPhrase: Bool
 
-    init(title: String, detailText: String, action: SettingsAction, userPrefersDark: Binding<Bool>) {
+    @State
+    private var  fetchedEmoji = ""
+
+    init(title: String, detailText: String, willShowBrainwalletPhrase: Binding<Bool>) {
         self.title = title
         self.detailText = detailText
-        self.action = action
-        _userPrefersDark = userPrefersDark
+        _willShowBrainwalletPhrase = willShowBrainwalletPhrase
     }
 
     var body: some View {
@@ -46,22 +47,30 @@ struct SettingsActionThemeView: View {
 
                         Spacer()
                         VStack {
-                            Button(action: { userPrefersDark.toggle() }) {
+                            Button(action: {
+                                willShowBrainwalletPhrase.toggle()
+                            }) {
                                 VStack {
-                                    Image(systemName: userPrefersDark ? action.isOffSystemImage : action.isOnSystemImage)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 30.0,
-                                               height: 30.0)
-                                        .foregroundColor(BrainwalletColor.content)
-                                        .padding(20.0)
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 8.0)
+                                            .foregroundColor(.white.opacity(0.1))
+                                            .frame(width: 44.0,
+                                                   height: 44.0)
+                                            .background(.thinMaterial,
+                                                in: RoundedRectangle(cornerRadius: 8.0))
+                                                .shadow(radius: 1.0, x: 2.0, y: 2.0)
+                                        Image(systemName: "ellipsis.rectangle")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 30.0,
+                                                   height: 30.0)
+                                            .foregroundColor(BrainwalletColor.content)
+                                    }
                                     Spacer()
                                 }
                             }
                             .frame(width: 30.0, height: 30.0)
                         }
-                    }.onAppear {
-                        userPrefersDark = UserDefaults.userPreferredDarkTheme
                     }
                 }
             }
