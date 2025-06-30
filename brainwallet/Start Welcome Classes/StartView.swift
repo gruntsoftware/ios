@@ -142,9 +142,7 @@ struct StartView: View {
 						       alignment: .center)
 
                         Button(action: {
-                                 startViewModel.didTapCreate!()
-                                // path.append(.inputWordsView)
-                                // path.append(.readyView)
+                                 path.append(.readyView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
@@ -164,9 +162,7 @@ struct StartView: View {
                         }
 
                         Button(action: {
-                                 startViewModel.didTapRecover!()
-                                // path.append(.restoreView)
-                                // path.append(.yourSeedWordsView)
+                            path.append(.restoreView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)

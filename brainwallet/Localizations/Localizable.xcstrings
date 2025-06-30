@@ -13161,6 +13161,9 @@
         }
       }
     },
+    "Ready?" : {
+
+    },
     "Receive" : {
       "localizations" : {
         "ar" : {
@@ -14476,6 +14479,9 @@
           }
         }
       }
+    },
+    "Restore your Brainwallet" : {
+
     },
     "Restore your power" : {
       "localizations" : {
@@ -17688,6 +17694,9 @@
           }
         }
       }
+    },
+    "Switching devices? Lost it in a boating accident? You can restore your Brainwallet here." : {
+
     },
     "Sync" : {
       "localizations" : {

@@ -191,8 +191,8 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			currencyTapView.bottomAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: C.padding[1])
 		])
 
-		let gr = UITapGestureRecognizer(target: self, action: #selector(currencySwitchTapped))
-		currencyTapView.addGestureRecognizer(gr)
+		let gestureReg = UITapGestureRecognizer(target: self, action: #selector(currencySwitchTapped))
+		currencyTapView.addGestureRecognizer(gestureReg)
 	}
 
 	/// This is called when the price changes
