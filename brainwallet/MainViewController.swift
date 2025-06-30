@@ -10,7 +10,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 	private var isLoginRequired = false
 	private let loginView: LoginViewController
-	private let tempLoginView: LoginViewController
 	private let loginTransitionDelegate = LoginTransitionDelegate()
 
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -18,7 +17,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	var walletManager: WalletManager? {
 		didSet {
 			guard let walletManager = walletManager else { return }
-            
+
 			if !walletManager.noWallet {
 				loginView.walletManager = walletManager
 				loginView.transitioningDelegate = loginTransitionDelegate
@@ -26,7 +25,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 				loginView.modalPresentationCapturesStatusBarAppearance = true
 				loginView.shouldSelfDismiss = true
 				present(loginView, animated: false, completion: {
-					self.tempLoginView.remove()
 				})
 			}
 		}
@@ -35,7 +33,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	init(store: Store) {
 		self.store = store
 		loginView = LoginViewController(store: store, isPresentedForLock: false)
-		tempLoginView = LoginViewController(store: store, isPresentedForLock: false)
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -45,7 +42,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		navigationController?.navigationBar.tintColor = BrainwalletUIColor.surface
 		navigationController?.navigationBar.titleTextAttributes = [
 			NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
-			NSAttributedString.Key.font: UIFont.customBold(size: 17.0),
+			NSAttributedString.Key.font: UIFont.customBold(size: 17.0)
 		]
 
 		navigationController?.navigationBar.isTranslucent = false
@@ -54,11 +51,9 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
 		NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification,
 		                                       object: nil,
-		                                       queue: nil)
-		{ _ in
-			if UserDefaults.writePaperPhraseDate != nil
-			{
-                
+		                                       queue: nil) { _ in
+			if UserDefaults.writePaperPhraseDate != nil {
+
             }
 		}
 
@@ -68,12 +63,12 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	}
 
 	func didUnlockLogin() {
-        
+
         guard let walletManager = self.walletManager
          else {
             return
         }
-        
+
         guard let tabVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "TabBarViewController")
             as? TabBarViewController
@@ -84,7 +79,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
         tabVC.store = store
         tabVC.walletManager = walletManager
-         
+
         addChildViewController(tabVC, layout: {
             tabVC.view.constrain(toSuperviewEdges: nil)
             tabVC.view.alpha = 0
@@ -96,8 +91,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         }) { _ in
             NSLog("US MainView Controller presented")
         }
-        
-        
+
 // STASH FOR NEW UI
 //        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
 //
@@ -110,11 +104,9 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	private func addTemporaryStartupViews() {
 		guardProtected(queue: DispatchQueue.main) {
 			if !WalletManager.staticNoWallet {
-				self.addChildViewController(self.tempLoginView, layout: {
-					self.tempLoginView.view.constrain(toSuperviewEdges: nil)
-				})
+
 			} else {
-				// Adds a brainwalletBlue card view the hides work while thread finishes
+				// Adds a  card view the hides work while thread finishes
 				let launchView = LaunchCardHostingController()
 				self.addChildViewController(launchView, layout: {
 					launchView.view.constrain(toSuperviewEdges: nil)
@@ -143,8 +135,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		}
 
 		NotificationCenter.default.addObserver(forName: UIScene.willDeactivateNotification, object: nil, queue: nil) { [weak self] _ in
-            
-            
+
 			if let mySelf = self,
                !mySelf.isLoginRequired, !mySelf.store.state.isPromptingBiometrics {
                 mySelf.blurView.alpha = 1.0

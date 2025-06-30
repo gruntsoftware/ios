@@ -8,43 +8,46 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 
 	@Published
 	var currencyCode: String = ""
-    
+
     @Published
     var userPrefersDarkMode = false
-    
+
     @Published
     var shouldShowQR: Bool = false
-    
+
     @Published
     var authenticationFailed =  false
-    
-    
+
     @Published
     var didCompleteWipingWallet = false
-    
+
     @Published
     var pinDigits = [Int(),Int(),Int(),Int()]
-    
+
     var userSubmittedPIN: ((String) -> Void)?
-    
+
     var userDidTapQR: (() -> Void)?
-    
+
     var didTapWipeWallet: ((Bool) -> Void)?
-      
+
+    var userDidPreferDarkMode: ((Bool) -> Void)?
+
 	// MARK: - Public Variables
 
 	var store: Store?
 
-    
 	init(store: Store) {
 		self.store = store
-        
 		addSubscriptions()
 		fetchCurrentPrice()
 	}
-    
+
     func startWipeProcess() {
         didTapWipeWallet?(true)
+    }
+
+    func userDidSetThemePreference(userPrefersDarkMode: Bool) {
+        userDidPreferDarkMode?(userPrefersDarkMode)
     }
 
 	private func fetchCurrentPrice() {
@@ -61,7 +64,6 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 		let currencySymbol = Currency.getSymbolForCurrencyCode(code: currencyCode) ?? ""
 		currentValueInFiat = String(currencySymbol + formattedFiatString)
 	}
-    
 
 	// MARK: - Add Subscriptions
 
@@ -79,6 +81,5 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 		                	self?.fetchCurrentPrice()
 		                })
 	}
-    
-    
+
 }

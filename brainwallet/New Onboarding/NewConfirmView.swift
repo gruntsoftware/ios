@@ -9,17 +9,17 @@
 import SwiftUI
 
 struct NewConfirmView: View {
-    
+
     @ObservedObject
     var viewModel: NewConfirmViewModel
-    
+
     init(viewModel: NewConfirmViewModel) {
         self.viewModel = viewModel
     }
-    
+
     var body: some View {
-        GeometryReader { geometry in
-        
+        GeometryReader { _ in
+
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {

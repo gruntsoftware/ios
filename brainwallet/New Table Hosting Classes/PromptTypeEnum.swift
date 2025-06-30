@@ -63,7 +63,7 @@ enum PromptType {
         case .shareData: return .promptShareData
         }
     }
-     
+
     var systemImageName: String? {
         switch self {
         case .biometrics: return "faceid"
@@ -74,7 +74,6 @@ enum PromptType {
         case .shareData: return "square.and.arrow.up"
         }
     }
-    
 
     func shouldPrompt(walletManager: WalletManager, state: ReduxState) -> Bool {
         switch self {

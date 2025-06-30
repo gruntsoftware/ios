@@ -37,8 +37,6 @@ struct PinDigitView: View {
 
 /// Inspired by https://stackoverflow.com/questions/72926965/creating-an-ios-passcode-view-with-swiftui-how-to-hide-a-textview
 
-import SwiftUI
-
 struct PasscodeView: View {
 	@EnvironmentObject
 	var viewModel: StartViewModel
@@ -74,25 +72,8 @@ struct PasscodeView: View {
 			}
 		}
 		.padding()
-		.onChange(of: enteredPasscode) { newValue in
-			if newValue.count == viewModel.walletManager.pinLength {
-				keyboardFocused = false
-			}
-		}
-		//        .onChange(of: enteredPasscode) { _ in
-		//            guard enteredPasscode.count == maxDigits else { return }
-//
-		//            passcodeValidation()
-		//        }
-	}
+		.onChange(of: enteredPasscode) { _ in
 
-	//    func passcodeValidation() {
-	//        if enteredPasscode == userPasscode {
-	//            viewModel.isUnlocked = true
-	//            dismiss()
-	//        } else {
-	//            enteredPasscode = ""
-	//            showAlert = true
-	//        }
-	//    }
+		}
+	}
 }

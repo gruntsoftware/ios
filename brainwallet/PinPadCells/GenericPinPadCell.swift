@@ -32,7 +32,7 @@ class GenericPinPadCell: UICollectionViewCell {
         "6": "",
         "7": "",
         "8": "",
-        "9": "",
+        "9": ""
     ]
 
     override var isHighlighted: Bool {
@@ -70,11 +70,11 @@ class GenericPinPadCell: UICollectionViewCell {
         centerLabel.constrain(toSuperviewEdges: nil)
         topLabel.constrain([
             topLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            topLabel.topAnchor.constraint(equalTo: topAnchor, constant: 2.5),
+            topLabel.topAnchor.constraint(equalTo: topAnchor, constant: 2.5)
         ])
         sublabel.constrain([
             sublabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            sublabel.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: -3.0),
+            sublabel.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: -3.0)
         ])
     }
 
@@ -124,4 +124,3 @@ class WhiteDecimalPad: GenericPinPadCell {
         imageView.constrain(toSuperviewEdges: nil)
     }
 }
-

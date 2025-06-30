@@ -6,7 +6,7 @@ class WritePaperPhraseViewController: UIViewController {
 	private let pin: String
 	private let label = UILabel.wrapping(font: UIFont.customBody(size: 16.0))
 	private let stepLabel = UILabel.wrapping(font: UIFont.customMedium(size: 16.0))
-	private let header = RadialGradientView(backgroundColor: BrainwalletUIColor.surface)
+	private let header = UIView()
 
 	private lazy var phraseViews: [PhraseView] = {
 		guard let phraseString = self.walletManager.seedPhrase(pin: self.pin) else { return [] }
@@ -15,8 +15,8 @@ class WritePaperPhraseViewController: UIViewController {
 	}()
 
 	// This is awkwardly named because nextResponder is now named next is swift 3 :(,
-	private let proceed = ShadowButton(title: "Next" , type: .secondary)
-	private let previous = ShadowButton(title: "Previous" , type: .secondary)
+	private let proceed = ShadowButton(title: String(localized: "Next") , type: .secondary)
+	private let previous = ShadowButton(title: String(localized: "Previous") , type: .secondary)
 	private var proceedWidth: NSLayoutConstraint?
 	private var previousWidth: NSLayoutConstraint?
 
@@ -61,8 +61,7 @@ class WritePaperPhraseViewController: UIViewController {
 
 		NotificationCenter.default.addObserver(forName: UIScene.willDeactivateNotification,
 		                                       object: nil,
-		                                       queue: nil)
-		{ [weak self] _ in
+		                                       queue: nil) { [weak self] _ in
 			self?.dismiss(animated: true, completion: nil)
 		}
 	}
@@ -83,7 +82,7 @@ class WritePaperPhraseViewController: UIViewController {
 	private func addConstraints() {
 		header.constrainTopCorners(sidePadding: 0, topPadding: 0)
 		header.constrain([
-			header.constraint(.height, constant: 152.0),
+			header.constraint(.height, constant: 152.0)
 		])
 		label.constrainBottomCorners(sidePadding: C.padding[3], bottomPadding: C.padding[2])
 
@@ -96,14 +95,14 @@ class WritePaperPhraseViewController: UIViewController {
 				phraseView.constraint(.width, constant: PhraseView.defaultSize.width),
 				phraseView.constraint(.height, constant: PhraseView.defaultSize.height),
 				phraseView.constraint(.centerY, toView: view, constant: 0.0),
-				xConstraint,
+				xConstraint
 			])
 		}
 
 		stepLabel.constrain([
 			NSLayoutConstraint(item: stepLabel, attribute: .top, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: PhraseView.defaultSize.height / 2.0 + C.padding[1]),
 			stepLabel.constraint(.centerX, toView: view, constant: 0.0),
-			stepLabel.constraint(.width, constant: 200.0), // The transitions are smoother if this view is forced to be wider than it needs to be
+			stepLabel.constraint(.width, constant: 200.0) // The transitions are smoother if this view is forced to be wider than it needs to be
 		])
 
 		proceedWidth = proceed.constraint(.width, toView: view, constant: -C.padding[2] * 2)
@@ -111,7 +110,7 @@ class WritePaperPhraseViewController: UIViewController {
 			proceed.constraint(.trailing, toView: view, constant: -C.padding[2]),
 			proceed.constraint(.height, constant: C.Sizes.buttonHeight),
 			proceed.constraint(.bottom, toView: view, constant: -(C.padding[4] + C.Sizes.buttonHeight)),
-			proceedWidth!,
+			proceedWidth!
 		])
 
 		previousWidth = previous.constraint(.width, toView: view, constant: -view.bounds.width)
@@ -119,7 +118,7 @@ class WritePaperPhraseViewController: UIViewController {
 			previous.constraint(.leading, toView: view, constant: C.padding[2]),
 			previous.constraint(.height, constant: C.Sizes.buttonHeight),
 			previous.constraint(.bottom, toView: view, constant: -(C.padding[4] + C.Sizes.buttonHeight)),
-			previousWidth!,
+			previousWidth!
 		])
 	}
 

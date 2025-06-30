@@ -9,37 +9,34 @@
 import SwiftUI
 
 enum FilterTransactionMode: Int, CaseIterable {
-    case all = 0
-    case sent = 1
-    case received = 2
+    case allTransactions = 0
+    case sentTransactions = 1
+    case receivedTransactions = 2
 }
- 
+
 struct NewTransactionsView: View {
-    
+
     @ObservedObject
     var newMainViewModel: NewMainViewModel
-    
+
     @State
     private var transactions: [Transaction] = []
-    
+
     @State
-    private var filterMode: FilterTransactionMode = .all
-    
+    private var filterMode: FilterTransactionMode = .allTransactions
+
     @State
     private var modeState = 0
-    
-    
+
     init(viewModel: NewMainViewModel) {
         newMainViewModel = viewModel
-        
-        
+
     }
     var body: some View {
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
-            let height = geometry.size.height
-            
+
             ZStack {
                 BrainwalletColor.affirm.edgesIgnoringSafeArea(.all)
                 VStack {
@@ -48,14 +45,12 @@ struct NewTransactionsView: View {
                         Spacer()
                         Button(action: {
                             if modeState < 2 {
-                                modeState = modeState + 1
-                            }
-                            else {
+                                modeState += 1
+                            } else {
                                 modeState = 0
                             }
                             filterMode = FilterTransactionMode(rawValue: modeState)!
-                            
-                            
+
                         }) {
                             Image(systemName: "slider.horizontal.3")
                                 .resizable()
@@ -68,7 +63,7 @@ struct NewTransactionsView: View {
                     }
                     .frame(height: 30.0, alignment: .center)
                     .padding([.leading, .trailing], 8.0)
-                    ScrollViewReader { proxy in
+                    ScrollViewReader { _ in
                         VStack {
                             List(transactions, id: \.hash) { tx in
                                 TransactionRowView(transaction: tx)

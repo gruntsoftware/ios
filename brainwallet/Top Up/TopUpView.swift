@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TopUpView: View {
-    
+
     @Binding var path: [Onboarding]
 
     @ObservedObject
@@ -28,23 +28,23 @@ struct TopUpView: View {
     let versionFont: Font = .barlowSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
     let themeButtonSize: CGFloat = 28.0
-    
+
     let arrowSize: CGFloat = 60.0
 
     init(viewModel: StartViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
         _path = path
     }
-    
+
     var body: some View {
-        
+
         GeometryReader { geometry in
-            
+
             let width = geometry.size.width
-            
+
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                
+
                 VStack {
                     HStack {
                         Button(action: {
@@ -57,7 +57,7 @@ struct TopUpView: View {
                                     .frame(width: squareImageSize,
                                            height: squareImageSize,
                                            alignment: .center)
-                                
+
                                     .foregroundColor(BrainwalletColor.content)
                                 Spacer()
                             }
@@ -65,7 +65,7 @@ struct TopUpView: View {
                         Spacer()
                     }
                     .padding(.all, 20.0)
-                    
+
                     Spacer()
                     HStack {
                         Image(systemName: "arrow.down.right")
@@ -74,7 +74,7 @@ struct TopUpView: View {
                             .frame(width: arrowSize,
                                    alignment: .center)
                             .padding(.leading, 20.0)
-                        
+
                         Spacer()
                     }
                     .frame(maxHeight: .infinity, alignment: .bottomLeading)
@@ -84,7 +84,7 @@ struct TopUpView: View {
                     }
                     .padding(.bottom, 40.0)
                     .padding(.leading, 20.0)
-                    
+
                     Spacer(minLength: 20.0)
                         Button(action: {
                             path.append(.topUpSetAmountView)
@@ -93,7 +93,7 @@ struct TopUpView: View {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
-                                
+
                                 Text("Setup app passcode")
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(largeButtonFont)
@@ -111,7 +111,7 @@ struct TopUpView: View {
     }
 }
 
-//struct TopUpView_Previews: PreviewProvider {
+// struct TopUpView_Previews: PreviewProvider {
 //    typealias Previews = <#type#>
 //    
 //    static let walletManager = (try? WalletManager(store: Store(), dbPath: nil))!
@@ -120,6 +120,4 @@ struct TopUpView: View {
 ////    static var previews: some View {
 ////       TopUpView(viewModel: viewModel, path: .constant([.topUpView]))
 ////    }
-//}
-
-
+// }

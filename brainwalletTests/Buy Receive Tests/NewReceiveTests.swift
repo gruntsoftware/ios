@@ -12,33 +12,64 @@ import SwiftUI
 @MainActor
 class NewReceiveViewModelTests: XCTestCase {
     
-    var sut: NewReceiveViewModel!
+    var viewModel: NewReceiveViewModel!
+    
+    var mockWalletManager: WalletManager!
     
     override func setUp() {
         super.setUp()
         // Clear UserDefaults before each test
         UserDefaults.standard.removeObject(forKey: "userPreferredBuyCurrency")
         UserDefaults.standard.removeObject(forKey: "userPreferredDarkTheme")
+        guard let tempWalletManager = try? WalletManager(store: Store(), dbPath: nil) else {
+            assertionFailure("WalletManager no initialized")
+            return
+        }
+        mockWalletManager = tempWalletManager
+        viewModel = NewReceiveViewModel(store: Store(),
+                                              walletManager: tempWalletManager,
+                                              canUserBuy: true)
     }
     
     override func tearDown() {
-        sut = nil
+        viewModel = nil
         // Clean up UserDefaults after each test
         UserDefaults.standard.removeObject(forKey: "userPreferredBuyCurrency")
         UserDefaults.standard.removeObject(forKey: "userPreferredDarkTheme")
         super.tearDown()
     }
     
-    // MARK: - Published Properties Tests
+    // MARK: - Initialization Tests
     
-    func testInitialPublishedProperties() {
-        // Test that we can verify initial values without mocking
-        // These are the default values set in the class
+    func testInitialization() {
         
-        // We can't easily test initialization without real dependencies,
-        // but we can test individual methods that don't depend on external state
         
-        XCTAssertTrue(true) // Placeholder - we'll test specific methods below
+        XCTAssertEqual(viewModel.pickedAmount, 210)
+        XCTAssertEqual(viewModel.fiatMinAmount, 20)
+        XCTAssertEqual(viewModel.fiatTenXAmount, 200)
+        XCTAssertEqual(viewModel.fiatMaxAmount, 20000)
+        XCTAssertEqual(viewModel.quotedLTCAmount, 0.0)
+        XCTAssertTrue(viewModel.canUserBuy)
+        XCTAssertTrue(viewModel.didFetchData)
+        XCTAssertFalse(viewModel.didFetchURLString)
+        XCTAssertEqual(viewModel.signedURLString, "")
+        XCTAssertEqual(viewModel.quotedTimestamp, "")
+    }
+    
+    func testInitializationWithCanUserBuyFalse() {
+        
+        let viewModelNoBuy = NewReceiveViewModel(store: Store(),
+                                               walletManager: mockWalletManager,
+                                               canUserBuy: false)
+        XCTAssertFalse(viewModelNoBuy.canUserBuy)
+    }
+    
+    func testInitializationWithCanUserBuyTrue() {
+        
+        let viewModelNoBuy = NewReceiveViewModel(store: Store(),
+                                               walletManager: mockWalletManager,
+                                               canUserBuy: true)
+        XCTAssertTrue(viewModelNoBuy.canUserBuy)
     }
     
     func testDefaultPickedAmount() {
@@ -64,7 +95,7 @@ class NewReceiveViewModelTests: XCTestCase {
     
     func testSupportedFiatCurrenciesEnum() {
         // Test that the enum has expected cases
-        let allCurrencies = SupportedFiatCurrencies.allCases
+        let allCurrencies = SupportedFiatCurrency.allCases
         
         XCTAssertTrue(allCurrencies.contains(.USD))
         XCTAssertGreaterThan(allCurrencies.count, 0)
@@ -72,8 +103,8 @@ class NewReceiveViewModelTests: XCTestCase {
     
     func testCurrencyFromCode() {
         // Test the from(code:) method if it exists on SupportedFiatCurrencies
-        let usdCurrency = SupportedFiatCurrencies.from(code: "USD")
-        let invalidCurrency = SupportedFiatCurrencies.from(code: "INVALID")
+        let usdCurrency = SupportedFiatCurrency.from(code: "USD")
+        let invalidCurrency = SupportedFiatCurrency.from(code: "INVALID")
         
         XCTAssertEqual(usdCurrency, .USD)
         XCTAssertNil(invalidCurrency)
@@ -126,7 +157,7 @@ class NewReceiveViewModelTests: XCTestCase {
             baseCurrencyAmount: "100.0",
             language: "en",
             walletAddress: "LTCTestAddress123",
-            defaultCurrencyCode: "ltc",
+            userPreferredCurrencyCode: "ltc",
             externalTransactionId: "test-external-id",
             currencyCode: "ltc",
             themeId: "main-v1.0.0",
@@ -137,7 +168,7 @@ class NewReceiveViewModelTests: XCTestCase {
         XCTAssertEqual(signingData.baseCurrencyAmount, "100.0")
         XCTAssertEqual(signingData.language, "en")
         XCTAssertEqual(signingData.walletAddress, "LTCTestAddress123")
-        XCTAssertEqual(signingData.defaultCurrencyCode, "ltc")
+        XCTAssertEqual(signingData.userPreferredCurrencyCode, "ltc")
         XCTAssertEqual(signingData.externalTransactionId, "test-external-id")
         XCTAssertEqual(signingData.currencyCode, "ltc")
         XCTAssertEqual(signingData.themeId, "main-v1.0.0")
@@ -224,18 +255,6 @@ class NewReceiveViewModelTests: XCTestCase {
         let expectedTenXAmount = minAmount * 10
         
         XCTAssertEqual(expectedTenXAmount, 500)
-    }
-    
-    func testThemeStringConversion() {
-        // Test theme boolean to string conversion logic
-        let darkTheme = true
-        let lightTheme = false
-        
-        let darkThemeString = darkTheme ? "dark" : "light"
-        let lightThemeString = lightTheme ? "dark" : "light"
-        
-        XCTAssertEqual(darkThemeString, "dark")
-        XCTAssertEqual(lightThemeString, "light")
     }
     
     func testAmountToStringConversion() {

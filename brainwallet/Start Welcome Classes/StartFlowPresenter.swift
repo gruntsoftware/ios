@@ -34,13 +34,13 @@ class StartFlowPresenter: Subscriber {
 		                		self?.presentLoginFlow(isPresentedForLock: true)
 		                	}
 		                })
-        
+
         NotificationCenter.default.addObserver(self,
                          selector: #selector(relaunchStartFlow),
                          name: .walletDidWipeNotification,
                          object: nil)
 	}
-    
+
     @objc private func relaunchStartFlow() {
         loginViewController = nil
        // self.presentStartFlow()
@@ -90,9 +90,9 @@ class StartFlowPresenter: Subscriber {
 	}
 
 	// MARK: - SwiftUI Start Flow
-    
+
     private func presentStartFlow() {
-        
+
             let startHostingController = StartHostingController(store: store,
                                                                 walletManager: walletManager)
 
@@ -111,14 +111,13 @@ class StartFlowPresenter: Subscriber {
             navigationController = ModalNavigationController(rootViewController: startHostingController)
             navigationController?.delegate = navigationControllerDelegate
             navigationController?.modalPresentationStyle = .fullScreen
-        
 
         if let startFlow = navigationController {
             startFlow.setNavigationBarHidden(true, animated: false)
             rootViewController.present(startFlow, animated: false, completion: nil)
         }
     }
-    
+
 	private var pushRecoverWalletView: () -> Void {
 		return { [weak self] in
 			guard let myself = self else { return }
@@ -175,7 +174,7 @@ class StartFlowPresenter: Subscriber {
 
 		navigationController?.navigationBar.titleTextAttributes = [
 			NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
-			NSAttributedString.Key.font: UIFont.customBold(size: 17.0),
+			NSAttributedString.Key.font: UIFont.customBold(size: 17.0)
 		]
 		navigationController?.pushViewController(paperPhraseViewController, animated: true)
 	}
@@ -190,20 +189,23 @@ class StartFlowPresenter: Subscriber {
 	}
 
 	private func pushConfirmPaperPhraseViewController(pin: String) {
-		let confirmVC = UIStoryboard(name: String(localized: "Phrase", bundle: .main), bundle: nil).instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController") as? ConfirmPaperPhraseViewController
+		let confirmVC = UIStoryboard(name: String(localized: "Phrase", bundle: .main),
+                                     bundle: nil)
+                .instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController")
+                   as? ConfirmPaperPhraseViewController
 		confirmVC?.store = store
 		confirmVC?.walletManager = walletManager
 		confirmVC?.pin = pin
 		confirmVC?.didCompleteConfirmation = { [weak self] in
 			guard let myself = self else { return }
-			
+
             confirmVC?.dismiss(animated: true, completion: {
                 myself.store.perform(action: SimpleReduxAlert.Show(.paperKeySet(callback: {
                     myself.store.perform(action: HideStartFlow())
                 })))
             })
 		}
-        
+
 		navigationController?.navigationBar.tintColor = BrainwalletUIColor.surface
 		if let confirmVC = confirmVC {
 			navigationController?.pushViewController(confirmVC, animated: true)

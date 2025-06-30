@@ -10,39 +10,47 @@ import Foundation
 import SwiftUI
 
 class LockScreenHostingController: UIHostingController<LockScreenView> {
-    
+
     var viewModel: LockScreenViewModel
-    
+
     var didEnterPIN: ((String) -> Void)?
-    
+
     var didTapQR: (() -> Void)?
-    
+
     var didTapWipeWallet: ((Bool) -> Void)?
-     
+
+    var userDidPreferDarkMode: ((Bool) -> Void)?
+
     init(store: Store) {
         viewModel = LockScreenViewModel(store: store)
+
+        let userPrefersDarkMode = UserDefaults.userPreferredDarkTheme
+
        super.init(rootView: LockScreenView(viewModel: viewModel))
-        
+
         viewModel.userSubmittedPIN = { [weak self] pin in
             self?.didEnterPIN?(pin)
         }
-        
+
         viewModel.userDidTapQR = { [weak self] in
             self?.didTapQR?()
         }
-        
+
         viewModel.didTapWipeWallet = { [weak self] userWantsToDelete in
-            
+
             if userWantsToDelete {
                 self?.didTapWipeWallet?(userWantsToDelete)
             }
         }
+
+        viewModel.userDidPreferDarkMode = { [weak self] userPrefersDarkMode in
+            self?.userDidPreferDarkMode?(userPrefersDarkMode)
+        }
     }
-    
+
     func walletWiped() {
         viewModel.didCompleteWipingWallet = true
     }
-    
 
     @available(*, unavailable)
     @MainActor dynamic required init?(coder _: NSCoder) {

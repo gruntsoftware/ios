@@ -1,15 +1,13 @@
 import SwiftUI
 
- 
-
 struct ReadyRestoreView: View {
-    
+
     @ObservedObject
     var viewModel: StartViewModel
-    
+
     @Binding
     var path: [Onboarding]
-      
+
     let selectorFont: Font = .barlowSemiBold(size: 16.0)
     let buttonLightFont: Font = .barlowLight(size: 16.0)
     let regularButtonFont: Font = .barlowRegular(size: 24.0)
@@ -24,25 +22,25 @@ struct ReadyRestoreView: View {
     let themeButtonSize: CGFloat = 28.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
-    
+
     let arrowSize: CGFloat = 60.0
-    
+
     private let isRestore: Bool
-    
+
     init(isRestore: Bool, viewModel: StartViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
         self.isRestore = isRestore
         _path = path
     }
     var body: some View {
-        
+
             GeometryReader { geometry in
-                
+
                 let width = geometry.size.width
-                
+
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                    
+
                     VStack {
                         HStack {
                             Button(action: {
@@ -55,7 +53,7 @@ struct ReadyRestoreView: View {
                                         .frame(width: squareImageSize,
                                                height: squareImageSize,
                                                alignment: .center)
-                                    
+
                                         .foregroundColor(BrainwalletColor.content)
                                     Spacer()
                                 }
@@ -63,7 +61,7 @@ struct ReadyRestoreView: View {
                             Spacer()
                         }
                         .padding(.all, 20.0)
-                        
+
                         Spacer()
                         HStack {
                             Image(systemName: "arrow.down.right")
@@ -72,7 +70,7 @@ struct ReadyRestoreView: View {
                                 .frame(width: arrowSize,
                                        alignment: .center)
                                 .padding(.leading, 20.0)
-                            
+
                             Spacer()
                         }
                         .frame(maxHeight: .infinity, alignment: .bottomLeading)
@@ -95,7 +93,7 @@ struct ReadyRestoreView: View {
                         }
                         .padding(.bottom, 40.0)
                         .padding(.leading, 20.0)
-                        
+
                         Spacer(minLength: 20.0)
                             Button(action: {
                                 path.append(.setPasscodeView)
@@ -104,7 +102,7 @@ struct ReadyRestoreView: View {
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                         .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                         .foregroundColor(BrainwalletColor.surface)
-                                    
+
                                     Text("Setup app passcode")
                                         .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                         .font(largeButtonFont)

@@ -33,7 +33,7 @@ class FeeUpdater: Trackable {
 	private let walletManager: WalletManager
 	private let store: Store
 	private var timer: Timer?
-	private let feeUpdateInterval: TimeInterval = 3
+    private let rateUpdateInterval: TimeInterval
 	private var exchangeUpdater: ExchangeUpdater
 
 	// MARK: - Public
@@ -42,6 +42,12 @@ class FeeUpdater: Trackable {
 		self.walletManager = walletManager
 		self.store = store
 		self.exchangeUpdater = exchangeUpdater
+
+        #if targetEnvironment(simulator)
+        rateUpdateInterval = 2.0
+        #else
+        rateUpdateInterval = 30.0
+        #endif
 	}
 
 	func refresh(completion: @escaping () -> Void) {
@@ -50,13 +56,13 @@ class FeeUpdater: Trackable {
 			else {
 				let properties: [String: String] = ["ERROR_MESSAGE": String(describing: error),
 				                                    "ERROR_TYPE": "FEE_PER_KB"]
-				LWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
+				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: properties)
 				completion()
 				return
 			}
 
 			if newFees == Fees.usingDefaultValues {
-				LWAnalytics.logEventWithParameters(itemName: ._20200301_DUDFPK)
+				BWAnalytics.logEventWithParameters(itemName: ._20200301_DUDFPK)
 				self.saveEvent("wallet.didUseDefaultFeePerKB")
 			}
 
@@ -65,7 +71,7 @@ class FeeUpdater: Trackable {
 		}
 
 		if timer == nil {
-			timer = Timer.scheduledTimer(timeInterval: feeUpdateInterval,
+			timer = Timer.scheduledTimer(timeInterval: rateUpdateInterval,
 			                             target: self,
 			                             selector: #selector(intervalRefresh),
 			                             userInfo: nil, repeats: true)
@@ -79,7 +85,7 @@ class FeeUpdater: Trackable {
 	@objc func intervalRefresh() {
 		refresh(completion: {})
 		exchangeUpdater.refresh(completion: {
-			/// DEV: For testing
+
 		})
 	}
 }

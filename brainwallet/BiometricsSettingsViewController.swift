@@ -19,7 +19,7 @@ class BiometricsSettingsViewController: UIViewController, Subscriber {
 	private var spendingButton = ShadowButton(title: "-", type: .secondary)
 	private var dismissButton = UIButton()
 
-	private let toggle = GradientSwitch()
+	private let toggle = UISwitch()
     private let separator = UIView(color: BrainwalletUIColor.content)
 	private let walletManager: WalletManager
 	private let store: Store
@@ -63,46 +63,45 @@ class BiometricsSettingsViewController: UIViewController, Subscriber {
 		header.constrain([header.heightAnchor.constraint(equalToConstant: C.Sizes.largeHeaderHeight)])
 		illustration.constrain([
 			illustration.centerXAnchor.constraint(equalTo: header.centerXAnchor),
-			illustration.centerYAnchor.constraint(equalTo: header.centerYAnchor, constant: E.isIPhoneX ? C.padding[4] : C.padding[2]),
+			illustration.centerYAnchor.constraint(equalTo: header.centerYAnchor, constant: E.isIPhoneX ? C.padding[4] : C.padding[2])
 		])
 		dismissButton.constrain([
 			dismissButton.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: C.padding[2]),
-			dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: C.padding[2]),
+			dismissButton.topAnchor.constraint(equalTo: view.topAnchor, constant: C.padding[2])
 		])
 		label.constrain([
 			label.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: C.padding[2]),
 			label.topAnchor.constraint(equalTo: header.bottomAnchor, constant: C.padding[2]),
-			label.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -C.padding[2]),
+			label.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -C.padding[2])
 		])
 		switchLabel.constrain([
 			switchLabel.leadingAnchor.constraint(equalTo: label.leadingAnchor),
-			switchLabel.topAnchor.constraint(equalTo: label.bottomAnchor, constant: C.padding[2]),
+			switchLabel.topAnchor.constraint(equalTo: label.bottomAnchor, constant: C.padding[2])
 		])
 		toggle.constrain([
 			toggle.centerYAnchor.constraint(equalTo: switchLabel.centerYAnchor),
-			toggle.trailingAnchor.constraint(equalTo: label.trailingAnchor),
+			toggle.trailingAnchor.constraint(equalTo: label.trailingAnchor)
 		])
 		spendingLimitLabel.constrain([
 			spendingLimitLabel.leadingAnchor.constraint(equalTo: label.leadingAnchor),
-			spendingLimitLabel.topAnchor.constraint(equalTo: switchLabel.bottomAnchor, constant: C.padding[4]),
+			spendingLimitLabel.topAnchor.constraint(equalTo: switchLabel.bottomAnchor, constant: C.padding[4])
 		])
 		spendingButton.constrain([
 			spendingButton.centerYAnchor.constraint(equalTo: spendingLimitLabel.centerYAnchor),
-			spendingButton.trailingAnchor.constraint(equalTo: label.trailingAnchor),
+			spendingButton.trailingAnchor.constraint(equalTo: label.trailingAnchor)
 		])
 		separator.constrain([
 			separator.leadingAnchor.constraint(equalTo: switchLabel.leadingAnchor),
 			separator.topAnchor.constraint(equalTo: spendingButton.bottomAnchor, constant: C.padding[1]),
 			separator.trailingAnchor.constraint(equalTo: spendingButton.trailingAnchor),
-			separator.heightAnchor.constraint(equalToConstant: 1.0),
+			separator.heightAnchor.constraint(equalToConstant: 1.0)
 		])
 	}
 
 	private func setData() {
 		spendingButton.addTarget(self, action: #selector(didTapSpendingButton), for: .touchUpInside)
 		if #available(iOS 11.0, *), let backGroundColor = UIColor(named: "lfBackgroundColor"),
-		   let textColor = UIColor(named: "labelTextColor")
-		{
+		   let textColor = UIColor(named: "labelTextColor") {
 			label.textColor = textColor
 			switchLabel.textColor = textColor
 			spendingLimitLabel.textColor = textColor
@@ -149,8 +148,8 @@ class BiometricsSettingsViewController: UIViewController, Subscriber {
 	}
 
 	fileprivate func presentCantUseBiometricsAlert() {
-		let unavailableAlertTitle = LAContext.biometricType() == .face ? "Face ID Not Set Up" : "Touch ID Not Set Up"
-		let unavailableAlertMessage = LAContext.biometricType() == .face ? "You have not set up Face ID on this device. Go to Settings->Face ID & Passcode to set it up now." : "You have not set up Touch ID on this device. Go to Settings->Touch ID & Passcode to set it up now."
+		let unavailableAlertTitle = LAContext.biometricType() == .face ? String(localized: "Face ID Not Set Up") : String(localized: "Touch ID Not Set Up")
+		let unavailableAlertMessage = LAContext.biometricType() == .face ? String(localized: "You have not set up Face ID on this device. Go to Settings->Face ID & Passcode to set it up now.") : String(localized: "You have not set up Touch ID on this device. Go to Settings->Touch ID & Passcode to set it up now.")
 		let alert = UIAlertController(title: unavailableAlertTitle, message: unavailableAlertMessage, preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Ok" , style: .cancel, handler: nil))
 		present(alert, animated: true, completion: nil)

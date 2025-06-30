@@ -35,18 +35,17 @@ class MenuViewController: UIViewController, Trackable {
 				topConstraint,
 				button.constraint(.leading, toView: view, constant: 0.0),
 				button.constraint(.trailing, toView: view, constant: 0.0),
-				button.constraint(.height, constant: buttonHeight),
+				button.constraint(.height, constant: buttonHeight)
 			])
 			previousButton = button
 		}
 
 		previousButton?.constrain([
-			previousButton?.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -C.padding[2]),
+			previousButton?.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -C.padding[2])
 		])
 
-		
 			view.backgroundColor = BrainwalletUIColor.surface
-		
+
 	}
 
 	@objc private func didTapButton(button: MenuButton) {
@@ -64,11 +63,7 @@ class MenuViewController: UIViewController, Trackable {
 }
 
 extension MenuViewController: ModalDisplayable {
-	var faqArticleId: String? {
-		return nil
-	}
-
 	var modalTitle: String {
-		return "Menu"
+		return String(localized: "Menu")
 	}
 }

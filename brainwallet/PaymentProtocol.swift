@@ -11,8 +11,7 @@ class PaymentProtocolDetails {
 	}
 
 	init?(network: String = "main", outputs: [BRTxOutput], time: UInt64, expires: UInt64, memo: String? = nil,
-	      paymentURL: String? = nil, merchantData: [UInt8]? = nil)
-	{
+	      paymentURL: String? = nil, merchantData: [UInt8]? = nil) {
 		guard let cPointer = BRPaymentProtocolDetailsNew(network, outputs, outputs.count, time, expires, memo, paymentURL,
 		                                             merchantData, merchantData?.count ?? 0) else { return nil }
 		self.cPointer = cPointer
@@ -80,8 +79,7 @@ class PaymentProtocolRequest {
 	}
 
 	init?(version: UInt32 = 1, pkiType: String = "none", pkiData: [UInt8]? = nil, details: PaymentProtocolDetails,
-	      signature: [UInt8]? = nil)
-	{
+	      signature: [UInt8]? = nil) {
 		guard details.isManaged else { return nil } // request must be able take over memory management of details
 		guard let cPointer = BRPaymentProtocolRequestNew(version, pkiType, pkiData, pkiData?.count ?? 0, details.cPointer,
 		                                             signature, signature?.count ?? 0) else { return nil }
@@ -167,7 +165,7 @@ class PaymentProtocolRequest {
 			// .unspecified indicates a positive result that wasn't decided by the user
 			guard trustResult == .unspecified || trustResult == .proceed
 			else {
-				errMsg = certs.count > 0 ? "S.PaymentProtocol.Errors.untrustedCertificate"  : "S.PaymentProtocol.Errors.missingCertificate"
+				errMsg = !certs.isEmpty ? "S.PaymentProtocol.Errors.untrustedCertificate"  : "S.PaymentProtocol.Errors.missingCertificate"
 
 				if let trust = trust, let properties = SecTrustCopyProperties(trust) {
 					for prop in properties as! [[AnyHashable: Any]] {
@@ -210,7 +208,7 @@ class PaymentProtocolRequest {
 
 		guard details.expires == 0 || NSDate.timeIntervalSinceReferenceDate <= Double(details.expires)
 		else {
-			errMsg = "request expired" 
+			errMsg = "request expired"
 			return false
 		}
 
@@ -242,8 +240,7 @@ class PaymentProtocolPayment {
 	}
 
 	init?(merchantData: [UInt8]? = nil, transactions: [BRTxRef?], refundTo: [(address: String, amount: UInt64)],
-	      memo: String? = nil)
-	{
+	      memo: String? = nil) {
 		var txRefs = transactions
 		guard let cPointer = BRPaymentProtocolPaymentNew(merchantData, merchantData?.count ?? 0, &txRefs, txRefs.count,
 		                                             refundTo.map { $0.amount },

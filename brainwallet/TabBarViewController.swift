@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import SwiftUI
 
 class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDelegate {
 	let kInitialChildViewControllerIndex = 2 // Buy / Receive
@@ -8,7 +9,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	@IBOutlet var tabBar: UITabBar!
 	@IBOutlet var settingsButton: UIButton!
 	@IBOutlet var walletBalanceLabel: UILabel!
-    
+
 	var primaryBalanceLabel: UpdatingLabel?
 	var secondaryBalanceLabel: UpdatingLabel?
 	private let largeFontSize: CGFloat = 24.0
@@ -25,6 +26,8 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	var viewControllers: [UIViewController] = []
 	var activeController: UIViewController?
     var receiveHostingController: ReceiveHostingController?
+    var buyReceiveHostingController: BuyReceiveHostingController?
+
 	var updateTimer: Timer?
 	var store: Store?
 	var walletManager: WalletManager?
@@ -62,7 +65,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		updateTimer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { _ in
 			self.setBalances()
 		}
-        
+
 		guard let array = tabBar.items
 		else {
 			NSLog("ERROR: no items found")
@@ -94,7 +97,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 				let controller = UIStoryboard(name: storyboardNames[index], bundle: nil)
                 .instantiateViewController(withIdentifier: storyboardID)
 				viewControllers.append(controller)
-        } 
+        }
 	}
 
 	private func setupModels() {
@@ -111,16 +114,21 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			secondaryBalanceLabel = UpdatingLabel(formatter: NumberFormatter())
 			primaryBalanceLabel = UpdatingLabel(formatter: NumberFormatter())
 		}
-        
+
 	}
 
 	private func setupViews() {
 		walletBalanceLabel.text = String(localized: "Balance :", bundle: .main)
-        
+
         settingsButton.imageView?.tintColor = BrainwalletUIColor.content
 
 		headerView.backgroundColor = BrainwalletUIColor.surface
-        tabBar.barTintColor = BrainwalletUIColor.content.withAlphaComponent(0.01)
+
+        tabBar.barTintColor = BrainwalletUIColor.surface
+        tabBar.backgroundColor = BrainwalletUIColor.surface
+        tabBar.tintColor = BrainwalletUIColor.content
+        tabBar.unselectedItemTintColor = BrainwalletUIColor.content.withAlphaComponent(0.3)
+
 		containerView.backgroundColor = BrainwalletUIColor.surface
 		view.backgroundColor = BrainwalletUIColor.surface
 	}
@@ -151,7 +159,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		headerView.addSubview(currencyTapView)
 
 		secondaryLabel.constrain([
-			secondaryLabel.constraint(.firstBaseline, toView: primaryLabel, constant: 0.0),
+			secondaryLabel.constraint(.firstBaseline, toView: primaryLabel, constant: 0.0)
 		])
 
 		equalsLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -161,7 +169,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			primaryLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: C.padding[1] * 1.25),
 			equalsLabel.firstBaselineAnchor.constraint(equalTo: primaryLabel.firstBaselineAnchor, constant: 0),
 			equalsLabel.leadingAnchor.constraint(equalTo: primaryLabel.trailingAnchor, constant: C.padding[1] / 2.0),
-			secondaryLabel.leadingAnchor.constraint(equalTo: equalsLabel.trailingAnchor, constant: C.padding[1] / 2.0),
+			secondaryLabel.leadingAnchor.constraint(equalTo: equalsLabel.trailingAnchor, constant: C.padding[1] / 2.0)
 		]
 
 		swappedConstraints = [
@@ -169,7 +177,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			secondaryLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: C.padding[1] * 1.25),
 			equalsLabel.firstBaselineAnchor.constraint(equalTo: secondaryLabel.firstBaselineAnchor, constant: 0),
 			equalsLabel.leadingAnchor.constraint(equalTo: secondaryLabel.trailingAnchor, constant: C.padding[1] / 2.0),
-			primaryLabel.leadingAnchor.constraint(equalTo: equalsLabel.trailingAnchor, constant: C.padding[1] / 2.0),
+			primaryLabel.leadingAnchor.constraint(equalTo: equalsLabel.trailingAnchor, constant: C.padding[1] / 2.0)
 		]
 
 		if let isLTCSwapped = isLtcSwapped {
@@ -180,13 +188,12 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			currencyTapView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 0),
 			currencyTapView.trailingAnchor.constraint(equalTo: settingsButton.leadingAnchor, constant: -C.padding[5]),
 			currencyTapView.topAnchor.constraint(equalTo: primaryLabel.topAnchor, constant: 0),
-			currencyTapView.bottomAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: C.padding[1]),
+			currencyTapView.bottomAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: C.padding[1])
 		])
 
 		let gr = UITapGestureRecognizer(target: self, action: #selector(currencySwitchTapped))
 		currencyTapView.addGestureRecognizer(gr)
 	}
-
 
 	/// This is called when the price changes
 	private func setBalances() {
@@ -261,7 +268,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			NSLog("ERROR: no items found")
 			return
 		}
-        
+
         /// To show all more compex state (Buy or Receive) toggle here for dev
         canUserBuy = UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
 		for item in array {
@@ -333,38 +340,76 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		if let tempActiveController = activeController {
 			hideContentController(contentController: tempActiveController)
 		}
-        
+
         self.tabBar.selectedItem = item
 
-        //New Receive SwiftUI HC
+        // New Receive SwiftUI HC
         if item.tag == 2 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.presentNewReceiveModal()
             }
-        }
-        else {
+        } else {
             // DEV: This happens because it relies on the tab in the storyboard tag
             displayContentController(contentController: viewControllers[item.tag])
         }
 	}
-    
-    
+
     func presentNewReceiveModal() {
         guard let store = store,
               let walletManager = walletManager else { return }
-        
-        let receiveVC = ReceiveHostingController(store: store, walletManager: walletManager, canUserBuy: self.canUserBuy)
-        
-        addChild(receiveVC)
-        receiveVC.view.frame = containerView.frame
-        view.addSubview(receiveVC.view)
-        receiveVC.didMove(toParent: self)
+        let canUserBuy = UserDefaults.standard
+            .object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
+
+        receiveHostingController = nil
+        buyReceiveHostingController = nil
+
+        if canUserBuy {
+            self.children
+                .compactMap { $0 as? UIHostingController<BuyReceiveView> }
+                .forEach { buyReceiveHostingController in
+                    buyReceiveHostingController.willMove(toParent: nil)
+                    buyReceiveHostingController.view.removeFromSuperview()
+                    buyReceiveHostingController.removeFromParent()
+                }
+
+            buyReceiveHostingController = BuyReceiveHostingController(store: store,
+                                                        walletManager: walletManager,
+                                                        isModalMode: true)
+
+            guard let buyRecvHC = buyReceiveHostingController else { return }
+
+            addChild(buyRecvHC)
+            buyRecvHC.view.frame = containerView.frame
+            view.addSubview(buyRecvHC.view)
+            buyRecvHC.didMove(toParent: self)
+
+        } else {
+
+            self.children
+                .compactMap { $0 as? UIHostingController<NewReceiveView> }
+                .forEach { receiveHostingController in
+                    receiveHostingController.willMove(toParent: nil)
+                    receiveHostingController.view.removeFromSuperview()
+                    receiveHostingController.removeFromParent()
+                }
+
+            receiveHostingController = ReceiveHostingController(store: store,
+                                                     walletManager: walletManager,
+                                                     isModalMode: true)
+
+            guard let recvHC = receiveHostingController else { return }
+
+            addChild(recvHC)
+            recvHC.view.frame = containerView.frame
+            view.addSubview(recvHC.view)
+            recvHC.didMove(toParent: self)
+        }
     }
-    
+
 }
 
 extension TabBarViewController {
-    
+
     // MARK: - Adding Subscriptions
 
     private func addSubscriptions() {

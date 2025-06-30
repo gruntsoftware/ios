@@ -38,13 +38,13 @@ class DescriptionSendCell: SendCell {
 			textView.constraint(.leading, toView: self, constant: 11.0),
 			textView.centerYAnchor.constraint(equalTo: centerYAnchor),
 			textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.0),
-			textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.0),
+			textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.0)
 		])
 
 		textView.addSubview(placeholder)
 		placeholder.constrain([
 			placeholder.centerYAnchor.constraint(equalTo: textView.centerYAnchor),
-			placeholder.leadingAnchor.constraint(equalTo: textView.leadingAnchor, constant: 16.0),
+			placeholder.leadingAnchor.constraint(equalTo: textView.leadingAnchor, constant: 16.0)
 		])
 	}
 
@@ -65,7 +65,7 @@ extension DescriptionSendCell: UITextViewDelegate {
 	}
 
 	func textViewDidChange(_ textView: UITextView) {
-		placeholder.isHidden = textView.text.utf8.count > 0
+		placeholder.isHidden = !textView.text.utf8.isEmpty
 		if let text = textView.text {
 			didChange?(text)
 		}

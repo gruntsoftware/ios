@@ -1,0 +1,30 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "Brainwallet";
+
+/* Bundle name */
+"CFBundleName" = "Brainwallet";
+
+/* No comment provided by engineer. */
+"Litecoin Payment" = "Płatność Litecoin";
+
+/* No comment provided by engineer. */
+"Litecoin Payment ACK" = "ACK płatności Litecoin";
+
+/* No comment provided by engineer. */
+"Litecoin Payment Request" = "Żądanie płatności Litecoin";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Służy do skanowania kodów kreskowych";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Służy do odblokowywania aplikacji i autoryzacji płatności";
+
+/* Privacy - Location Always Usage Description */
+"NSLocationAlwaysUsageDescription" = "Służy do określenia najbliższego węzła - nigdy nie jest rejestrowany ani nikomu udostępniany.";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "Służy do określenia najbliższego węzła - nigdy nie jest rejestrowany ani nikomu udostępniany.";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "Służy do skanowania kodów kreskowych";
+

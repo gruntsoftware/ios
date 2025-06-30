@@ -8,21 +8,19 @@
 import Foundation
 import SwiftUI
 
-
-
 class NewConfirmViewModel: ObservableObject, Subscriber {
     // MARK: - Combine Variables
-    
+
     @Published
     var currentValueInFiat: String = ""
-    
+
     @Published
     var currencyCode: String = ""
-    
+
     var store: Store?
 
     init(store: Store) {
         self.store = store
     }
-    
+
 }
