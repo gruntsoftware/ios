@@ -11353,6 +11353,7 @@
       }
     },
     "Phrase" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

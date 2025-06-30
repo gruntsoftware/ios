@@ -179,8 +179,9 @@ extension WalletManager: WalletAuthenticator {
 			if try pin == keychainItem(key: KeychainKey.pin) {
 				try authenticationSuccess()
 				return true
-			}
-			return false
+            } else {
+                return false
+            }
 		} catch {
 			assertionFailure("Error: \(error)")
 			return false

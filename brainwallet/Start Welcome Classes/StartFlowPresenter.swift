@@ -189,8 +189,7 @@ class StartFlowPresenter: Subscriber {
 	}
 
 	private func pushConfirmPaperPhraseViewController(pin: String) {
-		let confirmVC = UIStoryboard(name: String(localized: "Phrase", bundle: .main),
-                                     bundle: nil)
+		let confirmVC = UIStoryboard(name: "Phrase", bundle: nil)
                 .instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController")
                    as? ConfirmPaperPhraseViewController
 		confirmVC?.store = store

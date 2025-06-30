@@ -5,6 +5,7 @@ struct LaunchView: View {
 		GeometryReader { _ in
 			ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
+
 			}
 		}
 	}

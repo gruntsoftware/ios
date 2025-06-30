@@ -14,7 +14,6 @@ class ApplicationController: Subscriber, Trackable {
     fileprivate var walletManager: WalletManager?
     private var walletCoordinator: WalletCoordinator?
     private var exchangeUpdater: ExchangeUpdater?
-    private var feeUpdater: FeeUpdater?
     private var transitionDelegate: ModalTransitionDelegate
     private var kvStoreCoordinator: KVStoreCoordinator?
     private var mainViewController: MainViewController?
@@ -23,7 +22,7 @@ class ApplicationController: Subscriber, Trackable {
     private var defaultsUpdater: UserDefaultsUpdater?
     private var reachability = ReachabilityMonitor()
     private let noAuthApiClient = BWAPIClient(authenticator: NoAuthAuthenticator())
-    private var fetchCompletionHandler: ((UIBackgroundFetchResult) -> Void)?
+    var fetchCompletionHandler: ((UIBackgroundFetchResult) -> Void)?
     private var launchURL: URL?
     private var hasPerformedWalletDependentInitialization = false
     private var didInitWallet = false
@@ -48,9 +47,16 @@ class ApplicationController: Subscriber, Trackable {
 
         _ = walletManager?.wallet // attempt to initialize wallet
 
-        /// Init exchange sooner
-        exchangeUpdater = ExchangeUpdater(store: store, walletManager: tempWalletManager)
-        exchangeUpdater?.fetchRates { _ in }
+        /// Update fiat rate
+        let preferredCurrencyCode = UserDefaults.userPreferredCurrencyCode
+
+        NetworkHelper.init().exchangeRates({ rates, _ in
+            guard let currentRate = rates.first(where: { $0.code ==
+                preferredCurrencyCode }) else {
+                return
+            }
+            self.store.perform(action: ExchangeRates.setRates(currentRate: currentRate, rates: rates))
+        })
 
         DispatchQueue.main.async {
             self.didInitWallet = true
@@ -135,7 +141,6 @@ class ApplicationController: Subscriber, Trackable {
         exchangeUpdater?.refresh(completion: {
 
         })
-        feeUpdater?.refresh()
         if modalPresenter?.walletManager == nil {
             modalPresenter?.walletManager = walletManager
         }
@@ -181,7 +186,6 @@ class ApplicationController: Subscriber, Trackable {
 		exchangeUpdater = ExchangeUpdater(store: store, walletManager: walletManager)
 
 		guard let exchangeUpdaterWithFee = exchangeUpdater else { return }
-		feeUpdater = FeeUpdater(walletManager: walletManager, store: store, exchangeUpdater: exchangeUpdaterWithFee)
 		startFlowController = StartFlowPresenter(store: store, walletManager: walletManager, rootViewController: rootViewController)
 		mainViewController?.walletManager = walletManager
 		defaultsUpdater = UserDefaultsUpdater(walletManager: walletManager)
@@ -211,12 +215,10 @@ class ApplicationController: Subscriber, Trackable {
 					self?.performBackgroundFetch()
 				}
 			}
-
-			exchangeUpdater?.refresh(completion: { })
 		}
 	}
 
-	private func shouldRequireLogin() -> Bool {
+	func shouldRequireLogin() -> Bool {
 		let then = UserDefaults.standard.double(forKey: timeSinceLastExitKey)
 		let timeout = UserDefaults.standard.double(forKey: shouldRequireLoginTimeoutKey)
 		let nowTime = Date().timeIntervalSince1970
@@ -230,13 +232,8 @@ class ApplicationController: Subscriber, Trackable {
 
 	private func startDataFetchers() {
 		initKVStoreCoordinator()
-		feeUpdater?.refresh()
 		defaultsUpdater?.refresh()
 		walletManager?.apiClient?.events?.up()
-
-		exchangeUpdater?.refresh(completion: {
-
-        })
 	}
 
 	private func addWalletCreationListener() {
@@ -294,9 +291,7 @@ class ApplicationController: Subscriber, Trackable {
 
 		group.enter()
 		Async.parallel(callbacks: [
-			{ self.exchangeUpdater?.refresh(completion: $0) },
-			{ self.feeUpdater?.refresh(completion: $0) },
-			{ self.walletManager?.apiClient?.events?.sync(completion: $0) }
+			{ self.exchangeUpdater?.refresh(completion: $0) }
 		], completion: {
 			group.leave()
 		})

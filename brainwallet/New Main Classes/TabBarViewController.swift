@@ -3,7 +3,7 @@ import UIKit
 import SwiftUI
 
 class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDelegate {
-	let kInitialChildViewControllerIndex = 2 // Buy / Receive
+	let kInitialChildViewControllerIndex = 1 // History
 	@IBOutlet var headerView: UIView!
 	@IBOutlet var containerView: UIView!
 	@IBOutlet var tabBar: UITabBar!

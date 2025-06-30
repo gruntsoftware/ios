@@ -365,7 +365,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		// MARK: - Wallet State:  CurrentRate
 
 		store.subscribe(self, selector: { $0.currentRate != $1.currentRate },
-		                callback: { self.rate = $0.currentRate })
+                        callback: {
+            self.rate = $0.currentRate
+        })
 
 		// MARK: - Wallet State:  Max Digits
 

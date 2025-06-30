@@ -8,6 +8,7 @@ struct Rate: Codable, Hashable {
 	let rate: Double
 	let lastTimestamp: Date
 
+    /// Calculated parameters
 	var currencySymbol: String {
 		if let symbol = Rate.symbolMap[code] {
 			return symbol

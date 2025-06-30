@@ -65,7 +65,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     var transactionCount = 0
 
     private
-    let timerPeriod: Double = {
+    let ratesPriceUpdateTimerPeriod: Double = {
         #if DEBUG
             return 3.0
         #else
@@ -79,20 +79,39 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     private var rate: Rate?
 
+    private var networkHelper = NetworkHelper()
+
     var resetSettingsDrawer: (() -> Void)?
 
     init(store: Store, walletManager: WalletManager) {
         self.store = store
         self.walletManager = walletManager
-        self.updatePreferred()
-        addSubscriptions()
 
+        let preferredCurrency = UserDefaults.userPreferredCurrencyCode
+        if let preferredGlobalCurrencyCode = GlobalCurrency.from(code: preferredCurrency) {
+            self.userDidSetCurrencyPreference(currency: preferredGlobalCurrencyCode)
+        } else {
+            self.userDidSetCurrencyPreference(currency: .USD)
+        }
+        addSubscriptions()
         updateTimer = Timer
-            .scheduledTimer(withTimeInterval: timerPeriod,
+            .scheduledTimer(withTimeInterval: ratesPriceUpdateTimerPeriod,
                             repeats: true) { _ in
-            self.updatePreferred()
-            self.fetchCurrentPrice()
-            self.setBalances()
+
+                self.networkHelper.exchangeRates({ rates, error in
+                    guard let currentRate = rates.first(where: { $0.code ==
+                        self.store?.state.userPreferredCurrencyCode }) else {
+                        return
+                    }
+                    if error == nil && !rates.isEmpty {
+                        debugPrint("::: currentRate \(currentRate.rate.description)")
+                    }
+
+                    self.store?.perform(action: ExchangeRates.setRate(currentRate))
+                    self.userDidSetCurrencyPreference(currency: self.currentGlobalFiat)
+                    self.fetchCurrentPrice()
+                    self.setBalances()
+                })
         }
 
         dateFormatter = DateFormatter()
@@ -105,15 +124,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         NotificationCenter.default.removeObserver(self, name: .languageChangedNotification, object: nil)
         self.updateTimer = nil
     }
-
-    private func updatePreferred() {
-        if let currentFiat = GlobalCurrency.from(code: UserDefaults.userPreferredCurrencyCode) {
-            currentGlobalFiat = currentFiat
-        } else {
-            currentGlobalFiat = .USD
-        }
-    }
-
     private func fetchCurrentPrice() {
         guard let currentRate = store?.state.currentRate
         else {
@@ -143,25 +153,19 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     func userDidSetCurrencyPreference(currency: GlobalCurrency) {
 
+        let code = currency.code
         guard let store = store
         else {
             debugPrint("::: Error: Rate not fetched")
             return
         }
+        // store.state.currentRate = nil
 
-        //  Check if preferred currency can be used for purchase
-        let code = currency.code
-        let isUnsupportedFiat = SupportedFiatCurrency.allCases.first(where: { $0.code == code }) == nil
-        // Preferred currency might not be supported for purchase
-        if isUnsupportedFiat {
-            UserDefaults.userPreferredBuyCurrency = "USD"
-        } else {
-            UserDefaults.userPreferredBuyCurrency = code
+        if let newGlobalCurrency = GlobalCurrency.from(code: code) {
+            currentGlobalFiat = newGlobalCurrency
+            // Set Preferred Currency
+            store.perform(action: UserPreferredCurrency.setDefault(code))
         }
-        UserDefaults.userPreferredCurrencyCode = code
-
-        // Set Preferred Currency
-        store.perform(action: UserPreferredCurrency.setDefault(code))
     }
 
     func updateTheme(shouldBeDark: Bool) {

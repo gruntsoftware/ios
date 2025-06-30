@@ -271,7 +271,7 @@ class ModalPresenter: Subscriber, Trackable {
 					var write: WritePaperPhraseViewController?
 					write = WritePaperPhraseViewController(store: myself.store, walletManager: walletManager, pin: pin, callback: { [weak self] in
 						guard let myself = self else { return }
-						let confirmVC = UIStoryboard(name: String(localized: "Phrase"), bundle: nil).instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController") as? ConfirmPaperPhraseViewController
+						let confirmVC = UIStoryboard(name: "Phrase", bundle: nil).instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController") as? ConfirmPaperPhraseViewController
 						confirmVC?.store = myself.store
 						confirmVC?.walletManager = myself.walletManager
 						confirmVC?.pin = pin

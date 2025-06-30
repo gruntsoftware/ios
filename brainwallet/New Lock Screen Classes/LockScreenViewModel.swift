@@ -57,7 +57,7 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 			return
 		}
 
-		// Price Label
+        // Price Label
 		let fiatRate = Double(round(100000 * currentRate.rate / 100000))
 		let formattedFiatString = String(format: "%3.2f", fiatRate)
 		currencyCode = currentRate.code
