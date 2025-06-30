@@ -1615,6 +1615,13 @@
 			path = "Settings Classes";
 			sourceTree = "<group>";
 		};
+		24C9E4092E12D82100F04241 /* Currency Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Currency Tests";
+			sourceTree = "<group>";
+		};
 		24D7AE522DCFF6350078252E /* New Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -2136,6 +2143,7 @@
 		C312D4F62D7DC28E00BB97A4 /* brainwalletTests */ = {
 			isa = PBXGroup;
 			children = (
+				24C9E4092E12D82100F04241 /* Currency Tests */,
 				24A0ACAC2E0D59E90077E695 /* Settings Tests */,
 				24360AFF2DED11B700E1E115 /* Buy Receive Tests */,
 				24952E452DE8B6D700ADEE10 /* Amounts Tests */,
@@ -3034,7 +3042,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250623.3;
+				CURRENT_PROJECT_VERSION = 250630.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3332,7 +3340,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250623.3;
+				CURRENT_PROJECT_VERSION = 250630.0;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;

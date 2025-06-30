@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
 
         // Ops
-        let startDate = Partner.partnerKeyPath(name: .walletStart)
+        _ = Partner.partnerKeyPath(name: .walletStart)
 
         // Firebase
         if FirebaseApp.app() == nil {
@@ -173,7 +173,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if let fboptions = FirebaseOptions(contentsOfFile: filePath) {
             FirebaseApp.configure(options: fboptions)
             #if DEBUG
-            Analytics.setUserProperty("debug", forName: "user_type")
+               Analytics.setUserProperty("debug_mode", forName: "debug_enabled")
+
+               /// Notfy the Firebase Console for monitoring and debugging
+               Analytics
+                   .logEvent("debug_mode_launched",
+                       parameters: [
+                           "platform": "ios",
+                           "app_version": AppVersion.string,
+                           "device": UIDevice.current.model
+                       ])
             #endif
 		} else {
             Analytics.logEvent("error_message", parameters: [
