@@ -53,7 +53,7 @@ class SettingsHelpersTests: XCTestCase {
     
     func testSettingsActionCaseIterable() {
         let allCases = SettingsAction.allCases
-        XCTAssertEqual(allCases.count, 4, "SettingsAction should have 4 cases")
+        XCTAssertEqual(allCases.count, 5, "SettingsAction should have 5 cases")
         XCTAssertTrue(allCases.contains(.preferDarkMode), "Should contain preferDarkMode case")
         XCTAssertTrue(allCases.contains(.wipeData), "Should contain wipeData case")
         XCTAssertTrue(allCases.contains(.lock), "Should contain lock case")
