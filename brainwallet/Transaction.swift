@@ -217,7 +217,7 @@ class Transaction {
 
 	var comment: String? {
 		if metaData?.comment != nil {
-			debugPrint(":::=== memo comments \(metaData?.comment ?? "NO MEMO")")
+			// debugPrint(":::=== memo comments \(metaData?.comment ?? "NO MEMO")")
 		}
 		return metaData?.comment
 	}
@@ -356,7 +356,7 @@ class Transaction {
 		do {
 			_ = try kvStore?.set(newData)
 		} catch {
-			debugPrint("::: could not update metadata: \(error)")
+			debugPrint("::: ERROR could not update metadata: \(error)")
 		}
 	}
 

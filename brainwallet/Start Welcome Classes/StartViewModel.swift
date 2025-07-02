@@ -49,7 +49,7 @@ class StartViewModel: ObservableObject, Subscriber {
 
         guard let store = store
         else {
-            debugPrint("::: Error: Rate not fetched")
+            debugPrint("::: ERROR: Rate not fetched")
             return
         }
 

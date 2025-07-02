@@ -156,7 +156,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         let code = currency.code
         guard let store = store
         else {
-            debugPrint("::: Error: Rate not fetched")
+            debugPrint("::: ERROR: Rate not fetched")
             return
         }
         // store.state.currentRate = nil
