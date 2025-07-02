@@ -29,8 +29,8 @@ platform :ios do
     scan(
       clean: true,
       devices: [device_name],
-      scheme: "brainwallet",
-      output_types: "html,junit",
+      scheme: "brainwalletTests",
+      output_types: "html",
       buildlog_path: "./build_logs",
       include_simulator_logs: true,
       derived_data_path: "./DerivedData"
