@@ -214,9 +214,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		default:
 			let transaction = transactions[indexPath.row]
-            debugPrint("::: TransactionViewController tableView transaction blockHeight: \(transaction.blockHeight)")
-
-			guard let cell = tableView.dequeueReusableCell(withIdentifier: "HostingCell<TransactionCellView>", for: indexPath) as? HostingCell<TransactionCellView>
+			guard let cell = tableView.dequeueReusableCell(withIdentifier: "HostingCell<TransactionCellView>",
+                for: indexPath) as? HostingCell<TransactionCellView>
 			else {
 				debugPrint("::: ERROR No cell found")
 				return UITableViewCell()
@@ -225,7 +224,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 			if let rate = rate,
 			   let store = store,
 			   let isLtcSwapped = isLtcSwapped {
-				let viewModel = TransactionCellViewModel(transaction: transaction, isLtcSwapped: isLtcSwapped, rate: rate, maxDigits: store.state.maxDigits, isSyncing: store.state.walletState.syncState != .success)
+				let viewModel = TransactionCellViewModel(transaction: transaction,
+                    isLtcSwapped: isLtcSwapped, rate: rate,
+                    maxDigits: store.state.maxDigits,
+                    isSyncing: store.state.walletState.syncState != .success)
 				cell.set(rootView: TransactionCellView(viewModel: viewModel), parentController: self)
 				cell.selectionStyle = .default
 			} else {
@@ -314,7 +316,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 			return UITableViewCell()
 		}
 
-        guard let promptType = promptType  else {
+        guard (promptType != nil)  else {
             return UITableViewCell()
         }
 
@@ -365,7 +367,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		// MARK: - Wallet State:  CurrentRate
 
 		store.subscribe(self, selector: { $0.currentRate != $1.currentRate },
-		                callback: { self.rate = $0.currentRate })
+                        callback: {
+            self.rate = $0.currentRate
+        })
 
 		// MARK: - Wallet State:  Max Digits
 

@@ -42,8 +42,8 @@ struct PasscodeView: View {
 	var viewModel: StartViewModel
 	@Environment(\.dismiss) var dismiss
 
-	private let maxDigits: Int = 6
-	private let userPasscode = "000000"
+	private let maxDigits: Int = 4
+	private let userPasscode = "0000"
 
 	@State var enteredPasscode: String = ""
 	@FocusState var keyboardFocused: Bool
@@ -51,9 +51,7 @@ struct PasscodeView: View {
 	public var body: some View {
 		ZStack {
 			HStack {
-				ForEach(0 ..< maxDigits, id: \.self) {
-					let entered = ($0 + 1) > enteredPasscode.count
-
+				ForEach(0 ..< maxDigits, id: \.self) { _ in
 					ZStack {
 						Image(systemName: "circle")
 					}
@@ -76,4 +74,18 @@ struct PasscodeView: View {
 
 		}
 	}
+}
+
+struct StaticPasscodeView: View {
+
+    public var body: some View {
+        ZStack {
+            HStack {
+                ForEach(0 ..< kPinDigitConstant, id: \.self) { _ in
+                    Image(systemName: "circle.fill")
+                        .padding(1.0)
+                }
+            }
+        }
+    }
 }

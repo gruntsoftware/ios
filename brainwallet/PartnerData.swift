@@ -1,6 +1,6 @@
 import Foundation
 import UIKit
-
+import FirebaseAnalytics
 enum PartnerName {
 	case walletOps
 	case walletStart
@@ -32,7 +32,12 @@ struct Partner {
 		guard let releasePath = Bundle.main.path(forResource: "service-data",
 		                                         ofType: "plist")
 		else {
-			let errorDescription = "service_data_missing"
+            Analytics.logEvent("service_data_error", parameters: [
+                "platform": "ios",
+                "app_version": AppVersion.string,
+                "error_message": "service_data_missing"
+            ])
+
 			return "error: FILE-NOT-FOUND"
 		}
 		filePath = releasePath

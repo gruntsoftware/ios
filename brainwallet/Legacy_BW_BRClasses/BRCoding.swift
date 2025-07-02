@@ -49,12 +49,12 @@ open class BRKeyedArchiver {
 			let j = try JSONSerialization.data(withJSONObject: coder.data, options: [])
 			guard let bz = (compressed ? nil : j)
 			else {
-				debugPrint(":::compression error")
+				debugPrint("::: ERROR compression error")
 				return Data()
 			}
 			return bz
 		} catch let e {
-			debugPrint(":::BRKeyedArchiver unable to archive object: \(e)")
+			debugPrint("::: BRKeyedArchiver unable to archive object: \(e)")
 			return "{}".data(using: String.Encoding.utf8)!
 		}
 	}
