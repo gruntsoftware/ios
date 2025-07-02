@@ -11,7 +11,7 @@ jobs:
     macos:
       xcode: 15.3.0
     #parallelism: 2  Does not work of open source macOS
-    resource_class: m4pro.medium
+    resource_class: macos.m1.medium.gen1
     working_directory: ~/ios/
     environment:
       FL_OUTPUT_DIR: output
