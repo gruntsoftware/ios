@@ -34,13 +34,13 @@ jobs:
       - run:
           name: Setup env files
           command: |
-            echo 'export BRAINWALLET_IOS_STOREKIT_V1_0_FILE="$BRAINWALLET_IOS_STOREKIT_V1_0_FILE"' >> $BASH_ENV
+            echo 'export $BRAINWALLET_IOS_STOREKIT_V1_0_FILE="$BRAINWALLET_IOS_STOREKIT_V1_0_FILE"' >> $BASH_ENV
             echo "$BRAINWALLET_IOS_STOREKIT_V1_0_FILE" | base64 --decode > Brainwallet-StoreKit-v1.storekit
-            echo 'export GOOGLE_SERVICES_PLIST="$GOOGLE_SERVICES_PLIST"' >> $BASH_ENV
+            echo 'export $GOOGLE_SERVICES_PLIST="$GOOGLE_SERVICES_PLIST"' >> $BASH_ENV
             echo "$GOOGLE_SERVICES_PLIST" | base64 --decode > GoogleService-Info.plist
-            echo 'export REMOTE_CONFIG_DEFAULTS="$REMOTE_CONFIG_DEFAULTS"' >> $BASH_ENV
+            echo 'export $REMOTE_CONFIG_DEFAULTS="$REMOTE_CONFIG_DEFAULTS"' >> $BASH_ENV
             echo "$REMOTE_CONFIG_DEFAULTS" | base64 --decode > remote-config-defaults.plist
-            echo 'export DEBUG_SERVICE_DATA="$DEBUG_SERVICE_DATA"' >> $BASH_ENV
+            echo 'export $DEBUG_SERVICE_DATA="$DEBUG_SERVICE_DATA"' >> $BASH_ENV
             echo "$DEBUG_SERVICE_DATA" | base64 --decode > service-data.plist
       - run:
           name: Validate configuration files
