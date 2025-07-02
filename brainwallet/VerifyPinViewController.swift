@@ -122,10 +122,10 @@ class VerifyPinViewController: UIViewController, ContentBoxPresenter {
 				if !myself.callback(output, myself) {
 					myself.authenticationFailed()
 				} else {
-					debugPrint("::: FAILED")
+					debugPrint("::: ERROR FAILED")
 				}
 			} else {
-				debugPrint("::: FAILED")
+				debugPrint("::: ERROR FAILED")
 			}
 		}
 		cancel.tap = { [weak self] in

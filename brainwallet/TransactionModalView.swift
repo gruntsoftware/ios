@@ -17,8 +17,6 @@ struct TransactionModalView: View {
 	var body: some View {
 
         GeometryReader { _ in
-
-            let buttonSize = 30.0
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 

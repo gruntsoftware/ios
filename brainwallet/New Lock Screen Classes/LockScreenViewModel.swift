@@ -53,11 +53,11 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 	private func fetchCurrentPrice() {
 		guard let currentRate = store?.state.currentRate
 		else {
-            debugPrint("::: Error: Rate not fetched ")
+            debugPrint("::: ERROR: Rate not fetched ")
 			return
 		}
 
-		// Price Label
+        // Price Label
 		let fiatRate = Double(round(100000 * currentRate.rate / 100000))
 		let formattedFiatString = String(format: "%3.2f", fiatRate)
 		currencyCode = currentRate.code

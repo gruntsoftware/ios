@@ -11,7 +11,6 @@ import SwiftUI
 import UIKit
 
 extension ModalPresenter {
-
     func rootModalViewController(_ type: RootModal) -> UIViewController? {
         switch type {
         case .none:

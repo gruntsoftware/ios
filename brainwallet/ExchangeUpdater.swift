@@ -13,7 +13,10 @@ class ExchangeUpdater: Subscriber {
 		store.subscribe(self,
 		                selector: { $0.userPreferredCurrencyCode != $1.userPreferredCurrencyCode },
 		                callback: { state in
-		                	guard let currentRate = state.rates.first(where: { $0.code == state.userPreferredCurrencyCode }) else { return }
+		                	guard let currentRate = state.rates.first(where: { $0.code == state.userPreferredCurrencyCode }) else {
+                                debugPrint("::: Exchange Updater: No rate  \(state.userPreferredCurrencyCode)\n")
+                                return }
+                            debugPrint("::: \(currentRate) \n")
 		                	self.store.perform(action: ExchangeRates.setRate(currentRate))
 		                })
 	}
@@ -27,11 +30,9 @@ class ExchangeUpdater: Subscriber {
         }
 
 		if walletManager.store.state.walletState.syncState != .syncing {
-			walletManager.apiClient?.exchangeRates { rates, _ in
-                debugPrint(":::: Exchange rates refreshed \n:::\(Date()):::: \n")
-                debugPrint(":::: \(rates.first.debugDescription) \n")
-                debugPrint(":::: \(rates.last.debugDescription) \n")
+			walletManager.apiClient?.exchangeRates { rates, error in
                 guard let currentRate = rates.first(where: { $0.code == self.store.state.userPreferredCurrencyCode }) else {
+                    debugPrint("::: ERROR fetching rates \(String(describing: error))")
                     completion()
                     return
                 }
@@ -39,7 +40,7 @@ class ExchangeUpdater: Subscriber {
 				completion()
 			}
 		} else {
-            debugPrint(":::: Exchange rates walletState.syncState \n:::\(walletManager.store.state.walletState.syncState):::: \n")
+            debugPrint(":::  Exchange rates walletState.syncState \n:::\(walletManager.store.state.walletState.syncState):::: \n")
         }
 	}
 
@@ -47,9 +48,6 @@ class ExchangeUpdater: Subscriber {
 
         let apiClient = BWAPIClient(authenticator: NoAuthAuthenticator())
         apiClient.exchangeRates { rates, _ in
-            debugPrint(":::: Exchange rates fetched \n:::\(Date()):::: \n")
-            debugPrint(":::: \(rates.first.debugDescription) \n")
-            debugPrint(":::: \(rates.last.debugDescription) \n")
             if let currentRate = rates.first(where: { $0.code == self.store.state.userPreferredCurrencyCode }) {
                 self.store.perform(action: ExchangeRates.setRates(currentRate: currentRate, rates: rates))
             }
