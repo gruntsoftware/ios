@@ -3,7 +3,7 @@ import SwiftUI
 struct ReadyRestoreView: View {
 
     @ObservedObject
-    var viewModel: StartViewModel
+    var viewModel: NewMainViewModel
 
     @Binding
     var path: [Onboarding]
@@ -27,7 +27,7 @@ struct ReadyRestoreView: View {
 
     private let isRestore: Bool
 
-    init(isRestore: Bool, viewModel: StartViewModel, path: Binding<[Onboarding]>) {
+    init(isRestore: Bool, viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
         self.isRestore = isRestore
         _path = path

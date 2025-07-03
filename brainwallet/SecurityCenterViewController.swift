@@ -34,7 +34,7 @@ class SecurityCenterViewController: UIViewController, Subscriber {
 	fileprivate var headerBackgroundHeight: NSLayoutConstraint?
 	private var headerBackground = UIView()
 	private let header: ModalHeaderView
-	fileprivate var shield = UIImageView(image: #imageLiteral(resourceName: "shield"))
+	fileprivate var shield = UIImageView(image: #imageLiteral(resourceName: "Faq"))
 	private let scrollView = UIScrollView()
 	private let info = UILabel(font: .customBody(size: 16.0))
 	private let pinCell = SecurityCenterCell(title:  String(localized: "4-Digit PIN") , descriptionText:  String(localized: "Protects your Brainwallet from unauthorized users.") )

@@ -1,10 +1,11 @@
 import SwiftUI
 
+@MainActor
 class LockScreenViewModel: ObservableObject, Subscriber {
 	// MARK: - Combine Variables
 
 	@Published
-	var currentValueInFiat: String = ""
+	var currentFiatValue: String = ""
 
 	@Published
 	var currencyCode: String = ""
@@ -62,7 +63,7 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 		let formattedFiatString = String(format: "%3.2f", fiatRate)
 		currencyCode = currentRate.code
 		let currencySymbol = Currency.getSymbolForCurrencyCode(code: currencyCode) ?? ""
-		currentValueInFiat = String(currencySymbol + formattedFiatString)
+        currentFiatValue = String(currencySymbol + formattedFiatString)
 	}
 
 	// MARK: - Add Subscriptions
