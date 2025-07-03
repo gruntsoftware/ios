@@ -5,6 +5,7 @@
 version: 2.1
 orbs:
   macos: circleci/macos@2
+  ruby: circleci/ruby@2.0.0
   
 jobs:
   build-and-test:
