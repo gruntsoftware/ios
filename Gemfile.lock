@@ -226,14 +226,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 2.4)
+  bundler (= 2.6.9)
   fastlane (= 2.228.0)
   rb-readline
   scan
   xcode-install
 
 RUBY VERSION
-   ruby 3.3.0p0
+   ruby 3.3.1p55
 
 BUNDLED WITH
    2.6.9
