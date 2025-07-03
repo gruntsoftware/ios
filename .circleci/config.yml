@@ -43,13 +43,6 @@ jobs:
             rbenv install 3.4.4  # or whatever version you need
             rbenv global 3.4.4
       - run:
-          name: Install Bundler and Gems
-          command: |
-            export PATH="$HOME/.rbenv/bin:$PATH"
-            eval "$(rbenv init -)"
-            gem install bundler
-            bundle install
-      - run:
           name: Setup SSH for private repos (ssh-ed25519 key added)
           command: |
             echo 'github.com ssh-rsa SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g' >> ~/.ssh/known_hosts
