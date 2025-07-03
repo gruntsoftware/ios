@@ -101,9 +101,13 @@ jobs:
               echo "No iPhone 15 simulator found, using available simulators:"
               xcrun simctl list devices available | grep iPhone | head -5
             fi
-      - run: 
-          name: Install Bundler
-          command: gem install bundler:2.6.9; bundle update --bundler; bundle install
+      - run:
+          name: Install Bundler and Dependencies
+          command: |
+            export PATH="$HOME/.rbenv/bin:$PATH"
+            eval "$(rbenv init -)"
+            gem install bundler
+            bundle install
       - run:
           name: Validate project structure
           command: |
@@ -112,10 +116,13 @@ jobs:
             echo "Scheme validation:"
             xcodebuild -list -project *.xcodeproj || xcodebuild -list -workspace *.xcworkspace || echo "Could not list schemes"
             echo "Build settings for test scheme:"
-            xcodebuild -showBuildSettings -scheme brainwalletTests -project *.xcodeproj || xcodebuild -showBuildSettings -scheme brainwalletTests -workspace *.xcworkspace || echo "Could not show build settings"
+            xcodebuild -showBuildSettings -scheme brainwalletTests -project *.xcodeproj || xcodebuild -showBuildSettings -scheme brainwalletTests -workspace *.xcworkspace || echo "Could not show build settings
       - run:
-          name: Fastlane
-          command: bundle exec fastlane $FASTLANE_LANE
+          name: Run Fastlane
+          command: |
+            export PATH="$HOME/.rbenv/bin:$PATH"
+            eval "$(rbenv init -)"
+            bundle exec fastlane $FASTLANE_LANE
       - run:
           name: Capture crash logs
           command: |
