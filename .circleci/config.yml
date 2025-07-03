@@ -5,7 +5,7 @@
 version: 2.1
 orbs:
   macos: circleci/macos@2
-  ruby: circleci/ruby@2.0.0
+  ruby: circleci/ruby@2.5.3
   
 jobs:
   build-and-test:
@@ -25,10 +25,41 @@ jobs:
           fingerprints:
             - "SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g"
       - checkout
-      - ruby/install:
-          version: "3.4.4"
-      - ruby/install-deps:
-          bundler-version: "2.4.22"
+      - run:
+          name: Install dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y \
+              build-essential \
+              libssl-dev \
+              libreadline-dev \
+              zlib1g-dev \
+              git \
+              curl
+      - run:
+          name: Install rbenv and ruby-build
+          command: |
+            git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+            cd ~/.rbenv && src/configure && make -C src
+            echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+            echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+            export PATH="$HOME/.rbenv/bin:$PATH"
+            eval "$(rbenv init -)"
+            git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+      - run:
+          name: Install Ruby using rbenv
+          command: |
+            export PATH="$HOME/.rbenv/bin:$PATH"
+            eval "$(rbenv init -)"
+            rbenv install 3.4.4  # or whatever version you need
+            rbenv global 3.4.4
+      - run:
+          name: Install Bundler and Gems
+          command: |
+            export PATH="$HOME/.rbenv/bin:$PATH"
+            eval "$(rbenv init -)"
+            gem install bundler
+            bundle install
       - run:
           name: Setup SSH for private repos (ssh-ed25519 key added)
           command: |
