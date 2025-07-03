@@ -112,9 +112,9 @@ jobs:
           name: Validate project structure
           command: |
             echo "Project structure validation:"
-            ls -la *.xcodeproj *.xcworkspace || echo "No Xcode project/workspace found"
+            ls -la /brainwallet/*.xcodeproj || echo "No Xcode project found"
             echo "Scheme validation:"
-            xcodebuild -list -project *.xcodeproj || xcodebuild -list -workspace *.xcworkspace || echo "Could not list schemes"
+            xcodebuild -list -project /brainwallet/*.xcodeproj || echo "Could not list schemes"
             echo "Build settings for test scheme:"
             xcodebuild -showBuildSettings -scheme brainwalletTests -project *.xcodeproj || xcodebuild -showBuildSettings -scheme brainwalletTests -workspace *.xcworkspace || echo "Could not show build settings
       - run:
