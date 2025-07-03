@@ -56,7 +56,10 @@ platform :ios do
       derived_data_path: "./DerivedData"
     )
   end
-
+  # Basic
+  lane :basic_test do
+    scan
+  end
   # Add a debug lane for troubleshooting
   lane :debug_tests do
     run_tests(
