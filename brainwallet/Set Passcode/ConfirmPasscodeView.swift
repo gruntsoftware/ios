@@ -2,7 +2,7 @@ import SwiftUI
 struct ConfirmPasscodeView: View {
 
     @ObservedObject
-    var viewModel: StartViewModel
+    var viewModel: NewMainViewModel
 
     @Binding
     var path: [Onboarding]
@@ -33,7 +33,7 @@ struct ConfirmPasscodeView: View {
 
     let arrowSize: CGFloat = 60.0
 
-    init(pinDigits: [Int], viewModel: StartViewModel, path: Binding<[Onboarding]>) {
+    init(pinDigits: [Int], viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
         _path = path
 

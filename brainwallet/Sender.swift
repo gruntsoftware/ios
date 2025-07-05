@@ -50,6 +50,7 @@ class Sender {
 
 	func createTransactionWithOpsOutputs(amount: UInt64,
 	                                     to: String) -> Bool {
+
 		transaction = walletManager.wallet?.createOpsTransaction(forAmount: amount,
 		                                                         toAddress: to,
 		                                                         opsFee: tieredOpsFee(amount: amount),

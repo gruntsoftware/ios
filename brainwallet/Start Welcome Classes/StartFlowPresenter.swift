@@ -96,11 +96,11 @@ class StartFlowPresenter: Subscriber {
             let startHostingController = StartHostingController(store: store,
                                                                 walletManager: walletManager)
 
-        startHostingController.startViewModel.userWantsToCreate {
+            startHostingController.newMainViewModel.userWantsToCreate {
                 self.pushPinCreationViewControllerForNewWallet()
             }
 
-            startHostingController.startViewModel.userWantsToRecover {
+            startHostingController.newMainViewModel.userWantsToRecover {
                 let recoverIntro = RecoverWalletIntroViewController(didTapNext: self.pushRecoverWalletView)
                 self.navigationController?.setClearNavbar()
                 self.navigationController?.modalPresentationStyle = .fullScreen

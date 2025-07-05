@@ -124,25 +124,28 @@ class WalletCoordinator: Subscriber, Trackable {
 
 		Task {
 			do {
-				guard (self.store.state.currentRate != nil),
-                      (self.kvStore != nil),
-                    let wallet = self.walletManager.wallet else {
-					debugPrint("Wallet not found!")
-					return
-				}
+                let walletManager = self.walletManager
+                guard let currentRate = self.store.state.currentRate,
+                    let kvStore = self.kvStore,
+                    let wallet = walletManager.wallet else {
+                    debugPrint("Wallet not found!")
+                    return
+                }
 
-				let transactions = try await self.makeTransactionViewModels(transactions: wallet.transactions,
-				                                                            walletManager: self.walletManager,
-				                                                            kvStore: self.kvStore,
-				                                                            rate: self.store.state.currentRate)
+				let transactions = try await self
+                    .makeTransactionViewModels(transactions: wallet.transactions,
+				        walletManager: walletManager,
+				        kvStore: kvStore,
+                        rate: currentRate)
 
 				if !transactions.isEmpty {
-					Task {
-						self.store.perform(action: WalletChange.setTransactions(transactions))
-					}
+                    await MainActor.run {
+                        self.store.perform(action: WalletChange.setTransactions(transactions))
+                    }
 				}
 			} catch let error {
                 debugPrint("::: ERROR \(error)")
+
 			}
 		}
 	}

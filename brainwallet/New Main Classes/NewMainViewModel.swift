@@ -21,6 +21,15 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     var exchangeRate: Rate?
 
     @Published
+    var userPrefersDarkMode: Bool = false
+
+    @Published
+    var tappedIndex: Int = 0
+
+    @Published
+    var walletCreationDidFail: Bool = false
+
+    @Published
     var currentFiatValue = ""
 
     @Published
@@ -64,6 +73,13 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     @Published
     var transactionCount = 0
 
+    let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
+
+    let globalCurrencyCodes: [String] = GlobalCurrency.allCases.map( \.code )
+
+    var didTapCreate: (() -> Void)?
+    var didTapRecover: (() -> Void)?
+
     private
     let ratesPriceUpdateTimerPeriod: Double = {
         #if DEBUG
@@ -98,6 +114,8 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             .scheduledTimer(withTimeInterval: ratesPriceUpdateTimerPeriod,
                             repeats: true) { _ in
 
+                debugPrint("::: userPreferredCurrencyCode \(self.store?.state.userPreferredCurrencyCode) currentFiatValue \(self.currentFiatValue)")
+
                 self.networkHelper.exchangeRates({ rates, error in
                     guard let currentRate = rates.first(where: { $0.code ==
                         self.store?.state.userPreferredCurrencyCode }) else {
@@ -124,6 +142,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         NotificationCenter.default.removeObserver(self, name: .languageChangedNotification, object: nil)
         self.updateTimer = nil
     }
+
     private func fetchCurrentPrice() {
         guard let currentRate = store?.state.currentRate
         else {
@@ -140,31 +159,20 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     private func setBalances() {
         guard let store = self.store else { return }
 
-        if let rate = store.state.currentRate,
+        if let currentRate = store.state.currentRate,
            let balance = store.state.walletState.balance {
             exchangeRate = rate
             walletAmount = Amount(amount: balance, rate: exchangeRate!, maxDigits: store.state.maxDigits)
             let ltcBalanceDouble = Double(balance) / Double(100_000_000)
-            let fiatBalanceDouble = ltcBalanceDouble * Double(rate.rate)
-            walletBalanceFiat = String(format: "%@%8.2f", rate.currencySymbol, fiatBalanceDouble)
+            let fiatBalanceDouble = ltcBalanceDouble * Double(currentRate.rate)
+            walletBalanceFiat = String(format: "%@%8.2f", currentRate.currencySymbol, fiatBalanceDouble)
             walletBalanceLitecoin = String(format: "Ł%8.6f", ltcBalanceDouble)
-        }
-    }
-
-    func userDidSetCurrencyPreference(currency: GlobalCurrency) {
-
-        let code = currency.code
-        guard let store = store
-        else {
-            debugPrint("::: ERROR: Rate not fetched")
-            return
-        }
-        // store.state.currentRate = nil
-
-        if let newGlobalCurrency = GlobalCurrency.from(code: code) {
-            currentGlobalFiat = newGlobalCurrency
-            // Set Preferred Currency
-            store.perform(action: UserPreferredCurrency.setDefault(code))
+            // Price Label
+            let fiatRate = Double(round(100000 * currentRate.rate / 100000))
+            let formattedFiatString = String(format: "%3.2f", fiatRate)
+            currencyCode = currentRate.code
+            let currencySymbol = Currency.getSymbolForCurrencyCode(code: currencyCode) ?? ""
+            currentFiatValue = String(currencySymbol + formattedFiatString)
         }
     }
 
@@ -209,6 +217,42 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         transactionCount = transactions.count
 
         rate = TransactionManager.sharedInstance.rate
+    }
+
+    func userWantsToCreate(completion: @escaping () -> Void) {
+        didTapCreate = completion
+    }
+
+    func userWantsToRecover(completion: @escaping () -> Void) {
+        didTapRecover = completion
+    }
+
+    func userDidSetThemePreference(userPrefersDarkMode: Bool) {
+
+        UserDefaults.userPreferredDarkTheme = userPrefersDarkMode
+
+        NotificationCenter
+            .default
+            .post(name: .changedThemePreferenceNotification,
+                object: nil)
+    }
+
+    func userDidSetCurrencyPreference(currency: GlobalCurrency) {
+
+        let code = currency.code
+        guard let store = store
+        else {
+            debugPrint("::: ERROR: Rate not fetched")
+            return
+        }
+
+        if let newGlobalCurrency = GlobalCurrency.from(code: code) {
+            currentGlobalFiat = newGlobalCurrency
+            setBalances()
+            // Set Preferred Currency
+            UserDefaults.userPreferredCurrencyCode = code
+            store.perform(action: UserPreferredCurrency.setDefault(code))
+        }
     }
 
     private func addSubscriptions() {

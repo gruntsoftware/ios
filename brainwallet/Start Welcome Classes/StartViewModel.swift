@@ -21,8 +21,6 @@ class StartViewModel: ObservableObject, Subscriber {
 	var didTapRecover: (() -> Void)?
     var store: Store?
 
-    let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
-
 	init(store: Store) {
 		self.store = store
 	}

@@ -19,9 +19,6 @@ struct StartView: View {
     @State
     private var isShowingOnboardView: Bool = true
 
-	@ObservedObject
-	var startViewModel: StartViewModel
-
     @ObservedObject
     var newMainViewModel: NewMainViewModel
 
@@ -40,8 +37,8 @@ struct StartView: View {
     @State
     private var userPrefersDarkMode: Bool = true
 
-	@State
-	private var currentTagline = ""
+    @State
+    private var fiatValue = ""
 
 	@State
 	private var animationAmount = 0.0
@@ -49,14 +46,10 @@ struct StartView: View {
     @State
     private var debugLocale = ""
 
-    @State
-    private var pickedCurrency: GlobalCurrency = .USD
-
 	@State
 	private var didContinue: Bool = false
 
-    init(startViewModel: StartViewModel, newMainViewModel: NewMainViewModel) {
-        self.startViewModel = startViewModel
+    init(newMainViewModel: NewMainViewModel) {
         self.newMainViewModel = newMainViewModel
 	}
 
@@ -83,66 +76,74 @@ struct StartView: View {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 
                     VStack {
-                        Group {
-                            Image("bw-logotype")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: width * 0.65,
-                                       alignment: .center)
-                                .padding([.top,.bottom], verticalPadding)
-
-                            WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
-                                .frame(height: height * 0.35, alignment: .center)
-                                .padding(.top, verticalPadding)
+                        HStack {
+                            Text(newMainViewModel.currentFiatValue)
+                                .font(Font(UIFont.barlowLight(size: 16.0)))
+                                .foregroundColor(BrainwalletColor.content)
+                                .animation(.bouncy(duration: 0.5))
+                                .frame(width: width * 0.9, alignment: .trailing)
+                                .padding(.trailing, 16.0)
                         }
+                        .padding(.top, 16.0)
+                        .frame(height: 20.0)
+
+                        Image("bw-logotype")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: width * 0.65,
+                                   alignment: .center)
+                            .padding([.top,.bottom], verticalPadding)
+
+                        WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
+                            .frame(height: height * 0.35, alignment: .center)
+                            .padding(.top, verticalPadding)
 
                         Spacer()
                         HStack {
-                            ZStack {
-                                Group {
-                                    HStack {
-                                        Button(action: {
-                                            userPrefersDarkMode.toggle()
-                                        }) {
-                                            ZStack {
-                                                Image(systemName: userPrefersDarkMode ?
-                                                    "moon.circle" : "sun.max.circle")
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(width: themeBorderSize,
-                                                           height: themeBorderSize,
-                                                           alignment: .center)
-                                                    .foregroundColor(BrainwalletColor.content)
-                                            }
-                                        }
-                                        .frame(width: width * 0.1)
-                                        .onChange(of: userPrefersDarkMode) { preference in
-                                            startViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
-                                        }
-
-                                        Picker("", selection: $pickedCurrency) {
-                                            ForEach(startViewModel.globalCurrencies, id: \.self) {
-                                                Text("\($0.fullCurrencyName)   \($0.code) (\($0.symbol))")
-                                                    .font(selectorFont)
-                                                    .foregroundColor(BrainwalletColor.content)
-                                            }
-
-                                        }
-                                        .pickerStyle(.wheel)
-                                        .frame(width: width * 0.6)
-                                        .onChange(of: pickedCurrency) { _ in
-                                            selectedFiat = true
-                                        }.padding(.trailing, width * 0.1)
-                                    }
+                            Button(action: {
+                                userPrefersDarkMode.toggle()
+                            }) {
+                                ZStack {
+                                    Image(systemName: userPrefersDarkMode ?
+                                        "moon.circle" : "sun.max.circle")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: themeButtonSize,
+                                               height: themeButtonSize,
+                                               alignment: .center)
+                                        .foregroundColor(BrainwalletColor.content)
                                 }
                             }
+                            .frame(width: width * 0.1, alignment: .center)
+                            .onChange(of: userPrefersDarkMode) { preference in
+                                newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
+                            }
+                            Picker("", selection: $newMainViewModel.currentGlobalFiat) {
+                                    ForEach(newMainViewModel.globalCurrencies, id: \.self) {
+                                        Text("\($0.fullCurrencyName)   \($0.code) (\($0.symbol))")
+                                            .font(selectorFont)
+                                            .frame(maxWidth: .infinity,
+                                                alignment: .center)
+                                            .foregroundColor(BrainwalletColor.content)
+                                    }
+                            }
+                            .pickerStyle(.wheel)
+                            .frame(width: width * 0.8, alignment: .center)
+                            .onChange(of: newMainViewModel.currentGlobalFiat) { _ in
+                                selectedFiat = true
+                                newMainViewModel
+                                    .userDidSetCurrencyPreference(currency:
+                                        newMainViewModel.currentGlobalFiat)
+
+                            }
+
 						}
 						.frame(width: width * 0.9,
 						       height: height * 0.1,
 						       alignment: .center)
 
                         Button(action: {
-                                 startViewModel.didTapCreate!()
+                                 newMainViewModel.didTapCreate!()
                                 // path.append(.inputWordsView)
                                 // path.append(.readyView)
                         }) {
@@ -164,7 +165,7 @@ struct StartView: View {
                         }
 
                         Button(action: {
-                                 startViewModel.didTapRecover!()
+                            newMainViewModel.didTapRecover!()
                                 // path.append(.restoreView)
                                 // path.append(.yourSeedWordsView)
                         }) {
@@ -206,10 +207,10 @@ struct StartView: View {
                 .navigationDestination(for: Onboarding.self) { onboard in
                     switch onboard {
                     case .restoreView:
-                        ReadyRestoreView(isRestore: true, viewModel: startViewModel, path: $path)
+                        ReadyRestoreView(isRestore: true, viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                     case .readyView:
-                        ReadyRestoreView(isRestore: false, viewModel: startViewModel, path: $path)
+                        ReadyRestoreView(isRestore: false, viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                     case .setPasscodeView:
                         ZStack {
@@ -218,30 +219,30 @@ struct StartView: View {
                         }
                     case .confirmPasscodeView(let pinDigits):
                         ZStack {
-                            ConfirmPasscodeView(pinDigits: pinDigits, viewModel: startViewModel, path: $path)
+                            ConfirmPasscodeView(pinDigits: pinDigits, viewModel: newMainViewModel, path: $path)
                                .navigationBarBackButtonHidden()
                         }
                     case .inputWordsView:
                         ZStack {
-                             InputWordsView(viewModel: startViewModel, path: $path)
+                             InputWordsView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
                     case .yourSeedWordsView:
                         ZStack {
-                            YourSeedWordsView(viewModel: startViewModel, path: $path)
+                            YourSeedWordsView(viewModel: newMainViewModel, path: $path)
                                                         .navigationBarBackButtonHidden()
                         }
                     case .yourSeedProveView:
-                        YourSeedProveItView(viewModel: startViewModel, path: $path)
+                        YourSeedProveItView(viewModel: newMainViewModel, path: $path)
                             .navigationBarBackButtonHidden()
                     case .topUpView:
                         ZStack {
-                            TopUpView(viewModel: startViewModel, path: $path)
+                            TopUpView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
                     case .topUpSetAmountView:
                         ZStack {
-                            TopUpSetAmountView(viewModel: startViewModel, path: $path)
+                            TopUpSetAmountView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
                     case .tempSettingsView:
@@ -253,17 +254,19 @@ struct StartView: View {
                 }
             }
             .alert( "Error" ,
-                   isPresented: $startViewModel.walletCreationDidFail,
+                   isPresented: $newMainViewModel.walletCreationDidFail,
                    actions: {
                 HStack {
                     Button("Ok" , role: .cancel) {
-                        startViewModel.walletCreationDidFail = false
+                        newMainViewModel.walletCreationDidFail = false
                     }
                 }
             })
             .onAppear {
                 Task {
                     userPrefersDarkMode = UserDefaults.userPreferredDarkTheme
+                    let currentValue = newMainViewModel.currentFiatValue
+                    fiatValue = String(format: String(localized: "%@ = 1Ł"), currentValue)
                     updateVersionLabel()
                 }
             }
