@@ -60,9 +60,6 @@ struct SignupWebViewRepresentable: UIViewRepresentable {
 			if let resultString = response as? String,
 			   resultString.contains("Please") {
 				userAction = true
-
-				let signupDict: [String: String] = ["date_accepted": Date().ISO8601Format()]
-				BWAnalytics.logEventWithParameters(itemName: ._20240101_US, properties: signupDict)
 			}
 		}
 	}

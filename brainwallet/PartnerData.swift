@@ -1,6 +1,6 @@
 import Foundation
 import UIKit
-
+import FirebaseAnalytics
 enum PartnerName {
 	case walletOps
 	case walletStart
@@ -32,8 +32,12 @@ struct Partner {
 		guard let releasePath = Bundle.main.path(forResource: "service-data",
 		                                         ofType: "plist")
 		else {
-			let errorDescription = "service_data_missing"
-			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
+            Analytics.logEvent("service_data_error", parameters: [
+                "platform": "ios",
+                "app_version": AppVersion.string,
+                "error_message": "service_data_missing"
+            ])
+
 			return "error: FILE-NOT-FOUND"
 		}
 		filePath = releasePath
@@ -47,7 +51,6 @@ struct Partner {
 				return keyString
 			} else {
 				let errorDescription = "error_wallet_opskey"
-				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 				return errorDescription
 			}
 
@@ -58,7 +61,6 @@ struct Partner {
                     return keyString
 			} else {
 				let errorDescription = "error_brainwallet_start_key"
-				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 				return errorDescription
 			}
 
@@ -69,7 +71,6 @@ struct Partner {
                 return keyString
             } else {
                 let errorDescription = "error_agent-base64-pubkey"
-                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
                 return errorDescription
             }
 
@@ -80,7 +81,6 @@ struct Partner {
 				return keyString
 			} else {
 				let errorDescription = "error_afprod_id_key"
-				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
 				return errorDescription
 			}
 		}
@@ -93,9 +93,6 @@ struct Partner {
 		                                         ofType: "plist")
 
 		else {
-			let errorDescription = "service_data_missing"
-			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error": errorDescription])
-
 			return [""]
 		}
 

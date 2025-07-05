@@ -58,7 +58,6 @@ extension UserDefaults {
 
 			if defaults.object(forKey: userPreferredCurrencyCodeKey) == nil {
                 if let localeCode: String = Locale.current.currency?.identifier {
-                    debugPrint(":::: \(localeCode) ")
                     currencyCode = localeCode
                 }
 			} else {
@@ -66,7 +65,9 @@ extension UserDefaults {
 			}
 			return currencyCode
 		}
-		set { defaults.set(newValue, forKey: userPreferredCurrencyCodeKey) }
+        set {
+            defaults.set(newValue, forKey: userPreferredCurrencyCodeKey)
+        }
 	}
 
     static var userPreferredDarkTheme: Bool {

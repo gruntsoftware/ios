@@ -29,6 +29,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       enableASanStackUseAfterReturn = "YES"
+      codeCoverageEnabled = "YES"
       onlyGenerateCoverageForSpecifiedTargets = "YES"
       localizableStringsDataGatheringEnabled = "YES">
       <AdditionalOptions>
@@ -83,6 +84,12 @@
             ReferencedContainer = "container:brainwallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-FIRDebugEnabled"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <LocationScenarioReference
          identifier = "San Francisco, CA, USA"
          referenceType = "1">

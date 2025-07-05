@@ -69,15 +69,15 @@ struct LockScreenView: View {
                         .padding(4.0)
 
                     Spacer()
-                        .frame(minHeight: height * 0.05)
+                        .frame(minHeight: height * 0.02)
 
                     PINRowView(pinState: $pinState)
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: 40.0)
+                        .frame(height: 30.0)
                         .padding([.top,.bottom], 5.0)
 
                     Spacer()
-                        .frame(minHeight: height * 0.05)
+                        .frame(minHeight: height * 0.02)
 
                     PasscodeGridView(digits: $pinDigits)
                         .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
@@ -85,7 +85,7 @@ struct LockScreenView: View {
 
                     LockScreenFooterView(viewModel: viewModel,
                                          userPrefersDarkMode: $userPrefersDarkMode)
-                        .frame(width: width, height: 50.0, alignment: .center)
+                        .frame(width: width, height: 45, alignment: .center)
                         .padding(.top, 20.0)
                         .padding(.bottom, 20.0)
 
@@ -104,6 +104,8 @@ struct LockScreenView: View {
                                 .padding(.all, 5.0)
                         }
                     }
+                    .frame(height: 22.0, alignment: .center)
+
                 }
                 .onChange(of: viewModel.currentValueInFiat) { newValue in
                     fiatValue = String(format: String(localized: "%@ = 1Ł"), newValue)

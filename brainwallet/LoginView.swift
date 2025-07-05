@@ -12,8 +12,6 @@ struct LoginView: View {
 
 	init(viewModel: LockScreenViewModel) {
 		self.viewModel = viewModel
-
-		/// lockScreenHeaderView
 	}
 
 	var body: some View {

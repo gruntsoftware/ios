@@ -1,7 +1,7 @@
 import LocalAuthentication
 import SwiftUI
 import UIKit
-import Firebase
+import FirebaseAnalytics
 
 let kNormalTransactionCellHeight: CGFloat = 65.0
 let kProgressHeaderHeight: CGFloat = 75.0
@@ -57,7 +57,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		guard let _ = walletManager
 		else {
 			debugPrint("::: ERROR: Wallet manager Not initialized")
-			BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR)
 			return
 		}
 
@@ -215,9 +214,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		default:
 			let transaction = transactions[indexPath.row]
-            debugPrint("::: TransactionViewController tableView transaction blockHeight: \(transaction.blockHeight)")
-
-			guard let cell = tableView.dequeueReusableCell(withIdentifier: "HostingCell<TransactionCellView>", for: indexPath) as? HostingCell<TransactionCellView>
+			guard let cell = tableView.dequeueReusableCell(withIdentifier: "HostingCell<TransactionCellView>",
+                for: indexPath) as? HostingCell<TransactionCellView>
 			else {
 				debugPrint("::: ERROR No cell found")
 				return UITableViewCell()
@@ -226,7 +224,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 			if let rate = rate,
 			   let store = store,
 			   let isLtcSwapped = isLtcSwapped {
-				let viewModel = TransactionCellViewModel(transaction: transaction, isLtcSwapped: isLtcSwapped, rate: rate, maxDigits: store.state.maxDigits, isSyncing: store.state.walletState.syncState != .success)
+				let viewModel = TransactionCellViewModel(transaction: transaction,
+                    isLtcSwapped: isLtcSwapped, rate: rate,
+                    maxDigits: store.state.maxDigits,
+                    isSyncing: store.state.walletState.syncState != .success)
 				cell.set(rootView: TransactionCellView(viewModel: viewModel), parentController: self)
 				cell.selectionStyle = .default
 			} else {
@@ -315,7 +316,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 			return UITableViewCell()
 		}
 
-        guard let promptType = promptType  else {
+        guard (promptType != nil)  else {
             return UITableViewCell()
         }
 
@@ -333,7 +334,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     private func measureSyncTimes(startSync: Date, endSync: Date) {
         let duration = endSync.timeIntervalSince(startSync)
         let uuid = UUID().uuidString
-        Analytics.logEvent(CustomEvent._20250615_UDCS.rawValue,
+        Analytics.logEvent("user_did_complete_sync",
             parameters: [
             "start_timestamp": startSync,
             "end_timestamp": endSync,
@@ -366,7 +367,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		// MARK: - Wallet State:  CurrentRate
 
 		store.subscribe(self, selector: { $0.currentRate != $1.currentRate },
-		                callback: { self.rate = $0.currentRate })
+                        callback: {
+            self.rate = $0.currentRate
+        })
 
 		// MARK: - Wallet State:  Max Digits
 

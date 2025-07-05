@@ -30,6 +30,9 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     var currentLanguage = Locale.current.identifier
 
     @Published
+    var currentGlobalFiat: GlobalCurrency = .USD
+
+    @Published
     var walletAmount: Amount?
 
     @Published
@@ -49,11 +52,20 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     @Published
     var shouldShowSettings = false
 
-    private
-    var walletHasInitialized: Bool = false
+    @Published
+    var walletBalanceFiat = ""
+
+    @Published
+    var walletBalanceLitecoin = ""
+
+    @Published
+    var transactions: [Transaction]?
+
+    @Published
+    var transactionCount = 0
 
     private
-    let timerPeriod: Double = {
+    let ratesPriceUpdateTimerPeriod: Double = {
         #if DEBUG
             return 3.0
         #else
@@ -65,34 +77,53 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         didSet { setBalances() }
     }
 
+    private var rate: Rate?
+
+    private var networkHelper = NetworkHelper()
+
+    var resetSettingsDrawer: (() -> Void)?
+
     init(store: Store, walletManager: WalletManager) {
         self.store = store
         self.walletManager = walletManager
 
+        let preferredCurrency = UserDefaults.userPreferredCurrencyCode
+        if let preferredGlobalCurrencyCode = GlobalCurrency.from(code: preferredCurrency) {
+            self.userDidSetCurrencyPreference(currency: preferredGlobalCurrencyCode)
+        } else {
+            self.userDidSetCurrencyPreference(currency: .USD)
+        }
         addSubscriptions()
-
         updateTimer = Timer
-            .scheduledTimer(withTimeInterval: timerPeriod,
+            .scheduledTimer(withTimeInterval: ratesPriceUpdateTimerPeriod,
                             repeats: true) { _ in
-            self.fetchCurrentPrice()
-            self.setBalances()
+
+                self.networkHelper.exchangeRates({ rates, error in
+                    guard let currentRate = rates.first(where: { $0.code ==
+                        self.store?.state.userPreferredCurrencyCode }) else {
+                        return
+                    }
+                    if error == nil && !rates.isEmpty {
+                        debugPrint("::: currentRate \(currentRate.rate.description)")
+                    }
+
+                    self.store?.perform(action: ExchangeRates.setRate(currentRate))
+                    self.userDidSetCurrencyPreference(currency: self.currentGlobalFiat)
+                    self.fetchCurrentPrice()
+                    self.setBalances()
+                })
         }
 
         dateFormatter = DateFormatter()
         dateFormatter!.setLocalizedDateFormatFromTemplate("dd MMM hh:mm:ss a")
-
-        NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: .languageChangedNotification, object: nil)
+        setBalances()
+        updateTransactions()
     }
 
     deinit {
         NotificationCenter.default.removeObserver(self, name: .languageChangedNotification, object: nil)
         self.updateTimer = nil
     }
-
-    @objc private func languageChanged() {
-
-    }
-
     private func fetchCurrentPrice() {
         guard let currentRate = store?.state.currentRate
         else {
@@ -110,12 +141,74 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         guard let store = self.store else { return }
 
         if let rate = store.state.currentRate,
-           let balance = store.state.walletState.balance,
-           walletHasInitialized {
+           let balance = store.state.walletState.balance {
             exchangeRate = rate
             walletAmount = Amount(amount: balance, rate: exchangeRate!, maxDigits: store.state.maxDigits)
-            walletHasInitialized = true
+            let ltcBalanceDouble = Double(balance) / Double(100_000_000)
+            let fiatBalanceDouble = ltcBalanceDouble * Double(rate.rate)
+            walletBalanceFiat = String(format: "%@%8.2f", rate.currencySymbol, fiatBalanceDouble)
+            walletBalanceLitecoin = String(format: "Ł%8.6f", ltcBalanceDouble)
         }
+    }
+
+    func userDidSetCurrencyPreference(currency: GlobalCurrency) {
+
+        let code = currency.code
+        guard let store = store
+        else {
+            debugPrint("::: ERROR: Rate not fetched")
+            return
+        }
+        // store.state.currentRate = nil
+
+        if let newGlobalCurrency = GlobalCurrency.from(code: code) {
+            currentGlobalFiat = newGlobalCurrency
+            // Set Preferred Currency
+            store.perform(action: UserPreferredCurrency.setDefault(code))
+        }
+    }
+
+    func updateTheme(shouldBeDark: Bool) {
+        UserDefaults.userPreferredDarkTheme = shouldBeDark
+        NotificationCenter
+            .default
+            .post(name: .changedThemePreferenceNotification,
+                object: nil)
+    }
+
+    func lockBrainwallet() {
+        delay(0.6) {
+            self.resetSettingsDrawer?()
+        }
+    }
+
+    func userWillSyncBlockchain() {
+        guard let store = self.store else { return }
+        store.trigger(name: .rescan)
+    }
+
+    func userWillChangePIN() {
+        guard let store = self.store else { return }
+        store.trigger(name: .promptUpgradePin)
+    }
+
+    func userWillShareData() {
+        guard let store = self.store else { return }
+        store.trigger(name: .promptShareData)
+    }
+
+    func updateTransactions() {
+        guard let _ = walletManager
+        else {
+            debugPrint("::: ERROR: Wallet manager Not initialized")
+            return
+        }
+
+        transactions = TransactionManager.sharedInstance.transactions
+        guard let transactions = transactions else { return }
+        transactionCount = transactions.count
+
+        rate = TransactionManager.sharedInstance.rate
     }
 
     private func addSubscriptions() {
@@ -128,14 +221,15 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
                         })
         store.lazySubscribe(self,
                             selector: { $0.currentRate != $1.currentRate },
-                            callback: {
+                            callback: { [weak self] in
                                 if let rate = $0.currentRate {
                                     let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
-                                    self.localFormatter = placeholderAmount.localFormat
-                                    self.ltcFormatter = placeholderAmount.ltcFormat
+                                    self?.localFormatter = placeholderAmount.localFormat
+                                    self?.ltcFormatter = placeholderAmount.ltcFormat
                                 }
-                                self.exchangeRate = $0.currentRate
-                                self.fetchCurrentPrice()
+                                self?.exchangeRate = $0.currentRate
+                                self?.fetchCurrentPrice()
+                                self?.updateTransactions()
                             })
 
         store.lazySubscribe(self,

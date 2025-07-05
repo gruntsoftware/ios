@@ -51,7 +51,7 @@ struct LockScreenFooterView: View {
 
                         }
                         .frame(minWidth: width * 0.20,
-                            minHeight: 40.0,
+                            minHeight: 30.0,
                             alignment: .center)
 
                         Button(action: {
@@ -71,7 +71,7 @@ struct LockScreenFooterView: View {
                             }
                         }
                         .frame(minWidth: width * 0.20,
-                            minHeight: 40.0,
+                            minHeight: 30.0,
                             alignment: .center)
                         .padding(8.0)
 
@@ -91,10 +91,10 @@ struct LockScreenFooterView: View {
                             }
                         }
                         .frame(minWidth: width * 0.20,
-                            minHeight: 40.0,
+                            minHeight: 30.0,
                             alignment: .center)
                     }
-                    .frame(height: 55.0, alignment: .center)
+                    .frame(height: 45.0, alignment: .center)
                     .frame(maxWidth: .infinity)
                     .padding([.leading, .trailing], 8.0)
                     .sheet(isPresented: $shoulShowWipeAlert) {
