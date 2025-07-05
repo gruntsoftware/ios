@@ -180,7 +180,6 @@ class ApplicationController: Subscriber, Trackable {
 		guard let window = window else { return }
 
 		hasPerformedWalletDependentInitialization = true
-		store.perform(action: PinLength.set(walletManager.pinLength))
 		walletCoordinator = WalletCoordinator(walletManager: walletManager, store: store)
 		modalPresenter = ModalPresenter(store: store, walletManager: walletManager, window: window, apiClient: noAuthApiClient)
 		exchangeUpdater = ExchangeUpdater(store: store, walletManager: walletManager)

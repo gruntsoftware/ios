@@ -10,85 +10,98 @@ import SwiftUI
 
 struct SeedWordsGridView: View {
 
-    @State private var seedWords: [String] = ["","","","","","","","","","","",""]
+    @Binding
+    var seedWords: [SeedWord]
 
-    private let isRestore: Bool
+    @State
+    private var seedWord1 = SeedWord(word: "", tagNumber: 1)
+    @State
+    private var seedWord2 = SeedWord(word: "", tagNumber: 2)
+    @State
+    private var seedWord3 = SeedWord(word: "", tagNumber: 3)
+    @State
+    private var seedWord4 = SeedWord(word: "", tagNumber: 4)
+    @State
+    private var seedWord5 = SeedWord(word: "", tagNumber: 5)
+    @State
+    private var seedWord6 = SeedWord(word: "", tagNumber: 6)
+    @State
+    private var seedWord7 = SeedWord(word: "", tagNumber: 7)
+    @State
+    private var seedWord8 = SeedWord(word: "", tagNumber: 8)
+    @State
+    private var seedWord9 = SeedWord(word: "", tagNumber: 9)
+    @State
+    private var seedWord10 = SeedWord(word: "", tagNumber: 10)
+    @State
+    private var seedWord11 = SeedWord(word: "", tagNumber: 11)
+    @State
+    private var seedWord12 = SeedWord(word: "", tagNumber: 12)
+
     let elementSpacing = 8.0
     let fieldHeight: CGFloat = 40.0
 
-    init(isRestore: Bool) {
-        self.isRestore = isRestore
+    init(seedWords: Binding<[SeedWord]>) {
+        _seedWords = seedWords
     }
 
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
 
             ZStack {
                 VStack {
-
-                        Grid(horizontalSpacing: elementSpacing, verticalSpacing: elementSpacing) {
-                            GridRow {
-                                SeedCapsuleView(index: 1, word: $seedWords[0])
-                                SeedCapsuleView(index: 2, word: $seedWords[1])
-                                SeedCapsuleView(index: 3, word: $seedWords[2])
-                            }
-                            .frame(minHeight: fieldHeight)
-
-                            GridRow {
-                                SeedCapsuleView(index: 4, word: $seedWords[3])
-                                SeedCapsuleView(index: 5, word: $seedWords[4])
-                                SeedCapsuleView(index: 6, word: $seedWords[5])
-                            }
-                            .frame(minHeight: fieldHeight)
-
-                            GridRow {
-                                SeedCapsuleView(index: 7, word: $seedWords[6])
-                                SeedCapsuleView(index: 8, word: $seedWords[7])
-                                SeedCapsuleView(index: 9, word: $seedWords[8])
-                            }
-                            .frame(minHeight: fieldHeight)
-                            GridRow {
-                                SeedCapsuleView(index: 10, word: $seedWords[9])
-                                SeedCapsuleView(index: 11, word: $seedWords[10])
-                                SeedCapsuleView(index: 12, word: $seedWords[11])
-                            }
-                            .frame(minHeight: fieldHeight)
-                            HStack {
-                                Button(action: {
-                                    // path.append(.setPasscodeView(isRestore: isRestore))
-                                }) {
-                                    ZStack {
-                                        GeometryReader { geometry in
-
-                                            let width = geometry.size.width
-
-                                            ZStack {
-                                                Capsule()
-                                                    .fill(BrainwalletColor.content.opacity(0.3))
-                                                    .frame(height: fieldHeight)
-                                                    .frame(width: width * 0.3)
-
-                                                HStack {
-                                                    Spacer()
-                                                    Text("Clear")
-                                                        .font(.footnote)
-                                                        .fontWeight(.semibold)
-                                                        .multilineTextAlignment(.center)
-                                                        .foregroundColor(BrainwalletColor.content)
-                                                    Spacer()
-                                                }
-                                                .frame(maxWidth: .infinity, alignment: .center)
-
-                                            }
-                                            .frame(minHeight:fieldHeight)
-                                        }
-                                    }
-                                }
-                            }
+                    Grid(horizontalSpacing: elementSpacing,
+                         verticalSpacing: elementSpacing) {
+                        GridRow {
+                            SeedWordView(seedWord: seedWord1.word, wordNumber: seedWord1.tagNumber)
+                            SeedWordView(seedWord: seedWord2.word, wordNumber: seedWord2.tagNumber)
+                            SeedWordView(seedWord: seedWord3.word, wordNumber: seedWord3.tagNumber)
                         }
+                        .frame(minHeight: fieldHeight)
+
+                        GridRow {
+                            SeedWordView(seedWord: seedWord4.word, wordNumber: seedWord4.tagNumber)
+                            SeedWordView(seedWord: seedWord5.word, wordNumber: seedWord5.tagNumber)
+                            SeedWordView(seedWord: seedWord6.word, wordNumber: seedWord6.tagNumber)
+                        }
+                        .frame(minHeight: fieldHeight)
+
+                        GridRow {
+                            SeedWordView(seedWord: seedWord7.word, wordNumber: seedWord7.tagNumber)
+                            SeedWordView(seedWord: seedWord8.word, wordNumber: seedWord8.tagNumber)
+                            SeedWordView(seedWord: seedWord9.word, wordNumber: seedWord9.tagNumber)
+                        }
+                        .frame(minHeight: fieldHeight)
+                        GridRow {
+                            SeedWordView(seedWord: seedWord10.word, wordNumber: seedWord10.tagNumber)
+                            SeedWordView(seedWord: seedWord11.word, wordNumber: seedWord11.tagNumber)
+                            SeedWordView(seedWord: seedWord12.word, wordNumber: seedWord12.tagNumber)
+                        }
+                        .frame(minHeight: fieldHeight)
+                    }
+                    .frame(height: fieldHeight * 4)
+                    .padding(8.0)
                 }
-                .frame(maxHeight: .infinity)
-                .padding(5.0)
+                .onChange(of: seedWords) { _ in
+
+                    if seedWords.count == kSeedPhraseLength {
+
+                        debugPrint(":::seedWords \(seedWords)")
+
+                        seedWord1 = SeedWord(word: seedWords[0].word, tagNumber: seedWords[0].tagNumber)
+                        seedWord2 = SeedWord(word: seedWords[1].word, tagNumber: seedWords[1].tagNumber)
+                        seedWord3 = SeedWord(word: seedWords[2].word, tagNumber: seedWords[2].tagNumber)
+                        seedWord4 = SeedWord(word: seedWords[3].word, tagNumber: seedWords[3].tagNumber)
+                        seedWord5 = SeedWord(word: seedWords[4].word, tagNumber: seedWords[4].tagNumber)
+                        seedWord6 = SeedWord(word: seedWords[5].word, tagNumber: seedWords[5].tagNumber)
+                        seedWord7 = SeedWord(word: seedWords[6].word, tagNumber: seedWords[6].tagNumber)
+                        seedWord8 = SeedWord(word: seedWords[7].word, tagNumber: seedWords[7].tagNumber)
+                        seedWord9 = SeedWord(word: seedWords[8].word, tagNumber: seedWords[8].tagNumber)
+                        seedWord10 = SeedWord(word: seedWords[9].word, tagNumber: seedWords[9].tagNumber)
+                        seedWord11 = SeedWord(word: seedWords[10].word, tagNumber: seedWords[10].tagNumber)
+                        seedWord12 = SeedWord(word: seedWords[11].word, tagNumber: seedWords[11].tagNumber)
+                    }
+                }
             }
         }
     }
@@ -97,14 +110,21 @@ struct SeedWordsGridView: View {
 struct SeedCapsuleView: View {
     let buttonSize = 70.0
     let detailFont: Font = .barlowRegular(size: 28.0)
-    var index: Int
     let fieldHeight: CGFloat = 40.0
 
-    @Binding var word: String
+    @State
+    private var seedWord: SeedWord
 
-    init (index: Int, word: Binding<String>) {
-        _word = word
-        self.index = index
+    @State
+    private var wordString = ""
+
+    @State
+    private var tagNumber: Int = 0
+
+    init (seedWord: SeedWord) {
+        self.seedWord = seedWord
+        wordString = seedWord.word
+        tagNumber = seedWord.tagNumber
     }
 
     var body: some View {
@@ -114,61 +134,31 @@ struct SeedCapsuleView: View {
 
             ZStack {
                 Capsule()
-                    .fill(BrainwalletColor.content.opacity(0.3))
+                    .fill(BrainwalletColor.background)
                     .frame(height: fieldHeight)
                     .frame(width: width)
 
                 HStack {
-                    Text("\(index)")
+                    Text("\(tagNumber)")
                         .font(.footnote)
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                         .foregroundColor(BrainwalletColor.content)
                         .padding(.leading, 8.0)
                         .frame(width: 24.0)
-                    TextField("",text: $word) // DEV12345678
+                    Text("\(wordString)")
                         .font(.footnote)
                         .fontWeight(.semibold)
                         .foregroundColor(BrainwalletColor.content)
                         .frame(minHeight: fieldHeight)
-                        .disableAutocorrection(true)
                  }
 
             }
             .frame(minHeight:fieldHeight)
+            .onChange(of: seedWord) { updatedSeedWord in
+                debugPrint("::: updatedSeedWord \(updatedSeedWord)")
+            }
 
         }
     }
-
 }
-
-struct SeedWordsGridView_Previews: PreviewProvider {
-    static var previews: some View {
-        SeedWordsGridView(isRestore: true)
-    }
-}
-
-//        TextField("", text: .constant(""))
-//            .opacity(0.0)
-//            .frame(width: 0, height: 0)
-//        Button {
-//
-//
-//
-//        } label: {
-//            ZStack {
-//                Capsule()
-//                .frame(width: buttonSize)
-//                .foregroundColor(BrainwalletColor.error.opacity(0.2))
-//
-//                    Text("\(index)")
-//                        .font(detailFont)
-//                        .foregroundColor(BrainwalletColor.content)
-//                        .frame(maxWidth: .infinity,
-//                               maxHeight: .infinity)
-//                        .padding()
-//
-//            }
-//        }
-//        .padding(.all, 5.0)
-//        .disabled(index == -1)

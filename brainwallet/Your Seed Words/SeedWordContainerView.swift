@@ -8,7 +8,7 @@ struct SeedWordContainerView: View {
 
 	let secureFieldHeight: CGFloat = 45.0
 
-	let seedWordCount: Int = 12
+	let seedWordCount: Int = kSeedPhraseLength
 
 	@State
 	private var viewColumns = [GridItem]()
@@ -25,12 +25,12 @@ struct SeedWordContainerView: View {
 	@State
 	private var didEnterPINCode = false
 
-	@ObservedObject
+	@StateObject
 	var seedViewModel = SeedViewModel(enteredPIN: .constant(""))
 
 	var walletManager: WalletManager
 
-	init(walletManager: WalletManager) {
+    init(walletManager: WalletManager) {
 		self.walletManager = walletManager
 	}
 

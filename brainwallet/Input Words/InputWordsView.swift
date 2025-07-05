@@ -80,7 +80,7 @@ struct InputWordsView: View {
                         .padding(.top, 2.0)
                         .padding([.leading, .trailing], 20.0)
 
-                    SeedWordsGridView(isRestore: isRestore)
+                    SeedWordsGridView(seedWords: $viewModel.seedPhrase)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.3, alignment: .center)
                         .padding(.all, 2.0)

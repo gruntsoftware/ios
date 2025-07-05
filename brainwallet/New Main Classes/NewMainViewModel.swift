@@ -6,8 +6,8 @@
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
+import FirebaseAnalytics
 
 class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
@@ -34,6 +34,15 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     @Published
     var currencyCode = ""
+
+    @Published
+    var isSeedPhraseFilled: Bool = false
+
+    @Published
+    var seedPhrase: [SeedWord] = []
+
+    @Published
+    var draggableSeedPhrase: [DraggableSeedWord] = []
 
     @Published
     var currentLanguage = Locale.current.identifier
@@ -75,8 +84,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
 
-    let globalCurrencyCodes: [String] = GlobalCurrency.allCases.map( \.code )
-
     var didTapCreate: (() -> Void)?
     var didTapRecover: (() -> Void)?
 
@@ -92,6 +99,8 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     private var balance: UInt64 = 0 {
         didSet { setBalances() }
     }
+
+    var pinDigits: [Int] = []
 
     private var rate: Rate?
 
@@ -113,8 +122,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         updateTimer = Timer
             .scheduledTimer(withTimeInterval: ratesPriceUpdateTimerPeriod,
                             repeats: true) { _ in
-
-                debugPrint("::: userPreferredCurrencyCode \(self.store?.state.userPreferredCurrencyCode) currentFiatValue \(self.currentFiatValue)")
 
                 self.networkHelper.exchangeRates({ rates, error in
                     guard let currentRate = rates.first(where: { $0.code ==
@@ -161,8 +168,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
         if let currentRate = store.state.currentRate,
            let balance = store.state.walletState.balance {
-            exchangeRate = rate
-            walletAmount = Amount(amount: balance, rate: exchangeRate!, maxDigits: store.state.maxDigits)
+            walletAmount = Amount(amount: balance, rate: currentRate, maxDigits: store.state.maxDigits)
             let ltcBalanceDouble = Double(balance) / Double(100_000_000)
             let fiatBalanceDouble = ltcBalanceDouble * Double(currentRate.rate)
             walletBalanceFiat = String(format: "%@%8.2f", currentRate.currencySymbol, fiatBalanceDouble)
@@ -253,6 +259,62 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             UserDefaults.userPreferredCurrencyCode = code
             store.perform(action: UserPreferredCurrency.setDefault(code))
         }
+    }
+
+    func setPinPasscode(newPasscode: String) -> Bool {
+        guard let store = store,
+            let walletManager = self.walletManager else {
+            Analytics.logEvent("wallet_manager_error", parameters: [
+                "platform": "ios",
+                "app_version": AppVersion.string,
+                "error_message": "wallet_manager_nil"
+            ])
+            return false
+        }
+        store.perform(action: PinLength.set(newPasscode.utf8.count))
+        _ = walletManager.forceSetPin(newPin: newPasscode)
+        return true
+    }
+
+    func generateNewWallet() {
+        guard let store = store,
+            let walletManager = self.walletManager,
+            let seedPhraseString = walletManager.setRandomSeedPhrase() else {
+            return
+        }
+
+        let seedWordArray: [String] = seedPhraseString.components(separatedBy: " ")
+        let filteredSeedWordArray = seedWordArray.filter { !$0.isEmpty }
+        if filteredSeedWordArray.count == kSeedPhraseLength {
+            DispatchQueue.walletQueue.async { [weak self] in
+                walletManager.peerManager?.connect()
+                DispatchQueue.main.async { [weak self, weak store] in
+                    guard let self = self,
+                        let store = store else { return }
+                    for (index, element) in filteredSeedWordArray.enumerated() {
+                        let seedWordElement = SeedWord(word: element, tagNumber: index + 1)
+                        self.seedPhrase.insert(seedWordElement, at: index)
+                    }
+                    isSeedPhraseFilled = true
+                    store.perform(action: WalletChange.setWalletCreationDate(Date()))
+                    store.trigger(name: .didCreateOrRecoverWallet)
+                    draggableSeedPhrase = loadDraggableSeedWords()
+                }
+            }
+        }
+    }
+
+    func loadDraggableSeedWords() -> [DraggableSeedWord] {
+        draggableSeedPhrase = mockDraggableArray
+        guard !seedPhrase.isEmpty && seedPhrase.count != kSeedPhraseLength else {
+            return []
+        }
+
+        for seedWord in seedPhrase {
+            let dragableSeedWord = DraggableSeedWord(id: UUID(), tagNumber: seedWord.tagNumber, word: seedWord.word, doesMatch: false)
+            draggableSeedPhrase.append(dragableSeedWord)
+        }
+        return draggableSeedPhrase
     }
 
     private func addSubscriptions() {

@@ -1,6 +1,6 @@
 import SwiftUI
 import Lottie
-
+import FirebaseAnalytics
 struct StartView: View {
     let selectorFont: Font = .barlowSemiBold(size: 16.0)
     let buttonLightFont: Font = .barlowLight(size: 16.0)
@@ -48,6 +48,9 @@ struct StartView: View {
 
 	@State
 	private var didContinue: Bool = false
+
+    @State
+    private var isOnboarding: Bool = false
 
     init(newMainViewModel: NewMainViewModel) {
         self.newMainViewModel = newMainViewModel
@@ -143,6 +146,7 @@ struct StartView: View {
 						       alignment: .center)
 
                         Button(action: {
+                            isOnboarding = false
                                 path.append(.readyView)
                         }) {
                             ZStack {
@@ -163,6 +167,7 @@ struct StartView: View {
                         }
 
                         Button(action: {
+                            isOnboarding = true
                             newMainViewModel.didTapRecover!()
                                 // path.append(.restoreView)
                                 // path.append(.yourSeedWordsView)
@@ -205,19 +210,19 @@ struct StartView: View {
                 .navigationDestination(for: Onboarding.self) { onboard in
                     switch onboard {
                     case .restoreView:
-                        ReadyRestoreView(isRestore: true, viewModel: newMainViewModel, path: $path)
+                        RestoreView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                     case .readyView:
-                        ReadyRestoreView(isRestore: false, viewModel: newMainViewModel, path: $path)
+                        ReadyView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
-                    case .setPasscodeView(let isRestore):
+                    case .setPasscodeView(let isOnboarding):
                         ZStack {
-                            SetPasscodeView(isRestore: true, path: $path)
+                            SetPasscodeView(isOnboarding: isOnboarding, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
-                    case .confirmPasscodeView(let isRestore, let pinDigits):
+                    case .confirmPasscodeView(let isOnboarding, let pinDigits):
                         ZStack {
-                            ConfirmPasscodeView(isRestore: isRestore, pinDigits: pinDigits, viewModel: newMainViewModel, path: $path)
+                            ConfirmPasscodeView(isOnboarding: isOnboarding, pinDigits: pinDigits, viewModel: newMainViewModel, path: $path)
                                .navigationBarBackButtonHidden()
                         }
                     case .inputWordsView:
@@ -251,14 +256,22 @@ struct StartView: View {
                     }
                 }
             }
-            .alert( "Error" ,
-                   isPresented: $newMainViewModel.walletCreationDidFail,
-                   actions: {
-                HStack {
-                    Button("Ok" , role: .cancel) {
+            .alert(String(localized: "Wallet Creation Error"),
+                isPresented: $newMainViewModel.walletCreationDidFail,
+                actions: {
+                    Button( String(localized: "OK"), role: .cancel) {
                         newMainViewModel.walletCreationDidFail = false
+
+                        Analytics.logEvent("wallet_creation_error",
+                            parameters: [
+                                "platform": "ios",
+                                "app_version": AppVersion.string,
+                                "error_message": "failed_to_create_wallet"
+                            ])
                     }
-                }
+                },
+                message: {
+                        Text(String(localized: "There was a serious error in creating your Brainwallet. Visit us at brainwallet.co to file a customer support ticket."))
             })
             .onAppear {
                 Task {
@@ -276,8 +289,8 @@ struct StartView: View {
 enum Onboarding: Hashable {
     case readyView
     case restoreView
-    case setPasscodeView(isRestore: Bool)
-    case confirmPasscodeView(isRestore: Bool, pinDigits: [Int])
+    case setPasscodeView(isOnboarding: Bool)
+    case confirmPasscodeView(isOnboarding: Bool, pinDigits: [Int])
     case inputWordsView
     case yourSeedWordsView
     case yourSeedProveView

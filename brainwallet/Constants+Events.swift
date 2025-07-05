@@ -5,6 +5,7 @@ let customUserAgent: String = "brainwallet-ios"
 let swiftUICellPadding = 12.0
 let bigButtonCornerRadius = 15.0
 let kPinDigitConstant = 4
+let kSeedPhraseLength: Int = 12
 
 struct BrainwalletSupport {
 	static let dashboard = "https://brainwallet.co/support.html"

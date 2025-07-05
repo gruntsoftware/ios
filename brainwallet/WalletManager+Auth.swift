@@ -263,11 +263,16 @@ extension WalletManager: WalletAuthenticator {
 
 	// the 12 word wallet recovery phrase
 	func seedPhrase(pin: String) -> String? {
-		guard authenticate(pin: pin) else { return nil }
+        guard authenticate(pin: pin) else {
+            return nil
+        }
 
 		do {
-			return try keychainItem(key: KeychainKey.mnemonic)
-		} catch { return nil }
+            let fetchedMnemonic: String? = try keychainItem(key: KeychainKey.mnemonic)
+			return fetchedMnemonic
+        } catch {
+            return nil
+        }
 	}
 
 	// recover an existing wallet using 12 word wallet recovery phrase

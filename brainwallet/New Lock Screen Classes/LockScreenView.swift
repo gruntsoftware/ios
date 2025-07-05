@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreHaptics
 
 struct LockScreenView: View {
     let versionFont: Font = .barlowLight(size: 15.0)
@@ -11,6 +12,9 @@ struct LockScreenView: View {
 
     @State
     private var debugLocale = ""
+
+    @State
+    private var startShake = false
 
     @State
     private var pinState: [Bool] = [false,false,false,false]
@@ -70,15 +74,13 @@ struct LockScreenView: View {
 
                     Spacer()
                         .frame(minHeight: height * 0.02)
-
                     PINRowView(pinState: $pinState)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: 30.0)
-                        .padding([.top,.bottom], 5.0)
+                        .frame(width: 180, height: 30.0)
+                        .offset(x: startShake ? 7 : 0)
+                        .animation(.spring(response: 0.15, dampingFraction: 0.1, blendDuration: 0.2), value: startShake)
 
                     Spacer()
                         .frame(minHeight: height * 0.02)
-
                     PasscodeGridView(digits: $pinDigits)
                         .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
                         .padding(.bottom, 5.0)
@@ -123,6 +125,23 @@ struct LockScreenView: View {
                         viewModel.userSubmittedPIN?(pinString)
                     }
                 }
+                .onChange(of: viewModel.authenticationFailed) { didFailAuthentication in
+                    if didFailAuthentication {
+                        startShake.toggle()
+                        let generator = UINotificationFeedbackGenerator()
+                        generator.notificationOccurred(.error)
+
+                        delay(0.4) {
+                            /// Resetting for another attempt
+                            self.pinDigits = []
+                            self.pinState = [false,false,false,false]
+                            viewModel.authenticationFailed = false
+                            startShake.toggle()
+
+                        }
+                    }
+                }
+
             }
             .background(BrainwalletColor.surface)
             .onChange(of: userPrefersDarkMode) { preference in
