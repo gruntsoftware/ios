@@ -3,7 +3,7 @@ import SwiftUI
 struct ReadyRestoreView: View {
 
     @ObservedObject
-    var viewModel: StartViewModel
+    var viewModel: NewMainViewModel
 
     @Binding
     var path: [Onboarding]
@@ -27,9 +27,9 @@ struct ReadyRestoreView: View {
 
     private let isRestore: Bool
 
-    private let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
+    let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
-    init(isRestore: Bool, viewModel: StartViewModel, path: Binding<[Onboarding]>) {
+    init(isRestore: Bool, viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
         self.isRestore = isRestore
         _path = path
@@ -88,7 +88,8 @@ struct ReadyRestoreView: View {
                                         .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 }
                                 .padding(.bottom, 20.0)
-                                Text( isRestore ? String(localized: "Switching devices? Lost it in a boating accident? You can restore your Brainwallet here.") : String(localized: "Do this for you. Please do it alone. Grab a pen, paper & 5 mins."))
+                                Text(isRestore ? String(localized: "Switching devices? Lost it in a boating accident? You can restore your Brainwallet here.") :
+                                        String(localized: "Do this for you. Please do it alone. Grab a pen, paper & 5 mins."))
                                     .font(detailFont)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(BrainwalletColor.content)
@@ -100,7 +101,7 @@ struct ReadyRestoreView: View {
 
                         Spacer(minLength: 20.0)
                             Button(action: {
-                                path.append(.setPasscodeView)
+                                path.append(.setPasscodeView(isRestore: isRestore))
                             }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)

@@ -16,8 +16,8 @@ class Transaction {
 
 	init?(_ tx: BRTxRef, walletManager: WalletManager, kvStore: BRReplicatedKVStore?, rate: Rate?) {
 
-		guard let wallet = walletManager.wallet else { return nil }
-		guard let peerManager = walletManager.peerManager else { return nil }
+		guard let wallet = walletManager.wallet,
+              let peerManager = walletManager.peerManager else { return nil }
 
 		self.tx = tx
 		self.wallet = wallet
