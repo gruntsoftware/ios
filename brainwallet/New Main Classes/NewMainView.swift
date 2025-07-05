@@ -8,6 +8,20 @@
 
 import SwiftUI
 
+let globalHeaderHeight: CGFloat = 160.0
+
+enum Selection {
+    case receive
+    case send
+    case gameHistory
+}
+
+enum TransactionFilterState: Int, CaseIterable {
+    case allTransactions = 0
+    case sendTransactions
+    case receiveTransactions
+}
+
 struct NewMainView: View {
 
     @ObservedObject
@@ -15,6 +29,14 @@ struct NewMainView: View {
 
     @ObservedObject
     var newReceiveViewModel: NewReceiveViewModel
+
+    @State
+    private var selectionState: Selection = .gameHistory
+
+    @State
+    private var filterTransactionState: TransactionFilterState = .allTransactions
+
+    let statusBarHeight = 44.0
 
     init(viewModel: NewMainViewModel,
          receiveViewModel: NewReceiveViewModel) {
@@ -26,63 +48,42 @@ struct NewMainView: View {
 
             let width = geometry.size.width
             let height = geometry.size.height
+            let activeHeight = abs(height - globalHeaderHeight - statusBarHeight - geometry.safeAreaInsets.bottom - geometry.safeAreaInsets.top)
 
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 
                 VStack {
-
-                }
-                .frame(width: width,
-                       alignment: .center)
-                    .background(BrainwalletColor.warn)
-                .opacity(newMainViewModel.shouldShowSettings ? 1.0 : 0.0)
-                .transition(.opacity)
-
-                VStack {
                         SimpleHeaderView(viewModel: newMainViewModel)
-                            .frame(minHeight: 60.0,
-                                    maxHeight: height * 0.10,
+                            .frame(height: globalHeaderHeight,
                                     alignment: .top)
-                            .padding(.bottom, 1.0)
-                        WalletBalanceView(viewModel: newMainViewModel)
-                            .frame(minHeight: 120,
-                                    maxHeight: height * 0.20,
-                                    alignment: .top)
-                        Spacer()
+                            .padding(.top, statusBarHeight)
+                    Spacer()
                         TabView {
                             NewSendView(viewModel: newMainViewModel)
                                 .tabItem {
-                                    Label("Send", systemImage: "square.and.arrow.up")
+                                    Label(String(localized: "Send"), systemImage: "arrow.up.right")
                                 }
                                 .toolbar(.visible, for: .tabBar)
                                 .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
                             GameView(viewModel: newMainViewModel)
-                                .frame(minHeight: 300,
-                                        maxHeight: height * 0.6,
-                                        alignment: .top)
                                 .tabItem {
-                                    Image("bw-square-logo")
-                                        .resizable()
+                                    Label(String(localized: "History"), systemImage: "deskclock")
                                 }
                                 .toolbar(.visible, for: .tabBar)
                                 .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
 
                             NewReceiveView(viewModel: newReceiveViewModel, isModalMode: nil)
                                 .tabItem {
-                                    Label("Receive", systemImage: "square.and.arrow.down")
+                                    Label(newReceiveViewModel.canUserBuy ? String(localized: "Buy / Receive") : String(localized: "Receive"),
+                                          systemImage: "arrow.down.backward")
                                 }
                                 .toolbar(.visible, for: .tabBar)
                                 .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
                             }
-                            .frame(minHeight: 350.0,
-                                maxHeight: height * 0.50,
-                                alignment: .bottom)
+                            .frame(height: activeHeight, alignment: .bottom)
+                            .accentColor(BrainwalletColor.content)
 
-                        NewTransactionsView(viewModel: newMainViewModel)
-                            .frame(minHeight: height * 0.10,
-                                    maxHeight: 100,
-                                    alignment: .bottom)
                     }
                     .offset(x: newMainViewModel.shouldShowSettings ? width - 90.0: 0)
 

@@ -14,7 +14,6 @@ class ApplicationController: Subscriber, Trackable {
     fileprivate var walletManager: WalletManager?
     private var walletCoordinator: WalletCoordinator?
     private var exchangeUpdater: ExchangeUpdater?
-    private var feeUpdater: FeeUpdater?
     private var transitionDelegate: ModalTransitionDelegate
     private var kvStoreCoordinator: KVStoreCoordinator?
     private var mainViewController: MainViewController?
@@ -23,7 +22,7 @@ class ApplicationController: Subscriber, Trackable {
     private var defaultsUpdater: UserDefaultsUpdater?
     private var reachability = ReachabilityMonitor()
     private let noAuthApiClient = BWAPIClient(authenticator: NoAuthAuthenticator())
-    private var fetchCompletionHandler: ((UIBackgroundFetchResult) -> Void)?
+    var fetchCompletionHandler: ((UIBackgroundFetchResult) -> Void)?
     private var launchURL: URL?
     private var hasPerformedWalletDependentInitialization = false
     private var didInitWallet = false
@@ -48,9 +47,16 @@ class ApplicationController: Subscriber, Trackable {
 
         _ = walletManager?.wallet // attempt to initialize wallet
 
-        /// Init exchange sooner
-        exchangeUpdater = ExchangeUpdater(store: store, walletManager: tempWalletManager)
-        exchangeUpdater?.fetchRates { _ in }
+        /// Update fiat rate
+        let preferredCurrencyCode = UserDefaults.userPreferredCurrencyCode
+
+        NetworkHelper.init().exchangeRates({ rates, _ in
+            guard let currentRate = rates.first(where: { $0.code ==
+                preferredCurrencyCode }) else {
+                return
+            }
+            self.store.perform(action: ExchangeRates.setRates(currentRate: currentRate, rates: rates))
+        })
 
         DispatchQueue.main.async {
             self.didInitWallet = true
@@ -135,7 +141,6 @@ class ApplicationController: Subscriber, Trackable {
         exchangeUpdater?.refresh(completion: {
 
         })
-        feeUpdater?.refresh()
         if modalPresenter?.walletManager == nil {
             modalPresenter?.walletManager = walletManager
         }
@@ -181,7 +186,6 @@ class ApplicationController: Subscriber, Trackable {
 		exchangeUpdater = ExchangeUpdater(store: store, walletManager: walletManager)
 
 		guard let exchangeUpdaterWithFee = exchangeUpdater else { return }
-		feeUpdater = FeeUpdater(walletManager: walletManager, store: store, exchangeUpdater: exchangeUpdaterWithFee)
 		startFlowController = StartFlowPresenter(store: store, walletManager: walletManager, rootViewController: rootViewController)
 		mainViewController?.walletManager = walletManager
 		defaultsUpdater = UserDefaultsUpdater(walletManager: walletManager)
@@ -211,15 +215,10 @@ class ApplicationController: Subscriber, Trackable {
 					self?.performBackgroundFetch()
 				}
 			}
-
-			exchangeUpdater?.refresh(completion: {
-				let properties = ["application_controller": "rate_was_updated"]
-				BWAnalytics.logEventWithParameters(itemName: ._20240315_AI, properties: properties)
-			})
 		}
 	}
 
-	private func shouldRequireLogin() -> Bool {
+	func shouldRequireLogin() -> Bool {
 		let then = UserDefaults.standard.double(forKey: timeSinceLastExitKey)
 		let timeout = UserDefaults.standard.double(forKey: shouldRequireLoginTimeoutKey)
 		let nowTime = Date().timeIntervalSince1970
@@ -233,13 +232,8 @@ class ApplicationController: Subscriber, Trackable {
 
 	private func startDataFetchers() {
 		initKVStoreCoordinator()
-		feeUpdater?.refresh()
 		defaultsUpdater?.refresh()
 		walletManager?.apiClient?.events?.up()
-
-		exchangeUpdater?.refresh(completion: {
-
-        })
 	}
 
 	private func addWalletCreationListener() {
@@ -253,22 +247,15 @@ class ApplicationController: Subscriber, Trackable {
 	private func initKVStoreCoordinator() {
 		guard let kvStore = walletManager?.apiClient?.kv
 		else {
-			let properties = ["applications_info": "kvstore_not_initialized"]
-			BWAnalytics.logEventWithParameters(itemName: ._20240315_AI, properties: properties)
 			return
 		}
 
 		guard kvStoreCoordinator == nil
 		else {
-			let properties = ["applications_info": "kvstorecoordinator_not_initialized"]
-			BWAnalytics.logEventWithParameters(itemName: ._20240315_AI, properties: properties)
 			return
 		}
 
-		kvStore.syncAllKeys { error in
-			let properties = ["error_message": "kv_finished_syning",
-			                  "error": "\(String(describing: error))"]
-			BWAnalytics.logEventWithParameters(itemName: ._20240315_AI, properties: properties)
+		kvStore.syncAllKeys { _ in
 			self.walletCoordinator?.kvStore = kvStore
 			self.kvStoreCoordinator = KVStoreCoordinator(store: self.store, kvStore: kvStore)
 			self.kvStoreCoordinator?.retreiveStoredWalletInfo()
@@ -287,8 +274,6 @@ class ApplicationController: Subscriber, Trackable {
 		let group = DispatchGroup()
 		if let peerManager = walletManager?.peerManager, peerManager.syncProgress(fromStartHeight: peerManager.lastBlockHeight) < 1.0 {
 			group.enter()
-			BWAnalytics.logEventWithParameters(itemName: ._20200111_DEDG)
-
 			store.lazySubscribe(self, selector: { $0.walletState.syncState != $1.walletState.syncState }, callback: { state in
 				if self.fetchCompletionHandler != nil {
 					if state.walletState.syncState == .success {
@@ -296,7 +281,6 @@ class ApplicationController: Subscriber, Trackable {
 							peerManager.disconnect()
 							self.saveEvent("appController.peerDisconnect")
 							DispatchQueue.main.async {
-								BWAnalytics.logEventWithParameters(itemName: ._20200111_DLDG)
 								group.leave()
 							}
 						}
@@ -306,13 +290,9 @@ class ApplicationController: Subscriber, Trackable {
 		}
 
 		group.enter()
-		BWAnalytics.logEventWithParameters(itemName: ._20200111_DEDG)
 		Async.parallel(callbacks: [
-			{ self.exchangeUpdater?.refresh(completion: $0) },
-			{ self.feeUpdater?.refresh(completion: $0) },
-			{ self.walletManager?.apiClient?.events?.sync(completion: $0) }
+			{ self.exchangeUpdater?.refresh(completion: $0) }
 		], completion: {
-			BWAnalytics.logEventWithParameters(itemName: ._20200111_DLDG)
 			group.leave()
 		})
 

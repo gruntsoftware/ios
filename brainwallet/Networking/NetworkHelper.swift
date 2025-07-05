@@ -11,6 +11,52 @@ import Network
 
 class NetworkHelper: ObservableObject {
 
+    func exchangeRates(_ handler: @escaping (_ rates: [Rate], _ error: String?) -> Void) {
+
+        guard let url = URL(string: APIServer.baseUrl + "v1/rates") else {
+            debugPrint("::: ERROR: rates_url_failed")
+            return
+        }
+        var request = URLRequest(url: url)
+        #if targetEnvironment(simulator)
+            request.assumesHTTP3Capable = false
+        #endif
+        request.httpMethod = "GET"
+        request.timeoutInterval = 10
+        request.allHTTPHeaderFields = ["accept": "application/json"]
+
+        let task = URLSession(configuration: .ephemeral).dataTask(with: request) { data, _, error in
+
+            if error == nil {
+                DispatchQueue.main.sync {
+                    if let jsonData = try? JSONSerialization.jsonObject(with: data ?? Data(), options: []),
+                       let jsonArray = jsonData as? [[String: Any]] {
+                        var dataArray: [Rate] = []
+
+                        /// Loads currencies for 174 rates
+                        for element in jsonArray {
+                            let code = element["code"] as? String ?? ""
+                            let name = element["name"] as? String ?? ""
+                            let rateNumber = element["n"] as? Double ?? 0.0
+                            let lastTimestamp: Date = Date()
+
+                            let rateElement = Rate(code: code,
+                                            name: name,
+                                            rate: rateNumber,
+                                            lastTimestamp: lastTimestamp)
+
+                            dataArray.append(rateElement)
+                        }
+                    handler(dataArray, nil)
+                    }
+                }
+            } else {
+                return handler([], "/rates didn't return an array")
+            }
+        }
+        task.resume()
+    }
+
     func fetchCurrenciesCountries(completion: @escaping ([MoonpayCountryData]) -> Void) {
         let url = URL(string: "https://api.moonpay.com/v3/countries")!
         var request = URLRequest(url: url)
@@ -54,8 +100,6 @@ class NetworkHelper: ObservableObject {
                     }
                 }
             } else {
-                let currencyError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: currencyError)
                 completion([])
             }
         }
@@ -120,9 +164,6 @@ class NetworkHelper: ObservableObject {
                         completion(moonpayBuyQuoteObject)
                     }
                 }
-            } else {
-                let fetchError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
             }
         }
         task.resume()
@@ -173,13 +214,8 @@ class NetworkHelper: ObservableObject {
                         completion(signedURLString)
                     } else {
                         completion(fallbackURLString)
-                        let fetchError: [String: String] = ["error": "signed_url_invalid"]
-                        BWAnalytics.logEventWithParameters(itemName: ._20191105_AL, properties: fetchError)
                     }
                 }
-            } else {
-                let fetchError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
             }
         }
         task.resume()
@@ -240,9 +276,6 @@ class NetworkHelper: ObservableObject {
                         completion(moonpayBuyLimits)
                     }
                 }
-            } else {
-                let fetchError: [String: String] = ["error": error?.localizedDescription ?? ""]
-                BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: fetchError)
             }
         }
         task.resume()

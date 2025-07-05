@@ -35,7 +35,7 @@ class ModalPresenter: Subscriber, Trackable {
         guard let walletManager = walletManager else { return nil }
         var root : ModalViewController?
 
-        var canUserBuy = UserDefaults
+        let canUserBuy = UserDefaults
             .standard
                 .object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
 
@@ -96,7 +96,6 @@ class ModalPresenter: Subscriber, Trackable {
             }, callback: {
                 let urlString = BrainwalletSocials.linktree
                 guard let url = URL(string: urlString) else { return }
-                BWAnalytics.logEventWithParameters(itemName: ._20250504_DTSM)
                 let vc = SFSafariViewController(url: url)
                 settingsNav.pushViewController(vc, animated: true)})],
 			"Wallet":
@@ -112,7 +111,6 @@ class ModalPresenter: Subscriber, Trackable {
                             let group = DispatchGroup()
 
                             _ = walletManager.peerManager?.disconnect()
-                            BWAnalytics.logEventWithParameters(itemName: ._20250522_DDAD)
                             group.enter()
                             DispatchQueue.walletQueue.async {
                                 delay(3.0) {
@@ -166,7 +164,6 @@ class ModalPresenter: Subscriber, Trackable {
 					}))
 					alert.addAction(UIAlertAction(title: String(localized: "Sync") , style: .default, handler: {  [weak self] _ in
 						self?.store.trigger(name: .rescan)
-						BWAnalytics.logEventWithParameters(itemName: ._20200112_DSR)
 						alert.dismiss(animated: true)
 						self?.topViewController?.dismiss(animated: true)
 					}))
@@ -274,7 +271,7 @@ class ModalPresenter: Subscriber, Trackable {
 					var write: WritePaperPhraseViewController?
 					write = WritePaperPhraseViewController(store: myself.store, walletManager: walletManager, pin: pin, callback: { [weak self] in
 						guard let myself = self else { return }
-						let confirmVC = UIStoryboard(name: String(localized: "Phrase"), bundle: nil).instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController") as? ConfirmPaperPhraseViewController
+						let confirmVC = UIStoryboard(name: "Phrase", bundle: nil).instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController") as? ConfirmPaperPhraseViewController
 						confirmVC?.store = myself.store
 						confirmVC?.walletManager = myself.walletManager
 						confirmVC?.pin = pin
@@ -350,7 +347,10 @@ class ModalPresenter: Subscriber, Trackable {
 		guard notReachableAlert == nil else { return }
 		let alert = InAppAlert(message: String(localized: "No internet connection found. Check your connection and try again.") , image: #imageLiteral(resourceName: "BrokenCloud"))
 		notReachableAlert = alert
-		guard let window = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first
+		guard let window = UIApplication.shared.connectedScenes
+                               .compactMap({ $0 as? UIWindowScene })
+                               .flatMap({ $0.windows })
+                               .first(where: { $0.isKeyWindow })
 		else {
 			return
 		}

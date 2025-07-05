@@ -26,11 +26,11 @@ platform :ios do
   lane :single_unit_test_all do
     # Test iPhone 15 Pro Max variant
     device_name = "iPhone 15 Pro Max"  # single sim
-    run_tests(
+    scan(
       clean: true,
       devices: [device_name],
-      scheme: "brainwallet",
-      output_types: "html,junit",
+      scheme: "brainwalletTests",
+      output_types: "html",
       buildlog_path: "./build_logs",
       include_simulator_logs: true,
       derived_data_path: "./DerivedData"

@@ -358,6 +358,16 @@
         }
       }
     },
+    "%@   (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@   (%2$@)"
+          }
+        }
+      }
+    },
     "%@   %@ (%@)" : {
       "localizations" : {
         "ar" : {
@@ -844,6 +854,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ = 1Ł"
+          }
+        }
+      }
+    },
+    "%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@"
           }
         }
       }
@@ -1563,6 +1583,9 @@
         }
       }
     },
+    "App Version:" : {
+
+    },
     "Are you sure you want to delete this wallet & all its data?" : {
       "localizations" : {
         "ar" : {
@@ -2064,6 +2087,9 @@
           }
         }
       }
+    },
+    "BALANCE" : {
+
     },
     "Balance :" : {
       "localizations" : {
@@ -2652,6 +2678,9 @@
     "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)." : {
 
     },
+    "Brainwallet Phrase" : {
+
+    },
     "Buy / Receive" : {
       "localizations" : {
         "ar" : {
@@ -3236,6 +3265,9 @@
         }
       }
     },
+    "Change PIN" : {
+
+    },
     "Clear" : {
       "localizations" : {
         "ar" : {
@@ -3353,6 +3385,18 @@
           }
         }
       }
+    },
+    "Coming soon... 🍔" : {
+
+    },
+    "Coming soon... 👺" : {
+
+    },
+    "Coming soon... 🤩" : {
+
+    },
+    "Coming soon... 🪲" : {
+
     },
     "Complete" : {
       "localizations" : {
@@ -5465,6 +5509,9 @@
           }
         }
       }
+    },
+    "Dark Mode" : {
+
     },
     "Delete all" : {
       "localizations" : {
@@ -8905,6 +8952,27 @@
         }
       }
     },
+    "Fiat Currency" : {
+
+    },
+    "Found transactions are added to the device's database and added or subtracted creating your Brainwallet's balance. There is no Litecoin in any wallet. Litecoin is only found on the network.  Brainwallet is a simple way to check your transaction history and it stores your private keys" : {
+
+    },
+    "Game 1" : {
+
+    },
+    "Game 2" : {
+
+    },
+    "Game 3" : {
+
+    },
+    "Game 4" : {
+
+    },
+    "Games" : {
+
+    },
     "Go to Settings to allow camera access." : {
       "localizations" : {
         "ar" : {
@@ -9616,6 +9684,9 @@
           }
         }
       }
+    },
+    "Light Mode" : {
+
     },
     "Litecoin Display Unit" : {
       "localizations" : {
@@ -11282,6 +11353,7 @@
       }
     },
     "Phrase" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -11516,6 +11588,9 @@
           }
         }
       }
+    },
+    "PIN" : {
+
     },
     "PIN Required" : {
       "localizations" : {
@@ -15067,6 +15142,9 @@
         }
       }
     },
+    "Seed Phrase" : {
+
+    },
     "Send" : {
       "localizations" : {
         "ar" : {
@@ -15918,6 +15996,7 @@
       }
     },
     "Settings View" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -16737,6 +16816,12 @@
         }
       }
     },
+    "Show my emojis" : {
+
+    },
+    "Show my seed phrase" : {
+
+    },
     "Show seed words" : {
       "localizations" : {
         "ar" : {
@@ -16854,6 +16939,9 @@
           }
         }
       }
+    },
+    "Social" : {
+
     },
     "Social links" : {
       "localizations" : {
@@ -17925,6 +18013,9 @@
         }
       }
     },
+    "Sync to the Litecoin Blockchain" : {
+
+    },
     "Sync with Blockchain?" : {
       "localizations" : {
         "ar" : {
@@ -18042,6 +18133,9 @@
           }
         }
       }
+    },
+    "Syncing is a process where Brainwallet scans the Litecoin blockchain to see if any transactions that match your seed words (private keys) are in any transactions." : {
+
     },
     "Syncing..." : {
       "localizations" : {
@@ -20155,6 +20249,9 @@
         }
       }
     },
+    "This process can take 5 - 45 mins depending on your connectivty to the Litecoin network." : {
+
+    },
     "This will allow you to send and receive from your previous balance. You will need to set a new PIN" : {
       "localizations" : {
         "ar" : {
@@ -22180,6 +22277,9 @@
           }
         }
       }
+    },
+    "Tx Count: " : {
+
     },
     "Update PIN" : {
       "localizations" : {
@@ -24424,6 +24524,9 @@
           }
         }
       }
+    },
+    "You will not be able to send Litecoin while syncing. It may take a while." : {
+
     },
     "You will not be able to send money while syncing with the blockchain." : {
       "localizations" : {

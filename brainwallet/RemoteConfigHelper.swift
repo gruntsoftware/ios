@@ -45,7 +45,6 @@ class RemoteConfigHelper: NSObject {
 		remoteConfig.addOnConfigUpdateListener { _, error in
 			guard error != nil else {
 				let errorDict: [String: String] = ["error": error?.localizedDescription ?? ""]
-				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: errorDict)
 				return
 			}
 
@@ -58,19 +57,13 @@ class RemoteConfigHelper: NSObject {
 			if status == .success {
 				self.remoteConfig.activate { _, error in
 					guard error == nil else { return }
-					DispatchQueue.main.async {
-						BWAnalytics.logEventWithParameters(itemName: ._20241213_RCC)
-					}
 				}
-			} else {
-				let errorDict: [String: String] = ["error": error?.localizedDescription ?? ""]
-				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: errorDict)
 			}
 		}
 	}
 
 	func getString(key: String) -> String {
-		return remoteConfig[key].stringValue ?? "value_not_found"
+		return remoteConfig[key].stringValue
 	}
 
 	func getNumber(key: String) -> NSNumber {

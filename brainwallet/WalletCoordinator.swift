@@ -1,6 +1,7 @@
 import AVFoundation
 import Foundation
 import UIKit
+import UserNotifications
 
 private let lastBlockHeightKey = "LastBlockHeightKey"
 private let progressUpdateInterval: TimeInterval = 0.5
@@ -139,11 +140,9 @@ class WalletCoordinator: Subscriber, Trackable {
 					Task {
 						self.store.perform(action: WalletChange.setTransactions(transactions))
 					}
-				} else {
-					BWAnalytics.logEventWithParameters(itemName: ._20240214_TI, properties: ["transactions_info": "no_txs_found_in_wallet"])
 				}
-			} catch {
-				BWAnalytics.logEventWithParameters(itemName: ._20200112_ERR, properties: ["error_message": error.localizedDescription])
+			} catch let error {
+                debugPrint("::: ERROR \(error)")
 			}
 		}
 	}
@@ -253,11 +252,19 @@ class WalletCoordinator: Subscriber, Trackable {
 		guard UIApplication.shared.applicationState == .background || UIApplication.shared.applicationState == .inactive else { return }
 		guard store.state.isPushNotificationsEnabled else { return }
 		UIApplication.shared.applicationIconBadgeNumber = UIApplication.shared.applicationIconBadgeNumber + 1
-		let notification =
-			UILocalNotification()
-		notification.alertBody = message
-		notification.soundName = "coinflip.aiff"
-		UIApplication.shared.presentLocalNotificationNow(notification)
+
+        // Create and schedule the notification
+        let content = UNMutableNotificationContent()
+        content.body = message
+        content.sound = UNNotificationSound(named: UNNotificationSoundName("coinflip.aiff"))
+
+        let request = UNNotificationRequest(identifier: "localNotification", content: content, trigger: nil)
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling notification: \(error)")
+            }
+        }
 	}
 
 	private func reachabilityDidChange(isReachable: Bool) {
