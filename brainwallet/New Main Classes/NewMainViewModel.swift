@@ -33,6 +33,12 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     var currentGlobalFiat: GlobalCurrency = .USD
 
     @Published
+    var searchedCurrency: GlobalCurrency = .USD
+
+    @Published
+    var searchedCurrencyString: String = GlobalCurrency.USD.code
+
+    @Published
     var walletAmount: Amount?
 
     @Published
@@ -82,6 +88,29 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     private var networkHelper = NetworkHelper()
 
     var resetSettingsDrawer: (() -> Void)?
+
+    var filteredCurrencyCodes: [String] {
+        if searchedCurrencyString.isEmpty {
+            return allGlobalCurrenciesCodes
+        } else {
+            return allGlobalCurrenciesCodes.filter { $0.localizedCaseInsensitiveContains(searchedCurrencyString) }
+        }
+    }
+
+    let allGlobalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
+    let allGlobalCurrenciesCodes: [String] = GlobalCurrency.allCases.map { $0.code }
+
+//    var filteredItems: [String] {
+//            // Filter your data based on searchText
+//            if searchText.isEmpty {
+//                return items
+//            } else {
+//                return items.filter { $0.localizedCaseInsensitiveContains(searchText) }
+//            }
+//        }
+//        
+//        let items = ["Apple", "Banana", "Cherry", "Date", "Elderberry"]
+//    
 
     init(store: Store, walletManager: WalletManager) {
         self.store = store
