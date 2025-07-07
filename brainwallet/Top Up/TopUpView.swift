@@ -13,7 +13,7 @@ struct TopUpView: View {
     @Binding var path: [Onboarding]
 
     @ObservedObject
-    var viewModel: StartViewModel
+    var viewModel: NewMainViewModel
 
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
@@ -31,7 +31,7 @@ struct TopUpView: View {
 
     let arrowSize: CGFloat = 60.0
 
-    init(viewModel: StartViewModel, path: Binding<[Onboarding]>) {
+    init(viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
         _path = path
     }
@@ -110,14 +110,3 @@ struct TopUpView: View {
             }
     }
 }
-
-// struct TopUpView_Previews: PreviewProvider {
-//    typealias Previews = <#type#>
-//    
-//    static let walletManager = (try? WalletManager(store: Store(), dbPath: nil))!
-//    static let viewModel = StartViewModel(store: Store(), walletManager: walletManager)
-//    
-////    static var previews: some View {
-////       TopUpView(viewModel: viewModel, path: .constant([.topUpView]))
-////    }
-// }

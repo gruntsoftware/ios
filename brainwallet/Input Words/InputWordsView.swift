@@ -12,7 +12,7 @@ struct InputWordsView: View {
     var path: [Onboarding]
 
     @ObservedObject
-    var viewModel: StartViewModel
+    var viewModel: NewMainViewModel
 
     let subTitleFont: Font = .barlowSemiBold(size: 32.0)
     let largeButtonFont: Font = .barlowBold(size: 24.0)
@@ -28,7 +28,7 @@ struct InputWordsView: View {
     /// Reuse the seed grid for yourr seedwords
     private let isRestore = true
 
-    init(viewModel: StartViewModel, path: Binding<[Onboarding]>) {
+    init(viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
         _path = path
     }
