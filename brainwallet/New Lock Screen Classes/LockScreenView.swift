@@ -107,7 +107,7 @@ struct LockScreenView: View {
                     .frame(height: 22.0, alignment: .center)
 
                 }
-                .onChange(of: viewModel.currentValueInFiat) { newValue in
+                .onChange(of: viewModel.currentFiatValue) { newValue in
                     fiatValue = String(format: String(localized: "%@ = 1Ł"), newValue)
                 }
                 .onChange(of: pinDigits) { _ in
@@ -130,7 +130,7 @@ struct LockScreenView: View {
             }
             .onAppear {
                 userPrefersDarkMode = UserDefaults.userPreferredDarkTheme
-                fiatValue = String(format: String(localized: "%@ = 1Ł"), viewModel.currentValueInFiat)
+                fiatValue = String(format: String(localized: "%@ = 1Ł"), viewModel.currentFiatValue)
                 updateVersionLabel()
             }
         }

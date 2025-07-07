@@ -13,7 +13,7 @@ struct YourSeedWordsView: View {
     @Binding var path: [Onboarding]
 
     @ObservedObject
-    var viewModel: StartViewModel
+    var viewModel: NewMainViewModel
 
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
@@ -21,7 +21,7 @@ struct YourSeedWordsView: View {
     let largeButtonHeight: CGFloat = 65.0
     let largeButtonFont: Font = .barlowBold(size: 24.0)
 
-    init(viewModel: StartViewModel, path: Binding<[Onboarding]>) {
+    init(viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
         _path = path
     }
