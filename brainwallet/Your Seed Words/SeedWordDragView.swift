@@ -21,10 +21,10 @@ extension UTType {
 
 struct SeedWordDragView: View {
 	let seedWord: [DraggableSeedWord]
-    let genericPad = 8.0
+    let genericPad = 7.0
     let wordPad = 4.0
 	let cellHeight = 40.0
-    let buttonSize = 20.0
+    let buttonSize = 17.0
 
     @State
     private var isDragging: Bool = false
@@ -46,7 +46,7 @@ struct SeedWordDragView: View {
 							HStack {
                                 Spacer()
                                 Text(seedWord.first?.word ?? "")
-									.font(.barlowRegular(size: 17.0))
+									.font(.barlowRegular(size: 16.0))
 									.foregroundColor(userPrefersDarkTheme ? .white :
                                         BrainwalletColor.content)
 									.frame(height: cellHeight,
@@ -57,7 +57,7 @@ struct SeedWordDragView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .rotationEffect(Angle(degrees: 90))
-                                    .font(.system(size: 12, weight: .ultraLight))
+                                    .font(.system(size: 11, weight: .ultraLight))
                                     .frame(width: buttonSize,
                                            height: buttonSize,
                                         alignment: .center)

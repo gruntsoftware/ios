@@ -105,6 +105,7 @@
 		24BC04BF2E0D7969007B0195 /* SettingsActionShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BC04BE2E0D7969007B0195 /* SettingsActionShareView.swift */; };
 		24BC04C12E0D7FA1007B0195 /* SettingsActionBrainwalletPhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BC04C02E0D7FA1007B0195 /* SettingsActionBrainwalletPhraseView.swift */; };
 		24BC04C32E0DB1C1007B0195 /* SettingsActionSeedPhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BC04C22E0DB1C1007B0195 /* SettingsActionSeedPhraseView.swift */; };
+		24BC37C02E22B249005DD3AC /* coinflip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 24BC37BF2E22B249005DD3AC /* coinflip.mp3 */; };
 		24BEBB972DCDE4D4001E1F1F /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		24BEC6072DF0B53000140AAD /* WipeWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BEC6062DF0B52600140AAD /* WipeWalletView.swift */; };
 		24BEF7E12DCCCD6C00CA2EEC /* BrainwalletiOSStorekit in Frameworks */ = {isa = PBXBuildFile; productRef = 24BEF7E02DCCCD6C00CA2EEC /* BrainwalletiOSStorekit */; };
@@ -679,6 +680,7 @@
 		24BC04BE2E0D7969007B0195 /* SettingsActionShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionShareView.swift; sourceTree = "<group>"; };
 		24BC04C02E0D7FA1007B0195 /* SettingsActionBrainwalletPhraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionBrainwalletPhraseView.swift; sourceTree = "<group>"; };
 		24BC04C22E0DB1C1007B0195 /* SettingsActionSeedPhraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionSeedPhraseView.swift; sourceTree = "<group>"; };
+		24BC37BF2E22B249005DD3AC /* coinflip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinflip.mp3; sourceTree = "<group>"; };
 		24BEC6062DF0B52600140AAD /* WipeWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipeWalletView.swift; sourceTree = "<group>"; };
 		24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
 		24C6D2D22E1C7BFF0096AD62 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1804,6 +1806,7 @@
 				24F5BD3B2E042A040010D340 /* clicksound.wav */,
 				24F5BD412E042E840010D340 /* clicksound.aiff */,
 				24F5BD432E042F1D0010D340 /* clicksound.mp3 */,
+				24BC37BF2E22B249005DD3AC /* coinflip.mp3 */,
 				C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */,
 			);
 			path = Sounds;
@@ -2407,6 +2410,7 @@
 				C312D4CA2D7DC27700BB97A4 /* Buy.storyboard in Resources */,
 				C312D4CC2D7DC27700BB97A4 /* Alerts.storyboard in Resources */,
 				C312D4CE2D7DC27700BB97A4 /* Phrase.storyboard in Resources */,
+				24BC37C02E22B249005DD3AC /* coinflip.mp3 in Resources */,
 				C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,6 +26,17 @@ let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
 
 extension UserDefaults {
 
+    static var userCanBuyInCurrentLocale: Bool {
+        get {
+            guard defaults.object(forKey: userCurrentLocaleMPApprovedKey) != nil
+            else {
+                return false
+            }
+            return defaults.bool(forKey: userCurrentLocaleMPApprovedKey)
+        }
+        set { defaults.set(newValue, forKey: userCurrentLocaleMPApprovedKey) }
+    }
+
 	static var isBiometricsEnabled: Bool {
 		get {
 			guard defaults.object(forKey: isBiometricsEnabledKey) != nil

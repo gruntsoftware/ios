@@ -297,7 +297,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
                     }
                     isSeedPhraseFilled = true
                     store.perform(action: WalletChange.setWalletCreationDate(Date()))
-                    store.trigger(name: .didCreateOrRecoverWallet)
                     draggableSeedPhrase = loadDraggableSeedWords()
                 }
             }

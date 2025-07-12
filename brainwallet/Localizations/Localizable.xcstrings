@@ -4011,6 +4011,9 @@
         }
       }
     },
+    "Buy Litecoin" : {
+
+    },
     "BUY LTC" : {
       "localizations" : {
         "ar" : {
@@ -28595,6 +28598,9 @@
           }
         }
       }
+    },
+    "To be deposited to your LTC address" : {
+
     },
     "To make sure everything was written down correctly, please enter the following words from your paper key." : {
       "localizations" : {

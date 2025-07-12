@@ -110,6 +110,8 @@ struct ConfirmPasscodeView: View {
                     didConfirmPasscode  = currentPinState && pinDoesMatch
                     viewModel.pinDigits = self.pinDigits
 
+                    let store = viewModel.store
+
                     /// Pin digits filled
                     if confirmPinDigits.count == kPinDigitConstant {
                         /// Confirmed the Passcode
@@ -118,6 +120,10 @@ struct ConfirmPasscodeView: View {
                             viewModel.pinDigits = self.pinDigits
                             _ = viewModel.setPinPasscode(newPasscode:
                                 pinDigits.map { String($0) }.joined())
+
+                            store?.perform(action: SimpleReduxAlert.Show(.pinSet(callback: {
+                            })))
+
                             if isOnboarding {
                                path.append(.yourSeedWordsView)
                             } else {

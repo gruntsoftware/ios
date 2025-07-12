@@ -147,9 +147,7 @@ struct StartView: View {
 
                         Button(action: {
                             isOnboarding = false
-                            path.append(.topUpView)
-                                /// TBD DEV
-                                // path.append(.readyView)
+                            path.append(.readyView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
@@ -210,6 +208,7 @@ struct StartView: View {
                 .scrollContentBackground(.hidden)
                 .background(BrainwalletColor.surface)
                 .navigationDestination(for: Onboarding.self) { onboard in
+
                     switch onboard {
                     case .restoreView:
                         RestoreView(viewModel: newMainViewModel, path: $path)

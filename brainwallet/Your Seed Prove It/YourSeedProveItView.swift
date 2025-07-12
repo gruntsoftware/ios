@@ -30,6 +30,7 @@ struct YourSeedProveItView: View {
     let fieldHeight: CGFloat = 40.0
     let arrowSize: CGFloat = 60.0
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
+    let canUserBuy: Bool = UserDefaults.userCanBuyInCurrentLocale
 
     private let columns = Array(repeating: GridItem(.flexible(minimum: 80)), count: 3)
 
@@ -63,6 +64,10 @@ struct YourSeedProveItView: View {
 
     private func playError() {
         SoundsHelper().play(filename: "errorsound", type: "mp3")
+    }
+
+    private func playJingle() {
+        SoundsHelper().play(filename: "coinflip", type: "mp3")
     }
 
     private func isPhraseMatched() -> Bool {
@@ -152,10 +157,10 @@ struct YourSeedProveItView: View {
 
                     // Word buckets grid
                     Grid(horizontalSpacing: elementSpacing, verticalSpacing: elementSpacing) {
-                        ForEach(0..<4) { row in
+                        ForEach(0..<4) { wordRow in
                             GridRow {
-                                ForEach(1...3, id: \.self) { col in
-                                    let wordNumber = row * 3 + col
+                                ForEach(1...3, id: \.self) { column in
+                                    let wordNumber = wordRow * 3 + column
                                     createWordBucket(for: wordNumber)
                                 }
                             }
@@ -195,7 +200,15 @@ struct YourSeedProveItView: View {
 
                     Button(action: {
                         if isPhraseMatched() {
-                            path.append(.topUpView)
+                            playJingle()
+
+                            if let store = viewModel.store {
+                                store.trigger(name: .didCreateOrRecoverWallet)
+                                store.perform(action: SimpleReduxAlert.Show(.paperKeySet(callback: {})))
+                                NotificationCenter.default.post(name: .didCompleteOnboardingNotification,
+                                                                    object: nil,
+                                                                    userInfo: nil)
+                            }
                         } else {
                             resetWords()
                         }

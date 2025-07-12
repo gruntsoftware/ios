@@ -68,7 +68,7 @@ class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
 
     private func requestReviewForFrequentUser() {
         SKStoreReviewController.requestReviewInCurrentScene()
-        Analytics.logEvent("did_show_review_request",
+        Analytics.logEvent("did_request_rating",
             parameters: [
                 "platform": "ios",
                 "app_version": AppVersion.string
