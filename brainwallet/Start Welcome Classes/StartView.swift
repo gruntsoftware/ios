@@ -147,7 +147,9 @@ struct StartView: View {
 
                         Button(action: {
                             isOnboarding = false
-                                path.append(.readyView)
+                            path.append(.topUpView)
+                                /// TBD DEV
+                                // path.append(.readyView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)

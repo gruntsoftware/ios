@@ -2393,6 +2393,9 @@
         }
       }
     },
+    "as of %@" : {
+
+    },
     "at %1$@" : {
       "localizations" : {
         "ar" : {
@@ -12448,6 +12451,12 @@
         }
       }
     },
+    "Get Litecoin through MoonPay" : {
+
+    },
+    "Get some Litecoin for your Brainwallet" : {
+
+    },
     "Go to Settings to allow camera access." : {
       "localizations" : {
         "ar" : {
@@ -14186,6 +14195,9 @@
           }
         }
       }
+    },
+    "Maybe later (Skip)" : {
+
     },
     "Menu" : {
       "localizations" : {
@@ -28831,6 +28843,9 @@
           }
         }
       }
+    },
+    "Top up?" : {
+
     },
     "Total Cost:" : {
       "localizations" : {

@@ -305,10 +305,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     }
 
     func loadDraggableSeedWords() -> [DraggableSeedWord] {
-        draggableSeedPhrase = mockDraggableArray
-        guard !seedPhrase.isEmpty && seedPhrase.count != kSeedPhraseLength else {
-            return []
-        }
 
         for seedWord in seedPhrase {
             let dragableSeedWord = DraggableSeedWord(id: UUID(), tagNumber: seedWord.tagNumber, word: seedWord.word, doesMatch: false)
