@@ -333,9 +333,9 @@ extension ModalPresenter {
         store.subscribe(self, name: .promptUpgradePin, callback: { [weak self] _ in
             self?.presentUpgradePin()
         })
-        store.subscribe(self, name: .promptPaperKey, callback: { [weak self]  _ in
-            self?.presentWritePaperKey()
-        })
+//        store.subscribe(self, name: .promptPaperKey, callback: { [weak self]  _ in
+//            self?.presentWritePaperKey()
+//        })
         store.subscribe(self, name: .promptBiometrics, callback: { [weak self] _ in
             self?.presentBiometricsSetting()
         })

@@ -126,7 +126,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
                             repeats: true) { _ in
 
                 debugPrint("::: userPreferredCurrencyCode \(self.store?.state.userPreferredCurrencyCode) currentFiatValue \(self.currentFiatValue)")
-
                 self.networkHelper.exchangeRates({ rates, error in
                     guard let currentRate = rates.first(where: { $0.code ==
                         self.store?.state.userPreferredCurrencyCode }) else {

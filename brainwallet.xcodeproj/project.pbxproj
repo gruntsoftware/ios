@@ -520,6 +520,7 @@
 		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		246A9A062DF5F532002480CB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
+		2476AE322E27038F0065CE22 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2480B5822DF2015B00653403 /* PromptHostingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptHostingCell.swift; sourceTree = "<group>"; };
 		2489E05B2DF0A23700630888 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "brainwallet/Launch Resources/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		248E5C3E2DE77E88003F232F /* moon_pay_buy_status.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = moon_pay_buy_status.txt; sourceTree = "<group>"; };
@@ -683,7 +684,6 @@
 		24BC37BF2E22B249005DD3AC /* coinflip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinflip.mp3; sourceTree = "<group>"; };
 		24BEC6062DF0B52600140AAD /* WipeWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipeWalletView.swift; sourceTree = "<group>"; };
 		24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
-		24C6D2D22E1C7BFF0096AD62 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24C6D2D32E1D6B030096AD62 /* SeedWordPileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordPileView.swift; sourceTree = "<group>"; };
 		24C6D2D52E1D9C4E0096AD62 /* SeedWordDragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordDragView.swift; sourceTree = "<group>"; };
 		24C6D2D72E1E75510096AD62 /* SeedWordTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordTargetView.swift; sourceTree = "<group>"; };
@@ -693,8 +693,6 @@
 		24C9E40F2E12FD5800F04241 /* SendAddressCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendAddressCellViewModelTests.swift; sourceTree = "<group>"; };
 		24D0343A2E1AED2200AF81DF /* SwiftUIEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIEffects.swift; sourceTree = "<group>"; };
 		24D0343C2E1BFB9500AF81DF /* RestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreView.swift; sourceTree = "<group>"; };
-		24D0343E2E1C5C4D00AF81DF /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		24D0343F2E1C5CB100AF81DF /* fr-FR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-FR"; path = "fr-FR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmHostingController.swift; sourceTree = "<group>"; };
 		24D7AE552DCFF6830078252E /* NewConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmView.swift; sourceTree = "<group>"; };
 		24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmViewModel.swift; sourceTree = "<group>"; };
@@ -2976,7 +2974,7 @@
 				24B84F7B2E085BBC0060C2EE /* fa */,
 				24B84F7C2E085CE40060C2EE /* pa */,
 				242E6CDE2E095AF4002C579A /* pl */,
-				24C6D2D22E1C7BFF0096AD62 /* fr */,
+				2476AE322E27038F0065CE22 /* fr */,
 			);
 			name = InfoPlist.strings;
 			path = brainwallet;

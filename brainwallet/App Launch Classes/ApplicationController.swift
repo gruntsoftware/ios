@@ -9,7 +9,7 @@ class ApplicationController: Subscriber, Trackable {
 
     var window: UIWindow?
     fileprivate let store = Store()
-    private var startFlowController: StartFlowPresenter?
+//    private var startFlowController: StartFlowPresenter?
     private var modalPresenter: ModalPresenter?
     fileprivate var walletManager: WalletManager?
     private var walletCoordinator: WalletCoordinator?
@@ -183,7 +183,7 @@ class ApplicationController: Subscriber, Trackable {
 		walletCoordinator = WalletCoordinator(walletManager: walletManager, store: store)
 		modalPresenter = ModalPresenter(store: store, walletManager: walletManager, window: window, apiClient: noAuthApiClient)
 		exchangeUpdater = ExchangeUpdater(store: store, walletManager: walletManager)
-		startFlowController = StartFlowPresenter(store: store, walletManager: walletManager, rootViewController: rootViewController)
+//		startFlowController = StartFlowPresenter(store: store, walletManager: walletManager, rootViewController: rootViewController)
 		mainViewController?.walletManager = walletManager
 		defaultsUpdater = UserDefaultsUpdater(walletManager: walletManager)
 		urlController = URLController(store: store, walletManager: walletManager)
@@ -195,7 +195,8 @@ class ApplicationController: Subscriber, Trackable {
 		if UIApplication.shared.applicationState != .background {
 			if walletManager.noWallet {
 				addWalletCreationListener()
-                store.perform(action: ShowStartFlow())
+                mainViewController?.startOnboarding()
+//                store.perform(action: ShowStartFlow())
 			} else {
 				modalPresenter?.walletManager = walletManager
 				DispatchQueue.walletQueue.async {

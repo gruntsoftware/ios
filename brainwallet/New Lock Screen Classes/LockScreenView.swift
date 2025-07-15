@@ -45,6 +45,14 @@ struct LockScreenView: View {
         }
     }
 
+    func clearPINSettings() {
+        /// Resetting for another attempt
+        self.pinDigits = []
+        self.pinState = [false,false,false,false]
+        viewModel.authenticationFailed = false
+        viewModel.pinDigits = []
+    }
+
 	var body: some View {
 
         GeometryReader { geometry in
@@ -132,12 +140,8 @@ struct LockScreenView: View {
                         generator.notificationOccurred(.error)
 
                         delay(0.4) {
-                            /// Resetting for another attempt
-                            self.pinDigits = []
-                            self.pinState = [false,false,false,false]
-                            viewModel.authenticationFailed = false
+                            clearPINSettings()
                             startShake.toggle()
-
                         }
                     }
                 }
@@ -151,6 +155,8 @@ struct LockScreenView: View {
                 userPrefersDarkMode = UserDefaults.userPreferredDarkTheme
                 fiatValue = String(format: String(localized: "%@ = 1Ł"), viewModel.currentFiatValue)
                 updateVersionLabel()
+            }.onDisappear {
+                clearPINSettings()
             }
         }
 	}

@@ -28,21 +28,10 @@ class StartFlowPresenter: Subscriber {
 		store.lazySubscribe(self,
 		                    selector: { $0.isLoginRequired != $1.isLoginRequired },
 		                    callback: { self.handleLoginRequiredChange(state: $0) })
-		store.subscribe(self, name: .lock,
-		                callback: { [weak self] _ in
-		                	Task { @MainActor in
-		                		self?.presentLoginFlow(isPresentedForLock: true)
-		                	}
-		                })
 
         NotificationCenter.default.addObserver(self,
                          selector: #selector(relaunchStartFlow),
                          name: .walletDidWipeNotification,
-                         object: nil)
-
-        NotificationCenter.default.addObserver(self,
-                         selector: #selector(userDidCompleteOnboarding),
-                         name: .didCompleteOnboardingNotification,
                          object: nil)
 
 	}
@@ -63,7 +52,6 @@ class StartFlowPresenter: Subscriber {
 
 	private func handleLoginRequiredChange(state: ReduxState) {
 		if state.isLoginRequired {
-			presentLoginFlow(isPresentedForLock: false)
 		} else {
 			dismissLoginFlow()
 		}
@@ -144,30 +132,6 @@ class StartFlowPresenter: Subscriber {
 		}
 	}
 
-	private func pushStartPaperPhraseCreationViewController(pin: String) {
-		let paperPhraseViewController = StartPaperPhraseViewController(store: store, callback: { [weak self] in
-			// self?.pushWritePaperPhraseViewController(pin: pin)
-		})
-		paperPhraseViewController.title = String(localized: "Paper Key", bundle: .main)
-		paperPhraseViewController.navigationItem.setHidesBackButton(true, animated: false)
-		paperPhraseViewController.hideCloseNavigationItem() // Forces user to confirm paper-key
-
-		navigationController?.navigationBar.titleTextAttributes = [
-			NSAttributedString.Key.foregroundColor: BrainwalletUIColor.content,
-			NSAttributedString.Key.font: UIFont.customBold(size: 17.0)
-		]
-		navigationController?.pushViewController(paperPhraseViewController, animated: true)
-	}
-
-	private func pushWritePaperPhraseViewController(pin: String) {
-//		let writeViewController = WritePaperPhraseViewController(store: store, walletManager: walletManager, pin: pin, callback: { [weak self] in
-//			self?.pushConfirmPaperPhraseViewController(pin: pin)
-//		})
-//		writeViewController.title = String(localized: "Paper Key", bundle: .main)
-//		writeViewController.hideCloseNavigationItem()
-//		navigationController?.pushViewController(writeViewController, animated: true)
-	}
-
 	private func pushConfirmPaperPhraseViewController(pin: String) {
 		let confirmVC = UIStoryboard(name: "Phrase", bundle: nil)
                 .instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController")
@@ -191,18 +155,6 @@ class StartFlowPresenter: Subscriber {
 		}
 	}
 
-	private func presentLoginFlow(isPresentedForLock: Bool) {
-		let loginView = LoginViewController(store: store, isPresentedForLock: isPresentedForLock, walletManager: walletManager)
-		if isPresentedForLock {
-			loginView.shouldSelfDismiss = true
-		}
-		loginView.transitioningDelegate = loginTransitionDelegate
-		loginView.modalPresentationStyle = .overFullScreen
-		loginView.modalPresentationCapturesStatusBarAppearance = true
-		loginViewController = loginView
-		rootViewController.present(loginView, animated: false, completion: nil)
-	}
-
 	private func handleWalletCreationError() {
 		let alert = UIAlertController(title: String(localized: "Error", bundle: .main), message: String(localized: "Could not create wallet", bundle: .main), preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: String(localized: "Ok", bundle: .main), style: .default, handler: nil))
@@ -220,11 +172,4 @@ class StartFlowPresenter: Subscriber {
 			self?.loginViewController = nil
 		})
 	}
-
-    @objc
-    private func userDidCompleteOnboarding() {
-//        store.perform(action: HideStartFlow())
-//        navigationController = nil
-        presentLoginFlow(isPresentedForLock: true)
-    }
 }
