@@ -161,8 +161,8 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
         if let currentRate = store.state.currentRate,
            let balance = store.state.walletState.balance {
-            exchangeRate = rate
-            walletAmount = Amount(amount: balance, rate: exchangeRate!, maxDigits: store.state.maxDigits)
+            exchangeRate = currentRate
+            walletAmount = Amount(amount: balance, rate: currentRate, maxDigits: store.state.maxDigits)
             let ltcBalanceDouble = Double(balance) / Double(100_000_000)
             let fiatBalanceDouble = ltcBalanceDouble * Double(currentRate.rate)
             walletBalanceFiat = String(format: "%@%8.2f", currentRate.currencySymbol, fiatBalanceDouble)
