@@ -24,6 +24,7 @@ let shouldRequireLoginTimeoutKey = "ShouldRequireLoginTimeoutKey"
 let numberOfBrainwalletLaunches = "NumberOfBrainwalletLaunches"
 let userDidPreferDarkModeKey = "UserDidPreferDarkMode"
 let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
+let appHasRequestedReviewKey = "appHasRequestedReviewKey"
 
 extension UserDefaults {
 	static var selectedLanguage: String {
@@ -51,6 +52,17 @@ extension UserDefaults {
 		get { return defaults.bool(forKey: didSeeTransactionCorruption) }
 		set { defaults.set(newValue, forKey: didSeeTransactionCorruption) }
 	}
+
+    static var  appHasRequestedReview: Bool {
+        get {
+            guard defaults.object(forKey: appHasRequestedReviewKey) != nil
+            else {
+                return false
+            }
+            return defaults.bool(forKey: appHasRequestedReviewKey)
+        }
+        set { defaults.set(newValue, forKey: appHasRequestedReviewKey) }
+    }
 
 	static var userPreferredCurrencyCode: String {
 		get {
