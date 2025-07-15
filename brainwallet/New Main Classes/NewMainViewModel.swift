@@ -84,6 +84,8 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
 
+    let globalCurrencyCodes: [String] = GlobalCurrency.allCases.map( \.code )
+
     var didTapCreate: (() -> Void)?
     var didTapRecover: (() -> Void)?
 
@@ -122,6 +124,8 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         updateTimer = Timer
             .scheduledTimer(withTimeInterval: ratesPriceUpdateTimerPeriod,
                             repeats: true) { _ in
+
+                debugPrint("::: userPreferredCurrencyCode \(self.store?.state.userPreferredCurrencyCode) currentFiatValue \(self.currentFiatValue)")
 
                 self.networkHelper.exchangeRates({ rates, error in
                     guard let currentRate = rates.first(where: { $0.code ==
@@ -168,6 +172,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
         if let currentRate = store.state.currentRate,
            let balance = store.state.walletState.balance {
+            exchangeRate = currentRate
             walletAmount = Amount(amount: balance, rate: currentRate, maxDigits: store.state.maxDigits)
             let ltcBalanceDouble = Double(balance) / Double(100_000_000)
             let fiatBalanceDouble = ltcBalanceDouble * Double(currentRate.rate)

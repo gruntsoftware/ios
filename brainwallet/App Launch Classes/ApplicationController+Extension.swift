@@ -20,15 +20,14 @@ extension ApplicationController {
 		if var launchNumber = UserDefaults.standard.object(forKey: numberOfBrainwalletLaunches) as? Int {
 			launchNumber += 1
 			UserDefaults.standard.set(NSNumber(value: launchNumber), forKey: numberOfBrainwalletLaunches)
-			if launchNumber == 3 {
-				SKStoreReviewController.requestReviewInCurrentScene()
+            if launchNumber == 3 {
+                SKStoreReviewController.requestReviewInCurrentScene()
                 Analytics.logEvent("did_request_rating",
                     parameters: [
                         "platform": "ios",
                         "app_version": AppVersion.string
                     ])
-                UserDefaults.appHasRequestedReview = true
-			}
+            }
 		} else {
 			UserDefaults.standard.set(NSNumber(value: 1), forKey: numberOfBrainwalletLaunches)
 		}

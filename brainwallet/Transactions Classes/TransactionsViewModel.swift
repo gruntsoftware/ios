@@ -35,12 +35,7 @@ class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store
 		self.walletManager = walletManager
-        fetchAllTransactions()
 	}
-
-    func fetchAllTransactions() {
-
-    }
 
     /// Update displayed transactions. Used mainly when the database needs an update
     /// - Parameter txHash: String reprsentation of the TX

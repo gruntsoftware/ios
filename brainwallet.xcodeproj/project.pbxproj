@@ -693,6 +693,8 @@
 		24C9E40F2E12FD5800F04241 /* SendAddressCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendAddressCellViewModelTests.swift; sourceTree = "<group>"; };
 		24D0343A2E1AED2200AF81DF /* SwiftUIEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIEffects.swift; sourceTree = "<group>"; };
 		24D0343C2E1BFB9500AF81DF /* RestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreView.swift; sourceTree = "<group>"; };
+		24D0343E2E1C5C4D00AF81DF /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		24D0343F2E1C5CB100AF81DF /* fr-FR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-FR"; path = "fr-FR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmHostingController.swift; sourceTree = "<group>"; };
 		24D7AE552DCFF6830078252E /* NewConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmView.swift; sourceTree = "<group>"; };
 		24D7AE572DCFF7280078252E /* NewConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmViewModel.swift; sourceTree = "<group>"; };
@@ -733,7 +735,6 @@
 		24FEB8C12DD25B5200D60036 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24FEB8C22DD25B6600D60036 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		24FEB8C32DD25B7600D60036 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		24FEB8C42DD25B9000D60036 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		24FEB8C52DD25BA200D60036 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24FEB8C62DD25BB600D60036 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		24FEB8C72DD25BD000D60036 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2338,7 +2339,6 @@
 				sv,
 				tr,
 				uk,
-				"es-419",
 				Base,
 				pa,
 				fa,
@@ -2967,7 +2967,6 @@
 				24FEB8C12DD25B5200D60036 /* ja */,
 				24FEB8C22DD25B6600D60036 /* pt-BR */,
 				24FEB8C32DD25B7600D60036 /* ru */,
-				24FEB8C42DD25B9000D60036 /* es-419 */,
 				24FEB8C52DD25BA200D60036 /* sv */,
 				24FEB8C62DD25BB600D60036 /* tr */,
 				24FEB8C72DD25BD000D60036 /* uk */,
@@ -3070,7 +3069,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250705.0;
+				CURRENT_PROJECT_VERSION = 250712.1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3086,7 +3085,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.5.1;
+				MARKETING_VERSION = 3.5.4;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
@@ -3368,7 +3367,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250705.0;
+				CURRENT_PROJECT_VERSION = 250712.1;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
@@ -3383,7 +3382,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.5.1;
+				MARKETING_VERSION = 3.5.4;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
