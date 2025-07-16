@@ -10,7 +10,7 @@ struct SetPasscodeView: View {
     private var pinState: [Bool] = [false,false,false,false]
 
     @State
-    private var isOnboarding: Bool = true
+    private var isRestoringAnOldWallet: Bool = true
 
     @State
     private var didFillPasscode: Bool = false
@@ -29,8 +29,8 @@ struct SetPasscodeView: View {
     let arrowSize: CGFloat = 60.0
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
-    init(isOnboarding: Bool, path: Binding<[Onboarding]>) {
-        self.isOnboarding = isOnboarding
+    init(isRestoringAnOldWallet: Bool, path: Binding<[Onboarding]>) {
+        self.isRestoringAnOldWallet = isRestoringAnOldWallet
         _path = path
     }
 
@@ -97,7 +97,7 @@ struct SetPasscodeView: View {
                 didFillPasscode = pinState.allSatisfy { $0 == true }
                 if didFillPasscode {
                     delay(0.2) {
-                        path.append(.confirmPasscodeView(isOnboarding: self.isOnboarding, pinDigits: pinDigits))
+                        path.append(.confirmPasscodeView(isRestoringAnOldWallet: self.isRestoringAnOldWallet, pinDigits: pinDigits))
                     }
                 }
             }

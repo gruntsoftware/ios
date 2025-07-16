@@ -15,7 +15,7 @@ struct ConfirmPasscodeView: View {
     @State
     private var confirmPinDigits: [Int] = []
 
-    private let isOnboarding: Bool
+    private let isRestoringAnOldWallet: Bool
 
     @State
     var pinState: [Bool] = [false,false,false,false]
@@ -37,10 +37,10 @@ struct ConfirmPasscodeView: View {
     let arrowSize: CGFloat = 60.0
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
-    init(isOnboarding: Bool, pinDigits: [Int],
+    init(isRestoringAnOldWallet: Bool, pinDigits: [Int],
          viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.pinDigits = pinDigits
-        self.isOnboarding = isOnboarding
+        self.isRestoringAnOldWallet = isRestoringAnOldWallet
         self.viewModel = viewModel
         _path = path
     }
@@ -124,7 +124,7 @@ struct ConfirmPasscodeView: View {
                             store?.perform(action: SimpleReduxAlert.Show(.pinSet(callback: {
                             })))
 
-                            if isOnboarding {
+                            if isRestoringAnOldWallet {
                                path.append(.yourSeedWordsView)
                             } else {
                                path.append(.inputWordsView)

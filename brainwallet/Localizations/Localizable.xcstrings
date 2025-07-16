@@ -8715,7 +8715,7 @@
         }
       }
     },
-    "Don’t guess.\n\nIt would take you 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries." : {
+    "Don’t guess. It would take you\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries." : {
 
     },
     "Done" : {
@@ -19670,10 +19670,14 @@
         }
       }
     },
+    "Restore & Sync" : {
+
+    },
     "Restore your Brainwallet" : {
 
     },
     "Restore your power" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -25048,6 +25052,9 @@
           }
         }
       }
+    },
+    "Tap a field above.\nEnter the a few letters.\nTap the word that matches" : {
+
     },
     "Tap here for more information." : {
       "localizations" : {
@@ -31590,6 +31597,7 @@
       }
     },
     "You can get back from where you started" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -33104,6 +33112,9 @@
           }
         }
       }
+    },
+    "Your seed phrase is verified!" : {
+
     },
     "Your seed words" : {
 

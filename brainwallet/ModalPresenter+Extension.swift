@@ -89,12 +89,12 @@ extension ModalPresenter {
             topConstraint?.constant = size.height - self.alertHeight
             window.layoutIfNeeded()
         }, completion: { _ in
+            SoundsHelper().play(filename: "bloop", type: "mp3")
             alertView.animate()
-            UIView.spring(0.6, delay: 3.0, animations: {
+            UIView.spring(0.6, delay: 0.7, animations: {
                 topConstraint?.constant = size.height
                 window.layoutIfNeeded()
             }, completion: { _ in
-                // TODO: - Make these callbacks generic
                 if case let .paperKeySet(callback) = type { callback() }
                 if case let .pinSet(callback) = type { callback() }
                 if case let .sweepSuccess(callback) = type { callback() }
@@ -110,7 +110,9 @@ extension ModalPresenter {
         if topViewController is MainViewController || topViewController is LoginViewController {
             presentLoginScan()
         } else {
-            if let presented = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first?.rootViewController?.presentedViewController {
+            if let presented = UIApplication
+                .shared.windows.filter({ $0.isKeyWindow })
+                .first?.rootViewController?.presentedViewController {
                 presented.dismiss(animated: true, completion: { self.presentLoginScan() })
             }
         }

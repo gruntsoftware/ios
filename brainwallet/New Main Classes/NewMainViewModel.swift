@@ -42,6 +42,9 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     var seedPhrase: [SeedWord] = []
 
     @Published
+    var restoredPhrase = ""
+
+    @Published
     var draggableSeedPhrase: [DraggableSeedWord] = []
 
     @Published
@@ -80,6 +83,9 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     var transactions: [Transaction]?
 
     @Published
+    var filteredSeedWords: [String] = [""]
+
+    @Published
     var transactionCount = 0
 
     let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
@@ -105,6 +111,11 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     var pinDigits: [Int] = []
 
     private var rate: Rate?
+
+    private var bip39SeedWords: [NSString]? {
+        guard let path = Bundle.main.path(forResource: "BIP39Words", ofType: "plist") else { return nil }
+        return NSArray(contentsOfFile: path) as? [NSString]
+    }
 
     private var networkHelper = NetworkHelper()
 
@@ -304,6 +315,29 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
                     draggableSeedPhrase = loadDraggableSeedWords()
                 }
             }
+        }
+    }
+
+    func verifySeedPhrase(phrase: String) -> Bool {
+        guard let walletManager = self.walletManager else { return false }
+        return walletManager.isPhraseValid(phrase)
+    }
+
+    func didRestoreOldBrainwallet() {
+        guard let store = store,
+            let walletManager = self.walletManager else {
+            return
+        }
+
+        if walletManager.setSeedPhrase(restoredPhrase) {
+            UserDefaults.writePaperPhraseDate = Date()
+            store.perform(action: SimpleReduxAlert.Show(.paperKeySet(callback: {})))
+            store.trigger(name: .didCreateOrRecoverWallet)
+            DispatchQueue.walletQueue.async {
+               walletManager.peerManager?.connect()
+            }
+        } else {
+            fatalError("💣💣💣 Error: restore seed phrase failed")
         }
     }
 

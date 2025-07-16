@@ -50,7 +50,7 @@ struct StartView: View {
 	private var didContinue: Bool = false
 
     @State
-    private var isOnboarding: Bool = false
+    private var isRestoringAnOldWallet: Bool = false
 
     init(newMainViewModel: NewMainViewModel) {
         self.newMainViewModel = newMainViewModel
@@ -146,7 +146,7 @@ struct StartView: View {
 						       alignment: .center)
 
                         Button(action: {
-                            isOnboarding = false
+                            isRestoringAnOldWallet = false
                             path.append(.readyView)
                         }) {
                             ZStack {
@@ -167,10 +167,8 @@ struct StartView: View {
                         }
 
                         Button(action: {
-                            isOnboarding = true
-                            newMainViewModel.didTapRecover!()
-                                // path.append(.restoreView)
-                                // path.append(.yourSeedWordsView)
+                            isRestoringAnOldWallet = true
+                            path.append(.restoreView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
@@ -216,14 +214,14 @@ struct StartView: View {
                     case .readyView:
                         ReadyView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
-                    case .setPasscodeView(let isOnboarding):
+                    case .setPasscodeView(let isRestoringAnOldWallet):
                         ZStack {
-                            SetPasscodeView(isOnboarding: isOnboarding, path: $path)
+                            SetPasscodeView(isRestoringAnOldWallet: isRestoringAnOldWallet, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
-                    case .confirmPasscodeView(let isOnboarding, let pinDigits):
+                    case .confirmPasscodeView(let isRestoringAnOldWallet, let pinDigits):
                         ZStack {
-                            ConfirmPasscodeView(isOnboarding: isOnboarding, pinDigits: pinDigits, viewModel: newMainViewModel, path: $path)
+                            ConfirmPasscodeView(isRestoringAnOldWallet: isRestoringAnOldWallet, pinDigits: pinDigits, viewModel: newMainViewModel, path: $path)
                                .navigationBarBackButtonHidden()
                         }
                     case .inputWordsView:
@@ -290,8 +288,8 @@ struct StartView: View {
 enum Onboarding: Hashable {
     case readyView
     case restoreView
-    case setPasscodeView(isOnboarding: Bool)
-    case confirmPasscodeView(isOnboarding: Bool, pinDigits: [Int])
+    case setPasscodeView(isRestoringAnOldWallet: Bool)
+    case confirmPasscodeView(isRestoringAnOldWallet: Bool, pinDigits: [Int])
     case inputWordsView
     case yourSeedWordsView
     case yourSeedProveView

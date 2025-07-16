@@ -66,7 +66,7 @@ struct YourSeedProveItView: View {
         SoundsHelper().play(filename: "errorsound", type: "mp3")
     }
 
-    private func playJingle() {
+    private func playCoin() {
         SoundsHelper().play(filename: "coinflip", type: "mp3")
     }
 
@@ -200,7 +200,7 @@ struct YourSeedProveItView: View {
 
                     Button(action: {
                         if isPhraseMatched() {
-                            playJingle()
+                            playCoin()
 
                             if let store = viewModel.store {
                                 store.trigger(name: .didCreateOrRecoverWallet)
