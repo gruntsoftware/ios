@@ -99,12 +99,12 @@ jobs:
               xcrun simctl list devices available | grep iPhone | head -5
             fi
       - run:
-          name: Install Bundler and Dependencies
+          name: Install Bundler (2.6.9) and Dependencies
           command: |
             export PATH="$HOME/.rbenv/bin:$PATH"
             eval "$(rbenv init -)"
-            gem install bundler
-            bundle install
+            gem install bundler:2.6.9
+            bundle install 
       - run:
           name: Validate project structure
           command: |
