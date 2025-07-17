@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.4.4"
+ruby "3.2.2"
 gem "abbrev"
 gem "mutex_m"
 gem "ostruct"
