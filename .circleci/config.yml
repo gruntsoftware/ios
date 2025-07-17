@@ -26,21 +26,10 @@ jobs:
             - "SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g"
       - checkout
       - run:
-          name: Install rbenv and ruby-build
-          command: |
-            git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-            cd ~/.rbenv && src/configure && make -C src
-            echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-            echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-            export PATH="$HOME/.rbenv/bin:$PATH"
-            eval "$(rbenv init -)"
-            git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-      - run:
           name: Install Ruby using rbenv
           command: |
             export PATH="$HOME/.rbenv/bin:$PATH"
             eval "$(rbenv init -)"
-            rbenv install 3.2.2
             rbenv global 3.2.2
       - run:
           name: Remove Gemfile.lock (optional, for clean install)
