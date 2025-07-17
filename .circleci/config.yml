@@ -38,7 +38,10 @@ jobs:
             rbenv global 3.2.2
       - run:
           name: Remove Gemfile.lock (optional, for clean install)
-          command: rm -f Gemfile.lock
+          command: |
+            rm -f Gemfile.lock
+            rm -rf vendor/bundle
+            gem uninstall fastlane -aIx || true
       - run:
           name: Setup SSH for private repos (ssh-ed25519 key added)
           command: |

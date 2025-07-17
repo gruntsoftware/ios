@@ -5,7 +5,7 @@ gem "abbrev"
 gem "mutex_m"
 gem "ostruct"
 gem 'rb-readline'
-gem "fastlane", "2.228.0"
+gem 'fastlane', '~> 2.228.0'
 gem "bundler", "2.6.9"  # Use a modern bundler
 
 # iOS specific gems
