@@ -34,7 +34,7 @@ jobs:
             echo 'eval "$(rbenv init -)"' >> ~/.bashrc
             export PATH="$HOME/.rbenv/bin:$PATH"
             eval "$(rbenv init -)"
-            git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+            rbenv install -s 3.2.2
             rbenv global 3.2.2
       - run:
           name: Remove Gemfile.lock (optional, for clean install)
