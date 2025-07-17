@@ -116,7 +116,7 @@ jobs:
             echo "Scheme validation:"
             xcodebuild -list -project *.xcodeproj || echo "Could not list schemes"
             echo "Build settings for test scheme:"
-            xcodebuild -showBuildSettings -scheme brainwalletTests -project *.xcodeproj || echo "Could not show build settings
+            xcodebuild -showBuildSettings -scheme brainwalletTests -project *.xcodeproj || echo "Could not show build settings"
       - run:
           name: Run Fastlane
           command: |
