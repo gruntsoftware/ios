@@ -175,6 +175,21 @@
 				<string>application/litecoin-paymentack</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>Codable</string>
+				<string>Equatable</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Draggable Seed Word</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>com.gruntsoftware.brainwallet.draggableSeedWord</string>
+			<key>UTTypeTagSpecification</key>
+			<dict/>
+		</dict>
 	</array>
 </dict>
 </plist>

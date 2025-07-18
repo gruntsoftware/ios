@@ -7,7 +7,8 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	private let store: Store
 	private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 	private var isLoginRequired = false
-	private let loginView: LoginViewController
+    private var startHostingController: StartHostingController?
+    private let loginView: LoginViewController
     private var settingsViewController: SettingsHostingController?
 	private let loginTransitionDelegate = LoginTransitionDelegate()
     var showSettingsConstant: CGFloat = 0.0
@@ -53,25 +54,55 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		navigationController?.navigationBar.isTranslucent = false
 		navigationController?.navigationBar.barTintColor = BrainwalletUIColor.surface
 		addSubscriptions()
-		addAppLifecycleNotificationEvents()
 		addTemporaryStartupViews()
         activateSettingsDrawer(shouldClose: false)
 	}
+    func startOnboarding() {
+        guard let walletManager = self.walletManager else { return }
+        startHostingController = StartHostingController(store: self.store,
+            walletManager: walletManager)
+        guard let startHC = self.startHostingController else { return }
+        addChildViewController(startHC, layout: {
+            startHC.view.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    startHC.view.topAnchor.constraint(equalTo: view.topAnchor),
+                    startHC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+                    startHC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+                    startHC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor) ])
+            startHC.view.alpha = 0
+            startHC.view.layoutIfNeeded()
+        })
+        UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
+            startHC.view.alpha = 1
+        }) { _ in
+        }
+    }
+    /// This or that
+    //// This is a legacy redux method of triggering adctions versus delegation
+    func didCompleteOnboarding() {
+        self.presentLockScreen()
+    }
 
     func didUnlockLogin() {
+        /// Remove Onboarding
+        children.forEach { childVC in
+            if childVC.isKind(of: StartHostingController.self) {
+                childVC.willMove(toParent: nil)
+                childVC.view.removeFromSuperview()
+                childVC.removeFromParent()
+            }
+        }
+
         guard let tabVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "TabBarViewController")
-                as? TabBarViewController,
-              let walletManager = self.walletManager
+                as? TabBarViewController, let walletManager = self.walletManager
         else {
             debugPrint("::: ERROR: TabBarViewController or wallet not intialized")
-            return
-        }
+            return }
 
         tabVC.store = store
         tabVC.walletManager = walletManager
         addChildViewController(tabVC, layout: {
-            // Setup constraints
             tabVC.view.translatesAutoresizingMaskIntoConstraints = false
                    NSLayoutConstraint.activate([
                     tabVC.view.topAnchor.constraint(equalTo: view.topAnchor),
@@ -138,15 +169,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
     func activateSettingsDrawer(shouldClose: Bool? = nil) {
         var shouldShow = shouldShowSettings
-        guard let tabVC = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "TabBarViewController")
-                as? TabBarViewController,
-              let walletManager = self.walletManager
-        else {
-            debugPrint("::: ERROR: TabBarViewController or wallet not intialized")
-            return
-        }
-
         if let closeState = shouldClose {
             shouldShow = closeState
         }
@@ -206,27 +228,27 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		store.subscribe(self, selector: { $0.isLoginRequired != $1.isLoginRequired },
 		                callback: { self.isLoginRequired = $0.isLoginRequired
 		                })
+
+        /// This or that
+        //// This is a legacy redux method of triggering adctions versus delegation
+        store.subscribe(self, name: .lock,
+                        callback: { [weak self] _ in
+                            Task { @MainActor in
+                                self?.presentLockScreen()
+                            }
+                        })
 	}
 
-	private func addAppLifecycleNotificationEvents() {
-		NotificationCenter.default.addObserver(forName: UIScene.didActivateNotification, object: nil, queue: nil) { _ in
-			UIView.animate(withDuration: 0.1, animations: {
-				self.blurView.alpha = 0.0
-			}, completion: { [weak self] _ in
-				self?.blurView.removeFromSuperview()
-			})
-		}
+    private func presentLockScreen() {
 
-		NotificationCenter.default.addObserver(forName: UIScene.willDeactivateNotification, object: nil, queue: nil) { [weak self] _ in
-
-			if let mySelf = self,
-               !mySelf.isLoginRequired, !mySelf.store.state.isPromptingBiometrics {
-                mySelf.blurView.alpha = 1.0
-                mySelf.view.addSubview(mySelf.blurView)
-                mySelf.blurView.constrain(toSuperviewEdges: nil)
-			}
-		}
-	}
+        loginView.walletManager = walletManager
+        loginView.transitioningDelegate = loginTransitionDelegate
+        loginView.modalPresentationStyle = .overFullScreen
+        loginView.modalPresentationCapturesStatusBarAppearance = true
+        loginView.shouldSelfDismiss = true
+        loginView.view.alpha = 1
+        present(loginView, animated: false, completion: { })
+    }
 
 	override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
 		return .fade

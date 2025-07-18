@@ -1,6 +1,6 @@
 import SwiftUI
 import Lottie
-
+import FirebaseAnalytics
 struct StartView: View {
     let selectorFont: Font = .barlowSemiBold(size: 16.0)
     let buttonLightFont: Font = .barlowLight(size: 16.0)
@@ -48,6 +48,9 @@ struct StartView: View {
 
 	@State
 	private var didContinue: Bool = false
+
+    @State
+    private var isRestoringAnOldWallet: Bool = false
 
     init(newMainViewModel: NewMainViewModel) {
         self.newMainViewModel = newMainViewModel
@@ -143,16 +146,15 @@ struct StartView: View {
 						       alignment: .center)
 
                         Button(action: {
-                                 newMainViewModel.didTapCreate!()
-                                // path.append(.inputWordsView)
-                                // path.append(.readyView)
+                            isRestoringAnOldWallet = false
+                            path.append(.readyView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
 
-                                Text( "Ready" )
+                                Text("Ready")
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(largeButtonFont)
                                     .foregroundColor(BrainwalletColor.content)
@@ -165,9 +167,8 @@ struct StartView: View {
                         }
 
                         Button(action: {
-                            newMainViewModel.didTapRecover!()
-                                // path.append(.restoreView)
-                                // path.append(.yourSeedWordsView)
+                            isRestoringAnOldWallet = true
+                            path.append(.restoreView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
@@ -205,21 +206,22 @@ struct StartView: View {
                 .scrollContentBackground(.hidden)
                 .background(BrainwalletColor.surface)
                 .navigationDestination(for: Onboarding.self) { onboard in
+
                     switch onboard {
                     case .restoreView:
-                        ReadyRestoreView(isRestore: true, viewModel: newMainViewModel, path: $path)
+                        RestoreView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                     case .readyView:
-                        ReadyRestoreView(isRestore: false, viewModel: newMainViewModel, path: $path)
+                        ReadyView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
-                    case .setPasscodeView:
+                    case .setPasscodeView(let isRestoringAnOldWallet):
                         ZStack {
-                           SetPasscodeView(path: $path)
+                            SetPasscodeView(isRestoringAnOldWallet: isRestoringAnOldWallet, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
-                    case .confirmPasscodeView(let pinDigits):
+                    case .confirmPasscodeView(let isRestoringAnOldWallet, let pinDigits):
                         ZStack {
-                            ConfirmPasscodeView(pinDigits: pinDigits, viewModel: newMainViewModel, path: $path)
+                            ConfirmPasscodeView(isRestoringAnOldWallet: isRestoringAnOldWallet, pinDigits: pinDigits, viewModel: newMainViewModel, path: $path)
                                .navigationBarBackButtonHidden()
                         }
                     case .inputWordsView:
@@ -253,14 +255,22 @@ struct StartView: View {
                     }
                 }
             }
-            .alert( "Error" ,
-                   isPresented: $newMainViewModel.walletCreationDidFail,
-                   actions: {
-                HStack {
-                    Button("Ok" , role: .cancel) {
+            .alert(String(localized: "Wallet Creation Error"),
+                isPresented: $newMainViewModel.walletCreationDidFail,
+                actions: {
+                    Button( String(localized: "OK"), role: .cancel) {
                         newMainViewModel.walletCreationDidFail = false
+
+                        Analytics.logEvent("wallet_creation_error",
+                            parameters: [
+                                "platform": "ios",
+                                "app_version": AppVersion.string,
+                                "error_message": "failed_to_create_wallet"
+                            ])
                     }
-                }
+                },
+                message: {
+                        Text(String(localized: "There was a serious error in creating your Brainwallet. Visit us at brainwallet.co to file a customer support ticket."))
             })
             .onAppear {
                 Task {
@@ -278,8 +288,8 @@ struct StartView: View {
 enum Onboarding: Hashable {
     case readyView
     case restoreView
-    case setPasscodeView
-    case confirmPasscodeView(pinDigits: [Int])
+    case setPasscodeView(isRestoringAnOldWallet: Bool)
+    case confirmPasscodeView(isRestoringAnOldWallet: Bool, pinDigits: [Int])
     case inputWordsView
     case yourSeedWordsView
     case yourSeedProveView

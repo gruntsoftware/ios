@@ -9,14 +9,15 @@ struct SetPasscodeView: View {
     @State
     private var pinState: [Bool] = [false,false,false,false]
 
-    private let isRestore: Bool?
+    @State
+    private var isRestoringAnOldWallet: Bool = true
 
     @State
-    private var didFillPIN: Bool = false
+    private var didFillPasscode: Bool = false
 
     let subTitleFont: Font = .barlowSemiBold(size: 32.0)
     let largeButtonFont: Font = .barlowBold(size: 24.0)
-    let detailFont: Font = .barlowRegular(size: 26.0)
+    let detailFont: Font = .barlowRegular(size: 22.0)
 
     let verticalPadding: CGFloat = 20.0
     let squareButtonSize: CGFloat = 55.0
@@ -26,10 +27,11 @@ struct SetPasscodeView: View {
     let largeButtonHeight: CGFloat = 65.0
 
     let arrowSize: CGFloat = 60.0
+    let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
-    init(path: Binding<[Onboarding]>) {
+    init(isRestoringAnOldWallet: Bool, path: Binding<[Onboarding]>) {
+        self.isRestoringAnOldWallet = isRestoringAnOldWallet
         _path = path
-        isRestore = true
     }
 
     var body: some View {
@@ -56,8 +58,7 @@ struct SetPasscodeView: View {
                                         .frame(width: squareImageSize,
                                                height: squareImageSize,
                                                alignment: .center)
-
-                                        .foregroundColor(BrainwalletColor.content)
+                                        .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                     Spacer()
                                 }
                             }.frame(maxWidth: .infinity, alignment: .leading)
@@ -65,14 +66,14 @@ struct SetPasscodeView: View {
                         .frame(height: squareImageSize)
                         .padding(.all, 20.0)
 
-                            Text( "Set app PIN" )
+                            Text( "Set app passcode" )
                                 .font(subTitleFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
-                                .foregroundColor(BrainwalletColor.content)
-                            Text( "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool" )
+                                .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
+                            Text( "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool!" )
                                 .font(detailFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
-                                .foregroundColor(BrainwalletColor.content)
+                                .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 .padding(.all, 20.0)
 
                         PINRowView(pinState: $pinState)
@@ -82,8 +83,10 @@ struct SetPasscodeView: View {
 
                         Spacer()
                         PasscodeGridView(digits: $pinDigits)
-                            .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
-                            .padding(.bottom, 80.0)
+                            .frame(width: width * 0.6,
+                                   height: height * 0.35,
+                                   alignment: .center)
+                                .padding(.bottom, 80.0)
                         }
                 }
             }
@@ -91,11 +94,16 @@ struct SetPasscodeView: View {
 
                 pinState = (0..<4).map { $0 < pinDigits.count }
 
-                didFillPIN  = pinState.allSatisfy { $0 == true }
-                if didFillPIN {
-
-                   // path.append(.confirmPasscodeView(isRestore: self.isRestore, pinDigits: pinDigits))
+                didFillPasscode = pinState.allSatisfy { $0 == true }
+                if didFillPasscode {
+                    delay(0.2) {
+                        path.append(.confirmPasscodeView(isRestoringAnOldWallet: self.isRestoringAnOldWallet, pinDigits: pinDigits))
+                    }
                 }
+            }
+            .onAppear {
+                pinDigits = []
+                pinState = [false,false,false,false]
             }
     }
 }

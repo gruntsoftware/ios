@@ -82,10 +82,3 @@ func hideKeyboard() {
 		            from: nil,
 		            for: nil)
 }
-
-// #Preview {
-//	SeedPhraseStepView()
-//		.environmentObject(StartViewModel(store: Store(),
-//		                                  walletManager:
-//		                                  WalletManager(store: Store())))
-// }

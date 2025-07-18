@@ -16,26 +16,26 @@ private let customNodeIPKey = "customNodeIPKey"
 private let customNodePortKey = "customNodePortKey"
 private let hasPromptedShareDataKey = "hasPromptedShareDataKey"
 private let didSeeTransactionCorruption = "DidSeeTransactionCorruption"
-private let userIsInUSAKey = "userIsInUSAKey"
-private let selectedLanguageKey = "selectedLanguage"
 
 let timeSinceLastExitKey = "TimeSinceLastExit"
 let shouldRequireLoginTimeoutKey = "ShouldRequireLoginTimeoutKey"
 let numberOfBrainwalletLaunches = "NumberOfBrainwalletLaunches"
+let appHasRequestedReviewKey = "appHasRequestedReviewKey"
 let userDidPreferDarkModeKey = "UserDidPreferDarkMode"
 let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
-let appHasRequestedReviewKey = "appHasRequestedReviewKey"
 
 extension UserDefaults {
-	static var selectedLanguage: String {
-		get {
-			guard defaults.object(forKey: selectedLanguageKey) != nil else {
-				return "en"
-			}
-			return defaults.string(forKey: selectedLanguageKey) ?? "en"
-		}
-		set { defaults.set(newValue, forKey: selectedLanguageKey) }
-	}
+
+    static var userCanBuyInCurrentLocale: Bool {
+        get {
+            guard defaults.object(forKey: userCurrentLocaleMPApprovedKey) != nil
+            else {
+                return false
+            }
+            return defaults.bool(forKey: userCurrentLocaleMPApprovedKey)
+        }
+        set { defaults.set(newValue, forKey: userCurrentLocaleMPApprovedKey) }
+    }
 
 	static var isBiometricsEnabled: Bool {
 		get {
@@ -48,11 +48,6 @@ extension UserDefaults {
 		set { defaults.set(newValue, forKey: isBiometricsEnabledKey) }
 	}
 
-	static var didSeeCorruption: Bool {
-		get { return defaults.bool(forKey: didSeeTransactionCorruption) }
-		set { defaults.set(newValue, forKey: didSeeTransactionCorruption) }
-	}
-
     static var  appHasRequestedReview: Bool {
         get {
             guard defaults.object(forKey: appHasRequestedReviewKey) != nil
@@ -63,6 +58,11 @@ extension UserDefaults {
         }
         set { defaults.set(newValue, forKey: appHasRequestedReviewKey) }
     }
+
+	static var didSeeCorruption: Bool {
+		get { return defaults.bool(forKey: didSeeTransactionCorruption) }
+		set { defaults.set(newValue, forKey: didSeeTransactionCorruption) }
+	}
 
 	static var userPreferredCurrencyCode: String {
 		get {
@@ -115,12 +115,6 @@ extension UserDefaults {
 		get { return defaults.bool(forKey: isLtcSwappedKey)
 		}
 		set { defaults.set(newValue, forKey: isLtcSwappedKey) }
-	}
-
-	static var userIsInUSA: Bool {
-		get { return defaults.bool(forKey: userIsInUSAKey)
-		}
-		set { defaults.set(newValue, forKey: userIsInUSAKey) }
 	}
 
 	//

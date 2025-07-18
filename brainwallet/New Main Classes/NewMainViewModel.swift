@@ -6,8 +6,8 @@
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
+import FirebaseAnalytics
 
 class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
@@ -34,6 +34,18 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     @Published
     var currencyCode = ""
+
+    @Published
+    var isSeedPhraseFilled: Bool = false
+
+    @Published
+    var seedPhrase: [SeedWord] = []
+
+    @Published
+    var restoredPhrase = ""
+
+    @Published
+    var draggableSeedPhrase: [DraggableSeedWord] = []
 
     @Published
     var currentLanguage = Locale.current.identifier
@@ -71,6 +83,9 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     var transactions: [Transaction]?
 
     @Published
+    var filteredSeedWords: [String] = [""]
+
+    @Published
     var transactionCount = 0
 
     let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
@@ -93,7 +108,14 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         didSet { setBalances() }
     }
 
+    var pinDigits: [Int] = []
+
     private var rate: Rate?
+
+    private var bip39SeedWords: [NSString]? {
+        guard let path = Bundle.main.path(forResource: "BIP39Words", ofType: "plist") else { return nil }
+        return NSArray(contentsOfFile: path) as? [NSString]
+    }
 
     private var networkHelper = NetworkHelper()
 
@@ -115,7 +137,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
                             repeats: true) { _ in
 
                 debugPrint("::: userPreferredCurrencyCode \(self.store?.state.userPreferredCurrencyCode) currentFiatValue \(self.currentFiatValue)")
-
                 self.networkHelper.exchangeRates({ rates, error in
                     guard let currentRate = rates.first(where: { $0.code ==
                         self.store?.state.userPreferredCurrencyCode }) else {
@@ -253,6 +274,80 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             UserDefaults.userPreferredCurrencyCode = code
             store.perform(action: UserPreferredCurrency.setDefault(code))
         }
+    }
+
+    func setPinPasscode(newPasscode: String) -> Bool {
+        guard let store = store,
+            let walletManager = self.walletManager else {
+            Analytics.logEvent("wallet_manager_error", parameters: [
+                "platform": "ios",
+                "app_version": AppVersion.string,
+                "error_message": "wallet_manager_nil"
+            ])
+            return false
+        }
+        store.perform(action: PinLength.set(newPasscode.utf8.count))
+        _ = walletManager.forceSetPin(newPin: newPasscode)
+        return true
+    }
+
+    func generateNewWallet() {
+        guard let store = store,
+            let walletManager = self.walletManager,
+            let seedPhraseString = walletManager.setRandomSeedPhrase() else {
+            return
+        }
+
+        let seedWordArray: [String] = seedPhraseString.components(separatedBy: " ")
+        let filteredSeedWordArray = seedWordArray.filter { !$0.isEmpty }
+        if filteredSeedWordArray.count == kSeedPhraseLength {
+            DispatchQueue.walletQueue.async { [weak self] in
+                walletManager.peerManager?.connect()
+                DispatchQueue.main.async { [weak self, weak store] in
+                    guard let self = self,
+                        let store = store else { return }
+                    for (index, element) in filteredSeedWordArray.enumerated() {
+                        let seedWordElement = SeedWord(word: element, tagNumber: index + 1)
+                        self.seedPhrase.insert(seedWordElement, at: index)
+                    }
+                    isSeedPhraseFilled = true
+                    store.perform(action: WalletChange.setWalletCreationDate(Date()))
+                    draggableSeedPhrase = loadDraggableSeedWords()
+                }
+            }
+        }
+    }
+
+    func verifySeedPhrase(phrase: String) -> Bool {
+        guard let walletManager = self.walletManager else { return false }
+        return walletManager.isPhraseValid(phrase)
+    }
+
+    func didRestoreOldBrainwallet() {
+        guard let store = store,
+            let walletManager = self.walletManager else {
+            return
+        }
+
+        if walletManager.setSeedPhrase(restoredPhrase) {
+            UserDefaults.writePaperPhraseDate = Date()
+            store.perform(action: SimpleReduxAlert.Show(.paperKeySet(callback: {})))
+            store.trigger(name: .didCreateOrRecoverWallet)
+            DispatchQueue.walletQueue.async {
+               walletManager.peerManager?.connect()
+            }
+        } else {
+            fatalError("💣💣💣 Error: restore seed phrase failed")
+        }
+    }
+
+    func loadDraggableSeedWords() -> [DraggableSeedWord] {
+
+        for seedWord in seedPhrase {
+            let dragableSeedWord = DraggableSeedWord(id: UUID(), tagNumber: seedWord.tagNumber, word: seedWord.word, doesMatch: false)
+            draggableSeedPhrase.append(dragableSeedWord)
+        }
+        return draggableSeedPhrase
     }
 
     private func addSubscriptions() {

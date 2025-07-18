@@ -16,3 +16,17 @@ struct MockData {
 	static let largeBalance: Double = 48235.059349
 	static let testLTCAddress: String = "QieeWYTdgF7tJu6suEnpyoWry1YxJ3Egvs"
 }
+
+let mockDraggableArray : [DraggableSeedWord] = [
+    DraggableSeedWord(id: UUID(), tagNumber: 1, word: "these", doesMatch: false),
+    DraggableSeedWord(id: UUID(), tagNumber: 2, word: "are", doesMatch: false),
+    DraggableSeedWord(id: UUID(), tagNumber: 3, word: "not", doesMatch: false),
+    DraggableSeedWord(id: UUID(), tagNumber: 4, word: "the", doesMatch: false),
+    DraggableSeedWord(id: UUID(), tagNumber: 5, word: "droids", doesMatch: false),
+    DraggableSeedWord(id: UUID(), tagNumber: 6, word: "you", doesMatch: false),
+    DraggableSeedWord(id: UUID(), tagNumber: 7, word: "are", doesMatch: false),
+    DraggableSeedWord(id: UUID(), tagNumber: 8, word: "looking", doesMatch: false),
+    DraggableSeedWord(id: UUID(), tagNumber: 9, word: "for", doesMatch: false),
+    DraggableSeedWord(id: UUID(), tagNumber: 10, word: "he", doesMatch: false),
+    DraggableSeedWord(id: UUID(), tagNumber: 11, word: "can", doesMatch: false),
+    DraggableSeedWord(id: UUID(), tagNumber: 12, word: "go", doesMatch: false) ]

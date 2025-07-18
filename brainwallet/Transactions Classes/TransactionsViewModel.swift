@@ -1,6 +1,6 @@
 import Foundation
-import FirebaseAnalytics
 import StoreKit
+import FirebaseAnalytics
 
 class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
 
@@ -83,12 +83,13 @@ class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
 
         store.subscribe(self, selector: { $0.walletState.transactions != $1.walletState.transactions },
                         callback: { state in
-                            self.allTransactions = state.walletState.transactions
-                            if self.allTransactions.count >= 7 && !UserDefaults.appHasRequestedReview {
-                                  self.requestReviewForFrequentUser()
-                            }
+            self.allTransactions = state.walletState.transactions
 
-                        })
+            if self.allTransactions.count >= 7 && !UserDefaults.appHasRequestedReview {
+                self.requestReviewForFrequentUser()
+            }
+
+         })
 
         // MARK: - Wallet State:  CurrentRate
 

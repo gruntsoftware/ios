@@ -10,6 +10,7 @@ struct PasscodeGridView: View {
 
     let detailFont: Font = .barlowRegular(size: 24.0)
     let elementSpacing = 2.0
+    let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
     @Binding var digits: [Int]
 
@@ -47,6 +48,7 @@ struct CodeButton: View {
     let buttonSize = 60.0
     let detailFont: Font = .barlowRegular(size: 28.0)
     var index: Int
+    let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
     @Binding var digits: [Int]
 
@@ -69,12 +71,12 @@ struct CodeButton: View {
                 Ellipse()
                 .frame(width: buttonSize,
                        height: buttonSize)
-                    .foregroundColor(index >= 0 ? BrainwalletColor.content.opacity(0.2) : .clear)
+                    .foregroundColor(index >= 0 ? BrainwalletColor.background : .clear)
 
                 if index == -2 {
                     Image(systemName: "arrow.backward")
                         .resizable()
-                        .foregroundColor(BrainwalletColor.content)
+                        .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.grape)
                         .frame(maxWidth: buttonSize * 0.25,
                                maxHeight: buttonSize * 0.25)
                         .padding()
@@ -83,7 +85,7 @@ struct CodeButton: View {
                 } else {
                     Text("\(index)")
                         .font(detailFont)
-                        .foregroundColor(BrainwalletColor.content)
+                        .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.grape)
                         .frame(maxWidth: .infinity,
                                maxHeight: .infinity)
                         .padding()

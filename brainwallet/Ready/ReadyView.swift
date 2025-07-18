@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ReadyRestoreView: View {
+struct ReadyView: View {
 
     @ObservedObject
     var viewModel: NewMainViewModel
@@ -10,10 +10,10 @@ struct ReadyRestoreView: View {
 
     let selectorFont: Font = .barlowSemiBold(size: 16.0)
     let buttonLightFont: Font = .barlowLight(size: 16.0)
-    let regularButtonFont: Font = .barlowRegular(size: 24.0)
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
-    let detailFont: Font = .barlowRegular(size: 28.0)
-    let billboardFont: Font = .barlowBold(size: 70.0)
+    let regularButtonFont: Font = .barlowRegular(size: 20.0)
+    let largeButtonFont: Font = .barlowSemiBold(size: 24.0)
+    let detailFont: Font = .barlowRegular(size: 22.0)
+    let billboardFont: Font = .barlowSemiBold(size: 50.0)
 
     let versionFont: Font = .barlowSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
@@ -23,13 +23,12 @@ struct ReadyRestoreView: View {
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
 
-    let arrowSize: CGFloat = 60.0
+    let arrowSize: CGFloat = 40.0
 
-    private let isRestore: Bool
+    let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
-    init(isRestore: Bool, viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
+    init(viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
-        self.isRestore = isRestore
         _path = path
     }
     var body: some View {
@@ -37,6 +36,9 @@ struct ReadyRestoreView: View {
             GeometryReader { geometry in
 
                 let width = geometry.size.width
+
+                let readyText = String(localized:
+                    "Switching devices? Lost it in a boating accident? You can restore your Brainwallet here.")
 
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
@@ -53,8 +55,7 @@ struct ReadyRestoreView: View {
                                         .frame(width: squareImageSize,
                                                height: squareImageSize,
                                                alignment: .center)
-
-                                        .foregroundColor(BrainwalletColor.content)
+                                        .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                     Spacer()
                                 }
                             }
@@ -67,10 +68,10 @@ struct ReadyRestoreView: View {
                             Image(systemName: "arrow.down.right")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
+                                .font(Font.system(size: 35, weight: .light))
                                 .frame(width: arrowSize,
                                        alignment: .center)
                                 .padding(.leading, 20.0)
-
                             Spacer()
                         }
                         .frame(maxHeight: .infinity, alignment: .bottomLeading)
@@ -78,38 +79,40 @@ struct ReadyRestoreView: View {
                         HStack {
                             VStack {
                                 HStack {
-                                    Text( isRestore ? "Restore"  : "Ready" )
+                                    Text("Ready?")
                                         .font(billboardFont)
                                         .frame(maxWidth: .infinity, alignment: .leading)
-                                        .foregroundColor(BrainwalletColor.content)
+                                        .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 }
                                 .padding(.bottom, 20.0)
-                                Text( isRestore ? "Restore!"  : "Do this for you. Please do it alone. Grab a pen, paper & 5 mins." )
+                                Text(readyText)
                                     .font(detailFont)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                    .foregroundColor(BrainwalletColor.content)
+                                    .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
+                                    .padding(.all, 10.0)
+
                             }
                             Spacer()
                         }
                         .padding(.bottom, 40.0)
                         .padding(.leading, 20.0)
 
-                        Spacer(minLength: 20.0)
+                        Spacer(minLength: 40.0)
                             Button(action: {
-                                path.append(.setPasscodeView)
+                                path.append(.setPasscodeView(isRestoringAnOldWallet: true))
                             }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                         .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                        .foregroundColor(BrainwalletColor.surface)
+                                        .foregroundColor(BrainwalletColor.grape)
 
                                     Text("Setup app passcode")
                                         .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                        .font(largeButtonFont)
-                                        .foregroundColor(BrainwalletColor.content)
+                                        .font(regularButtonFont)
+                                        .foregroundColor(.white)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: largeButtonHeight/2)
-                                                .stroke(BrainwalletColor.content, lineWidth: 2.0)
+                                                .stroke(.white, lineWidth: 1.0)
                                         )
                                 }
                                 .padding(.all, 8.0)
