@@ -8,9 +8,9 @@ orbs:
   ruby: circleci/ruby@2.5.3
   
 jobs:
-  build-and-test:
+  build-test-per-push:
     macos:
-      xcode: 15.3.0
+      xcode: 16.4.0
     #parallelism: 2  Does not work of open source macOS
     resource_class: macos.m1.medium.gen1
     working_directory: ~/ios/
@@ -26,8 +26,17 @@ jobs:
             - "SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g"
       - checkout
       - run:
-          name: Set Ruby Version
-          command: rbenv global 3.2.2 && rbenv rehash
+          name: Install Ruby 3.2.2 with rbenv
+          command: |
+            export PATH="$HOME/.rbenv/bin:$PATH"
+            if ! command -v rbenv &> /dev/null; then
+              brew update
+              brew install rbenv ruby-build
+            fi
+            eval "$(rbenv init -)"
+            rbenv install -s 3.2.2
+            rbenv global 3.2.2
+            ruby -v
       - run:
           name: Remove Gemfile.lock (optional, for clean install)
           command: |
@@ -54,6 +63,10 @@ jobs:
             echo "$REMOTE_CONFIG_DEFAULTS" | base64 --decode > remote-config-defaults.plist
             echo 'export DEBUG_SERVICE_DATA="$DEBUG_SERVICE_DATA"' >> $BASH_ENV
             echo "$DEBUG_SERVICE_DATA" | base64 --decode > service-data.plist
+            mv Brainwallet-StoreKit-v1.storekit ./brainwallet/Launch\ Resources/
+            mv GoogleService-Info.plist ./brainwallet/Launch\ Resources/
+            mv remote-config-defaults.plist ./brainwallet/Launch\ Resources/
+            mv service-data.plist ./brainwallet/Launch\ Resources/
       - run:
           name: Validate configuration files
           command: |
@@ -73,13 +86,6 @@ jobs:
           name: Restore SPM Cache
           keys:
             - spm-cache-{{ checksum "Package.resolved" }}
-      - run:
-          name: List available devices and simulators
-          command: |
-            echo "Available simulators:"
-            xcrun simctl list devices available | grep iPhone || echo "No iPhone simulators found"
-            echo "Build destinations for scheme:"
-            xcodebuild -showdestinations -scheme brainwalletTests -project *.xcodeproj || xcodebuild -showdestinations -scheme brainwalletTests -workspace *.xcworkspace || echo "Could not determine build destinations"
       - run:
           name: Boot simulator if needed
           command: |
@@ -110,7 +116,7 @@ jobs:
             echo "Build settings for test scheme:"
             xcodebuild -showBuildSettings -scheme brainwalletTests -project *.xcodeproj || echo "Could not show build settings"
       - run:
-          name: Run Fastlane
+          name: Run Fastlane iPhone 15 simulator Tests
           command: |
             export PATH="$HOME/.rbenv/bin:$PATH"
             eval "$(rbenv init -)"
@@ -138,31 +144,8 @@ jobs:
           path: ~/Library/Logs/DiagnosticReports
           destination: crash-logs
           when: on_fail
-  beta:
-    macos:
-      xcode: 14.0.1
-    working_directory: ~/ios/
-    environment:
-      FL_OUTPUT_DIR: output
-      FASTLANE_LANE: beta
-    shell: /bin/bash --login -o pipefail
-    steps:
-      - checkout
-      - run: bundle install
-      - run:
-          name: Fastlane
-          command: cd ios; bundle exec fastlane $FASTLANE_LANE
-      - store_artifacts:
-          path: output/brainwallet.ipa
-
 workflows:
-  version: 2
-  build-test:
+  version: 3
+  build-test-brainwallet-ios:
     jobs:
-      - build-and-test
-      - beta:
-          filters:
-            branches:
-              only: develop
-          requires:
-            - build-and-test
+      - build-test-per-push
