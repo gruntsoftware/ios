@@ -1,7 +1,6 @@
 import Foundation
 import StoreKit
 import FirebaseAnalytics
-
 extension ApplicationController {
 	func setupDefaults() {
 		if UserDefaults.standard.object(forKey: shouldRequireLoginTimeoutKey) == nil {

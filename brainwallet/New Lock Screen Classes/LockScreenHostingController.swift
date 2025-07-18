@@ -13,6 +13,8 @@ class LockScreenHostingController: UIHostingController<LockScreenView> {
 
     var viewModel: LockScreenViewModel
 
+    var lockScreenView: LockScreenView
+
     var didEnterPIN: ((String) -> Void)?
 
     var didTapQR: (() -> Void)?
@@ -29,8 +31,8 @@ class LockScreenHostingController: UIHostingController<LockScreenView> {
         }
         self.store = validStore
         viewModel = LockScreenViewModel(store: validStore)
-
-        super.init(rootView: LockScreenView(viewModel: viewModel))
+        lockScreenView = LockScreenView(viewModel: viewModel)
+        super.init(rootView: lockScreenView)
 
         viewModel.userSubmittedPIN = { [weak self] pin in
             self?.didEnterPIN?(pin)

@@ -24,6 +24,7 @@ struct PINRowView: View {
     private var digitFourEmpty: Bool = true
 
     var dotSize: CGFloat = 20.0
+    private let dotBackgroundColor = BrainwalletColor.grape
 
     private func updatePIN() {
             digitOneEmpty = pinState[0]
@@ -41,7 +42,8 @@ struct PINRowView: View {
             Ellipse()
                 .frame(width: dotSize,
                    height: dotSize)
-                .foregroundColor(digitOneEmpty ? BrainwalletColor.content.opacity(0.9) : BrainwalletColor.content.opacity(0.1))
+                .foregroundColor(digitOneEmpty ? dotBackgroundColor.opacity(0.9) :
+                    dotBackgroundColor.opacity(0.1))
                 .overlay(
                     Ellipse()
                         .stroke(BrainwalletColor.content, lineWidth: 1)
@@ -52,7 +54,8 @@ struct PINRowView: View {
             Ellipse()
                 .frame(width: dotSize,
                        height: dotSize)
-                .foregroundColor( digitTwoEmpty ? BrainwalletColor.content.opacity(0.9) : BrainwalletColor.content.opacity(0.1))
+                .foregroundColor( digitTwoEmpty ? dotBackgroundColor.opacity(0.9) :
+                     dotBackgroundColor.opacity(0.1))
                 .overlay(
                     Ellipse()
                         .stroke(BrainwalletColor.content, lineWidth: 1)
@@ -63,7 +66,8 @@ struct PINRowView: View {
             Ellipse()
                 .frame(width: dotSize,
                        height: dotSize)
-                .foregroundColor(digitThreeEmpty ? BrainwalletColor.content.opacity(0.9) : BrainwalletColor.content.opacity(0.1))
+                .foregroundColor(digitThreeEmpty ? dotBackgroundColor.opacity(0.9) :
+                    dotBackgroundColor.opacity(0.1))
                 .overlay(
                     Ellipse()
                         .stroke(BrainwalletColor.content, lineWidth: 1)
@@ -74,7 +78,8 @@ struct PINRowView: View {
             Ellipse()
                 .frame(width: dotSize,
                        height: dotSize)
-                .foregroundColor(digitFourEmpty ? BrainwalletColor.content.opacity(0.9) : BrainwalletColor.content.opacity(0.1))
+                .foregroundColor(digitFourEmpty ? dotBackgroundColor.opacity(0.9) :
+                    dotBackgroundColor.opacity(0.1))
                 .overlay(
                     Ellipse()
                         .stroke(BrainwalletColor.content, lineWidth: 1)

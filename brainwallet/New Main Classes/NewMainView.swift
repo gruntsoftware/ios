@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 let globalHeaderHeight: CGFloat = 160.0
 
@@ -86,7 +87,6 @@ struct NewMainView: View {
 
                     }
                     .offset(x: newMainViewModel.shouldShowSettings ? width - 90.0: 0)
-
                 }
             }
         }

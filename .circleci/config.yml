@@ -5,6 +5,7 @@
 version: 2.1
 orbs:
   macos: circleci/macos@2
+  ruby: circleci/ruby@2.5.3
   
 jobs:
   build-and-test:
@@ -14,6 +15,8 @@ jobs:
     resource_class: macos.m1.medium.gen1
     working_directory: ~/ios/
     environment:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+      FASTLANE_SKIP_UPDATE_CHECK: 1
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: single_unit_test_all
     shell: /bin/bash --login -o pipefail
@@ -22,6 +25,15 @@ jobs:
           fingerprints:
             - "SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g"
       - checkout
+      - run:
+          name: Set Ruby Version
+          command: rbenv global 3.2.2 && rbenv rehash
+      - run:
+          name: Remove Gemfile.lock (optional, for clean install)
+          command: |
+            rm -f Gemfile.lock
+            rm -rf vendor/bundle
+            gem uninstall fastlane -aIx || true
       - run:
           name: Setup SSH for private repos (ssh-ed25519 key added)
           command: |
@@ -81,21 +93,28 @@ jobs:
               echo "No iPhone 15 simulator found, using available simulators:"
               xcrun simctl list devices available | grep iPhone | head -5
             fi
-      - run: 
-          name: Install Bundler
-          command: gem install bundler:2.6.9; bundle update --bundler; bundle install
+      - run:
+          name: Install Bundler (2.6.9) and Dependencies
+          command: |
+            export PATH="$HOME/.rbenv/bin:$PATH"
+            eval "$(rbenv init -)"
+            gem install bundler:2.6.9
+            bundle install 
       - run:
           name: Validate project structure
           command: |
             echo "Project structure validation:"
-            ls -la *.xcodeproj *.xcworkspace || echo "No Xcode project/workspace found"
+            ls -la *.xcodeproj || echo "No Xcode project found"
             echo "Scheme validation:"
-            xcodebuild -list -project *.xcodeproj || xcodebuild -list -workspace *.xcworkspace || echo "Could not list schemes"
+            xcodebuild -list -project *.xcodeproj || echo "Could not list schemes"
             echo "Build settings for test scheme:"
-            xcodebuild -showBuildSettings -scheme brainwalletTests -project *.xcodeproj || xcodebuild -showBuildSettings -scheme brainwalletTests -workspace *.xcworkspace || echo "Could not show build settings"
+            xcodebuild -showBuildSettings -scheme brainwalletTests -project *.xcodeproj || echo "Could not show build settings"
       - run:
-          name: Fastlane
-          command: bundle exec fastlane $FASTLANE_LANE
+          name: Run Fastlane
+          command: |
+            export PATH="$HOME/.rbenv/bin:$PATH"
+            eval "$(rbenv init -)"
+            bundle exec fastlane $FASTLANE_LANE
       - run:
           name: Capture crash logs
           command: |

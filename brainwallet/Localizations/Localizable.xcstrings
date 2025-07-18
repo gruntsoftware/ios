@@ -2429,6 +2429,9 @@
         }
       }
     },
+    "as of %@" : {
+
+    },
     "at %1$@" : {
       "localizations" : {
         "ar" : {
@@ -4026,6 +4029,9 @@
         }
       }
     },
+    "Buy Litecoin" : {
+
+    },
     "BUY LTC" : {
       "localizations" : {
         "ar" : {
@@ -4653,6 +4659,7 @@
       }
     },
     "Clear" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -5361,6 +5368,7 @@
       }
     },
     "Confirm" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -5489,6 +5497,9 @@
           }
         }
       }
+    },
+    "Confirm passcode" : {
+
     },
     "Confirmation" : {
       "localizations" : {
@@ -8704,7 +8715,7 @@
         }
       }
     },
-    "Don’t guess.\n\nIt would take you 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries." : {
+    "Don’t guess. It would take you\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries." : {
 
     },
     "Done" : {
@@ -11885,6 +11896,9 @@
         }
       }
     },
+    "Game & Sync" : {
+
+    },
     "Game 1" : {
       "localizations" : {
         "ar" : {
@@ -12445,6 +12459,12 @@
         }
       }
     },
+    "Get Litecoin through MoonPay" : {
+
+    },
+    "Get some Litecoin for your Brainwallet" : {
+
+    },
     "Go to Settings to allow camera access." : {
       "localizations" : {
         "ar" : {
@@ -12828,6 +12848,9 @@
           }
         }
       }
+    },
+    "I saved it on paper or metal" : {
+
     },
     "Ignore" : {
       "localizations" : {
@@ -13330,6 +13353,9 @@
           }
         }
       }
+    },
+    "Just for you.\nIs it the private key that lets you send." : {
+
     },
     "Light Mode" : {
       "localizations" : {
@@ -14086,6 +14112,9 @@
           }
         }
       }
+    },
+    "Maybe later (Skip)" : {
+
     },
     "Menu" : {
       "localizations" : {
@@ -14955,6 +14984,9 @@
         }
       }
     },
+    "OK" : {
+
+    },
     "Paper Key" : {
       "localizations" : {
         "ar" : {
@@ -15713,6 +15745,7 @@
       }
     },
     "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -15841,6 +15874,9 @@
           }
         }
       }
+    },
+    "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool!" : {
+
     },
     "PIN" : {
       "localizations" : {
@@ -16970,6 +17006,9 @@
         }
       }
     },
+    "Press and drag a word into place" : {
+
+    },
     "Previous" : {
       "localizations" : {
         "ar" : {
@@ -17478,6 +17517,9 @@
         }
       }
     },
+    "Prove it!\nPlace the words in the correct order." : {
+
+    },
     "Re-Enter PIN" : {
       "localizations" : {
         "ar" : {
@@ -17867,6 +17909,9 @@
           }
         }
       }
+    },
+    "Ready?" : {
+
     },
     "Receive" : {
       "localizations" : {
@@ -19250,6 +19295,9 @@
         }
       }
     },
+    "RESET / START OVER" : {
+
+    },
     "Reset PIN" : {
       "localizations" : {
         "ar" : {
@@ -19622,7 +19670,14 @@
         }
       }
     },
+    "Restore & Sync" : {
+
+    },
+    "Restore your Brainwallet" : {
+
+    },
     "Restore your power" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -21240,7 +21295,11 @@
         }
       }
     },
+    "Set app passcode" : {
+
+    },
     "Set app PIN" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -24117,6 +24176,9 @@
         }
       }
     },
+    "Switching devices? Lost it in a boating accident? You can restore your Brainwallet here." : {
+
+    },
     "Sync" : {
       "localizations" : {
         "ar" : {
@@ -24990,6 +25052,9 @@
           }
         }
       }
+    },
+    "Tap a field above.\nEnter the a few letters.\nTap the word that matches" : {
+
     },
     "Tap here for more information." : {
       "localizations" : {
@@ -26669,6 +26734,9 @@
         }
       }
     },
+    "There was a serious error in creating your Brainwallet. Visit us at brainwallet.co to file a customer support ticket." : {
+
+    },
     "These are your seed words. If you show them to anyone, they can take your Litecoin" : {
       "localizations" : {
         "ar" : {
@@ -27803,6 +27871,9 @@
         }
       }
     },
+    "To be deposited to your LTC address" : {
+
+    },
     "To make sure everything was written down correctly, please enter the following words from your paper key." : {
       "localizations" : {
         "ar" : {
@@ -28062,6 +28133,9 @@
           }
         }
       }
+    },
+    "Top up?" : {
+
     },
     "Total Cost:" : {
       "localizations" : {
@@ -30367,6 +30441,9 @@
         }
       }
     },
+    "Wallet Creation Error" : {
+
+    },
     "Wallet is deleted" : {
       "localizations" : {
         "ar" : {
@@ -31520,6 +31597,7 @@
       }
     },
     "You can get back from where you started" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -31780,6 +31858,7 @@
       }
     },
     "You didn’t forget did you? Enter it again. Or, go back to start over." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -31908,6 +31987,9 @@
           }
         }
       }
+    },
+    "You didn’t forget did you? Ok! Just go back to start over." : {
+
     },
     "You have not set up Face ID on this device. Go to Settings->Face ID & Passcode to set it up now." : {
       "localizations" : {
@@ -32262,6 +32344,9 @@
           }
         }
       }
+    },
+    "You saved it, right?" : {
+
     },
     "You will be asked to enter your 6-digit PIN to send any transaction over your spending limit, and every 48 hours since the last time you entered your 6-digit PIN." : {
       "localizations" : {
@@ -33028,7 +33113,14 @@
         }
       }
     },
+    "Your seed phrase is verified!" : {
+
+    },
+    "Your seed words" : {
+
+    },
     "Your seed words " : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -33159,6 +33251,7 @@
       }
     },
     "Your seed words, prove it" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

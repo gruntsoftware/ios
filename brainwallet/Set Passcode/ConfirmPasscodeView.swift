@@ -7,22 +7,25 @@ struct ConfirmPasscodeView: View {
     @Binding
     var path: [Onboarding]
 
+    @State
+    private var startShake = false
+
     private let pinDigits: [Int]
 
     @State
     private var confirmPinDigits: [Int] = []
 
-    private let isRestore: Bool?
+    private let isRestoringAnOldWallet: Bool
 
     @State
     var pinState: [Bool] = [false,false,false,false]
 
     @State
-    private var didConfirmPIN: Bool = false
+    private var didConfirmPasscode: Bool = false
 
     let subTitleFont: Font = .barlowSemiBold(size: 32.0)
     let largeButtonFont: Font = .barlowBold(size: 24.0)
-    let detailFont: Font = .barlowRegular(size: 26.0)
+    let detailFont: Font = .barlowRegular(size: 22.0)
 
     let verticalPadding: CGFloat = 20.0
     let squareButtonSize: CGFloat = 55.0
@@ -32,13 +35,14 @@ struct ConfirmPasscodeView: View {
     let largeButtonHeight: CGFloat = 65.0
 
     let arrowSize: CGFloat = 60.0
+    let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
-    init(pinDigits: [Int], viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
+    init(isRestoringAnOldWallet: Bool, pinDigits: [Int],
+         viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
+        self.pinDigits = pinDigits
+        self.isRestoringAnOldWallet = isRestoringAnOldWallet
         self.viewModel = viewModel
         _path = path
-
-        self.pinDigits = pinDigits
-        isRestore = true
     }
 
     var body: some View {
@@ -65,8 +69,7 @@ struct ConfirmPasscodeView: View {
                                         .frame(width: squareImageSize,
                                                height: squareImageSize,
                                                alignment: .center)
-
-                                        .foregroundColor(BrainwalletColor.content)
+                                        .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                     Spacer()
                                 }
                             }.frame(maxWidth: .infinity, alignment: .leading)
@@ -74,25 +77,29 @@ struct ConfirmPasscodeView: View {
                         .frame(height: squareImageSize)
                         .padding(.all, 20.0)
 
-                            Text( "Confirm" )
+                            Text( "Confirm passcode" )
                                 .font(subTitleFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
-                                .foregroundColor(BrainwalletColor.content)
-                            Text( "You didn’t forget did you? Enter it again. Or, go back to start over.")
+                                .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
+                            Text( "You didn’t forget did you? Ok! Just go back to start over.")
                                 .font(detailFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
-                                .foregroundColor(BrainwalletColor.content)
+                                .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 .padding(.all, 20.0)
 
                         PINRowView(pinState: $pinState)
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .frame(height: 40.0)
-                                .padding(.top, 40.0)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .frame(height: 40.0)
+                            .padding(.top, 40.0)
+                            .offset(x: startShake ? 7 : 0)
+                            .animation(.spring(response: 0.15, dampingFraction: 0.1, blendDuration: 0.2), value: startShake)
 
                         Spacer()
                         PasscodeGridView(digits: $confirmPinDigits)
-                            .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
-                            .padding(.bottom, 80.0)
+                            .frame(width: width * 0.6,
+                                   height: height * 0.35,
+                                   alignment: .center)
+                                .padding(.bottom, 80.0)
                         }
                 }
                 .onChange(of: confirmPinDigits) { _ in
@@ -100,21 +107,47 @@ struct ConfirmPasscodeView: View {
                     pinState = (0..<4).map { $0 < confirmPinDigits.count }
                     let currentPinState = pinState.allSatisfy { $0 == true }
                     let pinDoesMatch = confirmPinDigits == self.pinDigits
-                    didConfirmPIN  = currentPinState && pinDoesMatch
+                    didConfirmPasscode  = currentPinState && pinDoesMatch
+                    viewModel.pinDigits = self.pinDigits
 
-                    if didConfirmPIN {
+                    let store = viewModel.store
 
-                        switch isRestore {
-                        case true :
-                                path.append(.inputWordsView)
-                        case false :
-                                path.append(.yourSeedWordsView)
-                        case nil :
-                                path.append(.tempSettingsView)
-                        case .some:
-                                    path.append(.tempSettingsView)
+                    /// Pin digits filled
+                    if confirmPinDigits.count == kPinDigitConstant {
+                        /// Confirmed the Passcode
+                        if didConfirmPasscode {
+                            /// Set the PIN/Passcode into UserDefaults
+                            viewModel.pinDigits = self.pinDigits
+                            _ = viewModel.setPinPasscode(newPasscode:
+                                pinDigits.map { String($0) }.joined())
+
+                            store?.perform(action: SimpleReduxAlert.Show(.pinSet(callback: {
+                            })))
+
+                            if isRestoringAnOldWallet {
+                               path.append(.yourSeedWordsView)
+                            } else {
+                               path.append(.inputWordsView)
+                            }
+                        } else {
+                            startShake.toggle()
+                            delay(0.4) {
+                                startShake.toggle()
+                                confirmPinDigits = []
+                                pinState = [false,false,false,false]
+                            }
                         }
                     }
+                }
+                .onChange(of: viewModel.walletCreationDidFail) { newValue in
+                    /// Returns user to the StartView if there is a failure
+                    if newValue {
+                        path.removeAll(keepingCapacity: false)
+                    }
+                }
+                .onAppear {
+                    confirmPinDigits = []
+                    pinState = [false,false,false,false]
                 }
             }
     }
