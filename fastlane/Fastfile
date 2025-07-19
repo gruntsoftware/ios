@@ -1,4 +1,5 @@
 # fastlane/Fastfile
+opt_out_usage
 default_platform :ios
 
 platform :ios do
@@ -12,69 +13,72 @@ platform :ios do
     # You can log the error, send a notification, or take any other action
     UI.error("Error occurred during running the pipeline: #{exception.message}")
   end
-  
-  desc "Run all the unit tests kcw"
-  lane :all_unit_tests_old do
-    run_tests(clean: true, devices: ["iPhone 15 Pro Max"], scheme: "brainwalletTests", cloned_source_packages_path: "SourcePackages")
-  end
-  desc "use Gemfile"
-  lane :run_scan do
-    scan
-  end
-  
-  desc "Run all the unit tests - iPhone 15 Pro Max"
-  lane :single_unit_test_all do
-    # Test iPhone 15 Pro Max variant
-    device_name = "iPhone 15 Pro Max"  # single sim
-    scan(
-      clean: true,
-      devices: [device_name],
-      scheme: "brainwalletTests",
-      output_types: "html",
-      buildlog_path: "./build_logs",
-      include_simulator_logs: true,
-      derived_data_path: "./DerivedData"
-    )
-  end
-  desc "Run all the unit tests ai"
-  lane :all_unit_tests do
-    # Try to detect available iPhone 15 Pro Max variant
-    available_devices = `xcrun simctl list devices available | grep "iPhone 15 Pro Max"`.split("\n")
-    device_name = if available_devices.any?
-      available_devices.first.match(/iPhone 15[^(]*/)[0].strip
-    else
-      "iPhone 15 Pro Max"  # fallback
-    end
-  
+  lane :minimal_test do
     run_tests(
-      clean: true,
-      devices: [device_name],
       scheme: "brainwalletTests",
-      output_types: "html,junit",
-      buildlog_path: "./build_logs",
-      include_simulator_logs: true,
-      derived_data_path: "./DerivedData"
-    )
-  end
-  # Basic
-  lane :basic_test do
-    scan
-  end
-  # Add a debug lane for troubleshooting
-  lane :debug_tests do
-    run_tests(
       clean: true,
+      code_coverage: true,
+      configuration: "Debug",
+      only_testing: ["brainwalletTests/SettingsHelpersTests"],
       devices: ["iPhone 15 Pro Max"],
-      scheme: "brainwalletTests",
-      skip_build: false,
-      code_coverage: false,
-      derived_data_path: "./DerivedData",
-      output_types: "html,junit"
+      output_types: "html,junit",
+      output_directory: "./fastlane/test_output",
+      skip_build: false
     )
   end
-  desc "Build and Archive"
-  lane :build_and_archive do
-    build_app(clean: true, scheme: "brainwallet", cloned_source_packages_path: "SourcePackages")
-  end
+  # desc "Run all the unit tests - iPhone 15 Pro Max"
+  # lane :single_unit_test_all do
+  #   # Test iPhone 15 Pro Max variant
+  #   device_name = "iPhone 15 Pro Max"  # single sim
+  #   scan(
+  #     clean: true,
+  #     devices: [device_name],
+  #     scheme: "brainwalletTests",
+  #     output_types: "html",
+  #     buildlog_path: "./build_logs",
+  #     include_simulator_logs: true,
+  #     derived_data_path: "./DerivedData"
+  #   )
+  # end
+  # desc "Run all the unit tests ai"
+  # lane :all_unit_tests do
+  #   # Try to detect available iPhone 15 Pro Max variant
+  #   available_devices = `xcrun simctl list devices available | grep "iPhone 15 Pro Max"`.split("\n")
+  #   device_name = if available_devices.any?
+  #     available_devices.first.match(/iPhone 15[^(]*/)[0].strip
+  #   else
+  #     "iPhone 15 Pro Max"  # fallback
+  #   end
+  #
+  #   run_tests(
+  #     clean: true,
+  #     devices: [device_name],
+  #     scheme: "brainwalletTests",
+  #     output_types: "html,junit",
+  #     buildlog_path: "./build_logs",
+  #     include_simulator_logs: true,
+  #     derived_data_path: "./DerivedData"
+  #   )
+  # end
+  # # Basic
+  # lane :basic_test do
+  #   scan
+  # end
+  # # Add a debug lane for troubleshooting
+  # lane :debug_tests do
+  #   run_tests(
+  #     clean: true,
+  #     devices: ["iPhone 15 Pro Max"],
+  #     scheme: "brainwalletTests",
+  #     skip_build: false,
+  #     code_coverage: true,
+  #     derived_data_path: "./DerivedData",
+  #     output_types: "html,junit"
+  #   )
+  # end
+  # desc "Build and Archive"
+  # lane :build_and_archive do
+  #   build_app(clean: true, scheme: "brainwallet", cloned_source_packages_path: "SourcePackages")
+  # end
 end
 
