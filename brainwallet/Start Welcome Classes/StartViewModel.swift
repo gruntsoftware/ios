@@ -12,27 +12,11 @@ class StartViewModel: ObservableObject, Subscriber {
 	@Published
 	var tappedIndex: Int = 0
 
-	@Published
-	var walletCreationDidFail: Bool = false
-
 	// MARK: - Public Variables
-
-	var didTapCreate: (() -> Void)?
-	var didTapRecover: (() -> Void)?
     var store: Store?
-
-    let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
 
 	init(store: Store) {
 		self.store = store
-	}
-
-	func userWantsToCreate(completion: @escaping () -> Void) {
-		didTapCreate = completion
-	}
-
-	func userWantsToRecover(completion: @escaping () -> Void) {
-		didTapRecover = completion
 	}
 
     func userDidSetThemePreference(userPrefersDarkMode: Bool) {

@@ -1,0 +1,30 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "Portefeuille de cerveaux";
+
+/* Bundle name */
+"CFBundleName" = "Portefeuille de cerveaux";
+
+/* No comment provided by engineer. */
+"Litecoin Payment" = "Paiement Litecoin";
+
+/* No comment provided by engineer. */
+"Litecoin Payment ACK" = "Paiement Litecoin ACK";
+
+/* No comment provided by engineer. */
+"Litecoin Payment Request" = "Demande de paiement Litecoin";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Utilisé pour scanner les codes-barres";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Utilisé pour déverrouiller l’application et autoriser les paiements";
+
+/* Privacy - Location Always Usage Description */
+"NSLocationAlwaysUsageDescription" = "Utilisé pour déterminer le nœud le plus proche de vous - jamais enregistré ou partagé avec qui que ce soit";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "Utilisé pour déterminer le nœud le plus proche de vous - jamais enregistré ou partagé avec qui que ce soit";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "Utilisé pour scanner les codes-barres";
+

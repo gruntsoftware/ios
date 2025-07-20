@@ -5,6 +5,9 @@ struct InputWordsView: View {
     @State
     private var didContinue: Bool = false
 
+    @State
+    private var phraseIsVerified: Bool = false
+
     @FocusState
     private var fieldInFocus: Bool
 
@@ -12,7 +15,7 @@ struct InputWordsView: View {
     var path: [Onboarding]
 
     @ObservedObject
-    var viewModel: StartViewModel
+    var viewModel: NewMainViewModel
 
     let subTitleFont: Font = .barlowSemiBold(size: 32.0)
     let largeButtonFont: Font = .barlowBold(size: 24.0)
@@ -28,9 +31,13 @@ struct InputWordsView: View {
     /// Reuse the seed grid for yourr seedwords
     private let isRestore = true
 
-    init(viewModel: StartViewModel, path: Binding<[Onboarding]>) {
+    init(viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
         _path = path
+    }
+
+    private func playCoin() {
+        SoundsHelper().play(filename: "coinflip", type: "mp3")
     }
 
     var body: some View {
@@ -65,55 +72,53 @@ struct InputWordsView: View {
                     .padding([.leading, .trailing], 20.0)
                     .padding(.bottom, 0.0)
 
-                    Text("Restore your power")
+                    Text("Restore your Brainwallet")
                         .font(subTitleFont)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.05)
                         .foregroundColor(BrainwalletColor.content)
-                        .padding(.top, 5.0)
+                        .padding(8.0)
 
-                    Text( "You can get back from where you started" )
-                        .font(detailFont)
+                    InputWordsGridView(viewModel: viewModel, phraseIsVerified: $phraseIsVerified)
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: height * 0.1)
-                        .foregroundColor(BrainwalletColor.content)
-                        .padding(.top, 2.0)
-                        .padding([.leading, .trailing], 20.0)
+                        .frame(height: height * 0.4, alignment: .center)
+                        .padding(.top, 16.0)
+                        .padding([.leading, .trailing], 16.0)
+                        .focused($fieldInFocus)
 
-                    SeedWordsGridView(isRestore: isRestore)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: height * 0.3, alignment: .center)
-                        .padding(.all, 2.0)
-
-                    Spacer()
-
-                        Text( "Don’t guess.\n\nIt would take you 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries.")
-                            .font(detailerFont)
+                    Text( phraseIsVerified ? "Your seed phrase is verified!" :
+                            "Don’t guess. It would take you\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries.")
+                    .font(phraseIsVerified ? subTitleFont : detailerFont)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(BrainwalletColor.content)
                             .frame(height: height * 0.2, alignment: .center)
                             .padding(.top, 5.0)
                             .padding([.leading, .trailing], 24.0)
+                            .opacity(fieldInFocus ? 0.0 : 1.0)
 
                         Text( "Blockchain: Litecoin" )
                             .font(detailerFont)
                             .frame(maxWidth: .infinity, alignment: .center)
-                            .frame(height: height * 0.04, alignment: .center)
                             .foregroundColor(BrainwalletColor.content)
-                            .padding(.all, 5.0)
-
+                            .padding(.all, 12.0)
+                            .opacity(fieldInFocus ? 0.0 : 1.0)
+                    Spacer()
                     Button(action: {
-                       // path.append(.setPasscodeView(isRestore: isRestore))
+                        if phraseIsVerified {
+                            playCoin()
+                            viewModel.didRestoreOldBrainwallet()
+                        }
+
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .foregroundColor(BrainwalletColor.surface)
 
-                            Text("Setup app passcode")
+                            Text("Restore & Sync")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .font(largeButtonFont)
-                                .foregroundColor(BrainwalletColor.content)
+                                .foregroundColor(phraseIsVerified ? BrainwalletColor.content : BrainwalletColor.content.opacity(0.5))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                         .stroke(BrainwalletColor.content, lineWidth: 2.0)
@@ -121,9 +126,16 @@ struct InputWordsView: View {
                         }
                         .padding(.all, 8.0)
                     }
-
+                    .padding(.all, 8.0)
+                    .opacity(fieldInFocus ? 0.0 : 1.0)
+                    .disabled(!phraseIsVerified)
                 }
                 .ignoresSafeArea(.keyboard)
+                .onChange(of: phraseIsVerified) { _ in
+                    if phraseIsVerified {
+                        fieldInFocus = false
+                    }
+                }
             }
         }
     }

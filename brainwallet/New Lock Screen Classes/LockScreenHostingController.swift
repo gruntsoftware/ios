@@ -13,6 +13,8 @@ class LockScreenHostingController: UIHostingController<LockScreenView> {
 
     var viewModel: LockScreenViewModel
 
+    var lockScreenView: LockScreenView
+
     var didEnterPIN: ((String) -> Void)?
 
     var didTapQR: (() -> Void)?
@@ -21,12 +23,16 @@ class LockScreenHostingController: UIHostingController<LockScreenView> {
 
     var userDidPreferDarkMode: ((Bool) -> Void)?
 
-    init(store: Store) {
-        viewModel = LockScreenViewModel(store: store)
+    let store: Store
 
-        let userPrefersDarkMode = UserDefaults.userPreferredDarkTheme
-
-       super.init(rootView: LockScreenView(viewModel: viewModel))
+    init(store: Store?) {
+        guard let validStore = store else {
+            preconditionFailure("LockScreenHostingController requires a non-nil store.")
+        }
+        self.store = validStore
+        viewModel = LockScreenViewModel(store: validStore)
+        lockScreenView = LockScreenView(viewModel: viewModel)
+        super.init(rootView: lockScreenView)
 
         viewModel.userSubmittedPIN = { [weak self] pin in
             self?.didEnterPIN?(pin)

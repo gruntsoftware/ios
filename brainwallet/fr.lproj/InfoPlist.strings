@@ -1,30 +1,30 @@
 /* Bundle display name */
-"CFBundleDisplayName" = "Portefeuille de cerveaux";
+"CFBundleDisplayName" = "محفظة الدماغ";
 
 /* Bundle name */
-"CFBundleName" = "Portefeuille de cerveaux";
+"CFBundleName" = "محفظة الدماغ";
 
 /* No comment provided by engineer. */
-"Litecoin Payment" = "Paiement Litecoin";
+"Litecoin Payment" = "دفع لايتكوين";
 
 /* No comment provided by engineer. */
-"Litecoin Payment ACK" = "Paiement Litecoin ACK";
+"Litecoin Payment ACK" = "إقرار دفع لايتكوين";
 
 /* No comment provided by engineer. */
-"Litecoin Payment Request" = "Demande de paiement Litecoin";
+"Litecoin Payment Request" = "طلب دفع لايتكوين";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Utilisé pour scanner les codes-barres";
+"NSCameraUsageDescription" = "تُستخدم لمسح الباركود";
 
 /* Privacy - Face ID Usage Description */
-"NSFaceIDUsageDescription" = "Utilisé pour déverrouiller l’application et autoriser les paiements";
+"NSFaceIDUsageDescription" = "يُستخدم لفتح التطبيق وتفويض المدفوعات";
 
 /* Privacy - Location Always Usage Description */
-"NSLocationAlwaysUsageDescription" = "Utilisé pour déterminer le nœud le plus proche de vous - jamais enregistré ou partagé avec qui que ce soit";
+"NSLocationAlwaysUsageDescription" = "يُستخدم لتحديد أقرب عقدة إليك - لا يتم تسجيله أو مشاركته مع أي شخص.";
 
 /* Privacy - Location When In Use Usage Description */
-"NSLocationWhenInUseUsageDescription" = "Utilisé pour déterminer le nœud le plus proche de vous - jamais enregistré ou partagé avec qui que ce soit";
+"NSLocationWhenInUseUsageDescription" = "يستخدم لتحديد أقرب عقدة إليك - لا يتم تسجيله أو مشاركته مع أي شخص";
 
 /* Privacy - Photo Library Usage Description */
-"NSPhotoLibraryUsageDescription" = "Utilisé pour scanner les codes-barres";
+"NSPhotoLibraryUsageDescription" = "تُستخدم لمسح الرموز الشريطية";
 

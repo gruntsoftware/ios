@@ -58,15 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NetworkHelper.init().fetchCurrenciesCountries(completion:  { countryData  in
 
             let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == regionCode2Char }.first ?? countryRussia
-
-            let isBuyAllowed = currentMoonPayCountry.isBuyAllowed
-            if isBuyAllowed {
-                UserDefaults.standard.set(isBuyAllowed, forKey: userCurrentLocaleMPApprovedKey)
-            } else {
-            UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
-            }
-
-            UserDefaults.standard.synchronize()
+            UserDefaults.userCanBuyInCurrentLocale = currentMoonPayCountry.isBuyAllowed
         })
 
         // Ops

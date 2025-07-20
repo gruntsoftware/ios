@@ -5,11 +5,14 @@ struct LaunchView: View {
 		GeometryReader { _ in
 			ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
+
 			}
 		}
 	}
 }
 
-#Preview {
-	LaunchView()
+struct LaunchView_Previews: PreviewProvider {
+    static var previews: some View {
+        LaunchView()
+    }
 }

@@ -4,13 +4,11 @@ import SwiftUI
 class StartHostingController: UIHostingController<StartView> {
 	// MARK: - Private
 
-	var startViewModel: StartViewModel
+    var newMainViewModel: NewMainViewModel
 
 	init(store: Store, walletManager: WalletManager) {
-        startViewModel = StartViewModel(store: store)
-
-        let newMainViewModel = NewMainViewModel(store: store, walletManager: walletManager)
-        super.init(rootView: StartView(startViewModel: startViewModel, newMainViewModel: newMainViewModel))
+        newMainViewModel = NewMainViewModel(store: store, walletManager: walletManager)
+        super.init(rootView: StartView(newMainViewModel: newMainViewModel))
 	}
 	// MARK: - Private
 

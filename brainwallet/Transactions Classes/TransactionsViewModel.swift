@@ -1,4 +1,6 @@
 import Foundation
+import StoreKit
+import FirebaseAnalytics
 
 class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
 
@@ -33,12 +35,7 @@ class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
 	init(store: Store, walletManager: WalletManager) {
 		self.store = store
 		self.walletManager = walletManager
-        fetchAllTransactions()
 	}
-
-    func fetchAllTransactions() {
-
-    }
 
     /// Update displayed transactions. Used mainly when the database needs an update
     /// - Parameter txHash: String reprsentation of the TX
@@ -64,6 +61,15 @@ class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
         return progressValue
     }
 
+    private func requestReviewForFrequentUser() {
+        SKStoreReviewController.requestReviewInCurrentScene()
+        Analytics.logEvent("did_request_rating",
+            parameters: [
+                "platform": "ios",
+                "app_version": AppVersion.string
+            ])
+    }
+
     // MARK: - Subscription Methods
 
     private func addSubscriptions() {
@@ -77,9 +83,13 @@ class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
 
         store.subscribe(self, selector: { $0.walletState.transactions != $1.walletState.transactions },
                         callback: { state in
-                            self.allTransactions = state.walletState.transactions
+            self.allTransactions = state.walletState.transactions
 
-                        })
+            if self.allTransactions.count >= 7 && !UserDefaults.appHasRequestedReview {
+                self.requestReviewForFrequentUser()
+            }
+
+         })
 
         // MARK: - Wallet State:  CurrentRate
 

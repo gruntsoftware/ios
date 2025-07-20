@@ -12,7 +12,7 @@ class NewConfirmViewModel: ObservableObject, Subscriber {
     // MARK: - Combine Variables
 
     @Published
-    var currentValueInFiat: String = ""
+    var currentFiatValue: String = ""
 
     @Published
     var currencyCode: String = ""

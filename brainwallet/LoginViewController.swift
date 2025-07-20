@@ -153,17 +153,7 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 	}
 
     private func authenticationFailed() {
-        saveEvent("login.failed")
         lockScreenView.viewModel.authenticationFailed = true
-        // TBD  Add Animation
-        //		pinView.shake { [weak self] in
-        //			self?.pinPadViewController.view.isUserInteractionEnabled = true
-        //		}
-        //		pinPadViewController.clear()
-        //		DispatchQueue.main.asyncAfter(deadline: .now() + pinView.shakeDuration) { [weak self] in
-        //			pinView.fill(0)
-        //			self?.lockIfNeeded()
-        //		}
     }
 
 	private var shouldUseBiometrics: Bool {

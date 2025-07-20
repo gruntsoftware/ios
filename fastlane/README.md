@@ -47,6 +47,14 @@ Run all the unit tests - iPhone 15 Pro Max
 
 Run all the unit tests ai
 
+### ios basic_test
+
+```sh
+[bundle exec] fastlane ios basic_test
+```
+
+
+
 ### ios debug_tests
 
 ```sh
