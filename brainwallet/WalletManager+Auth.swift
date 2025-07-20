@@ -40,11 +40,14 @@ extension WalletManager: WalletAuthenticator {
 	private static var failedPins = [String]()
 
 	convenience init(store: Store, dbPath: String? = nil) throws {
-		Task {
-			if await !UIApplication.shared.isProtectedDataAvailable {
-				throw NSError(domain: NSOSStatusErrorDomain, code: Int(errSecNotAvailable))
-			}
-		}
+
+        Task {
+            try await MainActor.run {
+                if !UIApplication.shared.isProtectedDataAvailable {
+                    throw NSError(domain: NSOSStatusErrorDomain, code: Int(errSecNotAvailable))
+                }
+            }
+        }
 
 		if try keychainItem(key: KeychainKey.seed) as Data? != nil { // upgrade from old keychain scheme
 			let seedPhrase: String? = try keychainItem(key: KeychainKey.mnemonic)
@@ -263,11 +266,16 @@ extension WalletManager: WalletAuthenticator {
 
 	// the 12 word wallet recovery phrase
 	func seedPhrase(pin: String) -> String? {
-		guard authenticate(pin: pin) else { return nil }
+        guard authenticate(pin: pin) else {
+            return nil
+        }
 
 		do {
-			return try keychainItem(key: KeychainKey.mnemonic)
-		} catch { return nil }
+            let fetchedMnemonic: String? = try keychainItem(key: KeychainKey.mnemonic)
+			return fetchedMnemonic
+        } catch {
+            return nil
+        }
 	}
 
 	// recover an existing wallet using 12 word wallet recovery phrase

@@ -1,6 +1,6 @@
 import SwiftUI
 import Lottie
-
+import FirebaseAnalytics
 struct StartView: View {
     let selectorFont: Font = .barlowSemiBold(size: 16.0)
     let buttonLightFont: Font = .barlowLight(size: 16.0)
@@ -18,9 +18,6 @@ struct StartView: View {
 
     @State
     private var isShowingOnboardView: Bool = true
-
-	@ObservedObject
-	var startViewModel: StartViewModel
 
     @ObservedObject
     var newMainViewModel: NewMainViewModel
@@ -40,8 +37,8 @@ struct StartView: View {
     @State
     private var userPrefersDarkMode: Bool = true
 
-	@State
-	private var currentTagline = ""
+    @State
+    private var fiatValue = ""
 
 	@State
 	private var animationAmount = 0.0
@@ -49,14 +46,13 @@ struct StartView: View {
     @State
     private var debugLocale = ""
 
-    @State
-    private var pickedCurrency: GlobalCurrency = .USD
-
 	@State
 	private var didContinue: Bool = false
 
-    init(startViewModel: StartViewModel, newMainViewModel: NewMainViewModel) {
-        self.startViewModel = startViewModel
+    @State
+    private var isRestoringAnOldWallet: Bool = false
+
+    init(newMainViewModel: NewMainViewModel) {
         self.newMainViewModel = newMainViewModel
 	}
 
@@ -83,75 +79,82 @@ struct StartView: View {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 
                     VStack {
-                        Group {
-                            Image("bw-logotype")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: width * 0.65,
-                                       alignment: .center)
-                                .padding([.top,.bottom], verticalPadding)
-
-                            WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
-                                .frame(height: height * 0.35, alignment: .center)
-                                .padding(.top, verticalPadding)
+                        HStack {
+                            Text(newMainViewModel.currentFiatValue)
+                                .font(Font(UIFont.barlowLight(size: 16.0)))
+                                .foregroundColor(BrainwalletColor.content)
+                                .animation(.bouncy(duration: 0.5))
+                                .frame(width: width * 0.9, alignment: .trailing)
+                                .padding(.trailing, 16.0)
                         }
+                        .padding(.top, 16.0)
+                        .frame(height: 20.0)
+
+                        Image("bw-logotype")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: width * 0.65,
+                                   alignment: .center)
+                            .padding([.top,.bottom], verticalPadding)
+
+                        WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
+                            .frame(height: height * 0.35, alignment: .center)
+                            .padding(.top, verticalPadding)
 
                         Spacer()
                         HStack {
-                            ZStack {
-                                Group {
-                                    HStack {
-                                        Button(action: {
-                                            userPrefersDarkMode.toggle()
-                                        }) {
-                                            ZStack {
-                                                Image(systemName: userPrefersDarkMode ?
-                                                    "moon.circle" : "sun.max.circle")
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(width: themeBorderSize,
-                                                           height: themeBorderSize,
-                                                           alignment: .center)
-                                                    .foregroundColor(BrainwalletColor.content)
-                                            }
-                                        }
-                                        .frame(width: width * 0.1)
-                                        .onChange(of: userPrefersDarkMode) { preference in
-                                            startViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
-                                        }
-
-                                        Picker("", selection: $pickedCurrency) {
-                                            ForEach(startViewModel.globalCurrencies, id: \.self) {
-                                                Text("\($0.fullCurrencyName)   \($0.code) (\($0.symbol))")
-                                                    .font(selectorFont)
-                                                    .foregroundColor(BrainwalletColor.content)
-                                            }
-
-                                        }
-                                        .pickerStyle(.wheel)
-                                        .frame(width: width * 0.6)
-                                        .onChange(of: pickedCurrency) { _ in
-                                            selectedFiat = true
-                                        }.padding(.trailing, width * 0.1)
-                                    }
+                            Button(action: {
+                                userPrefersDarkMode.toggle()
+                            }) {
+                                ZStack {
+                                    Image(systemName: userPrefersDarkMode ?
+                                        "moon.circle" : "sun.max.circle")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: themeButtonSize,
+                                               height: themeButtonSize,
+                                               alignment: .center)
+                                        .foregroundColor(BrainwalletColor.content)
                                 }
                             }
+                            .frame(width: width * 0.1, alignment: .center)
+                            .onChange(of: userPrefersDarkMode) { preference in
+                                newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
+                            }
+                            Picker("", selection: $newMainViewModel.currentGlobalFiat) {
+                                    ForEach(newMainViewModel.globalCurrencies, id: \.self) {
+                                        Text("\($0.fullCurrencyName)   \($0.code) (\($0.symbol))")
+                                            .font(selectorFont)
+                                            .frame(maxWidth: .infinity,
+                                                alignment: .center)
+                                            .foregroundColor(BrainwalletColor.content)
+                                    }
+                            }
+                            .pickerStyle(.wheel)
+                            .frame(width: width * 0.8, alignment: .center)
+                            .onChange(of: newMainViewModel.currentGlobalFiat) { _ in
+                                selectedFiat = true
+                                newMainViewModel
+                                    .userDidSetCurrencyPreference(currency:
+                                        newMainViewModel.currentGlobalFiat)
+
+                            }
+
 						}
 						.frame(width: width * 0.9,
 						       height: height * 0.1,
 						       alignment: .center)
 
                         Button(action: {
-                                 startViewModel.didTapCreate!()
-                                // path.append(.inputWordsView)
-                                // path.append(.readyView)
+                            isRestoringAnOldWallet = false
+                            path.append(.readyView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
 
-                                Text( "Ready" )
+                                Text("Ready")
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(largeButtonFont)
                                     .foregroundColor(BrainwalletColor.content)
@@ -164,9 +167,8 @@ struct StartView: View {
                         }
 
                         Button(action: {
-                                 startViewModel.didTapRecover!()
-                                // path.append(.restoreView)
-                                // path.append(.yourSeedWordsView)
+                            isRestoringAnOldWallet = true
+                            path.append(.restoreView)
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: largeButtonHeight/2)
@@ -204,44 +206,45 @@ struct StartView: View {
                 .scrollContentBackground(.hidden)
                 .background(BrainwalletColor.surface)
                 .navigationDestination(for: Onboarding.self) { onboard in
+
                     switch onboard {
                     case .restoreView:
-                        ReadyRestoreView(isRestore: true, viewModel: startViewModel, path: $path)
+                        RestoreView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                     case .readyView:
-                        ReadyRestoreView(isRestore: false, viewModel: startViewModel, path: $path)
+                        ReadyView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
-                    case .setPasscodeView:
+                    case .setPasscodeView(let isRestoringAnOldWallet):
                         ZStack {
-                           SetPasscodeView(path: $path)
+                            SetPasscodeView(isRestoringAnOldWallet: isRestoringAnOldWallet, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
-                    case .confirmPasscodeView(let pinDigits):
+                    case .confirmPasscodeView(let isRestoringAnOldWallet, let pinDigits):
                         ZStack {
-                            ConfirmPasscodeView(pinDigits: pinDigits, viewModel: startViewModel, path: $path)
+                            ConfirmPasscodeView(isRestoringAnOldWallet: isRestoringAnOldWallet, pinDigits: pinDigits, viewModel: newMainViewModel, path: $path)
                                .navigationBarBackButtonHidden()
                         }
                     case .inputWordsView:
                         ZStack {
-                             InputWordsView(viewModel: startViewModel, path: $path)
+                             InputWordsView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
                     case .yourSeedWordsView:
                         ZStack {
-                            YourSeedWordsView(viewModel: startViewModel, path: $path)
+                            YourSeedWordsView(viewModel: newMainViewModel, path: $path)
                                                         .navigationBarBackButtonHidden()
                         }
                     case .yourSeedProveView:
-                        YourSeedProveItView(viewModel: startViewModel, path: $path)
+                        YourSeedProveItView(viewModel: newMainViewModel, path: $path)
                             .navigationBarBackButtonHidden()
                     case .topUpView:
                         ZStack {
-                            TopUpView(viewModel: startViewModel, path: $path)
+                            TopUpView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
                     case .topUpSetAmountView:
                         ZStack {
-                            TopUpSetAmountView(viewModel: startViewModel, path: $path)
+                            TopUpSetAmountView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
                     case .tempSettingsView:
@@ -252,18 +255,28 @@ struct StartView: View {
                     }
                 }
             }
-            .alert( "Error" ,
-                   isPresented: $startViewModel.walletCreationDidFail,
-                   actions: {
-                HStack {
-                    Button("Ok" , role: .cancel) {
-                        startViewModel.walletCreationDidFail = false
+            .alert(String(localized: "Wallet Creation Error"),
+                isPresented: $newMainViewModel.walletCreationDidFail,
+                actions: {
+                    Button( String(localized: "OK"), role: .cancel) {
+                        newMainViewModel.walletCreationDidFail = false
+
+                        Analytics.logEvent("wallet_creation_error",
+                            parameters: [
+                                "platform": "ios",
+                                "app_version": AppVersion.string,
+                                "error_message": "failed_to_create_wallet"
+                            ])
                     }
-                }
+                },
+                message: {
+                        Text(String(localized: "There was a serious error in creating your Brainwallet. Visit us at brainwallet.co to file a customer support ticket."))
             })
             .onAppear {
                 Task {
                     userPrefersDarkMode = UserDefaults.userPreferredDarkTheme
+                    let currentValue = newMainViewModel.currentFiatValue
+                    fiatValue = String(format: String(localized: "%@ = 1Ł"), currentValue)
                     updateVersionLabel()
                 }
             }
@@ -275,8 +288,8 @@ struct StartView: View {
 enum Onboarding: Hashable {
     case readyView
     case restoreView
-    case setPasscodeView
-    case confirmPasscodeView(pinDigits: [Int])
+    case setPasscodeView(isRestoringAnOldWallet: Bool)
+    case confirmPasscodeView(isRestoringAnOldWallet: Bool, pinDigits: [Int])
     case inputWordsView
     case yourSeedWordsView
     case yourSeedProveView

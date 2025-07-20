@@ -96,8 +96,8 @@ class ModalPresenter: Subscriber, Trackable {
             }, callback: {
                 let urlString = BrainwalletSocials.linktree
                 guard let url = URL(string: urlString) else { return }
-                let vc = SFSafariViewController(url: url)
-                settingsNav.pushViewController(vc, animated: true)})],
+                let sfvc = SFSafariViewController(url: url)
+                settingsNav.pushViewController(sfvc, animated: true)})],
 			"Wallet":
 				[
 					Setting(title:  String(localized: "Delete my data") , callback: { [weak self] in
