@@ -7319,6 +7319,12 @@
         }
       }
     },
+    "CSV and PDF Created" : {
+
+    },
+    "CSV Created" : {
+
+    },
     "Currency" : {
       "localizations" : {
         "ar" : {
@@ -10790,6 +10796,12 @@
         }
       }
     },
+    "Export" : {
+
+    },
+    "Export Transaction Data" : {
+
+    },
     "Face ID" : {
       "localizations" : {
         "ar" : {
@@ -12598,6 +12610,9 @@
           }
         }
       }
+    },
+    "Great for tracking your activity or preparing for tax season!" : {
+
     },
     "Help improve Brainwallet by sharing your anonymous data with us to improve the app. We respect your privacy." : {
       "localizations" : {
@@ -26366,6 +26381,15 @@
         }
       }
     },
+    "The Brainwallet team does not store this data and has no visibility into it." : {
+
+    },
+    "The CSV and PDF zip file was copied to your clipboard." : {
+
+    },
+    "The CSV was copied to your clipboard." : {
+
+    },
     "The destination is your own address. You cannot send to yourself." : {
       "localizations" : {
         "ar" : {
@@ -29559,6 +29583,9 @@
         }
       }
     },
+    "Transactions:  %5d" : {
+
+    },
     "Turn device passcode on" : {
       "localizations" : {
         "ar" : {
@@ -30714,6 +30741,9 @@
         }
       }
     },
+    "We do store the status of your purchase" : {
+
+    },
     "Welcome" : {
       "localizations" : {
         "ar" : {
@@ -31605,6 +31635,9 @@
           }
         }
       }
+    },
+    "You can export all of your transaction data to include amount per transaction, date, category & memo." : {
+
     },
     "You can get back from where you started" : {
       "extractionState" : "stale",

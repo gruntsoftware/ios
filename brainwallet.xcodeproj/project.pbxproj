@@ -59,6 +59,13 @@
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
+		24637D092E2D412B003BE0A2 /* SettingsExpandingExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24637D082E2D412B003BE0A2 /* SettingsExpandingExportView.swift */; };
+		24637D0B2E2D4652003BE0A2 /* TransactionFooterHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24637D0A2E2D464D003BE0A2 /* TransactionFooterHostingController.swift */; };
+		24637D0D2E2D488C003BE0A2 /* TransactionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24637D0C2E2D488B003BE0A2 /* TransactionFooterView.swift */; };
+		24637D0F2E2D9C81003BE0A2 /* ExportModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24637D0E2E2D9C76003BE0A2 /* ExportModalView.swift */; };
+		24637D112E2D9E46003BE0A2 /* ExportModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24637D102E2D9E43003BE0A2 /* ExportModalViewModel.swift */; };
+		24637D142E2ED672003BE0A2 /* PDFRenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24637D132E2ED663003BE0A2 /* PDFRenderModel.swift */; };
+		24637D162E2ED691003BE0A2 /* PDFExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24637D152E2ED679003BE0A2 /* PDFExportView.swift */; };
 		246A9A072DF5F54C002480CB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A9A062DF5F532002480CB /* Utility.swift */; };
 		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
 		2476AE342E27B44B0065CE22 /* InputWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */; };
@@ -499,6 +506,13 @@
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
+		24637D082E2D412B003BE0A2 /* SettingsExpandingExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingExportView.swift; sourceTree = "<group>"; };
+		24637D0A2E2D464D003BE0A2 /* TransactionFooterHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFooterHostingController.swift; sourceTree = "<group>"; };
+		24637D0C2E2D488B003BE0A2 /* TransactionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFooterView.swift; sourceTree = "<group>"; };
+		24637D0E2E2D9C76003BE0A2 /* ExportModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportModalView.swift; sourceTree = "<group>"; };
+		24637D102E2D9E43003BE0A2 /* ExportModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportModalViewModel.swift; sourceTree = "<group>"; };
+		24637D132E2ED663003BE0A2 /* PDFRenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFRenderModel.swift; sourceTree = "<group>"; };
+		24637D152E2ED679003BE0A2 /* PDFExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFExportView.swift; sourceTree = "<group>"; };
 		246A9A062DF5F532002480CB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
 		2476AE322E27038F0065CE22 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1208,6 +1222,25 @@
 			path = "Brainwallet Custom Shapes";
 			sourceTree = "<group>";
 		};
+		24637D072E2D400C003BE0A2 /* Tech Features */ = {
+			isa = PBXGroup;
+			children = (
+				24637D132E2ED663003BE0A2 /* PDFRenderModel.swift */,
+				24637D152E2ED679003BE0A2 /* PDFExportView.swift */,
+				24637D0E2E2D9C76003BE0A2 /* ExportModalView.swift */,
+				24637D102E2D9E43003BE0A2 /* ExportModalViewModel.swift */,
+			);
+			path = "Tech Features";
+			sourceTree = "<group>";
+		};
+		24637D122E2ED649003BE0A2 /* StoreKitClassesTBD */ = {
+			isa = PBXGroup;
+			children = (
+				24637D072E2D400C003BE0A2 /* Tech Features */,
+			);
+			path = StoreKitClassesTBD;
+			sourceTree = "<group>";
+		};
 		2466FECB2DFFE4ED00A1ACC2 /* App Launch Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1581,6 +1614,7 @@
 				24BC04C22E0DB1C1007B0195 /* SettingsActionSeedPhraseView.swift */,
 				24DB05E32E05D5E800C57FE9 /* SettingsActionThemeView.swift */,
 				24F5BD4B2E0450B80010D340 /* SettingsExpandingSecurityView.swift */,
+				24637D082E2D412B003BE0A2 /* SettingsExpandingExportView.swift */,
 				243136FC2E0B251900BCBED1 /* SettingsActionToggleView.swift */,
 				24E7591D2E0B407F0065BA02 /* SettingsResetPINView.swift */,
 				24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */,
@@ -1613,18 +1647,18 @@
 		24D7E9FC2E336CE100A9AB68 /* PreLaunchResources */ = {
 			isa = PBXGroup;
 			children = (
+				24E06FC42DF4790B00719B6C /* remote-config-defaults.plist */,
 				24D7EA0D2E336F9100A9AB68 /* service-data.plist */,
 				24D7E9FD2E336D0800A9AB68 /* general.css */,
 				24D7E9FE2E336D0800A9AB68 /* moon_pay_buy_status.txt */,
 				24D7E9FF2E336D0800A9AB68 /* Assets.xcassets */,
+				2489E05B2DF0A23700630888 /* GoogleService-Info.plist */,
 				24D7EA002E336D0800A9AB68 /* RELEASE_NOTES.md */,
 				24D7EA012E336D0800A9AB68 /* PrivacyInfo.xcprivacy */,
 				24D7EA022E336D0800A9AB68 /* Icon.xcassets */,
 				24D7EA032E336D0800A9AB68 /* CHANGELOG.md */,
 				24D7EA042E336D0800A9AB68 /* POSTBouncer.html */,
-				24E06FC42DF4790B00719B6C /* remote-config-defaults.plist */,
 				244895E22DF57D1900CA8BA2 /* Brainwallet-StoreKit-v1.storekit */,
-				2489E05B2DF0A23700630888 /* GoogleService-Info.plist */,
 			);
 			path = PreLaunchResources;
 			sourceTree = "<group>";
@@ -1636,8 +1670,10 @@
 				C312D2BB2D7DC27700BB97A4 /* TransactionCellViewModel.swift */,
 				C312D2512D7DC27700BB97A4 /* HostingCell.swift */,
 				2480B5822DF2015B00653403 /* PromptHostingCell.swift */,
+				24637D0C2E2D488B003BE0A2 /* TransactionFooterView.swift */,
 				24E078A72DF1F997004B5958 /* PromptCellView.swift */,
 				24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */,
+				24637D0A2E2D464D003BE0A2 /* TransactionFooterHostingController.swift */,
 				24E078A92DF1F9AC004B5958 /* PromptCellViewModel.swift */,
 			);
 			path = "New Table Hosting Classes";
@@ -1824,6 +1860,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				24637D122E2ED649003BE0A2 /* StoreKitClassesTBD */,
 				2466FECB2DFFE4ED00A1ACC2 /* App Launch Classes */,
 				24F05E782DF9627000E25829 /* BWAPIClient Classes */,
 				24E078A62DF1F915004B5958 /* New Table Hosting Classes */,
@@ -2508,6 +2545,7 @@
 				C312D2DE2D7DC27700BB97A4 /* SendLTCViewController.swift in Sources */,
 				C312D2DF2D7DC27700BB97A4 /* MockSeeds.swift in Sources */,
 				C312D2E02D7DC27700BB97A4 /* ShareDataViewController.swift in Sources */,
+				24637D162E2ED691003BE0A2 /* PDFExportView.swift in Sources */,
 				C312D2E12D7DC27700BB97A4 /* PinView.swift in Sources */,
 				C312D2E22D7DC27700BB97A4 /* SimpleUTXO.swift in Sources */,
 				C312D2E32D7DC27700BB97A4 /* SeedWordView.swift in Sources */,
@@ -2638,8 +2676,10 @@
 				C312D3842D7DC27700BB97A4 /* UIImage+Utils.swift in Sources */,
 				C312D3872D7DC27700BB97A4 /* StartPaperPhraseViewController.swift in Sources */,
 				C312D3882D7DC27700BB97A4 /* Brainwallet+Color.swift in Sources */,
+				24637D0D2E2D488C003BE0A2 /* TransactionFooterView.swift in Sources */,
 				24B0652A2DC6135900B5E000 /* WalletBalanceView.swift in Sources */,
 				C312D38D2D7DC27700BB97A4 /* AppDelegate.swift in Sources */,
+				24637D092E2D412B003BE0A2 /* SettingsExpandingExportView.swift in Sources */,
 				24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */,
 				241D223F2DB526A1000302C8 /* ReadyView.swift in Sources */,
 				C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */,
@@ -2691,11 +2731,13 @@
 				24F5BD5A2E04714C0010D340 /* GamesListView.swift in Sources */,
 				C312D3E42D7DC27700BB97A4 /* LoginView.swift in Sources */,
 				C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */,
+				24637D142E2ED672003BE0A2 /* PDFRenderModel.swift in Sources */,
 				C312D3E82D7DC27700BB97A4 /* FinishedStepView.swift in Sources */,
 				C312D3EC2D7DC27700BB97A4 /* TxMetaData.swift in Sources */,
 				24C6D2DA2E1E77BE0096AD62 /* WordBucketView.swift in Sources */,
 				C312D3F02D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift in Sources */,
 				C312D3F22D7DC27700BB97A4 /* SegmentedButton.swift in Sources */,
+				24637D0B2E2D4652003BE0A2 /* TransactionFooterHostingController.swift in Sources */,
 				C312D3F32D7DC27700BB97A4 /* WalletCoordinator.swift in Sources */,
 				C312D3F42D7DC27700BB97A4 /* EnterPhraseViewModel.swift in Sources */,
 				243136FB2E0AFD1700BCBED1 /* SettingsHelpers.swift in Sources */,
@@ -2710,6 +2752,7 @@
 				C312D4002D7DC27700BB97A4 /* MessageUIPresenter.swift in Sources */,
 				C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */,
 				C312D4032D7DC27700BB97A4 /* ShadowButton.swift in Sources */,
+				24637D0F2E2D9C81003BE0A2 /* ExportModalView.swift in Sources */,
 				24B0653B2DC6433800B5E000 /* SimpleHeaderView.swift in Sources */,
 				24D0343B2E1AED2F00AF81DF /* SwiftUIEffects.swift in Sources */,
 				C312D4062D7DC27700BB97A4 /* IntroStepView.swift in Sources */,
@@ -2747,6 +2790,7 @@
 				C312D4352D7DC27700BB97A4 /* MenuViewController.swift in Sources */,
 				C312D4372D7DC27700BB97A4 /* CreateStepView.swift in Sources */,
 				24C6D2D62E1D9C4E0096AD62 /* SeedWordDragView.swift in Sources */,
+				24637D112E2D9E46003BE0A2 /* ExportModalViewModel.swift in Sources */,
 				C312D4392D7DC27700BB97A4 /* UIView+AnimationAdditions.swift in Sources */,
 				C312D43C2D7DC27700BB97A4 /* ModalHeaderView.swift in Sources */,
 				C312D43D2D7DC27700BB97A4 /* SendCell.swift in Sources */,

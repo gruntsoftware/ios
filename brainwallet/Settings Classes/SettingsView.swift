@@ -28,6 +28,9 @@ struct SettingsView: View {
     private var shouldExpandSecurity: Bool = false
 
     @State
+    private var shouldExpandExport: Bool = false
+
+    @State
     private var shouldExpandCurrency: Bool = false
 
     @State
@@ -77,6 +80,14 @@ struct SettingsView: View {
                     HStack {
                         VStack {
                             List {
+                                SettingsExpandingExportView(title: String(localized: "Export"),
+                                     viewModel: newMainViewModel, shouldExpandExport: $shouldExpandExport)
+                                .frame(height: shouldExpandSecurity ? 300 : tempRowHeight)
+                                .listRowBackground(shouldExpandSecurity ? BrainwalletColor.background : BrainwalletColor.surface)
+                                .listRowInsets(EdgeInsets())
+                                .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.leading, leadRowPad)
+                                .padding(.trailing, trailRowPad)
                                 SettingsExpandingSecurityView(title: String(localized: "Security"),
                                      viewModel: newMainViewModel, shouldExpandSecurity: $shouldExpandSecurity)
                                 .frame(height: shouldExpandSecurity ? 300 : tempRowHeight)

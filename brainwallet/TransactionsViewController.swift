@@ -5,27 +5,32 @@ import FirebaseAnalytics
 
 let kNormalTransactionCellHeight: CGFloat = 65.0
 let kProgressHeaderHeight: CGFloat = 75.0
+let kFooterHeight: CGFloat = 55.0
 let kDormantHeaderHeight: CGFloat = 1.0
 let kPromptCellHeight: CGFloat = 120.0
 let kQRImageSide: CGFloat = 110.0
 let kFiveYears: Double = 157_680_000.0
 let kTodaysEpochTime: TimeInterval = Date().timeIntervalSince1970
 
-class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Subscriber, Trackable {
+class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Subscriber, Trackable, UIActionSheetDelegate {
 	@IBOutlet var tableView: UITableView!
-
-	var store: Store?
+    @IBOutlet weak var staticFooterView: UIView!
+    var store: Store?
 	var walletManager: WalletManager?
     var shouldBeSyncing: Bool = false
     var newSyncingHeaderView: NewSyncHostingController?
+    var exportModalView: ExportModalView?
     var syncStartTime = Date()
-
+    var transactionsLabel = UILabel(font: .customMedium(size: 14.0))
 	private var transactions: [Transaction] = []
 	private var allTransactions: [Transaction] = [] {
 		didSet {
 			transactions = allTransactions
 		}
 	}
+
+    @State
+    private var shouldShowExportModal = false
 
 	private var rate: Rate? {
 		didSet { reload() }
@@ -72,11 +77,28 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		transactions = TransactionManager.sharedInstance.transactions
 		rate = TransactionManager.sharedInstance.rate
 		tableView.backgroundColor = BrainwalletUIColor.surface
+
+        /// Format Export
+        staticFooterView.backgroundColor = BrainwalletUIColor.background
+        let exportButton = UIButton(type: .system)
+        exportButton.translatesAutoresizingMaskIntoConstraints = false
+        staticFooterView.addSubview(exportButton)
+        NSLayoutConstraint.activate([
+            exportButton.heightAnchor.constraint(equalTo: staticFooterView.heightAnchor),
+            exportButton.widthAnchor.constraint(equalTo: staticFooterView.widthAnchor)
+        ])
+        exportButton.setTitle(String(localized: "Export Transaction Data") , for: .normal)
+        exportButton.titleLabel?.font = UIFont.barlowSemiBold(size: 16.0)
+        exportButton.setTitleColor(BrainwalletUIColor.content, for: .normal)
+        exportButton.setTitleColor(BrainwalletUIColor.content.withAlphaComponent(0.8), for: .highlighted)
+        exportButton.backgroundColor = .clear
+        exportButton.layer.cornerRadius = 8.0
+        exportButton.addTarget(self, action: #selector(exportTransactionData), for: .touchUpInside)
+
 		initSyncingHeaderView(reduxState: reduxState, completion: {})
 		attemptShowPrompt()
 
         NotificationCenter.default.addObserver(self, selector: #selector(userTappedPromptClose), name: .userTapsClosePromptNotification, object: nil)
-
         NotificationCenter.default.addObserver(self, selector: #selector(userTappedPromptContinue), name: .userTapsContinuePromptNotification, object: nil)
 	}
 
@@ -100,6 +122,17 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         newSyncingHeaderView?.viewModel.blockHeightString = reduxState.walletState.transactions.first?.blockHeight ?? ""
 		completion()
 	}
+
+    @objc
+    private func exportTransactionData() {
+        exportModalView = ExportModalView(transactions: self.allTransactions)
+        let hostingController = UIHostingController(rootView: exportModalView)
+        hostingController.modalPresentationStyle = .formSheet
+        exportModalView?.shouldDismiss = { [weak self] _ in
+            hostingController.dismiss(animated: true)
+        }
+        present(hostingController, animated: true)
+    }
 
     @objc
     private func userTappedPromptClose() {
@@ -355,9 +388,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		store.subscribe(self, selector: { $0.walletState.transactions != $1.walletState.transactions },
 		                callback: { state in
-		                	self.allTransactions = state.walletState.transactions
-		                	self.reload()
-		                })
+                        self.allTransactions = state.walletState.transactions
+                        self.transactionsLabel.text = String(format: String(localized: "Transactions:  %5d"),
+                                                             self.allTransactions.count)
+                        self.reload()
+        })
 
 		// MARK: - Wallet State: isLTCSwapped
 
