@@ -49,7 +49,6 @@
 		243136FB2E0AFD1700BCBED1 /* SettingsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243136FA2E0AFD1000BCBED1 /* SettingsHelpers.swift */; };
 		243136FD2E0B251D00BCBED1 /* SettingsActionToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243136FC2E0B251900BCBED1 /* SettingsActionToggleView.swift */; };
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
-		24360B012DED120500E1E115 /* NewReceiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24360B002DED11D900E1E115 /* NewReceiveTests.swift */; };
 		244310442E21BCBD004AE386 /* errorsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 244310432E21BCBD004AE386 /* errorsound.mp3 */; };
 		244310462E21BCCE004AE386 /* clickseedword.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 244310452E21BCCE004AE386 /* clickseedword.mp3 */; };
 		244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244520332DE70310003AFFDF /* LockScreenHostingController.swift */; };
@@ -84,11 +83,9 @@
 		2489E05C2DF0A23700630888 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2489E05B2DF0A23700630888 /* GoogleService-Info.plist */; };
 		248E5C422DE78653003F232F /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E5C412DE7863C003F232F /* NetworkHelper.swift */; };
 		2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2492829B2DAC22B00088528E /* BIP39Words.plist */; };
-		24952E442DE8B6D400ADEE10 /* OpsFeesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24952E432DE8B6D200ADEE10 /* OpsFeesTests.swift */; };
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
 		249DDE422DCD573700B2B275 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249DDE412DCD572F00B2B275 /* SettingsView.swift */; };
 		24A0ACAB2E0C812C0077E695 /* SettingsLitecoinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */; };
-		24A0ACAE2E0D59F10077E695 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0ACAD2E0D59F10077E695 /* SettingsTests.swift */; };
 		24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A404222DC92F35006CD076 /* WebBuyView.swift */; };
 		24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */; };
 		24AAB31D2DE79ECC00F0C18C /* NewReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */; };
@@ -117,8 +114,6 @@
 		24C6D2D82E1E75510096AD62 /* SeedWordTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6D2D72E1E75510096AD62 /* SeedWordTargetView.swift */; };
 		24C6D2DA2E1E77BE0096AD62 /* WordBucketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6D2D92E1E77B90096AD62 /* WordBucketView.swift */; };
 		24C73FBC2DF2CA4100042B01 /* PromptTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */; };
-		24C9E40E2E12EA7E00F04241 /* Application Controller Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C9E40D2E12EA7100F04241 /* Application Controller Tests.swift */; };
-		24C9E4102E12FD5B00F04241 /* SendAddressCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C9E40F2E12FD5800F04241 /* SendAddressCellViewModelTests.swift */; };
 		24D0343B2E1AED2F00AF81DF /* SwiftUIEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0343A2E1AED2200AF81DF /* SwiftUIEffects.swift */; };
 		24D0343D2E1BFB9500AF81DF /* RestoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0343C2E1BFB9500AF81DF /* RestoreView.swift */; };
 		24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */; };
@@ -405,31 +400,6 @@
 		C312D4CC2D7DC27700BB97A4 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1842D7DC27700BB97A4 /* Alerts.storyboard */; };
 		C312D4CE2D7DC27700BB97A4 /* Phrase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1882D7DC27700BB97A4 /* Phrase.storyboard */; };
 		C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0952D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf */; };
-		C312D4F82D7DC28E00BB97A4 /* NSDataExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E52D7DC28E00BB97A4 /* NSDataExtensionTests.swift */; };
-		C312D4F92D7DC28E00BB97A4 /* TouchIdEnabledTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E92D7DC28E00BB97A4 /* TouchIdEnabledTests.swift */; };
-		C312D4FA2D7DC28E00BB97A4 /* WalletCreationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4EB2D7DC28E00BB97A4 /* WalletCreationTests.swift */; };
-		C312D4FB2D7DC28E00BB97A4 /* WalletAuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4EA2D7DC28E00BB97A4 /* WalletAuthenticationTests.swift */; };
-		C312D4FC2D7DC28E00BB97A4 /* DefaultFiatCurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E42D7DC28E00BB97A4 /* DefaultFiatCurrencyTests.swift */; };
-		C312D4FD2D7DC28E00BB97A4 /* AmountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4D32D7DC28E00BB97A4 /* AmountTests.swift */; };
-		C312D4FE2D7DC28E00BB97A4 /* BRReplicatedKVStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E32D7DC28E00BB97A4 /* BRReplicatedKVStoreTests.swift */; };
-		C312D4FF2D7DC28E00BB97A4 /* BRCoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E22D7DC28E00BB97A4 /* BRCoderTests.swift */; };
-		C312D5002D7DC28E00BB97A4 /* SeedWordsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4F02D7DC28E00BB97A4 /* SeedWordsTests.swift */; };
-		C312D5012D7DC28E00BB97A4 /* BWAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E12D7DC28E00BB97A4 /* BWAPIClientTests.swift */; };
-		C312D5022D7DC28E00BB97A4 /* TabBarViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4D62D7DC28E00BB97A4 /* TabBarViewControllerTests.swift */; };
-		C312D5032D7DC28E00BB97A4 /* LocaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4DE2D7DC28E00BB97A4 /* LocaleTests.swift */; };
-		C312D5042D7DC28E00BB97A4 /* WalletManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4F52D7DC28E00BB97A4 /* WalletManagerTests.swift */; };
-		C312D5052D7DC28E00BB97A4 /* PhraseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E72D7DC28E00BB97A4 /* PhraseTests.swift */; };
-		C312D5062D7DC28E00BB97A4 /* FileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4DB2D7DC28E00BB97A4 /* FileTests.swift */; };
-		C312D5082D7DC28E00BB97A4 /* LockScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4EE2D7DC28E00BB97A4 /* LockScreenTests.swift */; };
-		C312D5092D7DC28E00BB97A4 /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4F22D7DC28E00BB97A4 /* APITests.swift */; };
-		C312D50A2D7DC28E00BB97A4 /* SpendingLimitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E82D7DC28E00BB97A4 /* SpendingLimitTests.swift */; };
-		C312D50C2D7DC28E00BB97A4 /* PaymentRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E62D7DC28E00BB97A4 /* PaymentRequestTests.swift */; };
-		C312D50D2D7DC28E00BB97A4 /* BRAddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4E02D7DC28E00BB97A4 /* BRAddressTests.swift */; };
-		C312D50E2D7DC28E00BB97A4 /* BuyWKWebVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4D52D7DC28E00BB97A4 /* BuyWKWebVCTests.swift */; };
-		C312D50F2D7DC28E00BB97A4 /* ConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4D92D7DC28E00BB97A4 /* ConstantsTests.swift */; };
-		C312D5102D7DC28E00BB97A4 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4F42D7DC28E00BB97A4 /* TestHelpers.swift */; };
-		C312D5112D7DC28E00BB97A4 /* UnstoppableDomainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4D72D7DC28E00BB97A4 /* UnstoppableDomainViewModelTests.swift */; };
-		C312D5122D7DC28E00BB97A4 /* WalletInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D4EC2D7DC28E00BB97A4 /* WalletInfoTest.swift */; };
 		C32369FF2D7DD431007039A1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32369FE2D7DD431007039A1 /* LoginViewController.swift */; };
 		C3236A012D7DE355007039A1 /* URLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3236A002D7DE34D007039A1 /* URLController.swift */; };
 		C353582D2D11DA4900395C45 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = C353582C2D11DA4900395C45 /* FirebaseRemoteConfig */; };
@@ -440,19 +410,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		24295E3F2E341F1C00A76776 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75A2A7881DA5934300A983D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75A2A78F1DA5934300A983D8;
+			remoteInfo = brainwallet;
+		};
+		24295EA12E3428CA00A76776 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75A2A7881DA5934300A983D8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75A2A78F1DA5934300A983D8;
+			remoteInfo = brainwallet;
+		};
 		24618EE72D90397E00A878AC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75A2A7881DA5934300A983D8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 755CD9D01DAA197C0075898E;
 			remoteInfo = BRCore;
-		};
-		2465873B23A5AAD100A32E9E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75A2A7881DA5934300A983D8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 75A2A78F1DA5934300A983D8;
-			remoteInfo = litewallet;
 		};
 		759DA0DD1DAC86BC008CC49B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -506,11 +483,12 @@
 		242871852DE5D2550035DE48 /* NewSyncProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressView.swift; sourceTree = "<group>"; };
 		242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressViewModel.swift; sourceTree = "<group>"; };
 		2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncHostingController.swift; sourceTree = "<group>"; };
+		24295E3B2E341F1C00A76776 /* BrainwalletUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainwalletUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		24295E9B2E3428CA00A76776 /* BrainwalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainwalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		242E6CDE2E095AF4002C579A /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		243136FA2E0AFD1000BCBED1 /* SettingsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHelpers.swift; sourceTree = "<group>"; };
 		243136FC2E0B251900BCBED1 /* SettingsActionToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionToggleView.swift; sourceTree = "<group>"; };
 		2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasscodeView.swift; sourceTree = "<group>"; };
-		24360B002DED11D900E1E115 /* NewReceiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveTests.swift; sourceTree = "<group>"; };
 		244310432E21BCBD004AE386 /* errorsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = errorsound.mp3; sourceTree = "<group>"; };
 		244310452E21BCCE004AE386 /* clickseedword.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clickseedword.mp3; sourceTree = "<group>"; };
 		244520332DE70310003AFFDF /* LockScreenHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHostingController.swift; sourceTree = "<group>"; };
@@ -521,7 +499,6 @@
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
-		2465873623A5AAD000A32E9E /* brainwalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = brainwalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		246A9A062DF5F532002480CB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
 		2476AE322E27038F0065CE22 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -531,7 +508,6 @@
 		2489E05B2DF0A23700630888 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "brainwallet/PreLaunchResources/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		248E5C412DE7863C003F232F /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		2492829B2DAC22B00088528E /* BIP39Words.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BIP39Words.plist; sourceTree = "<group>"; };
-		24952E432DE8B6D200ADEE10 /* OpsFeesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpsFeesTests.swift; sourceTree = "<group>"; };
 		249C450E2D936D5900E9C3B0 /* ax_jni_include_dir.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_jni_include_dir.m4; sourceTree = "<group>"; };
 		249C450F2D936D5900E9C3B0 /* ax_prog_cc_for_build.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = ax_prog_cc_for_build.m4; sourceTree = "<group>"; };
 		249C45102D936D5900E9C3B0 /* bitcoin_secp.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = bitcoin_secp.m4; sourceTree = "<group>"; };
@@ -665,7 +641,6 @@
 		249C45DA2D936DA600E9C3B0 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = ../core/module.modulemap; sourceTree = SOURCE_ROOT; };
 		249DDE412DCD572F00B2B275 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLitecoinDetailView.swift; sourceTree = "<group>"; };
-		24A0ACAD2E0D59F10077E695 /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
 		24A404222DC92F35006CD076 /* WebBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBuyView.swift; sourceTree = "<group>"; };
 		24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveHostingController.swift; sourceTree = "<group>"; };
 		24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveView.swift; sourceTree = "<group>"; };
@@ -694,8 +669,6 @@
 		24C6D2D72E1E75510096AD62 /* SeedWordTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordTargetView.swift; sourceTree = "<group>"; };
 		24C6D2D92E1E77B90096AD62 /* WordBucketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBucketView.swift; sourceTree = "<group>"; };
 		24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTypeEnum.swift; sourceTree = "<group>"; };
-		24C9E40D2E12EA7100F04241 /* Application Controller Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application Controller Tests.swift"; sourceTree = "<group>"; };
-		24C9E40F2E12FD5800F04241 /* SendAddressCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendAddressCellViewModelTests.swift; sourceTree = "<group>"; };
 		24D0343A2E1AED2200AF81DF /* SwiftUIEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIEffects.swift; sourceTree = "<group>"; };
 		24D0343C2E1BFB9500AF81DF /* RestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreView.swift; sourceTree = "<group>"; };
 		24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmHostingController.swift; sourceTree = "<group>"; };
@@ -720,7 +693,6 @@
 		24E06FC42DF4790B00719B6C /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "remote-config-defaults.plist"; path = "brainwallet/PreLaunchResources/remote-config-defaults.plist"; sourceTree = SOURCE_ROOT; };
 		24E078A72DF1F997004B5958 /* PromptCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCellView.swift; sourceTree = "<group>"; };
 		24E078A92DF1F9AC004B5958 /* PromptCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCellViewModel.swift; sourceTree = "<group>"; };
-		24E52B412DEDD4AB009E3E35 /* brainwalletTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = brainwalletTests.xctestplan; path = brainwalletTests/brainwalletTests.xctestplan; sourceTree = "<group>"; };
 		24E7591D2E0B407F0065BA02 /* SettingsResetPINView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsResetPINView.swift; sourceTree = "<group>"; };
 		24EE3F1E2DCF5A560017472B /* TopUpSetAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpSetAmountView.swift; sourceTree = "<group>"; };
 		24F378012DE89C6600A388AB /* MoonPayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPayHelper.swift; sourceTree = "<group>"; };
@@ -1001,38 +973,45 @@
 		C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletManager+Auth.swift"; sourceTree = "<group>"; };
 		C312D2CB2D7DC27700BB97A4 /* WarningConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningConfirmationViewController.swift; sourceTree = "<group>"; };
 		C312D2CC2D7DC27700BB97A4 /* WipeEmptyWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipeEmptyWalletViewController.swift; sourceTree = "<group>"; };
-		C312D4D32D7DC28E00BB97A4 /* AmountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTests.swift; sourceTree = "<group>"; };
-		C312D4D52D7DC28E00BB97A4 /* BuyWKWebVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyWKWebVCTests.swift; sourceTree = "<group>"; };
-		C312D4D62D7DC28E00BB97A4 /* TabBarViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewControllerTests.swift; sourceTree = "<group>"; };
-		C312D4D72D7DC28E00BB97A4 /* UnstoppableDomainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnstoppableDomainViewModelTests.swift; sourceTree = "<group>"; };
-		C312D4D92D7DC28E00BB97A4 /* ConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsTests.swift; sourceTree = "<group>"; };
-		C312D4DB2D7DC28E00BB97A4 /* FileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTests.swift; sourceTree = "<group>"; };
-		C312D4DE2D7DC28E00BB97A4 /* LocaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleTests.swift; sourceTree = "<group>"; };
-		C312D4E02D7DC28E00BB97A4 /* BRAddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAddressTests.swift; sourceTree = "<group>"; };
-		C312D4E12D7DC28E00BB97A4 /* BWAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWAPIClientTests.swift; sourceTree = "<group>"; };
-		C312D4E22D7DC28E00BB97A4 /* BRCoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCoderTests.swift; sourceTree = "<group>"; };
-		C312D4E32D7DC28E00BB97A4 /* BRReplicatedKVStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRReplicatedKVStoreTests.swift; sourceTree = "<group>"; };
-		C312D4E42D7DC28E00BB97A4 /* DefaultFiatCurrencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFiatCurrencyTests.swift; sourceTree = "<group>"; };
-		C312D4E52D7DC28E00BB97A4 /* NSDataExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDataExtensionTests.swift; sourceTree = "<group>"; };
-		C312D4E62D7DC28E00BB97A4 /* PaymentRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRequestTests.swift; sourceTree = "<group>"; };
-		C312D4E72D7DC28E00BB97A4 /* PhraseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseTests.swift; sourceTree = "<group>"; };
-		C312D4E82D7DC28E00BB97A4 /* SpendingLimitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingLimitTests.swift; sourceTree = "<group>"; };
-		C312D4E92D7DC28E00BB97A4 /* TouchIdEnabledTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIdEnabledTests.swift; sourceTree = "<group>"; };
-		C312D4EA2D7DC28E00BB97A4 /* WalletAuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAuthenticationTests.swift; sourceTree = "<group>"; };
-		C312D4EB2D7DC28E00BB97A4 /* WalletCreationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreationTests.swift; sourceTree = "<group>"; };
-		C312D4EC2D7DC28E00BB97A4 /* WalletInfoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletInfoTest.swift; sourceTree = "<group>"; };
-		C312D4EE2D7DC28E00BB97A4 /* LockScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenTests.swift; sourceTree = "<group>"; };
-		C312D4F02D7DC28E00BB97A4 /* SeedWordsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordsTests.swift; sourceTree = "<group>"; };
-		C312D4F22D7DC28E00BB97A4 /* APITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITests.swift; sourceTree = "<group>"; };
-		C312D4F32D7DC28E00BB97A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C312D4F42D7DC28E00BB97A4 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
-		C312D4F52D7DC28E00BB97A4 /* WalletManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManagerTests.swift; sourceTree = "<group>"; };
 		C32369FE2D7DD431007039A1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C3236A002D7DE34D007039A1 /* URLController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		24295E962E3427C400A76776 /* Exceptions for "BrainwalletUnitTests" folder in "BrainwalletUnitTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 24295E3A2E341F1C00A76776 /* BrainwalletUnitTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		24295E3C2E341F1C00A76776 /* BrainwalletUnitTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				24295E962E3427C400A76776 /* Exceptions for "BrainwalletUnitTests" folder in "BrainwalletUnitTests" target */,
+			);
+			path = BrainwalletUnitTests;
+			sourceTree = "<group>";
+		};
+		24295E9C2E3428CA00A76776 /* BrainwalletUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BrainwalletUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
-		2465873323A5AAD000A32E9E /* Frameworks */ = {
+		24295E382E341F1C00A76776 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24295E982E3428CA00A76776 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1221,14 +1200,6 @@
 			path = CoreResources;
 			sourceTree = "<group>";
 		};
-		24360AFF2DED11B700E1E115 /* Buy Receive Tests */ = {
-			isa = PBXGroup;
-			children = (
-				24360B002DED11D900E1E115 /* NewReceiveTests.swift */,
-			);
-			path = "Buy Receive Tests";
-			sourceTree = "<group>";
-		};
 		244A8D912DE84C710024D356 /* Brainwallet Custom Shapes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1261,13 +1232,6 @@
 				248E5C412DE7863C003F232F /* NetworkHelper.swift */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		24952E452DE8B6D700ADEE10 /* Amounts Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Amounts Tests";
 			sourceTree = "<group>";
 		};
 		249C45112D936D5900E9C3B0 /* m4 */ = {
@@ -1537,14 +1501,6 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		24A0ACAC2E0D59E90077E695 /* Settings Tests */ = {
-			isa = PBXGroup;
-			children = (
-				24A0ACAD2E0D59F10077E695 /* SettingsTests.swift */,
-			);
-			path = "Settings Tests";
-			sourceTree = "<group>";
-		};
 		24A404212DC92F1F006CD076 /* New Buy Webview */ = {
 			isa = PBXGroup;
 			children = (
@@ -1634,21 +1590,6 @@
 				24F5BD492E0442D00010D340 /* SettingsFooterView.swift */,
 			);
 			path = "Settings Classes";
-			sourceTree = "<group>";
-		};
-		24C9E4092E12D82100F04241 /* Currency Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Currency Tests";
-			sourceTree = "<group>";
-		};
-		24C9E40C2E12E9C500F04241 /* Launch Class Tests */ = {
-			isa = PBXGroup;
-			children = (
-				24C9E40D2E12EA7100F04241 /* Application Controller Tests.swift */,
-			);
-			path = "Launch Class Tests";
 			sourceTree = "<group>";
 		};
 		24D034392E1AED0200AF81DF /* Geometric Effects */ = {
@@ -1746,10 +1687,10 @@
 		75A2A7871DA5934300A983D8 = {
 			isa = PBXGroup;
 			children = (
-				24E52B412DEDD4AB009E3E35 /* brainwalletTests.xctestplan */,
 				C312D2CD2D7DC27700BB97A4 /* brainwallet */,
-				C312D4F62D7DC28E00BB97A4 /* brainwalletTests */,
+				24295E3C2E341F1C00A76776 /* BrainwalletUnitTests */,
 				75B6F52F1DA71DCC0031A93F /* Modules */,
+				24295E9C2E3428CA00A76776 /* BrainwalletUITests */,
 				75A2A7F11DA5935F00A983D8 /* Frameworks */,
 				75A2A7911DA5934300A983D8 /* Products */,
 				249DDE402DCD55D700B2B275 /* Recovered References */,
@@ -1761,7 +1702,8 @@
 			children = (
 				75A2A7901DA5934300A983D8 /* Brainwallet.app */,
 				755CD9D11DAA197C0075898E /* libBRCore.a */,
-				2465873623A5AAD000A32E9E /* brainwalletTests.xctest */,
+				24295E3B2E341F1C00A76776 /* BrainwalletUnitTests.xctest */,
+				24295E9B2E3428CA00A76776 /* BrainwalletUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2100,102 +2042,6 @@
 			path = brainwallet;
 			sourceTree = "<group>";
 		};
-		C312D4D82D7DC28E00BB97A4 /* Class Tests */ = {
-			isa = PBXGroup;
-			children = (
-				24C9E40F2E12FD5800F04241 /* SendAddressCellViewModelTests.swift */,
-				C312D4D32D7DC28E00BB97A4 /* AmountTests.swift */,
-				C312D4D52D7DC28E00BB97A4 /* BuyWKWebVCTests.swift */,
-				C312D4D62D7DC28E00BB97A4 /* TabBarViewControllerTests.swift */,
-				C312D4D72D7DC28E00BB97A4 /* UnstoppableDomainViewModelTests.swift */,
-			);
-			path = "Class Tests";
-			sourceTree = "<group>";
-		};
-		C312D4DA2D7DC28E00BB97A4 /* Constants Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C312D4D92D7DC28E00BB97A4 /* ConstantsTests.swift */,
-			);
-			path = "Constants Tests";
-			sourceTree = "<group>";
-		};
-		C312D4DC2D7DC28E00BB97A4 /* File Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C312D4DB2D7DC28E00BB97A4 /* FileTests.swift */,
-			);
-			path = "File Tests";
-			sourceTree = "<group>";
-		};
-		C312D4DF2D7DC28E00BB97A4 /* Localizations Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C312D4DE2D7DC28E00BB97A4 /* LocaleTests.swift */,
-			);
-			path = "Localizations Tests";
-			sourceTree = "<group>";
-		};
-		C312D4ED2D7DC28E00BB97A4 /* Legacy BRTests */ = {
-			isa = PBXGroup;
-			children = (
-				C312D4E02D7DC28E00BB97A4 /* BRAddressTests.swift */,
-				C312D4E12D7DC28E00BB97A4 /* BWAPIClientTests.swift */,
-				C312D4E22D7DC28E00BB97A4 /* BRCoderTests.swift */,
-				C312D4E32D7DC28E00BB97A4 /* BRReplicatedKVStoreTests.swift */,
-				C312D4E42D7DC28E00BB97A4 /* DefaultFiatCurrencyTests.swift */,
-				C312D4E52D7DC28E00BB97A4 /* NSDataExtensionTests.swift */,
-				C312D4E62D7DC28E00BB97A4 /* PaymentRequestTests.swift */,
-				C312D4E72D7DC28E00BB97A4 /* PhraseTests.swift */,
-				C312D4E82D7DC28E00BB97A4 /* SpendingLimitTests.swift */,
-				C312D4E92D7DC28E00BB97A4 /* TouchIdEnabledTests.swift */,
-				C312D4EA2D7DC28E00BB97A4 /* WalletAuthenticationTests.swift */,
-				C312D4EB2D7DC28E00BB97A4 /* WalletCreationTests.swift */,
-				C312D4EC2D7DC28E00BB97A4 /* WalletInfoTest.swift */,
-			);
-			path = "Legacy BRTests";
-			sourceTree = "<group>";
-		};
-		C312D4EF2D7DC28E00BB97A4 /* Lock Screen Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C312D4EE2D7DC28E00BB97A4 /* LockScreenTests.swift */,
-			);
-			path = "Lock Screen Tests";
-			sourceTree = "<group>";
-		};
-		C312D4F12D7DC28E00BB97A4 /* Seed Word Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C312D4F02D7DC28E00BB97A4 /* SeedWordsTests.swift */,
-			);
-			path = "Seed Word Tests";
-			sourceTree = "<group>";
-		};
-		C312D4F62D7DC28E00BB97A4 /* brainwalletTests */ = {
-			isa = PBXGroup;
-			children = (
-				24C9E40C2E12E9C500F04241 /* Launch Class Tests */,
-				24C9E4092E12D82100F04241 /* Currency Tests */,
-				24A0ACAC2E0D59E90077E695 /* Settings Tests */,
-				24360AFF2DED11B700E1E115 /* Buy Receive Tests */,
-				24952E452DE8B6D700ADEE10 /* Amounts Tests */,
-				24952E432DE8B6D200ADEE10 /* OpsFeesTests.swift */,
-				C312D4D82D7DC28E00BB97A4 /* Class Tests */,
-				C312D4DA2D7DC28E00BB97A4 /* Constants Tests */,
-				C312D4DC2D7DC28E00BB97A4 /* File Tests */,
-				C312D4DF2D7DC28E00BB97A4 /* Localizations Tests */,
-				C312D4ED2D7DC28E00BB97A4 /* Legacy BRTests */,
-				C312D4EF2D7DC28E00BB97A4 /* Lock Screen Tests */,
-				C312D4F12D7DC28E00BB97A4 /* Seed Word Tests */,
-				C312D4F22D7DC28E00BB97A4 /* APITests.swift */,
-				C312D4F32D7DC28E00BB97A4 /* Info.plist */,
-				C312D4F42D7DC28E00BB97A4 /* TestHelpers.swift */,
-				C312D4F52D7DC28E00BB97A4 /* WalletManagerTests.swift */,
-			);
-			path = brainwalletTests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
@@ -2216,22 +2062,51 @@
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
-		2465873523A5AAD000A32E9E /* brainwalletTests */ = {
+		24295E3A2E341F1C00A76776 /* BrainwalletUnitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2465873D23A5AAD100A32E9E /* Build configuration list for PBXNativeTarget "brainwalletTests" */;
+			buildConfigurationList = 24295E412E341F1C00A76776 /* Build configuration list for PBXNativeTarget "BrainwalletUnitTests" */;
 			buildPhases = (
-				2465873223A5AAD000A32E9E /* Sources */,
-				2465873323A5AAD000A32E9E /* Frameworks */,
+				24295E372E341F1C00A76776 /* Sources */,
+				24295E382E341F1C00A76776 /* Frameworks */,
+				24295E392E341F1C00A76776 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2465873C23A5AAD100A32E9E /* PBXTargetDependency */,
+				24295E402E341F1C00A76776 /* PBXTargetDependency */,
 			);
-			name = brainwalletTests;
-			productName = litewalletTests;
-			productReference = 2465873623A5AAD000A32E9E /* brainwalletTests.xctest */;
+			fileSystemSynchronizedGroups = (
+				24295E3C2E341F1C00A76776 /* BrainwalletUnitTests */,
+			);
+			name = BrainwalletUnitTests;
+			packageProductDependencies = (
+			);
+			productName = BrainwalletUnitTests;
+			productReference = 24295E3B2E341F1C00A76776 /* BrainwalletUnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		24295E9A2E3428CA00A76776 /* BrainwalletUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24295EA32E3428CA00A76776 /* Build configuration list for PBXNativeTarget "BrainwalletUITests" */;
+			buildPhases = (
+				24295E972E3428CA00A76776 /* Sources */,
+				24295E982E3428CA00A76776 /* Frameworks */,
+				24295E992E3428CA00A76776 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24295EA22E3428CA00A76776 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				24295E9C2E3428CA00A76776 /* BrainwalletUITests */,
+			);
+			name = BrainwalletUITests;
+			packageProductDependencies = (
+			);
+			productName = BrainwalletUITests;
+			productReference = 24295E9B2E3428CA00A76776 /* BrainwalletUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		755CD9D01DAA197C0075898E /* BRCore */ = {
 			isa = PBXNativeTarget;
@@ -2291,12 +2166,16 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = "";
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1630;
 				ORGANIZATIONNAME = "Grunt Software, LTD";
 				TargetAttributes = {
-					2465873523A5AAD000A32E9E = {
-						CreatedOnToolsVersion = 11.3;
+					24295E3A2E341F1C00A76776 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 75A2A78F1DA5934300A983D8;
+					};
+					24295E9A2E3428CA00A76776 = {
+						CreatedOnToolsVersion = 16.4;
 						TestTargetID = 75A2A78F1DA5934300A983D8;
 					};
 					755CD9D01DAA197C0075898E = {
@@ -2366,14 +2245,29 @@
 			projectRoot = "";
 			targets = (
 				75A2A78F1DA5934300A983D8 /* brainwallet */,
-				2465873523A5AAD000A32E9E /* brainwalletTests */,
 				755CD9D01DAA197C0075898E /* BRCore */,
 				759DA0D71DAC8668008CC49B /* submodules */,
+				24295E3A2E341F1C00A76776 /* BrainwalletUnitTests */,
+				24295E9A2E3428CA00A76776 /* BrainwalletUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		24295E392E341F1C00A76776 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24295E992E3428CA00A76776 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		75A2A78E1DA5934300A983D8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2552,40 +2446,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2465873223A5AAD000A32E9E /* Sources */ = {
+		24295E372E341F1C00A76776 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C312D4F82D7DC28E00BB97A4 /* NSDataExtensionTests.swift in Sources */,
-				C312D4F92D7DC28E00BB97A4 /* TouchIdEnabledTests.swift in Sources */,
-				24952E442DE8B6D400ADEE10 /* OpsFeesTests.swift in Sources */,
-				C312D4FA2D7DC28E00BB97A4 /* WalletCreationTests.swift in Sources */,
-				C312D4FB2D7DC28E00BB97A4 /* WalletAuthenticationTests.swift in Sources */,
-				C312D4FC2D7DC28E00BB97A4 /* DefaultFiatCurrencyTests.swift in Sources */,
-				C312D4FD2D7DC28E00BB97A4 /* AmountTests.swift in Sources */,
-				C312D4FE2D7DC28E00BB97A4 /* BRReplicatedKVStoreTests.swift in Sources */,
-				C312D4FF2D7DC28E00BB97A4 /* BRCoderTests.swift in Sources */,
-				C312D5002D7DC28E00BB97A4 /* SeedWordsTests.swift in Sources */,
-				24C9E40E2E12EA7E00F04241 /* Application Controller Tests.swift in Sources */,
-				C312D5012D7DC28E00BB97A4 /* BWAPIClientTests.swift in Sources */,
-				C312D5022D7DC28E00BB97A4 /* TabBarViewControllerTests.swift in Sources */,
-				C312D5032D7DC28E00BB97A4 /* LocaleTests.swift in Sources */,
-				C312D5042D7DC28E00BB97A4 /* WalletManagerTests.swift in Sources */,
-				C312D5052D7DC28E00BB97A4 /* PhraseTests.swift in Sources */,
-				C312D5062D7DC28E00BB97A4 /* FileTests.swift in Sources */,
-				C312D5082D7DC28E00BB97A4 /* LockScreenTests.swift in Sources */,
-				C312D5092D7DC28E00BB97A4 /* APITests.swift in Sources */,
-				C312D50A2D7DC28E00BB97A4 /* SpendingLimitTests.swift in Sources */,
-				24360B012DED120500E1E115 /* NewReceiveTests.swift in Sources */,
-				C312D50C2D7DC28E00BB97A4 /* PaymentRequestTests.swift in Sources */,
-				C312D50D2D7DC28E00BB97A4 /* BRAddressTests.swift in Sources */,
-				C312D50E2D7DC28E00BB97A4 /* BuyWKWebVCTests.swift in Sources */,
-				C312D50F2D7DC28E00BB97A4 /* ConstantsTests.swift in Sources */,
-				C312D5102D7DC28E00BB97A4 /* TestHelpers.swift in Sources */,
-				C312D5112D7DC28E00BB97A4 /* UnstoppableDomainViewModelTests.swift in Sources */,
-				24A0ACAE2E0D59F10077E695 /* SettingsTests.swift in Sources */,
-				C312D5122D7DC28E00BB97A4 /* WalletInfoTest.swift in Sources */,
-				24C9E4102E12FD5B00F04241 /* SendAddressCellViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		24295E972E3428CA00A76776 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2948,15 +2819,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		24295E402E341F1C00A76776 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 75A2A78F1DA5934300A983D8 /* brainwallet */;
+			targetProxy = 24295E3F2E341F1C00A76776 /* PBXContainerItemProxy */;
+		};
+		24295EA22E3428CA00A76776 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 75A2A78F1DA5934300A983D8 /* brainwallet */;
+			targetProxy = 24295EA12E3428CA00A76776 /* PBXContainerItemProxy */;
+		};
 		24618EE82D90397E00A878AC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 755CD9D01DAA197C0075898E /* BRCore */;
 			targetProxy = 24618EE72D90397E00A878AC /* PBXContainerItemProxy */;
-		};
-		2465873C23A5AAD100A32E9E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 75A2A78F1DA5934300A983D8 /* brainwallet */;
-			targetProxy = 2465873B23A5AAD100A32E9E /* PBXContainerItemProxy */;
 		};
 		759DA0DE1DAC86BC008CC49B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2995,6 +2871,126 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		24295E422E341F1C00A76776 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = U8WDVUDC2P;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet.BrainwalletUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brainwallet.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Brainwallet";
+			};
+			name = Debug;
+		};
+		24295E432E341F1C00A76776 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U8WDVUDC2P;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet.BrainwalletUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brainwallet.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Brainwallet";
+			};
+			name = Release;
+		};
+		24295EA42E3428CA00A76776 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = U8WDVUDC2P;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet.BrainwalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = brainwallet;
+			};
+			name = Debug;
+		};
+		24295EA52E3428CA00A76776 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U8WDVUDC2P;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet.BrainwalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = brainwallet;
+			};
+			name = Release;
+		};
 		24470E0023A5BF3C00ADDA27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3079,7 +3075,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250720.0;
+				CURRENT_PROJECT_VERSION = 250725.1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3095,7 +3091,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.6.1;
+				MARKETING_VERSION = 3.6.2;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
@@ -3110,85 +3106,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		24470E0323A5BF3C00ADDA27 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				"BUNDLE_LOADER[arch=*]" = "$(TEST_HOST)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = U8WDVUDC2P;
-				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
-				ENABLE_ON_DEMAND_RESOURCES = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = brainwalletTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet.brainwalletTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brainwallet.app/Brainwallet";
 			};
 			name = Debug;
 		};
@@ -3232,37 +3149,6 @@
 				SWIFT_INCLUDE_PATHS = "";
 			};
 			name = Debug;
-		};
-		2465874023A5AAD100A32E9E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = U8WDVUDC2P;
-				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
-				ENABLE_ON_DEMAND_RESOURCES = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = brainwalletTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet.brainwalletTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brainwallet.app/Brainwallet";
-			};
-			name = Release;
 		};
 		755CD9D91DAA197D0075898E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -3377,7 +3263,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250720.0;
+				CURRENT_PROJECT_VERSION = 250725.1;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
@@ -3392,7 +3278,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.6.1;
+				MARKETING_VERSION = 3.6.2;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
@@ -3411,11 +3297,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2465873D23A5AAD100A32E9E /* Build configuration list for PBXNativeTarget "brainwalletTests" */ = {
+		24295E412E341F1C00A76776 /* Build configuration list for PBXNativeTarget "BrainwalletUnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				24470E0323A5BF3C00ADDA27 /* Debug */,
-				2465874023A5AAD100A32E9E /* Release */,
+				24295E422E341F1C00A76776 /* Debug */,
+				24295E432E341F1C00A76776 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		24295EA32E3428CA00A76776 /* Build configuration list for PBXNativeTarget "BrainwalletUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24295EA42E3428CA00A76776 /* Debug */,
+				24295EA52E3428CA00A76776 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
