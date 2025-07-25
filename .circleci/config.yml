@@ -6,9 +6,8 @@ version: 2.1
 orbs:
   macos: circleci/macos@2
   ruby: circleci/ruby@2.5.3
-  
 jobs:
-  build-test-per-push:
+  build-unit-tests-per-push:
     macos:
       xcode: 16.4.0
     resource_class: macos.m1.medium.gen1
@@ -529,9 +528,9 @@ workflows:
   version: 4
   
   # Regular workflow that runs on every push
-  build-test-brainwallet-ios:
+  build-unit-tests-brainwallet-ios:
     jobs:
-      - build-test-per-push:
+      - build-unit-tests-per-push:
           context: 
             - bw-ios-test
   # Workflow that runs UI Testing scheme
