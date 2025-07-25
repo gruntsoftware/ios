@@ -47,3 +47,4 @@ GoogleService-Info.plist
 *.storekit
 Brainwallet-StoreKit-v1.storekit
 fastlane/report.xml
+fastlane/test_output/
