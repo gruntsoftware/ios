@@ -112,10 +112,10 @@ jobs:
             
             # Also copy to brainwallet directory if needed
             mkdir -p ./brainwallet
-            cp Brainwallet-StoreKit-v1.storekit ./brainwallet/
-            cp GoogleService-Info.plist ./brainwallet/
-            cp remote-config-defaults.plist ./brainwallet/
-            cp service-data.plist ./brainwallet/
+            cp Brainwallet-StoreKit-v1.storekit ./brainwallet/PreLaunchResources/
+            cp GoogleService-Info.plist ./brainwallet/PreLaunchResources/
+            cp remote-config-defaults.plist ./brainwallet/PreLaunchResources/
+            cp service-data.plist ./brainwallet/PreLaunchResources/
             
             # Verify copies were successful
             echo "Files in brainwallet directory:"
