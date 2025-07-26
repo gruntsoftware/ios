@@ -15,7 +15,7 @@ platform :ios do
   end
   lane :run_all_unit_tests do
     run_tests(
-      scheme: "brainwalletUnitTests",
+      scheme: ENV["XCODE_SCHEME"] || "brainwalletUnitTests",
       clean: true,
       code_coverage: true,
       configuration: "Debug",
