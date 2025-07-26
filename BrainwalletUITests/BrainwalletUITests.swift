@@ -19,24 +19,28 @@ final class BrainwalletUITests: XCTestCase {
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    override func tearDownWithError() throws { }
 
     @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testStartView() throws {
         let app = XCUIApplication()
+        setupSnapshot(app)
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    @MainActor
-    func testLaunchPerformance() throws {
-        // This measures how long it takes to launch your application.
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
-        }
-    }
+        let darkModeButton = app.buttons["darkModePreference"]
+        XCTAssert(darkModeButton.waitForExistence(timeout: 10))
+        darkModeButton.tap()
+        snapshot("01WelcomeScreen")
+        darkModeButton.tap()
+        snapshot("02WelcomeScreen")
+        app.buttons["restoreYourBrainwalletButton"].tap()
+        snapshot("03RestoreScreen")
+        app.buttons["backButtonToStartRestore"].tap()
+        app.buttons["readyCreateNewBrainwalletButton"].tap()
+        snapshot("04ReadyScreen")
+        app.buttons["backButtonToStartReady"].tap()
+        
+        XCTAssertTrue(app.buttons["darkModePreference"].exists, "Verified darkModePreference")
+        XCTAssertTrue(app.buttons["restoreYourBrainwalletButton"].exists, "Verified restoreButton")
+        XCTAssertTrue(app.buttons["readyCreateNewBrainwalletButton"].exists, "Verified readyButton")
+     }
 }
