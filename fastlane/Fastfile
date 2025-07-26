@@ -15,7 +15,7 @@ platform :ios do
   end
   lane :run_all_unit_tests do
     run_tests(
-      scheme: ENV["XCODE_SCHEME"] || "brainwalletUnitTests",
+      scheme: "brainwalletUnitTests",
       clean: true,
       code_coverage: true,
       configuration: "Debug",
@@ -37,7 +37,7 @@ platform :ios do
       skip_build: false
     )
   end
-  lane :run_all_tests do
+  lane :run_all_tests_iPhone15ProMax do
     run_tests(
       scheme: "brainwalletAllTests",
       clean: true,
@@ -49,7 +49,7 @@ platform :ios do
       skip_build: false
     )
   end
-  lane :run_ui_iphone13mini_tests do
+  lane :run_all_tests_iPhone13Mini do
     run_tests(
       scheme: "brainwalletAllTests",
       clean: true,

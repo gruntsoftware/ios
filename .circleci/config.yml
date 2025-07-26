@@ -219,6 +219,11 @@ jobs:
       HOMEBREW_NO_AUTO_UPDATE: 1
       FASTLANE_SKIP_UPDATE_CHECK: 1
       FL_OUTPUT_DIR: output
+      FASTLANE_LANE: run_all_tests_iPhone15ProMax
+      XCODE_SCHEME: brainwalletAllTests
+      XCODE_PROJECT: brainwallet.xcodeproj
+      FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
+      FASTLANE_XCODEBUILD_SETTINGS_RETRIES: 3
     shell: /bin/bash --login -o pipefail
     steps:
       - add_ssh_keys:
@@ -527,18 +532,23 @@ jobs:
 workflows:
   version: 4
   
-  # Regular workflow that runs on every push
-  build-unit-tests-brainwallet-ios:
+  # Main workflow - runs unit tests by default
+  build-test-brainwallet-ios:
     jobs:
       - build-unit-tests-per-push:
           context: 
             - bw-ios-test
-  # Workflow that runs UI Testing scheme
+  
+  # UI test workflow - only runs when manually triggered or on specific branches
   build-uitest-brainwallet-ios:
     jobs:
       - build-uitest:
           context: 
             - bw-ios-test
+          filters:
+            branches:
+              only:
+                - ui-test-branch  # Only run UI tests on this specific branch
   # Daily scheduled workflow UITest UnitTest
   daily-maintenance-workflow:
     triggers:
