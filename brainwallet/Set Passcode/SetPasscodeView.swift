@@ -61,6 +61,8 @@ struct SetPasscodeView: View {
                                         .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                     Spacer()
                                 }
+                                .accessibilityIdentifier("backButtonFromSetPasscode")
+
                             }.frame(maxWidth: .infinity, alignment: .leading)
                         }
                         .frame(height: squareImageSize)
@@ -69,17 +71,20 @@ struct SetPasscodeView: View {
                             Text( "Set app passcode" )
                                 .font(subTitleFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
-                                .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
+                                .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)                                .accessibilityLabel(Text("Set app passcode"))
+
                             Text( "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool!" )
                                 .font(detailFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 .padding(.all, 20.0)
+                                .accessibilityLabel(Text("Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool!"))
 
                         PINRowView(pinState: $pinState)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .frame(height: 40.0)
                                 .padding(.top, 40.0)
+                                .accessibilityIdentifier("pinRowView")
 
                         Spacer()
                         PasscodeGridView(digits: $pinDigits)
@@ -87,6 +92,7 @@ struct SetPasscodeView: View {
                                    height: height * 0.35,
                                    alignment: .center)
                                 .padding(.bottom, 80.0)
+                                .accessibilityIdentifier("passcodeGridView")
                         }
                 }
             }

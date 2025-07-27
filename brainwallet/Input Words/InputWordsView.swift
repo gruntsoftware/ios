@@ -67,6 +67,7 @@ struct InputWordsView: View {
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .accessibilityIdentifier("backButtonFromInputWordsView")
                     }
                     .frame(height: squareImageSize)
                     .padding([.leading, .trailing], 20.0)
@@ -78,6 +79,7 @@ struct InputWordsView: View {
                         .frame(height: height * 0.05)
                         .foregroundColor(BrainwalletColor.content)
                         .padding(8.0)
+                        .accessibilityLabel(Text("Restore your Brainwallet"))
 
                     InputWordsGridView(viewModel: viewModel, phraseIsVerified: $phraseIsVerified)
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -86,7 +88,7 @@ struct InputWordsView: View {
                         .padding([.leading, .trailing], 16.0)
                         .focused($fieldInFocus)
 
-                    Text( phraseIsVerified ? "Your seed phrase is verified!" :
+                    Text(phraseIsVerified ? "Your seed phrase is verified!" :
                             "Don’t guess. It would take you\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries.")
                     .font(phraseIsVerified ? subTitleFont : detailerFont)
                             .frame(maxWidth: .infinity, alignment: .center)
@@ -95,13 +97,17 @@ struct InputWordsView: View {
                             .padding(.top, 5.0)
                             .padding([.leading, .trailing], 24.0)
                             .opacity(fieldInFocus ? 0.0 : 1.0)
+                            .accessibilityLabel(Text(phraseIsVerified ? "Your seed phrase is verified!" :
+                                                        "Don’t guess. It would take you\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries."))
 
-                        Text( "Blockchain: Litecoin" )
+                        Text("Blockchain: Litecoin")
                             .font(detailerFont)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(BrainwalletColor.content)
                             .padding(.all, 12.0)
                             .opacity(fieldInFocus ? 0.0 : 1.0)
+                            .accessibilityLabel(Text("Blockchain: Litecoin"))
+
                     Spacer()
                     Button(action: {
                         if phraseIsVerified {
@@ -123,12 +129,15 @@ struct InputWordsView: View {
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                         .stroke(BrainwalletColor.content, lineWidth: 2.0)
                                 )
+                                .accessibilityLabel(Text("Restore & Sync"))
                         }
                         .padding(.all, 8.0)
                     }
                     .padding(.all, 8.0)
                     .opacity(fieldInFocus ? 0.0 : 1.0)
                     .disabled(!phraseIsVerified)
+                    .accessibilityIdentifier("verifyPhraseButton")
+
                 }
                 .ignoresSafeArea(.keyboard)
                 .onChange(of: phraseIsVerified) { _ in

@@ -93,7 +93,6 @@ struct RestoreView: View {
                                     .padding(.all, 10.0)
                                     .accessibilityIdentifier("restoreTextDetail")
 
-
                             }
                             Spacer()
                         }

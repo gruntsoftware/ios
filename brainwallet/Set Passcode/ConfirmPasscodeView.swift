@@ -72,6 +72,8 @@ struct ConfirmPasscodeView: View {
                                         .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                     Spacer()
                                 }
+                                .accessibilityIdentifier("backButtonFromConfirmPasscode")
+
                             }.frame(maxWidth: .infinity, alignment: .leading)
                         }
                         .frame(height: squareImageSize)
@@ -81,11 +83,14 @@ struct ConfirmPasscodeView: View {
                                 .font(subTitleFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
-                            Text( "You didn’t forget did you? Ok! Just go back to start over.")
+                                .accessibilityLabel(Text("Confirm passcode"))
+
+                            Text("You didn’t forget did you? Ok! Just go back to start over.")
                                 .font(detailFont)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 .padding(.all, 20.0)
+                                .accessibilityLabel(Text("You didn’t forget did you? Ok! Just go back to start over."))
 
                         PINRowView(pinState: $pinState)
                             .frame(maxWidth: .infinity, alignment: .center)
@@ -93,6 +98,7 @@ struct ConfirmPasscodeView: View {
                             .padding(.top, 40.0)
                             .offset(x: startShake ? 7 : 0)
                             .animation(.spring(response: 0.15, dampingFraction: 0.1, blendDuration: 0.2), value: startShake)
+                            .accessibilityIdentifier("confirmRowView")
 
                         Spacer()
                         PasscodeGridView(digits: $confirmPinDigits)
@@ -100,6 +106,7 @@ struct ConfirmPasscodeView: View {
                                    height: height * 0.35,
                                    alignment: .center)
                                 .padding(.bottom, 80.0)
+                                .accessibilityIdentifier("passcode2GridView")
                         }
                 }
                 .onChange(of: confirmPinDigits) { _ in

@@ -134,7 +134,7 @@ struct StartView: View {
                                             .frame(maxWidth: .infinity,
                                                 alignment: .center)
                                             .foregroundColor(BrainwalletColor.content)
-                                            .accessibilityIdentifier("currencyPickerItem")
+                                            .accessibilityLabel(Text("\($0.fullCurrencyName) \($0.code) (\($0.symbol))"))
 
                                     }
                             }
@@ -146,7 +146,6 @@ struct StartView: View {
                                 newMainViewModel
                                     .userDidSetCurrencyPreference(currency:
                                         newMainViewModel.currentGlobalFiat)
-
                             }
 
 						}
@@ -171,6 +170,7 @@ struct StartView: View {
                                         RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                             .stroke(BrainwalletColor.content, lineWidth: 2.0)
                                     )
+                                    .accessibilityLabel(Text("Ready"))
                             }
                             .padding(.all, 8.0)
                         }
@@ -193,6 +193,8 @@ struct StartView: View {
                                         RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                             .stroke(BrainwalletColor.content, lineWidth: 1.0)
                                     )
+                                    .accessibilityLabel(Text("Restore"))
+
                             }
                             .padding(.all, 8.0)
                         }
@@ -204,7 +206,7 @@ struct StartView: View {
                                 .font(versionFont)
                                 .foregroundColor(BrainwalletColor.content)
                                 .padding(.all, 5.0)
-                                .accessibilityIdentifier("brainwalletVersion")
+                                .accessibilityLabel(Text(AppVersion.string))
                         }
                     }
                 }
