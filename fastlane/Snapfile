@@ -1,34 +1,6 @@
 # Uncomment the lines below you want to change by removing the # in the beginning
 
 # A list of devices you want to take the screenshots from
-# devices([
-#   "iPhone 13 mini",
-#   "iPhone 16 Pro Max",
-# ])
-#
-# languages([
-#   "en-US",
-#   "ar-SA",
-#   "zh-TW",
-#   "zh-CN",
-#   "fr-FR",
-#   "de-DE",
-#   "fa-IR",
-#   "pa-IN",
-#   "pl-PL",
-#   "id-ID",
-#   "es-ES",
-#   "sv-SE",
-#   "uk-UA",
-#   "ru-RU",
-#   "tr-TR",
-#   "ja-JP",
-#   "ko-KR",
-#   "hi-IN",
-#   "it-IT",
-#   ["pt", "pt_BR"]
-# ])
-
 devices([
   "iPhone 13 mini",
   "iPhone 16 Pro Max",
@@ -36,7 +8,25 @@ devices([
 
 languages([
   "en-US",
-  "ar-SA"
+  "ar-SA",
+  "zh-TW",
+  "zh-CN",
+  "fr-FR",
+  "de-DE",
+  "fa-IR",
+  "pa-IN",
+  "pl-PL",
+  "id-ID",
+  "es-ES",
+  "sv-SE",
+  "uk-UA",
+  "ru-RU",
+  "tr-TR",
+  "ja-JP",
+  "ko-KR",
+  "hi-IN",
+  "it-IT",
+  ["pt", "pt_BR"]
 ])
 
 erase_simulator(true)
