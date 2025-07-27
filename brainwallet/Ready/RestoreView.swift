@@ -83,6 +83,7 @@ struct RestoreView: View {
                                         .font(billboardFont)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
+                                        .accessibilityIdentifier("restoreHeadline")
                                 }
                                 .padding(.bottom, 20.0)
                                 Text(restoreText)
@@ -90,6 +91,8 @@ struct RestoreView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                     .padding(.all, 10.0)
+                                    .accessibilityIdentifier("restoreTextDetail")
+
 
                             }
                             Spacer()
@@ -117,6 +120,7 @@ struct RestoreView: View {
                                 }
                                 .padding(.all, 8.0)
                             }
+                            .accessibilityIdentifier("setPasscodeButtonAtRestore")
                         }
                     }
                 }

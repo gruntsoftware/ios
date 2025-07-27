@@ -84,6 +84,7 @@ struct ReadyView: View {
                                         .font(billboardFont)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
+                                        .accessibilityIdentifier("readyHeadline")
                                 }
                                 .padding(.bottom, 20.0)
                                 Text(readyText)
@@ -91,7 +92,7 @@ struct ReadyView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                     .padding(.all, 10.0)
-
+                                    .accessibilityIdentifier("readyTextDetail")
                             }
                             Spacer()
                         }
@@ -118,6 +119,7 @@ struct ReadyView: View {
                                 }
                                 .padding(.all, 8.0)
                             }
+                            .accessibilityIdentifier("setPasscodeButtonAtReady")
                         }
                     }
                 }
