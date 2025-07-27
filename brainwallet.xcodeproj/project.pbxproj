@@ -1263,13 +1263,6 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		24952E452DE8B6D700ADEE10 /* Amounts Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Amounts Tests";
-			sourceTree = "<group>";
-		};
 		249C45112D936D5900E9C3B0 /* m4 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1634,13 +1627,6 @@
 				24F5BD492E0442D00010D340 /* SettingsFooterView.swift */,
 			);
 			path = "Settings Classes";
-			sourceTree = "<group>";
-		};
-		24C9E4092E12D82100F04241 /* Currency Tests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Currency Tests";
 			sourceTree = "<group>";
 		};
 		24C9E40C2E12E9C500F04241 /* Launch Class Tests */ = {
@@ -2176,10 +2162,8 @@
 			isa = PBXGroup;
 			children = (
 				24C9E40C2E12E9C500F04241 /* Launch Class Tests */,
-				24C9E4092E12D82100F04241 /* Currency Tests */,
 				24A0ACAC2E0D59E90077E695 /* Settings Tests */,
 				24360AFF2DED11B700E1E115 /* Buy Receive Tests */,
-				24952E452DE8B6D700ADEE10 /* Amounts Tests */,
 				24952E432DE8B6D200ADEE10 /* OpsFeesTests.swift */,
 				C312D4D82D7DC28E00BB97A4 /* Class Tests */,
 				C312D4DA2D7DC28E00BB97A4 /* Constants Tests */,
