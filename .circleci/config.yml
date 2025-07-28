@@ -209,8 +209,8 @@ jobs:
           destination: crash-logs
           when: on_fail
 
-  # New daily maintenance job
-  daily-maintenance:
+  # Nightly build
+  nightly-develop-build:
     macos:
       xcode: 16.4.0
     resource_class: macos.m1.medium.gen1
@@ -549,18 +549,17 @@ workflows:
             branches:
               only:
                 - ui-test-branch  # Only run UI tests on this specific branch
-  # Daily scheduled workflow UITest UnitTest
-  daily-maintenance-workflow:
+  # Nightly scheduled workflow UITest UnitTest
+  nightly-develop-build-workflow:
     triggers:
       - schedule:
-          # Run daily at 6:00 AM UTC (adjust for your timezone)
-          cron: "0 6 * * *"
+          # Run daily at 3:00 AM UTC (adjust for your timezone)
+          cron: "0 3 * * *"
           filters:
             branches:
               only:
-                - main
                 - develop
-    jobs:
-      - daily-maintenance:
-          context:
-            - bw-ios-test
+   jobs:
+     - nightly-develop-build:
+         context:
+           - bw-ios-test
