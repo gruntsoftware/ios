@@ -110,7 +110,7 @@ jobs:
             head -10 GoogleService-Info.plist
             
             # Also copy to brainwallet directory if needed
-            mkdir -p ./brainwallet
+            mkdir -p ./brainwallet/PreLaunchResources/
             cp Brainwallet-StoreKit-v1.storekit ./brainwallet/PreLaunchResources/
             cp GoogleService-Info.plist ./brainwallet/PreLaunchResources/
             cp remote-config-defaults.plist ./brainwallet/PreLaunchResources/
@@ -118,7 +118,7 @@ jobs:
             
             # Verify copies were successful
             echo "Files in brainwallet directory:"
-            ls -la ./brainwallet/
+            ls -la ./brainwallet/PreLaunchResources/
 
       # Prepare build environment
       - run:
@@ -153,9 +153,9 @@ jobs:
             fi
             
             # Check brainwallet subdirectory
-            if [ -f "./brainwallet/GoogleService-Info.plist" ]; then
+            if [ -f "./brainwallet/PreLaunchResources/GoogleService-Info.plist" ]; then
               echo "✅ GoogleService-Info.plist found in brainwallet directory"
-              ls -la ./brainwallet/GoogleService-Info.plist
+              ls -la ./brainwallet/PreLaunchResources/GoogleService-Info.plist
             else
               echo "❌ GoogleService-Info.plist NOT found in brainwallet directory"
             fi
@@ -165,7 +165,7 @@ jobs:
             find . -name "*.plist" -type f
             
             # Ensure at least one GoogleService-Info.plist exists
-            if [ ! -f "GoogleService-Info.plist" ] && [ ! -f "./brainwallet/GoogleService-Info.plist" ]; then
+            if [ ! -f "GoogleService-Info.plist" ] && [ ! -f "./brainwallet/PreLaunchResources/GoogleService-Info.plist" ]; then
               echo "ERROR: GoogleService-Info.plist not found in any expected location!"
               exit 1
             fi
@@ -302,8 +302,8 @@ jobs:
             echo "$DEBUG_SERVICE_DATA" | base64 --decode > service-data.plist
             
             # Copy to brainwallet directory
-            mkdir -p ./brainwallet
-            cp *.storekit *.plist ./brainwallet/ 2>/dev/null || echo "Some files may not exist"
+            mkdir -p ./brainwallet/PreLaunchResources/
+            cp *.storekit *.plist ./brainwallet/PreLaunchResources/ 2>/dev/null || echo "Some files may not exist"
             
             # Quick build verification (build only, no tests)
             xcodebuild build \
@@ -328,6 +328,7 @@ jobs:
       - store_artifacts:
           path: output
           destination: daily-maintenance-logs
+
   build-uitest:
     macos:
       xcode: 16.4.0
@@ -431,7 +432,7 @@ jobs:
             head -10 GoogleService-Info.plist
             
             # Also copy to brainwallet directory if needed
-            mkdir -p ./brainwallet
+            mkdir -p ./brainwallet/PreLaunchResources/
             cp Brainwallet-StoreKit-v1.storekit ./brainwallet/PreLaunchResources/
             cp GoogleService-Info.plist ./brainwallet/PreLaunchResources/
             cp remote-config-defaults.plist ./brainwallet/PreLaunchResources/
@@ -439,7 +440,7 @@ jobs:
             
             # Verify copies were successful
             echo "Files in brainwallet directory:"
-            ls -la ./brainwallet/
+            ls -la ./brainwallet/PreLaunchResources/
 
       # Prepare build environment
       - run:
@@ -474,9 +475,9 @@ jobs:
             fi
             
             # Check brainwallet subdirectory
-            if [ -f "./brainwallet/GoogleService-Info.plist" ]; then
+            if [ -f "./brainwallet/PreLaunchResources/GoogleService-Info.plist" ]; then
               echo "✅ GoogleService-Info.plist found in brainwallet directory"
-              ls -la ./brainwallet/GoogleService-Info.plist
+              ls -la ./brainwallet/PreLaunchResources/GoogleService-Info.plist
             else
               echo "❌ GoogleService-Info.plist NOT found in brainwallet directory"
             fi
@@ -486,7 +487,7 @@ jobs:
             find . -name "*.plist" -type f
             
             # Ensure at least one GoogleService-Info.plist exists
-            if [ ! -f "GoogleService-Info.plist" ] && [ ! -f "./brainwallet/GoogleService-Info.plist" ]; then
+            if [ ! -f "GoogleService-Info.plist" ] && [ ! -f "./brainwallet/PreLaunchResources/GoogleService-Info.plist" ]; then
               echo "ERROR: GoogleService-Info.plist not found in any expected location!"
               exit 1
             fi
@@ -529,8 +530,9 @@ jobs:
           path: ~/Library/Logs/DiagnosticReports
           destination: crash-logs
           when: on_fail
+
 workflows:
-  version: 4
+  version: 2.1
   
   # Main workflow - runs unit tests by default
   build-test-brainwallet-ios:
@@ -549,6 +551,7 @@ workflows:
             branches:
               only:
                 - ui-test-branch  # Only run UI tests on this specific branch
+  
   # Nightly scheduled workflow UITest UnitTest
   nightly-develop-build-workflow:
     triggers:
@@ -559,7 +562,7 @@ workflows:
             branches:
               only:
                 - develop
-   jobs:
-     - nightly-develop-build:
-         context:
-           - bw-ios-test
+    jobs:
+      - nightly-develop-build:
+          context:
+            - bw-ios-test
