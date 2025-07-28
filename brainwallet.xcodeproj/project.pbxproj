@@ -67,6 +67,7 @@
 		24637D142E2ED672003BE0A2 /* PDFRenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24637D132E2ED663003BE0A2 /* PDFRenderModel.swift */; };
 		24637D162E2ED691003BE0A2 /* PDFExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24637D152E2ED679003BE0A2 /* PDFExportView.swift */; };
 		246A9A072DF5F54C002480CB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A9A062DF5F532002480CB /* Utility.swift */; };
+		2472CA432E37978000D10C5B /* CreateZipHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2472CA422E37977C00D10C5B /* CreateZipHelper.swift */; };
 		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
 		2476AE342E27B44B0065CE22 /* InputWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */; };
 		2476AE362E2802AF0065CE22 /* InputSeedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE352E28029B0065CE22 /* InputSeedWordView.swift */; };
@@ -514,6 +515,7 @@
 		24637D132E2ED663003BE0A2 /* PDFRenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFRenderModel.swift; sourceTree = "<group>"; };
 		24637D152E2ED679003BE0A2 /* PDFExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFExportView.swift; sourceTree = "<group>"; };
 		246A9A062DF5F532002480CB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		2472CA422E37977C00D10C5B /* CreateZipHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateZipHelper.swift; sourceTree = "<group>"; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
 		2476AE322E27038F0065CE22 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWordsGridView.swift; sourceTree = "<group>"; };
@@ -1225,6 +1227,7 @@
 		24637D072E2D400C003BE0A2 /* Tech Features */ = {
 			isa = PBXGroup;
 			children = (
+				2472CA422E37977C00D10C5B /* CreateZipHelper.swift */,
 				24637D132E2ED663003BE0A2 /* PDFRenderModel.swift */,
 				24637D152E2ED679003BE0A2 /* PDFExportView.swift */,
 				24637D0E2E2D9C76003BE0A2 /* ExportModalView.swift */,
@@ -2531,6 +2534,7 @@
 				C312D2D12D7DC27700BB97A4 /* CopyButtonView.swift in Sources */,
 				24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */,
 				C312D2D22D7DC27700BB97A4 /* LightWeightAlert.swift in Sources */,
+				2472CA432E37978000D10C5B /* CreateZipHelper.swift in Sources */,
 				C312D2D32D7DC27700BB97A4 /* ExchangeUpdater.swift in Sources */,
 				C312D2D42D7DC27700BB97A4 /* Currency.swift in Sources */,
 				2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */,

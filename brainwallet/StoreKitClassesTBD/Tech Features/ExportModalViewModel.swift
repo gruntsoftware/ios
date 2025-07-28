@@ -23,6 +23,8 @@ class ExportModalViewModel: ObservableObject {
 
     @Published
     var exportCSVPDFPrice = 0.0
+     
+    private let zipFileName = "brainwallet_transaction_data_\(UUID().uuidString).zip"
 
     var transactions: [Transaction]
 
@@ -39,5 +41,14 @@ class ExportModalViewModel: ObservableObject {
 
     func userDidTapExportCSVAndPDF() {
     }
+    
+    let mediaDirectoryURL = /* ... */
+
+    let zipFileNameURL = try createZip(
+        zipFinalURL: FileManager.default.temporaryDirectory.appending(path: zipFileName),
+        fromDirectory: mediaDirectoryURL
+    )
+    
+    
 
 }
