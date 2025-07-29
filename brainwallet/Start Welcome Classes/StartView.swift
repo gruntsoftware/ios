@@ -86,6 +86,8 @@ struct StartView: View {
                                 .animation(.bouncy(duration: 0.5))
                                 .frame(width: width * 0.9, alignment: .trailing)
                                 .padding(.trailing, 16.0)
+                                .accessibilityIdentifier("currentFiatValue")
+
                         }
                         .padding(.top, 16.0)
                         .frame(height: 20.0)
@@ -96,10 +98,12 @@ struct StartView: View {
                             .frame(maxWidth: width * 0.65,
                                    alignment: .center)
                             .padding([.top,.bottom], verticalPadding)
+                            .accessibilityIdentifier("brainwalletLogo")
 
                         WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
                             .frame(height: height * 0.35, alignment: .center)
                             .padding(.top, verticalPadding)
+                            .accessibilityIdentifier("welcomeAnimation")
 
                         Spacer()
                         HStack {
@@ -121,6 +125,8 @@ struct StartView: View {
                             .onChange(of: userPrefersDarkMode) { preference in
                                 newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
                             }
+                            .accessibilityIdentifier("darkModePreference")
+
                             Picker("", selection: $newMainViewModel.currentGlobalFiat) {
                                     ForEach(newMainViewModel.globalCurrencies, id: \.self) {
                                         Text("\($0.fullCurrencyName)   \($0.code) (\($0.symbol))")
@@ -128,9 +134,12 @@ struct StartView: View {
                                             .frame(maxWidth: .infinity,
                                                 alignment: .center)
                                             .foregroundColor(BrainwalletColor.content)
+                                            .accessibilityIdentifier("currencyPickerItem")
+
                                     }
                             }
                             .pickerStyle(.wheel)
+                            .accessibilityIdentifier("fiatCurrencyPreferencePicker")
                             .frame(width: width * 0.8, alignment: .center)
                             .onChange(of: newMainViewModel.currentGlobalFiat) { _ in
                                 selectedFiat = true
@@ -165,6 +174,7 @@ struct StartView: View {
                             }
                             .padding(.all, 8.0)
                         }
+                        .accessibilityIdentifier("readyCreateNewBrainwalletButton")
 
                         Button(action: {
                             isRestoringAnOldWallet = true
@@ -186,19 +196,15 @@ struct StartView: View {
                             }
                             .padding(.all, 8.0)
                         }
+                        .accessibilityIdentifier("restoreYourBrainwalletButton")
+
                         HStack {
                             Text(AppVersion.string)
                                 .frame(alignment: .center)
                                 .font(versionFont)
                                 .foregroundColor(BrainwalletColor.content)
                                 .padding(.all, 5.0)
-                            if !debugLocale.isEmpty {
-                                Text("\(debugLocale)")
-                                    .frame(alignment: .center)
-                                    .font(versionFont)
-                                    .foregroundColor(BrainwalletColor.chili.opacity(0.8))
-                                    .padding(.all, 5.0)
-                            }
+                                .accessibilityIdentifier("brainwalletVersion")
                         }
                     }
                 }

@@ -51,12 +51,23 @@
       <Testables>
          <TestableReference
             skipped = "NO"
-            testExecutionOrdering = "random">
+            parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2465873523A5AAD000A32E9E"
-               BuildableName = "brainwalletTests.xctest"
-               BlueprintName = "brainwalletTests"
+               BlueprintIdentifier = "24295E3A2E341F1C00A76776"
+               BuildableName = "BrainwalletUnitTests.xctest"
+               BlueprintName = "BrainwalletUnitTests"
+               ReferencedContainer = "container:brainwallet.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "24295E9A2E3428CA00A76776"
+               BuildableName = "BrainwalletUITests.xctest"
+               BlueprintName = "BrainwalletUITests"
                ReferencedContainer = "container:brainwallet.xcodeproj">
             </BuildableReference>
          </TestableReference>
