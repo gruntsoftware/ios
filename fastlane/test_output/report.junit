@@ -1,29 +1,158 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuites name='brainwalletTests.xctest' tests='24' failures='0'>
-  <testsuite name='brainwalletTests.SettingsHelpersTests' tests='24' failures='0'>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testAllSettingsActionsHaveValidSystemImages' time='0.001'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testClosedRowHeight' time='0.001'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testConstantsArePositive' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testExpandArrowSize' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testExpandedRowHeight' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testLeadRowPad' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testLockIsOffSystemImage' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testLockIsOnSystemImage' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testPaddingRelationships' time='0.011'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testPickerViewHeight' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testPreferDarkModeIsOffSystemImage' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testPreferDarkModeIsOnSystemImage' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testRowHeightRelationships' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testRowLeadingPad' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testSettingsActionCaseIterable' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testSystemImageConsistency' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testSystemImageDifferences' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testToggleIsOffSystemImage' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testToggleIsOnSystemImage' time='0.010'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testToggleRowHeight' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testTrailRowPad' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testUpdatePINRowHeight' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testWipeDataIsOffSystemImage' time='0.000'/>
-    <testcase classname='brainwalletTests.SettingsHelpersTests' name='testWipeDataIsOnSystemImage' time='0.000'/>
+<testsuites name='BrainwalletUnitTests.xctest' tests='109' failures='0'>
+  <testsuite name='BrainwalletUnitTests.APITests' tests='2' failures='0'>
+    <testcase classname='BrainwalletUnitTests.APITests' name='testfeePerKb' time='0.001'/>
+    <testcase classname='BrainwalletUnitTests.APITests' name='testfetchExchangeRates' time='0.000'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.AmountTests' tests='3' failures='0'>
+    <testcase classname='BrainwalletUnitTests.AmountTests' name='testAmountForLtcFormat' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.AmountTests' name='testAmountString' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.AmountTests' name='testPerformanceExample' time='0.366'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.ApplicationControllerTests' tests='4' failures='0'>
+    <testcase classname='BrainwalletUnitTests.ApplicationControllerTests' name='testLaunchAssignsApplicationAndWindow' time='0.009'/>
+    <testcase classname='BrainwalletUnitTests.ApplicationControllerTests' name='testPerformFetchStoresCompletionHandler' time='0.001'/>
+    <testcase classname='BrainwalletUnitTests.ApplicationControllerTests' name='testShouldRequireLoginReturnsFalseWhenWithinTimeout' time='0.001'/>
+    <testcase classname='BrainwalletUnitTests.ApplicationControllerTests' name='testShouldRequireLoginReturnsTrueWhenPastTimeout' time='0.001'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.BRAddressTests' tests='1' failures='0'>
+    <testcase classname='BrainwalletUnitTests.BRAddressTests' name='testNewAddressGeneration' time='0.000'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.BWAPIClientTests' tests='1' failures='0'>
+    <testcase classname='BrainwalletUnitTests.BWAPIClientTests' name='testPublicKeyEncoding' time='0.023'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.BuyWKWebVCTests' tests='3' failures='0'>
+    <testcase classname='BrainwalletUnitTests.BuyWKWebVCTests' name='testDidTapCurrentAddressButton' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.BuyWKWebVCTests' name='testLoadRequest' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.BuyWKWebVCTests' name='testUUIDStringExists' time='0.001'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.FileTests' tests='1' failures='0'>
+    <testcase classname='BrainwalletUnitTests.FileTests' name='testGoogleServicesFileExists' time='0.001'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.LocaleTests' tests='2' failures='0'>
+    <testcase classname='BrainwalletUnitTests.LocaleTests' name='testFilteringUnsupportedCountries' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.LocaleTests' name='testUnsupportedCountriesEnum' time='0.001'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.LockScreenTests' tests='1' failures='0'>
+    <testcase classname='BrainwalletUnitTests.LockScreenTests' name='testLockScreenView' time='0.001'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.NewReceiveViewModelTests' tests='23' failures='0'>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testAmountToStringConversion' time='0.070'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testCurrencyFromCode' time='0.015'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testDateFormatterLocale' time='0.010'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testDateFormatterWithInvalidString' time='0.008'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testDefaultFiatAmounts' time='0.008'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testDefaultPickedAmount' time='0.008'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testDeviceInformation' time='0.008'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testExpectedConstants' time='0.007'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testInitialization' time='0.008'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testInitializationWithCanUserBuyFalse' time='0.014'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testInitializationWithCanUserBuyTrue' time='0.015'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testISO8601DateFormatterFormat' time='0.008'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testLocaleLanguageCode' time='0.008'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testMoonpaySigningDataCreation' time='0.008'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testReceiveAddressValidation' time='0.007'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testStringCapitalization' time='0.008'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testStringURLEscaping' time='0.007'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testSupportedFiatCurrenciesEnum' time='0.008'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testTenXAmountCalculation' time='0.007'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testUserPreferredBuyCurrencyDefault' time='0.007'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testUserPreferredBuyCurrencySetting' time='0.008'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testUserPreferredDarkThemeDefault' time='0.007'/>
+    <testcase classname='BrainwalletUnitTests.NewReceiveViewModelTests' name='testUserPreferredDarkThemeSetting' time='0.009'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.OpsFeesTests' tests='1' failures='0'>
+    <testcase classname='BrainwalletUnitTests.OpsFeesTests' name='testOpsFees' time='0.001'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.PaymentRequestTests' tests='7' failures='0'>
+    <testcase classname='BrainwalletUnitTests.PaymentRequestTests' name='testAmountInUri' time='0.003'/>
+    <testcase classname='BrainwalletUnitTests.PaymentRequestTests' name='testBasicExample' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.PaymentRequestTests' name='testEmptyString' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.PaymentRequestTests' name='testExtraEqualSign' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.PaymentRequestTests' name='testInvalidAddress' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.PaymentRequestTests' name='testMessageWithSpace' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.PaymentRequestTests' name='testRequestMetaData' time='0.000'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.PhraseTests' tests='6' failures='0'>
+    <testcase classname='BrainwalletUnitTests.PhraseTests' name='testEmptyPhrase' time='0.009'/>
+    <testcase classname='BrainwalletUnitTests.PhraseTests' name='testEmptyWord' time='0.011'/>
+    <testcase classname='BrainwalletUnitTests.PhraseTests' name='testInvalidPhrase' time='0.009'/>
+    <testcase classname='BrainwalletUnitTests.PhraseTests' name='testInValidWord' time='0.011'/>
+    <testcase classname='BrainwalletUnitTests.PhraseTests' name='testValidPhrase' time='0.004'/>
+    <testcase classname='BrainwalletUnitTests.PhraseTests' name='testValidWord' time='0.011'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.SeedWordsTests' tests='2' failures='0'>
+    <testcase classname='BrainwalletUnitTests.SeedWordsTests' name='testExample' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SeedWordsTests' name='testPerformanceExample' time='0.470'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.SendAddressCellViewModelTests' tests='10' failures='0'>
+    <testcase classname='BrainwalletUnitTests.SendAddressCellViewModelTests' name='testAddressStringCanBeEmpty' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SendAddressCellViewModelTests' name='testAddressStringCanBeSet' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SendAddressCellViewModelTests' name='testAddressStringCanHandleSpecialCharacters' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SendAddressCellViewModelTests' name='testAddressStringCanHandleUnicodeCharacters' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SendAddressCellViewModelTests' name='testAddressStringIsPublished' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SendAddressCellViewModelTests' name='testAddressStringPublisherEmitsOnChange' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SendAddressCellViewModelTests' name='testInitialAddressStringIsEmpty' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SendAddressCellViewModelTests' name='testInitialClosuresAreNil' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SendAddressCellViewModelTests' name='testInitialization' time='0.001'/>
+    <testcase classname='BrainwalletUnitTests.SendAddressCellViewModelTests' name='testMultipleAddressStringChangesArePublished' time='0.000'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.SettingsHelpersTests' tests='24' failures='0'>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testAllSettingsActionsHaveValidSystemImages' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testClosedRowHeight' time='0.010'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testConstantsArePositive' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testExpandArrowSize' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testExpandedRowHeight' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testLeadRowPad' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testLockIsOffSystemImage' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testLockIsOnSystemImage' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testPaddingRelationships' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testPickerViewHeight' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testPreferDarkModeIsOffSystemImage' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testPreferDarkModeIsOnSystemImage' time='0.002'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testRowHeightRelationships' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testRowLeadingPad' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testSettingsActionCaseIterable' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testSystemImageConsistency' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testSystemImageDifferences' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testToggleIsOffSystemImage' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testToggleIsOnSystemImage' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testToggleRowHeight' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testTrailRowPad' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testUpdatePINRowHeight' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testWipeDataIsOffSystemImage' time='0.006'/>
+    <testcase classname='BrainwalletUnitTests.SettingsHelpersTests' name='testWipeDataIsOnSystemImage' time='0.000'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.SpendingLimitTests' tests='3' failures='0'>
+    <testcase classname='BrainwalletUnitTests.SpendingLimitTests' name='testDefaultValue' time='0.012'/>
+    <testcase classname='BrainwalletUnitTests.SpendingLimitTests' name='testSaveSpendingLimit' time='0.012'/>
+    <testcase classname='BrainwalletUnitTests.SpendingLimitTests' name='testSaveZero' time='0.011'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.TabBarViewControllerTests' tests='2' failures='0'>
+    <testcase classname='BrainwalletUnitTests.TabBarViewControllerTests' name='testTabBarItemCount' time='0.037'/>
+    <testcase classname='BrainwalletUnitTests.TabBarViewControllerTests' name='testTabBarItemRange' time='0.004'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.TouchIdEnabledTests' tests='3' failures='0'>
+    <testcase classname='BrainwalletUnitTests.TouchIdEnabledTests' name='testInitialState' time='0.002'/>
+    <testcase classname='BrainwalletUnitTests.TouchIdEnabledTests' name='testTouchIdAction' time='0.002'/>
+    <testcase classname='BrainwalletUnitTests.TouchIdEnabledTests' name='testUserDefaultsStorage' time='0.002'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.UserPreferredCurrencyTests' tests='3' failures='0'>
+    <testcase classname='BrainwalletUnitTests.UserPreferredCurrencyTests' name='testAction' time='0.002'/>
+    <testcase classname='BrainwalletUnitTests.UserPreferredCurrencyTests' name='testUpdateEUR' time='0.001'/>
+    <testcase classname='BrainwalletUnitTests.UserPreferredCurrencyTests' name='testUpdateJPY' time='0.001'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.WalletAuthenticationTests' tests='4' failures='0'>
+    <testcase classname='BrainwalletUnitTests.WalletAuthenticationTests' name='testAuthentication' time='0.023'/>
+    <testcase classname='BrainwalletUnitTests.WalletAuthenticationTests' name='testWalletDisabledTwice' time='0.022'/>
+    <testcase classname='BrainwalletUnitTests.WalletAuthenticationTests' name='testWalletDisabledUntil' time='0.021'/>
+    <testcase classname='BrainwalletUnitTests.WalletAuthenticationTests' name='testWalletNotDisabled' time='0.021'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.WalletCreationTests' tests='1' failures='0'>
+    <testcase classname='BrainwalletUnitTests.WalletCreationTests' name='testWalletCreation' time='0.012'/>
+  </testsuite>
+  <testsuite name='BrainwalletUnitTests.WalletManagerTests' tests='2' failures='0'>
+    <testcase classname='BrainwalletUnitTests.WalletManagerTests' name='testSyncingWallet' time='0.000'/>
+    <testcase classname='BrainwalletUnitTests.WalletManagerTests' name='testWalletPeerManagerDisconnection' time='0.000'/>
   </testsuite>
 </testsuites>

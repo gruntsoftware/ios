@@ -7,6 +7,12 @@ struct MockSeeds {
 	static let rate100 = Rate(code: "USD", name: "US Dollar", rate: 43.3833, lastTimestamp: date100)
 	static let amount100 = Amount(amount: 100, rate: rate100, maxDigits: 4_443_588_634)
 	static let walletManager: WalletManager = try! WalletManager(store: Store(), dbPath: nil)
+    static let twelveWords = [  SeedWord(word: "banana", tagNumber: 1), SeedWord(word: "apple", tagNumber: 2),
+                                SeedWord(word: "orange", tagNumber: 3), SeedWord(word: "banana", tagNumber: 4),
+                                SeedWord(word: "apple", tagNumber: 5), SeedWord(word: "orange", tagNumber: 6),
+                                SeedWord(word: "banana", tagNumber: 7), SeedWord(word: "apple", tagNumber: 8),
+                                SeedWord(word: "orange", tagNumber: 9), SeedWord(word: "banana", tagNumber: 10),
+                                SeedWord(word: "apple", tagNumber: 11), SeedWord(word: "orange", tagNumber: 12)]
 }
 
 struct MockData {

@@ -15,10 +15,34 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
-### ios minimal_test
+### ios run_all_unit_tests
 
 ```sh
-[bundle exec] fastlane ios minimal_test
+[bundle exec] fastlane ios run_all_unit_tests
+```
+
+
+
+### ios run_ui_iphone16promax_tests
+
+```sh
+[bundle exec] fastlane ios run_ui_iphone16promax_tests
+```
+
+
+
+### ios run_all_tests
+
+```sh
+[bundle exec] fastlane ios run_all_tests
+```
+
+
+
+### ios run_ui_iphone13mini_tests
+
+```sh
+[bundle exec] fastlane ios run_ui_iphone13mini_tests
 ```
 
 

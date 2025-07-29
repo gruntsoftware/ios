@@ -59,6 +59,7 @@ struct ReadyView: View {
                                     Spacer()
                                 }
                             }
+                            .accessibilityIdentifier("backButtonToStartReady")
                             Spacer()
                         }
                         .padding(.all, 20.0)

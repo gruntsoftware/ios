@@ -58,6 +58,7 @@ struct RestoreView: View {
                                     Spacer()
                                 }
                             }
+                            .accessibilityIdentifier("backButtonToStartRestore")
                             Spacer()
                         }
                         .padding(.all, 20.0)
