@@ -31,18 +31,18 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### ios run_all_tests
+### ios run_all_tests_iPhone15ProMax
 
 ```sh
-[bundle exec] fastlane ios run_all_tests
+[bundle exec] fastlane ios run_all_tests_iPhone15ProMax
 ```
 
 
 
-### ios run_ui_iphone13mini_tests
+### ios run_all_tests_iPhone13Mini
 
 ```sh
-[bundle exec] fastlane ios run_ui_iphone13mini_tests
+[bundle exec] fastlane ios run_all_tests_iPhone13Mini
 ```
 
 
