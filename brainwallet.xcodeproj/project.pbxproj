@@ -53,7 +53,6 @@
 		244310462E21BCCE004AE386 /* clickseedword.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 244310452E21BCCE004AE386 /* clickseedword.mp3 */; };
 		244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244520332DE70310003AFFDF /* LockScreenHostingController.swift */; };
 		2446DF522E2906AC001453DF /* bloop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2446DF512E2906AC001453DF /* bloop.mp3 */; };
-		244895E32DF57D1900CA8BA2 /* Brainwallet-StoreKit-v1.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 244895E22DF57D1900CA8BA2 /* Brainwallet-StoreKit-v1.storekit */; };
 		244A8D932DE84C890024D356 /* BrainwalletShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
@@ -493,7 +492,6 @@
 		244310452E21BCCE004AE386 /* clickseedword.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clickseedword.mp3; sourceTree = "<group>"; };
 		244520332DE70310003AFFDF /* LockScreenHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHostingController.swift; sourceTree = "<group>"; };
 		2446DF512E2906AC001453DF /* bloop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bloop.mp3; sourceTree = "<group>"; };
-		244895E22DF57D1900CA8BA2 /* Brainwallet-StoreKit-v1.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Brainwallet-StoreKit-v1.storekit"; sourceTree = "<group>"; };
 		244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainwalletShapes.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
@@ -1623,7 +1621,6 @@
 				24D7EA032E336D0800A9AB68 /* CHANGELOG.md */,
 				24D7EA042E336D0800A9AB68 /* POSTBouncer.html */,
 				24E06FC42DF4790B00719B6C /* remote-config-defaults.plist */,
-				244895E22DF57D1900CA8BA2 /* Brainwallet-StoreKit-v1.storekit */,
 				2489E05B2DF0A23700630888 /* GoogleService-Info.plist */,
 			);
 			path = PreLaunchResources;
@@ -2292,7 +2289,6 @@
 				24D7EA0B2E336D0800A9AB68 /* CHANGELOG.md in Resources */,
 				24D7EA0E2E336F9100A9AB68 /* service-data.plist in Resources */,
 				24D7EA0C2E336D0800A9AB68 /* PrivacyInfo.xcprivacy in Resources */,
-				244895E32DF57D1900CA8BA2 /* Brainwallet-StoreKit-v1.storekit in Resources */,
 				24F5BD3C2E042A040010D340 /* clicksound.wav in Resources */,
 				C312D4B22D7DC27700BB97A4 /* SyncProgressHeaderView.xib in Resources */,
 				244310442E21BCBD004AE386 /* errorsound.mp3 in Resources */,

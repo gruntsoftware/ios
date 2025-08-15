@@ -1,6 +1,6 @@
 import Foundation
-import StoreKit
 import FirebaseAnalytics
+import StoreKit
 
 class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
 
