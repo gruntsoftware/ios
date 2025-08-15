@@ -48,3 +48,6 @@ GoogleService-Info.plist
 Brainwallet-StoreKit-v1.storekit
 fastlane/report.xml
 fastlane/test_output/
+
+## Games protection
+/Private
