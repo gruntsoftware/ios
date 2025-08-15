@@ -71,7 +71,7 @@ jobs:
             echo 'github.com ssh-rsa SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g' >> ~/.ssh/known_hosts
             ssh-add -D
             ssh-add ~/.ssh/id_rsa_*
-            git submodule init && git submodule update --init --recursive
+            git submodule init && git submodule update --init Modules/core
       
       # Setup environment files (MUST be before build)
       - run:
@@ -290,20 +290,18 @@ jobs:
             echo "Running daily health check build..."
             
             # Setup environment files for build check
-            echo 'export BRAINWALLET_IOS_STOREKIT_V1_0_FILE="$BRAINWALLET_IOS_STOREKIT_V1_0_FILE"' >> $BASH_ENV
             echo 'export GOOGLE_SERVICES_PLIST="$GOOGLE_SERVICES_PLIST"' >> $BASH_ENV
             echo 'export REMOTE_CONFIG_DEFAULTS="$REMOTE_CONFIG_DEFAULTS"' >> $BASH_ENV
             echo 'export DEBUG_SERVICE_DATA="$DEBUG_SERVICE_DATA"' >> $BASH_ENV
             
             # Create minimal environment files for build verification
-            echo "$BRAINWALLET_IOS_STOREKIT_V1_0_FILE" | base64 --decode > Brainwallet-StoreKit-v1.storekit
             echo "$GOOGLE_SERVICES_PLIST" | base64 --decode > GoogleService-Info.plist
             echo "$REMOTE_CONFIG_DEFAULTS" | base64 --decode > remote-config-defaults.plist
             echo "$DEBUG_SERVICE_DATA" | base64 --decode > service-data.plist
             
             # Copy to brainwallet directory
             mkdir -p ./brainwallet
-            cp *.storekit *.plist ./brainwallet/ 2>/dev/null || echo "Some files may not exist"
+            cp *.plist ./brainwallet/ 2>/dev/null || echo "Some files may not exist"
             
             # Quick build verification (build only, no tests)
             xcodebuild build \
@@ -392,20 +390,18 @@ jobs:
             echo 'github.com ssh-rsa SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g' >> ~/.ssh/known_hosts
             ssh-add -D
             ssh-add ~/.ssh/id_rsa_*
-            git submodule init && git submodule update --init --recursive
-      
+            git submodule init && git submodule update --init Modules/core
+
       # Setup environment files (MUST be before build)
       - run:
           name: Setup environment files
           command: |
             # Export environment variables
-            echo 'export BRAINWALLET_IOS_STOREKIT_V1_0_FILE="$BRAINWALLET_IOS_STOREKIT_V1_0_FILE"' >> $BASH_ENV
             echo 'export GOOGLE_SERVICES_PLIST="$GOOGLE_SERVICES_PLIST"' >> $BASH_ENV
             echo 'export REMOTE_CONFIG_DEFAULTS="$REMOTE_CONFIG_DEFAULTS"' >> $BASH_ENV
             echo 'export DEBUG_SERVICE_DATA="$DEBUG_SERVICE_DATA"' >> $BASH_ENV
             
             # Create environment files in root directory (required by Xcode build)
-            echo "$BRAINWALLET_IOS_STOREKIT_V1_0_FILE" | base64 --decode > Brainwallet-StoreKit-v1.storekit
             echo "$GOOGLE_SERVICES_PLIST" | base64 --decode > GoogleService-Info.plist
             echo "$REMOTE_CONFIG_DEFAULTS" | base64 --decode > remote-config-defaults.plist
             echo "$DEBUG_SERVICE_DATA" | base64 --decode > service-data.plist
@@ -432,7 +428,6 @@ jobs:
             
             # Also copy to brainwallet directory if needed
             mkdir -p ./brainwallet
-            cp Brainwallet-StoreKit-v1.storekit ./brainwallet/PreLaunchResources/
             cp GoogleService-Info.plist ./brainwallet/PreLaunchResources/
             cp remote-config-defaults.plist ./brainwallet/PreLaunchResources/
             cp service-data.plist ./brainwallet/PreLaunchResources/
