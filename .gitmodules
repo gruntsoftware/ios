@@ -4,3 +4,5 @@
 [submodule "Private/ios-games"]
 	path = Private/ios-games
 	url = https://github.com/gruntsoftware/ios-games.git
+	update = none
+	ignore = all
