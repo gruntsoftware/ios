@@ -390,6 +390,8 @@ jobs:
             echo 'github.com ssh-rsa SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g' >> ~/.ssh/known_hosts
             ssh-add -D
             ssh-add ~/.ssh/id_rsa_*
+            git submodule sync --recursive
+            git submodule update --init --recursive --jobs=4 --filter=blob:none -- ':(exclude)Private/ios-games'
             git submodule init && git submodule update --init Modules/core
 
       # Setup environment files (MUST be before build)
