@@ -7179,6 +7179,9 @@
         }
       }
     },
+    "Create New" : {
+
+    },
     "Create Wallet" : {
       "localizations" : {
         "ar" : {
@@ -8586,6 +8589,7 @@
       }
     },
     "Do this for you. Please do it alone. Grab a pen, paper & 5 mins." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -12852,6 +12856,9 @@
     "I saved it on paper or metal" : {
 
     },
+    "If you saved 12 word seed phrase on your phone or had it on Litewallet, you can restore your Brainwallet here." : {
+
+    },
     "Ignore" : {
       "localizations" : {
         "ar" : {
@@ -13982,6 +13989,9 @@
           }
         }
       }
+    },
+    "Lose your smartphone in a boating accident?\n\n" : {
+
     },
     "Manage" : {
       "localizations" : {
@@ -17910,7 +17920,7 @@
         }
       }
     },
-    "Ready?" : {
+    "Ready to start?" : {
 
     },
     "Receive" : {
@@ -19673,6 +19683,12 @@
     "Restore & Sync" : {
 
     },
+    "Restore from seed" : {
+
+    },
+    "Restore with Seed Phrase" : {
+
+    },
     "Restore your Brainwallet" : {
 
     },
@@ -19808,6 +19824,7 @@
       }
     },
     "Restore!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -24176,9 +24193,6 @@
         }
       }
     },
-    "Switching devices? Lost it in a boating accident? You can restore your Brainwallet here." : {
-
-    },
     "Sync" : {
       "localizations" : {
         "ar" : {
@@ -26866,6 +26880,9 @@
           }
         }
       }
+    },
+    "This is for you alone.\n\nSetup the app passcode, open your password manager or grab a pen to record it & your new seed phrase.\n\n" : {
+
     },
     "This option is not recommended for time-sensitive transactions." : {
       "localizations" : {
@@ -30703,6 +30720,9 @@
           }
         }
       }
+    },
+    "We do not know it nor do we have a copy!" : {
+
     },
     "Welcome" : {
       "localizations" : {
