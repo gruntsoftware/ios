@@ -495,6 +495,7 @@
 		244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainwalletShapes.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
+		246027A62E5E178700CDEB7A /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		246A9A062DF5F532002480CB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -2227,6 +2228,7 @@
 				fa,
 				pl,
 				fr,
+				"es-419",
 			);
 			mainGroup = 75A2A7871DA5934300A983D8;
 			packageReferences = (
@@ -2859,6 +2861,7 @@
 				24B84F7C2E085CE40060C2EE /* pa */,
 				242E6CDE2E095AF4002C579A /* pl */,
 				2476AE322E27038F0065CE22 /* fr */,
+				246027A62E5E178700CDEB7A /* es-419 */,
 			);
 			name = InfoPlist.strings;
 			path = brainwallet;
@@ -3071,7 +3074,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250825.0;
+				CURRENT_PROJECT_VERSION = 250826.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3259,7 +3262,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250825.0;
+				CURRENT_PROJECT_VERSION = 250826.0;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
