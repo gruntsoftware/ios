@@ -163,7 +163,7 @@ struct StartView: View {
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
 
-                                Text("Ready")
+                                Text("Create New")
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(largeButtonFont)
                                     .foregroundColor(BrainwalletColor.content)
@@ -185,7 +185,7 @@ struct StartView: View {
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
 
-                                Text("Restore")
+                                Text("Restore with Seed Phrase")
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(regularButtonFont)
                                     .foregroundColor(BrainwalletColor.content)
