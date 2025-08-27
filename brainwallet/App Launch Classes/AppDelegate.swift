@@ -16,9 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        // Locale and fetch access
-        // DEV: Break here to test Locale/Matrix
-
         var regionCode2Char: String = "RU"
         let countryRussia = MoonpayCountryData(alphaCode2Char: "RU",
                                        alphaCode3Char: "RUS",
@@ -108,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
            let warnTopic: String = "warn_\(localePrefix)"
 
            let topicsArray: [String] = [initialTopic, promoTopic, newsTopic, warnTopic]
-        debugPrint("::: fcmToken: \(String(describing: fcmToken))")
+           debugPrint("::: fcmToken: \(String(describing: fcmToken))")
            topicsArray.forEach { topic in
                Messaging.messaging().subscribe(toTopic: topic) { error in
                    if error != nil {
@@ -160,13 +157,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 	func application(_: UIApplication, didReceiveRemoteNotification remoteNotificationDictionary: [AnyHashable: Any],
 	                 fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void) {
-        debugPrint("++++ did receive rn \(remoteNotificationDictionary.debugDescription)")
+        debugPrint(":::: did receive rn \(remoteNotificationDictionary.debugDescription)")
     }
 
     @objc
     private func restartAfterWipedWallet() {
         // Change State
-        debugPrint(":: Restarting after wiping wallet")
+        debugPrint(":::: Restarting after wiping wallet")
 
         DispatchQueue.main.async {
             guard let thisWindow = self.window else { return }
