@@ -420,7 +420,19 @@
             "value" : "%1$@   (%2$@)"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@   (%2$@)"
+          }
+        },
         "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@   (%2$@)"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@   (%2$@)"
@@ -1076,7 +1088,19 @@
             "value" : "%1$@%2$@"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@%2$@"
+          }
+        },
         "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@%2$@"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@%2$@"
@@ -1705,10 +1729,22 @@
             "value" : "Direcciones copiadas"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direcciones Copiadas"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "آدرس‌ها کپی شدند"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresses copiées"
           }
         },
         "fr-FR" : {
@@ -2077,10 +2113,22 @@
             "value" : "Versión de la aplicación:"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión de la Aplicación:"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "نسخه برنامه:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version de l’application :"
           }
         },
         "fr-FR" : {
@@ -2430,7 +2478,74 @@
       }
     },
     "as of %@" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اعتبارًا من %@"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ab %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "a partir de %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "à compter du %@"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "के रूप में %@"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pada %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "a partire da %@"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "a partir de %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "по состоянию на %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "itibariyle %@"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "станом на %@"
+          }
+        }
+      }
     },
     "at %1$@" : {
       "localizations" : {
@@ -2452,10 +2567,22 @@
             "value" : "en %1$@"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "en %1$@"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "در %1$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "à %1$@"
           }
         },
         "fr-FR" : {
@@ -2694,10 +2821,22 @@
             "value" : "¡Genial!"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Increíble!"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "عالی!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Génial!"
           }
         },
         "fr-FR" : {
@@ -2936,10 +3075,22 @@
             "value" : "Equilibrio"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Equilibrio"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "تعادل"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Équilibre"
           }
         },
         "fr-FR" : {
@@ -3048,10 +3199,22 @@
             "value" : "BALANCE"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EQUILIBRIO"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "تعادل"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ÉQUILIBRE"
           }
         },
         "fr-FR" : {
@@ -3807,10 +3970,22 @@
             "value" : "Frase de Monedero Mental"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frase de Brainwallet"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "عبارت کیف پول مغزی"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet Phrase"
           }
         },
         "fr-FR" : {
@@ -4030,7 +4205,74 @@
       }
     },
     "Buy Litecoin" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شراء لايتكوين"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Litecoin kaufen"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprar Litecoin"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acheter du Litecoin"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "लाइटकॉइन खरीदें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beli Litecoin"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acquista Litecoin"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprar Litecoin"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Купить Лайткоин"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Litecoin Satın Alın"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Купити Лайткоїн"
+          }
+        }
+      }
     },
     "BUY LTC" : {
       "localizations" : {
@@ -4566,10 +4808,22 @@
             "value" : "Cambiar PIN"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar PIN"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "تغییر رمز"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier le code PIN"
           }
         },
         "fr-FR" : {
@@ -5499,7 +5753,74 @@
       }
     },
     "Confirm passcode" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تأكيد رمز المرور"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passcode bestätigen"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmar código de acceso"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmer le code d’accès"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "पासकोड की पुष्टि करें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konfirmasi kode sandi"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conferma il codice di accesso"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmar código de acesso"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подтвердите код доступа"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifreyi onayla"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Підтвердьте пароль"
+          }
+        }
+      }
     },
     "Confirmation" : {
       "localizations" : {
@@ -7179,6 +7500,76 @@
         }
       }
     },
+    "Create New" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إنشاء جديد"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neu erstellen"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear Nuevo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un nouveau"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "नया निर्माण"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buat Baru"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea nuovo"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criar novo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создать новое"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Oluştur"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Створити нове"
+          }
+        }
+      }
+    },
     "Create Wallet" : {
       "localizations" : {
         "ar" : {
@@ -7589,10 +7980,22 @@
             "value" : "Modo Oscuro"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo Oscuro"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "حالت تاریک"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode sombre"
           }
         },
         "fr-FR" : {
@@ -8586,6 +8989,7 @@
       }
     },
     "Do this for you. Please do it alone. Grab a pen, paper & 5 mins." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -9648,10 +10052,22 @@
             "value" : "Ingresar Clave de Papel"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingresa la Clave de Papel"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "وارد کردن کلید کاغذی"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrez la clé de papier"
           }
         },
         "fr-FR" : {
@@ -10930,10 +11346,22 @@
             "value" : "ID facial no configurado"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Face ID No Configurado"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "شناسه چهره تنظیم نشده است"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Face ID n’est pas configuré"
           }
         },
         "fr-FR" : {
@@ -11692,10 +12120,22 @@
             "value" : "Moneda Fiduciaria"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moneda Fiduciaria"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ارز فیات"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monnaie fiduciaire"
           }
         },
         "fr-FR" : {
@@ -11804,10 +12244,22 @@
             "value" : "Las transacciones encontradas se agregan a la base de datos del dispositivo y se suman o restan creando el saldo de tu Brainwallet. No hay Litecoin en ninguna cartera. Litecoin solo se encuentra en la red.  Brainwallet es una forma sencilla de verificar tu historial de transacciones y almacena tus claves privadas"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las transacciones encontradas se agregan a la base de datos del dispositivo y se suman o restan creando el saldo de tu Brainwallet. No hay Litecoin en ninguna billetera. Litecoin solo se encuentra en la red.  Brainwallet es una forma sencilla de verificar tu historial de transacciones y almacena tus claves privadas"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "تراکنش‌های یافت شده به پایگاه داده دستگاه اضافه می‌شوند و با اضافه یا کم کردن، موجودی کیف پول مغزی شما را ایجاد می‌کنند. هیچ لایت کوینی در هیچ کیف پولی وجود ندارد. لایت کوین فقط در شبکه یافت می‌شود.  کیف پول مغزی (Brainwallet) روشی ساده برای بررسی تاریخچه تراکنش‌های شماست و کلیدهای خصوصی شما را ذخیره می‌کند."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les transactions trouvées sont ajoutées à la base de données de l'appareil et ajoutées ou soustraites, créant ainsi le solde de votre Brainwallet. Il n’y a pas de Litecoin dans un portefeuille. Le Litecoin ne se trouve que sur le réseau.  Brainwallet est un moyen simple de vérifier l’historique de vos transactions et il stocke vos clés privées"
           }
         },
         "fr-FR" : {
@@ -11897,7 +12349,74 @@
       }
     },
     "Game & Sync" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لعبة & تزامن"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiel & Synchronisation"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juego y Sincronización"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeu et synchronisation"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "गेम और सिंक"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game & Sinkronisasi"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gioco e sincronizzazione"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jogo e sincronização"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Игра и синхронизация"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyun ve Senkronizasyon"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гра та синхронізація"
+          }
+        }
+      }
     },
     "Game 1" : {
       "localizations" : {
@@ -11919,10 +12438,22 @@
             "value" : "Juego 1"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juego 1"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "بازی ۱"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Match 1"
           }
         },
         "fr-FR" : {
@@ -12031,10 +12562,22 @@
             "value" : "Juego 2"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juego 2"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "بازی ۲"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Match 2"
           }
         },
         "fr-FR" : {
@@ -12143,10 +12686,22 @@
             "value" : "Juego 3"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juego 3"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "بازی ۳"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Match 3"
           }
         },
         "fr-FR" : {
@@ -12255,10 +12810,22 @@
             "value" : "Juego 4"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juego 4"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "بازی ۴"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Match 4"
           }
         },
         "fr-FR" : {
@@ -12367,10 +12934,22 @@
             "value" : "Juegos"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juegos"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "بازی‌ها"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeux"
           }
         },
         "fr-FR" : {
@@ -12460,10 +13039,144 @@
       }
     },
     "Get Litecoin through MoonPay" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "احصل على لايتكوين عبر MoonPay"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Litecoin über MoonPay erhalten"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtén Litecoin a través de MoonPay"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtenez du Litecoin via MoonPay"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "मूनपे के माध्यम से लाइटकॉइन प्राप्त करें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dapatkan Litecoin melalui MoonPay"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottieni Litecoin tramite MoonPay"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtenha Litecoin por meio do MoonPay"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Получите Litecoin через MoonPay"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MoonPay aracılığıyla Litecoin alın"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отримайте Litecoin через MoonPay"
+          }
+        }
+      }
     },
     "Get some Litecoin for your Brainwallet" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "احصل على بعض اللايتكوين لمحفظة الدماغ الخاصة بك"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Holen Sie sich etwas Litecoin für Ihr Brainwallet"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consigue algo de Litecoin para tu Brainwallet"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtenez du Litecoin pour votre Brainwallet"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "अपने ब्रेनवॉलेट के लिए कुछ लाइटकॉइन प्राप्त करें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dapatkan beberapa Litecoin untuk Brainwallet Anda"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottieni Litecoin per il tuo Brainwallet"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtenha um pouco de Litecoin para sua Brainwallet"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Получите немного Litecoin для вашего Brainwallet."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet'ınız için biraz Litecoin alın"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отримайте трохи Litecoin для свого Brainwallet"
+          }
+        }
+      }
     },
     "Go to Settings to allow camera access." : {
       "localizations" : {
@@ -12850,7 +13563,144 @@
       }
     },
     "I saved it on paper or metal" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حفظته على الورق أو المعدن"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich habe es auf Papier oder Metall gespeichert"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lo guardé en papel o metal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je l’ai sauvegardé sur papier ou métal"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "मैंने इसे कागज़ या धातु पर सहेजा"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saya menyimpannya di atas kertas atau logam"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'ho salvato su carta o metallo"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardei em papel ou metal"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Я сохранил это на бумаге или металле."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kağıt ya da metal üzerine kaydettim."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Я зберіг це на папері чи металі"
+          }
+        }
+      }
+    },
+    "If you saved 12 word seed phrase on your phone or had it on Litewallet, you can restore your Brainwallet here." : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إذا قمت بحفظ عبارة البذور المكونة من 12 كلمة على هاتفك أو كانت لديك على Litewallet، يمكنك استعادة محفظة الدماغ هنا."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn Sie Ihre 12-Wort-Seed-Phrase auf Ihrem Telefon gespeichert haben oder sie in Litewallet hatten, können Sie Ihr Brainwallet hier wiederherstellen."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si guardaste la frase semilla de 12 palabras en tu teléfono o la tenías en Litewallet, puedes restaurar tu Brainwallet aquí."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si vous avez enregistré une phrase de récupération de 12 mots sur votre téléphone ou si vous l’aviez sur Litewallet, vous pouvez restaurer votre Brainwallet ici."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "यदि आपने अपने फोन पर 12 शब्दों का बीज वाक्यांश सहेजा है या इसे लाइटवॉलेट पर रखा है, तो आप यहां अपने ब्रेनवॉलेट को पुनर्स्थापित कर सकते हैं।"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jika Anda menyimpan 12 frasa benih kata di ponsel Anda atau menyimpannya di Litewallet, Anda dapat memulihkan Brainwallet Anda di sini."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se hai salvato una frase seed di 12 parole sul tuo telefono o l'hai salvata su Litewallet, puoi ripristinare il tuo Brainwallet qui."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se você salvou 12 palavras e frases de sementes em seu telefone ou as tinha no Litewallet, pode restaurar seu Brainwallet aqui."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если вы сохранили 12 слов из seed-фразы на своем телефоне или имели ее в Litewallet, вы можете восстановить свой Brainwallet здесь."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12 kelimelik tohum cümlesini telefonunuza kaydettiyseniz veya Litewallet'ta varsa, Brainwallet'ınızı buradan geri yükleyebilirsiniz."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Якщо ви зберегли 12-словну основну фразу на своєму телефоні або мали її на Litewallet, ви можете відновити свій Brainwallet тут."
+          }
+        }
+      }
     },
     "Ignore" : {
       "localizations" : {
@@ -13002,10 +13852,22 @@
             "value" : "En progreso: %1$@"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En progreso: %1$@"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "در حال پیشرفت: %1$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En cours : %1$@"
           }
         },
         "fr-FR" : {
@@ -13377,10 +14239,22 @@
             "value" : "Modo Claro"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo Claro"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "حالت روشن"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode d’éclairage"
           }
         },
         "fr-FR" : {
@@ -13983,6 +14857,9 @@
         }
       }
     },
+    "Lose your smartphone in a boating accident?\n\n" : {
+
+    },
     "Manage" : {
       "localizations" : {
         "ar" : {
@@ -14114,7 +14991,74 @@
       }
     },
     "Maybe later (Skip)" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ربما لاحقًا (تخطي)"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vielleicht später (Überspringen)"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tal vez más tarde (Omitir)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peut-être plus tard (Skip)"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "शायद बाद में (छोड़ें)"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mungkin nanti (Lewati)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forse più tardi (Salta)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Talvez mais tarde (pular)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Возможно, позже (Пропустить)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belki sonra (Skip)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Можливо пізніше (Пропустити)"
+          }
+        }
+      }
     },
     "Menu" : {
       "localizations" : {
@@ -14266,10 +15210,22 @@
             "value" : "Dinero Enviado!"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Dinero Enviado!"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "پول ارسال شد!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De l’argent envoyé !"
           }
         },
         "fr-FR" : {
@@ -14378,10 +15334,22 @@
             "value" : "Movido <b>%1@</b>"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movido <b>%1@</b>"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "انتقال یافت <b>%1@</b>"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déplacé <b> %1@</b>"
           }
         },
         "fr-FR" : {
@@ -14877,7 +15845,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ok"
+            "value" : "Vale"
           }
         },
         "fa" : {
@@ -14985,7 +15953,74 @@
       }
     },
     "OK" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حسنًا"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D’ACCORD"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ठीक है"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BAIKLAH."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хорошо"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TAMAM."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гаразд"
+          }
+        }
+      }
     },
     "Paper Key" : {
       "localizations" : {
@@ -15137,10 +16172,22 @@
             "value" : "Conjunto de Llaves de Papel"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conjunto de Llaves de Papel"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "مجموعه کلید کاغذی"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeu de clés en papier"
           }
         },
         "fr-FR" : {
@@ -15876,7 +16923,74 @@
       }
     },
     "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool!" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر رمز مرور لفتح محفظة الدماغ الخاصة بك. ليس رمز قفل الهاتف! اجعلها مختلفة. اجعلها رائعة!"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wählen Sie einen Passcode, um Ihr Brainwallet zu entsperren. Kein Telefon-Sperrcode! Mach es anders. Mach es cool!"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige una contraseña para desbloquear tu Brainwallet. ¡No es un código de bloqueo de teléfono! Hazlo diferente. ¡Hazlo genial!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez un mot de passe pour déverrouiller votre Brainwallet. Pas un code de verrouillage de téléphone ! Faites en sorte que ce soit différent. Rendez-le cool !"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "अपने ब्रेनवॉलेट को अनलॉक करने के लिए पासकोड चुनें। यह कोई फ़ोन लॉक कोड नहीं है! इसे अलग बनाओ. इसे ठंडा बनाओ!"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilih kode sandi untuk membuka kunci Brainwallet Anda. Bukan kode kunci telepon! Buatlah berbeda. Buatlah keren!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli un codice di accesso per sbloccare il tuo Brainwallet. Non è un codice di blocco del telefono! Rendila diversa. Rendila fantastica!"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha uma senha para desbloquear seu Brainwallet. Não é um código de bloqueio telefônico! Torne-o diferente. Faça com que seja legal!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите код доступа для разблокировки вашего Brainwallet. Это не код блокировки телефона! Сделай это по-другому. Сделай это круто!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet'ınızın kilidini açmak için bir şifre seçin. Telefon kilit kodu değil! Farklı olsun. Havalı olsun!"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть пароль, щоб розблокувати свій Brainwallet. Не код блокування телефону! Зробіть це інакше. Зробіть це круто!"
+          }
+        }
+      }
     },
     "PIN" : {
       "localizations" : {
@@ -15898,10 +17012,22 @@
             "value" : "PIN"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PIN"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "پین"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ÉPINGLER"
           }
         },
         "fr-FR" : {
@@ -16140,10 +17266,22 @@
             "value" : "Configuración de PIN"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración de PIN"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "رمز تنظیم شد"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeu de codes PIN"
           }
         },
         "fr-FR" : {
@@ -17007,7 +18145,74 @@
       }
     },
     "Press and drag a word into place" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اضغط واسحب الكلمة إلى مكانها المناسب"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drücken und ziehen Sie ein Wort an die richtige Stelle"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presiona y arrastra una palabra al lugar correspondiente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appuyez sur un mot et faites-le glisser"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "किसी शब्द को दबाकर उसके स्थान पर खींचें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekan dan seret kata ke tempatnya"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premi e trascina una parola nella posizione desiderata"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressione e arraste uma palavra para o lugar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нажмите и перетащите слово на место."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir kelimeye basın ve yerine sürükleyin"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Натисніть і перетягніть слово на потрібне місце"
+          }
+        }
+      }
     },
     "Previous" : {
       "localizations" : {
@@ -17910,8 +19115,75 @@
         }
       }
     },
-    "Ready?" : {
-
+    "Ready to start?" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مستعد للبدء؟"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereit anzufangen?"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Listo para empezar?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prêt à commencer ?"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "शुरू करने के लिए तैयार हैं?"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siap untuk memulai?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pronti per iniziare?"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pronto para começar?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готовы начать?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlamaya hazır mısınız?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готові почати?"
+          }
+        }
+      }
     },
     "Receive" : {
       "localizations" : {
@@ -18317,10 +19589,22 @@
             "value" : "Recibido <b>%1@</b>"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recibido <b>%1@</b>"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "دریافت شد <b>%1@</b>"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reçu <b> %1@</b>"
           }
         },
         "fr-FR" : {
@@ -18429,10 +19713,22 @@
             "value" : "Recibido en esta dirección"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recibido en esta Dirección"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "دریافت شده در این آدرس"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reçu à cette adresse"
           }
         },
         "fr-FR" : {
@@ -19296,7 +20592,74 @@
       }
     },
     "RESET / START OVER" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعادة تعيين / البدء من جديد"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZURÜCKSETZEN / VON VORNE BEGINNEN"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "REINICIAR / EMPEZAR DE NUEVO"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RÉINITIALISER / RECOMMENCER"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "रीसेट करें / पुनः प्रारंभ करें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MENGATUR ULANG / MEMULAI KEMBALI"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RESET / RICOMINCIA"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "REINICIAR / COMEÇAR DE NOVO"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "СБРОС / НАЧАТЬ ЗАНОВО"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SIFIRLA / BAŞTAN BAŞLA"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "СКИДАННЯ / ПОЧАТИ ЗНОВУ"
+          }
+        }
+      }
     },
     "Reset PIN" : {
       "localizations" : {
@@ -19448,10 +20811,22 @@
             "value" : "Resuelto"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resuelto"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "حل شده"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résolu"
           }
         },
         "fr-FR" : {
@@ -19671,10 +21046,284 @@
       }
     },
     "Restore & Sync" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استعادة ومزامنة"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiederherstellen & Synchronisieren"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar y sincronizar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restauration et synchronisation"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "पुनर्स्थापित करें और सिंक करें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulihkan & Sinkronisasi"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina e sincronizza"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restauração e sincronização"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Восстановить и синхронизировать"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri Yükleme ve Senkronizasyon"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відновлення та синхронізація"
+          }
+        }
+      }
+    },
+    "Restore from seed" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استعادة من البذور"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus Seed wiederherstellen"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar desde semilla"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurer à partir de graines"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "बीज से पुनर्स्थापित करें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kembalikan dari biji"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristinare dal seme"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar a partir da semente"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Восстановить из семени"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tohumdan geri yükleme"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відновлення з насіння"
+          }
+        }
+      }
+    },
+    "Restore with Seed Phrase" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استعادة باستخدام العبارة السرية"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiederherstellen mit Seed-Phrase"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar con Frase Semilla"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurer avec une phrase de récupération"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "बीज वाक्यांश के साथ पुनर्स्थापित करें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kembalikan dengan Frasa Benih"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina con la frase Seed"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar com a Seed Phrase"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Восстановить с помощью секретной фразы"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tohum İfadesi ile Geri Yükleme"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відновлення за допомогою початкової фрази"
+          }
+        }
+      }
     },
     "Restore your Brainwallet" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استعادة محفظة الدماغ الخاصة بك"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stellen Sie Ihr Brainwallet wieder her"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaura tu Brainwallet"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurez votre Brainwallet"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "अपना ब्रेनवॉलेट पुनर्स्थापित करें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kembalikan Brainwallet Anda"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina il tuo Brainwallet"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar seu Brainwallet"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Восстановите ваш Brainwallet"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet'ınızı geri yükleyin"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відновіть свій Brainwallet"
+          }
+        }
+      }
     },
     "Restore your power" : {
       "extractionState" : "stale",
@@ -19808,6 +21457,7 @@
       }
     },
     "Restore!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -20347,10 +21997,22 @@
             "value" : "Frase Semilla"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frase Semilla"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "عبارت بازیابی"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phrase de départ"
           }
         },
         "fr-FR" : {
@@ -20719,10 +22381,22 @@
             "value" : "Enviar Confirmación"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar Confirmación"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "تأیید ارسال"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyer une confirmation"
           }
         },
         "fr-FR" : {
@@ -20961,10 +22635,22 @@
             "value" : "Enviado <b>%1@</b>"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviado <b>%1@</b>"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ارسال شد <b>%1@</b>"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyé <b> %1@</b>"
           }
         },
         "fr-FR" : {
@@ -21073,10 +22759,22 @@
             "value" : "Enviado a esta dirección"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviado a esta Dirección"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ارسال شده به این آدرس"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyé à cette adresse"
           }
         },
         "fr-FR" : {
@@ -21296,7 +22994,74 @@
       }
     },
     "Set app passcode" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين رمز مرور للتطبيق"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Passcode festlegen"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establecer código de acceso de la aplicación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définir le code d’accès de l’application"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ऐप पासकोड सेट करें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mengatur kode sandi aplikasi"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta il codice di accesso dell'app"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir a senha do aplicativo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установить код доступа для приложения"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulama şifresini ayarlama"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Встановити пароль програми"
+          }
+        }
+      }
     },
     "Set app PIN" : {
       "extractionState" : "stale",
@@ -22608,10 +24373,22 @@
             "value" : "Mostrar mis emojis"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar mis emojis"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "نشان دادن ایموجی‌های من"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher mes emojis"
           }
         },
         "fr-FR" : {
@@ -22720,10 +24497,22 @@
             "value" : "Mostrar mi frase semilla"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar mi frase semilla"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "نمایش عبارت بازیابی من"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher ma phrase de récupération"
           }
         },
         "fr-FR" : {
@@ -22962,10 +24751,22 @@
             "value" : "Social"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Social"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "اجتماعی"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Social"
           }
         },
         "fr-FR" : {
@@ -23842,10 +25643,22 @@
             "value" : "Éxito"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Éxito"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "موفقیت"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Succès"
           }
         },
         "fr-FR" : {
@@ -23954,10 +25767,22 @@
             "value" : "Billetera importada con éxito."
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Billetera importada exitosamente."
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "کیف پول با موفقیت وارد شد."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portefeuille importé avec succès."
           }
         },
         "fr-FR" : {
@@ -24175,9 +26000,6 @@
           }
         }
       }
-    },
-    "Switching devices? Lost it in a boating accident? You can restore your Brainwallet here." : {
-
     },
     "Sync" : {
       "localizations" : {
@@ -24459,10 +26281,22 @@
             "value" : "Sincronizar con la cadena de bloques de Litecoin"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sincronizar con la Blockchain de Litecoin"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "همگام‌سازی با بلاک‌چین لایت‌کوین"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronisation avec la blockchain Litecoin"
           }
         },
         "fr-FR" : {
@@ -24701,10 +26535,22 @@
             "value" : "La sincronización es un proceso en el que Brainwallet escanea la cadena de bloques de Litecoin para ver si hay transacciones que coincidan con tus palabras semilla (claves privadas) en alguna transacción."
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La sincronización es un proceso donde Brainwallet escanea la cadena de bloques de Litecoin para ver si alguna transacción que coincida con tus palabras semilla (claves privadas) está en alguna transacción."
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "همگام‌سازی فرآیندی است که در آن برین‌والت (Brainwallet) بلاک‌چین لایت‌کوین را اسکن می‌کند تا ببیند آیا تراکنش‌هایی که با کلمات بذر شما (کلیدهای خصوصی) مطابقت دارند در هیچ تراکنشی وجود دارند."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La synchronisation est un processus par lequel Brainwallet analyse la blockchain Litecoin pour voir si des transactions qui correspondent à vos mots de récupération (clés privées) sont dans des transactions."
           }
         },
         "fr-FR" : {
@@ -26735,7 +28581,74 @@
       }
     },
     "There was a serious error in creating your Brainwallet. Visit us at brainwallet.co to file a customer support ticket." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حدث خطأ جسيم في إنشاء محفظة الدماغ الخاصة بك. قم بزيارتنا على brainwallet.co لتقديم تذكرة دعم العملاء."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es gab einen schwerwiegenden Fehler beim Erstellen Ihrer Brainwallet. Besuchen Sie uns unter brainwallet.co, um ein Kundensupport-Ticket zu erstellen."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hubo un error grave al crear tu Brainwallet. Visítanos en brainwallet.co para enviar un ticket de soporte al cliente."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il y a eu une grave erreur lors de la création de votre Brainwallet. Rendez-vous sur brainwallet.co pour déposer un ticket d’assistance client."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "आपके ब्रेनवॉलेट को बनाने में एक गंभीर त्रुटि हुई है। ग्राहक सहायता टिकट दर्ज करने के लिए brainwallet.co पर हमारी वेबसाइट पर जाएँ।"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ada kesalahan serius dalam membuat Brainwallet Anda. Kunjungi kami di brainwallet.co untuk mengajukan tiket dukungan pelanggan."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si è verificato un grave errore durante la creazione del tuo Brainwallet. Visitateci su brainwallet.co per inviare un ticket di assistenza clienti."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Houve um erro grave na criação de seu Brainwallet. Visite-nos em brainwallet.co para registrar um tíquete de suporte ao cliente."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "При создании вашего Brainwallet произошла серьезная ошибка. Посетите наш сайт brainwallet.co, чтобы подать заявку в службу поддержки клиентов."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet'ınızı oluştururken ciddi bir hata oluştu. Bir müşteri destek bileti oluşturmak için brainwallet.co adresinden bizi ziyaret edin."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Під час створення вашого Brainwallet сталася серйозна помилка. Відвідайте наш веб-сайт brainwallet.co, щоб подати запит на підтримку клієнтів."
+          }
+        }
+      }
     },
     "These are your seed words. If you show them to anyone, they can take your Litecoin" : {
       "localizations" : {
@@ -26866,6 +28779,9 @@
           }
         }
       }
+    },
+    "This is for you alone.\n\nSetup the app passcode, open your password manager or grab a pen to record it & your new seed phrase.\n\n" : {
+
     },
     "This option is not recommended for time-sensitive transactions." : {
       "localizations" : {
@@ -27147,10 +29063,22 @@
             "value" : "Este proceso puede tardar entre 5 y 45 minutos dependiendo de tu conectividad a la red de Litecoin."
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este proceso puede tomar de 5 a 45 minutos dependiendo de tu conectividad a la red de Litecoin."
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "این فرآیند می‌تواند بسته به کیفیت اتصال شما به شبکه لایت‌کوین، بین ۵ تا ۴۵ دقیقه طول بکشد."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce processus peut prendre de 5 à 45 minutes en fonction de votre connexion au réseau Litecoin."
           }
         },
         "fr-FR" : {
@@ -27779,10 +29707,22 @@
             "value" : "a %1$@"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "a %1$@"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "به %1$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "à %1$@"
           }
         },
         "fr-FR" : {
@@ -27872,7 +29812,74 @@
       }
     },
     "To be deposited to your LTC address" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ليتم إيداعه في عنوان LTC الخاص بك"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zur Einzahlung auf Ihre LTC-Adresse"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para ser depositado a tu dirección LTC"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À déposer à votre adresse LTC"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "आपके LTC पते पर जमा किया जाना है"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Untuk disetorkan ke alamat LTC Anda"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Da depositare al tuo indirizzo LTC"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A ser depositado em seu endereço LTC"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для зачисления на ваш LTC-адрес"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LTC adresinize yatırılmak üzere"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для зарахування на вашу адресу LTC"
+          }
+        }
+      }
     },
     "To make sure everything was written down correctly, please enter the following words from your paper key." : {
       "localizations" : {
@@ -28135,7 +30142,74 @@
       }
     },
     "Top up?" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعادة تعبئة؟"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufladen?"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Recargar?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recharger ?"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "लबालब भरना?"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top up?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ricaricare?"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aumentar?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пополнить?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doldurayım mı?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поповнити?"
+          }
+        }
+      }
     },
     "Total Cost:" : {
       "localizations" : {
@@ -28417,10 +30491,22 @@
             "value" : "Touch ID no configurado"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touch ID No Configurado"
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "تاچ آی‌دی تنظیم نشده است"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touch ID n’est pas configuré"
           }
         },
         "fr-FR" : {
@@ -29699,10 +31785,22 @@
             "value" : "Recuento de Tx: "
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cantidad de Tx: "
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "تعداد تراکنش‌ها: "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de tx : "
           }
         },
         "fr-FR" : {
@@ -30442,7 +32540,74 @@
       }
     },
     "Wallet Creation Error" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خطأ في إنشاء المحفظة"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wallet-Erstellungsfehler"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de Creación de Billetera"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erreur de création de portefeuille"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "वॉलेट निर्माण त्रुटि"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kesalahan Pembuatan Dompet"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errore di creazione del portafoglio"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erro na criação da carteira"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка создания кошелька"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cüzdan Oluşturma Hatası"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помилка створення гаманця"
+          }
+        }
+      }
     },
     "Wallet is deleted" : {
       "localizations" : {
@@ -30700,6 +32865,76 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "警告"
+          }
+        }
+      }
+    },
+    "We do not know it nor do we have a copy!" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نحن لا نعرفه ولا نملك نسخة منه!"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir kennen es nicht und haben auch keine Kopie davon!"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡No lo conocemos ni tenemos una copia!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous ne le savons pas et nous n’en avons pas de copie !"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "हमें इसकी जानकारी नहीं है और न ही हमारे पास इसकी कोई प्रति है!"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kami tidak mengetahuinya dan juga tidak memiliki salinannya!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non lo sappiamo e non ne abbiamo una copia!"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não o conhecemos nem temos uma cópia!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мы этого не знаем, и у нас нет копии!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bunu ne biliyoruz ne de bir kopyasına sahibiz!"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ми цього не знаємо і не маємо копії!"
           }
         }
       }
@@ -31989,7 +34224,74 @@
       }
     },
     "You didn’t forget did you? Ok! Just go back to start over." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ألم تنسَ، أليس كذلك؟ حسنًا! فقط عد إلى البداية لتبدأ من جديد."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du hast es nicht vergessen, oder? Ok! Geh einfach zurück und fang von vorne an."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se te olvidó, ¿verdad? ¡De acuerdo! Solo regresa para empezar de nuevo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous n’avez pas oublié, n’est-ce pas ? D’accord! Il suffit de revenir en arrière pour recommencer."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "आप भूले तो नहीं? ठीक है! बस वापस जाकर दोबारा शुरू करें।"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anda tidak lupa, bukan? Ok! Kembali saja untuk memulai dari awal."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non te ne sei dimenticato, vero? OK! Basta tornare indietro per ricominciare."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você não se esqueceu, não é? Ok! Basta voltar e começar de novo."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ты не забыл, правда? Хорошо! Просто вернись и начни сначала."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unutmadın değil mi? Tamam! Baştan başlamak için geri dön."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ти ж не забув, чи не так? Гаразд! Просто повернися, щоб почати спочатку."
+          }
+        }
+      }
     },
     "You have not set up Face ID on this device. Go to Settings->Face ID & Passcode to set it up now." : {
       "localizations" : {
@@ -32011,10 +34313,22 @@
             "value" : "No has configurado Face ID en este dispositivo. Ve a Configuración->ID de Cara y Código para configurarlo ahora."
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No has configurado Face ID en este dispositivo. Ve a Configuración->Face ID y código de acceso para configurarlo ahora."
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "شما Face ID را در این دستگاه راه‌اندازی نکرده‌اید. به تنظیمات -> Face ID و رمز عبور بروید تا آن را اکنون راه‌اندازی کنید."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous n’avez pas configuré Face ID sur cet appareil. Allez dans Paramètres->Face ID et code d’accès pour le configurer maintenant."
           }
         },
         "fr-FR" : {
@@ -32123,10 +34437,22 @@
             "value" : "No ha configurado Touch ID en este dispositivo. Ve a Configuración->Touch ID y código para configurarlo ahora."
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No has configurado Touch ID en este dispositivo. Ve a Configuración->Touch ID y código de acceso para configurarlo ahora."
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "شما Touch ID را روی این دستگاه راه‌اندازی نکرده‌اید. به تنظیمات->اثر انگشت و رمز عبور بروید تا آن را اکنون راه‌اندازی کنید."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous n’avez pas configuré Touch ID sur cet appareil. Allez dans Paramètres->Touch ID et mot de passe pour le configurer maintenant."
           }
         },
         "fr-FR" : {
@@ -32346,7 +34672,74 @@
       }
     },
     "You saved it, right?" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لقد حفظته، أليس كذلك؟"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du hast es gespeichert, oder?"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lo guardaste, ¿verdad?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous l’avez sauvegardé, n’est-ce pas ?"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "आपने इसे बचा लिया, है ना?"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anda menyimpannya, kan?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'hai salvato, vero?"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você o salvou, certo?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ты сохранил это, правда?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onu sakladın, değil mi?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ти ж його врятував, так?"
+          }
+        }
+      }
     },
     "You will be asked to enter your 6-digit PIN to send any transaction over your spending limit, and every 48 hours since the last time you entered your 6-digit PIN." : {
       "localizations" : {
@@ -32498,10 +34891,22 @@
             "value" : "No podrás enviar Litecoin mientras se está sincronizando. Puede que tome un tiempo."
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No podrás enviar Litecoin mientras se sincroniza. Puede tomar un tiempo."
+          }
+        },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "شما قادر نخواهید بود در حین همگام‌سازی، لایت‌کوین ارسال کنید. ممکن است مدتی طول بکشد."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous ne pourrez pas envoyer de Litecoin pendant la synchronisation. Cela peut prendre un certain temps."
           }
         },
         "fr-FR" : {
@@ -33114,10 +35519,144 @@
       }
     },
     "Your seed phrase is verified!" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم التحقق من عبارة الاسترداد الخاصة بك!"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ihre Seed-Phrase ist verifiziert!"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Tu frase semilla está verificada!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre phrase de récupération est vérifiée !"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "आपका बीज वाक्यांश सत्यापित है!"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frasa benih Anda telah diverifikasi!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua frase seed è stata verificata!"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sua frase-semente foi verificada!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваша секретная фраза подтверждена!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tohum ifadeniz doğrulandı!"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вашу початкову фразу перевірено!"
+          }
+        }
+      }
     },
     "Your seed words" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كلماتك السرية"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ihre Startwörter"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus palabras semilla"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vos mots clés"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "आपके बीज शब्द"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kata-kata benih Anda"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le tue parole seme"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suas palavras-semente"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваши начальные слова"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tohum kelimeleriniz"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваші ключові слова"
+          }
+        }
+      }
     },
     "Your seed words " : {
       "extractionState" : "stale",
