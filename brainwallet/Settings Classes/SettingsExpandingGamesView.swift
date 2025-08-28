@@ -72,11 +72,6 @@ struct SettingsExpandingGamesView: View {
                             }
                         }
                         .padding(.top, 1.0)
-                        GamesListView(viewModel: viewModel)
-                            .transition(.opacity)
-                            .transition(.move(edge: .top))
-                            .animation(.easeInOut(duration: 0.3))
-                            .frame(height: shouldExpandGames ? 110.0 : 0.1)
                     }
                 }
             }
