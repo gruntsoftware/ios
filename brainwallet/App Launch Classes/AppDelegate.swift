@@ -8,7 +8,7 @@ import SwiftUI
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 	var window: UIWindow?
 	var applicationController = ApplicationController()
 	var remoteConfigurationHelper: RemoteConfigHelper?
@@ -49,13 +49,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Remote Config
         self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
 
+        // FCM
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if granted {
+                DispatchQueue.main.async {
+                  application.registerForRemoteNotifications()
+                }
+            }
 
-                let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-                UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: { _, _ in })
-
-                application.registerForRemoteNotifications()
+            if error != nil {
+                Analytics
+                    .logEvent("fcm_messaging_registration_error",
+                        parameters: [
+                           "platform": "ios",
+                           "app_version": AppVersion.string,
+                           "error": "\(String(describing: error))"
+                        ])
+            }
+       }
 
         // Wipe restart
         // Register for system notifications
@@ -244,4 +257,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 			}
 		}
 	}
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                               willPresent notification: UNNotification,
+                               withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+
+        let userInfo = notification.request.content.userInfo
+        debugPrint("Foreground notification received: \(userInfo)")
+        completionHandler([.banner, .sound])
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                               didReceive response: UNNotificationResponse,
+                               withCompletionHandler completionHandler: @escaping () -> Void) {
+
+        let userInfo = response.notification.request.content.userInfo
+        debugPrint("User tapped notification: \(userInfo)")
+        completionHandler()
+    }
 }
