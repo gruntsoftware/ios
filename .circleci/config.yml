@@ -184,9 +184,9 @@ jobs:
               brew install chargepoint/xcparse/xcparse
               fi
               # Convert to JUnit XML
-              xcparse screenshots output/scan/result.xcresult output/scan/screenshots
-              xcparse logs output/scan/result.xcresult output/scan/logs
-              xcparse junit output/scan/result.xcresult output/scan/junit.xml
+              xcparse screenshots output/scan/brainwalletUnitTests.xcresult output/scan/screenshots
+              xcparse logs output/scan/brainwalletUnitTests.xcresult output/scan/logs
+              xcparse junit output/scan/brainwalletUnitTests.xcresult output/scan/junit.xml
           when: always
       - save_cache:
           name: Save combined cache
@@ -527,7 +527,7 @@ jobs:
               if ! command -v xcparse &> /dev/null; then
               brew install chargepoint/xcparse/xcparse
               fi
-              xcparse junit output/scan/result.xcresult output/scan/junit.xml
+              xcparse junit output/scan/brainwalletUnitTests.xcresult output/scan/junit.xml
           when: always
       - run:
           name: Capture crash logs
