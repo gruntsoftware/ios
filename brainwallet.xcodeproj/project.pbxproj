@@ -1598,14 +1598,6 @@
 			path = "Geometric Effects";
 			sourceTree = "<group>";
 		};
-		24D034392E1AED0200AF81DF /* Geometric Effects */ = {
-			isa = PBXGroup;
-			children = (
-				24D0343A2E1AED2200AF81DF /* SwiftUIEffects.swift */,
-			);
-			path = "Geometric Effects";
-			sourceTree = "<group>";
-		};
 		24D7AE522DCFF6350078252E /* New Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -3080,7 +3072,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250827.0;
+				CURRENT_PROJECT_VERSION = 250829.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3096,7 +3088,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.6.3;
+				MARKETING_VERSION = 3.7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
@@ -3268,7 +3260,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250827.0;
+				CURRENT_PROJECT_VERSION = 250829.0;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
@@ -3283,7 +3275,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.6.3;
+				MARKETING_VERSION = 3.7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
