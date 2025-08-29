@@ -107,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         // Receved FCM Token
         let dataDict: [String: String] = ["token" : fcmToken ?? ""]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
-
+        debugPrint(":::: fcmToken: \(fcmToken)")
         // Messaging topic subscription
         if let localeIdentifier = Locale.current.identifier as String?,
         (fcmToken != nil) {
@@ -267,13 +267,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
         let userInfo = notification.request.content.userInfo
         debugPrint("Foreground notification received: \(userInfo)")
-        completionHandler([.banner, .sound])
+        completionHandler([.banner, .sound, .list])
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                didReceive response: UNNotificationResponse,
                                withCompletionHandler completionHandler: @escaping () -> Void) {
 
         let userInfo = response.notification.request.content.userInfo
+        NotificationCenter.default.post(name: Notification.Name("didReceiveRemoteNotification"), object: nil, userInfo: userInfo)
         debugPrint("User tapped notification: \(userInfo)")
         completionHandler()
     }
