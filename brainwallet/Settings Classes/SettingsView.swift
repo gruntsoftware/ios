@@ -93,14 +93,15 @@ struct SettingsView: View {
                                 .listRowSeparatorTint(BrainwalletColor.content)
                                 .padding(.leading, leadRowPad)
                                 .padding(.trailing, trailRowPad)
-                                SettingsExpandingGamesView(title: String(localized: "Games"),
-                                    viewModel: newMainViewModel, shouldExpandGames: $shouldExpandGames)
-                                .frame(height: shouldExpandGames ? 200 : tempRowHeight)
-                                .listRowBackground(shouldExpandGames ? BrainwalletColor.background : BrainwalletColor.surface)
-                                .listRowInsets(EdgeInsets())
-                                .listRowSeparatorTint(BrainwalletColor.content)
-                                .padding(.leading, leadRowPad)
-                                .padding(.trailing, trailRowPad)
+                                // TBD For when games are live
+                                //    SettingsExpandingGamesView(title: String(localized: "Games"),
+                                //        viewModel: newMainViewModel, shouldExpandGames: $shouldExpandGames)
+                                //    .frame(height: shouldExpandGames ? 200 : tempRowHeight)
+                                //    .listRowBackground(shouldExpandGames ? BrainwalletColor.background : BrainwalletColor.surface)
+                                //    .listRowInsets(EdgeInsets())
+                                //    .listRowSeparatorTint(BrainwalletColor.content)
+                                //    .padding(.leading, leadRowPad)
+                                //    .padding(.trailing, trailRowPad)
                                 SettingsExpandingBlockchainView(title: String(localized: "Blockchain: Litecoin"),
                                     viewModel: newMainViewModel, shouldExpandBlockchain: $shouldExpandBlockchain)
                                 .frame(maxWidth: .infinity)

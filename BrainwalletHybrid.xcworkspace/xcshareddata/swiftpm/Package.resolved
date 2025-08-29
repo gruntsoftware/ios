@@ -1,5 +1,5 @@
 {
-  "originHash" : "1fae515ecb077b020404ba96ab97a952faae66bc0ab8f22de14421a303e179c1",
+  "originHash" : "450b00c1b701de371fa0991316782008bccafa5277b4d1b0211814da347afc10",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -29,21 +29,12 @@
       }
     },
     {
-      "identity" : "brainwalletiosstorekit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/gruntsoftware/BrainwalletiOSStorekit.git",
-      "state" : {
-        "revision" : "3465dba4eddab73f68d441db08b710aeb284b198",
-        "version" : "1.0.5"
-      }
-    },
-    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
-        "revision" : "fdc352fabaf5916e7faa1f96ad02b1957e93e5a5",
-        "version" : "11.15.0"
+        "revision" : "b9bf3adac18e6e3059167194aeb632f15a5ba4b2",
+        "version" : "12.1.0"
       }
     },
     {
@@ -51,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/googleads/google-ads-on-device-conversion-ios-sdk",
       "state" : {
-        "revision" : "973bd67929bfbe465f63c05cd5a4b113765fbc7f",
-        "version" : "2.2.1"
+        "revision" : "e15f979c3eaf477d24e5bfec9d87f1d76fbac297",
+        "version" : "2.2.0"
       }
     },
     {
@@ -60,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "45ce435e9406d3c674dd249a042b932bee006f60",
-        "version" : "11.15.0"
+        "revision" : "883305109ead4599e4ca59591754ee72e81e6b5e",
+        "version" : "12.1.0"
       }
     },
     {
