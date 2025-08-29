@@ -21,7 +21,7 @@ platform :ios do
       configuration: "Debug",
       devices: ["iPhone 15 Pro Max"],
       output_types: "html,junit",
-      output_directory: "output/scan", #"./fastlane/test_output",
+      output_directory: "~/output/scan", #"./fastlane/test_output",
       result_bundle: true,
       skip_build: false
     )
@@ -34,7 +34,7 @@ platform :ios do
       configuration: "Debug",
       devices: ["iPhone 16 Pro Max"],
       output_types: "html,junit",
-      output_directory: "output/scan", #"./fastlane/test_output",
+      output_directory: "~/output/scan", #"./fastlane/test_output",
       result_bundle: true,
       skip_build: false
     )
@@ -47,7 +47,7 @@ platform :ios do
       configuration: "Debug",
       devices: ["iPhone 15 Pro Max"],
       output_types: "html,junit",
-      output_directory: "output/scan", #"./fastlane/test_output",
+      output_directory: "~/output/scan", #"./fastlane/test_output",
       result_bundle: true,
       skip_build: false
     )
@@ -60,7 +60,7 @@ platform :ios do
       configuration: "Debug",
       devices: ["iPhone 13 Mini"],
       output_types: "html,junit",
-      output_directory: "output/scan", #"./fastlane/test_output",
+      output_directory: "~/output/scan", #"./fastlane/test_output",
       result_bundle: true,
       skip_build: false
     )

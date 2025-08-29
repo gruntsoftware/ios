@@ -214,7 +214,7 @@ jobs:
       - store_artifacts:
           path: output
       - store_test_results:
-          path: output/scan
+          path: ~/output/scan
       - store_artifacts:
           path: ~/Library/Logs/DiagnosticReports
           destination: crash-logs
@@ -540,7 +540,7 @@ jobs:
       - store_artifacts:
           path: output
       - store_test_results:
-          path: output/scan
+          path: ~/output/scan
       - store_artifacts:
           path: ~/Library/Logs/DiagnosticReports
           destination: crash-logs
