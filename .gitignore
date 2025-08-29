@@ -50,3 +50,4 @@ Brainwallet-StoreKit-v1.storekit
 **/fastlane/test_output/
 ## Games protection
 /Private
+brainwallet/PreLaunchResources/topics_schema.plist

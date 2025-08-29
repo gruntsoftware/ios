@@ -163,7 +163,7 @@ struct StartView: View {
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .foregroundColor(BrainwalletColor.surface)
 
-                                Text("Create New")
+                                Text("Create New Wallet")
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                     .font(largeButtonFont)
                                     .foregroundColor(BrainwalletColor.content)

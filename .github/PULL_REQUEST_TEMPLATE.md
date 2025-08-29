@@ -6,7 +6,6 @@
 - [ ] iOS
 - [ ] Games-Unity
 - [ ] DevOps (AWS)
-- [ ] Website
 - [ ] C/Golang 
 
 ## 🎯 Type of Change
@@ -42,6 +41,3 @@
 |--------|-------|
 |<!-- Add screenshot/video of current behavior -->|<!-- Add screenshot/video of new behavior -->|
 
-## 🎯 Reviewers
-<!-- Tag specific reviewers or teams -->
-@kcw-grunt, @josikie

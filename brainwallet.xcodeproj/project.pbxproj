@@ -56,6 +56,12 @@
 		244A8D932DE84C890024D356 /* BrainwalletShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
+		2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2460284E2E5F178400CDEB7A /* FirebaseAnalytics */; };
+		246028512E5F178400CDEB7A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 246028502E5F178400CDEB7A /* FirebaseCrashlytics */; };
+		246028532E5F178400CDEB7A /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 246028522E5F178400CDEB7A /* FirebaseInAppMessaging-Beta */; };
+		246028552E5F178400CDEB7A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 246028542E5F178400CDEB7A /* FirebaseMessaging */; };
+		246028572E5F178400CDEB7A /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 246028562E5F178400CDEB7A /* FirebasePerformance */; };
+		246028592E5F178400CDEB7A /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 246028582E5F178400CDEB7A /* FirebaseRemoteConfig */; };
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
 		246A9A072DF5F54C002480CB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A9A062DF5F532002480CB /* Utility.swift */; };
@@ -106,7 +112,6 @@
 		24BC37C02E22B249005DD3AC /* coinflip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 24BC37BF2E22B249005DD3AC /* coinflip.mp3 */; };
 		24BEBB972DCDE4D4001E1F1F /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		24BEC6072DF0B53000140AAD /* WipeWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BEC6062DF0B52600140AAD /* WipeWalletView.swift */; };
-		24BEF7E12DCCCD6C00CA2EEC /* BrainwalletiOSStorekit in Frameworks */ = {isa = PBXBuildFile; productRef = 24BEF7E02DCCCD6C00CA2EEC /* BrainwalletiOSStorekit */; };
 		24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */; };
 		24C6D2D42E1D6B150096AD62 /* SeedWordPileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6D2D32E1D6B030096AD62 /* SeedWordPileView.swift */; };
 		24C6D2D62E1D9C4E0096AD62 /* SeedWordDragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6D2D52E1D9C4E0096AD62 /* SeedWordDragView.swift */; };
@@ -150,7 +155,6 @@
 		24F5BD4E2E0452670010D340 /* SettingsActionLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4D2E0452670010D340 /* SettingsActionLockView.swift */; };
 		24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4F2E0460C90010D340 /* SecurityListView.swift */; };
 		24F5BD582E04711E0010D340 /* CurrencyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */; };
-		24F5BD5A2E04714C0010D340 /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD592E04714C0010D340 /* GamesListView.swift */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
 		24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */; };
@@ -401,10 +405,6 @@
 		C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0952D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf */; };
 		C32369FF2D7DD431007039A1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32369FE2D7DD431007039A1 /* LoginViewController.swift */; };
 		C3236A012D7DE355007039A1 /* URLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3236A002D7DE34D007039A1 /* URLController.swift */; };
-		C353582D2D11DA4900395C45 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = C353582C2D11DA4900395C45 /* FirebaseRemoteConfig */; };
-		C35C1220293D464A0009022D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C35C121F293D464A0009022D /* FirebaseAnalytics */; };
-		C35C1222293D464A0009022D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1221293D464A0009022D /* FirebaseAuth */; };
-		C35C1224293D464A0009022D /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1223293D464A0009022D /* FirebaseCrashlytics */; };
 		C35C122A293D48340009022D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1229293D48340009022D /* KeychainAccess */; };
 /* End PBXBuildFile section */
 
@@ -705,7 +705,6 @@
 		24F5BD4D2E0452670010D340 /* SettingsActionLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionLockView.swift; sourceTree = "<group>"; };
 		24F5BD4F2E0460C90010D340 /* SecurityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityListView.swift; sourceTree = "<group>"; };
 		24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerView.swift; sourceTree = "<group>"; };
-		24F5BD592E04714C0010D340 /* GamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListView.swift; sourceTree = "<group>"; };
 		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
 		24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
@@ -1022,20 +1021,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				24BEBB972DCDE4D4001E1F1F /* (null) in Frameworks */,
+				246028532E5F178400CDEB7A /* FirebaseInAppMessaging-Beta in Frameworks */,
 				24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */,
+				2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */,
+				246028592E5F178400CDEB7A /* FirebaseRemoteConfig in Frameworks */,
 				24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */,
 				C35C122A293D48340009022D /* KeychainAccess in Frameworks */,
+				246028572E5F178400CDEB7A /* FirebasePerformance in Frameworks */,
 				249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */,
 				22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */,
-				C353582D2D11DA4900395C45 /* FirebaseRemoteConfig in Frameworks */,
 				22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */,
 				22A9A9621DF61FE0000F0016 /* SystemConfiguration.framework in Frameworks */,
+				246028512E5F178400CDEB7A /* FirebaseCrashlytics in Frameworks */,
 				22A9A9601DF61FD8000F0016 /* CoreLocation.framework in Frameworks */,
+				246028552E5F178400CDEB7A /* FirebaseMessaging in Frameworks */,
 				22A9A95E1DF61FD0000F0016 /* PushKit.framework in Frameworks */,
-				24BEF7E12DCCCD6C00CA2EEC /* BrainwalletiOSStorekit in Frameworks */,
-				C35C1222293D464A0009022D /* FirebaseAuth in Frameworks */,
-				C35C1224293D464A0009022D /* FirebaseCrashlytics in Frameworks */,
-				C35C1220293D464A0009022D /* FirebaseAnalytics in Frameworks */,
 				759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1571,7 +1571,6 @@
 				243136FA2E0AFD1000BCBED1 /* SettingsHelpers.swift */,
 				24F5BD4F2E0460C90010D340 /* SecurityListView.swift */,
 				24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */,
-				24F5BD592E04714C0010D340 /* GamesListView.swift */,
 				24F5BD472E043C1B0010D340 /* SettingsLabelView.swift */,
 				24DB05ED2E06C34A00C57FE9 /* SettingsSpacerView.swift */,
 				24F5BD4D2E0452670010D340 /* SettingsActionLockView.swift */,
@@ -2143,14 +2142,15 @@
 			);
 			name = brainwallet;
 			packageProductDependencies = (
-				C35C121F293D464A0009022D /* FirebaseAnalytics */,
-				C35C1221293D464A0009022D /* FirebaseAuth */,
-				C35C1223293D464A0009022D /* FirebaseCrashlytics */,
 				C35C1229293D48340009022D /* KeychainAccess */,
-				C353582C2D11DA4900395C45 /* FirebaseRemoteConfig */,
 				249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */,
 				24F64C1D2DAFBD0F001DC9B6 /* Lottie */,
-				24BEF7E02DCCCD6C00CA2EEC /* BrainwalletiOSStorekit */,
+				2460284E2E5F178400CDEB7A /* FirebaseAnalytics */,
+				246028502E5F178400CDEB7A /* FirebaseCrashlytics */,
+				246028522E5F178400CDEB7A /* FirebaseInAppMessaging-Beta */,
+				246028542E5F178400CDEB7A /* FirebaseMessaging */,
+				246028562E5F178400CDEB7A /* FirebasePerformance */,
+				246028582E5F178400CDEB7A /* FirebaseRemoteConfig */,
 			);
 			productName = breadwallet;
 			productReference = 75A2A7901DA5934300A983D8 /* Brainwallet.app */;
@@ -2232,11 +2232,10 @@
 			);
 			mainGroup = 75A2A7871DA5934300A983D8;
 			packageReferences = (
-				C35C121E293D464A0009022D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
 				24F64C1C2DAFBD0F001DC9B6 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				24BEF7DF2DCCCD6C00CA2EEC /* XCRemoteSwiftPackageReference "BrainwalletiOSStorekit" */,
+				2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 75A2A7911DA5934300A983D8 /* Products */;
@@ -2686,7 +2685,6 @@
 				C312D3DC2D7DC27700BB97A4 /* ConfirmPhrase.swift in Sources */,
 				C312D3DD2D7DC27700BB97A4 /* ReceiveLTCViewController.swift in Sources */,
 				C312D3DF2D7DC27700BB97A4 /* EnterPhraseViewController.swift in Sources */,
-				24F5BD5A2E04714C0010D340 /* GamesListView.swift in Sources */,
 				C312D3E42D7DC27700BB97A4 /* LoginView.swift in Sources */,
 				C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */,
 				C312D3E82D7DC27700BB97A4 /* FinishedStepView.swift in Sources */,
@@ -3074,7 +3072,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250826.0;
+				CURRENT_PROJECT_VERSION = 250827.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3262,7 +3260,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250826.0;
+				CURRENT_PROJECT_VERSION = 250827.0;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
@@ -3353,6 +3351,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 12.1.0;
+			};
+		};
 		249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
@@ -3361,28 +3367,12 @@
 				minimumVersion = 6.16.1;
 			};
 		};
-		24BEF7DF2DCCCD6C00CA2EEC /* XCRemoteSwiftPackageReference "BrainwalletiOSStorekit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/gruntsoftware/BrainwalletiOSStorekit.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		24F64C1C2DAFBD0F001DC9B6 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
 				kind = exactVersion;
 				version = 4.5.1;
-			};
-		};
-		C35C121E293D464A0009022D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				kind = exactVersion;
-				version = 11.15.0;
 			};
 		};
 		C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
@@ -3396,40 +3386,45 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2460284E2E5F178400CDEB7A /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		246028502E5F178400CDEB7A /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		246028522E5F178400CDEB7A /* FirebaseInAppMessaging-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessaging-Beta";
+		};
+		246028542E5F178400CDEB7A /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		246028562E5F178400CDEB7A /* FirebasePerformance */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebasePerformance;
+		};
+		246028582E5F178400CDEB7A /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
 		249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
 			productName = AppsFlyerLib;
 		};
-		24BEF7E02DCCCD6C00CA2EEC /* BrainwalletiOSStorekit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 24BEF7DF2DCCCD6C00CA2EEC /* XCRemoteSwiftPackageReference "BrainwalletiOSStorekit" */;
-			productName = BrainwalletiOSStorekit;
-		};
 		24F64C1D2DAFBD0F001DC9B6 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 24F64C1C2DAFBD0F001DC9B6 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		C353582C2D11DA4900395C45 /* FirebaseRemoteConfig */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C35C121E293D464A0009022D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseRemoteConfig;
-		};
-		C35C121F293D464A0009022D /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C35C121E293D464A0009022D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		C35C1221293D464A0009022D /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C35C121E293D464A0009022D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		C35C1223293D464A0009022D /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C35C121E293D464A0009022D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
 		};
 		C35C1229293D48340009022D /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
