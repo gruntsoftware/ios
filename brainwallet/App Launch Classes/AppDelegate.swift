@@ -107,7 +107,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         // Receved FCM Token
         let dataDict: [String: String] = ["token" : fcmToken ?? ""]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
-        debugPrint(":::: fcmToken: \(fcmToken)")
+        // Messaging topic clear all subscriptions
+        Messaging.messaging().unsubscribe(fromTopic: "/topics/*") { error in
+            if error != nil {
+                debugPrint("Error unsubscribing from topics: \(String(describing: error))")
+                    Analytics
+                        .logEvent("fcm_messaging_unsubscribe_error",
+                            parameters: [ "platform": "ios",
+                                          "app_version": AppVersion.string,
+                                          "error": "Error unsubscribing from topics: \(String(describing: error))"
+                            ])
+            }
+        }
         // Messaging topic subscription
         if let localeIdentifier = Locale.current.identifier as String?,
         (fcmToken != nil) {
