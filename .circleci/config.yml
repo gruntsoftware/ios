@@ -511,6 +511,14 @@ jobs:
       
       # Store artifacts and handle failures
       - run:
+          name: Convert test results to JUnit
+          command: |
+              if ! command -v xcparse &> /dev/null; then
+              brew install chargepoint/xcparse/xcparse
+              fi
+              xcparse junit output/scan/result.xcresult output/scan/junit.xml
+          when: always
+      - run:
           name: Capture crash logs
           command: |
             find ~/Library/Logs/DiagnosticReports -name "*Brainwallet*" -type f -exec echo "Found crash log: {}" \; -exec cat {} \; || echo "No crash logs found"
