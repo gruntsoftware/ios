@@ -1598,6 +1598,14 @@
 			path = "Geometric Effects";
 			sourceTree = "<group>";
 		};
+		24D034392E1AED0200AF81DF /* Geometric Effects */ = {
+			isa = PBXGroup;
+			children = (
+				24D0343A2E1AED2200AF81DF /* SwiftUIEffects.swift */,
+			);
+			path = "Geometric Effects";
+			sourceTree = "<group>";
+		};
 		24D7AE522DCFF6350078252E /* New Onboarding */ = {
 			isa = PBXGroup;
 			children = (
