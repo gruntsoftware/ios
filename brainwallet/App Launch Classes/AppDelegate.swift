@@ -266,6 +266,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 
         let userInfo = notification.request.content.userInfo
+        Messaging.messaging().appDidReceiveMessage(userInfo)
         debugPrint("Foreground notification received: \(userInfo)")
         completionHandler([.banner, .sound, .list])
     }
