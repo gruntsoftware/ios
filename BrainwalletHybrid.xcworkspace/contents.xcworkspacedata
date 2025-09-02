@@ -4,7 +4,4 @@
    <FileRef
       location = "container:brainwallet.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Private/ios-games/iosgames.xcodeproj">
-   </FileRef>
 </Workspace>

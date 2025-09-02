@@ -10198,6 +10198,9 @@
         }
       }
     },
+    "Export Transaction Data" : {
+
+    },
     "Face ID" : {
       "localizations" : {
         "ar" : {

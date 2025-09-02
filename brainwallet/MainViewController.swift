@@ -2,6 +2,8 @@ import BRCore
 import MachO
 import SwiftUI
 import UIKit
+import BrainwalletiOSGames
+import StoreKit
 
 class MainViewController: UIViewController, Subscriber, LoginViewControllerDelegate {
 	private let store: Store
@@ -10,6 +12,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
     private var startHostingController: StartHostingController?
     private let loginView: LoginViewController
     private var settingsViewController: SettingsHostingController?
+    private var exportHC = ExportHostingController()
 	private let loginTransitionDelegate = LoginTransitionDelegate()
     var showSettingsConstant: CGFloat = 0.0
     var settingsViewPlacement: CGFloat = 0.0
@@ -17,6 +20,10 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
     var barShouldBeHidden = false
     var settingsLeadingConstraint = NSLayoutConstraint()
     var settingsTrailingConstraint = NSLayoutConstraint()
+    var exportHCHeight: CGFloat = 44.0
+    var exportHCHeightConstraint: NSLayoutConstraint!
+    var exportViewShoulShow: Bool = false
+
     private let clickSound = "click_sound"
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -40,6 +47,10 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		self.store = store
 		loginView = LoginViewController(store: store, isPresentedForLock: false)
 		super.init(nibName: nil, bundle: nil)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateExportButtonView),
+                                               name: .transactionsCountUpdateNotification, object: nil)
 	}
 
 	override func viewDidLoad() {
@@ -92,10 +103,14 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
                 childVC.removeFromParent()
             }
         }
+        guard let walletManager = self.walletManager else {
+            debugPrint("::: ERROR: TabBarViewController or wallet not intialized")
+            return
+        }
 
         guard let tabVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "TabBarViewController")
-                as? TabBarViewController, let walletManager = self.walletManager
+                as? TabBarViewController
         else {
             debugPrint("::: ERROR: TabBarViewController or wallet not intialized")
             return }
@@ -150,21 +165,105 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             settingsHC.view.layoutIfNeeded()
         })
 
+        exportHC.view.backgroundColor = BrainwalletUIColor.surface
+
+//        addChildViewController(exportHC, layout: {
+//            exportHC.view.translatesAutoresizingMaskIntoConstraints = false
+//            exportHCHeightConstraint = exportHC.view.heightAnchor.constraint(equalToConstant: exportHCHeight)
+//                   NSLayoutConstraint.activate([
+//                    exportHC.view.bottomAnchor.constraint(equalTo: tabVC.view.bottomAnchor, constant: -kTransactionsFooterHeight),
+//                    exportHC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+//                    exportHC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+//                   ])
+//            exportHC.view.alpha = 1
+//            exportHC.view.layoutIfNeeded()
+//        })
+
+        addChildViewController(exportHC, layout: {
+            exportHC.view.translatesAutoresizingMaskIntoConstraints = false
+            exportHCHeightConstraint = exportHC.view.heightAnchor.constraint(equalToConstant: exportHCHeight)
+
+            NSLayoutConstraint.activate([
+                exportHC.view.bottomAnchor.constraint(equalTo: tabVC.view.bottomAnchor, constant: -kTransactionsFooterHeight),
+                exportHC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+                exportHC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+                exportHCHeightConstraint
+            ])
+            exportHC.view.alpha = 1
+            exportHC.view.layoutIfNeeded()
+        })
+
+        exportHC.viewModel.didTapExport = {
+            self.exportViewShoulShow.toggle()
+            if self.exportViewShoulShow {
+                self.animateResize(to: 240.0)
+            } else {
+                self.animateResize(to: 44.0)
+            }
+        }
+
         tabVC.didTapSettingsButton = { [weak self]  in
             self?.activateSettingsDrawer()
+        }
+
+        tabVC.didSwipeTable = { [weak self] isScrolling in
+            if isScrolling {
+                UIView.animate(withDuration: 0.4, delay: 0.1, options: .transitionCrossDissolve, animations: {
+                    self?.exportHC.view.alpha = 0
+                    self?.exportHC.view.layoutIfNeeded()
+
+                    delay(4.0) {
+                        self?.exportHC.view.alpha = 1
+                        self?.exportHC.view.layoutIfNeeded()
+                    }
+                    }) { _ in
+                }
+            }
         }
 
         UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
             tabVC.view.alpha = 1
         }) { _ in
         }
-
         // STASH FOR NEW UI
         //        let newMainViewHostingController = NewMainHostingController(store: self.store, walletManager: walletManager)
         //        addChildViewController(newMainViewHostingController, layout: {
         //            newMainViewHostingController.view.constrain(toSuperviewEdges: nil)
         //            newMainViewHostingController.view.layoutIfNeeded()
         //        }}
+    }
+
+    func animateResize(to newHeight: CGFloat) {
+        exportHCHeightConstraint.constant = newHeight
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    func animateResizeSpring(to newHeight: CGFloat) {
+        exportHCHeightConstraint.constant = newHeight
+
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       usingSpringWithDamping: 0.8,
+                       initialSpringVelocity: 0.5,
+                       options: .curveEaseInOut) {
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            // Animation completed
+        }
+    }
+
+    @objc func updateExportButtonView(_ notification: NSNotification) {
+        if notification.name == .transactionsCountUpdateNotification,
+         let transactionsCount = notification.userInfo?["transactionsCount"] as? Int {
+
+            UIView.animate(withDuration: 0.4, delay: 0.1, options: .transitionCrossDissolve, animations: {
+                self.exportHC.view.alpha = transactionsCount > 0 ? 1.0 : 0.0
+                self.exportHC.view.layoutIfNeeded()
+                }) { _ in
+            }
+        }
     }
 
     func activateSettingsDrawer(shouldClose: Bool? = nil) {
@@ -184,6 +283,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             self.settingsTrailingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
 
             UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+
                 self.view.layoutIfNeeded()
                 // TBD: Sound not ideal..in progress
                 // _ = SoundsHelper.play(filename: "clicksound", type: "mp3")
@@ -228,7 +328,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		store.subscribe(self, selector: { $0.isLoginRequired != $1.isLoginRequired },
 		                callback: { self.isLoginRequired = $0.isLoginRequired
 		                })
-
         /// This or that
         //// This is a legacy redux method of triggering adctions versus delegation
         store.subscribe(self, name: .lock,
@@ -240,7 +339,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 	}
 
     private func presentLockScreen() {
-
         loginView.walletManager = walletManager
         loginView.transitioningDelegate = loginTransitionDelegate
         loginView.modalPresentationStyle = .overFullScreen

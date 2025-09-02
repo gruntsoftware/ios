@@ -3,7 +3,8 @@ import UIKit
 import SwiftUI
 
 class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDelegate {
-	let kInitialChildViewControllerIndex = 1 // History
+
+    let kInitialChildViewControllerIndex = 1 // History
 	@IBOutlet var headerView: UIView!
 	@IBOutlet var containerView: UIView!
 	@IBOutlet var tabBar: UITabBar!
@@ -27,6 +28,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	var activeController: UIViewController?
     var receiveHostingController: ReceiveHostingController?
     var buyReceiveHostingController: BuyReceiveHostingController?
+    var shouldShowGameView: Bool = false
 
 	var updateTimer: Timer?
 	var store: Store?
@@ -44,6 +46,8 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	}
 
     var didTapSettingsButton: (() -> Void)?
+
+    var didSwipeTable: ((Bool) -> Void)?
 
 	@IBAction func showSettingsAction(_: Any) {
         didTapSettingsButton?()
@@ -71,10 +75,12 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		tabBar.selectedItem = array[kInitialChildViewControllerIndex]
 
 		NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: .languageChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userDidScroll), name: .transactionsDidScrollNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userDidStoppedScrolling), name: .transactionsStoppedScrollNotification, object: nil)
 	}
 
 	deinit {
-		NotificationCenter.default.removeObserver(self, name: .languageChangedNotification, object: nil)
+		NotificationCenter.default.removeObserver(self)
 		self.updateTimer = nil
 	}
 
@@ -124,6 +130,14 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
         UIView.animate(withDuration: 0.1) {
             self.settingsButton.transform = CGAffineTransform.identity
         }
+    }
+
+    @objc func userDidScroll() {
+        didSwipeTable?(true)
+    }
+
+    @objc func userDidStoppedScrolling() {
+        didSwipeTable?(false)
     }
 
 	private func setupViews() {

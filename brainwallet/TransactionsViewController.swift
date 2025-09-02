@@ -11,7 +11,7 @@ let kQRImageSide: CGFloat = 110.0
 let kFiveYears: Double = 157_680_000.0
 let kTodaysEpochTime: TimeInterval = Date().timeIntervalSince1970
 
-class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Subscriber, Trackable {
+class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Subscriber, Trackable, UIScrollViewDelegate {
 	@IBOutlet var tableView: UITableView!
 
 	var store: Store?
@@ -30,6 +30,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	private var rate: Rate? {
 		didSet { reload() }
 	}
+
+    deinit {
+        NotificationCenter
+            .default
+            .removeObserver(self)
+    }
 
 	private var currentPromptType: PromptType? {
 		didSet {
@@ -76,8 +82,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		attemptShowPrompt()
 
         NotificationCenter.default.addObserver(self, selector: #selector(userTappedPromptClose), name: .userTapsClosePromptNotification, object: nil)
-
         NotificationCenter.default.addObserver(self, selector: #selector(userTappedPromptContinue), name: .userTapsContinuePromptNotification, object: nil)
+
 	}
 
 	/// Calls the Syncing HeaderView
@@ -118,6 +124,22 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
         self.currentPromptType = nil
         self.reload()
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .transactionsDidScrollNotification,
+                                            object: nil,
+                                            userInfo: nil)
+        }
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .transactionsStoppedScrollNotification,
+                                            object: nil,
+                                            userInfo: nil)
+        }
     }
 
 	private func attemptShowPrompt() {
@@ -285,6 +307,23 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		}
 	}
 
+    func tableView(_: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+
+        if section == 1 {
+            return kTransactionsFooterHeight/2
+        }
+        return 0.0
+    }
+
+    func tableView(_: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 1 {
+            let footerView = UIView()
+            footerView.backgroundColor = BrainwalletUIColor.surface
+            return footerView
+        }
+        return nil
+    }
+
 	func numberOfSections(in _: UITableView) -> Int {
 		return 2
 	}
@@ -295,8 +334,24 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		} else {
 			if !transactions.isEmpty {
 				tableView.backgroundView = nil
+
+                let userInfo: [AnyHashable: Any] = ["transactionsCount": transactions.count]
+
+                NotificationCenter
+                    .default
+                    .post(name: .transactionsCountUpdateNotification,
+                          object: nil,
+                          userInfo: userInfo)
+
 				return transactions.count
 			} else {
+
+                let userInfo: [AnyHashable: Any] = ["transactionsCount": 0]
+                NotificationCenter
+                    .default
+                    .post(name: .transactionsCountUpdateNotification,
+                          object: nil,
+                          userInfo: userInfo)
 				tableView.backgroundView = emptyMessageView()
 				tableView.separatorStyle = .none
 

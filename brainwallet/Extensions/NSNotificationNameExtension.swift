@@ -14,4 +14,7 @@ public extension NSNotification.Name {
     static let userTapsClosePromptNotification = Notification.Name("userTapClosePrompt")
     static let userTapsContinuePromptNotification = Notification.Name("userTapContinuePrompt")
     static let changedThemePreferenceNotification = Notification.Name("changedThemePreference")
+    static let transactionsDidScrollNotification = Notification.Name("transactionsDidScroll")
+    static let transactionsStoppedScrollNotification = Notification.Name("transactionsStoppedScroll")
+    static let transactionsCountUpdateNotification = Notification.Name("transactionsCountUpdate")
 }
