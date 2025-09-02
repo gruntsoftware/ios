@@ -1602,16 +1602,70 @@
             "value" : "العنوان مستخدم بالفعل\n\nعناوين لايتكوين مخصصة للاستخدام لمرة واحدة فقط.\n\nإعادة الاستخدام تقلل من الخصوصية لك وللمستلم ويمكن أن تؤدي إلى خسارة إذا لم يكن المستلم يتحكم مباشرة في العنوان."
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresse bereits verwendet\n\nLitecoin-Adressen sind nur für einmalige Nutzung gedacht.\n\nEine Wiederverwendung verringert die Privatsphäre sowohl für dich als auch für den Empfänger und kann zu Verlusten führen, wenn der Empfänger die Adresse nicht direkt kontrolliert."
+          }
+        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dirección ya utilizada\n\nLas direcciones de Litecoin están destinadas únicamente a un solo uso.\n\nLa reutilización reduce la privacidad tanto para usted como para el destinatario y puede ocasionar pérdidas si el destinatario no controla directamente la dirección."
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dirección ya utilizada\n\nLas direcciones de Litecoin están destinadas a un solo uso.\n\nEl reuso reduce la privacidad tanto para ti como para el destinatario y puede resultar en pérdidas si el destinatario no controla directamente la dirección."
+          }
+        },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آدرس قبلاً استفاده شده است\n\nآدرس‌های لایت‌کوین فقط برای یک بار استفاده طراحی شده‌اند.\n\nاستفاده مجدد، حریم خصوصی شما و گیرنده را کاهش می‌دهد و اگر گیرنده آدرس را مستقیماً کنترل نکند ممکن است منجر به از دست رفتن شود."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Traduction française de: Address Already Used\n\n Litecoin addresses are intended for single use only.\n\nRe-use reduces privacy for both you and the recipient and can result in loss if the recipient doesn't directly control the address."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "पता पहले से उपयोग किया गया है\n\nLitecoin पते केवल एक बार उपयोग के लिए होते हैं।\n\nदोबारा उपयोग करने से आपकी और प्राप्तकर्ता दोनों की गोपनीयता कम होती है और यदि प्राप्तकर्ता सीधे पते को नियंत्रित नहीं करता है तो नुकसान हो सकता है।"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alamat sudah digunakan\n\nAlamat Litecoin hanya dimaksudkan untuk sekali pakai.\n\nPenggunaan ulang mengurangi privasi baik untuk Anda maupun penerima dan dapat menyebabkan kerugian jika penerima tidak mengendalikan alamat tersebut secara langsung."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indirizzo già utilizzato\n\nGli indirizzi Litecoin sono destinati a un solo utilizzo.\n\nIl riutilizzo riduce la privacy sia per te che per il destinatario e può comportare perdite se il destinatario non controlla direttamente l'indirizzo."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アドレスはすでに使用されています\n\nLitecoin アドレスは一度だけ使用することを目的としています。\n\n再利用すると、あなたと受取人の両方のプライバシーが低下し、受取人がそのアドレスを直接管理していない場合は損失につながる可能性があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미 사용된 주소\n\n라이트코인 주소는 한 번만 사용하도록 설계되었습니다.\n\n재사용하면 사용자와 수신자 모두의 프라이버시가 줄어들고, 수신자가 해당 주소를 직접 제어하지 않는 경우 손실이 발생할 수 있습니다."
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਪਤਾ ਪਹਿਲਾਂ ਹੀ ਵਰਤਿਆ ਜਾ ਚੁੱਕਾ ਹੈ\n\nLitecoin ਪਤੇ ਸਿਰਫ ਇੱਕ ਵਾਰ ਵਰਤੋਂ ਲਈ ਹਨ।\n\nਦੁਬਾਰਾ ਵਰਤੋਂ ਤੁਹਾਡੇ ਅਤੇ ਪ੍ਰਾਪਤਕਰਤਾ ਦੋਵਾਂ ਦੀ ਪਰਦੇਦਾਰੀ ਨੂੰ ਘਟਾਉਂਦੀ ਹੈ ਅਤੇ ਜੇ ਪ੍ਰਾਪਤਕਰਤਾ ਸਿੱਧੇ ਤੌਰ 'ਤੇ ਪਤੇ ਨੂੰ ਨਿਯੰਤਰਿਤ ਨਹੀਂ ਕਰਦਾ ਤਾਂ ਨੁਕਸਾਨ ਹੋ ਸਕਦਾ ਹੈ।"
           }
         },
         "pl" : {
@@ -1624,6 +1678,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Endereço Já Utilizado\n\nOs endereços Litecoin são destinados apenas para uso único.\n\nA reutilização reduz a privacidade para você e o destinatário e pode resultar em perda se o destinatário não controlar diretamente o endereço."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Адрес уже использован\n\nАдреса Litecoin предназначены только для однократного использования.\n\nПовторное использование снижает конфиденциальность как для вас, так и для получателя и может привести к потере средств, если получатель не контролирует адрес напрямую."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adressen används redan\n\nLitecoin-adresser är endast avsedda för engångsbruk.\n\nÅteranvändning minskar integriteten både för dig och mottagaren och kan leda till förlust om mottagaren inte direkt kontrollerar adressen."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adres Zaten Kullanılmış\n\nLitecoin adresleri yalnızca tek kullanımlık olarak tasarlanmıştır.\n\nYeniden kullanım hem sizin hem de alıcının gizliliğini azaltır ve alıcının adresi doğrudan kontrol etmediği durumlarda kayıplara yol açabilir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Адресу вже використано\n\nАдреси Litecoin призначені лише для одноразового використання.\n\nПовторне використання зменшує конфіденційність як для вас, так і для одержувача та може призвести до втрати коштів, якщо одержувач не контролює адресу безпосередньо."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "地址已被使用\n\n莱特币地址仅供一次性使用。\n\n重复使用会降低您和接收者的隐私，如果接收者不直接控制该地址，则可能导致损失。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "地址已被使用\n\nLitecoin 地址僅限一次性使用。\n\n重複使用會降低你和收款人的隱私，並可能導致損失，如果收款人未直接控制該地址。"
           }
         }
       }
@@ -2582,6 +2672,18 @@
             "value" : "a partire da %@"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@現在"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@부터"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2600,6 +2702,12 @@
             "value" : "по состоянию на %@"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "från och med %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2610,6 +2718,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "станом на %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "截至 %@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "截至 %@"
           }
         }
       }
@@ -4046,10 +4166,70 @@
     },
     "Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محفظة Brainwallet الآن بمظهر جديد كليًا وميزات جديدة.\n\nجميع العملات معروضة باللايت (ł). 1 لايتكوين (Ł) = 1000 لايت (ł)."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet hat jetzt ein völlig neues Erscheinungsbild und einige neue Funktionen.\n\nAlle Coins werden in Lites (ł) angezeigt. 1 Litecoin (Ł) = 1000 Lites (ł)."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet ahora tiene una apariencia completamente nueva y algunas funciones nuevas.\n\nTodas las monedas se muestran en lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)."
+          }
+        },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet اکنون ظاهر جدیدی دارد و چند ویژگی تازه اضافه شده است.\n\nتمام سکه‌ها به صورت لایت (ł) نمایش داده می‌شوند. 1 لایت‌کوین (Ł) = 1000 لایت (ł)."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Traduction française de: Brainwallet now has a brand new look and some new features.\n\nAll coins are displayed in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet अब एक बिल्कुल नया रूप और कुछ नई विशेषताओं के साथ आया है।\n\nसभी कॉइन Lites (ł) में दिखाए जाते हैं। 1 Litecoin (Ł) = 1000 Lites (ł)।"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet sekarang memiliki tampilan baru dan beberapa fitur baru.\n\nSemua koin ditampilkan dalam lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet ha ora un nuovo aspetto e alcune nuove funzionalità.\n\nTutte le monete sono visualizzate in lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet は新しい外観といくつかの新機能を備えています。\n\nすべてのコインは lite (ł) で表示されます。1 Litecoin (Ł) = 1000 lites (ł)。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet이 새로운 디자인과 몇 가지 새로운 기능으로 업데이트되었습니다.\n\n모든 코인은 라이트(ł)로 표시됩니다. 1 라이트코인(Ł) = 1000 라이트(ł)."
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet ਹੁਣ ਨਵੇਂ ਰੂਪ ਅਤੇ ਕੁਝ ਨਵੀਆਂ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਨਾਲ ਆਇਆ ਹੈ।\n\nਸਾਰੇ ਸਿੱਕੇ ਲਾਈਟ (ł) ਵਿੱਚ ਦਰਸਾਏ ਗਏ ਹਨ। 1 Litecoin (Ł) = 1000 ਲਾਈਟ (ł)।"
           }
         },
         "pl" : {
@@ -4062,6 +4242,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "A Brainwallet agora tem um novo visual e alguns novos recursos.\n\nTodas as moedas são exibidas em lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet теперь имеет совершенно новый вид и несколько новых функций.\n\nВсе монеты отображаются в лайт (ł). 1 Litecoin (Ł) = 1000 лайт (ł)."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet har nu ett helt nytt utseende och några nya funktioner.\n\nAlla mynt visas i lites (ł). 1 Litecoin (Ł) = 1000 lites (ł)."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet şimdi tamamen yeni bir görünüme ve bazı yeni özelliklere sahip.\n\nTüm coinler lite (ł) olarak görüntülenir. 1 Litecoin (Ł) = 1000 lite (ł)."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet тепер має абсолютно новий вигляд і кілька нових функцій.\n\nУсі монети відображаються в лайт (ł). 1 Litecoin (Ł) = 1000 лайт (ł)."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet 现已焕然一新，并拥有一些新功能。\n\n所有货币均以莱特 (ł) 显示。1 莱特币 (Ł) = 1000 莱特 (ł)。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet 現在有全新的外觀和一些新功能。\n\n所有幣種以 Lites (ł) 顯示。1 Litecoin (Ł) = 1000 Lites (ł)。"
           }
         }
       }
@@ -4346,6 +4562,12 @@
             "value" : "Comprar Litecoin"
           }
         },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خرید لایت‌کوین"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4370,6 +4592,24 @@
             "value" : "Acquista Litecoin"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Litecoin を購入"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "라이트코인 구매"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Litecoin ਖਰੀਦੋ"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4388,6 +4628,12 @@
             "value" : "Купить Лайткоин"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Köp Litecoin"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4398,6 +4644,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Купити Лайткоїн"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "购买莱特币"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購買 Litecoin"
           }
         }
       }
@@ -5202,6 +5460,12 @@
             "value" : "Confirmar código de acceso"
           }
         },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تأیید رمز عبور"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5226,6 +5490,24 @@
             "value" : "Conferma il codice di accesso"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パスコードを確認"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "암호 확인"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਪਾਸਕੋਡ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5244,6 +5526,12 @@
             "value" : "Подтвердите код доступа"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bekräfta lösenkod"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5254,6 +5542,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Підтвердьте пароль"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认密码"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認密碼"
           }
         }
       }
@@ -6950,10 +7250,70 @@
     },
     "Create New Wallet" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إنشاء محفظة جديدة"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Wallet erstellen"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear nueva billetera"
+          }
+        },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ایجاد کیف پول جدید"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Traduction française de: Create New Wallet"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "नया वॉलेट बनाएँ"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buat Dompet Baru"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea un nuovo portafoglio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいウォレットを作成"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새 지갑 만들기"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਨਵਾਂ ਵਾਲਿਟ ਬਣਾਓ"
           }
         },
         "pl" : {
@@ -6966,6 +7326,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Criar Nova Carteira"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создать новый кошелёк"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skapa ny plånbok"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Cüzdan Oluştur"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Створити новий гаманець"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "创建新钱包"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "建立新錢包"
           }
         }
       }
@@ -8272,10 +8668,70 @@
     },
     "Don’t guess. It would take you\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا تُخمّن. سيستغرق الأمر منك 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000 محاولة."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rate nicht. Es würde\n5.444.517.950.000.000.000.000.000.000.000.000.000.000.000.000.000 Versuche dauern."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No adivines. Te tomaría\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 intentos."
+          }
+        },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حدس نزنید. این کار نیاز به\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 بار تلاش دارد."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Traduction française de: Don’t guess. It would take you\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "अंदाज़ा मत लगाओ। इसमें तुम्हें\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 बार प्रयास करना पड़ेगा।"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jangan menebak. Itu akan memerlukan\n5.444.517.950.000.000.000.000.000.000.000.000.000.000.000.000.000 percobaan."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non indovinare. Ci vorrebbero\n5.444.517.950.000.000.000.000.000.000.000.000.000.000.000.000.000 tentativi."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "推測しないでください。それには\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 回の試行が必要です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "추측하지 마세요. 시도하려면\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000번이 필요합니다."
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਅਨੁਮਾਨ ਨਾ ਲਗਾਓ। ਇਸ ਲਈ ਤੁਹਾਨੂੰ\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 ਕੋਸ਼ਿਸ਼ਾਂ ਲੱਗਣਗੀਆਂ।"
           }
         },
         "pl" : {
@@ -8288,6 +8744,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Não tente adivinhar. Você precisaria de\n5.444.517.950.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000 tentativas."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не пытайтесь угадать. Это заняло бы\n5 444 517 950 000 000 000 000 000 000 000 000 000 000 000 000 000 попыток."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gissa inte. Det skulle ta dig\n5 444 517 950 000 000 000 000 000 000 000 000 000 000 000 000 000 försök."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tahmin etmeyin. Bunun için\n5.444.517.950.000.000.000.000.000.000.000.000.000.000.000.000.000 deneme gerekir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не намагайтеся вгадати. Це зайняло б\n5 444 517 950 000 000 000 000 000 000 000 000 000 000 000 000 000 спроб."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "别猜了。这得花你\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000 次尝试。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不要猜。這需要\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 次嘗試。"
           }
         }
       }
@@ -11562,6 +12054,12 @@
             "value" : "Juego y Sincronización"
           }
         },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بازی و همگام‌سازی"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11586,6 +12084,24 @@
             "value" : "Gioco e sincronizzazione"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ゲームと同期"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "게임 및 동기화"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਖੇਡ ਅਤੇ ਸਿੰਕ"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11604,6 +12120,12 @@
             "value" : "Игра и синхронизация"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spel och synkronisering"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11614,6 +12136,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Гра та синхронізація"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "游戏与同步"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "遊戲與同步"
           }
         }
       }
@@ -11636,6 +12170,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Obtén Litecoin a través de MoonPay"
+          }
+        },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "دریافت لایت‌کوین از طریق MoonPay"
           }
         },
         "fr" : {
@@ -11662,6 +12202,24 @@
             "value" : "Ottieni Litecoin tramite MoonPay"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MoonPay を通じて Litecoin を入手"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MoonPay를 통해 라이트코인 받기"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MoonPay ਰਾਹੀਂ Litecoin ਪ੍ਰਾਪਤ ਕਰੋ"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11680,6 +12238,12 @@
             "value" : "Получите Litecoin через MoonPay"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skaffa Litecoin via MoonPay"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11690,6 +12254,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отримайте Litecoin через MoonPay"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通过 MoonPay 获取莱特币"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "透過 MoonPay 獲取 Litecoin"
           }
         }
       }
@@ -11712,6 +12288,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consigue algo de Litecoin para tu Brainwallet"
+          }
+        },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مقداری لایت‌کوین برای Brainwallet خود دریافت کنید"
           }
         },
         "fr" : {
@@ -11738,6 +12320,24 @@
             "value" : "Ottieni Litecoin per il tuo Brainwallet"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet 用に Litecoin を入手"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet에 라이트코인 받기"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਆਪਣੇ Brainwallet ਲਈ ਕੁਝ Litecoin ਪ੍ਰਾਪਤ ਕਰੋ"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11756,6 +12356,12 @@
             "value" : "Получите немного Litecoin для вашего Brainwallet."
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skaffa lite Litecoin till din Brainwallet"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11766,6 +12372,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отримайте трохи Litecoin для свого Brainwallet"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "为你的脑钱包获取一些莱特币"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "為你的 Brainwallet 獲取一些 Litecoin"
           }
         }
       }
@@ -12180,6 +12798,12 @@
             "value" : "Lo guardé en papel o metal"
           }
         },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "من آن را روی کاغذ یا فلز ذخیره کردم"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12204,6 +12828,24 @@
             "value" : "L'ho salvato su carta o metallo"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "紙または金属に保存しました"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "나는 그것을 종이나 금속에 저장했습니다"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਮੈਂ ਇਸਨੂੰ ਕਾਗਜ਼ ਜਾਂ ਧਾਤ 'ਤੇ ਸੰਭਾਲਿਆ"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12222,6 +12864,12 @@
             "value" : "Я сохранил это на бумаге или металле."
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jag sparade det på papper eller metall"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12232,6 +12880,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Я зберіг це на папері чи металі"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我把它保存在纸上或金属上"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我已將它記錄在紙上或金屬上"
           }
         }
       }
@@ -12254,6 +12914,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Si guardaste la frase semilla de 12 palabras en tu teléfono o la tenías en Litewallet, puedes restaurar tu Brainwallet aquí."
+          }
+        },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اگر عبارت بازیابی ۱۲ کلمه‌ای را در تلفن خود ذخیره کرده‌اید یا در Litewallet داشتید، می‌توانید Brainwallet خود را اینجا بازیابی کنید."
           }
         },
         "fr" : {
@@ -12280,6 +12946,24 @@
             "value" : "Se hai salvato una frase seed di 12 parole sul tuo telefono o l'hai salvata su Litewallet, puoi ripristinare il tuo Brainwallet qui."
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12 単語のシードフレーズを携帯電話に保存した場合、または Litewallet に保存していた場合は、ここで Brainwallet を復元できます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "휴대폰에 12단어 시드 구문을 저장했거나 Litewallet에 보관했다면, 여기에서 Brainwallet을 복원할 수 있습니다."
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਜੇਕਰ ਤੁਸੀਂ ਆਪਣੇ ਫੋਨ 'ਤੇ 12 ਸ਼ਬਦਾਂ ਦੀ ਬੀਜ ਫਰੇਜ਼ ਸੇਵ ਕੀਤੀ ਹੈ ਜਾਂ Litewallet 'ਤੇ ਸੀ, ਤਾਂ ਤੁਸੀਂ ਇੱਥੇ ਆਪਣਾ Brainwallet ਮੁੜ ਪ੍ਰਾਪਤ ਕਰ ਸਕਦੇ ਹੋ।"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12298,6 +12982,12 @@
             "value" : "Если вы сохранили 12 слов из seed-фразы на своем телефоне или имели ее в Litewallet, вы можете восстановить свой Brainwallet здесь."
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Om du sparade en 12-ords fras på din telefon eller hade den i Litewallet kan du återställa din Brainwallet här."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12308,6 +12998,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Якщо ви зберегли 12-словну основну фразу на своєму телефоні або мали її на Litewallet, ви можете відновити свій Brainwallet тут."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果您在手机上保存了 12 个单词的种子短语，或者将其放在 Litewallet 上，您可以在此处恢复您的 Brainwallet。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果你將 12 個字的種子詞保存在手機或 Litewallet 上，你可以在這裡恢復你的 Brainwallet。"
           }
         }
       }
@@ -12834,10 +13536,70 @@
     },
     "Just for you.\nIs it the private key that lets you send." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لك فقط. هل هو المفتاح الخاص الذي يسمح لك بالإرسال؟"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur für dich.\nEs ist der private Schlüssel, der dir das Senden ermöglicht."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo para ti.\nEs la clave privada la que te permite enviar."
+          }
+        },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فقط برای شما.\nاین کلید خصوصی است که به شما اجازه ارسال می‌دهد."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Traduction française de: Just for you.\nIs it the private key that lets you send."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "सिर्फ़ तुम्हारे लिए।\nयह प्राइवेट की ही है जो तुम्हें भेजने की अनुमति देती है।"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hanya untuk Anda.\nInilah kunci pribadi yang memungkinkan Anda mengirim."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo per te.\nÈ la chiave privata che ti permette di inviare."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなただけのもの。\n送信できるのは秘密鍵です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신만을 위한 것.\n전송을 가능하게 하는 것은 개인 키입니다."
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਸਿਰਫ ਤੁਹਾਡੇ ਲਈ।\nਇਹ ਪ੍ਰਾਈਵੇਟ ਕੀ ਹੈ ਜੋ ਤੁਹਾਨੂੰ ਭੇਜਣ ਦੀ ਆਗਿਆ ਦਿੰਦੀ ਹੈ।"
           }
         },
         "pl" : {
@@ -12850,6 +13612,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apenas para você.\nÉ a chave privada que permite enviar."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Только для вас.\nЭто приватный ключ позволяет вам отправлять."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bara för dig.\nDet är den privata nyckeln som låter dig skicka."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sadece senin için.\nGöndermeni sağlayan şey özel anahtardır."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тільки для вас.\nСаме приватний ключ дозволяє вам надсилати."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "只为你。\n它是让你发送的私钥吗？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "僅屬於你。\n是私鑰讓你能夠發送。"
           }
         }
       }
@@ -13506,10 +14304,70 @@
     },
     "Lose your smartphone in a boating accident?\n\n" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هل فقدت هاتفك الذكي في حادث قارب؟"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Smartphone bei einem Bootsunfall verloren?\n\n"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Perdiste tu teléfono inteligente en un accidente de bote?\n\n"
+          }
+        },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "گوشی خود را در یک حادثه قایق‌رانی از دست داده‌اید؟\n\n"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Traduction française de: Lose your smartphone in a boating accident?\n\n"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "क्या तुमने नौका दुर्घटना में अपना स्मार्टफ़ोन खो दिया?\n\n"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kehilangan ponsel Anda dalam kecelakaan perahu?\n\n"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai perso il tuo smartphone in un incidente in barca?\n\n"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ボート事故でスマートフォンを失くしましたか？\n\n"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "보트 사고로 스마트폰을 잃어버렸나요?\n\n"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਕੀ ਕਿਸ਼ਤੀ ਹਾਦਸੇ ਵਿੱਚ ਤੁਹਾਡਾ ਸਮਾਰਟਫੋਨ ਖੋ ਗਿਆ?\n\n"
           }
         },
         "pl" : {
@@ -13522,6 +14380,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perdeu seu smartphone em um acidente de barco?\n\n"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Потеряли смартфон в лодочной аварии?\n\n"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Förlorade du din smartphone i en båtolycka?\n\n"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir tekne kazasında akıllı telefonunu mu kaybettin?\n\n"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Втратили смартфон у човновій аварії?\n\n"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在船舶事故中丢失了智能手机？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在划船意外中丟失了智慧型手機？\n\n"
           }
         }
       }
@@ -13676,6 +14570,12 @@
             "value" : "Tal vez más tarde (Omitir)"
           }
         },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شاید بعداً (رد کردن)"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13700,6 +14600,24 @@
             "value" : "Forse più tardi (Salta)"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "後で（スキップ）"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "나중에 (건너뛰기)"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਸ਼ਾਇਦ ਬਾਅਦ ਵਿੱਚ (ਛੱਡੋ)"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13718,6 +14636,12 @@
             "value" : "Возможно, позже (Пропустить)"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kanske senare (Hoppa över)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13728,6 +14652,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Можливо пізніше (Пропустити)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "或许稍后（跳过）"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "稍後再說（跳過）"
           }
         }
       }
@@ -14662,6 +15598,12 @@
             "value" : "OK"
           }
         },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "باشه"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14686,6 +15628,24 @@
             "value" : "OK"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "확인"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਠੀਕ ਹੈ"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14704,6 +15664,12 @@
             "value" : "Хорошо"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14714,6 +15680,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Гаразд"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "好的"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "好"
           }
         }
       }
@@ -15388,6 +16366,12 @@
             "value" : "Elige una contraseña para desbloquear tu Brainwallet. ¡No es un código de bloqueo de teléfono! Hazlo diferente. ¡Hazlo genial!"
           }
         },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "یک رمز عبور برای باز کردن Brainwallet انتخاب کنید. نه رمز قفل گوشی! آن را متفاوت انتخاب کنید. آن را جالب کنید!"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15412,6 +16396,24 @@
             "value" : "Scegli un codice di accesso per sbloccare il tuo Brainwallet. Non è un codice di blocco del telefono! Rendila diversa. Rendila fantastica!"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet を解除するためのパスコードを選択してください。携帯のロックコードではありません！違うものにしてください。かっこよく！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet을 잠금 해제할 암호를 선택하세요. 휴대폰 잠금 코드가 아닙니다! 다르게, 멋지게 설정하세요!"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਆਪਣਾ Brainwallet ਅਨਲੌਕ ਕਰਨ ਲਈ ਇੱਕ ਪਾਸਕੋਡ ਚੁਣੋ। ਫੋਨ ਲੌਕ ਕੋਡ ਨਹੀਂ! ਇਸਨੂੰ ਵੱਖਰਾ ਬਣਾਓ। ਇਸਨੂੰ ਸ਼ਾਨਦਾਰ ਬਣਾਓ!"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15430,6 +16432,12 @@
             "value" : "Выберите код доступа для разблокировки вашего Brainwallet. Это не код блокировки телефона! Сделай это по-другому. Сделай это круто!"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Välj en lösenkod för att låsa upp din Brainwallet. Inte en telefonkod! Gör den annorlunda. Gör den cool!"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15440,6 +16448,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Виберіть пароль, щоб розблокувати свій Brainwallet. Не код блокування телефону! Зробіть це інакше. Зробіть це круто!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设定一个密码来解锁你的脑钱包。别再用手机锁密码了！让它与众不同，让它更酷炫！"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇一個密碼來解鎖你的 Brainwallet。不要使用手機解鎖碼！讓它不同，讓它很酷！"
           }
         }
       }
@@ -16634,6 +17654,12 @@
             "value" : "Presiona y arrastra una palabra al lugar correspondiente"
           }
         },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "یک کلمه را فشار دهید و به جای درست بکشید"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16658,6 +17684,24 @@
             "value" : "Premi e trascina una parola nella posizione desiderata"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語を押して所定の位置にドラッグ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "단어를 눌러 제자리에 끌어다 놓으세요"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਕਿਸੇ ਸ਼ਬਦ ਨੂੰ ਦਬਾਓ ਅਤੇ ਉਸਨੂੰ ਥਾਂ 'ਤੇ ਖਿੱਚੋ"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16676,6 +17720,12 @@
             "value" : "Нажмите и перетащите слово на место."
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryck och dra ett ord på plats"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16686,6 +17736,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Натисніть і перетягніть слово на потрібне місце"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按住并拖动一个单词到位"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按住並拖曳一個單詞到正確位置"
           }
         }
       }
@@ -17212,10 +18274,70 @@
     },
     "Prove it!\nPlace the words in the correct order." : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أثبت ذلك!\nضع الكلمات بالترتيب الصحيح."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beweise es!\nBringe die Wörter in die richtige Reihenfolge."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Pruébalo!\nColoca las palabras en el orden correcto."
+          }
+        },
+        "fa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ثابت کنید!\nکلمات را به ترتیب صحیح قرار دهید."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Traduction française de: Prove it!\nPlace the words in the correct order."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "साबित करो!\nशब्दों को सही क्रम में रखो।"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buktikan!\nLetakkan kata-kata dalam urutan yang benar."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dimostralo!\nMetti le parole nell'ordine corretto."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "証明してください！\n単語を正しい順序に並べてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "증명해 보세요!\n단어를 올바른 순서로 배열하세요."
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਇਸਨੂੰ ਸਾਬਤ ਕਰੋ!\nਸ਼ਬਦਾਂ ਨੂੰ ਸਹੀ ਕ੍ਰਮ ਵਿੱਚ ਰੱਖੋ।"
           }
         },
         "pl" : {
@@ -17228,6 +18350,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prove!\nColoque as palavras na ordem correta."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Докажите!\nРасположите слова в правильном порядке."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bevisa det!\nPlacera orden i rätt ordning."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kanıtla!\nKelimeleri doğru sıraya yerleştir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доведіть це!\nРозташуйте слова у правильному порядку."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "证明一下！\n将单词按正确顺序排列。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "證明吧！\n將單詞排列在正確的順序。"
           }
         }
       }
@@ -17666,6 +18824,18 @@
             "value" : "Pronti per iniziare?"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "始める準備はできましたか？"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작할 준비가 되었습니까?"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17684,6 +18854,12 @@
             "value" : "Готовы начать?"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redo att börja?"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17694,6 +18870,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Готові почати?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "准备好开始了吗？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "準備開始了嗎？"
           }
         }
       }
@@ -19172,6 +20360,18 @@
             "value" : "RESET / RICOMINCIA"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リセット / 最初からやり直す"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "재설정 / 다시 시작"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19190,6 +20390,12 @@
             "value" : "СБРОС / НАЧАТЬ ЗАНОВО"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ÅTERSTÄLL / BÖRJA OM"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19200,6 +20406,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "СКИДАННЯ / ПОЧАТИ ЗНОВУ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置/重新开始"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重設 / 重新開始"
           }
         }
       }
@@ -19638,6 +20856,18 @@
             "value" : "Ripristina e sincronizza"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復元と同期"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "복원 및 동기화"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19656,6 +20886,12 @@
             "value" : "Восстановить и синхронизировать"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Återställ och synkronisera"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19666,6 +20902,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Відновлення та синхронізація"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢复和同步"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢復與同步"
           }
         }
       }
@@ -19714,6 +20962,18 @@
             "value" : "Ripristinare dal seme"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シードから復元"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시드에서 복원"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19732,6 +20992,12 @@
             "value" : "Восстановить из семени"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Återställ från seed"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19742,6 +21008,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Відновлення з насіння"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从种子恢复"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "從種子恢復"
           }
         }
       }
@@ -19790,6 +21068,18 @@
             "value" : "Ripristina con la frase Seed"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シードフレーズで復元"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시드 문구로 복원"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19808,6 +21098,12 @@
             "value" : "Восстановить с помощью секретной фразы"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Återställ med seed-fras"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19818,6 +21114,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Відновлення за допомогою початкової фрази"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用种子短语恢复"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用種子片語恢復"
           }
         }
       }
@@ -19866,6 +21174,18 @@
             "value" : "Ripristina il tuo Brainwallet"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet を復元"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet 복원"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19884,6 +21204,12 @@
             "value" : "Восстановите ваш Brainwallet"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Återställ din Brainwallet"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19894,6 +21220,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Відновіть свій Brainwallet"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢复你的脑钱包"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢復你的 Brainwallet"
           }
         }
       }
@@ -21372,6 +22710,18 @@
             "value" : "Imposta il codice di accesso dell'app"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリのパスコードを設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "앱 암호 설정"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21390,6 +22740,12 @@
             "value" : "Установить код доступа для приложения"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ställ in appens lösenkod"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21400,6 +22756,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Встановити пароль програми"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置应用程序密码"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定應用程式密碼"
           }
         }
       }
@@ -25046,10 +26414,58 @@
     },
     "Tap a field above.\nEnter the a few letters.\nTap the word that matches" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "انقر على الحقل أعلاه.\nأدخل بعض الأحرف.\nانقر على الكلمة المطابقة."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippe auf ein Feld oben.\nGib ein paar Buchstaben ein.\nTippe auf das passende Wort."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca un campo arriba.\nIngresa algunas letras.\nToca la palabra que coincida."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Traduction française de: Tap a field above.\nEnter the a few letters.\nTap the word that matches"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ऊपर दिए गए फ़ील्ड पर टैप करें।\nकुछ अक्षर दर्ज करें।\nमेल खाने वाले शब्द पर टैप करें।"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ketuk kolom di atas.\nMasukkan beberapa huruf.\nKetuk kata yang cocok."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tocca un campo qui sopra.\nInserisci alcune lettere.\nTocca la parola corrispondente."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上のフィールドをタップしてください。\nいくつかの文字を入力してください。\n一致する単語をタップしてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "위의 필드를 탭하세요.\n몇 글자를 입력하세요.\n일치하는 단어를 탭하세요."
           }
         },
         "pl" : {
@@ -25062,6 +26478,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toque em um campo acima.\nDigite algumas letras.\nToque na palavra correspondente"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нажмите на поле выше.\nВведите несколько букв.\nНажмите на соответствующее слово."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryck på ett fält ovan.\nSkriv några bokstäver.\nTryck på det ord som matchar."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yukarıdaki bir alana dokunun.\nBirkaç harf girin.\nEşleşen kelimeye dokunun."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Торкніться поля вище.\nВведіть кілька літер.\nТоркніться відповідного слова."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点按上方的字段。\n输入几个字母。\n点按匹配的单词"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點擊上方的欄位。\n輸入幾個字母。\n點擊相符的單詞。"
           }
         }
       }
@@ -26800,6 +28252,18 @@
             "value" : "Si è verificato un grave errore durante la creazione del tuo Brainwallet. Visitateci su brainwallet.co per inviare un ticket di assistenza clienti."
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet の作成中に重大なエラーが発生しました。カスタマーサポートチケットを送信するには brainwallet.co にアクセスしてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brainwallet을 생성하는 동안 심각한 오류가 발생했습니다. 고객 지원 티켓을 제출하려면 brainwallet.co를 방문하세요."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26818,6 +28282,12 @@
             "value" : "При создании вашего Brainwallet произошла серьезная ошибка. Посетите наш сайт brainwallet.co, чтобы подать заявку в службу поддержки клиентов."
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ett allvarligt fel inträffade när din Brainwallet skapades. Besök brainwallet.co för att skicka in ett supportärende."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26828,6 +28298,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Під час створення вашого Brainwallet сталася серйозна помилка. Відвідайте наш веб-сайт brainwallet.co, щоб подати запит на підтримку клієнтів."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "创建您的 Brainwallet 时出现严重错误。请访问 brainwallet.co 提交客户支持工单。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "建立你的 Brainwallet 時發生嚴重錯誤。請造訪 brainwallet.co 提交客服支援單。"
           }
         }
       }
@@ -26964,10 +28446,58 @@
     },
     "This is for you alone.\n\nSetup the app passcode, open your password manager or grab a pen to record it & your new seed phrase.\n\n" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هذا لك وحدك.\n\nأنشئ كلمة مرور التطبيق، افتح مدير كلمات المرور، أو استخدم قلمًا لتسجيلها مع عبارة البذرة الجديدة."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ist nur für dich.\n\nRichte den App-Passcode ein, öffne deinen Passwort-Manager oder nimm einen Stift, um ihn und deine neue Seed-Phrase aufzuschreiben.\n\n"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esto es solo para ti.\n\nConfigura el código de acceso de la aplicación, abre tu gestor de contraseñas o toma un bolígrafo para anotarlo junto con tu nueva frase semilla.\n\n"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Traduction française de: This is for you alone.\n\nSetup the app passcode, open your password manager or grab a pen to record it & your new seed phrase.\n\n"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "यह केवल तुम्हारे लिए है।\n\nऐप पासकोड सेट करें, अपना पासवर्ड मैनेजर खोलें या पेन लें और इसे तथा अपनी नई सीड फ्रेज़ को लिख लें।\n\n"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ini hanya untuk Anda.\n\nAtur kode sandi aplikasi, buka pengelola kata sandi Anda atau ambil pena untuk mencatatnya beserta frasa benih baru Anda.\n\n"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo è solo per te.\n\nImposta il codice di accesso dell'app, apri il tuo gestore di password o prendi una penna per annotarlo insieme alla tua nuova frase seed.\n\n"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "これはあなただけのものです。\n\nアプリのパスコードを設定し、パスワードマネージャーを開くか、ペンを取ってそれと新しいシードフレーズを書き留めてください。\n\n"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이것은 오직 당신을 위한 것입니다.\n\n앱 암호를 설정하고, 비밀번호 관리자를 열거나 펜을 잡아 암호와 새 시드 문구를 기록하세요.\n\n"
           }
         },
         "pl" : {
@@ -26980,6 +28510,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Isso é só para você.\n\nConfigure a senha do aplicativo, abra seu gerenciador de senhas ou pegue uma caneta para anotar isso e sua nova frase semente.\n\n"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это только для вас.\n\nУстановите код доступа к приложению, откройте менеджер паролей или возьмите ручку, чтобы записать его и вашу новую seed-фразу.\n\n"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detta är endast för dig.\n\nStäll in appens lösenkod, öppna din lösenordshanterare eller ta en penna för att skriva ner den och din nya seed-fras.\n\n"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu sadece senin için.\n\nUygulama şifresini ayarla, şifre yöneticini aç veya kalem alarak onu ve yeni tohum ifadesini not et.\n\n"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Це лише для вас.\n\nВстановіть код доступу до застосунку, відкрийте менеджер паролів або візьміть ручку, щоб записати його та вашу нову seed-фразу.\n\n"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这只属于你。\n\n设置应用密码，打开密码管理器或拿起笔记录密码和你的新种子短语。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這僅供你使用。\n\n設定應用程式密碼，打開你的密碼管理器或拿起筆將它和你的新種子片語記錄下來。\n\n"
           }
         }
       }
@@ -28068,6 +29634,18 @@
             "value" : "Da depositare al tuo indirizzo LTC"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたのLTCアドレスに入金されます"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "귀하의 LTC 주소로 입금됩니다"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -28086,6 +29664,12 @@
             "value" : "Для зачисления на ваш LTC-адрес"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Att sättas in på din LTC-adress"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -28096,6 +29680,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Для зарахування на вашу адресу LTC"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "存入您的 LTC 地址"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將存入你的 LTC 地址"
           }
         }
       }
@@ -28404,6 +30000,18 @@
             "value" : "Ricaricare?"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "チャージしますか？"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "충전하시겠습니까?"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -28422,6 +30030,12 @@
             "value" : "Пополнить?"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fyll på?"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -28432,6 +30046,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поповнити?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "充值？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "要充值嗎？"
           }
         }
       }
@@ -30820,6 +32446,18 @@
             "value" : "Errore di creazione del portafoglio"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウォレット作成エラー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지갑 생성 오류"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -30838,6 +32476,12 @@
             "value" : "Ошибка создания кошелька"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fel vid skapande av plånbok"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -30848,6 +32492,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Помилка створення гаманця"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "钱包创建错误"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "錢包建立錯誤"
           }
         }
       }
@@ -31156,6 +32812,18 @@
             "value" : "Non lo sappiamo e non ne abbiamo una copia!"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "私たちはそれを知らず、コピーも持っていません！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "우리는 그것을 알지도 못하고 사본도 가지고 있지 않습니다!"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -31174,6 +32842,12 @@
             "value" : "Мы этого не знаем, и у нас нет копии!"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vi känner inte till det och vi har ingen kopia!"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -31184,6 +32858,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ми цього не знаємо і не маємо копії!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我们不知道，也没有副本！"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我們不知道它，也沒有備份副本！"
           }
         }
       }
@@ -32272,6 +33958,18 @@
             "value" : "Non te ne sei dimenticato, vero? OK! Basta tornare indietro per ricominciare."
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忘れていませんよね？大丈夫！最初に戻ってやり直してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "잊지 않았죠? 좋아요! 그냥 돌아가서 다시 시작하세요."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32290,6 +33988,12 @@
             "value" : "Ты не забыл, правда? Хорошо! Просто вернись и начни сначала."
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du glömde inte, eller hur? Okej! Gå bara tillbaka och börja om."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32300,6 +34004,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ти ж не забув, чи не так? Гаразд! Просто повернися, щоб почати спочатку."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你没忘吧？好的！回去重新开始就行了。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你沒有忘記吧？好的！回到開始重新來過。"
           }
         }
       }
@@ -32738,6 +34454,18 @@
             "value" : "L'hai salvato, vero?"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存しましたよね？"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장했죠?"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32756,6 +34484,12 @@
             "value" : "Ты сохранил это, правда?"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du sparade det, eller hur?"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -32766,6 +34500,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ти ж його врятував, так?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你保存了它，对吗？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你有保存下來，對吧？"
           }
         }
       }
@@ -33422,10 +35168,58 @@
     },
     "Your paper key is the only way to restore your Brainwallet if your mobile is unavailable.\n No one in the Brainwallet team can give this paper key to you!\n\nWe will show you a list of words to write down on a piece of paper and keep safe.\n\nPLEASE MAKE BACKUPS AND DON'T LOSE IT!" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مفتاحك الورقي هو الطريقة الوحيدة لاستعادة محفظة Brainwallet الخاصة بك إذا كان هاتفك غير متاح.\n\nلا أحد من فريق Brainwallet يستطيع إعطائك هذا المفتاح الورقي!\n\nسنعرض عليك قائمة كلمات لتدوينها على ورقة وحفظها في مكان آمن.\n\nيرجى الاحتفاظ بنسخة احتياطية من بياناتك وعدم فقدانها!"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Paper Key ist die einzige Möglichkeit, deine Brainwallet wiederherzustellen, wenn dein Handy nicht verfügbar ist.\n Niemand im Brainwallet-Team kann dir diesen Paper Key geben!\n\nWir zeigen dir eine Liste von Wörtern, die du auf ein Blatt Papier schreiben und sicher aufbewahren solltest.\n\nBITTE MACHE BACKUPS UND VERLIERE IHN NICHT!"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu clave en papel es la única manera de restaurar tu Brainwallet si tu teléfono no está disponible.\nNadie en el equipo de Brainwallet puede darte esta clave en papel.\n\nTe mostraremos una lista de palabras para que las escribas en un papel y las guardes de forma segura.\n\n¡POR FAVOR HAZ COPIAS DE SEGURIDAD Y NO LA PIERDAS!"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Traduction française de: Your paper key is the only way to restore your Brainwallet if your mobile is unavailable.\n No one in the Brainwallet team can give this paper key to you!\n\nWe will show you a list of words to write down on a piece of paper and keep safe.\n\nPLEASE MAKE BACKUPS AND DON'T LOSE IT!"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "यदि तुम्हारा मोबाइल उपलब्ध नहीं है तो तुम्हारा पेपर की ही तुम्हारी Brainwallet को पुनर्स्थापित करने का एकमात्र तरीका है।\n Brainwallet टीम में कोई भी तुम्हें यह पेपर की नहीं दे सकता!\n\nहम तुम्हें शब्दों की एक सूची दिखाएँगे जिसे कागज़ पर लिखकर सुरक्षित रखना होगा।\n\nकृपया बैकअप बनाओ और इसे खोना मत!"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kunci kertas Anda adalah satu-satunya cara untuk memulihkan Brainwallet Anda jika ponsel Anda tidak tersedia.\n Tidak ada seorang pun di tim Brainwallet yang dapat memberikan kunci kertas ini kepada Anda!\n\nKami akan menampilkan daftar kata untuk ditulis di selembar kertas dan disimpan dengan aman.\n\nHARAP BUAT CADANGAN DAN JANGAN KEHILANGANNYA!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua chiave cartacea è l'unico modo per ripristinare il tuo Brainwallet se il tuo cellulare non è disponibile.\n Nessuno del team Brainwallet può fornirti questa chiave cartacea!\n\nTi mostreremo un elenco di parole da scrivere su un foglio di carta e conservare al sicuro.\n\nPER FAVORE FAI DELLE COPIE DI BACKUP E NON PERDERLE!"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "携帯が使えない場合、Brainwallet を復元する唯一の方法はペーパーキーです。\nBrainwallet チームの誰もこのペーパーキーを提供することはできません！\n\n紙に書き留めて安全に保管するべき単語リストを表示します。\n\n必ずバックアップを作成し、失くさないでください！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모바일을 사용할 수 없는 경우 Brainwallet을 복원하는 유일한 방법은 종이 키입니다.\nBrainwallet 팀의 누구도 이 종이 키를 제공할 수 없습니다!\n\n우리는 당신이 종이에 적어 안전하게 보관해야 할 단어 목록을 보여줄 것입니다.\n\n반드시 백업을 만들고 잃어버리지 마세요!"
           }
         },
         "pl" : {
@@ -33438,6 +35232,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sua chave de papel é a única maneira de restaurar seu Brainwallet se seu celular não estiver disponível.\nNinguém da equipe Brainwallet pode fornecer esta chave de papel para você!\n\nMostraremos uma lista de palavras para você escrever em um pedaço de papel e guardar com segurança.\n\nPOR FAVOR, FAÇA BACKUPS E NÃO PERCA!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваш бумажный ключ — единственный способ восстановить Brainwallet, если ваш телефон недоступен.\n Никто из команды Brainwallet не сможет предоставить вам этот ключ!\n\nМы покажем вам список слов, которые нужно записать на бумаге и хранить в безопасности.\n\nПОЖАЛУЙСТА, ДЕЛАЙТЕ РЕЗЕРВНЫЕ КОПИИ И НЕ ТЕРЯЙТЕ ЕГО!"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Din pappersnyckel är det enda sättet att återställa din Brainwallet om din mobil inte är tillgänglig.\nIngen i Brainwallet-teamet kan ge dig denna pappersnyckel!\n\nVi visar dig en lista med ord som du ska skriva ner på ett papper och förvara säkert.\n\nSNÄLLA, GÖR SÄKERHETSKOPIOR OCH TAPPA INTE BORT DEN!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonun kullanılamaz durumdaysa Brainwallet'ini geri yüklemenin tek yolu kağıt anahtarındır.\nBrainwallet ekibinden hiç kimse bu kağıt anahtarı sana veremez!\n\nSana bir kağıda yazıp güvenli bir şekilde saklaman gereken kelime listesini göstereceğiz.\n\nLÜTFEN YEDEKLER OLUŞTUR VE ONU KAYBETME!"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваш паперовий ключ — єдиний спосіб відновити Brainwallet, якщо ваш телефон недоступний.\nНіхто з команди Brainwallet не зможе надати вам цей ключ!\n\nМи покажемо вам список слів, які потрібно записати на папері та зберігати в безпеці.\n\nБУДЬ ЛАСКА, РОБІТЬ РЕЗЕРВНІ КОПІЇ І НЕ ВТРАТЬТЕ ЙОГО!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果您的手机无法使用，纸质密钥是恢复 Brainwallet 的唯一方法。\nBrainwallet 团队的任何人都不能将这张纸质密钥交给您！\n\n我们会向您展示一份单词表，请您将其写在纸上并妥善保管。\n\n请做好备份，切勿丢失！"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "當你的手機無法使用時，紙本金鑰是恢復你的 Brainwallet 的唯一方式。\n Brainwallet 團隊中沒有人能將此紙本金鑰提供給你！\n\n我們會顯示一組單詞，請將它們寫在紙上並妥善保管。\n\n請務必建立備份並且不要遺失！"
           }
         }
       }
@@ -33616,6 +35446,18 @@
             "value" : "La tua frase seed è stata verificata!"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シードフレーズが確認されました！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시드 문구가 확인되었습니다!"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -33634,6 +35476,12 @@
             "value" : "Ваша секретная фраза подтверждена!"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Din seed-fras har verifierats!"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -33644,6 +35492,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вашу початкову фразу перевірено!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您的种子短语已验证！"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你的種子片語已驗證！"
           }
         }
       }
@@ -33692,6 +35552,18 @@
             "value" : "Le tue parole seme"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シードワード"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시드 단어"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -33710,6 +35582,12 @@
             "value" : "Ваши начальные слова"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dina seed-ord"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -33720,6 +35598,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ваші ключові слова"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你的种子词"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你的種子詞"
           }
         }
       }
