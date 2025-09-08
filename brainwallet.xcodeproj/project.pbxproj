@@ -51,6 +51,8 @@
 		243136FB2E0AFD1700BCBED1 /* SettingsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243136FA2E0AFD1000BCBED1 /* SettingsHelpers.swift */; };
 		243136FD2E0B251D00BCBED1 /* SettingsActionToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243136FC2E0B251900BCBED1 /* SettingsActionToggleView.swift */; };
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
+		2437CA022E6EF680000C038F /* BrainwalletiOSGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 242AC3F42E6C555B00777DCB /* BrainwalletiOSGames.framework */; };
+		2437CA032E6EF680000C038F /* BrainwalletiOSGames.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 242AC3F42E6C555B00777DCB /* BrainwalletiOSGames.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		243C7E4C2E685917000543D5 /* ExportButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243C7E4B2E68590C000543D5 /* ExportButtonView.swift */; };
 		244310442E21BCBD004AE386 /* errorsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 244310432E21BCBD004AE386 /* errorsound.mp3 */; };
 		244310462E21BCCE004AE386 /* clickseedword.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 244310452E21BCCE004AE386 /* clickseedword.mp3 */; };
@@ -91,8 +93,6 @@
 		2489E05C2DF0A23700630888 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2489E05B2DF0A23700630888 /* GoogleService-Info.plist */; };
 		248E5C422DE78653003F232F /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E5C412DE7863C003F232F /* NetworkHelper.swift */; };
 		2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2492829B2DAC22B00088528E /* BIP39Words.plist */; };
-		2494B5D12E6C880900576932 /* BrainwalletiOSGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 242AC3F42E6C555B00777DCB /* BrainwalletiOSGames.framework */; };
-		2494B5D22E6C880900576932 /* BrainwalletiOSGames.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 242AC3F42E6C555B00777DCB /* BrainwalletiOSGames.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
 		249DDE422DCD573700B2B275 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249DDE412DCD572F00B2B275 /* SettingsView.swift */; };
 		24A0ACAB2E0C812C0077E695 /* SettingsLitecoinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */; };
@@ -480,13 +480,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2494B5D32E6C880900576932 /* Embed Frameworks */ = {
+		2437CA042E6EF680000C038F /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2494B5D22E6C880900576932 /* BrainwalletiOSGames.framework in Embed Frameworks */,
+				2437CA032E6EF680000C038F /* BrainwalletiOSGames.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1086,7 +1086,7 @@
 				24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */,
 				C35C122A293D48340009022D /* KeychainAccess in Frameworks */,
 				246028572E5F178400CDEB7A /* FirebasePerformance in Frameworks */,
-				2494B5D12E6C880900576932 /* BrainwalletiOSGames.framework in Frameworks */,
+				2437CA022E6EF680000C038F /* BrainwalletiOSGames.framework in Frameworks */,
 				249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */,
 				22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */,
 				22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */,
@@ -2208,8 +2208,8 @@
 				C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */,
 				C3A3FFB526FE46E8000FE955 /* Mark Dev Notes */,
 				58A9FE4C291BC37400B75825 /* Count number of swift lines */,
+				2437CA042E6EF680000C038F /* Embed Frameworks */,
 				245F189D2DD1F92000D20715 /* Collect and Send dSYMs to Crashlytics */,
-				2494B5D32E6C880900576932 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3195,8 +3195,9 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250827.0;
+				CURRENT_PROJECT_VERSION = 250919.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
@@ -3211,7 +3212,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.6.3;
+				MARKETING_VERSION = 3.8.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
@@ -3383,7 +3384,8 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250827.0;
+				CURRENT_PROJECT_VERSION = 250919.0;
+				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
@@ -3398,7 +3400,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.6.3;
+				MARKETING_VERSION = 3.8.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;

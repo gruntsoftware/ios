@@ -139,6 +139,30 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             self?.store.trigger(name: .lock)
         }
 
+        exportHC.view.backgroundColor = BrainwalletUIColor.surface
+        addChildViewController(exportHC, layout: {
+            exportHC.view.translatesAutoresizingMaskIntoConstraints = false
+            exportHCHeightConstraint = exportHC.view.heightAnchor.constraint(equalToConstant: exportHCHeight)
+
+            NSLayoutConstraint.activate([
+                exportHC.view.bottomAnchor.constraint(equalTo: tabVC.view.bottomAnchor, constant: -kTransactionsFooterHeight),
+                exportHC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+                exportHC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+                exportHCHeightConstraint
+            ])
+            exportHC.view.alpha = 1
+            exportHC.view.layoutIfNeeded()
+        })
+
+        exportHC.viewModel.didTapExport = {
+            self.exportViewShoulShow.toggle()
+            if self.exportViewShoulShow {
+                self.animateResize(to: 240.0)
+            } else {
+                self.animateResize(to: 44.0)
+            }
+        }
+
         /// Settings constant setup
         settingsViewPlacement = -self.view.frame.width
         showSettingsConstant = 0
@@ -165,43 +189,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             settingsHC.view.layoutIfNeeded()
         })
 
-        exportHC.view.backgroundColor = BrainwalletUIColor.surface
-
-//        addChildViewController(exportHC, layout: {
-//            exportHC.view.translatesAutoresizingMaskIntoConstraints = false
-//            exportHCHeightConstraint = exportHC.view.heightAnchor.constraint(equalToConstant: exportHCHeight)
-//                   NSLayoutConstraint.activate([
-//                    exportHC.view.bottomAnchor.constraint(equalTo: tabVC.view.bottomAnchor, constant: -kTransactionsFooterHeight),
-//                    exportHC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-//                    exportHC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-//                   ])
-//            exportHC.view.alpha = 1
-//            exportHC.view.layoutIfNeeded()
-//        })
-
-        addChildViewController(exportHC, layout: {
-            exportHC.view.translatesAutoresizingMaskIntoConstraints = false
-            exportHCHeightConstraint = exportHC.view.heightAnchor.constraint(equalToConstant: exportHCHeight)
-
-            NSLayoutConstraint.activate([
-                exportHC.view.bottomAnchor.constraint(equalTo: tabVC.view.bottomAnchor, constant: -kTransactionsFooterHeight),
-                exportHC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-                exportHC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-                exportHCHeightConstraint
-            ])
-            exportHC.view.alpha = 1
-            exportHC.view.layoutIfNeeded()
-        })
-
-        exportHC.viewModel.didTapExport = {
-            self.exportViewShoulShow.toggle()
-            if self.exportViewShoulShow {
-                self.animateResize(to: 240.0)
-            } else {
-                self.animateResize(to: 44.0)
-            }
-        }
-
         tabVC.didTapSettingsButton = { [weak self]  in
             self?.activateSettingsDrawer()
         }
@@ -221,6 +208,14 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             }
         }
 
+        tabVC.shouldHideExportView = { [weak self]  in
+            /// Hide the export button
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .transitionCrossDissolve, animations: {
+                self?.exportHC.view.alpha = 0
+                self?.exportHC.view.layoutIfNeeded()
+            })
+        }
+
         UIView.animate(withDuration: 0.3, delay: 0.1, options: .transitionCrossDissolve, animations: {
             tabVC.view.alpha = 1
         }) { _ in
@@ -237,20 +232,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         exportHCHeightConstraint.constant = newHeight
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
             self.view.layoutIfNeeded()
-        }
-    }
-
-    func animateResizeSpring(to newHeight: CGFloat) {
-        exportHCHeightConstraint.constant = newHeight
-
-        UIView.animate(withDuration: 0.5,
-                       delay: 0,
-                       usingSpringWithDamping: 0.8,
-                       initialSpringVelocity: 0.5,
-                       options: .curveEaseInOut) {
-            self.view.layoutIfNeeded()
-        } completion: { _ in
-            // Animation completed
         }
     }
 
@@ -277,6 +258,12 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             self.settingsViewPlacement = 0.0
             self.barShouldBeHidden = true
 
+            /// Hide the export button
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .transitionCrossDissolve, animations: {
+                self.exportHC.view.alpha = 0
+                self.exportHC.view.layoutIfNeeded()
+            })
+
             self.setNeedsStatusBarAppearanceUpdate()
             // Update existing constraints
             self.settingsLeadingConstraint.constant = self.settingsViewPlacement - self.showSettingsConstant
@@ -284,9 +271,9 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
             UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
 
-                self.view.layoutIfNeeded()
-                // TBD: Sound not ideal..in progress
-                // _ = SoundsHelper.play(filename: "clicksound", type: "mp3")
+            self.view.layoutIfNeeded()
+            // TBD: Sound not ideal..in progress
+            // _ = SoundsHelper.play(filename: "clicksound", type: "mp3")
             }) { _ in self.shouldShowSettings = false }
 
         } else {

@@ -17,4 +17,6 @@ public extension NSNotification.Name {
     static let transactionsDidScrollNotification = Notification.Name("transactionsDidScroll")
     static let transactionsStoppedScrollNotification = Notification.Name("transactionsStoppedScroll")
     static let transactionsCountUpdateNotification = Notification.Name("transactionsCountUpdate")
+    static let transactionsDataUpdateNotification = Notification.Name("transactionsDataUpdate")
+
 }

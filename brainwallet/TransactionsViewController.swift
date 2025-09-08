@@ -11,6 +11,31 @@ let kQRImageSide: CGFloat = 110.0
 let kFiveYears: Double = 157_680_000.0
 let kTodaysEpochTime: TimeInterval = Date().timeIntervalSince1970
 
+struct ExportedTransaction {
+
+    var blockHeight: String = ""
+    var toAddress: String = ""
+    var unixTimestamp: TimeInterval = 0
+    var shortTimestamp: String = ""
+    var memoString: String = "--"
+    var txFee: Int = 0
+    var txHash: String = ""
+    var amount: Int = 0
+
+    let direction: TransactionDirection
+    /// Calculated parameters
+    var directionString: String {
+        switch direction {
+        case .received:
+            return String(localized: "Received")
+        case .sent:
+            return String(localized: "Sent")
+        case .moved:
+            return String(localized: "Moved")
+        }
+    }
+ }
+
 class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Subscriber, Trackable, UIScrollViewDelegate {
 	@IBOutlet var tableView: UITableView!
 
@@ -24,6 +49,35 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	private var allTransactions: [Transaction] = [] {
 		didSet {
 			transactions = allTransactions
+            debugPrint("|||| Transactions Updated Count: \(transactions.count)")
+
+            var dataDict: [[AnyHashable: Any]] = []
+            transactions.forEach { transaction in
+
+                let export = ExportedTransaction(blockHeight: transaction.blockHeight,
+                                                 toAddress: transaction.toAddress ?? "--",
+                                                 unixTimestamp: TimeInterval(transaction.timestamp),
+                                                 shortTimestamp: transaction.shortTimestamp,
+                                                 memoString: transaction.comment ?? "--",
+                                                 txFee: Int(transaction.fee),
+                                                 txHash: transaction.hash,
+                                                 amount: transaction.litoshis,
+                                                 direction: transaction.direction)
+
+                let exportDict = ["Transaction_direction": export.directionString,
+                                  "Block_height": export.blockHeight,
+                                  "LTC_Address": export.toAddress,
+                                  "UNIX_Timestamp": export.unixTimestamp,
+                                  "Short_Date": export.shortTimestamp,
+                                  "Memo": export.memoString,
+                                  "Transaction_Hash": export.txHash,
+                                  "Transaction_Fees": export.txFee,
+                                  "Amount": export.amount] as [AnyHashable : Any]
+                dataDict.append(exportDict)
+            }
+
+            let dataDictArray = ["transactions": dataDict]
+            NotificationCenter.default.post(name: .transactionsDataUpdateNotification, object: nil, userInfo: dataDictArray)
 		}
 	}
 

@@ -36,7 +36,8 @@ struct ExportButtonView: View {
                     Divider()
                         .frame(height: 2.0)
                         .background(BrainwalletColor.content)
-                    WalletProductsModalView()
+                    WalletProductsModalView(data: viewModel.transactions)
+                    /// data: [[String : Any]]
                 }
                 Spacer()
 
@@ -67,12 +68,8 @@ struct ExportButtonView: View {
                     Spacer()
                 }
                 .padding(.bottom, 5.0)
+
             }
         }
     }
 }
-// struct ExportButtonView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ExportButtonView(viewModel: ExportButtonViewModel())
-//    }
-// }

@@ -11,8 +11,7 @@ import SwiftUI
 
 class ExportButtonViewModel: ObservableObject {
     var didTapExport: (() -> Void)?
+    var transactions: [[AnyHashable : Any]] = []
     init() {
-
     }
-
 }
