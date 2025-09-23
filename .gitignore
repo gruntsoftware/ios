@@ -46,4 +46,8 @@ GoogleService-Info.plist
 /Storekit
 *.storekit
 Brainwallet-StoreKit-v1.storekit
-fastlane/report.xml
+/fastlane/report.xml
+**/fastlane/test_output/
+## Games protection
+/Private
+brainwallet/PreLaunchResources/topics_schema.plist
