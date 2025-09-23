@@ -1,4 +1,5 @@
 import AppsFlyerLib
+import FirebaseMessaging
 import Firebase
 import FirebaseCore
 import FirebaseAnalytics
@@ -7,41 +8,13 @@ import SwiftUI
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 	var window: UIWindow?
 	var applicationController = ApplicationController()
 	var remoteConfigurationHelper: RemoteConfigHelper?
-
 	var resourceRequest: NSBundleResourceRequest?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-        preSetupSteps()
-
-        // Wipe restart
-        // Register for system notifications
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(restartAfterWipedWallet),
-            name: .didDeleteWalletDBNotification,
-            object: nil
-        )
-
-        // Set User theme preference
-        // Register for system notifications
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(updateUserThemePreference),
-            name: .changedThemePreferenceNotification,
-            object: nil
-        )
-		return true
-	}
-
-    private func preSetupSteps() {
-
-        // Locale and fetch access
-        // DEV: Break here to test Locale/Matrix
 
         var regionCode2Char: String = "RU"
         let countryRussia = MoonpayCountryData(alphaCode2Char: "RU",
@@ -76,14 +49,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Remote Config
         self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
 
-        let current = UNUserNotificationCenter.current()
-        current.getNotificationSettings(completionHandler: { settings in
+        // FCM
+        Messaging.messaging().delegate = self
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if granted {
+                DispatchQueue.main.async {
+                  application.registerForRemoteNotifications()
+                }
+            }
 
-            debugPrint(settings.debugDescription)
-            if settings.authorizationStatus == .denied {}
-        })
+            if error != nil {
+                Analytics
+                    .logEvent("fcm_messaging_registration_error",
+                        parameters: [
+                           "platform": "ios",
+                           "app_version": AppVersion.string,
+                           "error": "\(String(describing: error))"
+                        ])
+            }
+       }
 
-        guard let thisWindow = window else { return }
+        // Wipe restart
+        // Register for system notifications
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(restartAfterWipedWallet),
+            name: .didDeleteWalletDBNotification,
+            object: nil
+        )
+
+        // Set User theme preference
+        // Register for system notifications
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateUserThemePreference),
+            name: .changedThemePreferenceNotification,
+            object: nil
+        )
+
+        guard let thisWindow = window else { return false }
 
         // Set global themes
         thisWindow.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark: .light
@@ -94,6 +99,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UIView.swizzleSetFrame()
         self.applicationController.launch(application: UIApplication.shared, window: thisWindow)
+
+        return true
+	}
+
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        // Receved FCM Token
+        let dataDict: [String: String] = ["token" : fcmToken ?? ""]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+
+        // Messaging topic subscription
+        if let localeIdentifier = Locale.current.identifier as String?,
+        (fcmToken != nil) {
+           let localePrefix: String = localeIdentifier.components(separatedBy: "_").first ?? "en"
+           let initialTopic: String = "initial_\(localePrefix)"
+           let promoTopic: String = "promo_\(localePrefix)"
+           let newsTopic: String = "news_\(localePrefix)"
+           let warnTopic: String = "warn_\(localePrefix)"
+
+           let topicsArray: [String] = [initialTopic, promoTopic, newsTopic, warnTopic]
+           debugPrint("::: fcmToken: \(String(describing: fcmToken))")
+           topicsArray.forEach { topic in
+               Messaging.messaging().subscribe(toTopic: topic) { error in
+                   if error != nil {
+                       Analytics
+                           .logEvent("fcm_messaging_subscription_error",
+                               parameters: [
+                                  "platform": "ios",
+                                  "app_version": AppVersion.string,
+                                  "error": "topic \(topic) \(String(describing: error))"
+                               ])
+                   }
+               }
+           }
+        }
     }
 
 	func applicationDidBecomeActive(_: UIApplication) {
@@ -125,15 +164,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return true
 	}
 
-	func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken _: Data) { }
+    func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+          Messaging.messaging().apnsToken = deviceToken
+    }
 
-	func application(_: UIApplication, didReceiveRemoteNotification _: [AnyHashable: Any],
-	                 fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void) {}
+	func application(_: UIApplication, didReceiveRemoteNotification remoteNotificationDictionary: [AnyHashable: Any],
+	                 fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void) {
+        debugPrint(":::: did receive rn \(remoteNotificationDictionary.debugDescription)")
+    }
 
     @objc
     private func restartAfterWipedWallet() {
         // Change State
-        debugPrint(":: Restarting after wiping wallet")
+        debugPrint(":::: Restarting after wiping wallet")
 
         DispatchQueue.main.async {
             guard let thisWindow = self.window else { return }
@@ -142,7 +185,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             // Clear the root view controller
             thisWindow.rootViewController = nil
-            self.preSetupSteps()
+
+            /// TBD to restart the app
         }
     }
 
@@ -164,18 +208,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		if let fboptions = FirebaseOptions(contentsOfFile: filePath) {
             FirebaseApp.configure(options: fboptions)
-            #if DEBUG
-               Analytics.setUserProperty("debug_mode", forName: "debug_enabled")
+            // #if DEBUG
+            //   Analytics.setUserProperty("debug_mode", forName: "debug_enabled")
+            //
+            //   /// Notfy the Firebase Console for monitoring and debugging
+            //   Analytics
+            //       .logEvent("debug_mode_launched",
+            //           parameters: [
+            //               "platform": "ios",
+            //               "app_version": AppVersion.string,
+            //               "device": UIDevice.current.model
+            //           ])
+            // #endif
 
-               /// Notfy the Firebase Console for monitoring and debugging
-               Analytics
-                   .logEvent("debug_mode_launched",
-                       parameters: [
-                           "platform": "ios",
-                           "app_version": AppVersion.string,
-                           "device": UIDevice.current.model
-                       ])
-            #endif
 		} else {
             Analytics.logEvent("error_message", parameters: [
               "firebase_config_failed": "launch_error"
@@ -212,4 +257,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 		}
 	}
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                               willPresent notification: UNNotification,
+                               withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+
+        let userInfo = notification.request.content.userInfo
+        Messaging.messaging().appDidReceiveMessage(userInfo)
+        debugPrint("Foreground notification received: \(userInfo)")
+        completionHandler([.banner, .sound, .list])
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                               didReceive response: UNNotificationResponse,
+                               withCompletionHandler completionHandler: @escaping () -> Void) {
+
+        let userInfo = response.notification.request.content.userInfo
+        NotificationCenter.default.post(name: Notification.Name("didReceiveRemoteNotification"), object: nil, userInfo: userInfo)
+        debugPrint("User tapped notification: \(userInfo)")
+        completionHandler()
+    }
 }

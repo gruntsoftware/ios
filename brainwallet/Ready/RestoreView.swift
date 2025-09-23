@@ -13,7 +13,8 @@ struct RestoreView: View {
     let regularButtonFont: Font = .barlowRegular(size: 20.0)
     let largeButtonFont: Font = .barlowSemiBold(size: 24.0)
     let detailFont: Font = .barlowRegular(size: 22.0)
-    let billboardFont: Font = .barlowSemiBold(size: 50.0)
+    let detailHeavyFont: Font = .barlowSemiBold(size: 22.0)
+    let billboardFont: Font = .barlowSemiBold(size: 40.0)
 
     let versionFont: Font = .barlowSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
@@ -36,8 +37,12 @@ struct RestoreView: View {
             GeometryReader { geometry in
 
                 let width = geometry.size.width
-                let restoreText = String(localized:
-                    "Do this for you. Please do it alone. Grab a pen, paper & 5 mins.")
+                let height = geometry.size.height
+
+                let restoreText1 = String(localized:
+                    "Lose your smartphone in a boating accident?\n\n")
+                let restoreText2 = String(localized:
+                    "If you saved 12 word seed phrase on your phone or had it on Litewallet, you can restore your Brainwallet here.")
 
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
@@ -58,6 +63,7 @@ struct RestoreView: View {
                                     Spacer()
                                 }
                             }
+                            .accessibilityIdentifier("backButtonToStartRestore")
                             Spacer()
                         }
                         .padding(.all, 20.0)
@@ -78,23 +84,27 @@ struct RestoreView: View {
                         HStack {
                             VStack {
                                 HStack {
-                                    Text("Restore!")
+                                    Text("Restore from seed")
                                         .font(billboardFont)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 }
                                 .padding(.bottom, 20.0)
-                                Text(restoreText)
+                                Text(restoreText1)
+                                    .font(detailHeavyFont)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
+                                Text(restoreText2)
                                     .font(detailFont)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
-                                    .padding(.all, 10.0)
 
                             }
                             Spacer()
                         }
-                        .padding(.bottom, 40.0)
-                        .padding(.leading, 20.0)
+                        .frame(minHeight: height * 0.45, alignment: .topLeading)
+                        .padding(.bottom, 20.0)
+                        .padding([.leading,.trailing], 20.0)
 
                         Spacer(minLength: 40.0)
                             Button(action: {
@@ -105,7 +115,7 @@ struct RestoreView: View {
                                         .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                         .foregroundColor(BrainwalletColor.grape)
 
-                                    Text( "Restore your Brainwallet" )
+                                    Text("Restore your Brainwallet")
                                         .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                         .font(regularButtonFont)
                                         .foregroundColor(.white)

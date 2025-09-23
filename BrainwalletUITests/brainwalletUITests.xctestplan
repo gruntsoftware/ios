@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "1AC767BE-0ED6-4258-9871-69B50FDE0609",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:brainwallet.xcodeproj",
+        "identifier" : "24295E9A2E3428CA00A76776",
+        "name" : "BrainwalletUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

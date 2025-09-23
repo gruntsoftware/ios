@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "19C3EF97-5448-4481-8A53-57BED2DE6B8B",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:brainwallet.xcodeproj",
+        "identifier" : "24295E3A2E341F1C00A76776",
+        "name" : "BrainwalletUnitTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -35,13 +35,15 @@ struct CreateStepTabView: View {
 						Spacer()
 					}
 
-					HStack {
-						Text("Create Wallet")/// TBD naming
-							.font(.barlowBold(size: 30.0))
-                            .foregroundColor(BrainwalletColor.content)
-							.padding([.bottom, .top], 10.00)
-					}
-					.frame(height: 25.0)
+                    HStack {
+                        // TBD naming
+                        // Text("Create Wallet")
+                        //    .font(.barlowBold(size: 30.0))
+                        //    .foregroundColor(BrainwalletColor.content)
+                        //    .padding([.bottom, .top], 10.00)
+                        //					}
+                        // .frame(height: 25.0)
+                    }
 				}
 
 				TabView(selection: $viewModel.tappedIndex) {

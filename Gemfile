@@ -12,4 +12,4 @@ gem "bundler", "2.6.9"  # Use a modern bundler
 gem "xcode-install"
 
 # Testing and code quality
-gem "scan"
+# Note: scan is included with fastlane, no need for separate gem
