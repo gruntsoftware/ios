@@ -51,8 +51,6 @@
 		243136FB2E0AFD1700BCBED1 /* SettingsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243136FA2E0AFD1000BCBED1 /* SettingsHelpers.swift */; };
 		243136FD2E0B251D00BCBED1 /* SettingsActionToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243136FC2E0B251900BCBED1 /* SettingsActionToggleView.swift */; };
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
-		2437CA022E6EF680000C038F /* BrainwalletiOSGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 242AC3F42E6C555B00777DCB /* BrainwalletiOSGames.framework */; };
-		2437CA032E6EF680000C038F /* BrainwalletiOSGames.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 242AC3F42E6C555B00777DCB /* BrainwalletiOSGames.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		243C7E4C2E685917000543D5 /* ExportButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243C7E4B2E68590C000543D5 /* ExportButtonView.swift */; };
 		244310442E21BCBD004AE386 /* errorsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 244310432E21BCBD004AE386 /* errorsound.mp3 */; };
 		244310462E21BCCE004AE386 /* clickseedword.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 244310452E21BCCE004AE386 /* clickseedword.mp3 */; };
@@ -70,6 +68,8 @@
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
 		246A9A072DF5F54C002480CB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A9A062DF5F532002480CB /* Utility.swift */; };
+		246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; };
+		246F97EB2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
 		2476AE342E27B44B0065CE22 /* InputWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */; };
 		2476AE362E2802AF0065CE22 /* InputSeedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE352E28029B0065CE22 /* InputSeedWordView.swift */; };
@@ -428,47 +428,47 @@
 			remoteGlobalIDString = 75A2A78F1DA5934300A983D8;
 			remoteInfo = brainwallet;
 		};
-		242AC3ED2E6C555B00777DCB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 242AC3B92E6C555B00777DCB /* iosgames.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2425ACB32E4BD610007185C7;
-			remoteInfo = iosgames;
-		};
-		242AC3EF2E6C555B00777DCB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 242AC3B92E6C555B00777DCB /* iosgames.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2425ACC02E4BD612007185C7;
-			remoteInfo = iosgamesTests;
-		};
-		242AC3F12E6C555B00777DCB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 242AC3B92E6C555B00777DCB /* iosgames.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2425ACCA2E4BD612007185C7;
-			remoteInfo = iosgamesUITests;
-		};
-		242AC3F32E6C555B00777DCB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 242AC3B92E6C555B00777DCB /* iosgames.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2439E7E42E67415F00FB765C;
-			remoteInfo = BrainwalletiOSGames;
-		};
-		242AC3F52E6C555B00777DCB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 242AC3B92E6C555B00777DCB /* iosgames.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2439E7EE2E67415F00FB765C;
-			remoteInfo = BrainwalletiOSGamesTests;
-		};
 		24618EE72D90397E00A878AC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75A2A7881DA5934300A983D8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 755CD9D01DAA197C0075898E;
 			remoteInfo = BRCore;
+		};
+		246F97E02E846218001923A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 246F97832E846218001923A6 /* private-general-purpose.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2425ACB32E4BD610007185C7;
+			remoteInfo = "private-general-purpose";
+		};
+		246F97E22E846218001923A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 246F97832E846218001923A6 /* private-general-purpose.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2425ACC02E4BD612007185C7;
+			remoteInfo = "private-general-purposeTests";
+		};
+		246F97E42E846218001923A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 246F97832E846218001923A6 /* private-general-purpose.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2425ACCA2E4BD612007185C7;
+			remoteInfo = "private-general-purposeUITests";
+		};
+		246F97E62E846218001923A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 246F97832E846218001923A6 /* private-general-purpose.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2439E7E42E67415F00FB765C;
+			remoteInfo = BrainwalletiOSPrivateGeneralPurpose;
+		};
+		246F97E82E846218001923A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 246F97832E846218001923A6 /* private-general-purpose.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2439E7EE2E67415F00FB765C;
+			remoteInfo = BrainwalletiOSPrivateGeneralPurposeTests;
 		};
 		759DA0DD1DAC86BC008CC49B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -480,13 +480,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2437CA042E6EF680000C038F /* Embed Frameworks */ = {
+		246F97EC2E846230001923A6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2437CA032E6EF680000C038F /* BrainwalletiOSGames.framework in Embed Frameworks */,
+				246F97EB2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,7 +540,6 @@
 		2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncHostingController.swift; sourceTree = "<group>"; };
 		24295E3B2E341F1C00A76776 /* BrainwalletUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainwalletUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24295E9B2E3428CA00A76776 /* BrainwalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainwalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		242AC3B92E6C555B00777DCB /* iosgames.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iosgames.xcodeproj; path = "Private/ios-games/iosgames.xcodeproj"; sourceTree = "<group>"; };
 		242E6CDE2E095AF4002C579A /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		243136FA2E0AFD1000BCBED1 /* SettingsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHelpers.swift; sourceTree = "<group>"; };
 		243136FC2E0B251900BCBED1 /* SettingsActionToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionToggleView.swift; sourceTree = "<group>"; };
@@ -557,6 +556,7 @@
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		246A9A062DF5F532002480CB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		246F97832E846218001923A6 /* private-general-purpose.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "private-general-purpose.xcodeproj"; path = "Private/general-purpose/private-general-purpose.xcodeproj"; sourceTree = "<group>"; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
 		2476AE322E27038F0065CE22 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWordsGridView.swift; sourceTree = "<group>"; };
@@ -1080,13 +1080,13 @@
 			files = (
 				24BEBB972DCDE4D4001E1F1F /* (null) in Frameworks */,
 				246028532E5F178400CDEB7A /* FirebaseInAppMessaging-Beta in Frameworks */,
+				246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */,
 				24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */,
 				2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */,
 				246028592E5F178400CDEB7A /* FirebaseRemoteConfig in Frameworks */,
 				24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */,
 				C35C122A293D48340009022D /* KeychainAccess in Frameworks */,
 				246028572E5F178400CDEB7A /* FirebasePerformance in Frameworks */,
-				2437CA022E6EF680000C038F /* BrainwalletiOSGames.framework in Frameworks */,
 				249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */,
 				22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */,
 				22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */,
@@ -1258,18 +1258,6 @@
 			path = CoreResources;
 			sourceTree = "<group>";
 		};
-		242AC3BA2E6C555B00777DCB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				242AC3EE2E6C555B00777DCB /* iosgames.app */,
-				242AC3F02E6C555B00777DCB /* iosgamesTests.xctest */,
-				242AC3F22E6C555B00777DCB /* iosgamesUITests.xctest */,
-				242AC3F42E6C555B00777DCB /* BrainwalletiOSGames.framework */,
-				242AC3F62E6C555B00777DCB /* BrainwalletiOSGamesTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		244A8D912DE84C710024D356 /* Brainwallet Custom Shapes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1286,6 +1274,18 @@
 				C312D2012D7DC27700BB97A4 /* ApplicationController.swift */,
 			);
 			path = "App Launch Classes";
+			sourceTree = "<group>";
+		};
+		246F97842E846218001923A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				246F97E12E846218001923A6 /* private-general-purpose.app */,
+				246F97E32E846218001923A6 /* private-general-purposeTests.xctest */,
+				246F97E52E846218001923A6 /* private-general-purposeUITests.xctest */,
+				246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */,
+				246F97E92E846218001923A6 /* BrainwalletiOSPrivateGeneralPurposeTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		248D87B92DB4E3C900745552 /* Colors */ = {
@@ -1782,7 +1782,7 @@
 		75A2A7F11DA5935F00A983D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				242AC3B92E6C555B00777DCB /* iosgames.xcodeproj */,
+				246F97832E846218001923A6 /* private-general-purpose.xcodeproj */,
 				24D91D0A2166923E0077A619 /* UserNotifications.framework */,
 				22A9A9671DF61FF8000F0016 /* libbz2.tbd */,
 				22A9A9651DF61FEE000F0016 /* WebKit.framework */,
@@ -2208,8 +2208,8 @@
 				C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */,
 				C3A3FFB526FE46E8000FE955 /* Mark Dev Notes */,
 				58A9FE4C291BC37400B75825 /* Count number of swift lines */,
-				2437CA042E6EF680000C038F /* Embed Frameworks */,
 				245F189D2DD1F92000D20715 /* Collect and Send dSYMs to Crashlytics */,
+				246F97EC2E846230001923A6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2318,8 +2318,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 242AC3BA2E6C555B00777DCB /* Products */;
-					ProjectRef = 242AC3B92E6C555B00777DCB /* iosgames.xcodeproj */;
+					ProductGroup = 246F97842E846218001923A6 /* Products */;
+					ProjectRef = 246F97832E846218001923A6 /* private-general-purpose.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -2334,39 +2334,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		242AC3EE2E6C555B00777DCB /* iosgames.app */ = {
+		246F97E12E846218001923A6 /* private-general-purpose.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
-			path = iosgames.app;
-			remoteRef = 242AC3ED2E6C555B00777DCB /* PBXContainerItemProxy */;
+			path = "private-general-purpose.app";
+			remoteRef = 246F97E02E846218001923A6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		242AC3F02E6C555B00777DCB /* iosgamesTests.xctest */ = {
+		246F97E32E846218001923A6 /* private-general-purposeTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = iosgamesTests.xctest;
-			remoteRef = 242AC3EF2E6C555B00777DCB /* PBXContainerItemProxy */;
+			path = "private-general-purposeTests.xctest";
+			remoteRef = 246F97E22E846218001923A6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		242AC3F22E6C555B00777DCB /* iosgamesUITests.xctest */ = {
+		246F97E52E846218001923A6 /* private-general-purposeUITests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = iosgamesUITests.xctest;
-			remoteRef = 242AC3F12E6C555B00777DCB /* PBXContainerItemProxy */;
+			path = "private-general-purposeUITests.xctest";
+			remoteRef = 246F97E42E846218001923A6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		242AC3F42E6C555B00777DCB /* BrainwalletiOSGames.framework */ = {
+		246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = BrainwalletiOSGames.framework;
-			remoteRef = 242AC3F32E6C555B00777DCB /* PBXContainerItemProxy */;
+			path = BrainwalletiOSPrivateGeneralPurpose.framework;
+			remoteRef = 246F97E62E846218001923A6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		242AC3F62E6C555B00777DCB /* BrainwalletiOSGamesTests.xctest */ = {
+		246F97E92E846218001923A6 /* BrainwalletiOSPrivateGeneralPurposeTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = BrainwalletiOSGamesTests.xctest;
-			remoteRef = 242AC3F52E6C555B00777DCB /* PBXContainerItemProxy */;
+			path = BrainwalletiOSPrivateGeneralPurposeTests.xctest;
+			remoteRef = 246F97E82E846218001923A6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -3195,7 +3195,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250923.0;
+				CURRENT_PROJECT_VERSION = 250924.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3384,7 +3384,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 250923.0;
+				CURRENT_PROJECT_VERSION = 250924.0;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;

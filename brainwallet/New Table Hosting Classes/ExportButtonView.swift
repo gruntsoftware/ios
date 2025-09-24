@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import BrainwalletiOSGames
+import BrainwalletiOSPrivateGeneralPurpose
 
 struct ExportButtonView: View {
     let buttonHeight =  45.0
@@ -37,7 +37,6 @@ struct ExportButtonView: View {
                         .frame(height: 2.0)
                         .background(BrainwalletColor.content)
                     WalletProductsModalView(data: viewModel.transactions)
-                    /// data: [[String : Any]]
                 }
                 Spacer()
 
