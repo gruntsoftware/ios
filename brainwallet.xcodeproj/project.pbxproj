@@ -2208,8 +2208,8 @@
 				C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */,
 				C3A3FFB526FE46E8000FE955 /* Mark Dev Notes */,
 				58A9FE4C291BC37400B75825 /* Count number of swift lines */,
-				245F189D2DD1F92000D20715 /* Collect and Send dSYMs to Crashlytics */,
 				246F97EC2E846230001923A6 /* Embed Frameworks */,
+				245F189D2DD1F92000D20715 /* Collect and Send dSYMs to Crashlytics */,
 			);
 			buildRules = (
 			);

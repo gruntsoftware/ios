@@ -26,7 +26,7 @@ struct YourSeedProveItView: View {
     let detailFont: Font = .barlowRegular(size: 22.0)
     let detailerFont: Font = .barlowRegular(size: 20.0)
     let regularButtonFont: Font = .barlowRegular(size: 20.0)
-    let elementSpacing = 8.0
+    let elementSpacing = 4.0
     let fieldHeight: CGFloat = 40.0
     let arrowSize: CGFloat = 60.0
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
@@ -145,15 +145,13 @@ struct YourSeedProveItView: View {
                         .padding(.top, 5.0)
 
                     // Subtitle
-                    Text("Prove it!\nPlace the words in the correct order.")
+                    Text("Place the words in the correct order!")
                         .font(detailFont)
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: height * 0.1)
+                        .frame(height: height * 0.06)
                         .foregroundColor(BrainwalletColor.content)
                         .padding([.leading, .trailing], 20.0)
-                        .padding([.top, .bottom], 10.0)
+                        .padding([.top, .bottom], 6.0)
 
                     // Word buckets grid
                     Grid(horizontalSpacing: elementSpacing, verticalSpacing: elementSpacing) {
@@ -173,10 +171,8 @@ struct YourSeedProveItView: View {
 
                     Text("Press and drag a word into place")
                         .font(detailFont)
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: height * 0.1)
+                        .frame(height: height * 0.05)
                         .foregroundColor(BrainwalletColor.content)
                         .padding([.leading, .trailing], 20.0)
 
@@ -228,7 +224,7 @@ struct YourSeedProveItView: View {
                                 .animation(.easeInOut(duration: 0.4), value: isPhraseMatched())
                         }
                     }
-                    .padding(.all, 20.0)
+                    .padding(.all, 10.0)
                 }
             }
             .onAppear {

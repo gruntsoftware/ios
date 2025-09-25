@@ -15510,6 +15510,9 @@
         }
       }
     },
+    "Place the words in the correct order!" : {
+
+    },
     "Please enter the recipient's address." : {
       "localizations" : {
         "ar" : {
@@ -16863,6 +16866,7 @@
       }
     },
     "Prove it!\nPlace the words in the correct order." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
