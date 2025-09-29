@@ -63,20 +63,15 @@ jobs:
             gem install bundler:2.6.9
             bundle config set --local path 'vendor/bundle'
             bundle install --jobs=4 --retry=3
-      # Setup GH Token
+      # Setup SSH &  GH Token and initialize submodules 
       - run:
-          name: Configure Github Auth
-          command: |
-            git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
-      # Setup SSH and initialize submodules
-      - run:
-          name: Setup SSH and submodules
+          name: Configure Github Auth & Setup SSH and submodules
           command: |
             echo 'github.com ssh-rsa SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g' >> ~/.ssh/known_hosts
             ssh-add -D
             ssh-add ~/.ssh/id_rsa_*
+            sed -i "s#https://github.com/#https://${GH_TOKEN}@github.com/#g" .gitmodules
             git submodule init && git submodule update --init Modules/core && git submodule update --init Private/general-purpose
-      
       # Setup environment files (MUST be before build)
       - run:
           name: Setup environment files
