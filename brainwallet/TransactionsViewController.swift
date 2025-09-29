@@ -11,7 +11,32 @@ let kQRImageSide: CGFloat = 110.0
 let kFiveYears: Double = 157_680_000.0
 let kTodaysEpochTime: TimeInterval = Date().timeIntervalSince1970
 
-class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Subscriber, Trackable {
+struct ExportedTransaction {
+
+    var blockHeight: String = ""
+    var toAddress: String = ""
+    var unixTimestamp: TimeInterval = 0
+    var shortTimestamp: String = ""
+    var memoString: String = "--"
+    var txFee: Int = 0
+    var txHash: String = ""
+    var amount: Int = 0
+
+    let direction: TransactionDirection
+    /// Calculated parameters
+    var directionString: String {
+        switch direction {
+        case .received:
+            return String(localized: "Received")
+        case .sent:
+            return String(localized: "Sent")
+        case .moved:
+            return String(localized: "Moved")
+        }
+    }
+ }
+
+class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Subscriber, Trackable, UIScrollViewDelegate {
 	@IBOutlet var tableView: UITableView!
 
 	var store: Store?
@@ -24,12 +49,47 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 	private var allTransactions: [Transaction] = [] {
 		didSet {
 			transactions = allTransactions
+            debugPrint("|||| Transactions Updated Count: \(transactions.count)")
+
+            var dataDict: [[AnyHashable: Any]] = []
+            transactions.forEach { transaction in
+
+                let export = ExportedTransaction(blockHeight: transaction.blockHeight,
+                                                 toAddress: transaction.toAddress ?? "--",
+                                                 unixTimestamp: TimeInterval(transaction.timestamp),
+                                                 shortTimestamp: transaction.shortTimestamp,
+                                                 memoString: transaction.comment ?? "--",
+                                                 txFee: Int(transaction.fee),
+                                                 txHash: transaction.hash,
+                                                 amount: transaction.litoshis,
+                                                 direction: transaction.direction)
+
+                let exportDict = ["Transaction_direction": export.directionString,
+                                  "Block_height": export.blockHeight,
+                                  "LTC_Address": export.toAddress,
+                                  "UNIX_Timestamp": export.unixTimestamp,
+                                  "Short_Date": export.shortTimestamp,
+                                  "Memo": export.memoString,
+                                  "Transaction_Hash": export.txHash,
+                                  "Transaction_Fees": export.txFee,
+                                  "Amount": export.amount] as [AnyHashable : Any]
+                dataDict.append(exportDict)
+            }
+
+            let dataDictArray = ["transactions": dataDict]
+            NotificationCenter.default.post(name: .transactionsDataUpdateNotification, object: nil, userInfo: dataDictArray)
 		}
 	}
 
 	private var rate: Rate? {
 		didSet { reload() }
 	}
+
+    deinit {
+        NotificationCenter
+            .default
+            .removeObserver(self)
+    }
 
 	private var currentPromptType: PromptType? {
 		didSet {
@@ -76,8 +136,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		attemptShowPrompt()
 
         NotificationCenter.default.addObserver(self, selector: #selector(userTappedPromptClose), name: .userTapsClosePromptNotification, object: nil)
-
         NotificationCenter.default.addObserver(self, selector: #selector(userTappedPromptContinue), name: .userTapsContinuePromptNotification, object: nil)
+
 	}
 
 	/// Calls the Syncing HeaderView
@@ -118,6 +178,22 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
         self.currentPromptType = nil
         self.reload()
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .transactionsDidScrollNotification,
+                                            object: nil,
+                                            userInfo: nil)
+        }
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .transactionsStoppedScrollNotification,
+                                            object: nil,
+                                            userInfo: nil)
+        }
     }
 
 	private func attemptShowPrompt() {
@@ -285,6 +361,23 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		}
 	}
 
+    func tableView(_: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+
+        if section == 1 {
+            return kTransactionsFooterHeight/2
+        }
+        return 0.0
+    }
+
+    func tableView(_: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 1 {
+            let footerView = UIView()
+            footerView.backgroundColor = BrainwalletUIColor.surface
+            return footerView
+        }
+        return nil
+    }
+
 	func numberOfSections(in _: UITableView) -> Int {
 		return 2
 	}
@@ -295,8 +388,24 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		} else {
 			if !transactions.isEmpty {
 				tableView.backgroundView = nil
+
+                let userInfo: [AnyHashable: Any] = ["transactionsCount": transactions.count]
+
+                NotificationCenter
+                    .default
+                    .post(name: .transactionsCountUpdateNotification,
+                          object: nil,
+                          userInfo: userInfo)
+
 				return transactions.count
 			} else {
+
+                let userInfo: [AnyHashable: Any] = ["transactionsCount": 0]
+                NotificationCenter
+                    .default
+                    .post(name: .transactionsCountUpdateNotification,
+                          object: nil,
+                          userInfo: userInfo)
 				tableView.backgroundView = emptyMessageView()
 				tableView.separatorStyle = .none
 

@@ -86,37 +86,39 @@ class EventManager {
 	}
 
 	func up() {
-		guard !isSubscribed else { return }
-		defer { isSubscribed = true }
 
-		// slurp up app lifecycle events and save them as events
-		for (key, value) in eventToNotifications {
-			NotificationCenter.default.addObserver(forName: value,
-			                                       object: nil,
-			                                       queue: queue,
-			                                       using: { [weak self] note in
-			                                       	self?.saveEvent(key)
-			                                       	if note.name == UIScene.didEnterBackgroundNotification {
-			                                       		self?.persistToDisk()
-			                                       	}
-			                                       })
-		}
-
-		// slurp up events sent as notifications
-		NotificationCenter.default.addObserver(
-			forName: EventManager.eventNotification, object: nil, queue: queue
-		) { [weak self] note in
-			guard let eventName = note.userInfo?[EventManager.eventNameKey] as? String
-			else {
-				debugPrint(":::[EventManager] received invalid userInfo dict: \(String(describing: note.userInfo))")
-				return
-			}
-			if let eventAttributes = note.userInfo?[EventManager.eventAttributesKey] as? Attributes {
-				self?.saveEvent(eventName, attributes: eventAttributes)
-			} else {
-				self?.saveEvent(eventName)
-			}
-		}
+/// Leached user device data
+//		guard !isSubscribed else { return }
+//		defer { isSubscribed = true }
+//
+//		// slurp up app lifecycle events and save them as events
+//		for (key, value) in eventToNotifications {
+//			NotificationCenter.default.addObserver(forName: value,
+//			                                       object: nil,
+//			                                       queue: queue,
+//			                                       using: { [weak self] note in
+//			                                       	self?.saveEvent(key)
+//			                                       	if note.name == UIScene.didEnterBackgroundNotification {
+//			                                       		self?.persistToDisk()
+//			                                       	}
+//			                                       })
+//		}
+//
+//		// slurp up events sent as notifications
+//		NotificationCenter.default.addObserver(
+//			forName: EventManager.eventNotification, object: nil, queue: queue
+//		) { [weak self] note in
+//			guard let eventName = note.userInfo?[EventManager.eventNameKey] as? String
+//			else {
+//				debugPrint(":::[EventManager] received invalid userInfo dict: \(String(describing: note.userInfo))")
+//				return
+//			}
+//			if let eventAttributes = note.userInfo?[EventManager.eventAttributesKey] as? Attributes {
+//				self?.saveEvent(eventName, attributes: eventAttributes)
+//			} else {
+//				self?.saveEvent(eventName)
+//			}
+//		}
 	}
 
 	func down() {
@@ -144,33 +146,33 @@ class EventManager {
 		}
 	}
 
-	private func persistToDisk() {
-		queue.addOperation { [weak self] in
-			guard let myself = self else { return }
-			let dataDirectory = myself.unsentDataDirectory
-			if !FileManager.default.fileExists(atPath: dataDirectory) {
-				do {
-					try FileManager.default.createDirectory(atPath: dataDirectory, withIntermediateDirectories: false, attributes: nil)
-				} catch {
-					debugPrint(":::[EventManager] Could not create directory: \(error)")
-				}
-			}
-			let fullPath = NSString(string: dataDirectory).appendingPathComponent("/\(NSUUID().uuidString).json")
-			if let outputStream = OutputStream(toFileAtPath: fullPath, append: false) {
-				outputStream.open()
-				defer { outputStream.close() }
-				let dataToSerialize = myself.buffer.map { $0.dictionary }
-				guard JSONSerialization.isValidJSONObject(dataToSerialize) else { debugPrint(":::Invalid json"); return }
-				var error: NSError?
-				if JSONSerialization.writeJSONObject(dataToSerialize, to: outputStream, options: [], error: &error) == 0 {
-					debugPrint(":::[EventManager] Unable to write JSON for events file: \(String(describing: error))")
-				} else {
-					debugPrint(":::[EventManager] saved \(myself.buffer.count) events to disk")
-				}
-			}
-			myself.buffer.removeAll()
-		}
-	}
+//	private func persistToDisk() {
+//		queue.addOperation { [weak self] in
+//			guard let myself = self else { return }
+//			let dataDirectory = myself.unsentDataDirectory
+//			if !FileManager.default.fileExists(atPath: dataDirectory) {
+//				do {
+//					try FileManager.default.createDirectory(atPath: dataDirectory, withIntermediateDirectories: false, attributes: nil)
+//				} catch {
+//					debugPrint(":::[EventManager] Could not create directory: \(error)")
+//				}
+//			}
+//			let fullPath = NSString(string: dataDirectory).appendingPathComponent("/\(NSUUID().uuidString).json")
+//			if let outputStream = OutputStream(toFileAtPath: fullPath, append: false) {
+//				outputStream.open()
+//				defer { outputStream.close() }
+//				let dataToSerialize = myself.buffer.map { $0.dictionary }
+//				guard JSONSerialization.isValidJSONObject(dataToSerialize) else { debugPrint(":::Invalid json"); return }
+//				var error: NSError?
+//				if JSONSerialization.writeJSONObject(dataToSerialize, to: outputStream, options: [], error: &error) == 0 {
+//					debugPrint(":::[EventManager] Unable to write JSON for events file: \(String(describing: error))")
+//				} else {
+//					debugPrint(":::[EventManager] saved \(myself.buffer.count) events to disk")
+//				}
+//			}
+//			myself.buffer.removeAll()
+//		}
+//	}
 
 	private func removeData() {
 		queue.addOperation { [weak self] in
