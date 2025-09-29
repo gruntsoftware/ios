@@ -67,7 +67,7 @@ jobs:
       - run:
           name: Configure Github Auth
           command: |
-            git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.co/"
+            git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
       # Setup SSH and initialize submodules
       - run:
           name: Setup SSH and submodules
@@ -75,7 +75,7 @@ jobs:
             echo 'github.com ssh-rsa SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g' >> ~/.ssh/known_hosts
             ssh-add -D
             ssh-add ~/.ssh/id_rsa_*
-            git submodule init && git submodule update --init Modules/core 
+            git submodule init && git submodule update --init Modules/core && git submodule update --init Private/general-purpose
       
       # Setup environment files (MUST be before build)
       - run:
