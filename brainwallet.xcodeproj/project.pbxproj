@@ -69,7 +69,6 @@
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
 		246A9A072DF5F54C002480CB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A9A062DF5F532002480CB /* Utility.swift */; };
 		246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; };
-		246F97EB2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
 		2476AE342E27B44B0065CE22 /* InputWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */; };
 		2476AE362E2802AF0065CE22 /* InputSeedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE352E28029B0065CE22 /* InputSeedWordView.swift */; };
@@ -165,6 +164,7 @@
 		24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */; };
 		24FBB86A2E035E10002B5F84 /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */; };
 		24FEB8BB2DD2425A00D60036 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24FEB8B92DD2425A00D60036 /* InfoPlist.strings */; };
+		24FF3E6A2E898D4000FF43C5 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 755CD9D11DAA197C0075898E /* libBRCore.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		C312D2CF2D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C22D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift */; };
 		C312D2D02D7DC27700BB97A4 /* ReachabilityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2912D7DC27700BB97A4 /* ReachabilityMonitor.swift */; };
@@ -486,7 +486,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				246F97EB2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */,
+				24FF3E6A2E898D4000FF43C5 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
