@@ -63,7 +63,11 @@ jobs:
             gem install bundler:2.6.9
             bundle config set --local path 'vendor/bundle'
             bundle install --jobs=4 --retry=3
-      
+      # Setup GH Token
+      - run:
+          name: Configure Github Auth
+          command: |
+            git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
       # Setup SSH and initialize submodules
       - run:
           name: Setup SSH and submodules
@@ -560,4 +564,4 @@ workflows:
     jobs:
       - daily-maintenance:
           context:
-            - bw-ios-test
+            - circleci-agents
