@@ -10198,6 +10198,9 @@
         }
       }
     },
+    "Export Transaction Data" : {
+
+    },
     "Face ID" : {
       "localizations" : {
         "ar" : {
@@ -13710,6 +13713,9 @@
         }
       }
     },
+    "Moved" : {
+
+    },
     "Moved <b>%1@</b>" : {
       "localizations" : {
         "ar" : {
@@ -15504,6 +15510,9 @@
         }
       }
     },
+    "Place the words in the correct order!" : {
+
+    },
     "Please enter the recipient's address." : {
       "localizations" : {
         "ar" : {
@@ -16857,6 +16866,7 @@
       }
     },
     "Prove it!\nPlace the words in the correct order." : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -20493,6 +20503,9 @@
           }
         }
       }
+    },
+    "Sent" : {
+
     },
     "Sent <b>%1@</b>" : {
       "localizations" : {

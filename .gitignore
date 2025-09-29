@@ -1,16 +1,33 @@
-## Build generated
+# Build generated
 build/
 DerivedData/
 
-## OS Related
+# Private and sensitive directories
+Private/
+!Private/.gitkeep  # Allow keeping an empty directory in git
+
+# OS Related
 .DS_Store
 
-## Various settings
+# Various settings
 *.moved-aside
 
-## Xcode related
+# Xcode related
 *.xcuserstate
 xcuserdata/
+
+# Sensitive files
+*.p12
+*.pem
+*.cer
+*.mobileprovision
+*.entitlements
+
+# Secrets
+*.xcconfig
+*secret*
+*private*
+*confidential*
 
 ## Obj-C/Swift specific
 *.hmap

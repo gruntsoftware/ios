@@ -222,6 +222,10 @@ class Transaction {
 		return metaData?.comment
 	}
 
+    var litoshis: Int {
+        return Int(satoshis)
+    }
+
 	var hasKvStore: Bool {
 		return kvStore != nil
 	}
