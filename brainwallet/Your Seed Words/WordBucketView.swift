@@ -17,7 +17,7 @@ struct WordBucketView: View {
 
     let wordNumber: Int
     let genericPad = 16.0
-    let cellHeight = 44.0
+    let cellHeight = 40.0
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
     var body: some View {

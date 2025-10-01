@@ -6,7 +6,7 @@ let swiftUICellPadding = 12.0
 let bigButtonCornerRadius = 15.0
 let kPinDigitConstant = 4
 let kSeedPhraseLength: Int = 12
-
+let kTransactionsFooterHeight: CGFloat = 110
 struct BrainwalletSupport {
 	static let dashboard = "https://brainwallet.co/support.html"
 }
