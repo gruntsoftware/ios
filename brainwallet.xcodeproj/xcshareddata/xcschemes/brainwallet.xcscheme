@@ -105,6 +105,9 @@
          identifier = "San Francisco, CA, USA"
          referenceType = "1">
       </LocationScenarioReference>
+      <StoreKitConfigurationFileReference
+         identifier = "../Private/ios-games/BrainwalletProductsv1_2.storekit">
+      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

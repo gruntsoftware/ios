@@ -63,16 +63,15 @@ jobs:
             gem install bundler:2.6.9
             bundle config set --local path 'vendor/bundle'
             bundle install --jobs=4 --retry=3
-      
-      # Setup SSH and initialize submodules
+      # Setup SSH &  GH Token and initialize submodules 
       - run:
-          name: Setup SSH and submodules
+          name: Configure Github Auth & Setup SSH and submodules
           command: |
             echo 'github.com ssh-rsa SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g' >> ~/.ssh/known_hosts
             ssh-add -D
             ssh-add ~/.ssh/id_rsa_*
-            git submodule init && git submodule update --init Modules/core
-      
+            sed -i "s#https://github.com/#https://${GH_TOKEN}@github.com/#g" .gitmodules
+            git submodule init && git submodule update --init Modules/core && git submodule update --init Private/general-purpose
       # Setup environment files (MUST be before build)
       - run:
           name: Setup environment files
@@ -177,17 +176,6 @@ jobs:
             export PATH="$HOME/.rbenv/bin:$PATH"
             eval "$(rbenv init -)"
             bundle exec fastlane $FASTLANE_LANE
-      - run:
-          name: Convert test results to JUnit
-          command: |
-              if ! command -v xcparse &> /dev/null; then
-              brew install chargepoint/xcparse/xcparse
-              fi
-              # Convert to JUnit XML
-              xcparse screenshots output/scan/brainwalletUnitTests.xcresult output/scan/screenshots
-              xcparse logs output/scan/brainwalletUnitTests.xcresult output/scan/logs
-              xcparse junit output/scan/brainwalletUnitTests.xcresult output/scan/junit.xml
-          when: always
       - save_cache:
           name: Save combined cache
           key: combined-cache-v1-{{ arch }}-{{ checksum "Gemfile" }}-{{ checksum "Package.resolved" }}-{{ checksum "brainwallet.xcodeproj/project.pbxproj" }}
@@ -522,14 +510,6 @@ jobs:
       
       # Store artifacts and handle failures
       - run:
-          name: Convert test results to JUnit
-          command: |
-              if ! command -v xcparse &> /dev/null; then
-              brew install chargepoint/xcparse/xcparse
-              fi
-              xcparse junit output/scan/brainwalletUnitTests.xcresult output/scan/junit.xml
-          when: always
-      - run:
           name: Capture crash logs
           command: |
             find ~/Library/Logs/DiagnosticReports -name "*Brainwallet*" -type f -exec echo "Found crash log: {}" \; -exec cat {} \; || echo "No crash logs found"
@@ -540,7 +520,7 @@ jobs:
       - store_artifacts:
           path: output
       - store_test_results:
-          path: ~/output/scan
+          path: output/scan
       - store_artifacts:
           path: ~/Library/Logs/DiagnosticReports
           destination: crash-logs
@@ -579,4 +559,4 @@ workflows:
     jobs:
       - daily-maintenance:
           context:
-            - bw-ios-test
+            - circleci-agents
