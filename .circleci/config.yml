@@ -556,6 +556,7 @@ workflows:
               only:
                 - main
                 - develop
+                - bento
     jobs:
       - daily-maintenance:
           context:
