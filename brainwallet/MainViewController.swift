@@ -88,7 +88,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         }) { _ in
         }
     }
-    /// This or that
     //// This is a legacy redux method of triggering adctions versus delegation
     func didCompleteOnboarding() {
         self.presentLockScreen()
@@ -314,7 +313,6 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		store.subscribe(self, selector: { $0.isLoginRequired != $1.isLoginRequired },
 		                callback: { self.isLoginRequired = $0.isLoginRequired
 		                })
-        /// This or that
         //// This is a legacy redux method of triggering adctions versus delegation
         store.subscribe(self, name: .lock,
                         callback: { [weak self] _ in
