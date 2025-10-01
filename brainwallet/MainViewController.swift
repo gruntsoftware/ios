@@ -105,8 +105,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         }
         guard let walletManager = self.walletManager else {
             debugPrint("::: ERROR: TabBarViewController or wallet not intialized")
-            return
-        }
+            return }
 
         guard let tabVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "TabBarViewController")
