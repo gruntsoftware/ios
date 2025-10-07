@@ -104,7 +104,7 @@ struct NewMainView: View {
                         .toolbar(.visible, for: .tabBar)
                         .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
                         .onAppear {
-                            
+
                         }
                     Color.clear
                         .tabItem {
@@ -115,7 +115,7 @@ struct NewMainView: View {
                         .toolbar(.visible, for: .tabBar)
                         .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
                         .onAppear {
-                            
+
                         }
                     Color.clear
                         .tabItem {
@@ -124,7 +124,7 @@ struct NewMainView: View {
                         .toolbar(.visible, for: .tabBar)
                         .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
                         .onAppear {
-                            
+
                         }
                     Color.clear
                         .tabItem {
@@ -134,7 +134,7 @@ struct NewMainView: View {
                         .toolbar(.visible, for: .tabBar)
                         .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
                         .onAppear {
-                            
+
                         }
                 }
                 .accentColor(BrainwalletColor.content)
