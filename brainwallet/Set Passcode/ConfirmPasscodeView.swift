@@ -23,6 +23,9 @@ struct ConfirmPasscodeView: View {
     @State
     private var didConfirmPasscode: Bool = false
 
+    @State
+    private var userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
+
     let subTitleFont: Font = .barlowSemiBold(size: 32.0)
     let largeButtonFont: Font = .barlowBold(size: 24.0)
     let detailFont: Font = .barlowRegular(size: 22.0)
@@ -35,7 +38,6 @@ struct ConfirmPasscodeView: View {
     let largeButtonHeight: CGFloat = 65.0
 
     let arrowSize: CGFloat = 60.0
-    let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
     init(isRestoringAnOldWallet: Bool, pinDigits: [Int],
          viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
@@ -95,7 +97,8 @@ struct ConfirmPasscodeView: View {
                             .animation(.spring(response: 0.15, dampingFraction: 0.1, blendDuration: 0.2), value: startShake)
 
                         Spacer()
-                        PasscodeGridView(digits: $confirmPinDigits)
+                        PasscodeGridView(digits: $confirmPinDigits,
+                                         userPrefersDarkMode: $userPrefersDarkTheme)
                             .frame(width: width * 0.6,
                                    height: height * 0.35,
                                    alignment: .center)
