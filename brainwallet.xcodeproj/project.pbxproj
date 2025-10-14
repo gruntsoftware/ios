@@ -80,6 +80,7 @@
 		247A7D0F2E951D10000DF8C0 /* LTCPriceBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D0E2E951D10000DF8C0 /* LTCPriceBentoView.swift */; };
 		247A7D112E951D3F000DF8C0 /* FavouritesBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D102E951D3F000DF8C0 /* FavouritesBentoView.swift */; };
 		247A7D132E95286E000DF8C0 /* GameHubBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D122E952864000DF8C0 /* GameHubBentoView.swift */; };
+		247A838A2E9EFD3F00B5DFD8 /* TransactionDetailBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A83892E9EFD2000B5DFD8 /* TransactionDetailBentoView.swift */; };
 		247D74E62DA907FB00855B14 /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45792D936D5900E9C3B0 /* BRAddress.c */; };
 		247D74E72DA907FB00855B14 /* BRBase58.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457C2D936D5900E9C3B0 /* BRBase58.c */; };
 		247D74E82DA907FB00855B14 /* BRBech32.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457E2D936D5900E9C3B0 /* BRBech32.c */; };
@@ -577,6 +578,7 @@
 		247A7D0E2E951D10000DF8C0 /* LTCPriceBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTCPriceBentoView.swift; sourceTree = "<group>"; };
 		247A7D102E951D3F000DF8C0 /* FavouritesBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesBentoView.swift; sourceTree = "<group>"; };
 		247A7D122E952864000DF8C0 /* GameHubBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHubBentoView.swift; sourceTree = "<group>"; };
+		247A83892E9EFD2000B5DFD8 /* TransactionDetailBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailBentoView.swift; sourceTree = "<group>"; };
 		2480B5822DF2015B00653403 /* PromptHostingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptHostingCell.swift; sourceTree = "<group>"; };
 		2489E05B2DF0A23700630888 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "brainwallet/PreLaunchResources/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		248E5C412DE7863C003F232F /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
@@ -1307,6 +1309,7 @@
 		247A7D022E950443000DF8C0 /* Bento Views */ = {
 			isa = PBXGroup;
 			children = (
+				247A83892E9EFD2000B5DFD8 /* TransactionDetailBentoView.swift */,
 				247A7D042E9504DB000DF8C0 /* UtilityHeaderView.swift */,
 				247A7D062E951653000DF8C0 /* BalanceBentoView.swift */,
 				247A7D122E952864000DF8C0 /* GameHubBentoView.swift */,
@@ -2704,6 +2707,7 @@
 				C312D32E2D7DC27700BB97A4 /* StoreReview+Extension.swift in Sources */,
 				C312D32F2D7DC27700BB97A4 /* UISlider+Gradient.swift in Sources */,
 				C312D3302D7DC27700BB97A4 /* UIControl+Callback.swift in Sources */,
+				247A838A2E9EFD3F00B5DFD8 /* TransactionDetailBentoView.swift in Sources */,
 				24618EEA2D90436500A878AC /* BRCore.swift in Sources */,
 				C312D3312D7DC27700BB97A4 /* String+Additions.swift in Sources */,
 				C312D3352D7DC27700BB97A4 /* TransactionManager.swift in Sources */,
@@ -3246,7 +3250,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/brainwallet/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Brainwallet;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3434,7 +3438,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/brainwallet/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Brainwallet;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

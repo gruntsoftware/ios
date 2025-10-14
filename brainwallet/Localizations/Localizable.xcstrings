@@ -20522,6 +20522,9 @@
         }
       }
     },
+    "Send LTC" : {
+
+    },
     "Sent" : {
 
     },
@@ -28646,6 +28649,9 @@
           }
         }
       }
+    },
+    "Transaction Detail View" : {
+
     },
     "Transaction Details" : {
       "localizations" : {

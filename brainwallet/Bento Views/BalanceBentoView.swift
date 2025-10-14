@@ -15,14 +15,14 @@ struct BalanceBentoView: View {
 
     @State
     var shouldShowSettings: Bool = false
-    
+
     @Binding
     var userPrefersDarkTheme: Bool
 
     private let buttonSize: CGFloat = 20.0
 
     private let buttonPlatformFactor: CGFloat = 2.1
-    
+
     init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
         newMainViewModel = viewModel

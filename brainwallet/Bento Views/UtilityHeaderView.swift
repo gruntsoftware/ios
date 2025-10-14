@@ -14,23 +14,32 @@ struct UtilityHeaderView: View {
     var newMainViewModel: NewMainViewModel
 
     @State
-    var shouldShowSettings: Bool = false
+    private var shouldShowSettings: Bool = false
 
-    @Binding
-    var userPrefersDarkTheme: Bool
+    @State
+    private var userPrefersDarkTheme: Bool = true
+
+    @State
+    private var shouldRing: Bool = false
+
+    @State
+    private var bellAngle: Double = 0.0
 
     private let buttonSize: CGFloat = 20.0
 
     private let buttonPlatformFactor: CGFloat = 2.1
 
-    init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
-        _userPrefersDarkTheme = userPrefersDarkTheme
+    init(viewModel: NewMainViewModel) {
         newMainViewModel = viewModel
     }
     var body: some View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
+            /// Tidy the long name
+            let content = BrainwalletColor.content
+            let surface = BrainwalletColor.surface
+
             ZStack {
                 Color.clear.edgesIgnoringSafeArea(.all)
                 VStack {
@@ -44,10 +53,10 @@ struct UtilityHeaderView: View {
                                     .frame(width: buttonSize * buttonPlatformFactor,
                                            height: buttonSize * buttonPlatformFactor,
                                            alignment: .center)
-                                    .foregroundColor(BrainwalletColor.surface)
+                                    .foregroundColor(surface)
                                     .overlay(
                                         Ellipse()
-                                            .stroke(BrainwalletColor.content.opacity(0.3), lineWidth: 0.5)
+                                            .stroke(content.opacity(0.3), lineWidth: 0.5)
                                             .frame(width: buttonSize * buttonPlatformFactor,
                                                    height: buttonSize * buttonPlatformFactor,
                                                    alignment: .center)
@@ -58,7 +67,7 @@ struct UtilityHeaderView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: buttonSize, height: buttonSize,
                                            alignment: .center)
-                                    .foregroundColor(BrainwalletColor.content)
+                                    .foregroundColor(content)
                             }
 
                         }
@@ -72,40 +81,46 @@ struct UtilityHeaderView: View {
                                 .frame(width: buttonSize * buttonPlatformFactor * 2,
                                        height: buttonSize * buttonPlatformFactor,
                                        alignment: .center)
-                                .foregroundColor(BrainwalletColor.surface)
+                                .foregroundColor(surface)
                                 .overlay(
                                     Capsule()
-                                        .stroke(BrainwalletColor.content.opacity(0.3), lineWidth: 0.5)
+                                        .stroke(content.opacity(0.3), lineWidth: 0.5)
                                         .frame(width: buttonSize * buttonPlatformFactor * 2,
                                                height: buttonSize * buttonPlatformFactor,
                                                alignment: .center)
                                 )
                             HStack {
                                 Button(action: {
-                                    /// Activate Theme Settings
+                                    userPrefersDarkTheme.toggle()
                                 }) {
                                     Image(systemName: userPrefersDarkTheme ?
-                                        "moon.circle" : "sun.max.circle")
+                                          "sun.max.circle" : "moon.circle")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: buttonSize,
                                                height: buttonSize,
                                                alignment: .topLeading)
-                                        .foregroundColor(BrainwalletColor.content)
+                                        .foregroundColor(content)
                                 }
                                 .frame(width: buttonSize, height: buttonSize,
                                        alignment: .leading)
                                 .padding(4)
 
                                 Button(action: {
-                                    /// Activate Notification Settings 
+                                    shouldRing.toggle()
+                                    withAnimation(.spring(response: 0.5, dampingFraction: 0.3)) {
+                                        bellAngle = shouldRing ? 30 : 0
+
+                                    }
+
                                 }) {
                                     Image(systemName: "bell")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: buttonSize, height: buttonSize,
                                                alignment: .topLeading)
-                                        .foregroundColor(BrainwalletColor.content)
+                                        .foregroundColor(content)
+                                        .rotationEffect(Angle(degrees: bellAngle))
                                 }
                                 .frame(width: buttonSize, height: buttonSize,
                                        alignment: .leading)
@@ -114,7 +129,6 @@ struct UtilityHeaderView: View {
                             .frame(width: buttonSize * buttonPlatformFactor * 2,
                                    height: buttonSize * buttonPlatformFactor,
                                    alignment: .center)
-
                         }
 
                     }
@@ -123,6 +137,11 @@ struct UtilityHeaderView: View {
             }
             .frame(height: utilityHeaderHeight, alignment: .center)
 
+        }.onAppear {
+            userPrefersDarkTheme = newMainViewModel.userPrefersDarkMode
+        }
+        .onChange(of: userPrefersDarkTheme) { preference in
+            newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
         }
     }
 }

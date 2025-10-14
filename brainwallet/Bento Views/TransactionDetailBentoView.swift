@@ -1,14 +1,14 @@
 //
-//  TutorialsBentoView.swift
+//  TransactionDetailBentoView.swift
 //  brainwallet
 //
-//  Created by Kerry Washington on 07/10/2025.
+//  Created by Kerry Washington on 14/10/2025.
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
 
 import SwiftUI
 
-struct LTCPriceBentoView: View {
+struct TransactionDetailBentoView: View {
 
     @ObservedObject
     var newMainViewModel: NewMainViewModel
@@ -18,6 +18,11 @@ struct LTCPriceBentoView: View {
 
     @Binding
     var userPrefersDarkTheme: Bool
+
+    @State
+    var filterMode: TransactionFilterState = .allTransactions
+
+    private var modeState = TransactionFilterState.allCases
 
     private let buttonSize: CGFloat = 20.0
 
@@ -33,7 +38,7 @@ struct LTCPriceBentoView: View {
             let width = geometry.size.width
             ZStack {
                 BrainwalletColor.gray.edgesIgnoringSafeArea(.all)
-                Text("LTC Price Bento View")
+                Text("Transaction Detail View")
                     .font(.system(size: 16, weight: .ultraLight, design: .default))
             }
             .cornerRadius(bentoCornerRadius)

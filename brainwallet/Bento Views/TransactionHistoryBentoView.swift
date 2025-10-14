@@ -14,7 +14,7 @@ struct TransactionHistoryBentoView: View {
 
     @State
     var shouldShowSettings: Bool = false
-    
+
     @Binding
     var userPrefersDarkTheme: Bool
 
