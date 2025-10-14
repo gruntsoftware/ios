@@ -16,11 +16,7 @@ struct TutorialsBentoView: View {
     @State
     var shouldShowSettings: Bool = false
 
-    @State
-    var filterMode: TransactionFilterState = .allTransactions
-
-    private var modeState = TransactionFilterState.allCases
-
+    
     private let buttonSize: CGFloat = 20.0
 
     private let buttonPlatformFactor: CGFloat = 2.1

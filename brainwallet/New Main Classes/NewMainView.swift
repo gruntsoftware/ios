@@ -42,12 +42,16 @@ struct NewMainView: View {
     @State
     private var filterTransactionState: TransactionFilterState = .allTransactions
 
+    @State
+    private var userPrefersDarkTheme = true
+
     let statusBarHeight = 20.0
 
     init(viewModel: NewMainViewModel,
          receiveViewModel: NewReceiveViewModel) {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
+        userPrefersDarkTheme = viewModel.userPrefersDarkMode
     }
     var body: some View {
         GeometryReader { geometry in
@@ -59,36 +63,36 @@ struct NewMainView: View {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 
                 VStack {
-                    UtilityHeaderView(viewModel: newMainViewModel)
+                    UtilityHeaderView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                         .frame(height: utilityHeaderHeight, alignment: .top)
                         .padding(.top, 1.0)
                         .padding([.leading, .trailing], 10.0)
 
-                    BalanceBentoView(viewModel: newMainViewModel)
+                    BalanceBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                         .frame(height: balanceGameBentoHeight, alignment: .top)
                         .padding(.top, 1.0)
                         .padding([.leading, .trailing], 10.0)
 
-                    TransactionHistoryBentoView(viewModel: newMainViewModel)
+                    TransactionHistoryBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                         .frame(height: transactionsBentoHeight, alignment: .top)
                         .padding(.top, 1.0)
                         .padding([.leading, .trailing], 10.0)
 
                     HStack {
-                        TutorialsBentoView(viewModel: newMainViewModel)
+                        TutorialsBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
 
                         VStack {
-                            LTCPriceBentoView(viewModel: newMainViewModel)
+                            LTCPriceBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                                 .frame(maxHeight: height * 0.5 * 0.5, alignment: .top)
 
-                            FavouritesBentoView(viewModel: newMainViewModel)
+                            FavouritesBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                                 .frame(maxHeight: height * 0.5 * 0.5, alignment: .top)
                         }
                     }
                     .frame(maxHeight: height * 0.5, alignment: .top)
                     .padding([.leading, .trailing], 10.0)
 
-                    GameHubBentoView(viewModel: newMainViewModel)
+                    GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                         .frame(height: balanceGameBentoHeight, alignment: .top)
                         .padding(.bottom, 1.0)
                         .padding([.leading, .trailing], 10.0)
@@ -102,7 +106,7 @@ struct NewMainView: View {
                             Label(String(localized: "Send"), systemImage: "paperplane")
                         }
                         .toolbar(.visible, for: .tabBar)
-                        .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
+                        .toolbarBackground(userPrefersDarkTheme ? BrainwalletColor.content : BrainwalletColor.surface, for: .tabBar)
                         .onAppear {
 
                         }
@@ -113,7 +117,7 @@ struct NewMainView: View {
                                   systemImage: "arrow.left.arrow.right")
                         }
                         .toolbar(.visible, for: .tabBar)
-                        .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
+                        .toolbarBackground(userPrefersDarkTheme ? BrainwalletColor.content : BrainwalletColor.surface, for: .tabBar)
                         .onAppear {
 
                         }
@@ -122,7 +126,7 @@ struct NewMainView: View {
                             Label(String(localized: "Game Hub"), systemImage: "gamecontroller")
                         }
                         .toolbar(.visible, for: .tabBar)
-                        .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
+                        .toolbarBackground(userPrefersDarkTheme ? BrainwalletColor.content : BrainwalletColor.surface, for: .tabBar)
                         .onAppear {
 
                         }
@@ -132,12 +136,12 @@ struct NewMainView: View {
                                   systemImage: "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
                         }
                         .toolbar(.visible, for: .tabBar)
-                        .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
+                        .toolbarBackground(userPrefersDarkTheme ? BrainwalletColor.content : BrainwalletColor.surface, for: .tabBar)
                         .onAppear {
 
                         }
                 }
-                .accentColor(BrainwalletColor.content)
+                .accentColor(userPrefersDarkTheme ? BrainwalletColor.content : BrainwalletColor.surface)
                 .frame(height: tabBarHeight, alignment: .bottom)
             }
         }
