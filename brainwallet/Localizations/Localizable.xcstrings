@@ -3452,6 +3452,9 @@
         }
       }
     },
+    "Balance Bento View" : {
+
+    },
     "Block: " : {
       "localizations" : {
         "ar" : {
@@ -4559,6 +4562,9 @@
           }
         }
       }
+    },
+    "Buy/Receive" : {
+
     },
     "Camera Flash" : {
       "localizations" : {
@@ -10845,6 +10851,9 @@
         }
       }
     },
+    "Favourites Bento View" : {
+
+    },
     "Fees: " : {
       "localizations" : {
         "ar" : {
@@ -11422,6 +11431,12 @@
           }
         }
       }
+    },
+    "Game Hub" : {
+
+    },
+    "Game Hub Bento View" : {
+
     },
     "Get Litecoin through MoonPay" : {
       "localizations" : {
@@ -13258,6 +13273,9 @@
           }
         }
       }
+    },
+    "LTC Price Bento View" : {
+
     },
     "Manage" : {
       "localizations" : {
@@ -28759,6 +28777,9 @@
         }
       }
     },
+    "Transaction History View" : {
+
+    },
     "Transaction Rejected" : {
       "localizations" : {
         "ar" : {
@@ -29408,6 +29429,9 @@
           }
         }
       }
+    },
+    "Tutorials Bento View" : {
+
     },
     "Tx Count: " : {
       "localizations" : {

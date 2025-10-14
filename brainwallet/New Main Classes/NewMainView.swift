@@ -9,7 +9,12 @@
 import SwiftUI
 import FirebaseAnalytics
 
-let globalHeaderHeight: CGFloat = 160.0
+let bentoCornerRadius: CGFloat = 14.0
+let utilityHeaderHeight: CGFloat = 60.0
+let tabBarHeight: CGFloat = 80.0
+let balanceGameBentoHeight: CGFloat = 120.0
+let transactionsBentoHeight: CGFloat = 80.0
+let maxMidBentoHeight: CGFloat = 220.0
 
 enum Selection {
     case receive
@@ -37,7 +42,7 @@ struct NewMainView: View {
     @State
     private var filterTransactionState: TransactionFilterState = .allTransactions
 
-    let statusBarHeight = 44.0
+    let statusBarHeight = 20.0
 
     init(viewModel: NewMainViewModel,
          receiveViewModel: NewReceiveViewModel) {
@@ -49,45 +54,92 @@ struct NewMainView: View {
 
             let width = geometry.size.width
             let height = geometry.size.height
-            let activeHeight = abs(height - globalHeaderHeight - statusBarHeight - geometry.safeAreaInsets.bottom - geometry.safeAreaInsets.top)
 
-            ZStack {
+            ZStack(alignment: .bottom) {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 
                 VStack {
-                        SimpleHeaderView(viewModel: newMainViewModel)
-                            .frame(height: globalHeaderHeight,
-                                    alignment: .top)
-                            .padding(.top, statusBarHeight)
-                    Spacer()
-                        TabView {
-                            NewSendView(viewModel: newMainViewModel)
-                                .tabItem {
-                                    Label(String(localized: "Send"), systemImage: "arrow.up.right")
-                                }
-                                .toolbar(.visible, for: .tabBar)
-                                .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
-                            GameView(viewModel: newMainViewModel)
-                                .tabItem {
-                                    Label(String(localized: "History"), systemImage: "deskclock")
-                                }
-                                .toolbar(.visible, for: .tabBar)
-                                .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
+                    UtilityHeaderView(viewModel: newMainViewModel)
+                        .frame(height: utilityHeaderHeight, alignment: .top)
+                        .padding(.top, 1.0)
+                        .padding([.leading, .trailing], 10.0)
 
-                            NewReceiveView(viewModel: newReceiveViewModel, isModalMode: nil)
-                                .tabItem {
-                                    Label(newReceiveViewModel.canUserBuy ? String(localized: "Buy / Receive") : String(localized: "Receive"),
-                                          systemImage: "arrow.down.backward")
-                                }
-                                .toolbar(.visible, for: .tabBar)
-                                .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
-                            }
-                            .frame(height: activeHeight, alignment: .bottom)
-                            .accentColor(BrainwalletColor.content)
+                    BalanceBentoView(viewModel: newMainViewModel)
+                        .frame(height: balanceGameBentoHeight, alignment: .top)
+                        .padding(.top, 1.0)
+                        .padding([.leading, .trailing], 10.0)
 
+                    TransactionHistoryBentoView(viewModel: newMainViewModel)
+                        .frame(height: transactionsBentoHeight, alignment: .top)
+                        .padding(.top, 1.0)
+                        .padding([.leading, .trailing], 10.0)
+
+                    HStack {
+                        TutorialsBentoView(viewModel: newMainViewModel)
+
+                        VStack {
+                            LTCPriceBentoView(viewModel: newMainViewModel)
+                                .frame(maxHeight: height * 0.5 * 0.5, alignment: .top)
+
+                            FavouritesBentoView(viewModel: newMainViewModel)
+                                .frame(maxHeight: height * 0.5 * 0.5, alignment: .top)
+                        }
                     }
-                    .offset(x: newMainViewModel.shouldShowSettings ? width - 90.0: 0)
+                    .frame(maxHeight: height * 0.5, alignment: .top)
+                    .padding([.leading, .trailing], 10.0)
+
+                    GameHubBentoView(viewModel: newMainViewModel)
+                        .frame(height: balanceGameBentoHeight, alignment: .top)
+                        .padding(.bottom, 1.0)
+                        .padding([.leading, .trailing], 10.0)
+                    Spacer(minLength: tabBarHeight)
                 }
+                .offset(x: newMainViewModel.shouldShowSettings ? width - 90.0: 0)
+
+                TabView {
+                    Color.clear
+                        .tabItem {
+                            Label(String(localized: "Send"), systemImage: "paperplane")
+                        }
+                        .toolbar(.visible, for: .tabBar)
+                        .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
+                        .onAppear {
+
+                        }
+                    Color.clear
+                        .tabItem {
+                            Label(newReceiveViewModel.canUserBuy ?
+                                  String(localized: "Buy/Receive") : String(localized: "Receive"),
+                                  systemImage: "arrow.left.arrow.right")
+                        }
+                        .toolbar(.visible, for: .tabBar)
+                        .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
+                        .onAppear {
+
+                        }
+                    Color.clear
+                        .tabItem {
+                            Label(String(localized: "Game Hub"), systemImage: "gamecontroller")
+                        }
+                        .toolbar(.visible, for: .tabBar)
+                        .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
+                        .onAppear {
+
+                        }
+                    Color.clear
+                        .tabItem {
+                            Label(String(localized: "History"),
+                                  systemImage: "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
+                        }
+                        .toolbar(.visible, for: .tabBar)
+                        .toolbarBackground(BrainwalletColor.surface, for: .tabBar)
+                        .onAppear {
+
+                        }
+                }
+                .accentColor(BrainwalletColor.content)
+                .frame(height: tabBarHeight, alignment: .bottom)
             }
         }
+    }
 }

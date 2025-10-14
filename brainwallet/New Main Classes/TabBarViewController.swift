@@ -49,8 +49,6 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
     var didSwipeTable: ((Bool) -> Void)?
 
-    var shouldHideExportView: (() -> Void)?
-
 	@IBAction func showSettingsAction(_: Any) {
         didTapSettingsButton?()
 	}
@@ -324,7 +322,6 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 	func displayContentController(contentController: UIViewController) {
 		// MARK: - Tab View Controllers Configuration
-        shouldHideExportView?()
 		switch NSStringFromClass(contentController.classForCoder) {
 		case "brainwallet.TransactionsViewController":
 

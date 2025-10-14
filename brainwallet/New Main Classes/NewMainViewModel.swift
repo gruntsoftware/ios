@@ -94,6 +94,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     var didTapCreate: (() -> Void)?
     var didTapRecover: (() -> Void)?
+    var didTapSettingsButton: (() -> Void)?
 
     private
     let ratesPriceUpdateTimerPeriod: Double = {
@@ -195,6 +196,10 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             let currencySymbol = Currency.getSymbolForCurrencyCode(code: currencyCode) ?? ""
             currentFiatValue = String(currencySymbol + formattedFiatString)
         }
+    }
+
+    func userDidTapTheSettingsButton() {
+        didTapSettingsButton?()
     }
 
     func updateTheme(shouldBeDark: Bool) {
