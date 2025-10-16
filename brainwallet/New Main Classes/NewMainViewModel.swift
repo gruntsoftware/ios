@@ -191,7 +191,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             walletBalanceLitecoin = String(format: "Ł%8.6f", ltcBalanceDouble)
             // Price Label
             let fiatRate = Double(round(100000 * currentRate.rate / 100000))
-            let formattedFiatString = String(format: "%3.2f", fiatRate)
+            let formattedFiatString = String(format: "%8.2f", fiatRate)
             currencyCode = currentRate.code
             let currencySymbol = Currency.getSymbolForCurrencyCode(code: currencyCode) ?? ""
             currentFiatValue = String(currencySymbol + formattedFiatString)

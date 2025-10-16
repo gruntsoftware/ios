@@ -20,6 +20,9 @@ struct TransactionDetailBentoView: View {
     var userPrefersDarkTheme: Bool
 
     @State
+    private var mainGradientStyle: MainGradientStyle = .lightStyle
+
+    @State
     var filterMode: TransactionFilterState = .allTransactions
 
     private var modeState = TransactionFilterState.allCases
@@ -37,11 +40,16 @@ struct TransactionDetailBentoView: View {
 
             let width = geometry.size.width
             ZStack {
-                BrainwalletColor.gray.edgesIgnoringSafeArea(.all)
+                BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
                 Text("Transaction Detail View")
                     .font(.system(size: 16, weight: .ultraLight, design: .default))
+                    .foregroundStyle(BrainwalletColor.content)
+
             }
             .cornerRadius(bentoCornerRadius)
+            .onAppear {
+                mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
+            }
         }
     }
 }

@@ -3452,9 +3452,6 @@
         }
       }
     },
-    "Balance Bento View" : {
-
-    },
     "Block: " : {
       "localizations" : {
         "ar" : {
@@ -10204,6 +10201,9 @@
         }
       }
     },
+    "Export" : {
+
+    },
     "Export Transaction Data" : {
 
     },
@@ -10851,7 +10851,7 @@
         }
       }
     },
-    "Favourites Bento View" : {
+    "FALLINMOJI" : {
 
     },
     "Fees: " : {
@@ -11435,7 +11435,7 @@
     "Game Hub" : {
 
     },
-    "Game Hub Bento View" : {
+    "GAME HUB" : {
 
     },
     "Get Litecoin through MoonPay" : {
@@ -12880,6 +12880,9 @@
         }
       }
     },
+    "Load with MoonPay" : {
+
+    },
     "Loading Wallet" : {
       "localizations" : {
         "ar" : {
@@ -13273,9 +13276,6 @@
           }
         }
       }
-    },
-    "LTC Price Bento View" : {
-
     },
     "Manage" : {
       "localizations" : {
@@ -13857,6 +13857,9 @@
           }
         }
       }
+    },
+    "MY BALANCE" : {
+
     },
     "New address copied" : {
       "localizations" : {
@@ -17614,6 +17617,9 @@
         }
       }
     },
+    "Receive Litecoin in seconds" : {
+
+    },
     "Received" : {
       "localizations" : {
         "ar" : {
@@ -20523,6 +20529,9 @@
       }
     },
     "Send LTC" : {
+
+    },
+    "Sending is easy!" : {
 
     },
     "Sent" : {
@@ -27806,6 +27815,9 @@
         }
       }
     },
+    "TOP SECRET" : {
+
+    },
     "Top up?" : {
       "localizations" : {
         "ar" : {
@@ -28783,9 +28795,6 @@
         }
       }
     },
-    "Transaction History View" : {
-
-    },
     "Transaction Rejected" : {
       "localizations" : {
         "ar" : {
@@ -29436,7 +29445,7 @@
         }
       }
     },
-    "Tutorials Bento View" : {
+    "TUTORIALS" : {
 
     },
     "Tx Count: " : {

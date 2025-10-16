@@ -67,13 +67,12 @@ struct ReceiveAddressView: View {
                              ZStack {
                                 RoundedRectangle(cornerRadius: buttonCorner / 4)
                                     .foregroundColor(.white)
-                                    .frame(width: qrWidth - padding,
-                                           height: qrWidth - padding)
+                                    .frame(width: abs(qrWidth - padding), height: abs(qrWidth - padding))
                                     .background(.thinMaterial, in: RoundedRectangle(cornerRadius: buttonCorner / 4))
                                 Image(uiImage: viewModel.newReceiveAddressQR ?? qrPlaceholder)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: qrWidth - padding)
+                                    .frame(width: abs(qrWidth - padding))
                             }
                             Spacer()
 

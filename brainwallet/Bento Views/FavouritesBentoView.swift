@@ -19,7 +19,10 @@ struct FavouritesBentoView: View {
     @Binding
     var userPrefersDarkTheme: Bool
 
-    private let buttonSize: CGFloat = 20.0
+    @State
+    private var mainGradientStyle: MainGradientStyle = .lightStyle
+
+    private let favoriteTileSize: CGFloat = 50.0
 
     private let buttonPlatformFactor: CGFloat = 2.1
 
@@ -31,12 +34,86 @@ struct FavouritesBentoView: View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
+            let labelBackground =  userPrefersDarkTheme ? BrainwalletColor.content.opacity(0.1) :
+            Color(red: 0.9490196078431372, green: 1.0, blue: 0.9529411764705882) // #F2FFF3
+            let labelForeground = userPrefersDarkTheme ? BrainwalletColor.content :
+            Color(red: 0.2823529411764706, green: 0.592156862745098, blue: 0.3058823529411765) // #48974E
+
             ZStack {
-                BrainwalletColor.gray.edgesIgnoringSafeArea(.all)
-                Text("Favourites Bento View")
-                    .font(.system(size: 16, weight: .ultraLight, design: .default))
+                BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
+                VStack {
+                    HStack {
+                        ZStack {
+                        RoundedRectangle(cornerRadius: 8)
+                            .frame(width: width * 0.5, height: 24, alignment: .center)
+                            .foregroundColor(labelBackground)
+                            .padding(8)
+                        Text("TOP SECRET")
+                            .font(.system(size: 12, weight: .light, design: .default))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)// Shrinks to 50% of original
+                            .padding([.leading, .trailing], 4)
+                            .frame(maxWidth: width * 0.5, maxHeight: 24, alignment: .center)
+                            .foregroundColor(labelForeground)
+                    }
+                    Spacer()
+                }
+                    Spacer()
+                }
+
+                Group {
+                    HStack {
+                        Ellipse()
+                            .fill(BrainwalletColor.pesto)
+                            .frame(width: favoriteTileSize, height: favoriteTileSize)
+                            .padding(4)
+                            .offset(x: 20, y: 0)
+
+                        Spacer()
+                    }
+                    HStack {
+                        Ellipse()
+                            .fill(BrainwalletColor.cheddar)
+                            .frame(width: favoriteTileSize, height: favoriteTileSize)
+                            .padding(4)
+                            .offset(x: 40, y: 0)
+                        Spacer()
+                    }
+                    HStack {
+                        Ellipse()
+                            .fill(BrainwalletColor.grape)
+                            .frame(width: favoriteTileSize, height: favoriteTileSize)
+                            .padding(4)
+                            .offset(x: 60, y: 0)
+                        Spacer()
+                    }
+                    HStack {
+                        ZStack {
+                            Ellipse()
+                                .fill(BrainwalletColor.gray)
+                                .frame(width: favoriteTileSize, height: favoriteTileSize)
+                                .padding(4)
+                                .offset(x: 80, y: 0)
+                            Image(systemName: "plus")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundStyle(.white)
+                                .frame(width: favoriteTileSize * 0.5, height: favoriteTileSize * 0.5)
+                                .padding(4)
+                                .offset(x: 80, y: 0)
+                        }
+
+                        Spacer()
+
+                    }
+                }
+                .opacity(userPrefersDarkTheme ? 0.8 : 0.7)
+                .padding(.top, 16)
             }
             .cornerRadius(bentoCornerRadius)
+            .onAppear {
+                mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
+            }
         }
     }
 }

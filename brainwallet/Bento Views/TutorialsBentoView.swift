@@ -14,10 +14,16 @@ struct TutorialsBentoView: View {
     var newMainViewModel: NewMainViewModel
 
     @State
-    var shouldShowSettings: Bool = false
+    private var shouldShowSettings: Bool = false
+
+    @State
+    private var selectedPage: Int = 0
 
     @Binding
     var userPrefersDarkTheme: Bool
+
+    @State
+    private var mainGradientStyle: MainGradientStyle = .lightStyle
 
     private let buttonSize: CGFloat = 20.0
 
@@ -26,17 +32,76 @@ struct TutorialsBentoView: View {
     init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
         newMainViewModel = viewModel
+
+        UIPageControl.appearance().currentPageIndicatorTintColor = BrainwalletUIColor.midnight
+        UIPageControl.appearance().pageIndicatorTintColor = BrainwalletUIColor.lavender
+
+    }
+
+    @ViewBuilder
+    func formattedText(_ text: String, backgroundColor: Color = Color.clear, foregroundColor: Color = BrainwalletColor.nearBlack) -> some View {
+        Text(text)
+            .font(.largeTitle)
+            .padding()
+            .background(backgroundColor)
+            .foregroundColor(foregroundColor)
+            .cornerRadius(15)
     }
     var body: some View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
+            let labelBackground =  userPrefersDarkTheme ? BrainwalletColor.content.opacity(0.1) :
+            Color(red: 0.9490196078431372, green: 1.0, blue: 0.9529411764705882) // #F2FFF3
+            let labelForeground = userPrefersDarkTheme ? BrainwalletColor.content :
+            Color(red: 0.2823529411764706, green: 0.592156862745098, blue: 0.3058823529411765) // #48974E
+
             ZStack {
-                BrainwalletColor.gray.edgesIgnoringSafeArea(.all)
-                Text("Tutorials Bento View")
-                    .font(.system(size: 16, weight: .ultraLight, design: .default))
+                BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
+                VStack(alignment: .center) {
+                    HStack {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 8)
+                                .frame(width: width * 0.5, height: 24, alignment: .center)
+                                .foregroundColor(labelBackground)
+                                .padding(8)
+                            Text("TUTORIALS")
+                                .font(.system(size: 12, weight: .light, design: .default))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)// Shrinks to 50% of original
+                                .padding([.leading, .trailing], 4)
+                                .frame(maxWidth: width * 0.5, maxHeight: 24, alignment: .center)
+                                .foregroundColor(labelForeground)
+                        }
+                        Spacer()
+                    }
+                    Spacer()
+                }
+
+                TabView(selection: $selectedPage) {
+                        formattedText("How to send").tag(0)
+                            .tabItem {
+                                Text("Sending is easy!")
+                            }
+
+                        formattedText("How to receive").tag(1)
+                            .tabItem {
+                                Text("Receive Litecoin in seconds")
+                            }
+
+                        formattedText("Top Up").tag(2)
+                            .tabItem {
+                                Text("Load with MoonPay")
+                            }
+
+                    }
+                .tabViewStyle(.page)
+
             }
             .cornerRadius(bentoCornerRadius)
+            .onAppear {
+                mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
+            }
         }
     }
 }

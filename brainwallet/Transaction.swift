@@ -1,5 +1,6 @@
 import BRCore
 import UIKit
+import SwiftUI
 
 // Ideally this would be a struct, but it needs to be a class to allow
 // for lazy variables
@@ -9,7 +10,7 @@ struct TransactionStatusTuple {
 	var units: Int
 }
 
-class Transaction {
+class Transaction : Hashable {
 	// MARK: - Public
 
 	private let opsAddressSet: Set<String> = Partner.walletOpsSet()
@@ -367,6 +368,14 @@ class Transaction {
 	var shouldDisplayAvailableToSpend: Bool {
 		return confirms > 1 && confirms < 6 && direction == .received
 	}
+
+    static func == (lhside: brainwallet.Transaction, rhside: brainwallet.Transaction) -> Bool {
+        return lhside.hash == rhside.hash && lhside.status == rhside.status && lhside.comment == rhside.comment && lhside.hasKvStore == rhside.hasKvStore
+    }
+
+    func hash(into hasher: inout Hasher) {
+            hasher.combine(hash)
+    }
 }
 
 private extension String {
@@ -413,10 +422,4 @@ private func makeStatus(_ txRef: BRTxRef, wallet: BRWallet, peerManager: BRPeerM
 	} else {
 		return String(localized: "Complete", bundle: .main)
 	}
-}
-
-extension Transaction: Equatable {}
-
-func == (lhs: Transaction, rhs: Transaction) -> Bool {
-	return lhs.hash == rhs.hash && lhs.status == rhs.status && lhs.comment == rhs.comment && lhs.hasKvStore == rhs.hasKvStore
 }
