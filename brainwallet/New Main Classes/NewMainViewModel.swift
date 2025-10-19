@@ -263,6 +263,11 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
                 object: nil)
     }
 
+    func updateNotificationSettings() {
+        let notificationsManager = NotificationManager()
+
+    }
+
     func userDidSetCurrencyPreference(currency: GlobalCurrency) {
 
         let code = currency.code

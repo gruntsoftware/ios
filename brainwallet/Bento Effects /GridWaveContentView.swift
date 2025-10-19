@@ -39,10 +39,10 @@ struct GridWaveContentView: View {
         _userPrefersDarkTheme = userPrefersDarkTheme
     }
     // Helper function for color interpolation
-    func interpolateColor(from: CIColor, to: CIColor, progress: CGFloat) -> CIColor {
-        let rColor = from.red + (to.red - from.red) * progress
-        let gColor = from.green + (to.green - from.green) * progress
-        let bColor = from.blue + (to.blue - from.blue) * progress
+    func interpolateColor(fromColor: CIColor, toColor: CIColor, progress: CGFloat) -> CIColor {
+        let rColor = fromColor.red + (toColor.red - fromColor.red) * progress
+        let gColor = fromColor.green + (toColor.green - fromColor.green) * progress
+        let bColor = fromColor.blue + (toColor.blue - fromColor.blue) * progress
         return CIColor(red: rColor, green: gColor, blue: bColor)
     }
 
@@ -65,16 +65,16 @@ struct GridWaveContentView: View {
 
             // Cycle through color pairs
             if cycleTime < 1.0 {
-                startColor = interpolateColor(from: color1, to: color2, progress: cycleTime)
-                endColor = interpolateColor(from: color2, to: color3, progress: cycleTime)
+                startColor = interpolateColor(fromColor: color1, toColor: color2, progress: cycleTime)
+                endColor = interpolateColor(fromColor: color2, toColor: color3, progress: cycleTime)
             } else if cycleTime < 2.0 {
                 let progress = cycleTime - 1.0
-                startColor = interpolateColor(from: color2, to: color3, progress: progress)
-                endColor = interpolateColor(from: color3, to: color1, progress: progress)
+                startColor = interpolateColor(fromColor: color2, toColor: color3, progress: progress)
+                endColor = interpolateColor(fromColor: color3, toColor: color1, progress: progress)
             } else {
                 let progress = cycleTime - 2.0
-                startColor = interpolateColor(from: color3, to: color1, progress: progress)
-                endColor = interpolateColor(from: color1, to: color2, progress: progress)
+                startColor = interpolateColor(fromColor: color3, toColor: color1, progress: progress)
+                endColor = interpolateColor(fromColor: color1, toColor: color2, progress: progress)
             }
 
             // Create animated gradient

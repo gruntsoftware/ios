@@ -238,6 +238,11 @@ struct NewMainView: View {
 
                                 Button(action: {
                                     shouldRing.toggle()
+                                    if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                                        if UIApplication.shared.canOpenURL(appSettings) {
+                                            UIApplication.shared.open(appSettings)
+                                        }
+                                    }
                                     withAnimation(.spring(response: 0.5, dampingFraction: 0.3)) {
                                         bellAngle = shouldRing ? 30 : 0
                                     }

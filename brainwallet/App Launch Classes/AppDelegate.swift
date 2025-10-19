@@ -70,6 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
             }
        }
 
+       // Init NotifactionManager
+        NotificationManager.shared.configure()
+
         // Wipe restart
         // Register for system notifications
         NotificationCenter.default.addObserver(
