@@ -73,11 +73,7 @@ struct GameHubBentoView: View {
                                     .frame(maxWidth: width, maxHeight: 24, alignment: .center)
                                     .foregroundStyle(
                                         LinearGradient(
-                                            colors: [.white,.white,
-                                                     Color(red: 0.06666666666666667,
-                                                           green: 0.2980392156862745,
-                                                           blue: 0.8313725490196079)
-                                                        .opacity(0.9)],// #114CD4
+                                            colors: [.white,.white, BentoColor.gameBlue1.opacity(0.9)],
                                             startPoint: .top,
                                             endPoint: .bottom
                                         )

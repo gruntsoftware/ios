@@ -58,9 +58,9 @@ struct LTCPriceBentoView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
                     Text(currentDateLabel)
-                        .font(.system(size: 13, weight: .ultraLight, design: .default))
+                        .font(.system(size: 11, weight: .ultraLight, design: .default))
                         .lineLimit(1)
-                        .minimumScaleFactor(0.8)// Shrinks to 80% of original
+                        .minimumScaleFactor(0.9)// Shrinks to 80% of original
                         .padding(.leading, 10)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))

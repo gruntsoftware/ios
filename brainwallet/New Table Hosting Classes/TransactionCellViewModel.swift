@@ -8,7 +8,7 @@ class TransactionCellViewModel: ObservableObject {
 
 	var transaction: Transaction
 
-	var isLtcSwapped: Bool
+	var isLTCValueShown: Bool
 
 	var rate: Rate
 
@@ -37,12 +37,12 @@ class TransactionCellViewModel: ObservableObject {
 	private var timer: Timer?
 
 	init(transaction: Transaction,
-	     isLtcSwapped: Bool,
+	     isLTCValueShown: Bool,
 	     rate: Rate,
 	     maxDigits: Int,
 	     isSyncing: Bool) {
 		self.transaction = transaction
-		self.isLtcSwapped = isLtcSwapped
+		self.isLTCValueShown = isLTCValueShown
 		self.rate = rate
 		self.maxDigits = maxDigits
 		self.isSyncing = isSyncing
@@ -68,9 +68,9 @@ class TransactionCellViewModel: ObservableObject {
 	}
 
 	private func loadVariables() {
-		amountText = transaction.descriptionString(isLtcSwapped: isLtcSwapped, rate: rate, maxDigits: maxDigits).string
+		amountText = transaction.descriptionString(isLTCValueShown: isLTCValueShown, rate: rate, maxDigits: maxDigits).string
 
-		feeText = transaction.amountDetails(isLtcSwapped: isLtcSwapped, rate: rate, rates: [rate], maxDigits: maxDigits)
+		feeText = transaction.amountDetails(isLTCValueShown: isLTCValueShown, rate: rate, rates: [rate], maxDigits: maxDigits)
 
 		addressText = String(format: transaction.direction.addressTextFormat, transaction.toAddress ?? "---ERROR---")
 

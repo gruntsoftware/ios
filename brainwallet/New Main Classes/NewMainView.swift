@@ -11,7 +11,7 @@ import FirebaseAnalytics
 
 let bentoCornerRadius: CGFloat = 14.0
 let balanceGameBentoHeight: CGFloat = 130.0
-let transactionsBentoHeight: CGFloat = 70.0
+let transactionsBentoHeight: CGFloat = 85.0
 let iconSize: CGFloat = 20.0
 
 enum Selection {
@@ -36,6 +36,28 @@ enum TransactionFilterState: Int, CaseIterable {
         }
     }
 
+    var icon: String {
+        switch self {
+        case .allTransactions:
+            return "smallcircle.filled.circle"
+        case .sendTransactions:
+            return "arrow.up.circle"
+        case .receiveTransactions:
+            return "arrow.down.circle"
+        }
+    }
+
+    var iconColor: Color {
+        switch self {
+        case .allTransactions:
+            return BrainwalletColor.nearBlack
+        case .sendTransactions:
+            return BrainwalletColor.chili
+        case .receiveTransactions:
+            return BrainwalletColor.affirm
+        }
+    }
+
     mutating func toggle() {
             let nextRawValue = (self.rawValue + 1) % Self.allCases.count
             self = TransactionFilterState(rawValue: nextRawValue)!
@@ -51,6 +73,14 @@ struct NewMainView: View {
     var newReceiveViewModel: NewReceiveViewModel
 
     @State
+    var cellViewModel = TransactionCellViewModel(transaction: Transaction(BRHelp().makeTransaction(),
+                                                                          walletManager: WalletManager.sharedInstance,
+                                                                          kvStore: nil, rate: nil)!,
+                                                                          isLTCValueShown: false,
+                                                                          rate: Rate(code: "", name: "", rate: 0.0, lastTimestamp: Date()),
+                                                                          maxDigits: 8, isSyncing: false)
+
+    @State
     private var userDidTapSend: Bool = false
 
     @State
@@ -58,6 +88,9 @@ struct NewMainView: View {
 
     @State
     private var userDidTapBuyReceive: Bool = false
+
+    @State
+    private var shouldShowExportOptions: Bool = false
 
     @State
     var shouldShowSettings: Bool = false
@@ -120,7 +153,9 @@ struct NewMainView: View {
                         .padding(.top, 8)
 
                         if shouldShowTransactionDetail {
-                            TransactionDetailBentoView(viewModel: newMainViewModel, userPrefersDarkTheme:  $userPrefersDarkTheme)
+                            TransactionDetailBentoView(cellViewModel: $cellViewModel,
+                                                       viewModel: newMainViewModel,
+                                                       userPrefersDarkTheme:  $userPrefersDarkTheme)
                                 .frame(maxHeight: .infinity)
                                 .padding(bentoPadding)
                                 .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 1.0 : 0.0, anchor: .top)
@@ -128,11 +163,12 @@ struct NewMainView: View {
                                 .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
 
                         }
-                        TransactionHistoryBentoView(viewModel: newMainViewModel,
+                            TransactionHistoryBentoView(
+                                cellViewModel: $cellViewModel,
+                            viewModel: newMainViewModel,
                                                     detailIsShowing: $shouldShowTransactionDetail,
                                                     userPrefersDarkTheme: $userPrefersDarkTheme)
-                            .frame(height: shouldShowTransactionDetail ? transactionsBentoHeight * 1.2 :
-                                    transactionsBentoHeight, alignment: .top)
+                            .frame(height: transactionsBentoHeight, alignment: .top)
                             .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
                             .padding(bentoPadding)
 
@@ -363,10 +399,15 @@ struct NewMainView: View {
                         .presentationDragIndicator(.visible)
                 }
                 .sheet(isPresented: $userDidTapBuyReceive) {
-
                     BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
                         .cornerRadius(bentoCornerRadius)
-                        .presentationDetents([.medium])
+                        .presentationDetents([.large])
+                        .presentationDragIndicator(.visible)
+                }
+                .sheet(isPresented: $shouldShowExportOptions) {
+                    BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
+                        .cornerRadius(bentoCornerRadius)
+                        .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
                 }
             }

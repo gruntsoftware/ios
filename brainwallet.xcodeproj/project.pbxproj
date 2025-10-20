@@ -115,7 +115,6 @@
 		24AAB31D2DE79ECC00F0C18C /* NewReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */; };
 		24AAB31F2DE79EE300F0C18C /* NewReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31E2DE79EE200F0C18C /* NewReceiveViewModel.swift */; };
 		24B0652A2DC6135900B5E000 /* WalletBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065292DC6134C00B5E000 /* WalletBalanceView.swift */; };
-		24B0652E2DC61E2F00B5E000 /* NewTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B0652D2DC61E2100B5E000 /* NewTransactionsView.swift */; };
 		24B065352DC627F000B5E000 /* NewMainHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065342DC627E500B5E000 /* NewMainHostingController.swift */; };
 		24B065372DC6281D00B5E000 /* NewMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065362DC6281D00B5E000 /* NewMainViewModel.swift */; };
 		24B065392DC6282100B5E000 /* NewMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065382DC6282100B5E000 /* NewMainView.swift */; };
@@ -733,7 +732,6 @@
 		24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveView.swift; sourceTree = "<group>"; };
 		24AAB31E2DE79EE200F0C18C /* NewReceiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveViewModel.swift; sourceTree = "<group>"; };
 		24B065292DC6134C00B5E000 /* WalletBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalanceView.swift; sourceTree = "<group>"; };
-		24B0652D2DC61E2100B5E000 /* NewTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTransactionsView.swift; sourceTree = "<group>"; };
 		24B065342DC627E500B5E000 /* NewMainHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainHostingController.swift; sourceTree = "<group>"; };
 		24B065362DC6281D00B5E000 /* NewMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainViewModel.swift; sourceTree = "<group>"; };
 		24B065382DC6282100B5E000 /* NewMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainView.swift; sourceTree = "<group>"; };
@@ -1659,7 +1657,6 @@
 		24B065262DC6130200B5E000 /* Transactions Classes */ = {
 			isa = PBXGroup;
 			children = (
-				24B0652D2DC61E2100B5E000 /* NewTransactionsView.swift */,
 				C312D2BF2D7DC27700BB97A4 /* TransactionsViewModel.swift */,
 				24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */,
 				247A7D002E9501AE000DF8C0 /* HistoryTabView.swift */,
@@ -2942,7 +2939,6 @@
 				C312D43D2D7DC27700BB97A4 /* SendCell.swift in Sources */,
 				C312D4402D7DC27700BB97A4 /* SeparatorCell.swift in Sources */,
 				C312D4412D7DC27700BB97A4 /* UIButton+BRWAdditions.swift in Sources */,
-				24B0652E2DC61E2F00B5E000 /* NewTransactionsView.swift in Sources */,
 				24BC04C12E0D7FA1007B0195 /* SettingsActionBrainwalletPhraseView.swift in Sources */,
 				24EE3F1F2DCF5A560017472B /* TopUpSetAmountView.swift in Sources */,
 				C312D4422D7DC27700BB97A4 /* WalletManager.swift in Sources */,
@@ -3084,7 +3080,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -3115,7 +3111,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
@@ -3144,7 +3140,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -3174,7 +3170,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
@@ -3327,6 +3323,7 @@
 					"${SRCROOT}/Modules/core/secp256k1",
 				);
 				INFOPLIST_PREPROCESS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SHARED_PRECOMPS_DIR = "";
 				SKIP_INSTALL = YES;
@@ -3365,6 +3362,7 @@
 					"${SRCROOT}/Modules/core/secp256k1",
 				);
 				INFOPLIST_PREPROCESS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SHARED_PRECOMPS_DIR = "";
 				SKIP_INSTALL = YES;

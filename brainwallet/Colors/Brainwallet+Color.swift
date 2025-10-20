@@ -73,3 +73,51 @@ struct BrainwalletUIColor {
     static let nearBlack = UIColor(#colorLiteral(red: 0.08235294118, green: 0.08235294118, blue: 0.08235294118, alpha: 1))
     static let lightgray = UIColor(#colorLiteral(red: 0.8352941176, green: 0.8352941176, blue: 0.8352941176, alpha: 1))
 }
+
+/// Brainwallet Bento Colors
+
+struct BentoColor {
+    /// purple1 - #C8B3EE
+    static let purple1 = Color(red: 0.7843137254901961,
+                               green: 0.7019607843137254,
+                               blue: 0.9333333333333333)
+    /// purple2 - #8669BA
+    static let purple2 = Color(red: 0.5254901960784314,
+                               green: 0.4117647058823529,
+                               blue: 0.7294117647058823)
+    /// purple3 - #121348
+    static let purple3 = Color(red: 0.07058823529411765,
+                               green: 0.07450980392156863,
+                               blue: 0.2823529411764706)
+    /// purple4 - #491FA3
+    static let purple4  = Color(red:  0.28627450980392155,
+                                green: 0.12156862745098039,
+                                blue: 0.6392156862745098)
+    /// purple5 - #5754FF
+    static let purple5  = Color(red:  0.3411764705882353,
+                                green: 0.32941176470588235,
+                                blue: 1)
+
+    /// gray1- #EAEAEA
+    static let gray1 = Color(red: 0.9176470588235294,
+                             green: 0.9176470588235294,
+                             blue: 0.9176470588235294)
+    /// gray2- #E7EAEC
+    static let gray2 = Color(red: 0.9098039215686274,
+                             green: 0.9176470588235294,
+                             blue: 0.9254901960784314)
+    /// gameBlue1 - #114CD4
+    static let gameBlue1 = Color(red: 0.06666666666666667,
+                                 green: 0.2980392156862745,
+                                 blue: 0.8313725490196079)
+
+    /// tutorialGreen1- #F2FFF3
+    static let tutorialGreen1 = Color(red: 0.9490196078431372,
+                                      green: 1.0,
+                                      blue: 0.9529411764705882)
+
+    /// tutorialGreen2- #48974E
+    static let tutorialGreen2 = Color(red: 0.2823529411764706,
+                                      green: 0.592156862745098,
+                                      blue: 0.3058823529411765)
+}

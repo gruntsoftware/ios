@@ -9,6 +9,12 @@
 import SwiftUI
 import FirebaseAnalytics
 
+enum FilterTransactionMode: Int, CaseIterable {
+    case allTransactions = 0
+    case sentTransactions = 1
+    case receivedTransactions = 2
+}
+
 class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     @Published
@@ -22,6 +28,9 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     @Published
     var userPrefersDarkMode: Bool = false
+
+    @Published
+    var isLTCValueShown: Bool = false
 
     @Published
     var tappedIndex: Int = 0
@@ -83,6 +92,12 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     var transactions: [Transaction]?
 
     @Published
+    var filteredTransactions: [Transaction] = []
+
+    @Published
+    var detailedTransaction: Transaction?
+
+    @Published
     var filteredSeedWords: [String] = [""]
 
     @Published
@@ -137,7 +152,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             .scheduledTimer(withTimeInterval: ratesPriceUpdateTimerPeriod,
                             repeats: true) { _ in
 
-                debugPrint("::: userPreferredCurrencyCode \(self.store?.state.userPreferredCurrencyCode) currentFiatValue \(self.currentFiatValue)")
                 self.networkHelper.exchangeRates({ rates, error in
                     guard let currentRate = rates.first(where: { $0.code ==
                         self.store?.state.userPreferredCurrencyCode }) else {
@@ -145,11 +159,12 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
                     }
                     if error == nil && !rates.isEmpty {
                         debugPrint("::: currentRate \(currentRate.rate.description)")
+                        self.currencyCode = "\(currentRate.code)"
+                        self.currentFiatValue = "\(currentRate.rate.description)"
                     }
 
                     self.store?.perform(action: ExchangeRates.setRate(currentRate))
                     self.userDidSetCurrencyPreference(currency: self.currentGlobalFiat)
-                    self.fetchCurrentPrice()
                     self.setBalances()
                 })
         }
@@ -165,19 +180,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         self.updateTimer = nil
     }
 
-    private func fetchCurrentPrice() {
-        guard let currentRate = store?.state.currentRate
-        else {
-            return
-        }
-
-        let fiatRate = Double(round(100000 * currentRate.rate / 100000))
-        let formattedFiatString = String(format: "%3.2f", fiatRate)
-        currencyCode = currentRate.code
-        let currencySymbol = Currency.getSymbolForCurrencyCode(code: currencyCode) ?? ""
-        currentFiatValue = String(currencySymbol+formattedFiatString + " = Ł1")
-    }
-
     private func setBalances() {
         guard let store = self.store else { return }
 
@@ -190,11 +192,8 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             walletBalanceFiat = String(format: "%@%8.2f", currentRate.currencySymbol, fiatBalanceDouble)
             walletBalanceLitecoin = String(format: "Ł%8.6f", ltcBalanceDouble)
             // Price Label
-            let fiatRate = Double(round(100000 * currentRate.rate / 100000))
-            let formattedFiatString = String(format: "%8.2f", fiatRate)
-            currencyCode = currentRate.code
-            let currencySymbol = Currency.getSymbolForCurrencyCode(code: currencyCode) ?? ""
-            currentFiatValue = String(currencySymbol + formattedFiatString)
+            let formattedFiatString = String(format: "%8.2f", currentRate.rate)
+            currentFiatValue = String(currentRate.currencySymbol + formattedFiatString)
         }
     }
 
@@ -241,7 +240,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         transactions = TransactionManager.sharedInstance.transactions
         guard let transactions = transactions else { return }
         transactionCount = transactions.count
-
+        filteredTransactions = transactions
         rate = TransactionManager.sharedInstance.rate
     }
 
@@ -261,11 +260,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             .default
             .post(name: .changedThemePreferenceNotification,
                 object: nil)
-    }
-
-    func updateNotificationSettings() {
-        let notificationsManager = NotificationManager()
-
     }
 
     func userDidSetCurrencyPreference(currency: GlobalCurrency) {
@@ -365,7 +359,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         guard let store = self.store else { return }
 
         store.lazySubscribe(self,
-                            selector: { $0.isLtcSwapped != $1.isLtcSwapped },
+                            selector: { $0.isLTCValueShown != $1.isLTCValueShown },
                             callback: { _ in
                         })
         store.lazySubscribe(self,
@@ -377,7 +371,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
                                     self?.ltcFormatter = placeholderAmount.ltcFormat
                                 }
                                 self?.exchangeRate = $0.currentRate
-                                self?.fetchCurrentPrice()
                                 self?.updateTransactions()
                             })
 

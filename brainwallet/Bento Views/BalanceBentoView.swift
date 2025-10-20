@@ -16,7 +16,7 @@ struct BalanceBentoView: View {
     @State
     private var shouldShowBalance: Bool = true
     @State
-    private var shouldSwapCurrencies: Bool = false
+    private var isLTCValueShown: Bool = false
     @Binding
     var userPrefersDarkTheme: Bool
     @State
@@ -71,28 +71,28 @@ struct BalanceBentoView: View {
                         ZStack {
                             VStack {
                                 Text(shouldShowBalance ? "\(newMainViewModel.walletBalanceLitecoin)" : "")
-                                    .font(shouldSwapCurrencies ? .system(size: 12, weight: .light, design: .default) :
+                                    .font(isLTCValueShown ? .system(size: 12, weight: .light, design: .default) :
                                             .system(size: 35, weight: .bold, design: .default))
                                     .padding(.leading, 20)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.white)
                                     .contentTransition(.identity)
-                                    .offset(y: shouldSwapCurrencies ? 45 : 0)
-                                    .zIndex(shouldSwapCurrencies ? 0 : 1)
+                                    .offset(y: isLTCValueShown ? 45 : 0)
+                                    .zIndex(isLTCValueShown ? 0 : 1)
                                 Spacer()
                             }
                             .frame(height: height * 0.7)
 
                             VStack {
                                 Text(shouldShowBalance ? "\(newMainViewModel.walletBalanceFiat)" : "")
-                                    .font( shouldSwapCurrencies ? .system(size: 35, weight: .bold, design: .default) :
+                                    .font( isLTCValueShown ? .system(size: 35, weight: .bold, design: .default) :
                                             .system(size: 12, weight: .light, design: .default))
                                     .padding(.leading, 20)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.white)
                                     .contentTransition(.identity)
-                                    .offset(y: shouldSwapCurrencies ? 0 : 45)
-                                    .zIndex(shouldSwapCurrencies ? 1 : 0)
+                                    .offset(y: isLTCValueShown ? 0 : 45)
+                                    .zIndex(isLTCValueShown ? 1 : 0)
                                 Spacer()
                             }
                             .frame(height: height * 0.7)
@@ -102,7 +102,8 @@ struct BalanceBentoView: View {
                     .onTapGesture {
                         if shouldShowBalance {
                             withAnimation(.spring(response: 0.8, dampingFraction: 0.5, blendDuration: 0.2)) {
-                                shouldSwapCurrencies.toggle()
+                                isLTCValueShown.toggle()
+                                newMainViewModel.isLTCValueShown = isLTCValueShown
                             }
                         }
                     }

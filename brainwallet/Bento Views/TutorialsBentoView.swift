@@ -51,10 +51,8 @@ struct TutorialsBentoView: View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
-            let labelBackground =  userPrefersDarkTheme ? BrainwalletColor.content.opacity(0.1) :
-            Color(red: 0.9490196078431372, green: 1.0, blue: 0.9529411764705882) // #F2FFF3
-            let labelForeground = userPrefersDarkTheme ? BrainwalletColor.content :
-            Color(red: 0.2823529411764706, green: 0.592156862745098, blue: 0.3058823529411765) // #48974E
+            let labelBackground =  userPrefersDarkTheme ? BrainwalletColor.content.opacity(0.1) : BentoColor.tutorialGreen1
+            let labelForeground = userPrefersDarkTheme ? BrainwalletColor.content : BentoColor.tutorialGreen2
 
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)

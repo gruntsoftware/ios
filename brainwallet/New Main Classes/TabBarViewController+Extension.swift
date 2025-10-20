@@ -38,8 +38,8 @@ extension TabBarViewController {
         })
 
         store.lazySubscribe(self,
-                            selector: { $0.isLtcSwapped != $1.isLtcSwapped },
-                            callback: { self.isLtcSwapped = $0.isLtcSwapped })
+                            selector: { $0.isLTCValueShown != $1.isLTCValueShown },
+                            callback: { self.isLTCValueShown = $0.isLTCValueShown })
         store.lazySubscribe(self,
                             selector: { $0.currentRate != $1.currentRate },
                             callback: {
@@ -76,7 +76,7 @@ extension TabBarViewController {
     func currencySwitchTapped() {
         view.layoutIfNeeded()
         guard let store = store else { return }
-        guard let isLTCSwapped = isLtcSwapped else { return }
+        guard let isLTCValueShown = isLTCValueShown else { return }
         guard let primaryLabel = primaryBalanceLabel,
               let secondaryLabel = secondaryBalanceLabel
         else {
@@ -87,8 +87,8 @@ extension TabBarViewController {
         UIView.spring(0.7, animations: {
             primaryLabel.transform = primaryLabel.transform.isIdentity ? self.transform(forView: primaryLabel) : .identity
             secondaryLabel.transform = secondaryLabel.transform.isIdentity ? self.transform(forView: secondaryLabel) : .identity
-            NSLayoutConstraint.deactivate(!isLTCSwapped ? self.regularConstraints : self.swappedConstraints)
-            NSLayoutConstraint.activate(!isLTCSwapped ? self.swappedConstraints : self.regularConstraints)
+            NSLayoutConstraint.deactivate(!isLTCValueShown ? self.regularConstraints : self.swappedConstraints)
+            NSLayoutConstraint.activate(!isLTCValueShown ? self.swappedConstraints : self.regularConstraints)
             self.view.layoutIfNeeded()
         }) { _ in }
         store.perform(action: CurrencyChange.toggle())

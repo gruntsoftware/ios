@@ -85,42 +85,6 @@ class EventManager {
 		pushEvent(eventName: eventName, attributes: attributes)
 	}
 
-	func up() {
-
-/// Leached user device data
-//		guard !isSubscribed else { return }
-//		defer { isSubscribed = true }
-//
-//		// slurp up app lifecycle events and save them as events
-//		for (key, value) in eventToNotifications {
-//			NotificationCenter.default.addObserver(forName: value,
-//			                                       object: nil,
-//			                                       queue: queue,
-//			                                       using: { [weak self] note in
-//			                                       	self?.saveEvent(key)
-//			                                       	if note.name == UIScene.didEnterBackgroundNotification {
-//			                                       		self?.persistToDisk()
-//			                                       	}
-//			                                       })
-//		}
-//
-//		// slurp up events sent as notifications
-//		NotificationCenter.default.addObserver(
-//			forName: EventManager.eventNotification, object: nil, queue: queue
-//		) { [weak self] note in
-//			guard let eventName = note.userInfo?[EventManager.eventNameKey] as? String
-//			else {
-//				debugPrint(":::[EventManager] received invalid userInfo dict: \(String(describing: note.userInfo))")
-//				return
-//			}
-//			if let eventAttributes = note.userInfo?[EventManager.eventAttributesKey] as? Attributes {
-//				self?.saveEvent(eventName, attributes: eventAttributes)
-//			} else {
-//				self?.saveEvent(eventName)
-//			}
-//		}
-	}
-
 	func down() {
 		guard isSubscribed else { return }
 		for (_, value) in eventToNotifications {

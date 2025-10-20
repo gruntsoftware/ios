@@ -13,6 +13,15 @@ struct TransactionDetailBentoView: View {
     @ObservedObject
     var newMainViewModel: NewMainViewModel
 
+    @Binding
+    var cellViewModel: TransactionCellViewModel
+
+    @ObservedObject
+    var exportViewModel = ExportButtonViewModel()
+
+    @State
+    var copiedData: String = ""
+
     @State
     var shouldShowSettings: Bool = false
 
@@ -31,25 +40,113 @@ struct TransactionDetailBentoView: View {
 
     private let buttonPlatformFactor: CGFloat = 2.1
 
-    init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
+    init(cellViewModel: Binding<TransactionCellViewModel>,
+         viewModel: NewMainViewModel,
+         userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
+        _cellViewModel = cellViewModel
         newMainViewModel = viewModel
     }
+
     var body: some View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
             ZStack {
-                BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
-                Text("Transaction Detail View")
-                    .font(.system(size: 16, weight: .ultraLight, design: .default))
-                    .foregroundStyle(BrainwalletColor.content)
+                BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
+                    .edgesIgnoringSafeArea(.all)
 
-            }
-            .cornerRadius(bentoCornerRadius)
-            .onAppear {
-                mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
-            }
+               VStack {
+
+                            // MARK: Amount data
+
+                            Group {
+                                VStack(alignment: .leading) {
+                                    HStack {
+                                        Text(cellViewModel.feeText)
+                                            .font(Font(UIFont.barlowRegular(size: 15.0)))
+                                            .lineLimit(3)
+                                            .scaledToFill()
+                                            .foregroundColor(BrainwalletColor.content)
+                                            .padding(.leading, 20.0)
+                                            .padding(.top, 10.0)
+
+                                        Spacer()
+                                    }
+                                    .padding(.top, 1.0)
+
+                                    Text(cellViewModel.addressText)
+                                        .font(Font(UIFont.barlowRegular(size: 15.0)))
+                                        .foregroundColor(BrainwalletColor.content)
+                                        .padding(.leading, 20.0)
+
+                                    Text(cellViewModel.transaction.hash)
+                                        .font(Font(UIFont.barlowLight(size: 9.0)))
+                                        .foregroundColor(BrainwalletColor.content)
+                                        .padding(.leading, 20.0)
+                                        .padding(.trailing, 40.0)
+
+                                    Text(String(localized: "Memo: ") + cellViewModel.memoString)
+                                        .font(Font(UIFont.barlowRegular(size: 15.0)))
+                                        .foregroundColor(BrainwalletColor.content)
+                                        .padding(.leading, 20.0)
+
+                                }
+                                .padding(.bottom, 2.0)
+
+                            }
+
+                            // MARK: Transaction data
+
+                            Group {
+
+                                VStack(alignment: .leading, spacing: 1.0) {
+
+                                    Text( String(localized: "Blockheight: ") + cellViewModel.transaction.blockHeight)
+                                        .font(Font(UIFont.barlowRegular(size: 15.0)))
+                                        .foregroundColor(BrainwalletColor.content)
+                                        .padding(.leading, 20.0)
+
+                                }
+                                .frame(height: 44)
+
+                            }
+
+                            // MARK: QR Image
+                            Group {
+                                Spacer()
+
+                                VStack(alignment: .center, spacing: 1.0) {
+                                    Image(uiImage: cellViewModel.qrImage)
+                                        .frame(width: kQRImageSide,
+                                               height: kQRImageSide,
+                                               alignment: .center)
+                                        .padding(.all, 2.0)
+                                        .tint(BrainwalletColor.content)
+
+                                    Text(cellViewModel.addressText)
+                                        .font(Font(UIFont.barlowLight(size: 13.0)))
+                                        .foregroundColor(BrainwalletColor.content)
+                                        .frame(alignment: .center).padding(.all, 2.0)
+                                }
+                                .padding(.all, 8.0)
+
+                                Spacer()
+                            }
+
+                            Spacer()
+                        }
+                VStack {
+                    Spacer()
+                    ExportButtonView(userPrefersDarkTheme: $userPrefersDarkTheme, viewModel: exportViewModel)
+                        .frame(width: width * 0.3, height: 35)
+                }
+
+                }
+                .cornerRadius(bentoCornerRadius)
+                .onAppear {
+                    mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
+                }
         }
     }
 }

@@ -1322,6 +1322,9 @@
         }
       }
     },
+    "%lld txns" : {
+
+    },
     "4-Digit PIN" : {
       "localizations" : {
         "ar" : {
@@ -3841,6 +3844,9 @@
           }
         }
       }
+    },
+    "Blockheight: " : {
+
     },
     "Brainwallet is not allowed to access the camera" : {
       "localizations" : {
@@ -10201,9 +10207,6 @@
         }
       }
     },
-    "Export" : {
-
-    },
     "Export Transaction Data" : {
 
     },
@@ -13476,6 +13479,9 @@
           }
         }
       }
+    },
+    "Memo: " : {
+
     },
     "Menu" : {
       "localizations" : {
@@ -28661,9 +28667,6 @@
           }
         }
       }
-    },
-    "Transaction Detail View" : {
-
     },
     "Transaction Details" : {
       "localizations" : {

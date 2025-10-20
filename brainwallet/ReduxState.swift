@@ -5,7 +5,7 @@ struct ReduxState {
 	let isLoginRequired: Bool
 	let rootModal: RootModal
 	let walletState: WalletState
-	let isLtcSwapped: Bool
+	let isLTCValueShown: Bool
 	let currentRate: Rate?
 	let rates: [Rate]
 	let alert: AlertType?
@@ -26,7 +26,7 @@ extension ReduxState {
 		                  isLoginRequired: true,
 		                  rootModal: .none,
 		                  walletState: WalletState.initial,
-		                  isLtcSwapped: UserDefaults.isLtcSwapped,
+		                  isLTCValueShown: UserDefaults.isLTCValueShown,
 		                  currentRate: UserDefaults.currentRate,
 		                  rates: [],
 		                  alert: nil,

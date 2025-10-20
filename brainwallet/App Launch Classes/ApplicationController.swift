@@ -230,7 +230,6 @@ class ApplicationController: Subscriber, Trackable {
 	private func startDataFetchers() {
 		initKVStoreCoordinator()
 		defaultsUpdater?.refresh()
-		walletManager?.apiClient?.events?.up()
 	}
 
 	private func addWalletCreationListener() {
