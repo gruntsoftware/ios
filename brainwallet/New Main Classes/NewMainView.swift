@@ -393,7 +393,7 @@ struct NewMainView: View {
                     userPrefersDarkTheme = newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 }
-                .onChange(of: userPrefersDarkTheme) { preference in
+                .onChange(of: userPrefersDarkTheme) { _,preference in
                     newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 }
@@ -410,9 +410,9 @@ struct NewMainView: View {
                         .presentationDragIndicator(.visible)
                 }
                 .sheet(isPresented: $shouldShowExportProducts) {
-                    WalletProductsModalView(data: newMainViewModel.transactions)
+                    WalletProductsModalView(data: newMainViewModel.transactionData)
                         .cornerRadius(bentoCornerRadius)
-                        .presentationDetents([.large])
+                        .presentationDetents([.medium])
                         .presentationDragIndicator(.visible)
                 }
             }

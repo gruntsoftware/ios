@@ -92,6 +92,9 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     var transactions: [Transaction]?
 
     @Published
+    var transactionData: [[AnyHashable: Any]] = []
+
+    @Published
     var filteredTransactions: [Transaction] = []
 
     @Published
@@ -173,10 +176,18 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         dateFormatter!.setLocalizedDateFormatFromTemplate("dd MMM hh:mm:ss a")
         setBalances()
         updateTransactions()
+
+                NotificationCenter
+                   .default
+                   .addObserver(self,
+                                selector: #selector(updateExportData),
+                                name: .transactionsDataUpdateNotification, object: nil)
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(self, name: .languageChangedNotification, object: nil)
+        NotificationCenter
+                   .default
+                   .removeObserver(self)
         self.updateTimer = nil
     }
 
@@ -215,6 +226,13 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         }
     }
 
+   @objc private func updateExportData(_ notification: Notification) {
+        if notification.name == .transactionsDataUpdateNotification,
+           let data = notification.userInfo?["transactions"] as? [[AnyHashable: Any]] {
+            transactionData = data
+        }
+    }
+
     func userWillSyncBlockchain() {
         guard let store = self.store else { return }
         store.trigger(name: .rescan)
@@ -242,6 +260,35 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         transactionCount = transactions.count
         filteredTransactions = transactions
         rate = TransactionManager.sharedInstance.rate
+
+        var dataDict: [[AnyHashable: Any]] = []
+        transactions.forEach { transaction in
+
+            let export = ExportedTransaction(blockHeight: transaction.blockHeight,
+                                             toAddress: transaction.toAddress ?? "--",
+                                             unixTimestamp: TimeInterval(transaction.timestamp),
+                                             shortTimestamp: transaction.shortTimestamp,
+                                             memoString: transaction.comment ?? "--",
+                                             txFee: Int(transaction.fee),
+                                             txHash: transaction.hash,
+                                             amount: transaction.litoshis,
+                                             direction: transaction.direction)
+
+            let exportDict = ["Transaction_direction": export.directionString,
+                              "Block_height": export.blockHeight,
+                              "LTC_Address": export.toAddress,
+                              "UNIX_Timestamp": export.unixTimestamp,
+                              "Short_Date": export.shortTimestamp,
+                              "Memo": export.memoString,
+                              "Transaction_Hash": export.txHash,
+                              "Transaction_Fees": export.txFee,
+                              "Amount": export.amount] as [AnyHashable : Any]
+            dataDict.append(exportDict)
+        }
+
+        let dataDictArray = ["transactions": dataDict]
+        transactionData = [["transactions": dataDict]]
+        NotificationCenter.default.post(name: .transactionsDataUpdateNotification, object: nil, userInfo: dataDictArray)
     }
 
     func userWantsToCreate(completion: @escaping () -> Void) {
