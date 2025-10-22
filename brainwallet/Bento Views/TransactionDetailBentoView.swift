@@ -22,8 +22,8 @@ struct TransactionDetailBentoView: View {
     @State
     var copiedData: String = ""
 
-    @State
-    var shouldShowExportProducts: Bool = false
+    @Binding
+    var shouldShowExportProducts: Bool
 
     @Binding
     var userPrefersDarkTheme: Bool
@@ -42,8 +42,10 @@ struct TransactionDetailBentoView: View {
 
     init(cellViewModel: Binding<TransactionCellViewModel>,
          viewModel: NewMainViewModel,
-         userPrefersDarkTheme: Binding<Bool>) {
+         userPrefersDarkTheme: Binding<Bool>,
+         shouldShowExportProducts: Binding <Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
+        _shouldShowExportProducts = shouldShowExportProducts
         _cellViewModel = cellViewModel
         newMainViewModel = viewModel
     }
@@ -173,7 +175,7 @@ struct TransactionDetailBentoView: View {
 
                                 VStack {
                                     Text("Export Transaction Data")
-                                        .font(.system(size: 20, weight: .bold, design: .default))
+                                        .font(.system(size: 18, weight: .semibold, design: .default))
                                         .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
                                 }
                             }

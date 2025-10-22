@@ -8,6 +8,7 @@
 
 import SwiftUI
 import FirebaseAnalytics
+import BrainwalletiOSPrivateGeneralPurpose
 
 let bentoCornerRadius: CGFloat = 14.0
 let balanceGameBentoHeight: CGFloat = 130.0
@@ -87,6 +88,9 @@ struct NewMainView: View {
     private var shouldShowTransactionDetail: Bool = false
 
     @State
+    private var shouldShowExportProducts: Bool = false
+
+    @State
     private var userDidTapBuyReceive: Bool = false
 
     @State
@@ -155,7 +159,8 @@ struct NewMainView: View {
                         if shouldShowTransactionDetail {
                             TransactionDetailBentoView(cellViewModel: $cellViewModel,
                                                        viewModel: newMainViewModel,
-                                                       userPrefersDarkTheme:  $userPrefersDarkTheme)
+                                                       userPrefersDarkTheme:  $userPrefersDarkTheme,
+                                                       shouldShowExportProducts: $shouldShowExportProducts)
                                 .frame(maxHeight: .infinity)
                                 .padding(bentoPadding)
                                 .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 1.0 : 0.0, anchor: .top)
@@ -404,8 +409,8 @@ struct NewMainView: View {
                         .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
                 }
-                .sheet(isPresented: $shouldShowExportOptions) {
-                    BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
+                .sheet(isPresented: $shouldShowExportProducts) {
+                    WalletProductsModalView(data: newMainViewModel.transactions)
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.large])
                         .presentationDragIndicator(.visible)

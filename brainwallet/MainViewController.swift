@@ -2,7 +2,7 @@ import BRCore
 import MachO
 import SwiftUI
 import UIKit
-import BrainwalletiOSPrivateGeneralPurpose
+// import BrainwalletiOSPrivateGeneralPurpose
 import StoreKit
 
 class MainViewController: UIViewController, Subscriber, LoginViewControllerDelegate {
