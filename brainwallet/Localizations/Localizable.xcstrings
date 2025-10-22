@@ -1731,6 +1731,9 @@
         }
       }
     },
+    "Address: " : {
+
+    },
     "Addresses Copied" : {
       "localizations" : {
         "ar" : {
@@ -2114,6 +2117,9 @@
           }
         }
       }
+    },
+    "Amount detail: " : {
+
     },
     "App Version:" : {
       "localizations" : {
@@ -28797,6 +28803,9 @@
           }
         }
       }
+    },
+    "Transaction Hash: " : {
+
     },
     "Transaction Rejected" : {
       "localizations" : {
