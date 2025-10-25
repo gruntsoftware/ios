@@ -5,7 +5,7 @@ import UserNotifications
 
 private let lastBlockHeightKey = "LastBlockHeightKey"
 private let progressUpdateInterval: TimeInterval = 0.5
-private let updateDebounceInterval: TimeInterval = 0.4
+private let updateDebounceInterval: TimeInterval = 1.0
 
 class WalletCoordinator: Subscriber, Trackable {
 	var kvStore: BRReplicatedKVStore? {
@@ -29,6 +29,7 @@ class WalletCoordinator: Subscriber, Trackable {
 		addWalletObservers()
 		addSubscriptions()
 		updateBalance()
+        updateTransactions()
 		reachability.didChange = { [weak self] isReachable in
 			self?.reachabilityDidChange(isReachable: isReachable)
 		}
@@ -52,6 +53,7 @@ class WalletCoordinator: Subscriber, Trackable {
 			}
 		}
 		updateBalance()
+
 	}
 
 	private func onSyncStart() {
@@ -122,7 +124,8 @@ class WalletCoordinator: Subscriber, Trackable {
 		updateTimer?.invalidate()
 		updateTimer = nil
 
-		Task {
+        Task(priority: .userInitiated) {
+
 			do {
                 let walletManager = self.walletManager
                 guard let currentRate = self.store.state.currentRate,
@@ -193,6 +196,7 @@ class WalletCoordinator: Subscriber, Trackable {
 
 		NotificationCenter.default.addObserver(forName: .walletSyncStartedNotification, object: nil, queue: nil, using: { _ in
 			myself?.onSyncStart()
+            myself?.updateTransactions()
 		})
 
 		NotificationCenter.default.addObserver(forName: .walletSyncStoppedNotification, object: nil, queue: nil, using: { note in
@@ -231,8 +235,8 @@ class WalletCoordinator: Subscriber, Trackable {
 	private func showReceived(amount: UInt64) {
 		if let rate = store.state.currentRate {
 			let amount = Amount(amount: amount, rate: rate, maxDigits: store.state.maxDigits)
-			let primary = store.state.isLtcSwapped ? amount.localCurrency : amount.bits
-			let secondary = store.state.isLtcSwapped ? amount.bits : amount.localCurrency
+			let primary = store.state.isLTCValueShown ? amount.localCurrency : amount.bits
+			let secondary = store.state.isLTCValueShown ? amount.bits : amount.localCurrency
 			let message = String(format: "S.TransactionDetails.received" , "\(primary) (\(secondary))")
 			store.trigger(name: .lightWeightAlert(message))
 			showLocalNotification(message: message)

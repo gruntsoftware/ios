@@ -357,7 +357,7 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 				else {
 					let minOutputAmount = Amount(amount: minOutput, rate: Rate.empty, maxDigits: store.state.maxDigits)
 					let message = String(format: "Litecoin payments can't be less than %1$@" ,
-					                     minOutputAmount.string(isLtcSwapped: store.state.isLtcSwapped))
+					                     minOutputAmount.string(isLTCValueShown: store.state.isLTCValueShown))
 					return showAlert(title: "Error" ,
 					                 message: message,
 					                 buttonLabel: "Ok" )

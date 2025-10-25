@@ -1,5 +1,6 @@
 import BRCore
 import UIKit
+import SwiftUI
 
 // Ideally this would be a struct, but it needs to be a class to allow
 // for lazy variables
@@ -9,7 +10,7 @@ struct TransactionStatusTuple {
 	var units: Int
 }
 
-class Transaction {
+class Transaction : Hashable, Identifiable {
 	// MARK: - Public
 
 	private let opsAddressSet: Set<String> = Partner.walletOpsSet()
@@ -76,13 +77,13 @@ class Transaction {
 		}
 	}
 
-	func amountDescription(isLtcSwapped: Bool, rate: Rate, maxDigits: Int) -> String {
+	func amountDescription(isLTCValueShown: Bool, rate: Rate, maxDigits: Int) -> String {
 		let amount = Amount(amount: satoshis, rate: rate, maxDigits: maxDigits)
-		return isLtcSwapped ? amount.localCurrency : amount.bits
+		return isLTCValueShown ? amount.localCurrency : amount.bits
 	}
 
-	func descriptionString(isLtcSwapped: Bool, rate: Rate, maxDigits: Int) -> NSAttributedString {
-		let amount = Amount(amount: satoshis, rate: rate, maxDigits: maxDigits).string(isLtcSwapped: isLtcSwapped)
+	func descriptionString(isLTCValueShown: Bool, rate: Rate, maxDigits: Int) -> NSAttributedString {
+		let amount = Amount(amount: satoshis, rate: rate, maxDigits: maxDigits).string(isLTCValueShown: isLTCValueShown)
 		let format = direction.amountDescriptionFormat
 		let string = String(format: format, amount)
 		return string.attributedStringForTags
@@ -93,12 +94,12 @@ class Transaction {
 		return String(format: direction.addressTextFormat, address ?? "account" )
 	}
 
-	func amountDetails(isLtcSwapped: Bool, rate: Rate, rates: [Rate], maxDigits: Int) -> String {
+	func amountDetails(isLTCValueShown: Bool, rate: Rate, rates: [Rate], maxDigits: Int) -> String {
 		let feeAmount = Amount(amount: fee, rate: rate, maxDigits: maxDigits)
-		let feeString = direction == .sent ? String(format: "Fee" , "\(feeAmount.string(isLtcSwapped: isLtcSwapped))") : ""
-		let amountString = "\(direction.sign)\(Amount(amount: satoshis, rate: rate, maxDigits: maxDigits).string(isLtcSwapped: isLtcSwapped)) \(feeString)"
-		var startingString = String(format:"Starting balance: %1$@", "\(Amount(amount: startingBalance, rate: rate, maxDigits: maxDigits).string(isLtcSwapped: isLtcSwapped))")
-		var endingString = String(format: String(format: "Ending balance: %1$@", "\(Amount(amount: balanceAfter, rate: rate, maxDigits: maxDigits).string(isLtcSwapped: isLtcSwapped))"))
+		let feeString = direction == .sent ? String(format: "Fee" , "\(feeAmount.string(isLTCValueShown: isLTCValueShown))") : ""
+		let amountString = "\(direction.sign)\(Amount(amount: satoshis, rate: rate, maxDigits: maxDigits).string(isLTCValueShown: isLTCValueShown)) \(feeString)"
+		var startingString = String(format:"Starting balance: %1$@", "\(Amount(amount: startingBalance, rate: rate, maxDigits: maxDigits).string(isLTCValueShown: isLTCValueShown))")
+		var endingString = String(format: String(format: "Ending balance: %1$@", "\(Amount(amount: balanceAfter, rate: rate, maxDigits: maxDigits).string(isLTCValueShown: isLTCValueShown))"))
 
 		if startingBalance > C.maxMoney {
 			startingString = ""
@@ -122,21 +123,21 @@ class Transaction {
 		return "\(amountString)\n\(startingString)\n\(endingString)\n\(exchangeRateInfo)"
 	}
 
-	func amountDetailsAmountString(isLtcSwapped: Bool, rate: Rate, rates _: [Rate], maxDigits: Int) -> String {
+	func amountDetailsAmountString(isLTCValueShown: Bool, rate: Rate, rates _: [Rate], maxDigits: Int) -> String {
 		let feeAmount = Amount(amount: fee, rate: rate, maxDigits: maxDigits)
-		let feeString = direction == .sent ? String(format: "fee" , "\(feeAmount.string(isLtcSwapped: isLtcSwapped))") : ""
-		return "\(direction.sign)\(Amount(amount: satoshis, rate: rate, maxDigits: maxDigits).string(isLtcSwapped: isLtcSwapped)) \(feeString)"
+		let feeString = direction == .sent ? String(format: "fee" , "\(feeAmount.string(isLTCValueShown: isLTCValueShown))") : ""
+		return "\(direction.sign)\(Amount(amount: satoshis, rate: rate, maxDigits: maxDigits).string(isLTCValueShown: isLTCValueShown)) \(feeString)"
 	}
 
-	func amountDetailsStartingBalanceString(isLtcSwapped: Bool, rate: Rate, rates _: [Rate], maxDigits: Int) -> String {
-		return String(format: "Starting balance: %1$@" , "\(Amount(amount: startingBalance, rate: rate, maxDigits: maxDigits).string(isLtcSwapped: isLtcSwapped))")
+	func amountDetailsStartingBalanceString(isLTCValueShown: Bool, rate: Rate, rates _: [Rate], maxDigits: Int) -> String {
+		return String(format: "Starting balance: %1$@" , "\(Amount(amount: startingBalance, rate: rate, maxDigits: maxDigits).string(isLTCValueShown: isLTCValueShown))")
 	}
 
-	func amountDetailsEndingBalanceString(isLtcSwapped: Bool, rate: Rate, rates _: [Rate], maxDigits: Int) -> String {
-		return String(format: String(format: "Ending balance: %1$@" , "\(Amount(amount: balanceAfter, rate: rate, maxDigits: maxDigits).string(isLtcSwapped: isLtcSwapped))"))
+	func amountDetailsEndingBalanceString(isLTCValueShown: Bool, rate: Rate, rates _: [Rate], maxDigits: Int) -> String {
+		return String(format: String(format: "Ending balance: %1$@" , "\(Amount(amount: balanceAfter, rate: rate, maxDigits: maxDigits).string(isLTCValueShown: isLTCValueShown))"))
 	}
 
-	func amountExchangeString(isLtcSwapped _: Bool, rate _: Rate, rates: [Rate], maxDigits _: Int) -> String {
+	func amountExchangeString(isLTCValueShown _: Bool, rate _: Rate, rates: [Rate], maxDigits _: Int) -> String {
 		var exchangeRateInfo = ""
 		if let metaData = metaData, let currentRate = rates.filter({ $0.code.lowercased() == metaData.exchangeRateCurrency.lowercased() }).first {
 			let difference = (currentRate.rate - metaData.exchangeRate) / metaData.exchangeRate * 100.0
@@ -160,6 +161,7 @@ class Transaction {
 	let hash: String
 	let isValid: Bool
 	let blockHeight: String
+    let id = UUID()
 	private let confirms: Int
 	private let metaDataKey: String
 
@@ -367,6 +369,14 @@ class Transaction {
 	var shouldDisplayAvailableToSpend: Bool {
 		return confirms > 1 && confirms < 6 && direction == .received
 	}
+
+    static func == (lhside: brainwallet.Transaction, rhside: brainwallet.Transaction) -> Bool {
+        return lhside.hash == rhside.hash && lhside.status == rhside.status && lhside.comment == rhside.comment && lhside.hasKvStore == rhside.hasKvStore
+    }
+
+    func hash(into hasher: inout Hasher) {
+            hasher.combine(hash)
+    }
 }
 
 private extension String {
@@ -413,10 +423,4 @@ private func makeStatus(_ txRef: BRTxRef, wallet: BRWallet, peerManager: BRPeerM
 	} else {
 		return String(localized: "Complete", bundle: .main)
 	}
-}
-
-extension Transaction: Equatable {}
-
-func == (lhs: Transaction, rhs: Transaction) -> Bool {
-	return lhs.hash == rhs.hash && lhs.status == rhs.status && lhs.comment == rhs.comment && lhs.hasKvStore == rhs.hasKvStore
 }

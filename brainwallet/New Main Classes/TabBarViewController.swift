@@ -41,7 +41,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		didSet { setBalances() }
 	}
 
-	var isLtcSwapped: Bool? {
+	var isLTCValueShown: Bool? {
 		didSet { setBalances() }
 	}
 
@@ -106,7 +106,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 	private func setupModels() {
 		guard let store = store else { return }
 
-		isLtcSwapped = store.state.isLtcSwapped
+		isLTCValueShown = store.state.isLTCValueShown
 
 		if let rate = store.state.currentRate {
 			exchangeRate = rate
@@ -212,8 +212,8 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 			primaryLabel.leadingAnchor.constraint(equalTo: equalsLabel.trailingAnchor, constant: C.padding[1] / 2.0)
 		]
 
-		if let isLTCSwapped = isLtcSwapped {
-			NSLayoutConstraint.activate(isLTCSwapped ? swappedConstraints : regularConstraints)
+		if let isLTCValueShown = isLTCValueShown {
+			NSLayoutConstraint.activate(isLTCValueShown ? swappedConstraints : regularConstraints)
 		}
 
 		currencyTapView.constrain([
@@ -229,7 +229,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 	/// This is called when the price changes
     func setBalances() {
-		guard let rate = exchangeRate, let store = store, let isLTCSwapped = isLtcSwapped
+		guard let rate = exchangeRate, let store = store, let isLTCValueShown = isLTCValueShown
 		else {
 			NSLog("ERROR: Rate, Store not initialized")
 			return
@@ -245,11 +245,11 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 		if !hasInitialized {
 			let amount = Amount(amount: balance, rate: exchangeRate!, maxDigits: store.state.maxDigits)
-			NSLayoutConstraint.deactivate(isLTCSwapped ? regularConstraints : swappedConstraints)
-			NSLayoutConstraint.activate(isLTCSwapped ? swappedConstraints : regularConstraints)
+			NSLayoutConstraint.deactivate(isLTCValueShown ? regularConstraints : swappedConstraints)
+			NSLayoutConstraint.activate(isLTCValueShown ? swappedConstraints : regularConstraints)
 			primaryLabel.setValue(amount.amountForLtcFormat)
 			secondaryLabel.setValue(amount.localAmount)
-			if isLTCSwapped {
+			if isLTCValueShown {
 				primaryLabel.transform = transform(forView: primaryLabel)
 			} else {
 				secondaryLabel.transform = transform(forView: secondaryLabel)
@@ -268,7 +268,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 		primaryLabel.setValue(amount.amountForLtcFormat)
 		secondaryLabel.setValue(amount.localAmount)
 
-		if !isLTCSwapped {
+		if !isLTCValueShown {
 			primaryLabel.transform = .identity
 			secondaryLabel.transform = transform(forView: secondaryLabel)
 		} else {
@@ -332,7 +332,7 @@ class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDel
 
 			transactionVC.store = store
 			transactionVC.walletManager = walletManager
-			transactionVC.isLtcSwapped = store?.state.isLtcSwapped
+			transactionVC.isLTCValueShown = store?.state.isLTCValueShown
 
         case "brainwallet.SendLTCViewController":
 			guard let sendVC = contentController as? SendLTCViewController

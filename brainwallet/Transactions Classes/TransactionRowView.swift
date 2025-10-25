@@ -10,48 +10,96 @@ import SwiftUI
 
 struct TransactionRowView: View {
 
-    @State
-    private var isReceived: Bool = false
+    @ObservedObject
+    var newMainViewModel: NewMainViewModel
 
     @State
     private var filterMode: FilterTransactionMode = .allTransactions
 
+    @Binding
+    var userPrefersDarkTheme: Bool
+
     @State
-    private var modeState = 0
+    private var amountLabel = ""
 
-    let transaction: Transaction
+    @State
+    private var isLTCValueShown = false
 
-    init(transaction: Transaction) {
-        self.transaction = transaction
-        isReceived = (transaction.direction == .received) ? true : false
+    @Binding
+    var transaction: Transaction
+
+    init(userPrefersDarkTheme: Binding<Bool>, transaction: Binding<Transaction>, newMainViewModel: NewMainViewModel) {
+        self.newMainViewModel = newMainViewModel
+        _transaction = transaction
+        _userPrefersDarkTheme = userPrefersDarkTheme
     }
 
     var body: some View {
-        GeometryReader { _ in
-
+        GeometryReader { geometry in
+            let height = geometry.size.height
             ZStack {
-                BrainwalletColor.affirm.edgesIgnoringSafeArea(.all)
-                HStack {
-                    VStack {
-                        Image(systemName: isReceived ? "arrow.up.circlepath" : "arrow.down.circlepath")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .padding()
+                BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
+
+//                BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
+//                VStack {
+//                    Text(newMainViewModel.currencyCode + "/LTC")
+//                        .font(.system(size: 30, weight: .semibold, design: .default))
+//                        .lineLimit(1)
+//                        .minimumScaleFactor(0.3)// Shrinks to 30% of original
+//                        .padding([.leading,.top], 10)
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                        .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
+//
+//                
+//                
+//                
+
+                VStack {
+                    HStack {
+                        Text(transaction.longTimestamp)
+                            .font(.system(size: 18, weight: .regular, design: .default))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.2)// Shrinks to 20% of original
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
+                            .padding(.leading, 8)
+
+                        Spacer()
+                        Text(amountLabel)
+                            .font(.system(size: 18, weight: .semibold, design: .default))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.2)// Shrinks to 20% of original
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .foregroundColor(transaction.direction == .sent ? BrainwalletColor.chili : BrainwalletColor.affirm)
+                            .padding(.trailing, 8)
                     }
-                    VStack {
-                        Text(String(format: transaction.direction.addressTextFormat, transaction.toAddress ?? "---ERROR---"))
-                            .font(.title2)
-                            .foregroundColor(BrainwalletColor.content)
+                    .frame(alignment: .topLeading)
+                    .padding(.top, 8)
+                    HStack {
+                        Spacer()
+                        Text(transaction.detailsAddressText)
+                            .font(.system(size: 15, weight: .ultraLight, design: .default))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.4)// Shrinks to 40% of original
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
+                            .padding(.trailing, 8)
                     }
-                    VStack {}
+                    .frame(alignment: .topTrailing)
+                    .padding(.bottom, 8)
                 }
             }
         }
+        .onChange(of: newMainViewModel.isLTCValueShown, { _, _ in
+            isLTCValueShown = newMainViewModel.isLTCValueShown
+        })
+        .onAppear {
+            if let currentRate = newMainViewModel.store?.state.currentRate,
+               let maxDigits = newMainViewModel.store?.state.maxDigits {
+                let sense = transaction.direction == .sent ? "-" : "+"
+                isLTCValueShown = newMainViewModel.isLTCValueShown
+                amountLabel = "\(sense) " + transaction.amountDescription(isLTCValueShown: isLTCValueShown, rate: currentRate, maxDigits: maxDigits)
+            }
+        }
     }
-
 }
-// amountText = transaction.descriptionString(isLtcSwapped: isLtcSwapped, rate: rate, maxDigits: maxDigits).string
-//
-// feeText = transaction.amountDetails(isLtcSwapped: isLtcSwapped, rate: rate, rates: [rate], maxDigits: maxDigits)
-//
-// addressText = String(format: transaction.direction.addressTextFormat, transaction.toAddress ?? "---ERROR---")

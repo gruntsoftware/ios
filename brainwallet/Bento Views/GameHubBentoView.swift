@@ -13,32 +13,84 @@ struct GameHubBentoView: View {
     @ObservedObject
     var newMainViewModel: NewMainViewModel
 
-    @State
-    var shouldShowSettings: Bool = false
+    @Binding
+    var userPrefersDarkTheme: Bool
 
     @State
-    var filterMode: TransactionFilterState = .allTransactions
-
-    private var modeState = TransactionFilterState.allCases
+    private var mainGradientStyle: MainGradientStyle = .lightStyle
 
     private let buttonSize: CGFloat = 20.0
 
     private let buttonPlatformFactor: CGFloat = 2.1
 
-    init(viewModel: NewMainViewModel) {
+    init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
+        _userPrefersDarkTheme = userPrefersDarkTheme
         newMainViewModel = viewModel
     }
     var body: some View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
+            let labelBackground = Color.white.opacity(0.1)
+            let labelForeground = Color.white
+
             ZStack {
-                BrainwalletColor.gray.edgesIgnoringSafeArea(.all)
-                Text("Game Hub Bento View")
-                    .font(.system(size: 16, weight: .ultraLight, design: .default))
+                BalanceGameBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
+                    .edgesIgnoringSafeArea(.all)
+
+                VStack(alignment: .center) {
+                    HStack {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 8)
+                                .frame(width: width * 0.25, height: 24, alignment: .center)
+                                .foregroundColor(labelBackground)
+                                .padding(8)
+                            Text("GAME HUB")
+                                .font(.system(size: 12, weight: .light, design: .default))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)// Shrinks to 50% of original
+                                .padding([.leading, .trailing], 4)
+                                .frame(maxWidth: width * 0.25, maxHeight: 24, alignment: .center)
+                                .foregroundColor(labelForeground)
+                        }
+                        Spacer()
+                    }
+                    Spacer()
+                }
+
+                VStack(alignment: .center) {
+                    HStack {
+
+                        Button(action: {
+                            ///
+                        }) {
+                            VStack {
+                                Text("FALLINMOJI")
+                                    .font(Font.custom("BoldenVan", size: 100))
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.5)// Shrinks to 50% of original
+                                    .padding([.leading, .trailing], 10)
+                                    .frame(maxWidth: width, maxHeight: 24, alignment: .center)
+                                    .foregroundStyle(
+                                        LinearGradient(
+                                            colors: [.white,.white, BentoColor.gameBlue1.opacity(0.9)],
+                                            startPoint: .top,
+                                            endPoint: .bottom
+                                        )
+                                    )
+                            }
+                            .padding(.top, 20)
+                        }
+                        .accessibilityIdentifier("enterGamesModeButton")
+
+                    }
+                }
             }
             .cornerRadius(bentoCornerRadius)
             .frame(height: balanceGameBentoHeight, alignment: .center)
+            .onAppear {
+                mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
+            }
         }
     }
 }

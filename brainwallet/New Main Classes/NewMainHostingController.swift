@@ -22,6 +22,7 @@ class NewMainHostingController: UIHostingController<NewMainView> {
         self.store = store
         self.walletManager = walletManager
         /// Migrate CanUserBuy when ready
+        ///
         let receiveViewModel = NewReceiveViewModel(store: store, walletManager: walletManager, canUserBuy: false)
         mainViewModel = NewMainViewModel(store: store, walletManager: walletManager)
         self.newMainView = NewMainView(viewModel: mainViewModel, receiveViewModel: receiveViewModel)

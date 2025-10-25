@@ -7,7 +7,7 @@ let kNormalTransactionCellHeight: CGFloat = 65.0
 let kProgressHeaderHeight: CGFloat = 75.0
 let kDormantHeaderHeight: CGFloat = 1.0
 let kPromptCellHeight: CGFloat = 120.0
-let kQRImageSide: CGFloat = 110.0
+let kQRImageSide: CGFloat = 100.0
 let kFiveYears: Double = 157_680_000.0
 let kTodaysEpochTime: TimeInterval = Date().timeIntervalSince1970
 
@@ -104,7 +104,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		}
 	}
 
-	var isLtcSwapped: Bool? {
+	var isLTCValueShown: Bool? {
 		didSet { reload() }
 	}
 
@@ -299,15 +299,15 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 			if let rate = rate,
 			   let store = store,
-			   let isLtcSwapped = isLtcSwapped {
+			   let isLTCValueShown = isLTCValueShown {
 				let viewModel = TransactionCellViewModel(transaction: transaction,
-                    isLtcSwapped: isLtcSwapped, rate: rate,
+                    isLTCValueShown: isLTCValueShown, rate: rate,
                     maxDigits: store.state.maxDigits,
                     isSyncing: store.state.walletState.syncState != .success)
 				cell.set(rootView: TransactionCellView(viewModel: viewModel), parentController: self)
 				cell.selectionStyle = .default
 			} else {
-                debugPrint("::: ERROR Rate, Store, isLtcSwapped not set")
+                debugPrint("::: ERROR Rate, Store, isLTCValueShown not set")
             }
 
 			return cell
@@ -320,8 +320,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 			if let rate = rate,
 			   let store = store,
-			   let isLtcSwapped = isLtcSwapped {
-				let viewModel = TransactionCellViewModel(transaction: transaction, isLtcSwapped: isLtcSwapped, rate: rate, maxDigits: store.state.maxDigits, isSyncing: store.state.walletState.syncState != .success)
+			   let isLTCValueShown = isLTCValueShown {
+				let viewModel = TransactionCellViewModel(transaction: transaction, isLTCValueShown: isLTCValueShown, rate: rate, maxDigits: store.state.maxDigits, isSyncing: store.state.walletState.syncState != .success)
 
 				let hostingController = UIHostingController(rootView: TransactionModalView(viewModel: viewModel))
 
@@ -468,10 +468,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		                	self.reload()
 		                })
 
-		// MARK: - Wallet State: isLTCSwapped
+		// MARK: - Wallet State: isLTCValueShown
 
-		store.subscribe(self, selector: { $0.isLtcSwapped != $1.isLtcSwapped },
-		                callback: { self.isLtcSwapped = $0.isLtcSwapped })
+		store.subscribe(self, selector: { $0.isLTCValueShown != $1.isLTCValueShown },
+		                callback: { self.isLTCValueShown = $0.isLTCValueShown })
 
 		// MARK: - Wallet State:  CurrentRate
 

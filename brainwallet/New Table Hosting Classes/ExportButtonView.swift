@@ -15,12 +15,16 @@ struct ExportButtonView: View {
     var viewModel: ExportButtonViewModel
 
     @State
-    private var shouldExpand: Bool = false
+    private var shouldShowProducts: Bool = false
+
+    @Binding
+    var userPrefersDarkTheme: Bool
 
     @State
     private var didBuy: Bool = false
-    init(viewModel: ExportButtonViewModel) {
+    init(userPrefersDarkTheme: Binding<Bool>, viewModel: ExportButtonViewModel) {
         self.viewModel = viewModel
+        _userPrefersDarkTheme = userPrefersDarkTheme
     }
 
     var body: some View {
@@ -30,45 +34,23 @@ struct ExportButtonView: View {
             let width = geometry.size.width
             let height = geometry.size.height
 
-            VStack {
-
-                if shouldExpand {
-                    Divider()
-                        .frame(height: 2.0)
-                        .background(BrainwalletColor.content)
-                    WalletProductsModalView(data: viewModel.transactions)
-                }
-                Spacer()
+            ZStack {
+                BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
 
                 HStack {
-                    Spacer()
-
                     Button(action: {
-                        viewModel.didTapExport?()
-                        shouldExpand.toggle()
+                        // viewModel.didTapExport?()
+                        shouldShowProducts.toggle()
                     }) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: buttonHeight/2)
-                                .frame(width: width * 0.55, height: buttonHeight, alignment: .center)
-                                .foregroundColor(BrainwalletColor.surface)
-                                .shadow(color: BrainwalletColor.nearBlack.opacity(0.35),
-                                        radius: 3.0, x: 4.0, y: 4.0)
-                            Text("Export Transaction Data")
-                                .frame(width: width * 0.55, height: buttonHeight, alignment: .center)
-                                .font(Font(UIFont.barlowRegular(size: 15.0)))
-                                .foregroundColor(BrainwalletColor.content)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: buttonHeight/2)
-                                        .stroke(BrainwalletColor.content, lineWidth: 2.0)
-                                )
-                        }
+                        Text("Export Transaction Data")
+                            .font(.system(size: 22, weight: .semibold, design: .default))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.3)// Shrinks to 30% of original
+                            .foregroundColor(userPrefersDarkTheme ? .purple: .green)
                     }
-
-                    Spacer()
                 }
-                .padding(.bottom, 5.0)
-
             }
         }
+        .cornerRadius(bentoCornerRadius)
     }
 }
