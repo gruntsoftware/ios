@@ -7,7 +7,7 @@ let kNormalTransactionCellHeight: CGFloat = 65.0
 let kProgressHeaderHeight: CGFloat = 75.0
 let kDormantHeaderHeight: CGFloat = 1.0
 let kPromptCellHeight: CGFloat = 120.0
-let kQRImageSide: CGFloat = 90.0
+let kQRImageSide: CGFloat = 100.0
 let kFiveYears: Double = 157_680_000.0
 let kTodaysEpochTime: TimeInterval = Date().timeIntervalSince1970
 
