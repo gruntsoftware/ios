@@ -83,6 +83,9 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     var shouldShowSettings = false
 
     @Published
+    var shouldBeSyncing: Bool = false
+
+    @Published
     var walletBalanceFiat = ""
 
     @Published
@@ -119,6 +122,16 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             return 20.0
         #endif
     }()
+
+    private var currentPromptType: PromptType? {
+        didSet {
+            if currentPromptType != nil, oldValue == nil {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                }
+            }
+        }
+    }
 
     private var balance: UInt64 = 0 {
         didSet { setBalances() }
@@ -295,6 +308,17 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         return true
     }
 
+    @objc
+    private func userTappedPromptContinue() {
+        /// do continue
+         if let store = self.store,
+            let trigger = self.currentPromptType?.trigger {
+                store.trigger(name: trigger)
+            }
+
+        self.currentPromptType = nil
+    }
+
     func generateNewWallet() {
         guard let store = store,
             let walletManager = self.walletManager,
@@ -354,46 +378,208 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         return draggableSeedPhrase
     }
 
+    private func attemptShowPrompt() {
+        guard let walletManager = walletManager,
+        let store = store else {
+            NSLog("::: ERROR: WalletManager or Store not initialized")
+            return
+        }
+
+        let types = PromptType.defaultOrder
+        if let type = types.first(where: { $0.shouldPrompt(walletManager: walletManager, state: store.state) }) {
+            saveEvent("prompt.\(type.name).displayed")
+            currentPromptType = type
+            if type == .biometrics {
+                UserDefaults.hasPromptedBiometrics = true
+            }
+            if type == .shareData {
+                UserDefaults.hasPromptedShareData = true
+            }
+        } else {
+            currentPromptType = nil
+        }
+    }
+
+//    private func addSubscriptions() {
+//
+//        guard let store = self.store else { return }
+//
+//        store.lazySubscribe(self,
+//                            selector: { $0.isLTCValueShown != $1.isLTCValueShown },
+//                            callback: { _ in
+//                        })
+//        store.lazySubscribe(self,
+//                            selector: { $0.currentRate != $1.currentRate },
+//                            callback: { [weak self] in
+//                                if let rate = $0.currentRate {
+//                                    let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
+//                                    self?.localFormatter = placeholderAmount.localFormat
+//                                    self?.ltcFormatter = placeholderAmount.ltcFormat
+//                                }
+//                                self?.exchangeRate = $0.currentRate
+//                                self?.updateTransactions()
+//                            })
+//
+//        store.lazySubscribe(self,
+//                            selector: { $0.maxDigits != $1.maxDigits },
+//                            callback: {
+//                                if let rate = $0.currentRate {
+//                                    let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
+//                                    self.localFormatter = placeholderAmount.localFormat
+//                                    self.ltcFormatter = placeholderAmount.ltcFormat
+//                                    self.setBalances()
+//                                }
+//                            })
+//
+//        store.subscribe(self,
+//                        selector: { $0.walletState.balance != $1.walletState.balance },
+//                        callback: { state in
+//                            if let balance = state.walletState.balance {
+//                                self.balance = balance
+//                                self.setBalances()
+//                            }
+//                        })
+//
+//    }
+
+    // MARK: - Subscription Methods
+
     private func addSubscriptions() {
+        guard let store = store
+        else {
+            NSLog("::: ERROR: Store not initialized")
+            return
+        }
 
-        guard let store = self.store else { return }
+        // MARK: - Wallet State: Transactions
 
-        store.lazySubscribe(self,
-                            selector: { $0.isLTCValueShown != $1.isLTCValueShown },
-                            callback: { _ in
-                        })
-        store.lazySubscribe(self,
-                            selector: { $0.currentRate != $1.currentRate },
-                            callback: { [weak self] in
-                                if let rate = $0.currentRate {
-                                    let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
-                                    self?.localFormatter = placeholderAmount.localFormat
-                                    self?.ltcFormatter = placeholderAmount.ltcFormat
-                                }
-                                self?.exchangeRate = $0.currentRate
-                                self?.updateTransactions()
-                            })
-
-        store.lazySubscribe(self,
-                            selector: { $0.maxDigits != $1.maxDigits },
-                            callback: {
-                                if let rate = $0.currentRate {
-                                    let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
-                                    self.localFormatter = placeholderAmount.localFormat
-                                    self.ltcFormatter = placeholderAmount.ltcFormat
-                                    self.setBalances()
-                                }
-                            })
-
-        store.subscribe(self,
-                        selector: { $0.walletState.balance != $1.walletState.balance },
+        store.subscribe(self, selector: { $0.walletState.transactions != $1.walletState.transactions },
                         callback: { state in
-                            if let balance = state.walletState.balance {
-                                self.balance = balance
-                                self.setBalances()
+                            self.transactions = state.walletState.transactions
+                        })
+
+        // MARK: - Wallet State: isLTCValueShown
+
+        store.subscribe(self, selector: { $0.isLTCValueShown != $1.isLTCValueShown },
+                        callback: { self.isLTCValueShown = $0.isLTCValueShown })
+
+        // MARK: - Wallet State:  CurrentRate
+
+        store.subscribe(self, selector: { $0.currentRate != $1.currentRate },
+                        callback: {
+            self.rate = $0.currentRate
+        })
+
+        // MARK: - Wallet State:  Balance
+
+                store.subscribe(self,
+                                selector: { $0.walletState.balance != $1.walletState.balance },
+                                callback: { state in
+                                    if let balance = state.walletState.balance {
+                                        self.balance = balance
+                                        self.setBalances()
+                                    }
+                                })
+
+        // MARK: - Wallet State:  Max Digits
+
+         store.lazySubscribe(self,
+                                    selector: { $0.maxDigits != $1.maxDigits },
+                                    callback: {
+                                        if let rate = $0.currentRate {
+                                            let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
+                                            self.localFormatter = placeholderAmount.localFormat
+                                            self.ltcFormatter = placeholderAmount.ltcFormat
+                                            self.setBalances()
+                                        }
+                                    })
+
+        // MARK: - Wallet State:  Sync Progress
+
+        store.subscribe(self, selector: { $0.walletState.lastBlockTimestamp != $1.walletState.lastBlockTimestamp },
+                        callback: { _ in
+
+                            // guard let syncView = self.newSyncingHeaderView else { return }
+
+//            syncView.viewModel.isRescanning = reduxState.walletState.isRescanning
+//                            if syncView.viewModel.isRescanning || (reduxState.walletState.syncState == .syncing) {
+//                                syncView.viewModel.progress = CGFloat(self.updateProgressView(syncProgress:
+//                                    CGFloat(reduxState.walletState.syncProgress),lastBlockTimestamp: Double(reduxState.walletState.lastBlockTimestamp)))
+//                                syncView.viewModel.headerMessage = reduxState.walletState.syncState
+//                                syncView.viewModel.dateTimestamp = reduxState.walletState.lastBlockTimestamp
+//                                syncView.viewModel.blockHeightString = reduxState.walletState.transactions.first?.blockHeight ?? ""
+
+                                self.shouldBeSyncing = true
+
+//                                if reduxState.walletState.syncProgress == 0.999 {
+//                                    self.shouldBeSyncing = false
+//                                    self.newSyncingHeaderView = nil
+//
+//                                    self.measureSyncTimes(startSync: self.syncStartTime, endSync: Date())
+//                                }
+
+                        })
+
+        // MARK: - Wallet State:  Sync State
+
+        store.subscribe(self, selector: { $0.walletState.syncState != $1.walletState.syncState },
+                        callback: { reduxState in
+
+                            guard let _ = self.walletManager?.peerManager
+                            else {
+                                return
+                            }
+
+                            if reduxState.walletState.syncState == .syncing {
+                                self.shouldBeSyncing = true
+                            }
+
+                            if reduxState.walletState.syncState == .success {
+                                self.shouldBeSyncing = false
                             }
                         })
 
+        // MARK: - Subscription:  Recommend Rescan
+
+        store.subscribe(self, selector: { $0.recommendRescan != $1.recommendRescan },
+                        callback: { [weak self] _ in
+            self?.attemptShowPrompt()
+        })
+
+        // MARK: - Subscription:  Did Upgrade PIN
+
+        store.subscribe(self, name: .didUpgradePin, callback: {  [weak self] _ in
+            if self?.currentPromptType == .upgradePin {
+                self?.currentPromptType = nil
+            }
+        })
+
+        // MARK: - Subscription:  Did Enable Share Data
+
+        store.subscribe(self, name: .didEnableShareData, callback: { [weak self] _ in
+            if self?.currentPromptType == .shareData {
+                self?.currentPromptType = nil
+            }
+        })
+
+        // MARK: - Subscription:  Did Write Paper Key
+
+        store.subscribe(self, name: .didWritePaperKey, callback: { [weak self] _ in
+            if self?.currentPromptType == .paperKey {
+                self?.currentPromptType = nil
+            }
+        })
+
+        // MARK: - Subscription:  Memo Updated
+
+        store.subscribe(self, name: .txMemoUpdated(""), callback: { [weak self] in
+
+            guard let trigger = $0 else { return }
+
+            if case let .txMemoUpdated(txHash) = trigger {
+                // self?.updateTransactions(txHash: txHash)
+            }
+        })
     }
 
 }

@@ -10,7 +10,7 @@ import SwiftUI
 import FirebaseAnalytics
 
 let bentoCornerRadius: CGFloat = 14.0
-let balanceGameBentoHeight: CGFloat = 130.0
+let balanceGameBentoHeight: CGFloat = 135.0
 let transactionsBentoHeight: CGFloat = 85.0
 let iconSize: CGFloat = 20.0
 
@@ -150,7 +150,8 @@ struct NewMainView: View {
                         .frame(height:  balanceGameBentoHeight, alignment: .top)
                         .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
                         .padding(bentoPadding)
-                        .padding(.top, 8)
+                       .padding(.top, 10)
+                       .padding(.bottom, 10)
 
                         if shouldShowTransactionDetail {
                             TransactionDetailBentoView(cellViewModel: $cellViewModel,
@@ -178,7 +179,7 @@ struct NewMainView: View {
                                     TutorialsBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme: $userPrefersDarkTheme)
                                     .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
-                                    .frame(maxHeight: height * 0.4, alignment: .top)
+                                    .frame(maxHeight: height * 0.3, alignment: .top)
                                     .padding(bentoPadding)
 
                                     VStack {
@@ -194,7 +195,7 @@ struct NewMainView: View {
 
                                     }
                                 }
-                                .frame(maxHeight: height * 0.4, alignment: .top)
+                                .frame(maxHeight: height * 0.3, alignment: .top)
                                 .padding([.top,.leading, .trailing], bentoPadding)
                                 GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                                         .frame(height: balanceGameBentoHeight, alignment: .top)

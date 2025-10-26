@@ -38,16 +38,21 @@ struct BalanceBentoView: View {
             ZStack {
                 BalanceGameBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
                     .edgesIgnoringSafeArea(.all)
+                VStack {
+                    HStack {
+                        SyncSubBentoView(viewModel: SyncSubBentoViewModel(store: newMainViewModel.store,
+                                                                          walletManager: newMainViewModel.walletManager))
+                    }
+                    .padding([.leading, .trailing], 20)
+                }
 
                 VStack {
                     HStack {
                         Text("MY BALANCE")
-                            .font(.system(size: 18, weight: .semibold, design: .default))
+                            .font(.system(size: 16, weight: .semibold, design: .default))
                             .lineLimit(1)
-                            .minimumScaleFactor(0.2)// Shrinks to 20% of original
-                            .padding(.top, 20)
-                            .padding(.leading, 20)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .minimumScaleFactor(0.8)// Shrinks to 80% of original
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
                             .foregroundColor(Color.white)
                         Spacer()
                         Button(action: {
@@ -59,13 +64,13 @@ struct BalanceBentoView: View {
                                 .foregroundColor(Color.white)
                                 .frame(width: buttonSize,
                                        height: buttonSize,
-                                       alignment: .leading)
-                                .padding(.top, 12)
-                                .padding(.trailing, 20)
+                                       alignment: .topTrailing)
                         }
                         .accessibilityIdentifier("hideBalanceToggleButton")
                     }
-                    .frame(height: height * 0.3, alignment: .top)
+                    .padding(.top, 12)
+                    .padding([.leading, .trailing], 20)
+                    .frame(height: height * 0.25)
 
                     HStack {
                         ZStack {
@@ -73,7 +78,6 @@ struct BalanceBentoView: View {
                                 Text(shouldShowBalance ? "\(newMainViewModel.walletBalanceLitecoin)" : "")
                                     .font(isLTCValueShown ? .system(size: 12, weight: .light, design: .default) :
                                             .system(size: 35, weight: .bold, design: .default))
-                                    .padding(.leading, 20)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.white)
                                     .contentTransition(.identity)
@@ -81,13 +85,12 @@ struct BalanceBentoView: View {
                                     .zIndex(isLTCValueShown ? 0 : 1)
                                 Spacer()
                             }
-                            .frame(height: height * 0.7)
+                            .frame(height: height * 0.75)
 
                             VStack {
                                 Text(shouldShowBalance ? "\(newMainViewModel.walletBalanceFiat)" : "")
                                     .font( isLTCValueShown ? .system(size: 35, weight: .bold, design: .default) :
                                             .system(size: 12, weight: .light, design: .default))
-                                    .padding(.leading, 20)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.white)
                                     .contentTransition(.identity)
@@ -95,10 +98,11 @@ struct BalanceBentoView: View {
                                     .zIndex(isLTCValueShown ? 1 : 0)
                                 Spacer()
                             }
-                            .frame(height: height * 0.7)
+                            .frame(height: height * 0.75)
                         }
                     }
-                    .frame(height: height * 0.7, alignment: .bottom)
+                    .padding([.leading, .trailing], 20)
+                    .frame(width: width, height: height * 0.75)
                     .onTapGesture {
                         if shouldShowBalance {
                             withAnimation(.spring(response: 0.8, dampingFraction: 0.5, blendDuration: 0.2)) {

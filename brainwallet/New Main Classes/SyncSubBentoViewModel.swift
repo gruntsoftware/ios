@@ -1,8 +1,8 @@
 //
-//  NewSyncProgressViewModel.swift
+//  SyncSubBentoViewModel.swift
 //  brainwallet
 //
-//  Created by Kerry Washington on 27/05/2025.
+//  Created by Kerry Washington on 27/10/2025.
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
 
@@ -11,26 +11,26 @@ import Foundation
 import SwiftUI
 import UIKit
 
-class NewSyncProgressViewModel: ObservableObject, Subscriber {
+class SyncSubBentoViewModel: ObservableObject, Subscriber {
     // MARK: - Combine Variables
 
     @Published
     var formattedTimestamp = ""
 
     @Published
-    var blockHeightString = "--"
+    var blockHeightString = ""
 
     // MARK: - Public Variables
 
     private let dateFormatter: DateFormatter = {
-        let df = DateFormatter()
-        df.setLocalizedDateFormatFromTemplate("MMM d, yyyy h a")
-        return df
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMM d, yyyy h a")
+        return dateFormatter
     }()
 
     var isRescanning: Bool = false
     var headerMessage: SyncState = .success
-    var progress: CGFloat = 0.0
+    var progress: CGFloat = 0.6
     var userCannotSend: Bool = false
     var dateTimestamp: UInt32 = 0 {
         didSet {
@@ -38,12 +38,12 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
         }
     }
 
-    var store: Store
-    var walletManager: WalletManager
+    var store: Store?
+    var walletManager: WalletManager?
 
     let currencies: [SupportedFiatCurrency] = SupportedFiatCurrency.allCases
 
-    init(store: Store, walletManager: WalletManager) {
+    init(store: Store? = nil, walletManager: WalletManager? = nil) {
         self.store = store
         self.walletManager = walletManager
         setSubscriptions()
@@ -61,7 +61,10 @@ class NewSyncProgressViewModel: ObservableObject, Subscriber {
         }
     }
     private func setSubscriptions() {
-        self.store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
+
+        guard let store = self.store else { return }
+
+        store.subscribe(self, selector: { $0.walletState.syncProgress != $1.walletState.syncProgress },
                         callback: { _ in
 
         })

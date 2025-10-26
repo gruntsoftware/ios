@@ -47,7 +47,7 @@
 		2428717F2DE5C25F0035DE48 /* ClearDecimalPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428717E2DE5C25D0035DE48 /* ClearDecimalPad.swift */; };
 		242871812DE5C28B0035DE48 /* WhiteNumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871802DE5C27F0035DE48 /* WhiteNumberPad.swift */; };
 		242871862DE5D2580035DE48 /* NewSyncProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871852DE5D2550035DE48 /* NewSyncProgressView.swift */; };
-		242871882DE5D36F0035DE48 /* NewSyncProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */; };
+		242871882DE5D36F0035DE48 /* SyncSubBentoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871872DE5D36C0035DE48 /* SyncSubBentoViewModel.swift */; };
 		2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */; };
 		243136FB2E0AFD1700BCBED1 /* SettingsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243136FA2E0AFD1000BCBED1 /* SettingsHelpers.swift */; };
 		243136FD2E0B251D00BCBED1 /* SettingsActionToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243136FC2E0B251900BCBED1 /* SettingsActionToggleView.swift */; };
@@ -68,6 +68,7 @@
 		246028592E5F178400CDEB7A /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 246028582E5F178400CDEB7A /* FirebaseRemoteConfig */; };
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
+		24691D142EAE4D30003CDC7C /* SyncSubBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */; };
 		246A9A072DF5F54C002480CB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A9A062DF5F532002480CB /* Utility.swift */; };
 		246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; };
 		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
@@ -551,7 +552,7 @@
 		2428717E2DE5C25D0035DE48 /* ClearDecimalPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearDecimalPad.swift; sourceTree = "<group>"; };
 		242871802DE5C27F0035DE48 /* WhiteNumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNumberPad.swift; sourceTree = "<group>"; };
 		242871852DE5D2550035DE48 /* NewSyncProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressView.swift; sourceTree = "<group>"; };
-		242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncProgressViewModel.swift; sourceTree = "<group>"; };
+		242871872DE5D36C0035DE48 /* SyncSubBentoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSubBentoViewModel.swift; sourceTree = "<group>"; };
 		2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncHostingController.swift; sourceTree = "<group>"; };
 		24295E3B2E341F1C00A76776 /* BrainwalletUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainwalletUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24295E9B2E3428CA00A76776 /* BrainwalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainwalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -570,6 +571,7 @@
 		246027A62E5E178700CDEB7A /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
+		24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSubBentoView.swift; sourceTree = "<group>"; };
 		246A9A062DF5F532002480CB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		246F97832E846218001923A6 /* private-general-purpose.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "private-general-purpose.xcodeproj"; path = "Private/general-purpose/private-general-purpose.xcodeproj"; sourceTree = "<group>"; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
@@ -1319,6 +1321,7 @@
 		247A7D022E950443000DF8C0 /* Bento Views */ = {
 			isa = PBXGroup;
 			children = (
+				24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */,
 				247A83892E9EFD2000B5DFD8 /* TransactionDetailBentoView.swift */,
 				247A7D062E951653000DF8C0 /* BalanceBentoView.swift */,
 				247A7D122E952864000DF8C0 /* GameHubBentoView.swift */,
@@ -1672,7 +1675,7 @@
 				2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */,
 				24B065362DC6281D00B5E000 /* NewMainViewModel.swift */,
 				242871852DE5D2550035DE48 /* NewSyncProgressView.swift */,
-				242871872DE5D36C0035DE48 /* NewSyncProgressViewModel.swift */,
+				242871872DE5D36C0035DE48 /* SyncSubBentoViewModel.swift */,
 				24B065342DC627E500B5E000 /* NewMainHostingController.swift */,
 				24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */,
 				C312D2B72D7DC27700BB97A4 /* TabBarViewController.swift */,
@@ -2697,7 +2700,7 @@
 				C312D2ED2D7DC27700BB97A4 /* LoginViewModel.swift in Sources */,
 				C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */,
 				C312D2F72D7DC27700BB97A4 /* ArticleIds.swift in Sources */,
-				242871882DE5D36F0035DE48 /* NewSyncProgressViewModel.swift in Sources */,
+				242871882DE5D36F0035DE48 /* SyncSubBentoViewModel.swift in Sources */,
 				C312D2F82D7DC27700BB97A4 /* BiometricsSettingsViewController.swift in Sources */,
 				2476AE362E2802AF0065CE22 /* InputSeedWordView.swift in Sources */,
 				247A7D0D2E951CE1000DF8C0 /* TutorialsBentoView.swift in Sources */,
@@ -2776,6 +2779,7 @@
 				C312D3692D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift in Sources */,
 				C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */,
 				2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */,
+				24691D142EAE4D30003CDC7C /* SyncSubBentoView.swift in Sources */,
 				2416CE6B2DA90D0D00FFBD10 /* BRSocketHelpers.c in Sources */,
 				2416CE6C2DA90D0D00FFBD10 /* BWAPIClient.swift in Sources */,
 				2416CE6D2DA90D0D00FFBD10 /* BRTar.swift in Sources */,
