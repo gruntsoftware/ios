@@ -14,7 +14,7 @@ struct TransactionHistoryBentoView: View {
     var newMainViewModel: NewMainViewModel
 
     @Binding
-    var cellViewModel: TransactionCellViewModel
+    var cellViewModel: TransactionCellViewModel?
 
     @Binding
     var userPrefersDarkTheme: Bool
@@ -49,12 +49,12 @@ struct TransactionHistoryBentoView: View {
     @State
     private var filterModeState: TransactionFilterState = .allTransactions
 
-    init(cellViewModel:  Binding<TransactionCellViewModel>,
+    init(cellViewModel:  Binding<TransactionCellViewModel?>?,
          viewModel: NewMainViewModel, detailIsShowing: Binding<Bool>, userPrefersDarkTheme: Binding<Bool>) {
         _detailIsShowing = detailIsShowing
         _userPrefersDarkTheme = userPrefersDarkTheme
         newMainViewModel = viewModel
-        _cellViewModel = cellViewModel
+        self._cellViewModel = cellViewModel ?? Binding.constant(nil)
         filteredTransactions = newMainViewModel.transactions ?? []
     }
 

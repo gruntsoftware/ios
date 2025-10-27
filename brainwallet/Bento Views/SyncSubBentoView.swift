@@ -69,7 +69,6 @@ struct SyncSubBentoView: View {
                                     .font(.system(size: 10, weight: .light, design: .default))
                                     .frame(alignment: .center)
                                     .foregroundColor(.white)
-                                    .padding(1)
 
                                 Image(systemName: "nosign")
                                     .resizable()
@@ -78,13 +77,11 @@ struct SyncSubBentoView: View {
                                            height: progressIconSize,
                                            alignment: .center)
                                     .foregroundColor(BrainwalletColor.error)
-                                    .padding(1)
 
                                 Text("RECEIVE")
                                     .font(.system(size: 10, weight: .light, design: .default))
                                     .frame(alignment: .center)
                                     .foregroundColor(.white)
-                                    .padding(1)
 
                                 Image(systemName: "square.and.arrow.down")
                                     .resizable()

@@ -497,7 +497,13 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
         // MARK: - Wallet State:  Sync Progress
 
         store.subscribe(self, selector: { $0.walletState.lastBlockTimestamp != $1.walletState.lastBlockTimestamp },
-                        callback: { _ in
+                        callback: { reduxState in
+
+                        print("::: \(reduxState.walletState.isRescanning)")
+                        print("::: \(reduxState.walletState.lastBlockTimestamp)")
+                        print("::: \(reduxState.walletState.syncProgress)")
+                        print("::: \(reduxState.walletState.isConnected)")
+                        print("::: sync progress")
 
                             // guard let syncView = self.newSyncingHeaderView else { return }
 

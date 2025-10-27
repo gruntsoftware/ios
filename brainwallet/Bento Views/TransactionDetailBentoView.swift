@@ -14,7 +14,7 @@ struct TransactionDetailBentoView: View {
     var newMainViewModel: NewMainViewModel
 
     @Binding
-    var cellViewModel: TransactionCellViewModel
+    var cellViewModel: TransactionCellViewModel?
 
     @ObservedObject
     var exportViewModel = ExportButtonViewModel()
@@ -40,11 +40,11 @@ struct TransactionDetailBentoView: View {
 
     private let buttonPlatformFactor: CGFloat = 2.1
 
-    init(cellViewModel: Binding<TransactionCellViewModel>,
+    init(cellViewModel: Binding<TransactionCellViewModel?>?,
          viewModel: NewMainViewModel,
          userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
-        _cellViewModel = cellViewModel
+        self._cellViewModel = cellViewModel ?? Binding.constant(nil)
         newMainViewModel = viewModel
     }
 
@@ -63,7 +63,7 @@ struct TransactionDetailBentoView: View {
                             Group {
                                 VStack(alignment: .leading) {
                                     HStack {
-                                        Text(cellViewModel.feeText)
+                                        Text(cellViewModel?.feeText ?? "")
                                             .font(Font(UIFont.barlowRegular(size: 15.0)))
                                             .lineLimit(3)
                                             .scaledToFill()
@@ -75,18 +75,18 @@ struct TransactionDetailBentoView: View {
                                     }
                                     .padding(.top, 1.0)
 
-                                    Text(cellViewModel.addressText)
+                                    Text(cellViewModel?.addressText ?? "")
                                         .font(Font(UIFont.barlowRegular(size: 15.0)))
                                         .foregroundColor(BrainwalletColor.content)
                                         .padding(.leading, 20.0)
 
-                                    Text(cellViewModel.transaction.hash)
+                                    Text(cellViewModel?.transaction.hash ?? "")
                                         .font(Font(UIFont.barlowLight(size: 9.0)))
                                         .foregroundColor(BrainwalletColor.content)
                                         .padding(.leading, 20.0)
                                         .padding(.trailing, 40.0)
 
-                                    Text(String(localized: "Memo: ") + cellViewModel.memoString)
+                                    Text(String(localized: "Memo: ") + (cellViewModel?.memoString ?? ""))
                                         .font(Font(UIFont.barlowRegular(size: 15.0)))
                                         .foregroundColor(BrainwalletColor.content)
                                         .padding(.leading, 20.0)
@@ -102,7 +102,7 @@ struct TransactionDetailBentoView: View {
 
                                 VStack(alignment: .leading, spacing: 1.0) {
 
-                                    Text( String(localized: "Blockheight: ") + cellViewModel.transaction.blockHeight)
+                                    Text( String(localized: "Blockheight: ") + (cellViewModel?.transaction.blockHeight ?? ""))
                                         .font(Font(UIFont.barlowRegular(size: 15.0)))
                                         .foregroundColor(BrainwalletColor.content)
                                         .padding(.leading, 20.0)
@@ -117,14 +117,14 @@ struct TransactionDetailBentoView: View {
                                 Spacer()
 
                                 VStack(alignment: .center, spacing: 1.0) {
-                                    Image(uiImage: cellViewModel.qrImage)
+                                    Image(uiImage: cellViewModel?.qrImage ?? UIImage())
                                         .frame(width: kQRImageSide,
                                                height: kQRImageSide,
                                                alignment: .center)
                                         .padding(.all, 2.0)
                                         .tint(BrainwalletColor.content)
 
-                                    Text(cellViewModel.addressText)
+                                    Text(cellViewModel?.addressText ?? "")
                                         .font(Font(UIFont.barlowLight(size: 13.0)))
                                         .foregroundColor(BrainwalletColor.content)
                                         .frame(alignment: .center).padding(.all, 2.0)

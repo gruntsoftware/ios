@@ -60,7 +60,7 @@ struct TutorialsBentoView: View {
                     HStack {
                         ZStack {
                             RoundedRectangle(cornerRadius: 8)
-                                .frame(width: width * 0.5, height: 24, alignment: .center)
+                                .frame(width: width * 0.5, height: 22, alignment: .center)
                                 .foregroundColor(labelBackground)
                                 .padding(8)
                             Text("TUTORIALS")

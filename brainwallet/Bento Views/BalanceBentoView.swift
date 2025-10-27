@@ -23,6 +23,7 @@ struct BalanceBentoView: View {
     private var mainGradientStyle: MainGradientStyle = .lightStyle
     private let buttonSize: CGFloat = 20.0
     private let buttonPlatformFactor: CGFloat = 2.1
+    private let sidePadding: CGFloat = 16.0
 
     init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
@@ -43,7 +44,7 @@ struct BalanceBentoView: View {
                         SyncSubBentoView(viewModel: SyncSubBentoViewModel(store: newMainViewModel.store,
                                                                           walletManager: newMainViewModel.walletManager))
                     }
-                    .padding([.leading, .trailing], 20)
+                    .padding([.leading, .trailing], sidePadding)
                 }
 
                 VStack {
@@ -69,7 +70,7 @@ struct BalanceBentoView: View {
                         .accessibilityIdentifier("hideBalanceToggleButton")
                     }
                     .padding(.top, 12)
-                    .padding([.leading, .trailing], 20)
+                    .padding([.leading, .trailing], sidePadding)
                     .frame(height: height * 0.25)
 
                     HStack {
@@ -101,7 +102,7 @@ struct BalanceBentoView: View {
                             .frame(height: height * 0.75)
                         }
                     }
-                    .padding([.leading, .trailing], 20)
+                    .padding([.leading, .trailing], sidePadding)
                     .frame(width: width, height: height * 0.75)
                     .onTapGesture {
                         if shouldShowBalance {

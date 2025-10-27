@@ -73,12 +73,7 @@ struct NewMainView: View {
     var newReceiveViewModel: NewReceiveViewModel
 
     @State
-    var cellViewModel = TransactionCellViewModel(transaction: Transaction(BRHelp().makeTransaction(),
-                                                                          walletManager: WalletManager.sharedInstance,
-                                                                          kvStore: nil, rate: nil)!,
-                                                                          isLTCValueShown: false,
-                                                                          rate: Rate(code: "", name: "", rate: 0.0, lastTimestamp: Date()),
-                                                                          maxDigits: 8, isSyncing: false)
+    var cellViewModel: TransactionCellViewModel?
 
     @State
     private var userDidTapSend: Bool = false
@@ -121,6 +116,18 @@ struct NewMainView: View {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
         userPrefersDarkTheme = viewModel.userPrefersDarkMode
+
+//        self._cellViewModel = cellViewModel ?? Binding.constant(nil)
+
+        if let transaction = Transaction(BRHelp().makeTransaction(),
+                                         walletManager: WalletManager.sharedInstance,
+                                         kvStore: nil, rate: nil) {
+
+            cellViewModel =  TransactionCellViewModel(transaction: transaction,
+                                                                               isLTCValueShown: false,
+                                                                               rate: Rate(code: "", name: "", rate: 0.0, lastTimestamp: Date()),
+                                                                               maxDigits: 8, isSyncing: false)
+        }
     }
     var body: some View {
         GeometryReader { geometry in
@@ -179,7 +186,7 @@ struct NewMainView: View {
                                     TutorialsBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme: $userPrefersDarkTheme)
                                     .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
-                                    .frame(maxHeight: height * 0.3, alignment: .top)
+                                    .frame(maxHeight: height * 0.5, alignment: .top)
                                     .padding(bentoPadding)
 
                                     VStack {
@@ -195,7 +202,7 @@ struct NewMainView: View {
 
                                     }
                                 }
-                                .frame(maxHeight: height * 0.3, alignment: .top)
+                                .frame(maxHeight: height * 0.5, alignment: .top)
                                 .padding([.top,.leading, .trailing], bentoPadding)
                                 GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                                         .frame(height: balanceGameBentoHeight, alignment: .top)
