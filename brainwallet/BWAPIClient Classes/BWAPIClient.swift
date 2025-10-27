@@ -52,12 +52,12 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
     private let configuration: URLSessionConfiguration = {
         #if targetEnvironment(simulator)
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 90 // Longer timeout for simulator
-        configuration.timeoutIntervalForResource = 180
+        configuration.timeoutIntervalForRequest = 60
+        configuration.timeoutIntervalForResource = 60
         configuration.waitsForConnectivity = true
         #else
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 30
+        configuration.timeoutIntervalForRequest = 60
         configuration.timeoutIntervalForResource = 60
         configuration.waitsForConnectivity = true
         configuration.allowsCellularAccess = true
