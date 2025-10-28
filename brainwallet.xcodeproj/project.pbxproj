@@ -1286,6 +1286,15 @@
 			path = CoreResources;
 			sourceTree = "<group>";
 		};
+		24289A3F2EB0D3E600F0F11F /* Transaction Bentos */ = {
+			isa = PBXGroup;
+			children = (
+				247A83892E9EFD2000B5DFD8 /* TransactionDetailBentoView.swift */,
+				247A7D0A2E95194F000DF8C0 /* TransactionHistoryBentoView.swift */,
+			);
+			path = "Transaction Bentos";
+			sourceTree = "<group>";
+		};
 		244A8D912DE84C710024D356 /* Brainwallet Custom Shapes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1319,14 +1328,13 @@
 		247A7D022E950443000DF8C0 /* Bento Views */ = {
 			isa = PBXGroup;
 			children = (
+				24289A3F2EB0D3E600F0F11F /* Transaction Bentos */,
 				24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */,
-				247A83892E9EFD2000B5DFD8 /* TransactionDetailBentoView.swift */,
 				247A7D062E951653000DF8C0 /* BalanceBentoView.swift */,
 				247A7D122E952864000DF8C0 /* GameHubBentoView.swift */,
 				247A7D0C2E951CD7000DF8C0 /* TutorialsBentoView.swift */,
 				247A7D0E2E951D10000DF8C0 /* LTCPriceBentoView.swift */,
 				247A7D102E951D3F000DF8C0 /* FavouritesBentoView.swift */,
-				247A7D0A2E95194F000DF8C0 /* TransactionHistoryBentoView.swift */,
 			);
 			path = "Bento Views";
 			sourceTree = "<group>";
@@ -1753,7 +1761,7 @@
 			path = PreLaunchResources;
 			sourceTree = "<group>";
 		};
-		24E078A62DF1F915004B5958 /* New Table Hosting Classes */ = {
+		24E078A62DF1F915004B5958 /* Old Table Hosting Classes */ = {
 			isa = PBXGroup;
 			children = (
 				241B7CDC2E68BDBD00B18679 /* ExportHostingController.swift */,
@@ -1766,8 +1774,9 @@
 				24E078A72DF1F997004B5958 /* PromptCellView.swift */,
 				24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */,
 				24E078A92DF1F9AC004B5958 /* PromptCellViewModel.swift */,
+				24B065262DC6130200B5E000 /* Transactions Classes */,
 			);
-			path = "New Table Hosting Classes";
+			path = "Old Table Hosting Classes";
 			sourceTree = "<group>";
 		};
 		24F05E782DF9627000E25829 /* BWAPIClient Classes */ = {
@@ -1956,7 +1965,7 @@
 				247A7D022E950443000DF8C0 /* Bento Views */,
 				2466FECB2DFFE4ED00A1ACC2 /* App Launch Classes */,
 				24F05E782DF9627000E25829 /* BWAPIClient Classes */,
-				24E078A62DF1F915004B5958 /* New Table Hosting Classes */,
+				24E078A62DF1F915004B5958 /* Old Table Hosting Classes */,
 				24F378002DE89C5B00A388AB /* MoonPay Helper */,
 				244A8D912DE84C710024D356 /* Brainwallet Custom Shapes */,
 				24AAB3192DE79E6E00F0C18C /* New Receive Classes */,
@@ -1978,7 +1987,6 @@
 				24F64C1B2DAFB362001DC9B6 /* Start Welcome Classes */,
 				24B065252DC6121A00B5E000 /* Wallet Balance Classes */,
 				24B065332DC627D200B5E000 /* New Main Classes */,
-				24B065262DC6130200B5E000 /* Transactions Classes */,
 				2416CE552DA90C8B00FFBD10 /* Legacy_BW_BRClasses */,
 				C312D1DB2D7DC27700BB97A4 /* SendViewCells */,
 				24D034392E1AED0200AF81DF /* Geometric Effects */,

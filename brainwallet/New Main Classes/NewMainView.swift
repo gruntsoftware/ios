@@ -116,17 +116,15 @@ struct NewMainView: View {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
         userPrefersDarkTheme = viewModel.userPrefersDarkMode
-
-//        self._cellViewModel = cellViewModel ?? Binding.constant(nil)
-
         if let transaction = Transaction(BRHelp().makeTransaction(),
                                          walletManager: WalletManager.sharedInstance,
                                          kvStore: nil, rate: nil) {
 
             cellViewModel =  TransactionCellViewModel(transaction: transaction,
-                                                                               isLTCValueShown: false,
-                                                                               rate: Rate(code: "", name: "", rate: 0.0, lastTimestamp: Date()),
-                                                                               maxDigits: 8, isSyncing: false)
+                                                      isLTCValueShown: false,
+                                                      rate: Rate(code: "", name: "",
+                                                                 rate: 0.0, lastTimestamp: Date()),
+                                                      maxDigits: 8, isSyncing: false)
         }
     }
     var body: some View {
