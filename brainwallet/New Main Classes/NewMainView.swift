@@ -245,6 +245,7 @@ struct NewMainView: View {
                                            alignment: .center)
                                     .foregroundColor(content)
                             }
+
                         }
                         .offset(x: newMainViewModel.shouldShowSettings ? width - 80.0: 0)
                     }
@@ -417,13 +418,6 @@ struct NewMainView: View {
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
-                }
-            }
-            .onTapGesture {
-                if shouldShowSettings {
-                    newMainViewModel.shouldShowSettings.toggle()
-                    shouldShowSettings = newMainViewModel.shouldShowSettings
-                    newMainViewModel.userDidTapTheSettingsButton()
                 }
             }
         }
