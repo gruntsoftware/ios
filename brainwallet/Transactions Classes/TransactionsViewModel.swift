@@ -2,7 +2,7 @@ import Foundation
 import FirebaseAnalytics
 import StoreKit
 
-class TransactionsViewModel: ObservableObject, Subscriber, Trackable {
+class TransactionsViewModel: ObservableObject, Subscriber {
 
     @Published
     var transactions: [Transaction] = []

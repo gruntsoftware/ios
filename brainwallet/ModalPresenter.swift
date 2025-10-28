@@ -3,7 +3,7 @@ import SafariServices
 import SwiftUI
 import UIKit
 
-class ModalPresenter: Subscriber, Trackable {
+class ModalPresenter: Subscriber {
 	var walletManager: WalletManager?
 	init(store: Store, walletManager: WalletManager, window: UIWindow, apiClient: BWAPIClient) {
 		self.store = store

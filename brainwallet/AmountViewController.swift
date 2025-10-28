@@ -2,7 +2,7 @@ import UIKit
 
 private let currencyToggleButtonConstant: CGFloat = 20.0
 private let amountFont: UIFont = .barlowMedium(size: 24.0)
-class AmountViewController: UIViewController, Trackable {
+class AmountViewController: UIViewController {
 	private let store: Store
 	private let isPinPadExpandedAtLaunch: Bool
 	private let isRequesting: Bool

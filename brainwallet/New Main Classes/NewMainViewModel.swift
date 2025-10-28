@@ -15,7 +15,7 @@ enum FilterTransactionMode: Int, CaseIterable {
     case receivedTransactions = 2
 }
 
-class NewMainViewModel: ObservableObject, Subscriber, Trackable {
+class NewMainViewModel: ObservableObject, Subscriber {
 
     @Published
     var store: Store?
@@ -387,7 +387,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
         let types = PromptType.defaultOrder
         if let type = types.first(where: { $0.shouldPrompt(walletManager: walletManager, state: store.state) }) {
-            saveEvent("prompt.\(type.name).displayed")
             currentPromptType = type
             if type == .biometrics {
                 UserDefaults.hasPromptedBiometrics = true

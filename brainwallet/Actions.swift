@@ -158,18 +158,17 @@ enum SimpleReduxAlert {
 }
 
 enum Biometrics {
-	struct setIsEnabled: Action, Trackable {
+	struct setIsEnabled: Action {
 		let reduce: Reducer
 		init(_ isBiometricsEnabled: Bool) {
 			UserDefaults.isBiometricsEnabled = isBiometricsEnabled
 			reduce = { $0.clone(isBiometricsEnabled: isBiometricsEnabled) }
-			saveEvent("event.enableBiometrics", attributes: ["isEnabled": "\(isBiometricsEnabled)"])
 		}
 	}
 }
 
 enum UserPreferredCurrency {
-	struct setDefault: Action, Trackable {
+	struct setDefault: Action {
 		let reduce: Reducer
 		init(_ userPreferredCurrencyCode: String) {
 			UserDefaults.userPreferredCurrencyCode = userPreferredCurrencyCode
@@ -186,11 +185,10 @@ enum UserPreferredCurrency {
 }
 
 enum RecommendRescan {
-	struct set: Action, Trackable {
+	struct set: Action {
 		let reduce: Reducer
 		init(_ recommendRescan: Bool) {
 			reduce = { $0.clone(recommendRescan: recommendRescan) }
-			saveEvent("event.recommendRescan")
 		}
 	}
 }
@@ -205,12 +203,11 @@ enum LoadTransactions {
 }
 
 enum MaxDigits {
-	struct set: Action, Trackable {
+	struct set: Action {
 		let reduce: Reducer
 		init(_ maxDigits: Int) {
 			UserDefaults.maxDigits = maxDigits
 			reduce = { $0.clone(maxDigits: maxDigits) }
-			saveEvent("maxDigits.set", attributes: ["maxDigits": "\(maxDigits)"])
 		}
 	}
 }

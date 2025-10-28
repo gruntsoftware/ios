@@ -22,7 +22,6 @@
 		2416CE6D2DA90D0D00FFBD10 /* BRTar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE662DA90D0D00FFBD10 /* BRTar.swift */; };
 		2416CE6E2DA90D0D00FFBD10 /* BRPeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE622DA90D0D00FFBD10 /* BRPeerManager.swift */; };
 		2416CE6F2DA90D0D00FFBD10 /* BRTxOutputExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE682DA90D0D00FFBD10 /* BRTxOutputExtension.swift */; };
-		2416CE702DA90D0D00FFBD10 /* BWAPIClient+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5A2DA90D0D00FFBD10 /* BWAPIClient+Events.swift */; };
 		2416CE712DA90D0D00FFBD10 /* BRWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE692DA90D0D00FFBD10 /* BRWallet.swift */; };
 		2416CE722DA90D0D00FFBD10 /* BRTxInputExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE672DA90D0D00FFBD10 /* BRTxInputExtension.swift */; };
 		2416CE742DA90D0D00FFBD10 /* BRReplicatedKVStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE632DA90D0D00FFBD10 /* BRReplicatedKVStore.swift */; };
@@ -523,7 +522,6 @@
 		2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRActivityView.swift; sourceTree = "<group>"; };
 		2416CE572DA90D0D00FFBD10 /* BRAddressExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAddressExtension.swift; sourceTree = "<group>"; };
 		2416CE582DA90D0D00FFBD10 /* BWAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWAPIClient.swift; sourceTree = "<group>"; };
-		2416CE5A2DA90D0D00FFBD10 /* BWAPIClient+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWAPIClient+Events.swift"; sourceTree = "<group>"; };
 		2416CE5C2DA90D0D00FFBD10 /* BWAPIClient+KV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWAPIClient+KV.swift"; sourceTree = "<group>"; };
 		2416CE5D2DA90D0D00FFBD10 /* BWAPIClient+FiatLTCRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BWAPIClient+FiatLTCRates.swift"; sourceTree = "<group>"; };
 		2416CE5E2DA90D0D00FFBD10 /* BRCalculationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCalculationExtension.swift; sourceTree = "<group>"; };
@@ -1776,7 +1774,6 @@
 			isa = PBXGroup;
 			children = (
 				2416CE582DA90D0D00FFBD10 /* BWAPIClient.swift */,
-				2416CE5A2DA90D0D00FFBD10 /* BWAPIClient+Events.swift */,
 				2416CE5C2DA90D0D00FFBD10 /* BWAPIClient+KV.swift */,
 				2416CE5D2DA90D0D00FFBD10 /* BWAPIClient+FiatLTCRates.swift */,
 			);
@@ -2785,7 +2782,6 @@
 				2416CE6D2DA90D0D00FFBD10 /* BRTar.swift in Sources */,
 				2416CE6E2DA90D0D00FFBD10 /* BRPeerManager.swift in Sources */,
 				2416CE6F2DA90D0D00FFBD10 /* BRTxOutputExtension.swift in Sources */,
-				2416CE702DA90D0D00FFBD10 /* BWAPIClient+Events.swift in Sources */,
 				241D22472DB526D7000302C8 /* YourSeedProveItView.swift in Sources */,
 				2416CE712DA90D0D00FFBD10 /* BRWallet.swift in Sources */,
 				24C6D2D42E1D6B150096AD62 /* SeedWordPileView.swift in Sources */,

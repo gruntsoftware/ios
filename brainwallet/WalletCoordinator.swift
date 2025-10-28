@@ -7,7 +7,7 @@ private let lastBlockHeightKey = "LastBlockHeightKey"
 private let progressUpdateInterval: TimeInterval = 0.5
 private let updateDebounceInterval: TimeInterval = 1.0
 
-class WalletCoordinator: Subscriber, Trackable {
+class WalletCoordinator: Subscriber {
 	var kvStore: BRReplicatedKVStore? {
 		didSet {
 			requestTxUpdate()
@@ -75,7 +75,6 @@ class WalletCoordinator: Subscriber, Trackable {
 			guard let code = notification.userInfo?["errorCode"] else { return }
 			guard let message = notification.userInfo?["errorDescription"] else { return }
 			store.perform(action: WalletChange.setSyncingState(.connecting))
-			saveEvent("event.syncErrorMessage", attributes: ["message": "\(message) (\(code))"])
 			endActivity()
 
 			if retryTimer == nil, reachability.isReachable {

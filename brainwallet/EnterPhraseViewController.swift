@@ -8,7 +8,7 @@ enum PhraseEntryReason {
 
 typealias EnterPhraseCallback = (String) -> Void
 
-class EnterPhraseViewController: UIViewController, UIScrollViewDelegate, CustomTitleView, Trackable {
+class EnterPhraseViewController: UIViewController, UIScrollViewDelegate, CustomTitleView {
 	init(store: Store, walletManager: WalletManager, reason: PhraseEntryReason) {
 		self.store = store
 		self.walletManager = walletManager
@@ -132,12 +132,10 @@ class EnterPhraseViewController: UIViewController, UIScrollViewDelegate, CustomT
 
 		switch reason {
 		case .setSeed:
-			saveEvent("enterPhrase.setSeed")
 			titleLabel.text = String(localized: "Restore", bundle: .main)
 			subheader.text = String(localized: "Enter the paper key for the wallet you want to recover.", bundle: .main)
 			moreInfoButton.isHidden = true
 		case .validateForResettingPin:
-			saveEvent("enterPhrase.resettingPin")
 			titleLabel.text = String(localized: "Reset PIN", bundle: .main)
 			subheader.text = String(localized: "Enter the paper key for the wallet you want to recover.", bundle: .main)
 			instruction.isHidden = true
@@ -147,7 +145,6 @@ class EnterPhraseViewController: UIViewController, UIScrollViewDelegate, CustomT
 			}
 			faq.isHidden = true
 		case .validateForWipingWallet:
-			saveEvent("enterPhrase.wipeWallet")
 			titleLabel.text = String(localized: "Start or Recover Another Wallet", bundle: .main)
 			subheader.text = String(localized: "To start a new wallet or restore an existing wallet, you must first erase the wallet that is currently installed. To continue, enter the current wallet's Paper Key.", bundle: .main)
 		}
@@ -159,11 +156,9 @@ class EnterPhraseViewController: UIViewController, UIScrollViewDelegate, CustomT
 	private func validatePhrase(_ phrase: String) {
 		guard walletManager.isPhraseValid(phrase)
 		else {
-			saveEvent("enterPhrase.invalid")
 			errorLabel.isHidden = false
 			return
 		}
-		saveEvent("enterPhrase.valid")
 		errorLabel.isHidden = true
 		switch reason {
 		case let .setSeed(callback):

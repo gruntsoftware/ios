@@ -36,7 +36,7 @@ struct ExportedTransaction {
     }
  }
 
-class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Subscriber, Trackable, UIScrollViewDelegate {
+class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Subscriber, UIScrollViewDelegate {
 	@IBOutlet var tableView: UITableView!
 
 	var store: Store?
@@ -205,7 +205,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		let types = PromptType.defaultOrder
 		if let type = types.first(where: { $0.shouldPrompt(walletManager: walletManager, state: store.state) }) {
-			saveEvent("prompt.\(type.name).displayed")
 			currentPromptType = type
 			if type == .biometrics {
 				UserDefaults.hasPromptedBiometrics = true
