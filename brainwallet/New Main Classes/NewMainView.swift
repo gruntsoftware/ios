@@ -214,13 +214,14 @@ struct NewMainView: View {
                         Spacer()
                     }
                     .padding([.leading, .trailing], bentoPadding + 10)
-                    .offset(x: newMainViewModel.shouldShowSettings ? width - 90.0: 0)
+                    .offset(x: newMainViewModel.shouldShowSettings ? width - 80.0: 0)
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
                             newMainViewModel.shouldShowSettings.toggle()
                             shouldShowSettings = newMainViewModel.shouldShowSettings
+                            newMainViewModel.userDidTapTheSettingsButton()
                         }) {
                             ZStack {
                                 Ellipse()
@@ -245,6 +246,7 @@ struct NewMainView: View {
                                     .foregroundColor(content)
                             }
                         }
+                        .offset(x: newMainViewModel.shouldShowSettings ? width - 80.0: 0)
                     }
 
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -302,7 +304,7 @@ struct NewMainView: View {
                             .frame(width: iconSize * buttonPlatformFactor * 2,
                                    height: iconSize * buttonPlatformFactor)
 
-                        }
+                        }.offset(x: newMainViewModel.shouldShowSettings ? width - 80.0: 0)
                     }
 
                     ToolbarItemGroup(placement: .bottomBar) {
@@ -415,6 +417,13 @@ struct NewMainView: View {
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
+                }
+            }
+            .onTapGesture {
+                if shouldShowSettings {
+                    newMainViewModel.shouldShowSettings.toggle()
+                    shouldShowSettings = newMainViewModel.shouldShowSettings
+                    newMainViewModel.userDidTapTheSettingsButton()
                 }
             }
         }
