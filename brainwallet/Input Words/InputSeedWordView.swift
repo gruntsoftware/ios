@@ -59,7 +59,7 @@ struct InputSeedWordView: View {
                                            height: cellHeight,
                                            alignment: .leading)
                                     .padding(.leading, numberPad)
-                                    .offset(y: -6.0)
+                                    .offset(x: -4, y: -4)
 
                                 Spacer()
                             }
@@ -67,7 +67,9 @@ struct InputSeedWordView: View {
                         HStack {
                             TextField("", text: $seedWord)
                                 .frame(width: fieldWidth, height: cellHeight, alignment: .center)
-                                .font(subDetailFont)
+                                .font(.system(size: 17, weight: .semibold, design: .default))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.8)
                                 .foregroundColor(BrainwalletColor.content)
                                 .keyboardType(.alphabet)
                                 .disableAutocorrection(true)
