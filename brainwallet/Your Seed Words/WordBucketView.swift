@@ -47,6 +47,7 @@ struct WordBucketView: View {
                                            height: cellHeight,
                                            alignment: .leading)
                                     .padding(.leading, genericPad)
+                                    .offset(x: -4, y: -4)
                                 Spacer()
                             }
                         }
