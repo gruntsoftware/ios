@@ -240,7 +240,7 @@ class ModalPresenter: Subscriber, Trackable {
     func pushBiometricsSpendingLimit(onNc: UINavigationController) {
 		guard let walletManager = walletManager else { return }
 
-		let verify = VerifyPinViewController(bodyText: String(localized: "Please enter your PIN to continue.") , pinLength: store.state.pinLength, callback: { [weak self] pin, vc in
+		let verify = VerifyPinViewController(bodyText: String(localized: "Please enter your PIN to continue."), pinLength: store.state.pinLength, callback: { [weak self] pin, vc in
 			guard let myself = self else { return false }
 			if walletManager.authenticate(pin: pin) {
 				vc.dismiss(animated: true, completion: {
