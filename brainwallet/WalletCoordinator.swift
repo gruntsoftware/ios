@@ -285,13 +285,13 @@ class WalletCoordinator: Subscriber {
 	}
 
 	private func addSubscriptions() {
-		store.subscribe(self, name: .retrySync, callback: { [weak self] _ in
+		store.subscribe(self, triggerName: .retrySync, callback: { [weak self] _ in
 			DispatchQueue.walletQueue.async {
 				self?.walletManager.peerManager?.connect()
 			}
 		})
 
-		store.subscribe(self, name: .rescan, callback: { [weak self] _ in
+		store.subscribe(self, triggerName: .rescan, callback: { [weak self] _ in
 			self?.store.perform(action: RecommendRescan.set(false))
 			// In case rescan is called while a sync is in progess
 			// we need to make sure it's false before a rescan starts
@@ -301,7 +301,7 @@ class WalletCoordinator: Subscriber {
 			}
 		})
 
-		store.subscribe(self, name: .rescan, callback: { [weak self] _ in
+		store.subscribe(self, triggerName: .rescan, callback: { [weak self] _ in
 			self?.store.perform(action: WalletChange.setIsRescanning(true))
 		})
 	}

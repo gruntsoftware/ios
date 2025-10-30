@@ -90,7 +90,7 @@ class ApplicationController: Subscriber {
         setupRootViewController()
 		window?.makeKeyAndVisible()
 		offMainInitialization()
-		store.subscribe(self, name: .reinitWalletManager(nil), callback: {
+		store.subscribe(self, triggerName: .reinitWalletManager(nil), callback: {
 			guard let trigger = $0 else { return }
 			if case let .reinitWalletManager(callback) = trigger {
 				if let callback = callback {
@@ -233,7 +233,7 @@ class ApplicationController: Subscriber {
 	}
 
 	private func addWalletCreationListener() {
-		store.subscribe(self, name: .didCreateOrRecoverWallet, callback: { [weak self] _ in
+		store.subscribe(self, triggerName: .didCreateOrRecoverWallet, callback: { [weak self] _ in
 			self?.modalPresenter?.walletManager = self?.walletManager
 			self?.startDataFetchers()
 			self?.mainViewController?.didUnlockLogin()

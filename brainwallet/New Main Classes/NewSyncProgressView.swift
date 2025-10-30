@@ -56,7 +56,7 @@ struct NewSyncProgressView: View {
                                 .font(.caption)
                                 .frame(width: 230.0, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)
-                            Text(String(localized:"Block: ") + viewModel.blockHeightString)
+                            Text(String(localized:"Block: ") + viewModel.lastFoundBlockHeightString)
                                 .font(.caption)
                                 .frame(width: 230.0, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)

@@ -146,22 +146,22 @@ class TransactionsViewModel: ObservableObject, Subscriber {
 
         // MARK: - Subscription:  Did Upgrade PIN
 
-        store.subscribe(self, name: .didUpgradePin, callback: { _ in
+        store.subscribe(self, triggerName: .didUpgradePin, callback: { _ in
         })
 
         // MARK: - Subscription:  Did Enable Share Data
 
-        store.subscribe(self, name: .didEnableShareData, callback: { _ in
+        store.subscribe(self, triggerName: .didEnableShareData, callback: { _ in
         })
 
         // MARK: - Subscription:  Did Write Paper Key
 
-        store.subscribe(self, name: .didWritePaperKey, callback: { _ in
+        store.subscribe(self, triggerName: .didWritePaperKey, callback: { _ in
         })
 
         // MARK: - Subscription:  Memo Updated
 
-        store.subscribe(self, name: .txMemoUpdated(""), callback: { [weak self] in
+        store.subscribe(self, triggerName: .txMemoUpdated(""), callback: { [weak self] in
             guard let trigger = $0 else { return }
             if case let .txMemoUpdated(txHash) = trigger {
                 self?.updateTransactions(txHash: txHash)

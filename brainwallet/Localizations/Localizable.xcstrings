@@ -3585,6 +3585,9 @@
         }
       }
     },
+    "Block: %@" : {
+
+    },
     "Blockchain" : {
       "localizations" : {
         "ar" : {
@@ -7219,6 +7222,9 @@
         }
       }
     },
+    "Date: " : {
+
+    },
     "Delete all" : {
       "localizations" : {
         "ar" : {
@@ -8122,6 +8128,9 @@
           }
         }
       }
+    },
+    "Dismiss (Desctructive)" : {
+
     },
     "Don’t guess. It would take you\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries." : {
       "localizations" : {
@@ -12629,6 +12638,9 @@
         }
       }
     },
+    "Last block: " : {
+
+    },
     "Light Mode" : {
       "localizations" : {
         "ar" : {
@@ -14251,6 +14263,9 @@
         }
       }
     },
+    "No Prompt" : {
+
+    },
     "Ok" : {
       "localizations" : {
         "ar" : {
@@ -14450,6 +14465,9 @@
           }
         }
       }
+    },
+    "Okay" : {
+
     },
     "Paper Key" : {
       "localizations" : {
@@ -24964,6 +24982,9 @@
           }
         }
       }
+    },
+    "Tap here to NO PROMPT" : {
+
     },
     "Tap here to perform a rescan" : {
       "localizations" : {

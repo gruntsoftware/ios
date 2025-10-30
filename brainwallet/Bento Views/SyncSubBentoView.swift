@@ -41,29 +41,51 @@ struct SyncSubBentoView: View {
             ZStack {
                         VStack {
                             Spacer()
+                            HStack {
+                                Spacer()
+
+                                Text(viewModel.syncStateMessage)
+                                    .font(.system(size: 11, weight: .semibold, design: .default))
+                                    .frame(alignment: .trailing)
+                                    .foregroundColor(.white)
+                            }
 
                             HStack {
                                 Spacer()
 
-                                Text(String(localized:"Block: ") + viewModel.blockHeightString)
+                                Text(String(localized:"Last block: ") + viewModel.lastFoundBlockHeightString)
                                     .font(.system(size: 10, weight: .light, design: .default))
                                     .frame(alignment: .trailing)
                                     .foregroundColor(.white)
+
                             }
                             HStack {
                                 Spacer()
 
-                                Text(String(localized:"Timestamp: ") + viewModel.formattedTimestamp)
+                                Text(String(localized:"Date: ") + viewModel.formattedTimestamp)
                                     .font(.system(size: 10, weight: .light, design: .default))
                                     .frame(alignment: .trailing)
                                     .foregroundColor(.white)
+
                             }
+
                             HStack {
                                 ProgressView(value: viewModel.progress)
                                     .progressViewStyle(.linear)
                                     .accentColor(.white)
                             }
+
                             HStack {
+
+                                Text(String(format: "%3.2f %%", viewModel.progress * 100))
+                                    .font(.system(size: 10, weight: .bold, design: .default))
+                                    .frame(width: 50.0, alignment: .leading)
+                                    .foregroundColor(.white)
+                                    .padding(.trailing, 4.0)
+                                Text("Block: \(viewModel.currentBlockHeightString)")
+                                    .font(.system(size: 10, weight: .light, design: .default))
+                                    .frame(alignment: .leading)
+                                    .foregroundColor(.white)
                                 Spacer()
                                 Text("SEND")
                                     .font(.system(size: 10, weight: .light, design: .default))
@@ -93,8 +115,11 @@ struct SyncSubBentoView: View {
 
                             }
                             .coordinateSpace(name: "progresslabels")
+
                         }
                         .padding(.bottom, 8)
+                        .opacity(viewModel.isSyncing ? 1.0 : 0.0)
+
                     }
         }
     }

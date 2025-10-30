@@ -88,6 +88,12 @@ struct NewMainView: View {
     private var shouldShowExportOptions: Bool = false
 
     @State
+    private var shouldShowPromptAlert: Bool = false
+
+    @State
+    private var currentPrompt: PromptType = .noPrompt
+
+    @State
     var shouldShowSettings: Bool = false
 
     @State
@@ -134,7 +140,6 @@ struct NewMainView: View {
 
             let width = geometry.size.width
             let height = geometry.size.height
-            let surface = BrainwalletColor.surface
             let content = BrainwalletColor.content
             NavigationStack {
                 ZStack(alignment: .bottom) {
@@ -221,7 +226,9 @@ struct NewMainView: View {
 
                     ToolbarItem(placement: .navigationBarLeading) {
                             Button(action: {
-                                userPrefersDarkTheme.toggle()
+                                // userPrefersDarkTheme.toggle()
+
+                                 shouldShowPromptAlert.toggle()
                             }) {
 
                                 ZStack {
@@ -392,6 +399,15 @@ struct NewMainView: View {
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
+                }
+                .alert(isPresented: $shouldShowPromptAlert) {
+                    Alert(title: Text(currentPrompt.title),
+                          message: Text(currentPrompt.body),
+                          primaryButton: .default(Text("Okay"),
+                                        action: {
+                                        print("Ok CLICK")
+                                }),
+                          secondaryButton: .destructive(Text("Dismiss (Desctructive)")))
                 }
             }
         }

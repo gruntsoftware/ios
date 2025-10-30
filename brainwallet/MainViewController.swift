@@ -234,7 +234,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 		                callback: { self.isLoginRequired = $0.isLoginRequired
 		                })
         //// This is a legacy redux method of triggering adctions versus delegation
-        store.subscribe(self, name: .lock,
+        store.subscribe(self, triggerName: .lock,
                         callback: { [weak self] _ in
                             Task { @MainActor in
                                 self?.presentLockScreen()

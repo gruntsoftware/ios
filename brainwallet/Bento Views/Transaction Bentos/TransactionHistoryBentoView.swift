@@ -70,7 +70,7 @@ struct TransactionHistoryBentoView: View {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
                 HStack {
 
-                    if !newMainViewModel.filteredTransactions.isEmpty {
+                    if !filteredTransactions.isEmpty {
                         ZStack {
                             ScrollView(.vertical) {
                                 LazyVStack {
@@ -149,6 +149,11 @@ struct TransactionHistoryBentoView: View {
                                                          isSyncing: false)
             }
             .onChange(of: newMainViewModel.isLTCValueShown ) { _,_ in
+                if let filteredTxs = newMainViewModel.transactions {
+                    filteredTransactions = filteredTxs
+                }
+            }
+            .onChange(of: newMainViewModel.transactions ) { _,_ in
                 if let filteredTxs = newMainViewModel.transactions {
                     filteredTransactions = filteredTxs
                 }
