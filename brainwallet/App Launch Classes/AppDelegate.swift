@@ -50,28 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
 
         // FCM
-        Messaging.messaging().delegate = self
-        UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-            if granted {
-                DispatchQueue.main.async {
-                  application.registerForRemoteNotifications()
-                }
-            }
-
-            if error != nil {
-                Analytics
-                    .logEvent("fcm_messaging_registration_error",
-                        parameters: [
-                           "platform": "ios",
-                           "app_version": AppVersion.string,
-                           "error": "\(String(describing: error))"
-                        ])
-            }
-       }
-
-       // Init NotifactionManager
-        NotificationManager.shared.configure()
+        launchFCMessaging(application: application)
 
         // Wipe restart
         // Register for system notifications
@@ -291,5 +270,27 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         NotificationCenter.default.post(name: Notification.Name("didReceiveRemoteNotification"), object: nil, userInfo: userInfo)
         debugPrint("User tapped notification: \(userInfo)")
         completionHandler()
+    }
+
+    func launchFCMessaging(application: UIApplication) {
+        Messaging.messaging().delegate = self
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if granted {
+                DispatchQueue.main.async {
+                    application.registerForRemoteNotifications()
+                }
+            }
+
+            if error != nil {
+                Analytics
+                    .logEvent("fcm_messaging_registration_error",
+                              parameters: [
+                                "platform": "ios",
+                                "app_version": AppVersion.string,
+                                "error": "\(String(describing: error))"
+                              ])
+            }
+        }
     }
 }

@@ -40,7 +40,6 @@
 		241D22452DB526C9000302C8 /* InputWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22442DB526C5000302C8 /* InputWordsView.swift */; };
 		241D22472DB526D7000302C8 /* YourSeedProveItView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22462DB526D4000302C8 /* YourSeedProveItView.swift */; };
 		241D22492DB526E9000302C8 /* YourSeedWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22482DB526E7000302C8 /* YourSeedWordsView.swift */; };
-		2427D56A2EA5546300B61783 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2427D5692EA5545D00B61783 /* NotificationManager.swift */; };
 		2428717B2DE5C1060035DE48 /* GenericPinPadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428717A2DE5C1030035DE48 /* GenericPinPadCell.swift */; };
 		2428717D2DE5C2230035DE48 /* ClearNumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428717C2DE5C2210035DE48 /* ClearNumberPad.swift */; };
 		2428717F2DE5C25F0035DE48 /* ClearDecimalPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428717E2DE5C25D0035DE48 /* ClearDecimalPad.swift */; };
@@ -544,7 +543,6 @@
 		241D22442DB526C5000302C8 /* InputWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWordsView.swift; sourceTree = "<group>"; };
 		241D22462DB526D4000302C8 /* YourSeedProveItView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSeedProveItView.swift; sourceTree = "<group>"; };
 		241D22482DB526E7000302C8 /* YourSeedWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourSeedWordsView.swift; sourceTree = "<group>"; };
-		2427D5692EA5545D00B61783 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		2428717A2DE5C1030035DE48 /* GenericPinPadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericPinPadCell.swift; sourceTree = "<group>"; };
 		2428717C2DE5C2210035DE48 /* ClearNumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearNumberPad.swift; sourceTree = "<group>"; };
 		2428717E2DE5C25D0035DE48 /* ClearDecimalPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearDecimalPad.swift; sourceTree = "<group>"; };
@@ -1701,7 +1699,6 @@
 		24C639C82DC69E940014E6DD /* Settings Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2427D5692EA5545D00B61783 /* NotificationManager.swift */,
 				249DDE412DCD572F00B2B275 /* SettingsView.swift */,
 				243136FA2E0AFD1000BCBED1 /* SettingsHelpers.swift */,
 				24F5BD4F2E0460C90010D340 /* SecurityListView.swift */,
@@ -2970,7 +2967,6 @@
 				C312D4612D7DC27700BB97A4 /* UIViewController+Alerts.swift in Sources */,
 				C312D4622D7DC27700BB97A4 /* UIViewController+BRWAdditions.swift in Sources */,
 				C312D4632D7DC27700BB97A4 /* PinPadCells.swift in Sources */,
-				2427D56A2EA5546300B61783 /* NotificationManager.swift in Sources */,
 				C312D4662D7DC27700BB97A4 /* PaymentRequest.swift in Sources */,
 				C312D4672D7DC27700BB97A4 /* SendAmountCell.swift in Sources */,
 				C312D4692D7DC27700BB97A4 /* CGContext+Additions.swift in Sources */,

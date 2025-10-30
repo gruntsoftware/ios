@@ -111,6 +111,8 @@ struct NewMainView: View {
     @State
     private var userPrefersDarkTheme = true
 
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     init(viewModel: NewMainViewModel,
          receiveViewModel: NewReceiveViewModel) {
         newMainViewModel = viewModel
@@ -214,10 +216,41 @@ struct NewMainView: View {
                         Spacer()
                     }
                     .padding([.leading, .trailing], bentoPadding + 10)
-                    .offset(x: newMainViewModel.shouldShowSettings ? width - 80.0: 0)
                 }
                 .toolbar {
+
                     ToolbarItem(placement: .navigationBarLeading) {
+                            Button(action: {
+                                userPrefersDarkTheme.toggle()
+                            }) {
+
+                                ZStack {
+                                    Ellipse()
+                                        .frame(width: iconSize * 2.0,
+                                               height: iconSize * 2.0,
+                                               alignment: .center)
+                                        .modifier(BentoSurface(userPrefersDarkTheme: $userPrefersDarkTheme))
+                                        .overlay(
+                                            Ellipse()
+                                                .stroke(content.opacity(0.3), lineWidth: 0.5)
+                                                .frame(width: iconSize * 2.0,
+                                                       height: iconSize * 2.0,
+                                                       alignment: .center)
+                                        )
+                                        .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
+
+                                    Image(systemName: userPrefersDarkTheme ?
+                                          "sun.max.circle" : "moon.circle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: iconSize,
+                                           height: iconSize)
+                                    .foregroundColor(content)
+                                }
+                            }
+                    }
+
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
                             newMainViewModel.shouldShowSettings.toggle()
                             shouldShowSettings = newMainViewModel.shouldShowSettings
@@ -247,65 +280,6 @@ struct NewMainView: View {
                             }
 
                         }
-                        .offset(x: newMainViewModel.shouldShowSettings ? width - 80.0: 0)
-                    }
-
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-
-                        ZStack {
-                            Capsule()
-                                .frame(width: iconSize * buttonPlatformFactor * 2,
-                                       height: iconSize * buttonPlatformFactor,
-                                       alignment: .center)
-                                .modifier(BentoSurface(userPrefersDarkTheme: $userPrefersDarkTheme))
-                                .overlay(
-                                    Capsule()
-                                        .stroke(content.opacity(0.2), lineWidth: 0.5)
-                                        .frame(width: iconSize * buttonPlatformFactor * 2,
-                                               height: iconSize * buttonPlatformFactor,
-                                               alignment: .center)
-                                )
-                                .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
-
-                            HStack {
-                                Button(action: {
-                                    userPrefersDarkTheme.toggle()
-                                }) {
-                                    Image(systemName: userPrefersDarkTheme ?
-                                          "sun.max.circle" : "moon.circle")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
-                                    .foregroundColor(content)
-                                    .offset(x: -7, y: 0)
-                                }
-
-                                Button(action: {
-                                    shouldRing.toggle()
-                                    if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                                        if UIApplication.shared.canOpenURL(appSettings) {
-                                            UIApplication.shared.open(appSettings)
-                                        }
-                                    }
-                                    withAnimation(.spring(response: 0.5, dampingFraction: 0.3)) {
-                                        bellAngle = shouldRing ? 30 : 0
-                                    }
-
-                                }) {
-                                    Image(systemName: "bell")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: iconSize,
-                                               height: iconSize)
-                                        .foregroundColor(content)
-                                        .rotationEffect(Angle(degrees: bellAngle))
-                                }
-                            }
-                            .frame(width: iconSize * buttonPlatformFactor * 2,
-                                   height: iconSize * buttonPlatformFactor)
-
-                        }.offset(x: newMainViewModel.shouldShowSettings ? width - 80.0: 0)
                     }
 
                     ToolbarItemGroup(placement: .bottomBar) {
