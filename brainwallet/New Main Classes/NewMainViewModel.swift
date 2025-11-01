@@ -158,8 +158,7 @@ class NewMainViewModel: ObservableObject, Subscriber {
                         return
                     }
                     if error == nil && !rates.isEmpty {
-                        debugPrint("::: currentRate \(currentRate.rate.description)")
-                        self.currencyCode = "\(currentRate.code)"
+                        self.currencyCode = "\(currentRate.code)/LTC"
                         self.currentFiatValue = "\(currentRate.rate.description)"
                     }
 

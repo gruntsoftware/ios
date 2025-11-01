@@ -42,11 +42,9 @@ struct LTCPriceBentoView: View {
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
                 VStack {
-                    Text(newMainViewModel.currencyCode + "/LTC")
-                        .font(.system(size: 30, weight: .semibold, design: .default))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.3)// Shrinks to 30% of original
-                        .padding([.leading,.top], 10)
+                    Text(newMainViewModel.currencyCode)
+                        .font(.system(size: 24, weight: .semibold, design: .default))
+                        .padding([.leading,.top], 16)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
                     Text(newMainViewModel.currentFiatValue)//  "RP1,516,863,885.40"
@@ -54,16 +52,16 @@ struct LTCPriceBentoView: View {
                         .lineLimit(1)
                         .minimumScaleFactor(0.3)// Shrinks to 30% of original
                         .padding(.top, 12)
-                        .padding([.leading,.trailing], 10)
+                        .padding([.leading,.trailing], 16)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
+                        .foregroundStyle( userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack.opacity(0.8))
                     Text(currentDateLabel)
                         .font(.system(size: 11, weight: .ultraLight, design: .default))
                         .lineLimit(1)
                         .minimumScaleFactor(0.9)// Shrinks to 80% of original
-                        .padding(.leading, 10)
+                        .padding(.leading, 16)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
+                        .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
                     Spacer()
                 }
 

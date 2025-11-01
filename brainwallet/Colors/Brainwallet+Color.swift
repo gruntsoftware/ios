@@ -149,4 +149,14 @@ struct BentoColor {
                                       green: 0.15294117647058825,
                                       blue: 0.8862745098039215)
 
+    /// progressGreen1 #37BE46
+    static let progressGreen1 = Color(red: 0.21568627450980393,
+                                      green: 0.7450980392156863,
+                                      blue: 0.27450980392156865)
+
+    /// progressGreen2 - #AFF64C
+    static let progressGreen2 = Color(red: 0.6862745098039216,
+                                      green: 0.9647058823529412,
+                                      blue: 0.2980392156862745)
+
 }

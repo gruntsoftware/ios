@@ -70,12 +70,6 @@ struct SyncSubBentoView: View {
                             }
 
                             HStack {
-                                ProgressView(value: viewModel.progress)
-                                    .progressViewStyle(.linear)
-                                    .accentColor(.white)
-                            }
-
-                            HStack {
 
                                 Text(String(format: "%3.2f %%", viewModel.progress * 100))
                                     .font(.system(size: 10, weight: .bold, design: .default))
@@ -87,12 +81,12 @@ struct SyncSubBentoView: View {
                                     .frame(alignment: .leading)
                                     .foregroundColor(.white)
                                 Spacer()
-                                Text("SEND")
+                                Text("Send")
                                     .font(.system(size: 10, weight: .light, design: .default))
                                     .frame(alignment: .center)
                                     .foregroundColor(.white)
 
-                                Image(systemName: "nosign")
+                                Image(systemName: "xmark.circle")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: progressIconSize,
@@ -100,12 +94,12 @@ struct SyncSubBentoView: View {
                                            alignment: .center)
                                     .foregroundColor(BrainwalletColor.error)
 
-                                Text("RECEIVE")
+                                Text("Receive")
                                     .font(.system(size: 10, weight: .light, design: .default))
                                     .frame(alignment: .center)
                                     .foregroundColor(.white)
 
-                                Image(systemName: "square.and.arrow.down")
+                                Image(systemName: "checkmark.circle")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: progressIconSize,
@@ -115,6 +109,12 @@ struct SyncSubBentoView: View {
 
                             }
                             .coordinateSpace(name: "progresslabels")
+                            HStack {
+                                ProgressView(value: viewModel.progress)
+                                    .progressViewStyle(.linear)
+                                    .accentColor(BentoColor.progressGreen1)
+                                    .padding(.bottom, 8)
+                            }
 
                         }
                         .padding(.bottom, 8)
