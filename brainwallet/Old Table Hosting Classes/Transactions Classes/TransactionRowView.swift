@@ -37,44 +37,32 @@ struct TransactionRowView: View {
     var body: some View {
         GeometryReader { geometry in
             let height = geometry.size.height
+            let width = geometry.size.width
+
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
-
-//                BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
-//                VStack {
-//                    Text(newMainViewModel.currencyCode + "/LTC")
-//                        .font(.system(size: 30, weight: .semibold, design: .default))
-//                        .lineLimit(1)
-//                        .minimumScaleFactor(0.3)// Shrinks to 30% of original
-//                        .padding([.leading,.top], 10)
-//                        .frame(maxWidth: .infinity, alignment: .leading)
-//                        .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
-//
-//                
-//                
-//                
-
                 VStack {
+                    Spacer()
                     HStack {
                         Text(transaction.longTimestamp)
-                            .font(.system(size: 18, weight: .regular, design: .default))
+                            .font(.system(size: 19, weight: .regular, design: .default))
                             .lineLimit(1)
-                            .minimumScaleFactor(0.2)// Shrinks to 20% of original
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
-                            .padding(.leading, 8)
+                            .minimumScaleFactor(0.1)// Shrinks to 20% of original
+                            .frame(maxWidth: width * 0.5, alignment: .leading)
+                            .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
 
                         Spacer()
                         Text(amountLabel)
-                            .font(.system(size: 18, weight: .semibold, design: .default))
+                            .font(.system(size: 22, weight: .bold, design: .default))
                             .lineLimit(1)
                             .minimumScaleFactor(0.2)// Shrinks to 20% of original
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                            .foregroundColor(transaction.direction == .sent ? BrainwalletColor.chili : BrainwalletColor.affirm)
-                            .padding(.trailing, 8)
+                            .frame(maxWidth: width * 0.5, alignment: .trailing)
+                            .foregroundColor(transaction.direction == .sent ? BrainwalletColor.transferRed : BrainwalletColor.affirm)
                     }
-                    .frame(alignment: .topLeading)
-                    .padding(.top, 8)
+                    .padding([.leading, .trailing], 16)
+
+                    Spacer()
+
                     HStack {
                         Spacer()
                         Text(transaction.detailsAddressText)
@@ -83,10 +71,10 @@ struct TransactionRowView: View {
                             .minimumScaleFactor(0.4)// Shrinks to 40% of original
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
-                            .padding(.trailing, 8)
+
                     }
-                    .frame(alignment: .topTrailing)
-                    .padding(.bottom, 8)
+                    .padding([.leading, .trailing], 16)
+                    Spacer()
                 }
             }
         }

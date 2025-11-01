@@ -45,9 +45,9 @@ enum TransactionFilterState: Int, CaseIterable {
     var iconColor: Color {
         switch self {
         case .allTransactions:
-            return BrainwalletColor.nearBlack
+            return Color.white
         case .sendTransactions:
-            return BrainwalletColor.chili
+            return BrainwalletColor.transferRed
         case .receiveTransactions:
             return BrainwalletColor.affirm
         }

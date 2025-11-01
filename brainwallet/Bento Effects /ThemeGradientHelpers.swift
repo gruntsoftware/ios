@@ -32,37 +32,22 @@ import SwiftUI
      }
  }
 
-struct BentoShadow: ViewModifier {
-
-    @Binding
-    var userPrefersDarkTheme: Bool
-    func body(content: Content) -> some View {
-        content
-            .shadow(color: userPrefersDarkTheme ? Color.black.opacity(0.8) :
-                        BentoColor.purple5.opacity(0.12),
-                    radius: 2, x: 1, y: 2.4)
-    }
-}
-
 struct BentoSurface: ViewModifier {
 
     @Binding
     var userPrefersDarkTheme: Bool
+
+    let darkModeColor = LinearGradient(colors: [BentoColor.purple2.opacity(0.25),
+                                                 BentoColor.purple2.opacity(0.07)],
+                                                               startPoint: .topLeading,
+                                                               endPoint: .bottomTrailing)
+    let lightModeColor = LinearGradient(colors: [BentoColor.grayBackground],
+                                                               startPoint: .topLeading,
+                                                               endPoint: .bottomTrailing)
+
     func body(content: Content) -> some View {
         content
-            .foregroundStyle(userPrefersDarkTheme ? LinearGradient(colors: [BentoColor.purple2.opacity(0.25),
-                                                                            BentoColor.purple2.opacity(0.07)],
-                                                                   startPoint: .topLeading,
-                                                                   endPoint: .bottomTrailing) :
-                                LinearGradient(
-                                    colors: [.white, BentoColor.gray1],
-                                    startPoint: .top,
-                                    endPoint: .bottom
-                                )
-            )
-
-        /// Dark Mode : #000000 at 40% Opacity
-        /// Light  Mode : #5754FF1F at 12% Opacity
+            .foregroundStyle(userPrefersDarkTheme ? darkModeColor : lightModeColor)
     }
 }
 
@@ -74,26 +59,16 @@ struct BentoBackgroundView: View {
     var body: some View {
         ZStack {
             if userPrefersDarkTheme {
-                LinearGradient(colors: [BentoColor.purple2.opacity(0.25),
-                                        BentoColor.purple2.opacity(0.07)],
-                               startPoint: .topLeading, endPoint: .bottomTrailing)
-                                        .edgesIgnoringSafeArea(.all)
+
+                Color.white.opacity(0.03).edgesIgnoringSafeArea(.all)
                 RoundedRectangle(cornerRadius: bentoCornerRadius)
-                    .stroke( LinearGradient(
-                        colors: [BentoColor.purple1
-                                 ,BentoColor.purple2],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    ),lineWidth: 1.5)
+                    .stroke(Color.white.opacity(0.25)
+                    ,lineWidth: 1.5)
             } else {
-                LinearGradient(
-                    colors: [.white, BentoColor.gray1],
-                    startPoint: .top,
-                    endPoint: .bottom
-                ).edgesIgnoringSafeArea(.all)
+                Color.white.edgesIgnoringSafeArea(.all)
                 RoundedRectangle(cornerRadius: bentoCornerRadius)
-                    .stroke(BentoColor.gray2,
-                            lineWidth: 1.5)
+                    .stroke(BentoColor.grayBorder,
+                            lineWidth:  1.5)
             }
         }
     }
@@ -107,17 +82,21 @@ struct BalanceGameBackgroundView: View {
     var body: some View {
         ZStack {
             if userPrefersDarkTheme {
-                LinearGradient(colors: [BentoColor.purple3.opacity(0.8),
-                                        BentoColor.purple4.opacity(0.3)],
-                               startPoint: .top, endPoint: .bottom)
-                                        .edgesIgnoringSafeArea(.all)
+                RadialGradient(stops:
+                                [Gradient.Stop(color: .black.opacity(0.5), location: 0.0),
+                                         Gradient.Stop(color: BentoColor.balanceBackgroundPurple.opacity(0.3), location: 0.950)
+                                        ], center: .topLeading, startRadius: 90.0, endRadius: 400)
+
                 RoundedRectangle(cornerRadius: bentoCornerRadius)
-                    .stroke( LinearGradient(
-                        colors: [BentoColor.purple1,
-                                 BentoColor.purple2],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    ),lineWidth: 1.5)
+                    .stroke(
+                        RadialGradient(stops:
+                                                [Gradient.Stop(color: .white, location: 0.0),
+                                                 Gradient.Stop(color: BentoColor.darkModeBorder2, location: 0.22),
+                                                 Gradient.Stop(color: BentoColor.darkModeBorder3, location: 0.59),
+                                                 Gradient.Stop(color: BentoColor.darkModeBorder4, location: 0.88),
+                                                 Gradient.Stop(color: BentoColor.darkModeBorder5, location: 1.0)
+                                                ], center: .center, startRadius: 20.0, endRadius: 200),
+                             lineWidth: 1.5)
             } else {
                 RoundedRectangle(cornerRadius: bentoCornerRadius)
                     .fill(LinearGradient(
@@ -128,8 +107,8 @@ struct BalanceGameBackgroundView: View {
                     ))
                     .edgesIgnoringSafeArea(.all)
                 RoundedRectangle(cornerRadius: bentoCornerRadius)
-                    .stroke(BentoColor.gray2,
-                            lineWidth: 1.5)
+                    .stroke(BentoColor.grayBorder,
+                            lineWidth:  1.5)
             }
         }
     }

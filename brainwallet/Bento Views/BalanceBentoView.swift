@@ -54,7 +54,7 @@ struct BalanceBentoView: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.8)// Shrinks to 80% of original
                             .frame(maxWidth: .infinity, alignment: .topLeading)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color.white.opacity(0.70))
                         Spacer()
                         Button(action: {
                             shouldShowBalance.toggle()
@@ -65,11 +65,14 @@ struct BalanceBentoView: View {
                                 .foregroundColor(Color.white)
                                 .frame(width: buttonSize,
                                        height: buttonSize,
-                                       alignment: .topTrailing)
+                                       alignment: .center)
                         }
+                        .frame(width: buttonSize * 1.5, height: buttonSize * 1.5)
                         .accessibilityIdentifier("hideBalanceToggleButton")
-                    }
-                    .padding(.top, 12)
+                        .background(Color.white.opacity(0.07))
+                        .cornerRadius(8)
+                     }
+                    .padding(.top, 24)
                     .padding([.leading, .trailing], sidePadding)
                     .frame(height: height * 0.25)
 

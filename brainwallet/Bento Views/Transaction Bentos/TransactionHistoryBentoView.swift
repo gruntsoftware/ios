@@ -96,35 +96,34 @@ struct TransactionHistoryBentoView: View {
                                 Spacer()
                                 HStack {
                                     ZStack {
-                                        Capsule()
-                                            .fill(labelBackground.opacity(0.4))
-                                            .frame(width: 85, height: 25)
                                         Button {
                                             filterModeState.toggle()
                                         } label: {
                                             HStack {
-
                                                 Image(systemName: filterModeState.icon)
                                                     .resizable()
                                                     .frame(width: 12, height: 12)
                                                     .foregroundColor(filterModeState.iconColor)
                                                 Text("\(filteredTransactions.count) txns")
-                                                    .font(.system(size: 12, weight: .semibold, design: .default))
+                                                    .font(.system(size: 14,
+                                                                  weight: .semibold,
+                                                                  design: .default))
                                                     .lineLimit(1)
                                                     .minimumScaleFactor(0.3)// Shrinks to 30% of original
                                                     .frame(maxWidth: .infinity, alignment: .leading)
                                                     .foregroundColor(labelForeground)
                                             }
+                                            .padding([.leading, .trailing], 4)
                                         }
-                                        .padding(.leading)
-                                        .frame(width: 85, height: 25)
+                                        .frame(width: 80, height: 22, alignment: .leading)
+                                        .background(Color.white.opacity(0.1))
+                                        .cornerRadius(8)
                                         .accessibilityIdentifier("filterTransactionsButton")
-
                                     }
+                                    .padding([.leading, .bottom], 16)
+
                                     Spacer()
                                 }
-                                .padding(.leading, 4)
-                                .padding(.bottom, 2)
 
                             }
                         }
@@ -207,85 +206,7 @@ class BRHelp: NSObject {
         return txPtr
     }
 }
-
-// let width = geometry.size.width
 //
-//
-// ZStack {
-//    BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
-//    VStack(alignment: .center) {
-//        HStack {
-//            ZStack {
-//                RoundedRectangle(cornerRadius: 8)
-//                    .frame(width: width * 0.5, height: 24, alignment: .center)
-//                    .foregroundColor(labelBackground)
-//                    .padding(8)
-//                Text("TUTORIALS")
-//                    .font(.system(size: 12, weight: .light, design: .default))
-//                    .lineLimit(1)
-//                    .minimumScaleFactor(0.5)// Shrinks to 50% of original
-//                    .padding([.leading, .trailing], 4)
-//                    .frame(maxWidth: width * 0.5, maxHeight: 24, alignment: .center)
-//                    .foregroundColor(labelForeground)
-//            }
-//            Spacer()
-//        }
-//        Spacer()
-//    }
-
-//                                            Picker("", selection: $currentTransaction) {
-//                                                ForEach($filteredTransactions, id: \.self) { transaction in
-//                                                    TransactionRowView(transaction: transaction, newMainViewModel: newMainViewModel)
-//                                                }
-//                                            }
-//                                            .pickerStyle(.wheel)
-//                                            .background(Color.clear)
-//                                            .frame(height: height, alignment: .center)
-//                                            .disabled(filteredTransactions.isEmpty)
-//                                            .onChange(of: currentTransaction) { value in
-//                                                print(":::||\(value)")
-//                                            }
-// if detailIsShowing {
-//    Button(action: {
-//        modeState.toggle()
-//    }) {
-//        ZStack {
-//            BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
-//                .frame(width: width * 0.18, height: height * 0.7, alignment: .center)
-//
-//            Text(String(localized: "\(modeState.label)"))
-//                .frame(width: width * 0.18, height: height * 0.7, alignment: .center)
-//                .font(Font(UIFont.barlowSemiBold(size: 15.0)))
-//                .foregroundColor(BrainwalletColor.content)
-//                .overlay(
-//                    RoundedRectangle(cornerRadius: bentoCornerRadius)
-//                        .stroke(BrainwalletColor.content, lineWidth: 0.5)
-//                )
-//        }
-//        .padding(.all, 6.0)
-//    }
-//    .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
-//    .accessibilityIdentifier("transactionsFilterToggleButton")
-// }
-// if detailIsShowing {
-//    Button(action: {
-//        shouldShowExportOptions.toggle()
-//    }) {
-//        ZStack {
-//            BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
-//                .frame(width: width * 0.18, height: height * 0.7, alignment: .center)
-//
-//            Text(String(localized: "Export"))
-//                .frame(width: width * 0.18, height: height * 0.7, alignment: .center)
-//                .font(Font(UIFont.barlowSemiBold(size: 15.0)))
-//                .foregroundColor(BrainwalletColor.content)
-//                .overlay(
-//                    RoundedRectangle(cornerRadius: bentoCornerRadius)
-//                        .stroke(BrainwalletColor.content, lineWidth: 0.5)
-//                )
-//        }
-//        .padding(.all, 6.0)
-//    }
-//    .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
-//    .accessibilityIdentifier("exportTransactionsButton")
-// }
+// .background(
+//        RoundedRectangle(cornerRadius: 10)
+//            .fill(Color.white.opacity(0.07))

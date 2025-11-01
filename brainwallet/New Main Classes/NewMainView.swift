@@ -62,9 +62,6 @@ struct NewMainView: View {
     private var mainGradientStyle: MainGradientStyle = .lightStyle
 
     @State
-    private var filterTransactionState: TransactionFilterState = .allTransactions
-
-    @State
     private var userPrefersDarkTheme = true
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -110,7 +107,6 @@ struct NewMainView: View {
                         BalanceBentoView(viewModel: newMainViewModel,
                                          userPrefersDarkTheme: $userPrefersDarkTheme)
                         .frame(height:  balanceGameBentoHeight, alignment: .top)
-                        .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
                         .padding(bentoPadding)
                        .padding(.top, 10)
                        .padding(.bottom, 10)
@@ -123,7 +119,6 @@ struct NewMainView: View {
                                 .padding(bentoPadding)
                                 .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 1.0 : 0.0, anchor: .top)
                                 .transition(.scale)
-                                .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
 
                         }
                             TransactionHistoryBentoView(
@@ -132,7 +127,6 @@ struct NewMainView: View {
                                                     detailIsShowing: $shouldShowTransactionDetail,
                                                     userPrefersDarkTheme: $userPrefersDarkTheme)
                             .frame(height: transactionsBentoHeight, alignment: .top)
-                            .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
                             .padding(bentoPadding)
 
                         if !shouldShowTransactionDetail {
@@ -140,19 +134,16 @@ struct NewMainView: View {
                                 HStack {
                                     TutorialsBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                                    .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
                                     .frame(maxHeight: height * 0.5, alignment: .top)
                                     .padding(bentoPadding)
 
                                     VStack {
                                         LTCPriceBentoView(viewModel: newMainViewModel,
                                                           userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
                                         .padding(bentoPadding)
 
                                         FavouritesBentoView(viewModel: newMainViewModel,
                                                             userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
                                         .padding(bentoPadding)
 
                                     }
@@ -161,7 +152,6 @@ struct NewMainView: View {
                                 .padding([.top,.leading, .trailing], bentoPadding)
                                 GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                                         .frame(height: balanceGameBentoHeight, alignment: .top)
-                                        .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
                                         .padding(bentoPadding)
                             }
                             .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 0.0 : 1.0, anchor: .bottom)
@@ -192,7 +182,6 @@ struct NewMainView: View {
                                                        height: iconSize * 2.0,
                                                        alignment: .center)
                                         )
-                                        .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
 
                                     Image(systemName: userPrefersDarkTheme ?
                                           "sun.max.circle" : "moon.circle")
@@ -224,7 +213,6 @@ struct NewMainView: View {
                                                    height: iconSize * 2.0,
                                                    alignment: .center)
                                     )
-                                    .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
 
                                 Image(systemName: "line.3.horizontal")
                                     .resizable()

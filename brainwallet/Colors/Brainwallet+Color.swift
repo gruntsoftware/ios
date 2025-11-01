@@ -38,6 +38,7 @@ struct BrainwalletColor {
     static let pesto = Color(#colorLiteral(red: 0.1450980392, green: 0.6666666667, blue: 0.1725490196, alpha: 1))
     static let grape = Color(#colorLiteral(red: 0.2509803922, green: 0.1764705882, blue: 0.6823529412, alpha: 1))
     static let chili = Color(#colorLiteral(red: 0.8078431373, green: 0.1882352941, blue: 0.1450980392, alpha: 1))
+    static let transferRed = Color(#colorLiteral(red: 1, green: 0.2823529412, blue: 0.2941176471, alpha: 1))
     static let blue = Color(#colorLiteral(red: 0.1607843137, green: 0.4078431373, blue: 0.9490196078, alpha: 1))
     static let nearBlack = Color(#colorLiteral(red: 0.08235294118, green: 0.08235294118, blue: 0.08235294118, alpha: 1))
     static let lightgray = Color(#colorLiteral(red: 0.8352941176, green: 0.8352941176, blue: 0.8352941176, alpha: 1))
@@ -97,15 +98,15 @@ struct BentoColor {
     static let purple5  = Color(red:  0.3411764705882353,
                                 green: 0.32941176470588235,
                                 blue: 1)
+    /// grayBackground- #E8EAEC
+    static let grayBackground = Color(red: 0.9098039215686274,
+                                      green: 0.9176470588235294,
+                                      blue: 0.9254901960784314)
+    /// grayBorder - #D9D9D9
+    static let grayBorder = Color(red: 0.8509803921568627,
+                             green: 0.8509803921568627,
+                             blue: 0.8509803921568627)
 
-    /// gray1- #EAEAEA
-    static let gray1 = Color(red: 0.9176470588235294,
-                             green: 0.9176470588235294,
-                             blue: 0.9176470588235294)
-    /// gray2- #E7EAEC
-    static let gray2 = Color(red: 0.9098039215686274,
-                             green: 0.9176470588235294,
-                             blue: 0.9254901960784314)
     /// gameBlue1 - #114CD4
     static let gameBlue1 = Color(red: 0.06666666666666667,
                                  green: 0.2980392156862745,
@@ -120,4 +121,32 @@ struct BentoColor {
     static let tutorialGreen2 = Color(red: 0.2823529411764706,
                                       green: 0.592156862745098,
                                       blue: 0.3058823529411765)
+
+    /// darkModeBorder2- #9074FF
+    static let darkModeBorder2 = Color(red: 0.5647058823529412,
+                                      green: 0.4549019607843137,
+                                       blue: 1.0)
+
+    /// darkModeBorder3- #020148
+    static let darkModeBorder3 = Color(red: 0.00784313725490196,
+                                      green: 0.00392156862745098,
+                                      blue: 0.2823529411764706)
+
+    /// darkModeBorder4- #2B193B
+    static let darkModeBorder4 = Color(red: 0.16862745098039217,
+                                      green: 0.09803921568627451,
+                                      blue: 0.23137254901960785)
+
+    /// darkModeBorder5- #6944BE
+
+    static let darkModeBorder5 = Color(red: 0.4117647058823529,
+                                      green: 0.26666666666666666,
+                                      blue: 0.7450980392156863)
+
+    /// balanceBackgroundPurple - #5827E2
+
+    static let balanceBackgroundPurple = Color(red: 0.34509803921568627,
+                                      green: 0.15294117647058825,
+                                      blue: 0.8862745098039215)
+
 }
