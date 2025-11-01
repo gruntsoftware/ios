@@ -39,7 +39,6 @@ struct ExportButtonView: View {
 
                 HStack {
                     Button(action: {
-                        // viewModel.didTapExport?()
                         shouldShowProducts.toggle()
                     }) {
                         Text("Export Transaction Data")

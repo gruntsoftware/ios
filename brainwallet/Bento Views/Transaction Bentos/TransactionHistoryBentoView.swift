@@ -50,7 +50,9 @@ struct TransactionHistoryBentoView: View {
     private var filterModeState: TransactionFilterState = .allTransactions
 
     init(cellViewModel:  Binding<TransactionCellViewModel?>?,
-         viewModel: NewMainViewModel, detailIsShowing: Binding<Bool>, userPrefersDarkTheme: Binding<Bool>) {
+         viewModel: NewMainViewModel,
+         detailIsShowing: Binding<Bool>,
+         userPrefersDarkTheme: Binding<Bool>) {
         _detailIsShowing = detailIsShowing
         _userPrefersDarkTheme = userPrefersDarkTheme
         newMainViewModel = viewModel
@@ -75,7 +77,9 @@ struct TransactionHistoryBentoView: View {
                             ScrollView(.vertical) {
                                 LazyVStack {
                                     ForEach($filteredTransactions, id: \.self) { transaction in
-                                        TransactionRowView(userPrefersDarkTheme:$userPrefersDarkTheme, transaction: transaction, newMainViewModel: newMainViewModel)
+                                        TransactionRowView(userPrefersDarkTheme:$userPrefersDarkTheme,
+                                                           transaction: transaction,
+                                                           newMainViewModel: newMainViewModel)
                                             .frame(height: height)
                                             .cornerRadius(bentoCornerRadius)
                                             .id(transaction.id)

@@ -14,56 +14,6 @@ let balanceGameBentoHeight: CGFloat = 135.0
 let transactionsBentoHeight: CGFloat = 85.0
 let iconSize: CGFloat = 20.0
 
-enum Selection {
-    case receive
-    case send
-    case gameHistory
-}
-
-enum TransactionFilterState: Int, CaseIterable {
-    case allTransactions = 0
-    case sendTransactions
-    case receiveTransactions
-
-    var label: String {
-        switch self {
-        case .allTransactions:
-            return "All"
-        case .sendTransactions:
-            return "Sent"
-        case .receiveTransactions:
-            return "Received"
-        }
-    }
-
-    var icon: String {
-        switch self {
-        case .allTransactions:
-            return "smallcircle.filled.circle"
-        case .sendTransactions:
-            return "arrow.up.circle"
-        case .receiveTransactions:
-            return "arrow.down.circle"
-        }
-    }
-
-    var iconColor: Color {
-        switch self {
-        case .allTransactions:
-            return BrainwalletColor.nearBlack
-        case .sendTransactions:
-            return BrainwalletColor.chili
-        case .receiveTransactions:
-            return BrainwalletColor.affirm
-        }
-    }
-
-    mutating func toggle() {
-            let nextRawValue = (self.rawValue + 1) % Self.allCases.count
-            self = TransactionFilterState(rawValue: nextRawValue)!
-    }
-}
-
 struct NewMainView: View {
 
     @ObservedObject
@@ -226,9 +176,7 @@ struct NewMainView: View {
 
                     ToolbarItem(placement: .navigationBarLeading) {
                             Button(action: {
-                                // userPrefersDarkTheme.toggle()
-
-                                 shouldShowPromptAlert.toggle()
+                                 userPrefersDarkTheme.toggle()
                             }) {
 
                                 ZStack {
@@ -383,18 +331,12 @@ struct NewMainView: View {
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 }
                 .sheet(isPresented: $userDidTapSend) {
-                    NewSendView(viewModel: newMainViewModel)
+                    BentoSendModalView(viewModel: newMainViewModel)
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.medium])
                         .presentationDragIndicator(.visible)
                 }
                 .sheet(isPresented: $userDidTapBuyReceive) {
-                    BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
-                        .cornerRadius(bentoCornerRadius)
-                        .presentationDetents([.large])
-                        .presentationDragIndicator(.visible)
-                }
-                .sheet(isPresented: $shouldShowExportOptions) {
                     BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.large])

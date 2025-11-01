@@ -1,5 +1,5 @@
 //
-//  NewSendView.swift
+//  BentoSendModalView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 03/05/2025.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct NewSendView: View {
+struct BentoSendModalView: View {
 
     @ObservedObject var newMainViewModel: NewMainViewModel
 

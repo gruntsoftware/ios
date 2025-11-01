@@ -32,7 +32,6 @@
 		2416CE792DA90D0D00FFBD10 /* BRCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5F2DA90D0D00FFBD10 /* BRCoding.swift */; };
 		2416CE7A2DA90D0D00FFBD10 /* BRKeyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE602DA90D0D00FFBD10 /* BRKeyExtension.swift */; };
 		2416CE7C2DA90D0D00FFBD10 /* BRCalculationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416CE5E2DA90D0D00FFBD10 /* BRCalculationExtension.swift */; };
-		241B7CDD2E68BDCF00B18679 /* ExportHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241B7CDC2E68BDBD00B18679 /* ExportHostingController.swift */; };
 		241B7CDF2E68CA3F00B18679 /* ExportButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241B7CDE2E68CA3400B18679 /* ExportButtonViewModel.swift */; };
 		241D223F2DB526A1000302C8 /* ReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D223E2DB52699000302C8 /* ReadyView.swift */; };
 		241D22412DB526AE000302C8 /* SetPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D22402DB526AC000302C8 /* SetPasscodeView.swift */; };
@@ -56,6 +55,7 @@
 		244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244520332DE70310003AFFDF /* LockScreenHostingController.swift */; };
 		2446DF522E2906AC001453DF /* bloop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2446DF512E2906AC001453DF /* bloop.mp3 */; };
 		244A8D932DE84C890024D356 /* BrainwalletShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */; };
+		2457DC822EB63AAE00688B9A /* TransactionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2457DC812EB63AA600688B9A /* TransactionHelper.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
 		2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2460284E2E5F178400CDEB7A /* FirebaseAnalytics */; };
@@ -535,7 +535,6 @@
 		2416CE672DA90D0D00FFBD10 /* BRTxInputExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRTxInputExtension.swift; sourceTree = "<group>"; };
 		2416CE682DA90D0D00FFBD10 /* BRTxOutputExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRTxOutputExtension.swift; sourceTree = "<group>"; };
 		2416CE692DA90D0D00FFBD10 /* BRWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRWallet.swift; sourceTree = "<group>"; };
-		241B7CDC2E68BDBD00B18679 /* ExportHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportHostingController.swift; sourceTree = "<group>"; };
 		241B7CDE2E68CA3400B18679 /* ExportButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportButtonViewModel.swift; sourceTree = "<group>"; };
 		241D223E2DB52699000302C8 /* ReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyView.swift; sourceTree = "<group>"; };
 		241D22402DB526AC000302C8 /* SetPasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasscodeView.swift; sourceTree = "<group>"; };
@@ -562,6 +561,7 @@
 		244520332DE70310003AFFDF /* LockScreenHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHostingController.swift; sourceTree = "<group>"; };
 		2446DF512E2906AC001453DF /* bloop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bloop.mp3; sourceTree = "<group>"; };
 		244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainwalletShapes.swift; sourceTree = "<group>"; };
+		2457DC812EB63AA600688B9A /* TransactionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHelper.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
 		246027A62E5E178700CDEB7A /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -1287,6 +1287,7 @@
 		24289A3F2EB0D3E600F0F11F /* Transaction Bentos */ = {
 			isa = PBXGroup;
 			children = (
+				2457DC812EB63AA600688B9A /* TransactionHelper.swift */,
 				247A83892E9EFD2000B5DFD8 /* TransactionDetailBentoView.swift */,
 				247A7D0A2E95194F000DF8C0 /* TransactionHistoryBentoView.swift */,
 			);
@@ -1299,6 +1300,15 @@
 				244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */,
 			);
 			path = "Brainwallet Custom Shapes";
+			sourceTree = "<group>";
+		};
+		2457DC802EB63A3000688B9A /* Export Classes */ = {
+			isa = PBXGroup;
+			children = (
+				243C7E4B2E68590C000543D5 /* ExportButtonView.swift */,
+				241B7CDE2E68CA3400B18679 /* ExportButtonViewModel.swift */,
+			);
+			path = "Export Classes";
 			sourceTree = "<group>";
 		};
 		2466FECB2DFFE4ED00A1ACC2 /* App Launch Classes */ = {
@@ -1761,13 +1771,10 @@
 		24E078A62DF1F915004B5958 /* Old Table Hosting Classes */ = {
 			isa = PBXGroup;
 			children = (
-				241B7CDC2E68BDBD00B18679 /* ExportHostingController.swift */,
 				C312D2BA2D7DC27700BB97A4 /* TransactionCellView.swift */,
 				C312D2BB2D7DC27700BB97A4 /* TransactionCellViewModel.swift */,
 				C312D2512D7DC27700BB97A4 /* HostingCell.swift */,
 				2480B5822DF2015B00653403 /* PromptHostingCell.swift */,
-				243C7E4B2E68590C000543D5 /* ExportButtonView.swift */,
-				241B7CDE2E68CA3400B18679 /* ExportButtonViewModel.swift */,
 				24E078A72DF1F997004B5958 /* PromptCellView.swift */,
 				24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */,
 				24E078A92DF1F9AC004B5958 /* PromptCellViewModel.swift */,
@@ -1959,6 +1966,7 @@
 			isa = PBXGroup;
 			children = (
 				247A838B2EA00CEB00B5DFD8 /* Bento Effects  */,
+				2457DC802EB63A3000688B9A /* Export Classes */,
 				247A7D022E950443000DF8C0 /* Bento Views */,
 				2466FECB2DFFE4ED00A1ACC2 /* App Launch Classes */,
 				24F05E782DF9627000E25829 /* BWAPIClient Classes */,
@@ -2743,7 +2751,6 @@
 				C312D3352D7DC27700BB97A4 /* TransactionManager.swift in Sources */,
 				24B065402DC647F400B5E000 /* GameView.swift in Sources */,
 				C312D3362D7DC27700BB97A4 /* DescriptionSendCell.swift in Sources */,
-				241B7CDD2E68BDCF00B18679 /* ExportHostingController.swift in Sources */,
 				C312D3372D7DC27700BB97A4 /* Types.swift in Sources */,
 				C312D3382D7DC27700BB97A4 /* NonScrollingCollectionView.swift in Sources */,
 				C312D33B2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift in Sources */,
@@ -2865,6 +2872,7 @@
 				C312D3C42D7DC27700BB97A4 /* EmptyTableViewCell.swift in Sources */,
 				C312D3C62D7DC27700BB97A4 /* View+Extension.swift in Sources */,
 				C312D3C72D7DC27700BB97A4 /* Sender.swift in Sources */,
+				2457DC822EB63AAE00688B9A /* TransactionHelper.swift in Sources */,
 				24DB05E42E05D5E800C57FE9 /* SettingsActionThemeView.swift in Sources */,
 				C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */,
 				C312D3CD2D7DC27700BB97A4 /* AlertFailureView.swift in Sources */,
