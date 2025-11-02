@@ -1325,6 +1325,15 @@
     "%lld txns" : {
 
     },
+    "1. " : {
+
+    },
+    "2. " : {
+
+    },
+    "3. " : {
+
+    },
     "4-Digit PIN" : {
       "localizations" : {
         "ar" : {
@@ -14264,6 +14273,9 @@
       }
     },
     "No Prompt" : {
+
+    },
+    "Nothing yet. Top up now!" : {
 
     },
     "Ok" : {
@@ -28818,6 +28830,9 @@
           }
         }
       }
+    },
+    "TRANSACTION HISTORY" : {
+
     },
     "Transaction Rejected" : {
       "localizations" : {

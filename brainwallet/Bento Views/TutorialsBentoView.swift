@@ -40,12 +40,30 @@ struct TutorialsBentoView: View {
 
     @ViewBuilder
     func formattedText(_ text: String, backgroundColor: Color = Color.clear, foregroundColor: Color = BrainwalletColor.nearBlack) -> some View {
-        Text(text)
-            .font(.largeTitle)
-            .padding()
-            .background(backgroundColor)
-            .foregroundColor(foregroundColor)
-            .cornerRadius(15)
+
+        VStack {
+            Text(text)
+                .font(.system(size: 12, weight: .semibold, design: .default))
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)// Shrinks to 50% of original
+                .padding([.leading, .trailing], 4)
+
+            Text("1. ")
+                .font(.system(size: 12, weight: .light, design: .default))
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)// Shrinks to 50% of original
+                .padding([.leading, .trailing], 4)
+            Text("2. ")
+                .font(.system(size: 12, weight: .light, design: .default))
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)// Shrinks to 50% of original
+                .padding([.leading, .trailing], 4)
+            Text("3. ")
+                .font(.system(size: 12, weight: .light, design: .default))
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)// Shrinks to 50% of original
+                .padding([.leading, .trailing], 4)
+        }
     }
     var body: some View {
         GeometryReader { geometry in

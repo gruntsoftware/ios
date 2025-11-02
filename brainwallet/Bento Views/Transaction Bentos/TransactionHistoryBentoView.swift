@@ -63,35 +63,40 @@ struct TransactionHistoryBentoView: View {
     var body: some View {
         GeometryReader { geometry in
 
-            let width = geometry.size.width
             let height = geometry.size.height
-            let labelBackground =  userPrefersDarkTheme ? BrainwalletColor.content.opacity(0.1) : BentoColor.tutorialGreen1
+            let labelBackground =  userPrefersDarkTheme ? Color.white.opacity(0.1) : BentoColor.tutorialGreen2.opacity(0.2)
             let labelForeground = userPrefersDarkTheme ? BrainwalletColor.content : BentoColor.tutorialGreen2
 
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
                 HStack {
-
-                    if !filteredTransactions.isEmpty {
                         ZStack {
                             ScrollView(.vertical) {
                                 LazyVStack {
                                     ForEach($filteredTransactions, id: \.self) { transaction in
+
                                         TransactionRowView(userPrefersDarkTheme:$userPrefersDarkTheme,
-                                                           transaction: transaction,
-                                                           newMainViewModel: newMainViewModel)
-                                            .frame(height: height)
-                                            .cornerRadius(bentoCornerRadius)
-                                            .id(transaction.id)
-                                            .onAppear {
-                                                currentID = transaction.id
-                                                currentTransaction = filteredTransactions.filter { $0.id == currentID }.first
-                                            }
+                                                               transaction: transaction,
+                                                               newMainViewModel: newMainViewModel)
+                                                .frame(height: height)
+                                                .cornerRadius(bentoCornerRadius)
+                                                .id(transaction.id)
+                                                .onAppear {
+                                                    currentID = transaction.id
+                                                    currentTransaction = filteredTransactions.filter { $0.id == currentID }.first
+                                                }
                                     }
                                 }
                                 .scrollTargetLayout()
                             }
                             .scrollTargetBehavior(.viewAligned)
+
+                    .opacity(filteredTransactions.isEmpty ? 0 : 1)
+
+                            EmptyTransactionRow(userPrefersDarkTheme: $userPrefersDarkTheme)
+                                 .frame(height: height)
+                                 .cornerRadius(bentoCornerRadius)
+                                 .opacity(filteredTransactions.isEmpty ? 1 : 0)
                             VStack {
                                 Spacer()
                                 HStack {
@@ -116,7 +121,7 @@ struct TransactionHistoryBentoView: View {
                                             .padding([.leading, .trailing], 4)
                                         }
                                         .frame(width: 80, height: 22, alignment: .leading)
-                                        .background(Color.white.opacity(0.1))
+                                        .background(labelBackground)
                                         .cornerRadius(8)
                                         .accessibilityIdentifier("filterTransactionsButton")
                                     }
@@ -124,10 +129,9 @@ struct TransactionHistoryBentoView: View {
 
                                     Spacer()
                                 }
-
                             }
+                            .opacity(filteredTransactions.isEmpty ? 0 : 1)
                         }
-                    }
                 }
             }
             .cornerRadius(bentoCornerRadius)

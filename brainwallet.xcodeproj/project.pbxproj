@@ -56,6 +56,7 @@
 		2446DF522E2906AC001453DF /* bloop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2446DF512E2906AC001453DF /* bloop.mp3 */; };
 		244A8D932DE84C890024D356 /* BrainwalletShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */; };
 		2457DC822EB63AAE00688B9A /* TransactionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2457DC812EB63AA600688B9A /* TransactionHelper.swift */; };
+		2457DD342EB79AD000688B9A /* EmptyTransactionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2457DD332EB79AC400688B9A /* EmptyTransactionRow.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
 		2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2460284E2E5F178400CDEB7A /* FirebaseAnalytics */; };
@@ -562,6 +563,7 @@
 		2446DF512E2906AC001453DF /* bloop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bloop.mp3; sourceTree = "<group>"; };
 		244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainwalletShapes.swift; sourceTree = "<group>"; };
 		2457DC812EB63AA600688B9A /* TransactionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHelper.swift; sourceTree = "<group>"; };
+		2457DD332EB79AC400688B9A /* EmptyTransactionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTransactionRow.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
 		246027A62E5E178700CDEB7A /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -1676,6 +1678,7 @@
 			children = (
 				C312D2BF2D7DC27700BB97A4 /* TransactionsViewModel.swift */,
 				24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */,
+				2457DD332EB79AC400688B9A /* EmptyTransactionRow.swift */,
 				247A7D002E9501AE000DF8C0 /* HistoryTabView.swift */,
 			);
 			path = "Transactions Classes";
@@ -2785,6 +2788,7 @@
 				C312D3642D7DC27700BB97A4 /* SearchHeaderView.swift in Sources */,
 				C312D3652D7DC27700BB97A4 /* Async.swift in Sources */,
 				C312D3682D7DC27700BB97A4 /* PINFieldView.swift in Sources */,
+				2457DD342EB79AD000688B9A /* EmptyTransactionRow.swift in Sources */,
 				C312D3692D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift in Sources */,
 				C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */,
 				2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */,

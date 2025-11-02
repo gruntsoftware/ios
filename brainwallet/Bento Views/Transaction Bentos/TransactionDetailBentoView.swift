@@ -135,7 +135,8 @@ struct TransactionDetailBentoView: View {
                         Spacer()
                         ExportButtonView(userPrefersDarkTheme: $userPrefersDarkTheme,
                                          viewModel: exportViewModel)
-                            .frame(width: width * 0.3, height: 35)
+                            .frame(width: width * 0.8, height: 50)
+                            .padding(.all, 16)
                     }
 
                 }

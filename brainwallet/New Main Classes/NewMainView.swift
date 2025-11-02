@@ -184,7 +184,7 @@ struct NewMainView: View {
                                         )
 
                                     Image(systemName: userPrefersDarkTheme ?
-                                          "sun.max.circle" : "moon.circle")
+                                          "sun.max" : "moon.circle")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: iconSize,
@@ -306,6 +306,7 @@ struct NewMainView: View {
 
                             }
                         })
+                        .disabled(newMainViewModel.filteredTransactions.isEmpty ? true : false)
                         Spacer()
                     }
                 }
