@@ -7,14 +7,13 @@
 
 import Foundation
 import SwiftUI
+import BrainwalletiOSPrivateGeneralPurpose
 
-class NewMainHostingController: UIHostingController<NewMainView> {
+class NewMainHostingController: UIHostingController<CoreModeView> {
 
     var store: Store?
 
     var walletManager: WalletManager?
-
-    var newMainView: NewMainView
 
     var mainViewModel: NewMainViewModel
 
@@ -25,8 +24,7 @@ class NewMainHostingController: UIHostingController<NewMainView> {
         ///
         let receiveViewModel = NewReceiveViewModel(store: store, walletManager: walletManager, canUserBuy: false)
         mainViewModel = NewMainViewModel(store: store, walletManager: walletManager)
-        self.newMainView = NewMainView(viewModel: mainViewModel, receiveViewModel: receiveViewModel)
-        super.init(rootView: newMainView)
+        super.init(rootView: CoreModeView(mainViewModel: mainViewModel, receiveViewModel: receiveViewModel))
     }
 
     // MARK: - Private

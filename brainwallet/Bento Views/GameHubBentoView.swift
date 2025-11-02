@@ -19,6 +19,9 @@ struct GameHubBentoView: View {
     @State
     private var mainGradientStyle: MainGradientStyle = .lightStyle
 
+    @State
+    private var shouldShowGameMode: Bool = false
+
     private let buttonSize: CGFloat = 20.0
 
     private let buttonPlatformFactor: CGFloat = 2.1
@@ -62,7 +65,7 @@ struct GameHubBentoView: View {
                     HStack {
 
                         Button(action: {
-                            ///
+                            shouldShowGameMode.toggle()
                         }) {
                             VStack {
                                 Text("FALLINMOJI")
@@ -88,6 +91,9 @@ struct GameHubBentoView: View {
             }
             .cornerRadius(bentoCornerRadius)
             .frame(height: balanceGameBentoHeight, alignment: .center)
+            .onChange(of: shouldShowGameMode) { _,_ in
+                newMainViewModel.shouldShowGameMode = shouldShowGameMode
+            }
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
             }

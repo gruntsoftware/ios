@@ -38,6 +38,9 @@ struct NewMainView: View {
     private var shouldShowExportOptions: Bool = false
 
     @State
+    private var shouldShowGameMode: Bool = false
+
+    @State
     private var shouldShowPromptAlert: Bool = false
 
     @State
@@ -268,7 +271,7 @@ struct NewMainView: View {
                         Spacer()
 
                         Button(action: {
-                            // action
+                            shouldShowGameMode.toggle()
                         }, label: {
                             VStack(spacing: 4) {
                                 Image(systemName: "gamecontroller")
@@ -314,6 +317,9 @@ struct NewMainView: View {
                 .onAppear {
                     userPrefersDarkTheme = newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
+                }
+                .onChange(of: shouldShowGameMode) { _,_ in
+                    newMainViewModel.shouldShowGameMode = shouldShowGameMode
                 }
                 .onChange(of: userPrefersDarkTheme) { preference in
                     newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)

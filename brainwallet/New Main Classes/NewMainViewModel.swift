@@ -48,6 +48,9 @@ class NewMainViewModel: ObservableObject, Subscriber {
     var isSeedPhraseFilled: Bool = false
 
     @Published
+    var shouldShowGameMode: Bool = false
+
+    @Published
     var seedPhrase: [SeedWord] = []
 
     @Published

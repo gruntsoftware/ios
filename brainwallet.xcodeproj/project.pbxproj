@@ -57,6 +57,7 @@
 		244A8D932DE84C890024D356 /* BrainwalletShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */; };
 		2457DC822EB63AAE00688B9A /* TransactionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2457DC812EB63AA600688B9A /* TransactionHelper.swift */; };
 		2457DD342EB79AD000688B9A /* EmptyTransactionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2457DD332EB79AC400688B9A /* EmptyTransactionRow.swift */; };
+		2457DDE82EB7EC4400688B9A /* CoreModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2457DDE72EB7EC3600688B9A /* CoreModeView.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
 		2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2460284E2E5F178400CDEB7A /* FirebaseAnalytics */; };
@@ -564,6 +565,7 @@
 		244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainwalletShapes.swift; sourceTree = "<group>"; };
 		2457DC812EB63AA600688B9A /* TransactionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHelper.swift; sourceTree = "<group>"; };
 		2457DD332EB79AC400688B9A /* EmptyTransactionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTransactionRow.swift; sourceTree = "<group>"; };
+		2457DDE72EB7EC3600688B9A /* CoreModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreModeView.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
 		246027A62E5E178700CDEB7A /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -1687,6 +1689,7 @@
 		24B065332DC627D200B5E000 /* New Main Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2457DDE72EB7EC3600688B9A /* CoreModeView.swift */,
 				24B065382DC6282100B5E000 /* NewMainView.swift */,
 				24B0653A2DC6433000B5E000 /* SimpleHeaderView.swift */,
 				2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */,
@@ -2903,6 +2906,7 @@
 				243136FB2E0AFD1700BCBED1 /* SettingsHelpers.swift in Sources */,
 				C312D3F52D7DC27700BB97A4 /* FeeSelectorView.swift in Sources */,
 				C312D3F72D7DC27700BB97A4 /* UnEditableTextView.swift in Sources */,
+				2457DDE82EB7EC4400688B9A /* CoreModeView.swift in Sources */,
 				247A7D132E95286E000DF8C0 /* GameHubBentoView.swift in Sources */,
 				C312D3FC2D7DC27700BB97A4 /* UIView+InitAdditions.swift in Sources */,
 				C312D3FD2D7DC27700BB97A4 /* LocaleChangeViewModel.swift in Sources */,
