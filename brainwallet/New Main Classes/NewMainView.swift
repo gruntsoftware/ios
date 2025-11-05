@@ -32,6 +32,9 @@ struct NewMainView: View {
     private var shouldShowTransactionDetail: Bool = false
 
     @State
+    private var disableTransactionDetail: Bool = false
+
+    @State
     private var userDidTapBuyReceive: Bool = false
 
     @State
@@ -309,7 +312,7 @@ struct NewMainView: View {
 
                             }
                         })
-                        .disabled(newMainViewModel.filteredTransactions.isEmpty ? true : false)
+                        .disabled(disableTransactionDetail)
                         Spacer()
                     }
                 }
@@ -320,6 +323,9 @@ struct NewMainView: View {
                 }
                 .onChange(of: shouldShowGameMode) { _,_ in
                     newMainViewModel.shouldShowGameMode = shouldShowGameMode
+                }
+                .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
+                    disableTransactionDetail = newMainViewModel.filteredTransactions.isEmpty
                 }
                 .onChange(of: userPrefersDarkTheme) { preference in
                     newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
