@@ -112,7 +112,7 @@ struct StartView: View {
                             }) {
                                 ZStack {
                                     Image(systemName: userPrefersDarkMode ?
-                                        "moon.circle" : "sun.max")
+                                        "moon.stars" : "sun.max")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: themeButtonSize,

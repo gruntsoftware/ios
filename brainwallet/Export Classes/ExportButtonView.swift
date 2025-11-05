@@ -29,10 +29,15 @@ struct ExportButtonView: View {
 
     var body: some View {
 
-        GeometryReader { _ in
-
+        GeometryReader { geometry in
+            let width = geometry.size.width
             ZStack {
-                BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
+                RoundedRectangle(cornerRadius: 13)
+                    .foregroundColor(.white)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 13)
+                            .stroke(BentoColor.grayBackground, lineWidth: 2)
+                    }
 
                 HStack {
                     Button(action: {
@@ -42,7 +47,7 @@ struct ExportButtonView: View {
                             .font(.system(size: 22, weight: .semibold, design: .default))
                             .lineLimit(1)
                             .minimumScaleFactor(0.3)// Shrinks to 30% of original
-                            .foregroundColor(userPrefersDarkTheme ? .purple: .green)
+                            .foregroundColor(.black)
                     }
                 }
             }

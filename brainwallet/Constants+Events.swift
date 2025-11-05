@@ -52,6 +52,7 @@ struct C {
 	static let secondsInDay: TimeInterval = 86400
 	static let maxMoney: UInt64 = 84_000_000 * 100_000_000
 	static let satoshis: UInt64 = 100_000_000
+    static let litoshis: UInt64 = 100_000_000
 	static let walletQueue = "com.gruntsoftware.brainwalletqueue"
 	static let ltcCurrencyCode = "LTC"
 	static let null = "(null)"

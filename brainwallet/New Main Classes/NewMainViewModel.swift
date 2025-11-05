@@ -27,7 +27,7 @@ class NewMainViewModel: ObservableObject, Subscriber {
     var exchangeRate: Rate?
 
     @Published
-    var userPrefersDarkMode: Bool = false
+    var userPrefersDarkMode: Bool = UserDefaults.userPreferredDarkTheme
 
     @Published
     var isLTCValueShown: Bool = false

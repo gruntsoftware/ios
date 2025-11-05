@@ -18,7 +18,11 @@ class TransactionCellViewModel: ObservableObject {
 
 	var amountText: String = ""
 
+    var amountValue: Int = 0
+
 	var feeText: String = ""
+
+    var feesValue: UInt64 = 0
 
 	var directionImageText: String = ""
 
@@ -73,6 +77,10 @@ class TransactionCellViewModel: ObservableObject {
 		feeText = transaction.amountDetails(isLTCValueShown: isLTCValueShown, rate: rate, rates: [rate], maxDigits: maxDigits)
 
 		addressText = String(format: transaction.direction.addressTextFormat, transaction.toAddress ?? "---ERROR---")
+
+        amountValue = transaction.litoshis
+
+        feesValue = transaction.fee
 
 		if transaction.direction == .sent {
 			directionImageText = "arrowtriangle.up.circle.fill"

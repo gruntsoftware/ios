@@ -68,7 +68,7 @@ struct NewMainView: View {
     private var mainGradientStyle: MainGradientStyle = .lightStyle
 
     @State
-    private var userPrefersDarkTheme = true
+    private var userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -76,7 +76,6 @@ struct NewMainView: View {
          receiveViewModel: NewReceiveViewModel) {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
-        userPrefersDarkTheme = viewModel.userPrefersDarkMode
         if let transaction = Transaction(BRHelp().makeTransaction(),
                                          walletManager: WalletManager.sharedInstance,
                                          kvStore: nil, rate: nil) {
@@ -190,7 +189,7 @@ struct NewMainView: View {
                                         )
 
                                     Image(systemName: userPrefersDarkTheme ?
-                                          "sun.max" : "moon.circle")
+                                          "sun.max" : "moon.stars")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: iconSize,

@@ -2124,6 +2124,9 @@
         }
       }
     },
+    "Amount:" : {
+
+    },
     "App Version:" : {
       "localizations" : {
         "ar" : {
@@ -3856,9 +3859,6 @@
           }
         }
       }
-    },
-    "Blockheight: " : {
-
     },
     "Brainwallet is not allowed to access the camera" : {
       "localizations" : {
@@ -10875,6 +10875,9 @@
     "FALLINMOJI" : {
 
     },
+    "Fees:" : {
+
+    },
     "Fees: " : {
       "localizations" : {
         "ar" : {
@@ -12646,6 +12649,9 @@
           }
         }
       }
+    },
+    "Ł %lf" : {
+
     },
     "Last block: " : {
 
@@ -29610,6 +29616,9 @@
           }
         }
       }
+    },
+    "TX ID:" : {
+
     },
     "Update PIN" : {
       "localizations" : {
