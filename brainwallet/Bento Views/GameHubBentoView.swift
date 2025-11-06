@@ -68,7 +68,7 @@ struct GameHubBentoView: View {
                             shouldShowGameMode.toggle()
                         }) {
                             VStack {
-                                Text("FALLINMOJI")
+                                Text("MOJIMUNCH")
                                     .font(Font.custom("BoldenVan", size: 100))
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.5)// Shrinks to 50% of original

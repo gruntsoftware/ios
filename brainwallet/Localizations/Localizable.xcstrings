@@ -10872,9 +10872,6 @@
         }
       }
     },
-    "FALLINMOJI" : {
-
-    },
     "Fees:" : {
 
     },
@@ -13639,6 +13636,9 @@
           }
         }
       }
+    },
+    "MOJIMUNCH" : {
+
     },
     "Money Sent!" : {
       "localizations" : {

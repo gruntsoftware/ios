@@ -89,14 +89,15 @@ struct BalanceGameBackgroundView: View {
 
                 RoundedRectangle(cornerRadius: bentoCornerRadius)
                     .stroke(
-                        RadialGradient(stops:
-                                                [Gradient.Stop(color: .white, location: 0.0),
-                                                 Gradient.Stop(color: BentoColor.darkModeBorder2, location: 0.22),
-                                                 Gradient.Stop(color: BentoColor.darkModeBorder3, location: 0.59),
-                                                 Gradient.Stop(color: BentoColor.darkModeBorder4, location: 0.88),
-                                                 Gradient.Stop(color: BentoColor.darkModeBorder5, location: 1.0)
-                                                ], center: .center, startRadius: 20.0, endRadius: 200),
-                             lineWidth: 1.5)
+                        LinearGradient(colors: [.white,
+                                                BentoColor.darkModeBorder2.opacity(0.8),
+                                                BentoColor.darkModeBorder3,
+                                                BentoColor.darkModeBorder4.opacity(0.8),
+                                                BentoColor.darkModeBorder5.opacity(0.8)
+                                        ], startPoint: .topLeading,
+                                       endPoint: .bottomTrailing),
+                        lineWidth: 1.5) 
+
             } else {
                 RoundedRectangle(cornerRadius: bentoCornerRadius)
                     .fill(LinearGradient(
