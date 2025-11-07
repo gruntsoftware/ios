@@ -147,9 +147,9 @@ class Store {
 		}
 	}
 
-	func subscribe(_ subscriber: Subscriber, name: TriggerName, callback: @escaping (TriggerName?) -> Void) {
+	func subscribe(_ subscriber: Subscriber, triggerName: TriggerName, callback: @escaping (TriggerName?) -> Void) {
 		let key = subscriber.hashValue
-		let trigger = Trigger(name: name, callback: callback)
+		let trigger = Trigger(name: triggerName, callback: callback)
 		if triggers[key] != nil {
 			triggers[key]?.append(trigger)
 		} else {

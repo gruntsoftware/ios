@@ -7,7 +7,7 @@ private let lastBlockHeightKey = "LastBlockHeightKey"
 private let progressUpdateInterval: TimeInterval = 0.5
 private let updateDebounceInterval: TimeInterval = 1.0
 
-class WalletCoordinator: Subscriber, Trackable {
+class WalletCoordinator: Subscriber {
 	var kvStore: BRReplicatedKVStore? {
 		didSet {
 			requestTxUpdate()
@@ -75,7 +75,6 @@ class WalletCoordinator: Subscriber, Trackable {
 			guard let code = notification.userInfo?["errorCode"] else { return }
 			guard let message = notification.userInfo?["errorDescription"] else { return }
 			store.perform(action: WalletChange.setSyncingState(.connecting))
-			saveEvent("event.syncErrorMessage", attributes: ["message": "\(message) (\(code))"])
 			endActivity()
 
 			if retryTimer == nil, reachability.isReachable {
@@ -286,13 +285,13 @@ class WalletCoordinator: Subscriber, Trackable {
 	}
 
 	private func addSubscriptions() {
-		store.subscribe(self, name: .retrySync, callback: { [weak self] _ in
+		store.subscribe(self, triggerName: .retrySync, callback: { [weak self] _ in
 			DispatchQueue.walletQueue.async {
 				self?.walletManager.peerManager?.connect()
 			}
 		})
 
-		store.subscribe(self, name: .rescan, callback: { [weak self] _ in
+		store.subscribe(self, triggerName: .rescan, callback: { [weak self] _ in
 			self?.store.perform(action: RecommendRescan.set(false))
 			// In case rescan is called while a sync is in progess
 			// we need to make sure it's false before a rescan starts
@@ -302,7 +301,7 @@ class WalletCoordinator: Subscriber, Trackable {
 			}
 		})
 
-		store.subscribe(self, name: .rescan, callback: { [weak self] _ in
+		store.subscribe(self, triggerName: .rescan, callback: { [weak self] _ in
 			self?.store.perform(action: WalletChange.setIsRescanning(true))
 		})
 	}

@@ -332,26 +332,26 @@ extension ModalPresenter {
                         selector: { $0.alert != $1.alert && $1.alert != nil },
                         callback: { self.handleAlertChange($0.alert) })
 
-        store.subscribe(self, name: .promptUpgradePin, callback: { [weak self] _ in
+        store.subscribe(self, triggerName: .promptUpgradePin, callback: { [weak self] _ in
             self?.presentUpgradePin()
         })
-//        store.subscribe(self, name: .promptPaperKey, callback: { [weak self]  _ in
+//        store.subscribe(self, triggerName: .promptPaperKey, callback: { [weak self]  _ in
 //            self?.presentWritePaperKey()
 //        })
-        store.subscribe(self, name: .promptBiometrics, callback: { [weak self] _ in
+        store.subscribe(self, triggerName: .promptBiometrics, callback: { [weak self] _ in
             self?.presentBiometricsSetting()
         })
-        store.subscribe(self, name: .promptShareData, callback: { [weak self] _ in
+        store.subscribe(self, triggerName: .promptShareData, callback: { [weak self] _ in
             self?.promptShareData()
         })
-        store.subscribe(self, name: .recommendRescan, callback: { [weak self] _ in
+        store.subscribe(self, triggerName: .recommendRescan, callback: { [weak self] _ in
             self?.presentRescan()
         })
 
-        store.subscribe(self, name: .scanQr, callback: { [weak self]  _ in
+        store.subscribe(self, triggerName: .scanQr, callback: { [weak self]  _ in
             self?.handleScanQrURL()
         })
-        store.subscribe(self, name: .copyWalletAddresses(nil, nil), callback: { [weak self] in
+        store.subscribe(self, triggerName: .copyWalletAddresses(nil, nil), callback: { [weak self] in
             guard let trigger = $0 else { return }
             if case let .copyWalletAddresses(success, error) = trigger {
                 self?.handleCopyAddresses(success: success, error: error)
@@ -364,13 +364,13 @@ extension ModalPresenter {
                 self.showNotReachable()
             }
         }
-        store.subscribe(self, name: .lightWeightAlert(""), callback: {
+        store.subscribe(self, triggerName: .lightWeightAlert(""), callback: {
             guard let trigger = $0 else { return }
             if case let .lightWeightAlert(message) = trigger {
                 self.showLightWeightAlert(message: message)
             }
         })
-        store.subscribe(self, name: .showAlert(nil), callback: {
+        store.subscribe(self, triggerName: .showAlert(nil), callback: {
             guard let trigger = $0 else { return }
             if case let .showAlert(alert) = trigger {
                 if let alert = alert {

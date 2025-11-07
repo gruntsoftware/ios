@@ -7,7 +7,7 @@ import UIKit
 
 typealias PresentScan = (@escaping (PaymentRequest) -> Void) -> Void
 
-class SendViewController: UIViewController, Subscriber, ModalPresentable, Trackable {
+class SendViewController: UIViewController, Subscriber, ModalPresentable {
 	// MARK: - Public
 
 	var presentScan: PresentScan?
@@ -487,18 +487,15 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable, Tracka
 		            			}
 		            			myself.onPublishSuccess?()
 		            		})
-		            		self?.saveEvent("send.success")
 		            		self?.sendAddressCell.textField.text = ""
 		            		self?.memoCell.textView.text = ""
 
 		            	case let .creationError(message):
 		            		self?.showAlert(title: String(localized: "Could not create transaction." , bundle: .main), message: message, buttonLabel:  String(localized: "Ok", bundle: .main))
-		            		self?.saveEvent("send.publishFailed", attributes: ["errorMessage": message])
 
 		            	case let .publishFailure(error):
 		            		if case let .posixError(code, description) = error {
 		            			self?.showAlert(title: String(localized: "Send failed", bundle: .main), message: "\(description) (\(code))", buttonLabel: String(localized:  "Ok", bundle: .main))
-		            			self?.saveEvent("send.publishFailed", attributes: ["errorMessage": "\(description) (\(code))"])
 		            		}
 		            	}
 		            })

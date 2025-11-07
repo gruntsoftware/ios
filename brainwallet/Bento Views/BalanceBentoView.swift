@@ -23,6 +23,7 @@ struct BalanceBentoView: View {
     private var mainGradientStyle: MainGradientStyle = .lightStyle
     private let buttonSize: CGFloat = 20.0
     private let buttonPlatformFactor: CGFloat = 2.1
+    private let sidePadding: CGFloat = 16.0
 
     init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
@@ -38,17 +39,22 @@ struct BalanceBentoView: View {
             ZStack {
                 BalanceGameBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
                     .edgesIgnoringSafeArea(.all)
+                VStack {
+                    HStack {
+                        SyncSubBentoView(viewModel: SyncSubBentoViewModel(store: newMainViewModel.store,
+                                                                          walletManager: newMainViewModel.walletManager))
+                    }
+                    .padding([.leading, .trailing], sidePadding)
+                }
 
                 VStack {
                     HStack {
                         Text("MY BALANCE")
-                            .font(.system(size: 18, weight: .semibold, design: .default))
+                            .font(.system(size: 16, weight: .semibold, design: .default))
                             .lineLimit(1)
-                            .minimumScaleFactor(0.2)// Shrinks to 20% of original
-                            .padding(.top, 20)
-                            .padding(.leading, 20)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundColor(Color.white)
+                            .minimumScaleFactor(0.8)// Shrinks to 80% of original
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .foregroundColor(Color.white.opacity(0.70))
                         Spacer()
                         Button(action: {
                             shouldShowBalance.toggle()
@@ -59,13 +65,16 @@ struct BalanceBentoView: View {
                                 .foregroundColor(Color.white)
                                 .frame(width: buttonSize,
                                        height: buttonSize,
-                                       alignment: .leading)
-                                .padding(.top, 12)
-                                .padding(.trailing, 20)
+                                       alignment: .center)
                         }
+                        .frame(width: buttonSize * 1.5, height: buttonSize * 1.5)
                         .accessibilityIdentifier("hideBalanceToggleButton")
-                    }
-                    .frame(height: height * 0.3, alignment: .top)
+                        .background(Color.white.opacity(0.07))
+                        .cornerRadius(8)
+                     }
+                    .padding(.top, 24)
+                    .padding([.leading, .trailing], sidePadding)
+                    .frame(height: height * 0.25)
 
                     HStack {
                         ZStack {
@@ -73,7 +82,6 @@ struct BalanceBentoView: View {
                                 Text(shouldShowBalance ? "\(newMainViewModel.walletBalanceLitecoin)" : "")
                                     .font(isLTCValueShown ? .system(size: 12, weight: .light, design: .default) :
                                             .system(size: 35, weight: .bold, design: .default))
-                                    .padding(.leading, 20)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.white)
                                     .contentTransition(.identity)
@@ -81,13 +89,12 @@ struct BalanceBentoView: View {
                                     .zIndex(isLTCValueShown ? 0 : 1)
                                 Spacer()
                             }
-                            .frame(height: height * 0.7)
+                            .frame(height: height * 0.75)
 
                             VStack {
                                 Text(shouldShowBalance ? "\(newMainViewModel.walletBalanceFiat)" : "")
                                     .font( isLTCValueShown ? .system(size: 35, weight: .bold, design: .default) :
                                             .system(size: 12, weight: .light, design: .default))
-                                    .padding(.leading, 20)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.white)
                                     .contentTransition(.identity)
@@ -95,10 +102,11 @@ struct BalanceBentoView: View {
                                     .zIndex(isLTCValueShown ? 1 : 0)
                                 Spacer()
                             }
-                            .frame(height: height * 0.7)
+                            .frame(height: height * 0.75)
                         }
                     }
-                    .frame(height: height * 0.7, alignment: .bottom)
+                    .padding([.leading, .trailing], sidePadding)
+                    .frame(width: width, height: height * 0.75)
                     .onTapGesture {
                         if shouldShowBalance {
                             withAnimation(.spring(response: 0.8, dampingFraction: 0.5, blendDuration: 0.2)) {

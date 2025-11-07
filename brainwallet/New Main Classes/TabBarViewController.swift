@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
-class TabBarViewController: UIViewController, Subscriber, Trackable, UITabBarDelegate {
+class TabBarViewController: UIViewController, Subscriber, UITabBarDelegate {
 
     let kInitialChildViewControllerIndex = 1 // History
 	@IBOutlet var headerView: UIView!

@@ -9,7 +9,6 @@ let kDormantHeaderHeight: CGFloat = 1.0
 let kPromptCellHeight: CGFloat = 120.0
 let kQRImageSide: CGFloat = 100.0
 let kFiveYears: Double = 157_680_000.0
-let kTodaysEpochTime: TimeInterval = Date().timeIntervalSince1970
 
 struct ExportedTransaction {
 
@@ -36,7 +35,7 @@ struct ExportedTransaction {
     }
  }
 
-class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Subscriber, Trackable, UIScrollViewDelegate {
+class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, Subscriber, UIScrollViewDelegate {
 	@IBOutlet var tableView: UITableView!
 
 	var store: Store?
@@ -152,12 +151,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
             return
         }
 
-        newSyncingHeaderView = NewSyncHostingController(store: store, walletManager: walletManager)
-        newSyncingHeaderView?.viewModel.isRescanning = reduxState.walletState.isRescanning
-        newSyncingHeaderView?.viewModel.progress = 0.02
-        newSyncingHeaderView?.viewModel.headerMessage = reduxState.walletState.syncState
-        newSyncingHeaderView?.viewModel.dateTimestamp = reduxState.walletState.lastBlockTimestamp
-        newSyncingHeaderView?.viewModel.blockHeightString = reduxState.walletState.transactions.first?.blockHeight ?? ""
+//        newSyncingHeaderView = NewSyncHostingController(store: store, walletManager: walletManager)
+//        newSyncingHeaderView?.viewModel.isRescanning = reduxState.walletState.isRescanning
+//        newSyncingHeaderView?.viewModel.progress = 0.02
+//        newSyncingHeaderView?.viewModel.headerMessage = reduxState.walletState.syncState
+//        newSyncingHeaderView?.viewModel.dateTimestamp = reduxState.walletState.lastBlockTimestamp
+//        newSyncingHeaderView?.viewModel.blockHeightString = reduxState.walletState.transactions.first?.blockHeight ?? ""
 		completion()
 	}
 
@@ -205,7 +204,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		let types = PromptType.defaultOrder
 		if let type = types.first(where: { $0.shouldPrompt(walletManager: walletManager, state: store.state) }) {
-			saveEvent("prompt.\(type.name).displayed")
 			currentPromptType = type
 			if type == .biometrics {
 				UserDefaults.hasPromptedBiometrics = true
@@ -438,19 +436,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 		}
 	}
 
-    // MARK: - Sync Measurement
-
-    private func measureSyncTimes(startSync: Date, endSync: Date) {
-        let duration = endSync.timeIntervalSince(startSync)
-        let uuid = UUID().uuidString
-        Analytics.logEvent("user_did_complete_sync",
-            parameters: [
-            "start_timestamp": startSync,
-            "end_timestamp": endSync,
-            "duration_seconds": duration,
-            "uuid": uuid
-        ])
-    }
     // MARK: - Subscription Methods
 
 	private func addSubscriptions() {
@@ -488,35 +473,35 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		// MARK: - Wallet State:  Sync Progress
 
-		store.subscribe(self, selector: { $0.walletState.lastBlockTimestamp != $1.walletState.lastBlockTimestamp },
-		                callback: { reduxState in
-
-		                	guard let syncView = self.newSyncingHeaderView else { return }
-
-            syncView.viewModel.isRescanning = reduxState.walletState.isRescanning
-		                	if syncView.viewModel.isRescanning || (reduxState.walletState.syncState == .syncing) {
-                                syncView.viewModel.progress = CGFloat(self.updateProgressView(syncProgress:
-		                			CGFloat(reduxState.walletState.syncProgress),lastBlockTimestamp: Double(reduxState.walletState.lastBlockTimestamp)))
-                                syncView.viewModel.headerMessage = reduxState.walletState.syncState
-                                syncView.viewModel.dateTimestamp = reduxState.walletState.lastBlockTimestamp
-                                syncView.viewModel.blockHeightString = reduxState.walletState.transactions.first?.blockHeight ?? ""
-
-		                		self.shouldBeSyncing = true
-
-		                		if reduxState.walletState.syncProgress == 0.999 {
-		                			self.shouldBeSyncing = false
-		                			self.newSyncingHeaderView = nil
-
-                                    self.measureSyncTimes(startSync: self.syncStartTime, endSync: Date())
-		                		}
-		                	}
-
-		                	self.reload()
-		                })
+//		store.subscribe(self, selector: { $0.walletState.lastBlockTimestamp != $1.walletState.lastBlockTimestamp },
+//		                callback: { reduxState in
+//
+//		                	guard let syncView = self.newSyncingHeaderView else { return }
+//
+//            syncView.viewModel.isRescanning = reduxState.walletState.isRescanning
+//		                	if syncView.viewModel.isRescanning || (reduxState.walletState.syncState == .syncing) {
+//                                syncView.viewModel.progress = CGFloat(self.updateProgressView(syncProgress:
+//		                			CGFloat(reduxState.walletState.syncProgress),lastBlockTimestamp: Double(reduxState.walletState.lastBlockTimestamp)))
+//                                syncView.viewModel.headerMessage = reduxState.walletState.syncState
+//                                syncView.viewModel.dateTimestamp = reduxState.walletState.lastBlockTimestamp
+//                                syncView.viewModel.blockHeightString = reduxState.walletState.transactions.first?.blockHeight ?? ""
+//
+//		                		self.shouldBeSyncing = true
+//
+//		                		if reduxState.walletState.syncProgress == 0.999 {
+//		                			self.shouldBeSyncing = false
+//		                			self.newSyncingHeaderView = nil
+//
+//                                    self.measureSyncTimes(startSync: self.syncStartTime, endSync: Date())
+//		                		}
+//		                	}
+//
+//		                	self.reload()
+//		                })
 
 		// MARK: - Wallet State:  Show Status Bar
 
-		store.subscribe(self, name: .showStatusBar) { _ in
+		store.subscribe(self, triggerName: .showStatusBar) { _ in
 			self.reload()
 		}
 
@@ -549,7 +534,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		// MARK: - Subscription:  Did Upgrade PIN
 
-		store.subscribe(self, name: .didUpgradePin, callback: {  [weak self] _ in
+		store.subscribe(self, triggerName: .didUpgradePin, callback: {  [weak self] _ in
 			if self?.currentPromptType == .upgradePin {
 				self?.currentPromptType = nil
 			}
@@ -557,7 +542,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		// MARK: - Subscription:  Did Enable Share Data
 
-		store.subscribe(self, name: .didEnableShareData, callback: { [weak self] _ in
+		store.subscribe(self, triggerName: .didEnableShareData, callback: { [weak self] _ in
 			if self?.currentPromptType == .shareData {
 				self?.currentPromptType = nil
 			}
@@ -565,7 +550,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		// MARK: - Subscription:  Did Write Paper Key
 
-		store.subscribe(self, name: .didWritePaperKey, callback: { [weak self] _ in
+		store.subscribe(self, triggerName: .didWritePaperKey, callback: { [weak self] _ in
 			if self?.currentPromptType == .paperKey {
 				self?.currentPromptType = nil
 			}
@@ -573,7 +558,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 		// MARK: - Subscription:  Memo Updated
 
-		store.subscribe(self, name: .txMemoUpdated(""), callback: { [weak self] in
+		store.subscribe(self, triggerName: .txMemoUpdated(""), callback: { [weak self] in
 
 			guard let trigger = $0 else { return }
 

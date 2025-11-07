@@ -22,7 +22,7 @@ struct FavouritesBentoView: View {
     @State
     private var mainGradientStyle: MainGradientStyle = .lightStyle
 
-    private let favoriteTileSize: CGFloat = 50.0
+    private let favoriteTileSize: CGFloat = 40.0
 
     private let buttonPlatformFactor: CGFloat = 2.1
 
@@ -44,7 +44,7 @@ struct FavouritesBentoView: View {
                     HStack {
                         ZStack {
                         RoundedRectangle(cornerRadius: 8)
-                            .frame(width: width * 0.5, height: 24, alignment: .center)
+                            .frame(width: width * 0.5, height: 22, alignment: .center)
                             .foregroundColor(labelBackground)
                             .padding(8)
                         Text("TOP SECRET")

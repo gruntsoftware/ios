@@ -1325,6 +1325,15 @@
     "%lld txns" : {
 
     },
+    "1. " : {
+
+    },
+    "2. " : {
+
+    },
+    "3. " : {
+
+    },
     "4-Digit PIN" : {
       "localizations" : {
         "ar" : {
@@ -2114,6 +2123,9 @@
           }
         }
       }
+    },
+    "Amount:" : {
+
     },
     "App Version:" : {
       "localizations" : {
@@ -3585,6 +3597,9 @@
         }
       }
     },
+    "Block: %@" : {
+
+    },
     "Blockchain" : {
       "localizations" : {
         "ar" : {
@@ -3844,9 +3859,6 @@
           }
         }
       }
-    },
-    "Blockheight: " : {
-
     },
     "Brainwallet is not allowed to access the camera" : {
       "localizations" : {
@@ -7219,6 +7231,9 @@
         }
       }
     },
+    "Date: " : {
+
+    },
     "Delete all" : {
       "localizations" : {
         "ar" : {
@@ -8122,6 +8137,9 @@
           }
         }
       }
+    },
+    "Dismiss (Desctructive)" : {
+
     },
     "Don’t guess. It would take you\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries." : {
       "localizations" : {
@@ -10854,7 +10872,7 @@
         }
       }
     },
-    "FALLINMOJI" : {
+    "Fees:" : {
 
     },
     "Fees: " : {
@@ -12629,6 +12647,12 @@
         }
       }
     },
+    "Ł %lf" : {
+
+    },
+    "Last block: " : {
+
+    },
     "Light Mode" : {
       "localizations" : {
         "ar" : {
@@ -13613,6 +13637,9 @@
         }
       }
     },
+    "MOJIMUNCH" : {
+
+    },
     "Money Sent!" : {
       "localizations" : {
         "ar" : {
@@ -14251,6 +14278,12 @@
         }
       }
     },
+    "No Prompt" : {
+
+    },
+    "Nothing yet. Top up now!" : {
+
+    },
     "Ok" : {
       "localizations" : {
         "ar" : {
@@ -14450,6 +14483,9 @@
           }
         }
       }
+    },
+    "Okay" : {
+
     },
     "Paper Key" : {
       "localizations" : {
@@ -24965,6 +25001,9 @@
         }
       }
     },
+    "Tap here to NO PROMPT" : {
+
+    },
     "Tap here to perform a rescan" : {
       "localizations" : {
         "ar" : {
@@ -28798,6 +28837,9 @@
         }
       }
     },
+    "TRANSACTION HISTORY" : {
+
+    },
     "Transaction Rejected" : {
       "localizations" : {
         "ar" : {
@@ -29574,6 +29616,9 @@
           }
         }
       }
+    },
+    "TX ID:" : {
+
     },
     "Update PIN" : {
       "localizations" : {

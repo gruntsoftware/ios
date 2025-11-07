@@ -15,7 +15,7 @@ enum FilterTransactionMode: Int, CaseIterable {
     case receivedTransactions = 2
 }
 
-class NewMainViewModel: ObservableObject, Subscriber, Trackable {
+class NewMainViewModel: ObservableObject, Subscriber {
 
     @Published
     var store: Store?
@@ -27,7 +27,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
     var exchangeRate: Rate?
 
     @Published
-    var userPrefersDarkMode: Bool = false
+    var userPrefersDarkMode: Bool = UserDefaults.userPreferredDarkTheme
 
     @Published
     var isLTCValueShown: Bool = false
@@ -46,6 +46,9 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
 
     @Published
     var isSeedPhraseFilled: Bool = false
+
+    @Published
+    var shouldShowGameMode: Bool = false
 
     @Published
     var seedPhrase: [SeedWord] = []
@@ -158,8 +161,7 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
                         return
                     }
                     if error == nil && !rates.isEmpty {
-                        debugPrint("::: currentRate \(currentRate.rate.description)")
-                        self.currencyCode = "\(currentRate.code)"
+                        self.currencyCode = "\(currentRate.code)/LTC"
                         self.currentFiatValue = "\(currentRate.rate.description)"
                     }
 
@@ -195,6 +197,57 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             let formattedFiatString = String(format: "%8.2f", currentRate.rate)
             currentFiatValue = String(currentRate.currencySymbol + formattedFiatString)
         }
+    }
+
+    private func addSubscriptions() {
+        guard let store = store
+        else {
+            NSLog("::: ERROR: Store not initialized")
+            return
+        }
+
+        // MARK: - Wallet State: Transactions
+
+        store.subscribe(self, selector: { $0.walletState.transactions != $1.walletState.transactions },
+                        callback: { state in
+                            self.transactions = state.walletState.transactions
+                        })
+
+        // MARK: - Wallet State: isLTCValueShown
+
+        store.subscribe(self, selector: { $0.isLTCValueShown != $1.isLTCValueShown },
+                        callback: { self.isLTCValueShown = $0.isLTCValueShown })
+
+        // MARK: - Wallet State:  CurrentRate
+
+        store.subscribe(self, selector: { $0.currentRate != $1.currentRate },
+                        callback: {
+            self.rate = $0.currentRate
+        })
+
+        // MARK: - Wallet State:  Balance
+
+                store.subscribe(self,
+                                selector: { $0.walletState.balance != $1.walletState.balance },
+                                callback: { state in
+                                    if let balance = state.walletState.balance {
+                                        self.balance = balance
+                                        self.setBalances()
+                                    }
+                                })
+
+        // MARK: - Wallet State:  Max Digits
+
+         store.lazySubscribe(self,
+                                    selector: { $0.maxDigits != $1.maxDigits },
+                                    callback: {
+                                        if let rate = $0.currentRate {
+                                            let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
+                                            self.localFormatter = placeholderAmount.localFormat
+                                            self.ltcFormatter = placeholderAmount.ltcFormat
+                                            self.setBalances()
+                                        }
+                                    })
     }
 
     func userDidTapTheSettingsButton() {
@@ -352,48 +405,6 @@ class NewMainViewModel: ObservableObject, Subscriber, Trackable {
             draggableSeedPhrase.append(dragableSeedWord)
         }
         return draggableSeedPhrase
-    }
-
-    private func addSubscriptions() {
-
-        guard let store = self.store else { return }
-
-        store.lazySubscribe(self,
-                            selector: { $0.isLTCValueShown != $1.isLTCValueShown },
-                            callback: { _ in
-                        })
-        store.lazySubscribe(self,
-                            selector: { $0.currentRate != $1.currentRate },
-                            callback: { [weak self] in
-                                if let rate = $0.currentRate {
-                                    let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
-                                    self?.localFormatter = placeholderAmount.localFormat
-                                    self?.ltcFormatter = placeholderAmount.ltcFormat
-                                }
-                                self?.exchangeRate = $0.currentRate
-                                self?.updateTransactions()
-                            })
-
-        store.lazySubscribe(self,
-                            selector: { $0.maxDigits != $1.maxDigits },
-                            callback: {
-                                if let rate = $0.currentRate {
-                                    let placeholderAmount = Amount(amount: 0, rate: rate, maxDigits: $0.maxDigits)
-                                    self.localFormatter = placeholderAmount.localFormat
-                                    self.ltcFormatter = placeholderAmount.ltcFormat
-                                    self.setBalances()
-                                }
-                            })
-
-        store.subscribe(self,
-                        selector: { $0.walletState.balance != $1.walletState.balance },
-                        callback: { state in
-                            if let balance = state.walletState.balance {
-                                self.balance = balance
-                                self.setBalances()
-                            }
-                        })
-
     }
 
 }

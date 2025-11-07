@@ -10,59 +10,9 @@ import SwiftUI
 import FirebaseAnalytics
 
 let bentoCornerRadius: CGFloat = 14.0
-let balanceGameBentoHeight: CGFloat = 130.0
+let balanceGameBentoHeight: CGFloat = 135.0
 let transactionsBentoHeight: CGFloat = 85.0
 let iconSize: CGFloat = 20.0
-
-enum Selection {
-    case receive
-    case send
-    case gameHistory
-}
-
-enum TransactionFilterState: Int, CaseIterable {
-    case allTransactions = 0
-    case sendTransactions
-    case receiveTransactions
-
-    var label: String {
-        switch self {
-        case .allTransactions:
-            return "All"
-        case .sendTransactions:
-            return "Sent"
-        case .receiveTransactions:
-            return "Received"
-        }
-    }
-
-    var icon: String {
-        switch self {
-        case .allTransactions:
-            return "smallcircle.filled.circle"
-        case .sendTransactions:
-            return "arrow.up.circle"
-        case .receiveTransactions:
-            return "arrow.down.circle"
-        }
-    }
-
-    var iconColor: Color {
-        switch self {
-        case .allTransactions:
-            return BrainwalletColor.nearBlack
-        case .sendTransactions:
-            return BrainwalletColor.chili
-        case .receiveTransactions:
-            return BrainwalletColor.affirm
-        }
-    }
-
-    mutating func toggle() {
-            let nextRawValue = (self.rawValue + 1) % Self.allCases.count
-            self = TransactionFilterState(rawValue: nextRawValue)!
-    }
-}
 
 struct NewMainView: View {
 
@@ -73,12 +23,7 @@ struct NewMainView: View {
     var newReceiveViewModel: NewReceiveViewModel
 
     @State
-    var cellViewModel = TransactionCellViewModel(transaction: Transaction(BRHelp().makeTransaction(),
-                                                                          walletManager: WalletManager.sharedInstance,
-                                                                          kvStore: nil, rate: nil)!,
-                                                                          isLTCValueShown: false,
-                                                                          rate: Rate(code: "", name: "", rate: 0.0, lastTimestamp: Date()),
-                                                                          maxDigits: 8, isSyncing: false)
+    var cellViewModel: TransactionCellViewModel?
 
     @State
     private var userDidTapSend: Bool = false
@@ -87,10 +32,22 @@ struct NewMainView: View {
     private var shouldShowTransactionDetail: Bool = false
 
     @State
+    private var disableTransactionDetail: Bool = false
+
+    @State
     private var userDidTapBuyReceive: Bool = false
 
     @State
     private var shouldShowExportOptions: Bool = false
+
+    @State
+    private var shouldShowGameMode: Bool = false
+
+    @State
+    private var shouldShowPromptAlert: Bool = false
+
+    @State
+    private var currentPrompt: PromptType = .noPrompt
 
     @State
     var shouldShowSettings: Bool = false
@@ -111,23 +68,30 @@ struct NewMainView: View {
     private var mainGradientStyle: MainGradientStyle = .lightStyle
 
     @State
-    private var filterTransactionState: TransactionFilterState = .allTransactions
+    private var userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
-    @State
-    private var userPrefersDarkTheme = true
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     init(viewModel: NewMainViewModel,
          receiveViewModel: NewReceiveViewModel) {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
-        userPrefersDarkTheme = viewModel.userPrefersDarkMode
+        if let transaction = Transaction(BRHelp().makeTransaction(),
+                                         walletManager: WalletManager.sharedInstance,
+                                         kvStore: nil, rate: nil) {
+
+            cellViewModel =  TransactionCellViewModel(transaction: transaction,
+                                                      isLTCValueShown: false,
+                                                      rate: Rate(code: "", name: "",
+                                                                 rate: 0.0, lastTimestamp: Date()),
+                                                      maxDigits: 8, isSyncing: false)
+        }
     }
     var body: some View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
             let height = geometry.size.height
-            let surface = BrainwalletColor.surface
             let content = BrainwalletColor.content
             NavigationStack {
                 ZStack(alignment: .bottom) {
@@ -148,9 +112,9 @@ struct NewMainView: View {
                         BalanceBentoView(viewModel: newMainViewModel,
                                          userPrefersDarkTheme: $userPrefersDarkTheme)
                         .frame(height:  balanceGameBentoHeight, alignment: .top)
-                        .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
                         .padding(bentoPadding)
-                        .padding(.top, 8)
+                       .padding(.top, 10)
+                       .padding(.bottom, 10)
 
                         if shouldShowTransactionDetail {
                             TransactionDetailBentoView(cellViewModel: $cellViewModel,
@@ -160,7 +124,6 @@ struct NewMainView: View {
                                 .padding(bentoPadding)
                                 .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 1.0 : 0.0, anchor: .top)
                                 .transition(.scale)
-                                .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
 
                         }
                             TransactionHistoryBentoView(
@@ -169,7 +132,6 @@ struct NewMainView: View {
                                                     detailIsShowing: $shouldShowTransactionDetail,
                                                     userPrefersDarkTheme: $userPrefersDarkTheme)
                             .frame(height: transactionsBentoHeight, alignment: .top)
-                            .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
                             .padding(bentoPadding)
 
                         if !shouldShowTransactionDetail {
@@ -177,28 +139,24 @@ struct NewMainView: View {
                                 HStack {
                                     TutorialsBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                                    .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
-                                    .frame(maxHeight: height * 0.4, alignment: .top)
+                                    .frame(maxHeight: height * 0.5, alignment: .top)
                                     .padding(bentoPadding)
 
                                     VStack {
                                         LTCPriceBentoView(viewModel: newMainViewModel,
                                                           userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
                                         .padding(bentoPadding)
 
                                         FavouritesBentoView(viewModel: newMainViewModel,
                                                             userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
                                         .padding(bentoPadding)
 
                                     }
                                 }
-                                .frame(maxHeight: height * 0.4, alignment: .top)
+                                .frame(maxHeight: height * 0.5, alignment: .top)
                                 .padding([.top,.leading, .trailing], bentoPadding)
                                 GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                                         .frame(height: balanceGameBentoHeight, alignment: .top)
-                                        .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
                                         .padding(bentoPadding)
                             }
                             .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 0.0 : 1.0, anchor: .bottom)
@@ -208,13 +166,44 @@ struct NewMainView: View {
                         Spacer()
                     }
                     .padding([.leading, .trailing], bentoPadding + 10)
-                    .offset(x: newMainViewModel.shouldShowSettings ? width - 90.0: 0)
                 }
                 .toolbar {
+
                     ToolbarItem(placement: .navigationBarLeading) {
+                            Button(action: {
+                                 userPrefersDarkTheme.toggle()
+                            }) {
+
+                                ZStack {
+                                    Ellipse()
+                                        .frame(width: iconSize * 2.0,
+                                               height: iconSize * 2.0,
+                                               alignment: .center)
+                                        .modifier(BentoSurface(userPrefersDarkTheme: $userPrefersDarkTheme))
+                                        .overlay(
+                                            Ellipse()
+                                                .stroke(content.opacity(0.3), lineWidth: 0.5)
+                                                .frame(width: iconSize * 2.0,
+                                                       height: iconSize * 2.0,
+                                                       alignment: .center)
+                                        )
+
+                                    Image(systemName: userPrefersDarkTheme ?
+                                          "sun.max" : "moon.stars")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: iconSize,
+                                           height: iconSize)
+                                    .foregroundColor(content)
+                                }
+                            }
+                    }
+
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
                             newMainViewModel.shouldShowSettings.toggle()
                             shouldShowSettings = newMainViewModel.shouldShowSettings
+                            newMainViewModel.userDidTapTheSettingsButton()
                         }) {
                             ZStack {
                                 Ellipse()
@@ -229,7 +218,6 @@ struct NewMainView: View {
                                                    height: iconSize * 2.0,
                                                    alignment: .center)
                                     )
-                                    .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
 
                                 Image(systemName: "line.3.horizontal")
                                     .resizable()
@@ -238,63 +226,6 @@ struct NewMainView: View {
                                            alignment: .center)
                                     .foregroundColor(content)
                             }
-                        }
-                    }
-
-                    ToolbarItemGroup(placement: .navigationBarTrailing) {
-
-                        ZStack {
-                            Capsule()
-                                .frame(width: iconSize * buttonPlatformFactor * 2,
-                                       height: iconSize * buttonPlatformFactor,
-                                       alignment: .center)
-                                .modifier(BentoSurface(userPrefersDarkTheme: $userPrefersDarkTheme))
-                                .overlay(
-                                    Capsule()
-                                        .stroke(content.opacity(0.2), lineWidth: 0.5)
-                                        .frame(width: iconSize * buttonPlatformFactor * 2,
-                                               height: iconSize * buttonPlatformFactor,
-                                               alignment: .center)
-                                )
-                                .modifier(BentoShadow(userPrefersDarkTheme: $userPrefersDarkTheme))
-
-                            HStack {
-                                Button(action: {
-                                    userPrefersDarkTheme.toggle()
-                                }) {
-                                    Image(systemName: userPrefersDarkTheme ?
-                                          "sun.max.circle" : "moon.circle")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
-                                    .foregroundColor(content)
-                                    .offset(x: -7, y: 0)
-                                }
-
-                                Button(action: {
-                                    shouldRing.toggle()
-                                    if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-                                        if UIApplication.shared.canOpenURL(appSettings) {
-                                            UIApplication.shared.open(appSettings)
-                                        }
-                                    }
-                                    withAnimation(.spring(response: 0.5, dampingFraction: 0.3)) {
-                                        bellAngle = shouldRing ? 30 : 0
-                                    }
-
-                                }) {
-                                    Image(systemName: "bell")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: iconSize,
-                                               height: iconSize)
-                                        .foregroundColor(content)
-                                        .rotationEffect(Angle(degrees: bellAngle))
-                                }
-                            }
-                            .frame(width: iconSize * buttonPlatformFactor * 2,
-                                   height: iconSize * buttonPlatformFactor)
 
                         }
                     }
@@ -342,7 +273,7 @@ struct NewMainView: View {
                         Spacer()
 
                         Button(action: {
-                            // action
+                            shouldShowGameMode.toggle()
                         }, label: {
                             VStack(spacing: 4) {
                                 Image(systemName: "gamecontroller")
@@ -380,6 +311,7 @@ struct NewMainView: View {
 
                             }
                         })
+                        .disabled(disableTransactionDetail)
                         Spacer()
                     }
                 }
@@ -388,12 +320,18 @@ struct NewMainView: View {
                     userPrefersDarkTheme = newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 }
+                .onChange(of: shouldShowGameMode) { _,_ in
+                    newMainViewModel.shouldShowGameMode = shouldShowGameMode
+                }
+                .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
+                    disableTransactionDetail = newMainViewModel.filteredTransactions.isEmpty
+                }
                 .onChange(of: userPrefersDarkTheme) { preference in
                     newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 }
                 .sheet(isPresented: $userDidTapSend) {
-                    NewSendView(viewModel: newMainViewModel)
+                    BentoSendModalView(viewModel: newMainViewModel)
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.medium])
                         .presentationDragIndicator(.visible)
@@ -404,11 +342,14 @@ struct NewMainView: View {
                         .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
                 }
-                .sheet(isPresented: $shouldShowExportOptions) {
-                    BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
-                        .cornerRadius(bentoCornerRadius)
-                        .presentationDetents([.large])
-                        .presentationDragIndicator(.visible)
+                .alert(isPresented: $shouldShowPromptAlert) {
+                    Alert(title: Text(currentPrompt.title),
+                          message: Text(currentPrompt.body),
+                          primaryButton: .default(Text("Okay"),
+                                        action: {
+                                        print("Ok CLICK")
+                                }),
+                          secondaryButton: .destructive(Text("Dismiss (Desctructive)")))
                 }
             }
         }

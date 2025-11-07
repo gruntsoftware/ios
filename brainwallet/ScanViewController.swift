@@ -4,7 +4,7 @@ import UIKit
 typealias ScanCompletion = (PaymentRequest?) -> Void
 typealias KeyScanCompletion = (String) -> Void
 
-class ScanViewController: UIViewController, Trackable {
+class ScanViewController: UIViewController {
     // TODO: Add a storyboard
     @IBOutlet var cameraOverlayView: UIView!
     @IBOutlet var toolbarView: UIView!
@@ -106,7 +106,6 @@ class ScanViewController: UIViewController, Trackable {
         guide.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
 
         close.tap = { [weak self] in
-            self?.saveEvent("scan.dismiss")
             self?.dismiss(animated: true, completion: {
                 self?.completion?(nil)
             })
@@ -152,11 +151,6 @@ class ScanViewController: UIViewController, Trackable {
                     try device.lockForConfiguration()
                     device.torchMode = device.torchMode == .on ? .off : .on
                     device.unlockForConfiguration()
-                    if device.torchMode == .on {
-                        self?.saveEvent("scan.torchOn")
-                    } else {
-                        self?.saveEvent("scan.torchOn")
-                    }
                 } catch {
                     debugPrint(":::Camera Torch error: \(error)")
                 }
@@ -202,7 +196,6 @@ extension ScanViewController: AVCaptureMetadataOutputObjectsDelegate {
         if currentUri != uri {
             currentUri = uri
             if let paymentRequest = PaymentRequest(string: uri) {
-                saveEvent("scan.litecoinUri")
                 guide.state = .positive
                 // Add a small delay so the green guide will be seen
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -218,7 +211,6 @@ extension ScanViewController: AVCaptureMetadataOutputObjectsDelegate {
 
     func handleKey(_ keyString: String) {
         if isValidURI(keyString) {
-            saveEvent("scan.privateKey")
             guide.state = .positive
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.dismiss(animated: true, completion: {
