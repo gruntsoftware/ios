@@ -331,7 +331,8 @@ struct NewMainView: View {
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 }
                 .sheet(isPresented: $userDidTapSend) {
-                    BentoSendModalView(viewModel: newMainViewModel)
+                    BentoSendModalView(viewModel: newMainViewModel,
+                                       userPrefersDarkTheme: $userPrefersDarkTheme)
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.medium])
                         .presentationDragIndicator(.visible)

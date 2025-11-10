@@ -92,6 +92,9 @@ class NewMainViewModel: ObservableObject, Subscriber {
     var walletBalanceLitecoin = ""
 
     @Published
+    var sendPaymentRequest = PaymentRequest(string: "")
+
+    @Published
     var transactions: [Transaction]?
 
     @Published

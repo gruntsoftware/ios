@@ -5413,6 +5413,9 @@
         }
       }
     },
+    "Continue" : {
+
+    },
     "Conveniently unlock your Brainwallet and send money up to a set limit." : {
       "localizations" : {
         "ar" : {
@@ -15001,6 +15004,9 @@
         }
       }
     },
+    "Payment Memo" : {
+
+    },
     "Pending" : {
       "localizations" : {
         "ar" : {
@@ -18034,6 +18040,9 @@
         }
       }
     },
+    "Recipient" : {
+
+    },
     "Recover" : {
       "localizations" : {
         "ar" : {
@@ -20570,7 +20579,7 @@
         }
       }
     },
-    "Send LTC" : {
+    "Send Litecoin" : {
 
     },
     "Sending is easy!" : {

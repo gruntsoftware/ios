@@ -96,7 +96,7 @@ struct BalanceGameBackgroundView: View {
                                                 BentoColor.darkModeBorder5.opacity(0.8)
                                         ], startPoint: .topLeading,
                                        endPoint: .bottomTrailing),
-                        lineWidth: 1.5) 
+                        lineWidth: 1.5)
 
             } else {
                 RoundedRectangle(cornerRadius: bentoCornerRadius)
