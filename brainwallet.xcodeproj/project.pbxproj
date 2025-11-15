@@ -13,6 +13,14 @@
 		22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9631DF61FE7000F0016 /* Security.framework */; };
 		22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9A9651DF61FEE000F0016 /* WebKit.framework */; };
 		2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */; };
+		24126DF92ECA687B00F9A4BE /* DataScannerExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DF32ECA687800F9A4BE /* DataScannerExampleView.swift */; };
+		24126DFB2ECA68AB00F9A4BE /* DataScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */; };
+		24126DFE2ECA68E900F9A4BE /* TextScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DFD2ECA68E000F9A4BE /* TextScannerView.swift */; };
+		24126E002ECA690A00F9A4BE /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DFF2ECA690600F9A4BE /* BarcodeScannerView.swift */; };
+		24126E022ECA693E00F9A4BE /* BarcodeOnlyScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E012ECA693100F9A4BE /* BarcodeOnlyScannerSheet.swift */; };
+		24126E042ECA69C300F9A4BE /* TextOnlyScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E032ECA69C000F9A4BE /* TextOnlyScannerSheet.swift */; };
+		24126E062ECA741200F9A4BE /* ScanOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */; };
+		24126E082ECA7F8900F9A4BE /* ScanOverlayDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */; };
 		2412BA7E2DF4660300AC40BB /* ReceiveAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */; };
 		2413E4162DF6452200DFE7EE /* SecurityCenterNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2413E4152DF6451D00DFE7EE /* SecurityCenterNavigationDelegate.swift */; };
 		2415FFDF2DBD8505002A2199 /* SeedWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */; };
@@ -70,6 +78,7 @@
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
 		24691D142EAE4D30003CDC7C /* SyncSubBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */; };
 		246A9A072DF5F54C002480CB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A9A062DF5F532002480CB /* Utility.swift */; };
+		246EA1972EC8B32D00085D3A /* DataScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EA1962EC8B31900085D3A /* DataScannerView.swift */; };
 		246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; };
 		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
 		2476AE342E27B44B0065CE22 /* InputWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */; };
@@ -516,6 +525,14 @@
 		22A9A9651DF61FEE000F0016 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		22A9A9671DF61FF8000F0016 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenFooterView.swift; sourceTree = "<group>"; };
+		24126DF32ECA687800F9A4BE /* DataScannerExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerExampleView.swift; sourceTree = "<group>"; };
+		24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerSheet.swift; sourceTree = "<group>"; };
+		24126DFD2ECA68E000F9A4BE /* TextScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextScannerView.swift; sourceTree = "<group>"; };
+		24126DFF2ECA690600F9A4BE /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
+		24126E012ECA693100F9A4BE /* BarcodeOnlyScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeOnlyScannerSheet.swift; sourceTree = "<group>"; };
+		24126E032ECA69C000F9A4BE /* TextOnlyScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOnlyScannerSheet.swift; sourceTree = "<group>"; };
+		24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayView.swift; sourceTree = "<group>"; };
+		24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayDataView.swift; sourceTree = "<group>"; };
 		2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveAddressView.swift; sourceTree = "<group>"; };
 		2413E4152DF6451D00DFE7EE /* SecurityCenterNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCenterNavigationDelegate.swift; sourceTree = "<group>"; };
 		2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordsGridView.swift; sourceTree = "<group>"; };
@@ -573,6 +590,7 @@
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSubBentoView.swift; sourceTree = "<group>"; };
 		246A9A062DF5F532002480CB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		246EA1962EC8B31900085D3A /* DataScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerView.swift; sourceTree = "<group>"; };
 		246F97832E846218001923A6 /* private-general-purpose.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "private-general-purpose.xcodeproj"; path = "Private/general-purpose/private-general-purpose.xcodeproj"; sourceTree = "<group>"; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
 		2476AE322E27038F0065CE22 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1142,6 +1160,22 @@
 				244520332DE70310003AFFDF /* LockScreenHostingController.swift */,
 			);
 			path = "New Lock Screen Classes";
+			sourceTree = "<group>";
+		};
+		24126DFC2ECA68BF00F9A4BE /* Scanner Classes */ = {
+			isa = PBXGroup;
+			children = (
+				24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */,
+				24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */,
+				24126E032ECA69C000F9A4BE /* TextOnlyScannerSheet.swift */,
+				24126E012ECA693100F9A4BE /* BarcodeOnlyScannerSheet.swift */,
+				24126DFF2ECA690600F9A4BE /* BarcodeScannerView.swift */,
+				24126DFD2ECA68E000F9A4BE /* TextScannerView.swift */,
+				24126DF32ECA687800F9A4BE /* DataScannerExampleView.swift */,
+				246EA1962EC8B31900085D3A /* DataScannerView.swift */,
+				24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */,
+			);
+			path = "Scanner Classes";
 			sourceTree = "<group>";
 		};
 		2416CE552DA90C8B00FFBD10 /* Legacy_BW_BRClasses */ = {
@@ -1960,6 +1994,7 @@
 		C312D1DB2D7DC27700BB97A4 /* Send Views */ = {
 			isa = PBXGroup;
 			children = (
+				24126DFC2ECA68BF00F9A4BE /* Scanner Classes */,
 				C312D1D82D7DC27700BB97A4 /* AddressCell.swift */,
 				C312D1D92D7DC27700BB97A4 /* DescriptionSendCell.swift */,
 				24B0653C2DC6476700B5E000 /* BentoSendModalView.swift */,
@@ -2318,7 +2353,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = "";
 				LastSwiftUpdateCheck = 1640;
-				LastUpgradeCheck = 1630;
+				LastUpgradeCheck = 2610;
 				ORGANIZATIONNAME = "Grunt Software, LTD";
 				TargetAttributes = {
 					24295E3A2E341F1C00A76776 = {
@@ -2692,6 +2727,8 @@
 				C312D2D22D7DC27700BB97A4 /* LightWeightAlert.swift in Sources */,
 				C312D2D32D7DC27700BB97A4 /* ExchangeUpdater.swift in Sources */,
 				C312D2D42D7DC27700BB97A4 /* Currency.swift in Sources */,
+				24126E062ECA741200F9A4BE /* ScanOverlayView.swift in Sources */,
+				24126DF92ECA687B00F9A4BE /* DataScannerExampleView.swift in Sources */,
 				2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */,
 				C312D2D62D7DC27700BB97A4 /* RecoverWalletView.swift in Sources */,
 				C312D2D72D7DC27700BB97A4 /* Date+Additions.swift in Sources */,
@@ -2778,6 +2815,7 @@
 				C312D34F2D7DC27700BB97A4 /* DispatchQueue+Additions.swift in Sources */,
 				C312D3512D7DC27700BB97A4 /* DataValidation.swift in Sources */,
 				C312D3532D7DC27700BB97A4 /* TransactionModalView.swift in Sources */,
+				24126E082ECA7F8900F9A4BE /* ScanOverlayDataView.swift in Sources */,
 				247A7D112E951D3F000DF8C0 /* FavouritesBentoView.swift in Sources */,
 				246A9A072DF5F54C002480CB /* Utility.swift in Sources */,
 				C312D3572D7DC27700BB97A4 /* ModalPresenter.swift in Sources */,
@@ -2791,8 +2829,10 @@
 				C312D3642D7DC27700BB97A4 /* SearchHeaderView.swift in Sources */,
 				C312D3652D7DC27700BB97A4 /* Async.swift in Sources */,
 				C312D3682D7DC27700BB97A4 /* PINFieldView.swift in Sources */,
+				246EA1972EC8B32D00085D3A /* DataScannerView.swift in Sources */,
 				2457DD342EB79AD000688B9A /* EmptyTransactionRow.swift in Sources */,
 				C312D3692D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift in Sources */,
+				24126E002ECA690A00F9A4BE /* BarcodeScannerView.swift in Sources */,
 				C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */,
 				2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */,
 				24691D142EAE4D30003CDC7C /* SyncSubBentoView.swift in Sources */,
@@ -2824,6 +2864,7 @@
 				C312D36F2D7DC27700BB97A4 /* EnterPhraseCell.swift in Sources */,
 				C312D3712D7DC27700BB97A4 /* SeedViewModel.swift in Sources */,
 				C32369FF2D7DD431007039A1 /* LoginViewController.swift in Sources */,
+				24126E042ECA69C300F9A4BE /* TextOnlyScannerSheet.swift in Sources */,
 				24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */,
 				C312D3732D7DC27700BB97A4 /* AboutCell.swift in Sources */,
 				243136FD2E0B251D00BCBED1 /* SettingsActionToggleView.swift in Sources */,
@@ -2908,6 +2949,7 @@
 				C312D3F72D7DC27700BB97A4 /* UnEditableTextView.swift in Sources */,
 				2457DDE82EB7EC4400688B9A /* CoreModeView.swift in Sources */,
 				247A7D132E95286E000DF8C0 /* GameHubBentoView.swift in Sources */,
+				24126DFE2ECA68E900F9A4BE /* TextScannerView.swift in Sources */,
 				C312D3FC2D7DC27700BB97A4 /* UIView+InitAdditions.swift in Sources */,
 				C312D3FD2D7DC27700BB97A4 /* LocaleChangeViewModel.swift in Sources */,
 				C312D3FE2D7DC27700BB97A4 /* ReduxState.swift in Sources */,
@@ -2926,6 +2968,7 @@
 				2412BA7E2DF4660300AC40BB /* ReceiveAddressView.swift in Sources */,
 				C312D40A2D7DC27700BB97A4 /* EnterPhraseView.swift in Sources */,
 				247A83952EA034FE00B5DFD8 /* GridWaveContentView.swift in Sources */,
+				24126DFB2ECA68AB00F9A4BE /* DataScannerSheet.swift in Sources */,
 				C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */,
 				C312D40F2D7DC27700BB97A4 /* Environment.swift in Sources */,
 				C312D4102D7DC27700BB97A4 /* CustomTitleView.swift in Sources */,
@@ -2970,6 +3013,7 @@
 				C312D44F2D7DC27700BB97A4 /* LWActivityIndicator.swift in Sources */,
 				24B065352DC627F000B5E000 /* NewMainHostingController.swift in Sources */,
 				C312D4502D7DC27700BB97A4 /* TransactionDirection.swift in Sources */,
+				24126E022ECA693E00F9A4BE /* BarcodeOnlyScannerSheet.swift in Sources */,
 				C312D4512D7DC27700BB97A4 /* PromptModalViewController.swift in Sources */,
 				C312D4522D7DC27700BB97A4 /* CheckboxesStepView.swift in Sources */,
 				24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */,
@@ -3264,6 +3308,7 @@
 				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "initial-resources";
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -3305,7 +3350,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
 				MARKETING_VERSION = 3.9.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
 				PRODUCT_MODULE_NAME = brainwallet;
@@ -3456,6 +3501,7 @@
 				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "initial-resources";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC  ";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules $(SRCROOT)/brainwallet/br-swift";
@@ -3495,7 +3541,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
 				MARKETING_VERSION = 3.9.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
 				PRODUCT_MODULE_NAME = brainwallet;
@@ -3575,7 +3621,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 12.1.0;
+				version = 12.7.0;
 			};
 		};
 		249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {

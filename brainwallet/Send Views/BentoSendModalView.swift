@@ -41,7 +41,19 @@ struct BentoSendModalView: View {
     private var isValidAddress = false
 
     @State
+    private var shouldShowError = false
+
+    @State
+    private var errorMessage = ""
+
+    @State
     private var isAmountValid = false
+
+    @State
+    private var pasteboardString = ""
+
+    @State
+    private var scannedText = ""
 
     @State
     private var sendPaymentRequest = PaymentRequest(string: "")
@@ -61,13 +73,21 @@ struct BentoSendModalView: View {
          userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
         newMainViewModel = viewModel
-        print(":::::\(newMainViewModel.filteredTransactions.count)")
     }
 
     private func limitText(_ upper: Int) {
 //            if username.count > upper {
 //                username = String(username.prefix(upper))
 //            }
+    }
+
+    private func verifyAddressInPasteboard() -> Bool {
+        if let pasteboard = UIPasteboard.general.string,
+            pasteboard.isValidAddress {
+            pasteboardString = pasteboard
+            return true
+        }
+        return false
     }
 
     private func isSendInformationValid() -> Bool {
@@ -139,7 +159,14 @@ struct BentoSendModalView: View {
                                 HStack {
                                     Spacer()
                                     Button(action: {
-                                        didTapPaste.toggle()
+
+                                        if verifyAddressInPasteboard() {
+                                            didTapPaste.toggle()
+                                        } else {
+                                            errorMessage = "Invalid LTC Address"
+                                            shouldShowError.toggle()
+                                        }
+
                                     }) {
                                         ZStack {
 
@@ -156,12 +183,63 @@ struct BentoSendModalView: View {
                                                        alignment: .center)
                                         }
                                     }
+                                    .alert(errorMessage, isPresented: $shouldShowError) {
+                                                Button("OK", role: .cancel) { }
+                                    }
                                     .frame(width: buttonSize, height: buttonSize)
                                     .accessibilityIdentifier("pasteLTCAddressButton")
                                     .padding(.trailing, 4)
 
                                     Button(action: {
+                                        didTapScan.toggle()
                                         // shouldShowBalance.toggle()
+
+//                                        guard ScanViewController.isCameraAllowed else {
+//                                            ScanViewController.presentCameraUnavailableAlert(fromRoot: parent)
+//                                            return
+//                                        }
+
+//                                        let vc = ScanViewController(completion: { paymentRequest in
+//                                            guard let request = paymentRequest else {
+//                                                assertionFailure("Invalid payment request type: \(String(describing: paymentRequest))")
+//                                                return
+//                                            }
+//                                            scanCompletion(request)
+//                                            parent.view.isFrameChangeBlocked = false
+//                                            
+//                                        }, isValidURI: { address in
+//                                            return address.isValidAddress
+//                                        })
+//                                        
+//                                        
+//                                        self.present(vc, animated: true, completion: {})
+
+//                                        func presentScan(parent: UIViewController) -> PresentScan {
+//                                            return { [weak parent] scanCompletion in
+//                                                guard let parent = parent else { return }
+//                                                guard ScanViewController.isCameraAllowed else {
+//                                                    ScanViewController.presentCameraUnavailableAlert(fromRoot: parent)
+//                                                    return
+//                                                }
+//
+//                                                let vc = ScanViewController(completion: { paymentRequest in
+//
+//                                                    guard let request = paymentRequest else {
+//                                                        assertionFailure("Invalid payment request type: \(String(describing: paymentRequest))")
+//                                                        return
+//                                                    }
+//                                                    scanCompletion(request)
+//                                                    parent.view.isFrameChangeBlocked = false
+//
+//                                                }, isValidURI: { address in
+//                                                    return address.isValidAddress
+//                                                })
+//
+//                                                parent.view.isFrameChangeBlocked = true
+//                                                parent.present(vc, animated: true, completion: {})
+//                                            }
+//                                        }
+
                                     }) {
                                         ZStack {
 
@@ -368,6 +446,7 @@ struct BentoSendModalView: View {
 
             guard let pasteboard = UIPasteboard.general.string, !pasteboard.utf8.isEmpty
             else {
+                shouldShowError  = true
                 return
             }
 //            guard let request = PaymentRequest(string: pasteboard)
@@ -385,12 +464,19 @@ struct BentoSendModalView: View {
             newMainViewModel.sendPaymentRequest = sendPaymentRequest
             sendLTCAddress = pasteboard
         }
-        .onChange(of: didTapScan) { _ in
-
-        }
         .onChange(of: isLTCValueShown) { _ in
             newMainViewModel.isLTCValueShown = isLTCValueShown
         }
+        .onChange(of: shouldShowError) { _ in
+            newMainViewModel.isLTCValueShown = isLTCValueShown
+        }
+        .sheet(isPresented: $didTapScan) {
+            DataScannerView(scannedText: $scannedText, isPresented: $didTapScan)
+        }
+        .onChange(of: scannedText) { _ in
+            print(scannedText)
+        }
+
         .onDisappear {
             backgroundColor = userPrefersDarkTheme ? darkModeColor : lightModeColor
             sendLTCAddress = ""

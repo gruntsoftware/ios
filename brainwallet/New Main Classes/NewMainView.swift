@@ -145,10 +145,12 @@ struct NewMainView: View {
                                     VStack {
                                         LTCPriceBentoView(viewModel: newMainViewModel,
                                                           userPrefersDarkTheme: $userPrefersDarkTheme)
+                                        .frame(maxHeight: height * 0.25)
                                         .padding(bentoPadding)
 
                                         FavouritesBentoView(viewModel: newMainViewModel,
                                                             userPrefersDarkTheme: $userPrefersDarkTheme)
+                                        .frame(maxHeight: height * 0.25)
                                         .padding(bentoPadding)
 
                                     }
