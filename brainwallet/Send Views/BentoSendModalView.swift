@@ -16,6 +16,15 @@ struct BentoSendModalView: View {
     @Binding
     var userPrefersDarkTheme: Bool
 
+    @Binding
+    var userWalletIsEmpty: Bool
+
+    @Binding
+    var shouldShowView: Bool
+
+    @State
+    private var shouldShowEmptyWalletAlert: Bool = false
+
     @State
     private var sendLTCAddress: String = ""
 
@@ -23,7 +32,10 @@ struct BentoSendModalView: View {
     private var sendAmount: Double = 0.0
 
     @State
-    private var sendAmountString = ""
+    private var sentTextColor: Color = .black
+
+    @State
+    private var continueTextColor: Color = .black
 
     @State
     private var sendMemo: String = ""
@@ -70,21 +82,21 @@ struct BentoSendModalView: View {
                                                                  endPoint: .bottomTrailing)
 
     init(viewModel: NewMainViewModel,
-         userPrefersDarkTheme: Binding<Bool>) {
+         userPrefersDarkTheme: Binding<Bool>,
+         userWalletIsEmpty: Binding<Bool>,
+         shouldShowView: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
+        _userWalletIsEmpty = userWalletIsEmpty
+        _shouldShowView = shouldShowView
         newMainViewModel = viewModel
     }
 
-    private func limitText(_ upper: Int) {
-//            if username.count > upper {
-//                username = String(username.prefix(upper))
-//            }
-    }
-
     private func verifyAddressInPasteboard() -> Bool {
-        if let pasteboard = UIPasteboard.general.string,
+
+        if let pasteboard = UIPasteboard.general.string?.lowercased(),
             pasteboard.isValidAddress {
             pasteboardString = pasteboard
+            self.isValidAddress = true
             return true
         }
         return false
@@ -99,7 +111,7 @@ struct BentoSendModalView: View {
 
             let width = geometry.size.width
             let sectionHeight = 60.0
-            let sectionSpacer = 12.0
+            let sectionSpacer = 18.0
             let sectionSides = 30.0
             let labelSize = 11.0
             let contentSize = 12.0
@@ -143,9 +155,13 @@ struct BentoSendModalView: View {
                                 .controlSize(.regular)
                                 .textFieldStyle(.plain)
                                 .background(.clear)
+                                .truncationMode(.middle)
                                 .keyboardType(.alphabet)
-                                .onChange(of: sendLTCAddress) { _ in
+                                .onChange(of: sendLTCAddress) { newStringValue , _ in
 
+                                    if newStringValue.isValidAddress {
+                                        didTapScan.toggle()
+                                    }
                                 }
                                 .padding(.bottom, 4)
                                 .padding(.leading, 16)
@@ -163,7 +179,7 @@ struct BentoSendModalView: View {
                                         if verifyAddressInPasteboard() {
                                             didTapPaste.toggle()
                                         } else {
-                                            errorMessage = "Invalid LTC Address"
+                                            errorMessage =  sendLTCAddress.isEmpty ? "No String Entered" : "Invalid LTC Address"
                                             shouldShowError.toggle()
                                         }
 
@@ -192,54 +208,6 @@ struct BentoSendModalView: View {
 
                                     Button(action: {
                                         didTapScan.toggle()
-                                        // shouldShowBalance.toggle()
-
-//                                        guard ScanViewController.isCameraAllowed else {
-//                                            ScanViewController.presentCameraUnavailableAlert(fromRoot: parent)
-//                                            return
-//                                        }
-
-//                                        let vc = ScanViewController(completion: { paymentRequest in
-//                                            guard let request = paymentRequest else {
-//                                                assertionFailure("Invalid payment request type: \(String(describing: paymentRequest))")
-//                                                return
-//                                            }
-//                                            scanCompletion(request)
-//                                            parent.view.isFrameChangeBlocked = false
-//                                            
-//                                        }, isValidURI: { address in
-//                                            return address.isValidAddress
-//                                        })
-//                                        
-//                                        
-//                                        self.present(vc, animated: true, completion: {})
-
-//                                        func presentScan(parent: UIViewController) -> PresentScan {
-//                                            return { [weak parent] scanCompletion in
-//                                                guard let parent = parent else { return }
-//                                                guard ScanViewController.isCameraAllowed else {
-//                                                    ScanViewController.presentCameraUnavailableAlert(fromRoot: parent)
-//                                                    return
-//                                                }
-//
-//                                                let vc = ScanViewController(completion: { paymentRequest in
-//
-//                                                    guard let request = paymentRequest else {
-//                                                        assertionFailure("Invalid payment request type: \(String(describing: paymentRequest))")
-//                                                        return
-//                                                    }
-//                                                    scanCompletion(request)
-//                                                    parent.view.isFrameChangeBlocked = false
-//
-//                                                }, isValidURI: { address in
-//                                                    return address.isValidAddress
-//                                                })
-//
-//                                                parent.view.isFrameChangeBlocked = true
-//                                                parent.present(vc, animated: true, completion: {})
-//                                            }
-//                                        }
-
                                     }) {
                                         ZStack {
 
@@ -291,17 +259,36 @@ struct BentoSendModalView: View {
                                 .frame(height: 18)
 
                                 TextField(String(localized: isLTCValueShown ? "\(newMainViewModel.walletBalanceLitecoin)" : "\(newMainViewModel.walletBalanceFiat)"),
-                                              text: $sendAmountString)
+                                          value: $sendAmount, format: .number)
                                     .font(.system(size: 26,
                                                   weight: .bold, design: .default))
-                                    .foregroundColor(userPrefersDarkTheme ? .white : .black)
+                                    .foregroundColor(sentTextColor)
                                     .frame(height: 34, alignment: .leading)
                                     .controlSize(.regular)
                                     .textFieldStyle(.plain)
                                     .background(.clear)
                                     .keyboardType(.decimalPad)
-                                    .onChange(of: sendAmountString) { _ in
+                                    .onChange(of: sendAmount) { _,_ in
 
+                                        /// reset the text color
+                                        sentTextColor = userPrefersDarkTheme ? .white : .black
+
+                                        /// Test the amount to send
+                                        if !newMainViewModel.canSendAmountWithFees(isLTCValue: isLTCValueShown, sendAmountDouble: sendAmount) {
+                                            sentTextColor = BrainwalletColor.error
+                                        }
+
+//                                        if isLTCValueShown {
+//                                            isAmountValid = sendAmount < newMainViewModel.walletBalanceLitecoinDouble
+//                                            if !isAmountValid {
+//                                                sentTextColor = BrainwalletColor.error
+//                                            }
+//                                        } else {
+//                                            isAmountValid =  sendAmount < newMainViewModel.walletBalanceFiatDouble
+//                                            if !isAmountValid {
+//                                                sentTextColor =  BrainwalletColor.error
+//                                            }
+//                                        }
                                     }
                                     .padding(.bottom, 4)
                                     .padding(.leading, 16)
@@ -388,7 +375,7 @@ struct BentoSendModalView: View {
                                     .textFieldStyle(.plain)
                                     .background(.clear)
                                     .keyboardType(.alphabet)
-                                    .onChange(of: sendMemo) { _ in
+                                    .onChange(of: sendMemo) { _,_ in
 
                                     }
                                 }
@@ -426,7 +413,7 @@ struct BentoSendModalView: View {
 
                                 Text("Continue")
                                     .font(.system(size: 18, weight: .semibold, design: .default))
-                                    .foregroundColor(userPrefersDarkTheme ? .black : .white)
+                                    .foregroundColor(continueTextColor)
                             }
 
                         }
@@ -440,48 +427,49 @@ struct BentoSendModalView: View {
         }
         .onAppear {
             backgroundColor = userPrefersDarkTheme ? darkModeColor : lightModeColor
+            sentTextColor = userPrefersDarkTheme ? .white : .black
+            continueTextColor = userPrefersDarkTheme ? .black : .white
             isLTCValueShown = newMainViewModel.isLTCValueShown
+            userWalletIsEmpty = (newMainViewModel.walletBalanceLitecoinDouble > 0.0 ) ? false : true
         }
-        .onChange(of: didTapPaste) { _ in
+        .onChange(of: didTapPaste) { _,_ in
 
             guard let pasteboard = UIPasteboard.general.string, !pasteboard.utf8.isEmpty
             else {
                 shouldShowError  = true
                 return
             }
-//            guard let request = PaymentRequest(string: pasteboard)
-//            else {
-//                return showAlert(title: "Invalid Address" , message: "Please enter the recipient's address." , buttonLabel: "Ok" )
-//            }
-//            
-
-//            if let amount = request.amount {
-//                amountView.forceUpdateAmount(amount: amount)
-//            }
-//            if request.label != nil {
-//                memoCell.content = request.label
-//            }
             newMainViewModel.sendPaymentRequest = sendPaymentRequest
             sendLTCAddress = pasteboard
         }
-        .onChange(of: isLTCValueShown) { _ in
-            newMainViewModel.isLTCValueShown = isLTCValueShown
+        .onChange(of: isLTCValueShown) { _,newValue in
+            newMainViewModel.isLTCValueShown = newValue
         }
-        .onChange(of: shouldShowError) { _ in
-            newMainViewModel.isLTCValueShown = isLTCValueShown
+        .onChange(of: shouldShowError) { _,newValue in
+            newMainViewModel.isLTCValueShown = newValue
+        }
+        .onChange(of: scannedText) { _,_ in
+            sendLTCAddress = scannedText
+        }
+        .onChange(of: userWalletIsEmpty) { _,_ in
+
+            delay(0.4) {
+                 shouldShowEmptyWalletAlert = userWalletIsEmpty
+            }
         }
         .sheet(isPresented: $didTapScan) {
             DataScannerView(scannedText: $scannedText, isPresented: $didTapScan)
         }
-        .onChange(of: scannedText) { _ in
-            print(scannedText)
+        .alert(isPresented: $shouldShowEmptyWalletAlert) {
+              Alert(title: Text("TOP UP NOW!"),
+                      message: Text("You have no Litecoin. Tap Buy/Recieve. Get LTC in 5 minutes with MoonPay!"),
+                      dismissButton: .default(Text("Ok"),
+                                              action: { shouldShowView = false }))
         }
-
         .onDisappear {
             backgroundColor = userPrefersDarkTheme ? darkModeColor : lightModeColor
             sendLTCAddress = ""
             sendAmount = 0.0
-            sendAmountString = ""
             sendMemo = ""
             sendPaymentRequest = PaymentRequest(string: "")
         }

@@ -38,6 +38,12 @@ struct NewMainView: View {
     private var userDidTapBuyReceive: Bool = false
 
     @State
+    private var userBalanceIsEmpty: Bool = true
+
+    @State
+    private var walletIsSyncing: Bool = true
+
+    @State
     private var shouldShowExportOptions: Bool = false
 
     @State
@@ -251,6 +257,7 @@ struct NewMainView: View {
                                     .foregroundStyle(content)
                             }
                         })
+                        .disabled(walletIsSyncing)
 
                         Spacer()
 
@@ -321,6 +328,7 @@ struct NewMainView: View {
                 .onAppear {
                     userPrefersDarkTheme = newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
+                    walletIsSyncing = newMainViewModel.walletIsSyncing
                 }
                 .onChange(of: shouldShowGameMode) { _,_ in
                     newMainViewModel.shouldShowGameMode = shouldShowGameMode
@@ -328,16 +336,22 @@ struct NewMainView: View {
                 .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
                     disableTransactionDetail = newMainViewModel.filteredTransactions.isEmpty
                 }
-                .onChange(of: userPrefersDarkTheme) { preference in
-                    newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
+                .onChange(of: userPrefersDarkTheme) { _,newPreference in
+                    newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: newPreference)
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 }
+                .onChange(of: newMainViewModel.walletIsSyncing) { _,newState in
+                    walletIsSyncing = newState
+                }
                 .sheet(isPresented: $userDidTapSend) {
-                    BentoSendModalView(viewModel: newMainViewModel,
-                                       userPrefersDarkTheme: $userPrefersDarkTheme)
+                        BentoSendModalView(viewModel: newMainViewModel,
+                                           userPrefersDarkTheme: $userPrefersDarkTheme,
+                                           userWalletIsEmpty: $userBalanceIsEmpty,
+                                           shouldShowView: $userDidTapSend)
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.medium])
-                        .presentationDragIndicator(.visible)
+                        .presentationDragIndicator(.hidden)
+                        .presentationBackground(.ultraThickMaterial)
                 }
                 .sheet(isPresented: $userDidTapBuyReceive) {
                     BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
@@ -350,7 +364,6 @@ struct NewMainView: View {
                           message: Text(currentPrompt.body),
                           primaryButton: .default(Text("Okay"),
                                         action: {
-                                        print("Ok CLICK")
                                 }),
                           secondaryButton: .destructive(Text("Dismiss (Desctructive)")))
                 }

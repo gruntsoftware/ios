@@ -27880,6 +27880,9 @@
     "TOP SECRET" : {
 
     },
+    "TOP UP NOW!" : {
+
+    },
     "Top up?" : {
       "localizations" : {
         "ar" : {
@@ -31778,6 +31781,9 @@
           }
         }
       }
+    },
+    "You have no Litecoin. Tap Buy/Recieve. Get LTC in 5 minutes with MoonPay!" : {
+
     },
     "You have not set up Face ID on this device. Go to Settings->Face ID & Passcode to set it up now." : {
       "localizations" : {

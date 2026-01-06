@@ -48,6 +48,9 @@ class NewMainViewModel: ObservableObject, Subscriber {
     var isSeedPhraseFilled: Bool = false
 
     @Published
+    var walletIsSyncing: Bool = false
+
+    @Published
     var shouldShowGameMode: Bool = false
 
     @Published
@@ -90,6 +93,21 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
     @Published
     var walletBalanceLitecoin = ""
+
+    @Published
+    var walletBalanceFiatDouble: Double = 0.0
+
+    @Published
+    var walletBalanceLitecoinDouble: Double = 0.0
+
+    @Published
+    var currentTieredOpsFee: UInt64 = 0
+
+    @Published
+    var currentNetworkFee: UInt64 = 0
+
+    @Published
+    var currentTotalAmountToSend: UInt64 = 0
 
     @Published
     var sendPaymentRequest = PaymentRequest(string: "")
@@ -192,10 +210,11 @@ class NewMainViewModel: ObservableObject, Subscriber {
            let balance = store.state.walletState.balance {
             exchangeRate = currentRate
             walletAmount = Amount(amount: balance, rate: currentRate, maxDigits: store.state.maxDigits)
-            let ltcBalanceDouble = Double(balance) / Double(100_000_000)
-            let fiatBalanceDouble = ltcBalanceDouble * Double(currentRate.rate)
-            walletBalanceFiat = String(format: "%@%8.2f", currentRate.currencySymbol, fiatBalanceDouble)
-            walletBalanceLitecoin = String(format: "Ł%8.6f", ltcBalanceDouble)
+
+            walletBalanceLitecoinDouble =  Double(balance) / Double(100_000_000)
+            walletBalanceFiatDouble = walletBalanceLitecoinDouble * Double(currentRate.rate)
+            walletBalanceFiat = String(format: "%@%8.2f", currentRate.currencySymbol, walletBalanceFiatDouble)
+            walletBalanceLitecoin = String(format: "Ł%8.6f", walletBalanceLitecoinDouble)
             // Price Label
             let formattedFiatString = String(format: "%8.2f", currentRate.rate)
             currentFiatValue = String(currentRate.currencySymbol + formattedFiatString)
@@ -208,6 +227,20 @@ class NewMainViewModel: ObservableObject, Subscriber {
             NSLog("::: ERROR: Store not initialized")
             return
         }
+
+        // MARK: - Wallet State:  Sync State
+        store.subscribe(self, selector: { $0.walletState.syncState != $1.walletState.syncState },
+                        callback: { state in
+            if state.walletState.syncState == .syncing {
+                    self.walletIsSyncing = true
+                } else {
+                    self.walletIsSyncing = false
+                }
+
+                if state.walletState.syncState == .success {
+                    self.walletIsSyncing = false
+                }
+        })
 
         // MARK: - Wallet State: Transactions
 
@@ -268,6 +301,44 @@ class NewMainViewModel: ObservableObject, Subscriber {
     func lockBrainwallet() {
         delay(0.6) {
             self.resetSettingsDrawer?()
+        }
+    }
+
+    func canSendAmountWithFees(isLTCValue: Bool, sendAmountDouble: Double) -> Bool {
+        debugPrint("|||| isLTCValue  \(isLTCValue)")
+        debugPrint("|||| sendAmountDouble \(sendAmountDouble)")
+        guard let rate = self.rate,
+              let kvStore = self.walletManager?.apiClient?.kv,
+              let walletManager = self.walletManager,
+              let store = self.store,
+              let walletLitoshiBalance = store.state.walletState.balance else { return false }
+
+        let sender = Sender(walletManager: walletManager,
+                            kvStore: kvStore, store: store)
+
+        let satoshiAmountLTC = UInt64(sendAmountDouble * 100_000_000)
+        let tieredOpsFeeLTC = tieredOpsFee(amount: satoshiAmountLTC)
+        let totalAmountToCalculateFees = (satoshiAmountLTC + tieredOpsFeeLTC)
+        let networkFee = sender.feeForTx(amount: totalAmountToCalculateFees)
+        let totalFees = tieredOpsFeeLTC + networkFee
+        let totalAmountToSend = totalFees + satoshiAmountLTC
+
+        currentTieredOpsFee = tieredOpsFeeLTC
+        currentNetworkFee = networkFee
+        currentTotalAmountToSend = totalAmountToSend
+
+        if isLTCValue {
+            return totalAmountToSend > walletLitoshiBalance ? false : true
+        }
+        else { /// Calculate the Fiat send amount
+            let sendAmountFiatLitoshis = UInt64(sendAmountDouble / Double(rate.rate) * 100_000_000)
+            let tieredOpsFiatLTC = tieredOpsFee(amount: sendAmountFiatLitoshis)
+            let totalAmountToCalculateFiatFees = (sendAmountFiatLitoshis + tieredOpsFiatLTC)
+            let networkFeeFiat = sender.feeForTx(amount: totalAmountToCalculateFiatFees)
+            let tieredOpsFiatLTCFee = Double(tieredOpsFiatLTC) / 100_000_000 * Double(rate.rate)
+            let totalFeesFiatLTCFee = (Double(tieredOpsFiatLTC) + Double(networkFeeFiat)) / 100_000_000 * Double(rate.rate)
+            let totalAmountToSendFiat = (Double(tieredOpsFiatLTC) + Double(networkFeeFiat) + Double(sendAmountFiatLitoshis)) / 100_000_000 * Double(rate.rate)
+            return  totalAmountToSendFiat > walletBalanceFiatDouble ? false : true
         }
     }
 
