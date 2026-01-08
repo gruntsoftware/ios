@@ -70,8 +70,12 @@ struct DataScannerView: UIViewControllerRepresentable {
 
             switch firstItem {
             case .barcode(let stringValue):
-                let rawAddress: String = (stringValue.payloadStringValue ?? "").components(separatedBy: ":").last ?? " "
-                scannedText = rawAddress.isValidAddress ? rawAddress : "Invalid Address"
+                var rawAddressString: String = (stringValue.payloadStringValue ?? "").components(separatedBy: ":").last ?? " "
+
+                if rawAddressString.contains("?label=") {/// Litecoin Core v0.21.4  with label
+                    rawAddressString = rawAddressString.components(separatedBy: "?").first ?? " "
+                }
+                scannedText = rawAddressString.isValidAddress ? rawAddressString : "Invalid Address"
                 isPresented = false
             case .none, .text: /// The Litecoin Core QR code is lockedup with text and
                                /// this causes an error when scanning

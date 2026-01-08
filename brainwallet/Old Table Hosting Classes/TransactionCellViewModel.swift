@@ -108,7 +108,7 @@ class TransactionCellViewModel: ObservableObject {
 			qrImage = image
 		}
 
-		if let memo = transaction.comment {
+		if let memo = transaction.memoString {
 			memoString = memo
 		}
 	}

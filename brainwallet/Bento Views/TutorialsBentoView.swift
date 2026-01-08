@@ -110,7 +110,7 @@ struct TutorialsBentoView: View {
                                 Text("Load with MoonPay")
                             }
 
-                    }
+                }
                 .tabViewStyle(.page)
 
             }

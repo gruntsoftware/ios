@@ -1,5 +1,5 @@
 //
-//  BentoSendModalView.swift
+//  BentoSendInitialView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 03/05/2025.
@@ -8,7 +8,13 @@
 
 import SwiftUI
 
-struct BentoSendModalView: View {
+struct BentoSendInitialView: View {
+
+    enum SendField {
+       case addressField
+       case amountField
+       case memoField
+    }
 
     @ObservedObject
     var newMainViewModel: NewMainViewModel
@@ -21,6 +27,9 @@ struct BentoSendModalView: View {
 
     @Binding
     var shouldShowView: Bool
+
+    @Binding
+    var currentIndex: Int
 
     @State
     private var shouldShowEmptyWalletAlert: Bool = false
@@ -62,32 +71,32 @@ struct BentoSendModalView: View {
     private var isAmountValid = false
 
     @State
+    private var isReadyToSend: Bool = false
+
+    @State
     private var pasteboardString = ""
 
     @State
     private var scannedText = ""
 
     @State
-    private var sendPaymentRequest = PaymentRequest(string: "")
+    private var bwTransaction = BWTransaction()
 
-    let darkModeColor = LinearGradient(colors: [BentoColor.sendTopPurple,
-                                                BentoColor.sendBottomPurple],
-                                       startPoint: .topLeading,
-                                       endPoint: .bottomTrailing)
-    let lightModeColor = LinearGradient(colors: [.white], startPoint: .topLeading,
-                                        endPoint: .bottomTrailing)
+    @FocusState
+    private var focusedField: SendField?
+
     @State
-    private var backgroundColor: LinearGradient = LinearGradient(colors: [.white],
-                                                                 startPoint: .topLeading,
+    private var backgroundColor: LinearGradient = LinearGradient(colors: [.white], startPoint: .topLeading,
                                                                  endPoint: .bottomTrailing)
 
     init(viewModel: NewMainViewModel,
-         userPrefersDarkTheme: Binding<Bool>,
-         userWalletIsEmpty: Binding<Bool>,
-         shouldShowView: Binding<Bool>) {
+         userPrefersDarkTheme: Binding<Bool>, userWalletIsEmpty: Binding<Bool>,
+         shouldShowView: Binding<Bool>,
+         currentIndex: Binding<Int>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
         _userWalletIsEmpty = userWalletIsEmpty
         _shouldShowView = shouldShowView
+        _currentIndex = currentIndex
         newMainViewModel = viewModel
     }
 
@@ -103,7 +112,10 @@ struct BentoSendModalView: View {
     }
 
     private func isSendInformationValid() -> Bool {
-        return isValidAddress && isAmountValid && !sendLTCAddress.isEmpty
+        Task {
+            isReadyToSend = isValidAddress && isAmountValid && !sendLTCAddress.isEmpty
+        }
+        return isReadyToSend
     }
 
     var body: some View {
@@ -112,12 +124,9 @@ struct BentoSendModalView: View {
             let width = geometry.size.width
             let sectionHeight = 60.0
             let sectionSpacer = 18.0
-            let sectionSides = 30.0
-            let labelSize = 11.0
-            let contentSize = 12.0
-            let iconSize = 14.0
+            let sectionSides = 15.0
             let buttonSize = 35.0
-            let coinSize = 28.0
+
             ZStack {
                 backgroundColor.edgesIgnoringSafeArea(.all)
                 VStack {
@@ -126,9 +135,10 @@ struct BentoSendModalView: View {
                         .lineLimit(1)
                         .minimumScaleFactor(0.9)
                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                        .padding(.top, sectionSpacer * 3)
-                        .padding(.bottom, sectionSpacer)
-
+                        .padding(2.5 * sectionSpacer)
+                        .onTapGesture {
+                            focusedField = nil
+                        }
                     HStack {
                         ZStack {
                             RoundedRectangle(cornerRadius: 12)
@@ -138,65 +148,55 @@ struct BentoSendModalView: View {
                             VStack {
                                 HStack {
                                     Text("Recipient")
-                                        .font(.system(size: labelSize, weight: .light, design: .default))
+                                        .modifier(SendTextModalSubTitleModifier())
                                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                                        .frame(height: 18, alignment: .topLeading)
-                                        .padding(.leading, 16)
                                     Spacer()
                                 }
-                                .padding(.top, 10)
                                 .frame(height: 18)
+                                .padding(.top, 10)
 
-                                TextField(String(localized:""),
-                                          text: $sendLTCAddress)
-                                .font(.system(size: 11,
-                                              weight: .regular, design: .default))
-                                .frame(height: 20, alignment: .leading)
-                                .controlSize(.regular)
-                                .textFieldStyle(.plain)
-                                .background(.clear)
-                                .truncationMode(.middle)
-                                .keyboardType(.alphabet)
-                                .onChange(of: sendLTCAddress) { newStringValue , _ in
-
-                                    if newStringValue.isValidAddress {
-                                        didTapScan.toggle()
+                                 TextField(String(localized:""), text: $sendLTCAddress)
+                                    .focused($focusedField, equals: .addressField)
+                                    .truncationMode(.middle)
+                                    .onChange(of: sendLTCAddress) { _ , newStringValue in
+                                        if newStringValue.isValidAddress {
+                                            bwTransaction.sendAddress = newStringValue
+                                            newMainViewModel.currentSendAddress = bwTransaction.sendAddress
+                                            isValidAddress = true
+                                            isReadyToSend = isValidAddress && isAmountValid && !sendLTCAddress.isEmpty
+                                        }
                                     }
-                                }
-                                .padding(.bottom, 4)
-                                .padding(.leading, 16)
-                                .padding(.trailing, width * 0.3)
+                                    .padding(.trailing, width * 0.3)
+                                    .textFieldStyle(BentoSendTextFieldStyle())
 
                             }
-                            .frame(height: sectionHeight,
-                                   alignment: .leading)
+                            .frame(height: sectionHeight, alignment: .leading)
+                            .onTapGesture {
+                                focusedField = .addressField
+                            }
 
                             VStack {
                                 HStack {
                                     Spacer()
                                     Button(action: {
-
                                         if verifyAddressInPasteboard() {
+                                            isValidAddress = true
+                                            bwTransaction.sendAddress = sendLTCAddress
+                                            newMainViewModel.currentSendAddress = bwTransaction.sendAddress
                                             didTapPaste.toggle()
                                         } else {
-                                            errorMessage =  sendLTCAddress.isEmpty ? "No String Entered" : "Invalid LTC Address"
+                                            errorMessage =  sendLTCAddress.isEmpty ? "No LTC Address Entered" : "Invalid LTC Address"
                                             shouldShowError.toggle()
                                         }
-
                                     }) {
                                         ZStack {
-
                                             RoundedRectangle(cornerRadius: 8)
                                                 .fill(userPrefersDarkTheme ? .white : BentoColor.grayBackground)
                                                 .frame(width: buttonSize, height: buttonSize)
 
                                             Image(systemName: "list.clipboard")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .foregroundColor(.black)
-                                                .frame(width: iconSize,
-                                                       height: iconSize,
-                                                       alignment: .center)
+                                                .sendButtonImageModifier()
+                                                .frame(alignment: .center)
                                         }
                                     }
                                     .alert(errorMessage, isPresented: $shouldShowError) {
@@ -210,18 +210,12 @@ struct BentoSendModalView: View {
                                         didTapScan.toggle()
                                     }) {
                                         ZStack {
-
                                             RoundedRectangle(cornerRadius: 8)
                                                 .fill(userPrefersDarkTheme ? .white : BentoColor.grayBackground)
                                                 .frame(width: buttonSize, height: buttonSize)
-
                                             Image(systemName: "qrcode")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .foregroundColor(.black)
-                                                .frame(width: iconSize,
-                                                       height: iconSize,
-                                                       alignment: .center)
+                                                .sendButtonImageModifier()
+                                                .frame(alignment: .center)
                                         }
                                     }
                                     .frame(width: buttonSize, height: buttonSize)
@@ -231,9 +225,7 @@ struct BentoSendModalView: View {
                                     .padding(.trailing, 16)
                                 }
                             }
-                            .frame(height: sectionHeight,
-                                   alignment: .trailing)
-
+                            .frame(height: sectionHeight, alignment: .trailing)
                         }
                     }
                     .padding([.leading, .trailing], sectionSides)
@@ -249,98 +241,92 @@ struct BentoSendModalView: View {
                             VStack {
                                 HStack {
                                     Text("Amount")
-                                        .font(.system(size: labelSize, weight: .light, design: .default))
+                                        .modifier(SendTextModalSubTitleModifier())
                                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                                        .frame(height: 15, alignment: .topLeading)
-                                        .padding(.leading, 16)
                                     Spacer()
                                 }
-                                .padding(.top, 10)
                                 .frame(height: 18)
+                                .padding(.top, 10)
 
                                 TextField(String(localized: isLTCValueShown ? "\(newMainViewModel.walletBalanceLitecoin)" : "\(newMainViewModel.walletBalanceFiat)"),
                                           value: $sendAmount, format: .number)
-                                    .font(.system(size: 26,
-                                                  weight: .bold, design: .default))
                                     .foregroundColor(sentTextColor)
-                                    .frame(height: 34, alignment: .leading)
-                                    .controlSize(.regular)
-                                    .textFieldStyle(.plain)
-                                    .background(.clear)
+                                    .focused($focusedField, equals: .amountField)
                                     .keyboardType(.decimalPad)
                                     .onChange(of: sendAmount) { _,_ in
 
-                                        /// reset the text color
                                         sentTextColor = userPrefersDarkTheme ? .white : .black
-
-                                        /// Test the amount to send
                                         if !newMainViewModel.canSendAmountWithFees(isLTCValue: isLTCValueShown, sendAmountDouble: sendAmount) {
                                             sentTextColor = BrainwalletColor.error
+                                            isAmountValid = false
+                                        } else {
+                                            isAmountValid = true
+                                            guard let code = GlobalCurrency.from(code: newMainViewModel.exchangeRate?.code ?? "USD"),
+                                                  let rate = newMainViewModel.exchangeRate?.rate else { return }
+                                            bwTransaction.amount = newMainViewModel.currentPreFeeAmount
+                                            bwTransaction.networkFee = newMainViewModel.currentNetworkFee
+                                            bwTransaction.serviceFee = newMainViewModel.currentServiceFee
+                                            bwTransaction.currentRate = newMainViewModel.exchangeRate
+                                            bwTransaction.fiatAmount = rate * newMainViewModel.currentTotalAmount.rawValue
+                                            bwTransaction.globalCode = code
+                                            newMainViewModel.bwTransaction = bwTransaction
+                                            debugPrint(" bwTransaction Amount: \(bwTransaction.amount)\n")
+                                            debugPrint(" bwTransaction Address: \(bwTransaction.sendAddress)\n")
+                                            debugPrint(" bwTransaction NetworkFee: \(bwTransaction.networkFee)\n")
+                                            debugPrint(" bwTransaction ServiceFee: \(bwTransaction.serviceFee)\n")
+                                            debugPrint(" bwTransaction Rate: \(bwTransaction.currentRate)\n")
+                                            debugPrint(" bwTransaction Fiat Amount: \(bwTransaction.fiatAmount)\n")
                                         }
-
-//                                        if isLTCValueShown {
-//                                            isAmountValid = sendAmount < newMainViewModel.walletBalanceLitecoinDouble
-//                                            if !isAmountValid {
-//                                                sentTextColor = BrainwalletColor.error
-//                                            }
-//                                        } else {
-//                                            isAmountValid =  sendAmount < newMainViewModel.walletBalanceFiatDouble
-//                                            if !isAmountValid {
-//                                                sentTextColor =  BrainwalletColor.error
-//                                            }
-//                                        }
-                                    }
-                                    .padding(.bottom, 4)
-                                    .padding(.leading, 16)
+                                        isReadyToSend = isValidAddress && isAmountValid && !sendLTCAddress.isEmpty
+                                     }
+                                    .textFieldStyle(BentoSendTextFieldStyle())
                                     .padding(.trailing, width * 0.25)
+                                    .padding(.bottom, 8)
                             }
-                            .frame(height: sectionHeight,
-                                   alignment: .leading)
+                            .frame(height: sectionHeight, alignment: .leading)
 
                             VStack {
+                                Spacer()
                                 HStack {
                                     Spacer()
-
                                     Button(action: {
                                         isLTCValueShown.toggle()
-
                                     }) {
-                                        HStack {
+                                        VStack {
                                             Spacer()
-                                            if isLTCValueShown {
-                                                Image("litecoin_cutout24")
-                                                    .resizable()
-                                                    .renderingMode(.template)
-                                                    .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                                                    .frame(width: coinSize,
-                                                           height: coinSize,
-                                                           alignment: .trailing)
-                                            } else {
+                                            HStack {
+                                                Spacer()
+                                                if isLTCValueShown {
+                                                    Image("litecoin_cutout24")
+                                                        .ltcIconImageModifier()
+                                                        .foregroundColor(userPrefersDarkTheme ? .white : .black)
 
-                                                Text( "\(newMainViewModel.exchangeRate?.code ?? "")")
-                                                    .font(.system(size: 18,
-                                                                  weight: .bold, design: .default))
-                                                    .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                                                    .frame(height: 30, alignment: .trailing)
+                                                } else {
+                                                    Text( "\(newMainViewModel.exchangeRate?.code ?? "")")
+                                                        .font(.system(size: 18, weight: .bold, design: .default))
+                                                        .foregroundColor(userPrefersDarkTheme ? .white : .black)
+                                                        .frame(height: 30, alignment: .trailing)
+                                                }
                                             }
+                                            .frame(width: buttonSize * 2 + 4, height: buttonSize)
 
                                         }
-                                        .frame(width: buttonSize * 2 + 4, height: buttonSize)
-
                                     }
                                     .frame(width: buttonSize * 2 + 4, height: buttonSize)
                                     .accessibilityIdentifier("toggleFiatLTCSendButton")
-                                    .padding(.top, 16)
                                     .padding(.trailing, 16)
                                 }
-                            }
-                            .frame(height: sectionHeight,
-                                   alignment: .trailing)
+                                .padding(.bottom, 8)
 
+                            }
+                            .frame(height: sectionHeight, alignment: .trailing)
                         }
                     }
                     .padding([.leading, .trailing], sectionSides)
                     .padding(.bottom, sectionSpacer)
+                    .onTapGesture {
+                        focusedField = .amountField
+                    }
 
                     HStack {
                         ZStack {
@@ -349,84 +335,81 @@ struct BentoSendModalView: View {
                                 .frame(height: sectionHeight)
                             VStack {
                                 HStack {
-                                    Text("Payment Memo")
-                                        .font(.system(size: labelSize, weight: .light, design: .default))
+                                    Text("Memo (Optional):")
+                                        .modifier(SendTextModalSubTitleModifier())
                                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                                        .frame(height: 18, alignment: .topLeading)
-                                        .padding(.leading, 16)
                                     Spacer()
                                 }
-                                .padding(.top, 10)
                                 .frame(height: 18)
+                                .padding(.top, 10)
 
                                 ZStack {
-
                                     Divider()
                                         .frame(height: 1.0)
                                         .background(userPrefersDarkTheme ? .white : BentoColor.grayBorder)
-                                        .padding(.top, 18.0)
+                                        .padding(.top, 15.0)
 
                                     TextField(String(localized:""),
                                               text: $sendMemo)
-                                    .font(.system(size: contentSize,
-                                                  weight: .semibold, design: .default))
-                                    .frame(height: 20, alignment: .leading)
-                                    .controlSize(.regular)
-                                    .textFieldStyle(.plain)
-                                    .background(.clear)
-                                    .keyboardType(.alphabet)
+                                    .focused($focusedField, equals: .memoField)
                                     .onChange(of: sendMemo) { _,_ in
-
                                     }
+                                    .textFieldStyle(BentoSendTextFieldStyle())
                                 }
                                 .padding([.leading, .trailing], 16)
                                 .padding(.bottom, 4)
-
                             }
                             .frame(height: sectionHeight)
                         }
                     }
                     .padding([.leading, .trailing], sectionSides)
-                    .padding(.bottom, sectionSpacer)
+                    .padding(.bottom, sectionSpacer / 2)
+                    .onTapGesture {
+                        focusedField = .memoField
+                    }
+
+                    Text("Dismiss keyboard")
+                        .font(.system(size: 14, weight: .light, design: .default))
+                        .foregroundColor(userPrefersDarkTheme ? .white : .black)
+                        .padding(sectionSpacer)
+                        .onTapGesture {
+                            focusedField = nil
+                        }
 
                     Spacer()
-
                     HStack {
                         Text("1 LTC" + " = \(newMainViewModel.currentFiatValue)")
-                            .font(.system(size: labelSize, weight: .light, design: .default))
+                            .modifier(SendTextModalFooterModifier())
                             .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                            .frame(height: 15, alignment: .leading)
                         Spacer()
                     }
                     .padding(.bottom, 2)
                     .padding([.leading, .trailing], sectionSides)
-                    .frame(height: 15)
 
                     HStack {
                         Button(action: {
-                            // Prepare to Send
+                            focusedField = nil
+                            currentIndex = 1
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 12)
                                     .fill(userPrefersDarkTheme ? .white : BentoColor.nearNearBlack)
                                     .frame(height: 48)
-
                                 Text("Continue")
                                     .font(.system(size: 18, weight: .semibold, design: .default))
-                                    .foregroundColor(continueTextColor)
+                                    .foregroundColor(isReadyToSend ? continueTextColor : continueTextColor.opacity(0.2))
                             }
-
                         }
                         .frame(height: 48)
                         .padding([.leading, .trailing], sectionSides)
                         .padding(.bottom, sectionSides * 0.5)
-                        .disabled(!isSendInformationValid())
+                        .disabled(!isReadyToSend)
                     }
                 }
             }
         }
         .onAppear {
-            backgroundColor = userPrefersDarkTheme ? darkModeColor : lightModeColor
+            backgroundColor = userPrefersDarkTheme ? BentoColor.darkModeColor1 : BentoColor.lightModeColor1
             sentTextColor = userPrefersDarkTheme ? .white : .black
             continueTextColor = userPrefersDarkTheme ? .black : .white
             isLTCValueShown = newMainViewModel.isLTCValueShown
@@ -434,28 +417,30 @@ struct BentoSendModalView: View {
         }
         .onChange(of: didTapPaste) { _,_ in
 
-            guard let pasteboard = UIPasteboard.general.string, !pasteboard.utf8.isEmpty
+            guard let pasteboard = UIPasteboard.general.string, !pasteboard.utf8.isEmpty,
+                  pasteboard.isValidAddress
             else {
                 shouldShowError  = true
                 return
             }
-            newMainViewModel.sendPaymentRequest = sendPaymentRequest
             sendLTCAddress = pasteboard
         }
         .onChange(of: isLTCValueShown) { _,newValue in
             newMainViewModel.isLTCValueShown = newValue
+            sendAmount = 0.0
         }
         .onChange(of: shouldShowError) { _,newValue in
             newMainViewModel.isLTCValueShown = newValue
         }
-        .onChange(of: scannedText) { _,_ in
-            sendLTCAddress = scannedText
-        }
-        .onChange(of: userWalletIsEmpty) { _,_ in
-
-            delay(0.4) {
-                 shouldShowEmptyWalletAlert = userWalletIsEmpty
+        .onChange(of: scannedText) { _, newValue in
+            sendLTCAddress = newValue
+            guard sendLTCAddress.isValidAddress else {
+                shouldShowError  = true
+                return
             }
+         }
+        .onChange(of: userWalletIsEmpty) { _,_ in
+            delay(0.4) { shouldShowEmptyWalletAlert = userWalletIsEmpty }
         }
         .sheet(isPresented: $didTapScan) {
             DataScannerView(scannedText: $scannedText, isPresented: $didTapScan)
@@ -463,15 +448,12 @@ struct BentoSendModalView: View {
         .alert(isPresented: $shouldShowEmptyWalletAlert) {
               Alert(title: Text("TOP UP NOW!"),
                       message: Text("You have no Litecoin. Tap Buy/Recieve. Get LTC in 5 minutes with MoonPay!"),
-                      dismissButton: .default(Text("Ok"),
-                                              action: { shouldShowView = false }))
+                      dismissButton: .default(Text("Ok"),action: { shouldShowView = false }))
         }
         .onDisappear {
-            backgroundColor = userPrefersDarkTheme ? darkModeColor : lightModeColor
             sendLTCAddress = ""
             sendAmount = 0.0
             sendMemo = ""
-            sendPaymentRequest = PaymentRequest(string: "")
         }
     }
 }

@@ -44,7 +44,7 @@ enum SearchFilterType {
 					}
 				}
 				if let metaData = transaction.metaData {
-					if metaData.comment.lowercased().contains(loweredText) {
+					if metaData.memoString.lowercased().contains(loweredText) {
 						return true
 					}
 				}

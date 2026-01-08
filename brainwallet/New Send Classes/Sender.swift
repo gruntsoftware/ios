@@ -12,29 +12,23 @@ class Sender {
 	// MARK: - Private Variables
 
 	private let walletManager: WalletManager
-
 	private let kvStore: BRReplicatedKVStore
-
 	private let store: Store
 
 	// MARK: - Public Variables
 
 	var transaction: BRTxRef?
-
-	var rate: Rate?
-
-	var comment: String?
-
+    var rate: Rate?
+	var memoString: String?
 	var feePerKb: UInt64?
-
-	var fee: UInt64 {
-		guard let tx = transaction else { return 0 }
-		return walletManager.wallet?.feeForTx(tx) ?? 0
+	var networkFee: UInt64 {
+		guard let transaction = transaction else { return 0 }
+		return walletManager.wallet?.feeForTx(transaction) ?? 0
 	}
 
 	var canUseBiometrics: Bool {
-		guard let tx = transaction else { return false }
-		return walletManager.canUseBiometrics(forTx: tx)
+		guard let transaction = transaction else { return false }
+		return walletManager.canUseBiometrics(forTx: transaction)
 	}
 
 	init(walletManager: WalletManager, kvStore: BRReplicatedKVStore, store: Store) {
@@ -62,38 +56,91 @@ class Sender {
 	func feeForTx(amount: UInt64) -> UInt64 {
 		return walletManager.wallet?.feeForTx(amount: amount) ?? 0
 	}
+    /// Send
+    /// - Parameters:
+    ///   - biometricsMessage: Response from decoding the biometrics
+    ///   - rate: LTC - Fiat rate
+    ///   - memoString: Memo note for the user recall in the database
+    ///   - feePerKb: rate  of fee per kb
+    ///   - pinCode: PIN code
+    ///   - completion: completion
+    func send(biometricsMessage: String,
+              rate: Rate?,
+              memoString: String?,
+              feePerKb: UInt64,
+              pinCode: String,
+              completion: @escaping (SendResult) -> Void) {
+        guard let transaction = transaction
+        else {
+            return completion(.creationError("Could not create transaction."))
+        }
+
+        self.rate = rate
+        self.memoString = memoString
+        self.feePerKb = feePerKb
+
+        if UserDefaults.isBiometricsEnabled,
+           walletManager.canUseBiometrics(forTx: transaction) {
+            DispatchQueue.walletQueue.async { [weak self] in
+                guard let myself = self else { return }
+                myself
+                    .walletManager
+                    .signTransaction(transaction,
+                                     biometricsPrompt:
+                                     biometricsMessage,
+                                     completion: { result in
+                                         if result == .success {
+                                             myself.publish(completion: completion)
+                                         } else {
+                                             if result == .failure || result == .fallback {
+
+                                             }
+                                         }
+                                     })
+            }
+        } else {
+            let group = DispatchGroup()
+            group.enter()
+            DispatchQueue.walletQueue.async {
+                if self.walletManager.signTransaction(transaction, pin: pinCode) {
+                    self.publish(completion: completion)
+                }
+                group.leave()
+            }
+        }
+    }
 
 	/// Send
 	/// - Parameters:
 	///   - biometricsMessage: Response from decoding the biometrics
 	///   - rate: LTC - Fiat rate
-	///   - comment: Users note to themselves
-	///   - feePerKb: comment rate  of fee per kb
+	///   - memoString: Memo note for the user recall in the database
+	///   - feePerKb: rate  of fee per kb
 	///   - verifyPinFunction: verification
 	///   - completion: completion
 	func send(biometricsMessage: String,
 	          rate: Rate?,
-	          comment: String?,
+              memoString: String?,
 	          feePerKb: UInt64,
 	          verifyPinFunction:
 	          @escaping (@escaping (String) -> Bool) -> Void,
 	          completion: @escaping (SendResult) -> Void) {
-		guard let tx = transaction
+		guard let transaction = transaction
 		else {
 			return completion(.creationError("Could not create transaction." ))
 		}
 
 		self.rate = rate
-		self.comment = comment
+		self.memoString = memoString
 		self.feePerKb = feePerKb
 
 		if UserDefaults.isBiometricsEnabled,
-		   walletManager.canUseBiometrics(forTx: tx) {
+		   walletManager.canUseBiometrics(forTx: transaction) {
 			DispatchQueue.walletQueue.async { [weak self] in
 				guard let myself = self else { return }
 				myself
 					.walletManager
-					.signTransaction(tx,
+					.signTransaction(transaction,
 					                 biometricsPrompt:
 					                 biometricsMessage,
 					                 completion: { result in
@@ -101,7 +148,7 @@ class Sender {
 					                 		myself.publish(completion: completion)
 					                 	} else {
 					                 		if result == .failure || result == .fallback {
-					                 			myself.verifyPin(tx: tx,
+					                 			myself.verifyPin(tx: transaction,
 					                 			                 withFunction: verifyPinFunction,
 					                 			                 completion: completion)
 					                 		}
@@ -109,7 +156,7 @@ class Sender {
 					                 })
 			}
 		} else {
-			verifyPin(tx: tx, withFunction: verifyPinFunction, completion: completion)
+			verifyPin(tx: transaction, withFunction: verifyPinFunction, completion: completion)
 		}
 	}
 
@@ -182,7 +229,7 @@ class Sender {
 		}
 
 		// Fires an event if the transaction is not set
-		guard let tx = transaction
+		guard let transaction = transaction
 		else {
 			return
 		}
@@ -193,17 +240,17 @@ class Sender {
 			return
 		}
 
-		let metaData = TxMetaData(transaction: tx.pointee,
+		let metaData = TxMetaData(transaction: transaction.pointee,
 		                          exchangeRate: rate.rate,
 		                          exchangeRateCurrency: rate.code,
 		                          feeRate: Double(feePerKb),
 		                          deviceId: UserDefaults.standard.deviceID,
-		                          comment: comment)
+                                  memoString: memoString)
 		do {
 			_ = try kvStore.set(metaData)
 		} catch let error {
             debugPrint("::: ERROR \(error)")
 		}
-		store.trigger(name: .txMemoUpdated(tx.pointee.txHash.description))
+		store.trigger(name: .txMemoUpdated(transaction.pointee.txHash.description))
 	}
 }

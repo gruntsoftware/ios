@@ -98,6 +98,8 @@ struct NewMainView: View {
 
             let width = geometry.size.width
             let height = geometry.size.height
+            let sheetContentHeight = height * 0.7
+
             let content = BrainwalletColor.content
             NavigationStack {
                 ZStack(alignment: .bottom) {
@@ -249,12 +251,12 @@ struct NewMainView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: iconSize,
                                            height: iconSize)
-                                    .foregroundColor(content)
+                                    .foregroundColor( walletIsSyncing ? content.opacity(0.3) : content)
                                     .padding(6)
 
                                 Text("Send")
                                     .font(.caption2)
-                                    .foregroundStyle(content)
+                                    .foregroundStyle(walletIsSyncing ? content.opacity(0.3) : content)
                             }
                         })
                         .disabled(walletIsSyncing)
@@ -349,9 +351,10 @@ struct NewMainView: View {
                                            userWalletIsEmpty: $userBalanceIsEmpty,
                                            shouldShowView: $userDidTapSend)
                         .cornerRadius(bentoCornerRadius)
-                        .presentationDetents([.medium])
                         .presentationDragIndicator(.hidden)
+                        .presentationDetents([.height(sheetContentHeight)])
                         .presentationBackground(.ultraThickMaterial)
+                        .ignoresSafeArea(edges: .bottom)
                 }
                 .sheet(isPresented: $userDidTapBuyReceive) {
                     BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)

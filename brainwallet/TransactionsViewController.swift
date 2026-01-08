@@ -57,7 +57,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                                  toAddress: transaction.toAddress ?? "--",
                                                  unixTimestamp: TimeInterval(transaction.timestamp),
                                                  shortTimestamp: transaction.shortTimestamp,
-                                                 memoString: transaction.comment ?? "--",
+                                                 memoString: transaction.memoString ?? "--",
                                                  txFee: Int(transaction.fee),
                                                  txHash: transaction.hash,
                                                  amount: transaction.litoshis,

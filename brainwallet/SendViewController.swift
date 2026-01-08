@@ -461,9 +461,9 @@ class SendViewController: UIViewController, Subscriber, ModalPresentable {
             return
         }
 
-		sender.send(biometricsMessage: "Authorize this transaction" ,
+        sender.send(biometricsMessage: "Authorize this transaction" ,
 		            rate: rate,
-		            comment: memoCell.textView.text,
+                    memoString: memoCell.textView.text,
 		            feePerKb: feePerKb,
 		            verifyPinFunction: { [weak self] pinValidationCallback in
                         self?.presentVerifyPin?(String(localized: "Please enter your PIN to authorize this transaction.")) { [weak self] passcode, viewController in

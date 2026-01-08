@@ -217,11 +217,11 @@ class Transaction : Hashable, Identifiable {
 		return metaData?.exchangeRate
 	}
 
-	var comment: String? {
-		if metaData?.comment != nil {
+	var memoString: String? {
+		if metaData?.memoString != nil {
 			// debugPrint(":::=== memo comments \(metaData?.comment ?? "NO MEMO")")
 		}
-		return metaData?.comment
+		return metaData?.memoString
 	}
 
     var litoshis: Int {
@@ -371,7 +371,7 @@ class Transaction : Hashable, Identifiable {
 	}
 
     static func == (lhside: brainwallet.Transaction, rhside: brainwallet.Transaction) -> Bool {
-        return lhside.hash == rhside.hash && lhside.status == rhside.status && lhside.comment == rhside.comment && lhside.hasKvStore == rhside.hasKvStore
+        return lhside.hash == rhside.hash && lhside.status == rhside.status && lhside.memoString == rhside.memoString && lhside.hasKvStore == rhside.hasKvStore
     }
 
     func hash(into hasher: inout Hasher) {

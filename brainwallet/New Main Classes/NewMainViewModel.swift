@@ -101,16 +101,31 @@ class NewMainViewModel: ObservableObject, Subscriber {
     var walletBalanceLitecoinDouble: Double = 0.0
 
     @Published
-    var currentTieredOpsFee: UInt64 = 0
+    var currentServiceFee = Litecoin(rawValue: 0.0)
 
     @Published
-    var currentNetworkFee: UInt64 = 0
+    var currentNetworkFee = Litecoin(rawValue: 0.0)
 
     @Published
-    var currentTotalAmountToSend: UInt64 = 0
+    var currentPreFeeAmount = Litecoin(rawValue: 0.0)
 
     @Published
-    var sendPaymentRequest = PaymentRequest(string: "")
+    var currentTotalAmount = Litecoin(rawValue: 0.0)
+
+    @Published
+    var currentFiatAmount = 0.0
+
+    @Published
+    var currentMemoString: String = ""
+
+    @Published
+    var currentSendAddress: String = ""
+
+    @Published
+    var sender: Sender?
+
+    @Published
+    var bwTransaction = BWTransaction()
 
     @Published
     var transactions: [Transaction]?
@@ -305,41 +320,31 @@ class NewMainViewModel: ObservableObject, Subscriber {
     }
 
     func canSendAmountWithFees(isLTCValue: Bool, sendAmountDouble: Double) -> Bool {
-        debugPrint("|||| isLTCValue  \(isLTCValue)")
-        debugPrint("|||| sendAmountDouble \(sendAmountDouble)")
         guard let rate = self.rate,
               let kvStore = self.walletManager?.apiClient?.kv,
               let walletManager = self.walletManager,
               let store = self.store,
               let walletLitoshiBalance = store.state.walletState.balance else { return false }
 
-        let sender = Sender(walletManager: walletManager,
+        sender = Sender(walletManager: walletManager,
                             kvStore: kvStore, store: store)
 
-        let satoshiAmountLTC = UInt64(sendAmountDouble * 100_000_000)
-        let tieredOpsFeeLTC = tieredOpsFee(amount: satoshiAmountLTC)
-        let totalAmountToCalculateFees = (satoshiAmountLTC + tieredOpsFeeLTC)
+        let amountInLTC = isLTCValue ? sendAmountDouble :  sendAmountDouble / rate.rate // UInt64(sendAmountDouble * 100_000_000)
+        let tieredOpsFeeLTC = tieredOpsFee(amount: UInt64(amountInLTC * 100_000_000))
+        let totalAmountToCalculateFees = (UInt64(amountInLTC * 100_000_000) + tieredOpsFeeLTC)
+
+        guard let sender = self.sender else { return false }
         let networkFee = sender.feeForTx(amount: totalAmountToCalculateFees)
         let totalFees = tieredOpsFeeLTC + networkFee
-        let totalAmountToSend = totalFees + satoshiAmountLTC
+        let preFeeAmount = UInt64(amountInLTC * 100_000_000)
+        let totalAmountToSendLitoshis = totalFees + preFeeAmount
 
-        currentTieredOpsFee = tieredOpsFeeLTC
-        currentNetworkFee = networkFee
-        currentTotalAmountToSend = totalAmountToSend
-
-        if isLTCValue {
-            return totalAmountToSend > walletLitoshiBalance ? false : true
-        }
-        else { /// Calculate the Fiat send amount
-            let sendAmountFiatLitoshis = UInt64(sendAmountDouble / Double(rate.rate) * 100_000_000)
-            let tieredOpsFiatLTC = tieredOpsFee(amount: sendAmountFiatLitoshis)
-            let totalAmountToCalculateFiatFees = (sendAmountFiatLitoshis + tieredOpsFiatLTC)
-            let networkFeeFiat = sender.feeForTx(amount: totalAmountToCalculateFiatFees)
-            let tieredOpsFiatLTCFee = Double(tieredOpsFiatLTC) / 100_000_000 * Double(rate.rate)
-            let totalFeesFiatLTCFee = (Double(tieredOpsFiatLTC) + Double(networkFeeFiat)) / 100_000_000 * Double(rate.rate)
-            let totalAmountToSendFiat = (Double(tieredOpsFiatLTC) + Double(networkFeeFiat) + Double(sendAmountFiatLitoshis)) / 100_000_000 * Double(rate.rate)
-            return  totalAmountToSendFiat > walletBalanceFiatDouble ? false : true
-        }
+        currentServiceFee = Litecoin(rawValue: Double(tieredOpsFeeLTC) / Double(100_000_000))
+        currentNetworkFee = Litecoin(rawValue: Double(networkFee) / Double(100_000_000))
+        currentPreFeeAmount = Litecoin(rawValue: Double(preFeeAmount) / Double(100_000_000))
+        currentTotalAmount = Litecoin(rawValue: Double(totalAmountToSendLitoshis) / Double(100_000_000))
+        currentFiatAmount = rate.rate * currentTotalAmount.rawValue
+        return totalAmountToSendLitoshis > walletLitoshiBalance ? false : true
     }
 
     func userWillSyncBlockchain() {

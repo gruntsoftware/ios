@@ -213,5 +213,7 @@
 			<dict/>
 		</dict>
 	</array>
+	<key>UIDesignRequiresCompatibility</key>
+	<true/>
 </dict>
 </plist>
