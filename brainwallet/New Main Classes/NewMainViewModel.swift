@@ -134,7 +134,15 @@ class NewMainViewModel: ObservableObject, Subscriber {
     var filteredTransactions: [Transaction] = []
 
     @Published
-    var detailedTransaction: Transaction?
+    var currentTransaction: Transaction? {
+        didSet {
+            currentTransactionUUID = currentTransaction?.id ?? UUID()
+            debugPrint(":::: currentTransactionUUID \(currentTransactionUUID)")
+        }
+    }
+
+    @Published
+    var currentTransactionUUID =  UUID()
 
     @Published
     var filteredSeedWords: [String] = [""]

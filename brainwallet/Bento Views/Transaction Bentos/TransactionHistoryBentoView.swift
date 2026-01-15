@@ -14,9 +14,6 @@ struct TransactionHistoryBentoView: View {
     var newMainViewModel: NewMainViewModel
 
     @Binding
-    var cellViewModel: TransactionCellViewModel?
-
-    @Binding
     var userPrefersDarkTheme: Bool
 
     @Binding
@@ -49,14 +46,12 @@ struct TransactionHistoryBentoView: View {
     @State
     private var filterModeState: TransactionFilterState = .allTransactions
 
-    init(cellViewModel:  Binding<TransactionCellViewModel?>?,
-         viewModel: NewMainViewModel,
+    init(viewModel: NewMainViewModel,
          detailIsShowing: Binding<Bool>,
          userPrefersDarkTheme: Binding<Bool>) {
         _detailIsShowing = detailIsShowing
         _userPrefersDarkTheme = userPrefersDarkTheme
         newMainViewModel = viewModel
-        self._cellViewModel = cellViewModel ?? Binding.constant(nil)
         filteredTransactions = newMainViewModel.transactions ?? []
     }
 
@@ -84,6 +79,7 @@ struct TransactionHistoryBentoView: View {
                                                 .onAppear {
                                                     currentID = transaction.id
                                                     currentTransaction = filteredTransactions.filter { $0.id == currentID }.first
+                                                    newMainViewModel.currentTransaction = currentTransaction
                                                 }
                                     }
                                 }
@@ -142,18 +138,6 @@ struct TransactionHistoryBentoView: View {
                 if let filteredTxs = newMainViewModel.transactions {
                     filteredTransactions = filteredTxs
                 }
-            }
-            .onChange(of: currentTransaction ) { _,_ in
-
-                guard let trxn = currentTransaction,
-                      let rate = newMainViewModel.store?.state.currentRate,
-                      let maxDigits = newMainViewModel.store?.state.maxDigits else { return }
-
-                cellViewModel = TransactionCellViewModel(transaction: trxn,
-                                                         isLTCValueShown: newMainViewModel.isLTCValueShown,
-                                                         rate: rate,
-                                                         maxDigits: maxDigits,
-                                                         isSyncing: false)
             }
             .onChange(of: newMainViewModel.isLTCValueShown ) { _,_ in
                 if let filteredTxs = newMainViewModel.transactions {

@@ -59,11 +59,7 @@ struct BentoSendCompletedView: View {
         _userPrefersDarkTheme = userPrefersDarkTheme
         _shouldDismissModal = shouldDismissModal
         newMainViewModel = viewModel
-        let urlString = URL(string: ExplorerURLs.blockchair + newMainViewModel.bwTransaction.txIDString)
-        self.url = urlString
-        debugPrint(":::: self.url \(String(describing: self.url.debugDescription))")
-        debugPrint(":::: urlString \(String(describing: urlString.debugDescription))")
-
+        self.url = URL(string: ExplorerURLs.blockchair + newMainViewModel.bwTransaction.txIDString)
     }
 
     var body: some View {

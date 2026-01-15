@@ -182,7 +182,6 @@ class ApplicationController: Subscriber {
 		walletCoordinator = WalletCoordinator(walletManager: walletManager, store: store)
 		modalPresenter = ModalPresenter(store: store, walletManager: walletManager, window: window, apiClient: noAuthApiClient)
 		exchangeUpdater = ExchangeUpdater(store: store, walletManager: walletManager)
-//		startFlowController = StartFlowPresenter(store: store, walletManager: walletManager, rootViewController: rootViewController)
 		mainViewController?.walletManager = walletManager
 		defaultsUpdater = UserDefaultsUpdater(walletManager: walletManager)
 		urlController = URLController(store: store, walletManager: walletManager)
@@ -195,7 +194,6 @@ class ApplicationController: Subscriber {
 			if walletManager.noWallet {
 				addWalletCreationListener()
                 mainViewController?.startOnboarding()
-//                store.perform(action: ShowStartFlow())
 			} else {
 				modalPresenter?.walletManager = walletManager
 				DispatchQueue.walletQueue.async {

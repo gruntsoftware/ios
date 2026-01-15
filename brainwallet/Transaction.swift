@@ -23,7 +23,7 @@ class Transaction : Hashable, Identifiable {
 		self.tx = tx
 		self.wallet = wallet
 		self.kvStore = kvStore
-		let fee = wallet.feeForTx(tx) ?? 0
+		let fee = wallet.feeForTx(tx) ?? UInt64(0)
 
 		var outputAddresses = Set<String>()
 		var opsAmount = UInt64(0)
