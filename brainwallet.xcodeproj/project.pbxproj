@@ -19,8 +19,6 @@
 		24126DF92ECA687B00F9A4BE /* DataScannerExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DF32ECA687800F9A4BE /* DataScannerExampleView.swift */; };
 		24126DFB2ECA68AB00F9A4BE /* DataScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */; };
 		24126DFE2ECA68E900F9A4BE /* TextScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DFD2ECA68E000F9A4BE /* TextScannerView.swift */; };
-		24126E002ECA690A00F9A4BE /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DFF2ECA690600F9A4BE /* BarcodeScannerView.swift */; };
-		24126E022ECA693E00F9A4BE /* BarcodeOnlyScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E012ECA693100F9A4BE /* BarcodeOnlyScannerSheet.swift */; };
 		24126E042ECA69C300F9A4BE /* TextOnlyScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E032ECA69C000F9A4BE /* TextOnlyScannerSheet.swift */; };
 		24126E062ECA741200F9A4BE /* ScanOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */; };
 		24126E082ECA7F8900F9A4BE /* ScanOverlayDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */; };
@@ -518,8 +516,6 @@
 		24126DF32ECA687800F9A4BE /* DataScannerExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerExampleView.swift; sourceTree = "<group>"; };
 		24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerSheet.swift; sourceTree = "<group>"; };
 		24126DFD2ECA68E000F9A4BE /* TextScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextScannerView.swift; sourceTree = "<group>"; };
-		24126DFF2ECA690600F9A4BE /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
-		24126E012ECA693100F9A4BE /* BarcodeOnlyScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeOnlyScannerSheet.swift; sourceTree = "<group>"; };
 		24126E032ECA69C000F9A4BE /* TextOnlyScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOnlyScannerSheet.swift; sourceTree = "<group>"; };
 		24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayView.swift; sourceTree = "<group>"; };
 		24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayDataView.swift; sourceTree = "<group>"; };
@@ -1156,8 +1152,6 @@
 				24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */,
 				24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */,
 				24126E032ECA69C000F9A4BE /* TextOnlyScannerSheet.swift */,
-				24126E012ECA693100F9A4BE /* BarcodeOnlyScannerSheet.swift */,
-				24126DFF2ECA690600F9A4BE /* BarcodeScannerView.swift */,
 				24126DFD2ECA68E000F9A4BE /* TextScannerView.swift */,
 				24126DF32ECA687800F9A4BE /* DataScannerExampleView.swift */,
 				246EA1962EC8B31900085D3A /* DataScannerView.swift */,
@@ -2802,7 +2796,6 @@
 				2457DD342EB79AD000688B9A /* EmptyTransactionRow.swift in Sources */,
 				2472D5D42F1276D100DC6737 /* BentoSendStyle.swift in Sources */,
 				C312D3692D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift in Sources */,
-				24126E002ECA690A00F9A4BE /* BarcodeScannerView.swift in Sources */,
 				C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */,
 				2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */,
 				24691D142EAE4D30003CDC7C /* SyncSubBentoView.swift in Sources */,
@@ -2981,7 +2974,6 @@
 				C312D44F2D7DC27700BB97A4 /* LWActivityIndicator.swift in Sources */,
 				24B065352DC627F000B5E000 /* NewMainHostingController.swift in Sources */,
 				C312D4502D7DC27700BB97A4 /* TransactionDirection.swift in Sources */,
-				24126E022ECA693E00F9A4BE /* BarcodeOnlyScannerSheet.swift in Sources */,
 				C312D4512D7DC27700BB97A4 /* PromptModalViewController.swift in Sources */,
 				C312D4522D7DC27700BB97A4 /* CheckboxesStepView.swift in Sources */,
 				24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */,
