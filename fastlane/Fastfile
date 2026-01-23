@@ -44,18 +44,6 @@ platform :ios do
       code_coverage: true,
       configuration: "Debug",
       devices: ["iPhone 15 Pro Max"],
-      output_types: "html,junit",
-      output_directory: "./fastlane/test_output",
-      skip_build: false
-    )
-  end
-  lane :run_all_tests_anySim do
-    run_tests(
-      scheme: "brainwalletAllTests",
-      clean: true,
-      destination: "platform=iOS Simulator,name=Any iOS Simulator Device",
-      code_coverage: true,
-      configuration: "Debug",
       derived_data_path: "./build",
       cloned_source_packages_path: "./SourcePackages",
       output_types: "html,junit",
