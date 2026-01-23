@@ -41,6 +41,7 @@ platform :ios do
     run_tests(
       scheme: "brainwalletAllTests",
       clean: true,
+      destination: "platform=iOS Simulator,name=iPhone 15 Pro Max",
       code_coverage: true,
       configuration: "Debug",
       devices: ["iPhone 15 Pro Max"],
