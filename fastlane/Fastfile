@@ -37,19 +37,19 @@ platform :ios do
       skip_build: false
     )
   end
-  lane :run_all_tests_iPhone15ProMax do
+  lane :run_all_tests_iPhone16ProMax do
     run_tests(
       scheme: "brainwalletAllTests",
       clean: true,
-      destination: "platform=iOS Simulator,name=iPhone 15 Pro Max",
+      destination: "platform=iOS Simulator,name=iPhone 16 Pro Max",
       code_coverage: true,
       configuration: "Debug",
-      devices: ["iPhone 15 Pro Max"],
+      devices: ["iPhone 16 Pro Max"],
       derived_data_path: "./build",
       cloned_source_packages_path: "./SourcePackages",
       output_types: "html,junit",
       output_directory: "./fastlane/test_output",
-      skip_build: false
+      skip_build: false 
     )
   end
   lane :run_all_tests_iPhone13Mini do
