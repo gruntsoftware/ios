@@ -39,10 +39,10 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### ios run_all_tests_iPhone13Mini
+### ios run_all_tests_anySim
 
 ```sh
-[bundle exec] fastlane ios run_all_tests_iPhone13Mini
+[bundle exec] fastlane ios run_all_tests_anySim
 ```
 
 
