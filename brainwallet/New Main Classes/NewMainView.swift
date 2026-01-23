@@ -23,10 +23,10 @@ struct NewMainView: View {
     var newReceiveViewModel: NewReceiveViewModel
 
     @State
-    var cellViewModel: TransactionCellViewModel?
+    private var userDidTapSend: Bool = false
 
     @State
-    private var userDidTapSend: Bool = false
+    private var userDidTapSendWhileSyncing: Bool = false
 
     @State
     private var shouldShowTransactionDetail: Bool = false
@@ -36,6 +36,12 @@ struct NewMainView: View {
 
     @State
     private var userDidTapBuyReceive: Bool = false
+
+    @State
+    private var userBalanceIsEmpty: Bool = true
+
+    @State
+    private var walletIsSyncing: Bool = true
 
     @State
     private var shouldShowExportOptions: Bool = false
@@ -64,6 +70,10 @@ struct NewMainView: View {
 
     private let buttonPlatformFactor: CGFloat = 2.1
 
+    private let noSendTitle = String(localized: "Send is Disabled")
+
+    private let noSendMessage = String(localized: "While syncing, send is disabled the database catchs up to the latest block.\nPlease try again later.")
+
     @State
     private var mainGradientStyle: MainGradientStyle = .lightStyle
 
@@ -76,22 +86,15 @@ struct NewMainView: View {
          receiveViewModel: NewReceiveViewModel) {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
-        if let transaction = Transaction(BRHelp().makeTransaction(),
-                                         walletManager: WalletManager.sharedInstance,
-                                         kvStore: nil, rate: nil) {
-
-            cellViewModel =  TransactionCellViewModel(transaction: transaction,
-                                                      isLTCValueShown: false,
-                                                      rate: Rate(code: "", name: "",
-                                                                 rate: 0.0, lastTimestamp: Date()),
-                                                      maxDigits: 8, isSyncing: false)
-        }
     }
     var body: some View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
             let height = geometry.size.height
+            let midBentoHeight = geometry.size.height
+            let sheetContentHeight = height * 0.7
+
             let content = BrainwalletColor.content
             NavigationStack {
                 ZStack(alignment: .bottom) {
@@ -102,6 +105,10 @@ struct NewMainView: View {
                                                  startPoint: .top, endPoint: .bottom))
                             .edgesIgnoringSafeArea(.all)
                             .offset(x: 0, y: -20)
+
+//                        Color.init(#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1))
+//                        .edgesIgnoringSafeArea(.all)
+//                        .offset(x: 0, y: -20)
                     } else {
                         Color.init(#colorLiteral(red: 0.9725490196, green: 0.9803921569, blue: 0.9843137255, alpha: 1))
                         .edgesIgnoringSafeArea(.all)
@@ -117,8 +124,7 @@ struct NewMainView: View {
                        .padding(.bottom, 10)
 
                         if shouldShowTransactionDetail {
-                            TransactionDetailBentoView(cellViewModel: $cellViewModel,
-                                                       viewModel: newMainViewModel,
+                            TransactionDetailBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme:  $userPrefersDarkTheme)
                                 .frame(maxHeight: .infinity)
                                 .padding(bentoPadding)
@@ -126,9 +132,7 @@ struct NewMainView: View {
                                 .transition(.scale)
 
                         }
-                            TransactionHistoryBentoView(
-                                cellViewModel: $cellViewModel,
-                            viewModel: newMainViewModel,
+                            TransactionHistoryBentoView(viewModel: newMainViewModel,
                                                     detailIsShowing: $shouldShowTransactionDetail,
                                                     userPrefersDarkTheme: $userPrefersDarkTheme)
                             .frame(height: transactionsBentoHeight, alignment: .top)
@@ -139,16 +143,18 @@ struct NewMainView: View {
                                 HStack {
                                     TutorialsBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                                    .frame(maxHeight: height * 0.5, alignment: .top)
+                                    .frame(maxHeight: midBentoHeight * 0.5, alignment: .top)
                                     .padding(bentoPadding)
 
                                     VStack {
                                         LTCPriceBentoView(viewModel: newMainViewModel,
                                                           userPrefersDarkTheme: $userPrefersDarkTheme)
+                                        .frame(maxHeight: midBentoHeight * 0.25)
                                         .padding(bentoPadding)
 
                                         FavouritesBentoView(viewModel: newMainViewModel,
                                                             userPrefersDarkTheme: $userPrefersDarkTheme)
+                                        .frame(maxHeight: midBentoHeight * 0.25)
                                         .padding(bentoPadding)
 
                                     }
@@ -165,6 +171,7 @@ struct NewMainView: View {
                         }
                         Spacer()
                     }
+                    .frame(maxHeight: .infinity, alignment: .init(horizontal: .center, vertical: .top))
                     .padding([.leading, .trailing], bentoPadding + 10)
                 }
                 .toolbar {
@@ -241,12 +248,12 @@ struct NewMainView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: iconSize,
                                            height: iconSize)
-                                    .foregroundColor(content)
+                                    .foregroundColor( walletIsSyncing ? content.opacity(0.3) : content)
                                     .padding(6)
 
                                 Text("Send")
                                     .font(.caption2)
-                                    .foregroundStyle(content)
+                                    .foregroundStyle(walletIsSyncing ? content.opacity(0.3) : content)
                             }
                         })
 
@@ -319,6 +326,7 @@ struct NewMainView: View {
                 .onAppear {
                     userPrefersDarkTheme = newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
+                    walletIsSyncing = newMainViewModel.walletIsSyncing
                 }
                 .onChange(of: shouldShowGameMode) { _,_ in
                     newMainViewModel.shouldShowGameMode = shouldShowGameMode
@@ -326,15 +334,33 @@ struct NewMainView: View {
                 .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
                     disableTransactionDetail = newMainViewModel.filteredTransactions.isEmpty
                 }
-                .onChange(of: userPrefersDarkTheme) { preference in
-                    newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
+                .onChange(of: userPrefersDarkTheme) { _,newPreference in
+                    newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: newPreference)
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 }
+                .onChange(of: newMainViewModel.walletIsSyncing) { _,newState in
+                    walletIsSyncing = newState
+                }
                 .sheet(isPresented: $userDidTapSend) {
-                    BentoSendModalView(viewModel: newMainViewModel)
+                 if !walletIsSyncing {
+                        BentoSendModalView(viewModel: newMainViewModel,
+                                           userPrefersDarkTheme: $userPrefersDarkTheme,
+                                           userWalletIsEmpty: $userBalanceIsEmpty,
+                                           shouldShowView: $userDidTapSend)
                         .cornerRadius(bentoCornerRadius)
-                        .presentationDetents([.medium])
-                        .presentationDragIndicator(.visible)
+                        .presentationDragIndicator(.hidden)
+                        .presentationDetents([.height(sheetContentHeight)])
+                        .presentationBackground(.ultraThickMaterial)
+                        .ignoresSafeArea(edges: .bottom)
+                  } else {
+                      BentoNoSendModalView(userPrefersDarkTheme: $userPrefersDarkTheme,
+                                           shouldShowView: $userDidTapSend)
+                        .cornerRadius(bentoCornerRadius)
+                        .presentationDragIndicator(.hidden)
+                        .presentationDetents([.height(height * 0.4)])
+                        .presentationBackground(.ultraThickMaterial)
+                        .ignoresSafeArea(edges: .bottom)
+                    }
                 }
                 .sheet(isPresented: $userDidTapBuyReceive) {
                     BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
@@ -345,11 +371,8 @@ struct NewMainView: View {
                 .alert(isPresented: $shouldShowPromptAlert) {
                     Alert(title: Text(currentPrompt.title),
                           message: Text(currentPrompt.body),
-                          primaryButton: .default(Text("Okay"),
-                                        action: {
-                                        print("Ok CLICK")
-                                }),
-                          secondaryButton: .destructive(Text("Dismiss (Desctructive)")))
+                          dismissButton: .default(Text(String(localized: "Ok")),
+                                         action: { shouldShowPromptAlert = false }))
                 }
             }
         }

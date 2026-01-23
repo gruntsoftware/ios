@@ -16,7 +16,7 @@ extension ModalPresenter {
         case .none:
             return nil
         case .send:
-            return makeSendView()
+            return nil // DEPRECATED return makeSendView()
         case .receive:
             return newBuyOrReceiveView() // receiveView(isRequestAmountVisible: true)
         case .menu:
@@ -167,43 +167,6 @@ extension ModalPresenter {
         topViewController?.present(alert, animated: true, completion: nil)
     }
 
-    func makeSendView() -> UIViewController? {
-        guard !store.state.walletState.isRescanning
-        else {
-            let alert = UIAlertController(title:  "Error" , message: "Rescanning" , preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok" , style: .cancel, handler: nil))
-            topViewController?.present(alert, animated: true, completion: nil)
-            return nil
-        }
-        guard let walletManager = walletManager else { return nil }
-        guard let kvStore = walletManager.apiClient?.kv else { return nil }
-
-        let sendVC = SendViewController(store: store, sender: Sender(walletManager: walletManager, kvStore: kvStore, store: store), walletManager: walletManager, initialRequest: currentRequest)
-        currentRequest = nil
-
-        if store.state.isLoginRequired {
-            sendVC.isPresentedFromLock = true
-        }
-
-        let root = ModalViewController(childViewController: sendVC, store: store)
-        sendVC.presentScan = presentScan(parent: root)
-        sendVC.presentVerifyPin = { [weak self, weak root] bodyText, callback in
-            guard let myself = self else { return }
-            guard let myroot = root else { return }
-
-            let verifyPVC = VerifyPinViewController(bodyText: bodyText, pinLength: myself.store.state.pinLength, callback: callback)
-            verifyPVC.transitioningDelegate = myself.verifyPinTransitionDelegate
-            verifyPVC.modalPresentationStyle = .overFullScreen
-            verifyPVC.modalPresentationCapturesStatusBarAppearance = true
-            myroot.view.isFrameChangeBlocked = true
-            myroot.present(verifyPVC, animated: true, completion: nil)
-        }
-        sendVC.onPublishSuccess = { [weak self] in
-            self?.presentAlert(.sendSuccess, completion: {})
-        }
-        return root
-    }
-
     func presentBiometricsSetting() {
         guard let walletManager = walletManager else { return }
         let biometricsSettings = BiometricsSettingsViewController(walletManager: walletManager, store: store)
@@ -282,13 +245,7 @@ extension ModalPresenter {
     }
 
     func presentLoginScan() {
-        guard let top = topViewController else { return }
-        let present = presentScan(parent: top)
-        store.perform(action: RootModalActions.Present(modal: .none))
-        present { paymentRequest in
-            self.currentRequest = paymentRequest
-            self.presentModal(.send)
-        }
+        /// DEPRECATED WITH new Bento Style
     }
 
     func handleCopyAddresses(success: String?, error _: String?) {

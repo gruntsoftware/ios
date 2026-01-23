@@ -50,10 +50,10 @@ class TransactionsViewModel: ObservableObject, Subscriber {
         /// DEV:  HACK if the previous value is the same add a ration
         /// The problem is the progress needs to go to o to 1 .
         var progressValue: CGFloat = 0.0
-        let num = lastBlockTimestamp - kFiveYears
-        let den = kTodaysEpochTime - kFiveYears
+        let numerator = lastBlockTimestamp - kFiveYears
+        let denominator = kTodaysEpochTime - kFiveYears
         if syncProgress == 0.05 {
-            progressValue = abs(CGFloat(num) / CGFloat(den))
+            progressValue = abs(CGFloat(numerator) / CGFloat(denominator))
         } else {
             progressValue = syncProgress
         }

@@ -106,11 +106,27 @@ struct PaymentRequest {
 	var toAddress: String?
 	let type: PaymentRequestType
 	var amount: Satoshis?
+    var networkFee: Satoshis?
+    var serviceFee: Satoshis?
 	var label: String?
 	var message: String?
 	var remoteRequest: NSURL?
 	var paymentProtocolRequest: PaymentProtocolRequest?
 	var r: URL?
+}
+
+struct BWTransaction {
+    var sendAddress = ""
+    var txIDString = ""
+    var amount = Litecoin(rawValue: 0.0)
+    var networkFee = Litecoin(rawValue: 0.0)
+    var serviceFee = Litecoin(rawValue: 0.0)
+    var currentRate: Rate?
+    var globalCode: GlobalCurrency = .USD
+    var memoString = ""
+    var fiatAmount = 0.0
+
+    init() {}
 }
 
 private func convertToBTC(fromSatoshis: UInt64) -> String {

@@ -34,16 +34,13 @@ struct LTCPriceBentoView: View {
         newMainViewModel = viewModel
     }
     var body: some View {
-        GeometryReader { geometry in
-
-            let width = geometry.size.width
-            let height = geometry.size.height
+        GeometryReader { _ in
 
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
                 VStack {
                     Text(newMainViewModel.currencyCode)
-                        .font(.system(size: 24, weight: .semibold, design: .default))
+                        .font(.system(size: 21, weight: .semibold, design: .default))
                         .padding([.leading,.top], 16)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
@@ -62,7 +59,7 @@ struct LTCPriceBentoView: View {
                         .padding(.leading, 16)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
-                    Spacer()
+                        .padding(.bottom, 4)
                 }
 
             }

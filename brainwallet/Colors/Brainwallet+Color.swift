@@ -159,4 +159,29 @@ struct BentoColor {
                                       green: 0.9647058823529412,
                                       blue: 0.2980392156862745)
 
+    /// sendTopPurple - #09082B
+    static let sendTopPurple = Color(red: 0.03529411764705882,
+                                      green: 0.03137254901960784,
+                                      blue: 0.16862745098039217)
+
+    /// sendBottomPurple - #280589
+    static let sendBottomPurple = Color(red: 0.1568627450980392,
+                                      green: 0.0196078431372549,
+                                      blue: 0.5372549019607843)
+
+    /// nearNearBlack - #2D2D2D
+    static let nearNearBlack = Color(red: 0.17647058823529413,
+                                      green: 0.17647058823529413,
+                                      blue: 0.17647058823529413)
+
+    /// darkMode - Linear Gradient 1
+    static let darkModeColor1 = LinearGradient(colors: [BentoColor.sendTopPurple,
+                                                             BentoColor.sendBottomPurple],
+                                                    startPoint: .topLeading, endPoint: .bottomTrailing)
+    /// lightMode - Linear Gradient 1
+    static let lightModeColor1 = LinearGradient(colors: [.white],
+                                                     startPoint: .topLeading, endPoint: .bottomTrailing)
+    /// background - Linear Gradient 1
+    static let background1 = LinearGradient(colors: [.white],startPoint: .topLeading, endPoint: .bottomTrailing)
+
 }

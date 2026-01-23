@@ -17,7 +17,7 @@ import Metal
 import MetalKit
 import CoreImage
 
-let maxBuffersInFlight = 3
+let maxBuffersInFlight = 5
 /// - Tag: Renderer
 final class Renderer: NSObject, MTKViewDelegate, ObservableObject {
     public let device: MTLDevice
@@ -105,8 +105,13 @@ final class Renderer: NSObject, MTKViewDelegate, ObservableObject {
                 image = image.composited(over: self.opaqueBackground)
 
                 // Start a task that renders to the texture destination.
-                _ = try? self.cicontext.startTask(toRender: image, from: backBounds,
-                                                  to: destination, at: CGPoint.zero)
+                do {
+                    try self.cicontext.startTask(toRender: image, from: backBounds,
+                                                 to: destination, at: CGPoint.zero)
+                } catch let error {
+                    print("Failed to start render task: \(error)")
+                    semaphore.signal()
+                }
 
                 // Insert a command to present the drawable when the buffer has been scheduled for execution.
                 commandBuffer.present(drawable)

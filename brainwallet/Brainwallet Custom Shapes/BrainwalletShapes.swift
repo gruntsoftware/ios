@@ -34,6 +34,87 @@ struct BrainwalletHexagon: Shape {
     }
 }
 
+struct BrainwallePulseEllipse: View {
+
+    @Binding
+    var shapeSize: CGFloat
+
+    @State private var circleOpacity: Double = 0
+    @State private var checkStrokeEnd: CGFloat = 0
+
+    @State
+    private var scaleEllipse: CGFloat = 1.0
+
+    private let animationDuration: TimeInterval = 0.4
+    private let originalCheckSize: CGFloat = 96.0
+
+    var body: some View {
+        GeometryReader { _ in
+            HStack {
+                Spacer()
+                ZStack {
+                    Ellipse()
+                        .fill(.green.opacity(0.2))
+                        .frame(width: shapeSize,
+                               height: shapeSize,
+                               alignment: .center)
+                        .scaleEffect(scaleEllipse)
+                                    .onAppear {
+                                        let baseAnimation = Animation.easeInOut(duration: 1.0)
+                                        let repeated = baseAnimation.repeatForever(autoreverses: true)
+                                        withAnimation(repeated) {
+                                            scaleEllipse = 1.1
+                                        }
+                        }
+                    Ellipse()
+                        .fill(.green)
+                        .frame(width: shapeSize * 0.8,
+                               height: shapeSize * 0.8,
+                               alignment: .center)
+                    Image(systemName: "checkmark")
+                        .resizable()
+                        .frame(width: shapeSize * 0.3,
+                               height: shapeSize * 0.3,
+                               alignment: .center)
+                        .foregroundStyle(.white)
+                }
+                Spacer()
+
+            }
+        }
+        .aspectRatio(1, contentMode: .fit)
+    }
+
+    func show() {
+        withAnimation(.easeIn(duration: animationDuration)) {
+            circleOpacity = 1.0
+            checkStrokeEnd = 1.0
+        }
+    }
+}
+
+struct CheckmarkShape: Shape {
+    let scaleFactor: CGFloat
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+
+        path.move(to: CGPoint(x: 32.5 * scaleFactor, y: 47.0 * scaleFactor))
+        path.addLine(to: CGPoint(x: 43.0 * scaleFactor, y: 57.0 * scaleFactor))
+        path.addLine(to: CGPoint(x: 63 * scaleFactor, y: 37.4 * scaleFactor))
+
+        return path
+    }
+}
+
+// Extension for the default tint color
+extension Color {
+    static var defaultTint: Color {
+        // Replace with your C.defaultTintColor equivalent
+        Color.blue // or your actual color
+    }
+}
+
 struct TestShapeView: View {
 
        @State

@@ -1,4 +1,3 @@
-import AppsFlyerLib
 import FirebaseMessaging
 import Firebase
 import FirebaseCore
@@ -43,8 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         }
 
         // AF
-        AppsFlyerLib.shared().appsFlyerDevKey = Partner.partnerKeyPath(name: .prodAF)
-        AppsFlyerLib.shared().appleAppID = BrainwalletAppStore.adamIDString
+        /// Activating for  future use
+        /// AppsFlyerLib.shared().appsFlyerDevKey = Partner.partnerKeyPath(name: .prodAF)
+        /// AppsFlyerLib.shared().appleAppID = BrainwalletAppStore.adamIDString
 
         // Remote Config
         self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
@@ -130,7 +130,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
 	func applicationDidBecomeActive(_: UIApplication) {
 		UIApplication.shared.applicationIconBadgeNumber = 0
-		AppsFlyerLib.shared().start()
+		/// Activating for  future use
+        /// AppsFlyerLib.shared().start()
 	}
 
 	func applicationWillEnterForeground(_: UIApplication) {
@@ -201,18 +202,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
 		if let fboptions = FirebaseOptions(contentsOfFile: filePath) {
             FirebaseApp.configure(options: fboptions)
-            // #if DEBUG
-            //   Analytics.setUserProperty("debug_mode", forName: "debug_enabled")
-            //
-            //   /// Notfy the Firebase Console for monitoring and debugging
-            //   Analytics
-            //       .logEvent("debug_mode_launched",
-            //           parameters: [
-            //               "platform": "ios",
-            //               "app_version": AppVersion.string,
-            //               "device": UIDevice.current.model
-            //           ])
-            // #endif
+//             #if DEBUG
+//               Analytics.setUserProperty("debug_mode", forName: "debug_enabled")
+//
+//               /// Notfy the Firebase Console for monitoring and debugging
+//               Analytics
+//                   .logEvent("debug_mode_launched",
+//                       parameters: [
+//                           "platform": "ios",
+//                           "app_version": AppVersion.string,
+//                           "device": UIDevice.current.model
+//                       ])
+//             #endif
 
 		} else {
             Analytics.logEvent("error_message", parameters: [
