@@ -1,5 +1,5 @@
 //
-//  TutorialsBentoView.swift
+//  LTCPriceBentoView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 07/10/2025.

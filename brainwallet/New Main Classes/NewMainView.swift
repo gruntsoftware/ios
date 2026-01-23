@@ -10,6 +10,8 @@ import SwiftUI
 import FirebaseAnalytics
 
 let bentoCornerRadius: CGFloat = 14.0
+let brainwalletNavBarHeight: CGFloat = 90.0
+let calloutHeight: CGFloat = 108.0
 let balanceGameBentoHeight: CGFloat = 135.0
 let transactionsBentoHeight: CGFloat = 85.0
 let iconSize: CGFloat = 20.0
@@ -105,10 +107,6 @@ struct NewMainView: View {
                                                  startPoint: .top, endPoint: .bottom))
                             .edgesIgnoringSafeArea(.all)
                             .offset(x: 0, y: -20)
-
-//                        Color.init(#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1))
-//                        .edgesIgnoringSafeArea(.all)
-//                        .offset(x: 0, y: -20)
                     } else {
                         Color.init(#colorLiteral(red: 0.9725490196, green: 0.9803921569, blue: 0.9843137255, alpha: 1))
                         .edgesIgnoringSafeArea(.all)

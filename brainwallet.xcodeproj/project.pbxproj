@@ -16,10 +16,7 @@
 		24006C2A2F0FCCA500F29F0A /* BentoSendCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24006C292F0FCCA500F29F0A /* BentoSendCompletedView.swift */; };
 		24006C2C2F0FCE5500F29F0A /* BentoSendInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24006C2B2F0FCE5500F29F0A /* BentoSendInitialView.swift */; };
 		2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */; };
-		24126DF92ECA687B00F9A4BE /* DataScannerExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DF32ECA687800F9A4BE /* DataScannerExampleView.swift */; };
 		24126DFB2ECA68AB00F9A4BE /* DataScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */; };
-		24126DFE2ECA68E900F9A4BE /* TextScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DFD2ECA68E000F9A4BE /* TextScannerView.swift */; };
-		24126E042ECA69C300F9A4BE /* TextOnlyScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E032ECA69C000F9A4BE /* TextOnlyScannerSheet.swift */; };
 		24126E062ECA741200F9A4BE /* ScanOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */; };
 		24126E082ECA7F8900F9A4BE /* ScanOverlayDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */; };
 		2412BA7E2DF4660300AC40BB /* ReceiveAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */; };
@@ -80,6 +77,14 @@
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
 		24691D142EAE4D30003CDC7C /* SyncSubBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */; };
 		246A9A072DF5F54C002480CB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A9A062DF5F532002480CB /* Utility.swift */; };
+		246C3F5A2F2431B6009BC881 /* TutorialSendBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C3F592F2431B6009BC881 /* TutorialSendBentoView.swift */; };
+		246C3F5C2F2431D0009BC881 /* TutorialSendPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C3F5B2F2431D0009BC881 /* TutorialSendPageView.swift */; };
+		246C3F5E2F244E61009BC881 /* TutorialReceiveBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C3F5D2F244E61009BC881 /* TutorialReceiveBentoView.swift */; };
+		246C3F602F244E76009BC881 /* TutorialReceivePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C3F5F2F244E76009BC881 /* TutorialReceivePageView.swift */; };
+		246C429E2F24E1C2009BC881 /* SendStep1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C429D2F24E1C2009BC881 /* SendStep1View.swift */; };
+		246C42A02F24E235009BC881 /* SendStep2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C429F2F24E235009BC881 /* SendStep2View.swift */; };
+		246C42A22F24E23E009BC881 /* SendStep3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C42A12F24E23E009BC881 /* SendStep3View.swift */; };
+		246C42A62F250E96009BC881 /* CalloutTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C42A52F250E89009BC881 /* CalloutTextView.swift */; };
 		246EA1972EC8B32D00085D3A /* DataScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EA1962EC8B31900085D3A /* DataScannerView.swift */; };
 		246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; };
 		2472D5D42F1276D100DC6737 /* BentoSendStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2472D5CE2F1276C700DC6737 /* BentoSendStyle.swift */; };
@@ -513,10 +518,7 @@
 		24006C292F0FCCA500F29F0A /* BentoSendCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoSendCompletedView.swift; sourceTree = "<group>"; };
 		24006C2B2F0FCE5500F29F0A /* BentoSendInitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoSendInitialView.swift; sourceTree = "<group>"; };
 		2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenFooterView.swift; sourceTree = "<group>"; };
-		24126DF32ECA687800F9A4BE /* DataScannerExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerExampleView.swift; sourceTree = "<group>"; };
 		24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerSheet.swift; sourceTree = "<group>"; };
-		24126DFD2ECA68E000F9A4BE /* TextScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextScannerView.swift; sourceTree = "<group>"; };
-		24126E032ECA69C000F9A4BE /* TextOnlyScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOnlyScannerSheet.swift; sourceTree = "<group>"; };
 		24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayView.swift; sourceTree = "<group>"; };
 		24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayDataView.swift; sourceTree = "<group>"; };
 		2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveAddressView.swift; sourceTree = "<group>"; };
@@ -577,6 +579,14 @@
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSubBentoView.swift; sourceTree = "<group>"; };
 		246A9A062DF5F532002480CB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		246C3F592F2431B6009BC881 /* TutorialSendBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSendBentoView.swift; sourceTree = "<group>"; };
+		246C3F5B2F2431D0009BC881 /* TutorialSendPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSendPageView.swift; sourceTree = "<group>"; };
+		246C3F5D2F244E61009BC881 /* TutorialReceiveBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialReceiveBentoView.swift; sourceTree = "<group>"; };
+		246C3F5F2F244E76009BC881 /* TutorialReceivePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialReceivePageView.swift; sourceTree = "<group>"; };
+		246C429D2F24E1C2009BC881 /* SendStep1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendStep1View.swift; sourceTree = "<group>"; };
+		246C429F2F24E235009BC881 /* SendStep2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendStep2View.swift; sourceTree = "<group>"; };
+		246C42A12F24E23E009BC881 /* SendStep3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendStep3View.swift; sourceTree = "<group>"; };
+		246C42A52F250E89009BC881 /* CalloutTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutTextView.swift; sourceTree = "<group>"; };
 		246EA1962EC8B31900085D3A /* DataScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerView.swift; sourceTree = "<group>"; };
 		246F97832E846218001923A6 /* private-general-purpose.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "private-general-purpose.xcodeproj"; path = "Private/general-purpose/private-general-purpose.xcodeproj"; sourceTree = "<group>"; };
 		2472D5CE2F1276C700DC6737 /* BentoSendStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoSendStyle.swift; sourceTree = "<group>"; };
@@ -1151,9 +1161,6 @@
 			children = (
 				24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */,
 				24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */,
-				24126E032ECA69C000F9A4BE /* TextOnlyScannerSheet.swift */,
-				24126DFD2ECA68E000F9A4BE /* TextScannerView.swift */,
-				24126DF32ECA687800F9A4BE /* DataScannerExampleView.swift */,
 				246EA1962EC8B31900085D3A /* DataScannerView.swift */,
 				24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */,
 			);
@@ -1317,6 +1324,7 @@
 		244A8D912DE84C710024D356 /* Brainwallet Custom Shapes */ = {
 			isa = PBXGroup;
 			children = (
+				246C42A52F250E89009BC881 /* CalloutTextView.swift */,
 				243B88812F1112DC00A8DB69 /* LeaderEllipseView.swift */,
 				244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */,
 			);
@@ -1339,6 +1347,44 @@
 				C312D2012D7DC27700BB97A4 /* ApplicationController.swift */,
 			);
 			path = "App Launch Classes";
+			sourceTree = "<group>";
+		};
+		246C3F4F2F2430DF009BC881 /* Tutorial Classes */ = {
+			isa = PBXGroup;
+			children = (
+				246C42A82F253585009BC881 /* WalkthroughSteps */,
+				246C42A72F25356E009BC881 /* ReceiveSteps */,
+				246C42972F24E18A009BC881 /* SendSteps */,
+				246C3F592F2431B6009BC881 /* TutorialSendBentoView.swift */,
+				246C3F5D2F244E61009BC881 /* TutorialReceiveBentoView.swift */,
+				246C3F5B2F2431D0009BC881 /* TutorialSendPageView.swift */,
+				246C3F5F2F244E76009BC881 /* TutorialReceivePageView.swift */,
+			);
+			path = "Tutorial Classes";
+			sourceTree = "<group>";
+		};
+		246C42972F24E18A009BC881 /* SendSteps */ = {
+			isa = PBXGroup;
+			children = (
+				246C429D2F24E1C2009BC881 /* SendStep1View.swift */,
+				246C429F2F24E235009BC881 /* SendStep2View.swift */,
+				246C42A12F24E23E009BC881 /* SendStep3View.swift */,
+			);
+			path = SendSteps;
+			sourceTree = "<group>";
+		};
+		246C42A72F25356E009BC881 /* ReceiveSteps */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ReceiveSteps;
+			sourceTree = "<group>";
+		};
+		246C42A82F253585009BC881 /* WalkthroughSteps */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WalkthroughSteps;
 			sourceTree = "<group>";
 		};
 		246F97842E846218001923A6 /* Products */ = {
@@ -1987,6 +2033,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				246C3F4F2F2430DF009BC881 /* Tutorial Classes */,
 				24E6675F2F167A4B00909157 /* New Send Classes */,
 				247A838B2EA00CEB00B5DFD8 /* Bento Effects  */,
 				2457DC802EB63A3000688B9A /* Export Classes */,
@@ -2698,7 +2745,6 @@
 				C312D2D32D7DC27700BB97A4 /* ExchangeUpdater.swift in Sources */,
 				C312D2D42D7DC27700BB97A4 /* Currency.swift in Sources */,
 				24126E062ECA741200F9A4BE /* ScanOverlayView.swift in Sources */,
-				24126DF92ECA687B00F9A4BE /* DataScannerExampleView.swift in Sources */,
 				2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */,
 				C312D2D62D7DC27700BB97A4 /* RecoverWalletView.swift in Sources */,
 				C312D2D72D7DC27700BB97A4 /* Date+Additions.swift in Sources */,
@@ -2721,6 +2767,7 @@
 				C312D2ED2D7DC27700BB97A4 /* LoginViewModel.swift in Sources */,
 				C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */,
 				C312D2F72D7DC27700BB97A4 /* ArticleIds.swift in Sources */,
+				246C3F5E2F244E61009BC881 /* TutorialReceiveBentoView.swift in Sources */,
 				242871882DE5D36F0035DE48 /* SyncSubBentoViewModel.swift in Sources */,
 				C312D2F82D7DC27700BB97A4 /* BiometricsSettingsViewController.swift in Sources */,
 				2476AE362E2802AF0065CE22 /* InputSeedWordView.swift in Sources */,
@@ -2735,6 +2782,7 @@
 				C312D3072D7DC27700BB97A4 /* CGRect+Additions.swift in Sources */,
 				247A83932EA034BC00B5DFD8 /* Renderer.swift in Sources */,
 				C312D30B2D7DC27700BB97A4 /* StartWipeWalletViewController.swift in Sources */,
+				246C3F5A2F2431B6009BC881 /* TutorialSendBentoView.swift in Sources */,
 				C312D3102D7DC27700BB97A4 /* UpdatingLabel.swift in Sources */,
 				C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */,
 				C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */,
@@ -2770,6 +2818,7 @@
 				24DB05EE2E06C34A00C57FE9 /* SettingsSpacerView.swift in Sources */,
 				C312D3452D7DC27700BB97A4 /* EmailValidation.swift in Sources */,
 				C312D3472D7DC27700BB97A4 /* WalletManager+Auth.swift in Sources */,
+				246C429E2F24E1C2009BC881 /* SendStep1View.swift in Sources */,
 				24F5BD582E04711E0010D340 /* CurrencyPickerView.swift in Sources */,
 				C312D3482D7DC27700BB97A4 /* FeeManager.swift in Sources */,
 				C312D3492D7DC27700BB97A4 /* StartNavigationDelegate.swift in Sources */,
@@ -2823,12 +2872,12 @@
 				2416CE7A2DA90D0D00FFBD10 /* BRKeyExtension.swift in Sources */,
 				2416CE7C2DA90D0D00FFBD10 /* BRCalculationExtension.swift in Sources */,
 				C312D36E2D7DC27700BB97A4 /* PinPadViewController.swift in Sources */,
+				246C3F602F244E76009BC881 /* TutorialReceivePageView.swift in Sources */,
 				C312D36F2D7DC27700BB97A4 /* EnterPhraseCell.swift in Sources */,
 				24006C262F0FCC4B00F29F0A /* BentoSendModalView.swift in Sources */,
 				C312D3712D7DC27700BB97A4 /* SeedViewModel.swift in Sources */,
 				C32369FF2D7DD431007039A1 /* LoginViewController.swift in Sources */,
 				24E667632F16CDB400909157 /* SendPinLockModel.swift in Sources */,
-				24126E042ECA69C300F9A4BE /* TextOnlyScannerSheet.swift in Sources */,
 				24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */,
 				C312D3732D7DC27700BB97A4 /* AboutCell.swift in Sources */,
 				243136FD2E0B251D00BCBED1 /* SettingsActionToggleView.swift in Sources */,
@@ -2853,11 +2902,13 @@
 				C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */,
 				C312D3902D7DC27700BB97A4 /* GradientSwitch.swift in Sources */,
 				24E7591E2E0B407F0065BA02 /* SettingsResetPINView.swift in Sources */,
+				246C42A62F250E96009BC881 /* CalloutTextView.swift in Sources */,
 				C312D3932D7DC27700BB97A4 /* EnterPhraseHostingController.swift in Sources */,
 				24F5BD4A2E0442D00010D340 /* SettingsFooterView.swift in Sources */,
 				24572C762F1E30C0009C72F0 /* BentoNoSendModalView.swift in Sources */,
 				C312D3962D7DC27700BB97A4 /* LAContext+Extensions.swift in Sources */,
 				24006C2A2F0FCCA500F29F0A /* BentoSendCompletedView.swift in Sources */,
+				246C42A22F24E23E009BC881 /* SendStep3View.swift in Sources */,
 				C312D39A2D7DC27700BB97A4 /* PinDigitView.swift in Sources */,
 				C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */,
 				C312D39D2D7DC27700BB97A4 /* PromptTableViewCell.swift in Sources */,
@@ -2893,6 +2944,7 @@
 				C312D3D82D7DC27700BB97A4 /* UITableView+Additions.swift in Sources */,
 				24006C2C2F0FCE5500F29F0A /* BentoSendInitialView.swift in Sources */,
 				C312D3DA2D7DC27700BB97A4 /* CameraGuideView.swift in Sources */,
+				246C42A02F24E235009BC881 /* SendStep2View.swift in Sources */,
 				2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */,
 				C312D3DC2D7DC27700BB97A4 /* ConfirmPhrase.swift in Sources */,
 				C312D3DD2D7DC27700BB97A4 /* ReceiveLTCViewController.swift in Sources */,
@@ -2911,7 +2963,6 @@
 				C312D3F72D7DC27700BB97A4 /* UnEditableTextView.swift in Sources */,
 				2457DDE82EB7EC4400688B9A /* CoreModeView.swift in Sources */,
 				247A7D132E95286E000DF8C0 /* GameHubBentoView.swift in Sources */,
-				24126DFE2ECA68E900F9A4BE /* TextScannerView.swift in Sources */,
 				C312D3FC2D7DC27700BB97A4 /* UIView+InitAdditions.swift in Sources */,
 				C312D3FD2D7DC27700BB97A4 /* LocaleChangeViewModel.swift in Sources */,
 				C312D3FE2D7DC27700BB97A4 /* ReduxState.swift in Sources */,
@@ -2932,6 +2983,7 @@
 				247A83952EA034FE00B5DFD8 /* GridWaveContentView.swift in Sources */,
 				24126DFB2ECA68AB00F9A4BE /* DataScannerSheet.swift in Sources */,
 				C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */,
+				246C3F5C2F2431D0009BC881 /* TutorialSendPageView.swift in Sources */,
 				C312D40F2D7DC27700BB97A4 /* Environment.swift in Sources */,
 				C312D4102D7DC27700BB97A4 /* CustomTitleView.swift in Sources */,
 				2480B5832DF2016300653403 /* PromptHostingCell.swift in Sources */,

@@ -34,6 +34,148 @@ struct BrainwalletHexagon: Shape {
     }
 }
 
+public enum ShapeCorner {
+    case topLeft
+    case topRight
+    case bottomLeft
+    case bottomRight
+    case none
+
+    var index: Int {
+        switch self {
+        case .topLeft:
+            return 0
+        case .topRight:
+            return 1
+        case .bottomLeft:
+            return 2
+        case .bottomRight:
+            return 3
+        case .none:
+            return -1
+        }
+    }
+}
+
+struct BentoCalloutShape: View {
+    @Binding
+    var shapeCorner: ShapeCorner
+
+    @Binding
+    var userPrefersDarkTheme: Bool
+
+    init(shapeCorner: Binding<ShapeCorner>,
+         userPrefersDarkTheme: Binding<Bool>) {
+        _shapeCorner = shapeCorner
+        _userPrefersDarkTheme = userPrefersDarkTheme
+    }
+    var body: some View {
+        GeometryReader { geometry in
+
+            let width = geometry.size.width
+            let triangleSize = 70.0
+
+            let backgroundColor: Color = .white
+            ZStack {
+
+                HStack {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(backgroundColor)
+                        .frame(alignment: .center)
+                        .shadow(color: .black.opacity(0.6),
+                                radius: 3.0, x: 0, y: 5)
+                }
+
+                if shapeCorner.index >= 0 {
+                    if shapeCorner.index == 0 {
+                        /// Top Left
+                        ///  \
+                        ///  \-------/
+                        ///  |          |
+                        ///  \--------/
+                        HStack {
+                            Spacer()
+                            RightTriangle()
+                                .foregroundColor(backgroundColor)
+                                .frame(width: triangleSize,
+                                       height: triangleSize,
+                                       alignment: .trailing)
+                                .scaleEffect(x: -1, y: 1)
+                                .offset(y: -triangleSize * 0.5)
+                        }
+
+                    } else if shapeCorner.index == 1 {
+
+                        /// Top Right
+                        ///       /
+                        ///   -------\
+                        ///  |          |
+                        ///  \--------/
+                        HStack {
+                            RightTriangle()
+                                .foregroundColor(backgroundColor)
+                                .frame(width: triangleSize,
+                                       height: triangleSize,
+                                       alignment: .leading)
+                                .scaleEffect(x: 1, y: 1)
+                                .offset(y: -triangleSize * 0.5)
+                            Spacer()
+                        }
+                    } else if shapeCorner.index == 2 {
+                        /// Bottom Left
+                        ///  / -------\
+                        ///  |          |
+                        ///  \--------/
+                        ///   /
+                        HStack {
+                            RightTriangle()
+                                .foregroundColor(backgroundColor)
+                                .frame(width: triangleSize,
+                                       height: triangleSize,
+                                       alignment: .leading)
+                                .scaleEffect(x: 1, y: -1)
+                                .offset(y: triangleSize * 0.5)
+                            Spacer()
+                        }
+                    } else {
+                        /// Bottom Right
+                        ///  / -------\
+                        ///  |          |
+                        ///  --------/
+                        ///       \
+                        HStack {
+                            Spacer()
+                            RightTriangle()
+                                .foregroundColor(backgroundColor)
+                                .frame(width: triangleSize,
+                                       height: triangleSize,
+                                       alignment: .trailing)
+                                .scaleEffect(x: -1, y: -1)
+                                .frame(alignment: .trailing)
+                                .offset(y: triangleSize * 0.5)
+                        }
+                    }
+                }
+
+            }
+        }
+        .onAppear {
+
+        }
+    }
+}
+
+struct RightTriangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        Path { path in
+            path.move(to: CGPoint(x: rect.minX, y: rect.minY))
+            path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+            path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+            path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
+        }
+    }
+}
+
 struct BrainwallePulseEllipse: View {
 
     @Binding
