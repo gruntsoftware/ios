@@ -56,6 +56,19 @@ platform :ios do
       destination: "platform=iOS Simulator,name=Any iOS Simulator Device",
       code_coverage: true,
       configuration: "Debug",
+      derived_data_path: "./build",
+      cloned_source_packages_path: "./SourcePackages"
+      output_types: "html,junit",
+      output_directory: "./fastlane/test_output",
+      skip_build: false
+    )
+  end
+  lane :run_all_tests_iPhone13Mini do
+    run_tests(
+      scheme: "brainwalletAllTests",
+      clean: true,
+      code_coverage: true,
+      configuration: "Debug",
       devices: ["iPhone 13 Mini"],
       output_types: "html,junit",
       output_directory: "./fastlane/test_output",
@@ -63,4 +76,3 @@ platform :ios do
     )
   end
 end
-
