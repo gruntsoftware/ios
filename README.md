@@ -1,5 +1,7 @@
 # ios
-The open source code section of Brainwallet iOS
+The open source code of Brainwallet iOS
+
+
 
 ## Release Notes
 
