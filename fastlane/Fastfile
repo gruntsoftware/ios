@@ -57,7 +57,7 @@ platform :ios do
       code_coverage: true,
       configuration: "Debug",
       derived_data_path: "./build",
-      cloned_source_packages_path: "./SourcePackages"
+      cloned_source_packages_path: "./SourcePackages",
       output_types: "html,junit",
       output_directory: "./fastlane/test_output",
       skip_build: false
