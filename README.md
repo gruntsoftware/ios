@@ -1,5 +1,11 @@
 # ios
-The open source code section of Brainwallet iOS
+The open source code of Brainwallet iOS
+
+## CI/CD Status
+**main**: [![CircleCI](https://dl.circleci.com/status-badge/img/gh/gruntsoftware/ios/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/gruntsoftware/ios/tree/main)
+
+**develop**: [![CircleCI](https://dl.circleci.com/status-badge/img/gh/gruntsoftware/ios/tree/develop.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/gruntsoftware/ios/tree/develop)
+
 
 ## Release Notes
 
