@@ -1,6 +1,6 @@
 import UIKit
 
-class WipeEmptyWalletViewController: UIViewController, Subscriber, Trackable {
+class WipeEmptyWalletViewController: UIViewController, Subscriber {
 	// MARK: - Public
 
 	init(walletManager: WalletManager, store: Store, didTapYesDelete: @escaping () -> Void) {

@@ -2,7 +2,7 @@ import UIKit
 
 // DEV: This whole class should be removed.
 // Need more testing.
-class URLController: Trackable {
+class URLController {
     init(store: Store, walletManager: WalletManager) {
         self.store = store
         self.walletManager = walletManager
@@ -13,11 +13,6 @@ class URLController: Trackable {
     private var xSource, xSuccess, xError, uri: String?
 
     func handleUrl(_ url: URL) -> Bool {
-        saveEvent("send.handleURL", attributes: [
-            "scheme": url.scheme ?? C.null,
-            "host": url.host ?? C.null,
-            "path": url.path
-        ])
 
         switch url.scheme ?? "" {
             case "loaf":

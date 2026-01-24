@@ -2,7 +2,7 @@ import UIKit
 
 private let currencyToggleButtonConstant: CGFloat = 20.0
 private let amountFont: UIFont = .barlowMedium(size: 24.0)
-class AmountViewController: UIViewController, Trackable {
+class AmountViewController: UIViewController {
 	private let store: Store
 	private let isPinPadExpandedAtLaunch: Bool
 	private let isRequesting: Bool
@@ -71,7 +71,7 @@ class AmountViewController: UIViewController, Trackable {
             default: currencyButtonTitle = "lites (ł)"
         }
 
-		if let rate = store.state.currentRate, store.state.isLtcSwapped {
+		if let rate = store.state.currentRate, store.state.isLTCValueShown {
 			currencyToggleButton = ShadowButton(title: "\(rate.code)(\(rate.currencySymbol))", type: .tertiary)
 		} else {
 
@@ -231,7 +231,7 @@ class AmountViewController: UIViewController, Trackable {
 
 		placeholder.text = String(localized: "Amount", bundle: .main)
 		bottomBorder.isHidden = true
-		if store.state.isLtcSwapped {
+		if store.state.isLTCValueShown {
 			if let rate = store.state.currentRate {
 				selectedRate = rate
 			}

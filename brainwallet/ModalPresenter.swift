@@ -3,7 +3,7 @@ import SafariServices
 import SwiftUI
 import UIKit
 
-class ModalPresenter: Subscriber, Trackable {
+class ModalPresenter: Subscriber {
 	var walletManager: WalletManager?
 	init(store: Store, walletManager: WalletManager, window: UIWindow, apiClient: BWAPIClient) {
 		self.store = store
@@ -184,32 +184,6 @@ class ModalPresenter: Subscriber, Trackable {
 		settingsNav.viewControllers = [settings]
         topVC.present(settingsNav, animated: true, completion: nil)
 	}
-
-    func presentScan(parent: UIViewController) -> PresentScan {
-        return { [weak parent] scanCompletion in
-            guard let parent = parent else { return }
-            guard ScanViewController.isCameraAllowed else {
-                ScanViewController.presentCameraUnavailableAlert(fromRoot: parent)
-                return
-            }
-
-            let vc = ScanViewController(completion: { paymentRequest in
-
-                guard let request = paymentRequest else {
-                    assertionFailure("Invalid payment request type: \(String(describing: paymentRequest))")
-                    return
-                }
-                scanCompletion(request)
-                parent.view.isFrameChangeBlocked = false
-
-            }, isValidURI: { address in
-                return address.isValidAddress
-            })
-
-            parent.view.isFrameChangeBlocked = true
-            parent.present(vc, animated: true, completion: {})
-        }
-    }
 
     func presentSecurityCenter() {
 		guard let walletManager = walletManager else { return }

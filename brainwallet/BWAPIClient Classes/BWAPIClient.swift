@@ -3,18 +3,6 @@ import Foundation
 
 let BWAPIClientErrorDomain = "BRApiClientErrorDomain"
 
-// these flags map to api feature flag name values
-// eg "buy-bitcoin-with-cash" is a persistent name in the /me/features list
-@objc public enum BRFeatureFlags: Int, CustomStringConvertible {
-	case buyLitecoin
-
-	public var description: String {
-		switch self {
-		case .buyLitecoin: return "buy-litecoin"
-		}
-	}
-}
-
 public typealias URLSessionTaskHandler = (Data?, HTTPURLResponse?, NSError?) -> Void
 public typealias URLSessionChallengeHandler = (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
 
@@ -52,7 +40,7 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
     private let configuration: URLSessionConfiguration = {
         #if targetEnvironment(simulator)
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 60
+        configuration.timeoutIntervalForRequest = 60 // Longer timeout for simulator
         configuration.timeoutIntervalForResource = 60
         configuration.waitsForConnectivity = true
         #else
@@ -258,18 +246,6 @@ private extension URLRequest {
 			}
 		}
 		return parts.joined(separator: "\n")
-	}
-}
-
-private extension HTTPURLResponse {
-	var isBreadChallenge: Bool {
-		if let headers = allHeaderFields as? [String: String],
-		   let challenge = headers.get(lowercasedKey: "www-authenticate") {
-			if challenge.lowercased().hasPrefix("Brainwallet") {
-				return true
-			}
-		}
-		return false
 	}
 }
 

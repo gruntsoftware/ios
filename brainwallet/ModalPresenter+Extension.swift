@@ -16,7 +16,7 @@ extension ModalPresenter {
         case .none:
             return nil
         case .send:
-            return makeSendView()
+            return nil // DEPRECATED return makeSendView()
         case .receive:
             return newBuyOrReceiveView() // receiveView(isRequestAmountVisible: true)
         case .menu:
@@ -167,43 +167,6 @@ extension ModalPresenter {
         topViewController?.present(alert, animated: true, completion: nil)
     }
 
-    func makeSendView() -> UIViewController? {
-        guard !store.state.walletState.isRescanning
-        else {
-            let alert = UIAlertController(title:  "Error" , message: "Rescanning" , preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok" , style: .cancel, handler: nil))
-            topViewController?.present(alert, animated: true, completion: nil)
-            return nil
-        }
-        guard let walletManager = walletManager else { return nil }
-        guard let kvStore = walletManager.apiClient?.kv else { return nil }
-
-        let sendVC = SendViewController(store: store, sender: Sender(walletManager: walletManager, kvStore: kvStore, store: store), walletManager: walletManager, initialRequest: currentRequest)
-        currentRequest = nil
-
-        if store.state.isLoginRequired {
-            sendVC.isPresentedFromLock = true
-        }
-
-        let root = ModalViewController(childViewController: sendVC, store: store)
-        sendVC.presentScan = presentScan(parent: root)
-        sendVC.presentVerifyPin = { [weak self, weak root] bodyText, callback in
-            guard let myself = self else { return }
-            guard let myroot = root else { return }
-
-            let verifyPVC = VerifyPinViewController(bodyText: bodyText, pinLength: myself.store.state.pinLength, callback: callback)
-            verifyPVC.transitioningDelegate = myself.verifyPinTransitionDelegate
-            verifyPVC.modalPresentationStyle = .overFullScreen
-            verifyPVC.modalPresentationCapturesStatusBarAppearance = true
-            myroot.view.isFrameChangeBlocked = true
-            myroot.present(verifyPVC, animated: true, completion: nil)
-        }
-        sendVC.onPublishSuccess = { [weak self] in
-            self?.presentAlert(.sendSuccess, completion: {})
-        }
-        return root
-    }
-
     func presentBiometricsSetting() {
         guard let walletManager = walletManager else { return }
         let biometricsSettings = BiometricsSettingsViewController(walletManager: walletManager, store: store)
@@ -282,13 +245,7 @@ extension ModalPresenter {
     }
 
     func presentLoginScan() {
-        guard let top = topViewController else { return }
-        let present = presentScan(parent: top)
-        store.perform(action: RootModalActions.Present(modal: .none))
-        present { paymentRequest in
-            self.currentRequest = paymentRequest
-            self.presentModal(.send)
-        }
+        /// DEPRECATED WITH new Bento Style
     }
 
     func handleCopyAddresses(success: String?, error _: String?) {
@@ -332,26 +289,26 @@ extension ModalPresenter {
                         selector: { $0.alert != $1.alert && $1.alert != nil },
                         callback: { self.handleAlertChange($0.alert) })
 
-        store.subscribe(self, name: .promptUpgradePin, callback: { [weak self] _ in
+        store.subscribe(self, triggerName: .promptUpgradePin, callback: { [weak self] _ in
             self?.presentUpgradePin()
         })
-//        store.subscribe(self, name: .promptPaperKey, callback: { [weak self]  _ in
+//        store.subscribe(self, triggerName: .promptPaperKey, callback: { [weak self]  _ in
 //            self?.presentWritePaperKey()
 //        })
-        store.subscribe(self, name: .promptBiometrics, callback: { [weak self] _ in
+        store.subscribe(self, triggerName: .promptBiometrics, callback: { [weak self] _ in
             self?.presentBiometricsSetting()
         })
-        store.subscribe(self, name: .promptShareData, callback: { [weak self] _ in
+        store.subscribe(self, triggerName: .promptShareData, callback: { [weak self] _ in
             self?.promptShareData()
         })
-        store.subscribe(self, name: .recommendRescan, callback: { [weak self] _ in
+        store.subscribe(self, triggerName: .recommendRescan, callback: { [weak self] _ in
             self?.presentRescan()
         })
 
-        store.subscribe(self, name: .scanQr, callback: { [weak self]  _ in
+        store.subscribe(self, triggerName: .scanQr, callback: { [weak self]  _ in
             self?.handleScanQrURL()
         })
-        store.subscribe(self, name: .copyWalletAddresses(nil, nil), callback: { [weak self] in
+        store.subscribe(self, triggerName: .copyWalletAddresses(nil, nil), callback: { [weak self] in
             guard let trigger = $0 else { return }
             if case let .copyWalletAddresses(success, error) = trigger {
                 self?.handleCopyAddresses(success: success, error: error)
@@ -364,13 +321,13 @@ extension ModalPresenter {
                 self.showNotReachable()
             }
         }
-        store.subscribe(self, name: .lightWeightAlert(""), callback: {
+        store.subscribe(self, triggerName: .lightWeightAlert(""), callback: {
             guard let trigger = $0 else { return }
             if case let .lightWeightAlert(message) = trigger {
                 self.showLightWeightAlert(message: message)
             }
         })
-        store.subscribe(self, name: .showAlert(nil), callback: {
+        store.subscribe(self, triggerName: .showAlert(nil), callback: {
             guard let trigger = $0 else { return }
             if case let .showAlert(alert) = trigger {
                 if let alert = alert {
