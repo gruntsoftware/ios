@@ -20,6 +20,12 @@ struct BrainwalletSocials {
     static let linktree = "https://linktr.ee/brainwallet"
 }
 
+struct ExplorerURLs {
+    static let blockexplorer = "https://blockexplorer.one/litecoin/mainnet/tx/"
+    static let litecoinspace =  "https://litecoinspace.org/tx/"
+    static let blockchair = "https://blockchair.com/litecoin/transaction/"
+}
+
 struct APIServer {
 	static let baseUrl = "https://api.grunt.ltd/"
     static let mp_pk_live = "pk_live_ylGsCKkktryFS138bWkR51M7QV0Q92ph"
@@ -52,6 +58,7 @@ struct C {
 	static let secondsInDay: TimeInterval = 86400
 	static let maxMoney: UInt64 = 84_000_000 * 100_000_000
 	static let satoshis: UInt64 = 100_000_000
+    static let litoshis: UInt64 = 100_000_000
 	static let walletQueue = "com.gruntsoftware.brainwalletqueue"
 	static let ltcCurrencyCode = "LTC"
 	static let null = "(null)"

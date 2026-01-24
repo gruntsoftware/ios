@@ -92,11 +92,11 @@ class ModalViewController: UIViewController, Subscriber {
         swipeGestureRecognizer.delegate = self
         swipeGestureRecognizer.addTarget(self, action: #selector(didSwipe))
 		view.addGestureRecognizer(swipeGestureRecognizer)
-		store.subscribe(self, name: .blockModalDismissal, callback: { [weak self] _ in
+		store.subscribe(self, triggerName: .blockModalDismissal, callback: { [weak self] _ in
 			self?.swipeGestureRecognizer.isEnabled = false
 		})
 
-		store.subscribe(self, name: .unblockModalDismissal, callback: { _ in
+		store.subscribe(self, triggerName: .unblockModalDismissal, callback: { _ in
 			self.swipeGestureRecognizer.isEnabled = true
 		})
 		addTopCorners()

@@ -14,7 +14,7 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 	var size: Int = 0
 	var created: Date = .zeroValue()
 	var deviceId: String = ""
-	var comment = ""
+	var memoString: String = ""
 
 	public required init?(coder decoder: BRCoder) {
 		classVersion = decoder.decode("classVersion")
@@ -29,7 +29,7 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 		size = decoder.decode("s")
 		deviceId = decoder.decode("dId")
 		created = decoder.decode("c")
-		comment = decoder.decode("comment")
+        memoString = decoder.decode("comment") // Leaving this to `comment` to allow matching in the database
 		super.init(key: "", version: 0, lastModified: Date(), deleted: true, data: Data())
 	}
 
@@ -42,7 +42,7 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 		coder.encode(size, key: "s")
 		coder.encode(created, key: "c")
 		coder.encode(deviceId, key: "dId")
-		coder.encode(comment, key: "comment")
+		coder.encode(memoString, key: "comment")
 	}
 
 	// Find metadata object based on the txHash
@@ -86,7 +86,7 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 
 	/// Create new transaction metadata
 	public init(transaction: BRTransaction, exchangeRate: Double, exchangeRateCurrency: String, feeRate: Double,
-	            deviceId: String, comment: String? = nil) {
+	            deviceId: String, memoString: String? = nil) {
 		debugPrint(":::[BRTxMetadataObject] new \(transaction.txHash.txKey)")
 		super.init(key: transaction.txHash.txKey, version: 0, lastModified: Date(), deleted: false, data: Data())
 		blockHeight = Int(transaction.blockHeight)
@@ -97,7 +97,7 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 		self.exchangeRateCurrency = exchangeRateCurrency
 		self.feeRate = feeRate
 		self.deviceId = deviceId
-		self.comment = comment ?? ""
+		self.memoString = memoString ?? ""
 	}
 
 	override func getData() -> Data? {
@@ -116,7 +116,7 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 		size = s.size
 		created = s.created
 		deviceId = s.deviceId
-		comment = s.comment
+        memoString = s.memoString
 	}
 }
 

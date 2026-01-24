@@ -40,7 +40,7 @@ struct LockScreenFooterView: View {
                         }) {
                             VStack {
                                 Spacer()
-                                Image(systemName: userPrefersDarkMode ? "sun.max.circle" : "moon.circle")
+                                Image(systemName: userPrefersDarkMode ? "sun.max" : "moon.stars")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: buttonSize, height: buttonSize,

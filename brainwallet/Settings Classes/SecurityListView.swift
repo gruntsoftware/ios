@@ -46,9 +46,6 @@ struct SecurityListView: View {
         NavigationStack {
             GeometryReader { _ in
 
-//                    let width = geometry.size.width
-//                    let height = geometry.size.height
-
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                         List {

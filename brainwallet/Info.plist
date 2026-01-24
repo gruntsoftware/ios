@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>ltd.grunt.brainwallet</string>
@@ -93,11 +91,11 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Used to scan barcodes</string>
+	<string>Used to scan barcodes and QR Codes for LTC Addresses</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Used to Unlock app &amp; Authorize payments</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Used to determine the closest node to you - never recorded or shared with anyone</string>
+	<string>Used to determine the closest Litecoin node to you - never recorded or shared with anyone</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Used to determine the closest node to you - never recorded or shared with anyone</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -113,6 +111,7 @@
 		<string>BarlowSemiCondensed-Light.ttf</string>
 		<string>BarlowSemiCondensed-Regular.ttf</string>
 		<string>BarlowSemiCondensed-Bold.ttf</string>
+		<string>BoldenVan.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
@@ -214,5 +213,7 @@
 			<dict/>
 		</dict>
 	</array>
+	<key>UIDesignRequiresCompatibility</key>
+	<true/>
 </dict>
 </plist>
