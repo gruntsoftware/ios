@@ -22,8 +22,6 @@ struct FavouritesBentoView: View {
     @State
     private var mainGradientStyle: MainGradientStyle = .lightStyle
 
-    private let favoriteTileSize: CGFloat = 40.0
-
     private let buttonPlatformFactor: CGFloat = 2.1
 
     init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
@@ -34,6 +32,10 @@ struct FavouritesBentoView: View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
+            let height = geometry.size.height
+
+            let favoriteTileSize: CGFloat = height * 0.4
+
             let labelBackground =  userPrefersDarkTheme ? BrainwalletColor.content.opacity(0.1) :
             BentoColor.tutorialGreen1
             let labelForeground = userPrefersDarkTheme ? BrainwalletColor.content : BentoColor.tutorialGreen2
@@ -108,6 +110,9 @@ struct FavouritesBentoView: View {
                 }
                 .opacity(userPrefersDarkTheme ? 0.8 : 0.7)
                 .padding(.top, 16)
+                .onAppear {
+                    debugPrint("::: favoriteTileSize: \(favoriteTileSize)")
+                }
             }
             .cornerRadius(bentoCornerRadius)
             .onAppear {

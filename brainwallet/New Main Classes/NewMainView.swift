@@ -9,13 +9,6 @@
 import SwiftUI
 import FirebaseAnalytics
 
-let bentoCornerRadius: CGFloat = 14.0
-let brainwalletNavBarHeight: CGFloat = 90.0
-let calloutHeight: CGFloat = 108.0
-let balanceGameBentoHeight: CGFloat = 135.0
-let transactionsBentoHeight: CGFloat = 85.0
-let iconSize: CGFloat = 20.0
-
 struct NewMainView: View {
 
     @ObservedObject

@@ -14,7 +14,7 @@ ContentView class that returns a `CIImage` for the current time.
 */
 
 import SwiftUI
-import CoreImage.CIFilterBuiltins
+import CoreImage.CIFilterBuiltins 
 
 /// - Tag: ContentView
 struct GridWaveContentView: View {
@@ -114,7 +114,6 @@ struct GridWaveContentView: View {
             .onChange(of: userPrefersDarkTheme) { _,newValue in
                 colorStyle = newValue ? .darkStyle : .lightStyle
             }
-
     }
 }
 

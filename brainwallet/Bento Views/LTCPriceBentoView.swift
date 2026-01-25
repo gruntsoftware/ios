@@ -34,50 +34,59 @@ struct LTCPriceBentoView: View {
         newMainViewModel = viewModel
     }
     var body: some View {
-        GeometryReader { _ in
+        GeometryReader { geometry in
+
+            let width = geometry.size.width
 
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
                 VStack {
-                    Text(newMainViewModel.currencyCode)
-                        .font(.system(size: 21, weight: .semibold, design: .default))
-                        .padding([.leading,.top], 16)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
+                    Spacer()
+                        Text(newMainViewModel.currencyCode)
+                            .font(.system(size: 21, weight: .semibold, design: .default))
+                            .padding([.leading,.top], 16)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
+                    Spacer()
                     Text(newMainViewModel.currentFiatValue)//  "RP1,516,863,885.40"
                         .font(.system(size: 40, weight: .semibold, design: .default))
                         .lineLimit(1)
-                        .minimumScaleFactor(0.3)// Shrinks to 30% of original
+                        .minimumScaleFactor(0.3)
                         .padding(.top, 12)
                         .padding([.leading,.trailing], 16)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundStyle( userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack.opacity(0.8))
-                    Text(currentDateLabel)
-                        .font(.system(size: 11, weight: .ultraLight, design: .default))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.9)// Shrinks to 80% of original
-                        .padding(.leading, 16)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
-                        .padding(.bottom, 4)
-                }
 
+                    HStack {
+                        Text(currentDateLabel)
+                            .font(.system(size: 11, weight: .ultraLight, design: .default))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.9)
+                            .padding(.leading, 16)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
+                            .padding(.bottom, 8)
+                        Spacer()
+                        Text(newMainViewModel.currentGlobalFiat.countryFlag)
+                            .font(.system(size: 14, weight: .regular, design: .default))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.8)
+                            .padding(.trailing, 16)
+                            .frame(maxWidth: width * 0.3, alignment: .trailing)
+                            .padding(.bottom, 8)
+                    }
+                }
             }
             .cornerRadius(bentoCornerRadius)
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
-                let lastedUpdateDate = Date()
-
-                if let dformatter = newMainViewModel.dateFormatter {
-                    currentDateLabel = String(describing: dformatter.string(from: lastedUpdateDate))
+                if let dateFormatter = newMainViewModel.dateFormatter {
+                    currentDateLabel = String(describing: dateFormatter.string(from: Date()))
                 }
-
             }
             .onChange(of: newMainViewModel.currentFiatValue) { _,_ in
-                let lastedUpdateDate = Date()
-
-                if let dformatter = newMainViewModel.dateFormatter {
-                    currentDateLabel = String(describing: dformatter.string(from: lastedUpdateDate))
+                if let dateFormatter = newMainViewModel.dateFormatter {
+                    currentDateLabel = String(describing: dateFormatter.string(from: Date()))
                 }
             }
         }
