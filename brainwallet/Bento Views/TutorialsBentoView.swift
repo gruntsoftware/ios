@@ -14,10 +14,16 @@ struct TutorialsBentoView: View {
     var newMainViewModel: NewMainViewModel
 
     @State
-    private var shouldShowSettings: Bool = false
+    private var selectedPage: Int = 0
 
     @State
-    private var selectedPage: Int = 0
+    private var shouldShowSendPage: Bool = false
+
+    @State
+    private var shouldShowReceivePage: Bool = false
+
+    @State
+    private var shouldShowWalkthroughPage: Bool = false
 
     @Binding
     var userPrefersDarkTheme: Bool
@@ -35,42 +41,15 @@ struct TutorialsBentoView: View {
 
         UIPageControl.appearance().currentPageIndicatorTintColor = BrainwalletUIColor.midnight
         UIPageControl.appearance().pageIndicatorTintColor = BrainwalletUIColor.lavender
-
+        UIPageControl.appearance().backgroundStyle = .prominent
     }
 
-    @ViewBuilder
-    func formattedText(_ text: String, backgroundColor: Color = Color.clear, foregroundColor: Color = BrainwalletColor.nearBlack) -> some View {
-
-        VStack {
-            Text(text)
-                .font(.system(size: 12, weight: .semibold, design: .default))
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)// Shrinks to 50% of original
-                .padding([.leading, .trailing], 4)
-
-            Text("1. ")
-                .font(.system(size: 12, weight: .light, design: .default))
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)// Shrinks to 50% of original
-                .padding([.leading, .trailing], 4)
-            Text("2. ")
-                .font(.system(size: 12, weight: .light, design: .default))
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)// Shrinks to 50% of original
-                .padding([.leading, .trailing], 4)
-            Text("3. ")
-                .font(.system(size: 12, weight: .light, design: .default))
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)// Shrinks to 50% of original
-                .padding([.leading, .trailing], 4)
-        }
-    }
     var body: some View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
-            let labelBackground =  userPrefersDarkTheme ? BrainwalletColor.content.opacity(0.1) : BentoColor.tutorialGreen1
-            let labelForeground = userPrefersDarkTheme ? BrainwalletColor.content : BentoColor.tutorialGreen2
+            let labelBackground =  userPrefersDarkTheme ? BentoColor.tutorialGreen1.opacity(0.1) : BentoColor.purple4.opacity(0.1)
+            let labelForeground = userPrefersDarkTheme ? BentoColor.tutorialGreen2 :BentoColor.purple4
 
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
@@ -82,7 +61,7 @@ struct TutorialsBentoView: View {
                                 .foregroundColor(labelBackground)
                                 .padding(8)
                             Text("TUTORIALS")
-                                .font(.system(size: 12, weight: .light, design: .default))
+                                .font(.system(size: 13, weight: .semibold, design: .default))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)// Shrinks to 50% of original
                                 .padding([.leading, .trailing], 4)
@@ -95,29 +74,55 @@ struct TutorialsBentoView: View {
                 }
 
                 TabView(selection: $selectedPage) {
-                        formattedText("How to send").tag(0)
-                            .tabItem {
-                                Text("Sending is easy!")
-                            }
-
-                        formattedText("How to receive").tag(1)
-                            .tabItem {
-                                Text("Receive Litecoin in seconds")
-                            }
-
-                        formattedText("Top Up").tag(2)
-                            .tabItem {
-                                Text("Load with MoonPay")
-                            }
-
+                    TutorialSendBentoView(selectedPage: $selectedPage,
+                                          userPrefersDarkTheme: $userPrefersDarkTheme)
+                        .onTapGesture {
+                            shouldShowSendPage.toggle()
+                        }
+                        .tag(0)
+                    TutorialWalkthroughBentoView(selectedPage: $selectedPage,
+                                          userPrefersDarkTheme: $userPrefersDarkTheme)
+                        .onTapGesture {
+                            shouldShowWalkthroughPage.toggle()
+                        }
+                        .tag(1)
+                    TutorialReceiveBentoView(selectedPage: $selectedPage,
+                                          userPrefersDarkTheme: $userPrefersDarkTheme)
+                        .onTapGesture {
+                            shouldShowReceivePage.toggle()
+                        }
+                        .tag(2)
                 }
                 .tabViewStyle(.page)
+                .indexViewStyle(.page(backgroundDisplayMode: .always))
 
             }
             .cornerRadius(bentoCornerRadius)
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
             }
+            .sheet(isPresented: $shouldShowSendPage) {
+                TutorialSendPageView(userPrefersDarkTheme: $userPrefersDarkTheme)
+                .cornerRadius(bentoCornerRadius)
+                .presentationDragIndicator(.hidden)
+                .presentationBackground(.opacity(0.2))
+                .ignoresSafeArea(edges: .bottom)
+            }
+            .sheet(isPresented: $shouldShowReceivePage) {
+                TutorialReceivePageView(userPrefersDarkTheme: $userPrefersDarkTheme)
+                .cornerRadius(bentoCornerRadius)
+                .presentationDragIndicator(.hidden)
+                .presentationBackground(.opacity(0.2))
+                .ignoresSafeArea(edges: .bottom)
+            }
+            .sheet(isPresented: $shouldShowWalkthroughPage) {
+                TutorialWalkthroughPageView(userPrefersDarkTheme: $userPrefersDarkTheme)
+                .cornerRadius(bentoCornerRadius)
+                .presentationDragIndicator(.hidden)
+                .presentationBackground(.opacity(0.2))
+                .ignoresSafeArea(edges: .bottom)
+            }
+
         }
     }
 }

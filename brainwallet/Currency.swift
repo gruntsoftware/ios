@@ -10,78 +10,6 @@ class Currency {
 	}
 }
 
-enum SupportedFiatCurrency: Int, CaseIterable, Equatable, Identifiable {
-    case USD = 0
-    case EUR
-    case GBP
-    case IDR
-    case CAD
-    case AUD
-    case MXN
-    case BRL
-    case CHF
-    case NGN
-    case TRY
-    case ZAR
-
-    static func from(code: String) -> SupportedFiatCurrency? {
-            return allCases.first { $0.code == code }
-    }
-
-    var id: SupportedFiatCurrency { self }
-
-    var symbol: String {
-        switch self {
-        case .USD: return "$"
-        case .EUR: return "€"
-        case .GBP: return "£"
-        case .IDR: return "Rp"
-        case .CAD: return "$"
-        case .AUD: return "$"
-        case .MXN: return "$"
-        case .BRL: return "R$"
-        case .CHF: return "Fr"
-        case .NGN: return "₦"
-        case .TRY: return "₺"
-        case .ZAR: return "R"
-        }
-    }
-
-    var code: String {
-        switch self {
-        case .USD: return "USD"
-        case .EUR: return "EUR"
-        case .GBP: return "GBP"
-        case .IDR: return "IDR"
-        case .CAD: return "CAD"
-        case .AUD: return "AUD"
-        case .MXN: return "MXN"
-        case .BRL: return "BRL"
-        case .CHF: return "CHF"
-        case .NGN: return "NGN"
-        case .TRY: return "TRY"
-        case .ZAR: return "ZAR"
-        }
-    }
-
-    var fullCurrencyName: String {
-        switch self {
-        case .USD: return "US Dollar"
-        case .EUR: return "Euro"
-        case .GBP: return "Great British Pound"
-        case .IDR: return "Indonesian Rupiah"
-        case .CAD: return "Canadian Dollar"
-        case .AUD: return "Australian Dollar"
-        case .MXN: return "Mexican Peso"
-        case .BRL: return "Brasil Real"
-        case .CHF: return "Swiss Franc"
-        case .NGN: return "Nigerian Naira"
-        case .TRY: return "Turkish Lira"
-        case .ZAR: return "South African Rand"
-        }
-    }
-}
-
 enum GlobalCurrency: Int, CaseIterable, Equatable, Identifiable {
 
     case USD = 0
@@ -500,4 +428,107 @@ enum GlobalCurrency: Int, CaseIterable, Equatable, Identifiable {
             case .ZAR: return "South African Rand"
             }
         }
+    var countryFlag: String {
+        switch self {
+        case .USD: return "🇺🇸"
+        case .EUR: return "🇪🇺"
+        case .AED: return "🇦🇪"
+        case .AFN: return "🇦🇫"
+        case .ALL: return "🇦🇱"
+        case .AMD: return "🇦🇲"
+        case .ARS: return "🇦🇷"
+        case .AUD: return "🇦🇺"
+        case .AZN: return "🇦🇿"
+        case .BAM: return "🇧🇦"
+        case .BBD: return "🇧🇧"
+        case .BDT: return "🇧🇩"
+        case .BGN: return "🇧🇬"
+        case .BHD: return "🇧🇭"
+        case .BND: return "🇧🇳"
+        case .BOB: return "🇧🇴"
+        case .BRL: return "🇧🇷"
+        case .BTN: return "🇧🇹"
+        case .BYN: return "🇧🇾"
+        case .CAD: return "🇨🇦"
+        case .CHF: return "🇨🇭"
+        case .CLP: return "🇨🇱"
+        case .CNY: return "🇨🇳"
+        case .COP: return "🇨🇴"
+        case .CRC: return "🇨🇷"
+        case .CZK: return "🇨🇿"
+        case .DKK: return "🇩🇰"
+        case .DOP: return "🇩🇴"
+        case .DZD: return "🇩🇿"
+        case .EGP: return "🇪🇬"
+        case .FJD: return "🇫🇯"
+        case .GBP: return "🇬🇧"
+        case .GEL: return "🇬🇪"
+        case .GHS: return "🇬🇭"
+        case .GTQ: return "🇬🇹"
+        case .HKD: return "🇭🇰"
+        case .HNL: return "🇭🇳"
+        case .HRK: return "🇭🇷"
+        case .HUF: return "🇭🇺"
+        case .IDR: return "🇮🇩"
+        case .ILS: return "🇮🇱"
+        case .INR: return "🇮🇳"
+        case .ISK: return "🇮🇸"
+        case .JMD: return "🇯🇲"
+        case .JOD: return "🇯🇴"
+        case .JPY: return "🇯🇵"
+        case .KES: return "🇰🇪"
+        case .KGS: return "🇰🇬"
+        case .KHR: return "🇰🇭"
+        case .KRW: return "🇰🇷"
+        case .KWD: return "🇰🇼"
+        case .KZT: return "🇰🇿"
+        case .LAK: return "🇱🇦"
+        case .LKR: return "🇱🇰"
+        case .MAD: return "🇲🇦"
+        case .MDL: return "🇲🇩"
+        case .MKD: return "🇲🇰"
+        case .MMK: return "🇲🇲"
+        case .MNT: return "🇲🇳"
+        case .MXN: return "🇲🇽"
+        case .MYR: return "🇲🇾"
+        case .NGN: return "🇳🇬"
+        case .NIO: return "🇳🇮"
+        case .NOK: return "🇳🇴"
+        case .NPR: return "🇳🇵"
+        case .NZD: return "🇳🇿"
+        case .OMR: return "🇴🇲"
+        case .PAB: return "🇵🇦"
+        case .PEN: return "🇵🇪"
+        case .PGK: return "🇵🇬"
+        case .PHP: return "🇵🇭"
+        case .PKR: return "🇵🇰"
+        case .PLN: return "🇵🇱"
+        case .PYG: return "🇵🇾"
+        case .QAR: return "🇶🇦"
+        case .RON: return "🇷🇴"
+        case .RSD: return "🇷🇸"
+        case .RUB: return "🇷🇺"
+        case .SAR: return "🇸🇦"
+        case .SBD: return "🇸🇧"
+        case .SEK: return "🇸🇪"
+        case .SGD: return "🇸🇬"
+        case .THB: return "🇹🇭"
+        case .TJS: return "🇹🇯"
+        case .TMT: return "🇹🇲"
+        case .TND: return "🇹🇳"
+        case .TOP: return "🇹🇴"
+        case .TRY: return "🇹🇷"
+        case .TTD: return "🇹🇹"
+        case .TWD: return "🇹🇼"
+        case .UAH: return "🇺🇦"
+        case .UYU: return "🇺🇾"
+        case .UZS: return "🇺🇿"
+        case .VES: return "🇻🇪"
+        case .VND: return "🇻🇳"
+        case .VUV: return "🇻🇺"
+        case .WST: return "🇼🇸"
+        case .XCD: return "🇦🇬" // Antigua and Barbuda (representing East Caribbean)
+        case .ZAR: return "🇿🇦"
+        }
+    }
 }

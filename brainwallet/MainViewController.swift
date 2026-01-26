@@ -2,11 +2,9 @@ import BRCore
 import MachO
 import SwiftUI
 import UIKit
-// import BrainwalletiOSPrivateGeneralPurpose
 import StoreKit
 
 class MainViewController: UIViewController, Subscriber, LoginViewControllerDelegate {
-	private let store: Store
 	private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 	private var isLoginRequired = false
     private var startHostingController: StartHostingController?
@@ -26,6 +24,8 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
     private let clickSound = "click_sound"
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
+    var newMainViewModel: NewMainViewModel?
+    private let store: Store
 	var walletManager: WalletManager? {
 		didSet {
 			guard let walletManager = walletManager else { return }
@@ -102,7 +102,12 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             return
         }
 
-        let newMVController = NewMainHostingController(store: self.store, walletManager: walletManager)
+        self.newMainViewModel = NewMainViewModel(store: store, walletManager: walletManager)
+
+        guard let newMainViewModel = self.newMainViewModel else { return }
+
+        let newMVController = NewMainHostingController(newMainViewModel: newMainViewModel,
+                                                       store: self.store, walletManager: walletManager)
         newMVController.store = store
         newMVController.walletManager = walletManager
 
@@ -116,9 +121,11 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
                    ])
             newMVController.view.alpha = 0
             newMVController.view.layoutIfNeeded()
+
         })
 
-        settingsViewController = SettingsHostingController(store: store,
+        settingsViewController = SettingsHostingController(newMainViewModel: newMainViewModel,
+                                                           store: store,
                                                            walletManager: walletManager)
         guard let settingsHC = settingsViewController else { return }
 
@@ -154,7 +161,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
             settingsHC.view.layoutIfNeeded()
         })
 
-        newMVController.mainViewModel.didTapSettingsButton = { [weak self]  in
+        newMVController.newMainViewModel.didTapSettingsButton = { [weak self]  in
             self?.activateSettingsDrawer()
         }
 

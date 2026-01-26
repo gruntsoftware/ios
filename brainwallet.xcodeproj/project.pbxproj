@@ -16,12 +16,10 @@
 		24006C2A2F0FCCA500F29F0A /* BentoSendCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24006C292F0FCCA500F29F0A /* BentoSendCompletedView.swift */; };
 		24006C2C2F0FCE5500F29F0A /* BentoSendInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24006C2B2F0FCE5500F29F0A /* BentoSendInitialView.swift */; };
 		2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */; };
-		24126DF92ECA687B00F9A4BE /* DataScannerExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DF32ECA687800F9A4BE /* DataScannerExampleView.swift */; };
 		24126DFB2ECA68AB00F9A4BE /* DataScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */; };
-		24126DFE2ECA68E900F9A4BE /* TextScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DFD2ECA68E000F9A4BE /* TextScannerView.swift */; };
-		24126E042ECA69C300F9A4BE /* TextOnlyScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E032ECA69C000F9A4BE /* TextOnlyScannerSheet.swift */; };
 		24126E062ECA741200F9A4BE /* ScanOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */; };
 		24126E082ECA7F8900F9A4BE /* ScanOverlayDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */; };
+		241283C12F2669E200638075 /* FiatCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241283BB2F2669D800638075 /* FiatCurrency.swift */; };
 		2412BA7E2DF4660300AC40BB /* ReceiveAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */; };
 		2413E4162DF6452200DFE7EE /* SecurityCenterNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2413E4152DF6451D00DFE7EE /* SecurityCenterNavigationDelegate.swift */; };
 		2415FFDF2DBD8505002A2199 /* SeedWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */; };
@@ -55,6 +53,13 @@
 		242871862DE5D2580035DE48 /* NewSyncProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871852DE5D2550035DE48 /* NewSyncProgressView.swift */; };
 		242871882DE5D36F0035DE48 /* SyncSubBentoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871872DE5D36C0035DE48 /* SyncSubBentoViewModel.swift */; };
 		2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */; };
+		242C43E92F2538E900CF6EA4 /* ReceiveStep1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242C43E52F2538E900CF6EA4 /* ReceiveStep1View.swift */; };
+		242C43EA2F2538E900CF6EA4 /* ReceiveStep2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242C43E62F2538E900CF6EA4 /* ReceiveStep2View.swift */; };
+		242C43EF2F25397300CF6EA4 /* WalkthroughStep3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242C43ED2F25397300CF6EA4 /* WalkthroughStep3View.swift */; };
+		242C43F02F25397300CF6EA4 /* WalkthroughStep1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242C43EB2F25397300CF6EA4 /* WalkthroughStep1View.swift */; };
+		242C43F12F25397300CF6EA4 /* WalkthroughStep2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242C43EC2F25397300CF6EA4 /* WalkthroughStep2View.swift */; };
+		242C43F32F253A3E00CF6EA4 /* TutorialWalkthroughBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242C43F22F253A3E00CF6EA4 /* TutorialWalkthroughBentoView.swift */; };
+		242C43F52F253A6800CF6EA4 /* TutorialWalkthroughPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242C43F42F253A6800CF6EA4 /* TutorialWalkthroughPageView.swift */; };
 		243136FB2E0AFD1700BCBED1 /* SettingsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243136FA2E0AFD1000BCBED1 /* SettingsHelpers.swift */; };
 		243136FD2E0B251D00BCBED1 /* SettingsActionToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243136FC2E0B251900BCBED1 /* SettingsActionToggleView.swift */; };
 		2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2434109B2DBC0C95001C595B /* ConfirmPasscodeView.swift */; };
@@ -80,6 +85,14 @@
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
 		24691D142EAE4D30003CDC7C /* SyncSubBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */; };
 		246A9A072DF5F54C002480CB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A9A062DF5F532002480CB /* Utility.swift */; };
+		246C3F5A2F2431B6009BC881 /* TutorialSendBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C3F592F2431B6009BC881 /* TutorialSendBentoView.swift */; };
+		246C3F5C2F2431D0009BC881 /* TutorialSendPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C3F5B2F2431D0009BC881 /* TutorialSendPageView.swift */; };
+		246C3F5E2F244E61009BC881 /* TutorialReceiveBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C3F5D2F244E61009BC881 /* TutorialReceiveBentoView.swift */; };
+		246C3F602F244E76009BC881 /* TutorialReceivePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C3F5F2F244E76009BC881 /* TutorialReceivePageView.swift */; };
+		246C429E2F24E1C2009BC881 /* SendStep1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C429D2F24E1C2009BC881 /* SendStep1View.swift */; };
+		246C42A02F24E235009BC881 /* SendStep2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C429F2F24E235009BC881 /* SendStep2View.swift */; };
+		246C42A22F24E23E009BC881 /* SendStep3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C42A12F24E23E009BC881 /* SendStep3View.swift */; };
+		246C42A62F250E96009BC881 /* CalloutTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C42A52F250E89009BC881 /* CalloutTextView.swift */; };
 		246EA1972EC8B32D00085D3A /* DataScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EA1962EC8B31900085D3A /* DataScannerView.swift */; };
 		246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; };
 		2472D5D42F1276D100DC6737 /* BentoSendStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2472D5CE2F1276C700DC6737 /* BentoSendStyle.swift */; };
@@ -221,7 +234,6 @@
 		C312D3012D7DC27700BB97A4 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1CC2D7DC27700BB97A4 /* WelcomeViewController.swift */; };
 		C312D3072D7DC27700BB97A4 /* CGRect+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D06E2D7DC27700BB97A4 /* CGRect+Additions.swift */; };
 		C312D30B2D7DC27700BB97A4 /* StartWipeWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1CA2D7DC27700BB97A4 /* StartWipeWalletViewController.swift */; };
-		C312D3102D7DC27700BB97A4 /* UpdatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F82D7DC27700BB97A4 /* UpdatingLabel.swift */; };
 		C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0872D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift */; };
 		C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */; };
 		C312D3132D7DC27700BB97A4 /* UserDefaultsUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C62D7DC27700BB97A4 /* UserDefaultsUpdater.swift */; };
@@ -293,7 +305,6 @@
 		C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */; };
 		C312D3B22D7DC27700BB97A4 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D29A2D7DC27700BB97A4 /* ScanViewController.swift */; };
 		C312D3B32D7DC27700BB97A4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C62D7DC27700BB97A4 /* SettingsViewController.swift */; };
-		C312D3B42D7DC27700BB97A4 /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B72D7DC27700BB97A4 /* AmountViewController.swift */; };
 		C312D3B52D7DC27700BB97A4 /* UpdatePinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1AD2D7DC27700BB97A4 /* UpdatePinViewController.swift */; };
 		C312D3B62D7DC27700BB97A4 /* PaymentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2892D7DC27700BB97A4 /* PaymentProtocol.swift */; };
 		C312D3B72D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0832D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift */; };
@@ -308,7 +319,6 @@
 		C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2862D7DC27700BB97A4 /* PartnerData.swift */; };
 		C312D3CD2D7DC27700BB97A4 /* AlertFailureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1FE2D7DC27700BB97A4 /* AlertFailureView.swift */; };
 		C312D3CE2D7DC27700BB97A4 /* TestnetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2B82D7DC27700BB97A4 /* TestnetData.swift */; };
-		C312D3D12D7DC27700BB97A4 /* RequestAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2972D7DC27700BB97A4 /* RequestAmountViewController.swift */; };
 		C312D3D22D7DC27700BB97A4 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D25D2D7DC27700BB97A4 /* LaunchView.swift */; };
 		C312D3D42D7DC27700BB97A4 /* BuyTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */; };
 		C312D3D52D7DC27700BB97A4 /* UIScreen+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D07E2D7DC27700BB97A4 /* UIScreen+Additions.swift */; };
@@ -362,7 +372,6 @@
 		C312D4412D7DC27700BB97A4 /* UIButton+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0772D7DC27700BB97A4 /* UIButton+BRWAdditions.swift */; };
 		C312D4422D7DC27700BB97A4 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C92D7DC27700BB97A4 /* WalletManager.swift */; };
 		C312D4432D7DC27700BB97A4 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1A92D7DC27700BB97A4 /* ReceiveViewController.swift */; };
-		C312D4452D7DC27700BB97A4 /* BlinkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1DE2D7DC27700BB97A4 /* BlinkingView.swift */; };
 		C312D4492D7DC27700BB97A4 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1DD2D7DC27700BB97A4 /* AlertView.swift */; };
 		C312D44E2D7DC27700BB97A4 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2AE2D7DC27700BB97A4 /* StartView.swift */; };
 		C312D44F2D7DC27700BB97A4 /* LWActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D27D2D7DC27700BB97A4 /* LWActivityIndicator.swift */; };
@@ -513,12 +522,10 @@
 		24006C292F0FCCA500F29F0A /* BentoSendCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoSendCompletedView.swift; sourceTree = "<group>"; };
 		24006C2B2F0FCE5500F29F0A /* BentoSendInitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoSendInitialView.swift; sourceTree = "<group>"; };
 		2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenFooterView.swift; sourceTree = "<group>"; };
-		24126DF32ECA687800F9A4BE /* DataScannerExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerExampleView.swift; sourceTree = "<group>"; };
 		24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerSheet.swift; sourceTree = "<group>"; };
-		24126DFD2ECA68E000F9A4BE /* TextScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextScannerView.swift; sourceTree = "<group>"; };
-		24126E032ECA69C000F9A4BE /* TextOnlyScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOnlyScannerSheet.swift; sourceTree = "<group>"; };
 		24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayView.swift; sourceTree = "<group>"; };
 		24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayDataView.swift; sourceTree = "<group>"; };
+		241283BB2F2669D800638075 /* FiatCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatCurrency.swift; sourceTree = "<group>"; };
 		2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveAddressView.swift; sourceTree = "<group>"; };
 		2413E4152DF6451D00DFE7EE /* SecurityCenterNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCenterNavigationDelegate.swift; sourceTree = "<group>"; };
 		2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordsGridView.swift; sourceTree = "<group>"; };
@@ -556,6 +563,13 @@
 		2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncHostingController.swift; sourceTree = "<group>"; };
 		24295E3B2E341F1C00A76776 /* BrainwalletUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainwalletUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24295E9B2E3428CA00A76776 /* BrainwalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainwalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		242C43E52F2538E900CF6EA4 /* ReceiveStep1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveStep1View.swift; sourceTree = "<group>"; };
+		242C43E62F2538E900CF6EA4 /* ReceiveStep2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveStep2View.swift; sourceTree = "<group>"; };
+		242C43EB2F25397300CF6EA4 /* WalkthroughStep1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughStep1View.swift; sourceTree = "<group>"; };
+		242C43EC2F25397300CF6EA4 /* WalkthroughStep2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughStep2View.swift; sourceTree = "<group>"; };
+		242C43ED2F25397300CF6EA4 /* WalkthroughStep3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughStep3View.swift; sourceTree = "<group>"; };
+		242C43F22F253A3E00CF6EA4 /* TutorialWalkthroughBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialWalkthroughBentoView.swift; sourceTree = "<group>"; };
+		242C43F42F253A6800CF6EA4 /* TutorialWalkthroughPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialWalkthroughPageView.swift; sourceTree = "<group>"; };
 		242E6CDE2E095AF4002C579A /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		243136FA2E0AFD1000BCBED1 /* SettingsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHelpers.swift; sourceTree = "<group>"; };
 		243136FC2E0B251900BCBED1 /* SettingsActionToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionToggleView.swift; sourceTree = "<group>"; };
@@ -577,6 +591,14 @@
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
 		24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSubBentoView.swift; sourceTree = "<group>"; };
 		246A9A062DF5F532002480CB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		246C3F592F2431B6009BC881 /* TutorialSendBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSendBentoView.swift; sourceTree = "<group>"; };
+		246C3F5B2F2431D0009BC881 /* TutorialSendPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSendPageView.swift; sourceTree = "<group>"; };
+		246C3F5D2F244E61009BC881 /* TutorialReceiveBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialReceiveBentoView.swift; sourceTree = "<group>"; };
+		246C3F5F2F244E76009BC881 /* TutorialReceivePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialReceivePageView.swift; sourceTree = "<group>"; };
+		246C429D2F24E1C2009BC881 /* SendStep1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendStep1View.swift; sourceTree = "<group>"; };
+		246C429F2F24E235009BC881 /* SendStep2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendStep2View.swift; sourceTree = "<group>"; };
+		246C42A12F24E23E009BC881 /* SendStep3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendStep3View.swift; sourceTree = "<group>"; };
+		246C42A52F250E89009BC881 /* CalloutTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutTextView.swift; sourceTree = "<group>"; };
 		246EA1962EC8B31900085D3A /* DataScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerView.swift; sourceTree = "<group>"; };
 		246F97832E846218001923A6 /* private-general-purpose.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "private-general-purpose.xcodeproj"; path = "Private/general-purpose/private-general-purpose.xcodeproj"; sourceTree = "<group>"; };
 		2472D5CE2F1276C700DC6737 /* BentoSendStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoSendStyle.swift; sourceTree = "<group>"; };
@@ -895,7 +917,6 @@
 		C312D1B32D7DC27700BB97A4 /* PinTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinTransitioningDelegate.swift; sourceTree = "<group>"; };
 		C312D1B42D7DC27700BB97A4 /* PresentModalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentModalAnimator.swift; sourceTree = "<group>"; };
 		C312D1B62D7DC27700BB97A4 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		C312D1B72D7DC27700BB97A4 /* AmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountViewController.swift; sourceTree = "<group>"; };
 		C312D1B82D7DC27700BB97A4 /* BiometricsSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsSettingsViewController.swift; sourceTree = "<group>"; };
 		C312D1B92D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsSpendingLimitViewController.swift; sourceTree = "<group>"; };
 		C312D1BA2D7DC27700BB97A4 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -922,7 +943,6 @@
 		C312D1D62D7DC27700BB97A4 /* PinPadCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPadCells.swift; sourceTree = "<group>"; };
 		C312D1DC2D7DC27700BB97A4 /* AboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
 		C312D1DD2D7DC27700BB97A4 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
-		C312D1DE2D7DC27700BB97A4 /* BlinkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingView.swift; sourceTree = "<group>"; };
 		C312D1DF2D7DC27700BB97A4 /* CameraGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraGuideView.swift; sourceTree = "<group>"; };
 		C312D1E02D7DC27700BB97A4 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		C312D1E12D7DC27700BB97A4 /* ConfirmPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPhrase.swift; sourceTree = "<group>"; };
@@ -946,7 +966,6 @@
 		C312D1F42D7DC27700BB97A4 /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 		C312D1F52D7DC27700BB97A4 /* ShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
 		C312D1F72D7DC27700BB97A4 /* UnEditableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnEditableTextView.swift; sourceTree = "<group>"; };
-		C312D1F82D7DC27700BB97A4 /* UpdatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatingLabel.swift; sourceTree = "<group>"; };
 		C312D1F92D7DC27700BB97A4 /* WalletDisabledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDisabledView.swift; sourceTree = "<group>"; };
 		C312D1FB2D7DC27700BB97A4 /* ExchangeUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeUpdater.swift; sourceTree = "<group>"; };
 		C312D1FD2D7DC27700BB97A4 /* AddressFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFieldView.swift; sourceTree = "<group>"; };
@@ -1011,7 +1030,6 @@
 		C312D2922D7DC27700BB97A4 /* ReceiveLTCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveLTCViewController.swift; sourceTree = "<group>"; };
 		C312D2932D7DC27700BB97A4 /* RecoverWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletView.swift; sourceTree = "<group>"; };
 		C312D2962D7DC27700BB97A4 /* RemoteConfigHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigHelper.swift; sourceTree = "<group>"; };
-		C312D2972D7DC27700BB97A4 /* RequestAmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAmountViewController.swift; sourceTree = "<group>"; };
 		C312D2982D7DC27700BB97A4 /* RetryTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryTimer.swift; sourceTree = "<group>"; };
 		C312D2992D7DC27700BB97A4 /* SafariServices+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafariServices+Extension.swift"; sourceTree = "<group>"; };
 		C312D29A2D7DC27700BB97A4 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
@@ -1151,9 +1169,6 @@
 			children = (
 				24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */,
 				24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */,
-				24126E032ECA69C000F9A4BE /* TextOnlyScannerSheet.swift */,
-				24126DFD2ECA68E000F9A4BE /* TextScannerView.swift */,
-				24126DF32ECA687800F9A4BE /* DataScannerExampleView.swift */,
 				246EA1962EC8B31900085D3A /* DataScannerView.swift */,
 				24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */,
 			);
@@ -1314,9 +1329,20 @@
 			path = "Transaction Bentos";
 			sourceTree = "<group>";
 		};
+		242C43EE2F25397300CF6EA4 /* WalkthroughSteps */ = {
+			isa = PBXGroup;
+			children = (
+				242C43EB2F25397300CF6EA4 /* WalkthroughStep1View.swift */,
+				242C43EC2F25397300CF6EA4 /* WalkthroughStep2View.swift */,
+				242C43ED2F25397300CF6EA4 /* WalkthroughStep3View.swift */,
+			);
+			path = WalkthroughSteps;
+			sourceTree = "<group>";
+		};
 		244A8D912DE84C710024D356 /* Brainwallet Custom Shapes */ = {
 			isa = PBXGroup;
 			children = (
+				246C42A52F250E89009BC881 /* CalloutTextView.swift */,
 				243B88812F1112DC00A8DB69 /* LeaderEllipseView.swift */,
 				244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */,
 			);
@@ -1339,6 +1365,41 @@
 				C312D2012D7DC27700BB97A4 /* ApplicationController.swift */,
 			);
 			path = "App Launch Classes";
+			sourceTree = "<group>";
+		};
+		246C3F4F2F2430DF009BC881 /* Tutorial Classes */ = {
+			isa = PBXGroup;
+			children = (
+				246C42A72F25356E009BC881 /* ReceiveSteps */,
+				242C43EE2F25397300CF6EA4 /* WalkthroughSteps */,
+				246C42972F24E18A009BC881 /* SendSteps */,
+				246C3F592F2431B6009BC881 /* TutorialSendBentoView.swift */,
+				242C43F22F253A3E00CF6EA4 /* TutorialWalkthroughBentoView.swift */,
+				246C3F5D2F244E61009BC881 /* TutorialReceiveBentoView.swift */,
+				246C3F5B2F2431D0009BC881 /* TutorialSendPageView.swift */,
+				246C3F5F2F244E76009BC881 /* TutorialReceivePageView.swift */,
+				242C43F42F253A6800CF6EA4 /* TutorialWalkthroughPageView.swift */,
+			);
+			path = "Tutorial Classes";
+			sourceTree = "<group>";
+		};
+		246C42972F24E18A009BC881 /* SendSteps */ = {
+			isa = PBXGroup;
+			children = (
+				246C429D2F24E1C2009BC881 /* SendStep1View.swift */,
+				246C429F2F24E235009BC881 /* SendStep2View.swift */,
+				246C42A12F24E23E009BC881 /* SendStep3View.swift */,
+			);
+			path = SendSteps;
+			sourceTree = "<group>";
+		};
+		246C42A72F25356E009BC881 /* ReceiveSteps */ = {
+			isa = PBXGroup;
+			children = (
+				242C43E52F2538E900CF6EA4 /* ReceiveStep1View.swift */,
+				242C43E62F2538E900CF6EA4 /* ReceiveStep2View.swift */,
+			);
+			path = ReceiveSteps;
 			sourceTree = "<group>";
 		};
 		246F97842E846218001923A6 /* Products */ = {
@@ -1987,6 +2048,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				246C3F4F2F2430DF009BC881 /* Tutorial Classes */,
 				24E6675F2F167A4B00909157 /* New Send Classes */,
 				247A838B2EA00CEB00B5DFD8 /* Bento Effects  */,
 				2457DC802EB63A3000688B9A /* Export Classes */,
@@ -2038,7 +2100,6 @@
 				C312D0832D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift */,
 				C312D0852D7DC27700BB97A4 /* UIViewController+Alerts.swift */,
 				C312D1B62D7DC27700BB97A4 /* AboutViewController.swift */,
-				C312D1B72D7DC27700BB97A4 /* AmountViewController.swift */,
 				C312D1B82D7DC27700BB97A4 /* BiometricsSettingsViewController.swift */,
 				C312D1B92D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift */,
 				C312D1BA2D7DC27700BB97A4 /* ConfirmationViewController.swift */,
@@ -2069,7 +2130,6 @@
 				C312D1D12D7DC27700BB97A4 /* TransactionDirection.swift */,
 				C312D1DC2D7DC27700BB97A4 /* AboutCell.swift */,
 				C312D1DD2D7DC27700BB97A4 /* AlertView.swift */,
-				C312D1DE2D7DC27700BB97A4 /* BlinkingView.swift */,
 				C312D1DF2D7DC27700BB97A4 /* CameraGuideView.swift */,
 				C312D1E02D7DC27700BB97A4 /* Circle.swift */,
 				C312D1E12D7DC27700BB97A4 /* ConfirmPhrase.swift */,
@@ -2094,7 +2154,6 @@
 				C312D1F42D7DC27700BB97A4 /* SeparatorCell.swift */,
 				C312D1F52D7DC27700BB97A4 /* ShadowButton.swift */,
 				C312D1F72D7DC27700BB97A4 /* UnEditableTextView.swift */,
-				C312D1F82D7DC27700BB97A4 /* UpdatingLabel.swift */,
 				C312D1F92D7DC27700BB97A4 /* WalletDisabledView.swift */,
 				C312D0AC2D7DC27700BB97A4 /* ReduxState.swift */,
 				C312D1C62D7DC27700BB97A4 /* SettingsViewController.swift */,
@@ -2121,6 +2180,7 @@
 				C312D23D2D7DC27700BB97A4 /* CreateStepView.swift */,
 				C312D23E2D7DC27700BB97A4 /* CreateWalletView.swift */,
 				C312D23F2D7DC27700BB97A4 /* Currency.swift */,
+				241283BB2F2669D800638075 /* FiatCurrency.swift */,
 				C312D2402D7DC27700BB97A4 /* DataValidation.swift */,
 				C312D2422D7DC27700BB97A4 /* EmailValidation.swift */,
 				C312D2432D7DC27700BB97A4 /* EmptyTableViewCell.swift */,
@@ -2165,7 +2225,6 @@
 				C312D2922D7DC27700BB97A4 /* ReceiveLTCViewController.swift */,
 				C312D2932D7DC27700BB97A4 /* RecoverWalletView.swift */,
 				C312D2962D7DC27700BB97A4 /* RemoteConfigHelper.swift */,
-				C312D2972D7DC27700BB97A4 /* RequestAmountViewController.swift */,
 				C312D2982D7DC27700BB97A4 /* RetryTimer.swift */,
 				C312D29A2D7DC27700BB97A4 /* ScanViewController.swift */,
 				C312D29B2D7DC27700BB97A4 /* SeedPhraseStepView.swift */,
@@ -2690,6 +2749,8 @@
 				2476AE342E27B44B0065CE22 /* InputWordsGridView.swift in Sources */,
 				245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */,
 				C312D2CF2D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift in Sources */,
+				242C43E92F2538E900CF6EA4 /* ReceiveStep1View.swift in Sources */,
+				242C43EA2F2538E900CF6EA4 /* ReceiveStep2View.swift in Sources */,
 				C312D2D02D7DC27700BB97A4 /* ReachabilityMonitor.swift in Sources */,
 				C312D2D12D7DC27700BB97A4 /* CopyButtonView.swift in Sources */,
 				247A7D0F2E951D10000DF8C0 /* LTCPriceBentoView.swift in Sources */,
@@ -2698,7 +2759,6 @@
 				C312D2D32D7DC27700BB97A4 /* ExchangeUpdater.swift in Sources */,
 				C312D2D42D7DC27700BB97A4 /* Currency.swift in Sources */,
 				24126E062ECA741200F9A4BE /* ScanOverlayView.swift in Sources */,
-				24126DF92ECA687B00F9A4BE /* DataScannerExampleView.swift in Sources */,
 				2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */,
 				C312D2D62D7DC27700BB97A4 /* RecoverWalletView.swift in Sources */,
 				C312D2D72D7DC27700BB97A4 /* Date+Additions.swift in Sources */,
@@ -2719,8 +2779,10 @@
 				C312D2EA2D7DC27700BB97A4 /* ForgotView.swift in Sources */,
 				C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */,
 				C312D2ED2D7DC27700BB97A4 /* LoginViewModel.swift in Sources */,
+				242C43EF2F25397300CF6EA4 /* WalkthroughStep3View.swift in Sources */,
 				C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */,
 				C312D2F72D7DC27700BB97A4 /* ArticleIds.swift in Sources */,
+				246C3F5E2F244E61009BC881 /* TutorialReceiveBentoView.swift in Sources */,
 				242871882DE5D36F0035DE48 /* SyncSubBentoViewModel.swift in Sources */,
 				C312D2F82D7DC27700BB97A4 /* BiometricsSettingsViewController.swift in Sources */,
 				2476AE362E2802AF0065CE22 /* InputSeedWordView.swift in Sources */,
@@ -2735,7 +2797,7 @@
 				C312D3072D7DC27700BB97A4 /* CGRect+Additions.swift in Sources */,
 				247A83932EA034BC00B5DFD8 /* Renderer.swift in Sources */,
 				C312D30B2D7DC27700BB97A4 /* StartWipeWalletViewController.swift in Sources */,
-				C312D3102D7DC27700BB97A4 /* UpdatingLabel.swift in Sources */,
+				246C3F5A2F2431B6009BC881 /* TutorialSendBentoView.swift in Sources */,
 				C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */,
 				C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */,
 				C312D3132D7DC27700BB97A4 /* UserDefaultsUpdater.swift in Sources */,
@@ -2770,12 +2832,14 @@
 				24DB05EE2E06C34A00C57FE9 /* SettingsSpacerView.swift in Sources */,
 				C312D3452D7DC27700BB97A4 /* EmailValidation.swift in Sources */,
 				C312D3472D7DC27700BB97A4 /* WalletManager+Auth.swift in Sources */,
+				246C429E2F24E1C2009BC881 /* SendStep1View.swift in Sources */,
 				24F5BD582E04711E0010D340 /* CurrencyPickerView.swift in Sources */,
 				C312D3482D7DC27700BB97A4 /* FeeManager.swift in Sources */,
 				C312D3492D7DC27700BB97A4 /* StartNavigationDelegate.swift in Sources */,
 				C312D34C2D7DC27700BB97A4 /* AssociatedObject.swift in Sources */,
 				24DB05E62E06059000C57FE9 /* SoundsHelper.swift in Sources */,
 				C312D34D2D7DC27700BB97A4 /* StartViewController.swift in Sources */,
+				242C43F52F253A6800CF6EA4 /* TutorialWalkthroughPageView.swift in Sources */,
 				C312D34F2D7DC27700BB97A4 /* DispatchQueue+Additions.swift in Sources */,
 				C312D3512D7DC27700BB97A4 /* DataValidation.swift in Sources */,
 				24126E082ECA7F8900F9A4BE /* ScanOverlayDataView.swift in Sources */,
@@ -2823,12 +2887,12 @@
 				2416CE7A2DA90D0D00FFBD10 /* BRKeyExtension.swift in Sources */,
 				2416CE7C2DA90D0D00FFBD10 /* BRCalculationExtension.swift in Sources */,
 				C312D36E2D7DC27700BB97A4 /* PinPadViewController.swift in Sources */,
+				246C3F602F244E76009BC881 /* TutorialReceivePageView.swift in Sources */,
 				C312D36F2D7DC27700BB97A4 /* EnterPhraseCell.swift in Sources */,
 				24006C262F0FCC4B00F29F0A /* BentoSendModalView.swift in Sources */,
 				C312D3712D7DC27700BB97A4 /* SeedViewModel.swift in Sources */,
 				C32369FF2D7DD431007039A1 /* LoginViewController.swift in Sources */,
 				24E667632F16CDB400909157 /* SendPinLockModel.swift in Sources */,
-				24126E042ECA69C300F9A4BE /* TextOnlyScannerSheet.swift in Sources */,
 				24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */,
 				C312D3732D7DC27700BB97A4 /* AboutCell.swift in Sources */,
 				243136FD2E0B251D00BCBED1 /* SettingsActionToggleView.swift in Sources */,
@@ -2853,20 +2917,22 @@
 				C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */,
 				C312D3902D7DC27700BB97A4 /* GradientSwitch.swift in Sources */,
 				24E7591E2E0B407F0065BA02 /* SettingsResetPINView.swift in Sources */,
+				246C42A62F250E96009BC881 /* CalloutTextView.swift in Sources */,
 				C312D3932D7DC27700BB97A4 /* EnterPhraseHostingController.swift in Sources */,
 				24F5BD4A2E0442D00010D340 /* SettingsFooterView.swift in Sources */,
 				24572C762F1E30C0009C72F0 /* BentoNoSendModalView.swift in Sources */,
 				C312D3962D7DC27700BB97A4 /* LAContext+Extensions.swift in Sources */,
 				24006C2A2F0FCCA500F29F0A /* BentoSendCompletedView.swift in Sources */,
+				246C42A22F24E23E009BC881 /* SendStep3View.swift in Sources */,
 				C312D39A2D7DC27700BB97A4 /* PinDigitView.swift in Sources */,
 				C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */,
 				C312D39D2D7DC27700BB97A4 /* PromptTableViewCell.swift in Sources */,
 				241B7CDF2E68CA3F00B18679 /* ExportButtonViewModel.swift in Sources */,
 				C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */,
 				24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */,
+				242C43F32F253A3E00CF6EA4 /* TutorialWalkthroughBentoView.swift in Sources */,
 				C312D3B22D7DC27700BB97A4 /* ScanViewController.swift in Sources */,
 				C312D3B32D7DC27700BB97A4 /* SettingsViewController.swift in Sources */,
-				C312D3B42D7DC27700BB97A4 /* AmountViewController.swift in Sources */,
 				C312D3B52D7DC27700BB97A4 /* UpdatePinViewController.swift in Sources */,
 				C312D3B62D7DC27700BB97A4 /* PaymentProtocol.swift in Sources */,
 				24B0653D2DC6476A00B5E000 /* BentoSendPrepView.swift in Sources */,
@@ -2886,13 +2952,14 @@
 				C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */,
 				C312D3CD2D7DC27700BB97A4 /* AlertFailureView.swift in Sources */,
 				C312D3CE2D7DC27700BB97A4 /* TestnetData.swift in Sources */,
-				C312D3D12D7DC27700BB97A4 /* RequestAmountViewController.swift in Sources */,
+				241283C12F2669E200638075 /* FiatCurrency.swift in Sources */,
 				C312D3D22D7DC27700BB97A4 /* LaunchView.swift in Sources */,
 				C312D3D42D7DC27700BB97A4 /* BuyTileView.swift in Sources */,
 				C312D3D52D7DC27700BB97A4 /* UIScreen+Additions.swift in Sources */,
 				C312D3D82D7DC27700BB97A4 /* UITableView+Additions.swift in Sources */,
 				24006C2C2F0FCE5500F29F0A /* BentoSendInitialView.swift in Sources */,
 				C312D3DA2D7DC27700BB97A4 /* CameraGuideView.swift in Sources */,
+				246C42A02F24E235009BC881 /* SendStep2View.swift in Sources */,
 				2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */,
 				C312D3DC2D7DC27700BB97A4 /* ConfirmPhrase.swift in Sources */,
 				C312D3DD2D7DC27700BB97A4 /* ReceiveLTCViewController.swift in Sources */,
@@ -2911,7 +2978,6 @@
 				C312D3F72D7DC27700BB97A4 /* UnEditableTextView.swift in Sources */,
 				2457DDE82EB7EC4400688B9A /* CoreModeView.swift in Sources */,
 				247A7D132E95286E000DF8C0 /* GameHubBentoView.swift in Sources */,
-				24126DFE2ECA68E900F9A4BE /* TextScannerView.swift in Sources */,
 				C312D3FC2D7DC27700BB97A4 /* UIView+InitAdditions.swift in Sources */,
 				C312D3FD2D7DC27700BB97A4 /* LocaleChangeViewModel.swift in Sources */,
 				C312D3FE2D7DC27700BB97A4 /* ReduxState.swift in Sources */,
@@ -2932,11 +2998,13 @@
 				247A83952EA034FE00B5DFD8 /* GridWaveContentView.swift in Sources */,
 				24126DFB2ECA68AB00F9A4BE /* DataScannerSheet.swift in Sources */,
 				C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */,
+				246C3F5C2F2431D0009BC881 /* TutorialSendPageView.swift in Sources */,
 				C312D40F2D7DC27700BB97A4 /* Environment.swift in Sources */,
 				C312D4102D7DC27700BB97A4 /* CustomTitleView.swift in Sources */,
 				2480B5832DF2016300653403 /* PromptHostingCell.swift in Sources */,
 				C312D4122D7DC27700BB97A4 /* SecurityCenterViewController.swift in Sources */,
 				C312D4152D7DC27700BB97A4 /* VerifyPinViewController.swift in Sources */,
+				242C43F02F25397300CF6EA4 /* WalkthroughStep1View.swift in Sources */,
 				244A8D932DE84C890024D356 /* BrainwalletShapes.swift in Sources */,
 				C312D4192D7DC27700BB97A4 /* MoonpayHelper.swift in Sources */,
 				C312D41C2D7DC27700BB97A4 /* CreateStepTabView.swift in Sources */,
@@ -2954,6 +3022,7 @@
 				24F5BD4E2E0452670010D340 /* SettingsActionLockView.swift in Sources */,
 				24FBB86A2E035E10002B5F84 /* SettingsHostingController.swift in Sources */,
 				24AAB31F2DE79EE300F0C18C /* NewReceiveViewModel.swift in Sources */,
+				242C43F12F25397300CF6EA4 /* WalkthroughStep2View.swift in Sources */,
 				24D7AE582DCFF72D0078252E /* NewConfirmViewModel.swift in Sources */,
 				C312D4332D7DC27700BB97A4 /* RemoteConfigHelper.swift in Sources */,
 				C312D4342D7DC27700BB97A4 /* TextView+Extension.swift in Sources */,
@@ -2968,7 +3037,6 @@
 				24EE3F1F2DCF5A560017472B /* TopUpSetAmountView.swift in Sources */,
 				C312D4422D7DC27700BB97A4 /* WalletManager.swift in Sources */,
 				C312D4432D7DC27700BB97A4 /* ReceiveViewController.swift in Sources */,
-				C312D4452D7DC27700BB97A4 /* BlinkingView.swift in Sources */,
 				C312D4492D7DC27700BB97A4 /* AlertView.swift in Sources */,
 				C312D44E2D7DC27700BB97A4 /* StartView.swift in Sources */,
 				C312D44F2D7DC27700BB97A4 /* LWActivityIndicator.swift in Sources */,
@@ -3288,7 +3356,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2601230.1;
+				CURRENT_PROJECT_VERSION = 2601250.4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3480,7 +3548,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2601230.1;
+				CURRENT_PROJECT_VERSION = 2601250.4;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;

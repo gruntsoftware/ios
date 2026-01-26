@@ -114,7 +114,6 @@ struct GridWaveContentView: View {
             .onChange(of: userPrefersDarkTheme) { _,newValue in
                 colorStyle = newValue ? .darkStyle : .lightStyle
             }
-
     }
 }
 

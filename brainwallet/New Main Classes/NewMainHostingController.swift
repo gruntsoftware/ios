@@ -11,20 +11,18 @@ import BrainwalletiOSPrivateGeneralPurpose
 
 class NewMainHostingController: UIHostingController<CoreModeView> {
 
-    var store: Store?
+    var store: Store
+    var walletManager: WalletManager
+    var newMainViewModel: NewMainViewModel
 
-    var walletManager: WalletManager?
-
-    var mainViewModel: NewMainViewModel
-
-    init(store: Store, walletManager: WalletManager) {
+    init(newMainViewModel: NewMainViewModel,
+         store: Store,
+         walletManager: WalletManager) {
         self.store = store
         self.walletManager = walletManager
-        /// Migrate CanUserBuy when ready
-        ///
-        let receiveViewModel = NewReceiveViewModel(store: store, walletManager: walletManager, canUserBuy: false)
-        mainViewModel = NewMainViewModel(store: store, walletManager: walletManager)
-        super.init(rootView: CoreModeView(mainViewModel: mainViewModel, receiveViewModel: receiveViewModel))
+        self.newMainViewModel = newMainViewModel
+        let receiveViewModel = NewReceiveViewModel(store: self.store, walletManager: self.walletManager, canUserBuy: false)
+        super.init(rootView: CoreModeView(mainViewModel: self.newMainViewModel, receiveViewModel: receiveViewModel))
     }
 
     // MARK: - Private

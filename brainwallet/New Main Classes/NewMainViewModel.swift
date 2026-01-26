@@ -206,7 +206,10 @@ class NewMainViewModel: ObservableObject, Subscriber {
                     }
                     if error == nil && !rates.isEmpty {
                         self.currencyCode = "\(currentRate.code)/LTC"
+                        self.rate = currentRate
                         self.currentFiatValue = "\(currentRate.rate.description)"
+
+                        debugPrint("::: currentRate.rate.description \(currentRate.rate.description)")
                     }
 
                     self.store?.perform(action: ExchangeRates.setRate(currentRate))
@@ -223,6 +226,7 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
     deinit {
         NotificationCenter.default.removeObserver(self, name: .languageChangedNotification, object: nil)
+        updateTimer?.invalidate()
         self.updateTimer = nil
     }
 
@@ -417,6 +421,8 @@ class NewMainViewModel: ObservableObject, Subscriber {
             // Set Preferred Currency
             UserDefaults.userPreferredCurrencyCode = code
             store.perform(action: UserPreferredCurrency.setDefault(code))
+
+            // Set Exchange Rate
         }
     }
 
