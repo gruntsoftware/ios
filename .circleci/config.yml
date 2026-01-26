@@ -10,7 +10,7 @@ jobs:
   build-unit-tests-per-push:
     macos:
       xcode: 16.4.0
-    resource_class: macos.m4pro.medium
+    resource_class: macos.m1.medium.gen1
     working_directory: ~/ios/
     environment:
       HOMEBREW_NO_AUTO_UPDATE: 1
@@ -211,7 +211,7 @@ jobs:
   daily-maintenance:
     macos:
       xcode: 16.4.0
-    resource_class: macos.m4pro.medium
+    resource_class: macos.m1.medium.gen1
     working_directory: ~/ios/
     environment:
       HOMEBREW_NO_AUTO_UPDATE: 1
@@ -411,7 +411,7 @@ jobs:
   build-uitest:
     macos:
       xcode: 16.4.0
-    resource_class: macos.m4pro.medium
+    resource_class: macos.m1.medium.gen1
     working_directory: ~/ios/
     environment:
       HOMEBREW_NO_AUTO_UPDATE: 1
