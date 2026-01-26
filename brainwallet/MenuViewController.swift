@@ -1,6 +1,6 @@
 import UIKit
 
-class MenuViewController: UIViewController, Trackable {
+class MenuViewController: UIViewController {
 	// MARK: - Public
 
 	var didTapSecurity: (() -> Void)?

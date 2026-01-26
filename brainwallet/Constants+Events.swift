@@ -7,6 +7,13 @@ let bigButtonCornerRadius = 15.0
 let kPinDigitConstant = 4
 let kSeedPhraseLength: Int = 12
 let kTransactionsFooterHeight: CGFloat = 110
+let bentoCornerRadius: CGFloat = 14.0
+let brainwalletNavBarHeight: CGFloat = 90.0
+let calloutHeight: CGFloat = 108.0
+let balanceGameBentoHeight: CGFloat = 135.0
+let transactionsBentoHeight: CGFloat = 85.0
+let iconSize: CGFloat = 20.0
+
 struct BrainwalletSupport {
 	static let dashboard = "https://brainwallet.co/support.html"
 }
@@ -18,6 +25,12 @@ struct BrainwalletAppStore {
 
 struct BrainwalletSocials {
     static let linktree = "https://linktr.ee/brainwallet"
+}
+
+struct ExplorerURLs {
+    static let blockexplorer = "https://blockexplorer.one/litecoin/mainnet/tx/"
+    static let litecoinspace =  "https://litecoinspace.org/tx/"
+    static let blockchair = "https://blockchair.com/litecoin/transaction/"
 }
 
 struct APIServer {
@@ -52,6 +65,7 @@ struct C {
 	static let secondsInDay: TimeInterval = 86400
 	static let maxMoney: UInt64 = 84_000_000 * 100_000_000
 	static let satoshis: UInt64 = 100_000_000
+    static let litoshis: UInt64 = 100_000_000
 	static let walletQueue = "com.gruntsoftware.brainwalletqueue"
 	static let ltcCurrencyCode = "LTC"
 	static let null = "(null)"

@@ -32,7 +32,7 @@ struct SimpleHeaderView: View {
 
             let width = geometry.size.width
             ZStack {
-                BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
+                BrainwalletColor.chili.edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
                         Button(action: {
@@ -115,13 +115,9 @@ struct SimpleHeaderView: View {
                     .frame(maxWidth: .infinity)
                     .padding([.leading, .trailing], 16.0)
                     .padding(.top, 16.0)
-                    HStack {
-                        NewTransactionsView(viewModel: newMainViewModel)
-                    }
-                    .background(.purple)
                 }
             }
-            .frame(height: globalHeaderHeight, alignment: .center)
+            .frame(height: 180, alignment: .center)
 
         }
     }

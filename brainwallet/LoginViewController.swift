@@ -8,7 +8,7 @@ protocol LoginViewControllerDelegate {
 	func didUnlockLogin()
 }
 
-class LoginViewController: UIViewController, Subscriber, Trackable {
+class LoginViewController: UIViewController, Subscriber {
 
 	var walletManager: WalletManager?
 	var shouldSelfDismiss = false
@@ -190,7 +190,6 @@ class LoginViewController: UIViewController, Subscriber, Trackable {
 	}
 
 	@objc private func unlock() {
-		saveEvent("login.unlocked")
 		delegate?.didUnlockLogin()
 		unlockTimer = nil
 	}

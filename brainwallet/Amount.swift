@@ -43,8 +43,8 @@ struct Amount: Equatable {
 		return string
 	}
 
-	func string(isLtcSwapped: Bool) -> String {
-		return isLtcSwapped ? localCurrency : bits
+	func string(isLTCValueShown: Bool) -> String {
+		return isLTCValueShown ? localCurrency : bits
 	}
 
 	var ltcFormat: NumberFormatter {
@@ -98,7 +98,7 @@ struct DisplayAmount {
 	}
 
 	var combinedDescription: String {
-		return state.isLtcSwapped ? "\(fiatDescription) (\(litecoinDescription))" : "\(litecoinDescription) (\(fiatDescription))"
+		return state.isLTCValueShown ? "\(fiatDescription) (\(litecoinDescription))" : "\(litecoinDescription) (\(fiatDescription))"
 	}
 
 	private var fiatDescription: String {

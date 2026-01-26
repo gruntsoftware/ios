@@ -11,7 +11,7 @@ import SwiftUI
 struct NewSyncProgressView: View {
 
     @ObservedObject
-    var viewModel: NewSyncProgressViewModel
+    var viewModel: SyncSubBentoViewModel
 
     @State
     private var headerText  = ""
@@ -31,7 +31,7 @@ struct NewSyncProgressView: View {
     private let progressBarHeight: CGFloat = 14.0
     private let progressIconSize: CGFloat = 16.0
 
-    init(viewModel: NewSyncProgressViewModel) {
+    init(viewModel: SyncSubBentoViewModel) {
         self.viewModel = viewModel
     }
     var body: some View {
@@ -56,7 +56,7 @@ struct NewSyncProgressView: View {
                                 .font(.caption)
                                 .frame(width: 230.0, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)
-                            Text(String(localized:"Block: ") + viewModel.blockHeightString)
+                            Text(String(localized:"Block: ") + viewModel.lastFoundBlockHeightString)
                                 .font(.caption)
                                 .frame(width: 230.0, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)

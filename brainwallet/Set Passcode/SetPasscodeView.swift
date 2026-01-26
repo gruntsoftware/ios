@@ -27,7 +27,9 @@ struct SetPasscodeView: View {
     let largeButtonHeight: CGFloat = 65.0
 
     let arrowSize: CGFloat = 60.0
-    let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
+
+    @State
+    private var userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
     init(isRestoringAnOldWallet: Bool, path: Binding<[Onboarding]>) {
         self.isRestoringAnOldWallet = isRestoringAnOldWallet
@@ -82,7 +84,7 @@ struct SetPasscodeView: View {
                                 .padding(.top, 40.0)
 
                         Spacer()
-                        PasscodeGridView(digits: $pinDigits)
+                        PasscodeGridView(digits: $pinDigits, userPrefersDarkMode: $userPrefersDarkTheme)
                             .frame(width: width * 0.6,
                                    height: height * 0.35,
                                    alignment: .center)

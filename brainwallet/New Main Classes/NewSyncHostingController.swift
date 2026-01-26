@@ -11,14 +11,14 @@ import SwiftUI
 
 class NewSyncHostingController: UIHostingController<NewSyncProgressView> {
 
-    var viewModel: NewSyncProgressViewModel
+    var viewModel: SyncSubBentoViewModel
     var store: Store
     var walletManager: WalletManager?
 
     init(store: Store, walletManager: WalletManager) {
         self.store = store
         self.walletManager = walletManager
-        viewModel = NewSyncProgressViewModel(store: store, walletManager: walletManager)
+        viewModel = SyncSubBentoViewModel(store: store, walletManager: walletManager)
         super.init(rootView: NewSyncProgressView(viewModel: viewModel))
     }
 

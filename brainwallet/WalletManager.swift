@@ -398,7 +398,6 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 				guard sqlite3_step(sql) == SQLITE_ROW
 				else {
 					print(String(cString: sqlite3_errmsg(self.db)))
-
 					sqlite3_exec(self.db, "rollback", nil, nil, nil)
 					return
 				}
