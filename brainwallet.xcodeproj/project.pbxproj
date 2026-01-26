@@ -255,7 +255,6 @@
 		C312D3372D7DC27700BB97A4 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D09B2D7DC27700BB97A4 /* Types.swift */; };
 		C312D3382D7DC27700BB97A4 /* NonScrollingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1ED2D7DC27700BB97A4 /* NonScrollingCollectionView.swift */; };
 		C312D33B2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1CD2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift */; };
-		C312D33E2D7DC27700BB97A4 /* StartFlowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2AB2D7DC27700BB97A4 /* StartFlowPresenter.swift */; };
 		C312D33F2D7DC27700BB97A4 /* ModalTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B22D7DC27700BB97A4 /* ModalTransitionDelegate.swift */; };
 		C312D3402D7DC27700BB97A4 /* WarningConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2CB2D7DC27700BB97A4 /* WarningConfirmationViewController.swift */; };
 		C312D3422D7DC27700BB97A4 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24E2D7DC27700BB97A4 /* Functions.swift */; };
@@ -399,7 +398,6 @@
 		C312D47A2D7DC27700BB97A4 /* PhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1EE2D7DC27700BB97A4 /* PhraseView.swift */; };
 		C312D47F2D7DC27700BB97A4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A62D7DC27700BB97A4 /* Extensions.swift */; };
 		C312D4812D7DC27700BB97A4 /* DismissModalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B02D7DC27700BB97A4 /* DismissModalAnimator.swift */; };
-		C312D4822D7DC27700BB97A4 /* SyncProgressHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2B62D7DC27700BB97A4 /* SyncProgressHeaderView.swift */; };
 		C312D4832D7DC27700BB97A4 /* GradientCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E52D7DC27700BB97A4 /* GradientCircle.swift */; };
 		C312D4842D7DC27700BB97A4 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1A82D7DC27700BB97A4 /* ModalViewController.swift */; };
 		C312D4872D7DC27700BB97A4 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D02D7DC27700BB97A4 /* Transaction.swift */; };
@@ -1041,13 +1039,11 @@
 		C312D2A72D7DC27700BB97A4 /* SignupWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupWebView.swift; sourceTree = "<group>"; };
 		C312D2A92D7DC27700BB97A4 /* SimpleRedux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRedux.swift; sourceTree = "<group>"; };
 		C312D2AA2D7DC27700BB97A4 /* StandardDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDividerView.swift; sourceTree = "<group>"; };
-		C312D2AB2D7DC27700BB97A4 /* StartFlowPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFlowPresenter.swift; sourceTree = "<group>"; };
 		C312D2AC2D7DC27700BB97A4 /* StartHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartHostingController.swift; sourceTree = "<group>"; };
 		C312D2AD2D7DC27700BB97A4 /* StartNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartNavigationDelegate.swift; sourceTree = "<group>"; };
 		C312D2AE2D7DC27700BB97A4 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		C312D2AF2D7DC27700BB97A4 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		C312D2B02D7DC27700BB97A4 /* StoreReview+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreReview+Extension.swift"; sourceTree = "<group>"; };
-		C312D2B62D7DC27700BB97A4 /* SyncProgressHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncProgressHeaderView.swift; sourceTree = "<group>"; };
 		C312D2B82D7DC27700BB97A4 /* TestnetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestnetData.swift; sourceTree = "<group>"; };
 		C312D2B92D7DC27700BB97A4 /* TextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextView+Extension.swift"; sourceTree = "<group>"; };
 		C312D2BC2D7DC27700BB97A4 /* TransactionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionManager.swift; sourceTree = "<group>"; };
@@ -1890,7 +1886,6 @@
 		24F64C1B2DAFB362001DC9B6 /* Start Welcome Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C312D2AB2D7DC27700BB97A4 /* StartFlowPresenter.swift */,
 				C312D2AC2D7DC27700BB97A4 /* StartHostingController.swift */,
 				C312D2AD2D7DC27700BB97A4 /* StartNavigationDelegate.swift */,
 				C312D2AE2D7DC27700BB97A4 /* StartView.swift */,
@@ -2231,7 +2226,6 @@
 				C312D2A72D7DC27700BB97A4 /* SignupWebView.swift */,
 				C312D2A92D7DC27700BB97A4 /* SimpleRedux.swift */,
 				C312D2AA2D7DC27700BB97A4 /* StandardDividerView.swift */,
-				C312D2B62D7DC27700BB97A4 /* SyncProgressHeaderView.swift */,
 				C312D2B82D7DC27700BB97A4 /* TestnetData.swift */,
 				C312D2BC2D7DC27700BB97A4 /* TransactionManager.swift */,
 				C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */,
@@ -2823,7 +2817,6 @@
 				C312D3372D7DC27700BB97A4 /* Types.swift in Sources */,
 				C312D3382D7DC27700BB97A4 /* NonScrollingCollectionView.swift in Sources */,
 				C312D33B2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift in Sources */,
-				C312D33E2D7DC27700BB97A4 /* StartFlowPresenter.swift in Sources */,
 				C312D33F2D7DC27700BB97A4 /* ModalTransitionDelegate.swift in Sources */,
 				24F5BD4C2E0450B80010D340 /* SettingsExpandingSecurityView.swift in Sources */,
 				C312D3402D7DC27700BB97A4 /* WarningConfirmationViewController.swift in Sources */,
@@ -3076,7 +3069,6 @@
 				24B7D75D2DF6FA0C0031F129 /* ModalPresenter+Extension.swift in Sources */,
 				C312D47F2D7DC27700BB97A4 /* Extensions.swift in Sources */,
 				C312D4812D7DC27700BB97A4 /* DismissModalAnimator.swift in Sources */,
-				C312D4822D7DC27700BB97A4 /* SyncProgressHeaderView.swift in Sources */,
 				C312D4832D7DC27700BB97A4 /* GradientCircle.swift in Sources */,
 				C312D4842D7DC27700BB97A4 /* ModalViewController.swift in Sources */,
 				245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */,

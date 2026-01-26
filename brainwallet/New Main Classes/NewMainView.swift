@@ -296,17 +296,20 @@ struct NewMainView: View {
                             }
                         }, label: {
                             VStack(spacing: 4) {
-                                Image(systemName: "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
+                                Image(systemName: shouldShowTransactionDetail ? "house" : "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: iconSize,
                                            height: iconSize)
                                     .foregroundColor(content)
                                     .padding(6)
-                                Text("History")
+                                    .animation(.easeInOut, value: shouldShowTransactionDetail)
+
+                                Text(shouldShowTransactionDetail ? " Home " :"History")
                                     .font(.caption2)
                                     .foregroundStyle(content)
-
+                                    .contentTransition(.opacity)
+                                    .animation(.easeInOut, value: shouldShowTransactionDetail)
                             }
                         })
                         .disabled(disableTransactionDetail)
