@@ -19,7 +19,6 @@ class ModalPresenter: Subscriber {
     let alertHeight: CGFloat = 260.0
     let modalTransitionDelegate: ModalTransitionDelegate
     let messagePresenter = MessageUIPresenter()
-    let securityCenterNavigationDelegate = SecurityCenterNavigationDelegate()
     let verifyPinTransitionDelegate = TransitioningDelegate()
     let noAuthApiClient: BWAPIClient
     var currentRequest: PaymentRequest?
@@ -129,32 +128,6 @@ class ModalPresenter: Subscriber {
         topVC.present(settingsNav, animated: true, completion: nil)
 	}
 
-    func presentSecurityCenter() {
-		guard let walletManager = walletManager else { return }
-		let securityCenter = SecurityCenterViewController(store: store, walletManager: walletManager)
-		let nc = ModalNavigationController(rootViewController: securityCenter)
-		nc.setDefaultStyle()
-		nc.isNavigationBarHidden = true
-		nc.delegate = securityCenterNavigationDelegate
-		securityCenter.didTapPin = { [weak self] in
-			guard let myself = self else { return }
-			let updatePin = UpdatePinViewController(store: myself.store, walletManager: walletManager, type: .update)
-			nc.pushViewController(updatePin, animated: true)
-		}
-		securityCenter.didTapBiometrics = strongify(self) { myself in
-			let biometricsSettings = BiometricsSettingsViewController(walletManager: walletManager, store: myself.store)
-			biometricsSettings.presentSpendingLimit = {
-				myself.pushBiometricsSpendingLimit(onNc: nc)
-			}
-			nc.pushViewController(biometricsSettings, animated: true)
-		}
-		securityCenter.didTapPaperKey = { [weak self] in
-			self?.presentWritePaperKey(fromViewController: nc)
-		}
-
-		window.rootViewController?.present(nc, animated: true, completion: nil)
-	}
-
     func pushBiometricsSpendingLimit(onNc: UINavigationController) {
 		guard let walletManager = walletManager else { return }
 
@@ -175,77 +148,6 @@ class ModalPresenter: Subscriber {
 		verify.modalPresentationCapturesStatusBarAppearance = true
 		onNc.present(verify, animated: true, completion: nil)
 	}
-
-    func presentWritePaperKey(fromViewController vc: UIViewController) {
-		guard let walletManager = walletManager else { return }
-		let paperPhraseNavigationController = UINavigationController()
-		paperPhraseNavigationController.setClearNavbar()
-		paperPhraseNavigationController.setWhiteStyle()
-		paperPhraseNavigationController.modalPresentationStyle = .overFullScreen
-		let start = StartPaperPhraseViewController(store: store, callback: { [weak self] in
-			guard let myself = self else { return }
-			let verify = VerifyPinViewController(bodyText: String(localized: "Please enter your PIN to continue."), pinLength: myself.store.state.pinLength, callback: { pin, vc in
-				if walletManager.authenticate(pin: pin) {
-					var write: WritePaperPhraseViewController?
-					write = WritePaperPhraseViewController(store: myself.store, walletManager: walletManager, pin: pin, callback: { [weak self] in
-						guard let myself = self else { return }
-						let confirmVC = UIStoryboard(name: "Phrase", bundle: nil).instantiateViewController(withIdentifier: "ConfirmPaperPhraseViewController") as? ConfirmPaperPhraseViewController
-						confirmVC?.store = myself.store
-						confirmVC?.walletManager = myself.walletManager
-						confirmVC?.pin = pin
-						confirmVC?.didCompleteConfirmation = {
-							confirmVC?.dismiss(animated: true, completion: {
-								myself.store.perform(action: SimpleReduxAlert.Show(.paperKeySet(callback: {
-									myself.store.perform(action: HideStartFlow()) })))
-							})
-						}
-						if let confirm = confirmVC {
-							paperPhraseNavigationController.pushViewController(confirm, animated: true)
-						}
-					})
-					write?.hideCloseNavigationItem()
-					vc.dismiss(animated: true, completion: {
-						guard let write = write else { return }
-						paperPhraseNavigationController.pushViewController(write, animated: true)
-					})
-					return true
-				} else {
-					return false
-				}
-			})
-			verify.transitioningDelegate = self?.verifyPinTransitionDelegate
-			verify.modalPresentationStyle = .overFullScreen
-			verify.modalPresentationCapturesStatusBarAppearance = true
-			paperPhraseNavigationController.present(verify, animated: true, completion: nil)
-		})
-		start.navigationItem.title = String(localized: "Paper Key")
-
-		if UserDefaults.writePaperPhraseDate != nil {
-			start.addCloseNavigationItem(tintColor: .lightGray)
-		} else {
-			start.hideCloseNavigationItem()
-		}
-
-		paperPhraseNavigationController.viewControllers = [start]
-		vc.present(paperPhraseNavigationController, animated: true, completion: nil)
-	}
-
-    func receiveView(isRequestAmountVisible: Bool) -> UIViewController? {
-        guard let wallet = walletManager?.wallet else { return nil }
-        let receiveVC = ReceiveViewController(wallet: wallet, store: store, isRequestAmountVisible: isRequestAmountVisible)
-        let root = ModalViewController(childViewController: receiveVC, store: store)
-        receiveVC.presentEmail = { [weak self, weak root] address, image in
-            guard let root = root else { return }
-            self?.messagePresenter.presenter = root
-            self?.messagePresenter.presentMailCompose(litecoinAddress: address, image: image)
-        }
-        receiveVC.presentText = { [weak self, weak root] address, image in
-            guard let root = root else { return }
-            self?.messagePresenter.presenter = root
-            self?.messagePresenter.presentMessageCompose(address: address, image: image)
-        }
-        return root
-    }
 
     func copyAllAddressesToClipboard() {
 		guard let wallet = walletManager?.wallet else { return }
