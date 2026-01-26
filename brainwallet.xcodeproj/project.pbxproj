@@ -231,7 +231,6 @@
 		C312D2F72D7DC27700BB97A4 /* ArticleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2022D7DC27700BB97A4 /* ArticleIds.swift */; };
 		C312D2F82D7DC27700BB97A4 /* BiometricsSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B82D7DC27700BB97A4 /* BiometricsSettingsViewController.swift */; };
 		C312D2FC2D7DC27700BB97A4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E72D7DC27700BB97A4 /* GradientView.swift */; };
-		C312D3012D7DC27700BB97A4 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1CC2D7DC27700BB97A4 /* WelcomeViewController.swift */; };
 		C312D3072D7DC27700BB97A4 /* CGRect+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D06E2D7DC27700BB97A4 /* CGRect+Additions.swift */; };
 		C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0872D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift */; };
 		C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */; };
@@ -255,7 +254,6 @@
 		C312D3382D7DC27700BB97A4 /* NonScrollingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1ED2D7DC27700BB97A4 /* NonScrollingCollectionView.swift */; };
 		C312D33B2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1CD2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift */; };
 		C312D33F2D7DC27700BB97A4 /* ModalTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B22D7DC27700BB97A4 /* ModalTransitionDelegate.swift */; };
-		C312D3402D7DC27700BB97A4 /* WarningConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2CB2D7DC27700BB97A4 /* WarningConfirmationViewController.swift */; };
 		C312D3422D7DC27700BB97A4 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24E2D7DC27700BB97A4 /* Functions.swift */; };
 		C312D3452D7DC27700BB97A4 /* EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2422D7DC27700BB97A4 /* EmailValidation.swift */; };
 		C312D3472D7DC27700BB97A4 /* WalletManager+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */; };
@@ -277,7 +275,6 @@
 		C312D3692D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C52D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift */; };
 		C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0822D7DC27700BB97A4 /* UIView+BRWAdditions.swift */; };
 		C312D36E2D7DC27700BB97A4 /* PinPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C12D7DC27700BB97A4 /* PinPadViewController.swift */; };
-		C312D36F2D7DC27700BB97A4 /* EnterPhraseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E42D7DC27700BB97A4 /* EnterPhraseCell.swift */; };
 		C312D3712D7DC27700BB97A4 /* SeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D29C2D7DC27700BB97A4 /* SeedViewModel.swift */; };
 		C312D3732D7DC27700BB97A4 /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1DC2D7DC27700BB97A4 /* AboutCell.swift */; };
 		C312D3762D7DC27700BB97A4 /* AddressFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1FD2D7DC27700BB97A4 /* AddressFieldView.swift */; };
@@ -294,7 +291,6 @@
 		C312D38D2D7DC27700BB97A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2002D7DC27700BB97A4 /* AppDelegate.swift */; };
 		C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D07A2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift */; };
 		C312D3902D7DC27700BB97A4 /* GradientSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E62D7DC27700BB97A4 /* GradientSwitch.swift */; };
-		C312D3932D7DC27700BB97A4 /* EnterPhraseHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2442D7DC27700BB97A4 /* EnterPhraseHostingController.swift */; };
 		C312D3962D7DC27700BB97A4 /* LAContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0722D7DC27700BB97A4 /* LAContext+Extensions.swift */; };
 		C312D39A2D7DC27700BB97A4 /* PinDigitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D28B2D7DC27700BB97A4 /* PinDigitView.swift */; };
 		C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A92D7DC27700BB97A4 /* WalletInfo.swift */; };
@@ -323,7 +319,6 @@
 		C312D3DA2D7DC27700BB97A4 /* CameraGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1DF2D7DC27700BB97A4 /* CameraGuideView.swift */; };
 		C312D3DC2D7DC27700BB97A4 /* ConfirmPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E12D7DC27700BB97A4 /* ConfirmPhrase.swift */; };
 		C312D3DD2D7DC27700BB97A4 /* ReceiveLTCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2922D7DC27700BB97A4 /* ReceiveLTCViewController.swift */; };
-		C312D3DF2D7DC27700BB97A4 /* EnterPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1BD2D7DC27700BB97A4 /* EnterPhraseViewController.swift */; };
 		C312D3E42D7DC27700BB97A4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D27A2D7DC27700BB97A4 /* LoginView.swift */; };
 		C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */; };
 		C312D3E82D7DC27700BB97A4 /* FinishedStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24B2D7DC27700BB97A4 /* FinishedStepView.swift */; };
@@ -331,7 +326,6 @@
 		C312D3F02D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0762D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift */; };
 		C312D3F22D7DC27700BB97A4 /* SegmentedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0692D7DC27700BB97A4 /* SegmentedButton.swift */; };
 		C312D3F32D7DC27700BB97A4 /* WalletCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */; };
-		C312D3F42D7DC27700BB97A4 /* EnterPhraseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2462D7DC27700BB97A4 /* EnterPhraseViewModel.swift */; };
 		C312D3F52D7DC27700BB97A4 /* FeeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24A2D7DC27700BB97A4 /* FeeSelectorView.swift */; };
 		C312D3F72D7DC27700BB97A4 /* UnEditableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F72D7DC27700BB97A4 /* UnEditableTextView.swift */; };
 		C312D3FC2D7DC27700BB97A4 /* UIView+InitAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0842D7DC27700BB97A4 /* UIView+InitAdditions.swift */; };
@@ -340,10 +334,8 @@
 		C312D3FF2D7DC27700BB97A4 /* InViewAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E92D7DC27700BB97A4 /* InViewAlert.swift */; };
 		C312D4002D7DC27700BB97A4 /* MessageUIPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2802D7DC27700BB97A4 /* MessageUIPresenter.swift */; };
 		C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E32D7DC27700BB97A4 /* DrawableCircle.swift */; };
-		C312D4032D7DC27700BB97A4 /* ShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F52D7DC27700BB97A4 /* ShadowButton.swift */; };
 		C312D4062D7DC27700BB97A4 /* IntroStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2542D7DC27700BB97A4 /* IntroStepView.swift */; };
 		C312D4072D7DC27700BB97A4 /* WipeEmptyWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2CC2D7DC27700BB97A4 /* WipeEmptyWalletViewController.swift */; };
-		C312D40A2D7DC27700BB97A4 /* EnterPhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2452D7DC27700BB97A4 /* EnterPhraseView.swift */; };
 		C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E82D7DC27700BB97A4 /* InAppAlert.swift */; };
 		C312D40F2D7DC27700BB97A4 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2472D7DC27700BB97A4 /* Environment.swift */; };
 		C312D4102D7DC27700BB97A4 /* CustomTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D06F2D7DC27700BB97A4 /* CustomTitleView.swift */; };
@@ -355,7 +347,6 @@
 		C312D41E2D7DC27700BB97A4 /* UnstoppableDomainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C42D7DC27700BB97A4 /* UnstoppableDomainView.swift */; };
 		C312D41F2D7DC27700BB97A4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B62D7DC27700BB97A4 /* AboutViewController.swift */; };
 		C312D4222D7DC27700BB97A4 /* ModalDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1A72D7DC27700BB97A4 /* ModalDisplayable.swift */; };
-		C312D4282D7DC27700BB97A4 /* EnterPhraseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1BC2D7DC27700BB97A4 /* EnterPhraseCollectionViewController.swift */; };
 		C312D4292D7DC27700BB97A4 /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D42D7DC27700BB97A4 /* CheckView.swift */; };
 		C312D4312D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1BB2D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift */; };
 		C312D4322D7DC27700BB97A4 /* SecurityCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F22D7DC27700BB97A4 /* SecurityCenterCell.swift */; };
@@ -405,22 +396,12 @@
 		C312D4912D7DC27700BB97A4 /* ForgotAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24C2D7DC27700BB97A4 /* ForgotAlertViewModel.swift */; };
 		C312D4942D7DC27700BB97A4 /* RetryTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2982D7DC27700BB97A4 /* RetryTimer.swift */; };
 		C312D4952D7DC27700BB97A4 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F02D7DC27700BB97A4 /* RadialGradientView.swift */; };
-		C312D4992D7DC27700BB97A4 /* Send.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D18A2D7DC27700BB97A4 /* Send.storyboard */; };
-		C312D49A2D7DC27700BB97A4 /* Receive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1892D7DC27700BB97A4 /* Receive.storyboard */; };
-		C312D49E2D7DC27700BB97A4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D18B2D7DC27700BB97A4 /* Settings.storyboard */; };
-		C312D4A42D7DC27700BB97A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1872D7DC27700BB97A4 /* Main.storyboard */; };
 		C312D4AB2D7DC27700BB97A4 /* BarlowSemiCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0902D7DC27700BB97A4 /* BarlowSemiCondensed-Bold.ttf */; };
-		C312D4AF2D7DC27700BB97A4 /* Animate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1852D7DC27700BB97A4 /* Animate.storyboard */; };
-		C312D4B22D7DC27700BB97A4 /* SyncProgressHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C312D1822D7DC27700BB97A4 /* SyncProgressHeaderView.xib */; };
 		C312D4B42D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0942D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf */; };
-		C312D4B72D7DC27700BB97A4 /* WarningConfirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D18D2D7DC27700BB97A4 /* WarningConfirmation.storyboard */; };
 		C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */ = {isa = PBXBuildFile; fileRef = C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */; };
 		C312D4BD2D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0932D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf */; };
 		C312D4BF2D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0912D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf */; };
 		C312D4C52D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0922D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf */; };
-		C312D4CA2D7DC27700BB97A4 /* Buy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1862D7DC27700BB97A4 /* Buy.storyboard */; };
-		C312D4CC2D7DC27700BB97A4 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1842D7DC27700BB97A4 /* Alerts.storyboard */; };
-		C312D4CE2D7DC27700BB97A4 /* Phrase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312D1882D7DC27700BB97A4 /* Phrase.storyboard */; };
 		C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0952D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf */; };
 		C32369FF2D7DD431007039A1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32369FE2D7DD431007039A1 /* LoginViewController.swift */; };
 		C3236A012D7DE355007039A1 /* URLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3236A002D7DE34D007039A1 /* URLController.swift */; };
@@ -890,16 +871,6 @@
 		C312D0AB2D7DC27700BB97A4 /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		C312D0AC2D7DC27700BB97A4 /* ReduxState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduxState.swift; sourceTree = "<group>"; };
 		C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = coinflip.aiff; sourceTree = "<group>"; };
-		C312D1822D7DC27700BB97A4 /* SyncProgressHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncProgressHeaderView.xib; sourceTree = "<group>"; };
-		C312D1842D7DC27700BB97A4 /* Alerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alerts.storyboard; sourceTree = "<group>"; };
-		C312D1852D7DC27700BB97A4 /* Animate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Animate.storyboard; sourceTree = "<group>"; };
-		C312D1862D7DC27700BB97A4 /* Buy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Buy.storyboard; sourceTree = "<group>"; };
-		C312D1872D7DC27700BB97A4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		C312D1882D7DC27700BB97A4 /* Phrase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Phrase.storyboard; sourceTree = "<group>"; };
-		C312D1892D7DC27700BB97A4 /* Receive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Receive.storyboard; sourceTree = "<group>"; };
-		C312D18A2D7DC27700BB97A4 /* Send.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Send.storyboard; sourceTree = "<group>"; };
-		C312D18B2D7DC27700BB97A4 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		C312D18D2D7DC27700BB97A4 /* WarningConfirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WarningConfirmation.storyboard; sourceTree = "<group>"; };
 		C312D1A62D7DC27700BB97A4 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C312D1A72D7DC27700BB97A4 /* ModalDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDisplayable.swift; sourceTree = "<group>"; };
 		C312D1A82D7DC27700BB97A4 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -917,8 +888,6 @@
 		C312D1B92D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsSpendingLimitViewController.swift; sourceTree = "<group>"; };
 		C312D1BA2D7DC27700BB97A4 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		C312D1BB2D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPaperPhraseViewController.swift; sourceTree = "<group>"; };
-		C312D1BC2D7DC27700BB97A4 /* EnterPhraseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhraseCollectionViewController.swift; sourceTree = "<group>"; };
-		C312D1BD2D7DC27700BB97A4 /* EnterPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhraseViewController.swift; sourceTree = "<group>"; };
 		C312D1BF2D7DC27700BB97A4 /* ModalNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNavigationController.swift; sourceTree = "<group>"; };
 		C312D1C12D7DC27700BB97A4 /* PinPadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPadViewController.swift; sourceTree = "<group>"; };
 		C312D1C22D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverWalletIntroViewController.swift; sourceTree = "<group>"; };
@@ -928,7 +897,6 @@
 		C312D1C82D7DC27700BB97A4 /* StartPaperPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPaperPhraseViewController.swift; sourceTree = "<group>"; };
 		C312D1C92D7DC27700BB97A4 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		C312D1CB2D7DC27700BB97A4 /* VerifyPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPinViewController.swift; sourceTree = "<group>"; };
-		C312D1CC2D7DC27700BB97A4 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C312D1CD2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePaperPhraseViewController.swift; sourceTree = "<group>"; };
 		C312D1CF2D7DC27700BB97A4 /* Amount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amount.swift; sourceTree = "<group>"; };
 		C312D1D02D7DC27700BB97A4 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -943,7 +911,6 @@
 		C312D1E12D7DC27700BB97A4 /* ConfirmPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPhrase.swift; sourceTree = "<group>"; };
 		C312D1E22D7DC27700BB97A4 /* DefaultCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCurrencyViewController.swift; sourceTree = "<group>"; };
 		C312D1E32D7DC27700BB97A4 /* DrawableCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableCircle.swift; sourceTree = "<group>"; };
-		C312D1E42D7DC27700BB97A4 /* EnterPhraseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhraseCell.swift; sourceTree = "<group>"; };
 		C312D1E52D7DC27700BB97A4 /* GradientCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientCircle.swift; sourceTree = "<group>"; };
 		C312D1E62D7DC27700BB97A4 /* GradientSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientSwitch.swift; sourceTree = "<group>"; };
 		C312D1E72D7DC27700BB97A4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -959,7 +926,6 @@
 		C312D1F12D7DC27700BB97A4 /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		C312D1F22D7DC27700BB97A4 /* SecurityCenterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCenterCell.swift; sourceTree = "<group>"; };
 		C312D1F42D7DC27700BB97A4 /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
-		C312D1F52D7DC27700BB97A4 /* ShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
 		C312D1F72D7DC27700BB97A4 /* UnEditableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnEditableTextView.swift; sourceTree = "<group>"; };
 		C312D1F92D7DC27700BB97A4 /* WalletDisabledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDisabledView.swift; sourceTree = "<group>"; };
 		C312D1FB2D7DC27700BB97A4 /* ExchangeUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeUpdater.swift; sourceTree = "<group>"; };
@@ -984,9 +950,6 @@
 		C312D2402D7DC27700BB97A4 /* DataValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidation.swift; sourceTree = "<group>"; };
 		C312D2422D7DC27700BB97A4 /* EmailValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidation.swift; sourceTree = "<group>"; };
 		C312D2432D7DC27700BB97A4 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
-		C312D2442D7DC27700BB97A4 /* EnterPhraseHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhraseHostingController.swift; sourceTree = "<group>"; };
-		C312D2452D7DC27700BB97A4 /* EnterPhraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhraseView.swift; sourceTree = "<group>"; };
-		C312D2462D7DC27700BB97A4 /* EnterPhraseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhraseViewModel.swift; sourceTree = "<group>"; };
 		C312D2472D7DC27700BB97A4 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		C312D2482D7DC27700BB97A4 /* FailedAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailedAlertView.swift; sourceTree = "<group>"; };
 		C312D2492D7DC27700BB97A4 /* FeeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeManager.swift; sourceTree = "<group>"; };
@@ -1055,7 +1018,6 @@
 		C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
 		C312D2C92D7DC27700BB97A4 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletManager+Auth.swift"; sourceTree = "<group>"; };
-		C312D2CB2D7DC27700BB97A4 /* WarningConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningConfirmationViewController.swift; sourceTree = "<group>"; };
 		C312D2CC2D7DC27700BB97A4 /* WipeEmptyWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipeEmptyWalletViewController.swift; sourceTree = "<group>"; };
 		C32369FE2D7DD431007039A1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C3236A002D7DE34D007039A1 /* URLController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLController.swift; sourceTree = "<group>"; };
@@ -1978,28 +1940,10 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
-		C312D1832D7DC27700BB97A4 /* XIBs */ = {
-			isa = PBXGroup;
-			children = (
-				C312D1822D7DC27700BB97A4 /* SyncProgressHeaderView.xib */,
-			);
-			path = XIBs;
-			sourceTree = "<group>";
-		};
 		C312D18E2D7DC27700BB97A4 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */,
-				C312D1832D7DC27700BB97A4 /* XIBs */,
-				C312D1842D7DC27700BB97A4 /* Alerts.storyboard */,
-				C312D1852D7DC27700BB97A4 /* Animate.storyboard */,
-				C312D1862D7DC27700BB97A4 /* Buy.storyboard */,
-				C312D1872D7DC27700BB97A4 /* Main.storyboard */,
-				C312D1882D7DC27700BB97A4 /* Phrase.storyboard */,
-				C312D1892D7DC27700BB97A4 /* Receive.storyboard */,
-				C312D18A2D7DC27700BB97A4 /* Send.storyboard */,
-				C312D18B2D7DC27700BB97A4 /* Settings.storyboard */,
-				C312D18D2D7DC27700BB97A4 /* WarningConfirmation.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -2094,8 +2038,6 @@
 				C312D1B92D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift */,
 				C312D1BA2D7DC27700BB97A4 /* ConfirmationViewController.swift */,
 				C312D1BB2D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift */,
-				C312D1BC2D7DC27700BB97A4 /* EnterPhraseCollectionViewController.swift */,
-				C312D1BD2D7DC27700BB97A4 /* EnterPhraseViewController.swift */,
 				C312D1BF2D7DC27700BB97A4 /* ModalNavigationController.swift */,
 				C312D1C12D7DC27700BB97A4 /* PinPadViewController.swift */,
 				C312D1C22D7DC27700BB97A4 /* RecoverWalletIntroViewController.swift */,
@@ -2125,7 +2067,6 @@
 				C312D1E12D7DC27700BB97A4 /* ConfirmPhrase.swift */,
 				C312D1E22D7DC27700BB97A4 /* DefaultCurrencyViewController.swift */,
 				C312D1E32D7DC27700BB97A4 /* DrawableCircle.swift */,
-				C312D1E42D7DC27700BB97A4 /* EnterPhraseCell.swift */,
 				C312D1E52D7DC27700BB97A4 /* GradientCircle.swift */,
 				C312D1E62D7DC27700BB97A4 /* GradientSwitch.swift */,
 				C312D1E72D7DC27700BB97A4 /* GradientView.swift */,
@@ -2142,7 +2083,6 @@
 				C312D1F22D7DC27700BB97A4 /* SecurityCenterCell.swift */,
 				2413E4152DF6451D00DFE7EE /* SecurityCenterNavigationDelegate.swift */,
 				C312D1F42D7DC27700BB97A4 /* SeparatorCell.swift */,
-				C312D1F52D7DC27700BB97A4 /* ShadowButton.swift */,
 				C312D1F72D7DC27700BB97A4 /* UnEditableTextView.swift */,
 				C312D1F92D7DC27700BB97A4 /* WalletDisabledView.swift */,
 				C312D0AC2D7DC27700BB97A4 /* ReduxState.swift */,
@@ -2152,7 +2092,6 @@
 				C312D1FB2D7DC27700BB97A4 /* ExchangeUpdater.swift */,
 				C312D1C92D7DC27700BB97A4 /* StartViewController.swift */,
 				C312D1CB2D7DC27700BB97A4 /* VerifyPinViewController.swift */,
-				C312D1CC2D7DC27700BB97A4 /* WelcomeViewController.swift */,
 				C312D1CD2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift */,
 				C312D1FD2D7DC27700BB97A4 /* AddressFieldView.swift */,
 				C312D1FE2D7DC27700BB97A4 /* AlertFailureView.swift */,
@@ -2173,9 +2112,6 @@
 				C312D2402D7DC27700BB97A4 /* DataValidation.swift */,
 				C312D2422D7DC27700BB97A4 /* EmailValidation.swift */,
 				C312D2432D7DC27700BB97A4 /* EmptyTableViewCell.swift */,
-				C312D2442D7DC27700BB97A4 /* EnterPhraseHostingController.swift */,
-				C312D2452D7DC27700BB97A4 /* EnterPhraseView.swift */,
-				C312D2462D7DC27700BB97A4 /* EnterPhraseViewModel.swift */,
 				C312D2472D7DC27700BB97A4 /* Environment.swift */,
 				C312D2482D7DC27700BB97A4 /* FailedAlertView.swift */,
 				C312D2492D7DC27700BB97A4 /* FeeManager.swift */,
@@ -2230,7 +2166,6 @@
 				C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */,
 				C312D2C92D7DC27700BB97A4 /* WalletManager.swift */,
 				C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */,
-				C312D2CB2D7DC27700BB97A4 /* WarningConfirmationViewController.swift */,
 				C312D2CC2D7DC27700BB97A4 /* WipeEmptyWalletViewController.swift */,
 				C312D0672D7DC27700BB97A4 /* MenuButton.swift */,
 				C312D0682D7DC27700BB97A4 /* MenuButtonType.swift */,
@@ -2521,16 +2456,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */,
-				C312D4992D7DC27700BB97A4 /* Send.storyboard in Resources */,
-				C312D49A2D7DC27700BB97A4 /* Receive.storyboard in Resources */,
 				24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */,
-				C312D49E2D7DC27700BB97A4 /* Settings.storyboard in Resources */,
-				C312D4A42D7DC27700BB97A4 /* Main.storyboard in Resources */,
 				24E06FC52DF4790B00719B6C /* remote-config-defaults.plist in Resources */,
 				2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */,
 				24FEB8BB2DD2425A00D60036 /* InfoPlist.strings in Resources */,
 				C312D4AB2D7DC27700BB97A4 /* BarlowSemiCondensed-Bold.ttf in Resources */,
-				C312D4AF2D7DC27700BB97A4 /* Animate.storyboard in Resources */,
 				24D7EA052E336D0800A9AB68 /* Assets.xcassets in Resources */,
 				247A83992EA3E3D800B5DFD8 /* BoldenVan.ttf in Resources */,
 				24D7EA062E336D0800A9AB68 /* Icon.xcassets in Resources */,
@@ -2542,11 +2472,9 @@
 				24D7EA0E2E336F9100A9AB68 /* service-data.plist in Resources */,
 				24D7EA0C2E336D0800A9AB68 /* PrivacyInfo.xcprivacy in Resources */,
 				24F5BD3C2E042A040010D340 /* clicksound.wav in Resources */,
-				C312D4B22D7DC27700BB97A4 /* SyncProgressHeaderView.xib in Resources */,
 				244310442E21BCBD004AE386 /* errorsound.mp3 in Resources */,
 				C312D4B42D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf in Resources */,
 				2446DF522E2906AC001453DF /* bloop.mp3 in Resources */,
-				C312D4B72D7DC27700BB97A4 /* WarningConfirmation.storyboard in Resources */,
 				C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */,
 				C312D4BD2D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf in Resources */,
 				C312D4BF2D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf in Resources */,
@@ -2556,9 +2484,6 @@
 				2489E05C2DF0A23700630888 /* GoogleService-Info.plist in Resources */,
 				244310462E21BCCE004AE386 /* clickseedword.mp3 in Resources */,
 				C312D4C52D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf in Resources */,
-				C312D4CA2D7DC27700BB97A4 /* Buy.storyboard in Resources */,
-				C312D4CC2D7DC27700BB97A4 /* Alerts.storyboard in Resources */,
-				C312D4CE2D7DC27700BB97A4 /* Phrase.storyboard in Resources */,
 				24BC37C02E22B249005DD3AC /* coinflip.mp3 in Resources */,
 				C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */,
 			);
@@ -2781,7 +2706,6 @@
 				C3236A012D7DE355007039A1 /* URLController.swift in Sources */,
 				2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */,
 				24C6D2D82E1E75510096AD62 /* SeedWordTargetView.swift in Sources */,
-				C312D3012D7DC27700BB97A4 /* WelcomeViewController.swift in Sources */,
 				C312D3072D7DC27700BB97A4 /* CGRect+Additions.swift in Sources */,
 				247A83932EA034BC00B5DFD8 /* Renderer.swift in Sources */,
 				246C3F5A2F2431B6009BC881 /* TutorialSendBentoView.swift in Sources */,
@@ -2812,7 +2736,6 @@
 				C312D33B2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift in Sources */,
 				C312D33F2D7DC27700BB97A4 /* ModalTransitionDelegate.swift in Sources */,
 				24F5BD4C2E0450B80010D340 /* SettingsExpandingSecurityView.swift in Sources */,
-				C312D3402D7DC27700BB97A4 /* WarningConfirmationViewController.swift in Sources */,
 				C312D3422D7DC27700BB97A4 /* Functions.swift in Sources */,
 				24BEC6072DF0B53000140AAD /* WipeWalletView.swift in Sources */,
 				24DB05EE2E06C34A00C57FE9 /* SettingsSpacerView.swift in Sources */,
@@ -2873,7 +2796,6 @@
 				2416CE7C2DA90D0D00FFBD10 /* BRCalculationExtension.swift in Sources */,
 				C312D36E2D7DC27700BB97A4 /* PinPadViewController.swift in Sources */,
 				246C3F602F244E76009BC881 /* TutorialReceivePageView.swift in Sources */,
-				C312D36F2D7DC27700BB97A4 /* EnterPhraseCell.swift in Sources */,
 				24006C262F0FCC4B00F29F0A /* BentoSendModalView.swift in Sources */,
 				C312D3712D7DC27700BB97A4 /* SeedViewModel.swift in Sources */,
 				C32369FF2D7DD431007039A1 /* LoginViewController.swift in Sources */,
@@ -2903,7 +2825,6 @@
 				C312D3902D7DC27700BB97A4 /* GradientSwitch.swift in Sources */,
 				24E7591E2E0B407F0065BA02 /* SettingsResetPINView.swift in Sources */,
 				246C42A62F250E96009BC881 /* CalloutTextView.swift in Sources */,
-				C312D3932D7DC27700BB97A4 /* EnterPhraseHostingController.swift in Sources */,
 				24F5BD4A2E0442D00010D340 /* SettingsFooterView.swift in Sources */,
 				24572C762F1E30C0009C72F0 /* BentoNoSendModalView.swift in Sources */,
 				C312D3962D7DC27700BB97A4 /* LAContext+Extensions.swift in Sources */,
@@ -2948,7 +2869,6 @@
 				2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */,
 				C312D3DC2D7DC27700BB97A4 /* ConfirmPhrase.swift in Sources */,
 				C312D3DD2D7DC27700BB97A4 /* ReceiveLTCViewController.swift in Sources */,
-				C312D3DF2D7DC27700BB97A4 /* EnterPhraseViewController.swift in Sources */,
 				C312D3E42D7DC27700BB97A4 /* LoginView.swift in Sources */,
 				C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */,
 				C312D3E82D7DC27700BB97A4 /* FinishedStepView.swift in Sources */,
@@ -2957,7 +2877,6 @@
 				C312D3F02D7DC27700BB97A4 /* UIBarButtonItem+Additions.swift in Sources */,
 				C312D3F22D7DC27700BB97A4 /* SegmentedButton.swift in Sources */,
 				C312D3F32D7DC27700BB97A4 /* WalletCoordinator.swift in Sources */,
-				C312D3F42D7DC27700BB97A4 /* EnterPhraseViewModel.swift in Sources */,
 				243136FB2E0AFD1700BCBED1 /* SettingsHelpers.swift in Sources */,
 				C312D3F52D7DC27700BB97A4 /* FeeSelectorView.swift in Sources */,
 				C312D3F72D7DC27700BB97A4 /* UnEditableTextView.swift in Sources */,
@@ -2971,7 +2890,6 @@
 				24D7AE562DCFF6870078252E /* NewConfirmView.swift in Sources */,
 				C312D4002D7DC27700BB97A4 /* MessageUIPresenter.swift in Sources */,
 				C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */,
-				C312D4032D7DC27700BB97A4 /* ShadowButton.swift in Sources */,
 				24B0653B2DC6433800B5E000 /* SimpleHeaderView.swift in Sources */,
 				24D0343B2E1AED2F00AF81DF /* SwiftUIEffects.swift in Sources */,
 				C312D4062D7DC27700BB97A4 /* IntroStepView.swift in Sources */,
@@ -2979,7 +2897,6 @@
 				C312D4072D7DC27700BB97A4 /* WipeEmptyWalletViewController.swift in Sources */,
 				24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */,
 				2412BA7E2DF4660300AC40BB /* ReceiveAddressView.swift in Sources */,
-				C312D40A2D7DC27700BB97A4 /* EnterPhraseView.swift in Sources */,
 				247A83952EA034FE00B5DFD8 /* GridWaveContentView.swift in Sources */,
 				24126DFB2ECA68AB00F9A4BE /* DataScannerSheet.swift in Sources */,
 				C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */,
@@ -3000,7 +2917,6 @@
 				C312D41F2D7DC27700BB97A4 /* AboutViewController.swift in Sources */,
 				243B88872F1112E500A8DB69 /* LeaderEllipseView.swift in Sources */,
 				C312D4222D7DC27700BB97A4 /* ModalDisplayable.swift in Sources */,
-				C312D4282D7DC27700BB97A4 /* EnterPhraseCollectionViewController.swift in Sources */,
 				C312D4292D7DC27700BB97A4 /* CheckView.swift in Sources */,
 				C312D4312D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift in Sources */,
 				C312D4322D7DC27700BB97A4 /* SecurityCenterCell.swift in Sources */,

@@ -9147,6 +9147,7 @@
       }
     },
     "Enter Paper Key" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -9401,6 +9402,7 @@
       }
     },
     "Enter the paper key for the wallet you want to recover." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -12490,6 +12492,7 @@
       }
     },
     "Invalid" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -19004,6 +19007,7 @@
       }
     },
     "Reset PIN" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -22826,6 +22830,7 @@
       }
     },
     "Start or Recover Another Wallet" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -24751,6 +24756,7 @@
       }
     },
     "Tap here for more information." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -27875,6 +27881,7 @@
       }
     },
     "To start a new wallet or restore an existing wallet, you must first erase the wallet that is currently installed. To continue, enter the current wallet's Paper Key." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
