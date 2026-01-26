@@ -1,4 +1,3 @@
-import AppsFlyerLib
 import FirebaseMessaging
 import Firebase
 import FirebaseCore
@@ -43,32 +42,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         }
 
         // AF
-        AppsFlyerLib.shared().appsFlyerDevKey = Partner.partnerKeyPath(name: .prodAF)
-        AppsFlyerLib.shared().appleAppID = BrainwalletAppStore.adamIDString
+        /// Activating for  future use
+        /// AppsFlyerLib.shared().appsFlyerDevKey = Partner.partnerKeyPath(name: .prodAF)
+        /// AppsFlyerLib.shared().appleAppID = BrainwalletAppStore.adamIDString
 
         // Remote Config
         self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
 
         // FCM
-        Messaging.messaging().delegate = self
-        UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-            if granted {
-                DispatchQueue.main.async {
-                  application.registerForRemoteNotifications()
-                }
-            }
-
-            if error != nil {
-                Analytics
-                    .logEvent("fcm_messaging_registration_error",
-                        parameters: [
-                           "platform": "ios",
-                           "app_version": AppVersion.string,
-                           "error": "\(String(describing: error))"
-                        ])
-            }
-       }
+        launchFCMessaging(application: application)
 
         // Wipe restart
         // Register for system notifications
@@ -148,7 +130,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
 	func applicationDidBecomeActive(_: UIApplication) {
 		UIApplication.shared.applicationIconBadgeNumber = 0
-		AppsFlyerLib.shared().start()
+		/// Activating for  future use
+        /// AppsFlyerLib.shared().start()
 	}
 
 	func applicationWillEnterForeground(_: UIApplication) {
@@ -219,18 +202,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
 		if let fboptions = FirebaseOptions(contentsOfFile: filePath) {
             FirebaseApp.configure(options: fboptions)
-            // #if DEBUG
-            //   Analytics.setUserProperty("debug_mode", forName: "debug_enabled")
-            //
-            //   /// Notfy the Firebase Console for monitoring and debugging
-            //   Analytics
-            //       .logEvent("debug_mode_launched",
-            //           parameters: [
-            //               "platform": "ios",
-            //               "app_version": AppVersion.string,
-            //               "device": UIDevice.current.model
-            //           ])
-            // #endif
+//             #if DEBUG
+//               Analytics.setUserProperty("debug_mode", forName: "debug_enabled")
+//
+//               /// Notfy the Firebase Console for monitoring and debugging
+//               Analytics
+//                   .logEvent("debug_mode_launched",
+//                       parameters: [
+//                           "platform": "ios",
+//                           "app_version": AppVersion.string,
+//                           "device": UIDevice.current.model
+//                       ])
+//             #endif
 
 		} else {
             Analytics.logEvent("error_message", parameters: [
@@ -288,5 +271,27 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         NotificationCenter.default.post(name: Notification.Name("didReceiveRemoteNotification"), object: nil, userInfo: userInfo)
         debugPrint("User tapped notification: \(userInfo)")
         completionHandler()
+    }
+
+    func launchFCMessaging(application: UIApplication) {
+        Messaging.messaging().delegate = self
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if granted {
+                DispatchQueue.main.async {
+                    application.registerForRemoteNotifications()
+                }
+            }
+
+            if error != nil {
+                Analytics
+                    .logEvent("fcm_messaging_registration_error",
+                              parameters: [
+                                "platform": "ios",
+                                "app_version": AppVersion.string,
+                                "error": "\(String(describing: error))"
+                              ])
+            }
+        }
     }
 }

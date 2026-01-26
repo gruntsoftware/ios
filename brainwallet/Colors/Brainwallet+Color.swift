@@ -38,8 +38,10 @@ struct BrainwalletColor {
     static let pesto = Color(#colorLiteral(red: 0.1450980392, green: 0.6666666667, blue: 0.1725490196, alpha: 1))
     static let grape = Color(#colorLiteral(red: 0.2509803922, green: 0.1764705882, blue: 0.6823529412, alpha: 1))
     static let chili = Color(#colorLiteral(red: 0.8078431373, green: 0.1882352941, blue: 0.1450980392, alpha: 1))
+    static let transferRed = Color(#colorLiteral(red: 1, green: 0.2823529412, blue: 0.2941176471, alpha: 1))
     static let blue = Color(#colorLiteral(red: 0.1607843137, green: 0.4078431373, blue: 0.9490196078, alpha: 1))
     static let nearBlack = Color(#colorLiteral(red: 0.08235294118, green: 0.08235294118, blue: 0.08235294118, alpha: 1))
+    static let lightgray = Color(#colorLiteral(red: 0.8352941176, green: 0.8352941176, blue: 0.8352941176, alpha: 1))
 }
 
 struct BrainwalletUIColor {
@@ -70,4 +72,116 @@ struct BrainwalletUIColor {
     static let chili = UIColor(#colorLiteral(red: 0.8078431373, green: 0.1882352941, blue: 0.1450980392, alpha: 1))
     static let blue = UIColor(#colorLiteral(red: 0.1607843137, green: 0.4078431373, blue: 0.9490196078, alpha: 1))
     static let nearBlack = UIColor(#colorLiteral(red: 0.08235294118, green: 0.08235294118, blue: 0.08235294118, alpha: 1))
+    static let lightgray = UIColor(#colorLiteral(red: 0.8352941176, green: 0.8352941176, blue: 0.8352941176, alpha: 1))
+}
+
+/// Brainwallet Bento Colors
+
+struct BentoColor {
+    /// purple1 - #C8B3EE
+    static let purple1 = Color(red: 0.7843137254901961,
+                               green: 0.7019607843137254,
+                               blue: 0.9333333333333333)
+    /// purple2 - #8669BA
+    static let purple2 = Color(red: 0.5254901960784314,
+                               green: 0.4117647058823529,
+                               blue: 0.7294117647058823)
+    /// purple3 - #121348
+    static let purple3 = Color(red: 0.07058823529411765,
+                               green: 0.07450980392156863,
+                               blue: 0.2823529411764706)
+    /// purple4 - #491FA3
+    static let purple4  = Color(red:  0.28627450980392155,
+                                green: 0.12156862745098039,
+                                blue: 0.6392156862745098)
+    /// purple5 - #5754FF
+    static let purple5  = Color(red:  0.3411764705882353,
+                                green: 0.32941176470588235,
+                                blue: 1)
+    /// grayBackground- #E8EAEC
+    static let grayBackground = Color(red: 0.9098039215686274,
+                                      green: 0.9176470588235294,
+                                      blue: 0.9254901960784314)
+    /// grayBorder - #D9D9D9
+    static let grayBorder = Color(red: 0.8509803921568627,
+                             green: 0.8509803921568627,
+                             blue: 0.8509803921568627)
+
+    /// gameBlue1 - #114CD4
+    static let gameBlue1 = Color(red: 0.06666666666666667,
+                                 green: 0.2980392156862745,
+                                 blue: 0.8313725490196079)
+
+    /// tutorialGreen1- #F2FFF3
+    static let tutorialGreen1 = Color(red: 0.9490196078431372,
+                                      green: 1.0,
+                                      blue: 0.9529411764705882)
+
+    /// tutorialGreen2- #48974E
+    static let tutorialGreen2 = Color(red: 0.2823529411764706,
+                                      green: 0.592156862745098,
+                                      blue: 0.3058823529411765)
+
+    /// darkModeBorder2- #9074FF
+    static let darkModeBorder2 = Color(red: 0.5647058823529412,
+                                      green: 0.4549019607843137,
+                                       blue: 1.0)
+
+    /// darkModeBorder3- #020148
+    static let darkModeBorder3 = Color(red: 0.00784313725490196,
+                                      green: 0.00392156862745098,
+                                      blue: 0.2823529411764706)
+
+    /// darkModeBorder4- #2B193B
+    static let darkModeBorder4 = Color(red: 0.16862745098039217,
+                                      green: 0.09803921568627451,
+                                      blue: 0.23137254901960785)
+
+    /// darkModeBorder5- #6944BE
+
+    static let darkModeBorder5 = Color(red: 0.4117647058823529,
+                                      green: 0.26666666666666666,
+                                      blue: 0.7450980392156863)
+
+    /// balanceBackgroundPurple - #5827E2
+
+    static let balanceBackgroundPurple = Color(red: 0.34509803921568627,
+                                      green: 0.15294117647058825,
+                                      blue: 0.8862745098039215)
+
+    /// progressGreen1 #37BE46
+    static let progressGreen1 = Color(red: 0.21568627450980393,
+                                      green: 0.7450980392156863,
+                                      blue: 0.27450980392156865)
+
+    /// progressGreen2 - #AFF64C
+    static let progressGreen2 = Color(red: 0.6862745098039216,
+                                      green: 0.9647058823529412,
+                                      blue: 0.2980392156862745)
+
+    /// sendTopPurple - #09082B
+    static let sendTopPurple = Color(red: 0.03529411764705882,
+                                      green: 0.03137254901960784,
+                                      blue: 0.16862745098039217)
+
+    /// sendBottomPurple - #280589
+    static let sendBottomPurple = Color(red: 0.1568627450980392,
+                                      green: 0.0196078431372549,
+                                      blue: 0.5372549019607843)
+
+    /// nearNearBlack - #2D2D2D
+    static let nearNearBlack = Color(red: 0.17647058823529413,
+                                      green: 0.17647058823529413,
+                                      blue: 0.17647058823529413)
+
+    /// darkMode - Linear Gradient 1
+    static let darkModeColor1 = LinearGradient(colors: [BentoColor.sendTopPurple,
+                                                             BentoColor.sendBottomPurple],
+                                                    startPoint: .topLeading, endPoint: .bottomTrailing)
+    /// lightMode - Linear Gradient 1
+    static let lightModeColor1 = LinearGradient(colors: [.white],
+                                                     startPoint: .topLeading, endPoint: .bottomTrailing)
+    /// background - Linear Gradient 1
+    static let background1 = LinearGradient(colors: [.white],startPoint: .topLeading, endPoint: .bottomTrailing)
+
 }

@@ -2,13 +2,12 @@ import BackgroundTasks
 import SwiftUI
 import UIKit
 
-class ApplicationController: Subscriber, Trackable {
+class ApplicationController: Subscriber {
     // Ideally the window would be private, but is unfortunately required
     // by the UIApplicationDelegate Protocol
 
     var window: UIWindow?
     fileprivate let store = Store()
-//    private var startFlowController: StartFlowPresenter?
     private var modalPresenter: ModalPresenter?
     fileprivate var walletManager: WalletManager?
     private var walletCoordinator: WalletCoordinator?
@@ -90,7 +89,7 @@ class ApplicationController: Subscriber, Trackable {
         setupRootViewController()
 		window?.makeKeyAndVisible()
 		offMainInitialization()
-		store.subscribe(self, name: .reinitWalletManager(nil), callback: {
+		store.subscribe(self, triggerName: .reinitWalletManager(nil), callback: {
 			guard let trigger = $0 else { return }
 			if case let .reinitWalletManager(callback) = trigger {
 				if let callback = callback {
@@ -182,7 +181,6 @@ class ApplicationController: Subscriber, Trackable {
 		walletCoordinator = WalletCoordinator(walletManager: walletManager, store: store)
 		modalPresenter = ModalPresenter(store: store, walletManager: walletManager, window: window, apiClient: noAuthApiClient)
 		exchangeUpdater = ExchangeUpdater(store: store, walletManager: walletManager)
-//		startFlowController = StartFlowPresenter(store: store, walletManager: walletManager, rootViewController: rootViewController)
 		mainViewController?.walletManager = walletManager
 		defaultsUpdater = UserDefaultsUpdater(walletManager: walletManager)
 		urlController = URLController(store: store, walletManager: walletManager)
@@ -195,7 +193,6 @@ class ApplicationController: Subscriber, Trackable {
 			if walletManager.noWallet {
 				addWalletCreationListener()
                 mainViewController?.startOnboarding()
-//                store.perform(action: ShowStartFlow())
 			} else {
 				modalPresenter?.walletManager = walletManager
 				DispatchQueue.walletQueue.async {
@@ -230,11 +227,10 @@ class ApplicationController: Subscriber, Trackable {
 	private func startDataFetchers() {
 		initKVStoreCoordinator()
 		defaultsUpdater?.refresh()
-		walletManager?.apiClient?.events?.up()
 	}
 
 	private func addWalletCreationListener() {
-		store.subscribe(self, name: .didCreateOrRecoverWallet, callback: { [weak self] _ in
+		store.subscribe(self, triggerName: .didCreateOrRecoverWallet, callback: { [weak self] _ in
 			self?.modalPresenter?.walletManager = self?.walletManager
 			self?.startDataFetchers()
 			self?.mainViewController?.didUnlockLogin()
@@ -267,7 +263,6 @@ class ApplicationController: Subscriber, Trackable {
 	}
 
 	func performBackgroundFetch() {
-		saveEvent("appController.performBackgroundFetch")
 		let group = DispatchGroup()
 		if let peerManager = walletManager?.peerManager, peerManager.syncProgress(fromStartHeight: peerManager.lastBlockHeight) < 1.0 {
 			group.enter()
@@ -276,7 +271,6 @@ class ApplicationController: Subscriber, Trackable {
 					if state.walletState.syncState == .success {
 						DispatchQueue.walletConcurrentQueue.async {
 							peerManager.disconnect()
-							self.saveEvent("appController.peerDisconnect")
 							DispatchQueue.main.async {
 								group.leave()
 							}
@@ -295,10 +289,8 @@ class ApplicationController: Subscriber, Trackable {
 
 		DispatchQueue.global(qos: .utility).async {
 			if group.wait(timeout: .now() + 25.0) == .timedOut {
-				self.saveEvent("appController.backgroundFetchFailed")
 				self.fetchCompletionHandler?(.failed)
 			} else {
-				self.saveEvent("appController.backgroundFetchNewData")
 				self.fetchCompletionHandler?(.newData)
 			}
 			self.fetchCompletionHandler = nil

@@ -14,7 +14,7 @@ struct HideStartFlow: Action {
 		           isLoginRequired: state.isLoginRequired,
 		           rootModal: .none,
 		           walletState: state.walletState,
-		           isLtcSwapped: state.isLtcSwapped,
+		           isLTCValueShown: state.isLTCValueShown,
 		           currentRate: state.currentRate,
 		           rates: state.rates,
 		           alert: state.alert,
@@ -117,8 +117,8 @@ enum WalletChange {
 enum CurrencyChange {
 	struct toggle: Action {
 		let reduce: Reducer = {
-			UserDefaults.isLtcSwapped = !$0.isLtcSwapped
-			return $0.clone(isLtcSwapped: !$0.isLtcSwapped)
+			UserDefaults.isLTCValueShown = !$0.isLTCValueShown
+			return $0.clone(isLTCValueShown: !$0.isLTCValueShown)
 		}
 	}
 }
@@ -158,18 +158,17 @@ enum SimpleReduxAlert {
 }
 
 enum Biometrics {
-	struct setIsEnabled: Action, Trackable {
+	struct setIsEnabled: Action {
 		let reduce: Reducer
 		init(_ isBiometricsEnabled: Bool) {
 			UserDefaults.isBiometricsEnabled = isBiometricsEnabled
 			reduce = { $0.clone(isBiometricsEnabled: isBiometricsEnabled) }
-			saveEvent("event.enableBiometrics", attributes: ["isEnabled": "\(isBiometricsEnabled)"])
 		}
 	}
 }
 
 enum UserPreferredCurrency {
-	struct setDefault: Action, Trackable {
+	struct setDefault: Action {
 		let reduce: Reducer
 		init(_ userPreferredCurrencyCode: String) {
 			UserDefaults.userPreferredCurrencyCode = userPreferredCurrencyCode
@@ -186,11 +185,10 @@ enum UserPreferredCurrency {
 }
 
 enum RecommendRescan {
-	struct set: Action, Trackable {
+	struct set: Action {
 		let reduce: Reducer
 		init(_ recommendRescan: Bool) {
 			reduce = { $0.clone(recommendRescan: recommendRescan) }
-			saveEvent("event.recommendRescan")
 		}
 	}
 }
@@ -205,12 +203,11 @@ enum LoadTransactions {
 }
 
 enum MaxDigits {
-	struct set: Action, Trackable {
+	struct set: Action {
 		let reduce: Reducer
 		init(_ maxDigits: Int) {
 			UserDefaults.maxDigits = maxDigits
 			reduce = { $0.clone(maxDigits: maxDigits) }
-			saveEvent("maxDigits.set", attributes: ["maxDigits": "\(maxDigits)"])
 		}
 	}
 }
@@ -250,7 +247,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -270,7 +267,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: type,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -290,7 +287,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -310,7 +307,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: WalletState(isConnected: walletState.isConnected, syncProgress: walletSyncProgress, syncState: walletState.syncState, balance: walletState.balance, transactions: walletState.transactions, lastBlockTimestamp: timestamp, name: walletState.name, creationDate: walletState.creationDate, isRescanning: walletState.isRescanning),
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -330,7 +327,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: WalletState(isConnected: walletState.isConnected, syncProgress: walletState.syncProgress, syncState: syncState, balance: walletState.balance, transactions: walletState.transactions, lastBlockTimestamp: walletState.lastBlockTimestamp, name: walletState.name, creationDate: walletState.creationDate, isRescanning: walletState.isRescanning),
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -350,7 +347,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: WalletState(isConnected: walletState.isConnected, syncProgress: walletState.syncProgress, syncState: walletState.syncState, balance: balance, transactions: walletState.transactions, lastBlockTimestamp: walletState.lastBlockTimestamp, name: walletState.name, creationDate: walletState.creationDate, isRescanning: walletState.isRescanning),
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -370,7 +367,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: WalletState(isConnected: walletState.isConnected, syncProgress: walletState.syncProgress, syncState: walletState.syncState, balance: walletState.balance, transactions: transactions, lastBlockTimestamp: walletState.lastBlockTimestamp, name: walletState.name, creationDate: walletState.creationDate, isRescanning: walletState.isRescanning),
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -390,7 +387,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: WalletState(isConnected: walletState.isConnected, syncProgress: walletState.syncProgress, syncState: walletState.syncState, balance: walletState.balance, transactions: walletState.transactions, lastBlockTimestamp: walletState.lastBlockTimestamp, name: walletName, creationDate: walletState.creationDate, isRescanning: walletState.isRescanning),
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -410,7 +407,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: WalletState(isConnected: walletState.isConnected, syncProgress: walletState.syncProgress, syncState: walletState.syncState, balance: walletState.balance, transactions: walletState.transactions, lastBlockTimestamp: walletState.lastBlockTimestamp, name: walletState.name, creationDate: walletState.creationDate, isRescanning: walletState.isRescanning),
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -430,7 +427,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: WalletState(isConnected: walletState.isConnected, syncProgress: walletState.syncProgress, syncState: walletState.syncState, balance: walletState.balance, transactions: walletState.transactions, lastBlockTimestamp: walletState.lastBlockTimestamp, name: walletState.name, creationDate: walletCreationDate, isRescanning: walletState.isRescanning),
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -450,7 +447,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: WalletState(isConnected: walletState.isConnected, syncProgress: walletState.syncProgress, syncState: walletState.syncState, balance: walletState.balance, transactions: walletState.transactions, lastBlockTimestamp: walletState.lastBlockTimestamp, name: walletState.name, creationDate: walletState.creationDate, isRescanning: isRescanning),
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -465,12 +462,12 @@ extension ReduxState {
 		                  fees: fees)
 	}
 
-	func clone(isLtcSwapped: Bool) -> ReduxState {
+	func clone(isLTCValueShown: Bool) -> ReduxState {
 		return ReduxState(isStartFlowVisible: isStartFlowVisible,
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -490,7 +487,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -510,7 +507,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -530,7 +527,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -550,7 +547,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -570,7 +567,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -590,7 +587,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -610,7 +607,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -630,7 +627,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -650,7 +647,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -670,7 +667,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -690,7 +687,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -710,7 +707,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,
@@ -730,7 +727,7 @@ extension ReduxState {
 		                  isLoginRequired: isLoginRequired,
 		                  rootModal: rootModal,
 		                  walletState: walletState,
-		                  isLtcSwapped: isLtcSwapped,
+		                  isLTCValueShown: isLTCValueShown,
 		                  currentRate: currentRate,
 		                  rates: rates,
 		                  alert: alert,

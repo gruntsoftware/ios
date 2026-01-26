@@ -28,7 +28,7 @@ enum SettingsAction: CaseIterable {
     var isOnSystemImage: String {
         switch self {
         case .preferDarkMode:
-            return "moon.circle"
+            return "moon.stars"
         case .wipeData:
             return "trash"
         case .lock:

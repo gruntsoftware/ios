@@ -63,8 +63,8 @@ class SettingsHelpersTests: XCTestCase {
     // MARK: - isOnSystemImage Tests
     
     func testPreferDarkModeIsOnSystemImage() {
-        XCTAssertEqual(SettingsAction.preferDarkMode.isOnSystemImage, "moon.circle",
-                      "preferDarkMode isOnSystemImage should be 'moon.circle'")
+        XCTAssertEqual(SettingsAction.preferDarkMode.isOnSystemImage, "moon.stars",
+                      "preferDarkMode isOnSystemImage should be 'moon.stars'")
     }
     
     func testWipeDataIsOnSystemImage() {

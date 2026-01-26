@@ -8,7 +8,7 @@ private let hasAquiredShareDataPermissionKey = "has_acquired_permission"
 private let legacyWalletNeedsBackupKey = "WALLET_NEEDS_BACKUP"
 private let writePaperPhraseDateKey = "writepaperphrasedatekey"
 private let hasPromptedBiometricsKey = "haspromptedtouched"
-private let isLtcSwappedKey = "isLtcSwappedKey"
+private let isLTCValueShownKey = "isLTCValueShownKey"
 private let maxDigitsKey = "SETTINGS_MAX_DIGITS"
 private let pushTokenKey = "pushTokenKey"
 private let currentRateKey = "currentRateKey"
@@ -111,10 +111,10 @@ extension UserDefaults {
 		set { defaults.set(newValue, forKey: hasAquiredShareDataPermissionKey) }
 	}
 
-	static var isLtcSwapped: Bool {
-		get { return defaults.bool(forKey: isLtcSwappedKey)
+	static var isLTCValueShown: Bool {
+		get { return defaults.bool(forKey: isLTCValueShownKey)
 		}
-		set { defaults.set(newValue, forKey: isLtcSwappedKey) }
+		set { defaults.set(newValue, forKey: isLTCValueShownKey) }
 	}
 
 	//

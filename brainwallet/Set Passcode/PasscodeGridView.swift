@@ -10,35 +10,43 @@ struct PasscodeGridView: View {
 
     let detailFont: Font = .barlowRegular(size: 24.0)
     let elementSpacing = 2.0
-    let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
-    @Binding var digits: [Int]
+    @Binding
+    var digits: [Int]
+
+    @Binding
+    var userPrefersDarkMode: Bool
+
+    init(digits: Binding<[Int]>, userPrefersDarkMode: Binding<Bool>) {
+        _userPrefersDarkMode = userPrefersDarkMode
+        _digits = digits
+    }
 
     var body: some View {
 
         Grid(horizontalSpacing: elementSpacing, verticalSpacing: elementSpacing) {
             GridRow {
-                CodeButton(index: 1, digits: $digits)
-                CodeButton(index: 2, digits: $digits)
-                CodeButton(index: 3, digits: $digits)
+                CodeButton(index: 1, digits: $digits, userPrefersDarkMode: $userPrefersDarkMode)
+                CodeButton(index: 2, digits: $digits, userPrefersDarkMode: $userPrefersDarkMode)
+                CodeButton(index: 3, digits: $digits, userPrefersDarkMode: $userPrefersDarkMode)
             }
 
             GridRow {
-                CodeButton(index: 4, digits: $digits)
-                CodeButton(index: 5, digits: $digits)
-                CodeButton(index: 6, digits: $digits)
+                CodeButton(index: 4, digits: $digits, userPrefersDarkMode: $userPrefersDarkMode)
+                CodeButton(index: 5, digits: $digits, userPrefersDarkMode: $userPrefersDarkMode)
+                CodeButton(index: 6, digits: $digits, userPrefersDarkMode: $userPrefersDarkMode)
             }
 
             GridRow {
-                CodeButton(index: 7, digits: $digits)
-                CodeButton(index: 8, digits: $digits)
-                CodeButton(index: 9, digits: $digits)
+                CodeButton(index: 7, digits: $digits, userPrefersDarkMode: $userPrefersDarkMode)
+                CodeButton(index: 8, digits: $digits, userPrefersDarkMode: $userPrefersDarkMode)
+                CodeButton(index: 9, digits: $digits, userPrefersDarkMode: $userPrefersDarkMode)
             }
 
             GridRow {
-                CodeButton(index: -1, digits: $digits)
-                CodeButton(index: 0, digits: $digits)
-                CodeButton(index: -2, digits: $digits)
+                CodeButton(index: -1, digits: $digits, userPrefersDarkMode: $userPrefersDarkMode)
+                CodeButton(index: 0, digits: $digits, userPrefersDarkMode: $userPrefersDarkMode)
+                CodeButton(index: -2, digits: $digits, userPrefersDarkMode: $userPrefersDarkMode)
             }
         }
     }
@@ -48,12 +56,16 @@ struct CodeButton: View {
     let buttonSize = 60.0
     let detailFont: Font = .barlowRegular(size: 28.0)
     var index: Int
-    let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
-    @Binding var digits: [Int]
+    @Binding
+    var digits: [Int]
 
-    init (index: Int, digits: Binding<[Int]>) {
+    @Binding
+    var userPrefersDarkMode: Bool
+
+    init (index: Int, digits: Binding<[Int]>, userPrefersDarkMode: Binding<Bool>) {
         _digits = digits
+        _userPrefersDarkMode = userPrefersDarkMode
         self.index = index
     }
 
@@ -76,7 +88,7 @@ struct CodeButton: View {
                 if index == -2 {
                     Image(systemName: "arrow.backward")
                         .resizable()
-                        .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.grape)
+                        .foregroundColor(userPrefersDarkMode ? .white : BrainwalletColor.grape)
                         .frame(maxWidth: buttonSize * 0.25,
                                maxHeight: buttonSize * 0.25)
                         .padding()
@@ -85,7 +97,7 @@ struct CodeButton: View {
                 } else {
                     Text("\(index)")
                         .font(detailFont)
-                        .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.grape)
+                        .foregroundColor(userPrefersDarkMode ? .white : BrainwalletColor.grape)
                         .frame(maxWidth: .infinity,
                                maxHeight: .infinity)
                         .padding()

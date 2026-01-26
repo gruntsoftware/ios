@@ -46,10 +46,12 @@ struct SeedWordDragView: View {
 							HStack {
                                 Spacer()
                                 Text(seedWord.first?.word ?? "")
-									.font(.barlowRegular(size: 16.0))
-									.foregroundColor(userPrefersDarkTheme ? .white :
-                                        BrainwalletColor.content)
-									.frame(height: cellHeight,
+                                    .font(.system(size: 16, weight: .light, design: .default))
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.8)
+                                    .foregroundColor(userPrefersDarkTheme ? .white :
+                                                                    BrainwalletColor.content)
+                                    .frame(height: cellHeight,
 									       alignment: .leading)
                                     .padding([.leading, .trailing], wordPad)
 

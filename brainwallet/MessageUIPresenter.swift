@@ -1,7 +1,7 @@
 import MessageUI
 import UIKit
 
-class MessageUIPresenter: NSObject, Trackable {
+class MessageUIPresenter: NSObject {
 	weak var presenter: UIViewController?
 
 	func presentMailCompose(litecoinAddress: String, image: UIImage) {
@@ -54,7 +54,6 @@ class MessageUIPresenter: NSObject, Trackable {
 		let emailView = MFMailComposeViewController()
 		emailView.setToRecipients([emailAddress])
 		emailView.mailComposeDelegate = self
-		saveEvent("receive.presentMailCompose")
 		present(emailView)
 	}
 
@@ -76,7 +75,6 @@ class MessageUIPresenter: NSObject, Trackable {
 			textView.addAttachmentData(data, typeIdentifier: "public.image", filename: "litecoinqr.png")
 		}
 		textView.messageComposeDelegate = self
-		saveEvent("receive.presentMessage")
 		present(textView)
 	}
 
@@ -95,14 +93,12 @@ class MessageUIPresenter: NSObject, Trackable {
 	}
 
 	private func showEmailUnavailableAlert() {
-		saveEvent("receive.emailUnavailable")
 		let alert = UIAlertController(title: "S.ErrorMessages.emailUnavailableTitle" , message: "S.ErrorMessages.emailUnavailableMessage" , preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Ok" , style: .default, handler: nil))
 		presenter?.present(alert, animated: true, completion: nil)
 	}
 
 	private func showMessageUnavailableAlert() {
-		saveEvent("receive.messagingUnavailable")
 		let alert = UIAlertController(title: "S.ErrorMessages.messagingUnavailableTitle" , message: "S.ErrorMessages.messagingUnavailableMessage" , preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Ok" , style: .default, handler: nil))
 		presenter?.present(alert, animated: true, completion: nil)

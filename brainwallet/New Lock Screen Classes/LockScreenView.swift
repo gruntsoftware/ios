@@ -89,7 +89,8 @@ struct LockScreenView: View {
 
                     Spacer()
                         .frame(minHeight: height * 0.02)
-                    PasscodeGridView(digits: $pinDigits)
+                    PasscodeGridView(digits: $pinDigits,
+                                     userPrefersDarkMode: $userPrefersDarkMode)
                         .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
                         .padding(.bottom, 5.0)
 
