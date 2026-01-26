@@ -8,7 +8,6 @@ class ApplicationController: Subscriber {
 
     var window: UIWindow?
     fileprivate let store = Store()
-//    private var startFlowController: StartFlowPresenter?
     private var modalPresenter: ModalPresenter?
     fileprivate var walletManager: WalletManager?
     private var walletCoordinator: WalletCoordinator?
