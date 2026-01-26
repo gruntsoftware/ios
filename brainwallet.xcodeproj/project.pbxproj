@@ -83,7 +83,6 @@
 		246028592E5F178400CDEB7A /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 246028582E5F178400CDEB7A /* FirebaseRemoteConfig */; };
 		2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */; };
 		24618EEA2D90436500A878AC /* BRCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24618EE92D90435200A878AC /* BRCore.swift */; };
-		246217022F2767380098F183 /* ExportButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246216FC2F2767360098F183 /* ExportButtonView.swift */; };
 		24691D142EAE4D30003CDC7C /* SyncSubBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */; };
 		246A9A072DF5F54C002480CB /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A9A062DF5F532002480CB /* Utility.swift */; };
 		246C3F5A2F2431B6009BC881 /* TutorialSendBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246C3F592F2431B6009BC881 /* TutorialSendBentoView.swift */; };
@@ -590,7 +589,6 @@
 		246027A62E5E178700CDEB7A /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		2461418E2DA9B7AF007BB116 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = brainwallet/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		24618EE92D90435200A878AC /* BRCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRCore.swift; sourceTree = "<group>"; };
-		246216FC2F2767360098F183 /* ExportButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportButtonView.swift; sourceTree = "<group>"; };
 		24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSubBentoView.swift; sourceTree = "<group>"; };
 		246A9A062DF5F532002480CB /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		246C3F592F2431B6009BC881 /* TutorialSendBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSendBentoView.swift; sourceTree = "<group>"; };
@@ -1853,7 +1851,6 @@
 		24E078A62DF1F915004B5958 /* Legacy Prompt Classes */ = {
 			isa = PBXGroup;
 			children = (
-				246216FC2F2767360098F183 /* ExportButtonView.swift */,
 				2480B5822DF2015B00653403 /* PromptHostingCell.swift */,
 				24E078A72DF1F997004B5958 /* PromptCellView.swift */,
 				24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */,
@@ -2870,7 +2867,6 @@
 				2416CE6C2DA90D0D00FFBD10 /* BWAPIClient.swift in Sources */,
 				2416CE6D2DA90D0D00FFBD10 /* BRTar.swift in Sources */,
 				2416CE6E2DA90D0D00FFBD10 /* BRPeerManager.swift in Sources */,
-				246217022F2767380098F183 /* ExportButtonView.swift in Sources */,
 				2416CE6F2DA90D0D00FFBD10 /* BRTxOutputExtension.swift in Sources */,
 				241D22472DB526D7000302C8 /* YourSeedProveItView.swift in Sources */,
 				2416CE712DA90D0D00FFBD10 /* BRWallet.swift in Sources */,
