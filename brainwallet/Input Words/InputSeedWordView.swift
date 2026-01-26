@@ -81,7 +81,7 @@ struct InputSeedWordView: View {
                 }
                 .frame(width: width, height: height)
                 .padding(.all, genericPad)
-                .onChange(of: seedWord) { _ in
+                .onChange(of: seedWord) { _,_ in
                     if seedWord.count < 2 {
                         wordIsSet = false
                     }

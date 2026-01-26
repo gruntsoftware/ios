@@ -123,7 +123,7 @@ struct YourSeedWordsView: View {
                     }
 
                 }
-                .onChange(of: viewModel.isSeedPhraseFilled) { _ in
+                .onChange(of: viewModel.isSeedPhraseFilled) { _,_ in
                     seedViewModel.loadSeedWords(seedPhrase: viewModel.seedPhrase)
                 }
                 .ignoresSafeArea(.keyboard)

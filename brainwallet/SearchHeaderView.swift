@@ -193,7 +193,7 @@ class SearchHeaderView: UIView {
 	}
 
 	@discardableResult private func toggleFilterType(_ filterType: SearchFilterType) -> Bool {
-		if let index = filters.index(of: filterType) {
+        if let index = filters.firstIndex(of: filterType) {
 			filters.remove(at: index)
 			return false
 		} else {
@@ -250,7 +250,7 @@ class SearchHeaderView: UIView {
 extension SearchHeaderView: UISearchBarDelegate {
 	func searchBar(_: UISearchBar, textDidChange searchText: String) {
 		let filter: SearchFilterType = .text(searchText)
-		if let index = filters.index(of: filter) {
+        if let index = filters.firstIndex(of: filter) {
 			filters.remove(at: index)
 		}
 		if searchText != "" {

@@ -28,8 +28,6 @@ struct SendStep2View: View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
-            let height = geometry.size.height
-
             let calloutWidth = width * 0.7
             let pointToBalanceOffset = 85.0
             ZStack {

@@ -18,13 +18,13 @@ extension ModalPresenter {
         case .send:
             return nil // DEPRECATED return makeSendView()
         case .receive:
-            return newBuyOrReceiveView() // receiveView(isRequestAmountVisible: true)
+            return nil
         case .menu:
             return menuViewController()
         case .loginScan:
             return nil // The scan view needs a custom presentation
         case .loginAddress:
-            return  newBuyOrReceiveView() // receiveView(isRequestAmountVisible: false)
+            return nil
         case .wipeEmptyWallet:
             return wipeEmptyView()
         case .requestAmount:

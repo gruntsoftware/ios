@@ -118,10 +118,10 @@ struct LockScreenView: View {
                     .frame(height: 22.0, alignment: .center)
 
                 }
-                .onChange(of: viewModel.currentFiatValue) { newValue in
+                .onChange(of: viewModel.currentFiatValue) { _,newValue in
                     fiatValue = String(format: String(localized: "%@ = 1Ł"), newValue)
                 }
-                .onChange(of: pinDigits) { _ in
+                .onChange(of: pinDigits) { _,_ in
 
                     pinState = (0..<4).map { $0 < pinDigits.count }
 
@@ -134,7 +134,7 @@ struct LockScreenView: View {
                         viewModel.userSubmittedPIN?(pinString)
                     }
                 }
-                .onChange(of: viewModel.authenticationFailed) { didFailAuthentication in
+                .onChange(of: viewModel.authenticationFailed) { _,didFailAuthentication in
                     if didFailAuthentication {
                         startShake.toggle()
                         let generator = UINotificationFeedbackGenerator()
@@ -149,7 +149,7 @@ struct LockScreenView: View {
 
             }
             .background(BrainwalletColor.surface)
-            .onChange(of: userPrefersDarkMode) { preference in
+            .onChange(of: userPrefersDarkMode) { _,preference in
                 viewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
             }
             .onAppear {

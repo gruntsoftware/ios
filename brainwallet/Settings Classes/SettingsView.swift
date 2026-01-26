@@ -157,10 +157,10 @@ struct SettingsView: View {
 
                         }
                         .frame(width: width * 0.9)
-                        .onChange(of: userPrefersDarkMode) { hasDarkPreference in
+                        .onChange(of: userPrefersDarkMode) { _,hasDarkPreference in
                             newMainViewModel.updateTheme(shouldBeDark: hasDarkPreference)
                         }
-                        .onChange(of: didTriggerLock) { _ in
+                        .onChange(of: didTriggerLock) { _,_ in
                             shouldLock = true
                             if shouldLock {
                                 delay(0.9) {

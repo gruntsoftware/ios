@@ -32,10 +32,7 @@ struct CalloutTextView: View {
     }
 
         var body: some View {
-            GeometryReader { geometry in
-
-                let width = geometry.size.width
-                let height = geometry.size.height
+            GeometryReader { _ in
 
                 ZStack {
                     VStack {

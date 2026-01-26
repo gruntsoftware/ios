@@ -233,7 +233,6 @@
 		C312D2FC2D7DC27700BB97A4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E72D7DC27700BB97A4 /* GradientView.swift */; };
 		C312D3012D7DC27700BB97A4 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1CC2D7DC27700BB97A4 /* WelcomeViewController.swift */; };
 		C312D3072D7DC27700BB97A4 /* CGRect+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D06E2D7DC27700BB97A4 /* CGRect+Additions.swift */; };
-		C312D30B2D7DC27700BB97A4 /* StartWipeWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1CA2D7DC27700BB97A4 /* StartWipeWalletViewController.swift */; };
 		C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0872D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift */; };
 		C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */; };
 		C312D3132D7DC27700BB97A4 /* UserDefaultsUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C62D7DC27700BB97A4 /* UserDefaultsUpdater.swift */; };
@@ -261,7 +260,6 @@
 		C312D3452D7DC27700BB97A4 /* EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2422D7DC27700BB97A4 /* EmailValidation.swift */; };
 		C312D3472D7DC27700BB97A4 /* WalletManager+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */; };
 		C312D3482D7DC27700BB97A4 /* FeeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2492D7DC27700BB97A4 /* FeeManager.swift */; };
-		C312D3492D7DC27700BB97A4 /* StartNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2AD2D7DC27700BB97A4 /* StartNavigationDelegate.swift */; };
 		C312D34C2D7DC27700BB97A4 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2042D7DC27700BB97A4 /* AssociatedObject.swift */; };
 		C312D34D2D7DC27700BB97A4 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C92D7DC27700BB97A4 /* StartViewController.swift */; };
 		C312D34F2D7DC27700BB97A4 /* DispatchQueue+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0712D7DC27700BB97A4 /* DispatchQueue+Additions.swift */; };
@@ -929,7 +927,6 @@
 		C312D1C72D7DC27700BB97A4 /* ShareDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareDataViewController.swift; sourceTree = "<group>"; };
 		C312D1C82D7DC27700BB97A4 /* StartPaperPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPaperPhraseViewController.swift; sourceTree = "<group>"; };
 		C312D1C92D7DC27700BB97A4 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		C312D1CA2D7DC27700BB97A4 /* StartWipeWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWipeWalletViewController.swift; sourceTree = "<group>"; };
 		C312D1CB2D7DC27700BB97A4 /* VerifyPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPinViewController.swift; sourceTree = "<group>"; };
 		C312D1CC2D7DC27700BB97A4 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C312D1CD2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePaperPhraseViewController.swift; sourceTree = "<group>"; };
@@ -1040,7 +1037,6 @@
 		C312D2A92D7DC27700BB97A4 /* SimpleRedux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRedux.swift; sourceTree = "<group>"; };
 		C312D2AA2D7DC27700BB97A4 /* StandardDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDividerView.swift; sourceTree = "<group>"; };
 		C312D2AC2D7DC27700BB97A4 /* StartHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartHostingController.swift; sourceTree = "<group>"; };
-		C312D2AD2D7DC27700BB97A4 /* StartNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartNavigationDelegate.swift; sourceTree = "<group>"; };
 		C312D2AE2D7DC27700BB97A4 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		C312D2AF2D7DC27700BB97A4 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		C312D2B02D7DC27700BB97A4 /* StoreReview+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreReview+Extension.swift"; sourceTree = "<group>"; };
@@ -1887,7 +1883,6 @@
 			isa = PBXGroup;
 			children = (
 				C312D2AC2D7DC27700BB97A4 /* StartHostingController.swift */,
-				C312D2AD2D7DC27700BB97A4 /* StartNavigationDelegate.swift */,
 				C312D2AE2D7DC27700BB97A4 /* StartView.swift */,
 				C312D2AF2D7DC27700BB97A4 /* StartViewModel.swift */,
 				24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */,
@@ -2156,7 +2151,6 @@
 				C312D1C82D7DC27700BB97A4 /* StartPaperPhraseViewController.swift */,
 				C312D1FB2D7DC27700BB97A4 /* ExchangeUpdater.swift */,
 				C312D1C92D7DC27700BB97A4 /* StartViewController.swift */,
-				C312D1CA2D7DC27700BB97A4 /* StartWipeWalletViewController.swift */,
 				C312D1CB2D7DC27700BB97A4 /* VerifyPinViewController.swift */,
 				C312D1CC2D7DC27700BB97A4 /* WelcomeViewController.swift */,
 				C312D1CD2D7DC27700BB97A4 /* WritePaperPhraseViewController.swift */,
@@ -2790,7 +2784,6 @@
 				C312D3012D7DC27700BB97A4 /* WelcomeViewController.swift in Sources */,
 				C312D3072D7DC27700BB97A4 /* CGRect+Additions.swift in Sources */,
 				247A83932EA034BC00B5DFD8 /* Renderer.swift in Sources */,
-				C312D30B2D7DC27700BB97A4 /* StartWipeWalletViewController.swift in Sources */,
 				246C3F5A2F2431B6009BC881 /* TutorialSendBentoView.swift in Sources */,
 				C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */,
 				C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */,
@@ -2828,7 +2821,6 @@
 				246C429E2F24E1C2009BC881 /* SendStep1View.swift in Sources */,
 				24F5BD582E04711E0010D340 /* CurrencyPickerView.swift in Sources */,
 				C312D3482D7DC27700BB97A4 /* FeeManager.swift in Sources */,
-				C312D3492D7DC27700BB97A4 /* StartNavigationDelegate.swift in Sources */,
 				C312D34C2D7DC27700BB97A4 /* AssociatedObject.swift in Sources */,
 				24DB05E62E06059000C57FE9 /* SoundsHelper.swift in Sources */,
 				C312D34D2D7DC27700BB97A4 /* StartViewController.swift in Sources */,

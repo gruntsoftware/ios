@@ -92,7 +92,7 @@ struct SetPasscodeView: View {
                         }
                 }
             }
-            .onChange(of: pinDigits) { _ in
+            .onChange(of: pinDigits) { _,_ in
 
                 pinState = (0..<4).map { $0 < pinDigits.count }
 

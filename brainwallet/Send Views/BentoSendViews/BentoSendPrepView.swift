@@ -47,7 +47,6 @@ struct BentoSendPrepView: View {
     var body: some View {
         GeometryReader { geometry in
 
-            let width = geometry.size.width
             let detailSectionHeight = geometry.size.height * 0.4
             let detailRowHeight = 22.0
             let sectionSpacer = 18.0

@@ -102,7 +102,7 @@ struct LockScreenFooterView: View {
                                        shouldDismiss: $shoulShowWipeAlert,
                                        didCompleteWipe: $viewModel.didCompleteWipingWallet)
                     }
-                    .onChange(of: viewModel.didCompleteWipingWallet) { _ in
+                    .onChange(of: viewModel.didCompleteWipingWallet) { _,_ in
                         shoulShowWipeAlert.toggle()
                     }
                 }

@@ -23210,6 +23210,7 @@
       }
     },
     "Starting or recovering another wallet allows you to access and manage a different Brainwallet wallet on this device." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -32907,6 +32908,7 @@
       }
     },
     "Your current wallet will be removed from this device. If you wish to restore it in the future, you will need to enter your Paper Key." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

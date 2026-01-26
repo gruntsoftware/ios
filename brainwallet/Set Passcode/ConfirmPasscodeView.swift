@@ -105,7 +105,7 @@ struct ConfirmPasscodeView: View {
                                 .padding(.bottom, 80.0)
                         }
                 }
-                .onChange(of: confirmPinDigits) { _ in
+                .onChange(of: confirmPinDigits) { _,_ in
 
                     pinState = (0..<4).map { $0 < confirmPinDigits.count }
                     let currentPinState = pinState.allSatisfy { $0 == true }
@@ -142,7 +142,7 @@ struct ConfirmPasscodeView: View {
                         }
                     }
                 }
-                .onChange(of: viewModel.walletCreationDidFail) { newValue in
+                .onChange(of: viewModel.walletCreationDidFail) { _,newValue in
                     /// Returns user to the StartView if there is a failure
                     if newValue {
                         path.removeAll(keepingCapacity: false)

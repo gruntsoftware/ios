@@ -10,7 +10,6 @@ class ModalPresenter: Subscriber {
 		self.window = window
 		self.walletManager = walletManager
 		modalTransitionDelegate = ModalTransitionDelegate(type: .regular, store: store)
-		wipeNavigationDelegate = StartNavigationDelegate(store: store)
 		noAuthApiClient = apiClient
 		addSubscriptions()
 	}
@@ -26,62 +25,7 @@ class ModalPresenter: Subscriber {
     var currentRequest: PaymentRequest?
     var reachability = ReachabilityMonitor()
     var notReachableAlert: InAppAlert?
-    let wipeNavigationDelegate: StartNavigationDelegate
     var receiveHostingController: ReceiveHostingController?
-    var buyReceiveHostingController: BuyReceiveHostingController?
-
-    func newBuyOrReceiveView() -> UIViewController? {
-
-        guard let walletManager = walletManager else { return nil }
-        var root : ModalViewController?
-
-        let canUserBuy = UserDefaults
-            .standard
-                .object(forKey: userCurrentLocaleMPApprovedKey) as? Bool ?? false
-
-        receiveHostingController = nil
-        buyReceiveHostingController = nil
-
-        if canUserBuy {
-            buyReceiveHostingController = BuyReceiveHostingController(store: self.store, walletManager: walletManager, isModalMode: true)
-            if let buyReceiveVC = buyReceiveHostingController {
-                buyReceiveVC.view.translatesAutoresizingMaskIntoConstraints = false
-                root = ModalViewController(childViewController: buyReceiveVC, store: store)
-
-                let heightFactor: CGFloat = 0.8
-                NSLayoutConstraint.activate([
-                    buyReceiveVC.view.heightAnchor
-                        .constraint(equalToConstant:
-                                        window.frame.height * heightFactor)
-                ])
-
-                buyReceiveVC.dismissBuyReceiveModal = strongify(self) { _ in
-                    guard let root = root else { return }
-                    root.dismiss(animated: true, completion: nil)
-                }
-            }
-        } else {
-            receiveHostingController = ReceiveHostingController(store: self.store, walletManager: walletManager, isModalMode: true)
-            if let receiveVC = receiveHostingController {
-                receiveVC.view.translatesAutoresizingMaskIntoConstraints = false
-                root = ModalViewController(childViewController: receiveVC, store: store)
-
-                let heightFactor: CGFloat = 0.4
-                NSLayoutConstraint.activate([
-                    receiveVC.view.heightAnchor
-                        .constraint(equalToConstant:
-                                        window.frame.height * heightFactor)
-                ])
-
-                receiveVC.dismissReceiveModal = strongify(self) { _ in
-                    guard let root = root else { return }
-                    root.dismiss(animated: true, completion: nil)
-                }
-            }
-        }
-
-        return root
-    }
 
     func presentSettings() {
 		guard let topVC = topViewController,

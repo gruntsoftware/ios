@@ -70,9 +70,8 @@ struct BentoCalloutShape: View {
         _userPrefersDarkTheme = userPrefersDarkTheme
     }
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
 
-            let width = geometry.size.width
             let triangleSize = 70.0
 
             let backgroundColor: Color = .white

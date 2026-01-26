@@ -132,7 +132,7 @@ struct TopUpSetAmountView: View {
                                     .padding(4.0)
                             }
                         }
-                        .onChange(of: pickedCurrency) { _ in
+                        .onChange(of: pickedCurrency) { _,_ in
                             updateAmountQuoted()
                         }
                         .pickerStyle(.wheel)

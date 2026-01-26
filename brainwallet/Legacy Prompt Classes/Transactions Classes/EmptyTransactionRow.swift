@@ -18,9 +18,7 @@ struct EmptyTransactionRow: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-            let height = geometry.size.height
-            let width = geometry.size.width
+        GeometryReader { _ in
 
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)

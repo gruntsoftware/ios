@@ -32,9 +32,7 @@ struct TutorialWalkthroughPageView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-
-            let width = geometry.size.width
+        GeometryReader { _ in
 
             ZStack {
                 VStack(alignment: .center) {

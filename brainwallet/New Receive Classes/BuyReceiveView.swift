@@ -201,7 +201,7 @@ struct BuyReceiveView: View {
                                             .padding(4.0)
                                     }
                                 }
-                                .onChange(of: pickedCurrency) { _ in
+                                .onChange(of: pickedCurrency) { _,_ in
                                     updateFiatAmounts()
                                 }
                                 .pickerStyle(.wheel)
@@ -223,7 +223,7 @@ struct BuyReceiveView: View {
                                 }
                                 .frame(height: 70, alignment: .center)
                                 .padding(.trailing, 20.0)
-                                .onChange(of: viewModel.quotedTimestamp) { newValue in
+                                .onChange(of: viewModel.quotedTimestamp) { _,newValue in
                                     quotedTimestamp = newValue
                                     quotedLTCAmount = viewModel.quotedLTCAmount
                                 }
@@ -247,7 +247,7 @@ struct BuyReceiveView: View {
                                         .tag(2)
                                 }
                                 .pickerStyle(.segmented)
-                                .onChange(of: pickedSegment) { segmentTag in
+                                .onChange(of: pickedSegment) { _,segmentTag in
 
                                     if segmentTag == 0 {
                                         pickedAmount = fiatMinAmount
@@ -358,10 +358,10 @@ struct BuyReceiveView: View {
                         .cornerRadius(modalCorner/2)
                     }
                 }
-                .onChange(of: viewModel.didFetchData) { newValue in
+                .onChange(of: viewModel.didFetchData) { _,newValue in
                     didFetchData = newValue
                 }
-                .onChange(of: viewModel.pickedCurrency) { _ in
+                .onChange(of: viewModel.pickedCurrency) { _,_ in
                     viewModel.updatePublishables()
                     pickedCurrency = viewModel.pickedCurrency
                 }

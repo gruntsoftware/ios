@@ -44,9 +44,8 @@ struct LTCPriceBentoView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
 
-            let width = geometry.size.width
             let trailingPad: CGFloat = 12
 
             ZStack {
@@ -62,7 +61,7 @@ struct LTCPriceBentoView: View {
                             }
                         }
                         .pickerStyle(.wheel)
-                        .onChange(of: pickedCurrency) { _ in
+                        .onChange(of: pickedCurrency) { _,_ in
                             delay(0.2) {
                                 newMainViewModel.userDidSetCurrencyPreference(currency: pickedCurrency)
                             }

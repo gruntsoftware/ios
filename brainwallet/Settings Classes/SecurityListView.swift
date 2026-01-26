@@ -84,10 +84,10 @@ struct SecurityListView: View {
                         }
                         .listStyle(.plain)
                         .scrollIndicators(.hidden)
-                        .onChange(of: willChangePIN) { _ in
+                        .onChange(of: willChangePIN) { _,_ in
                             newMainViewModel.userWillChangePIN()
                         }
-                        .onChange(of: willShareData) { _ in
+                        .onChange(of: willShareData) { _,_ in
                             newMainViewModel.userWillShareData()
                         }
                         .sheet(isPresented: $willShowSeedPhrase) {
