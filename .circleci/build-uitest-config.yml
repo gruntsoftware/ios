@@ -7,7 +7,7 @@ orbs:
   macos: circleci/macos@2
   ruby: circleci/ruby@2.5.3
 jobs:
-  build-unit-tests-per-push:
+  build-uitest:
     macos:
       xcode: 16.4.0
     resource_class: macos.m1.medium.gen1
@@ -16,8 +16,8 @@ jobs:
       HOMEBREW_NO_AUTO_UPDATE: 1
       FASTLANE_SKIP_UPDATE_CHECK: 1
       FL_OUTPUT_DIR: output
-      FASTLANE_LANE: run_all_tests_iPhone16ProMax
-      XCODE_SCHEME: brainwalletUnitTests
+      FASTLANE_LANE: run_ui_iphone16promax_tests
+      XCODE_SCHEME: brainwalletUITests
       XCODE_PROJECT: brainwallet.xcodeproj
       FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
       FASTLANE_XCODEBUILD_SETTINGS_RETRIES: 3
@@ -63,27 +63,28 @@ jobs:
             gem install bundler:2.6.9
             bundle config set --local path 'vendor/bundle'
             bundle install --jobs=4 --retry=3
-      # Setup SSH &  GH Token and initialize submodules 
+      
+      # Setup SSH and initialize submodules
       - run:
-          name: Configure Github Auth & Setup SSH and submodules
+          name: Setup SSH and submodules
           command: |
             echo 'github.com ssh-rsa SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g' >> ~/.ssh/known_hosts
             ssh-add -D
             ssh-add ~/.ssh/id_rsa_*
-            sed -i "s#https://github.com/#https://${GH_TOKEN}@github.com/#g" .gitmodules
-            git submodule init && git submodule update --init Modules/core && git submodule update --init Private/general-purpose
+            git submodule sync --recursive
+            git submodule update --init --recursive --jobs=4 --filter=blob:none -- ':(exclude)Private/ios-games'
+            git submodule init && git submodule update --init Modules/core
+
       # Setup environment files (MUST be before build)
       - run:
           name: Setup environment files
           command: |
             # Export environment variables
-            echo 'export BRAINWALLET_IOS_STOREKIT_V1_0_FILE="$BRAINWALLET_IOS_STOREKIT_V1_0_FILE"' >> $BASH_ENV
             echo 'export GOOGLE_SERVICES_PLIST="$GOOGLE_SERVICES_PLIST"' >> $BASH_ENV
             echo 'export REMOTE_CONFIG_DEFAULTS="$REMOTE_CONFIG_DEFAULTS"' >> $BASH_ENV
             echo 'export DEBUG_SERVICE_DATA="$DEBUG_SERVICE_DATA"' >> $BASH_ENV
             
             # Create environment files in root directory (required by Xcode build)
-            echo "$BRAINWALLET_IOS_STOREKIT_V1_0_FILE" | base64 --decode > Brainwallet-StoreKit-v1.storekit
             echo "$GOOGLE_SERVICES_PLIST" | base64 --decode > GoogleService-Info.plist
             echo "$REMOTE_CONFIG_DEFAULTS" | base64 --decode > remote-config-defaults.plist
             echo "$DEBUG_SERVICE_DATA" | base64 --decode > service-data.plist
@@ -110,7 +111,6 @@ jobs:
             
             # Also copy to brainwallet directory if needed
             mkdir -p ./brainwallet
-            cp Brainwallet-StoreKit-v1.storekit ./brainwallet/PreLaunchResources/
             cp GoogleService-Info.plist ./brainwallet/PreLaunchResources/
             cp remote-config-defaults.plist ./brainwallet/PreLaunchResources/
             cp service-data.plist ./brainwallet/PreLaunchResources/
@@ -207,13 +207,25 @@ jobs:
           path: ~/Library/Logs/DiagnosticReports
           destination: crash-logs
           when: on_fail
-  # New daily maintenance job
 workflows:
   version: 4
-  
-  # Main workflow - runs unit tests by default
-  build-test-brainwallet-ios:
+  # UI test workflow - only runs when manually triggered or on specific branches
+  build-uitest-brainwallet-ios:
     jobs:
-      - build-unit-tests-per-push:
+      - build-uitest:
           context: 
             - bw-ios-test
+  # Weekly scheduled workflow UITest
+  weekly-uittest-maintenance-workflow:
+    triggers:
+      - schedule:
+          # Run daily at 6:00 AM UTC (adjust for your timezone)
+          cron: "0 6 * * *"
+          filters:
+            branches:
+              only:
+                - develop
+    jobs:
+      - weekly-uittest-maintenance:
+          context:
+            - circleci-agents
