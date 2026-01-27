@@ -627,7 +627,7 @@ workflows:
           filters:
             branches:
               only:
-                - ui-test-branch  # Only run UI tests on this specific branch
+                - develop  # Only run UI tests on this specific branch
   # Daily scheduled workflow UITest UnitTest
   daily-maintenance-workflow:
     triggers:
