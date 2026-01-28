@@ -52,6 +52,7 @@
 		242871862DE5D2580035DE48 /* NewSyncProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871852DE5D2550035DE48 /* NewSyncProgressView.swift */; };
 		242871882DE5D36F0035DE48 /* SyncSubBentoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242871872DE5D36C0035DE48 /* SyncSubBentoViewModel.swift */; };
 		2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */; };
+		2429EF892F2A71390027CFD3 /* LockReceiveModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2429EF832F2A71370027CFD3 /* LockReceiveModalView.swift */; };
 		242C43E92F2538E900CF6EA4 /* ReceiveStep1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242C43E52F2538E900CF6EA4 /* ReceiveStep1View.swift */; };
 		242C43EA2F2538E900CF6EA4 /* ReceiveStep2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242C43E62F2538E900CF6EA4 /* ReceiveStep2View.swift */; };
 		242C43EF2F25397300CF6EA4 /* WalkthroughStep3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242C43ED2F25397300CF6EA4 /* WalkthroughStep3View.swift */; };
@@ -527,6 +528,7 @@
 		2428718B2DE5E3250035DE48 /* NewSyncHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSyncHostingController.swift; sourceTree = "<group>"; };
 		24295E3B2E341F1C00A76776 /* BrainwalletUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainwalletUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24295E9B2E3428CA00A76776 /* BrainwalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainwalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2429EF832F2A71370027CFD3 /* LockReceiveModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockReceiveModalView.swift; sourceTree = "<group>"; };
 		242C43E52F2538E900CF6EA4 /* ReceiveStep1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveStep1View.swift; sourceTree = "<group>"; };
 		242C43E62F2538E900CF6EA4 /* ReceiveStep2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveStep2View.swift; sourceTree = "<group>"; };
 		242C43EB2F25397300CF6EA4 /* WalkthroughStep1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughStep1View.swift; sourceTree = "<group>"; };
@@ -1085,6 +1087,7 @@
 		240204682DC7F37B00EC8E99 /* New Lock Screen Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2429EF832F2A71370027CFD3 /* LockReceiveModalView.swift */,
 				C312D2772D7DC27700BB97A4 /* LockScreenView.swift */,
 				C312D2792D7DC27700BB97A4 /* LockScreenViewModel.swift */,
 				24BEC6062DF0B52600140AAD /* WipeWalletView.swift */,
@@ -2898,6 +2901,7 @@
 				C312D4502D7DC27700BB97A4 /* TransactionDirection.swift in Sources */,
 				C312D4512D7DC27700BB97A4 /* PromptModalViewController.swift in Sources */,
 				C312D4522D7DC27700BB97A4 /* CheckboxesStepView.swift in Sources */,
+				2429EF892F2A71390027CFD3 /* LockReceiveModalView.swift in Sources */,
 				24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */,
 				C312D4562D7DC27700BB97A4 /* LockScreenView.swift in Sources */,
 				247A838D2EA00D0100B5DFD8 /* MetalView.swift in Sources */,

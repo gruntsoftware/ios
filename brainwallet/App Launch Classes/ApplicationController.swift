@@ -175,6 +175,7 @@ class ApplicationController: Subscriber {
             return
         }
 		guard let window = window else { return }
+        NotificationCenter.default.post(name: .walletDidIntializeNotification, object: nil, userInfo: nil)
 
 		hasPerformedWalletDependentInitialization = true
 		walletCoordinator = WalletCoordinator(walletManager: walletManager, store: store)
@@ -232,7 +233,7 @@ class ApplicationController: Subscriber {
 		store.subscribe(self, triggerName: .didCreateOrRecoverWallet, callback: { [weak self] _ in
 			self?.modalPresenter?.walletManager = self?.walletManager
 			self?.startDataFetchers()
-			self?.mainViewController?.didUnlockLogin()
+			self?.mainViewController?.didUnlock()
 		})
 	}
 

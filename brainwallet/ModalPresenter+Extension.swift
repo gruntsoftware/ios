@@ -33,7 +33,6 @@ extension ModalPresenter {
     }
 
     func presentModal(_ type: RootModal, configuration: ((UIViewController) -> Void)? = nil) {
-        guard type != .loginScan else { return presentLoginScan() }
         guard let viewC = rootModalViewController(type)
         else {
             store.perform(action: RootModalActions.Present(modal: .none))
@@ -92,20 +91,6 @@ extension ModalPresenter {
                 alertView.removeFromSuperview()
             })
         })
-    }
-
-    func handleScanQrURL() {
-        guard !store.state.isLoginRequired else { presentLoginScan(); return }
-
-        if topViewController is MainViewController || topViewController is LoginViewController {
-            presentLoginScan()
-        } else {
-            if let presented = UIApplication
-                .shared.windows.filter({ $0.isKeyWindow })
-                .first?.rootViewController?.presentedViewController {
-                presented.dismiss(animated: true, completion: { self.presentLoginScan() })
-            }
-        }
     }
 
     func wipeWallet() {
@@ -173,10 +158,6 @@ extension ModalPresenter {
         return root
     }
 
-    func presentLoginScan() {
-        /// DEPRECATED WITH new Bento Style
-    }
-
     func handleCopyAddresses(success: String?, error _: String?) {
         guard let walletManager = walletManager else { return }
         let alert = UIAlertController(title: String(localized: "Copy Wallet Addresses") , message: String(localized: "Copy wallet addresses to clipboard?") , preferredStyle: .alert)
@@ -218,9 +199,6 @@ extension ModalPresenter {
                         selector: { $0.alert != $1.alert && $1.alert != nil },
                         callback: { self.handleAlertChange($0.alert) })
 
-        store.subscribe(self, triggerName: .scanQr, callback: { [weak self]  _ in
-            self?.handleScanQrURL()
-        })
         store.subscribe(self, triggerName: .copyWalletAddresses(nil, nil), callback: { [weak self] in
             guard let trigger = $0 else { return }
             if case let .copyWalletAddresses(success, error) = trigger {

@@ -11,10 +11,13 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 	var currencyCode: String = ""
 
     @Published
+    var freshReceiveAddress: String = ""
+
+    @Published
     var userPrefersDarkMode = false
 
     @Published
-    var shouldShowQR: Bool = false
+    var shouldShowReceiveAddress: Bool = false
 
     @Published
     var authenticationFailed =  false
@@ -33,15 +36,30 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 
     var userDidPreferDarkMode: ((Bool) -> Void)?
 
+    var isPresentedForLock: Bool = false
+
 	// MARK: - Public Variables
 
 	var store: Store?
 
-	init(store: Store) {
+    init(store: Store) {
 		self.store = store
+
 		addSubscriptions()
 		fetchCurrentPrice()
+
+        NotificationCenter
+            .default
+            .addObserver(forName: .walletSyncStartedNotification,
+                object: nil,
+                         queue: nil) { [weak self] _ in
+                self?.updateWalletManager()
+        }
 	}
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+     }
 
     func startWipeProcess() {
         didTapWipeWallet?(true)
@@ -79,6 +97,19 @@ class LockScreenViewModel: ObservableObject, Subscriber {
             selector: { $0.currentRate != $1.currentRate },
                 callback: { [weak self] _ in
                     self?.fetchCurrentPrice() })
-	}
 
+//        store.subscribe(self,
+//                        selector: { $0.walletState != $1.walletState },
+//                        callback: { [weak self] _ in
+//            if let walletManager = self?.walletManager,
+//                let newAddress = walletManager.wallet?.receiveAddress {
+//                self?.freshReceiveAddress = newAddress
+//            }
+//        })
+
+	}
+    // MARK: - Add Notfications
+
+    @objc func updateWalletManager() {
+    }
 }

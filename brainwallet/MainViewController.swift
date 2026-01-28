@@ -4,13 +4,9 @@ import SwiftUI
 import UIKit
 import StoreKit
 
-class MainViewController: UIViewController, Subscriber, LoginViewControllerDelegate {
+class MainViewController: UIViewController, Subscriber, LockScreenHostingDelegate {
 	private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 	private var isLoginRequired = false
-    private var startHostingController: StartHostingController?
-    private let loginView: LoginViewController
-    private var settingsViewController: SettingsHostingController?
-	private let loginTransitionDelegate = LoginTransitionDelegate()
     var showSettingsConstant: CGFloat = 0.0
     var settingsViewPlacement: CGFloat = 0.0
     var shouldShowSettings: Bool = true
@@ -18,25 +14,33 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
     var settingsLeadingConstraint = NSLayoutConstraint()
     var settingsTrailingConstraint = NSLayoutConstraint()
     var exportHCHeight: CGFloat = 44.0
-    var exportHCHeightConstraint: NSLayoutConstraint!
     var exportViewShoulShow: Bool = false
-
+    private let loginTransitionDelegate = LoginTransitionDelegate()
     private let clickSound = "click_sound"
+
+    private var startHostingController: StartHostingController?
+    private let lockScreenHC: LockScreenHostingController
+    private var settingsViewController: SettingsHostingController?
+
+    var exportHCHeightConstraint: NSLayoutConstraint!
+
 	let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     var newMainViewModel: NewMainViewModel?
     private let store: Store
 	var walletManager: WalletManager? {
 		didSet {
-			guard let walletManager = walletManager else { return }
+			guard let walletManager = walletManager,
+                let newAddress = walletManager.wallet?.receiveAddress else { return }
 
 			if !walletManager.noWallet {
-				loginView.walletManager = walletManager
-				loginView.transitioningDelegate = loginTransitionDelegate
-				loginView.modalPresentationStyle = .overFullScreen
-				loginView.modalPresentationCapturesStatusBarAppearance = true
-				loginView.shouldSelfDismiss = true
-				present(loginView, animated: false, completion: {
+                lockScreenHC.walletManager = walletManager
+                lockScreenHC.viewModel.freshReceiveAddress = newAddress
+                lockScreenHC.transitioningDelegate = loginTransitionDelegate
+                lockScreenHC.modalPresentationStyle = .overFullScreen
+                lockScreenHC.modalPresentationCapturesStatusBarAppearance = true
+                lockScreenHC.shouldSelfDismiss = true
+				present(lockScreenHC, animated: false, completion: {
 				})
 			}
 		}
@@ -44,12 +48,13 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
 
 	init(store: Store) {
 		self.store = store
-		loginView = LoginViewController(store: store, isPresentedForLock: false)
+        lockScreenHC = LockScreenHostingController(store: store, walletManager: walletManager)
+
 		super.init(nibName: nil, bundle: nil)
 	}
 
 	override func viewDidLoad() {
-        loginView.delegate = self
+        lockScreenHC.delegate = self
         /// Set colors
 		view.backgroundColor = BrainwalletUIColor.surface
 		navigationController?.navigationBar.tintColor = BrainwalletUIColor.surface
@@ -88,7 +93,7 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
         self.presentLockScreen()
     }
 
-    func didUnlockLogin() {
+    func didUnlock() {
         /// Remove Onboarding
         children.forEach { childVC in
             if childVC.isKind(of: StartHostingController.self) {
@@ -247,16 +252,17 @@ class MainViewController: UIViewController, Subscriber, LoginViewControllerDeleg
                                 self?.presentLockScreen()
                             }
                         })
+
 	}
 
     private func presentLockScreen() {
-        loginView.walletManager = walletManager
-        loginView.transitioningDelegate = loginTransitionDelegate
-        loginView.modalPresentationStyle = .overFullScreen
-        loginView.modalPresentationCapturesStatusBarAppearance = true
-        loginView.shouldSelfDismiss = true
-        loginView.view.alpha = 1
-        present(loginView, animated: false, completion: { })
+        lockScreenHC.walletManager = walletManager
+        lockScreenHC.transitioningDelegate = loginTransitionDelegate
+        lockScreenHC.modalPresentationStyle = .overFullScreen
+        lockScreenHC.modalPresentationCapturesStatusBarAppearance = true
+        lockScreenHC.shouldSelfDismiss = true
+        lockScreenHC.view.alpha = 1
+        present(lockScreenHC, animated: false, completion: { })
     }
 
 	override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation { return .fade }
