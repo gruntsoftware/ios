@@ -19,9 +19,8 @@ struct LockReceiveModalView: View {
     @Binding
     var userPrefersDarkMode: Bool
 
-    @State private var newAddress = ""
-
-    let padding = 18.0
+    @State
+    private var newAddress = ""
 
     init(viewModel: LockScreenViewModel,
          shouldShowAddressModal: Binding<Bool>,
@@ -31,43 +30,75 @@ struct LockReceiveModalView: View {
         _shouldShowAddressModal = shouldShowAddressModal
     }
 
+    func generateQR(newAddress: String) -> UIImage {
+
+        if let data = newAddress.data(using: .utf8),
+           let image = UIImage
+            .qrCode(data: data, color: .gray)?
+            .resize(CGSize(width: kQRImageSide,
+                           height: kQRImageSide)) {
+            return image
+        }
+        return UIImage()
+    }
+
     var body: some View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
             let height = geometry.size.height
-            let qrWidth = geometry.size.width * 0.4
+            let qrWidth = geometry.size.width * 0.35
+            let padding = 18.0
 
-            let buttonSize = 35.0
             ZStack {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 
-                VStack {
-                    Spacer()
+                Button(action: {
+                    UIPasteboard.general.string =  newAddress
+                }) {
 
-                    Button(action: {
-                        UIPasteboard.general.string =  newAddress
-                    }) {
+                    VStack {
+                        Text(String(localized: "New LTC Address"))
+                            .font(.system(size: 16, weight: .semibold, design: .default))
+                            .minimumScaleFactor(0.9)
+                            .frame(alignment: .center)
+                            .foregroundColor(BrainwalletColor.content)
+                            .padding([.top,.bottom], 8)
+
+                        ZStack {
+                           RoundedRectangle(cornerRadius: 16)
+                               .foregroundColor(.white)
+                               .frame(width: abs(qrWidth + padding), height: abs(qrWidth + padding))
+                               .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
+                            Image(uiImage: generateQR(newAddress: newAddress))
+                               .resizable()
+                               .scaledToFit()
+                               .frame(width: qrWidth)
+                       }
+
+                        Text(newAddress)
+                            .font(.system(size: 14, weight: .light, design: .default))
+                            .minimumScaleFactor(0.9)
+                            .frame(alignment: .center)
+                            .foregroundColor(BrainwalletColor.content)
+                            .padding([.top,.bottom], 8)
                     }
-
-                        HStack {
-                            Spacer()
-                            VStack {
-                                Spacer()
-                                Text(newAddress)
-                                Text("COPY / SHARE")
-                                    .multilineTextAlignment(.center)
-                                    .padding(.all, 8.0)
-                                Spacer()
-                            }
-                            .frame(width: qrWidth, alignment: .leading)
-                        }
-                        .frame(width: width, height: height, alignment: .top)
+                    .frame(width: width * 0.75,
+                           height: height * 0.85)
+                    .background(BrainwalletColor.content.opacity(0.1))
+                    .cornerRadius(16)
+                    .padding(8)
                 }
-            }.onAppear {
+            }
+            .onAppear {
                 newAddress = viewModel.freshReceiveAddress
-                debugPrint(":::\(newAddress)")
             }
         }
     }
 }
+//                        HStack {
+//                            Spacer()
+//                            VStack {
+//                                Text(newAddress)
+//                            }
+//                            .frame(width: qrWidth, alignment: .leading)

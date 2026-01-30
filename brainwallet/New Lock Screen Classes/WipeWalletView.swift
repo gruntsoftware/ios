@@ -26,7 +26,9 @@ struct WipeWalletView: View {
     let regularFont: Font = .barlowRegular(size: 24.0)
     let largeButtonFont: Font = .barlowBold(size: 24.0)
 
-    init(viewModel: LockScreenViewModel, shouldDismiss: Binding<Bool>, didCompleteWipe: Binding<Bool>,) {
+    init(viewModel: LockScreenViewModel,
+         shouldDismiss: Binding<Bool>,
+         didCompleteWipe: Binding<Bool>,) {
         self.viewModel = viewModel
         _shouldDismiss = shouldDismiss
     }

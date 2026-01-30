@@ -30,11 +30,7 @@ class LockScreenViewModel: ObservableObject, Subscriber {
 
     var userSubmittedPIN: ((String) -> Void)?
 
-    var userDidTapQR: (() -> Void)?
-
     var didTapWipeWallet: ((Bool) -> Void)?
-
-    var userDidPreferDarkMode: ((Bool) -> Void)?
 
     var isPresentedForLock: Bool = false
 
@@ -66,7 +62,11 @@ class LockScreenViewModel: ObservableObject, Subscriber {
     }
 
     func userDidSetThemePreference(userPrefersDarkMode: Bool) {
-        userDidPreferDarkMode?(userPrefersDarkMode)
+        UserDefaults.userPreferredDarkTheme = userPrefersDarkMode
+                NotificationCenter
+                    .default
+                    .post(name: .changedThemePreferenceNotification,
+                        object: nil)
     }
 
 	private func fetchCurrentPrice() {

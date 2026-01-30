@@ -225,7 +225,6 @@
 		C312D2E72D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2352D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift */; };
 		C312D2EA2D7DC27700BB97A4 /* ForgotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24D2D7DC27700BB97A4 /* ForgotView.swift */; };
 		C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D32D7DC27700BB97A4 /* AnimatableIcon.swift */; };
-		C312D2ED2D7DC27700BB97A4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D27C2D7DC27700BB97A4 /* LoginViewModel.swift */; };
 		C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */; };
 		C312D2F72D7DC27700BB97A4 /* ArticleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2022D7DC27700BB97A4 /* ArticleIds.swift */; };
 		C312D2FC2D7DC27700BB97A4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E72D7DC27700BB97A4 /* GradientView.swift */; };
@@ -310,7 +309,6 @@
 		C312D3DA2D7DC27700BB97A4 /* CameraGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1DF2D7DC27700BB97A4 /* CameraGuideView.swift */; };
 		C312D3DC2D7DC27700BB97A4 /* ConfirmPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E12D7DC27700BB97A4 /* ConfirmPhrase.swift */; };
 		C312D3DD2D7DC27700BB97A4 /* ReceiveLTCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2922D7DC27700BB97A4 /* ReceiveLTCViewController.swift */; };
-		C312D3E42D7DC27700BB97A4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D27A2D7DC27700BB97A4 /* LoginView.swift */; };
 		C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */; };
 		C312D3E82D7DC27700BB97A4 /* FinishedStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24B2D7DC27700BB97A4 /* FinishedStepView.swift */; };
 		C312D3EC2D7DC27700BB97A4 /* TxMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A82D7DC27700BB97A4 /* TxMetaData.swift */; };
@@ -392,7 +390,6 @@
 		C312D4BF2D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0912D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf */; };
 		C312D4C52D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0922D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf */; };
 		C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0952D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf */; };
-		C32369FF2D7DD431007039A1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32369FE2D7DD431007039A1 /* LoginViewController.swift */; };
 		C3236A012D7DE355007039A1 /* URLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3236A002D7DE34D007039A1 /* URLController.swift */; };
 		C35C122A293D48340009022D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1229293D48340009022D /* KeychainAccess */; };
 /* End PBXBuildFile section */
@@ -947,8 +944,6 @@
 		C312D2632D7DC27700BB97A4 /* LocaleChangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleChangeViewModel.swift; sourceTree = "<group>"; };
 		C312D2772D7DC27700BB97A4 /* LockScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenView.swift; sourceTree = "<group>"; };
 		C312D2792D7DC27700BB97A4 /* LockScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenViewModel.swift; sourceTree = "<group>"; };
-		C312D27A2D7DC27700BB97A4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		C312D27C2D7DC27700BB97A4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C312D27D2D7DC27700BB97A4 /* LWActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWActivityIndicator.swift; sourceTree = "<group>"; };
 		C312D27F2D7DC27700BB97A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C312D2802D7DC27700BB97A4 /* MessageUIPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUIPresenter.swift; sourceTree = "<group>"; };
@@ -997,7 +992,6 @@
 		C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
 		C312D2C92D7DC27700BB97A4 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletManager+Auth.swift"; sourceTree = "<group>"; };
-		C32369FE2D7DD431007039A1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C3236A002D7DE34D007039A1 /* URLController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2097,9 +2091,6 @@
 				C312D25F2D7DC27700BB97A4 /* LFModalReceiveQRViewController.swift */,
 				C312D2622D7DC27700BB97A4 /* LocaleChangeView.swift */,
 				C312D2632D7DC27700BB97A4 /* LocaleChangeViewModel.swift */,
-				C312D27A2D7DC27700BB97A4 /* LoginView.swift */,
-				C312D27C2D7DC27700BB97A4 /* LoginViewModel.swift */,
-				C32369FE2D7DD431007039A1 /* LoginViewController.swift */,
 				C312D27D2D7DC27700BB97A4 /* LWActivityIndicator.swift */,
 				C312D27F2D7DC27700BB97A4 /* MainViewController.swift */,
 				C312D2802D7DC27700BB97A4 /* MessageUIPresenter.swift */,
@@ -2657,7 +2648,6 @@
 				247A83912EA00D8600B5DFD8 /* aurora.metal in Sources */,
 				C312D2EA2D7DC27700BB97A4 /* ForgotView.swift in Sources */,
 				C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */,
-				C312D2ED2D7DC27700BB97A4 /* LoginViewModel.swift in Sources */,
 				242C43EF2F25397300CF6EA4 /* WalkthroughStep3View.swift in Sources */,
 				C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */,
 				C312D2F72D7DC27700BB97A4 /* ArticleIds.swift in Sources */,
@@ -2758,7 +2748,6 @@
 				246C3F602F244E76009BC881 /* TutorialReceivePageView.swift in Sources */,
 				24006C262F0FCC4B00F29F0A /* BentoSendModalView.swift in Sources */,
 				C312D3712D7DC27700BB97A4 /* SeedViewModel.swift in Sources */,
-				C32369FF2D7DD431007039A1 /* LoginViewController.swift in Sources */,
 				24E667632F16CDB400909157 /* SendPinLockModel.swift in Sources */,
 				24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */,
 				C312D3732D7DC27700BB97A4 /* AboutCell.swift in Sources */,
@@ -2827,7 +2816,6 @@
 				2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */,
 				C312D3DC2D7DC27700BB97A4 /* ConfirmPhrase.swift in Sources */,
 				C312D3DD2D7DC27700BB97A4 /* ReceiveLTCViewController.swift in Sources */,
-				C312D3E42D7DC27700BB97A4 /* LoginView.swift in Sources */,
 				C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */,
 				C312D3E82D7DC27700BB97A4 /* FinishedStepView.swift in Sources */,
 				C312D3EC2D7DC27700BB97A4 /* TxMetaData.swift in Sources */,

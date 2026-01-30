@@ -58,7 +58,6 @@ struct LockScreenFooterView: View {
                             alignment: .center)
 
                         Button(action: {
-                            viewModel.userDidTapQR?()
                             viewModel.shouldShowReceiveAddress.toggle()
                         }) {
                             VStack {
@@ -114,6 +113,9 @@ struct LockScreenFooterView: View {
                         .presentationDetents([.medium])
                         .presentationBackground(.ultraThickMaterial)
                         .ignoresSafeArea(edges: .bottom)
+                    }
+                    .onChange(of: userPrefersDarkMode) { _,_ in
+                        viewModel.userDidSetThemePreference(userPrefersDarkMode: userPrefersDarkMode)
                     }
                     .onChange(of: viewModel.didCompleteWipingWallet) { _,_ in
                         shouldShowWipeAlert.toggle()
