@@ -1,5 +1,5 @@
 //
-//  WalkthroughStep2View.swift
+//  WalkthroughStep5View.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 23/01/2026.
@@ -7,7 +7,7 @@
 //
 import SwiftUI
 
-struct WalkthroughStep2View: View {
+struct WalkthroughStep5View: View {
 
     @Binding
     var selectedStep: Int
@@ -15,11 +15,11 @@ struct WalkthroughStep2View: View {
     @Binding
     var userPrefersDarkTheme: Bool
 
-    private let titleStep2 = String(localized: "2. Settings & Dark Mode")
-    private let descriptionStep2 = """
-    Fine tune by tapping on Settings to the top right. \
-    Set your Dark Mode preference by tapping on the ☀️ on the top left.
-    """
+    private let titleStep5 = String(localized: "Go Gaming")
+    private let descriptionStep5 = """
+                                   Tap on the Game Hub to try out Brainwallet's games. \
+                                   Check back regularly to see what's new!
+                                   """
 
     init(selectedStep: Binding<Int>,
          userPrefersDarkTheme: Binding<Bool>) {
@@ -31,23 +31,22 @@ struct WalkthroughStep2View: View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
-
             let calloutWidth = width * 0.7
-            let pointToBalanceOffset = 85.0
+            let pointToBalanceOffset = 65.0
             ZStack {
                 VStack {
+                    Spacer()
                     HStack {
-                        CalloutTextView(title: titleStep2,
-                                        description: descriptionStep2,
-                                        corner: .constant(.topRight),
+                        CalloutTextView(title: titleStep5,
+                                        description: descriptionStep5,
+                                        corner: .constant(.bottomLeft),
                                         userPrefersDarkTheme: $userPrefersDarkTheme)
-                        .frame(width: calloutWidth, alignment: .bottom)
+                        .frame(width: calloutWidth)
                         .padding([.leading], pointToBalanceOffset)
                       Spacer()
                     }
-                    .frame(height: calloutHeight, alignment: .bottom)
-                    .padding(.top, brainwalletNavBarHeight)
-                  Spacer()
+                    .frame(height: calloutHeight, alignment: .top)
+                    .padding(.bottom, brainwalletNavBarHeight + balanceGameBentoHeight)
                 }
             }
         }

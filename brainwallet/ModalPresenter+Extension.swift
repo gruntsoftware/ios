@@ -18,22 +18,21 @@ extension ModalPresenter {
         case .send:
             return nil // DEPRECATED return makeSendView()
         case .receive:
-            return newBuyOrReceiveView() // receiveView(isRequestAmountVisible: true)
+            return nil
         case .menu:
             return menuViewController()
         case .loginScan:
             return nil // The scan view needs a custom presentation
         case .loginAddress:
-            return  newBuyOrReceiveView() // receiveView(isRequestAmountVisible: false)
+            return nil
         case .wipeEmptyWallet:
-            return wipeEmptyView()
+            return nil
         case .requestAmount:
             return nil
         }
     }
 
     func presentModal(_ type: RootModal, configuration: ((UIViewController) -> Void)? = nil) {
-        guard type != .loginScan else { return presentLoginScan() }
         guard let viewC = rootModalViewController(type)
         else {
             store.perform(action: RootModalActions.Present(modal: .none))
@@ -94,30 +93,6 @@ extension ModalPresenter {
         })
     }
 
-    func handleScanQrURL() {
-        guard !store.state.isLoginRequired else { presentLoginScan(); return }
-
-        if topViewController is MainViewController || topViewController is LoginViewController {
-            presentLoginScan()
-        } else {
-            if let presented = UIApplication
-                .shared.windows.filter({ $0.isKeyWindow })
-                .first?.rootViewController?.presentedViewController {
-                presented.dismiss(animated: true, completion: { self.presentLoginScan() })
-            }
-        }
-    }
-
-    func wipeEmptyView() -> UIViewController? {
-        guard let walletManager = walletManager else { return nil }
-
-        let wipeEmptyvc = WipeEmptyWalletViewController(walletManager: walletManager, store: store, didTapYesDelete: ({ [weak self] in
-            guard let myself = self else { return }
-            myself.wipeWallet()
-        }))
-        return ModalViewController(childViewController: wipeEmptyvc, store: store)
-    }
-
     func wipeWallet() {
         let group = DispatchGroup()
         let alert = UIAlertController(title: String(localized: "Delete my wallet & data?"),
@@ -157,62 +132,11 @@ extension ModalPresenter {
         topViewController?.present(alert, animated: true, completion: nil)
     }
 
-    func presentBiometricsSetting() {
-        guard let walletManager = walletManager else { return }
-        let biometricsSettings = BiometricsSettingsViewController(walletManager: walletManager, store: store)
-        biometricsSettings.addCloseNavigationItem(tintColor: BrainwalletUIColor.content)
-        let nc = ModalNavigationController(rootViewController: biometricsSettings)
-        biometricsSettings.presentSpendingLimit = strongify(self) { myself in
-            myself.pushBiometricsSpendingLimit(onNc: nc)
-        }
-        nc.setDefaultStyle()
-        nc.isNavigationBarHidden = true
-        nc.delegate = securityCenterNavigationDelegate
-        topViewController?.present(nc, animated: true, completion: nil)
-    }
-
-    func promptShareData() {
-        let shareData = ShareDataViewController(store: store)
-        let modalNC = ModalNavigationController(rootViewController: shareData)
-        modalNC.setDefaultStyle()
-        modalNC.isNavigationBarHidden = true
-        modalNC.delegate = securityCenterNavigationDelegate
-        shareData.addCloseNavigationItem()
-        topViewController?.present(modalNC, animated: true, completion: nil)
-    }
-
-    func presentWritePaperKey() {
-        guard let topVC = topViewController else { return }
-        presentWritePaperKey(fromViewController: topVC)
-    }
-
-    func presentUpgradePin() {
-        guard let walletManager = walletManager else { return }
-        let updatePin = UpdatePinViewController(store: store, walletManager: walletManager, type: .update)
-        let nc = ModalNavigationController(rootViewController: updatePin)
-        nc.setDefaultStyle()
-        nc.isNavigationBarHidden = true
-        nc.delegate = securityCenterNavigationDelegate
-        updatePin.addCloseNavigationItem()
-        topViewController?.present(nc, animated: true, completion: nil)
-    }
-
-    func presentRescan() {
-        let rescanVC = ReScanViewController(store: store)
-        let navC = UINavigationController(rootViewController: rescanVC)
-        navC.setClearNavbar()
-        rescanVC.addCloseNavigationItem()
-        topViewController?.present(navC, animated: true, completion: nil)
-    }
-
     func menuViewController() -> UIViewController? {
         let menu = MenuViewController()
         let root = ModalViewController(childViewController: menu, store: store)
         menu.didTapSecurity = { [weak self, weak menu] in
             self?.modalTransitionDelegate.reset()
-            menu?.dismiss(animated: true) {
-                self?.presentSecurityCenter()
-            }
         }
 
         menu.didTapSupport = { [weak self, weak menu] in
@@ -232,10 +156,6 @@ extension ModalPresenter {
             menu?.dismiss(animated: true) { self?.presentSettings() }
         }
         return root
-    }
-
-    func presentLoginScan() {
-        /// DEPRECATED WITH new Bento Style
     }
 
     func handleCopyAddresses(success: String?, error _: String?) {
@@ -279,25 +199,6 @@ extension ModalPresenter {
                         selector: { $0.alert != $1.alert && $1.alert != nil },
                         callback: { self.handleAlertChange($0.alert) })
 
-        store.subscribe(self, triggerName: .promptUpgradePin, callback: { [weak self] _ in
-            self?.presentUpgradePin()
-        })
-//        store.subscribe(self, triggerName: .promptPaperKey, callback: { [weak self]  _ in
-//            self?.presentWritePaperKey()
-//        })
-        store.subscribe(self, triggerName: .promptBiometrics, callback: { [weak self] _ in
-            self?.presentBiometricsSetting()
-        })
-        store.subscribe(self, triggerName: .promptShareData, callback: { [weak self] _ in
-            self?.promptShareData()
-        })
-        store.subscribe(self, triggerName: .recommendRescan, callback: { [weak self] _ in
-            self?.presentRescan()
-        })
-
-        store.subscribe(self, triggerName: .scanQr, callback: { [weak self]  _ in
-            self?.handleScanQrURL()
-        })
         store.subscribe(self, triggerName: .copyWalletAddresses(nil, nil), callback: { [weak self] in
             guard let trigger = $0 else { return }
             if case let .copyWalletAddresses(success, error) = trigger {

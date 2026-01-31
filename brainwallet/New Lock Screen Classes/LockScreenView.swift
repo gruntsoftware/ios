@@ -91,14 +91,14 @@ struct LockScreenView: View {
                         .frame(minHeight: height * 0.02)
                     PasscodeGridView(digits: $pinDigits,
                                      userPrefersDarkMode: $userPrefersDarkMode)
-                        .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
-                        .padding(.bottom, 5.0)
+                    .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
+                    .padding(.bottom, 5.0)
 
                     LockScreenFooterView(viewModel: viewModel,
                                          userPrefersDarkMode: $userPrefersDarkMode)
-                        .frame(width: width, height: 45, alignment: .center)
-                        .padding(.top, 20.0)
-                        .padding(.bottom, 20.0)
+                    .frame(width: width, height: 45, alignment: .center)
+                    .padding(.top, 20.0)
+                    .padding(.bottom, 20.0)
 
                     Spacer()
                     HStack {
@@ -118,10 +118,10 @@ struct LockScreenView: View {
                     .frame(height: 22.0, alignment: .center)
 
                 }
-                .onChange(of: viewModel.currentFiatValue) { newValue in
+                .onChange(of: viewModel.currentFiatValue) { _,newValue in
                     fiatValue = String(format: String(localized: "%@ = 1Ł"), newValue)
                 }
-                .onChange(of: pinDigits) { _ in
+                .onChange(of: pinDigits) { _,_ in
 
                     pinState = (0..<4).map { $0 < pinDigits.count }
 
@@ -134,7 +134,7 @@ struct LockScreenView: View {
                         viewModel.userSubmittedPIN?(pinString)
                     }
                 }
-                .onChange(of: viewModel.authenticationFailed) { didFailAuthentication in
+                .onChange(of: viewModel.authenticationFailed) { _,didFailAuthentication in
                     if didFailAuthentication {
                         startShake.toggle()
                         let generator = UINotificationFeedbackGenerator()
@@ -149,8 +149,20 @@ struct LockScreenView: View {
 
             }
             .background(BrainwalletColor.surface)
-            .onChange(of: userPrefersDarkMode) { preference in
+            .onChange(of: userPrefersDarkMode) { _,preference in
                 viewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
+            }
+            .sheet(isPresented: $viewModel.shouldShowReceiveAddress) {
+                    LockReceiveModalView(viewModel: viewModel,
+                                         shouldShowAddressModal: $viewModel.shouldShowReceiveAddress,
+                                         userPrefersDarkMode: $userPrefersDarkMode)
+                    .background(BrainwalletColor.surface)
+                    .cornerRadius(bentoCornerRadius)
+                    .presentationDragIndicator(.hidden)
+                    .presentationDetents([.height(height * 0.3)])
+                    .presentationBackground(.ultraThickMaterial)
+                    .ignoresSafeArea(edges: .bottom)
+
             }
             .onAppear {
                 userPrefersDarkMode = UserDefaults.userPreferredDarkTheme

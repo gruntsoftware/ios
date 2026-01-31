@@ -122,7 +122,7 @@ struct StartView: View {
                                 }
                             }
                             .frame(width: width * 0.1, alignment: .center)
-                            .onChange(of: userPrefersDarkMode) { preference in
+                            .onChange(of: userPrefersDarkMode) { _,preference in
                                 newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
                             }
                             .accessibilityIdentifier("darkModePreference")
@@ -141,7 +141,7 @@ struct StartView: View {
                             .pickerStyle(.wheel)
                             .accessibilityIdentifier("fiatCurrencyPreferencePicker")
                             .frame(width: width * 0.8, alignment: .center)
-                            .onChange(of: newMainViewModel.currentGlobalFiat) { _ in
+                            .onChange(of: newMainViewModel.currentGlobalFiat) { _,_ in
                                 selectedFiat = true
                                 newMainViewModel
                                     .userDidSetCurrencyPreference(currency:

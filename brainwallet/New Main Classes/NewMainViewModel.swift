@@ -86,6 +86,9 @@ class NewMainViewModel: ObservableObject, Subscriber {
     var wasLTCFiatSwapped = false
 
     @Published
+    var userWantsToTopUp = false
+
+    @Published
     var shouldShowSettings = false
 
     @Published

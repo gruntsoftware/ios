@@ -52,7 +52,7 @@ struct WordBucketView: View {
                             }
                         }
                     }
-                    .onChange(of: seedWord) { seedWord in
+                    .onChange(of: seedWord) { _,seedWord in
                         if let draggableWord = seedWord.first,
                            !draggableWord.word.isEmpty {
                             word = draggableWord.word

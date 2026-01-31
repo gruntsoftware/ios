@@ -78,7 +78,7 @@ open class TxMetaData: BRKVStoreObject, BRCoding {
 			super.init(key: txKey, version: ver, lastModified: date, deleted: del, data: bytesDat)
 			return
 		} catch let txMetadataError {
-			// debugPrint(":::[BRTxMetadataObject] Unable to initialize BRTxMetadataObject: \(String(describing: txMetadataError))")
+			debugPrint(":::[BRTxMetadataObject] Unable to initialize BRTxMetadataObject: \(String(describing: txMetadataError))")
 		}
 
 		return nil

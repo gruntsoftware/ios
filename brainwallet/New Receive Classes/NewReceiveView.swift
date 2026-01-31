@@ -159,7 +159,7 @@ struct NewReceiveView: View {
                          }
                     }
                     .opacity(didCopyAddress ? 1.0 : 0.0)
-                    .onChange(of: didCopyAddress) { _ in
+                    .onChange(of: didCopyAddress) { _,_ in
                         withAnimation(.easeIn(duration: 1.0)) {
                             delay(2.0) {
                                 didCopyAddress = false

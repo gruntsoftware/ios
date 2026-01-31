@@ -52,7 +52,7 @@ struct CurrencyPickerView: View {
                             .frame(height: elementsHeight)
                             .pickerStyle(.wheel)
                             .frame(width: width * 0.75, alignment: .trailing)
-                            .onChange(of: pickedCurrency) { _ in
+                            .onChange(of: pickedCurrency) { _,_ in
                                selectedFiat = false
                                 delay(0.4) {
                                     selectedFiat = true

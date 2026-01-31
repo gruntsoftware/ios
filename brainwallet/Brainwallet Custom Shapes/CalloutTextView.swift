@@ -32,10 +32,9 @@ struct CalloutTextView: View {
     }
 
         var body: some View {
-            GeometryReader { geometry in
+            GeometryReader { _ in
 
-                let width = geometry.size.width
-                let height = geometry.size.height
+                let padding = 12.0
 
                 ZStack {
                     VStack {
@@ -55,25 +54,27 @@ struct CalloutTextView: View {
                                 .minimumScaleFactor(0.9)
                                 .frame(alignment: .leading)
                                 .foregroundColor(.black)
-                                .padding([.trailing], 16)
+                                .padding([.trailing], padding)
                           Spacer()
                         }
                         .padding(.top, 8)
 
                         HStack {
                             Text(description)
-                                .font(.system(size: 14, weight: .light, design: .default))
-                                .lineLimit(3)
+                                .font(.system(size: 16, weight: .regular, design: .default))
+                                .lineLimit(4)
                                 .minimumScaleFactor(0.7)
                                 .frame(alignment: .leading)
                                 .foregroundColor(.black)
-                                .padding([.trailing], 16)
+                                .padding([.trailing], padding)
                           Spacer()
                         }
                         .padding(.top, 1)
+                        .padding(.bottom, 8)
+
                         Spacer()
                     }
-                    .padding([.leading], 16)
+                    .padding([.leading], padding)
 
                 }
                 .frame(height: calloutHeight)

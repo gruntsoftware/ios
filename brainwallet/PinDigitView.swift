@@ -70,9 +70,6 @@ struct PasscodeView: View {
 			}
 		}
 		.padding()
-		.onChange(of: enteredPasscode) { _ in
-
-		}
 	}
 }
 

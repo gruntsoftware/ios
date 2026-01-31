@@ -87,7 +87,7 @@ struct TopUpView: View {
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     .foregroundColor(userPrefersDarkTheme ? .white.opacity(0.5) : BrainwalletColor.nearBlack.opacity(0.5))
                                     .padding(.top, 5.0)
-                                    .onChange(of: viewModel.currentFiatValue) { newValue in
+                                    .onChange(of: viewModel.currentFiatValue) { _,newValue in
                                         quotePriceString = String(format: String(localized: "%@"), newValue)
                                         let recentDate = Date()
                                         if let formattedDate = viewModel.dateFormatter?.string(from: recentDate) {

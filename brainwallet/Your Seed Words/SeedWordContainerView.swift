@@ -94,7 +94,7 @@ struct SeedWordContainerView: View {
 				viewColumns = [GridItem](repeating: GridItem(.flexible()),
 				                         count: wordViewWidthRoot)
 			}
-			.onChange(of: didEnterPINCode) { _ in
+			.onChange(of: didEnterPINCode) { _,_ in
 				if let fetchedWords = seedViewModel.fetchWords(walletManager: self.walletManager,
 				                                               appPIN: enteredPIN) {
 					seedViewModel.seedWords = fetchedWords

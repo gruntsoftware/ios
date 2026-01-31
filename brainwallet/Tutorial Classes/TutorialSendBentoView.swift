@@ -50,6 +50,8 @@ struct TutorialSendBentoView: View {
                                 .padding(.trailing, 10)
                                 .frame(alignment: .leading)
                                 .foregroundStyle( userPrefersDarkTheme ? .white : .black)
+                                .accessibilityIdentifier("tutorialSendBentoViewTitle")
+
                         Spacer()
                     }
                     .frame(height: height * 0.1)
@@ -65,6 +67,7 @@ struct TutorialSendBentoView: View {
                                 .padding(.trailing, 10)
                                 .frame(alignment: .leading)
                                 .foregroundStyle( userPrefersDarkTheme ? .white : .black)
+                                .accessibilityIdentifier("tutorialSendBentoViewDescription")
                         Spacer()
                     }
                     .padding(.top, 5)
@@ -74,6 +77,7 @@ struct TutorialSendBentoView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: width * 0.9, alignment: .leading)
+                            .accessibilityIdentifier("tutorialSendBentoViewImage")
                         Spacer()
                     }
                     .edgesIgnoringSafeArea([.bottom, .leading, .trailing])

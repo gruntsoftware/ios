@@ -131,7 +131,7 @@ struct InputWordsView: View {
                     .disabled(!phraseIsVerified)
                 }
                 .ignoresSafeArea(.keyboard)
-                .onChange(of: phraseIsVerified) { _ in
+                .onChange(of: phraseIsVerified) { _,_ in
                     if phraseIsVerified {
                         fieldInFocus = false
                     }

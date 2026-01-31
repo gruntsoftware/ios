@@ -50,6 +50,8 @@ struct TutorialWalkthroughBentoView: View {
                                 .padding(.trailing, 10)
                                 .frame(alignment: .leading)
                                 .foregroundStyle( userPrefersDarkTheme ? .white : .black)
+                                .accessibilityIdentifier("tutorialWalkthroughBentoViewTitle")
+
                         Spacer()
                     }
                     .frame(height: height * 0.2)
@@ -65,6 +67,7 @@ struct TutorialWalkthroughBentoView: View {
                                 .padding(.trailing, 10)
                                 .frame(alignment: .leading)
                                 .foregroundStyle( userPrefersDarkTheme ? .white : .black)
+                                .accessibilityIdentifier("tutorialWalkthroughBentoViewDescription")
                         Spacer()
                     }
                     .padding(.top, 5)
@@ -73,6 +76,7 @@ struct TutorialWalkthroughBentoView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: width * 0.8, alignment: .center)
+                            .accessibilityIdentifier("tutorialWalkthroughBentoViewImage")
                         Spacer()
                     }
                     Spacer()

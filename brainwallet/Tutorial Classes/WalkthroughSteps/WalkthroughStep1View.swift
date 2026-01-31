@@ -13,18 +13,13 @@ struct WalkthroughStep1View: View {
     var selectedStep: Int
 
     @Binding
-    var userDidTapMP: Bool
-
-    @Binding
     var userPrefersDarkTheme: Bool
 
     private let titleStep1 = String(localized: "1. Check your balance")
     private let descriptionStep1 = String(localized: "You cannot send if it's zero or it's syncing.\nTop up in 5 minutes with MoonPay if needed.")
 
     init(selectedStep: Binding<Int>,
-         userDidTapMP: Binding<Bool>,
          userPrefersDarkTheme: Binding<Bool>) {
-        _userDidTapMP = userDidTapMP
         _userPrefersDarkTheme = userPrefersDarkTheme
         _selectedStep = selectedStep
     }
@@ -41,7 +36,7 @@ struct WalkthroughStep1View: View {
 
                         CalloutTextView(title: titleStep1,
                                         description: descriptionStep1,
-                                        corner: .constant(.topRight),
+                                        corner: .constant(.topLeft),
                                         userPrefersDarkTheme: $userPrefersDarkTheme)
                         .frame(width: calloutWidth)
                         .padding([.leading], pointToBalanceOffset)
@@ -49,26 +44,6 @@ struct WalkthroughStep1View: View {
 
                     }
                     .padding(.top, brainwalletNavBarHeight + balanceGameBentoHeight)
-                    Spacer()
-                    Button {
-                        userDidTapMP.toggle()
-                    } label: {
-                        VStack {
-                            Text(String(localized:" Tap here & top up!"))
-                                .font(.system(size: 14, weight: .light, design: .default))
-                                .minimumScaleFactor(0.9)
-                                .frame(alignment: .center)
-                                .foregroundColor(.white)
-                                .padding([.bottom], 20)
-                            Image("moonpay-white-logo")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: width * 0.4)
-                                .shadow(color: .black.opacity(0.6),
-                                        radius: 3.0, x: 0, y: 5)
-                        }
-                    }
-                    .padding(.bottom, brainwalletNavBarHeight + balanceGameBentoHeight)
                     Spacer()
                 }
             }

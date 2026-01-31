@@ -270,12 +270,6 @@ struct BentoSendInitialView: View {
                                             bwTransaction.fiatAmount = rate * newMainViewModel.currentTotalAmount.rawValue
                                             bwTransaction.globalCode = code
                                             newMainViewModel.bwTransaction = bwTransaction
-                                            debugPrint(" bwTransaction Amount: \(bwTransaction.amount)\n")
-                                            debugPrint(" bwTransaction Address: \(bwTransaction.sendAddress)\n")
-                                            debugPrint(" bwTransaction NetworkFee: \(bwTransaction.networkFee)\n")
-                                            debugPrint(" bwTransaction ServiceFee: \(bwTransaction.serviceFee)\n")
-                                            debugPrint(" bwTransaction Rate: \(bwTransaction.currentRate)\n")
-                                            debugPrint(" bwTransaction Fiat Amount: \(bwTransaction.fiatAmount)\n")
                                         }
                                         isReadyToSend = isValidAddress && isAmountValid && !sendLTCAddress.isEmpty
                                      }
