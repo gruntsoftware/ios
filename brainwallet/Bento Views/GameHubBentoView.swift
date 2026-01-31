@@ -26,6 +26,8 @@ struct GameHubBentoView: View {
 
     private let buttonPlatformFactor: CGFloat = 2.1
 
+    private let tagLabelWidth: CGFloat = 80.0
+
     init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
         newMainViewModel = viewModel
@@ -44,16 +46,16 @@ struct GameHubBentoView: View {
                 VStack(alignment: .center) {
                     HStack {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 8)
-                                .frame(width: width * 0.25, height: 22, alignment: .center)
+                            RoundedRectangle(cornerRadius: 6)
+                                .frame(width: tagLabelWidth, height: 18, alignment: .center)
                                 .foregroundColor(labelBackground)
                                 .padding(8)
                             Text("GAME HUB")
-                                .font(.system(size: 12, weight: .light, design: .default))
+                                .font(.system(size: 10, weight: .light, design: .default))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)// Shrinks to 50% of original
                                 .padding([.leading, .trailing], 4)
-                                .frame(maxWidth: width * 0.25, maxHeight: 24, alignment: .center)
+                                .frame(maxWidth: width * 0.25, maxHeight: 20, alignment: .center)
                                 .foregroundColor(labelForeground)
                         }
                         Spacer()
@@ -67,22 +69,41 @@ struct GameHubBentoView: View {
                         Button(action: {
                             shouldShowGameMode.toggle()
                         }) {
-                            VStack {
-                                Text("MOJIMUNCH")
-                                    .font(Font.custom("BoldenVan", size: 100))
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.5)// Shrinks to 50% of original
-                                    .padding([.leading, .trailing], 10)
-                                    .frame(maxWidth: width, maxHeight: 24, alignment: .center)
-                                    .foregroundStyle(
-                                        LinearGradient(
-                                            colors: [.white,.white, BentoColor.gameBlue1.opacity(0.9)],
-                                            startPoint: .top,
-                                            endPoint: .bottom
+                                VStack {
+                                    Text("FALLINMOJI")
+                                        .font(Font.custom("BoldenVan", size: 100))
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.4)
+                                        .padding([.leading, .trailing], 16)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .foregroundStyle(
+                                            LinearGradient(
+                                                colors: [.white,.white, BentoColor.gameBlue1.opacity(0.9)],
+                                                startPoint: .top,
+                                                endPoint: .bottom
+                                            )
                                         )
-                                    )
-                            }
-                            .padding(.top, 20)
+
+                                    Text("CAN YOU BE #1?")
+                                        .font(.system(size: 16,
+                                                      weight: .regular,
+                                                      design: .rounded))
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.5)
+                                        .padding([.leading, .trailing], 16)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .foregroundStyle(
+                                            LinearGradient(
+                                                colors: [.white,.white, BentoColor.gameBlue1.opacity(0.9)],
+                                                startPoint: .top,
+                                                endPoint: .bottom
+                                            )
+                                        )
+
+                                }
+                                .fixedSize(horizontal: true, vertical: false)
+                                .frame(maxWidth: width * 0.8)
+                                .padding(.top, 5)
                         }
                         .accessibilityIdentifier("enterGamesModeButton")
 
