@@ -37,7 +37,7 @@ struct BalanceBentoView: View {
             let height = geometry.size.height
 
             ZStack {
-                BalanceGameBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
+                BalanceBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {

@@ -36,13 +36,14 @@ struct GameHubBentoView: View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
+            let height = geometry.size.height
+
             let labelBackground = Color.white.opacity(0.1)
             let labelForeground = Color.white
 
             ZStack {
-                BalanceGameBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
+                GameBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
                     .edgesIgnoringSafeArea(.all)
-                Image("")
                 VStack(alignment: .center) {
                     HStack {
                         ZStack {
@@ -67,7 +68,7 @@ struct GameHubBentoView: View {
                     HStack {
 
                         Button(action: {
-                            shouldShowGameMode.toggle()
+                          shouldShowGameMode.toggle()
                         }) {
 
                             HStack {
@@ -109,14 +110,24 @@ struct GameHubBentoView: View {
                             }
                         }
                         .accessibilityIdentifier("enterGamesModeButton")
-
                     }
                 }
+
+                HStack {
+                    Spacer()
+                    FallinMojiDemoView(width: width * 0.6,
+                                       height: height,
+                                       shouldPlay: $shouldShowGameMode,
+                                       timer: $newMainViewModel.updateTimer)
+                        .frame(width: width * 0.6, alignment: .trailing)
+                    }
+
             }
             .cornerRadius(bentoCornerRadius)
             .frame(height: balanceGameBentoHeight, alignment: .center)
             .onChange(of: shouldShowGameMode) { _,_ in
-                newMainViewModel.shouldShowGameMode = shouldShowGameMode
+
+                // newMainViewModel.shouldShowGameMode = shouldShowGameMode
             }
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle

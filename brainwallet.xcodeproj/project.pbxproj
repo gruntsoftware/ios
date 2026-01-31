@@ -18,6 +18,8 @@
 		2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */; };
 		240CEE1C2F2D87CB00428378 /* WalkthroughStep4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CEE1B2F2D87CB00428378 /* WalkthroughStep4View.swift */; };
 		240CEE1E2F2D87E500428378 /* WalkthroughStep5View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CEE1D2F2D87E500428378 /* WalkthroughStep5View.swift */; };
+		240CF5A72F2E7C7500428378 /* FallinMojiDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CF5A62F2E7C7500428378 /* FallinMojiDemoView.swift */; };
+		240CF5A92F2E7F3F00428378 /* DemoScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CF5A82F2E7F3F00428378 /* DemoScenes.swift */; };
 		24126DFB2ECA68AB00F9A4BE /* DataScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */; };
 		24126E062ECA741200F9A4BE /* ScanOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */; };
 		24126E082ECA7F8900F9A4BE /* ScanOverlayDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */; };
@@ -487,6 +489,8 @@
 		2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenFooterView.swift; sourceTree = "<group>"; };
 		240CEE1B2F2D87CB00428378 /* WalkthroughStep4View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughStep4View.swift; sourceTree = "<group>"; };
 		240CEE1D2F2D87E500428378 /* WalkthroughStep5View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughStep5View.swift; sourceTree = "<group>"; };
+		240CF5A62F2E7C7500428378 /* FallinMojiDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallinMojiDemoView.swift; sourceTree = "<group>"; };
+		240CF5A82F2E7F3F00428378 /* DemoScenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScenes.swift; sourceTree = "<group>"; };
 		24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerSheet.swift; sourceTree = "<group>"; };
 		24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayView.swift; sourceTree = "<group>"; };
 		24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayDataView.swift; sourceTree = "<group>"; };
@@ -1365,6 +1369,8 @@
 				247A83922EA034B600B5DFD8 /* Renderer.swift */,
 				247A838C2EA00CFB00B5DFD8 /* MetalView.swift */,
 				247A83902EA00D8600B5DFD8 /* aurora.metal */,
+				240CF5A62F2E7C7500428378 /* FallinMojiDemoView.swift */,
+				240CF5A82F2E7F3F00428378 /* DemoScenes.swift */,
 			);
 			path = "Bento Effects ";
 			sourceTree = "<group>";
@@ -2686,6 +2692,7 @@
 				C312D3352D7DC27700BB97A4 /* TransactionManager.swift in Sources */,
 				24B065402DC647F400B5E000 /* GameView.swift in Sources */,
 				C312D3372D7DC27700BB97A4 /* Types.swift in Sources */,
+				240CF5A92F2E7F3F00428378 /* DemoScenes.swift in Sources */,
 				C312D3382D7DC27700BB97A4 /* NonScrollingCollectionView.swift in Sources */,
 				C312D33F2D7DC27700BB97A4 /* ModalTransitionDelegate.swift in Sources */,
 				24F5BD4C2E0450B80010D340 /* SettingsExpandingSecurityView.swift in Sources */,
@@ -2801,6 +2808,7 @@
 				C312D3C62D7DC27700BB97A4 /* View+Extension.swift in Sources */,
 				C312D3C72D7DC27700BB97A4 /* Sender.swift in Sources */,
 				2457DC822EB63AAE00688B9A /* TransactionHelper.swift in Sources */,
+				240CF5A72F2E7C7500428378 /* FallinMojiDemoView.swift in Sources */,
 				24DB05E42E05D5E800C57FE9 /* SettingsActionThemeView.swift in Sources */,
 				C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */,
 				C312D3CD2D7DC27700BB97A4 /* AlertFailureView.swift in Sources */,
