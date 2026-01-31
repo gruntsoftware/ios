@@ -63,7 +63,7 @@ struct TutorialsBentoView: View {
                                 .foregroundColor(labelBackground)
                                 .padding(8)
                             Text("TUTORIALS")
-                                .font(.system(size: 10, weight: .light, design: .default))
+                                .font(.system(size: 10, weight: .regular, design: .default))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)// Shrinks to 50% of original
                                 .padding([.leading, .trailing], 4)
@@ -108,21 +108,21 @@ struct TutorialsBentoView: View {
                     .environmentObject(newMainViewModel)
                 .cornerRadius(bentoCornerRadius)
                 .presentationDragIndicator(.hidden)
-                .presentationBackground(.opacity(0.2))
+                .presentationBackground(.opacity(0.1))
                 .ignoresSafeArea(edges: .bottom)
             }
             .sheet(isPresented: $shouldShowReceivePage) {
                 TutorialReceivePageView(userPrefersDarkTheme: $userPrefersDarkTheme)
                 .cornerRadius(bentoCornerRadius)
                 .presentationDragIndicator(.hidden)
-                .presentationBackground(.opacity(0.2))
+                .presentationBackground(.opacity(0.1))
                 .ignoresSafeArea(edges: .bottom)
             }
             .sheet(isPresented: $shouldShowWalkthroughPage) {
                 TutorialWalkthroughPageView(userPrefersDarkTheme: $userPrefersDarkTheme)
                 .cornerRadius(bentoCornerRadius)
                 .presentationDragIndicator(.hidden)
-                .presentationBackground(.opacity(0.2))
+                .presentationBackground(.opacity(0.1))
                 .ignoresSafeArea(edges: .bottom)
             }
 

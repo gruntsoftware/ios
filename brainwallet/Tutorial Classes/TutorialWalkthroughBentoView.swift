@@ -45,7 +45,7 @@ struct TutorialWalkthroughBentoView: View {
                       Text("Brainwallet Walkthrough")
                                 .font(.system(size: 18, weight: .bold, design: .default))
                                 .lineLimit(2)
-                                .minimumScaleFactor(0.9)
+                                .minimumScaleFactor(0.8)
                                 .padding(.leading, 8)
                                 .padding(.trailing, 10)
                                 .frame(alignment: .leading)
@@ -55,14 +55,14 @@ struct TutorialWalkthroughBentoView: View {
                         Spacer()
                     }
                     .frame(height: height * 0.2)
-                    .padding(.top, 15)
+                    .padding(.top, 18)
 
                     HStack {
                       Text("Try all features of the Brainwallet, from sending and receiving crypto to managing your keys.")
                                 .font(.system(size: 15, weight: .regular, design: .default))
                                 .lineLimit(4)
-                                .minimumScaleFactor(0.9)
-                                .kerning(0.5)
+                                .minimumScaleFactor(0.6)
+                                .kerning(0.2)
                                 .padding([.leading], 8)
                                 .padding(.trailing, 10)
                                 .frame(alignment: .leading)
@@ -70,12 +70,12 @@ struct TutorialWalkthroughBentoView: View {
                                 .accessibilityIdentifier("tutorialWalkthroughBentoViewDescription")
                         Spacer()
                     }
-                    .padding(.top, 5)
+                    .padding(.top, 1)
                     HStack {
                         Image("tutorial-fruits-art")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: width * 0.8, alignment: .center)
+                            .frame(width: width, alignment: .center)
                             .accessibilityIdentifier("tutorialWalkthroughBentoViewImage")
                         Spacer()
                     }

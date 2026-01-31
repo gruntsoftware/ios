@@ -27,6 +27,9 @@ struct LTCPriceBentoView: View {
     @State
     var currentDateLabel = ""
 
+    @State
+    var currentFiatLabel = ""
+
     @Binding
     var userPrefersDarkTheme: Bool
 
@@ -57,6 +60,8 @@ struct LTCPriceBentoView: View {
                             ForEach(globalCurrencies, id: \.self) {
                                 Text("\($0.countryFlag)   \($0.code) / LTC")
                                     .font(.system(size: 20, weight: .semibold, design: .default))
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.7)
                                     .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
                             }
                         }
@@ -83,8 +88,20 @@ struct LTCPriceBentoView: View {
                         .animation(.easeInOut, value: newMainViewModel.currentFiatValue)
                     HStack {
                         Spacer()
+                        Text(currentFiatLabel)
+                            .font(.system(size: 12, weight: .ultraLight, design: .default))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.8)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
+                            .contentTransition(.opacity)
+                            .animation(.easeInOut, value: currentDateLabel)
+                    }
+                    .padding(.trailing, trailingPad)
+                    HStack {
+                        Spacer()
                         Text(currentDateLabel)
-                            .font(.system(size: 12, weight: .light, design: .default))
+                            .font(.system(size: 12, weight: .ultraLight, design: .default))
                             .lineLimit(1)
                             .minimumScaleFactor(0.9)
                             .frame(maxWidth: .infinity, alignment: .trailing)
@@ -101,14 +118,18 @@ struct LTCPriceBentoView: View {
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 if let dateFormatter = newMainViewModel.dateFormatter {
-                    currentDateLabel = String(describing: dateFormatter.string(from: Date()))
+                    currentDateLabel = "as of: " + String(describing: dateFormatter.string(from: Date()))
+                    currentFiatLabel = String(describing: newMainViewModel.currentGlobalFiat.fullCurrencyName)
                     pickedCurrency = newMainViewModel.currentGlobalFiat
                 }
             }
             .onChange(of: newMainViewModel.currentFiatValue) { _,_ in
                 if let dateFormatter = newMainViewModel.dateFormatter {
-                    currentDateLabel = String(describing: dateFormatter.string(from: Date()))
+                    currentDateLabel = "as of: " + String(describing: dateFormatter.string(from: Date()))
                 }
+            }
+            .onChange(of: newMainViewModel.currencyCode) { _,_ in
+                currentFiatLabel = String(describing: newMainViewModel.currentGlobalFiat.fullCurrencyName)
             }
         }
     }

@@ -266,7 +266,6 @@
 		C312D3632D7DC27700BB97A4 /* SignupWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A72D7DC27700BB97A4 /* SignupWebView.swift */; };
 		C312D3652D7DC27700BB97A4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D06C2D7DC27700BB97A4 /* Async.swift */; };
 		C312D3682D7DC27700BB97A4 /* PINFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D28C2D7DC27700BB97A4 /* PINFieldView.swift */; };
-		C312D3692D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C52D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift */; };
 		C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0822D7DC27700BB97A4 /* UIView+BRWAdditions.swift */; };
 		C312D36E2D7DC27700BB97A4 /* PinPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C12D7DC27700BB97A4 /* PinPadViewController.swift */; };
 		C312D3712D7DC27700BB97A4 /* SeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D29C2D7DC27700BB97A4 /* SeedViewModel.swift */; };
@@ -334,7 +333,6 @@
 		C312D4192D7DC27700BB97A4 /* MoonpayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2832D7DC27700BB97A4 /* MoonpayHelper.swift */; };
 		C312D41C2D7DC27700BB97A4 /* CreateStepTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D23C2D7DC27700BB97A4 /* CreateStepTabView.swift */; };
 		C312D41D2D7DC27700BB97A4 /* ModalNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1BF2D7DC27700BB97A4 /* ModalNavigationController.swift */; };
-		C312D41E2D7DC27700BB97A4 /* UnstoppableDomainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C42D7DC27700BB97A4 /* UnstoppableDomainView.swift */; };
 		C312D41F2D7DC27700BB97A4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B62D7DC27700BB97A4 /* AboutViewController.swift */; };
 		C312D4222D7DC27700BB97A4 /* ModalDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1A72D7DC27700BB97A4 /* ModalDisplayable.swift */; };
 		C312D4292D7DC27700BB97A4 /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D42D7DC27700BB97A4 /* CheckView.swift */; };
@@ -989,8 +987,6 @@
 		C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafeMutablePointerExtension.swift; sourceTree = "<group>"; };
-		C312D2C42D7DC27700BB97A4 /* UnstoppableDomainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnstoppableDomainView.swift; sourceTree = "<group>"; };
-		C312D2C52D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnstoppableDomainViewModel.swift; sourceTree = "<group>"; };
 		C312D2C62D7DC27700BB97A4 /* UserDefaultsUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsUpdater.swift; sourceTree = "<group>"; };
 		C312D2C72D7DC27700BB97A4 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
@@ -2125,8 +2121,6 @@
 				C312D2BC2D7DC27700BB97A4 /* TransactionManager.swift */,
 				C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */,
 				C3236A002D7DE34D007039A1 /* URLController.swift */,
-				C312D2C42D7DC27700BB97A4 /* UnstoppableDomainView.swift */,
-				C312D2C52D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift */,
 				C312D2C62D7DC27700BB97A4 /* UserDefaultsUpdater.swift */,
 				C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */,
 				C312D2C92D7DC27700BB97A4 /* WalletManager.swift */,
@@ -2724,7 +2718,6 @@
 				246EA1972EC8B32D00085D3A /* DataScannerView.swift in Sources */,
 				2457DD342EB79AD000688B9A /* EmptyTransactionRow.swift in Sources */,
 				2472D5D42F1276D100DC6737 /* BentoSendStyle.swift in Sources */,
-				C312D3692D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift in Sources */,
 				C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */,
 				2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */,
 				24691D142EAE4D30003CDC7C /* SyncSubBentoView.swift in Sources */,
@@ -2866,7 +2859,6 @@
 				C312D41D2D7DC27700BB97A4 /* ModalNavigationController.swift in Sources */,
 				242871862DE5D2580035DE48 /* NewSyncProgressView.swift in Sources */,
 				24F5BD482E043C2A0010D340 /* SettingsLabelView.swift in Sources */,
-				C312D41E2D7DC27700BB97A4 /* UnstoppableDomainView.swift in Sources */,
 				C312D41F2D7DC27700BB97A4 /* AboutViewController.swift in Sources */,
 				243B88872F1112E500A8DB69 /* LeaderEllipseView.swift in Sources */,
 				C312D4222D7DC27700BB97A4 /* ModalDisplayable.swift in Sources */,

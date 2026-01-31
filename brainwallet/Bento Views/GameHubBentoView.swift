@@ -42,7 +42,7 @@ struct GameHubBentoView: View {
             ZStack {
                 BalanceGameBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
                     .edgesIgnoringSafeArea(.all)
-
+                Image("")
                 VStack(alignment: .center) {
                     HStack {
                         ZStack {
@@ -51,9 +51,9 @@ struct GameHubBentoView: View {
                                 .foregroundColor(labelBackground)
                                 .padding(8)
                             Text("GAME HUB")
-                                .font(.system(size: 10, weight: .light, design: .default))
+                                .font(.system(size: 10, weight: .regular, design: .default))
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.5)// Shrinks to 50% of original
+                                .minimumScaleFactor(0.5)
                                 .padding([.leading, .trailing], 4)
                                 .frame(maxWidth: width * 0.25, maxHeight: 20, alignment: .center)
                                 .foregroundColor(labelForeground)
@@ -69,41 +69,44 @@ struct GameHubBentoView: View {
                         Button(action: {
                             shouldShowGameMode.toggle()
                         }) {
+
+                            HStack {
                                 VStack {
                                     Text("FALLINMOJI")
                                         .font(Font.custom("BoldenVan", size: 100))
                                         .lineLimit(1)
-                                        .minimumScaleFactor(0.4)
-                                        .padding([.leading, .trailing], 16)
+                                        .minimumScaleFactor(0.3)
+                                        .padding(.leading, 16)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundStyle(
                                             LinearGradient(
-                                                colors: [.white,.white, BentoColor.gameBlue1.opacity(0.9)],
+                                                colors: [.white,.white, BentoColor.gameBlue1.opacity(0.2)],
                                                 startPoint: .top,
                                                 endPoint: .bottom
                                             )
                                         )
 
-                                    Text("CAN YOU BE #1?")
+                                    Text("ARE YOU GOOD ENOUGH TO BE #1?")
                                         .font(.system(size: 16,
                                                       weight: .regular,
                                                       design: .rounded))
                                         .lineLimit(1)
                                         .minimumScaleFactor(0.5)
-                                        .padding([.leading, .trailing], 16)
+                                        .padding(.leading, 16)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundStyle(
                                             LinearGradient(
-                                                colors: [.white,.white, BentoColor.gameBlue1.opacity(0.9)],
+                                                colors: [.white,.white,.white,BentoColor.gameBlue1.opacity(0.1)],
                                                 startPoint: .top,
                                                 endPoint: .bottom
                                             )
                                         )
-
                                 }
+                                .frame(width: width * 0.6)
                                 .fixedSize(horizontal: true, vertical: false)
-                                .frame(maxWidth: width * 0.8)
                                 .padding(.top, 5)
+                                Spacer()
+                            }
                         }
                         .accessibilityIdentifier("enterGamesModeButton")
 
