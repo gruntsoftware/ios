@@ -87,23 +87,6 @@ struct BentoCalloutShape: View {
 
                 if shapeCorner.index >= 0 {
                     if shapeCorner.index == 0 {
-                        /// Top Left
-                        ///  \
-                        ///  \-------/
-                        ///  |          |
-                        ///  \--------/
-                        HStack {
-                            Spacer()
-                            RightTriangle()
-                                .foregroundColor(backgroundColor)
-                                .frame(width: triangleSize,
-                                       height: triangleSize,
-                                       alignment: .trailing)
-                                .scaleEffect(x: -1, y: 1)
-                                .offset(y: -triangleSize * 0.5)
-                        }
-
-                    } else if shapeCorner.index == 1 {
 
                         /// Top Right
                         ///       /
@@ -120,6 +103,25 @@ struct BentoCalloutShape: View {
                                 .offset(y: -triangleSize * 0.5)
                             Spacer()
                         }
+
+                    } else if shapeCorner.index == 1 {
+
+                        /// Top Left
+                        ///  \
+                        ///  \-------/
+                        ///  |          |
+                        ///  \--------/
+                        HStack {
+                            Spacer()
+                            RightTriangle()
+                                .foregroundColor(backgroundColor)
+                                .frame(width: triangleSize,
+                                       height: triangleSize,
+                                       alignment: .trailing)
+                                .scaleEffect(x: -1, y: 1)
+                                .offset(y: -triangleSize * 0.5)
+                        }
+
                     } else if shapeCorner.index == 2 {
                         /// Bottom Left
                         ///  / -------\

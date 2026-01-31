@@ -16,6 +16,8 @@
 		24006C2A2F0FCCA500F29F0A /* BentoSendCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24006C292F0FCCA500F29F0A /* BentoSendCompletedView.swift */; };
 		24006C2C2F0FCE5500F29F0A /* BentoSendInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24006C2B2F0FCE5500F29F0A /* BentoSendInitialView.swift */; };
 		2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */; };
+		240CEE1C2F2D87CB00428378 /* WalkthroughStep4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CEE1B2F2D87CB00428378 /* WalkthroughStep4View.swift */; };
+		240CEE1E2F2D87E500428378 /* WalkthroughStep5View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CEE1D2F2D87E500428378 /* WalkthroughStep5View.swift */; };
 		24126DFB2ECA68AB00F9A4BE /* DataScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */; };
 		24126E062ECA741200F9A4BE /* ScanOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */; };
 		24126E082ECA7F8900F9A4BE /* ScanOverlayDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */; };
@@ -485,6 +487,8 @@
 		24006C292F0FCCA500F29F0A /* BentoSendCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoSendCompletedView.swift; sourceTree = "<group>"; };
 		24006C2B2F0FCE5500F29F0A /* BentoSendInitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoSendInitialView.swift; sourceTree = "<group>"; };
 		2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenFooterView.swift; sourceTree = "<group>"; };
+		240CEE1B2F2D87CB00428378 /* WalkthroughStep4View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughStep4View.swift; sourceTree = "<group>"; };
+		240CEE1D2F2D87E500428378 /* WalkthroughStep5View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughStep5View.swift; sourceTree = "<group>"; };
 		24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerSheet.swift; sourceTree = "<group>"; };
 		24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayView.swift; sourceTree = "<group>"; };
 		24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayDataView.swift; sourceTree = "<group>"; };
@@ -1262,6 +1266,8 @@
 				242C43EB2F25397300CF6EA4 /* WalkthroughStep1View.swift */,
 				242C43EC2F25397300CF6EA4 /* WalkthroughStep2View.swift */,
 				242C43ED2F25397300CF6EA4 /* WalkthroughStep3View.swift */,
+				240CEE1B2F2D87CB00428378 /* WalkthroughStep4View.swift */,
+				240CEE1D2F2D87E500428378 /* WalkthroughStep5View.swift */,
 			);
 			path = WalkthroughSteps;
 			sourceTree = "<group>";
@@ -2714,6 +2720,7 @@
 				C312D3632D7DC27700BB97A4 /* SignupWebView.swift in Sources */,
 				C312D3652D7DC27700BB97A4 /* Async.swift in Sources */,
 				C312D3682D7DC27700BB97A4 /* PINFieldView.swift in Sources */,
+				240CEE1E2F2D87E500428378 /* WalkthroughStep5View.swift in Sources */,
 				246EA1972EC8B32D00085D3A /* DataScannerView.swift in Sources */,
 				2457DD342EB79AD000688B9A /* EmptyTransactionRow.swift in Sources */,
 				2472D5D42F1276D100DC6737 /* BentoSendStyle.swift in Sources */,
@@ -2810,6 +2817,7 @@
 				C312D3D42D7DC27700BB97A4 /* BuyTileView.swift in Sources */,
 				C312D3D52D7DC27700BB97A4 /* UIScreen+Additions.swift in Sources */,
 				C312D3D82D7DC27700BB97A4 /* UITableView+Additions.swift in Sources */,
+				240CEE1C2F2D87CB00428378 /* WalkthroughStep4View.swift in Sources */,
 				24006C2C2F0FCE5500F29F0A /* BentoSendInitialView.swift in Sources */,
 				C312D3DA2D7DC27700BB97A4 /* CameraGuideView.swift in Sources */,
 				246C42A02F24E235009BC881 /* SendStep2View.swift in Sources */,

@@ -44,7 +44,7 @@ struct SendStep1View: View {
 
                         CalloutTextView(title: titleStep1,
                                         description: descriptionStep1,
-                                        corner: .constant(.topRight),
+                                        corner: .constant(.topLeft),
                                         userPrefersDarkTheme: $userPrefersDarkTheme)
                         .frame(width: calloutWidth)
                         .padding([.leading], pointToBalanceOffset)
