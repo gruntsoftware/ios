@@ -41,6 +41,7 @@ struct TutorialSendPageView: View {
                             .font(.system(size: 24, weight: .semibold, design: .default))
                             .foregroundColor(.white)
                             .padding([.leading, .trailing], 4)
+                            .accessibilityIdentifier("tutorialSendPageViewTitle")
                     }
                     .padding(24)
                     Spacer()

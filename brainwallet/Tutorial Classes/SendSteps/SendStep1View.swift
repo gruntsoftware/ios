@@ -64,12 +64,15 @@ struct SendStep1View: View {
                                 .frame(alignment: .center)
                                 .foregroundColor(.white)
                                 .padding([.bottom], 20)
+                                .accessibilityIdentifier("sendStep1ViewTitle")
                             Image("moonpay-white-logo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: width * 0.4)
                                 .shadow(color: .black.opacity(0.6),
                                         radius: 3.0, x: 0, y: 5)
+                                .accessibilityIdentifier("sendStep1ViewMoonPayImage")
+
                         }
                         .padding(20.0)
                         .background(BrainwalletColor.surface.opacity(0.7))

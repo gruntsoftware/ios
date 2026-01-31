@@ -41,6 +41,8 @@ struct TutorialWalkthroughPageView: View {
                             .font(.system(size: 24, weight: .semibold, design: .default))
                             .foregroundColor(.white)
                             .padding([.leading, .trailing], 4)
+                            .accessibilityIdentifier("tutorialWalkthroughPageViewTitle")
+
                     }
                     .padding(24)
                     Spacer()
