@@ -32,7 +32,6 @@ struct SendStep3View: View {
 
             let width = geometry.size.width
             let calloutWidth = width * 0.7
-            let pointToBalanceOffset = 85.0
             ZStack {
                 VStack {
                     HStack {

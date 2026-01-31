@@ -32,32 +32,38 @@ struct TutorialWalkthroughPageView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-
-            let width = geometry.size.width
+        GeometryReader { _ in
 
             ZStack {
                 VStack(alignment: .center) {
                     HStack {
-                        Text("How to Receive LTC")
+                        Text("Brainwallet Walkthrough")
                             .font(.system(size: 24, weight: .semibold, design: .default))
                             .foregroundColor(.white)
                             .padding([.leading, .trailing], 4)
+                            .accessibilityIdentifier("tutorialWalkthroughPageViewTitle")
+
                     }
                     .padding(24)
                     Spacer()
                 }
                 TabView(selection: $selectedStep) {
-                    SendStep1View(selectedStep: $selectedStep,
-                                  userDidTapMP: $userDidTapMP,
-                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                        .tag(0)
-                    SendStep2View(selectedStep: $selectedStep,
-                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                        .tag(1)
-                    SendStep3View(selectedStep: $selectedStep,
-                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                        .tag(2)
+
+                    WalkthroughStep1View(selectedStep: $selectedStep,
+                                         userPrefersDarkTheme: $userPrefersDarkTheme)
+                    .tag(0)
+                    WalkthroughStep2View(selectedStep: $selectedStep,
+                                         userPrefersDarkTheme: $userPrefersDarkTheme)
+                    .tag(1)
+                    WalkthroughStep3View(selectedStep: $selectedStep,
+                                         userPrefersDarkTheme: $userPrefersDarkTheme)
+                    .tag(2)
+                    WalkthroughStep4View(selectedStep: $selectedStep,
+                                         userPrefersDarkTheme: $userPrefersDarkTheme)
+                    .tag(3)
+                    WalkthroughStep5View(selectedStep: $selectedStep,
+                                         userPrefersDarkTheme: $userPrefersDarkTheme)
+                    .tag(4)
                 }
                 .tabViewStyle(.page)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))

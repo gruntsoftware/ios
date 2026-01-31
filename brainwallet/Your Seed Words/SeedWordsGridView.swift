@@ -82,7 +82,7 @@ struct SeedWordsGridView: View {
                     .frame(height: fieldHeight * 4)
                     .padding(8.0)
                 }
-                .onChange(of: seedWords) { _ in
+                .onChange(of: seedWords) { _,_ in
 
                     if seedWords.count == kSeedPhraseLength {
 

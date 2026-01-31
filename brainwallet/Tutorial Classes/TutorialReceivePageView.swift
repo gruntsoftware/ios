@@ -32,9 +32,7 @@ struct TutorialReceivePageView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-
-            let width = geometry.size.width
+        GeometryReader { _ in
 
             ZStack {
                 VStack(alignment: .center) {
@@ -43,6 +41,7 @@ struct TutorialReceivePageView: View {
                             .font(.system(size: 24, weight: .semibold, design: .default))
                             .foregroundColor(.white)
                             .padding([.leading, .trailing], 4)
+                            .accessibilityIdentifier("tutorialReceivePageViewTitle")
                     }
                     .padding(24)
                     Spacer()
@@ -51,12 +50,9 @@ struct TutorialReceivePageView: View {
                     ReceiveStep1View(selectedStep: $selectedStep,
                         userPrefersDarkTheme: $userPrefersDarkTheme)
                         .tag(0)
-                    SendStep2View(selectedStep: $selectedStep,
+                    ReceiveStep2View(selectedStep: $selectedStep,
                         userPrefersDarkTheme: $userPrefersDarkTheme)
                         .tag(1)
-                    SendStep3View(selectedStep: $selectedStep,
-                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                        .tag(2)
                 }
                 .tabViewStyle(.page)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))

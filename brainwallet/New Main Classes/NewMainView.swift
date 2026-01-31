@@ -67,7 +67,10 @@ struct NewMainView: View {
 
     private let noSendTitle = String(localized: "Send is Disabled")
 
-    private let noSendMessage = String(localized: "While syncing, send is disabled the database catchs up to the latest block.\nPlease try again later.")
+    private let noSendMessage = """
+                                While syncing, send is disabled the \
+                                database catchs up to the latest block.\nPlease try again later.
+                                """
 
     @State
     private var mainGradientStyle: MainGradientStyle = .lightStyle
@@ -82,6 +85,7 @@ struct NewMainView: View {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
     }
+
     var body: some View {
         GeometryReader { geometry in
 
@@ -111,8 +115,9 @@ struct NewMainView: View {
                                          userPrefersDarkTheme: $userPrefersDarkTheme)
                         .frame(height:  balanceGameBentoHeight, alignment: .top)
                         .padding(bentoPadding)
-                       .padding(.top, 10)
-                       .padding(.bottom, 10)
+                        .padding(.top, 10)
+                        .padding(.bottom, 10)
+                        .accessibilityIdentifier("balanceBentoView")
 
                         if shouldShowTransactionDetail {
                             TransactionDetailBentoView(viewModel: newMainViewModel,
@@ -121,13 +126,14 @@ struct NewMainView: View {
                                 .padding(bentoPadding)
                                 .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 1.0 : 0.0, anchor: .top)
                                 .transition(.scale)
-
+                                .accessibilityIdentifier("transactionDetailBentoView")
                         }
                             TransactionHistoryBentoView(viewModel: newMainViewModel,
                                                     detailIsShowing: $shouldShowTransactionDetail,
                                                     userPrefersDarkTheme: $userPrefersDarkTheme)
                             .frame(height: transactionsBentoHeight, alignment: .top)
                             .padding(bentoPadding)
+                            .accessibilityIdentifier("transactionHistoryBentoView")
 
                         if !shouldShowTransactionDetail {
                             Group {
@@ -136,18 +142,20 @@ struct NewMainView: View {
                                                        userPrefersDarkTheme: $userPrefersDarkTheme)
                                     .frame(maxHeight: midBentoHeight * 0.5, alignment: .top)
                                     .padding(bentoPadding)
+                                    .accessibilityIdentifier("tutorialsBentoView")
 
                                     VStack {
                                         LTCPriceBentoView(viewModel: newMainViewModel,
                                                           userPrefersDarkTheme: $userPrefersDarkTheme)
                                         .frame(maxHeight: midBentoHeight * 0.25)
                                         .padding(bentoPadding)
+                                        .accessibilityIdentifier("ltcPriceBentoView")
 
                                         FavouritesBentoView(viewModel: newMainViewModel,
                                                             userPrefersDarkTheme: $userPrefersDarkTheme)
                                         .frame(maxHeight: midBentoHeight * 0.25)
                                         .padding(bentoPadding)
-
+                                        .accessibilityIdentifier("favouritesBentoView")
                                     }
                                 }
                                 .frame(maxHeight: height * 0.5, alignment: .top)
@@ -155,6 +163,7 @@ struct NewMainView: View {
                                 GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                                         .frame(height: balanceGameBentoHeight, alignment: .top)
                                         .padding(bentoPadding)
+                                        .accessibilityIdentifier("gameHubBentoView")
                             }
                             .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 0.0 : 1.0, anchor: .bottom)
                             .transition(.scale)
@@ -195,6 +204,8 @@ struct NewMainView: View {
                                     .foregroundColor(content)
                                 }
                             }
+                            .accessibilityIdentifier("themePreferenceButton")
+
                     }
 
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -226,6 +237,7 @@ struct NewMainView: View {
                             }
 
                         }
+                        .accessibilityIdentifier("settingsButton")
                     }
 
                     ToolbarItemGroup(placement: .bottomBar) {
@@ -247,6 +259,7 @@ struct NewMainView: View {
                                     .foregroundStyle(walletIsSyncing ? content.opacity(0.3) : content)
                             }
                         })
+                        .accessibilityIdentifier("sendTabBarItem")
 
                         Spacer()
 
@@ -267,6 +280,7 @@ struct NewMainView: View {
                                     .foregroundStyle(content)
                             }
                         })
+                        .accessibilityIdentifier("buyReceiveTabBarItem")
 
                         Spacer()
 
@@ -287,6 +301,7 @@ struct NewMainView: View {
                                     .foregroundStyle(content)
                             }
                         })
+                        .accessibilityIdentifier("gameHubTabBarItem")
 
                         Spacer()
 
@@ -296,20 +311,25 @@ struct NewMainView: View {
                             }
                         }, label: {
                             VStack(spacing: 4) {
-                                Image(systemName: "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
+                                Image(systemName: shouldShowTransactionDetail ? "house" : "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: iconSize,
                                            height: iconSize)
                                     .foregroundColor(content)
                                     .padding(6)
-                                Text("History")
+                                    .animation(.easeInOut, value: shouldShowTransactionDetail)
+
+                                Text(shouldShowTransactionDetail ? " Home " :"History")
                                     .font(.caption2)
                                     .foregroundStyle(content)
-
+                                    .contentTransition(.opacity)
+                                    .animation(.easeInOut, value: shouldShowTransactionDetail)
                             }
                         })
                         .disabled(disableTransactionDetail)
+                        .accessibilityIdentifier("historyHubTabBarItem")
+
                         Spacer()
                     }
                 }
@@ -331,6 +351,11 @@ struct NewMainView: View {
                 }
                 .onChange(of: newMainViewModel.walletIsSyncing) { _,newState in
                     walletIsSyncing = newState
+                }
+                .onChange(of: newMainViewModel.userWantsToTopUp) { _,newState in
+                    if newState {
+                        userDidTapBuyReceive.toggle()
+                    }
                 }
                 .sheet(isPresented: $userDidTapSend) {
                  if !walletIsSyncing {

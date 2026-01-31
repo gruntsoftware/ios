@@ -34,10 +34,8 @@ struct BentoNoSendModalView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
 
-            let width = geometry.size.width
-            let sectionHeight = 60.0
             let sectionSpacer = 18.0
             let sectionSides = 15.0
             let sectionBottom = 30.0

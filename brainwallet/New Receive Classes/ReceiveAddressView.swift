@@ -95,7 +95,7 @@ struct ReceiveAddressView: View {
                             Spacer()
                         }
                         .frame(width: qrWidth, alignment: .leading)
-                        .onChange(of: viewModel.newReceiveAddress) { address in
+                        .onChange(of: viewModel.newReceiveAddress) { _,address in
                             newAddress = address
                         }
                     }
@@ -131,7 +131,7 @@ struct ReceiveAddressView: View {
                      }
                 }
                 .opacity(didCopyAddress ? 1.0 : 0.0)
-                .onChange(of: didCopyAddress) { _ in
+                .onChange(of: didCopyAddress) { _,_ in
                     withAnimation(.easeInOut(duration: 1.0)) {
                         delay(1.0) {
                             didCopyAddress = false

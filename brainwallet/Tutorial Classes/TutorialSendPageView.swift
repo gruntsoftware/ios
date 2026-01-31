@@ -9,6 +9,9 @@ import SwiftUI
 
 struct TutorialSendPageView: View {
 
+    @EnvironmentObject
+    var viewModel: NewMainViewModel
+
     @State
     private var selectedStep: Int = 0
 
@@ -29,9 +32,7 @@ struct TutorialSendPageView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-
-            let width = geometry.size.width
+        GeometryReader { _ in
 
             ZStack {
                 VStack(alignment: .center) {
@@ -40,6 +41,7 @@ struct TutorialSendPageView: View {
                             .font(.system(size: 24, weight: .semibold, design: .default))
                             .foregroundColor(.white)
                             .padding([.leading, .trailing], 4)
+                            .accessibilityIdentifier("tutorialSendPageViewTitle")
                     }
                     .padding(24)
                     Spacer()
@@ -61,7 +63,9 @@ struct TutorialSendPageView: View {
             }
             .cornerRadius(bentoCornerRadius)
             .onChange(of: userDidTapMP) { _,_ in
-                /// TBD
+                if userDidTapMP {
+                    viewModel.userWantsToTopUp.toggle()
+                }
             }
         }
     }

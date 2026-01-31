@@ -30,7 +30,6 @@ struct ReceiveStep1View: View {
             let width = geometry.size.width
             let height = geometry.size.height
             let calloutWidth = width * 0.6
-            let pointToBalanceOffset = 65.0
             ZStack {
                 VStack {
                     Spacer()

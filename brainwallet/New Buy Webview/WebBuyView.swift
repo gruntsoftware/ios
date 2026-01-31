@@ -49,7 +49,7 @@ struct WebBuyView: View {
                 .frame(maxWidth: .infinity)
                 .padding([.leading, .trailing], 8.0)
             }
-            .onChange(of: viewModel.didFetchURLString) { didFetchURL in
+            .onChange(of: viewModel.didFetchURLString) { _,didFetchURL in
 
                 if didFetchURL {
 
