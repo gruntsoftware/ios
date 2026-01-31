@@ -18,6 +18,9 @@ struct SendStep1View: View {
     @Binding
     var userPrefersDarkTheme: Bool
 
+    @Environment(\.dismiss)
+    var dismiss
+
     private let titleStep1 = String(localized: "1. Check your balance")
     private let descriptionStep1 = String(localized: "You cannot send if it's zero or it's syncing.\nTop up in 5 minutes with MoonPay if needed.")
 
@@ -52,10 +55,11 @@ struct SendStep1View: View {
                     Spacer()
                     Button {
                         userDidTapMP.toggle()
+                        dismiss()
                     } label: {
                         VStack {
                             Text(String(localized:" Tap here & top up!"))
-                                .font(.system(size: 14, weight: .light, design: .default))
+                                .font(.system(size: 16, weight: .regular, design: .default))
                                 .minimumScaleFactor(0.9)
                                 .frame(alignment: .center)
                                 .foregroundColor(.white)
@@ -67,6 +71,9 @@ struct SendStep1View: View {
                                 .shadow(color: .black.opacity(0.6),
                                         radius: 3.0, x: 0, y: 5)
                         }
+                        .padding(20.0)
+                        .background(BrainwalletColor.surface.opacity(0.7))
+                        .cornerRadius(20.0)
                     }
                     .padding(.bottom, brainwalletNavBarHeight + balanceGameBentoHeight)
                     Spacer()

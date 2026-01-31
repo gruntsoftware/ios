@@ -82,6 +82,7 @@ struct NewMainView: View {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
     }
+
     var body: some View {
         GeometryReader { geometry in
 
@@ -334,6 +335,11 @@ struct NewMainView: View {
                 }
                 .onChange(of: newMainViewModel.walletIsSyncing) { _,newState in
                     walletIsSyncing = newState
+                }
+                .onChange(of: newMainViewModel.userWantsToTopUp) { _,newState in
+                    if newState {
+                        userDidTapBuyReceive.toggle()
+                    }
                 }
                 .sheet(isPresented: $userDidTapSend) {
                  if !walletIsSyncing {

@@ -103,6 +103,7 @@ struct TutorialsBentoView: View {
             }
             .sheet(isPresented: $shouldShowSendPage) {
                 TutorialSendPageView(userPrefersDarkTheme: $userPrefersDarkTheme)
+                    .environmentObject(newMainViewModel)
                 .cornerRadius(bentoCornerRadius)
                 .presentationDragIndicator(.hidden)
                 .presentationBackground(.opacity(0.2))

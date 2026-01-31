@@ -9,6 +9,9 @@ import SwiftUI
 
 struct TutorialSendPageView: View {
 
+    @EnvironmentObject
+    var viewModel: NewMainViewModel
+
     @State
     private var selectedStep: Int = 0
 
@@ -59,7 +62,9 @@ struct TutorialSendPageView: View {
             }
             .cornerRadius(bentoCornerRadius)
             .onChange(of: userDidTapMP) { _,_ in
-                /// TBD
+                if userDidTapMP {
+                    viewModel.userWantsToTopUp.toggle()
+                }
             }
         }
     }
