@@ -6,6 +6,7 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import FirebaseAnalytics
 
 struct WalkthroughStep5View: View {
 
@@ -49,6 +50,14 @@ struct WalkthroughStep5View: View {
                     .padding(.bottom, brainwalletNavBarHeight + balanceGameBentoHeight)
                 }
             }
+        }
+        .onAppear {
+            Analytics
+                .logEvent("user_completed_walkthrough_tutorial",
+                parameters: [
+                    "platform": "ios",
+                    "app_version": AppVersion.string
+                ])
         }
     }
 }

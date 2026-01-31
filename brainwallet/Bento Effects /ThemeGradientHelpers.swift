@@ -130,7 +130,7 @@ struct GameBackgroundView: View {
                                     [Gradient.Stop(color: .black.opacity(0.5), location: 0.0),
                                      Gradient.Stop(color: BentoColor.balanceBackgroundPurple.opacity(0.3), location: 0.950)
                                     ], center: .topLeading, startRadius: 90.0, endRadius: 400)
-                    Image(.gameHubStars)
+                    Image("game-hub-stars")
                         .resizable()
                         .opacity(0.5)
                         .frame(width: width, height: height)

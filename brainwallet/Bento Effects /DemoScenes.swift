@@ -41,7 +41,7 @@ class FallinScene: SKScene, SKPhysicsContactDelegate {
          addChild(label)
 
         delay(2.0) {
-            if self.children.count < 8 {
+            if self.children.count < 12 {
                 self.makeDot()
             } else {
                 self.removeAllChildren()

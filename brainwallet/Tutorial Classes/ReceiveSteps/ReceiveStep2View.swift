@@ -6,6 +6,7 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import FirebaseAnalytics
 
 struct ReceiveStep2View: View {
 
@@ -59,6 +60,14 @@ struct ReceiveStep2View: View {
                     .padding(.bottom, brainwalletNavBarHeight)
                 }
             }
+        }
+        .onAppear {
+            Analytics
+                .logEvent("user_completed_receive_tutorial",
+                parameters: [
+                    "platform": "ios",
+                    "app_version": AppVersion.string
+                ])
         }
     }
 }
