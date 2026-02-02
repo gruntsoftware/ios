@@ -21,11 +21,11 @@ extension UIFont {
 	static func ibmPlexSansBold(size: CGFloat) -> UIFont {
 		return UIFont(name: "IBMPlexSans-Bold", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
-    
+
 	static func ibmPlexSansSemiBold(size: CGFloat) -> UIFont {
 		return UIFont(name: "IBMPlexSans-SemiBold", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
-    
+
 	static func ibmPlexSansItalic(size: CGFloat) -> UIFont {
 		return UIFont(name: "IBMPlexSans-Italic", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
@@ -41,9 +41,13 @@ extension UIFont {
 	static func ibmPlexSansLight(size: CGFloat) -> UIFont {
 		return UIFont(name: "IBMPlexSans-Light", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
-    
+
     static func ibmPlexSansThin(size: CGFloat) -> UIFont {
         return UIFont(name: "IBMPlexSans-Thin", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
+    }
+
+    static func boldenVan(size: CGFloat) -> UIFont {
+        return UIFont(name: "BoldenVan", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
     }
 
 	static var regularAttributes: [NSAttributedString.Key: Any] {
@@ -88,5 +92,9 @@ extension Font {
 
     static func ibmPlexSansThin(size: CGFloat) -> Font {
         return Font.custom("IBMPlexSans-Thin", size: size)
+    }
+
+    static func boldenVan(size: CGFloat) -> Font {
+        return Font.custom("BoldenVan", size: size)
     }
 }

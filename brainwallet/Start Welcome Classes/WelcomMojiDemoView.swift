@@ -91,7 +91,7 @@ struct WelcomMojiDemoView: View {
                 VStack {
                     HStack {
                         Text("\(counter)")
-                            .font(Font.custom("BoldenVan", size: 40))
+                            .font(.boldenVan(size: 40))
                             .lineLimit(1)
                             .minimumScaleFactor(0.3)
                             .padding(.top, 16)
@@ -111,7 +111,7 @@ struct WelcomMojiDemoView: View {
                 VStack {
 
                     Text( String(format: "%.2f", countdown))
-                        .font(Font.custom("BoldenVan", size: 40))
+                        .font(.boldenVan(size: 40))
                         .lineLimit(1)
                         .minimumScaleFactor(0.3)
                         .padding(.top, 16)
@@ -142,7 +142,7 @@ struct WelcomMojiDemoView: View {
                                 ])
                         } label: {
                             Text("Start!")
-                                .font(Font.custom("BoldenVan", size: 50))
+                                .font(.boldenVan(size: 50))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.7)
                                 .padding(16)
