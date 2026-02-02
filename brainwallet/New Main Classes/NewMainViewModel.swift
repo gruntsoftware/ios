@@ -425,6 +425,8 @@ class NewMainViewModel: ObservableObject, Subscriber {
             // Set Preferred Currency
             UserDefaults.userPreferredCurrencyCode = code
             store.perform(action: UserPreferredCurrency.setDefault(code))
+
+            // Set Exchange Rate
         }
     }
 
