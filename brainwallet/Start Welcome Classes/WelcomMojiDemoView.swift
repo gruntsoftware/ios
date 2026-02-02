@@ -141,6 +141,13 @@ struct WelcomMojiDemoView: View {
                                 .minimumScaleFactor(0.7)
                                 .padding(16)
                                 .frame(width: 160, height: 80)
+                                .foregroundStyle(
+                                    LinearGradient(
+                                        colors: [.white,.white, BentoColor.progressGreen2.opacity(0.2)],
+                                        startPoint: .top,
+                                        endPoint: .bottom
+                                    )
+                                )
                                 .shadow(color:
                                             Color.black.opacity(0.3),
                                         radius: 10)
