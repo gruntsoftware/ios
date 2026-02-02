@@ -35,6 +35,8 @@ struct TutorialsBentoView: View {
 
     private let buttonPlatformFactor: CGFloat = 2.1
 
+    private let tagLabelWidth: CGFloat = 80.0
+
     init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
         newMainViewModel = viewModel
@@ -56,12 +58,12 @@ struct TutorialsBentoView: View {
                 VStack(alignment: .center) {
                     HStack {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 8)
-                                .frame(width: width * 0.5, height: 22, alignment: .center)
+                            RoundedRectangle(cornerRadius: 6)
+                                .frame(width: tagLabelWidth, height: 18, alignment: .center)
                                 .foregroundColor(labelBackground)
                                 .padding(8)
                             Text("TUTORIALS")
-                                .font(.system(size: 13, weight: .semibold, design: .default))
+                                .font(.system(size: 10, weight: .regular, design: .default))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)// Shrinks to 50% of original
                                 .padding([.leading, .trailing], 4)
@@ -106,21 +108,21 @@ struct TutorialsBentoView: View {
                     .environmentObject(newMainViewModel)
                 .cornerRadius(bentoCornerRadius)
                 .presentationDragIndicator(.hidden)
-                .presentationBackground(.opacity(0.2))
+                .presentationBackground(.opacity(0.1))
                 .ignoresSafeArea(edges: .bottom)
             }
             .sheet(isPresented: $shouldShowReceivePage) {
                 TutorialReceivePageView(userPrefersDarkTheme: $userPrefersDarkTheme)
                 .cornerRadius(bentoCornerRadius)
                 .presentationDragIndicator(.hidden)
-                .presentationBackground(.opacity(0.2))
+                .presentationBackground(.opacity(0.1))
                 .ignoresSafeArea(edges: .bottom)
             }
             .sheet(isPresented: $shouldShowWalkthroughPage) {
                 TutorialWalkthroughPageView(userPrefersDarkTheme: $userPrefersDarkTheme)
                 .cornerRadius(bentoCornerRadius)
                 .presentationDragIndicator(.hidden)
-                .presentationBackground(.opacity(0.2))
+                .presentationBackground(.opacity(0.1))
                 .ignoresSafeArea(edges: .bottom)
             }
 

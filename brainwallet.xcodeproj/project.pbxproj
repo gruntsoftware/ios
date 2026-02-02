@@ -18,6 +18,8 @@
 		2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */; };
 		240CEE1C2F2D87CB00428378 /* WalkthroughStep4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CEE1B2F2D87CB00428378 /* WalkthroughStep4View.swift */; };
 		240CEE1E2F2D87E500428378 /* WalkthroughStep5View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CEE1D2F2D87E500428378 /* WalkthroughStep5View.swift */; };
+		240CF5A72F2E7C7500428378 /* FallinMojiDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CF5A62F2E7C7500428378 /* FallinMojiDemoView.swift */; };
+		240CF5A92F2E7F3F00428378 /* DemoScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CF5A82F2E7F3F00428378 /* DemoScenes.swift */; };
 		24126DFB2ECA68AB00F9A4BE /* DataScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */; };
 		24126E062ECA741200F9A4BE /* ScanOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */; };
 		24126E082ECA7F8900F9A4BE /* ScanOverlayDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */; };
@@ -99,6 +101,9 @@
 		246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; };
 		2472D5D42F1276D100DC6737 /* BentoSendStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2472D5CE2F1276C700DC6737 /* BentoSendStyle.swift */; };
 		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
+		2476646A2F2FFEFA00F1A70E /* 215595__taira-komori__bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 247664692F2FFEFA00F1A70E /* 215595__taira-komori__bomb.mp3 */; };
+		2476646C2F2FFFA600F1A70E /* 807381__jean_filho__sci-fi-grenade-explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2476646B2F2FFFA600F1A70E /* 807381__jean_filho__sci-fi-grenade-explosion.mp3 */; };
+		2476646E2F3002BB00F1A70E /* WelcomeFallinScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476646D2F3002B900F1A70E /* WelcomeFallinScene.swift */; };
 		2476AE342E27B44B0065CE22 /* InputWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */; };
 		2476AE362E2802AF0065CE22 /* InputSeedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE352E28029B0065CE22 /* InputSeedWordView.swift */; };
 		247A7D072E951660000DF8C0 /* BalanceBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D062E951653000DF8C0 /* BalanceBentoView.swift */; };
@@ -201,8 +206,7 @@
 		24F5BD4E2E0452670010D340 /* SettingsActionLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4D2E0452670010D340 /* SettingsActionLockView.swift */; };
 		24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4F2E0460C90010D340 /* SecurityListView.swift */; };
 		24F5BD582E04711E0010D340 /* CurrencyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */; };
-		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
-		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
+		24F64C202DAFBDA4001DC9B6 /* WelcomMojiDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* WelcomMojiDemoView.swift */; };
 		24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */; };
 		24FBB86A2E035E10002B5F84 /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */; };
 		24FEB8BB2DD2425A00D60036 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24FEB8B92DD2425A00D60036 /* InfoPlist.strings */; };
@@ -266,7 +270,6 @@
 		C312D3632D7DC27700BB97A4 /* SignupWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A72D7DC27700BB97A4 /* SignupWebView.swift */; };
 		C312D3652D7DC27700BB97A4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D06C2D7DC27700BB97A4 /* Async.swift */; };
 		C312D3682D7DC27700BB97A4 /* PINFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D28C2D7DC27700BB97A4 /* PINFieldView.swift */; };
-		C312D3692D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C52D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift */; };
 		C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0822D7DC27700BB97A4 /* UIView+BRWAdditions.swift */; };
 		C312D36E2D7DC27700BB97A4 /* PinPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C12D7DC27700BB97A4 /* PinPadViewController.swift */; };
 		C312D3712D7DC27700BB97A4 /* SeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D29C2D7DC27700BB97A4 /* SeedViewModel.swift */; };
@@ -334,7 +337,6 @@
 		C312D4192D7DC27700BB97A4 /* MoonpayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2832D7DC27700BB97A4 /* MoonpayHelper.swift */; };
 		C312D41C2D7DC27700BB97A4 /* CreateStepTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D23C2D7DC27700BB97A4 /* CreateStepTabView.swift */; };
 		C312D41D2D7DC27700BB97A4 /* ModalNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1BF2D7DC27700BB97A4 /* ModalNavigationController.swift */; };
-		C312D41E2D7DC27700BB97A4 /* UnstoppableDomainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C42D7DC27700BB97A4 /* UnstoppableDomainView.swift */; };
 		C312D41F2D7DC27700BB97A4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B62D7DC27700BB97A4 /* AboutViewController.swift */; };
 		C312D4222D7DC27700BB97A4 /* ModalDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1A72D7DC27700BB97A4 /* ModalDisplayable.swift */; };
 		C312D4292D7DC27700BB97A4 /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D42D7DC27700BB97A4 /* CheckView.swift */; };
@@ -489,13 +491,14 @@
 		2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenFooterView.swift; sourceTree = "<group>"; };
 		240CEE1B2F2D87CB00428378 /* WalkthroughStep4View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughStep4View.swift; sourceTree = "<group>"; };
 		240CEE1D2F2D87E500428378 /* WalkthroughStep5View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughStep5View.swift; sourceTree = "<group>"; };
+		240CF5A62F2E7C7500428378 /* FallinMojiDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallinMojiDemoView.swift; sourceTree = "<group>"; };
+		240CF5A82F2E7F3F00428378 /* DemoScenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScenes.swift; sourceTree = "<group>"; };
 		24126DFA2ECA68AA00F9A4BE /* DataScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerSheet.swift; sourceTree = "<group>"; };
 		24126E052ECA740B00F9A4BE /* ScanOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayView.swift; sourceTree = "<group>"; };
 		24126E072ECA7F7A00F9A4BE /* ScanOverlayDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanOverlayDataView.swift; sourceTree = "<group>"; };
 		241283BB2F2669D800638075 /* FiatCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatCurrency.swift; sourceTree = "<group>"; };
 		2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveAddressView.swift; sourceTree = "<group>"; };
 		2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordsGridView.swift; sourceTree = "<group>"; };
-		2415FFF22DBE2CA4002A2199 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRActivityView.swift; sourceTree = "<group>"; };
 		2416CE572DA90D0D00FFBD10 /* BRAddressExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAddressExtension.swift; sourceTree = "<group>"; };
 		2416CE582DA90D0D00FFBD10 /* BWAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWAPIClient.swift; sourceTree = "<group>"; };
@@ -570,6 +573,9 @@
 		246F97832E846218001923A6 /* private-general-purpose.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "private-general-purpose.xcodeproj"; path = "Private/general-purpose/private-general-purpose.xcodeproj"; sourceTree = "<group>"; };
 		2472D5CE2F1276C700DC6737 /* BentoSendStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoSendStyle.swift; sourceTree = "<group>"; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
+		247664692F2FFEFA00F1A70E /* 215595__taira-komori__bomb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "215595__taira-komori__bomb.mp3"; sourceTree = "<group>"; };
+		2476646B2F2FFFA600F1A70E /* 807381__jean_filho__sci-fi-grenade-explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "807381__jean_filho__sci-fi-grenade-explosion.mp3"; sourceTree = "<group>"; };
+		2476646D2F3002B900F1A70E /* WelcomeFallinScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeFallinScene.swift; sourceTree = "<group>"; };
 		2476AE322E27038F0065CE22 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWordsGridView.swift; sourceTree = "<group>"; };
 		2476AE352E28029B0065CE22 /* InputSeedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSeedWordView.swift; sourceTree = "<group>"; };
@@ -788,7 +794,7 @@
 		24F5BD4D2E0452670010D340 /* SettingsActionLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionLockView.swift; sourceTree = "<group>"; };
 		24F5BD4F2E0460C90010D340 /* SecurityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityListView.swift; sourceTree = "<group>"; };
 		24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerView.swift; sourceTree = "<group>"; };
-		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
+		24F64C1F2DAFBD94001DC9B6 /* WelcomMojiDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomMojiDemoView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
 		24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
 		24FEB8BA2DD2425A00D60036 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -989,8 +995,6 @@
 		C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafeMutablePointerExtension.swift; sourceTree = "<group>"; };
-		C312D2C42D7DC27700BB97A4 /* UnstoppableDomainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnstoppableDomainView.swift; sourceTree = "<group>"; };
-		C312D2C52D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnstoppableDomainViewModel.swift; sourceTree = "<group>"; };
 		C312D2C62D7DC27700BB97A4 /* UserDefaultsUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsUpdater.swift; sourceTree = "<group>"; };
 		C312D2C72D7DC27700BB97A4 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
@@ -1050,7 +1054,6 @@
 				24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */,
 				2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */,
 				246028592E5F178400CDEB7A /* FirebaseRemoteConfig in Frameworks */,
-				24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */,
 				C35C122A293D48340009022D /* KeychainAccess in Frameworks */,
 				246028572E5F178400CDEB7A /* FirebasePerformance in Frameworks */,
 				249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */,
@@ -1364,11 +1367,14 @@
 		247A838B2EA00CEB00B5DFD8 /* Bento Effects  */ = {
 			isa = PBXGroup;
 			children = (
+				2476646D2F3002B900F1A70E /* WelcomeFallinScene.swift */,
 				247A83942EA034E900B5DFD8 /* GridWaveContentView.swift */,
 				247A83962EA2A99100B5DFD8 /* ThemeGradientHelpers.swift */,
 				247A83922EA034B600B5DFD8 /* Renderer.swift */,
 				247A838C2EA00CFB00B5DFD8 /* MetalView.swift */,
 				247A83902EA00D8600B5DFD8 /* aurora.metal */,
+				240CF5A62F2E7C7500428378 /* FallinMojiDemoView.swift */,
+				240CF5A82F2E7F3F00428378 /* DemoScenes.swift */,
 			);
 			path = "Bento Effects ";
 			sourceTree = "<group>";
@@ -1651,7 +1657,6 @@
 		249DDE402DCD55D700B2B275 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				2415FFF22DBE2CA4002A2199 /* SettingsView.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1826,7 +1831,7 @@
 				C312D2AC2D7DC27700BB97A4 /* StartHostingController.swift */,
 				C312D2AE2D7DC27700BB97A4 /* StartView.swift */,
 				C312D2AF2D7DC27700BB97A4 /* StartViewModel.swift */,
-				24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */,
+				24F64C1F2DAFBD94001DC9B6 /* WelcomMojiDemoView.swift */,
 			);
 			path = "Start Welcome Classes";
 			sourceTree = "<group>";
@@ -1906,6 +1911,8 @@
 		C312D0C72D7DC27700BB97A4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				247664692F2FFEFA00F1A70E /* 215595__taira-komori__bomb.mp3 */,
+				2476646B2F2FFFA600F1A70E /* 807381__jean_filho__sci-fi-grenade-explosion.mp3 */,
 				2446DF512E2906AC001453DF /* bloop.mp3 */,
 				24DB05E52E06054B00C57FE9 /* SoundsHelper.swift */,
 				244310432E21BCBD004AE386 /* errorsound.mp3 */,
@@ -2125,8 +2132,6 @@
 				C312D2BC2D7DC27700BB97A4 /* TransactionManager.swift */,
 				C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */,
 				C3236A002D7DE34D007039A1 /* URLController.swift */,
-				C312D2C42D7DC27700BB97A4 /* UnstoppableDomainView.swift */,
-				C312D2C52D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift */,
 				C312D2C62D7DC27700BB97A4 /* UserDefaultsUpdater.swift */,
 				C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */,
 				C312D2C92D7DC27700BB97A4 /* WalletManager.swift */,
@@ -2249,7 +2254,6 @@
 			packageProductDependencies = (
 				C35C1229293D48340009022D /* KeychainAccess */,
 				249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */,
-				24F64C1D2DAFBD0F001DC9B6 /* Lottie */,
 				2460284E2E5F178400CDEB7A /* FirebaseAnalytics */,
 				246028502E5F178400CDEB7A /* FirebaseCrashlytics */,
 				246028522E5F178400CDEB7A /* FirebaseInAppMessaging-Beta */,
@@ -2339,7 +2343,6 @@
 			packageReferences = (
 				C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
-				24F64C1C2DAFBD0F001DC9B6 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -2421,6 +2424,7 @@
 			files = (
 				2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */,
 				24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */,
+				2476646A2F2FFEFA00F1A70E /* 215595__taira-komori__bomb.mp3 in Resources */,
 				24E06FC52DF4790B00719B6C /* remote-config-defaults.plist in Resources */,
 				2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */,
 				24FEB8BB2DD2425A00D60036 /* InfoPlist.strings in Resources */,
@@ -2435,6 +2439,7 @@
 				24D7EA0B2E336D0800A9AB68 /* CHANGELOG.md in Resources */,
 				24D7EA0E2E336F9100A9AB68 /* service-data.plist in Resources */,
 				24D7EA0C2E336D0800A9AB68 /* PrivacyInfo.xcprivacy in Resources */,
+				2476646C2F2FFFA600F1A70E /* 807381__jean_filho__sci-fi-grenade-explosion.mp3 in Resources */,
 				24F5BD3C2E042A040010D340 /* clicksound.wav in Resources */,
 				244310442E21BCBD004AE386 /* errorsound.mp3 in Resources */,
 				C312D4B42D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf in Resources */,
@@ -2692,6 +2697,7 @@
 				C312D3352D7DC27700BB97A4 /* TransactionManager.swift in Sources */,
 				24B065402DC647F400B5E000 /* GameView.swift in Sources */,
 				C312D3372D7DC27700BB97A4 /* Types.swift in Sources */,
+				240CF5A92F2E7F3F00428378 /* DemoScenes.swift in Sources */,
 				C312D3382D7DC27700BB97A4 /* NonScrollingCollectionView.swift in Sources */,
 				C312D33F2D7DC27700BB97A4 /* ModalTransitionDelegate.swift in Sources */,
 				24F5BD4C2E0450B80010D340 /* SettingsExpandingSecurityView.swift in Sources */,
@@ -2724,7 +2730,6 @@
 				246EA1972EC8B32D00085D3A /* DataScannerView.swift in Sources */,
 				2457DD342EB79AD000688B9A /* EmptyTransactionRow.swift in Sources */,
 				2472D5D42F1276D100DC6737 /* BentoSendStyle.swift in Sources */,
-				C312D3692D7DC27700BB97A4 /* UnstoppableDomainViewModel.swift in Sources */,
 				C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */,
 				2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */,
 				24691D142EAE4D30003CDC7C /* SyncSubBentoView.swift in Sources */,
@@ -2773,7 +2778,7 @@
 				C312D3882D7DC27700BB97A4 /* Brainwallet+Color.swift in Sources */,
 				24B0652A2DC6135900B5E000 /* WalletBalanceView.swift in Sources */,
 				C312D38D2D7DC27700BB97A4 /* AppDelegate.swift in Sources */,
-				24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */,
+				24F64C202DAFBDA4001DC9B6 /* WelcomMojiDemoView.swift in Sources */,
 				241D223F2DB526A1000302C8 /* ReadyView.swift in Sources */,
 				C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */,
 				C312D3902D7DC27700BB97A4 /* GradientSwitch.swift in Sources */,
@@ -2808,6 +2813,8 @@
 				C312D3C62D7DC27700BB97A4 /* View+Extension.swift in Sources */,
 				C312D3C72D7DC27700BB97A4 /* Sender.swift in Sources */,
 				2457DC822EB63AAE00688B9A /* TransactionHelper.swift in Sources */,
+				2476646E2F3002BB00F1A70E /* WelcomeFallinScene.swift in Sources */,
+				240CF5A72F2E7C7500428378 /* FallinMojiDemoView.swift in Sources */,
 				24DB05E42E05D5E800C57FE9 /* SettingsActionThemeView.swift in Sources */,
 				C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */,
 				C312D3CD2D7DC27700BB97A4 /* AlertFailureView.swift in Sources */,
@@ -2866,7 +2873,6 @@
 				C312D41D2D7DC27700BB97A4 /* ModalNavigationController.swift in Sources */,
 				242871862DE5D2580035DE48 /* NewSyncProgressView.swift in Sources */,
 				24F5BD482E043C2A0010D340 /* SettingsLabelView.swift in Sources */,
-				C312D41E2D7DC27700BB97A4 /* UnstoppableDomainView.swift in Sources */,
 				C312D41F2D7DC27700BB97A4 /* AboutViewController.swift in Sources */,
 				243B88872F1112E500A8DB69 /* LeaderEllipseView.swift in Sources */,
 				C312D4222D7DC27700BB97A4 /* ModalDisplayable.swift in Sources */,
@@ -3208,7 +3214,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2601300.1;
+				CURRENT_PROJECT_VERSION = 2602010.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3400,7 +3406,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2601300.1;
+				CURRENT_PROJECT_VERSION = 2602010.0;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3508,14 +3514,6 @@
 				minimumVersion = 6.16.1;
 			};
 		};
-		24F64C1C2DAFBD0F001DC9B6 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
-			requirement = {
-				kind = exactVersion;
-				version = 4.5.1;
-			};
-		};
 		C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
@@ -3561,11 +3559,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
 			productName = AppsFlyerLib;
-		};
-		24F64C1D2DAFBD0F001DC9B6 /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 24F64C1C2DAFBD0F001DC9B6 /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
 		};
 		C35C1229293D48340009022D /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;

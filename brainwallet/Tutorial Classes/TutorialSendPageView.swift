@@ -6,6 +6,7 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import FirebaseAnalytics
 
 struct TutorialSendPageView: View {
 
@@ -66,6 +67,14 @@ struct TutorialSendPageView: View {
                 if userDidTapMP {
                     viewModel.userWantsToTopUp.toggle()
                 }
+            }
+            .onAppear {
+                Analytics
+                    .logEvent("user_tapped_send_tutorial",
+                    parameters: [
+                        "platform": "ios",
+                        "app_version": AppVersion.string
+                    ])
             }
         }
     }

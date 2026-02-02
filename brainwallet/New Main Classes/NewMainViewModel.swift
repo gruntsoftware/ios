@@ -80,6 +80,7 @@ class NewMainViewModel: ObservableObject, Subscriber {
     @Published
     var dateFormatter: DateFormatter?
 
+    @Published
     var updateTimer: Timer?
 
     @Published
@@ -424,8 +425,6 @@ class NewMainViewModel: ObservableObject, Subscriber {
             // Set Preferred Currency
             UserDefaults.userPreferredCurrencyCode = code
             store.perform(action: UserPreferredCurrency.setDefault(code))
-
-            // Set Exchange Rate
         }
     }
 

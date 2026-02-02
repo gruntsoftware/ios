@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct BalanceBentoView: View {
     @ObservedObject
@@ -37,7 +38,7 @@ struct BalanceBentoView: View {
             let height = geometry.size.height
 
             ZStack {
-                BalanceGameBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
+                BalanceBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
@@ -112,6 +113,12 @@ struct BalanceBentoView: View {
                             withAnimation(.spring(response: 0.8, dampingFraction: 0.5, blendDuration: 0.2)) {
                                 isLTCValueShown.toggle()
                                 newMainViewModel.isLTCValueShown = isLTCValueShown
+                                Analytics
+                                    .logEvent("user_tapped_switch_fiat_ltc",
+                                    parameters: [
+                                        "platform": "ios",
+                                        "app_version": AppVersion.string
+                                    ])
                             }
                         }
                     }

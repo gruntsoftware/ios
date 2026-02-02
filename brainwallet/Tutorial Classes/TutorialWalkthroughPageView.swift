@@ -6,6 +6,7 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import FirebaseAnalytics
 
 struct TutorialWalkthroughPageView: View {
 
@@ -71,9 +72,12 @@ struct TutorialWalkthroughPageView: View {
             .cornerRadius(bentoCornerRadius)
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
-            }
-            .onChange(of: userDidTapMP) { _,_ in
-                /// TBD
+                Analytics
+                    .logEvent("user_tapped_walkthrough_tutorial",
+                    parameters: [
+                        "platform": "ios",
+                        "app_version": AppVersion.string
+                    ])
             }
         }
     }

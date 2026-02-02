@@ -74,7 +74,7 @@ struct BentoBackgroundView: View {
     }
 }
 
-struct BalanceGameBackgroundView: View {
+struct BalanceBackgroundView: View {
 
     @Binding
     var userPrefersDarkTheme: Bool
@@ -86,7 +86,6 @@ struct BalanceGameBackgroundView: View {
                                 [Gradient.Stop(color: .black.opacity(0.5), location: 0.0),
                                          Gradient.Stop(color: BentoColor.balanceBackgroundPurple.opacity(0.3), location: 0.950)
                                         ], center: .topLeading, startRadius: 90.0, endRadius: 400)
-
                 RoundedRectangle(cornerRadius: bentoCornerRadius)
                     .stroke(
                         LinearGradient(colors: [.white,
@@ -110,6 +109,55 @@ struct BalanceGameBackgroundView: View {
                 RoundedRectangle(cornerRadius: bentoCornerRadius)
                     .stroke(BentoColor.grayBorder,
                             lineWidth:  1.5)
+            }
+        }
+    }
+}
+struct GameBackgroundView: View {
+
+    @Binding
+    var userPrefersDarkTheme: Bool
+
+    var body: some View {
+
+        GeometryReader { geometry in
+
+            let width = geometry.size.width
+            let height = geometry.size.height
+            ZStack {
+                if userPrefersDarkTheme {
+                    RadialGradient(stops:
+                                    [Gradient.Stop(color: .black.opacity(0.5), location: 0.0),
+                                     Gradient.Stop(color: BentoColor.balanceBackgroundPurple.opacity(0.3), location: 0.950)
+                                    ], center: .topLeading, startRadius: 90.0, endRadius: 400)
+                    Image("game-hub-stars")
+                        .resizable()
+                        .opacity(0.5)
+                        .frame(width: width, height: height)
+                    RoundedRectangle(cornerRadius: bentoCornerRadius)
+                        .stroke(
+                            LinearGradient(colors: [.white,
+                                                    BentoColor.darkModeBorder2.opacity(0.8),
+                                                    BentoColor.darkModeBorder3,
+                                                    BentoColor.darkModeBorder4.opacity(0.8),
+                                                    BentoColor.darkModeBorder5.opacity(0.8)
+                                                   ], startPoint: .topLeading,
+                                           endPoint: .bottomTrailing),
+                            lineWidth: 1.5)
+
+                } else {
+                    RoundedRectangle(cornerRadius: bentoCornerRadius)
+                        .fill(LinearGradient(
+                            colors: [BentoColor.purple4,
+                                     BentoColor.purple3],
+                            startPoint: .bottom,
+                            endPoint: .top
+                        ))
+                        .edgesIgnoringSafeArea(.all)
+                    RoundedRectangle(cornerRadius: bentoCornerRadius)
+                        .stroke(BentoColor.grayBorder,
+                                lineWidth:  1.5)
+                }
             }
         }
     }

@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import FirebaseAnalytics
 
 let defaultLaunchAmount = 210
 let maxLaunchAmount = 20000
@@ -370,6 +371,12 @@ struct BuyReceiveView: View {
                     canUserBuy = viewModel.canUserBuy
                     pickedCurrency = viewModel.pickedCurrency
                     updateFiatAmounts()
+
+                    Analytics.logEvent("user_did_tap_buyreceive_sheet",
+                        parameters: [
+                            "platform": "ios",
+                            "app_version": AppVersion.string
+                        ])
                 }
                 .alert(String(localized:"Address Copied"), isPresented: $didCopyAddress,
                        actions: {

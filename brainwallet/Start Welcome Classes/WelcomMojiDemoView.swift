@@ -1,0 +1,174 @@
+import UIKit
+import SwiftUI
+import SpriteKit
+import FirebaseAnalytics
+
+struct WelcomMojiDemoView: View {
+
+    @Binding
+    var shouldPlay: Bool
+
+    @State
+    private var counter: Int = 0
+
+    @State
+    private var didStartGame: Bool = true
+
+    @State
+    private var countdown: TimeInterval = 30.0
+
+    @State
+    private var mainGradientStyle: MainGradientStyle = .darkStyle
+
+    @State
+    private var welcomeScene: WelcomeFallinScene?
+
+    var width: CGFloat = 0.0
+    var height: CGFloat = 0.0
+
+    private func makeScene() -> WelcomeFallinScene {
+        let scene = WelcomeFallinScene(width: width,
+                                       height: height,
+                                       counter: $counter,
+                                       countdown: $countdown,
+                                       didStartGame: $didStartGame)
+        scene.size = CGSize(width: width, height: height)
+        scene.scaleMode = .fill
+        scene.width = width
+        scene.height = height
+        scene.backgroundColor = .clear
+        return scene
+    }
+
+    private func placeholderScene() -> SKScene {
+        let scene = SKScene(size: CGSize(width: max(width, 1), height: max(height, 1)))
+        scene.scaleMode = .fill
+        scene.backgroundColor = .clear
+        return scene
+    }
+
+    init(width: CGFloat,
+         height: CGFloat,
+         shouldPlay: Binding<Bool>) {
+        _shouldPlay = shouldPlay
+        self.height = height
+        self.width = width
+
+    }
+
+    var body: some View {
+
+        GeometryReader { geometry in
+
+            let width = geometry.size.width
+            let height = geometry.size.height
+
+            ZStack {
+                Image("welcome-bk")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: width, height: height)
+                    .cornerRadius(bentoCornerRadius)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: bentoCornerRadius)
+                            .stroke(BentoColor.purple4,
+                                    lineWidth: 2)
+                    }
+                VStack {
+                    SpriteView(scene: welcomeScene ?? placeholderScene(),
+                               options: [.allowsTransparency])
+                    .frame(width: width, height: height)
+                    .onAppear {
+                        if welcomeScene == nil {
+                            welcomeScene = makeScene()
+                        }
+                    }
+                    .cornerRadius(bentoCornerRadius)
+
+                    Spacer()
+                }
+
+                VStack {
+                    HStack {
+                        Text("\(counter)")
+                            .font(Font.custom("BoldenVan", size: 40))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.3)
+                            .padding(.top, 16)
+                            .padding([.trailing], 24)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .foregroundStyle(
+                                LinearGradient(
+                                    colors: [.white,.white, BentoColor.gameBlue1.opacity(0.2)],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
+                    }
+                    Spacer()
+                }
+
+                VStack {
+
+                    Text( String(format: "%.2f", countdown))
+                        .font(Font.custom("BoldenVan", size: 40))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.3)
+                        .padding(.top, 16)
+                        .padding([.leading], 24)
+
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [.white,.white, BentoColor.gameBlue1.opacity(0.2)],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer()
+
+                }
+
+                if !didStartGame {
+                    HStack {
+                        Button {
+                            didStartGame.toggle()
+                            welcomeScene?.startGame()
+                            Analytics.logEvent("did_start_demo_game",
+                                parameters: [
+                                    "platform": "ios",
+                                    "app_version": AppVersion.string
+                                ])
+                        } label: {
+                            Text("Start!")
+                                .font(Font.custom("BoldenVan", size: 50))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.7)
+                                .padding(16)
+                                .frame(width: 160, height: 80)
+                                .foregroundStyle(
+                                    LinearGradient(
+                                        colors: [.white,.white, BentoColor.progressGreen2.opacity(0.2)],
+                                        startPoint: .top,
+                                        endPoint: .bottom
+                                    )
+                                )
+                                .shadow(color:
+                                            Color.black.opacity(0.3),
+                                        radius: 10)
+                        }
+                        .padding(20.0)
+                        .cornerRadius(20.0)
+                    }
+                }
+
+            }
+            .frame(width: width, height: height)
+        }
+        .onDisappear {
+            welcomeScene = nil
+            didStartGame = false
+        }
+    }
+}
