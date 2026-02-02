@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct LTCPriceBentoView: View {
 
@@ -57,6 +58,8 @@ struct LTCPriceBentoView: View {
                             ForEach(globalCurrencies, id: \.self) {
                                 Text("\($0.countryFlag)   \($0.code) / LTC")
                                     .font(.system(size: 20, weight: .semibold, design: .default))
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.7)
                                     .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
                             }
                         }
@@ -64,16 +67,22 @@ struct LTCPriceBentoView: View {
                         .onChange(of: pickedCurrency) { _,_ in
                             delay(0.2) {
                                 newMainViewModel.userDidSetCurrencyPreference(currency: pickedCurrency)
+                                Analytics
+                                    .logEvent("user_set_preferred_fiat",
+                                    parameters: [
+                                        "platform": "ios",
+                                        "app_version": AppVersion.string
+                                    ])
                             }
                         }
-                        .frame(maxWidth: .infinity, alignment: .bottom)
+                        .frame(maxWidth: .infinity, alignment: .center)
                         .padding([.leading, .trailing], trailingPad)
 
                     }
                     .padding(.trailing, trailingPad)
 
                     Text(newMainViewModel.currentFiatValue)//  "RP1,516,863,885.40"
-                        .font(.system(size: 40, weight: .semibold, design: .default))
+                        .font(.system(size: 32, weight: .semibold, design: .default))
                         .lineLimit(1)
                         .minimumScaleFactor(0.2)
                         .padding([.leading, .trailing], trailingPad)
@@ -81,19 +90,21 @@ struct LTCPriceBentoView: View {
                         .foregroundStyle( userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack.opacity(0.8))
                         .contentTransition(.opacity)
                         .animation(.easeInOut, value: newMainViewModel.currentFiatValue)
+                        .padding(.bottom, 2)
+
                     HStack {
                         Spacer()
                         Text(currentDateLabel)
-                            .font(.system(size: 12, weight: .light, design: .default))
+                            .font(.system(size: 11, weight: .ultraLight, design: .default))
                             .lineLimit(1)
-                            .minimumScaleFactor(0.9)
+                            .minimumScaleFactor(0.7)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
                             .contentTransition(.opacity)
                             .animation(.easeInOut, value: currentDateLabel)
-                            .padding(.bottom, 8)
                     }
                     .padding(.trailing, trailingPad)
+                    .padding(.bottom, 8)
 
                 }
             }
@@ -101,13 +112,13 @@ struct LTCPriceBentoView: View {
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 if let dateFormatter = newMainViewModel.dateFormatter {
-                    currentDateLabel = String(describing: dateFormatter.string(from: Date()))
+                    currentDateLabel = "as of " + String(describing: dateFormatter.string(from: Date()))
                     pickedCurrency = newMainViewModel.currentGlobalFiat
                 }
             }
             .onChange(of: newMainViewModel.currentFiatValue) { _,_ in
                 if let dateFormatter = newMainViewModel.dateFormatter {
-                    currentDateLabel = String(describing: dateFormatter.string(from: Date()))
+                    currentDateLabel = "as of " + String(describing: dateFormatter.string(from: Date()))
                 }
             }
         }

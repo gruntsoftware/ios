@@ -286,6 +286,11 @@ struct NewMainView: View {
 
                         Button(action: {
                             shouldShowGameMode.toggle()
+                            Analytics.logEvent("user_did_tap_gamemode",
+                                parameters: [
+                                    "platform": "ios",
+                                    "app_version": AppVersion.string
+                                ])
                         }, label: {
                             VStack(spacing: 4) {
                                 Image(systemName: "gamecontroller")

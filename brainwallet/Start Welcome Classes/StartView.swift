@@ -1,5 +1,4 @@
 import SwiftUI
-import Lottie
 import FirebaseAnalytics
 struct StartView: View {
     let selectorFont: Font = .barlowSemiBold(size: 16.0)
@@ -14,7 +13,6 @@ struct StartView: View {
     let themeButtonSize: CGFloat = 32.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 60.0
-    let lottieFileName: String = "welcomeemoji20250212.json"
 
     @State
     private var isShowingOnboardView: Bool = true
@@ -100,10 +98,12 @@ struct StartView: View {
                             .padding([.top,.bottom], verticalPadding)
                             .accessibilityIdentifier("brainwalletLogo")
 
-                        WelcomeLottieView(lottieFileName: lottieFileName, shouldRunAnimation: true)
+                        WelcomMojiDemoView(width: width,
+                                           height: height * 0.35,
+                                           shouldPlay: .constant(true))
                             .frame(height: height * 0.35, alignment: .center)
                             .padding(.top, verticalPadding)
-                            .accessibilityIdentifier("welcomeAnimation")
+                            .accessibilityIdentifier("welcomMojiDemoView")
 
                         Spacer()
                         HStack {

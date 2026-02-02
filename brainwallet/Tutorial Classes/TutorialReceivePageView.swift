@@ -6,6 +6,7 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import FirebaseAnalytics
 
 struct TutorialReceivePageView: View {
 
@@ -60,9 +61,12 @@ struct TutorialReceivePageView: View {
             .cornerRadius(bentoCornerRadius)
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
-            }
-            .onChange(of: userDidTapMP) { _,_ in
-                /// TBD
+                Analytics
+                    .logEvent("user_tapped_receive_tutorial",
+                    parameters: [
+                        "platform": "ios",
+                        "app_version": AppVersion.string
+                    ])
             }
         }
     }
