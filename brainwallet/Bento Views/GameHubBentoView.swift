@@ -117,8 +117,7 @@ struct GameHubBentoView: View {
                     Spacer()
                     FallinMojiDemoView(width: width * 0.6,
                                        height: height,
-                                       shouldPlay: $shouldShowGameMode,
-                                       timer: $newMainViewModel.updateTimer)
+                                       shouldPlay: $shouldShowGameMode)
                         .frame(width: width * 0.6, alignment: .trailing)
                     }
 

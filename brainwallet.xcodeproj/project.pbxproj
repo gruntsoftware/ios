@@ -101,6 +101,9 @@
 		246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; };
 		2472D5D42F1276D100DC6737 /* BentoSendStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2472D5CE2F1276C700DC6737 /* BentoSendStyle.swift */; };
 		2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473D44E2DB991D90076746A /* PasscodeGridView.swift */; };
+		2476646A2F2FFEFA00F1A70E /* 215595__taira-komori__bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 247664692F2FFEFA00F1A70E /* 215595__taira-komori__bomb.mp3 */; };
+		2476646C2F2FFFA600F1A70E /* 807381__jean_filho__sci-fi-grenade-explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2476646B2F2FFFA600F1A70E /* 807381__jean_filho__sci-fi-grenade-explosion.mp3 */; };
+		2476646E2F3002BB00F1A70E /* WelcomeFallinScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476646D2F3002B900F1A70E /* WelcomeFallinScene.swift */; };
 		2476AE342E27B44B0065CE22 /* InputWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */; };
 		2476AE362E2802AF0065CE22 /* InputSeedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE352E28029B0065CE22 /* InputSeedWordView.swift */; };
 		247A7D072E951660000DF8C0 /* BalanceBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D062E951653000DF8C0 /* BalanceBentoView.swift */; };
@@ -204,7 +207,7 @@
 		24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4F2E0460C90010D340 /* SecurityListView.swift */; };
 		24F5BD582E04711E0010D340 /* CurrencyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */; };
 		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
-		24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */; };
+		24F64C202DAFBDA4001DC9B6 /* WelcomMojiDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* WelcomMojiDemoView.swift */; };
 		24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */; };
 		24FBB86A2E035E10002B5F84 /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */; };
 		24FEB8BB2DD2425A00D60036 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24FEB8B92DD2425A00D60036 /* InfoPlist.strings */; };
@@ -572,6 +575,9 @@
 		246F97832E846218001923A6 /* private-general-purpose.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "private-general-purpose.xcodeproj"; path = "Private/general-purpose/private-general-purpose.xcodeproj"; sourceTree = "<group>"; };
 		2472D5CE2F1276C700DC6737 /* BentoSendStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoSendStyle.swift; sourceTree = "<group>"; };
 		2473D44E2DB991D90076746A /* PasscodeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeGridView.swift; sourceTree = "<group>"; };
+		247664692F2FFEFA00F1A70E /* 215595__taira-komori__bomb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "215595__taira-komori__bomb.mp3"; sourceTree = "<group>"; };
+		2476646B2F2FFFA600F1A70E /* 807381__jean_filho__sci-fi-grenade-explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "807381__jean_filho__sci-fi-grenade-explosion.mp3"; sourceTree = "<group>"; };
+		2476646D2F3002B900F1A70E /* WelcomeFallinScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeFallinScene.swift; sourceTree = "<group>"; };
 		2476AE322E27038F0065CE22 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWordsGridView.swift; sourceTree = "<group>"; };
 		2476AE352E28029B0065CE22 /* InputSeedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSeedWordView.swift; sourceTree = "<group>"; };
@@ -790,7 +796,7 @@
 		24F5BD4D2E0452670010D340 /* SettingsActionLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionLockView.swift; sourceTree = "<group>"; };
 		24F5BD4F2E0460C90010D340 /* SecurityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityListView.swift; sourceTree = "<group>"; };
 		24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerView.swift; sourceTree = "<group>"; };
-		24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWelcomeView.swift; sourceTree = "<group>"; };
+		24F64C1F2DAFBD94001DC9B6 /* WelcomMojiDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomMojiDemoView.swift; sourceTree = "<group>"; };
 		24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = welcomeemoji20250212.json; sourceTree = "<group>"; };
 		24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
 		24FEB8BA2DD2425A00D60036 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1364,6 +1370,7 @@
 		247A838B2EA00CEB00B5DFD8 /* Bento Effects  */ = {
 			isa = PBXGroup;
 			children = (
+				2476646D2F3002B900F1A70E /* WelcomeFallinScene.swift */,
 				247A83942EA034E900B5DFD8 /* GridWaveContentView.swift */,
 				247A83962EA2A99100B5DFD8 /* ThemeGradientHelpers.swift */,
 				247A83922EA034B600B5DFD8 /* Renderer.swift */,
@@ -1828,7 +1835,7 @@
 				C312D2AC2D7DC27700BB97A4 /* StartHostingController.swift */,
 				C312D2AE2D7DC27700BB97A4 /* StartView.swift */,
 				C312D2AF2D7DC27700BB97A4 /* StartViewModel.swift */,
-				24F64C1F2DAFBD94001DC9B6 /* LottieWelcomeView.swift */,
+				24F64C1F2DAFBD94001DC9B6 /* WelcomMojiDemoView.swift */,
 			);
 			path = "Start Welcome Classes";
 			sourceTree = "<group>";
@@ -1908,6 +1915,8 @@
 		C312D0C72D7DC27700BB97A4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				247664692F2FFEFA00F1A70E /* 215595__taira-komori__bomb.mp3 */,
+				2476646B2F2FFFA600F1A70E /* 807381__jean_filho__sci-fi-grenade-explosion.mp3 */,
 				2446DF512E2906AC001453DF /* bloop.mp3 */,
 				24DB05E52E06054B00C57FE9 /* SoundsHelper.swift */,
 				244310432E21BCBD004AE386 /* errorsound.mp3 */,
@@ -2421,6 +2430,7 @@
 			files = (
 				2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */,
 				24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */,
+				2476646A2F2FFEFA00F1A70E /* 215595__taira-komori__bomb.mp3 in Resources */,
 				24E06FC52DF4790B00719B6C /* remote-config-defaults.plist in Resources */,
 				2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */,
 				24FEB8BB2DD2425A00D60036 /* InfoPlist.strings in Resources */,
@@ -2435,6 +2445,7 @@
 				24D7EA0B2E336D0800A9AB68 /* CHANGELOG.md in Resources */,
 				24D7EA0E2E336F9100A9AB68 /* service-data.plist in Resources */,
 				24D7EA0C2E336D0800A9AB68 /* PrivacyInfo.xcprivacy in Resources */,
+				2476646C2F2FFFA600F1A70E /* 807381__jean_filho__sci-fi-grenade-explosion.mp3 in Resources */,
 				24F5BD3C2E042A040010D340 /* clicksound.wav in Resources */,
 				244310442E21BCBD004AE386 /* errorsound.mp3 in Resources */,
 				C312D4B42D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf in Resources */,
@@ -2773,7 +2784,7 @@
 				C312D3882D7DC27700BB97A4 /* Brainwallet+Color.swift in Sources */,
 				24B0652A2DC6135900B5E000 /* WalletBalanceView.swift in Sources */,
 				C312D38D2D7DC27700BB97A4 /* AppDelegate.swift in Sources */,
-				24F64C202DAFBDA4001DC9B6 /* LottieWelcomeView.swift in Sources */,
+				24F64C202DAFBDA4001DC9B6 /* WelcomMojiDemoView.swift in Sources */,
 				241D223F2DB526A1000302C8 /* ReadyView.swift in Sources */,
 				C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */,
 				C312D3902D7DC27700BB97A4 /* GradientSwitch.swift in Sources */,
@@ -2808,6 +2819,7 @@
 				C312D3C62D7DC27700BB97A4 /* View+Extension.swift in Sources */,
 				C312D3C72D7DC27700BB97A4 /* Sender.swift in Sources */,
 				2457DC822EB63AAE00688B9A /* TransactionHelper.swift in Sources */,
+				2476646E2F3002BB00F1A70E /* WelcomeFallinScene.swift in Sources */,
 				240CF5A72F2E7C7500428378 /* FallinMojiDemoView.swift in Sources */,
 				24DB05E42E05D5E800C57FE9 /* SettingsActionThemeView.swift in Sources */,
 				C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */,
@@ -3208,7 +3220,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2601300.1;
+				CURRENT_PROJECT_VERSION = 2601310.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3400,7 +3412,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2601300.1;
+				CURRENT_PROJECT_VERSION = 2601310.0;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;

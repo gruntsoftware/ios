@@ -23263,6 +23263,9 @@
         }
       }
     },
+    "Start!" : {
+
+    },
     "Starting or recovering another wallet allows you to access and manage a different Brainwallet wallet on this device." : {
       "extractionState" : "stale",
       "localizations" : {

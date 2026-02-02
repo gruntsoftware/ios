@@ -13,18 +13,13 @@ struct FallinMojiDemoView: View {
     @Binding
     var shouldPlay: Bool
 
-    @Binding
-    var timer: Timer?
-
     var width: CGFloat = 0.0
     var height: CGFloat = 0.0
 
     init(width: CGFloat,
          height: CGFloat,
-         shouldPlay: Binding<Bool>,
-         timer: Binding<Timer?>) {
+         shouldPlay: Binding<Bool>) {
         _shouldPlay = shouldPlay
-        _timer = timer
         self.height = height
         self.width = width
     }
@@ -50,7 +45,8 @@ struct FallinMojiDemoView: View {
                 VStack {
                     SpriteView(scene: scene,
                                options: [.allowsTransparency])
-                    .frame(width: 1.2 * width, height: 1.2 * height)
+                    .frame(width: 1.2 * width,
+                           height: 1.2 * height)
                                        .clipped()
                                        .ignoresSafeArea()
                     Spacer()
