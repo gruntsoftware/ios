@@ -88,7 +88,7 @@ struct GameHubBentoView: View {
                                         )
 
                                     Text("ARE YOU GOOD ENOUGH TO BE #1?")
-                                        .font(.ibmPlexSansRegular(size: 16.0))
+                                        .font(.ibmPlexSansMedium(size: 16.0))
                                         .lineLimit(1)
                                         .minimumScaleFactor(0.5)
                                         .padding(.leading, 16)
