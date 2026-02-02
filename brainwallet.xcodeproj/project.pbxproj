@@ -77,6 +77,7 @@
 		2457DC822EB63AAE00688B9A /* TransactionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2457DC812EB63AA600688B9A /* TransactionHelper.swift */; };
 		2457DD342EB79AD000688B9A /* EmptyTransactionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2457DD332EB79AC400688B9A /* EmptyTransactionRow.swift */; };
 		2457DDE82EB7EC4400688B9A /* CoreModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2457DDE72EB7EC3600688B9A /* CoreModeView.swift */; };
+		24582D852F30BA75008B133A /* SeedWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24582D842F30BA73008B133A /* SeedWordViewModel.swift */; };
 		245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245A91DB2DBA3E450048E3A6 /* PINRowView.swift */; };
 		245F189C2DD1F28B00D20715 /* BuyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245F189B2DD1F27E00D20715 /* BuyViewModel.swift */; };
 		2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2460284E2E5F178400CDEB7A /* FirebaseAnalytics */; };
@@ -554,6 +555,7 @@
 		2457DC812EB63AA600688B9A /* TransactionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHelper.swift; sourceTree = "<group>"; };
 		2457DD332EB79AC400688B9A /* EmptyTransactionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTransactionRow.swift; sourceTree = "<group>"; };
 		2457DDE72EB7EC3600688B9A /* CoreModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreModeView.swift; sourceTree = "<group>"; };
+		24582D842F30BA73008B133A /* SeedWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordViewModel.swift; sourceTree = "<group>"; };
 		245A91DB2DBA3E450048E3A6 /* PINRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINRowView.swift; sourceTree = "<group>"; };
 		245F189B2DD1F27E00D20715 /* BuyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewModel.swift; sourceTree = "<group>"; };
 		246027A62E5E178700CDEB7A /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -1141,6 +1143,7 @@
 		241D22382DB52630000302C8 /* Input Words */ = {
 			isa = PBXGroup;
 			children = (
+				24582D842F30BA73008B133A /* SeedWordViewModel.swift */,
 				241D22442DB526C5000302C8 /* InputWordsView.swift */,
 				2476AE352E28029B0065CE22 /* InputSeedWordView.swift */,
 				2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */,
@@ -2712,6 +2715,7 @@
 				C312D34C2D7DC27700BB97A4 /* AssociatedObject.swift in Sources */,
 				24DB05E62E06059000C57FE9 /* SoundsHelper.swift in Sources */,
 				242C43F52F253A6800CF6EA4 /* TutorialWalkthroughPageView.swift in Sources */,
+				24582D852F30BA75008B133A /* SeedWordViewModel.swift in Sources */,
 				C312D34F2D7DC27700BB97A4 /* DispatchQueue+Additions.swift in Sources */,
 				C312D3512D7DC27700BB97A4 /* DataValidation.swift in Sources */,
 				24126E082ECA7F8900F9A4BE /* ScanOverlayDataView.swift in Sources */,
@@ -3214,7 +3218,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602010.0;
+				CURRENT_PROJECT_VERSION = 2602020.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3406,7 +3410,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602010.0;
+				CURRENT_PROJECT_VERSION = 2602020.0;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;

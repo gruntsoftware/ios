@@ -17,6 +17,31 @@ struct InputWordsGridView: View {
     private var wordSettingState: [Bool] = Array(repeating: false, count: 12)
     @State
     private var activeWordIndex = 0
+    @State
+    private var capsule1IsActive = false
+    @State
+    private var capsule2IsActive = false
+    @State
+    private var capsule3IsActive = false
+    @State
+    private var capsule4IsActive = false
+    @State
+    private var capsule5IsActive = false
+    @State
+    private var capsule6IsActive = false
+    @State
+    private var capsule7IsActive = false
+    @State
+    private var capsule8IsActive = false
+    @State
+    private var capsule9IsActive = false
+    @State
+    private var capsule10IsActive = false
+    @State
+    private var capsule11IsActive = false
+    @State
+    private var capsule12IsActive = false
+
     @Binding
     var phraseIsVerified: Bool
 
@@ -84,6 +109,10 @@ struct InputWordsGridView: View {
                                         ),
                                         wordNumber: index + 1
                                     )
+                                    .tag(index)
+                                    .onAppear {
+
+                                    }
                                 }
                             }
                             .frame(minHeight: fieldHeight)

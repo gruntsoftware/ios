@@ -1,5 +1,5 @@
 //
-//  InputWo.swift
+//  InputSeedWordView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 16/07/2025.
