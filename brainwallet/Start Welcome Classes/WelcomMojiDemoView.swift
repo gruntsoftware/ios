@@ -1,6 +1,7 @@
 import UIKit
 import SwiftUI
 import SpriteKit
+import FirebaseAnalytics
 
 struct WelcomMojiDemoView: View {
 
@@ -134,6 +135,11 @@ struct WelcomMojiDemoView: View {
                         Button {
                             didStartGame.toggle()
                             welcomeScene?.startGame()
+                            Analytics.logEvent("did_start_demo_game",
+                                parameters: [
+                                    "platform": "ios",
+                                    "app_version": AppVersion.string
+                                ])
                         } label: {
                             Text("Start!")
                                 .font(Font.custom("BoldenVan", size: 50))

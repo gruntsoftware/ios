@@ -206,7 +206,6 @@
 		24F5BD4E2E0452670010D340 /* SettingsActionLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4D2E0452670010D340 /* SettingsActionLockView.swift */; };
 		24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD4F2E0460C90010D340 /* SecurityListView.swift */; };
 		24F5BD582E04711E0010D340 /* CurrencyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */; };
-		24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 24F64C1D2DAFBD0F001DC9B6 /* Lottie */; };
 		24F64C202DAFBDA4001DC9B6 /* WelcomMojiDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F64C1F2DAFBD94001DC9B6 /* WelcomMojiDemoView.swift */; };
 		24F64C232DAFBEDB001DC9B6 /* welcomeemoji20250212.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F64C222DAFBEDB001DC9B6 /* welcomeemoji20250212.json */; };
 		24FBB86A2E035E10002B5F84 /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */; };
@@ -1056,7 +1055,6 @@
 				24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */,
 				2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */,
 				246028592E5F178400CDEB7A /* FirebaseRemoteConfig in Frameworks */,
-				24F64C1E2DAFBD0F001DC9B6 /* Lottie in Frameworks */,
 				C35C122A293D48340009022D /* KeychainAccess in Frameworks */,
 				246028572E5F178400CDEB7A /* FirebasePerformance in Frameworks */,
 				249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */,
@@ -2258,7 +2256,6 @@
 			packageProductDependencies = (
 				C35C1229293D48340009022D /* KeychainAccess */,
 				249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */,
-				24F64C1D2DAFBD0F001DC9B6 /* Lottie */,
 				2460284E2E5F178400CDEB7A /* FirebaseAnalytics */,
 				246028502E5F178400CDEB7A /* FirebaseCrashlytics */,
 				246028522E5F178400CDEB7A /* FirebaseInAppMessaging-Beta */,
@@ -2348,7 +2345,6 @@
 			packageReferences = (
 				C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
-				24F64C1C2DAFBD0F001DC9B6 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -3220,7 +3216,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2601310.0;
+				CURRENT_PROJECT_VERSION = 2602010.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3412,7 +3408,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2601310.0;
+				CURRENT_PROJECT_VERSION = 2602010.0;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3520,14 +3516,6 @@
 				minimumVersion = 6.16.1;
 			};
 		};
-		24F64C1C2DAFBD0F001DC9B6 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
-			requirement = {
-				kind = exactVersion;
-				version = 4.5.1;
-			};
-		};
 		C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
@@ -3573,11 +3561,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
 			productName = AppsFlyerLib;
-		};
-		24F64C1D2DAFBD0F001DC9B6 /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 24F64C1C2DAFBD0F001DC9B6 /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
 		};
 		C35C1229293D48340009022D /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;

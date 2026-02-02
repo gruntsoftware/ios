@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct LTCPriceBentoView: View {
 
@@ -66,6 +67,12 @@ struct LTCPriceBentoView: View {
                         .onChange(of: pickedCurrency) { _,_ in
                             delay(0.2) {
                                 newMainViewModel.userDidSetCurrencyPreference(currency: pickedCurrency)
+                                Analytics
+                                    .logEvent("user_set_preferred_fiat",
+                                    parameters: [
+                                        "platform": "ios",
+                                        "app_version": AppVersion.string
+                                    ])
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .center)
