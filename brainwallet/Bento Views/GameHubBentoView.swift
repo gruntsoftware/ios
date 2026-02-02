@@ -52,7 +52,7 @@ struct GameHubBentoView: View {
                                 .foregroundColor(labelBackground)
                                 .padding(8)
                             Text("GAME HUB")
-                                .font(.system(size: 10, weight: .regular, design: .default))
+                                .font(.ibmPlexSansRegular(size: 10.0))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)
                                 .padding([.leading, .trailing], 4)
@@ -88,9 +88,7 @@ struct GameHubBentoView: View {
                                         )
 
                                     Text("ARE YOU GOOD ENOUGH TO BE #1?")
-                                        .font(.system(size: 16,
-                                                      weight: .regular,
-                                                      design: .rounded))
+                                        .font(.ibmPlexSansRegular(size: 16.0))
                                         .lineLimit(1)
                                         .minimumScaleFactor(0.5)
                                         .padding(.leading, 16)

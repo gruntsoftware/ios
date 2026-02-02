@@ -49,7 +49,7 @@ struct InputWordsGridView: View {
     let fieldHeight: CGFloat = 40.0
     let maxSearchWordCount = 12
     private let columns = Array(repeating: GridItem(.flexible(minimum: 70)), count: 3)
-    let searchFont: Font = .barlowSemiBold(size: 20.0)
+    let searchFont: Font = .ibmPlexSansSemiBold(size: 20.0)
 
     private var bip39SeedWords: [String]? {
         guard let path = Bundle.main.path(forResource: "BIP39Words", ofType: "plist") else { return nil }

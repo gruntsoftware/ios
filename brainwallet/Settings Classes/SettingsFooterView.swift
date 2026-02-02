@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SettingsFooterView: View {
 
-    private let titleFont: Font = .barlowSemiBold(size: 19.0)
-    private let detailFont: Font = .barlowLight(size: 18.0)
+    private let titleFont: Font = .ibmPlexSansSemiBold(size: 19.0)
+    private let detailFont: Font = .ibmPlexSansLight(size: 18.0)
     private let darkBackgroundColor: Color = BrainwalletColor.nearBlack
     private let lightBackgroundColor: Color = BrainwalletColor.grape
     private var setBackgroundColor: Color = BrainwalletColor.grape

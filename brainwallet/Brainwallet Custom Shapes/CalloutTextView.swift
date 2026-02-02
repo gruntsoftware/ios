@@ -49,7 +49,7 @@ struct CalloutTextView: View {
                     VStack {
                         HStack {
                             Text(title)
-                                .font(.system(size: 17, weight: .bold, design: .default))
+                                .font(.ibmPlexSansBold(size: 17.0))
                                 .lineLimit(2)
                                 .minimumScaleFactor(0.9)
                                 .frame(alignment: .leading)
@@ -61,7 +61,7 @@ struct CalloutTextView: View {
 
                         HStack {
                             Text(description)
-                                .font(.system(size: 16, weight: .regular, design: .default))
+                                .font(.ibmPlexSansRegular(size: 16.0))
                                 .lineLimit(4)
                                 .minimumScaleFactor(0.7)
                                 .frame(alignment: .leading)

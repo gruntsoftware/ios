@@ -11,7 +11,7 @@ struct SeedPhraseStepView: View {
 	@State
 	var pinDigits: String = ""
 
-	let paragraphFont: Font = .barlowSemiBold(size: 22.0)
+	let paragraphFont: Font = .ibmPlexSansSemiBold(size: 22.0)
 
 	let genericPad = 5.0
 

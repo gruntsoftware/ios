@@ -59,7 +59,7 @@ struct SendStep1View: View {
                     } label: {
                         VStack {
                             Text(String(localized:" Tap here & top up!"))
-                                .font(.system(size: 16, weight: .regular, design: .default))
+                                .font(.ibmPlexSansRegular(size: 16.0))
                                 .minimumScaleFactor(0.9)
                                 .frame(alignment: .center)
                                 .foregroundColor(.white)

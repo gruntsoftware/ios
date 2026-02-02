@@ -147,6 +147,13 @@
 		24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */; };
 		24AAB31D2DE79ECC00F0C18C /* NewReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */; };
 		24AAB31F2DE79EE300F0C18C /* NewReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31E2DE79EE200F0C18C /* NewReceiveViewModel.swift */; };
+		24AFEEEC2F3152CE00427D02 /* IBMPlexSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24AFEEE52F3152CE00427D02 /* IBMPlexSans-Bold.ttf */; };
+		24AFEEED2F3152CE00427D02 /* IBMPlexSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24AFEEEA2F3152CE00427D02 /* IBMPlexSans-SemiBold.ttf */; };
+		24AFEEEE2F3152CE00427D02 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24AFEEE82F3152CE00427D02 /* IBMPlexSans-Medium.ttf */; };
+		24AFEEEF2F3152CE00427D02 /* IBMPlexSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24AFEEE72F3152CE00427D02 /* IBMPlexSans-Light.ttf */; };
+		24AFEEF02F3152CE00427D02 /* IBMPlexSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24AFEEE62F3152CE00427D02 /* IBMPlexSans-Italic.ttf */; };
+		24AFEEF12F3152CE00427D02 /* IBMPlexSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24AFEEEB2F3152CE00427D02 /* IBMPlexSans-Thin.ttf */; };
+		24AFEEF22F3152CE00427D02 /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24AFEEE92F3152CE00427D02 /* IBMPlexSans-Regular.ttf */; };
 		24B0652A2DC6135900B5E000 /* WalletBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065292DC6134C00B5E000 /* WalletBalanceView.swift */; };
 		24B065352DC627F000B5E000 /* NewMainHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065342DC627E500B5E000 /* NewMainHostingController.swift */; };
 		24B065372DC6281D00B5E000 /* NewMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B065362DC6281D00B5E000 /* NewMainViewModel.swift */; };
@@ -388,13 +395,7 @@
 		C312D4912D7DC27700BB97A4 /* ForgotAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24C2D7DC27700BB97A4 /* ForgotAlertViewModel.swift */; };
 		C312D4942D7DC27700BB97A4 /* RetryTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2982D7DC27700BB97A4 /* RetryTimer.swift */; };
 		C312D4952D7DC27700BB97A4 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F02D7DC27700BB97A4 /* RadialGradientView.swift */; };
-		C312D4AB2D7DC27700BB97A4 /* BarlowSemiCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0902D7DC27700BB97A4 /* BarlowSemiCondensed-Bold.ttf */; };
-		C312D4B42D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0942D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf */; };
 		C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */ = {isa = PBXBuildFile; fileRef = C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */; };
-		C312D4BD2D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0932D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf */; };
-		C312D4BF2D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0912D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf */; };
-		C312D4C52D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0922D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf */; };
-		C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C312D0952D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf */; };
 		C3236A012D7DE355007039A1 /* URLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3236A002D7DE34D007039A1 /* URLController.swift */; };
 		C35C122A293D48340009022D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1229293D48340009022D /* KeychainAccess */; };
 /* End PBXBuildFile section */
@@ -735,6 +736,13 @@
 		24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveHostingController.swift; sourceTree = "<group>"; };
 		24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveView.swift; sourceTree = "<group>"; };
 		24AAB31E2DE79EE200F0C18C /* NewReceiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveViewModel.swift; sourceTree = "<group>"; };
+		24AFEEE52F3152CE00427D02 /* IBMPlexSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Bold.ttf"; sourceTree = "<group>"; };
+		24AFEEE62F3152CE00427D02 /* IBMPlexSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Italic.ttf"; sourceTree = "<group>"; };
+		24AFEEE72F3152CE00427D02 /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
+		24AFEEE82F3152CE00427D02 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
+		24AFEEE92F3152CE00427D02 /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
+		24AFEEEA2F3152CE00427D02 /* IBMPlexSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		24AFEEEB2F3152CE00427D02 /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; };
 		24B065292DC6134C00B5E000 /* WalletBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalanceView.swift; sourceTree = "<group>"; };
 		24B065342DC627E500B5E000 /* NewMainHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainHostingController.swift; sourceTree = "<group>"; };
 		24B065362DC6281D00B5E000 /* NewMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainViewModel.swift; sourceTree = "<group>"; };
@@ -851,12 +859,6 @@
 		C312D0872D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewControllerContextTransitioning+BRAdditions.swift"; sourceTree = "<group>"; };
 		C312D0882D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewPropertyAnimator+BRWAdditions.swift"; sourceTree = "<group>"; };
 		C312D0892D7DC27700BB97A4 /* UserDefaults+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Additions.swift"; sourceTree = "<group>"; };
-		C312D0902D7DC27700BB97A4 /* BarlowSemiCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-Bold.ttf"; sourceTree = "<group>"; };
-		C312D0912D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-Italic.ttf"; sourceTree = "<group>"; };
-		C312D0922D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-Light.ttf"; sourceTree = "<group>"; };
-		C312D0932D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-Medium.ttf"; sourceTree = "<group>"; };
-		C312D0942D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-Regular.ttf"; sourceTree = "<group>"; };
-		C312D0952D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-SemiBold.ttf"; sourceTree = "<group>"; };
 		C312D0972D7DC27700BB97A4 /* KeyboardNotificationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationInfo.swift; sourceTree = "<group>"; };
 		C312D0982D7DC27700BB97A4 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		C312D0992D7DC27700BB97A4 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
@@ -1900,13 +1902,14 @@
 		C312D0962D7DC27700BB97A4 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				24AFEEE52F3152CE00427D02 /* IBMPlexSans-Bold.ttf */,
+				24AFEEE62F3152CE00427D02 /* IBMPlexSans-Italic.ttf */,
+				24AFEEE72F3152CE00427D02 /* IBMPlexSans-Light.ttf */,
+				24AFEEE82F3152CE00427D02 /* IBMPlexSans-Medium.ttf */,
+				24AFEEE92F3152CE00427D02 /* IBMPlexSans-Regular.ttf */,
+				24AFEEEA2F3152CE00427D02 /* IBMPlexSans-SemiBold.ttf */,
+				24AFEEEB2F3152CE00427D02 /* IBMPlexSans-Thin.ttf */,
 				247A83982EA3E3D800B5DFD8 /* BoldenVan.ttf */,
-				C312D0902D7DC27700BB97A4 /* BarlowSemiCondensed-Bold.ttf */,
-				C312D0912D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf */,
-				C312D0922D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf */,
-				C312D0932D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf */,
-				C312D0942D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf */,
-				C312D0952D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -2431,11 +2434,17 @@
 				24E06FC52DF4790B00719B6C /* remote-config-defaults.plist in Resources */,
 				2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */,
 				24FEB8BB2DD2425A00D60036 /* InfoPlist.strings in Resources */,
-				C312D4AB2D7DC27700BB97A4 /* BarlowSemiCondensed-Bold.ttf in Resources */,
 				24D7EA052E336D0800A9AB68 /* Assets.xcassets in Resources */,
 				247A83992EA3E3D800B5DFD8 /* BoldenVan.ttf in Resources */,
 				24D7EA062E336D0800A9AB68 /* Icon.xcassets in Resources */,
 				24D7EA072E336D0800A9AB68 /* POSTBouncer.html in Resources */,
+				24AFEEEC2F3152CE00427D02 /* IBMPlexSans-Bold.ttf in Resources */,
+				24AFEEED2F3152CE00427D02 /* IBMPlexSans-SemiBold.ttf in Resources */,
+				24AFEEEE2F3152CE00427D02 /* IBMPlexSans-Medium.ttf in Resources */,
+				24AFEEEF2F3152CE00427D02 /* IBMPlexSans-Light.ttf in Resources */,
+				24AFEEF02F3152CE00427D02 /* IBMPlexSans-Italic.ttf in Resources */,
+				24AFEEF12F3152CE00427D02 /* IBMPlexSans-Thin.ttf in Resources */,
+				24AFEEF22F3152CE00427D02 /* IBMPlexSans-Regular.ttf in Resources */,
 				24D7EA082E336D0800A9AB68 /* moon_pay_buy_status.txt in Resources */,
 				24D7EA092E336D0800A9AB68 /* RELEASE_NOTES.md in Resources */,
 				24D7EA0A2E336D0800A9AB68 /* general.css in Resources */,
@@ -2445,19 +2454,14 @@
 				2476646C2F2FFFA600F1A70E /* 807381__jean_filho__sci-fi-grenade-explosion.mp3 in Resources */,
 				24F5BD3C2E042A040010D340 /* clicksound.wav in Resources */,
 				244310442E21BCBD004AE386 /* errorsound.mp3 in Resources */,
-				C312D4B42D7DC27700BB97A4 /* BarlowSemiCondensed-Regular.ttf in Resources */,
 				2446DF522E2906AC001453DF /* bloop.mp3 in Resources */,
 				C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */,
-				C312D4BD2D7DC27700BB97A4 /* BarlowSemiCondensed-Medium.ttf in Resources */,
-				C312D4BF2D7DC27700BB97A4 /* BarlowSemiCondensed-Italic.ttf in Resources */,
 				24B84F832E0868370060C2EE /* Localizable.xcstrings in Resources */,
 				24F5BD422E042E840010D340 /* clicksound.aiff in Resources */,
 				24F5BD442E042F1D0010D340 /* clicksound.mp3 in Resources */,
 				2489E05C2DF0A23700630888 /* GoogleService-Info.plist in Resources */,
 				244310462E21BCCE004AE386 /* clickseedword.mp3 in Resources */,
-				C312D4C52D7DC27700BB97A4 /* BarlowSemiCondensed-Light.ttf in Resources */,
 				24BC37C02E22B249005DD3AC /* coinflip.mp3 in Resources */,
-				C312D4CF2D7DC27700BB97A4 /* BarlowSemiCondensed-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3218,7 +3222,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602020.0;
+				CURRENT_PROJECT_VERSION = 2602020.1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3410,7 +3414,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602020.0;
+				CURRENT_PROJECT_VERSION = 2602020.1;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;

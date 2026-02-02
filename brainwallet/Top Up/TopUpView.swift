@@ -22,14 +22,14 @@ struct TopUpView: View {
     @State
     private var quoteTimestampString: String = ""
 
-    let selectorFont: Font = .barlowSemiBold(size: 16.0)
-    let buttonLightFont: Font = .barlowLight(size: 16.0)
-    let regularButtonFont: Font = .barlowRegular(size: 20.0)
-    let largeButtonFont: Font = .barlowSemiBold(size: 24.0)
-    let detailFont: Font = .barlowRegular(size: 22.0)
-    let billboardFont: Font = .barlowSemiBold(size: 50.0)
+    let selectorFont: Font = .ibmPlexSansSemiBold(size: 16.0)
+    let buttonLightFont: Font = .ibmPlexSansLight(size: 16.0)
+    let regularButtonFont: Font = .ibmPlexSansRegular(size: 20.0)
+    let largeButtonFont: Font = .ibmPlexSansSemiBold(size: 24.0)
+    let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
+    let billboardFont: Font = .ibmPlexSansSemiBold(size: 50.0)
 
-    let versionFont: Font = .barlowSemiBold(size: 16.0)
+    let versionFont: Font = .ibmPlexSansSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0

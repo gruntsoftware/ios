@@ -1,12 +1,12 @@
 import SwiftUI
 import FirebaseAnalytics
 struct StartView: View {
-    let selectorFont: Font = .barlowSemiBold(size: 16.0)
-    let buttonLightFont: Font = .barlowLight(size: 16.0)
-    let regularButtonFont: Font = .barlowRegular(size: 24.0)
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
+    let selectorFont: Font = .ibmPlexSansSemiBold(size: 16.0)
+    let buttonLightFont: Font = .ibmPlexSansLight(size: 16.0)
+    let regularButtonFont: Font = .ibmPlexSansRegular(size: 24.0)
+    let largeButtonFont: Font = .ibmPlexSansBold(size: 24.0)
 
-    let versionFont: Font = .barlowSemiBold(size: 16.0)
+    let versionFont: Font = .ibmPlexSansSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
@@ -79,7 +79,7 @@ struct StartView: View {
                     VStack {
                         HStack {
                             Text(newMainViewModel.currentFiatValue)
-                                .font(Font(UIFont.barlowLight(size: 16.0)))
+                                .font(Font(UIFont.ibmPlexSansLight(size: 16.0)))
                                 .foregroundColor(BrainwalletColor.content)
                                 .animation(.bouncy(duration: 0.5))
                                 .frame(width: width * 0.9, alignment: .trailing)

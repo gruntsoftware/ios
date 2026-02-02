@@ -44,7 +44,7 @@ struct TransactionRowView: View {
                     Spacer()
                     HStack {
                         Text(transaction.longTimestamp)
-                            .font(.system(size: 19, weight: .regular, design: .default))
+                            .font(.ibmPlexSansRegular(size: 19.0))
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)// Shrinks to 20% of original
                             .frame(maxWidth: width * 0.5, alignment: .leading)
@@ -52,7 +52,7 @@ struct TransactionRowView: View {
 
                         Spacer()
                         Text(amountLabel)
-                            .font(.system(size: 22, weight: .bold, design: .default))
+                            .font(.ibmPlexSansBold(size: 22.0))
                             .lineLimit(1)
                             .minimumScaleFactor(0.2)// Shrinks to 20% of original
                             .frame(maxWidth: width * 0.5, alignment: .trailing)
@@ -65,7 +65,7 @@ struct TransactionRowView: View {
                     HStack {
                         Spacer()
                         Text(transaction.detailsAddressText)
-                            .font(.system(size: 15, weight: .ultraLight, design: .default))
+                            .font(.ibmPlexSansThin(size: 15.0))
                             .lineLimit(1)
                             .minimumScaleFactor(0.4)// Shrinks to 40% of original
                             .frame(maxWidth: .infinity, alignment: .trailing)

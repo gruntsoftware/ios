@@ -92,10 +92,7 @@ struct TransactionDetailBentoView: View {
             let height = geometry.size.height
             let labelWidth = geometry.size.width * 0.20
             let rowPadding: CGFloat = 1
-            let fontSize = 12.0
-            let convertedFeesValue = Double((Double(currentTransaction?.fee ?? UInt64(0))) / 100_000_000)
-
-            // Double(feesValue) / Double(C.litoshis)
+            let convertedFeesValue = Double((Double(currentTransaction?.fee ?? UInt64(0))) / 100_000_000) 
 
             let didSend = (currentTransaction?.direction == .sent) ? true : false
             let transactionLTCAddress = currentTransaction?.toAddress ?? ""
@@ -123,12 +120,12 @@ struct TransactionDetailBentoView: View {
                     VStack {
                         HStack {
                             Text(String(localized:"Amount:"))
-                                .font(.system(size: fontSize, weight: .regular, design: .default))
+                                .font(.ibmPlexSansRegular(size: 12.0))
                                 .frame(width: labelWidth, alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                                 .padding( .top, rowPadding)
                             Text("Ł \(convertedAmountValue)")
-                                .font(.system(size: fontSize, weight: .regular, design: .default))
+                                .font(.ibmPlexSansRegular(size: 12.0))
                                 .minimumScaleFactor(0.8)// Shrinks to 80% of original
                                 .frame(alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
@@ -144,12 +141,12 @@ struct TransactionDetailBentoView: View {
                         if didSend {
                             HStack {
                                 Text(String(localized:"Fees:"))
-                                    .font(.system(size: fontSize, weight: .regular, design: .default))
+                                    .font(.ibmPlexSansRegular(size: 12.0))
                                     .frame(width: labelWidth, alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : .black)
 
                                 Text("Ł \(convertedFeesValue)")
-                                    .font(.system(size: fontSize, weight: .regular, design: .default))
+                                    .font(.ibmPlexSansRegular(size: 12.0))
                                     .lineLimit(2)
                                     .minimumScaleFactor(0.8)// Shrinks to 80% of original
                                     .frame(alignment: .leading)
@@ -163,12 +160,12 @@ struct TransactionDetailBentoView: View {
 
                         HStack {
                             Text(String(localized:"TX ID:"))
-                                .font(.system(size: fontSize, weight: .regular, design: .default))
+                                .font(.ibmPlexSansRegular(size: 12.0))
                                 .frame(width: labelWidth, alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
 
                             Text(txHash ?? "")
-                                .font(.system(size: fontSize, weight: .regular, design: .default))
+                                .font(.ibmPlexSansRegular(size: 12.0))
                                 .lineLimit(3)
                                 .minimumScaleFactor(0.8)// Shrinks to 80% of original
                                 .fixedSize(horizontal: false, vertical: true)
@@ -183,11 +180,11 @@ struct TransactionDetailBentoView: View {
                         if ((memoString?.isEmpty) == nil) {
                             HStack {
                                 Text(String(localized: "Memo: "))
-                                    .font(.system(size: fontSize, weight: .regular, design: .default))
+                                    .font(.ibmPlexSansRegular(size: 12.0))
                                     .frame(width: labelWidth, alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : .black)
                                 Text(memoString  ?? "")
-                                    .font(.system(size: fontSize, weight: .regular, design: .default))
+                                    .font(.ibmPlexSansRegular(size: 12.0))
                                     .frame(alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : .black)
                                 Spacer()
@@ -199,10 +196,10 @@ struct TransactionDetailBentoView: View {
                         HStack {
                             Text(String(localized: "Block: "))
                                 .frame(width: labelWidth, alignment: .leading)
-                                .font(.system(size: fontSize, weight: .regular, design: .default))
+                                .font(.ibmPlexSansRegular(size: 12.0))
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             Text(blockHeight)
-                                .font(.system(size: fontSize, weight: .light, design: .default))
+                                .font(.ibmPlexSansThin(size: 12.0))
                                 .frame(alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             Spacer()
@@ -212,10 +209,10 @@ struct TransactionDetailBentoView: View {
                         HStack {
                             Text(String(localized: "Date: "))
                                 .frame(width: labelWidth, alignment: .leading)
-                                .font(.system(size: fontSize, weight: .regular, design: .default))
+                                .font(.ibmPlexSansRegular(size: 12.0))
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             Text(timeStamp)
-                                .font(.system(size: fontSize, weight: .light, design: .default))
+                                .font(.ibmPlexSansThin(size: 12.0))
                                 .frame(alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             Spacer()
@@ -240,7 +237,7 @@ struct TransactionDetailBentoView: View {
                     HStack {
                         Spacer()
                         Text(transactionLTCAddress)
-                            .font(.system(size: 16, weight: .semibold, design: .default))
+                            .font(.ibmPlexSansSemiBold(size: 16.0))
                             .lineLimit(2)
                             .minimumScaleFactor(0.8)
                             .foregroundColor(userPrefersDarkTheme ? .white : .black)
@@ -261,7 +258,7 @@ struct TransactionDetailBentoView: View {
                                    .frame(height: 48)
 
                                Text("Export Transaction Data")
-                                   .font(.system(size: 19, weight: .regular, design: .default))
+                                   .font(.ibmPlexSansRegular(size: 19.0))
                                    .lineLimit(1)
                                    .minimumScaleFactor(0.1)
                                    .frame(maxWidth: width * 0.5, alignment: .center)

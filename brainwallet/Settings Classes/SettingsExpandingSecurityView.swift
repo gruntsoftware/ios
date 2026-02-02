@@ -18,8 +18,8 @@ struct SettingsExpandingSecurityView: View {
     private var rotationAngle: Double = 0
 
     private var title: String
-    let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 18.0)
+    let largeFont: Font = .ibmPlexSansSemiBold(size: 19.0)
+    let detailFont: Font = .ibmPlexSansLight(size: 18.0)
 
     var securityListView: SecurityListView
 

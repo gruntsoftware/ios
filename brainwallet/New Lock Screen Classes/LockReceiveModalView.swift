@@ -59,7 +59,7 @@ struct LockReceiveModalView: View {
 
                     VStack {
                         Text(String(localized: "New LTC Address"))
-                            .font(.system(size: 16, weight: .semibold, design: .default))
+                            .font(.ibmPlexSansSemiBold(size: 18.0))
                             .minimumScaleFactor(0.9)
                             .frame(alignment: .center)
                             .foregroundColor(BrainwalletColor.content)
@@ -77,7 +77,7 @@ struct LockReceiveModalView: View {
                        }
 
                         Text(newAddress)
-                            .font(.system(size: 14, weight: .light, design: .default))
+                            .font(.ibmPlexSansLight(size: 14.0))
                             .minimumScaleFactor(0.9)
                             .frame(alignment: .center)
                             .foregroundColor(BrainwalletColor.content)

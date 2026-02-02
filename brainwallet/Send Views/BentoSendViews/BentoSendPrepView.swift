@@ -64,7 +64,7 @@ struct BentoSendPrepView: View {
                 backgroundColor.edgesIgnoringSafeArea(.all)
                 VStack {
                     Text(String(localized: "Confirm send details"))
-                        .font(.system(size: 24, weight: .bold, design: .default))
+                        .font(.ibmPlexSansBold(size: 24.0))
                         .lineLimit(1)
                         .minimumScaleFactor(0.9)
                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
@@ -156,7 +156,7 @@ struct BentoSendPrepView: View {
                                             lineWidth: 0.5)
                                     .frame(height: 48)
                                 Text("Edit")
-                                    .font(.system(size: 18, weight: .semibold, design: .default))
+                                    .font(.ibmPlexSansSemiBold(size: 18.0))
                                     .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             }
                         }
@@ -178,7 +178,7 @@ struct BentoSendPrepView: View {
                                     .frame(height: 48)
 
                                 Text("Confirm")
-                                    .font(.system(size: 18, weight: .semibold, design: .default))
+                                    .font(.ibmPlexSansSemiBold(size: 18.0))
                                     .foregroundColor(userPrefersDarkTheme ? .black : .white)
                             }
                         }

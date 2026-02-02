@@ -43,7 +43,7 @@ struct TutorialSendBentoView: View {
                     Spacer()
                     HStack {
                       Text("How to Send Litecoin")
-                                .font(.system(size: 18, weight: .bold, design: .default))
+                                .font(.ibmPlexSansBold(size: 18.0))
                                 .lineLimit(2)
                                 .minimumScaleFactor(0.6)
                                 .padding(.leading, 8)
@@ -59,7 +59,7 @@ struct TutorialSendBentoView: View {
 
                     HStack {
                       Text("Follow the easy steps to send LTC to someone else's wallet. They get it in seconds!")
-                                .font(.system(size: 15, weight: .regular, design: .default))
+                                .font(.ibmPlexSansRegular(size: 15.0))
                                 .lineLimit(4)
                                 .minimumScaleFactor(0.6)
                                 .kerning(0.5)

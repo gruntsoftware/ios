@@ -17,10 +17,10 @@ struct InputWordsView: View {
     @ObservedObject
     var viewModel: NewMainViewModel
 
-    let subTitleFont: Font = .barlowSemiBold(size: 32.0)
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
-    let detailFont: Font = .barlowRegular(size: 25.0)
-    let detailerFont: Font = .barlowRegular(size: 20.0)
+    let subTitleFont: Font = .ibmPlexSansSemiBold(size: 32.0)
+    let largeButtonFont: Font = .ibmPlexSansBold(size: 24.0)
+    let detailFont: Font = .ibmPlexSansRegular(size: 25.0)
+    let detailerFont: Font = .ibmPlexSansRegular(size: 20.0)
 
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0

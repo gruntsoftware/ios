@@ -18,27 +18,27 @@ extension UIFont {
 		return UIFont(name: "BarlowSemiCondensed-Medium", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
 
-	static func barlowBold(size: CGFloat) -> UIFont {
+	static func ibmPlexSansBold(size: CGFloat) -> UIFont {
 		return UIFont(name: "BarlowSemiCondensed-Bold", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
 
-	static func barlowSemiBold(size: CGFloat) -> UIFont {
+	static func ibmPlexSansSemiBold(size: CGFloat) -> UIFont {
 		return UIFont(name: "BarlowSemiCondensed-SemiBold", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
 
-	static func barlowItalic(size: CGFloat) -> UIFont {
+	static func ibmPlexSansItalic(size: CGFloat) -> UIFont {
 		return UIFont(name: "BarlowSemiCondensed-Italic", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
 
-	static func barlowMedium(size: CGFloat) -> UIFont {
+	static func ibmPlexSansMedium(size: CGFloat) -> UIFont {
 		return UIFont(name: "BarlowSemiCondensed-Medium", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
 
-	static func barlowRegular(size: CGFloat) -> UIFont {
+	static func ibmPlexSansRegular(size: CGFloat) -> UIFont {
 		return UIFont(name: "BarlowSemiCondensed-Regular", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
 
-	static func barlowLight(size: CGFloat) -> UIFont {
+	static func ibmPlexSansLight(size: CGFloat) -> UIFont {
 		return UIFont(name: "BarlowSemiCondensed-Light", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
 
@@ -58,27 +58,31 @@ extension UIFont {
 }
 
 extension Font {
-	static func barlowSemiBold(size: CGFloat) -> Font {
+	static func ibmPlexSansSemiBold(size: CGFloat) -> Font {
 		return Font.custom("BarlowSemiCondensed-SemiBold", size: size)
 	}
 
-	static func barlowBold(size: CGFloat) -> Font {
+	static func ibmPlexSansBold(size: CGFloat) -> Font {
 		return Font.custom("BarlowSemiCondensed-Bold", size: size)
 	}
 
-	static func barlowItalic(size: CGFloat) -> Font {
+	static func ibmPlexSansItalic(size: CGFloat) -> Font {
 		return Font.custom("BarlowSemiCondensed-Italic", size: size)
 	}
 
-	static func barlowMedium(size: CGFloat) -> Font {
+	static func ibmPlexSansMedium(size: CGFloat) -> Font {
 		return Font.custom("BarlowSemiCondensed-Medium", size: size)
 	}
 
-	static func barlowRegular(size: CGFloat) -> Font {
+	static func ibmPlexSansRegular(size: CGFloat) -> Font {
 		return Font.custom("BarlowSemiCondensed-Regular", size: size)
 	}
 
-	static func barlowLight(size: CGFloat) -> Font {
+	static func ibmPlexSansLight(size: CGFloat) -> Font {
 		return Font.custom("BarlowSemiCondensed-Light", size: size)
 	}
+    
+    static func ibmPlexSansThin(size: CGFloat) -> Font {
+        return Font.custom("BarlowSemiCondensed-Thin", size: size)
+    }
 }

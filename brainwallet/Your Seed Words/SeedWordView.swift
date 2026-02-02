@@ -28,7 +28,7 @@ struct SeedWordView: View {
 
 						Text("\(seedWord)")
 							.frame(height: cellHeight, alignment: .center)
-                            .font(.system(size: 16, weight: .light, design: .default))
+                            .font(.ibmPlexSansLight(size: 16.0)) 
                                                         .lineLimit(1)
                                                         .minimumScaleFactor(0.8)
                             .foregroundColor(userPrefersDarkTheme ? .white :
@@ -36,7 +36,7 @@ struct SeedWordView: View {
 						VStack {
 							HStack {
 								Text("\(wordNumber)")
-									.font(.barlowRegular(size: 12.0))
+									.font(.ibmPlexSansRegular(size: 12.0))
 									.foregroundColor(userPrefersDarkTheme ? .white :
                                         BrainwalletColor.content)
 									.frame(width: 22,

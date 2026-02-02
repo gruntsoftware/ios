@@ -57,7 +57,7 @@ struct TutorialReceiveBentoView: View {
                     Spacer()
                     HStack {
                       Text("How to receive LTC")
-                                .font(.system(size: 18, weight: .bold, design: .default))
+                                .font(.ibmPlexSansBold(size: 18.0))
                                 .lineLimit(2)
                                 .minimumScaleFactor(0.6)
                                 .padding(.leading, 8)
@@ -70,7 +70,7 @@ struct TutorialReceiveBentoView: View {
 
                     HStack {
                       Text("Follow the easy steps to stack LTC. Get it from a friend or our partner MoonPay")
-                            .font(.system(size: 15, weight: .regular, design: .default))
+                            .font(.ibmPlexSansRegular(size: 15.0))
                             .lineLimit(4)
                             .minimumScaleFactor(0.6)
                             .kerning(0.2)

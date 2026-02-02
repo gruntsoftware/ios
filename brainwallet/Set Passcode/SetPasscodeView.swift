@@ -15,9 +15,9 @@ struct SetPasscodeView: View {
     @State
     private var didFillPasscode: Bool = false
 
-    let subTitleFont: Font = .barlowSemiBold(size: 32.0)
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
-    let detailFont: Font = .barlowRegular(size: 22.0)
+    let subTitleFont: Font = .ibmPlexSansSemiBold(size: 32.0)
+    let largeButtonFont: Font = .ibmPlexSansBold(size: 24.0)
+    let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
 
     let verticalPadding: CGFloat = 20.0
     let squareButtonSize: CGFloat = 55.0

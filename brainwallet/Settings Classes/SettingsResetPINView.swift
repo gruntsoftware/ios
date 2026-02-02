@@ -11,8 +11,8 @@ struct SettingsResetPINView: View {
 
     private let title: String
     private let detailText: String
-    let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 15.0)
+    let largeFont: Font = .ibmPlexSansSemiBold(size: 19.0)
+    let detailFont: Font = .ibmPlexSansLight(size: 15.0)
     let action: SettingsAction
     let largeButtonHeight: CGFloat = 45.0
     let dotSize: CGFloat = 12.0

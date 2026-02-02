@@ -51,7 +51,7 @@ struct BalanceBentoView: View {
                 VStack {
                     HStack {
                         Text("MY BALANCE")
-                            .font(.system(size: 16, weight: .semibold, design: .default))
+                            .font(.ibmPlexSansSemiBold(size: 16.0))
                             .lineLimit(1)
                             .minimumScaleFactor(0.8)// Shrinks to 80% of original
                             .frame(maxWidth: .infinity, alignment: .topLeading)
@@ -81,8 +81,7 @@ struct BalanceBentoView: View {
                         ZStack {
                             VStack {
                                 Text(shouldShowBalance ? "\(newMainViewModel.walletBalanceLitecoin)" : "")
-                                    .font(isLTCValueShown ? .system(size: 12, weight: .light, design: .default) :
-                                            .system(size: 35, weight: .bold, design: .default))
+                                    .font(isLTCValueShown ? .ibmPlexSansThin(size: 12.0) : .ibmPlexSansBold(size: 35.0))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.white)
                                     .contentTransition(.identity)

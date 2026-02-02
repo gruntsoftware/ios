@@ -24,8 +24,8 @@ struct SettingsExpandingCurrencyView: View {
     private var pickedCurrency: GlobalCurrency = .USD
 
     private var title: String
-    let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowSemiBold(size: 14.0)
+    let largeFont: Font = .ibmPlexSansSemiBold(size: 19.0)
+    let detailFont: Font = .ibmPlexSansSemiBold(size: 14.0)
 
     init(title: String, viewModel: NewMainViewModel, shouldExpandCurrency: Binding <Bool>) {
         self.title = title

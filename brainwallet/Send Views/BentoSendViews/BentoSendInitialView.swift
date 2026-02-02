@@ -131,7 +131,7 @@ struct BentoSendInitialView: View {
                 backgroundColor.edgesIgnoringSafeArea(.all)
                 VStack {
                     Text("Send Litecoin")
-                        .font(.system(size: 24, weight: .bold, design: .default))
+                        .font(.ibmPlexSansBold(size: 24.0))
                         .lineLimit(1)
                         .minimumScaleFactor(0.9)
                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
@@ -297,7 +297,7 @@ struct BentoSendInitialView: View {
 
                                                 } else {
                                                     Text( "\(newMainViewModel.exchangeRate?.code ?? "")")
-                                                        .font(.system(size: 18, weight: .bold, design: .default))
+                                                        .font(.ibmPlexSansBold(size: 18.0))
                                                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
                                                         .frame(height: 30, alignment: .trailing)
                                                 }
@@ -363,7 +363,7 @@ struct BentoSendInitialView: View {
                     }
 
                     Text("Dismiss keyboard")
-                        .font(.system(size: 14, weight: .light, design: .default))
+                        .font(.ibmPlexSansLight(size: 14.0))
                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
                         .padding(sectionSpacer)
                         .onTapGesture {
@@ -390,7 +390,7 @@ struct BentoSendInitialView: View {
                                     .fill(userPrefersDarkTheme ? .white : BentoColor.nearNearBlack)
                                     .frame(height: 48)
                                 Text("Continue")
-                                    .font(.system(size: 18, weight: .semibold, design: .default))
+                                    .font(.ibmPlexSansSemiBold(size: 18.0))
                                     .foregroundColor(isReadyToSend ? continueTextColor : continueTextColor.opacity(0.2))
                             }
                         }

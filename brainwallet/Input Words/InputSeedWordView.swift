@@ -15,7 +15,7 @@ struct InputSeedWordView: View {
     let clearSize = 20.0
     let cellHeight = 40.0
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
-    let subDetailFont: Font = .barlowSemiBold(size: 17.0)
+    let subDetailFont: Font = .ibmPlexSansSemiBold(size: 17.0)
 
     @Binding
     var seedWord: String
@@ -52,7 +52,7 @@ struct InputSeedWordView: View {
                         VStack {
                             HStack {
                                 Text("\(wordNumber)")
-                                    .font(.barlowRegular(size: 12.0))
+                                    .font(.ibmPlexSansRegular(size: 12.0))
                                     .foregroundColor(userPrefersDarkTheme ? .white :
                                         BrainwalletColor.content)
                                     .frame(width: 18,
@@ -67,7 +67,7 @@ struct InputSeedWordView: View {
                         HStack {
                             TextField("", text: $seedWord)
                                 .frame(width: fieldWidth, height: cellHeight, alignment: .center)
-                                .font(.system(size: 17, weight: .semibold, design: .default))
+                                .font(.ibmPlexSansSemiBold(size: 17.0))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.8)
                                 .foregroundColor(BrainwalletColor.content)

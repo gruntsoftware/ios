@@ -11,8 +11,8 @@ struct SettingsLabelView: View {
 
     private let title: String
     private let detailText: String
-    let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 19.0)
+    let largeFont: Font = .ibmPlexSansSemiBold(size: 19.0)
+    let detailFont: Font = .ibmPlexSansLight(size: 19.0)
     let rowBackgroundColor: Color
 
     init(title: String, detailText: String, rowBackgroundColor: Color? = nil) {

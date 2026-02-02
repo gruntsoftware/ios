@@ -22,7 +22,7 @@ struct PinDigitView: View {
 
 						Text(pinDigit.digit)
 							.frame(height: 45, alignment: .center)
-							.font(.barlowSemiBold(size: 18.0))
+							.font(.ibmPlexSansSemiBold(size: 18.0))
 							.foregroundColor(.black)
 					}
 				}

@@ -57,7 +57,7 @@ struct LTCPriceBentoView: View {
                         Picker("", selection: $pickedCurrency) {
                             ForEach(globalCurrencies, id: \.self) {
                                 Text("\($0.countryFlag)   \($0.code) / LTC")
-                                    .font(.system(size: 20, weight: .semibold, design: .default))
+                                    .font(.ibmPlexSansSemiBold(size: 20.0))
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.7)
                                     .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
@@ -82,7 +82,7 @@ struct LTCPriceBentoView: View {
                     .padding(.trailing, trailingPad)
 
                     Text(newMainViewModel.currentFiatValue)//  "RP1,516,863,885.40"
-                        .font(.system(size: 32, weight: .semibold, design: .default))
+                        .font(.ibmPlexSansSemiBold(size: 32.0))
                         .lineLimit(1)
                         .minimumScaleFactor(0.2)
                         .padding([.leading, .trailing], trailingPad)
@@ -95,7 +95,7 @@ struct LTCPriceBentoView: View {
                     HStack {
                         Spacer()
                         Text(currentDateLabel)
-                            .font(.system(size: 11, weight: .ultraLight, design: .default))
+                            .font(.ibmPlexSansThin(size: 11.0))
                             .lineLimit(1)
                             .minimumScaleFactor(0.7)
                             .frame(maxWidth: .infinity, alignment: .trailing)

@@ -37,7 +37,7 @@ struct PromptCellView: View {
                     HStack(alignment: .top, spacing: 1.0) {
                         Text("\(viewModel.promptType.title)")
                             .frame(width: 190.0, alignment: .leading)
-                            .font(Font(UIFont.barlowSemiBold(size: 20.0)))
+                            .font(Font(UIFont.ibmPlexSansSemiBold(size: 20.0)))
                             .foregroundColor(BrainwalletColor.content)
                             .padding(20.0)
 
@@ -54,7 +54,7 @@ struct PromptCellView: View {
                     .padding(.bottom, 5.0)
                     HStack(alignment: .top, spacing: 1.0) {
                         Text("\(viewModel.promptType.body)")
-                            .font(Font(UIFont.barlowRegular(size: 18.0)))
+                            .font(Font(UIFont.ibmPlexSansRegular(size: 18.0)))
                             .foregroundColor(BrainwalletColor.content)
                             .padding(20.0)
                         Spacer()

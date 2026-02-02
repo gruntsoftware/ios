@@ -22,9 +22,9 @@ struct WipeWalletView: View {
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
-    let buttonLightFont: Font = .barlowLight(size: 16.0)
-    let regularFont: Font = .barlowRegular(size: 24.0)
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
+    let buttonLightFont: Font = .ibmPlexSansLight(size: 16.0)
+    let regularFont: Font = .ibmPlexSansRegular(size: 24.0)
+    let largeButtonFont: Font = .ibmPlexSansBold(size: 24.0)
 
     init(viewModel: LockScreenViewModel,
          shouldDismiss: Binding<Bool>,
@@ -48,7 +48,7 @@ struct WipeWalletView: View {
                         .padding(.all, 20.0)
 
                     Text("Wipe Brainwallet")
-                        .font(Font(UIFont.barlowBold(size: 32.0)))
+                        .font(Font(UIFont.ibmPlexSansBold(size: 32.0)))
                         .foregroundColor(BrainwalletColor.content)
                         .frame(alignment: .center)
                         .padding(.bottom, 10.0)

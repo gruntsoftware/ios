@@ -2,7 +2,7 @@ import SwiftUI
 import CoreHaptics
 
 struct LockScreenView: View {
-    let versionFont: Font = .barlowLight(size: 15.0)
+    let versionFont: Font = .ibmPlexSansLight(size: 15.0)
 
 	@ObservedObject
 	var viewModel: LockScreenViewModel
@@ -66,7 +66,7 @@ struct LockScreenView: View {
                 VStack {
                     HStack {
                         Text(fiatValue)
-                            .font(Font(UIFont.barlowLight(size: 16.0)))
+                            .font(Font(UIFont.ibmPlexSansLight(size: 16.0)))
                             .foregroundColor(BrainwalletColor.content)
                             .frame(width: width * 0.9, alignment: .trailing)
                             .padding(.trailing, 16.0)

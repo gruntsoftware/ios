@@ -42,11 +42,11 @@ struct TopUpSetAmountView: View {
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
-    let selectorFont: Font = .barlowSemiBold(size: 16.0)
-    let detailFont: Font = .barlowRegular(size: 28.0)
-    let amountSetFont: Font = .barlowBold(size: 35.0)
-    let versionFont: Font = .barlowSemiBold(size: 16.0)
+    let largeButtonFont: Font = .ibmPlexSansBold(size: 24.0)
+    let selectorFont: Font = .ibmPlexSansSemiBold(size: 16.0)
+    let detailFont: Font = .ibmPlexSansRegular(size: 28.0)
+    let amountSetFont: Font = .ibmPlexSansBold(size: 35.0)
+    let versionFont: Font = .ibmPlexSansSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
     let themeButtonSize: CGFloat = 28.0
 

@@ -26,7 +26,7 @@ struct EmptyTransactionRow: View {
                     Spacer()
                     HStack {
                         Text("TRANSACTION HISTORY")
-                            .font(.system(size: 17, weight: .bold, design: .default))
+                            .font(.ibmPlexSansBold(size: 17.0))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
 
@@ -36,7 +36,7 @@ struct EmptyTransactionRow: View {
 
                     HStack {
                         Text("Nothing yet. Top up now!")
-                            .font(.system(size: 15, weight: .ultraLight, design: .default))
+                            .font(.ibmPlexSansThin(size: 15.0))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
                             Spacer()

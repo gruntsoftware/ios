@@ -44,9 +44,9 @@ struct NewReceiveView: View {
     let squareImageSize: CGFloat = 16.0
     let setAmountSize: CGFloat = 60.0
     let buttonCorner: CGFloat = 26.0
-    let buttonFont: Font = .barlowBold(size: 20.0)
-    let toastFont: Font = .barlowLight(size: 30.0)
-    let lightDetailFont: Font = .barlowLight(size: 15.0)
+    let buttonFont: Font = .ibmPlexSansBold(size: 20.0)
+    let toastFont: Font = .ibmPlexSansLight(size: 30.0)
+    let lightDetailFont: Font = .ibmPlexSansLight(size: 15.0)
 
     let minimumDragFactor: CGFloat = 250.0
     let opacityFactor: CGFloat = 0.8

@@ -35,8 +35,6 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationCategoryType</key>
@@ -108,11 +106,12 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>BarlowSemiCondensed-SemiBold.ttf</string>
-		<string>BarlowSemiCondensed-Medium.ttf</string>
-		<string>BarlowSemiCondensed-Light.ttf</string>
-		<string>BarlowSemiCondensed-Regular.ttf</string>
-		<string>BarlowSemiCondensed-Bold.ttf</string>
+		<string>IBMPlexSans-SemiBold.ttf</string>
+		<string>IBMPlexSans-Medium.ttf</string>
+		<string>IBMPlexSans-Thin.ttf</string>
+		<string>IBMPlexSans-Light.ttf</string>
+		<string>IBMPlexSans-Regular.ttf</string>
+		<string>IBMPlexSans-Bold.ttf</string>
 		<string>BoldenVan.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
