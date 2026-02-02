@@ -28,7 +28,7 @@ struct SeedWordView: View {
 
 						Text("\(seedWord)")
 							.frame(height: cellHeight, alignment: .center)
-                            .font(.ibmPlexSansLight(size: 16.0)) 
+                            .font(.ibmPlexSansLight(size: 16.0))
                                                         .lineLimit(1)
                                                         .minimumScaleFactor(0.8)
                             .foregroundColor(userPrefersDarkTheme ? .white :

@@ -15,32 +15,36 @@ extension UIFont {
 	}
 
 	static func customMedium(size: CGFloat) -> UIFont {
-		return UIFont(name: "BarlowSemiCondensed-Medium", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
+		return UIFont(name: "IBMPlexSans-Medium", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
 
 	static func ibmPlexSansBold(size: CGFloat) -> UIFont {
-		return UIFont(name: "BarlowSemiCondensed-Bold", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
+		return UIFont(name: "IBMPlexSans-Bold", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
-
+    
 	static func ibmPlexSansSemiBold(size: CGFloat) -> UIFont {
-		return UIFont(name: "BarlowSemiCondensed-SemiBold", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
+		return UIFont(name: "IBMPlexSans-SemiBold", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
-
+    
 	static func ibmPlexSansItalic(size: CGFloat) -> UIFont {
-		return UIFont(name: "BarlowSemiCondensed-Italic", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
+		return UIFont(name: "IBMPlexSans-Italic", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
 
 	static func ibmPlexSansMedium(size: CGFloat) -> UIFont {
-		return UIFont(name: "BarlowSemiCondensed-Medium", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
+		return UIFont(name: "IBMPlexSans-Medium", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
 
 	static func ibmPlexSansRegular(size: CGFloat) -> UIFont {
-		return UIFont(name: "BarlowSemiCondensed-Regular", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
+		return UIFont(name: "IBMPlexSans-Regular", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
 
 	static func ibmPlexSansLight(size: CGFloat) -> UIFont {
-		return UIFont(name: "BarlowSemiCondensed-Light", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
+		return UIFont(name: "IBMPlexSans-Light", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
 	}
+    
+    static func ibmPlexSansThin(size: CGFloat) -> UIFont {
+        return UIFont(name: "IBMPlexSans-Thin", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
+    }
 
 	static var regularAttributes: [NSAttributedString.Key: Any] {
 		return [
@@ -59,30 +63,30 @@ extension UIFont {
 
 extension Font {
 	static func ibmPlexSansSemiBold(size: CGFloat) -> Font {
-		return Font.custom("BarlowSemiCondensed-SemiBold", size: size)
+		return Font.custom("IBMPlexSans-SemiBold", size: size)
 	}
 
 	static func ibmPlexSansBold(size: CGFloat) -> Font {
-		return Font.custom("BarlowSemiCondensed-Bold", size: size)
+		return Font.custom("IBMPlexSans-Bold", size: size)
 	}
 
 	static func ibmPlexSansItalic(size: CGFloat) -> Font {
-		return Font.custom("BarlowSemiCondensed-Italic", size: size)
+		return Font.custom("IBMPlexSans-Italic", size: size)
 	}
 
 	static func ibmPlexSansMedium(size: CGFloat) -> Font {
-		return Font.custom("BarlowSemiCondensed-Medium", size: size)
+		return Font.custom("IBMPlexSans-Medium", size: size)
 	}
 
 	static func ibmPlexSansRegular(size: CGFloat) -> Font {
-		return Font.custom("BarlowSemiCondensed-Regular", size: size)
+		return Font.custom("IBMPlexSans-Regular", size: size)
 	}
 
 	static func ibmPlexSansLight(size: CGFloat) -> Font {
-		return Font.custom("BarlowSemiCondensed-Light", size: size)
+		return Font.custom("IBMPlexSans-Light", size: size)
 	}
-    
+
     static func ibmPlexSansThin(size: CGFloat) -> Font {
-        return Font.custom("BarlowSemiCondensed-Thin", size: size)
+        return Font.custom("IBMPlexSans-Thin", size: size)
     }
 }

@@ -45,7 +45,7 @@ struct SeedWordDragView: View {
 						VStack {
 							HStack {
                                 Spacer()
-                                Text(seedWord.first?.word ?? "") 
+                                Text(seedWord.first?.word ?? "")
                                     .font(.ibmPlexSansLight(size: 16.0))
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.8)
@@ -59,7 +59,7 @@ struct SeedWordDragView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .rotationEffect(Angle(degrees: 90))
-                                    .font(.ibmPlexSansThin(size: 11.0)) 
+                                    .font(.ibmPlexSansThin(size: 11.0))
                                     .frame(width: buttonSize,
                                            height: buttonSize,
                                         alignment: .center)

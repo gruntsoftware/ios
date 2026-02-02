@@ -53,11 +53,11 @@ struct NewSyncProgressView: View {
                     HStack {
                         VStack {
                             Text(String(localized:"Timestamp: ") + viewModel.formattedTimestamp)
-                                .font(.caption)
+                                .font(.ibmPlexSansThin(size: 10.0))
                                 .frame(width: 230.0, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)
                             Text(String(localized:"Block: ") + viewModel.lastFoundBlockHeightString)
-                                .font(.caption)
+                                .font(.ibmPlexSansThin(size: 10.0))
                                 .frame(width: 230.0, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)
                             Spacer()
@@ -68,7 +68,7 @@ struct NewSyncProgressView: View {
                         VStack {
                             HStack {
                                 Text("SEND")
-                                    .font(.caption)
+                                    .font(.ibmPlexSansThin(size: 10.0))
                                     .frame(width: 70.0, alignment: .trailing)
                                     .foregroundColor(BrainwalletColor.content)
                                 Image(systemName: "nosign")
@@ -81,7 +81,7 @@ struct NewSyncProgressView: View {
                             }
                             HStack {
                                 Text("RECEIVE")
-                                    .font(.caption)
+                                    .font(.ibmPlexSansThin(size: 10.0))
                                     .frame(width: 70.0, alignment: .trailing)
                                     .foregroundColor(BrainwalletColor.content)
 

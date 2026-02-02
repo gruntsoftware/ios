@@ -73,7 +73,7 @@ struct RestoreView: View {
                             Image(systemName: "arrow.down.right")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .font(Font.system(size: 35, weight: .light))
+                                .font(.ibmPlexSansLight(size: 35.0))
                                 .frame(width: arrowSize,
                                        alignment: .center)
                                 .padding(.leading, 20.0)

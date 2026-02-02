@@ -110,7 +110,7 @@ struct SendFiatAmountLeaderModifier: ViewModifier {
             .frame(height: 15, alignment: .leading)
         LeaderEllipseView(userPrefersDarkTheme: $userPrefersDarkTheme)
         Text(formattedDataValue(fiatValue))
-            .font(.ibmPlexSansBold(size: 14.0)) 
+            .font(.ibmPlexSansBold(size: 14.0))
             .foregroundColor(userPrefersDarkTheme ? .white : .black)
             .frame(height: 15, alignment: .leading)
     }
@@ -169,7 +169,7 @@ struct SendCompletedSubTitleModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .font(.ibmPlexSansThin(size: 15.0)) 
+            .font(.ibmPlexSansThin(size: 15.0))
             .foregroundColor(userPrefersDarkTheme ? .white : .black)
             .frame(maxWidth: .infinity, alignment: .center)
             .kerning(2.0)

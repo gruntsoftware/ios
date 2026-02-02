@@ -48,7 +48,7 @@ struct WipeWalletView: View {
                         .padding(.all, 20.0)
 
                     Text("Wipe Brainwallet")
-                        .font(Font(UIFont.ibmPlexSansBold(size: 32.0)))
+                        .font(.ibmPlexSansBold(size: 32.0))
                         .foregroundColor(BrainwalletColor.content)
                         .frame(alignment: .center)
                         .padding(.bottom, 10.0)

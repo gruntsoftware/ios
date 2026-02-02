@@ -255,7 +255,7 @@ struct NewMainView: View {
                                     .padding(6)
 
                                 Text("Send")
-                                    .font(.caption2)
+                                    .font(.ibmPlexSansLight(size: 11.0))
                                     .foregroundStyle(walletIsSyncing ? content.opacity(0.3) : content)
                             }
                         })
@@ -276,7 +276,7 @@ struct NewMainView: View {
                                     .padding(6)
 
                                 Text("Buy/Receive")
-                                    .font(.caption2)
+                                    .font(.ibmPlexSansLight(size: 11.0))
                                     .foregroundStyle(content)
                             }
                         })
@@ -302,7 +302,7 @@ struct NewMainView: View {
                                     .padding(6)
 
                                 Text("Game Hub")
-                                    .font(.caption2)
+                                    .font(.ibmPlexSansLight(size: 11.0))
                                     .foregroundStyle(content)
                             }
                         })
@@ -326,7 +326,7 @@ struct NewMainView: View {
                                     .animation(.easeInOut, value: shouldShowTransactionDetail)
 
                                 Text(shouldShowTransactionDetail ? " Home " :"History")
-                                    .font(.caption2)
+                                    .font(.ibmPlexSansLight(size: 11.0))
                                     .foregroundStyle(content)
                                     .contentTransition(.opacity)
                                     .animation(.easeInOut, value: shouldShowTransactionDetail)
