@@ -499,7 +499,6 @@
 		241283BB2F2669D800638075 /* FiatCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatCurrency.swift; sourceTree = "<group>"; };
 		2412BA7D2DF465FC00AC40BB /* ReceiveAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveAddressView.swift; sourceTree = "<group>"; };
 		2415FFDE2DBD84F6002A2199 /* SeedWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordsGridView.swift; sourceTree = "<group>"; };
-		2415FFF22DBE2CA4002A2199 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2416CE562DA90D0D00FFBD10 /* BRActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRActivityView.swift; sourceTree = "<group>"; };
 		2416CE572DA90D0D00FFBD10 /* BRAddressExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BRAddressExtension.swift; sourceTree = "<group>"; };
 		2416CE582DA90D0D00FFBD10 /* BWAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BWAPIClient.swift; sourceTree = "<group>"; };
@@ -1658,7 +1657,6 @@
 		249DDE402DCD55D700B2B275 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				2415FFF22DBE2CA4002A2199 /* SettingsView.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
