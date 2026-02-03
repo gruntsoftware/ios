@@ -132,7 +132,7 @@ struct GameBackgroundView: View {
                                     ], center: .topLeading, startRadius: 90.0, endRadius: 400)
                     Image("game-hub-stars")
                         .resizable()
-                        .opacity(0.5)
+                        .opacity(0.7)
                         .frame(width: width, height: height)
                     RoundedRectangle(cornerRadius: bentoCornerRadius)
                         .stroke(
@@ -154,6 +154,10 @@ struct GameBackgroundView: View {
                             endPoint: .top
                         ))
                         .edgesIgnoringSafeArea(.all)
+                    Image("game-hub-stars")
+                        .resizable()
+                        .opacity(0.7)
+                        .frame(width: width, height: height)
                     RoundedRectangle(cornerRadius: bentoCornerRadius)
                         .stroke(BentoColor.grayBorder,
                                 lineWidth:  1.5)
