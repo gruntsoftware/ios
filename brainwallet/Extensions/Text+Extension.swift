@@ -84,3 +84,16 @@ struct BWIPSBold: ViewModifier {
             .truncationMode(.middle)
     }
 }
+
+struct BWBoldenVan: ViewModifier {
+    let size: Double
+    var lineLimit: Int = 1
+
+    func body(content: Content) -> some View {
+        content
+            .font(.boldenVan(size: size))
+            .lineLimit(lineLimit)
+            .minimumScaleFactor(0.7)
+            .truncationMode(.middle)
+    }
+}

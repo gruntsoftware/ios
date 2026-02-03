@@ -91,10 +91,8 @@ struct WelcomMojiDemoView: View {
                 VStack {
                     HStack {
                         Text("\(counter)")
-                            .font(.boldenVan(size: 40))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.3)
-                            .padding(.top, 16)
+                            .modifier(BWBoldenVan(size: 40))
+                            .padding(.top, 8)
                             .padding([.trailing], 24)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .foregroundStyle(
@@ -111,10 +109,8 @@ struct WelcomMojiDemoView: View {
                 VStack {
 
                     Text( String(format: "%.2f", countdown))
-                        .font(.boldenVan(size: 40))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.3)
-                        .padding(.top, 16)
+                        .modifier(BWBoldenVan(size: 40))
+                        .padding(.top, 8)
                         .padding([.leading], 24)
 
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -141,22 +137,22 @@ struct WelcomMojiDemoView: View {
                                     "app_version": AppVersion.string
                                 ])
                         } label: {
-                            Text("Start!")
-                                .font(.boldenVan(size: 50))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                                .padding(16)
-                                .frame(width: 160, height: 80)
-                                .foregroundStyle(
-                                    LinearGradient(
-                                        colors: [.white,.white, BentoColor.progressGreen2.opacity(0.2)],
-                                        startPoint: .top,
-                                        endPoint: .bottom
+                            VStack {
+                                Text("Start! \nTap & score")
+                                    .modifier(BWBoldenVan(size: 50, lineLimit: 2))
+                                    .frame(width: 200, height: 95)
+                                    .foregroundStyle(
+                                        LinearGradient(
+                                            colors: [.white,.white, BentoColor.progressGreen2.opacity(0.4)],
+                                            startPoint: .top,
+                                            endPoint: .bottom
+                                        )
                                     )
-                                )
-                                .shadow(color:
-                                            Color.black.opacity(0.3),
-                                        radius: 10)
+                                    .shadow(color:
+                                                Color.black.opacity(0.3),
+                                            radius: 10)
+                                    .padding(4)
+                            }
                         }
                         .padding(20.0)
                         .cornerRadius(20.0)
