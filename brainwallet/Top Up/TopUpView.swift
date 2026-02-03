@@ -83,7 +83,7 @@ struct TopUpView: View {
                                     .padding(.bottom, 5.0)
 
                                 Text(quoteTimestampString)
-                                    .font(detailFont)
+                                    .modifier(BWIPSLight(size: 18.0))
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     .foregroundColor(userPrefersDarkTheme ? .white.opacity(0.5) : BrainwalletColor.nearBlack.opacity(0.5))
                                     .padding(.top, 5.0)
@@ -102,7 +102,7 @@ struct TopUpView: View {
                                     Image(systemName: "arrow.down.right")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
-                                        .font(.ibmPlexSansLight(size: 35.0))
+                                        .modifier(BWIPSLight(size: 35.0))
                                         .frame(width: arrowSize,
                                                alignment: .leading)
                                     Spacer()
@@ -117,7 +117,7 @@ struct TopUpView: View {
                                 }
                                 .padding(.bottom, 10.0)
                                 Text("Get some Litecoin for your Brainwallet")
-                                    .font(detailFont)
+                                    .modifier(BWIPSLight(size: 18.0))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white.opacity(0.5) : BrainwalletColor.nearBlack.opacity(0.5))
                                     .padding(.all, 10.0)

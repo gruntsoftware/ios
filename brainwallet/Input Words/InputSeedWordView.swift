@@ -52,7 +52,7 @@ struct InputSeedWordView: View {
                         VStack {
                             HStack {
                                 Text("\(wordNumber)")
-                                    .font(.ibmPlexSansRegular(size: 12.0))
+                                    .modifier(BWIPSRegular(size: 12.0))
                                     .foregroundColor(userPrefersDarkTheme ? .white :
                                         BrainwalletColor.content)
                                     .frame(width: 18,
@@ -67,9 +67,7 @@ struct InputSeedWordView: View {
                         HStack {
                             TextField("", text: $seedWord)
                                 .frame(width: fieldWidth, height: cellHeight, alignment: .center)
-                                .font(.ibmPlexSansSemiBold(size: 17.0))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.8)
+                                .modifier(BWIPSSemiBold(size: 17.0))
                                 .foregroundColor(BrainwalletColor.content)
                                 .keyboardType(.alphabet)
                                 .disableAutocorrection(true)

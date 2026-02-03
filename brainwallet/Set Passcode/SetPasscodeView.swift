@@ -16,7 +16,7 @@ struct SetPasscodeView: View {
     private var didFillPasscode: Bool = false
 
     let subTitleFont: Font = .ibmPlexSansSemiBold(size: 32.0)
-    let largeButtonFont: Font = .ibmPlexSansBold(size: 24.0)
+
     let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
 
     let verticalPadding: CGFloat = 20.0
@@ -73,7 +73,7 @@ struct SetPasscodeView: View {
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                             Text( "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool!" )
-                                .font(detailFont)
+                                .modifier(BWIPSLight(size: 18.0))
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 .padding(.all, 20.0)

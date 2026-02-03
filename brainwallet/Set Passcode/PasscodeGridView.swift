@@ -96,7 +96,7 @@ struct CodeButton: View {
                     EmptyView()
                 } else {
                     Text("\(index)")
-                        .font(detailFont)
+                        .modifier(BWIPSLight(size: 18.0))
                         .foregroundColor(userPrefersDarkMode ? .white : BrainwalletColor.grape)
                         .frame(maxWidth: .infinity,
                                maxHeight: .infinity)

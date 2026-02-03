@@ -11,7 +11,7 @@ struct SettingsLabelView: View {
 
     private let title: String
     private let detailText: String
-    let largeFont: Font = .ibmPlexSansSemiBold(size: 19.0)
+
     let detailFont: Font = .ibmPlexSansLight(size: 19.0)
     let rowBackgroundColor: Color
 
@@ -28,13 +28,13 @@ struct SettingsLabelView: View {
                     rowBackgroundColor.edgesIgnoringSafeArea(.all)
                     VStack {
                         Text(title)
-                            .font(largeFont)
+                            .modifier(BWIPSSemiBold(size: 19.0))
                             .foregroundColor(BrainwalletColor.content)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.top, 4.0)
                             .padding(.bottom, 1.0)
                         Text(detailText)
-                            .font(detailFont)
+                            .modifier(BWIPSLight(size: 18.0))
                             .kerning(0.3)
                             .foregroundColor(BrainwalletColor.content)
                             .frame(maxWidth: .infinity, alignment: .leading)

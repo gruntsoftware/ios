@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SettingsLitecoinDetailView: View {
 
-    let largeFont: Font = .ibmPlexSansSemiBold(size: 19.0)
     let detailFont: Font = .ibmPlexSansLight(size: 15.0)
     let largeButtonHeight: CGFloat = 45.0
     let dotSize: CGFloat = 12.0
@@ -35,7 +34,7 @@ struct SettingsLitecoinDetailView: View {
                     List {
                         HStack {
                             Text(String(localized: "Sync to the Litecoin Blockchain"))
-                                .font(largeFont)
+                                .modifier(BWIPSSemiBold(size: 19.0))
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             Spacer()
@@ -48,7 +47,7 @@ struct SettingsLitecoinDetailView: View {
 
                         HStack {
                             Text(litecoinSyncDetailA)
-                                .font(detailFont)
+                                .modifier(BWIPSLight(size: 18.0))
                                 .multilineTextAlignment(.leading)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -62,7 +61,7 @@ struct SettingsLitecoinDetailView: View {
                         HStack {
 
                             Text(litecoinSyncDetailB)
-                                .font(detailFont)
+                                .modifier(BWIPSLight(size: 18.0))
                                 .multilineTextAlignment(.leading)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -76,7 +75,7 @@ struct SettingsLitecoinDetailView: View {
                         HStack {
 
                             Text(litecoinSyncDetailC)
-                                .font(detailFont)
+                                .modifier(BWIPSLight(size: 18.0))
                                 .multilineTextAlignment(.leading)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -102,7 +101,7 @@ struct SettingsLitecoinDetailView: View {
                                         .frame(width: width * 0.9, height: largeButtonHeight,
                                             alignment: .center)
                                         .frame(maxWidth: .infinity, alignment: .center)
-                                        .font(largeFont)
+                                        .modifier(BWIPSSemiBold(size: 19.0))
                                         .foregroundColor(BrainwalletColor.content)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: largeButtonHeight/2)

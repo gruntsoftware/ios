@@ -76,7 +76,7 @@ struct CurrencyPickerView: View {
                                                height: checkSize * 2)
                                     )
                                 Image(systemName: "checkmark")
-                                    .font(.ibmPlexSansBold(size: 20.0))
+                                    .modifier(BWIPSBold(size: 20.0))
                                     .frame(width: checkSize,
                                            height: checkSize)
                                     .foregroundColor(selectedFiat ? .white : BrainwalletColor.gray)

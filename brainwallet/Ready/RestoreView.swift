@@ -73,7 +73,7 @@ struct RestoreView: View {
                             Image(systemName: "arrow.down.right")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .font(.ibmPlexSansLight(size: 35.0))
+                                .modifier(BWIPSLight(size: 35.0))
                                 .frame(width: arrowSize,
                                        alignment: .center)
                                 .padding(.leading, 20.0)
@@ -95,7 +95,7 @@ struct RestoreView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 Text(restoreText2)
-                                    .font(detailFont)
+                                    .modifier(BWIPSLight(size: 18.0))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
 

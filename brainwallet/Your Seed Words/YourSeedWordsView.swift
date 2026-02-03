@@ -22,7 +22,6 @@ struct YourSeedWordsView: View {
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
-    let largeButtonFont: Font = .ibmPlexSansBold(size: 24.0)
     let subTitleFont: Font = .ibmPlexSansSemiBold(size: 32.0)
     let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
     let detailerFont: Font = .ibmPlexSansRegular(size: 20.0)
@@ -77,7 +76,7 @@ struct YourSeedWordsView: View {
                         .padding(.top, 5.0)
 
                     Text("Just for you.\nIs it the private key that lets you send.")
-                        .font(detailFont)
+                        .modifier(BWIPSLight(size: 18.0))
                         .multilineTextAlignment(.center)
                         .lineLimit(2)
                         .frame(maxWidth: .infinity, alignment: .center)

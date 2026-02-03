@@ -27,7 +27,7 @@ struct ConfirmPasscodeView: View {
     private var userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
     let subTitleFont: Font = .ibmPlexSansSemiBold(size: 32.0)
-    let largeButtonFont: Font = .ibmPlexSansBold(size: 24.0)
+
     let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
 
     let verticalPadding: CGFloat = 20.0
@@ -84,7 +84,7 @@ struct ConfirmPasscodeView: View {
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                             Text( "You didn’t forget did you? Ok! Just go back to start over.")
-                                .font(detailFont)
+                                .modifier(BWIPSLight(size: 18.0))
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 .padding(.all, 20.0)

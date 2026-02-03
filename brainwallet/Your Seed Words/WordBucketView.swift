@@ -33,14 +33,14 @@ struct WordBucketView: View {
                             .foregroundColor(BrainwalletColor.background.opacity(0.4))
 
                         Text(word)
-                            .font(.ibmPlexSansRegular(size: 16.0))
+                            .modifier(BWIPSRegular(size: 16.0))
                             .foregroundColor(userPrefersDarkTheme ? .white :
                                 BrainwalletColor.content)
 
                         VStack {
                             HStack {
                                 Text("\(wordNumber)")
-                                    .font(.ibmPlexSansRegular(size: 12.0))
+                                    .modifier(BWIPSRegular(size: 12.0))
                                     .foregroundColor(userPrefersDarkTheme ? .white :
                                         BrainwalletColor.content)
                                     .frame(width: 22,

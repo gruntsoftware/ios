@@ -101,7 +101,6 @@ struct BuyReceiveView: View {
     let headerFont: Font = .ibmPlexSansBold(size: 26.0)
     let liveQuoteFont: Font = .ibmPlexSansSemiBold(size: 25.0)
     let subHeaderFont: Font = .ibmPlexSansSemiBold(size: 17.0)
-
     let detailFont: Font = .ibmPlexSansSemiBold(size: 15.0)
     let subDetailFont: Font = .ibmPlexSansRegular(size: 14.0)
     let lightDetailFont: Font = .ibmPlexSansLight(size: 15.0)

@@ -11,7 +11,7 @@ struct SettingsActionToggleView: View {
 
     private let title: String
     private let detailText: String
-    let largeFont: Font = .ibmPlexSansSemiBold(size: 19.0)
+
     let detailFont: Font = .ibmPlexSansLight(size: 15.0)
     let action: SettingsAction
 
@@ -32,12 +32,12 @@ struct SettingsActionToggleView: View {
                     HStack {
                         VStack {
                             Text(title)
-                                .font(largeFont)
+                                .modifier(BWIPSSemiBold(size: 19.0))
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.top, 4.0)
                             Text(detailText)
-                                .font(detailFont)
+                                .modifier(BWIPSLight(size: 18.0))
                                 .kerning(0.6)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)

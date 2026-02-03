@@ -18,7 +18,7 @@ struct InputWordsView: View {
     var viewModel: NewMainViewModel
 
     let subTitleFont: Font = .ibmPlexSansSemiBold(size: 32.0)
-    let largeButtonFont: Font = .ibmPlexSansBold(size: 24.0)
+
     let detailFont: Font = .ibmPlexSansRegular(size: 25.0)
     let detailerFont: Font = .ibmPlexSansRegular(size: 20.0)
 
@@ -117,7 +117,7 @@ struct InputWordsView: View {
 
                             Text("Restore & Sync")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                .font(largeButtonFont)
+                                 .modifier(BWIPSBold(size: 24.0))
                                 .foregroundColor(phraseIsVerified ? BrainwalletColor.content : BrainwalletColor.content.opacity(0.5))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)

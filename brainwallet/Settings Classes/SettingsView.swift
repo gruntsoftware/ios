@@ -51,7 +51,6 @@ struct SettingsView: View {
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
-    let largeButtonFont: Font = .ibmPlexSansBold(size: 24.0)
 
     private let supportURL = URL(string: "https://brainwallet.co/support.html")!
 

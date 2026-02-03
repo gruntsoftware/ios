@@ -66,7 +66,7 @@ struct LockScreenView: View {
                 VStack {
                     HStack {
                         Text(fiatValue)
-                            .font(.ibmPlexSansLight(size: 16.0))
+                            .modifier(BWIPSLight(size: 16.0))
                             .foregroundColor(BrainwalletColor.content)
                             .frame(width: width * 0.9, alignment: .trailing)
                             .padding(.trailing, 16.0)

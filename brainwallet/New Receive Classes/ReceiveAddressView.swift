@@ -25,7 +25,6 @@ struct ReceiveAddressView: View {
     @State
     private var didCopyAddress = false
 
-    let ginormousFont: Font = .ibmPlexSansSemiBold(size: 22.0)
     let subDetailFont: Font = .ibmPlexSansRegular(size: 14.0)
     let lightDetailFont: Font = .ibmPlexSansLight(size: 18.0)
     let buttonFont: Font = .ibmPlexSansBold(size: 20.0)

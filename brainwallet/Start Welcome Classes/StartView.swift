@@ -4,7 +4,6 @@ struct StartView: View {
     let selectorFont: Font = .ibmPlexSansSemiBold(size: 16.0)
     let buttonLightFont: Font = .ibmPlexSansLight(size: 16.0)
     let regularButtonFont: Font = .ibmPlexSansRegular(size: 24.0)
-    let largeButtonFont: Font = .ibmPlexSansBold(size: 24.0)
 
     let versionFont: Font = .ibmPlexSansSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
@@ -165,7 +164,7 @@ struct StartView: View {
 
                                 Text("Create New Wallet")
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                    .font(largeButtonFont)
+                                     .modifier(BWIPSBold(size: 24.0))
                                     .foregroundColor(BrainwalletColor.content)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: largeButtonHeight/2)

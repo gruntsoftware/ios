@@ -51,9 +51,7 @@ struct BalanceBentoView: View {
                 VStack {
                     HStack {
                         Text("MY BALANCE")
-                            .font(.ibmPlexSansSemiBold(size: 16.0))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.8)// Shrinks to 80% of original
+                            .modifier(BWIPSSemiBold(size: 16.0))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                             .foregroundColor(Color.white.opacity(0.70))
                         Spacer()

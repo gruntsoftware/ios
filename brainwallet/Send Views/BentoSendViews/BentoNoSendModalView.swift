@@ -47,9 +47,7 @@ struct BentoNoSendModalView: View {
                 backgroundColor.edgesIgnoringSafeArea(.all)
                 VStack {
                     Text("Send is Disabled")
-                        .font(.ibmPlexSansBold(size: 24.0))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.9)
+                        .modifier(BWIPSBold(size: 24.0))
                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
                         .padding(sectionSpacer)
 
@@ -66,9 +64,7 @@ struct BentoNoSendModalView: View {
 
                     HStack {
                         Text("While syncing, sending is not possible. Your local database is catching with up to the latest block adding relevant transactions.\nPlease try again later.")
-                            .font(.ibmPlexSansSemiBold(size: 22.0))
-                            .lineLimit(4)
-                            .minimumScaleFactor(0.85)
+                            .modifier(BWIPSSemiBold(size: 22.0, lineLimit: 4))
                             .foregroundColor(userPrefersDarkTheme ? .white : .black)
                     }
                     .padding(sectionSides * 1.1)
@@ -84,7 +80,7 @@ struct BentoNoSendModalView: View {
                                     .fill(userPrefersDarkTheme ? .white : BentoColor.nearNearBlack)
                                     .frame(height: 48)
                                 Text("Ok")
-                                    .font(.ibmPlexSansSemiBold(size: 18.0))
+                                    .modifier(BWIPSSemiBold(size: 18.0))
                                     .foregroundColor(userPrefersDarkTheme ? .black : .white)
                             }
                         }

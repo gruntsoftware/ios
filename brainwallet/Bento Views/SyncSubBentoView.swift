@@ -42,7 +42,7 @@ struct SyncSubBentoView: View {
                                 Spacer()
 
                                 Text(viewModel.syncStateMessage)
-                                    .font(.ibmPlexSansSemiBold(size: 11.0))
+                                    .modifier(BWIPSSemiBold(size: 11.0))
                                     .frame(alignment: .trailing)
                                     .foregroundColor(.white)
                             }
@@ -51,7 +51,7 @@ struct SyncSubBentoView: View {
                                 Spacer()
 
                                 Text(String(localized:"Last block: ") + viewModel.lastFoundBlockHeightString)
-                                    .font(.ibmPlexSansLight(size: 11.0))
+                                    .modifier(BWIPSLight(size: 11.0))
                                     .frame(alignment: .trailing)
                                     .foregroundColor(.white)
 
@@ -60,7 +60,7 @@ struct SyncSubBentoView: View {
                                 Spacer()
 
                                 Text(String(localized:"Date: ") + viewModel.formattedTimestamp)
-                                    .font(.ibmPlexSansThin(size: 11.0))
+                                    .modifier(BWIPSThin(size: 11.0))
                                     .frame(alignment: .trailing)
                                     .foregroundColor(.white)
 
@@ -69,17 +69,17 @@ struct SyncSubBentoView: View {
                             HStack {
 
                                 Text(String(format: "%3.2f %%", viewModel.progress * 100))
-                                    .font(.ibmPlexSansBold(size: 10.0))
+                                    .modifier(BWIPSBold(size: 10.0))
                                     .frame(width: 50.0, alignment: .leading)
                                     .foregroundColor(.white)
                                     .padding(.trailing, 4.0)
                                 Text("Block: \(viewModel.currentBlockHeightString)")
-                                    .font(.ibmPlexSansThin(size: 11.0))
+                                    .modifier(BWIPSThin(size: 11.0))
                                     .frame(alignment: .leading)
                                     .foregroundColor(.white)
                                 Spacer()
                                 Text("Send")
-                                    .font(.ibmPlexSansThin(size: 11.0))
+                                    .modifier(BWIPSThin(size: 11.0))
                                     .frame(alignment: .center)
                                     .foregroundColor(.white)
 
@@ -92,7 +92,7 @@ struct SyncSubBentoView: View {
                                     .foregroundColor(BrainwalletColor.error)
 
                                 Text("Receive")
-                                    .font(.ibmPlexSansThin(size: 11.0))
+                                    .modifier(BWIPSThin(size: 11.0))
                                     .frame(alignment: .center)
                                     .foregroundColor(.white)
 

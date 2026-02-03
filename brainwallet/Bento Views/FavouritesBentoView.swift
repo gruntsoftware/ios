@@ -52,7 +52,7 @@ struct FavouritesBentoView: View {
                             .foregroundColor(labelBackground)
                             .padding(8)
                         Text("TOP SECRET")
-                            .font(.ibmPlexSansRegular(size: 10.0))
+                            .modifier(BWIPSRegular(size: 10.0))
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)// Shrinks to 50% of original
                             .padding([.leading, .trailing], 4)

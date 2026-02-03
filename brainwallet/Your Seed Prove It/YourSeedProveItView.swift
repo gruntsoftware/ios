@@ -21,7 +21,7 @@ struct YourSeedProveItView: View {
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 60.0
-    let largeButtonFont: Font = .ibmPlexSansBold(size: 24.0)
+
     let subTitleFont: Font = .ibmPlexSansSemiBold(size: 32.0)
     let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
     let detailerFont: Font = .ibmPlexSansRegular(size: 20.0)
@@ -146,7 +146,7 @@ struct YourSeedProveItView: View {
 
                     // Subtitle
                     Text("Place the words in the correct order!")
-                        .font(detailFont)
+                        .modifier(BWIPSLight(size: 18.0))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.06)
                         .foregroundColor(BrainwalletColor.content)
@@ -170,7 +170,7 @@ struct YourSeedProveItView: View {
                     .padding([.leading, .trailing], 20.0)
 
                     Text("Press and drag a word into place")
-                        .font(detailFont)
+                        .modifier(BWIPSLight(size: 18.0))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.05)
                         .foregroundColor(BrainwalletColor.content)

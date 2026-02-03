@@ -18,8 +18,6 @@ struct SettingsExpandingGamesView: View {
     private var rotationAngle: Double = 0
 
     private var title: String
-    let largeFont: Font = .ibmPlexSansSemiBold(size: 19.0)
-    let detailFont: Font = .ibmPlexSansLight(size: 18.0)
 
     init(title: String, viewModel: NewMainViewModel, shouldExpandGames: Binding <Bool>) {
         self.title = title
@@ -36,12 +34,12 @@ struct SettingsExpandingGamesView: View {
 
                             VStack {
                                 Text(title)
-                                    .font(largeFont)
+                                    .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundColor(BrainwalletColor.content)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(.top, 8.0)
                                 Text("")
-                                    .font(detailFont)
+                                    .modifier(BWIPSLight(size: 18.0))
                                     .kerning(0.6)
                                     .foregroundColor(BrainwalletColor.content)
                                     .frame(maxWidth: .infinity, alignment: .leading)

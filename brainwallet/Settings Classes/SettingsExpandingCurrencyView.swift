@@ -24,8 +24,6 @@ struct SettingsExpandingCurrencyView: View {
     private var pickedCurrency: GlobalCurrency = .USD
 
     private var title: String
-    let largeFont: Font = .ibmPlexSansSemiBold(size: 19.0)
-    let detailFont: Font = .ibmPlexSansSemiBold(size: 14.0)
 
     init(title: String, viewModel: NewMainViewModel, shouldExpandCurrency: Binding <Bool>) {
         self.title = title
@@ -41,7 +39,7 @@ struct SettingsExpandingCurrencyView: View {
                         HStack {
                             VStack {
                                 Text("\(title) (\(pickedCurrency.symbol))")
-                                    .font(largeFont)
+                                    .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundColor(BrainwalletColor.content)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(.bottom, 8.0)

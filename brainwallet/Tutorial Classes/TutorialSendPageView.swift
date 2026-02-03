@@ -39,7 +39,7 @@ struct TutorialSendPageView: View {
                 VStack(alignment: .center) {
                     HStack {
                         Text("How to Send LTC")
-                            .font(.ibmPlexSansSemiBold(size: 24.0))
+                            .modifier(BWIPSSemiBold(size: 24.0))
                             .foregroundColor(.white)
                             .padding([.leading, .trailing], 4)
                             .accessibilityIdentifier("tutorialSendPageViewTitle")

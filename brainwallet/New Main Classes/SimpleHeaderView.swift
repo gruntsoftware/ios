@@ -52,7 +52,7 @@ struct SimpleHeaderView: View {
                         Spacer()
 
                         Text(newMainViewModel.currentFiatValue)
-                            .font(.ibmPlexSansLight(size: 16.0))
+                            .modifier(BWIPSLight(size: 16.0))
                             .frame(width: width * 0.4, height: 30.0,
                                    alignment: .topTrailing)
                             .foregroundColor(BrainwalletColor.content)
@@ -63,16 +63,16 @@ struct SimpleHeaderView: View {
                     HStack {
                         VStack {
                             Text("BALANCE")
-                                .font(.ibmPlexSansRegular(size: 20.0))
+                                .modifier(BWIPSRegular(size: 20.0))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)
                             Text("\(newMainViewModel.walletBalanceFiat)")
-                                .font(.ibmPlexSansSemiBold(size: 50.0))
+                                .modifier(BWIPSSemiBold(size: 50.0))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(BrainwalletColor.content)
                                 .padding(.bottom,2.0)
                                 Text("\(newMainViewModel.walletBalanceLitecoin)")
-                                    .font(.ibmPlexSansLight(size: 16.0))
+                                    .modifier(BWIPSLight(size: 16.0))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(BrainwalletColor.content)
                                     .padding([.top,.bottom],4.0)
@@ -97,7 +97,7 @@ struct SimpleHeaderView: View {
                                 VStack {
                                     Spacer()
                                     Text("\(String(localized: "Tx Count: "))\(String(describing: newMainViewModel.transactionCount))")
-                                        .font(.ibmPlexSansLight(size: 16.0))
+                                        .modifier(BWIPSLight(size: 16.0))
                                         .frame(maxWidth: .infinity, alignment: .trailing)
                                         .foregroundColor(BrainwalletColor.content)
                                         .padding([.top,.bottom],4.0)

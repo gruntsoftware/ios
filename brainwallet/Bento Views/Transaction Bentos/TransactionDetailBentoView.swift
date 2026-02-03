@@ -120,12 +120,12 @@ struct TransactionDetailBentoView: View {
                     VStack {
                         HStack {
                             Text(String(localized:"Amount:"))
-                                .font(.ibmPlexSansRegular(size: 12.0))
+                                .modifier(BWIPSRegular(size: 12.0))
                                 .frame(width: labelWidth, alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                                 .padding( .top, rowPadding)
                             Text("Ł \(convertedAmountValue)")
-                                .font(.ibmPlexSansRegular(size: 12.0))
+                                .modifier(BWIPSRegular(size: 12.0))
                                 .minimumScaleFactor(0.8)// Shrinks to 80% of original
                                 .frame(alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
@@ -141,12 +141,12 @@ struct TransactionDetailBentoView: View {
                         if didSend {
                             HStack {
                                 Text(String(localized:"Fees:"))
-                                    .font(.ibmPlexSansRegular(size: 12.0))
+                                    .modifier(BWIPSRegular(size: 12.0))
                                     .frame(width: labelWidth, alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : .black)
 
                                 Text("Ł \(convertedFeesValue)")
-                                    .font(.ibmPlexSansRegular(size: 12.0))
+                                    .modifier(BWIPSRegular(size: 12.0))
                                     .lineLimit(2)
                                     .minimumScaleFactor(0.8)// Shrinks to 80% of original
                                     .frame(alignment: .leading)
@@ -160,12 +160,12 @@ struct TransactionDetailBentoView: View {
 
                         HStack {
                             Text(String(localized:"TX ID:"))
-                                .font(.ibmPlexSansRegular(size: 12.0))
+                                .modifier(BWIPSRegular(size: 12.0))
                                 .frame(width: labelWidth, alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
 
                             Text(txHash ?? "")
-                                .font(.ibmPlexSansRegular(size: 12.0))
+                                .modifier(BWIPSRegular(size: 12.0))
                                 .lineLimit(3)
                                 .minimumScaleFactor(0.8)// Shrinks to 80% of original
                                 .fixedSize(horizontal: false, vertical: true)
@@ -180,11 +180,11 @@ struct TransactionDetailBentoView: View {
                         if ((memoString?.isEmpty) == nil) {
                             HStack {
                                 Text(String(localized: "Memo: "))
-                                    .font(.ibmPlexSansRegular(size: 12.0))
+                                    .modifier(BWIPSRegular(size: 12.0))
                                     .frame(width: labelWidth, alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : .black)
                                 Text(memoString  ?? "")
-                                    .font(.ibmPlexSansRegular(size: 12.0))
+                                    .modifier(BWIPSRegular(size: 12.0))
                                     .frame(alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : .black)
                                 Spacer()
@@ -196,10 +196,10 @@ struct TransactionDetailBentoView: View {
                         HStack {
                             Text(String(localized: "Block: "))
                                 .frame(width: labelWidth, alignment: .leading)
-                                .font(.ibmPlexSansRegular(size: 12.0))
+                                .modifier(BWIPSRegular(size: 12.0))
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             Text(blockHeight)
-                                .font(.ibmPlexSansThin(size: 12.0))
+                                .modifier(BWIPSThin(size: 12.0))
                                 .frame(alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             Spacer()
@@ -209,10 +209,10 @@ struct TransactionDetailBentoView: View {
                         HStack {
                             Text(String(localized: "Date: "))
                                 .frame(width: labelWidth, alignment: .leading)
-                                .font(.ibmPlexSansRegular(size: 12.0))
+                                .modifier(BWIPSRegular(size: 12.0))
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             Text(timeStamp)
-                                .font(.ibmPlexSansThin(size: 12.0))
+                                .modifier(BWIPSThin(size: 12.0))
                                 .frame(alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             Spacer()
@@ -237,9 +237,7 @@ struct TransactionDetailBentoView: View {
                     HStack {
                         Spacer()
                         Text(transactionLTCAddress)
-                            .font(.ibmPlexSansSemiBold(size: 16.0))
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.8)
+                            .modifier(BWIPSSemiBold(size: 16.0, lineLimit: 2))
                             .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             .truncationMode(.middle)
                             .frame(width: width * 0.8, alignment: .center)
@@ -258,9 +256,7 @@ struct TransactionDetailBentoView: View {
                                    .frame(height: 48)
 
                                Text("Export Transaction Data")
-                                   .font(.ibmPlexSansRegular(size: 19.0))
-                                   .lineLimit(1)
-                                   .minimumScaleFactor(0.1)
+                                   .modifier(BWIPSRegular(size: 19.0))
                                    .frame(maxWidth: width * 0.5, alignment: .center)
                                    .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
                            }
