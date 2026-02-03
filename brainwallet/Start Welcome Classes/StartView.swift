@@ -122,7 +122,7 @@ struct StartView: View {
                             }
                             .frame(width: width * 0.1, alignment: .center)
                             .onChange(of: userPrefersDarkMode) { _,preference in
-                                newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
+                                newMainViewModel.updateTheme(shouldBeDark: preference)
                             }
                             .accessibilityIdentifier("darkModePreference")
 

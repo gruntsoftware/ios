@@ -60,8 +60,6 @@ struct SettingsActionThemeView: View {
                             }
                             .frame(width: 30.0, height: 30.0)
                         }
-                    }.onAppear {
-                        userPrefersDark = UserDefaults.userPreferredDarkTheme
                     }
                 }
             }

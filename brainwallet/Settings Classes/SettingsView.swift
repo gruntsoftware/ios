@@ -22,7 +22,7 @@ struct SettingsView: View {
     private var didTriggerLock: Bool = false
 
     @State
-    private var userPrefersDarkMode: Bool = false
+    private var userPrefersDarkMode: Bool = true
 
     @State
     private var shouldExpandSecurity: Bool = false
@@ -69,9 +69,13 @@ struct SettingsView: View {
             GeometryReader { geometry in
                 let width = geometry.size.width
                 ZStack {
-                    BrainwalletColor.content.edgesIgnoringSafeArea(.all)
-                    BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                        .padding(.trailing, 1.0)
+
+                    if userPrefersDarkMode {
+                        BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
+                    } else {
+                        BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
+                            .padding(.trailing, 1.0)
+                    }
 
                     HStack {
                         VStack {

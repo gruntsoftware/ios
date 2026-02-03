@@ -119,7 +119,7 @@
 		247A83912EA00D8600B5DFD8 /* aurora.metal in Sources */ = {isa = PBXBuildFile; fileRef = 247A83902EA00D8600B5DFD8 /* aurora.metal */; };
 		247A83932EA034BC00B5DFD8 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A83922EA034B600B5DFD8 /* Renderer.swift */; };
 		247A83952EA034FE00B5DFD8 /* GridWaveContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A83942EA034E900B5DFD8 /* GridWaveContentView.swift */; };
-		247A83972EA2A9A500B5DFD8 /* ThemeGradientHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A83962EA2A99100B5DFD8 /* ThemeGradientHelpers.swift */; };
+		247A83972EA2A9A500B5DFD8 /* BentoBackgroundHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A83962EA2A99100B5DFD8 /* BentoBackgroundHelpers.swift */; };
 		247A83992EA3E3D800B5DFD8 /* BoldenVan.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 247A83982EA3E3D800B5DFD8 /* BoldenVan.ttf */; };
 		247D74E62DA907FB00855B14 /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45792D936D5900E9C3B0 /* BRAddress.c */; };
 		247D74E72DA907FB00855B14 /* BRBase58.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457C2D936D5900E9C3B0 /* BRBase58.c */; };
@@ -595,7 +595,7 @@
 		247A83902EA00D8600B5DFD8 /* aurora.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = aurora.metal; sourceTree = "<group>"; };
 		247A83922EA034B600B5DFD8 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		247A83942EA034E900B5DFD8 /* GridWaveContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridWaveContentView.swift; sourceTree = "<group>"; };
-		247A83962EA2A99100B5DFD8 /* ThemeGradientHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeGradientHelpers.swift; sourceTree = "<group>"; };
+		247A83962EA2A99100B5DFD8 /* BentoBackgroundHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoBackgroundHelpers.swift; sourceTree = "<group>"; };
 		247A83982EA3E3D800B5DFD8 /* BoldenVan.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BoldenVan.ttf; sourceTree = "<group>"; };
 		2480B5822DF2015B00653403 /* PromptHostingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptHostingCell.swift; sourceTree = "<group>"; };
 		2489E05B2DF0A23700630888 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "brainwallet/PreLaunchResources/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -1377,7 +1377,7 @@
 			children = (
 				2476646D2F3002B900F1A70E /* WelcomeFallinScene.swift */,
 				247A83942EA034E900B5DFD8 /* GridWaveContentView.swift */,
-				247A83962EA2A99100B5DFD8 /* ThemeGradientHelpers.swift */,
+				247A83962EA2A99100B5DFD8 /* BentoBackgroundHelpers.swift */,
 				247A83922EA034B600B5DFD8 /* Renderer.swift */,
 				247A838C2EA00CFB00B5DFD8 /* MetalView.swift */,
 				247A83902EA00D8600B5DFD8 /* aurora.metal */,
@@ -2935,7 +2935,7 @@
 				24B065392DC6282100B5E000 /* NewMainView.swift in Sources */,
 				C312D4732D7DC27700BB97A4 /* DefaultCurrencyViewController.swift in Sources */,
 				C312D4742D7DC27700BB97A4 /* SeedPhraseStepView.swift in Sources */,
-				247A83972EA2A9A500B5DFD8 /* ThemeGradientHelpers.swift in Sources */,
+				247A83972EA2A9A500B5DFD8 /* BentoBackgroundHelpers.swift in Sources */,
 				C312D4752D7DC27700BB97A4 /* ApplicationController.swift in Sources */,
 				24DB05E82E06B44700C57FE9 /* SettingsExpandingBlockchainView.swift in Sources */,
 				C312D4772D7DC27700BB97A4 /* NSNotificationNameExtension.swift in Sources */,

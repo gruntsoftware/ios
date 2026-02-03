@@ -179,7 +179,8 @@ struct NewMainView: View {
 
                     ToolbarItem(placement: .navigationBarLeading) {
                             Button(action: {
-                                 userPrefersDarkTheme.toggle()
+                                userPrefersDarkTheme.toggle()
+                                newMainViewModel.updateTheme(shouldBeDark: userPrefersDarkTheme)
                             }) {
 
                                 ZStack {
@@ -351,8 +352,8 @@ struct NewMainView: View {
                 .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
                     disableTransactionDetail = newMainViewModel.filteredTransactions.isEmpty
                 }
-                .onChange(of: userPrefersDarkTheme) { _,newPreference in
-                    newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: newPreference)
+                .onChange(of: newMainViewModel.userPrefersDarkMode) { _,_ in
+                    userPrefersDarkTheme =  newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 }
                 .onChange(of: newMainViewModel.walletIsSyncing) { _,newState in

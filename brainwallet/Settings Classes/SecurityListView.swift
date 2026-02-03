@@ -26,7 +26,7 @@ struct SecurityListView: View {
     private var willShareData: Bool = false
 
     @State
-    private var userPrefersDarkMode: Bool = false
+    private var userPrefersDarkMode: Bool = true
 
     let footerRowHeight: CGFloat = 55.0
 
