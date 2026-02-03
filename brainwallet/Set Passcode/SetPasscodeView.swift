@@ -15,8 +15,6 @@ struct SetPasscodeView: View {
     @State
     private var didFillPasscode: Bool = false
 
-    let subTitleFont: Font = .ibmPlexSansSemiBold(size: 32.0)
-
     let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
 
     let verticalPadding: CGFloat = 20.0
@@ -69,19 +67,20 @@ struct SetPasscodeView: View {
                         .padding(.all, 20.0)
 
                             Text( "Set app passcode" )
-                                .font(subTitleFont)
+                                .modifier(BWIPSSemiBold(size: 32.0))
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
-                            Text( "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool!" )
-                                .modifier(BWIPSLight(size: 18.0))
+                           Text( "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool!" )
+                                .modifier(BWIPSRegular(size: 28.0, lineLimit: 3))
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
-                                .padding(.all, 20.0)
+                                .padding([.top, .bottom], 8.0)
+                                .padding([.leading, .trailing], 20.0)
 
                         PINRowView(pinState: $pinState)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .frame(height: 40.0)
-                                .padding(.top, 40.0)
+                                .padding(.top, 30.0)
 
                         Spacer()
                         PasscodeGridView(digits: $pinDigits, userPrefersDarkMode: $userPrefersDarkTheme)
@@ -89,7 +88,9 @@ struct SetPasscodeView: View {
                                    height: height * 0.35,
                                    alignment: .center)
                                 .padding(.bottom, 80.0)
-                        }
+                    }
+                    .padding([.leading, .trailing], 16.0)
+
                 }
             }
             .onChange(of: pinDigits) { _,_ in

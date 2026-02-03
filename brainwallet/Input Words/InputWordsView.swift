@@ -17,11 +17,6 @@ struct InputWordsView: View {
     @ObservedObject
     var viewModel: NewMainViewModel
 
-    let subTitleFont: Font = .ibmPlexSansSemiBold(size: 32.0)
-
-    let detailFont: Font = .ibmPlexSansRegular(size: 25.0)
-    let detailerFont: Font = .ibmPlexSansRegular(size: 20.0)
-
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let largeButtonHeight: CGFloat = 65.0
@@ -73,7 +68,7 @@ struct InputWordsView: View {
                     .padding(.bottom, 0.0)
 
                     Text("Restore your Brainwallet")
-                        .font(subTitleFont)
+                         .modifier(BWIPSSemiBold(size: 32.0))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.05)
                         .foregroundColor(BrainwalletColor.content)
@@ -88,7 +83,7 @@ struct InputWordsView: View {
 
                     Text( phraseIsVerified ? "Your seed phrase is verified!" :
                             "Don’t guess. It would take you\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries.")
-                    .font(phraseIsVerified ? subTitleFont : detailerFont)
+                            .font(phraseIsVerified ? .ibmPlexSansSemiBold(size: 32.0) : .ibmPlexSansRegular(size: 20.0))
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(BrainwalletColor.content)
                             .frame(height: height * 0.2, alignment: .center)
@@ -97,7 +92,7 @@ struct InputWordsView: View {
                             .opacity(fieldInFocus ? 0.0 : 1.0)
 
                         Text( "Blockchain: Litecoin" )
-                            .font(detailerFont)
+                            .modifier(BWIPSRegular(size: 20.0))
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(BrainwalletColor.content)
                             .padding(.all, 12.0)

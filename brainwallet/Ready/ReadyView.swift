@@ -13,8 +13,6 @@ struct ReadyView: View {
     let regularButtonFont: Font = .ibmPlexSansRegular(size: 20.0)
     let largeButtonFont: Font = .ibmPlexSansSemiBold(size: 24.0)
     let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
-    let detailHeavyFont: Font = .ibmPlexSansSemiBold(size: 22.0)
-    let billboardFont: Font = .ibmPlexSansSemiBold(size: 40.0)
 
     let versionFont: Font = .ibmPlexSansSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
@@ -39,10 +37,13 @@ struct ReadyView: View {
                 let width = geometry.size.width
                 let height = geometry.size.height
 
-                let readyText1 = String(localized:
-                    "This is for you alone.\n\nSetup the app passcode, open your password manager or grab a pen to record it & your new seed phrase.\n\n")
-                let readyText2 = String(localized:
-                    "We do not know it nor do we have a copy!")
+                let readyText1 = String(localized: """
+                                                   This is for you alone. Setup the app passcode,
+                                                   open your password manager or grab a pen to
+                                                   record it & your new seed phrase.
+                                                   """
+                )
+                let readyText2 = String(localized: "We do not know it nor do we have a copy!")
 
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
@@ -85,17 +86,18 @@ struct ReadyView: View {
                             VStack {
                                 HStack {
                                     Text("Ready to start?")
-                                        .font(billboardFont)
+                                        .modifier(BWIPSSemiBold(size: 40.0))
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 }
                                 .padding(.bottom, 20.0)
                                 Text(readyText1)
-                                    .modifier(BWIPSLight(size: 18.0))
+                                    .modifier(BWIPSRegular(size: 24.0, lineLimit: 3))
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.bottom, 4.0)
                                     .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 Text(readyText2)
-                                    .font(detailHeavyFont)
+                                    .modifier(BWIPSSemiBold(size: 22.0, lineLimit: 2))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                             }

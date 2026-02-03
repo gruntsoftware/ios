@@ -56,7 +56,7 @@ struct LTCPriceBentoView: View {
                     HStack {
                         Picker("", selection: $pickedCurrency) {
                             ForEach(globalCurrencies, id: \.self) {
-                                Text("\($0.countryFlag)   \($0.code) / LTC")
+                                Text(verbatim: "\($0.countryFlag)   \($0.code) / LTC")
                                     .modifier(BWIPSSemiBold(size: 20.0))
                                     .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
                             }
@@ -79,7 +79,7 @@ struct LTCPriceBentoView: View {
                     }
                     .padding(.trailing, trailingPad)
 
-                    Text(newMainViewModel.currentFiatValue)//  "RP1,516,863,885.40"
+                    Text(newMainViewModel.currentFiatValue)
                         .modifier(BWIPSSemiBold(size: 32.0))
                         .padding([.leading, .trailing], trailingPad)
                         .frame(maxWidth: .infinity, alignment: .trailing)

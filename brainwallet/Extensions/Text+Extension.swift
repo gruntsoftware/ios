@@ -15,7 +15,7 @@ struct BWIPSLight: ViewModifier {
         content
             .font(.ibmPlexSansLight(size: size))
             .lineLimit(lineLimit)
-            .minimumScaleFactor(0.6)
+            .minimumScaleFactor(0.5)
             .truncationMode(.middle)
     }
 }
@@ -28,7 +28,7 @@ struct BWIPSThin: ViewModifier {
         content
             .font(.ibmPlexSansThin(size: size))
             .lineLimit(lineLimit)
-            .minimumScaleFactor(0.6)
+            .minimumScaleFactor(0.5)
             .truncationMode(.middle)
     }
 }
@@ -41,7 +41,7 @@ struct BWIPSRegular: ViewModifier {
         content
             .font(.ibmPlexSansRegular(size: size))
             .lineLimit(lineLimit)
-            .minimumScaleFactor(0.6)
+            .minimumScaleFactor(0.5)
             .truncationMode(.middle)
     }
 }
@@ -54,7 +54,7 @@ struct BWIPSMedium: ViewModifier {
         content
             .font(.ibmPlexSansMedium(size: size))
             .lineLimit(lineLimit)
-            .minimumScaleFactor(0.6)
+            .minimumScaleFactor(0.5)
             .truncationMode(.middle)
     }
 }
@@ -67,7 +67,7 @@ struct BWIPSSemiBold: ViewModifier {
         content
             .font(.ibmPlexSansSemiBold(size: size))
             .lineLimit(lineLimit)
-            .minimumScaleFactor(0.6)
+            .minimumScaleFactor(0.5)
             .truncationMode(.middle)
     }
 }
@@ -80,7 +80,7 @@ struct BWIPSBold: ViewModifier {
         content
             .font(.ibmPlexSansBold(size: size))
             .lineLimit(lineLimit)
-            .minimumScaleFactor(0.6)
+            .minimumScaleFactor(0.5)
             .truncationMode(.middle)
     }
 }

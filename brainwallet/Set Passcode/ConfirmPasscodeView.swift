@@ -26,8 +26,6 @@ struct ConfirmPasscodeView: View {
     @State
     private var userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
-    let subTitleFont: Font = .ibmPlexSansSemiBold(size: 32.0)
-
     let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
 
     let verticalPadding: CGFloat = 20.0
@@ -80,14 +78,15 @@ struct ConfirmPasscodeView: View {
                         .padding(.all, 20.0)
 
                             Text( "Confirm passcode" )
-                                .font(subTitleFont)
+                                .modifier(BWIPSSemiBold(size: 32.0))
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                             Text( "You didn’t forget did you? Ok! Just go back to start over.")
-                                .modifier(BWIPSLight(size: 18.0))
+                                .modifier(BWIPSRegular(size: 22.0, lineLimit: 2))
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
-                                .padding(.all, 20.0)
+                                .padding([.top, .bottom], 8.0)
+                                .padding([.leading, .trailing], 20.0)
 
                         PINRowView(pinState: $pinState)
                             .frame(maxWidth: .infinity, alignment: .center)
@@ -103,7 +102,9 @@ struct ConfirmPasscodeView: View {
                                    height: height * 0.35,
                                    alignment: .center)
                                 .padding(.bottom, 80.0)
-                        }
+                    }
+                    .padding([.leading, .trailing], 16.0)
+
                 }
                 .onChange(of: confirmPinDigits) { _,_ in
 

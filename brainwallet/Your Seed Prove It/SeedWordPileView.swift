@@ -23,7 +23,6 @@ struct SeedWordPileView: View {
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
 
-    let subTitleFont: Font = .ibmPlexSansSemiBold(size: 32.0)
     let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
     let detailerFont: Font = .ibmPlexSansRegular(size: 20.0)
     let regularButtonFont: Font = .ibmPlexSansRegular(size: 20.0)

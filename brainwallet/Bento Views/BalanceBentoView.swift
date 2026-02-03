@@ -41,12 +41,14 @@ struct BalanceBentoView: View {
                 BalanceBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
                     .edgesIgnoringSafeArea(.all)
                 VStack {
+                    Spacer()
                     HStack {
                         SyncSubBentoView(viewModel: SyncSubBentoViewModel(store: newMainViewModel.store,
                                                                           walletManager: newMainViewModel.walletManager))
                     }
                     .padding([.leading, .trailing], sidePadding)
                 }
+                .frame(maxHeight: .infinity, alignment: .bottom)
 
                 VStack {
                     HStack {
@@ -120,6 +122,8 @@ struct BalanceBentoView: View {
                         }
                     }
                 }
+                .padding(.bottom, 4)
+
             }
             .cornerRadius(bentoCornerRadius)
             .frame(height: balanceGameBentoHeight, alignment: .center)

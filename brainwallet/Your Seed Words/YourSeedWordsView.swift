@@ -22,7 +22,7 @@ struct YourSeedWordsView: View {
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
-    let subTitleFont: Font = .ibmPlexSansSemiBold(size: 32.0)
+
     let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
     let detailerFont: Font = .ibmPlexSansRegular(size: 20.0)
     let regularButtonFont: Font = .ibmPlexSansRegular(size: 20.0)
@@ -69,7 +69,7 @@ struct YourSeedWordsView: View {
                     .opacity(0.0)
 
                     Text("Your seed words")
-                        .font(subTitleFont)
+                         .modifier(BWIPSSemiBold(size: 32.0))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.05)
                         .foregroundColor(BrainwalletColor.content)
