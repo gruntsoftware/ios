@@ -11,8 +11,6 @@ struct SettingsLabelView: View {
 
     private let title: String
     private let detailText: String
-
-    let detailFont: Font = .ibmPlexSansLight(size: 19.0)
     let rowBackgroundColor: Color
 
     init(title: String, detailText: String, rowBackgroundColor: Color? = nil) {
@@ -31,15 +29,15 @@ struct SettingsLabelView: View {
                             .modifier(BWIPSSemiBold(size: 19.0))
                             .foregroundColor(BrainwalletColor.content)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.top, 4.0)
-                            .padding(.bottom, 1.0)
+                            .frame(height: 25.0)
+                            .padding(.top, 8.0)
                         Text(detailText)
-                            .modifier(BWIPSLight(size: 18.0))
-                            .kerning(0.3)
+                            .modifier(BWIPSRegular(size: 19.0))
+                            .kerning(0.2)
                             .foregroundColor(BrainwalletColor.content)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.bottom, 8.0)
-                        Spacer()
+                            .frame(height: 21.0, alignment: .center)
+                            .padding(.bottom, 11.0)
                     }
                 }
             }

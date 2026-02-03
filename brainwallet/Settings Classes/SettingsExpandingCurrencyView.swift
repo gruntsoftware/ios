@@ -42,10 +42,9 @@ struct SettingsExpandingCurrencyView: View {
                                     .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundColor(BrainwalletColor.content)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.bottom, 8.0)
+                                    .frame(height: 25.0)
                                     .padding(.top, 8.0)
                             }
-
                             Spacer()
 
                             VStack {
@@ -67,7 +66,7 @@ struct SettingsExpandingCurrencyView: View {
 
                                     }
                                     .frame(width: 30.0, height: 30.0, alignment: .top)
-                                    .padding(.top, 8.0)
+                                    .padding(.top, 9.0)
 
                                 }
                                 .frame(width: 30.0, height: 30.0)

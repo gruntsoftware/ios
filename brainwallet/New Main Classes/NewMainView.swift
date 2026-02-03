@@ -93,6 +93,7 @@ struct NewMainView: View {
             let height = geometry.size.height
             let midBentoHeight = geometry.size.height
             let sheetContentHeight = height * 0.7
+            let mainTabIconSize: CGFloat = 26.0
 
             let content = BrainwalletColor.content
             NavigationStack {
@@ -249,8 +250,8 @@ struct NewMainView: View {
                                 Image(systemName: "paperplane")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
+                                    .frame(width: mainTabIconSize,
+                                           height: mainTabIconSize)
                                     .foregroundColor( walletIsSyncing ? content.opacity(0.3) : content)
                                     .padding(6)
 
@@ -270,8 +271,8 @@ struct NewMainView: View {
                                 Image(systemName: "arrow.left.arrow.right")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
+                                    .frame(width: mainTabIconSize,
+                                           height: mainTabIconSize)
                                     .foregroundColor(content)
                                     .padding(6)
 
@@ -296,8 +297,8 @@ struct NewMainView: View {
                                 Image(systemName: "gamecontroller")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
+                                    .frame(width: mainTabIconSize,
+                                           height: mainTabIconSize)
                                     .foregroundColor(content)
                                     .padding(6)
 
@@ -319,8 +320,8 @@ struct NewMainView: View {
                                 Image(systemName: shouldShowTransactionDetail ? "house" : "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
+                                    .frame(width: mainTabIconSize,
+                                           height: mainTabIconSize)
                                     .foregroundColor(content)
                                     .padding(6)
                                     .animation(.easeInOut, value: shouldShowTransactionDetail)

@@ -39,13 +39,8 @@ struct SettingsExpandingBlockchainView: View {
                                     .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundColor(BrainwalletColor.content)
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    .frame(height: 25.0)
                                     .padding(.top, 8.0)
-                                Text("")
-                                    .modifier(BWIPSLight(size: 18.0))
-                                    .kerning(0.6)
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.bottom, 1.0)
                             }
 
                             Spacer()
@@ -65,7 +60,7 @@ struct SettingsExpandingBlockchainView: View {
                                         }
                                     }
                                     .frame(width: 30.0, height: 30.0, alignment: .top)
-                                    .padding(.top, 8.0)
+                                    .padding(.top, 9.0)
                                 }
                                 .frame(width: 30.0, height: 30.0)
                             }
