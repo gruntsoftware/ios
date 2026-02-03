@@ -82,6 +82,9 @@ struct SettingsExpandingCurrencyView: View {
                             .frame(height: shouldExpandCurrency ? pickerViewHeight : 0.1)
                         Spacer()
                     }
+                    .onChange(of: viewModel.currentGlobalFiat, { _, _ in
+                        pickedCurrency = viewModel.currentGlobalFiat
+                    })
                     .onAppear {
                         pickedCurrency = viewModel.currentGlobalFiat
                     }
