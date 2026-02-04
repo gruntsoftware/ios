@@ -9,7 +9,6 @@ struct StartView: View {
     let squareImageSize: CGFloat = 25.0
     let themeButtonSize: CGFloat = 32.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 50.0
 
     @State
     private var isShowingOnboardView: Bool = true

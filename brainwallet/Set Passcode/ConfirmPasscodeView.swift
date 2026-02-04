@@ -33,8 +33,6 @@ struct ConfirmPasscodeView: View {
     let squareImageSize: CGFloat = 25.0
     let themeButtonSize: CGFloat = 28.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-
     let arrowSize: CGFloat = 60.0
 
     init(isRestoringAnOldWallet: Bool, pinDigits: [Int],
@@ -75,33 +73,34 @@ struct ConfirmPasscodeView: View {
                             }.frame(maxWidth: .infinity, alignment: .leading)
                         }
                         .frame(height: squareImageSize)
-                        .padding(.all, 20.0)
+                        .padding([.leading, .trailing], 20.0)
+                        .padding(.top, 10.0)
 
                             Text( "Confirm passcode" )
                                 .modifier(BWIPSSemiBold(size: 32.0))
                                 .frame(maxWidth: .infinity, alignment: .center)
+                                .frame(height: 40)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
+
                             Text( "You didn’t forget did you? Ok! Just go back to start over.")
                                 .modifier(BWIPSRegular(size: 22.0, lineLimit: 2))
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 .padding([.top, .bottom], 8.0)
                                 .padding([.leading, .trailing], 20.0)
-
+                        Spacer()
                         PINRowView(pinState: $pinState)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .frame(height: 40.0)
-                            .padding(.top, 40.0)
                             .offset(x: startShake ? 7 : 0)
                             .animation(.spring(response: 0.15, dampingFraction: 0.1, blendDuration: 0.2), value: startShake)
-
                         Spacer()
                         PasscodeGridView(digits: $confirmPinDigits,
                                          userPrefersDarkMode: $userPrefersDarkTheme)
                             .frame(width: width * 0.6,
                                    height: height * 0.35,
                                    alignment: .center)
-                                .padding(.bottom, 80.0)
+                                .padding(.bottom, 40.0)
                     }
                     .padding([.leading, .trailing], 16.0)
 

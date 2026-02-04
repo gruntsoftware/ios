@@ -53,7 +53,6 @@ struct WelcomMojiDemoView: View {
         _shouldPlay = shouldPlay
         self.height = height
         self.width = width
-
     }
 
     var body: some View {
@@ -84,7 +83,6 @@ struct WelcomMojiDemoView: View {
                         }
                     }
                     .cornerRadius(bentoCornerRadius)
-
                     Spacer()
                 }
 

@@ -13,6 +13,7 @@ let calloutHeight: CGFloat = 120.0
 let balanceGameBentoHeight: CGFloat = 135.0
 let transactionsBentoHeight: CGFloat = 85.0
 let iconSize: CGFloat = 20.0
+let largeButtonHeight: CGFloat = 50.0
 
 struct BrainwalletSupport {
 	static let dashboard = "https://brainwallet.co/support.html"

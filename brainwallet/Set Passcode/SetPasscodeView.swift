@@ -22,8 +22,6 @@ struct SetPasscodeView: View {
     let squareImageSize: CGFloat = 25.0
     let themeButtonSize: CGFloat = 28.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-
     let arrowSize: CGFloat = 60.0
 
     @State
@@ -64,30 +62,32 @@ struct SetPasscodeView: View {
                             }.frame(maxWidth: .infinity, alignment: .leading)
                         }
                         .frame(height: squareImageSize)
-                        .padding(.all, 20.0)
+                        .padding([.leading, .trailing], 20.0)
+                        .padding(.top, 10.0)
 
                             Text( "Set app passcode" )
                                 .modifier(BWIPSSemiBold(size: 32.0))
                                 .frame(maxWidth: .infinity, alignment: .center)
+                                .frame(height: 40)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
+
                            Text( "Pick a passcode to unlock your Brainwallet. Not a phone lock code! Make it different. Make it cool!" )
                                 .modifier(BWIPSRegular(size: 28.0, lineLimit: 3))
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 .padding([.top, .bottom], 8.0)
                                 .padding([.leading, .trailing], 20.0)
-
+                        Spacer()
                         PINRowView(pinState: $pinState)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .frame(height: 40.0)
-                                .padding(.top, 30.0)
-
                         Spacer()
+
                         PasscodeGridView(digits: $pinDigits, userPrefersDarkMode: $userPrefersDarkTheme)
                             .frame(width: width * 0.6,
                                    height: height * 0.35,
                                    alignment: .center)
-                                .padding(.bottom, 80.0)
+                                .padding(.bottom, 40.0)
                     }
                     .padding([.leading, .trailing], 16.0)
 

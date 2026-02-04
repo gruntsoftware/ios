@@ -35,8 +35,6 @@ struct TopUpView: View {
     let squareImageSize: CGFloat = 25.0
     let themeButtonSize: CGFloat = 28.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-
     let arrowSize: CGFloat = 40.0
 
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
@@ -72,7 +70,8 @@ struct TopUpView: View {
                             }
                             Spacer()
                         }
-                        .padding(.all, 20.0)
+                        .padding([.leading, .trailing], 20.0)
+                        .padding(.top, 10.0)
 
                         HStack {
                             VStack {

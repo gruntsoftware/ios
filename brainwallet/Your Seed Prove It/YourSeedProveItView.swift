@@ -20,7 +20,6 @@ struct YourSeedProveItView: View {
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 60.0
 
     let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
     let detailerFont: Font = .ibmPlexSansRegular(size: 20.0)
@@ -134,6 +133,7 @@ struct YourSeedProveItView: View {
                     }
                     .frame(height: squareImageSize)
                     .padding([.leading, .trailing], 20.0)
+                    .padding(.top, 10.0)
 
                     // Title
                     Text("You saved it, right?")
@@ -147,7 +147,7 @@ struct YourSeedProveItView: View {
                     Text("Place the words in the correct order!")
                         .modifier(BWIPSLight(size: 18.0))
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: height * 0.06)
+                        .frame(height: 22.0)
                         .foregroundColor(BrainwalletColor.content)
                         .padding([.leading, .trailing], 20.0)
                         .padding([.top, .bottom], 6.0)
@@ -167,32 +167,41 @@ struct YourSeedProveItView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .frame(height: height * 0.25, alignment: .center)
                     .padding([.leading, .trailing], 20.0)
-
-                    Text("Press and drag a word into place")
+                    Spacer()
+                    Text("Long press & drag a word into place")
                         .modifier(BWIPSLight(size: 18.0))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.05)
                         .foregroundColor(BrainwalletColor.content)
                         .padding([.leading, .trailing], 20.0)
-
+                    Spacer()
                     // Draggable words
                     LazyVGrid(columns: columns) {
                         ForEach(shuffledDraggableWords, id: \.id) { draggableItem in
-                            SeedWordDragView(seedWord: [draggableItem])
-                                .draggable(draggableItem, preview: {
-                                    SeedWordDragView(seedWord: [draggableItem])
-                                        .frame(width: 100, height: 30)
-                                        .contentShape(.dragPreview, Capsule())
-                                        .padding(.bottom, 24.0)
-                                })
-                                .padding([.top, .bottom], 16.0)
-                                .padding([.leading, .trailing], 2.0)
+
+                            Group {
+                                SeedWordDragView(seedWord: [draggableItem])
+                                    .draggable(draggableItem, preview: {
+                                        SeedWordDragView(seedWord: [draggableItem])
+                                            .frame(width: 110, height: 40)
+                                            .contentShape(.dragPreview, Capsule())
+                                            .padding(.bottom, 24.0)
+                                    })
+                                     .padding([.top, .bottom], 16.0)
+                                    .padding([.leading, .trailing], 2.0)
+                            }
+                            .simultaneousGesture(
+                                TapGesture().onEnded {
+                                    let impact = UIImpactFeedbackGenerator(style: .heavy)
+                                    impact.impactOccurred()
+                                }
+                            )
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     .frame(height: 200, alignment: .center)
                     .padding([.leading, .trailing], 20.0)
-
+                    Spacer()
                     Button(action: {
                         if isPhraseMatched() {
                             playCoin()

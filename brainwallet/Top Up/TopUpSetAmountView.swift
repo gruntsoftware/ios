@@ -41,7 +41,6 @@ struct TopUpSetAmountView: View {
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
 
     let selectorFont: Font = .ibmPlexSansSemiBold(size: 16.0)
     let detailFont: Font = .ibmPlexSansRegular(size: 28.0)
@@ -99,7 +98,8 @@ struct TopUpSetAmountView: View {
                         }
                         Spacer()
                     }
-                    .padding(.all, 20.0)
+                    .padding([.leading, .trailing], 20.0)
+                    .padding(.top, 10.0)
 
                     Text("Buy Litecoin")
                         .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)

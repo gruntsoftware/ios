@@ -19,8 +19,6 @@ struct InputWordsView: View {
 
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
-    let largeButtonHeight: CGFloat = 65.0
-
     let arrowSize: CGFloat = 60.0
 
     /// Reuse the seed grid for yourr seedwords
@@ -65,28 +63,29 @@ struct InputWordsView: View {
                     }
                     .frame(height: squareImageSize)
                     .padding([.leading, .trailing], 20.0)
-                    .padding(.bottom, 0.0)
+                    .padding(.top, 10.0)
 
+                    // Title
                     Text("Restore your Brainwallet")
                          .modifier(BWIPSSemiBold(size: 32.0))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.05)
                         .foregroundColor(BrainwalletColor.content)
-                        .padding(8.0)
+                        .padding(.top, 5.0)
 
                     InputWordsGridView(viewModel: viewModel, phraseIsVerified: $phraseIsVerified)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.4, alignment: .center)
-                        .padding(.top, 16.0)
+                        .padding(.top, 10.0)
                         .padding([.leading, .trailing], 16.0)
                         .focused($fieldInFocus)
-
+                    Spacer()
                     Text( phraseIsVerified ? "Your seed phrase is verified!" :
-                            "Don’t guess. It would take you\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries.")
-                            .font(phraseIsVerified ? .ibmPlexSansSemiBold(size: 32.0) : .ibmPlexSansRegular(size: 20.0))
+                            "Don’t guess. It would take you 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries.")
+                            .modifier(BWIPSSemiBold(size: 30.0, lineLimit: 3))
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(BrainwalletColor.content)
-                            .frame(height: height * 0.2, alignment: .center)
+                            .frame(height: height * 0.15, alignment: .center)
                             .padding(.top, 5.0)
                             .padding([.leading, .trailing], 24.0)
                             .opacity(fieldInFocus ? 0.0 : 1.0)
@@ -95,9 +94,8 @@ struct InputWordsView: View {
                             .modifier(BWIPSRegular(size: 20.0))
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(BrainwalletColor.content)
-                            .padding(.all, 12.0)
                             .opacity(fieldInFocus ? 0.0 : 1.0)
-                    Spacer()
+
                     Button(action: {
                         if phraseIsVerified {
                             playCoin()

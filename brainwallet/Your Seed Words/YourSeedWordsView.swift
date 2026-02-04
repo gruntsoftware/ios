@@ -21,11 +21,6 @@ struct YourSeedWordsView: View {
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-
-    let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
-    let detailerFont: Font = .ibmPlexSansRegular(size: 20.0)
-    let regularButtonFont: Font = .ibmPlexSansRegular(size: 20.0)
 
     let arrowSize: CGFloat = 60.0
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
@@ -65,7 +60,7 @@ struct YourSeedWordsView: View {
                     }
                     .frame(height: squareImageSize)
                     .padding([.leading, .trailing], 20.0)
-                    .padding(.bottom, 0.0)
+                    .padding(.top, 10.0)
                     .opacity(0.0)
 
                     Text("Your seed words")
@@ -77,8 +72,6 @@ struct YourSeedWordsView: View {
 
                     Text("Just for you.\nIs it the private key that lets you send.")
                         .modifier(BWIPSLight(size: 18.0))
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.1)
                         .foregroundColor(BrainwalletColor.content)
@@ -93,7 +86,7 @@ struct YourSeedWordsView: View {
                     Spacer()
 
                     Text("Blockchain: Litecoin")
-                        .font(detailerFont)
+                        .modifier(BWIPSRegular(size: 20.0))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.04, alignment: .center)
                         .foregroundColor(BrainwalletColor.content)
@@ -111,7 +104,7 @@ struct YourSeedWordsView: View {
 
                             Text("I saved it on paper or metal")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                .font(regularButtonFont)
+                                .modifier(BWIPSRegular(size: 20.0))
                                 .foregroundColor(.white)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)

@@ -50,7 +50,6 @@ struct SettingsView: View {
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
 
     private let supportURL = URL(string: "https://brainwallet.co/support")!
 

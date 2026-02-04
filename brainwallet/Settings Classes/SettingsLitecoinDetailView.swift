@@ -10,7 +10,6 @@ import SwiftUI
 struct SettingsLitecoinDetailView: View {
 
     let detailFont: Font = .ibmPlexSansLight(size: 15.0)
-    let largeButtonHeight: CGFloat = 45.0
     let dotSize: CGFloat = 12.0
 
     let litecoinSyncDetailA: String = String(localized: "Syncing is a process where Brainwallet scans the Litecoin blockchain to see if any transactions that match your seed words (private keys) are in any transactions.")
