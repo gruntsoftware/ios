@@ -114,25 +114,25 @@ struct NewMainView: View {
                     VStack {
                         BalanceBentoView(viewModel: newMainViewModel,
                                          userPrefersDarkTheme: $userPrefersDarkTheme)
-                        .frame(height:  balanceGameBentoHeight, alignment: .top)
+                        .frame(height:  balanceBentoHeight, alignment: .top)
                         .padding(bentoPadding)
                         .padding(.top, 10)
-                        .padding(.bottom, 10)
                         .accessibilityIdentifier("balanceBentoView")
 
                         if shouldShowTransactionDetail {
                             TransactionDetailBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme:  $userPrefersDarkTheme)
-                                .frame(maxHeight: .infinity)
+                            .frame(maxHeight: 320, alignment: .top)
                                 .padding(bentoPadding)
                                 .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 1.0 : 0.0, anchor: .top)
                                 .transition(.scale)
                                 .accessibilityIdentifier("transactionDetailBentoView")
+                            Spacer()
                         }
                             TransactionHistoryBentoView(viewModel: newMainViewModel,
                                                     detailIsShowing: $shouldShowTransactionDetail,
                                                     userPrefersDarkTheme: $userPrefersDarkTheme)
-                            .frame(height: transactionsBentoHeight, alignment: .top)
+                            .frame(height: transactionsBentoHeight, alignment: .bottom)
                             .padding(bentoPadding)
                             .accessibilityIdentifier("transactionHistoryBentoView")
 
@@ -141,20 +141,20 @@ struct NewMainView: View {
                                 HStack {
                                     TutorialsBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                                    .frame(maxHeight: midBentoHeight * 0.5, alignment: .top)
+                                    .frame(maxHeight: midBentoHeight * 0.9, alignment: .top)
                                     .padding(bentoPadding)
                                     .accessibilityIdentifier("tutorialsBentoView")
 
                                     VStack {
                                         LTCPriceBentoView(viewModel: newMainViewModel,
                                                           userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .frame(maxHeight: midBentoHeight * 0.25)
+                                        .frame(maxHeight: midBentoHeight * 0.78)
                                         .padding(bentoPadding)
                                         .accessibilityIdentifier("ltcPriceBentoView")
 
                                         FavouritesBentoView(viewModel: newMainViewModel,
                                                             userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .frame(maxHeight: midBentoHeight * 0.25)
+                                        .frame(maxHeight: midBentoHeight * 0.12)
                                         .padding(bentoPadding)
                                         .accessibilityIdentifier("favouritesBentoView")
                                     }
@@ -162,7 +162,7 @@ struct NewMainView: View {
                                 .frame(maxHeight: height * 0.5, alignment: .top)
                                 .padding([.top,.leading, .trailing], bentoPadding)
                                 GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .frame(height: balanceGameBentoHeight, alignment: .top)
+                                        .frame(idealHeight: balanceBentoHeight * 0.9, maxHeight: balanceBentoHeight, alignment: .top)
                                         .padding(bentoPadding)
                                         .accessibilityIdentifier("gameHubBentoView")
                             }

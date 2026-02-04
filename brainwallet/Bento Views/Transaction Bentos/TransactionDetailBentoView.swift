@@ -92,6 +92,7 @@ struct TransactionDetailBentoView: View {
             let height = geometry.size.height
             let labelWidth = geometry.size.width * 0.20
             let rowPadding: CGFloat = 1
+            let textRowHeight: CGFloat = 14
             let convertedFeesValue = Double((Double(currentTransaction?.fee ?? UInt64(0))) / 100_000_000)
 
             let didSend = (currentTransaction?.direction == .sent) ? true : false
@@ -117,7 +118,7 @@ struct TransactionDetailBentoView: View {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
                     .edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading) {
-                    VStack {
+
                         HStack {
                             Text(String(localized:"Amount:"))
                                 .modifier(BWIPSRegular(size: 12.0))
@@ -126,7 +127,6 @@ struct TransactionDetailBentoView: View {
                                 .padding( .top, rowPadding)
                             Text("Ł \(convertedAmountValue)")
                                 .modifier(BWIPSRegular(size: 12.0))
-                                .minimumScaleFactor(0.8)// Shrinks to 80% of original
                                 .frame(alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                                 .padding( .leading, rowPadding)
@@ -136,7 +136,8 @@ struct TransactionDetailBentoView: View {
                                 .frame(width: 15, height: 15)
                                 .foregroundColor(directionArrowColor)
                         }
-                        .padding(rowPadding)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.top, 20)
 
                         if didSend {
                             HStack {
@@ -147,35 +148,29 @@ struct TransactionDetailBentoView: View {
 
                                 Text("Ł \(convertedFeesValue)")
                                     .modifier(BWIPSRegular(size: 12.0))
-                                    .lineLimit(2)
-                                    .minimumScaleFactor(0.8)// Shrinks to 80% of original
                                     .frame(alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : .black)
                                     .padding( .leading, rowPadding)
                                 Spacer()
                             }
-                            .padding(rowPadding)
+                            .frame(maxWidth: .infinity, alignment: .center)
 
                         }
 
                         HStack {
                             Text(String(localized:"TX ID:"))
-                                .modifier(BWIPSRegular(size: 12.0))
+                                .modifier(BWIPSRegular(size: 12.0, lineLimit: 2))
                                 .frame(width: labelWidth, alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
 
                             Text(txHash ?? "")
                                 .modifier(BWIPSRegular(size: 12.0))
-                                .lineLimit(3)
-                                .minimumScaleFactor(0.8)// Shrinks to 80% of original
-                                .fixedSize(horizontal: false, vertical: true)
                                 .frame(alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                                 .padding( .leading, rowPadding)
                             Spacer()
 
                         }
-                        .padding(rowPadding)
 
                         if ((memoString?.isEmpty) == nil) {
                             HStack {
@@ -189,7 +184,7 @@ struct TransactionDetailBentoView: View {
                                     .foregroundColor(userPrefersDarkTheme ? .white : .black)
                                 Spacer()
                             }
-                            .padding(rowPadding)
+                            .frame(maxWidth: .infinity, alignment: .center)
 
                         }
 
@@ -204,7 +199,7 @@ struct TransactionDetailBentoView: View {
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             Spacer()
                         }
-                        .padding(rowPadding)
+                        .frame(maxWidth: .infinity, alignment: .center)
 
                         HStack {
                             Text(String(localized: "Date: "))
@@ -217,37 +212,24 @@ struct TransactionDetailBentoView: View {
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             Spacer()
                         }
-                        .padding(rowPadding)
-                    }
-                    .padding(12)
-                    .background(userPrefersDarkTheme ? .white.opacity(0.07) : BentoColor.grayBackground)
-                    .cornerRadius(8)
-
+                        .frame(maxWidth: .infinity, alignment: .center)
                     HStack {
-                        Spacer()
-                        Image(uiImage: qrImage)
+                         Image(uiImage: qrImage)
                             .frame(width: kQRImageSide,
                                    height: kQRImageSide,
                                    alignment: .center)
                             .tint(BrainwalletColor.content)
-                        Spacer()
-                    }
-                    .padding(5.0)
-
+                     }
+                    .frame(maxWidth: .infinity, alignment: .center)
                     HStack {
-                        Spacer()
                         Text(transactionLTCAddress)
                             .modifier(BWIPSSemiBold(size: 16.0, lineLimit: 2))
                             .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             .truncationMode(.middle)
                             .frame(width: width * 0.8, alignment: .center)
-                        Spacer()
                     }
-
-                   Spacer()
-
+                    .frame(maxWidth: .infinity, alignment: .center)
                     HStack {
-                        Spacer()
                         Button(action: {
                                 shouldShowExportSheet.toggle()
                         }) {
@@ -261,20 +243,14 @@ struct TransactionDetailBentoView: View {
                                    .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
                            }
                         }
+                        .padding( [.leading,.trailing,.bottom], 8.0)
                         .disabled(exportViewModel.transactions.isEmpty)
                         .accessibilityIdentifier("showExportSheetButton")
-
-                        Spacer()
                     }
-                   .frame(height: 48)
-                }
-                .padding(16)
+                }.padding([.leading, .trailing], 16.0)
             }
             .cornerRadius(bentoCornerRadius)
-            .onChange(of: newMainViewModel.currentTransactionUUID) { oldValue,newValue in
-                debugPrint(":::: oldValue \(oldValue)")
-                debugPrint(":::: newValue \(newValue)")
-
+            .onChange(of: newMainViewModel.currentTransactionUUID) { _,_ in
                 guard let transaction = newMainViewModel.currentTransaction,
                       let rate = newMainViewModel.exchangeRate else { return }
                 currentTransaction = transaction
@@ -284,12 +260,6 @@ struct TransactionDetailBentoView: View {
                 amountValue = transaction.litoshis
                 convertedAmountValue = Double(amountValue) / Double(C.litoshis)
                 feesValue = transaction.fee
-
-                debugPrint(":::: amountText \(amountText)")
-                debugPrint(":::: feeText \(feeText)")
-                debugPrint(":::: amountValue \(amountValue)")
-                debugPrint(":::: convertedAmountValue \(convertedAmountValue)")
-                debugPrint(":::: feesValue \(feesValue)")
 
                 if transaction.direction == .sent {
                     directionImageText = "arrowtriangle.up.circle.fill"

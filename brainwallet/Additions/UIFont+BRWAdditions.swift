@@ -39,8 +39,12 @@ extension UIFont {
 	}
 
 	static func ibmPlexSansLight(size: CGFloat) -> UIFont {
-		return UIFont(name: "IBMPlexSans-Light", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
+		return UIFont(name: "IBMPlexSans-Light", size: size) ?? UIFont.preferredFont(forTextStyle: .caption2)
 	}
+
+    static func ibmPlexSansExtraLight(size: CGFloat) -> UIFont {
+        return UIFont(name: "IBMPlexSans-ExtraLight", size: size) ?? UIFont.preferredFont(forTextStyle: .caption1)
+    }
 
     static func ibmPlexSansThin(size: CGFloat) -> UIFont {
         return UIFont(name: "IBMPlexSans-Thin", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
@@ -89,6 +93,10 @@ extension Font {
 	static func ibmPlexSansLight(size: CGFloat) -> Font {
 		return Font.custom("IBMPlexSans-Light", size: size)
 	}
+
+    static func ibmPlexSansExtraLight(size: CGFloat) -> Font {
+        return Font.custom("IBMPlexSans-ExtraLight", size: size)
+    }
 
     static func ibmPlexSansThin(size: CGFloat) -> Font {
         return Font.custom("IBMPlexSans-Thin", size: size)

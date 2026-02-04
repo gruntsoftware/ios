@@ -119,11 +119,9 @@ struct GameHubBentoView: View {
 
             }
             .cornerRadius(bentoCornerRadius)
-            .frame(height: balanceGameBentoHeight, alignment: .center)
-            .onChange(of: shouldShowGameMode) { _,_ in
+            .frame(height: gameBentoHeight, alignment: .center)
+            .frame(minHeight: gameBentoHeight * 0.9, idealHeight: gameBentoHeight * 1.4, maxHeight: gameBentoHeight * 2, alignment: .center)
 
-                // newMainViewModel.shouldShowGameMode = shouldShowGameMode
-            }
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
             }

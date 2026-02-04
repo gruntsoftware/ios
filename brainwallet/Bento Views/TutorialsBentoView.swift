@@ -35,8 +35,6 @@ struct TutorialsBentoView: View {
 
     private let buttonPlatformFactor: CGFloat = 2.1
 
-    private let tagLabelWidth: CGFloat = 80.0
-
     init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
         newMainViewModel = viewModel
@@ -52,7 +50,7 @@ struct TutorialsBentoView: View {
             let width = geometry.size.width
             let labelBackground =  userPrefersDarkTheme ? BentoColor.tutorialGreen1.opacity(0.1) : BentoColor.purple4.opacity(0.1)
             let labelForeground = userPrefersDarkTheme ? BentoColor.tutorialGreen2 :BentoColor.purple4
-
+            let tagLabelWidth: CGFloat = 80.0
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
                 VStack(alignment: .center) {
@@ -64,8 +62,6 @@ struct TutorialsBentoView: View {
                                 .padding(8)
                             Text("TUTORIALS")
                                 .modifier(BWIPSRegular(size: 10.0))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.5)// Shrinks to 50% of original
                                 .padding([.leading, .trailing], 4)
                                 .frame(maxWidth: width * 0.5, maxHeight: 24, alignment: .center)
                                 .foregroundColor(labelForeground)

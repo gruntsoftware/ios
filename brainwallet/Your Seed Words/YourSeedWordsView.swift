@@ -100,15 +100,19 @@ struct YourSeedWordsView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
+                                .padding([.leading, .trailing], 8.0)
                                 .foregroundColor(BrainwalletColor.grape)
 
                             Text("I saved it on paper or metal")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .modifier(BWIPSRegular(size: 20.0))
+                                .padding([.leading, .trailing], 8.0)
                                 .foregroundColor(.white)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                         .stroke(BrainwalletColor.grape, lineWidth: 2.0)
+                                        .padding([.leading, .trailing], 8.0)
+
                                 )
                         }
                         .padding(.all, 8.0)

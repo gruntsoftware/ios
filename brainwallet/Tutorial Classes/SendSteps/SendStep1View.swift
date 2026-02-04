@@ -51,7 +51,7 @@ struct SendStep1View: View {
                       Spacer()
 
                     }
-                    .padding(.top, brainwalletNavBarHeight + balanceGameBentoHeight)
+                    .padding(.top, brainwalletNavBarHeight + balanceBentoHeight)
                     Spacer()
                     Button {
                         userDidTapMP.toggle()
@@ -77,7 +77,7 @@ struct SendStep1View: View {
                         .background(BrainwalletColor.surface.opacity(0.7))
                         .cornerRadius(20.0)
                     }
-                    .padding(.bottom, brainwalletNavBarHeight + balanceGameBentoHeight)
+                    .padding(.bottom, brainwalletNavBarHeight + balanceBentoHeight)
                     Spacer()
                 }
             }

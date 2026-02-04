@@ -103,15 +103,19 @@ struct WipeWalletView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
+                                .padding([.leading, .trailing], 8.0)
                                 .foregroundColor(BrainwalletColor.surface)
 
                             Text(String(localized: "Wipe my Brainwallet & Data"))
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .modifier(BWIPSBold(size: 24.0))
+                                .padding([.leading, .trailing], 8.0)
                                 .foregroundColor(BrainwalletColor.chili)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                         .stroke(BrainwalletColor.chili, lineWidth: 1.0)
+                                        .padding([.leading, .trailing], 8.0)
+
                                 )
                         }
                         .padding(.all, 8.0)

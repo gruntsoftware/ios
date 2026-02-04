@@ -22207,7 +22207,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZURÜCKSETZEN / VON VORNE BEGINNEN"
+            "value" : "ZURÜCKSETZEN"
           }
         },
         "es-419" : {
@@ -22815,7 +22815,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stellen Sie Ihr Brainwallet wieder her"
+            "value" : "Brainwallet: Wiederherstellen"
           }
         },
         "es-419" : {

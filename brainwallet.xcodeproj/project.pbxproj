@@ -198,6 +198,7 @@
 		24DB05EA2E06B49B00C57FE9 /* SettingsExpandingGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05E92E06B49B00C57FE9 /* SettingsExpandingGamesView.swift */; };
 		24DB05EC2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05EB2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift */; };
 		24DB05EE2E06C34A00C57FE9 /* SettingsSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DB05ED2E06C34A00C57FE9 /* SettingsSpacerView.swift */; };
+		24DBB7C62F34E75A002E6511 /* IBMPlexSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24DBB7C52F34E75A002E6511 /* IBMPlexSans-ExtraLight.ttf */; };
 		24E06FC52DF4790B00719B6C /* remote-config-defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24E06FC42DF4790B00719B6C /* remote-config-defaults.plist */; };
 		24E078A82DF1F9A9004B5958 /* PromptCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E078A72DF1F997004B5958 /* PromptCellView.swift */; };
 		24E078AA2DF1F9AE004B5958 /* PromptCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E078A92DF1F9AC004B5958 /* PromptCellViewModel.swift */; };
@@ -789,6 +790,7 @@
 		24DB05E92E06B49B00C57FE9 /* SettingsExpandingGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingGamesView.swift; sourceTree = "<group>"; };
 		24DB05EB2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExpandingCurrencyView.swift; sourceTree = "<group>"; };
 		24DB05ED2E06C34A00C57FE9 /* SettingsSpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSpacerView.swift; sourceTree = "<group>"; };
+		24DBB7C52F34E75A002E6511 /* IBMPlexSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-ExtraLight.ttf"; sourceTree = "<group>"; };
 		24E06FC42DF4790B00719B6C /* remote-config-defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "remote-config-defaults.plist"; path = "brainwallet/PreLaunchResources/remote-config-defaults.plist"; sourceTree = SOURCE_ROOT; };
 		24E078A72DF1F997004B5958 /* PromptCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCellView.swift; sourceTree = "<group>"; };
 		24E078A92DF1F9AC004B5958 /* PromptCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptCellViewModel.swift; sourceTree = "<group>"; };
@@ -1913,6 +1915,7 @@
 				24AFEEEA2F3152CE00427D02 /* IBMPlexSans-SemiBold.ttf */,
 				24AFEEEB2F3152CE00427D02 /* IBMPlexSans-Thin.ttf */,
 				247A83982EA3E3D800B5DFD8 /* BoldenVan.ttf */,
+				24DBB7C52F34E75A002E6511 /* IBMPlexSans-ExtraLight.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -2442,6 +2445,7 @@
 				24D7EA062E336D0800A9AB68 /* Icon.xcassets in Resources */,
 				24D7EA072E336D0800A9AB68 /* POSTBouncer.html in Resources */,
 				24AFEEEC2F3152CE00427D02 /* IBMPlexSans-Bold.ttf in Resources */,
+				24DBB7C62F34E75A002E6511 /* IBMPlexSans-ExtraLight.ttf in Resources */,
 				24AFEEED2F3152CE00427D02 /* IBMPlexSans-SemiBold.ttf in Resources */,
 				24AFEEEE2F3152CE00427D02 /* IBMPlexSans-Medium.ttf in Resources */,
 				24AFEEEF2F3152CE00427D02 /* IBMPlexSans-Light.ttf in Resources */,

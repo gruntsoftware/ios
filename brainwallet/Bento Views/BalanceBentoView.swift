@@ -46,14 +46,14 @@ struct BalanceBentoView: View {
                         SyncSubBentoView(viewModel: SyncSubBentoViewModel(store: newMainViewModel.store,
                                                                           walletManager: newMainViewModel.walletManager))
                     }
+                    .frame(maxHeight: .infinity, alignment: .bottom)
                     .padding([.leading, .trailing], sidePadding)
                 }
                 .frame(maxHeight: .infinity, alignment: .bottom)
-
-                VStack {
+                VStack(alignment: .leading, spacing: 0) {
                     HStack {
                         Text("MY BALANCE")
-                            .modifier(BWIPSSemiBold(size: 16.0))
+                            .modifier(BWIPSRegular(size: 12.0))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                             .foregroundColor(Color.white.opacity(0.70))
                         Spacer()
@@ -66,47 +66,48 @@ struct BalanceBentoView: View {
                                 .foregroundColor(Color.white)
                                 .frame(width: buttonSize,
                                        height: buttonSize,
-                                       alignment: .center)
+                                       alignment: .bottom)
                         }
                         .frame(width: buttonSize * 1.5, height: buttonSize * 1.5)
                         .accessibilityIdentifier("hideBalanceToggleButton")
                         .background(Color.white.opacity(0.07))
                         .cornerRadius(8)
                      }
-                    .padding(.top, 24)
                     .padding([.leading, .trailing], sidePadding)
-                    .frame(height: height * 0.25)
+                    .frame(width: width, height: height * 0.25, alignment: .top)
+////                    .padding(.top, 4)
+//                    Rectangle().fill(.red)
+//                        .frame(width: width, height: height * 0.25, alignment: .top)
 
                     HStack {
                         ZStack {
                             VStack {
                                 Text(shouldShowBalance ? "\(newMainViewModel.walletBalanceLitecoin)" : "")
-                                    .font(isLTCValueShown ? .ibmPlexSansThin(size: 12.0) : .ibmPlexSansBold(size: 35.0))
+                                    .font(isLTCValueShown ? .ibmPlexSansThin(size: 12.0) : .ibmPlexSansBold(size: 29.0))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.white)
                                     .contentTransition(.identity)
-                                    .offset(y: isLTCValueShown ? 45 : 0)
+                                    .offset(y: isLTCValueShown ? 40 : 0)
                                     .zIndex(isLTCValueShown ? 0 : 1)
                                 Spacer()
-                            }
-                            .frame(height: height * 0.75)
 
+                            }
+                            .frame(maxHeight: 50.0, alignment: .top)
                             VStack {
                                 Text(shouldShowBalance ? "\(newMainViewModel.walletBalanceFiat)" : "")
-                                    .font( isLTCValueShown ? .system(size: 35, weight: .bold, design: .default) :
-                                            .system(size: 12, weight: .light, design: .default))
+                                    .font(isLTCValueShown ? .ibmPlexSansBold(size: 29.0) : .ibmPlexSansThin(size: 12.0))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.white)
                                     .contentTransition(.identity)
-                                    .offset(y: isLTCValueShown ? 0 : 45)
+                                    .offset(y: isLTCValueShown ? 0 : 40)
                                     .zIndex(isLTCValueShown ? 1 : 0)
                                 Spacer()
                             }
-                            .frame(height: height * 0.75)
+                            .frame(maxHeight: 50.0, alignment: .top)
                         }
                     }
                     .padding([.leading, .trailing], sidePadding)
-                    .frame(width: width, height: height * 0.75)
+                    .frame(width: width, height: height * 0.75, alignment: .top)
                     .onTapGesture {
                         if shouldShowBalance {
                             withAnimation(.spring(response: 0.8, dampingFraction: 0.5, blendDuration: 0.2)) {
@@ -121,12 +122,15 @@ struct BalanceBentoView: View {
                             }
                         }
                     }
+                    .layoutPriority(1)
+                    .accessibilityIdentifier("balanceFiatToggleButton")
+
+                    Spacer()
                 }
-                .padding(.bottom, 4)
 
             }
             .cornerRadius(bentoCornerRadius)
-            .frame(height: balanceGameBentoHeight, alignment: .center)
+            .frame(minHeight: balanceBentoHeight, idealHeight: balanceBentoHeight * 1.2, maxHeight: balanceBentoHeight * 1.4, alignment: .center)
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
             }
