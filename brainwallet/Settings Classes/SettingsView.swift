@@ -52,7 +52,7 @@ struct SettingsView: View {
     let themeBorderSize: CGFloat = 44.0
     let largeButtonHeight: CGFloat = 65.0
 
-    private let supportURL = URL(string: "https://brainwallet.co/support.html")!
+    private let supportURL = URL(string: "https://brainwallet.co/support")!
 
     private let socialsURL = URL(string: "https://linktr.ee/brainwallet")!
 
