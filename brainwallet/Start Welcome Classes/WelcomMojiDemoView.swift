@@ -3,7 +3,7 @@ import SwiftUI
 import SpriteKit
 import FirebaseAnalytics
 
-struct WelcomMojiDemoView: View {
+struct WelcomeMojiDemoView: View {
 
     @Binding
     var shouldPlay: Bool
@@ -13,6 +13,9 @@ struct WelcomMojiDemoView: View {
 
     @State
     private var didStartGame: Bool = true
+
+    @Binding
+    var userWantsToExit: Bool
 
     @State
     private var countdown: TimeInterval = 30.0
@@ -25,6 +28,20 @@ struct WelcomMojiDemoView: View {
 
     var width: CGFloat = 0.0
     var height: CGFloat = 0.0
+
+    var gameIsInWelcomeMode: Bool = false
+
+    init(width: CGFloat,
+         height: CGFloat,
+         shouldPlay: Binding<Bool>,
+         userWantsToExit: Binding<Bool>,
+         gameIsInWelcomeMode: Bool) {
+        _shouldPlay = shouldPlay
+        _userWantsToExit = userWantsToExit
+        self.gameIsInWelcomeMode = gameIsInWelcomeMode
+        self.height = height
+        self.width = width
+    }
 
     private func makeScene() -> WelcomeFallinScene {
         let scene = WelcomeFallinScene(width: width,
@@ -46,15 +63,6 @@ struct WelcomMojiDemoView: View {
         scene.backgroundColor = .clear
         return scene
     }
-
-    init(width: CGFloat,
-         height: CGFloat,
-         shouldPlay: Binding<Bool>) {
-        _shouldPlay = shouldPlay
-        self.height = height
-        self.width = width
-    }
-
     var body: some View {
 
         GeometryReader { geometry in
@@ -89,7 +97,7 @@ struct WelcomMojiDemoView: View {
                 VStack {
                     HStack {
                         Text("\(counter)")
-                            .modifier(BWBoldenVan(size: 40))
+                            .modifier(BWBoldenVan(size: 35))
                             .padding(.top, 8)
                             .padding([.trailing], 24)
                             .frame(maxWidth: .infinity, alignment: .trailing)
@@ -107,7 +115,7 @@ struct WelcomMojiDemoView: View {
                 VStack {
 
                     Text( String(format: "%.2f", countdown))
-                        .modifier(BWBoldenVan(size: 40))
+                        .modifier(BWBoldenVan(size: 35))
                         .padding(.top, 8)
                         .padding([.leading], 24)
 
@@ -122,6 +130,31 @@ struct WelcomMojiDemoView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer()
 
+                }
+
+                if !gameIsInWelcomeMode {
+
+                    VStack(alignment: .center) {
+
+                        Button {
+                            userWantsToExit.toggle()
+                        } label: {
+                            Text("Exit")
+                                .modifier(BWIPSLight(size: 30))
+                                .padding(.top, 8)
+                                .foregroundStyle(
+                                    LinearGradient(
+                                        colors: [.white,.white, BentoColor.gameBlue1.opacity(0.2)],
+                                        startPoint: .top,
+                                        endPoint: .bottom
+                                    )
+                                )
+                        }
+                        .frame(alignment: .center)
+                        .padding(8.0)
+
+                        Spacer()
+                    }
                 }
 
                 if !didStartGame {
@@ -156,7 +189,6 @@ struct WelcomMojiDemoView: View {
                         .cornerRadius(20.0)
                     }
                 }
-
             }
             .frame(width: width, height: height)
         }

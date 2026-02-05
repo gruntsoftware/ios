@@ -85,15 +85,17 @@ struct StartView: View {
                                    alignment: .center)
                             .accessibilityIdentifier("brainwalletLogo")
 
-                        WelcomMojiDemoView(width: miniGameWidth,
+                        WelcomeMojiDemoView(width: miniGameWidth,
                                            height: miniGameWidth,
-                                           shouldPlay: .constant(true))
+                                           shouldPlay: .constant(true),
+                                           userWantsToExit: .constant(false),
+                                           gameIsInWelcomeMode: true)
                             .frame(maxWidth: miniGameWidth,
                                    maxHeight: miniGameWidth,
                                    alignment: .center)
                             .padding([.leading, .trailing], 16.0)
                             .accessibilityIdentifier("welcomMojiDemoView")
-Spacer()
+                        Spacer()
                         HStack {
                             Button(action: {
                                 userPrefersDarkMode.toggle()

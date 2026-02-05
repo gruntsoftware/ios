@@ -68,7 +68,7 @@ struct GameHubBentoView: View {
                     HStack {
 
                         Button(action: {
-                          shouldShowGameMode.toggle()
+                            newMainViewModel.shouldShowGameMode.toggle()
                         }) {
 
                             HStack {

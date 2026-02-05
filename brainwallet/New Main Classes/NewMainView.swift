@@ -165,6 +165,9 @@ struct NewMainView: View {
                                         .frame(idealHeight: balanceBentoHeight * 0.9, maxHeight: balanceBentoHeight, alignment: .top)
                                         .padding(bentoPadding)
                                         .accessibilityIdentifier("gameHubBentoView")
+                                        .onTapGesture {
+                                            newMainViewModel.shouldShowGameMode.toggle()
+                                        }
                             }
                             .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 0.0 : 1.0, anchor: .bottom)
                             .transition(.scale)
@@ -287,7 +290,7 @@ struct NewMainView: View {
                         Spacer()
 
                         Button(action: {
-                            shouldShowGameMode.toggle()
+                            newMainViewModel.shouldShowGameMode.toggle()
                             Analytics.logEvent("user_did_tap_gamemode",
                                 parameters: [
                                     "platform": "ios",
@@ -345,9 +348,6 @@ struct NewMainView: View {
                     userPrefersDarkTheme = newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                     walletIsSyncing = newMainViewModel.walletIsSyncing
-                }
-                .onChange(of: shouldShowGameMode) { _,_ in
-                    newMainViewModel.shouldShowGameMode = shouldShowGameMode
                 }
                 .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
                     disableTransactionDetail = newMainViewModel.filteredTransactions.isEmpty

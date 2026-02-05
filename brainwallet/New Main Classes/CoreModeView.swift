@@ -20,15 +20,33 @@ struct CoreModeView: View {
     @State
     var showGameMode: Bool = false
 
+    @State
+    var userWanteToExit: Bool = false
+
     init(mainViewModel: NewMainViewModel, receiveViewModel: NewReceiveViewModel) {
         newMainViewModel = mainViewModel
         newReceiveViewModel = receiveViewModel
 
     }
     var body: some View {
-        GeometryReader { _ in
+        GeometryReader { geometry in
+
+            let width = geometry.size.width
+            let height = geometry.size.height
+
             if showGameMode {
-                SampleGameView(showGame: $showGameMode)
+              //  SampleGameView(showGame: $showGameMode)
+                WelcomeMojiDemoView(width: width,
+                                   height: height,
+                                   shouldPlay: .constant(true),
+                                   userWantsToExit: $showGameMode,
+                                   gameIsInWelcomeMode: false)
+                    .frame(maxWidth: width,
+                           maxHeight: height,
+                           alignment: .center)
+                    .padding([.leading, .trailing], 16.0)
+                    .accessibilityIdentifier("welcomMojiDemoView")
+
             } else {
                 NewMainView(viewModel: newMainViewModel, receiveViewModel: newReceiveViewModel)
             }
