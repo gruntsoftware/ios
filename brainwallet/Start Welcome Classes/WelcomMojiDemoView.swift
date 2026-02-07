@@ -4,7 +4,7 @@ import SpriteKit
 import FirebaseAnalytics
 
 struct WelcomeMojiDemoView: View {
-    
+
     @Environment(\.requestReview)
     private var requestReview
 

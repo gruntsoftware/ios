@@ -26,21 +26,35 @@ final class BrainwalletUITests: XCTestCase {
         let app = XCUIApplication()
         setupSnapshot(app)
         app.launch()
+        
         let darkModeButton = app.buttons["darkModePreference"]
         XCTAssert(darkModeButton.waitForExistence(timeout: 10))
-        darkModeButton.tap()
-        snapshot("01WelcomeScreen")
-        darkModeButton.tap()
-        snapshot("02WelcomeScreen")
-        app.buttons["restoreYourBrainwalletButton"].tap()
-        snapshot("03RestoreScreen")
-        app.buttons["backButtonToStartRestore"].tap()
-        app.buttons["readyCreateNewBrainwalletButton"].tap()
-        snapshot("04ReadyScreen")
-        app.buttons["backButtonToStartReady"].tap()
         
-        XCTAssertTrue(app.buttons["darkModePreference"].exists, "Verified darkModePreference")
-        XCTAssertTrue(app.buttons["restoreYourBrainwalletButton"].exists, "Verified restoreButton")
-        XCTAssertTrue(app.buttons["readyCreateNewBrainwalletButton"].exists, "Verified readyButton")
-     }
+        darkModeButton.tap()
+        sleep(1)  // Allow animation to complete
+        snapshot("01WelcomeScreen")
+        
+        darkModeButton.tap()
+        sleep(1)
+        snapshot("02WelcomeScreen")
+        
+        app.buttons["restoreYourBrainwalletButton"].tap()
+        XCTAssert(app.buttons["backButtonToStartRestore"].waitForExistence(timeout: 5))
+        snapshot("03RestoreScreen")
+        
+        app.buttons["backButtonToStartRestore"].tap()
+        XCTAssert(app.buttons["restoreYourBrainwalletButton"].waitForExistence(timeout: 5))
+        
+        app.buttons["readyCreateNewBrainwalletButton"].tap()
+        XCTAssert(app.buttons["backButtonToStartReady"].waitForExistence(timeout: 5))
+        snapshot("04ReadyScreen")
+        
+        app.buttons["backButtonToStartReady"].tap()
+        XCTAssert(darkModeButton.waitForExistence(timeout: 5))
+        
+        XCTAssertTrue(app.buttons["darkModePreference"].exists)
+        XCTAssertTrue(app.buttons["restoreYourBrainwalletButton"].exists)
+        XCTAssertTrue(app.buttons["readyCreateNewBrainwalletButton"].exists)
+    }
+    
 }
