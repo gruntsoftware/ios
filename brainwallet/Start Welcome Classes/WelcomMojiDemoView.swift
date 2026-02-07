@@ -138,6 +138,11 @@ struct WelcomeMojiDemoView: View {
 
                         Button {
                             userWantsToExit.toggle()
+                            Analytics.logEvent("did_exit_demo_game",
+                                parameters: [
+                                    "platform": "ios",
+                                    "app_version": AppVersion.string
+                                ])
                         } label: {
                             Text("Exit")
                                 .modifier(BWIPSLight(size: 30))
