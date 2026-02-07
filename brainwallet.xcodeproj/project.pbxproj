@@ -307,7 +307,6 @@
 		C312D3B62D7DC27700BB97A4 /* PaymentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2892D7DC27700BB97A4 /* PaymentProtocol.swift */; };
 		C312D3B72D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0832D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift */; };
 		C312D3B92D7DC27700BB97A4 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0672D7DC27700BB97A4 /* MenuButton.swift */; };
-		C312D3BB2D7DC27700BB97A4 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2BF2D7DC27700BB97A4 /* TransactionsViewModel.swift */; };
 		C312D3BC2D7DC27700BB97A4 /* Constants+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2382D7DC27700BB97A4 /* Constants+Events.swift */; };
 		C312D3C22D7DC27700BB97A4 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D22A2D7DC27700BB97A4 /* BundleExtension.swift */; };
 		C312D3C32D7DC27700BB97A4 /* FailedAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2482D7DC27700BB97A4 /* FailedAlertView.swift */; };
@@ -998,7 +997,6 @@
 		C312D2B82D7DC27700BB97A4 /* TestnetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestnetData.swift; sourceTree = "<group>"; };
 		C312D2B92D7DC27700BB97A4 /* TextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextView+Extension.swift"; sourceTree = "<group>"; };
 		C312D2BC2D7DC27700BB97A4 /* TransactionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionManager.swift; sourceTree = "<group>"; };
-		C312D2BF2D7DC27700BB97A4 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
 		C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferAmountViewModel.swift; sourceTree = "<group>"; };
 		C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
@@ -1703,7 +1701,6 @@
 		24B065262DC6130200B5E000 /* Transactions Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C312D2BF2D7DC27700BB97A4 /* TransactionsViewModel.swift */,
 				24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */,
 				2457DD332EB79AC400688B9A /* EmptyTransactionRow.swift */,
 			);
@@ -2819,7 +2816,6 @@
 				C312D3B72D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift in Sources */,
 				C312D3B92D7DC27700BB97A4 /* MenuButton.swift in Sources */,
 				24F378022DE89C7800A388AB /* MoonPayHelper.swift in Sources */,
-				C312D3BB2D7DC27700BB97A4 /* TransactionsViewModel.swift in Sources */,
 				C312D3BC2D7DC27700BB97A4 /* Constants+Events.swift in Sources */,
 				C312D3C22D7DC27700BB97A4 /* BundleExtension.swift in Sources */,
 				2428717D2DE5C2230035DE48 /* ClearNumberPad.swift in Sources */,
@@ -3230,7 +3226,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602050.1;
+				CURRENT_PROJECT_VERSION = 2602070.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3422,7 +3418,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602050.1;
+				CURRENT_PROJECT_VERSION = 2602070.0;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;

@@ -4,6 +4,9 @@ import SpriteKit
 import FirebaseAnalytics
 
 struct WelcomeMojiDemoView: View {
+    
+    @Environment(\.requestReview)
+    private var requestReview
 
     @Binding
     var shouldPlay: Bool
@@ -196,6 +199,14 @@ struct WelcomeMojiDemoView: View {
                 }
             }
             .frame(width: width, height: height)
+        }
+        .onAppear {
+            requestReview()
+            Analytics.logEvent("did_request_rating",
+                parameters: [
+                    "platform": "ios",
+                    "app_version": AppVersion.string
+                ])
         }
         .onDisappear {
             welcomeScene = nil

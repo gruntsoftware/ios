@@ -10,6 +10,9 @@ import SwiftUI
 import FirebaseAnalytics
 
 struct NewMainView: View {
+    
+    @Environment(\.requestReview)
+    private var requestReview
 
     @ObservedObject
     var newMainViewModel: NewMainViewModel
@@ -348,6 +351,15 @@ struct NewMainView: View {
                     userPrefersDarkTheme = newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                     walletIsSyncing = newMainViewModel.walletIsSyncing
+                    
+                    if NewMainViewModel.transactions.count > 2 && NewMainViewModel.transactions.count < 4 {
+                        requestReview()
+                        Analytics.logEvent("did_request_rating",
+                            parameters: [
+                                "platform": "ios",
+                                "app_version": AppVersion.string
+                            ])
+                    }
                 }
                 .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
                     disableTransactionDetail = newMainViewModel.filteredTransactions.isEmpty
