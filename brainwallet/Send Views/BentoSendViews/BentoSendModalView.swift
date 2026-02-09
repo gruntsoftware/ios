@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct BentoSendModalView: View {
 
@@ -142,6 +143,12 @@ struct BentoSendModalView: View {
             continueTextColor = userPrefersDarkTheme ? .black : .white
             isLTCValueShown = newMainViewModel.isLTCValueShown
             userWalletIsEmpty = (newMainViewModel.walletBalanceLitecoinDouble > 0.0 ) ? false : true
+
+            Analytics.logEvent("user_did_tap_send_sheet",
+                parameters: [
+                    "platform": "ios",
+                    "app_version": AppVersion.string
+                ])
         }
         .onChange(of: didTapPaste) { _,_ in
 

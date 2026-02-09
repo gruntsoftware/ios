@@ -6,6 +6,7 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import FirebaseAnalytics
 
 struct TutorialReceivePageView: View {
 
@@ -32,17 +33,16 @@ struct TutorialReceivePageView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-
-            let width = geometry.size.width
+        GeometryReader { _ in
 
             ZStack {
                 VStack(alignment: .center) {
                     HStack {
                         Text("How to Receive LTC")
-                            .font(.system(size: 24, weight: .semibold, design: .default))
+                            .modifier(BWIPSSemiBold(size: 24.0))
                             .foregroundColor(.white)
                             .padding([.leading, .trailing], 4)
+                            .accessibilityIdentifier("tutorialReceivePageViewTitle")
                     }
                     .padding(24)
                     Spacer()
@@ -51,12 +51,9 @@ struct TutorialReceivePageView: View {
                     ReceiveStep1View(selectedStep: $selectedStep,
                         userPrefersDarkTheme: $userPrefersDarkTheme)
                         .tag(0)
-                    SendStep2View(selectedStep: $selectedStep,
+                    ReceiveStep2View(selectedStep: $selectedStep,
                         userPrefersDarkTheme: $userPrefersDarkTheme)
                         .tag(1)
-                    SendStep3View(selectedStep: $selectedStep,
-                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                        .tag(2)
                 }
                 .tabViewStyle(.page)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
@@ -64,9 +61,12 @@ struct TutorialReceivePageView: View {
             .cornerRadius(bentoCornerRadius)
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
-            }
-            .onChange(of: userDidTapMP) { _,_ in
-                /// TBD
+                Analytics
+                    .logEvent("user_tapped_receive_tutorial",
+                    parameters: [
+                        "platform": "ios",
+                        "app_version": AppVersion.string
+                    ])
             }
         }
     }

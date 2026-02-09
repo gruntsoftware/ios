@@ -129,7 +129,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     }
 
 	func applicationDidBecomeActive(_: UIApplication) {
-		UIApplication.shared.applicationIconBadgeNumber = 0
+		UNUserNotificationCenter.current().setBadgeCount(0) { error in
+            if let error = error {
+                debugPrint("Failed to set badge count: \(error.localizedDescription)")
+            }
+        }
 		/// Activating for  future use
         /// AppsFlyerLib.shared().start()
 	}

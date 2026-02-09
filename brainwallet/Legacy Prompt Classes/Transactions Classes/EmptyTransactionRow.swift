@@ -18,9 +18,7 @@ struct EmptyTransactionRow: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-            let height = geometry.size.height
-            let width = geometry.size.width
+        GeometryReader { _ in
 
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
@@ -28,7 +26,7 @@ struct EmptyTransactionRow: View {
                     Spacer()
                     HStack {
                         Text("TRANSACTION HISTORY")
-                            .font(.system(size: 17, weight: .bold, design: .default))
+                            .modifier(BWIPSBold(size: 17.0))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
 
@@ -38,7 +36,7 @@ struct EmptyTransactionRow: View {
 
                     HStack {
                         Text("Nothing yet. Top up now!")
-                            .font(.system(size: 15, weight: .ultraLight, design: .default))
+                            .modifier(BWIPSThin(size: 15.0))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
                             Spacer()

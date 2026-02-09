@@ -27,7 +27,7 @@ struct AddressFieldView: UIViewRepresentable {
 		textfield.placeholder = placeholder
 		textfield.textAlignment = .left
 		textfield.adjustsFontSizeToFitWidth = true
-		textfield.font = UIFont.barlowMedium(size: 14.0)
+		textfield.font = UIFont.ibmPlexSansMedium(size: 14.0)
 		textfield.minimumFontSize = 12.0
 		textfield.keyboardType = .URL
 		textfield.autocorrectionType = .no

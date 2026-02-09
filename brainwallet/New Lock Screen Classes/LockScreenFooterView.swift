@@ -14,7 +14,10 @@ struct LockScreenFooterView: View {
     var viewModel: LockScreenViewModel
 
     @State
-    private var shoulShowWipeAlert: Bool = false
+    private var shouldShowWipeAlert: Bool = false
+
+    @State
+    private var shouldShowAddressModal: Bool = false
 
     @Binding
     var userPrefersDarkMode: Bool
@@ -55,8 +58,7 @@ struct LockScreenFooterView: View {
                             alignment: .center)
 
                         Button(action: {
-                            viewModel.userDidTapQR?()
-                            viewModel.shouldShowQR.toggle()
+                            viewModel.shouldShowReceiveAddress.toggle()
                         }) {
                             VStack {
                                 Spacer()
@@ -76,7 +78,7 @@ struct LockScreenFooterView: View {
                         .padding(8.0)
 
                         Button(action: {
-                            shoulShowWipeAlert.toggle()
+                            shouldShowWipeAlert.toggle()
                         }) {
                             VStack {
                                 Spacer()
@@ -97,13 +99,26 @@ struct LockScreenFooterView: View {
                     .frame(height: 45.0, alignment: .center)
                     .frame(maxWidth: .infinity)
                     .padding([.leading, .trailing], 8.0)
-                    .sheet(isPresented: $shoulShowWipeAlert) {
+                    .sheet(isPresented: $shouldShowWipeAlert) {
                         WipeWalletView(viewModel: viewModel,
-                                       shouldDismiss: $shoulShowWipeAlert,
+                                       shouldDismiss: $shouldShowWipeAlert,
                                        didCompleteWipe: $viewModel.didCompleteWipingWallet)
                     }
-                    .onChange(of: viewModel.didCompleteWipingWallet) { _ in
-                        shoulShowWipeAlert.toggle()
+                    .sheet(isPresented: $shouldShowAddressModal) {
+                        LockReceiveModalView(viewModel: viewModel,
+                                             shouldShowAddressModal: $shouldShowAddressModal,
+                                             userPrefersDarkMode: $userPrefersDarkMode)
+                        .cornerRadius(bentoCornerRadius)
+                        .presentationDragIndicator(.hidden)
+                        .presentationDetents([.medium])
+                        .presentationBackground(.ultraThickMaterial)
+                        .ignoresSafeArea(edges: .bottom)
+                    }
+                    .onChange(of: userPrefersDarkMode) { _,_ in
+                        viewModel.userDidSetThemePreference(userPrefersDarkMode: userPrefersDarkMode)
+                    }
+                    .onChange(of: viewModel.didCompleteWipingWallet) { _,_ in
+                        shouldShowWipeAlert.toggle()
                     }
                 }
             }

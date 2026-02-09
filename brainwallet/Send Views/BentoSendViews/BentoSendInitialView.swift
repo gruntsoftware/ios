@@ -131,9 +131,7 @@ struct BentoSendInitialView: View {
                 backgroundColor.edgesIgnoringSafeArea(.all)
                 VStack {
                     Text("Send Litecoin")
-                        .font(.system(size: 24, weight: .bold, design: .default))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.9)
+                        .modifier(BWIPSBold(size: 24.0))
                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
                         .padding(2.5 * sectionSpacer)
                         .onTapGesture {
@@ -270,12 +268,6 @@ struct BentoSendInitialView: View {
                                             bwTransaction.fiatAmount = rate * newMainViewModel.currentTotalAmount.rawValue
                                             bwTransaction.globalCode = code
                                             newMainViewModel.bwTransaction = bwTransaction
-                                            debugPrint(" bwTransaction Amount: \(bwTransaction.amount)\n")
-                                            debugPrint(" bwTransaction Address: \(bwTransaction.sendAddress)\n")
-                                            debugPrint(" bwTransaction NetworkFee: \(bwTransaction.networkFee)\n")
-                                            debugPrint(" bwTransaction ServiceFee: \(bwTransaction.serviceFee)\n")
-                                            debugPrint(" bwTransaction Rate: \(bwTransaction.currentRate)\n")
-                                            debugPrint(" bwTransaction Fiat Amount: \(bwTransaction.fiatAmount)\n")
                                         }
                                         isReadyToSend = isValidAddress && isAmountValid && !sendLTCAddress.isEmpty
                                      }
@@ -303,7 +295,7 @@ struct BentoSendInitialView: View {
 
                                                 } else {
                                                     Text( "\(newMainViewModel.exchangeRate?.code ?? "")")
-                                                        .font(.system(size: 18, weight: .bold, design: .default))
+                                                        .modifier(BWIPSBold(size: 18.0))
                                                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
                                                         .frame(height: 30, alignment: .trailing)
                                                 }
@@ -369,7 +361,7 @@ struct BentoSendInitialView: View {
                     }
 
                     Text("Dismiss keyboard")
-                        .font(.system(size: 14, weight: .light, design: .default))
+                        .modifier(BWIPSLight(size: 14.0))
                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
                         .padding(sectionSpacer)
                         .onTapGesture {
@@ -396,7 +388,7 @@ struct BentoSendInitialView: View {
                                     .fill(userPrefersDarkTheme ? .white : BentoColor.nearNearBlack)
                                     .frame(height: 48)
                                 Text("Continue")
-                                    .font(.system(size: 18, weight: .semibold, design: .default))
+                                    .modifier(BWIPSSemiBold(size: 18.0))
                                     .foregroundColor(isReadyToSend ? continueTextColor : continueTextColor.opacity(0.2))
                             }
                         }

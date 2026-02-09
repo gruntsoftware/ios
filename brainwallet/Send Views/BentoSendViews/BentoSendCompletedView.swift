@@ -163,7 +163,7 @@ struct BentoSendCompletedView: View {
                         Text(String(localized:"amount:"))
                             .modifier(SendCompletedSubTitleModifier(userPrefersDarkTheme: $userPrefersDarkTheme))
                         Text(localizedAmountSent)
-                            .font(.system(size: 32, weight: .bold, design: .default))
+                            .modifier(BWIPSBold(size: 32.0))
                             .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .padding(15.0)
@@ -179,11 +179,11 @@ struct BentoSendCompletedView: View {
                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
                         VStack {
                             Text(String(localized: "Tap here to verify your published transaction:"))
-                                .font(.system(size: 11, weight: .light, design: .default))
+                                .modifier(BWIPSLight(size: 11.0))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             Text(String(localized: "\(newMainViewModel.bwTransaction.txIDString)"))
-                                .font(.system(size: 11, weight: .light, design: .default))
+                                .modifier(BWIPSLight(size: 11.0))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                         }
@@ -206,7 +206,7 @@ struct BentoSendCompletedView: View {
                                     .frame(height: 48)
 
                                 Text(shouldShowDetail ? "Completed transaction" : "Transactions details")
-                                    .font(.system(size: 18, weight: .semibold, design: .default))
+                                    .modifier(BWIPSSemiBold(size: 18.0))
                                     .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             }
                         }
@@ -225,7 +225,7 @@ struct BentoSendCompletedView: View {
                                     .frame(height: 48)
 
                                 Text("Done")
-                                    .font(.system(size: 18, weight: .semibold, design: .default))
+                                    .modifier(BWIPSSemiBold(size: 18.0))
                                     .foregroundColor(userPrefersDarkTheme ? .black : .white)
 
                             }

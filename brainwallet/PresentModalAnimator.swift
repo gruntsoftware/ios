@@ -26,10 +26,10 @@ extension PresentModalAnimator: UIViewControllerAnimatedTransitioning {
 		guard let toView = transitionContext.view(forKey: .to) else { assertionFailure("Missing to view"); return }
 		let container = transitionContext.containerView
 
-		blurView.frame = container.frame
-		blurView.effect = nil
-		blurView.alpha = 1.0
-		container.addSubview(blurView)
+        blurUIVisualEffectView.frame = container.frame
+        blurUIVisualEffectView.effect = nil
+        blurUIVisualEffectView.alpha = 1.0
+		container.addSubview(blurUIVisualEffectView)
 
 		// This mask view is placed below the bottom of the modal being presented.
 		// It needs to be there to cover up the gap left below the modal during the
@@ -49,7 +49,7 @@ extension PresentModalAnimator: UIViewControllerAnimatedTransitioning {
 		UIView.spring(duration, animations: {
 			// fromFrame.height - 30.0
 			maskView?.frame = CGRect(x: 0, y: fromFrame.height, width: fromFrame.width, height: self.heightOffset)
-			blurView.effect = UIBlurEffect(style: .dark)
+            blurUIVisualEffectView.effect = UIBlurEffect(style: .dark)
 			toView.frame = finalToViewFrame
 		}, completion: { _ in
 			transitionContext.completeTransition(true)

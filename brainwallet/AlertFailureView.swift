@@ -28,7 +28,7 @@ struct AlertFailureView: View {
 
 			Text(self.errorMessage.localizedCapitalized)
 				.foregroundColor(.white)
-				.font(Font(UIFont.barlowSemiBold(size: 16.0)))
+				.modifier(BWIPSSemiBold(size: 16.0))
 				.padding(.bottom, 60)
 		}
 		.background(Color(UIColor.gray))

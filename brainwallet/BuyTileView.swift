@@ -4,7 +4,7 @@ struct BuyTileView: View {
 	let codeCellHeight = 28.0
 	let codeCellWidth = 80.0
 	let smallPad = 3.0
-	let buttonRegularFont: Font = .barlowSemiBold(size: 18.0)
+	let buttonRegularFont: Font = .ibmPlexSansSemiBold(size: 18.0)
 
 	private var code: String
 

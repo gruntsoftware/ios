@@ -6,6 +6,7 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import FirebaseAnalytics
 
 struct ReceiveStep2View: View {
 
@@ -15,8 +16,8 @@ struct ReceiveStep2View: View {
     @Binding
     var userPrefersDarkTheme: Bool
 
-    private let titleStep2 = String(localized: "2. Show or share the address")
-    private let descriptionStep2 = String(localized: "Balance over zero? Switch to currency or LTC to figure out how much to send. Adjust the network fee in settings")
+    private let titleStep2 = String(localized: "2. Pick the amount and payment method")
+    private let descriptionStep2 = String(localized: "The whole process will be done on in 5 mins!")
 
     init(selectedStep: Binding<Int>,
          userPrefersDarkTheme: Binding<Bool>) {
@@ -28,32 +29,28 @@ struct ReceiveStep2View: View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
-            let height = geometry.size.height
-
             let calloutWidth = width * 0.7
-            let pointToBalanceOffset = 85.0
             ZStack {
                 VStack {
                     Spacer()
                     HStack {
                         Spacer()
-                        Image("tutorial-send-set")
+                        Image("moonpay-sheet")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: width * 0.4)
-                            .clipShape(RoundedRectangle(cornerRadius: 8.0,
+                            .frame(width: width * 0.8)
+                            .clipShape(RoundedRectangle(cornerRadius: 12.0,
                                                         style: .continuous))
                             .shadow(color: .black.opacity(0.6),
                                     radius: 3.0, x: 0, y: 5)
                         Spacer()
                     }
-                    .frame(height: calloutHeight, alignment: .bottom)
                     .padding(.bottom, brainwalletNavBarHeight)
                     HStack {
-
+                        Spacer()
                         CalloutTextView(title: titleStep2,
                                         description: descriptionStep2,
-                                        corner: .constant(.bottomLeft),
+                                        corner: .constant(.none),
                                         userPrefersDarkTheme: $userPrefersDarkTheme)
                         .frame(width: calloutWidth, alignment: .bottom)
                       Spacer()
@@ -63,6 +60,14 @@ struct ReceiveStep2View: View {
                     .padding(.bottom, brainwalletNavBarHeight)
                 }
             }
+        }
+        .onAppear {
+            Analytics
+                .logEvent("user_completed_receive_tutorial",
+                parameters: [
+                    "platform": "ios",
+                    "app_version": AppVersion.string
+                ])
         }
     }
 }

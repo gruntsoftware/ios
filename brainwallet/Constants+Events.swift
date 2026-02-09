@@ -9,10 +9,12 @@ let kSeedPhraseLength: Int = 12
 let kTransactionsFooterHeight: CGFloat = 110
 let bentoCornerRadius: CGFloat = 14.0
 let brainwalletNavBarHeight: CGFloat = 90.0
-let calloutHeight: CGFloat = 108.0
-let balanceGameBentoHeight: CGFloat = 135.0
-let transactionsBentoHeight: CGFloat = 85.0
+let calloutHeight: CGFloat = 120.0
+let balanceBentoHeight: CGFloat = 105.0
+let gameBentoHeight: CGFloat = 120.0
+let transactionsBentoHeight: CGFloat = 70.0
 let iconSize: CGFloat = 20.0
+let largeButtonHeight: CGFloat = 50.0
 
 struct BrainwalletSupport {
 	static let dashboard = "https://brainwallet.co/support.html"

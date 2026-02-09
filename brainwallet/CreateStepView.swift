@@ -7,7 +7,7 @@ struct CreateStepView: View {
     var backgroundColor: Color = BrainwalletColor.surface
 	var createStepConfig: CreateStepConfig = .intro
 
-	let hugeFont = Font.barlowBold(size: 30.0)
+	let hugeFont = Font.ibmPlexSansBold(size: 30.0)
 
 	init(createConfig: CreateStepConfig) {
 		createStepConfig = createConfig

@@ -6,6 +6,7 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import FirebaseAnalytics
 
 struct TutorialWalkthroughPageView: View {
 
@@ -32,32 +33,38 @@ struct TutorialWalkthroughPageView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-
-            let width = geometry.size.width
+        GeometryReader { _ in
 
             ZStack {
                 VStack(alignment: .center) {
                     HStack {
-                        Text("How to Receive LTC")
-                            .font(.system(size: 24, weight: .semibold, design: .default))
+                        Text("Brainwallet Walkthrough")
+                            .modifier(BWIPSSemiBold(size: 24.0))
                             .foregroundColor(.white)
                             .padding([.leading, .trailing], 4)
+                            .accessibilityIdentifier("tutorialWalkthroughPageViewTitle")
+
                     }
                     .padding(24)
                     Spacer()
                 }
                 TabView(selection: $selectedStep) {
-                    SendStep1View(selectedStep: $selectedStep,
-                                  userDidTapMP: $userDidTapMP,
-                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                        .tag(0)
-                    SendStep2View(selectedStep: $selectedStep,
-                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                        .tag(1)
-                    SendStep3View(selectedStep: $selectedStep,
-                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                        .tag(2)
+
+                    WalkthroughStep1View(selectedStep: $selectedStep,
+                                         userPrefersDarkTheme: $userPrefersDarkTheme)
+                    .tag(0)
+                    WalkthroughStep2View(selectedStep: $selectedStep,
+                                         userPrefersDarkTheme: $userPrefersDarkTheme)
+                    .tag(1)
+                    WalkthroughStep3View(selectedStep: $selectedStep,
+                                         userPrefersDarkTheme: $userPrefersDarkTheme)
+                    .tag(2)
+                    WalkthroughStep4View(selectedStep: $selectedStep,
+                                         userPrefersDarkTheme: $userPrefersDarkTheme)
+                    .tag(3)
+                    WalkthroughStep5View(selectedStep: $selectedStep,
+                                         userPrefersDarkTheme: $userPrefersDarkTheme)
+                    .tag(4)
                 }
                 .tabViewStyle(.page)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
@@ -65,9 +72,12 @@ struct TutorialWalkthroughPageView: View {
             .cornerRadius(bentoCornerRadius)
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
-            }
-            .onChange(of: userDidTapMP) { _,_ in
-                /// TBD
+                Analytics
+                    .logEvent("user_tapped_walkthrough_tutorial",
+                    parameters: [
+                        "platform": "ios",
+                        "app_version": AppVersion.string
+                    ])
             }
         }
     }

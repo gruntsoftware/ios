@@ -33,14 +33,14 @@ struct WordBucketView: View {
                             .foregroundColor(BrainwalletColor.background.opacity(0.4))
 
                         Text(word)
-                            .font(.barlowRegular(size: 16.0))
+                            .modifier(BWIPSRegular(size: 16.0))
                             .foregroundColor(userPrefersDarkTheme ? .white :
                                 BrainwalletColor.content)
 
                         VStack {
                             HStack {
                                 Text("\(wordNumber)")
-                                    .font(.barlowRegular(size: 12.0))
+                                    .modifier(BWIPSRegular(size: 12.0))
                                     .foregroundColor(userPrefersDarkTheme ? .white :
                                         BrainwalletColor.content)
                                     .frame(width: 22,
@@ -52,7 +52,7 @@ struct WordBucketView: View {
                             }
                         }
                     }
-                    .onChange(of: seedWord) { seedWord in
+                    .onChange(of: seedWord) { _,seedWord in
                         if let draggableWord = seedWord.first,
                            !draggableWord.word.isEmpty {
                             word = draggableWord.word

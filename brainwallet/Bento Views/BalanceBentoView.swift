@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct BalanceBentoView: View {
     @ObservedObject
@@ -37,22 +38,22 @@ struct BalanceBentoView: View {
             let height = geometry.size.height
 
             ZStack {
-                BalanceGameBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
+                BalanceBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)
                     .edgesIgnoringSafeArea(.all)
                 VStack {
+                    Spacer()
                     HStack {
                         SyncSubBentoView(viewModel: SyncSubBentoViewModel(store: newMainViewModel.store,
                                                                           walletManager: newMainViewModel.walletManager))
                     }
+                    .frame(maxHeight: .infinity, alignment: .bottom)
                     .padding([.leading, .trailing], sidePadding)
                 }
-
-                VStack {
+                .frame(maxHeight: .infinity, alignment: .bottom)
+                VStack(alignment: .leading, spacing: 0) {
                     HStack {
                         Text("MY BALANCE")
-                            .font(.system(size: 16, weight: .semibold, design: .default))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.8)// Shrinks to 80% of original
+                            .modifier(BWIPSRegular(size: 12.0))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                             .foregroundColor(Color.white.opacity(0.70))
                         Spacer()
@@ -65,60 +66,71 @@ struct BalanceBentoView: View {
                                 .foregroundColor(Color.white)
                                 .frame(width: buttonSize,
                                        height: buttonSize,
-                                       alignment: .center)
+                                       alignment: .bottom)
                         }
                         .frame(width: buttonSize * 1.5, height: buttonSize * 1.5)
                         .accessibilityIdentifier("hideBalanceToggleButton")
                         .background(Color.white.opacity(0.07))
                         .cornerRadius(8)
                      }
-                    .padding(.top, 24)
                     .padding([.leading, .trailing], sidePadding)
-                    .frame(height: height * 0.25)
+                    .frame(width: width, height: height * 0.25, alignment: .top)
+////                    .padding(.top, 4)
+//                    Rectangle().fill(.red)
+//                        .frame(width: width, height: height * 0.25, alignment: .top)
 
                     HStack {
                         ZStack {
                             VStack {
                                 Text(shouldShowBalance ? "\(newMainViewModel.walletBalanceLitecoin)" : "")
-                                    .font(isLTCValueShown ? .system(size: 12, weight: .light, design: .default) :
-                                            .system(size: 35, weight: .bold, design: .default))
+                                    .font(isLTCValueShown ? .ibmPlexSansThin(size: 12.0) : .ibmPlexSansBold(size: 29.0))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.white)
                                     .contentTransition(.identity)
-                                    .offset(y: isLTCValueShown ? 45 : 0)
+                                    .offset(y: isLTCValueShown ? 40 : 0)
                                     .zIndex(isLTCValueShown ? 0 : 1)
                                 Spacer()
-                            }
-                            .frame(height: height * 0.75)
 
+                            }
+                            .frame(maxHeight: 50.0, alignment: .top)
                             VStack {
                                 Text(shouldShowBalance ? "\(newMainViewModel.walletBalanceFiat)" : "")
-                                    .font( isLTCValueShown ? .system(size: 35, weight: .bold, design: .default) :
-                                            .system(size: 12, weight: .light, design: .default))
+                                    .font(isLTCValueShown ? .ibmPlexSansBold(size: 29.0) : .ibmPlexSansThin(size: 12.0))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.white)
                                     .contentTransition(.identity)
-                                    .offset(y: isLTCValueShown ? 0 : 45)
+                                    .offset(y: isLTCValueShown ? 0 : 40)
                                     .zIndex(isLTCValueShown ? 1 : 0)
                                 Spacer()
                             }
-                            .frame(height: height * 0.75)
+                            .frame(maxHeight: 50.0, alignment: .top)
                         }
                     }
                     .padding([.leading, .trailing], sidePadding)
-                    .frame(width: width, height: height * 0.75)
+                    .frame(width: width, height: height * 0.75, alignment: .top)
                     .onTapGesture {
                         if shouldShowBalance {
                             withAnimation(.spring(response: 0.8, dampingFraction: 0.5, blendDuration: 0.2)) {
                                 isLTCValueShown.toggle()
                                 newMainViewModel.isLTCValueShown = isLTCValueShown
+                                Analytics
+                                    .logEvent("user_tapped_switch_fiat_ltc",
+                                    parameters: [
+                                        "platform": "ios",
+                                        "app_version": AppVersion.string
+                                    ])
                             }
                         }
                     }
+                    .layoutPriority(1)
+                    .accessibilityIdentifier("balanceFiatToggleButton")
+
+                    Spacer()
                 }
+
             }
             .cornerRadius(bentoCornerRadius)
-            .frame(height: balanceGameBentoHeight, alignment: .center)
+            .frame(minHeight: balanceBentoHeight, idealHeight: balanceBentoHeight * 1.2, maxHeight: balanceBentoHeight * 1.4, alignment: .center)
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
             }

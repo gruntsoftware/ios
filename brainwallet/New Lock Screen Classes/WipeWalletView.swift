@@ -21,12 +21,11 @@ struct WipeWalletView: View {
 
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-    let buttonLightFont: Font = .barlowLight(size: 16.0)
-    let regularFont: Font = .barlowRegular(size: 24.0)
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
+    let regularFont: Font = .ibmPlexSansRegular(size: 24.0)
 
-    init(viewModel: LockScreenViewModel, shouldDismiss: Binding<Bool>, didCompleteWipe: Binding<Bool>,) {
+    init(viewModel: LockScreenViewModel,
+         shouldDismiss: Binding<Bool>,
+         didCompleteWipe: Binding<Bool>,) {
         self.viewModel = viewModel
         _shouldDismiss = shouldDismiss
     }
@@ -46,7 +45,7 @@ struct WipeWalletView: View {
                         .padding(.all, 20.0)
 
                     Text("Wipe Brainwallet")
-                        .font(Font(UIFont.barlowBold(size: 32.0)))
+                        .modifier(BWIPSBold(size: 32.0))
                         .foregroundColor(BrainwalletColor.content)
                         .frame(alignment: .center)
                         .padding(.bottom, 10.0)
@@ -104,15 +103,19 @@ struct WipeWalletView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
+                                .padding([.leading, .trailing], 8.0)
                                 .foregroundColor(BrainwalletColor.surface)
 
                             Text(String(localized: "Wipe my Brainwallet & Data"))
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                .font(largeButtonFont)
+                                .modifier(BWIPSBold(size: 24.0))
+                                .padding([.leading, .trailing], 8.0)
                                 .foregroundColor(BrainwalletColor.chili)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                         .stroke(BrainwalletColor.chili, lineWidth: 1.0)
+                                        .padding([.leading, .trailing], 8.0)
+
                                 )
                         }
                         .padding(.all, 8.0)
@@ -128,7 +131,7 @@ struct WipeWalletView: View {
 
                             Text("Cancel")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                .font(largeButtonFont)
+                                 .modifier(BWIPSBold(size: 24.0))
                                 .foregroundColor( isWipingWallet ? BrainwalletColor.content.opacity(0.2) : BrainwalletColor.content)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)

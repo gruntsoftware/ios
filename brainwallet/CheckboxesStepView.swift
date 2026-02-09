@@ -5,8 +5,8 @@ struct CheckboxesStepView: View {
 	@EnvironmentObject
 	var viewModel: StartViewModel
 
-	let paragraphFont: Font = .barlowSemiBold(size: 22.0)
-	let calloutFont: Font = .barlowLight(size: 12.0)
+	let paragraphFont: Font = .ibmPlexSansSemiBold(size: 22.0)
+	let calloutFont: Font = .ibmPlexSansLight(size: 12.0)
 
 	let genericPad = 5.0
 

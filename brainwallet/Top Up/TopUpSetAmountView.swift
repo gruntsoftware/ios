@@ -41,12 +41,11 @@ struct TopUpSetAmountView: View {
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
-    let selectorFont: Font = .barlowSemiBold(size: 16.0)
-    let detailFont: Font = .barlowRegular(size: 28.0)
-    let amountSetFont: Font = .barlowBold(size: 35.0)
-    let versionFont: Font = .barlowSemiBold(size: 16.0)
+
+    let selectorFont: Font = .ibmPlexSansSemiBold(size: 16.0)
+    let detailFont: Font = .ibmPlexSansRegular(size: 28.0)
+    let amountSetFont: Font = .ibmPlexSansBold(size: 35.0)
+    let versionFont: Font = .ibmPlexSansSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
     let themeButtonSize: CGFloat = 28.0
 
@@ -99,11 +98,12 @@ struct TopUpSetAmountView: View {
                         }
                         Spacer()
                     }
-                    .padding(.all, 20.0)
+                    .padding([.leading, .trailing], 20.0)
+                    .padding(.top, 10.0)
 
                     Text("Buy Litecoin")
                         .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                        .font(detailFont)
+                        .modifier(BWIPSLight(size: 18.0))
                         .foregroundColor(BrainwalletColor.content)
 
                     Spacer()
@@ -127,18 +127,18 @@ struct TopUpSetAmountView: View {
                         Picker("", selection: $pickedCurrency) {
                             ForEach(currencies, id: \.self) {
                                 Text("\($0.code) (\($0.symbol))")
-                                    .font(detailFont)
+                                    .modifier(BWIPSLight(size: 18.0))
                                     .foregroundColor(BrainwalletColor.content)
                                     .padding(4.0)
                             }
                         }
-                        .onChange(of: pickedCurrency) { _ in
+                        .onChange(of: pickedCurrency) { _,_ in
                             updateAmountQuoted()
                         }
                         .pickerStyle(.wheel)
                         .frame(width: 120, alignment: .leading)
                         Text(String(format: "~%.2f Ł", amountQuoted))
-                            .font(detailFont)
+                            .modifier(BWIPSLight(size: 18.0))
                             .foregroundColor(userPrefersDarkTheme ? .white.opacity(0.5) : BrainwalletColor.nearBlack.opacity(0.5))
                             .frame(width: 120, alignment: .leading)
                         Spacer()
@@ -151,14 +151,14 @@ struct TopUpSetAmountView: View {
                         .frame(width: width * 0.6, alignment: .center)
                         .multilineTextAlignment(.center)
                         .lineLimit(2)
-                        .font(detailFont)
+                        .modifier(BWIPSLight(size: 18.0))
                         .foregroundColor(BrainwalletColor.content)
 
                     Text(newDepositAddress)
                         .frame(width: width * 0.6, alignment: .center)
                         .multilineTextAlignment(.center)
                         .lineLimit(2)
-                        .font(detailFont)
+                        .modifier(BWIPSLight(size: 18.0))
                         .foregroundColor(userPrefersDarkTheme ? .white.opacity(0.5) : BrainwalletColor.nearBlack.opacity(0.5))
                         .padding(.all, 20.0)
                     Spacer()
@@ -173,7 +173,7 @@ struct TopUpSetAmountView: View {
                                 .foregroundColor(BrainwalletColor.grape)
                             Text("Buy with MoonPay")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                .font(largeButtonFont)
+                                 .modifier(BWIPSBold(size: 24.0))
                                 .foregroundColor(.white)
                         }
                         .padding(.all, 8.0)

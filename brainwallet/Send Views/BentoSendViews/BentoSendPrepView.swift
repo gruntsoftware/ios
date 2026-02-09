@@ -47,7 +47,6 @@ struct BentoSendPrepView: View {
     var body: some View {
         GeometryReader { geometry in
 
-            let width = geometry.size.width
             let detailSectionHeight = geometry.size.height * 0.4
             let detailRowHeight = 22.0
             let sectionSpacer = 18.0
@@ -65,9 +64,7 @@ struct BentoSendPrepView: View {
                 backgroundColor.edgesIgnoringSafeArea(.all)
                 VStack {
                     Text(String(localized: "Confirm send details"))
-                        .font(.system(size: 24, weight: .bold, design: .default))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.9)
+                        .modifier(BWIPSBold(size: 24.0))
                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
                         .padding(.top, sectionSpacer * 2)
                         .padding(.bottom, sectionSpacer)
@@ -157,7 +154,7 @@ struct BentoSendPrepView: View {
                                             lineWidth: 0.5)
                                     .frame(height: 48)
                                 Text("Edit")
-                                    .font(.system(size: 18, weight: .semibold, design: .default))
+                                    .modifier(BWIPSSemiBold(size: 18.0))
                                     .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             }
                         }
@@ -179,7 +176,7 @@ struct BentoSendPrepView: View {
                                     .frame(height: 48)
 
                                 Text("Confirm")
-                                    .font(.system(size: 18, weight: .semibold, design: .default))
+                                    .modifier(BWIPSSemiBold(size: 18.0))
                                     .foregroundColor(userPrefersDarkTheme ? .black : .white)
                             }
                         }

@@ -46,9 +46,7 @@ struct SeedWordDragView: View {
 							HStack {
                                 Spacer()
                                 Text(seedWord.first?.word ?? "")
-                                    .font(.system(size: 16, weight: .light, design: .default))
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.8)
+                                    .modifier(BWIPSLight(size: 16.0))
                                     .foregroundColor(userPrefersDarkTheme ? .white :
                                                                     BrainwalletColor.content)
                                     .frame(height: cellHeight,
@@ -59,7 +57,7 @@ struct SeedWordDragView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .rotationEffect(Angle(degrees: 90))
-                                    .font(.system(size: 11, weight: .ultraLight))
+                                    .modifier(BWIPSThin(size: 11.0))
                                     .frame(width: buttonSize,
                                            height: buttonSize,
                                         alignment: .center)

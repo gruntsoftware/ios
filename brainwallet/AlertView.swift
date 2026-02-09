@@ -111,7 +111,7 @@ class AlertView: UIView, SolidColorDrawable {
 	private func setData() {
 		header.text = type.header
 		header.textAlignment = .center
-		header.font = UIFont.barlowBold(size: 18.0)
+		header.font = UIFont.ibmPlexSansBold(size: 18.0)
         header.textColor = BrainwalletUIColor.content
 
 		icon.backgroundColor = .clear
@@ -119,7 +119,7 @@ class AlertView: UIView, SolidColorDrawable {
 
 		subheader.text = type.subheader
 		subheader.textAlignment = .center
-		subheader.font = UIFont.barlowSemiBold(size: 16.0)
+		subheader.font = UIFont.ibmPlexSansSemiBold(size: 16.0)
 		subheader.textColor = BrainwalletUIColor.content
 	}
 

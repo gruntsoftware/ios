@@ -32,10 +32,9 @@ struct CalloutTextView: View {
     }
 
         var body: some View {
-            GeometryReader { geometry in
+            GeometryReader { _ in
 
-                let width = geometry.size.width
-                let height = geometry.size.height
+                let padding = 12.0
 
                 ZStack {
                     VStack {
@@ -50,30 +49,28 @@ struct CalloutTextView: View {
                     VStack {
                         HStack {
                             Text(title)
-                                .font(.system(size: 17, weight: .bold, design: .default))
-                                .lineLimit(2)
-                                .minimumScaleFactor(0.9)
+                                .modifier(BWIPSBold(size: 17.0, lineLimit: 2))
                                 .frame(alignment: .leading)
                                 .foregroundColor(.black)
-                                .padding([.trailing], 16)
+                                .padding([.trailing], padding)
                           Spacer()
                         }
                         .padding(.top, 8)
 
                         HStack {
                             Text(description)
-                                .font(.system(size: 14, weight: .light, design: .default))
-                                .lineLimit(3)
-                                .minimumScaleFactor(0.7)
+                                .modifier(BWIPSRegular(size: 17.0, lineLimit: 4))
                                 .frame(alignment: .leading)
                                 .foregroundColor(.black)
-                                .padding([.trailing], 16)
+                                .padding([.trailing], padding)
                           Spacer()
                         }
                         .padding(.top, 1)
+                        .padding(.bottom, 8)
+
                         Spacer()
                     }
-                    .padding([.leading], 16)
+                    .padding([.leading], padding)
 
                 }
                 .frame(height: calloutHeight)

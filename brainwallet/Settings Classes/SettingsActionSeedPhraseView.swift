@@ -11,8 +11,6 @@ struct SettingsActionSeedPhraseView: View {
 
     private let title: String
     private let detailText: String
-    let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 18.0)
 
     @Binding
     var willShowBrainwalletPhrase: Bool
@@ -33,12 +31,12 @@ struct SettingsActionSeedPhraseView: View {
                     HStack {
                         VStack {
                             Text(title)
-                                .font(largeFont)
+                                .modifier(BWIPSSemiBold(size: 19.0))
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.top, 4.0)
                             Text(detailText)
-                                .font(detailFont)
+                                .modifier(BWIPSLight(size: 18.0))
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding([.top, .bottom], 1.0)
