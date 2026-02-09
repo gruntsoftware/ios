@@ -26,17 +26,13 @@ struct ConfirmPasscodeView: View {
     @State
     private var userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
-    let subTitleFont: Font = .barlowSemiBold(size: 32.0)
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
-    let detailFont: Font = .barlowRegular(size: 22.0)
+    let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
 
     let verticalPadding: CGFloat = 20.0
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeButtonSize: CGFloat = 28.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-
     let arrowSize: CGFloat = 60.0
 
     init(isRestoringAnOldWallet: Bool, pinDigits: [Int],
@@ -77,35 +73,39 @@ struct ConfirmPasscodeView: View {
                             }.frame(maxWidth: .infinity, alignment: .leading)
                         }
                         .frame(height: squareImageSize)
-                        .padding(.all, 20.0)
+                        .padding([.leading, .trailing], 20.0)
+                        .padding(.top, 10.0)
 
                             Text( "Confirm passcode" )
-                                .font(subTitleFont)
+                                .modifier(BWIPSSemiBold(size: 32.0))
                                 .frame(maxWidth: .infinity, alignment: .center)
+                                .frame(height: 40)
                                 .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
-                            Text( "You didn’t forget did you? Ok! Just go back to start over.")
-                                .font(detailFont)
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
-                                .padding(.all, 20.0)
 
+                            Text( "You didn’t forget did you? Ok! Just go back to start over.")
+                                .modifier(BWIPSRegular(size: 22.0, lineLimit: 2))
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
+                                .padding([.top, .bottom], 8.0)
+                                .padding([.leading, .trailing], 20.0)
+                        Spacer()
                         PINRowView(pinState: $pinState)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .frame(height: 40.0)
-                            .padding(.top, 40.0)
                             .offset(x: startShake ? 7 : 0)
                             .animation(.spring(response: 0.15, dampingFraction: 0.1, blendDuration: 0.2), value: startShake)
-
                         Spacer()
                         PasscodeGridView(digits: $confirmPinDigits,
                                          userPrefersDarkMode: $userPrefersDarkTheme)
                             .frame(width: width * 0.6,
                                    height: height * 0.35,
                                    alignment: .center)
-                                .padding(.bottom, 80.0)
-                        }
+                                .padding(.bottom, 40.0)
+                    }
+                    .padding([.leading, .trailing], 16.0)
+
                 }
-                .onChange(of: confirmPinDigits) { _ in
+                .onChange(of: confirmPinDigits) { _,_ in
 
                     pinState = (0..<4).map { $0 < confirmPinDigits.count }
                     let currentPinState = pinState.allSatisfy { $0 == true }
@@ -142,7 +142,7 @@ struct ConfirmPasscodeView: View {
                         }
                     }
                 }
-                .onChange(of: viewModel.walletCreationDidFail) { newValue in
+                .onChange(of: viewModel.walletCreationDidFail) { _,newValue in
                     /// Returns user to the StartView if there is a failure
                     if newValue {
                         path.removeAll(keepingCapacity: false)

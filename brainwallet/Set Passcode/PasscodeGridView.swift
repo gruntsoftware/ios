@@ -8,7 +8,7 @@
 import SwiftUI
 struct PasscodeGridView: View {
 
-    let detailFont: Font = .barlowRegular(size: 24.0)
+    let detailFont: Font = .ibmPlexSansRegular(size: 24.0)
     let elementSpacing = 2.0
 
     @Binding
@@ -54,7 +54,7 @@ struct PasscodeGridView: View {
 
 struct CodeButton: View {
     let buttonSize = 60.0
-    let detailFont: Font = .barlowRegular(size: 28.0)
+    let detailFont: Font = .ibmPlexSansRegular(size: 28.0)
     var index: Int
 
     @Binding
@@ -96,7 +96,7 @@ struct CodeButton: View {
                     EmptyView()
                 } else {
                     Text("\(index)")
-                        .font(detailFont)
+                        .modifier(BWIPSLight(size: 18.0))
                         .foregroundColor(userPrefersDarkMode ? .white : BrainwalletColor.grape)
                         .frame(maxWidth: .infinity,
                                maxHeight: .infinity)

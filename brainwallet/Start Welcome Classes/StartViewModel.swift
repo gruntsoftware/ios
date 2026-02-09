@@ -7,7 +7,7 @@ class StartViewModel: ObservableObject, Subscriber {
 	// MARK: - Combine Variables
 
     @Published
-    var userPrefersDarkMode: Bool = false
+    var userPrefersDarkMode: Bool = true
 
 	@Published
 	var tappedIndex: Int = 0

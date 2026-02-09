@@ -11,10 +11,9 @@ struct SettingsResetPINView: View {
 
     private let title: String
     private let detailText: String
-    let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 15.0)
+
+    let detailFont: Font = .ibmPlexSansLight(size: 15.0)
     let action: SettingsAction
-    let largeButtonHeight: CGFloat = 45.0
     let dotSize: CGFloat = 12.0
 
     @Binding
@@ -37,7 +36,7 @@ struct SettingsResetPINView: View {
                     VStack {
                         HStack {
                             Text(title)
-                                .font(largeFont)
+                                .modifier(BWIPSSemiBold(size: 19.0))
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             Spacer()
@@ -47,7 +46,7 @@ struct SettingsResetPINView: View {
 
                         HStack {
                             Text(detailText)
-                                .font(detailFont)
+                                .modifier(BWIPSLight(size: 18.0))
                                 .kerning(0.6)
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -104,7 +103,7 @@ struct SettingsResetPINView: View {
                                         .frame(width: width * 0.9, height: largeButtonHeight,
                                             alignment: .center)
                                         .frame(maxWidth: .infinity, alignment: .center)
-                                        .font(largeFont)
+                                        .modifier(BWIPSSemiBold(size: 19.0))
                                         .foregroundColor(BrainwalletColor.content)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: largeButtonHeight/2)

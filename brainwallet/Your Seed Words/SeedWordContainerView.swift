@@ -46,7 +46,7 @@ struct SeedWordContainerView: View {
 				VStack {
 					HStack {
 						Text("These are your seed words. If you show them to anyone, they can take your Litecoin")
-							.font(.barlowSemiBold(size: 24.0))
+							.modifier(BWIPSSemiBold(size: 24.0))
 							.multilineTextAlignment(.center)
                             .foregroundColor(BrainwalletColor.content)
 							.padding()
@@ -94,7 +94,7 @@ struct SeedWordContainerView: View {
 				viewColumns = [GridItem](repeating: GridItem(.flexible()),
 				                         count: wordViewWidthRoot)
 			}
-			.onChange(of: didEnterPINCode) { _ in
+			.onChange(of: didEnterPINCode) { _,_ in
 				if let fetchedWords = seedViewModel.fetchWords(walletManager: self.walletManager,
 				                                               appPIN: enteredPIN) {
 					seedViewModel.seedWords = fetchedWords

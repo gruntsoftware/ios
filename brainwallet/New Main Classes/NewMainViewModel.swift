@@ -80,10 +80,14 @@ class NewMainViewModel: ObservableObject, Subscriber {
     @Published
     var dateFormatter: DateFormatter?
 
+    @Published
     var updateTimer: Timer?
 
     @Published
     var wasLTCFiatSwapped = false
+
+    @Published
+    var userWantsToTopUp = false
 
     @Published
     var shouldShowSettings = false
@@ -319,6 +323,7 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
     func updateTheme(shouldBeDark: Bool) {
         UserDefaults.userPreferredDarkTheme = shouldBeDark
+        userPrefersDarkMode = shouldBeDark
         NotificationCenter
             .default
             .post(name: .changedThemePreferenceNotification,
@@ -396,16 +401,6 @@ class NewMainViewModel: ObservableObject, Subscriber {
         didTapRecover = completion
     }
 
-    func userDidSetThemePreference(userPrefersDarkMode: Bool) {
-
-        UserDefaults.userPreferredDarkTheme = userPrefersDarkMode
-
-        NotificationCenter
-            .default
-            .post(name: .changedThemePreferenceNotification,
-                object: nil)
-    }
-
     func userDidSetCurrencyPreference(currency: GlobalCurrency) {
 
         let code = currency.code
@@ -421,8 +416,6 @@ class NewMainViewModel: ObservableObject, Subscriber {
             // Set Preferred Currency
             UserDefaults.userPreferredCurrencyCode = code
             store.perform(action: UserPreferredCurrency.setDefault(code))
-
-            // Set Exchange Rate
         }
     }
 

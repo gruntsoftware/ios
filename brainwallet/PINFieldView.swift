@@ -41,7 +41,7 @@ struct PINFieldView: UIViewRepresentable {
 	func makeUIView(context: UIViewRepresentableContext<PINFieldView>) -> UITextField {
 		let textField = UITextField()
 		textField.delegate = context.coordinator
-		textField.font = .barlowSemiBold(size: 24.0)
+		textField.font = .ibmPlexSansSemiBold(size: 24.0)
 		textField.textAlignment = .center
 		textField.backgroundColor = .clear
         textField.textColor = BrainwalletUIColor.content
@@ -50,7 +50,7 @@ struct PINFieldView: UIViewRepresentable {
 		textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
 			NSAttributedString.Key.kern: 15.0,
             NSAttributedString.Key.foregroundColor: BrainwalletUIColor.affirm,
-			NSAttributedString.Key.font: UIFont.barlowBold(size: 17.0)
+			NSAttributedString.Key.font: UIFont.ibmPlexSansBold(size: 17.0)
 		])
 		viewRect = textField.bounds
 		return textField

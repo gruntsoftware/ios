@@ -22,7 +22,7 @@ struct PinDigitView: View {
 
 						Text(pinDigit.digit)
 							.frame(height: 45, alignment: .center)
-							.font(.barlowSemiBold(size: 18.0))
+							.modifier(BWIPSSemiBold(size: 18.0))
 							.foregroundColor(.black)
 					}
 				}
@@ -70,9 +70,6 @@ struct PasscodeView: View {
 			}
 		}
 		.padding()
-		.onChange(of: enteredPasscode) { _ in
-
-		}
 	}
 }
 

@@ -25,12 +25,11 @@ struct ReceiveAddressView: View {
     @State
     private var didCopyAddress = false
 
-    let ginormousFont: Font = .barlowSemiBold(size: 22.0)
-    let subDetailFont: Font = .barlowRegular(size: 14.0)
-    let lightDetailFont: Font = .barlowLight(size: 18.0)
-    let buttonFont: Font = .barlowBold(size: 20.0)
+    let subDetailFont: Font = .ibmPlexSansRegular(size: 14.0)
+    let lightDetailFont: Font = .ibmPlexSansLight(size: 18.0)
+    let buttonFont: Font = .ibmPlexSansBold(size: 20.0)
     let buttonCorner: CGFloat = 26.0
-    let toastFont: Font = .barlowLight(size: 30.0)
+    let toastFont: Font = .ibmPlexSansLight(size: 30.0)
     let opacityFactor: CGFloat = 0.8
     let padding = 18.0
     let minimumDragFactor: CGFloat = 250.0
@@ -95,7 +94,7 @@ struct ReceiveAddressView: View {
                             Spacer()
                         }
                         .frame(width: qrWidth, alignment: .leading)
-                        .onChange(of: viewModel.newReceiveAddress) { address in
+                        .onChange(of: viewModel.newReceiveAddress) { _,address in
                             newAddress = address
                         }
                     }
@@ -131,7 +130,7 @@ struct ReceiveAddressView: View {
                      }
                 }
                 .opacity(didCopyAddress ? 1.0 : 0.0)
-                .onChange(of: didCopyAddress) { _ in
+                .onChange(of: didCopyAddress) { _,_ in
                     withAnimation(.easeInOut(duration: 1.0)) {
                         delay(1.0) {
                             didCopyAddress = false

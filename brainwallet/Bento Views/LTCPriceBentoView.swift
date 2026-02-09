@@ -7,11 +7,20 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct LTCPriceBentoView: View {
 
     @ObservedObject
     var newMainViewModel: NewMainViewModel
+
+    @State
+    private var pickedCurrency: GlobalCurrency = .USD
+
+    @State
+    private var selectedFiat: Bool = false
+
+    let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
 
     @State
     var shouldShowSettings: Bool = false
@@ -29,64 +38,97 @@ struct LTCPriceBentoView: View {
 
     private let buttonPlatformFactor: CGFloat = 2.1
 
-    init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
+    init(viewModel: NewMainViewModel,
+        userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
         newMainViewModel = viewModel
     }
+
     var body: some View {
         GeometryReader { geometry in
-
+            let height = geometry.size.height
+            let trailingPad: CGFloat = 12
             let width = geometry.size.width
+            let labelBackground =  userPrefersDarkTheme ? BentoColor.tutorialGreen1.opacity(0.1) : BentoColor.purple4.opacity(0.1)
+            let labelForeground = userPrefersDarkTheme ? BentoColor.tutorialGreen2 :BentoColor.purple4
+            let tagLabelWidth: CGFloat = 80.0
 
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
-                VStack {
+                VStack(alignment: .leading, spacing: 0) {
                     Spacer()
-                        Text(newMainViewModel.currencyCode)
-                            .font(.system(size: 21, weight: .semibold, design: .default))
-                            .padding([.leading,.top], 16)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
-                    Spacer()
-                    Text(newMainViewModel.currentFiatValue)//  "RP1,516,863,885.40"
-                        .font(.system(size: 40, weight: .semibold, design: .default))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.3)
-                        .padding(.top, 12)
-                        .padding([.leading,.trailing], 16)
+                    HStack {
+                        Picker("", selection: $pickedCurrency) {
+                            ForEach(globalCurrencies, id: \.self) {
+                                Text(verbatim: "\($0.countryFlag)   \($0.code) / LTC")
+                                    .modifier(BWIPSSemiBold(size: 18.0))
+                                    .frame(maxHeight: 19.0, alignment: .leading)
+                                    .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        .onChange(of: pickedCurrency) { _,_ in
+                            delay(0.2) {
+                                newMainViewModel.userDidSetCurrencyPreference(currency: pickedCurrency)
+                                Analytics
+                                    .logEvent("user_set_preferred_fiat",
+                                    parameters: [
+                                        "platform": "ios",
+                                        "app_version": AppVersion.string
+                                    ])
+                            }
+                        }
+                        .frame(alignment: .leading)
+                        .frame(minHeight: height * 0.2, idealHeight: height * 0.3, maxHeight: height * 0.35)
+                        .padding([.leading, .trailing], 8.0)
+
+                    }
+                    .frame(minHeight: height * 0.30,
+                           idealHeight: height * 0.40,
+                           maxHeight: height * 0.5)
+                    .padding(.bottom, 2.0)
+                    if height > 200 {
+                        Text(pickedCurrency.fullCurrencyName)
+                            .modifier(BWIPSLight(size: 16.0, lineLimit: 2))
+                            .padding([.leading, .trailing], 8.0)
+                            .padding(.bottom, 2.0)
+                    }
+                    Text(newMainViewModel.currentFiatValue)
+                        .modifier(BWIPSSemiBold(size: 30.0))
+                        .padding([.leading, .trailing], 8.0)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(minHeight: 34.0, idealHeight: 38.0, maxHeight: 50.0)
                         .foregroundStyle( userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack.opacity(0.8))
+                        .contentTransition(.opacity)
+                        .layoutPriority(1.0)
+                        .animation(.easeInOut, value: newMainViewModel.currentFiatValue)
+                        .padding(.bottom, 2.0)
 
                     HStack {
+                        Spacer()
                         Text(currentDateLabel)
-                            .font(.system(size: 11, weight: .ultraLight, design: .default))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.9)
-                            .padding(.leading, 16)
+                            .modifier(BWIPSThin(size: 11.0))
+                            .frame(minHeight: 9.0, idealHeight: 13.0, maxHeight: 14.0)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
-                            .padding(.bottom, 8)
-                        Spacer()
-                        Text(newMainViewModel.currentGlobalFiat.countryFlag)
-                            .font(.system(size: 14, weight: .regular, design: .default))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.8)
-                            .padding(.trailing, 16)
-                            .frame(maxWidth: width * 0.3, alignment: .trailing)
-                            .padding(.bottom, 8)
+                            .contentTransition(.opacity)
+                            .animation(.easeInOut, value: currentDateLabel)
                     }
+                    .padding(.trailing, trailingPad)
+                    .padding(.bottom, 6.0)
                 }
             }
             .cornerRadius(bentoCornerRadius)
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 if let dateFormatter = newMainViewModel.dateFormatter {
-                    currentDateLabel = String(describing: dateFormatter.string(from: Date()))
+                    currentDateLabel = "as of " + String(describing: dateFormatter.string(from: Date()))
+                    pickedCurrency = newMainViewModel.currentGlobalFiat
                 }
             }
             .onChange(of: newMainViewModel.currentFiatValue) { _,_ in
                 if let dateFormatter = newMainViewModel.dateFormatter {
-                    currentDateLabel = String(describing: dateFormatter.string(from: Date()))
+                    currentDateLabel = "as of " + String(describing: dateFormatter.string(from: Date()))
                 }
             }
         }

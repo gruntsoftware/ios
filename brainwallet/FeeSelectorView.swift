@@ -22,9 +22,9 @@ class FeeSelector: UIView {
 
 	//: ::
 	private let store: Store
-	private let header = UILabel(font: .barlowMedium(size: 16.0), color: BrainwalletUIColor.content)
-	private let subheader = UILabel(font: .barlowRegular(size: 14.0), color: BrainwalletUIColor.content)
-    private let feeMessageLabel = UILabel.wrapping(font: .barlowSemiBold(size: 14.0), color: BrainwalletUIColor.content)
+	private let header = UILabel(font: .ibmPlexSansMedium(size: 16.0), color: BrainwalletUIColor.content)
+	private let subheader = UILabel(font: .ibmPlexSansRegular(size: 14.0), color: BrainwalletUIColor.content)
+    private let feeMessageLabel = UILabel.wrapping(font: .ibmPlexSansSemiBold(size: 14.0), color: BrainwalletUIColor.content)
 	private let control = UISegmentedControl(items: ["Regular" , "Economy" , "Luxury" ])
 	private var bottomConstraint: NSLayoutConstraint?
 

@@ -20,12 +20,10 @@ struct YourSeedProveItView: View {
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 60.0
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
-    let subTitleFont: Font = .barlowSemiBold(size: 32.0)
-    let detailFont: Font = .barlowRegular(size: 22.0)
-    let detailerFont: Font = .barlowRegular(size: 20.0)
-    let regularButtonFont: Font = .barlowRegular(size: 20.0)
+
+    let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
+    let detailerFont: Font = .ibmPlexSansRegular(size: 20.0)
+    let regularButtonFont: Font = .ibmPlexSansRegular(size: 20.0)
     let elementSpacing = 4.0
     let fieldHeight: CGFloat = 40.0
     let arrowSize: CGFloat = 60.0
@@ -135,10 +133,11 @@ struct YourSeedProveItView: View {
                     }
                     .frame(height: squareImageSize)
                     .padding([.leading, .trailing], 20.0)
+                    .padding(.top, 10.0)
 
                     // Title
                     Text("You saved it, right?")
-                        .font(subTitleFont)
+                         .modifier(BWIPSSemiBold(size: 32.0))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.05)
                         .foregroundColor(BrainwalletColor.content)
@@ -146,9 +145,9 @@ struct YourSeedProveItView: View {
 
                     // Subtitle
                     Text("Place the words in the correct order!")
-                        .font(detailFont)
+                        .modifier(BWIPSLight(size: 18.0))
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: height * 0.06)
+                        .frame(height: 22.0)
                         .foregroundColor(BrainwalletColor.content)
                         .padding([.leading, .trailing], 20.0)
                         .padding([.top, .bottom], 6.0)
@@ -168,32 +167,41 @@ struct YourSeedProveItView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .frame(height: height * 0.25, alignment: .center)
                     .padding([.leading, .trailing], 20.0)
-
-                    Text("Press and drag a word into place")
-                        .font(detailFont)
+                    Spacer()
+                    Text("Long press & drag a word into place")
+                        .modifier(BWIPSSemiBold(size: 18.0))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.05)
                         .foregroundColor(BrainwalletColor.content)
                         .padding([.leading, .trailing], 20.0)
-
+                    Spacer()
                     // Draggable words
                     LazyVGrid(columns: columns) {
                         ForEach(shuffledDraggableWords, id: \.id) { draggableItem in
-                            SeedWordDragView(seedWord: [draggableItem])
-                                .draggable(draggableItem, preview: {
-                                    SeedWordDragView(seedWord: [draggableItem])
-                                        .frame(width: 100, height: 30)
-                                        .contentShape(.dragPreview, Capsule())
-                                        .padding(.bottom, 24.0)
-                                })
-                                .padding([.top, .bottom], 16.0)
-                                .padding([.leading, .trailing], 2.0)
+
+                            Group {
+                                SeedWordDragView(seedWord: [draggableItem])
+                                    .draggable(draggableItem, preview: {
+                                        SeedWordDragView(seedWord: [draggableItem])
+                                            .frame(width: 110, height: 40)
+                                            .contentShape(.dragPreview, Capsule())
+                                            .padding(.bottom, 24.0)
+                                    })
+                                     .padding([.top, .bottom], 16.0)
+                                    .padding([.leading, .trailing], 2.0)
+                            }
+                            .simultaneousGesture(
+                                TapGesture().onEnded {
+                                    let impact = UIImpactFeedbackGenerator(style: .heavy)
+                                    impact.impactOccurred()
+                                }
+                            )
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     .frame(height: 200, alignment: .center)
                     .padding([.leading, .trailing], 20.0)
-
+                    Spacer()
                     Button(action: {
                         if isPhraseMatched() {
                             playCoin()
@@ -213,13 +221,16 @@ struct YourSeedProveItView: View {
                             RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .foregroundColor(BrainwalletColor.grape)
+                                .padding([.leading, .trailing], 8.0)
                             Text(isPhraseMatched() ? String(localized:"Game & Sync") : String(localized:"RESET / START OVER"))
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                .font(regularButtonFont)
+                                .modifier(BWIPSBold(size: 24.0))
+                                .padding([.leading, .trailing], 8.0)
                                 .foregroundColor(.white)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                         .stroke(BrainwalletColor.grape, lineWidth: 2.0)
+                                        .padding([.leading, .trailing], 8.0)
                                 )
                                 .animation(.easeInOut(duration: 0.4), value: isPhraseMatched())
                         }

@@ -15,8 +15,11 @@ struct WalkthroughStep2View: View {
     @Binding
     var userPrefersDarkTheme: Bool
 
-    private let titleStep2 = String(localized: "2. Tap the Send tab")
-    private let descriptionStep2 = String(localized: "Balance over zero? Switch to currency or LTC to figure out how much to send. Adjust the network fee in settings")
+    private let titleStep2 = String(localized: "2. Settings & Dark Mode")
+    private let descriptionStep2 = """
+    Fine tune by tapping on Settings to the top right. \
+    Set your Dark Mode preference by tapping on the ☀️ on the top left.
+    """
 
     init(selectedStep: Binding<Int>,
          userPrefersDarkTheme: Binding<Bool>) {
@@ -28,26 +31,23 @@ struct WalkthroughStep2View: View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
-            let height = geometry.size.height
 
             let calloutWidth = width * 0.7
             let pointToBalanceOffset = 85.0
             ZStack {
                 VStack {
-                    Spacer()
                     HStack {
-
                         CalloutTextView(title: titleStep2,
                                         description: descriptionStep2,
-                                        corner: .constant(.bottomLeft),
+                                        corner: .constant(.topRight),
                                         userPrefersDarkTheme: $userPrefersDarkTheme)
                         .frame(width: calloutWidth, alignment: .bottom)
                         .padding([.leading], pointToBalanceOffset)
                       Spacer()
-
                     }
                     .frame(height: calloutHeight, alignment: .bottom)
-                    .padding(.bottom, brainwalletNavBarHeight)
+                    .padding(.top, brainwalletNavBarHeight)
+                  Spacer()
                 }
             }
         }

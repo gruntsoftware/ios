@@ -43,13 +43,13 @@ struct TutorialSendBentoView: View {
                     Spacer()
                     HStack {
                       Text("How to Send Litecoin")
-                                .font(.system(size: 18, weight: .bold, design: .default))
-                                .lineLimit(2)
-                                .minimumScaleFactor(0.9)
-                                .padding(.leading, 8)
-                                .padding(.trailing, 10)
-                                .frame(alignment: .leading)
-                                .foregroundStyle( userPrefersDarkTheme ? .white : .black)
+                            .modifier(BWIPSSemiBold(size: 18.0, lineLimit: 2))
+                            .padding(.leading, 8)
+                            .padding(.trailing, 10)
+                            .frame(alignment: .leading)
+                            .foregroundStyle( userPrefersDarkTheme ? .white : .black)
+                            .accessibilityIdentifier("tutorialSendBentoViewTitle")
+
                         Spacer()
                     }
                     .frame(height: height * 0.1)
@@ -57,14 +57,13 @@ struct TutorialSendBentoView: View {
 
                     HStack {
                       Text("Follow the easy steps to send LTC to someone else's wallet. They get it in seconds!")
-                                .font(.system(size: 15, weight: .regular, design: .default))
-                                .lineLimit(4)
-                                .minimumScaleFactor(0.9)
+                                .modifier(BWIPSRegular(size: 18.0, lineLimit: 4))
                                 .kerning(0.5)
                                 .padding([.leading], 8)
                                 .padding(.trailing, 10)
                                 .frame(alignment: .leading)
                                 .foregroundStyle( userPrefersDarkTheme ? .white : .black)
+                                .accessibilityIdentifier("tutorialSendBentoViewDescription")
                         Spacer()
                     }
                     .padding(.top, 5)
@@ -73,7 +72,8 @@ struct TutorialSendBentoView: View {
                         Image("tutorial-send-art")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: width * 0.9, alignment: .leading)
+                            .frame(width: width, alignment: .leading)
+                            .accessibilityIdentifier("tutorialSendBentoViewImage")
                         Spacer()
                     }
                     .edgesIgnoringSafeArea([.bottom, .leading, .trailing])

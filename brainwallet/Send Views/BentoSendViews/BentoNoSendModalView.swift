@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct BentoNoSendModalView: View {
 
@@ -34,10 +35,8 @@ struct BentoNoSendModalView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
 
-            let width = geometry.size.width
-            let sectionHeight = 60.0
             let sectionSpacer = 18.0
             let sectionSides = 15.0
             let sectionBottom = 30.0
@@ -48,9 +47,7 @@ struct BentoNoSendModalView: View {
                 backgroundColor.edgesIgnoringSafeArea(.all)
                 VStack {
                     Text("Send is Disabled")
-                        .font(.system(size: 24, weight: .bold, design: .default))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.9)
+                        .modifier(BWIPSBold(size: 24.0))
                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
                         .padding(sectionSpacer)
 
@@ -67,9 +64,7 @@ struct BentoNoSendModalView: View {
 
                     HStack {
                         Text("While syncing, sending is not possible. Your local database is catching with up to the latest block adding relevant transactions.\nPlease try again later.")
-                            .font(.system(size: 22, weight: .semibold, design: .default))
-                            .lineLimit(4)
-                            .minimumScaleFactor(0.85)
+                            .modifier(BWIPSSemiBold(size: 22.0, lineLimit: 4))
                             .foregroundColor(userPrefersDarkTheme ? .white : .black)
                     }
                     .padding(sectionSides * 1.1)
@@ -85,8 +80,7 @@ struct BentoNoSendModalView: View {
                                     .fill(userPrefersDarkTheme ? .white : BentoColor.nearNearBlack)
                                     .frame(height: 48)
                                 Text("Ok")
-                                    .font(.system(size: 18,
-                                                  weight: .semibold, design: .default))
+                                    .modifier(BWIPSSemiBold(size: 18.0))
                                     .foregroundColor(userPrefersDarkTheme ? .black : .white)
                             }
                         }
@@ -100,6 +94,11 @@ struct BentoNoSendModalView: View {
         }
         .onAppear {
             backgroundColor = userPrefersDarkTheme ? darkModeColor : lightModeColor
+            Analytics.logEvent("user_did_tap_nosend_sheet",
+                parameters: [
+                    "platform": "ios",
+                    "app_version": AppVersion.string
+                ])
         }
     }
 }

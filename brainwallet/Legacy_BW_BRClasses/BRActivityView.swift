@@ -32,7 +32,7 @@ class BRActivityViewController: UIViewController {
 
 		activityIndicatorView.startAnimating()
 
-		messageLabel.font = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
+        messageLabel.font = UIFont.ibmPlexSansBold(size: 16.0) 
 		messageLabel.textColor = BrainwalletUIColor.content
 		messageLabel.textAlignment = .center
 		messageLabel.shadowColor = UIColor.black

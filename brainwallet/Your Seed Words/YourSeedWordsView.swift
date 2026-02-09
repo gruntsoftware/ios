@@ -21,12 +21,6 @@ struct YourSeedWordsView: View {
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
-    let subTitleFont: Font = .barlowSemiBold(size: 32.0)
-    let detailFont: Font = .barlowRegular(size: 22.0)
-    let detailerFont: Font = .barlowRegular(size: 20.0)
-    let regularButtonFont: Font = .barlowRegular(size: 20.0)
 
     let arrowSize: CGFloat = 60.0
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
@@ -66,20 +60,18 @@ struct YourSeedWordsView: View {
                     }
                     .frame(height: squareImageSize)
                     .padding([.leading, .trailing], 20.0)
-                    .padding(.bottom, 0.0)
+                    .padding(.top, 10.0)
                     .opacity(0.0)
 
                     Text("Your seed words")
-                        .font(subTitleFont)
+                         .modifier(BWIPSSemiBold(size: 32.0))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.05)
                         .foregroundColor(BrainwalletColor.content)
                         .padding(.top, 5.0)
 
                     Text("Just for you.\nIs it the private key that lets you send.")
-                        .font(detailFont)
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
+                        .modifier(BWIPSLight(size: 18.0))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.1)
                         .foregroundColor(BrainwalletColor.content)
@@ -94,7 +86,7 @@ struct YourSeedWordsView: View {
                     Spacer()
 
                     Text("Blockchain: Litecoin")
-                        .font(detailerFont)
+                        .modifier(BWIPSRegular(size: 20.0))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: height * 0.04, alignment: .center)
                         .foregroundColor(BrainwalletColor.content)
@@ -108,22 +100,26 @@ struct YourSeedWordsView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
+                                .padding([.leading, .trailing], 8.0)
                                 .foregroundColor(BrainwalletColor.grape)
 
                             Text("I saved it on paper or metal")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                .font(regularButtonFont)
+                                .modifier(BWIPSRegular(size: 20.0))
+                                .padding([.leading, .trailing], 8.0)
                                 .foregroundColor(.white)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                         .stroke(BrainwalletColor.grape, lineWidth: 2.0)
+                                        .padding([.leading, .trailing], 8.0)
+
                                 )
                         }
                         .padding(.all, 8.0)
                     }
 
                 }
-                .onChange(of: viewModel.isSeedPhraseFilled) { _ in
+                .onChange(of: viewModel.isSeedPhraseFilled) { _,_ in
                     seedViewModel.loadSeedWords(seedPhrase: viewModel.seedPhrase)
                 }
                 .ignoresSafeArea(.keyboard)

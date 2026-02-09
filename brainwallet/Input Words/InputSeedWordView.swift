@@ -1,5 +1,5 @@
 //
-//  InputWo.swift
+//  InputSeedWordView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 16/07/2025.
@@ -15,7 +15,7 @@ struct InputSeedWordView: View {
     let clearSize = 20.0
     let cellHeight = 40.0
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
-    let subDetailFont: Font = .barlowSemiBold(size: 17.0)
+    let subDetailFont: Font = .ibmPlexSansSemiBold(size: 17.0)
 
     @Binding
     var seedWord: String
@@ -52,7 +52,7 @@ struct InputSeedWordView: View {
                         VStack {
                             HStack {
                                 Text("\(wordNumber)")
-                                    .font(.barlowRegular(size: 12.0))
+                                    .modifier(BWIPSRegular(size: 12.0))
                                     .foregroundColor(userPrefersDarkTheme ? .white :
                                         BrainwalletColor.content)
                                     .frame(width: 18,
@@ -67,9 +67,7 @@ struct InputSeedWordView: View {
                         HStack {
                             TextField("", text: $seedWord)
                                 .frame(width: fieldWidth, height: cellHeight, alignment: .center)
-                                .font(.system(size: 17, weight: .semibold, design: .default))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.8)
+                                .modifier(BWIPSSemiBold(size: 17.0))
                                 .foregroundColor(BrainwalletColor.content)
                                 .keyboardType(.alphabet)
                                 .disableAutocorrection(true)
@@ -81,7 +79,7 @@ struct InputSeedWordView: View {
                 }
                 .frame(width: width, height: height)
                 .padding(.all, genericPad)
-                .onChange(of: seedWord) { _ in
+                .onChange(of: seedWord) { _,_ in
                     if seedWord.count < 2 {
                         wordIsSet = false
                     }

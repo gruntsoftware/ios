@@ -6,6 +6,7 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import FirebaseAnalytics
 
 struct SendStep3View: View {
 
@@ -32,7 +33,6 @@ struct SendStep3View: View {
 
             let width = geometry.size.width
             let calloutWidth = width * 0.7
-            let pointToBalanceOffset = 85.0
             ZStack {
                 VStack {
                     HStack {
@@ -79,6 +79,14 @@ struct SendStep3View: View {
 
                 }
             }
+        }
+        .onAppear {
+            Analytics
+                .logEvent("user_completed_send_tutorial",
+                parameters: [
+                    "platform": "ios",
+                    "app_version": AppVersion.string
+                ])
         }
     }
 }

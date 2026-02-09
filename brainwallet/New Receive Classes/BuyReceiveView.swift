@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import FirebaseAnalytics
 
 let defaultLaunchAmount = 210
 let maxLaunchAmount = 20000
@@ -97,15 +98,14 @@ struct BuyReceiveView: View {
     let setAmountSize: CGFloat = 60.0
     let modalCorner: CGFloat = 55.0
     let buttonCorner: CGFloat = 26.0
-    let headerFont: Font = .barlowBold(size: 26.0)
-    let liveQuoteFont: Font = .barlowSemiBold(size: 25.0)
-    let subHeaderFont: Font = .barlowSemiBold(size: 17.0)
+    let headerFont: Font = .ibmPlexSansBold(size: 26.0)
+    let liveQuoteFont: Font = .ibmPlexSansSemiBold(size: 25.0)
+    let subHeaderFont: Font = .ibmPlexSansSemiBold(size: 17.0)
+    let detailFont: Font = .ibmPlexSansSemiBold(size: 15.0)
+    let subDetailFont: Font = .ibmPlexSansRegular(size: 14.0)
+    let lightDetailFont: Font = .ibmPlexSansLight(size: 15.0)
 
-    let detailFont: Font = .barlowSemiBold(size: 15.0)
-    let subDetailFont: Font = .barlowRegular(size: 14.0)
-    let lightDetailFont: Font = .barlowLight(size: 15.0)
-
-    let textFieldFont: Font = .barlowRegular(size: 15.0)
+    let textFieldFont: Font = .ibmPlexSansRegular(size: 15.0)
 
     let buyVStackFactor: CGFloat = 0.0
     let minimumDragFactor: CGFloat = 400.0
@@ -201,7 +201,7 @@ struct BuyReceiveView: View {
                                             .padding(4.0)
                                     }
                                 }
-                                .onChange(of: pickedCurrency) { _ in
+                                .onChange(of: pickedCurrency) { _,_ in
                                     updateFiatAmounts()
                                 }
                                 .pickerStyle(.wheel)
@@ -223,7 +223,7 @@ struct BuyReceiveView: View {
                                 }
                                 .frame(height: 70, alignment: .center)
                                 .padding(.trailing, 20.0)
-                                .onChange(of: viewModel.quotedTimestamp) { newValue in
+                                .onChange(of: viewModel.quotedTimestamp) { _,newValue in
                                     quotedTimestamp = newValue
                                     quotedLTCAmount = viewModel.quotedLTCAmount
                                 }
@@ -247,7 +247,7 @@ struct BuyReceiveView: View {
                                         .tag(2)
                                 }
                                 .pickerStyle(.segmented)
-                                .onChange(of: pickedSegment) { segmentTag in
+                                .onChange(of: pickedSegment) { _,segmentTag in
 
                                     if segmentTag == 0 {
                                         pickedAmount = fiatMinAmount
@@ -358,10 +358,10 @@ struct BuyReceiveView: View {
                         .cornerRadius(modalCorner/2)
                     }
                 }
-                .onChange(of: viewModel.didFetchData) { newValue in
+                .onChange(of: viewModel.didFetchData) { _,newValue in
                     didFetchData = newValue
                 }
-                .onChange(of: viewModel.pickedCurrency) { _ in
+                .onChange(of: viewModel.pickedCurrency) { _,_ in
                     viewModel.updatePublishables()
                     pickedCurrency = viewModel.pickedCurrency
                 }
@@ -370,6 +370,12 @@ struct BuyReceiveView: View {
                     canUserBuy = viewModel.canUserBuy
                     pickedCurrency = viewModel.pickedCurrency
                     updateFiatAmounts()
+
+                    Analytics.logEvent("user_did_tap_buyreceive_sheet",
+                        parameters: [
+                            "platform": "ios",
+                            "app_version": AppVersion.string
+                        ])
                 }
                 .alert(String(localized:"Address Copied"), isPresented: $didCopyAddress,
                        actions: {

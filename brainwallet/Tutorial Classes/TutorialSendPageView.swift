@@ -6,8 +6,12 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import FirebaseAnalytics
 
 struct TutorialSendPageView: View {
+
+    @EnvironmentObject
+    var viewModel: NewMainViewModel
 
     @State
     private var selectedStep: Int = 0
@@ -29,17 +33,16 @@ struct TutorialSendPageView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-
-            let width = geometry.size.width
+        GeometryReader { _ in
 
             ZStack {
                 VStack(alignment: .center) {
                     HStack {
                         Text("How to Send LTC")
-                            .font(.system(size: 24, weight: .semibold, design: .default))
+                            .modifier(BWIPSSemiBold(size: 24.0))
                             .foregroundColor(.white)
                             .padding([.leading, .trailing], 4)
+                            .accessibilityIdentifier("tutorialSendPageViewTitle")
                     }
                     .padding(24)
                     Spacer()
@@ -61,7 +64,17 @@ struct TutorialSendPageView: View {
             }
             .cornerRadius(bentoCornerRadius)
             .onChange(of: userDidTapMP) { _,_ in
-                /// TBD
+                if userDidTapMP {
+                    viewModel.userWantsToTopUp.toggle()
+                }
+            }
+            .onAppear {
+                Analytics
+                    .logEvent("user_tapped_send_tutorial",
+                    parameters: [
+                        "platform": "ios",
+                        "app_version": AppVersion.string
+                    ])
             }
         }
     }

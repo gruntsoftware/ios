@@ -4,7 +4,7 @@ struct IntroStepView: View {
 	@EnvironmentObject
 	var viewModel: StartViewModel
 
-	let paragraphFont: Font = .barlowBold(size: 35.0)
+	let paragraphFont: Font = .ibmPlexSansBold(size: 35.0)
 
 	let genericPad = 5.0
 

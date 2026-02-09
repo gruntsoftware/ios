@@ -24,6 +24,8 @@ struct FavouritesBentoView: View {
 
     private let buttonPlatformFactor: CGFloat = 2.1
 
+    private let tagLabelWidth: CGFloat = 80.0
+
     init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
         newMainViewModel = viewModel
@@ -45,12 +47,12 @@ struct FavouritesBentoView: View {
                 VStack {
                     HStack {
                         ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .frame(width: width * 0.5, height: 22, alignment: .center)
+                        RoundedRectangle(cornerRadius: 6)
+                            .frame(width: tagLabelWidth, height: 18, alignment: .center)
                             .foregroundColor(labelBackground)
                             .padding(8)
                         Text("TOP SECRET")
-                            .font(.system(size: 12, weight: .light, design: .default))
+                            .modifier(BWIPSRegular(size: 10.0))
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)// Shrinks to 50% of original
                             .padding([.leading, .trailing], 4)

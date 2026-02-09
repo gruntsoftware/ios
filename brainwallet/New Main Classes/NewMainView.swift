@@ -67,7 +67,10 @@ struct NewMainView: View {
 
     private let noSendTitle = String(localized: "Send is Disabled")
 
-    private let noSendMessage = String(localized: "While syncing, send is disabled the database catchs up to the latest block.\nPlease try again later.")
+    private let noSendMessage = """
+                                While syncing, send is disabled the \
+                                database catchs up to the latest block.\nPlease try again later.
+                                """
 
     @State
     private var mainGradientStyle: MainGradientStyle = .lightStyle
@@ -82,6 +85,7 @@ struct NewMainView: View {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
     }
+
     var body: some View {
         GeometryReader { geometry in
 
@@ -89,6 +93,7 @@ struct NewMainView: View {
             let height = geometry.size.height
             let midBentoHeight = geometry.size.height
             let sheetContentHeight = height * 0.7
+            let mainTabIconSize: CGFloat = 26.0
 
             let content = BrainwalletColor.content
             NavigationStack {
@@ -109,52 +114,60 @@ struct NewMainView: View {
                     VStack {
                         BalanceBentoView(viewModel: newMainViewModel,
                                          userPrefersDarkTheme: $userPrefersDarkTheme)
-                        .frame(height:  balanceGameBentoHeight, alignment: .top)
+                        .frame(height:  balanceBentoHeight, alignment: .top)
                         .padding(bentoPadding)
-                       .padding(.top, 10)
-                       .padding(.bottom, 10)
+                        .padding(.top, 10)
+                        .accessibilityIdentifier("balanceBentoView")
 
                         if shouldShowTransactionDetail {
                             TransactionDetailBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme:  $userPrefersDarkTheme)
-                                .frame(maxHeight: .infinity)
+                            .frame(maxHeight: 320, alignment: .top)
                                 .padding(bentoPadding)
                                 .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 1.0 : 0.0, anchor: .top)
                                 .transition(.scale)
-
+                                .accessibilityIdentifier("transactionDetailBentoView")
+                            Spacer()
                         }
                             TransactionHistoryBentoView(viewModel: newMainViewModel,
                                                     detailIsShowing: $shouldShowTransactionDetail,
                                                     userPrefersDarkTheme: $userPrefersDarkTheme)
-                            .frame(height: transactionsBentoHeight, alignment: .top)
+                            .frame(height: transactionsBentoHeight, alignment: .bottom)
                             .padding(bentoPadding)
+                            .accessibilityIdentifier("transactionHistoryBentoView")
 
                         if !shouldShowTransactionDetail {
                             Group {
                                 HStack {
                                     TutorialsBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                                    .frame(maxHeight: midBentoHeight * 0.5, alignment: .top)
+                                    .frame(maxHeight: midBentoHeight * 0.9, alignment: .top)
                                     .padding(bentoPadding)
+                                    .accessibilityIdentifier("tutorialsBentoView")
 
                                     VStack {
                                         LTCPriceBentoView(viewModel: newMainViewModel,
                                                           userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .frame(maxHeight: midBentoHeight * 0.25)
+                                        .frame(maxHeight: midBentoHeight * 0.78)
                                         .padding(bentoPadding)
+                                        .accessibilityIdentifier("ltcPriceBentoView")
 
                                         FavouritesBentoView(viewModel: newMainViewModel,
                                                             userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .frame(maxHeight: midBentoHeight * 0.25)
+                                        .frame(maxHeight: midBentoHeight * 0.12)
                                         .padding(bentoPadding)
-
+                                        .accessibilityIdentifier("favouritesBentoView")
                                     }
                                 }
                                 .frame(maxHeight: height * 0.5, alignment: .top)
                                 .padding([.top,.leading, .trailing], bentoPadding)
                                 GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .frame(height: balanceGameBentoHeight, alignment: .top)
+                                        .frame(idealHeight: balanceBentoHeight * 0.9, maxHeight: balanceBentoHeight, alignment: .top)
                                         .padding(bentoPadding)
+                                        .accessibilityIdentifier("gameHubBentoView")
+                                        .onTapGesture {
+                                            newMainViewModel.shouldShowGameMode.toggle()
+                                        }
                             }
                             .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 0.0 : 1.0, anchor: .bottom)
                             .transition(.scale)
@@ -169,7 +182,8 @@ struct NewMainView: View {
 
                     ToolbarItem(placement: .navigationBarLeading) {
                             Button(action: {
-                                 userPrefersDarkTheme.toggle()
+                                userPrefersDarkTheme.toggle()
+                                newMainViewModel.updateTheme(shouldBeDark: userPrefersDarkTheme)
                             }) {
 
                                 ZStack {
@@ -195,6 +209,8 @@ struct NewMainView: View {
                                     .foregroundColor(content)
                                 }
                             }
+                            .accessibilityIdentifier("themePreferenceButton")
+
                     }
 
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -226,6 +242,7 @@ struct NewMainView: View {
                             }
 
                         }
+                        .accessibilityIdentifier("settingsButton")
                     }
 
                     ToolbarItemGroup(placement: .bottomBar) {
@@ -237,16 +254,17 @@ struct NewMainView: View {
                                 Image(systemName: "paperplane")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
+                                    .frame(width: mainTabIconSize,
+                                           height: mainTabIconSize)
                                     .foregroundColor( walletIsSyncing ? content.opacity(0.3) : content)
                                     .padding(6)
 
                                 Text("Send")
-                                    .font(.caption2)
+                                    .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundStyle(walletIsSyncing ? content.opacity(0.3) : content)
                             }
                         })
+                        .accessibilityIdentifier("sendTabBarItem")
 
                         Spacer()
 
@@ -257,36 +275,43 @@ struct NewMainView: View {
                                 Image(systemName: "arrow.left.arrow.right")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
+                                    .frame(width: mainTabIconSize,
+                                           height: mainTabIconSize)
                                     .foregroundColor(content)
                                     .padding(6)
 
                                 Text("Buy/Receive")
-                                    .font(.caption2)
+                                    .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundStyle(content)
                             }
                         })
+                        .accessibilityIdentifier("buyReceiveTabBarItem")
 
                         Spacer()
 
                         Button(action: {
-                            shouldShowGameMode.toggle()
+                            newMainViewModel.shouldShowGameMode.toggle()
+                            Analytics.logEvent("user_did_tap_gamemode",
+                                parameters: [
+                                    "platform": "ios",
+                                    "app_version": AppVersion.string
+                                ])
                         }, label: {
                             VStack(spacing: 4) {
                                 Image(systemName: "gamecontroller")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
+                                    .frame(width: mainTabIconSize,
+                                           height: mainTabIconSize)
                                     .foregroundColor(content)
                                     .padding(6)
 
                                 Text("Game Hub")
-                                    .font(.caption2)
+                                    .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundStyle(content)
                             }
                         })
+                        .accessibilityIdentifier("gameHubTabBarItem")
 
                         Spacer()
 
@@ -296,20 +321,25 @@ struct NewMainView: View {
                             }
                         }, label: {
                             VStack(spacing: 4) {
-                                Image(systemName: "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
+                                Image(systemName: shouldShowTransactionDetail ? "house" : "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
+                                    .frame(width: mainTabIconSize,
+                                           height: mainTabIconSize)
                                     .foregroundColor(content)
                                     .padding(6)
-                                Text("History")
-                                    .font(.caption2)
-                                    .foregroundStyle(content)
+                                    .animation(.easeInOut, value: shouldShowTransactionDetail)
 
+                                Text(shouldShowTransactionDetail ? " Home " :"History")
+                                    .modifier(BWIPSSemiBold(size: 19.0))
+                                    .foregroundStyle(content)
+                                    .contentTransition(.opacity)
+                                    .animation(.easeInOut, value: shouldShowTransactionDetail)
                             }
                         })
                         .disabled(disableTransactionDetail)
+                        .accessibilityIdentifier("historyHubTabBarItem")
+
                         Spacer()
                     }
                 }
@@ -319,18 +349,20 @@ struct NewMainView: View {
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                     walletIsSyncing = newMainViewModel.walletIsSyncing
                 }
-                .onChange(of: shouldShowGameMode) { _,_ in
-                    newMainViewModel.shouldShowGameMode = shouldShowGameMode
-                }
                 .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
                     disableTransactionDetail = newMainViewModel.filteredTransactions.isEmpty
                 }
-                .onChange(of: userPrefersDarkTheme) { _,newPreference in
-                    newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: newPreference)
+                .onChange(of: newMainViewModel.userPrefersDarkMode) { _,_ in
+                    userPrefersDarkTheme =  newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 }
                 .onChange(of: newMainViewModel.walletIsSyncing) { _,newState in
                     walletIsSyncing = newState
+                }
+                .onChange(of: newMainViewModel.userWantsToTopUp) { _,newState in
+                    if newState {
+                        userDidTapBuyReceive.toggle()
+                    }
                 }
                 .sheet(isPresented: $userDidTapSend) {
                  if !walletIsSyncing {

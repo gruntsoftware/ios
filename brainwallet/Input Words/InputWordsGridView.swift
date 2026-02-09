@@ -17,6 +17,31 @@ struct InputWordsGridView: View {
     private var wordSettingState: [Bool] = Array(repeating: false, count: 12)
     @State
     private var activeWordIndex = 0
+    @State
+    private var capsule1IsActive = false
+    @State
+    private var capsule2IsActive = false
+    @State
+    private var capsule3IsActive = false
+    @State
+    private var capsule4IsActive = false
+    @State
+    private var capsule5IsActive = false
+    @State
+    private var capsule6IsActive = false
+    @State
+    private var capsule7IsActive = false
+    @State
+    private var capsule8IsActive = false
+    @State
+    private var capsule9IsActive = false
+    @State
+    private var capsule10IsActive = false
+    @State
+    private var capsule11IsActive = false
+    @State
+    private var capsule12IsActive = false
+
     @Binding
     var phraseIsVerified: Bool
 
@@ -24,7 +49,6 @@ struct InputWordsGridView: View {
     let fieldHeight: CGFloat = 40.0
     let maxSearchWordCount = 12
     private let columns = Array(repeating: GridItem(.flexible(minimum: 70)), count: 3)
-    let searchFont: Font = .barlowSemiBold(size: 20.0)
 
     private var bip39SeedWords: [String]? {
         guard let path = Bundle.main.path(forResource: "BIP39Words", ofType: "plist") else { return nil }
@@ -84,6 +108,10 @@ struct InputWordsGridView: View {
                                         ),
                                         wordNumber: index + 1
                                     )
+                                    .tag(index)
+                                    .onAppear {
+
+                                    }
                                 }
                             }
                             .frame(minHeight: fieldHeight)
@@ -94,9 +122,7 @@ struct InputWordsGridView: View {
 
                     ZStack {
                         Text("Tap a field above.\nEnter the a few letters.\nTap the word that matches")
-                            .font(searchFont)
-                            .lineLimit(3)
-                            .multilineTextAlignment(.center)
+                            .modifier(BWIPSRegular(size: 18.0, lineLimit: 3))
                             .foregroundColor(BrainwalletColor.content.opacity(0.4))
                             .opacity(filteredSeedWords.isEmpty ? 1 : 0)
 
@@ -107,7 +133,7 @@ struct InputWordsGridView: View {
                                 }) {
                                     Text(word)
                                         .frame(width: 90.0, alignment: .center)
-                                        .font(searchFont)
+                                        .modifier(BWIPSSemiBold(size: 20.0))
                                         .padding(3.0)
                                         .foregroundColor(BrainwalletColor.content)
                                         .background(BrainwalletColor.background)
