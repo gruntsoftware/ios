@@ -22,7 +22,7 @@ final class LockScreenViewUITests: XCTestCase {
         }
         app.launch()
            
-        let isLockScreenViewShowing = app.otherElements["Lock Screen Footer View"].waitForExistence(timeout: 2)
+        let isLockScreenViewShowing = app.descendants(matching: .any)["Lock Screen Footer View"].waitForExistence(timeout: 2)
         try XCTSkipUnless(isLockScreenViewShowing, "Lock Screen Footer View not showing, skipping these tests")
     }
 
@@ -33,7 +33,7 @@ final class LockScreenViewUITests: XCTestCase {
     @MainActor
     func testLockScreenView() throws {
         
-        XCTAssertTrue(app.staticTexts["Lock Screen Footer View"].exists)
+        XCTAssertTrue(app.descendants(matching: .any)["Lock Screen Footer View"].exists)
 
         app.activate()
         app/*@START_MENU_TOKEN@*/.buttons["moon.stars"]/*[[".otherElements",".buttons[\"Clear Night\"]",".buttons[\"moon.stars\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.firstMatch.tap()
