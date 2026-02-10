@@ -22,7 +22,7 @@ struct SettingsView: View {
     private var didTriggerLock: Bool = false
 
     @State
-    private var userPrefersDarkMode: Bool = false
+    private var userPrefersDarkMode: Bool = true
 
     @State
     private var shouldExpandSecurity: Bool = false
@@ -50,10 +50,8 @@ struct SettingsView: View {
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
 
-    private let supportURL = URL(string: "https://brainwallet.co/support.html")!
+    private let supportURL = URL(string: "https://brainwallet.co/support")!
 
     private let socialsURL = URL(string: "https://linktr.ee/brainwallet")!
 
@@ -70,9 +68,13 @@ struct SettingsView: View {
             GeometryReader { geometry in
                 let width = geometry.size.width
                 ZStack {
-                    BrainwalletColor.content.edgesIgnoringSafeArea(.all)
-                    BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                        .padding(.trailing, 1.0)
+
+                    if userPrefersDarkMode {
+                        BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
+                    } else {
+                        BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
+                            .padding(.trailing, 1.0)
+                    }
 
                     HStack {
                         VStack {

@@ -22,21 +22,19 @@ struct TopUpView: View {
     @State
     private var quoteTimestampString: String = ""
 
-    let selectorFont: Font = .barlowSemiBold(size: 16.0)
-    let buttonLightFont: Font = .barlowLight(size: 16.0)
-    let regularButtonFont: Font = .barlowRegular(size: 20.0)
-    let largeButtonFont: Font = .barlowSemiBold(size: 24.0)
-    let detailFont: Font = .barlowRegular(size: 22.0)
-    let billboardFont: Font = .barlowSemiBold(size: 50.0)
+    let selectorFont: Font = .ibmPlexSansSemiBold(size: 16.0)
+    let buttonLightFont: Font = .ibmPlexSansLight(size: 16.0)
+    let regularButtonFont: Font = .ibmPlexSansRegular(size: 20.0)
+    let largeButtonFont: Font = .ibmPlexSansSemiBold(size: 24.0)
+    let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
+    let billboardFont: Font = .ibmPlexSansSemiBold(size: 50.0)
 
-    let versionFont: Font = .barlowSemiBold(size: 16.0)
+    let versionFont: Font = .ibmPlexSansSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeButtonSize: CGFloat = 28.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-
     let arrowSize: CGFloat = 40.0
 
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
@@ -72,7 +70,8 @@ struct TopUpView: View {
                             }
                             Spacer()
                         }
-                        .padding(.all, 20.0)
+                        .padding([.leading, .trailing], 20.0)
+                        .padding(.top, 10.0)
 
                         HStack {
                             VStack {
@@ -83,7 +82,7 @@ struct TopUpView: View {
                                     .padding(.bottom, 5.0)
 
                                 Text(quoteTimestampString)
-                                    .font(detailFont)
+                                    .modifier(BWIPSLight(size: 18.0))
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     .foregroundColor(userPrefersDarkTheme ? .white.opacity(0.5) : BrainwalletColor.nearBlack.opacity(0.5))
                                     .padding(.top, 5.0)
@@ -102,7 +101,7 @@ struct TopUpView: View {
                                     Image(systemName: "arrow.down.right")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
-                                        .font(Font.system(size: 35, weight: .light))
+                                        .modifier(BWIPSLight(size: 35.0))
                                         .frame(width: arrowSize,
                                                alignment: .leading)
                                     Spacer()
@@ -117,7 +116,7 @@ struct TopUpView: View {
                                 }
                                 .padding(.bottom, 10.0)
                                 Text("Get some Litecoin for your Brainwallet")
-                                    .font(detailFont)
+                                    .modifier(BWIPSLight(size: 18.0))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white.opacity(0.5) : BrainwalletColor.nearBlack.opacity(0.5))
                                     .padding(.all, 10.0)

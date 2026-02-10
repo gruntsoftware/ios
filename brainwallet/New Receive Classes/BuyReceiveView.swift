@@ -98,15 +98,14 @@ struct BuyReceiveView: View {
     let setAmountSize: CGFloat = 60.0
     let modalCorner: CGFloat = 55.0
     let buttonCorner: CGFloat = 26.0
-    let headerFont: Font = .barlowBold(size: 26.0)
-    let liveQuoteFont: Font = .barlowSemiBold(size: 25.0)
-    let subHeaderFont: Font = .barlowSemiBold(size: 17.0)
+    let headerFont: Font = .ibmPlexSansBold(size: 26.0)
+    let liveQuoteFont: Font = .ibmPlexSansSemiBold(size: 25.0)
+    let subHeaderFont: Font = .ibmPlexSansSemiBold(size: 17.0)
+    let detailFont: Font = .ibmPlexSansSemiBold(size: 15.0)
+    let subDetailFont: Font = .ibmPlexSansRegular(size: 14.0)
+    let lightDetailFont: Font = .ibmPlexSansLight(size: 15.0)
 
-    let detailFont: Font = .barlowSemiBold(size: 15.0)
-    let subDetailFont: Font = .barlowRegular(size: 14.0)
-    let lightDetailFont: Font = .barlowLight(size: 15.0)
-
-    let textFieldFont: Font = .barlowRegular(size: 15.0)
+    let textFieldFont: Font = .ibmPlexSansRegular(size: 15.0)
 
     let buyVStackFactor: CGFloat = 0.0
     let minimumDragFactor: CGFloat = 400.0

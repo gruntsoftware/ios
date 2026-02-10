@@ -18,8 +18,6 @@ struct SettingsExpandingSecurityView: View {
     private var rotationAngle: Double = 0
 
     private var title: String
-    let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 18.0)
 
     var securityListView: SecurityListView
 
@@ -38,19 +36,14 @@ struct SettingsExpandingSecurityView: View {
                         HStack {
                             VStack {
                                 Text(title)
-                                    .font(largeFont)
+                                    .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundColor(BrainwalletColor.content)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.bottom, 1.0)
+                                    .frame(height: 25.0)
                                     .padding(.top, 8.0)
-
-                                Text("")
-                                    .font(detailFont)
-                                    .kerning(0.6)
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.bottom, 1.0)
                             }
+
+                            Spacer()
                             VStack {
                                 Button(action: {
                                     shouldExpandSecurity.toggle()
@@ -68,19 +61,18 @@ struct SettingsExpandingSecurityView: View {
                                         }
                                     }
                                     .frame(width: 30.0, height: 30.0, alignment: .top)
-                                    .padding(.top, 8.0)
+                                    .padding(.top, 11.0)
                                 }
                                 .frame(width: 30.0, height: 30.0)
                             }
                         }
-                        .frame(alignment: .top)
                         .padding(.top, 1.0)
                         SecurityListView(viewModel: viewModel)
                             .transition(.opacity)
                             .transition(.move(edge: .top))
                             .animation(.easeInOut(duration: 0.3))
                             .padding(.top, 16.0)
-
+                        Spacer()
                     }
 
                 }

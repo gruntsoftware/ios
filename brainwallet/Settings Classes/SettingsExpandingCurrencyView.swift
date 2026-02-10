@@ -24,8 +24,6 @@ struct SettingsExpandingCurrencyView: View {
     private var pickedCurrency: GlobalCurrency = .USD
 
     private var title: String
-    let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowSemiBold(size: 14.0)
 
     init(title: String, viewModel: NewMainViewModel, shouldExpandCurrency: Binding <Bool>) {
         self.title = title
@@ -41,13 +39,12 @@ struct SettingsExpandingCurrencyView: View {
                         HStack {
                             VStack {
                                 Text("\(title) (\(pickedCurrency.symbol))")
-                                    .font(largeFont)
+                                    .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundColor(BrainwalletColor.content)
                                     .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.bottom, 8.0)
+                                    .frame(height: 25.0)
                                     .padding(.top, 8.0)
                             }
-
                             Spacer()
 
                             VStack {
@@ -69,7 +66,7 @@ struct SettingsExpandingCurrencyView: View {
 
                                     }
                                     .frame(width: 30.0, height: 30.0, alignment: .top)
-                                    .padding(.top, 8.0)
+                                    .padding(.top, 9.0)
 
                                 }
                                 .frame(width: 30.0, height: 30.0)
@@ -85,6 +82,9 @@ struct SettingsExpandingCurrencyView: View {
                             .frame(height: shouldExpandCurrency ? pickerViewHeight : 0.1)
                         Spacer()
                     }
+                    .onChange(of: viewModel.currentGlobalFiat, { _, _ in
+                        pickedCurrency = viewModel.currentGlobalFiat
+                    })
                     .onAppear {
                         pickedCurrency = viewModel.currentGlobalFiat
                     }

@@ -8,22 +8,11 @@ struct ReadyView: View {
     @Binding
     var path: [Onboarding]
 
-    let selectorFont: Font = .barlowSemiBold(size: 16.0)
-    let buttonLightFont: Font = .barlowLight(size: 16.0)
-    let regularButtonFont: Font = .barlowRegular(size: 20.0)
-    let largeButtonFont: Font = .barlowSemiBold(size: 24.0)
-    let detailFont: Font = .barlowRegular(size: 22.0)
-    let detailHeavyFont: Font = .barlowSemiBold(size: 22.0)
-    let billboardFont: Font = .barlowSemiBold(size: 40.0)
-
-    let versionFont: Font = .barlowSemiBold(size: 16.0)
     let verticalPadding: CGFloat = 20.0
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeButtonSize: CGFloat = 28.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-
     let arrowSize: CGFloat = 40.0
 
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
@@ -39,10 +28,13 @@ struct ReadyView: View {
                 let width = geometry.size.width
                 let height = geometry.size.height
 
-                let readyText1 = String(localized:
-                    "This is for you alone.\n\nSetup the app passcode, open your password manager or grab a pen to record it & your new seed phrase.\n\n")
-                let readyText2 = String(localized:
-                    "We do not know it nor do we have a copy!")
+                let readyText1 = String(localized: """
+                                                   This is for you alone. Setup the app passcode,
+                                                   open your password manager or grab a pen to
+                                                   record it & your new seed phrase.
+                                                   """
+                )
+                let readyText2 = String(localized: "We do not know it nor do we have a copy!")
 
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
@@ -66,14 +58,15 @@ struct ReadyView: View {
                             .accessibilityIdentifier("backButtonToStartReady")
                             Spacer()
                         }
-                        .padding(.all, 20.0)
+                        .padding([.leading, .trailing], 20.0)
+                        .padding(.top, 10.0)
 
                         Spacer()
                         HStack {
                             Image(systemName: "arrow.down.right")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .font(Font.system(size: 35, weight: .light))
+                                .modifier(BWIPSLight(size: 35.0))
                                 .frame(width: arrowSize,
                                        alignment: .center)
                                 .padding(.leading, 20.0)
@@ -85,17 +78,18 @@ struct ReadyView: View {
                             VStack {
                                 HStack {
                                     Text("Ready to start?")
-                                        .font(billboardFont)
+                                        .modifier(BWIPSSemiBold(size: 40.0))
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 }
                                 .padding(.bottom, 20.0)
                                 Text(readyText1)
-                                    .font(detailFont)
+                                    .modifier(BWIPSRegular(size: 24.0, lineLimit: 3))
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.bottom, 4.0)
                                     .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                                 Text(readyText2)
-                                    .font(detailHeavyFont)
+                                    .modifier(BWIPSSemiBold(size: 22.0, lineLimit: 2))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack)
                             }
@@ -116,7 +110,7 @@ struct ReadyView: View {
 
                                     Text("Setup app passcode")
                                         .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                        .font(regularButtonFont)
+                                        .modifier(BWIPSRegular(size: 20.0))
                                         .foregroundColor(.white)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: largeButtonHeight/2)

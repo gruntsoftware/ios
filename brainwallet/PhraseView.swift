@@ -20,7 +20,7 @@ class PhraseView: UIView {
         label.textColor = BrainwalletUIColor.content
 		label.adjustsFontSizeToFitWidth = true
 		label.text = phrase
-        label.font = UIFont.barlowSemiBold(size: 30.0)
+        label.font = UIFont.ibmPlexSansSemiBold(size: 30.0)
         backgroundColor =  BrainwalletUIColor.surface
 		layer.cornerRadius = 10.0
 	}

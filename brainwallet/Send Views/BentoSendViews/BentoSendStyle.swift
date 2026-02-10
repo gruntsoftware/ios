@@ -11,7 +11,7 @@ import SwiftUI
 struct BentoSendTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<_Label>) -> some View {
         configuration
-            .font(.system(size: 16, weight: .regular, design: .default))
+            .modifier(BWIPSRegular(size: 16.0))
             .frame(height: 24, alignment: .leading)
             .controlSize(.regular)
             .textFieldStyle(.plain)
@@ -28,7 +28,7 @@ struct BentoSendTextFieldStyle: TextFieldStyle {
 struct SendTextModalTitleModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 13, weight: .light, design: .default))
+            .modifier(BWIPSLight(size: 13.0))
             .frame(height: 22, alignment: .topLeading)
             .padding(.leading, 16)
     }
@@ -37,7 +37,7 @@ struct SendTextModalTitleModifier: ViewModifier {
 struct SendTextModalSubTitleModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 12, weight: .light, design: .default))
+            .modifier(BWIPSLight(size: 12.0))
             .frame(height: 22, alignment: .topLeading)
             .padding(.leading, 16)
     }
@@ -46,7 +46,7 @@ struct SendTextModalSubTitleModifier: ViewModifier {
 struct SendTextModalFooterModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 11, weight: .light, design: .default))
+            .modifier(BWIPSLight(size: 11.0))
             .frame(height: 15, alignment: .leading)
     }
 }
@@ -61,12 +61,12 @@ struct SendTextLeaderModifier<T>: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 14, weight: .light, design: .default))
+            .modifier(BWIPSLight(size: 14.0))
             .foregroundColor(userPrefersDarkTheme ? .white : .black)
             .frame(height: 15, alignment: .leading)
         LeaderEllipseView(userPrefersDarkTheme: $userPrefersDarkTheme)
         Text(formatDataValue(dataValue))
-            .font(.system(size: 14, weight: .bold, design: .default))
+            .modifier(BWIPSSemiBold(size: 14.0))
             .foregroundColor(userPrefersDarkTheme ? .white : .black)
             .frame(height: 15, alignment: .leading)
     }
@@ -105,12 +105,12 @@ struct SendFiatAmountLeaderModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 14, weight: .light, design: .default))
+            .modifier(BWIPSLight(size: 14.0))
             .foregroundColor(userPrefersDarkTheme ? .white : .black)
             .frame(height: 15, alignment: .leading)
         LeaderEllipseView(userPrefersDarkTheme: $userPrefersDarkTheme)
         Text(formattedDataValue(fiatValue))
-            .font(.system(size: 14, weight: .bold, design: .default))
+            .modifier(BWIPSSemiBold(size: 14.0))
             .foregroundColor(userPrefersDarkTheme ? .white : .black)
             .frame(height: 15, alignment: .leading)
     }
@@ -129,7 +129,7 @@ struct SendTextPrepTitleModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 15, weight: .semibold, design: .default))
+            .modifier(BWIPSSemiBold(size: 15.0))
             .foregroundColor(userPrefersDarkTheme ? .white : .black)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -142,7 +142,7 @@ struct SendTextPrepDataModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 14, weight: .ultraLight, design: .default))
+            .modifier(BWIPSThin(size: 14.0))
             .foregroundColor(userPrefersDarkTheme ? .white : .black)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -155,9 +155,7 @@ struct SendCompletedTitleModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 24, weight: .bold, design: .default))
-            .lineLimit(1)
-            .minimumScaleFactor(0.9)
+            .modifier(BWIPSBold(size: 24.0))
             .foregroundColor(userPrefersDarkTheme ? .white : .black)
     }
 }
@@ -169,7 +167,7 @@ struct SendCompletedSubTitleModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 15, weight: .ultraLight, design: .default))
+            .modifier(BWIPSThin(size: 15.0))
             .foregroundColor(userPrefersDarkTheme ? .white : .black)
             .frame(maxWidth: .infinity, alignment: .center)
             .kerning(2.0)

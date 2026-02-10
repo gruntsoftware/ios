@@ -93,6 +93,7 @@ struct NewMainView: View {
             let height = geometry.size.height
             let midBentoHeight = geometry.size.height
             let sheetContentHeight = height * 0.7
+            let mainTabIconSize: CGFloat = 26.0
 
             let content = BrainwalletColor.content
             NavigationStack {
@@ -113,25 +114,25 @@ struct NewMainView: View {
                     VStack {
                         BalanceBentoView(viewModel: newMainViewModel,
                                          userPrefersDarkTheme: $userPrefersDarkTheme)
-                        .frame(height:  balanceGameBentoHeight, alignment: .top)
+                        .frame(height:  balanceBentoHeight, alignment: .top)
                         .padding(bentoPadding)
                         .padding(.top, 10)
-                        .padding(.bottom, 10)
                         .accessibilityIdentifier("balanceBentoView")
 
                         if shouldShowTransactionDetail {
                             TransactionDetailBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme:  $userPrefersDarkTheme)
-                                .frame(maxHeight: .infinity)
+                            .frame(maxHeight: 320, alignment: .top)
                                 .padding(bentoPadding)
                                 .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 1.0 : 0.0, anchor: .top)
                                 .transition(.scale)
                                 .accessibilityIdentifier("transactionDetailBentoView")
+                            Spacer()
                         }
                             TransactionHistoryBentoView(viewModel: newMainViewModel,
                                                     detailIsShowing: $shouldShowTransactionDetail,
                                                     userPrefersDarkTheme: $userPrefersDarkTheme)
-                            .frame(height: transactionsBentoHeight, alignment: .top)
+                            .frame(height: transactionsBentoHeight, alignment: .bottom)
                             .padding(bentoPadding)
                             .accessibilityIdentifier("transactionHistoryBentoView")
 
@@ -140,20 +141,20 @@ struct NewMainView: View {
                                 HStack {
                                     TutorialsBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme: $userPrefersDarkTheme)
-                                    .frame(maxHeight: midBentoHeight * 0.5, alignment: .top)
+                                    .frame(maxHeight: midBentoHeight * 0.9, alignment: .top)
                                     .padding(bentoPadding)
                                     .accessibilityIdentifier("tutorialsBentoView")
 
                                     VStack {
                                         LTCPriceBentoView(viewModel: newMainViewModel,
                                                           userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .frame(maxHeight: midBentoHeight * 0.25)
+                                        .frame(maxHeight: midBentoHeight * 0.78)
                                         .padding(bentoPadding)
                                         .accessibilityIdentifier("ltcPriceBentoView")
 
                                         FavouritesBentoView(viewModel: newMainViewModel,
                                                             userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .frame(maxHeight: midBentoHeight * 0.25)
+                                        .frame(maxHeight: midBentoHeight * 0.12)
                                         .padding(bentoPadding)
                                         .accessibilityIdentifier("favouritesBentoView")
                                     }
@@ -161,9 +162,12 @@ struct NewMainView: View {
                                 .frame(maxHeight: height * 0.5, alignment: .top)
                                 .padding([.top,.leading, .trailing], bentoPadding)
                                 GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .frame(height: balanceGameBentoHeight, alignment: .top)
+                                        .frame(idealHeight: balanceBentoHeight * 0.9, maxHeight: balanceBentoHeight, alignment: .top)
                                         .padding(bentoPadding)
                                         .accessibilityIdentifier("gameHubBentoView")
+                                        .onTapGesture {
+                                            newMainViewModel.shouldShowGameMode.toggle()
+                                        }
                             }
                             .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 0.0 : 1.0, anchor: .bottom)
                             .transition(.scale)
@@ -178,7 +182,8 @@ struct NewMainView: View {
 
                     ToolbarItem(placement: .navigationBarLeading) {
                             Button(action: {
-                                 userPrefersDarkTheme.toggle()
+                                userPrefersDarkTheme.toggle()
+                                newMainViewModel.updateTheme(shouldBeDark: userPrefersDarkTheme)
                             }) {
 
                                 ZStack {
@@ -249,13 +254,13 @@ struct NewMainView: View {
                                 Image(systemName: "paperplane")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
+                                    .frame(width: mainTabIconSize,
+                                           height: mainTabIconSize)
                                     .foregroundColor( walletIsSyncing ? content.opacity(0.3) : content)
                                     .padding(6)
 
                                 Text("Send")
-                                    .font(.caption2)
+                                    .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundStyle(walletIsSyncing ? content.opacity(0.3) : content)
                             }
                         })
@@ -270,13 +275,13 @@ struct NewMainView: View {
                                 Image(systemName: "arrow.left.arrow.right")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
+                                    .frame(width: mainTabIconSize,
+                                           height: mainTabIconSize)
                                     .foregroundColor(content)
                                     .padding(6)
 
                                 Text("Buy/Receive")
-                                    .font(.caption2)
+                                    .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundStyle(content)
                             }
                         })
@@ -285,7 +290,7 @@ struct NewMainView: View {
                         Spacer()
 
                         Button(action: {
-                            shouldShowGameMode.toggle()
+                            newMainViewModel.shouldShowGameMode.toggle()
                             Analytics.logEvent("user_did_tap_gamemode",
                                 parameters: [
                                     "platform": "ios",
@@ -296,13 +301,13 @@ struct NewMainView: View {
                                 Image(systemName: "gamecontroller")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
+                                    .frame(width: mainTabIconSize,
+                                           height: mainTabIconSize)
                                     .foregroundColor(content)
                                     .padding(6)
 
                                 Text("Game Hub")
-                                    .font(.caption2)
+                                    .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundStyle(content)
                             }
                         })
@@ -319,14 +324,14 @@ struct NewMainView: View {
                                 Image(systemName: shouldShowTransactionDetail ? "house" : "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
+                                    .frame(width: mainTabIconSize,
+                                           height: mainTabIconSize)
                                     .foregroundColor(content)
                                     .padding(6)
                                     .animation(.easeInOut, value: shouldShowTransactionDetail)
 
                                 Text(shouldShowTransactionDetail ? " Home " :"History")
-                                    .font(.caption2)
+                                    .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundStyle(content)
                                     .contentTransition(.opacity)
                                     .animation(.easeInOut, value: shouldShowTransactionDetail)
@@ -344,14 +349,11 @@ struct NewMainView: View {
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                     walletIsSyncing = newMainViewModel.walletIsSyncing
                 }
-                .onChange(of: shouldShowGameMode) { _,_ in
-                    newMainViewModel.shouldShowGameMode = shouldShowGameMode
-                }
                 .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
                     disableTransactionDetail = newMainViewModel.filteredTransactions.isEmpty
                 }
-                .onChange(of: userPrefersDarkTheme) { _,newPreference in
-                    newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: newPreference)
+                .onChange(of: newMainViewModel.userPrefersDarkMode) { _,_ in
+                    userPrefersDarkTheme =  newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 }
                 .onChange(of: newMainViewModel.walletIsSyncing) { _,newState in

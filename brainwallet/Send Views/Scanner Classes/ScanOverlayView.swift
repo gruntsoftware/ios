@@ -71,7 +71,7 @@ class ScanOverlayView: UIView {
 
         let instructionText = String(localized: "Align within frame. Tap to scan")
         let textAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 16, weight: .medium),
+            .font: UIFont.ibmPlexSansMedium(size: 16.0),
             .foregroundColor: UIColor.white
         ]
         let textSize = instructionText.size(withAttributes: textAttributes)

@@ -11,8 +11,7 @@ struct SettingsActionThemeView: View {
 
     private let title: String
     private let detailText: String
-    let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 18.0)
+
     let action: SettingsAction
 
     @Binding
@@ -32,12 +31,13 @@ struct SettingsActionThemeView: View {
                     HStack {
                         VStack {
                             Text(title)
-                                .font(largeFont)
+                                .modifier(BWIPSSemiBold(size: 19.0))
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.top, 4.0)
+                                .frame(height: 25.0)
+                                .padding(.top, 8.0)
                             Text(detailText)
-                                .font(detailFont)
+                                .modifier(BWIPSLight(size: 18.0))
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding([.top, .bottom], 1.0)
@@ -60,8 +60,6 @@ struct SettingsActionThemeView: View {
                             }
                             .frame(width: 30.0, height: 30.0)
                         }
-                    }.onAppear {
-                        userPrefersDark = UserDefaults.userPreferredDarkTheme
                     }
                 }
             }

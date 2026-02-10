@@ -46,7 +46,7 @@ struct SeedWordContainerView: View {
 				VStack {
 					HStack {
 						Text("These are your seed words. If you show them to anyone, they can take your Litecoin")
-							.font(.barlowSemiBold(size: 24.0))
+							.modifier(BWIPSSemiBold(size: 24.0))
 							.multilineTextAlignment(.center)
                             .foregroundColor(BrainwalletColor.content)
 							.padding()

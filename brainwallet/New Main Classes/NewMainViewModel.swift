@@ -323,6 +323,7 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
     func updateTheme(shouldBeDark: Bool) {
         UserDefaults.userPreferredDarkTheme = shouldBeDark
+        userPrefersDarkMode = shouldBeDark
         NotificationCenter
             .default
             .post(name: .changedThemePreferenceNotification,
@@ -398,16 +399,6 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
     func userWantsToRecover(completion: @escaping () -> Void) {
         didTapRecover = completion
-    }
-
-    func userDidSetThemePreference(userPrefersDarkMode: Bool) {
-
-        UserDefaults.userPreferredDarkTheme = userPrefersDarkMode
-
-        NotificationCenter
-            .default
-            .post(name: .changedThemePreferenceNotification,
-                object: nil)
     }
 
     func userDidSetCurrencyPreference(currency: GlobalCurrency) {

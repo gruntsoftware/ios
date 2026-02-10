@@ -52,7 +52,7 @@ struct GameHubBentoView: View {
                                 .foregroundColor(labelBackground)
                                 .padding(8)
                             Text("GAME HUB")
-                                .font(.system(size: 10, weight: .regular, design: .default))
+                                .modifier(BWIPSRegular(size: 10.0))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)
                                 .padding([.leading, .trailing], 4)
@@ -68,13 +68,13 @@ struct GameHubBentoView: View {
                     HStack {
 
                         Button(action: {
-                          shouldShowGameMode.toggle()
+                            newMainViewModel.shouldShowGameMode.toggle()
                         }) {
 
                             HStack {
                                 VStack {
                                     Text("FALLINMOJI")
-                                        .font(Font.custom("BoldenVan", size: 100))
+                                        .font(.boldenVan(size: 100))
                                         .lineLimit(1)
                                         .minimumScaleFactor(0.3)
                                         .padding(.leading, 16)
@@ -88,11 +88,7 @@ struct GameHubBentoView: View {
                                         )
 
                                     Text("ARE YOU GOOD ENOUGH TO BE #1?")
-                                        .font(.system(size: 16,
-                                                      weight: .regular,
-                                                      design: .rounded))
-                                        .lineLimit(1)
-                                        .minimumScaleFactor(0.5)
+                                        .modifier(BWIPSMedium(size: 16.0))
                                         .padding(.leading, 16)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundStyle(
@@ -123,11 +119,9 @@ struct GameHubBentoView: View {
 
             }
             .cornerRadius(bentoCornerRadius)
-            .frame(height: balanceGameBentoHeight, alignment: .center)
-            .onChange(of: shouldShowGameMode) { _,_ in
+            .frame(height: gameBentoHeight, alignment: .center)
+            .frame(minHeight: gameBentoHeight * 0.9, idealHeight: gameBentoHeight * 1.4, maxHeight: gameBentoHeight * 2, alignment: .center)
 
-                // newMainViewModel.shouldShowGameMode = shouldShowGameMode
-            }
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
             }

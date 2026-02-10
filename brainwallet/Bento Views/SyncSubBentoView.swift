@@ -36,53 +36,52 @@ struct SyncSubBentoView: View {
     var body: some View {
         GeometryReader { _ in
             ZStack {
-                        VStack {
+                VStack(alignment: .trailing, spacing: 0) {
                             Spacer()
                             HStack {
                                 Spacer()
 
                                 Text(viewModel.syncStateMessage)
-                                    .font(.system(size: 11, weight: .semibold, design: .default))
+                                    .modifier(BWIPSSemiBold(size: 11.0))
                                     .frame(alignment: .trailing)
                                     .foregroundColor(.white)
                             }
-
+                            .padding(.bottom, 2)
                             HStack {
                                 Spacer()
 
                                 Text(String(localized:"Last block: ") + viewModel.lastFoundBlockHeightString)
-                                    .font(.system(size: 10, weight: .light, design: .default))
+                                    .modifier(BWIPSLight(size: 11.0))
                                     .frame(alignment: .trailing)
                                     .foregroundColor(.white)
 
                             }
+                            .padding(.bottom, 2)
                             HStack {
                                 Spacer()
 
                                 Text(String(localized:"Date: ") + viewModel.formattedTimestamp)
-                                    .font(.system(size: 10, weight: .light, design: .default))
+                                    .modifier(BWIPSThin(size: 11.0))
                                     .frame(alignment: .trailing)
                                     .foregroundColor(.white)
 
                             }
-
+                            .padding(.bottom, 2)
                             HStack {
-
                                 Text(String(format: "%3.2f %%", viewModel.progress * 100))
-                                    .font(.system(size: 10, weight: .bold, design: .default))
+                                    .modifier(BWIPSBold(size: 10.0))
                                     .frame(width: 50.0, alignment: .leading)
                                     .foregroundColor(.white)
                                     .padding(.trailing, 4.0)
                                 Text("Block: \(viewModel.currentBlockHeightString)")
-                                    .font(.system(size: 10, weight: .light, design: .default))
+                                    .modifier(BWIPSThin(size: 11.0))
                                     .frame(alignment: .leading)
                                     .foregroundColor(.white)
                                 Spacer()
                                 Text("Send")
-                                    .font(.system(size: 10, weight: .light, design: .default))
+                                    .modifier(BWIPSThin(size: 11.0))
                                     .frame(alignment: .center)
                                     .foregroundColor(.white)
-
                                 Image(systemName: "xmark.circle")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -90,12 +89,10 @@ struct SyncSubBentoView: View {
                                            height: progressIconSize,
                                            alignment: .center)
                                     .foregroundColor(BrainwalletColor.error)
-
                                 Text("Receive")
-                                    .font(.system(size: 10, weight: .light, design: .default))
+                                    .modifier(BWIPSThin(size: 11.0))
                                     .frame(alignment: .center)
                                     .foregroundColor(.white)
-
                                 Image(systemName: "checkmark.circle")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -103,18 +100,18 @@ struct SyncSubBentoView: View {
                                            height: progressIconSize,
                                            alignment: .trailing)
                                     .foregroundColor(BrainwalletColor.affirm)
-
                             }
                             .coordinateSpace(name: "progresslabels")
+                            .padding(.bottom, 3)
+
                             HStack {
                                 ProgressView(value: viewModel.progress)
                                     .progressViewStyle(.linear)
                                     .accentColor(BentoColor.progressGreen1)
-                                    .padding(.bottom, 8)
+                                    .padding(.bottom, 4)
                             }
-
                         }
-                        .padding(.bottom, 8)
+                        .padding(.bottom, 4)
                         .opacity(viewModel.isSyncing ? 1.0 : 0.0)
 
                     }
