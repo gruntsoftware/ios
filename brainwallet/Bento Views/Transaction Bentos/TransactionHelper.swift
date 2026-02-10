@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-let kQRImageSide: CGFloat = 120.0
+let kQRImageSide: CGFloat = 100.0
 let kFiveYears: Double = 157_680_000.0
 
 enum Selection {
