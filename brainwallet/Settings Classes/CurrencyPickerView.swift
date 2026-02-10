@@ -19,7 +19,7 @@ struct CurrencyPickerView: View {
     @State
     private var selectedFiat: Bool = false
 
-    let selectorFont: Font = .barlowRegular(size: 14.0)
+    let selectorFont: Font = .ibmPlexSansRegular(size: 14.0)
 
     let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
     let checkSize: CGFloat = 16.0
@@ -76,7 +76,7 @@ struct CurrencyPickerView: View {
                                                height: checkSize * 2)
                                     )
                                 Image(systemName: "checkmark")
-                                    .font(.system(size: 20, weight: .bold))
+                                    .modifier(BWIPSBold(size: 20.0))
                                     .frame(width: checkSize,
                                            height: checkSize)
                                     .foregroundColor(selectedFiat ? .white : BrainwalletColor.gray)

@@ -47,7 +47,7 @@ struct WalkthroughStep4View: View {
 
                     }
                     .frame(height: calloutHeight, alignment: .top)
-                    .padding(.top, brainwalletNavBarHeight + balanceGameBentoHeight + transactionsBentoHeight * 0.5)
+                    .padding(.top, brainwalletNavBarHeight + balanceBentoHeight + transactionsBentoHeight * 0.5)
                     Spacer()
                 }
             }

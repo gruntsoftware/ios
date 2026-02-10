@@ -26,15 +26,14 @@ struct SecurityListView: View {
     private var willShareData: Bool = false
 
     @State
-    private var userPrefersDarkMode: Bool = false
+    private var userPrefersDarkMode: Bool = true
 
     let footerRowHeight: CGFloat = 55.0
 
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
+
     let rowBackground: Color = BrainwalletColor.background
     init(viewModel: NewMainViewModel) {
         self.newMainViewModel = viewModel

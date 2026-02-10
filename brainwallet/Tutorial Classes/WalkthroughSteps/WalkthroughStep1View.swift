@@ -43,7 +43,7 @@ struct WalkthroughStep1View: View {
                       Spacer()
 
                     }
-                    .padding(.top, brainwalletNavBarHeight + balanceGameBentoHeight)
+                    .padding(.top, brainwalletNavBarHeight + balanceBentoHeight)
                     Spacer()
                 }
             }

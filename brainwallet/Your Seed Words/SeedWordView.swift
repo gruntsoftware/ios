@@ -28,22 +28,20 @@ struct SeedWordView: View {
 
 						Text("\(seedWord)")
 							.frame(height: cellHeight, alignment: .center)
-                            .font(.system(size: 16, weight: .light, design: .default))
-                                                        .lineLimit(1)
-                                                        .minimumScaleFactor(0.8)
+                            .modifier(BWIPSLight(size: 15.0))
                             .foregroundColor(userPrefersDarkTheme ? .white :
                                 BrainwalletColor.content)
 						VStack {
 							HStack {
 								Text("\(wordNumber)")
-									.font(.barlowRegular(size: 12.0))
+									.modifier(BWIPSLight(size: 10.0))
 									.foregroundColor(userPrefersDarkTheme ? .white :
                                         BrainwalletColor.content)
-									.frame(width: 22,
+									.frame(width: 18,
 									       height: cellHeight,
-									       alignment: .leading)
+									       alignment: .topLeading)
                                     .padding(.leading, genericPad)
-                                    .offset(x: -4, y: -4)
+                                    .offset(x: -4, y: 3)
 								Spacer()
 							}
 						}

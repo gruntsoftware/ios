@@ -78,9 +78,7 @@ struct BentoSendConfirmView: View {
 
                     VStack {
                         Text(String(localized: "Enter PIN"))
-                            .font(.system(size: 24, weight: .bold, design: .default))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.9)
+                            .modifier(BWIPSBold(size: 24.0))
                             .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             .frame(width: width, height: 30.0, alignment: .top)
                             .padding([.top, .bottom], 8.0)

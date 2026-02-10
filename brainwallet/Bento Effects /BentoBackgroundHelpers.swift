@@ -1,5 +1,5 @@
 //
-//  ThemeGradientHelpers.swift
+//  BentoBackgrountHelpers.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 17/10/2025.
@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import UIKit
 
  enum MainGradientStyle {
     case darkStyle
@@ -56,20 +57,28 @@ struct BentoBackgroundView: View {
     @Binding
     var userPrefersDarkTheme: Bool
 
+    init(userPrefersDarkTheme: Binding<Bool>) {
+        _userPrefersDarkTheme = userPrefersDarkTheme
+    }
+
     var body: some View {
         ZStack {
-            if userPrefersDarkTheme {
 
+            Group {
                 Color.white.opacity(0.03).edgesIgnoringSafeArea(.all)
                 RoundedRectangle(cornerRadius: bentoCornerRadius)
                     .stroke(Color.white.opacity(0.25)
-                    ,lineWidth: 1.5)
-            } else {
+                            ,lineWidth: 1.5)
+            }
+            .opacity(userPrefersDarkTheme ? 1.0 : 0.0)
+
+            Group {
                 Color.white.edgesIgnoringSafeArea(.all)
                 RoundedRectangle(cornerRadius: bentoCornerRadius)
                     .stroke(BentoColor.grayBorder,
                             lineWidth:  1.5)
             }
+            .opacity(userPrefersDarkTheme ? 0.0 : 1.0)
         }
     }
 }
@@ -79,9 +88,13 @@ struct BalanceBackgroundView: View {
     @Binding
     var userPrefersDarkTheme: Bool
 
+    init(userPrefersDarkTheme: Binding<Bool>) {
+        _userPrefersDarkTheme = userPrefersDarkTheme
+    }
+
     var body: some View {
         ZStack {
-            if userPrefersDarkTheme {
+            Group {
                 RadialGradient(stops:
                                 [Gradient.Stop(color: .black.opacity(0.5), location: 0.0),
                                          Gradient.Stop(color: BentoColor.balanceBackgroundPurple.opacity(0.3), location: 0.950)
@@ -96,8 +109,9 @@ struct BalanceBackgroundView: View {
                                         ], startPoint: .topLeading,
                                        endPoint: .bottomTrailing),
                         lineWidth: 1.5)
-
-            } else {
+            }
+            .opacity(userPrefersDarkTheme ? 1.0 : 0.0)
+            Group {
                 RoundedRectangle(cornerRadius: bentoCornerRadius)
                     .fill(LinearGradient(
                         colors: [BentoColor.purple4,
@@ -110,9 +124,11 @@ struct BalanceBackgroundView: View {
                     .stroke(BentoColor.grayBorder,
                             lineWidth:  1.5)
             }
+            .opacity(userPrefersDarkTheme ? 0.0 : 1.0)
         }
     }
 }
+
 struct GameBackgroundView: View {
 
     @Binding
@@ -125,14 +141,14 @@ struct GameBackgroundView: View {
             let width = geometry.size.width
             let height = geometry.size.height
             ZStack {
-                if userPrefersDarkTheme {
+               Group {
                     RadialGradient(stops:
                                     [Gradient.Stop(color: .black.opacity(0.5), location: 0.0),
                                      Gradient.Stop(color: BentoColor.balanceBackgroundPurple.opacity(0.3), location: 0.950)
                                     ], center: .topLeading, startRadius: 90.0, endRadius: 400)
                     Image("game-hub-stars")
                         .resizable()
-                        .opacity(0.5)
+                        .opacity(0.7)
                         .frame(width: width, height: height)
                     RoundedRectangle(cornerRadius: bentoCornerRadius)
                         .stroke(
@@ -144,8 +160,10 @@ struct GameBackgroundView: View {
                                                    ], startPoint: .topLeading,
                                            endPoint: .bottomTrailing),
                             lineWidth: 1.5)
+                }
+                .opacity(userPrefersDarkTheme ? 1.0 : 0.0)
 
-                } else {
+                Group {
                     RoundedRectangle(cornerRadius: bentoCornerRadius)
                         .fill(LinearGradient(
                             colors: [BentoColor.purple4,
@@ -154,10 +172,15 @@ struct GameBackgroundView: View {
                             endPoint: .top
                         ))
                         .edgesIgnoringSafeArea(.all)
+                    Image("game-hub-stars")
+                        .resizable()
+                        .opacity(0.7)
+                        .frame(width: width, height: height)
                     RoundedRectangle(cornerRadius: bentoCornerRadius)
                         .stroke(BentoColor.grayBorder,
                                 lineWidth:  1.5)
                 }
+                .opacity(userPrefersDarkTheme ? 0.0 : 1.0)
             }
         }
     }

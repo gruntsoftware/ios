@@ -44,17 +44,13 @@ struct TransactionRowView: View {
                     Spacer()
                     HStack {
                         Text(transaction.longTimestamp)
-                            .font(.system(size: 19, weight: .regular, design: .default))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.1)// Shrinks to 20% of original
+                            .modifier(BWIPSRegular(size: 19.0))
                             .frame(maxWidth: width * 0.5, alignment: .leading)
                             .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
 
                         Spacer()
                         Text(amountLabel)
-                            .font(.system(size: 22, weight: .bold, design: .default))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.2)// Shrinks to 20% of original
+                            .modifier(BWIPSBold(size: 22.0))
                             .frame(maxWidth: width * 0.5, alignment: .trailing)
                             .foregroundColor(transaction.direction == .sent ? BrainwalletColor.transferRed : BrainwalletColor.affirm)
                     }
@@ -65,9 +61,7 @@ struct TransactionRowView: View {
                     HStack {
                         Spacer()
                         Text(transaction.detailsAddressText)
-                            .font(.system(size: 15, weight: .ultraLight, design: .default))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.4)// Shrinks to 40% of original
+                            .modifier(BWIPSThin(size: 15.0))
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
 

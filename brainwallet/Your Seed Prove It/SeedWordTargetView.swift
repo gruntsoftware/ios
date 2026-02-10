@@ -43,12 +43,10 @@ struct SeedWordTargetView: View {
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 65.0
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
-    let subTitleFont: Font = .barlowSemiBold(size: 32.0)
-    let detailFont: Font = .barlowRegular(size: 22.0)
-    let detailerFont: Font = .barlowRegular(size: 20.0)
-    let regularButtonFont: Font = .barlowRegular(size: 20.0)
+
+    let detailFont: Font = .ibmPlexSansRegular(size: 22.0)
+    let detailerFont: Font = .ibmPlexSansRegular(size: 20.0)
+    let regularButtonFont: Font = .ibmPlexSansRegular(size: 20.0)
 
     let elementSpacing = 8.0
     let fieldHeight: CGFloat = 40.0

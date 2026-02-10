@@ -2,13 +2,9 @@ import SwiftUI
 import CoreHaptics
 
 struct LockScreenView: View {
-    let versionFont: Font = .barlowLight(size: 15.0)
 
 	@ObservedObject
 	var viewModel: LockScreenViewModel
-
-	@State
-	private var fiatValue = ""
 
     @State
     private var debugLocale = ""
@@ -64,34 +60,27 @@ struct LockScreenView: View {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 
                 VStack {
-                    HStack {
-                        Text(fiatValue)
-                            .font(Font(UIFont.barlowLight(size: 16.0)))
-                            .foregroundColor(BrainwalletColor.content)
-                            .frame(width: width * 0.9, alignment: .trailing)
-                            .padding(.trailing, 16.0)
-                    }
-                    .padding(.top, 16.0)
 
                     Image("bw-logotype")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: width * 0.65)
-                        .padding(.top, 25.0)
-                        .padding(4.0)
-
+                        .padding(16.0)
+                        .frame(width: width * 0.7,
+                               alignment: .top)
+                        .accessibilityIdentifier("brainwalletLogo")
+                        .padding(.top, 10.0)
                     Spacer()
-                        .frame(minHeight: height * 0.02)
+
                     PINRowView(pinState: $pinState)
                         .frame(width: 180, height: 30.0)
                         .offset(x: startShake ? 7 : 0)
                         .animation(.spring(response: 0.15, dampingFraction: 0.1, blendDuration: 0.2), value: startShake)
+                        .padding(.bottom, 20.0)
 
                     Spacer()
-                        .frame(minHeight: height * 0.02)
                     PasscodeGridView(digits: $pinDigits,
                                      userPrefersDarkMode: $userPrefersDarkMode)
-                    .frame(maxWidth: width * 0.65, maxHeight: height * 0.4, alignment: .center)
+                    .frame(maxWidth: width * 0.65, maxHeight: height * 0.3, alignment: .bottom)
                     .padding(.bottom, 5.0)
 
                     LockScreenFooterView(viewModel: viewModel,
@@ -100,26 +89,23 @@ struct LockScreenView: View {
                     .padding(.top, 20.0)
                     .padding(.bottom, 20.0)
 
-                    Spacer()
                     HStack {
                         Text(AppVersion.string)
                             .frame(alignment: .center)
-                            .font(versionFont)
+                            .modifier(BWIPSRegular(size: 11.0))
                             .foregroundColor(BrainwalletColor.content)
-                            .padding(.all, 5.0)
+                            .accessibilityIdentifier("brainwalletVersion")
                         if !debugLocale.isEmpty {
                             Text("\(debugLocale)")
                                 .frame(alignment: .center)
-                                .font(versionFont)
+                                .modifier(BWIPSRegular(size: 11.0))
                                 .foregroundColor(BrainwalletColor.chili.opacity(0.8))
                                 .padding(.all, 5.0)
                         }
                     }
-                    .frame(height: 22.0, alignment: .center)
 
-                }
-                .onChange(of: viewModel.currentFiatValue) { _,newValue in
-                    fiatValue = String(format: String(localized: "%@ = 1Ł"), newValue)
+                    .padding(.bottom, 4.0)
+
                 }
                 .onChange(of: pinDigits) { _,_ in
 
@@ -166,7 +152,6 @@ struct LockScreenView: View {
             }
             .onAppear {
                 userPrefersDarkMode = UserDefaults.userPreferredDarkTheme
-                fiatValue = String(format: String(localized: "%@ = 1Ł"), viewModel.currentFiatValue)
                 updateVersionLabel()
             }.onDisappear {
                 clearPINSettings()

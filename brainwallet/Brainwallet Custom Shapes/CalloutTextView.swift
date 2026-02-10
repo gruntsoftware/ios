@@ -49,9 +49,7 @@ struct CalloutTextView: View {
                     VStack {
                         HStack {
                             Text(title)
-                                .font(.system(size: 17, weight: .bold, design: .default))
-                                .lineLimit(2)
-                                .minimumScaleFactor(0.9)
+                                .modifier(BWIPSBold(size: 17.0, lineLimit: 2))
                                 .frame(alignment: .leading)
                                 .foregroundColor(.black)
                                 .padding([.trailing], padding)
@@ -61,9 +59,7 @@ struct CalloutTextView: View {
 
                         HStack {
                             Text(description)
-                                .font(.system(size: 16, weight: .regular, design: .default))
-                                .lineLimit(4)
-                                .minimumScaleFactor(0.7)
+                                .modifier(BWIPSRegular(size: 17.0, lineLimit: 4))
                                 .frame(alignment: .leading)
                                 .foregroundColor(.black)
                                 .padding([.trailing], padding)

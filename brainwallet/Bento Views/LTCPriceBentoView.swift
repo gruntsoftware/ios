@@ -45,21 +45,24 @@ struct LTCPriceBentoView: View {
     }
 
     var body: some View {
-        GeometryReader { _ in
-
+        GeometryReader { geometry in
+            let height = geometry.size.height
             let trailingPad: CGFloat = 12
+            let width = geometry.size.width
+            let labelBackground =  userPrefersDarkTheme ? BentoColor.tutorialGreen1.opacity(0.1) : BentoColor.purple4.opacity(0.1)
+            let labelForeground = userPrefersDarkTheme ? BentoColor.tutorialGreen2 :BentoColor.purple4
+            let tagLabelWidth: CGFloat = 80.0
 
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
-                VStack {
+                VStack(alignment: .leading, spacing: 0) {
                     Spacer()
                     HStack {
                         Picker("", selection: $pickedCurrency) {
                             ForEach(globalCurrencies, id: \.self) {
-                                Text("\($0.countryFlag)   \($0.code) / LTC")
-                                    .font(.system(size: 20, weight: .semibold, design: .default))
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.7)
+                                Text(verbatim: "\($0.countryFlag)   \($0.code) / LTC")
+                                    .modifier(BWIPSSemiBold(size: 18.0))
+                                    .frame(maxHeight: 19.0, alignment: .leading)
                                     .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
                             }
                         }
@@ -75,37 +78,44 @@ struct LTCPriceBentoView: View {
                                     ])
                             }
                         }
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding([.leading, .trailing], trailingPad)
+                        .frame(alignment: .leading)
+                        .frame(minHeight: height * 0.2, idealHeight: height * 0.3, maxHeight: height * 0.35)
+                        .padding([.leading, .trailing], 8.0)
 
                     }
-                    .padding(.trailing, trailingPad)
-
-                    Text(newMainViewModel.currentFiatValue)//  "RP1,516,863,885.40"
-                        .font(.system(size: 32, weight: .semibold, design: .default))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.2)
-                        .padding([.leading, .trailing], trailingPad)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
+                    .frame(minHeight: height * 0.30,
+                           idealHeight: height * 0.40,
+                           maxHeight: height * 0.5)
+                    .padding(.bottom, 2.0)
+                    if height > 200 {
+                        Text(pickedCurrency.fullCurrencyName)
+                            .modifier(BWIPSLight(size: 16.0, lineLimit: 2))
+                            .padding([.leading, .trailing], 8.0)
+                            .padding(.bottom, 2.0)
+                    }
+                    Text(newMainViewModel.currentFiatValue)
+                        .modifier(BWIPSSemiBold(size: 30.0))
+                        .padding([.leading, .trailing], 8.0)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(minHeight: 34.0, idealHeight: 38.0, maxHeight: 50.0)
                         .foregroundStyle( userPrefersDarkTheme ? .white : BrainwalletColor.nearBlack.opacity(0.8))
                         .contentTransition(.opacity)
+                        .layoutPriority(1.0)
                         .animation(.easeInOut, value: newMainViewModel.currentFiatValue)
-                        .padding(.bottom, 2)
+                        .padding(.bottom, 2.0)
 
                     HStack {
                         Spacer()
                         Text(currentDateLabel)
-                            .font(.system(size: 11, weight: .ultraLight, design: .default))
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.7)
-                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .modifier(BWIPSThin(size: 11.0))
+                            .frame(minHeight: 9.0, idealHeight: 13.0, maxHeight: 14.0)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
                             .contentTransition(.opacity)
                             .animation(.easeInOut, value: currentDateLabel)
                     }
                     .padding(.trailing, trailingPad)
-                    .padding(.bottom, 8)
-
+                    .padding(.bottom, 6.0)
                 }
             }
             .cornerRadius(bentoCornerRadius)

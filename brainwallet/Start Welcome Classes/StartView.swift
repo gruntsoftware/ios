@@ -1,18 +1,14 @@
 import SwiftUI
 import FirebaseAnalytics
 struct StartView: View {
-    let selectorFont: Font = .barlowSemiBold(size: 16.0)
-    let buttonLightFont: Font = .barlowLight(size: 16.0)
-    let regularButtonFont: Font = .barlowRegular(size: 24.0)
-    let largeButtonFont: Font = .barlowBold(size: 24.0)
+    let selectorFont: Font = .ibmPlexSansSemiBold(size: 16.0)
+    let buttonLightFont: Font = .ibmPlexSansLight(size: 16.0)
+    let regularButtonFont: Font = .ibmPlexSansRegular(size: 24.0)
 
-    let versionFont: Font = .barlowSemiBold(size: 16.0)
-    let verticalPadding: CGFloat = 20.0
     let squareButtonSize: CGFloat = 55.0
     let squareImageSize: CGFloat = 25.0
     let themeButtonSize: CGFloat = 32.0
     let themeBorderSize: CGFloat = 44.0
-    let largeButtonHeight: CGFloat = 60.0
 
     @State
     private var isShowingOnboardView: Bool = true
@@ -71,40 +67,34 @@ struct StartView: View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
+            let miniGameWidth = geometry.size.width * 0.9
+
             let height = geometry.size.height
+            let verticalPadding: CGFloat = 20.0
+
             NavigationStack(path: $path) {
                 ZStack {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 
                     VStack {
-                        HStack {
-                            Text(newMainViewModel.currentFiatValue)
-                                .font(Font(UIFont.barlowLight(size: 16.0)))
-                                .foregroundColor(BrainwalletColor.content)
-                                .animation(.bouncy(duration: 0.5))
-                                .frame(width: width * 0.9, alignment: .trailing)
-                                .padding(.trailing, 16.0)
-                                .accessibilityIdentifier("currentFiatValue")
-
-                        }
-                        .padding(.top, 16.0)
-                        .frame(height: 20.0)
-
                         Image("bw-logotype")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: width * 0.65,
+                            .padding(16.0)
+                            .frame(width: width * 0.7,
                                    alignment: .center)
-                            .padding([.top,.bottom], verticalPadding)
                             .accessibilityIdentifier("brainwalletLogo")
 
-                        WelcomMojiDemoView(width: width,
-                                           height: height * 0.35,
-                                           shouldPlay: .constant(true))
-                            .frame(height: height * 0.35, alignment: .center)
-                            .padding(.top, verticalPadding)
+                        WelcomeMojiDemoView(width: miniGameWidth,
+                                           height: miniGameWidth,
+                                           shouldPlay: .constant(true),
+                                           userWantsToExit: .constant(false),
+                                           gameIsInWelcomeMode: true)
+                            .frame(maxWidth: miniGameWidth,
+                                   maxHeight: miniGameWidth,
+                                   alignment: .center)
+                            .padding([.leading, .trailing], 16.0)
                             .accessibilityIdentifier("welcomMojiDemoView")
-
                         Spacer()
                         HStack {
                             Button(action: {
@@ -123,7 +113,7 @@ struct StartView: View {
                             }
                             .frame(width: width * 0.1, alignment: .center)
                             .onChange(of: userPrefersDarkMode) { _,preference in
-                                newMainViewModel.userDidSetThemePreference(userPrefersDarkMode: preference)
+                                newMainViewModel.updateTheme(shouldBeDark: preference)
                             }
                             .accessibilityIdentifier("darkModePreference")
 
@@ -153,7 +143,7 @@ struct StartView: View {
 						.frame(width: width * 0.9,
 						       height: height * 0.1,
 						       alignment: .center)
-
+                        Spacer()
                         Button(action: {
                             isRestoringAnOldWallet = false
                             path.append(.readyView)
@@ -165,14 +155,16 @@ struct StartView: View {
 
                                 Text("Create New Wallet")
                                     .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
-                                    .font(largeButtonFont)
+                                     .modifier(BWIPSBold(size: 24.0))
                                     .foregroundColor(BrainwalletColor.content)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                             .stroke(BrainwalletColor.content, lineWidth: 2.0)
                                     )
+                                    .accessibilityIdentifier("readyCreateNewBrainwalletButtonTitle")
+
                             }
-                            .padding(.all, 8.0)
+                            .padding(.all, 6.0)
                         }
                         .accessibilityIdentifier("readyCreateNewBrainwalletButton")
 
@@ -193,19 +185,21 @@ struct StartView: View {
                                         RoundedRectangle(cornerRadius: largeButtonHeight/2)
                                             .stroke(BrainwalletColor.content, lineWidth: 1.0)
                                     )
+                                    .accessibilityIdentifier("restoreYourBrainwalletButtonTitle")
+
                             }
-                            .padding(.all, 8.0)
+                            .padding(.all, 6.0)
                         }
                         .accessibilityIdentifier("restoreYourBrainwalletButton")
 
                         HStack {
                             Text(AppVersion.string)
                                 .frame(alignment: .center)
-                                .font(versionFont)
+                                .modifier(BWIPSRegular(size: 11.0))
                                 .foregroundColor(BrainwalletColor.content)
-                                .padding(.all, 5.0)
                                 .accessibilityIdentifier("brainwalletVersion")
                         }
+                        .padding(.bottom, 4.0)
                     }
                 }
                 .padding(.all, swiftUICellPadding)

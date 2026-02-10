@@ -39,7 +39,7 @@ struct TutorialReceivePageView: View {
                 VStack(alignment: .center) {
                     HStack {
                         Text("How to Receive LTC")
-                            .font(.system(size: 24, weight: .semibold, design: .default))
+                            .modifier(BWIPSSemiBold(size: 24.0))
                             .foregroundColor(.white)
                             .padding([.leading, .trailing], 4)
                             .accessibilityIdentifier("tutorialReceivePageViewTitle")

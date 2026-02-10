@@ -106,11 +106,7 @@ struct TransactionHistoryBentoView: View {
                                                     .frame(width: 12, height: 12)
                                                     .foregroundColor(filterModeState.iconColor)
                                                 Text("\(filteredTransactions.count) txns")
-                                                    .font(.system(size: 14,
-                                                                  weight: .semibold,
-                                                                  design: .default))
-                                                    .lineLimit(1)
-                                                    .minimumScaleFactor(0.3)// Shrinks to 30% of original
+                                                    .modifier(BWIPSSemiBold(size: 14.0))
                                                     .frame(maxWidth: .infinity, alignment: .leading)
                                                     .foregroundColor(labelForeground)
                                             }

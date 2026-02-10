@@ -57,9 +57,7 @@ struct TutorialReceiveBentoView: View {
                     Spacer()
                     HStack {
                       Text("How to receive LTC")
-                                .font(.system(size: 18, weight: .bold, design: .default))
-                                .lineLimit(2)
-                                .minimumScaleFactor(0.6)
+                                .modifier(BWIPSBold(size: 18.0, lineLimit: 2))
                                 .padding(.leading, 8)
                                 .frame(alignment: .leading)
                                 .foregroundStyle( userPrefersDarkTheme ? .white : .black)
@@ -70,9 +68,7 @@ struct TutorialReceiveBentoView: View {
 
                     HStack {
                       Text("Follow the easy steps to stack LTC. Get it from a friend or our partner MoonPay")
-                            .font(.system(size: 15, weight: .regular, design: .default))
-                            .lineLimit(4)
-                            .minimumScaleFactor(0.6)
+                            .modifier(BWIPSRegular(size: 15.0, lineLimit: 4))
                             .kerning(0.2)
                             .padding([.leading], 8)
                             .padding(.trailing, 10)
@@ -83,7 +79,6 @@ struct TutorialReceiveBentoView: View {
                     }
                 }
                 .padding(.bottom, 44)
-
             }
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle

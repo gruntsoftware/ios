@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import SpriteKit
+import AVFAudio
 
 class WelcomeFallinScene: SKScene, SKPhysicsContactDelegate {
 
@@ -23,6 +24,9 @@ class WelcomeFallinScene: SKScene, SKPhysicsContactDelegate {
 
     @Binding
     var didStartGame: Bool
+
+    var boom: SKAudioNode!
+    var baap: SKAudioNode!
 
     init(width: CGFloat,
          height: CGFloat,
@@ -48,7 +52,18 @@ class WelcomeFallinScene: SKScene, SKPhysicsContactDelegate {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsBody?.affectedByGravity = true
         physicsBody?.density = 0.012
-       // buildScene()
+
+        if let boomFile = Bundle.main.url(forResource: "215595__taira-komori__bomb", withExtension: "mp3"),
+           let baapFile = Bundle.main.url(forResource: "807381__jean_filho__sci-fi-grenade-explosion", withExtension: "mp3") {
+            baap = SKAudioNode(url: baapFile)
+            boom = SKAudioNode(url: boomFile)
+            baap.autoplayLooped = false
+            boom.autoplayLooped = false
+            baap.isPositional = false
+            boom.isPositional = false
+            addChild(baap)
+            addChild(boom)
+        }
         startGame()
     }
 
@@ -59,9 +74,10 @@ class WelcomeFallinScene: SKScene, SKPhysicsContactDelegate {
 
            for node in touchedNodes {
                if let label = node as? SKLabelNode {
+
                    let explosion = SKLabelNode(text: "💥")
                    explosion.position = location
-                   explosion.fontSize = 50
+                   explosion.fontSize = 70
                    explosion.physicsBody = SKPhysicsBody(circleOfRadius: 14.0)
                    explosion.physicsBody?.affectedByGravity = false
                    explosion.physicsBody?.isDynamic = true
@@ -69,37 +85,35 @@ class WelcomeFallinScene: SKScene, SKPhysicsContactDelegate {
                    explosion.physicsBody?.friction = 0.1
                    addChild(explosion)
 
-                   delay(0.3) {
-                       self.playExplosion()
-                       explosion.removeFromParent()
-                       self.counter += 1
+                   let playAction = SKAction.play()
+                   let volumeAction = SKAction.changeVolume(to: 0.06, duration: 0.2)
+                   let boomOrBaap = Bool.random()
+                   delay(0.1) {
+                       boomOrBaap ? self.boom.run(SKAction.group([playAction, volumeAction])) :
+                       self.baap.run(SKAction.group([playAction, volumeAction]))
+
+                   explosion.removeFromParent()
+                   self.counter += 1
                        label.removeFromParent()
                    }
-
                    break
                }
            }
     }
 
     private func buildScene() {
-        // let bumper = SKShapeNode(path: <#T##CGPath#>)
 
         background = SKSpriteNode(imageNamed: "welcome-bk")
         background.position = CGPoint(x: size.width/2, y: size.height/2)
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         background.zPosition = -1
         addChild(background)
-
+        addChild(boom)
+        addChild(baap)
     }
 
     func startGame() {
-        // buildScene()
         makeSprites()
-    }
-
-    private func playExplosion() {
-        let soundArray = ["215595__taira-komori__bomb","807381__jean_filho__sci-fi-grenade-explosion"]
-        SoundsHelper().play(filename: soundArray.randomElement() ?? "", type: "mp3")
     }
 
     func makeSprites() {
@@ -115,6 +129,7 @@ class WelcomeFallinScene: SKScene, SKPhysicsContactDelegate {
                        "🐙","🎃"]
         let label = SKLabelNode(text: emojiFallArray.randomElement() ?? "")
             label.position = CGPoint(x: (width / 2) * randX, y: height)
+            label.fontSize = 35
             label.physicsBody = SKPhysicsBody(circleOfRadius: 14.0)
             label.physicsBody?.affectedByGravity = true
             label.physicsBody?.isDynamic = true

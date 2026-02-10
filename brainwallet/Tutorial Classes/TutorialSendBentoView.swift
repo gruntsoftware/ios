@@ -43,14 +43,12 @@ struct TutorialSendBentoView: View {
                     Spacer()
                     HStack {
                       Text("How to Send Litecoin")
-                                .font(.system(size: 18, weight: .bold, design: .default))
-                                .lineLimit(2)
-                                .minimumScaleFactor(0.6)
-                                .padding(.leading, 8)
-                                .padding(.trailing, 10)
-                                .frame(alignment: .leading)
-                                .foregroundStyle( userPrefersDarkTheme ? .white : .black)
-                                .accessibilityIdentifier("tutorialSendBentoViewTitle")
+                            .modifier(BWIPSSemiBold(size: 18.0, lineLimit: 2))
+                            .padding(.leading, 8)
+                            .padding(.trailing, 10)
+                            .frame(alignment: .leading)
+                            .foregroundStyle( userPrefersDarkTheme ? .white : .black)
+                            .accessibilityIdentifier("tutorialSendBentoViewTitle")
 
                         Spacer()
                     }
@@ -59,9 +57,7 @@ struct TutorialSendBentoView: View {
 
                     HStack {
                       Text("Follow the easy steps to send LTC to someone else's wallet. They get it in seconds!")
-                                .font(.system(size: 15, weight: .regular, design: .default))
-                                .lineLimit(4)
-                                .minimumScaleFactor(0.6)
+                                .modifier(BWIPSRegular(size: 18.0, lineLimit: 4))
                                 .kerning(0.5)
                                 .padding([.leading], 8)
                                 .padding(.trailing, 10)

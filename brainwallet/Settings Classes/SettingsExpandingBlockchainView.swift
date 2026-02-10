@@ -21,8 +21,6 @@ struct SettingsExpandingBlockchainView: View {
     private var willSync: Bool = false
 
     private var title: String
-    let largeFont: Font = .barlowSemiBold(size: 19.0)
-    let detailFont: Font = .barlowLight(size: 18.0)
 
     init(title: String, viewModel: NewMainViewModel, shouldExpandBlockchain: Binding <Bool>) {
         self.title = title
@@ -38,16 +36,11 @@ struct SettingsExpandingBlockchainView: View {
                         HStack {
                             VStack {
                                 Text(title)
-                                    .font(largeFont)
+                                    .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundColor(BrainwalletColor.content)
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    .frame(height: 25.0)
                                     .padding(.top, 8.0)
-                                Text("")
-                                    .font(detailFont)
-                                    .kerning(0.6)
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.bottom, 1.0)
                             }
 
                             Spacer()
@@ -67,7 +60,7 @@ struct SettingsExpandingBlockchainView: View {
                                         }
                                     }
                                     .frame(width: 30.0, height: 30.0, alignment: .top)
-                                    .padding(.top, 8.0)
+                                    .padding(.top, 9.0)
                                 }
                                 .frame(width: 30.0, height: 30.0)
                             }
