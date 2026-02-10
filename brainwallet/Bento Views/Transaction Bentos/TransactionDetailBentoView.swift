@@ -274,7 +274,7 @@ struct TransactionDetailBentoView: View {
               .background(BrainwalletColor.surface)
               .cornerRadius(bentoCornerRadius)
               .presentationDragIndicator(.hidden)
-              .presentationDetents([.height(height * 0.5)])
+              .presentationDetents([.height(height * 0.7)])
               .presentationBackground(.ultraThickMaterial)
               .ignoresSafeArea(edges: .bottom)
             }
