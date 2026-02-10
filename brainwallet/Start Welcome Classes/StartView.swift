@@ -94,7 +94,7 @@ struct StartView: View {
                                    maxHeight: miniGameWidth,
                                    alignment: .center)
                             .padding([.leading, .trailing], 16.0)
-                            .accessibilityIdentifier("welcomMojiDemoView")
+                            .accessibilityIdentifier("Welcome Moji Demo View")
                         Spacer()
                         HStack {
                             Button(action: {
@@ -282,6 +282,7 @@ struct StartView: View {
             }
 
         }
+
     }
 }
 

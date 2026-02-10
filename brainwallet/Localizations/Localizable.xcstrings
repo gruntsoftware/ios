@@ -10354,8 +10354,7 @@
         }
       }
     },
-    "Don’t guess. It would take you\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries." : {
-      "extractionState" : "stale",
+    "Don’t guess. It would take you 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries." : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -10366,7 +10365,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Raten Sie nicht. Sie bräuchten\n5.444.517.950.000.000.000.000.000.000.000.000.000.000.000.000.000.000 Versuche."
+            "value" : "Raten Sie nicht. Sie bräuchten 5.444.517.950.000.000.000.000.000.000.000.000.000.000.000.000.000.000 Versuche."
           }
         },
         "es-419" : {
@@ -10378,25 +10377,25 @@
         "fa-IR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "حدس نزنید. برای این کار به ۵,۴۴۴,۵۱۷,۹۵۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰, نیاز دارید."
+            "value" : "حدس نزنید. برای این کار به ۵,۴۴۴,۵۱۷,۹۵۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰,۰۰۰, نیاز دارید."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Traduction française de: Don’t guess. It would take you\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries."
+            "value" : "N'essayez pas de deviner. Il vous faudrait 5 444 517 950 000 000 000 000 000 000 000 000 000 000 000 000 000 000 essais."
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "अंदाज़ा मत लगाइए। इसमें आपको\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000 कोशिशें लगेंगी।"
+            "value" : "अनुमान मत लगाओ। इसमें आपको 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 प्रयास करने पड़ेंगे।"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jangan menebak. Itu akan membutuhkan\\n5.444.517.950.000.000.000.000.000.000.000.000.000.000.000.000.000 percobaan."
+            "value" : "Jangan menebak. Anda membutuhkan 5.444.517.950.000.000.000.000.000.000.000.000.000.000.000.000.000 percobaan."
           }
         },
         "it" : {
@@ -10408,73 +10407,70 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "推測しないでください。\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000回試行する必要があります。"
+            "value" : "推測しないでください。5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000回試行する必要があります。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "추측하지 마세요. 그렇게 하면\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000번의 시도가 필요할 겁니다."
+            "value" : "추측하지 마세요. 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000번의 시도가 필요할 겁니다."
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਅੰਦਾਜ਼ਾ ਨਾ ਲਗਾਓ। ਇਸ ਵਿੱਚ ਤੁਹਾਨੂੰ\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000,000 ਕੋਸ਼ਿਸ਼ਾਂ ਕਰਨੀਆਂ ਪੈਣਗੀਆਂ।"
+            "value" : "ਅੰਦਾਜ਼ਾ ਨਾ ਲਗਾਓ। ਇਸ ਵਿੱਚ ਤੁਹਾਨੂੰ 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 ਕੋਸ਼ਿਸ਼ਾਂ ਕਰਨੀਆਂ ਪੈਣਗੀਆਂ।"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nie zgaduj. Zajęłoby ci to 5 444 517 950 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 prób."
+            "value" : "Nie zgaduj. Zajęłoby ci to 5 444 517 950 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 prób."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Não chute. Você precisaria de\n5.444.517.950.000.000.000.000.000.000.000.000.000.000.000.000.000 tentativas."
+            "value" : "Não chute. Você precisaria de 5.444.517.950.000.000.000.000.000.000.000.000.000.000.000.000.000 tentativas."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Не гадайте. Вам потребуется\n5 444 517 950 000 000 000 000 000 000 000 000 000 000 000 000 000 попыток."
+            "value" : "Не гадайте. Вам понадобится 5 444 517 950 000 000 000 000 000 000 000 000 000 000 000 000 000 000 попыток."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gissa inte. Det skulle ta dig\n5 444 517 950 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 försök."
+            "value" : "Gissa inte. Det skulle ta dig 5 444 517 950 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 försök."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tahmin etmeye çalışmayın. Bu size 5.444.517.950.000.000.000.000.000.000.000.000.000.000.000.000.000.000 deneme gerektirir."
+            "value" : "Gissa inte. Det skulle ta dig 5 444 517 950 000 000 000 000 000 000 000 000 000 000 000 000 000 000 000 försök."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Не вгадуйте. Вам знадобиться\n5 444 517 950 000 000 000 000 000 000 000 000 000 000 000 000 спроб."
+            "value" : "Не вгадуйте. Вам знадобиться 5 444 517 950 000 000 000 000 000 000 000 000 000 000 000 000 спроб."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "别猜了。你需要尝试\n\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 次。"
+            "value" : "不要猜测。你需要尝试 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 次才能成功。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "別瞎猜。你需要嘗試\n\n5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000 次。"
+            "value" : "不要猜測。你需要嘗試 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 次才能成功。"
           }
         }
       }
-    },
-    "Don’t guess. It would take you 5,444,517,950,000,000,000,000,000,000,000,000,000,000,000,000,000 tries." : {
-
     },
     "Done" : {
       "localizations" : {
@@ -11956,7 +11952,117 @@
     },
     "Exit" : {
       "comment" : "A button label that says \"Exit\".",
-      "isCommentAutoGenerated" : true
+      "isCommentAutoGenerated" : true,
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مخرج"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausfahrt"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salida"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خارج شوید"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sortie"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "बाहर निकलना"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "KELUAR"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uscita"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "出口"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਨਿਕਾਸ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyjście"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saída"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выход"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utgång"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utgång"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вихід"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "出口"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "出口"
+          }
+        }
+      }
     },
     "Export Transaction Data" : {
       "localizations" : {
@@ -16381,7 +16487,123 @@
     },
     "Long press & drag a word into place" : {
       "comment" : "A description below the draggable seed words, instructing the user to drag them into place.",
-      "isCommentAutoGenerated" : true
+      "isCommentAutoGenerated" : true,
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اضغط مطولاً واسحب الكلمة إلى مكانها"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langes Drücken und Ziehen eines Wortes an die richtige Stelle"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantenga presionada y arrastre una palabra a su lugar"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشار طولانی و کشیدن یک کلمه به جای دلخواه"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appuyez longuement et faites glisser un mot à l'endroit souhaité."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "किसी शब्द को देर तक दबाकर खींचें और उसे सही स्थान पर रखें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekan lama dan seret kata ke tempat yang diinginkan."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premi a lungo e trascina una parola nella posizione desiderata"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "単語を長押しして所定の位置にドラッグします"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "단어를 길게 누른 후 드래그하여 원하는 위치에 놓으세요."
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਕਿਸੇ ਸ਼ਬਦ ਨੂੰ ਦੇਰ ਤੱਕ ਦਬਾ ਕੇ ਰੱਖੋ ਅਤੇ ਘਸੀਟੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naciśnij i przytrzymaj słowo, przeciągając je w odpowiednie miejsce"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressione e segure e arraste a palavra para o lugar desejado."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нажмите и удерживайте слово, затем перетащите его на нужное место."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Långt tryck och dra ett ord till rätt plats"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Långt tryck och dra ett ord till rätt plats"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тривале натискання та перетягування слова на потрібне місце"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "长按并拖动单词到指定位置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "長按並拖曳單字到指定位置"
+          }
+        }
+      }
     },
     "Lose your smartphone in a boating accident?\n\n" : {
       "localizations" : {
@@ -20073,125 +20295,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "請寫下來"
-          }
-        }
-      }
-    },
-    "Press and drag a word into place" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "اضغط واسحب الكلمة إلى مكانها المناسب"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Drücken und ziehen Sie ein Wort an die richtige Stelle"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Presiona y arrastra una palabra al lugar correspondiente"
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "یک کلمه را فشار دهید و به جای خود بکشید"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Appuyez sur un mot et faites-le glisser"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "किसी शब्द को दबाकर उसके स्थान पर खींचें"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tekan dan seret kata ke tempatnya"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Premi e trascina una parola nella posizione desiderata"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "単語を押してドラッグする"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "단어를 눌러서 끌어당겨 넣으세요"
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਸ਼ਾਇਦ ਬਾਅਦ ਵਿੱਚ (ਛੱਡੋ"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Naciśnij i przeciągnij słowo na miejsce"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pressione e arraste uma palavra para o lugar"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нажмите и перетащите слово на место."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tryck och dra ett ord på plats"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bir kelimeye basın ve yerine sürükleyin"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Натисніть і перетягніть слово на потрібне місце"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "点击并拖动单词到指定位置"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "點擊並拖曳單字到指定位置"
           }
         }
       }
@@ -27006,128 +27109,125 @@
         }
       }
     },
-    "Start!" : {
-      "extractionState" : "stale",
+    "Start! \nTap & score" : {
+      "comment" : "A button label that appears when the game hasn't started yet, instructing the user to start the game.",
+      "isCommentAutoGenerated" : true,
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ابدأ!"
+            "value" : "ابدأ!\nانقر وسجل النقاط"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Los geht's!"
+            "value" : "Los geht's! Tippen & Punkte erzielen"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡Arranca!"
+            "value" : "¡Comienza!\nToca y puntúa."
           }
         },
         "fa-IR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "شروع!"
+            "value" : "شروع کن!\nضربه بزن و امتیاز بگیر"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Démarrer !"
+            "value" : "Commencer!\nTouchez et marquez"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "प्रारंभ करें!"
+            "value" : "शुरू करें!\nटैप करें और स्कोर करें"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mulai!"
+            "value" : "Mulai!\nKetuk & raih skor"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Iniziare!"
+            "value" : "Inizia!\nTocca e segna"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "スタート！"
+            "value" : "スタート！\nタップしてスコアを獲得"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "시작!"
+            "value" : "시작!\n탭하고 점수를 획득하세요"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਸ਼ਾਇਦ ਬਾਅਦ ਵਿੱਚ (ਛੱਡੋ)"
+            "value" : "ਸ਼ੁਰੂ ਕਰੋ! \nਟੈਪ ਕਰੋ ਅਤੇ ਸਕੋਰ ਕਰੋ"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rozpocznij!"
+            "value" : "Start!\nDotknij i zdobądź punkty"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Começar!"
+            "value" : "Comece!\nToque e marque pontos"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Начать!"
+            "value" : "Старт!\nНажимайте и забивайте очки"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Starta!"
+            "value" : "Börja! Tryck och gör poäng"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Başla!"
+            "value" : "Börja! Tryck och gör poäng"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Початок!"
+            "value" : "Початок! Натисніть і заробляйте очки"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "开始！"
+            "value" : "开始！\n\n点击得分"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "開始！"
+            "value" : "開始！\n\n點擊得分"
           }
         }
       }
-    },
-    "Start! \nTap & score" : {
-      "comment" : "A button label that appears when the game hasn't started yet, instructing the user to start the game.",
-      "isCommentAutoGenerated" : true
     },
     "Submit" : {
       "localizations" : {

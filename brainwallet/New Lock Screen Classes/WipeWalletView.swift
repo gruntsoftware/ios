@@ -120,6 +120,7 @@ struct WipeWalletView: View {
                         }
                         .padding(.all, 8.0)
                     }
+                    .accessibilityIdentifier("Wipe Button")
 
                     Button(action: {
                         shouldDismiss.toggle()
@@ -140,6 +141,7 @@ struct WipeWalletView: View {
                         }
                         .padding(.all, 8.0)
                         .disabled(isWipingWallet)
+                        .accessibilityIdentifier("Cancel")
                     }
                 }
             }

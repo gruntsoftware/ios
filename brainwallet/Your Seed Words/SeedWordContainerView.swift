@@ -46,13 +46,10 @@ struct SeedWordContainerView: View {
 				VStack {
 					HStack {
 						Text("These are your seed words. If you show them to anyone, they can take your Litecoin")
-							.modifier(BWIPSSemiBold(size: 24.0))
-							.multilineTextAlignment(.center)
+							.modifier(BWIPSSemiBold(size: 24.0, lineLimit: 3))
                             .foregroundColor(BrainwalletColor.content)
-							.padding()
 					}
-					.padding()
-					Spacer()
+					.padding(20)
 					if shouldShowSeedWords {
 						LazyVGrid(columns: viewColumns, spacing: 1.0) {
 							ForEach(0 ..< seedWordCount, id: \.self) { increment in
@@ -77,6 +74,7 @@ struct SeedWordContainerView: View {
 											didEnterPINCode.toggle()
                                         }
                                         .foregroundColor(BrainwalletColor.content)
+                                        .frame(width: width * 0.25, alignment: .trailing)
                                     }
 								}
                                 .frame(width: width * 0.3,
