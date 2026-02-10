@@ -35177,6 +35177,7 @@
       }
     },
     "You can start over by tapping RESTORE then entering your previously saved 12 seed words." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
