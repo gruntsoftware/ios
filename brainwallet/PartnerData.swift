@@ -1,11 +1,24 @@
 import Foundation
 import UIKit
 import FirebaseAnalytics
-enum PartnerName {
-	case walletOps
-	case walletStart
+enum ServiceType {
+    case walletOps
+    case walletStart
     case agentPubKey
-	case prodAF
+    case prodAF
+
+    var name: String {
+        switch self {
+        case .walletOps:
+            return "wallet_ops"
+        case .walletStart:
+            return "wallet_start"
+        case .agentPubKey:
+            return "agent_pub_key"
+        case .prodAF:
+            return "prod_af"
+        }
+    }
 }
 
 struct Partner {
@@ -24,7 +37,7 @@ struct Partner {
 	/// Returns Partner Key
 	/// - Parameter name: Enum for the different partners
 	/// - Returns: Key string
-	static func partnerKeyPath(name: PartnerName) -> String {
+	static func partnerKeyPath(name: ServiceType) -> String {
 		/// Switch the config file based on the environment
 		var filePath: String
 
@@ -53,9 +66,7 @@ struct Partner {
 				let errorDescription = "error_wallet_opskey"
 				return errorDescription
 			}
-
 		case .walletStart:
-
 			if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
                 let keyString = dictionary["start-date"] as? String {
                     return keyString
@@ -63,9 +74,7 @@ struct Partner {
 				let errorDescription = "error_brainwallet_start_key"
 				return errorDescription
 			}
-
         case .agentPubKey:
-
             if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
                let keyString = dictionary["agent-base64-pubkey"] as? String {
                 return keyString
@@ -73,9 +82,7 @@ struct Partner {
                 let errorDescription = "error_agent-base64-pubkey"
                 return errorDescription
             }
-
 		case .prodAF:
-
 			if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
 			   let keyString = dictionary["af-prod-id"] as? String {
 				return keyString
