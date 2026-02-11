@@ -205,7 +205,8 @@ struct WelcomeMojiDemoView: View {
             Analytics.logEvent("did_request_rating",
                 parameters: [
                     "platform": "ios",
-                    "app_version": AppVersion.string
+                    "app_version": AppVersion.string,
+                    "request_placement": String(describing: type(of: WelcomeMojiDemoView.self))
                 ])
         }
         .onDisappear {

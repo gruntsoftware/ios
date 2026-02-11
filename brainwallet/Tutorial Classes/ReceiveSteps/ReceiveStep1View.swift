@@ -6,8 +6,11 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import FirebaseAnalytics
 
 struct ReceiveStep1View: View {
+    @Environment(\.requestReview)
+    private var requestReview
 
     @Binding
     var selectedStep: Int
@@ -46,6 +49,16 @@ struct ReceiveStep1View: View {
                     .padding(.bottom, brainwalletNavBarHeight)
                 }
             }
+        }
+        .onAppear {
+            requestReview()
+            Analytics
+                .logEvent("did_request_rating",
+                          parameters: [
+                            "platform": "ios",
+                            "app_version": AppVersion.string,
+                            "request_placement": String(describing: type(of: ReceiveStep1View.self))
+                          ])
         }
     }
 }
