@@ -143,8 +143,6 @@ struct BentoSendConfirmView: View {
                                                     Analytics
                                                         .logEvent("did_request_rating",
                                                                   parameters: [
-                                                                    "platform": "ios",
-                                                                    "app_version": AppVersion.string,
                                                                     "request_placement": String(describing: type(of: BentoSendConfirmView.self))
                                                                   ])
                                                 }
@@ -153,17 +151,13 @@ struct BentoSendConfirmView: View {
                                             Analytics
                                                 .logEvent("error_message",
                                                           parameters: [
-                                                            "platform": "ios",
-                                                            "transaction_failure" : "transaction_creation_failed",
-                                                            "app_version": AppVersion.string ])
+                                                            "transaction_failure" : "transaction_creation_failed"])
 
                                             case .publishFailure:
                                             Analytics
                                                 .logEvent("error_message",
                                                                parameters: [
-                                                                "platform": "ios",
-                                                                "transaction_failure" : "transaction_publish_failed",
-                                                                "app_version": AppVersion.string ])
+                                                                "transaction_failure" : "transaction_publish_failed"])
                                         }
                                     })
 

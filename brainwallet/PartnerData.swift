@@ -46,8 +46,6 @@ struct Partner {
 		                                         ofType: "plist")
 		else {
             Analytics.logEvent("service_data_error", parameters: [
-                "platform": "ios",
-                "app_version": AppVersion.string,
                 "error_message": "service_data_missing"
             ])
 

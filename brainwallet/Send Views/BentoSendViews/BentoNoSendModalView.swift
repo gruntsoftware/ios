@@ -95,10 +95,7 @@ struct BentoNoSendModalView: View {
         .onAppear {
             backgroundColor = userPrefersDarkTheme ? darkModeColor : lightModeColor
             Analytics.logEvent("user_did_tap_nosend_sheet",
-                parameters: [
-                    "platform": "ios",
-                    "app_version": AppVersion.string
-                ])
+                parameters: nil)
         }
     }
 }

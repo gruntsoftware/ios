@@ -145,10 +145,7 @@ struct BentoSendModalView: View {
             userWalletIsEmpty = (newMainViewModel.walletBalanceLitecoinDouble > 0.0 ) ? false : true
 
             Analytics.logEvent("user_did_tap_send_sheet",
-                parameters: [
-                    "platform": "ios",
-                    "app_version": AppVersion.string
-                ])
+                parameters: nil)
         }
         .onChange(of: didTapPaste) { _,_ in
 

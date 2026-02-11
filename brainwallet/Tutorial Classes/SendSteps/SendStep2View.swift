@@ -57,8 +57,6 @@ struct SendStep2View: View {
             Analytics
                 .logEvent("did_request_rating",
                           parameters: [
-                            "platform": "ios",
-                            "app_version": AppVersion.string,
                             "request_placement": String(describing: type(of: SendStep2View.self))
                           ])
         }

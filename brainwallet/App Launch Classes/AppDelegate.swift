@@ -95,9 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                 debugPrint("Error unsubscribing from topics: \(String(describing: error))")
                     Analytics
                         .logEvent("fcm_messaging_unsubscribe_error",
-                            parameters: [ "platform": "ios",
-                                          "app_version": AppVersion.string,
-                                          "error": "Error unsubscribing from topics: \(String(describing: error))"
+                            parameters: ["error": "Error unsubscribing from topics: \(String(describing: error))"
                             ])
             }
         }
@@ -117,10 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                    if error != nil {
                        Analytics
                            .logEvent("fcm_messaging_subscription_error",
-                               parameters: [
-                                  "platform": "ios",
-                                  "app_version": AppVersion.string,
-                                  "error": "topic \(topic) \(String(describing: error))"
+                               parameters: ["error": "topic \(topic) \(String(describing: error))"
                                ])
                    }
                }
@@ -212,17 +207,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                /// Notfy the Firebase Console for monitoring and debugging
                Analytics
                    .logEvent("debug_mode_launched",
-                       parameters: [
-                           "platform": "ios",
-                           "app_version": AppVersion.string,
-                           "device": UIDevice.current.model
+                       parameters: ["device": UIDevice.current.model
                        ])
              #endif
 
 		} else {
-            Analytics.logEvent("error_message", parameters: [
-              "firebase_config_failed": "launch_error"
-            ])
+            Analytics.logEvent("error_message",
+                               parameters: [
+                                "firebase_config_failed": "launch_error"
+                               ])
+
 			assertionFailure("Couldn't load Firebase config file")
 		}
 	}
@@ -290,10 +284,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             if error != nil {
                 Analytics
                     .logEvent("fcm_messaging_registration_error",
-                              parameters: [
-                                "platform": "ios",
-                                "app_version": AppVersion.string,
-                                "error": "\(String(describing: error))"
+                              parameters: ["error": "\(String(describing: error))"
                               ])
             }
         }

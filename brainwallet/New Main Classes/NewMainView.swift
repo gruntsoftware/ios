@@ -97,11 +97,7 @@ struct NewMainView: View {
             requestReview()
             Analytics
                 .logEvent("did_request_rating",
-                    parameters: [
-                                "platform": "ios",
-                                "app_version": AppVersion.string,
-                                "request_placement": String(describing: type(of: NewMainView.self))
-                               ])
+                    parameters: ["request_placement": String(describing: type(of: NewMainView.self))])
         }
 
     }
@@ -311,11 +307,7 @@ struct NewMainView: View {
 
                         Button(action: {
                             newMainViewModel.shouldShowGameMode.toggle()
-                            Analytics.logEvent("user_did_tap_gamemode",
-                                parameters: [
-                                    "platform": "ios",
-                                    "app_version": AppVersion.string
-                                ])
+                            Analytics.logEvent("user_did_tap_gamemode", parameters: nil)
                         }, label: {
                             VStack(spacing: 4) {
                                 Image(systemName: "gamecontroller")

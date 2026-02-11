@@ -72,10 +72,7 @@ struct LTCPriceBentoView: View {
                                 newMainViewModel.userDidSetCurrencyPreference(currency: pickedCurrency)
                                 Analytics
                                     .logEvent("user_set_preferred_fiat",
-                                    parameters: [
-                                        "platform": "ios",
-                                        "app_version": AppVersion.string
-                                    ])
+                                    parameters: nil)
                             }
                         }
                         .frame(alignment: .leading)
