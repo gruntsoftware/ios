@@ -263,8 +263,6 @@ struct StartView: View {
 
                         Analytics.logEvent("wallet_creation_error",
                             parameters: [
-                                "platform": "ios",
-                                "app_version": AppVersion.string,
                                 "error_message": "failed_to_create_wallet"
                             ])
                     }

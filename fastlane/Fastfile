@@ -37,9 +37,9 @@ platform :ios do
       skip_build: false
     )
   end
-  lane :run_all_tests_iPhone16ProMax do
+  lane :run_unit_tests_iPhone16ProMax do
     run_tests(
-      scheme: "brainwalletAllTests",
+      scheme: "brainwalletUnitTests",
       clean: true,
       destination: "platform=iOS Simulator,name=iPhone 16 Pro Max",
       code_coverage: true,

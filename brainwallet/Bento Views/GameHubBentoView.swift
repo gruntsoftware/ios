@@ -111,10 +111,11 @@ struct GameHubBentoView: View {
 
                 HStack {
                     Spacer()
-                    FallinMojiDemoView(width: width * 0.6,
+                    FallinMojiDemoView(width: width,
                                        height: height,
                                        shouldPlay: $shouldShowGameMode)
-                        .frame(width: width * 0.6, alignment: .trailing)
+                        .frame(width: width, alignment: .trailing)
+                        .clipped()
                     }
 
             }

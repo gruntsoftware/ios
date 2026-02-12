@@ -64,10 +64,7 @@ struct ReceiveStep2View: View {
         .onAppear {
             Analytics
                 .logEvent("user_completed_receive_tutorial",
-                parameters: [
-                    "platform": "ios",
-                    "app_version": AppVersion.string
-                ])
+                parameters: nil)
         }
     }
 }

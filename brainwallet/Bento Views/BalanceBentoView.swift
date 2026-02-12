@@ -115,10 +115,7 @@ struct BalanceBentoView: View {
                                 newMainViewModel.isLTCValueShown = isLTCValueShown
                                 Analytics
                                     .logEvent("user_tapped_switch_fiat_ltc",
-                                    parameters: [
-                                        "platform": "ios",
-                                        "app_version": AppVersion.string
-                                    ])
+                                    parameters: nil)
                             }
                         }
                     }

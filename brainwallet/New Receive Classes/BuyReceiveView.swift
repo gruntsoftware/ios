@@ -372,10 +372,7 @@ struct BuyReceiveView: View {
                     updateFiatAmounts()
 
                     Analytics.logEvent("user_did_tap_buyreceive_sheet",
-                        parameters: [
-                            "platform": "ios",
-                            "app_version": AppVersion.string
-                        ])
+                                       parameters: nil)
                 }
                 .alert(String(localized:"Address Copied"), isPresented: $didCopyAddress,
                        actions: {
