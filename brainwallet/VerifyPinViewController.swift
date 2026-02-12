@@ -128,10 +128,10 @@ class VerifyPinViewController: UIViewController, ContentBoxPresenter {
 				debugPrint("::: ERROR FAILED")
 			}
 		}
-		cancel.tap = { [weak self] in
-			self?.didCancel?()
-			self?.dismiss(animated: true, completion: nil)
-		}
+//		cancel.tap = { [weak self] in
+//			self?.didCancel?()
+//			self?.dismiss(animated: true, completion: nil)
+//		}
         cancel.setTitle( String(localized: "Cancel", bundle: .main), for: .normal)
         cancel.tintColor = BrainwalletUIColor.content
 		view.backgroundColor = .clear
