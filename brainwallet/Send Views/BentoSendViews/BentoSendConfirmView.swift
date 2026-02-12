@@ -19,6 +19,9 @@ struct BentoSendConfirmView: View {
         case insufficientFunds
     }
 
+    @Environment(\.requestReview)
+    private var requestReview
+
     @ObservedObject
     var viewModel: SendPinLockModel
 
@@ -136,21 +139,25 @@ struct BentoSendConfirmView: View {
                                                 delay(0.5) {
                                                     shouldDismiss.toggle()
                                                     nextIndex = 2
+                                                    requestReview()
+                                                    Analytics
+                                                        .logEvent("did_request_rating",
+                                                                  parameters: [
+                                                                    "request_placement": String(describing: type(of: BentoSendConfirmView.self))
+                                                                  ])
                                                 }
                                             }
                                             case .creationError:
                                             Analytics
                                                 .logEvent("error_message",
                                                           parameters: [
-                                                            "transaction_failure" : "transaction_creation_failed",
-                                                            "app_version": AppVersion.string ])
+                                                            "transaction_failure" : "transaction_creation_failed"])
 
                                             case .publishFailure:
                                             Analytics
                                                 .logEvent("error_message",
                                                                parameters: [
-                                                                "transaction_failure" : "transaction_publish_failed",
-                                                                "app_version": AppVersion.string ])
+                                                                "transaction_failure" : "transaction_publish_failed"])
                                         }
                                     })
 

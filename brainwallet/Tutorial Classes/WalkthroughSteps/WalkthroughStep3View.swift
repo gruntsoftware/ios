@@ -6,8 +6,12 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import FirebaseAnalytics
 
 struct WalkthroughStep3View: View {
+
+    @Environment(\.requestReview)
+    private var requestReview
 
     @Binding
     var selectedStep: Int
@@ -69,5 +73,14 @@ struct WalkthroughStep3View: View {
                 .frame(height: height)
             }
         }
+        .onAppear {
+            requestReview()
+            Analytics
+                .logEvent("did_request_rating",
+                          parameters: [
+                            "request_placement": String(describing: type(of: WalkthroughStep3View.self))
+                          ])
+        }
+
     }
 }

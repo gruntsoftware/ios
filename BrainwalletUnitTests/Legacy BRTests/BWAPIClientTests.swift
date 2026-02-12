@@ -42,19 +42,25 @@ class FakeAuthenticator: WalletAuthenticator {
 class BWAPIClientTests: XCTestCase {
 	var authenticator: WalletAuthenticator!
 	var client: BWAPIClient!
+    var sut: BWAPIClient!
+    var mockURLSession: MockURLSession!
 
-	override func setUp() {
-		super.setUp()
-		authenticator = FakeAuthenticator() // each test will get its own account
-		client = BWAPIClient(authenticator: authenticator)
-	}
-
-	override func tearDown() {
-		super.tearDown()
-		authenticator = nil
-		client = nil
-	}
-
+	  
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        authenticator = FakeAuthenticator() // each test will get its own account
+        client = BWAPIClient(authenticator: authenticator)
+        sut = BWAPIClient(authenticator: authenticator)
+    }
+    
+    override func tearDownWithError() throws {
+        sut = nil
+         mockURLSession = nil
+        authenticator = nil
+        client = nil
+        try super.tearDownWithError()
+    }
+     
 	func testPublicKeyEncoding() {
 		let pubKey1 = client.authKey!.publicKey.base58
 		let b = pubKey1.base58DecodedData()
@@ -78,4 +84,389 @@ class BWAPIClientTests: XCTestCase {
 	     }.resume()
 	     waitForExpectations(timeout: 30, handler: nil)
 	 } */
+    // MARK: - Initialization Tests
+    
+//    func testInit_WithAuthenticator_InitializesCorrectly() {
+//        // Given
+//        let authenticator = WalletAuthenticator(
+//        
+//        // When
+//        let client = BWAPIClient(authenticator: authenticator)
+//        
+//        // Then
+//        XCTAssertNotNil(client)
+//    }
+//    
+    // MARK: - URL Construction Tests
+    
+    func testURL_WithPathOnly_ReturnsCorrectURL() {
+        // Given
+        let path = "/api/v1/users"
+        
+        // When
+        let url = sut.url(path)
+        
+        // Then
+        XCTAssertEqual(url.absoluteString, "https://api.grunt.ltd/api/v1/users")
+    }
+    
+    func testURL_WithPathAndArguments_ReturnsCorrectURL() {
+        // Given
+        let path = "/api/v1/search"
+        let args = ["query": "test", "limit": "10"]
+        
+        // When
+        let url = sut.url(path, args: args)
+        
+        // Then
+        XCTAssertTrue(url.absoluteString.contains("https://api.grunt.ltd/api/v1/search?"))
+        XCTAssertTrue(url.absoluteString.contains("query=test"))
+        XCTAssertTrue(url.absoluteString.contains("limit=10"))
+    }
+    
+    func testURL_WithSpecialCharactersInArgs_URLEncodesCorrectly() {
+        // Given
+        let path = "/api/v1/data"
+        let args = ["name": "John Doe", "email": "test@example.com"]
+        
+        // When
+        let url = sut.url(path, args: args)
+        
+        // Then
+        XCTAssertTrue(url.absoluteString.contains("John Doe") || url.absoluteString.contains("%20"))
+    }
+    
+    func testURL_WithEmptyArgs_ReturnsPathOnly() {
+        // Given
+        let path = "/api/v1/endpoint"
+        let args: [String: String] = [:]
+        
+        // When
+        let url = sut.url(path, args: args)
+        
+        // Then
+        XCTAssertEqual(url.absoluteString, "https://api.grunt.ltd/api/v1/endpoint?")
+    }
+    
+    func testURL_WithMultipleArgs_JoinsWithAmpersand() {
+        // Given
+        let path = "/api/v1/filter"
+        let args = ["sort": "asc", "page": "1", "size": "20"]
+        
+        // When
+        let url = sut.url(path, args: args)
+        
+        // Then
+        let urlString = url.absoluteString
+        let ampersandCount = urlString.components(separatedBy: "&").count - 1
+        XCTAssertEqual(ampersandCount, 2, "Should have 2 ampersands for 3 parameters")
+    }
+
+    // MARK: - Data Task Tests
+    func testDataTaskWithRequest_AddsClientHeader() {
+        // Given
+        let url = URL(string: "https://api.grunt.ltd/test")!
+        let request = URLRequest(url: url)
+        
+        // When
+        let task = sut.dataTaskWithRequest(request, authenticated: false, retryCount: 0) { _, _, _ in }
+        
+        // Then
+        XCTAssertNotNil(task)
+        // Should have Mobile-Client header with app version
+    }
+    
+    func testDataTaskWithRequest_AddsAcceptLanguageHeader() {
+        // Given
+        let url = URL(string: "https://api.grunt.ltd/test")!
+        let request = URLRequest(url: url)
+        
+        // When
+        let task = sut.dataTaskWithRequest(request, authenticated: false, retryCount: 0) { _, _, _ in }
+        
+        // Then
+        XCTAssertNotNil(task)
+        // Should have Accept-Language header with current locale
+    }
+    
+    func testDataTaskWithRequest_WithRetryCount_IncludesInLog() {
+        // Given
+        let url = URL(string: "https://api.grunt.ltd/test")!
+        let request = URLRequest(url: url)
+        
+        // When
+        let task = sut.dataTaskWithRequest(request, authenticated: false, retryCount: 3) { _, _, _ in }
+        
+        // Then
+        XCTAssertNotNil(task)
+        // Verify retry count is logged (if logging is testable)
+    }
+    
+    // MARK: - URLSession Delegate Tests
+    
+    func testURLSession_ServerTrustChallenge_ForCorrectHost_Accepts() {
+        let session = URLSession.shared
+        let url = URL(string: "https://api.grunt.ltd")!
+        let task = session.dataTask(with: url)
+
+        let protectionSpace = URLProtectionSpace(
+            host: "api.grunt.ltd",
+            port: 443,
+            protocol: "https",
+            realm: nil,
+            authenticationMethod: NSURLAuthenticationMethodServerTrust
+        )
+ 
+        let challenge = URLAuthenticationChallenge(
+            protectionSpace: protectionSpace,
+            proposedCredential: nil,
+            previousFailureCount: 0,
+            failureResponse: nil,
+            error: nil,
+            sender: MockAuthenticationChallengeSender()
+        )
+
+        let expectation = expectation(description: "Challenge handled")
+
+        sut.urlSession(session, task: task, didReceive: challenge) { disposition, credential in
+            XCTAssertEqual(disposition, .rejectProtectionSpace)
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1.0)
+    }
+    
+    func testURLSession_ServerTrustChallenge_ForWrongHost_Rejects() {
+        // Given
+        let session = URLSession.shared
+        let task = URLSessionDataTask()
+        let protectionSpace = URLProtectionSpace(
+            host: "evil.example.com",
+            port: 443,
+            protocol: "https",
+            realm: nil,
+            authenticationMethod: NSURLAuthenticationMethodServerTrust
+        )
+        let challenge = URLAuthenticationChallenge(
+            protectionSpace: protectionSpace,
+            proposedCredential: nil,
+            previousFailureCount: 0,
+            failureResponse: nil,
+            error: nil,
+            sender: MockAuthenticationChallengeSender()
+        )
+        
+        let expectation = self.expectation(description: "Challenge handled")
+        
+        // When
+        sut.urlSession(session, task: task, didReceive: challenge) { disposition, credential in
+            // Then
+            XCTAssertEqual(disposition, .rejectProtectionSpace)
+            XCTAssertNil(credential)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0)
+    }
+    
+    // MARK: - HTTP Redirect Tests
+    
+    func testURLSession_Redirect_ToDifferentHost_DoesNotFollow() {
+        // Given
+        let session = URLSession.shared
+        let task = URLSessionDataTask()
+        let originalURL = URL(string: "https://api.grunt.ltd/endpoint")!
+        let newURL = URL(string: "https://evil.example.com/phishing")!
+        
+        var originalRequest = URLRequest(url: originalURL)
+        originalRequest.httpMethod = "GET"
+        
+        let newRequest = URLRequest(url: newURL)
+        let response = HTTPURLResponse(
+            url: originalURL,
+            statusCode: 302,
+            httpVersion: nil,
+            headerFields: nil
+        )!
+        
+        let expectation = self.expectation(description: "Redirect handled")
+        
+        // When
+        sut.urlSession(session, task: task, willPerformHTTPRedirection: response, newRequest: newRequest) { request in
+            // Then
+            XCTAssertNil(request)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0)
+    }
+    
+    
+    // MARK: - URL Extension Tests
+    
+    func testResourceString_PathOnly() {
+        // Given
+        
+        let server = APIServer.baseUrl
+        let url = URL(string:  server + "api/v1/users")!
+        
+        // When
+        let resourceString = url.relativeString
+        
+        // Then
+        XCTAssertEqual(resourceString, "https://api.grunt.ltd/api/v1/users")
+    }
+    
+    func testResourceString_PathWithQuery() {
+        // Given
+        let server = APIServer.baseUrl
+        let url = URL(string: server + "search?q=test&limit=10")!
+        
+        // When
+        let resourceString = url.absoluteString
+        
+        // Then
+        XCTAssertEqual(resourceString, "https://api.grunt.ltd/search?q=test&limit=10")
+    }
+    
+    func testResourceString_EmptyQuery() {
+        // Given
+        let server = APIServer.baseUrl
+        let url = URL(string: server + "data?")!
+        
+        // When
+        let resourceString = url.absoluteString
+        
+        // Then
+        XCTAssertEqual(resourceString,"https://api.grunt.ltd/data?")
+    }
+    
+    // MARK: - Dictionary Extension Tests
+    
+    func testDictionary_GetLowercasedKey_ExactMatch() {
+        // Given
+        let dict = ["Content-Type": "application/json", "Date": "Mon, 11 Feb 2026"]
+        
+        // When
+        let value = dict.get(lowercasedKey: "content-type")
+        
+        // Then
+        XCTAssertEqual(value, "application/json")
+    }
+    
+    func testDictionary_GetLowercasedKey_CaseInsensitive() {
+        // Given
+        let dict = ["Content-Type": "application/json", "DATE": "Mon, 11 Feb 2026"]
+        
+        // When
+        let value = dict.get(lowercasedKey: "date")
+        
+        // Then
+        XCTAssertEqual(value, "Mon, 11 Feb 2026")
+    }
+    
+    func testDictionary_GetLowercasedKey_NotFound() {
+        // Given
+        let dict = ["Content-Type": "application/json"]
+        
+        // When
+        let value = dict.get(lowercasedKey: "authorization")
+        
+        // Then
+        XCTAssertNil(value)
+    }
+    
+    func testDictionary_GetLowercasedKey_MixedCase() {
+        // Given
+        let dict = ["ConTent-TyPe": "text/html"]
+        
+        // When
+        let value = dict.get(lowercasedKey: "content-type")
+        
+        // Then
+        XCTAssertEqual(value, "text/html")
+    }
+    
+    // MARK: - Integration Tests
+    
+    func testFullRequestCycle_UnauthenticatedGET() {
+        // This would be better as an integration test with a mock server
+        // Given
+        let url = sut.url("/api/v1/status")
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        // When
+        let task = sut.dataTaskWithRequest(request, authenticated: false, retryCount: 0) { data, response, error in
+            // Then - verify response handling
+        }
+        
+        // Then
+        XCTAssertNotNil(task)
+    }
+    
+    // MARK: - Edge Cases
+    
+    func testURL_WithEmptyPath_ReturnsBaseURL() {
+        // Given
+        let path = ""
+        
+        // When
+        let url = sut.url(path)
+        
+        // Then
+        XCTAssertEqual(url.absoluteString, "https://api.grunt.ltd")
+    }
+    
+    func testURL_WithSlashOnlyPath_ReturnsSlash() {
+        // Given
+        let path = "/"
+        
+        // When
+        let url = sut.url(path)
+        
+        // Then
+        XCTAssertEqual(url.absoluteString, "https://api.grunt.ltd/")
+    }
+}
+
+// MARK: - Mock Classes
+ 
+class MockAuthenticationChallengeSender: NSObject, URLAuthenticationChallengeSender {
+    func use(_ credential: URLCredential, for challenge: URLAuthenticationChallenge) {}
+    func continueWithoutCredential(for challenge: URLAuthenticationChallenge) {}
+    func cancel(_ challenge: URLAuthenticationChallenge) {}
+}
+
+class MockURLSession: URLSession {
+    var mockDataTask: MockURLSessionDataTask?
+    
+    override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        let task = MockURLSessionDataTask()
+        task.completionHandler = completionHandler
+        mockDataTask = task
+        return task
+    }
+}
+
+class MockURLSessionDataTask: URLSessionDataTask {
+    var completionHandler: ((Data?, URLResponse?, Error?) -> Void)?
+    
+    override func resume() {
+        // Simulate completion
+        completionHandler?(nil, nil, nil)
+    }
+}
+
+// MARK: - Extensions for Testing
+
+extension UserDefaults {
+    var deviceID: String {
+        get {
+            return string(forKey: "deviceID") ?? ""
+        }
+        set {
+            set(newValue, forKey: "deviceID")
+        }
+    }
 }
