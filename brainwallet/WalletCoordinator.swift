@@ -72,8 +72,6 @@ class WalletCoordinator: Subscriber {
 		}
 		endBackgroundTask()
 		if notification.userInfo != nil {
-			guard let code = notification.userInfo?["errorCode"] else { return }
-			guard let message = notification.userInfo?["errorDescription"] else { return }
 			store.perform(action: WalletChange.setSyncingState(.connecting))
 			endActivity()
 

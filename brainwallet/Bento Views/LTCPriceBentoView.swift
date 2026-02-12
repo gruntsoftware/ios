@@ -48,10 +48,6 @@ struct LTCPriceBentoView: View {
         GeometryReader { geometry in
             let height = geometry.size.height
             let trailingPad: CGFloat = 12
-            let width = geometry.size.width
-            let labelBackground =  userPrefersDarkTheme ? BentoColor.tutorialGreen1.opacity(0.1) : BentoColor.purple4.opacity(0.1)
-            let labelForeground = userPrefersDarkTheme ? BentoColor.tutorialGreen2 :BentoColor.purple4
-            let tagLabelWidth: CGFloat = 80.0
 
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)

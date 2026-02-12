@@ -300,7 +300,6 @@
 		C312D39D2D7DC27700BB97A4 /* PromptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2902D7DC27700BB97A4 /* PromptTableViewCell.swift */; };
 		C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */; };
 		C312D3B22D7DC27700BB97A4 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D29A2D7DC27700BB97A4 /* ScanViewController.swift */; };
-		C312D3B32D7DC27700BB97A4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1C62D7DC27700BB97A4 /* SettingsViewController.swift */; };
 		C312D3B52D7DC27700BB97A4 /* UpdatePinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1AD2D7DC27700BB97A4 /* UpdatePinViewController.swift */; };
 		C312D3B62D7DC27700BB97A4 /* PaymentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2892D7DC27700BB97A4 /* PaymentProtocol.swift */; };
 		C312D3B72D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0832D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift */; };
@@ -882,7 +881,6 @@
 		C312D1BB2D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPaperPhraseViewController.swift; sourceTree = "<group>"; };
 		C312D1BF2D7DC27700BB97A4 /* ModalNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNavigationController.swift; sourceTree = "<group>"; };
 		C312D1C12D7DC27700BB97A4 /* PinPadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPadViewController.swift; sourceTree = "<group>"; };
-		C312D1C62D7DC27700BB97A4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C312D1C72D7DC27700BB97A4 /* ShareDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareDataViewController.swift; sourceTree = "<group>"; };
 		C312D1CB2D7DC27700BB97A4 /* VerifyPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPinViewController.swift; sourceTree = "<group>"; };
 		C312D1CF2D7DC27700BB97A4 /* Amount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amount.swift; sourceTree = "<group>"; };
@@ -2050,7 +2048,6 @@
 				C312D1F22D7DC27700BB97A4 /* SecurityCenterCell.swift */,
 				C312D1F42D7DC27700BB97A4 /* SeparatorCell.swift */,
 				C312D0AC2D7DC27700BB97A4 /* ReduxState.swift */,
-				C312D1C62D7DC27700BB97A4 /* SettingsViewController.swift */,
 				C312D1C72D7DC27700BB97A4 /* ShareDataViewController.swift */,
 				C312D1FB2D7DC27700BB97A4 /* ExchangeUpdater.swift */,
 				C312D1CB2D7DC27700BB97A4 /* VerifyPinViewController.swift */,
@@ -2784,7 +2781,6 @@
 				24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */,
 				242C43F32F253A3E00CF6EA4 /* TutorialWalkthroughBentoView.swift in Sources */,
 				C312D3B22D7DC27700BB97A4 /* ScanViewController.swift in Sources */,
-				C312D3B32D7DC27700BB97A4 /* SettingsViewController.swift in Sources */,
 				C312D3B52D7DC27700BB97A4 /* UpdatePinViewController.swift in Sources */,
 				C312D3B62D7DC27700BB97A4 /* PaymentProtocol.swift in Sources */,
 				24B0653D2DC6476A00B5E000 /* BentoSendPrepView.swift in Sources */,
@@ -3198,7 +3194,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602115;
+				CURRENT_PROJECT_VERSION = 2602116;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3390,7 +3386,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602115;
+				CURRENT_PROJECT_VERSION = 2602116;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
