@@ -49,7 +49,7 @@ platform :ios do
       cloned_source_packages_path: "./SourcePackages",
       output_types: "html,junit",
       output_files: "report.junit",
-      output_directory: "./output/scan",
+      output_directory: "./test_output", # This worked output_directory: "./output/scan",
       skip_build: false 
     )
   end

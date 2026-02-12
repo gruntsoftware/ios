@@ -199,7 +199,7 @@ jobs:
             log show --predicate 'process == "Brainwallet"' --last 10m || echo "No system logs found for Brainwallet"
           when: on_fail
       - store_test_results:
-          path: output/scan
+          path: test_output   #.This works path: output/scan
       - store_artifacts:
           path: ~/Library/Logs/DiagnosticReports
           destination: crash-logs

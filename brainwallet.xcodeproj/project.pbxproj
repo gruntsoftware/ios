@@ -1902,11 +1902,11 @@
 		C312D0C72D7DC27700BB97A4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				24DB05E52E06054B00C57FE9 /* SoundsHelper.swift */,
 				24C8875D2F3DCDA300E14910 /* AudioServicesWrapper.swift */,
 				247664692F2FFEFA00F1A70E /* 215595__taira-komori__bomb.mp3 */,
 				2476646B2F2FFFA600F1A70E /* 807381__jean_filho__sci-fi-grenade-explosion.mp3 */,
 				2446DF512E2906AC001453DF /* bloop.mp3 */,
-				24DB05E52E06054B00C57FE9 /* SoundsHelper.swift */,
 				244310432E21BCBD004AE386 /* errorsound.mp3 */,
 				244310452E21BCCE004AE386 /* clickseedword.mp3 */,
 				24F5BD3B2E042A040010D340 /* clicksound.wav */,
