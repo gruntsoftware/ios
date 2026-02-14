@@ -89,10 +89,7 @@ struct BentoSendInitialView: View {
     }
 
     func isSendInformationValid() -> Bool {
-        Task {
-            isReadyToSend = isValidAddress && isAmountValid && !sendLTCAddress.isEmpty
-        }
-        return isReadyToSend
+        return isValidAddress && isAmountValid && !sendLTCAddress.isEmpty
     }
 
     var body: some View {
@@ -103,7 +100,6 @@ struct BentoSendInitialView: View {
             let sectionSpacer = 18.0
             let sectionSides = 15.0
             let buttonSize = 35.0
-            let fieldHeight = 45.0
 
             ZStack {
                 backgroundColor.edgesIgnoringSafeArea(.all)
@@ -111,7 +107,8 @@ struct BentoSendInitialView: View {
                     Text("Send Litecoin")
                         .modifier(BWIPSBold(size: 24.0))
                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                        .padding(4 * sectionSpacer)
+                        .padding(.top, 44.0)
+                        .padding(.bottom, 15.0)
                         .onTapGesture {
                             focusedField = nil
                         }
@@ -137,7 +134,7 @@ struct BentoSendInitialView: View {
                                             bwTransaction.sendAddress = newStringValue
                                             newMainViewModel.currentSendAddress = bwTransaction.sendAddress
                                             isValidAddress = true
-                                            isReadyToSend = isValidAddress && isAmountValid && !sendLTCAddress.isEmpty
+                                            isReadyToSend = isSendInformationValid()
                                         }
                                     }
                                     .padding(.trailing, width * 0.3)
@@ -241,7 +238,8 @@ struct BentoSendInitialView: View {
                                             bwTransaction.globalCode = code
                                             newMainViewModel.bwTransaction = bwTransaction
                                         }
-                                        isReadyToSend = isValidAddress && isAmountValid && !sendLTCAddress.isEmpty
+                                        isReadyToSend = isSendInformationValid()
+
                                      }
                                     .textFieldStyle(BentoSendTextFieldStyle())
                                     .padding(.trailing, width * 0.25)
@@ -308,6 +306,7 @@ struct BentoSendInitialView: View {
                                               text: $sendMemo)
                                     .focused($focusedField, equals: .memoField)
                                     .onChange(of: sendMemo) { _,_ in
+                                        isSendInformationValid()
                                     }
                                     .textFieldStyle(BentoSendTextFieldStyle())
                                 }
@@ -335,7 +334,7 @@ struct BentoSendInitialView: View {
                     HStack {
                         Button(action: {
                             focusedField = nil
-                            currentIndex = 1
+                            currentIndex += 1
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 12)
@@ -348,8 +347,8 @@ struct BentoSendInitialView: View {
                         }
                         .frame(height: 48)
                         .padding([.leading, .trailing], sectionSides)
-                        .padding(.bottom, sectionSides * 0.5)
-                        .disabled(!isReadyToSend)
+                        .padding(.bottom, 48)
+                        .disabled(!isSendInformationValid())
                     }
                 }
                 .toolbar {
@@ -380,6 +379,7 @@ struct BentoSendInitialView: View {
                 return
             }
             sendLTCAddress = pasteboard
+            isSendInformationValid()
         }
         .onChange(of: isLTCValueShown) { _,newValue in
             newMainViewModel.isLTCValueShown = newValue

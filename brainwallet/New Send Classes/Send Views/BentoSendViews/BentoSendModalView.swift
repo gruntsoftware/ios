@@ -135,15 +135,11 @@ struct BentoSendModalView: View {
                         .tag(2)
                     }
                 .tabViewStyle(.page(indexDisplayMode: .never))
-                .indexViewStyle(.page(backgroundDisplayMode: .always))
-                .animation(.easeInOut(duration: 0.8), value: selectedSendPage)
-                .onChange(of: selectedSendPage) { _, newPage in
-                    debugPrint("|||| \(newPage)")
-                }
                 VStack {
                     SendProgressBarView(stepIndex: $selectedSendPage,
                                         userPrefersDarkTheme:  $userPrefersDarkTheme)
                     .frame(height: 60)
+
                     Spacer()
                 }
 

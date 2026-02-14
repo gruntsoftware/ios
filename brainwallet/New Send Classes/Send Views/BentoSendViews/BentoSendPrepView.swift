@@ -63,11 +63,11 @@ struct BentoSendPrepView: View {
             ZStack {
                 backgroundColor.edgesIgnoringSafeArea(.all)
                 VStack {
-                    Text(String(localized: "Confirm send details"))
+                    Text("Confirm send details")
                         .modifier(BWIPSBold(size: 24.0))
                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                        .padding(.top, sectionSpacer * 2)
-                        .padding(.bottom, sectionSpacer)
+                        .padding(.top, 44.0)
+                        .padding(.bottom, 15.0)
 
                     HStack {
                         VStack {
@@ -146,7 +146,7 @@ struct BentoSendPrepView: View {
 
                     HStack {
                         Button(action: {
-                            currentIndex = 0
+                            currentIndex += 1
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 12)

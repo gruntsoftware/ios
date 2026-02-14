@@ -28,7 +28,7 @@ struct SendProgressBarView: View {
              let width = geometry.size.width
              let dotSize = 16.0
              let dotLine = 2.0
-             let topPadding = 24.0
+             let topPadding = 18.0
              let capsuleHeight = 4.0
 
              ZStack {
@@ -90,7 +90,7 @@ struct SendProgressBarView: View {
                          Ellipse()
                              .frame(width: dotSize,
                                     height: dotSize)
-                             .foregroundColor(stepIndex > 2 ? backgroundColor : .white)
+                             .foregroundColor(stepIndex > 1 ? backgroundColor : .white)
                              .overlay(
                                 ZStack {
                                     Ellipse()

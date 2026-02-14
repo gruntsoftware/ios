@@ -70,7 +70,7 @@ struct BentoSendCompletedView: View {
             let detailRowHeight = 22.0
             let detailVertPadding = 15.0
             let detailSectionHeight = geometry.size.height * 0.4
-            let shapeSize: CGFloat = 100.0
+            let shapeSize: CGFloat = 60.0
 
             let localizedAmount = String(localized: "Amount")
             let localizedNetworkFees = String(localized: "Network fees")
@@ -83,8 +83,9 @@ struct BentoSendCompletedView: View {
             ZStack {
                 backgroundColor.edgesIgnoringSafeArea(.all)
                 VStack {
+                    Spacer()
                     if shouldShowDetail {
-                        Spacer()
+
                         HStack {
                             VStack {
                                 HStack {
@@ -153,43 +154,47 @@ struct BentoSendCompletedView: View {
                         .padding(.bottom, sectionSpacer)
                     } else {
                         Spacer()
-
                         BrainwallePulseEllipse(shapeSize: .constant(shapeSize))
-                                    .frame(alignment: .center)
-                                    .padding(.top, detailVertPadding)
+                            .frame(width: shapeSize * 2, height: shapeSize * 2, alignment: .center)
+                                    .padding(.top, 45.0)
+
                         Text(String(localized:"Transaction sent!"))
-                            .modifier(SendCompletedTitleModifier(userPrefersDarkTheme: $userPrefersDarkTheme))
-                            .padding([.top, .bottom], sectionSpacer)
-                        Text(String(localized:"amount:"))
-                            .modifier(SendCompletedSubTitleModifier(userPrefersDarkTheme: $userPrefersDarkTheme))
+                            .modifier(BWIPSBold(size: 32.0))
+                            .foregroundColor(userPrefersDarkTheme ? .white : .black)
+                            .frame(height: 24.0, alignment: .center)
                         Text(localizedAmountSent)
                             .modifier(BWIPSBold(size: 32.0))
                             .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(15.0)
+                            .frame(height: 34.0, alignment: .center)
+
+                        Spacer()
                     }
 
-                    Spacer()
-
-                    HStack {
+                    HStack(alignment: .center) {
                         Image(systemName: "info.circle")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 15, height: 15, alignment: .leading)
-                        .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                        VStack {
-                            Text(String(localized: "Tap here to verify your published transaction:"))
-                                .modifier(BWIPSLight(size: 11.0))
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 16, height: 16)
+                            .foregroundColor(userPrefersDarkTheme ? .white : .black)
+
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Tap here to verify your published transaction:")
+                                .modifier(BWIPSLight(size: 13.0))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                            Text(String(localized: "\(newMainViewModel.bwTransaction.txIDString)"))
-                                .modifier(BWIPSLight(size: 11.0))
+
+                            Text("\(newMainViewModel.bwTransaction.txIDString)")
+                                .modifier(BWIPSLight(size: 13.0))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(userPrefersDarkTheme ? .white : .black)
                         }
                     }
-                    .padding(.bottom, 2)
-                    .padding([.leading, .trailing], sectionSides)
+                    .padding(8)
+                    .background(userPrefersDarkTheme ? BentoColor.grayBackground.opacity(0.2) : BentoColor.grayBackground)
+                    .cornerRadius(12.0)
+                    .padding([.leading, .trailing], 24.0)
+                    .padding(.bottom, 20)
                     .onTapGesture {
                         shouldShowTXIDView.toggle()
                     }
