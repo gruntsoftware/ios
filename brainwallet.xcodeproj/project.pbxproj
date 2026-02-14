@@ -2433,7 +2433,7 @@
 		245F189D2DD1F92000D20715 /* Collect and Send dSYMs to Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -2451,9 +2451,9 @@
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/newOutputFile-dsyms",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+			shellScript = "if [ \"$CI\" != \"true\" ]; then\n    # Your Crashlytics dSYM upload script\n    \"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\nelse\n    echo \"Skipping Crashlytics dSYM upload in CI\"\n    exit 0\nfi\n\n\n";
 		};
 		2489E05F2DF0A6DE00630888 /* Run Swiftlint & Swiftlint - fix */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -50,7 +50,7 @@ platform :ios do
       output_types: "html,junit",
       output_files: "report.junit",
       output_directory: "./test_output", # This worked output_directory: "./output/scan",
-      skip_build: false 
+      skip_build: false
     )
   end
 end
