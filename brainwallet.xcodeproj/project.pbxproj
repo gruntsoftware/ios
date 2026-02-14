@@ -17,6 +17,8 @@
 		24006C2C2F0FCE5500F29F0A /* BentoSendInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24006C2B2F0FCE5500F29F0A /* BentoSendInitialView.swift */; };
 		2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */; };
 		240850F42F40B29B0097706A /* SendProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240850F32F40B29B0097706A /* SendProgressBarView.swift */; };
+		240850F62F40E3A30097706A /* BackgroundRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240850F52F40E3A30097706A /* BackgroundRectangle.swift */; };
+		240850F82F40E4310097706A /* LTCFiatToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240850F72F40E4310097706A /* LTCFiatToggleView.swift */; };
 		240CEE1C2F2D87CB00428378 /* WalkthroughStep4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CEE1B2F2D87CB00428378 /* WalkthroughStep4View.swift */; };
 		240CEE1E2F2D87E500428378 /* WalkthroughStep5View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CEE1D2F2D87E500428378 /* WalkthroughStep5View.swift */; };
 		240CF5A72F2E7C7500428378 /* FallinMojiDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CF5A62F2E7C7500428378 /* FallinMojiDemoView.swift */; };
@@ -480,6 +482,8 @@
 		24006C2B2F0FCE5500F29F0A /* BentoSendInitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoSendInitialView.swift; sourceTree = "<group>"; };
 		2402046B2DC7F3A500EC8E99 /* LockScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenFooterView.swift; sourceTree = "<group>"; };
 		240850F32F40B29B0097706A /* SendProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendProgressBarView.swift; sourceTree = "<group>"; };
+		240850F52F40E3A30097706A /* BackgroundRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRectangle.swift; sourceTree = "<group>"; };
+		240850F72F40E4310097706A /* LTCFiatToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTCFiatToggleView.swift; sourceTree = "<group>"; };
 		240CEE1B2F2D87CB00428378 /* WalkthroughStep4View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughStep4View.swift; sourceTree = "<group>"; };
 		240CEE1D2F2D87E500428378 /* WalkthroughStep5View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughStep5View.swift; sourceTree = "<group>"; };
 		240CF5A62F2E7C7500428378 /* FallinMojiDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallinMojiDemoView.swift; sourceTree = "<group>"; };
@@ -1343,6 +1347,8 @@
 				247A7D0C2E951CD7000DF8C0 /* TutorialsBentoView.swift */,
 				247A7D0E2E951D10000DF8C0 /* LTCPriceBentoView.swift */,
 				247A7D102E951D3F000DF8C0 /* FavouritesBentoView.swift */,
+				240850F52F40E3A30097706A /* BackgroundRectangle.swift */,
+				240850F72F40E4310097706A /* LTCFiatToggleView.swift */,
 			);
 			path = "Bento Views";
 			sourceTree = "<group>";
@@ -2693,6 +2699,7 @@
 				2472D5D42F1276D100DC6737 /* BentoSendStyle.swift in Sources */,
 				C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */,
 				2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */,
+				240850F62F40E3A30097706A /* BackgroundRectangle.swift in Sources */,
 				24691D142EAE4D30003CDC7C /* SyncSubBentoView.swift in Sources */,
 				2416CE6B2DA90D0D00FFBD10 /* BRSocketHelpers.c in Sources */,
 				2416CE6C2DA90D0D00FFBD10 /* BWAPIClient.swift in Sources */,
@@ -2892,6 +2899,7 @@
 				C312D4842D7DC27700BB97A4 /* ModalViewController.swift in Sources */,
 				245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */,
 				24DB05EA2E06B49B00C57FE9 /* SettingsExpandingGamesView.swift in Sources */,
+				240850F82F40E4310097706A /* LTCFiatToggleView.swift in Sources */,
 				24DB05EC2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift in Sources */,
 				C312D4872D7DC27700BB97A4 /* Transaction.swift in Sources */,
 				C312D48A2D7DC27700BB97A4 /* MenuButtonType.swift in Sources */,

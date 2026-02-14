@@ -110,6 +110,7 @@ struct BentoSendModalView: View {
     var body: some View {
         GeometryReader { geometry in
             let width = geometry.size.width
+            let height = geometry.size.height
             let subViewPad = 20.0
             ZStack {
                 backgroundColor.edgesIgnoringSafeArea(.all)
@@ -142,8 +143,10 @@ struct BentoSendModalView: View {
                 VStack {
                     SendProgressBarView(stepIndex: $selectedSendPage,
                                         userPrefersDarkTheme:  $userPrefersDarkTheme)
+                    .frame(height: 60)
                     Spacer()
                 }
+
             }
         }
         .onAppear {

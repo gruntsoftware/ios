@@ -8765,6 +8765,7 @@
       }
     },
     "Dismiss keyboard" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

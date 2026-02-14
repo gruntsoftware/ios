@@ -123,4 +123,3 @@ struct SendProgressBarView: View {
         }
     }
 }
- 

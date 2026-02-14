@@ -18,73 +18,50 @@ struct BentoSendInitialView: View {
 
     @ObservedObject
     var newMainViewModel: NewMainViewModel
-
     @Binding
     var userPrefersDarkTheme: Bool
-
     @Binding
     var userWalletIsEmpty: Bool
-
     @Binding
     var shouldShowView: Bool
-
     @Binding
     var currentIndex: Int
-
     @State
     private var shouldShowEmptyWalletAlert: Bool = false
-
     @State
     private var sendLTCAddress: String = ""
-
     @State
     private var sendAmount: Double = 0.0
-
     @State
     private var sentTextColor: Color = .black
-
     @State
     private var continueTextColor: Color = .black
-
     @State
     private var sendMemo: String = ""
-
     @State
     private var didTapPaste = false
-
     @State
     private var didTapScan = false
-
     @State
     private var isLTCValueShown = false
-
     @State
     var isValidAddress = false
-
     @State
     private var shouldShowError = false
-
     @State
     private var errorMessage = ""
-
     @State
     private var isAmountValid = false
-
     @State
     private var isReadyToSend: Bool = false
-
     @State
     var pasteboardString = ""
-
     @State
     private var scannedText = ""
-
     @State
     private var bwTransaction = BWTransaction()
-
     @FocusState
     private var focusedField: SendField?
-
     @State
     private var backgroundColor: LinearGradient = LinearGradient(colors: [.white], startPoint: .topLeading,
                                                                  endPoint: .bottomTrailing)
@@ -126,6 +103,7 @@ struct BentoSendInitialView: View {
             let sectionSpacer = 18.0
             let sectionSides = 15.0
             let buttonSize = 35.0
+            let fieldHeight = 45.0
 
             ZStack {
                 backgroundColor.edgesIgnoringSafeArea(.all)
@@ -139,10 +117,8 @@ struct BentoSendInitialView: View {
                         }
                     HStack {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(userPrefersDarkTheme ? .white : BentoColor.grayBorder,
-                                        lineWidth: 1)
-                                .frame(height: sectionHeight)
+                            BackgroundRectangle(userPrefersDarkTheme: $userPrefersDarkTheme)
+
                             VStack {
                                 HStack {
                                     Text("Recipient")
@@ -166,7 +142,6 @@ struct BentoSendInitialView: View {
                                     }
                                     .padding(.trailing, width * 0.3)
                                     .textFieldStyle(BentoSendTextFieldStyle())
-
                             }
                             .frame(height: sectionHeight, alignment: .leading)
                             .onTapGesture {
@@ -231,10 +206,7 @@ struct BentoSendInitialView: View {
 
                     HStack {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(userPrefersDarkTheme ? .white : BentoColor.grayBorder,
-                                        lineWidth: 1)
-                                .frame(height: sectionHeight)
+                            BackgroundRectangle(userPrefersDarkTheme: $userPrefersDarkTheme)
 
                             VStack {
                                 HStack {
@@ -285,31 +257,24 @@ struct BentoSendInitialView: View {
                                         isLTCValueShown.toggle()
                                     }) {
                                         VStack {
-                                            Spacer()
                                             HStack {
                                                 Spacer()
-                                                if isLTCValueShown {
-                                                    Image("litecoin_cutout24")
-                                                        .ltcIconImageModifier()
-                                                        .foregroundColor(userPrefersDarkTheme ? .white : .black)
-
-                                                } else {
-                                                    Text( "\(newMainViewModel.exchangeRate?.code ?? "")")
-                                                        .modifier(BWIPSBold(size: 18.0))
-                                                        .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                                                        .frame(height: 30, alignment: .trailing)
-                                                }
+                                                LTCFiatToggleView(userPrefersDarkTheme: $userPrefersDarkTheme,
+                                                                  isLTCValueShown:
+                                                                    $isLTCValueShown,
+                                                                  fiatCodeString: .constant("\(newMainViewModel.exchangeRate?.code ?? "")"))
                                             }
-                                            .frame(width: buttonSize * 2 + 4, height: buttonSize)
-
+                                            .frame(width: buttonSize * 2 + 4, height: buttonSize, alignment: .center)
+                                            .background(userPrefersDarkTheme ? BentoColor.grayBackground.opacity(0.2) : BentoColor.grayBackground)
+                                            .cornerRadius(8.0)
+                                            .padding(16)
                                         }
                                     }
                                     .frame(width: buttonSize * 2 + 4, height: buttonSize)
-                                    .accessibilityIdentifier("toggleFiatLTCSendButton")
                                     .padding(.trailing, 16)
+                                    .accessibilityIdentifier("toggleFiatLTCSendButton")
                                 }
                                 .padding(.bottom, 8)
-
                             }
                             .frame(height: sectionHeight, alignment: .trailing)
                         }
@@ -322,9 +287,7 @@ struct BentoSendInitialView: View {
 
                     HStack {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(userPrefersDarkTheme ? .white : BentoColor.grayBorder , lineWidth: 1)
-                                .frame(height: sectionHeight)
+                            BackgroundRectangle(userPrefersDarkTheme: $userPrefersDarkTheme)
                             VStack {
                                 HStack {
                                     Text("Memo (Optional):")
@@ -359,15 +322,6 @@ struct BentoSendInitialView: View {
                     .onTapGesture {
                         focusedField = .memoField
                     }
-
-                    Text("Dismiss keyboard")
-                        .modifier(BWIPSLight(size: 14.0))
-                        .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                        .padding(sectionSpacer)
-                        .onTapGesture {
-                            focusedField = nil
-                        }
-
                     Spacer()
                     HStack {
                         Text("1 LTC" + " = \(newMainViewModel.currentFiatValue)")
@@ -396,6 +350,16 @@ struct BentoSendInitialView: View {
                         .padding([.leading, .trailing], sectionSides)
                         .padding(.bottom, sectionSides * 0.5)
                         .disabled(!isReadyToSend)
+                    }
+                }
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("Done") {
+                            focusedField = nil
+                        }
+                        .foregroundColor(BrainwalletColor.content)
+                        .frame(width: width * 0.25, alignment: .trailing)
                     }
                 }
             }
