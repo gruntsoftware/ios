@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct BentoSendCompletedView: View {
 
@@ -59,7 +60,7 @@ struct BentoSendCompletedView: View {
         _userPrefersDarkTheme = userPrefersDarkTheme
         _shouldDismissModal = shouldDismissModal
         newMainViewModel = viewModel
-        self.url = URL(string: ExplorerURLs.blockchair + newMainViewModel.bwTransaction.txIDString)
+        self.url = URL(string: (explorerURLs.randomElement() ?? "") + newMainViewModel.bwTransaction.txIDString)
     }
 
     var body: some View {
@@ -197,6 +198,11 @@ struct BentoSendCompletedView: View {
                     .padding(.bottom, 20)
                     .onTapGesture {
                         shouldShowTXIDView.toggle()
+                        Analytics
+                            .logEvent("did_check_completed_txid",
+                                      parameters: [
+                                        "explorer_url": url?.absoluteString ?? "unknown explorer url"
+                                      ])
                     }
 
                     HStack {
