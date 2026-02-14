@@ -14,7 +14,6 @@ struct BentoSendTextFieldStyle: TextFieldStyle {
             .modifier(BWIPSRegular(size: 16.0))
             .frame(height: 24, alignment: .leading)
             .controlSize(.regular)
-            .textFieldStyle(.plain)
             .background(.clear)
             .padding(.bottom, 4)
             .padding(.leading, 16)

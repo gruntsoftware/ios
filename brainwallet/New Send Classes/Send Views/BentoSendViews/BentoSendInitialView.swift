@@ -59,7 +59,7 @@ struct BentoSendInitialView: View {
     private var isLTCValueShown = false
 
     @State
-    private var isValidAddress = false
+    var isValidAddress = false
 
     @State
     private var shouldShowError = false
@@ -74,7 +74,7 @@ struct BentoSendInitialView: View {
     private var isReadyToSend: Bool = false
 
     @State
-    private var pasteboardString = ""
+    var pasteboardString = ""
 
     @State
     private var scannedText = ""
@@ -100,7 +100,7 @@ struct BentoSendInitialView: View {
         newMainViewModel = viewModel
     }
 
-    private func verifyAddressInPasteboard() -> Bool {
+    func verifyAddressInPasteboard() -> Bool {
 
         if let pasteboard = UIPasteboard.general.string?.lowercased(),
             pasteboard.isValidAddress {
@@ -111,7 +111,7 @@ struct BentoSendInitialView: View {
         return false
     }
 
-    private func isSendInformationValid() -> Bool {
+    func isSendInformationValid() -> Bool {
         Task {
             isReadyToSend = isValidAddress && isAmountValid && !sendLTCAddress.isEmpty
         }
@@ -133,7 +133,7 @@ struct BentoSendInitialView: View {
                     Text("Send Litecoin")
                         .modifier(BWIPSBold(size: 24.0))
                         .foregroundColor(userPrefersDarkTheme ? .white : .black)
-                        .padding(2.5 * sectionSpacer)
+                        .padding(4 * sectionSpacer)
                         .onTapGesture {
                             focusedField = nil
                         }

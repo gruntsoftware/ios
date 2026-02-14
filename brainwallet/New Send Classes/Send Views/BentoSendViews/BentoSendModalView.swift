@@ -108,11 +108,12 @@ struct BentoSendModalView: View {
     }
 
     var body: some View {
-        GeometryReader { _ in
-
+        GeometryReader { geometry in
+            let width = geometry.size.width
             let subViewPad = 20.0
             ZStack {
                 backgroundColor.edgesIgnoringSafeArea(.all)
+
                 TabView(selection: $selectedSendPage) {
                     BentoSendInitialView(viewModel: newMainViewModel,
                                          userPrefersDarkTheme: $userPrefersDarkTheme,
@@ -133,8 +134,16 @@ struct BentoSendModalView: View {
                         .tag(2)
                     }
                 .tabViewStyle(.page(indexDisplayMode: .never))
+                .indexViewStyle(.page(backgroundDisplayMode: .always))
                 .animation(.easeInOut(duration: 0.8), value: selectedSendPage)
-                .transition(.slide)
+                .onChange(of: selectedSendPage) { _, newPage in
+                    debugPrint("|||| \(newPage)")
+                }
+                VStack {
+                    SendProgressBarView(stepIndex: $selectedSendPage,
+                                        userPrefersDarkTheme:  $userPrefersDarkTheme)
+                    Spacer()
+                }
             }
         }
         .onAppear {
@@ -165,9 +174,6 @@ struct BentoSendModalView: View {
         .onChange(of: scannedText) { _,_ in
             sendLTCAddress = scannedText
         }
-        .onChange(of: selectedSendPage, { _, _ in
-            //
-        })
         .onChange(of: userWalletIsEmpty) { _,_ in
             delay(0.4) {
                  shouldShowEmptyWalletAlert = userWalletIsEmpty

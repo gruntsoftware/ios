@@ -165,7 +165,7 @@ class NewMainViewModel: ObservableObject, Subscriber {
     private
     let ratesPriceUpdateTimerPeriod: Double = {
         #if DEBUG
-            return 3.0
+            return 6.0
         #else
             return 20.0
         #endif
