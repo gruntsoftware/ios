@@ -4,12 +4,11 @@
 ## Platform
 - [ ] Android
 - [ ] iOS
-- [ ] Games-Unity
-- [ ] DevOps (AWS)
-- [ ] C/Golang 
+- [ ] Games-Unity 
 
 ## 🎯 Type of Change
 <!-- Mark the relevant option with an [x] -->
+- [ ] 🚀  Release
 - [ ] 🐛 Bug fix
 - [ ] ✨ New feature
 - [ ] 🔧 Refactoring (code change that neither fixes a bug nor adds a feature)
@@ -18,12 +17,7 @@
 - [ ] ⚡ Performance improvement
 - [ ] 🧪 Test addition or improvement
 
-## 📋 Changes
-<!-- List the key changes made in this PR -->
-- 
-- 
-
-### 🔗 Related Issues
+## 📋 Changes / Issues
 <!-- Link any related issues using "Fixes #issue_number" or "Closes #issue_number" -->
 - Fixes #
 - Related to #
