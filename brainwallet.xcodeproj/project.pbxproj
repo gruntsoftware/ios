@@ -2510,7 +2510,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ -n \"$CI_XCODE_CLOUD\" ]]; then\n    echo \"Running in Xcode Cloud\"\n    echo \"$DEBUG_SERVICE_DATA\" | base64 --decode > \\\n        \"$CI_WORKSPACE/service-data.plist\"\n    echo \"$GOOGLE_SERVICES_PLIST\" | base64 --decode > \\\n        \"$CI_WORKSPACE/GoogleService-Info.plist\"\n    echo \"$REMOTE_CONFIG_DEFAULTS\" | base64 --decode > \\\n        \"$CI_WORKSPACE/remote-config-defaults.plist\"\nelse\n    echo \"Skipping secret file generation\"\nfi\n";
+			shellScript = "if [[ -n \"$CI_XCODE_CLOUD\" ]]; then\n    echo \"Running in Xcode Cloud\"\n    echo \"$DEBUG_SERVICE_DATA\" | base64 --decode > \\\n        \"$CI_WORKSPACE_PATH/repository/brainwallet/PreLaunchResources/service-data.plist\"\n    echo \"$GOOGLE_SERVICES_PLIST\" | base64 --decode > \\\n        \"$CI_WORKSPACE_PATH/repository/brainwallet/PreLaunchResources/GoogleService-Info.plist\"\n    echo \"$REMOTE_CONFIG_DEFAULTS\" | base64 --decode > \\\n        \"$CI_WORKSPACE_PATH/repository/brainwallet/PreLaunchResources/remote-config-defaults.plist\"\nelse\n    echo \"Skipping secret file generation\"\nfi\n";
 		};
 		58A9FE4C291BC37400B75825 /* Count number of swift lines */ = {
 			isa = PBXShellScriptBuildPhase;
