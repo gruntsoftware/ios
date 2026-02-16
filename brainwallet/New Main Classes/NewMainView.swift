@@ -11,6 +11,9 @@ import FirebaseAnalytics
 
 struct NewMainView: View {
 
+    @Environment(\.requestReview)
+    private var requestReview
+
     @ObservedObject
     var newMainViewModel: NewMainViewModel
 
@@ -84,6 +87,19 @@ struct NewMainView: View {
          receiveViewModel: NewReceiveViewModel) {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
+    }
+
+    private func requestRatingReview() {
+
+        guard let txns = newMainViewModel.transactions else { return }
+
+        if (txns.count > 2 && txns.count < 4) {
+            requestReview()
+            Analytics
+                .logEvent("did_request_rating",
+                    parameters: ["request_placement": String(describing: type(of: NewMainView.self))])
+        }
+
     }
 
     var body: some View {
@@ -291,11 +307,7 @@ struct NewMainView: View {
 
                         Button(action: {
                             newMainViewModel.shouldShowGameMode.toggle()
-                            Analytics.logEvent("user_did_tap_gamemode",
-                                parameters: [
-                                    "platform": "ios",
-                                    "app_version": AppVersion.string
-                                ])
+                            Analytics.logEvent("user_did_tap_gamemode", parameters: nil)
                         }, label: {
                             VStack(spacing: 4) {
                                 Image(systemName: "gamecontroller")
@@ -348,6 +360,7 @@ struct NewMainView: View {
                     userPrefersDarkTheme = newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                     walletIsSyncing = newMainViewModel.walletIsSyncing
+                    requestRatingReview()
                 }
                 .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
                     disableTransactionDetail = newMainViewModel.filteredTransactions.isEmpty

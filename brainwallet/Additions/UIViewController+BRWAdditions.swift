@@ -15,14 +15,7 @@ extension UIViewController {
 	}
 
 	func addCloseNavigationItem(tintColor: UIColor? = nil) {
-		let close = UIButton.close
-		close.tap = { [weak self] in
-			self?.dismiss(animated: true, completion: nil)
-		}
 
-		close.tintColor = UIColor.black
-
-		navigationItem.leftBarButtonItems = [UIBarButtonItem.negativePadding, UIBarButtonItem(customView: close)]
 	}
 
 	func hideCloseNavigationItem() {

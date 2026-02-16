@@ -8,9 +8,9 @@ enum ModalHeaderViewStyle {
 class ModalHeaderView: UIView {
     // MARK: - Public
 
-    var closeCallback: (() -> Void)? {
-        didSet { close.tap = closeCallback }
-    }
+//    var closeCallback: (() -> Void)? {
+//        didSet { close.tap = closeCallback }
+//    }
 
     init(title: String, style: ModalHeaderViewStyle, faqInfo _: (Store, String)? = nil, showCloseButton: Bool = true) {
         self.title.text = title

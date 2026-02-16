@@ -1,6 +1,7 @@
 import BRCore
 import Foundation
 import UIKit
+import FirebaseAnalytics
 
 enum SendResult {
 	case success
@@ -56,6 +57,15 @@ class Sender {
 	func feeForTx(amount: UInt64) -> UInt64 {
 		return walletManager.wallet?.feeForTx(amount: amount) ?? 0
 	}
+
+    private func updateFBData() {
+        Analytics
+            .logEvent("did_send_ltc",
+                      parameters: [
+                        "request_placement":
+                            String(describing: type(of: WalkthroughStep3View.self))
+                      ])
+    }
     /// Send
     /// - Parameters:
     ///   - biometricsMessage: Response from decoding the biometrics
@@ -91,6 +101,8 @@ class Sender {
                                      completion: { result in
                                          if result == .success {
                                              myself.publish(completion: completion)
+                                             myself.updateFBData()
+
                                          } else {
                                              if result == .failure || result == .fallback {
 
@@ -104,6 +116,8 @@ class Sender {
             DispatchQueue.walletQueue.async {
                 if self.walletManager.signTransaction(transaction, pin: pinCode) {
                     self.publish(completion: completion)
+                    self.updateFBData()
+
                 }
                 group.leave()
             }
@@ -146,6 +160,7 @@ class Sender {
 					                 completion: { result in
 					                 	if result == .success {
 					                 		myself.publish(completion: completion)
+                                            myself.updateFBData()
 					                 	} else {
 					                 		if result == .failure || result == .fallback {
 					                 			myself.verifyPin(tx: transaction,

@@ -21,7 +21,6 @@ struct WipeWalletView: View {
 
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
-    let regularFont: Font = .ibmPlexSansRegular(size: 24.0)
 
     init(viewModel: LockScreenViewModel,
          shouldDismiss: Binding<Bool>,
@@ -54,19 +53,13 @@ struct WipeWalletView: View {
 
                     if !isWipingWallet {
                         Text("This will erase your PIN, data & memos. This cannot be undone.")
-                            .font(regularFont)
-                            .foregroundColor(BrainwalletColor.content)
-                            .frame(alignment: .center)
-                            .padding(.all, 20.0)
-
-                        Text("You can start over by tapping RESTORE then entering your previously saved 12 seed words.")
-                            .font(regularFont)
+                            .modifier(BWIPSRegular(size: 24.0, lineLimit: 2))
                             .foregroundColor(BrainwalletColor.content)
                             .frame(alignment: .center)
                             .padding(.all, 20.0)
 
                         Text("This will allow you to send and receive from your previous balance. You will need to set a new PIN")
-                            .font(regularFont)
+                            .modifier(BWIPSRegular(size: 24.0, lineLimit: 3))
                             .foregroundColor(BrainwalletColor.content)
                             .frame(alignment: .center)
                             .padding(.all, 20.0)
@@ -81,13 +74,13 @@ struct WipeWalletView: View {
                             .padding(.all, 20.0)
                     } else {
                         Text("Wallet is deleted")
-                            .font(regularFont)
+                            .modifier(BWIPSRegular(size: 24.0))
                             .foregroundColor(BrainwalletColor.content)
                             .frame(alignment: .center)
                             .padding(.all, 20.0)
 
                         Text("Start over by swiping up and restarting the app.")
-                            .font(regularFont)
+                            .modifier(BWIPSRegular(size: 24.0, lineLimit: 2))
                             .foregroundColor(BrainwalletColor.content)
                             .frame(alignment: .center)
                             .padding(.all, 20.0)
@@ -120,6 +113,7 @@ struct WipeWalletView: View {
                         }
                         .padding(.all, 8.0)
                     }
+                    .accessibilityIdentifier("Wipe Button")
 
                     Button(action: {
                         shouldDismiss.toggle()
@@ -140,6 +134,7 @@ struct WipeWalletView: View {
                         }
                         .padding(.all, 8.0)
                         .disabled(isWipingWallet)
+                        .accessibilityIdentifier("Cancel")
                     }
                 }
             }

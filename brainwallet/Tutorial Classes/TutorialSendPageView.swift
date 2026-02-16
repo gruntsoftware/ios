@@ -70,11 +70,7 @@ struct TutorialSendPageView: View {
             }
             .onAppear {
                 Analytics
-                    .logEvent("user_tapped_send_tutorial",
-                    parameters: [
-                        "platform": "ios",
-                        "app_version": AppVersion.string
-                    ])
+                    .logEvent("user_tapped_send_tutorial", parameters: nil)
             }
         }
     }

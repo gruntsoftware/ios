@@ -54,10 +54,7 @@ struct WalkthroughStep5View: View {
         .onAppear {
             Analytics
                 .logEvent("user_completed_walkthrough_tutorial",
-                parameters: [
-                    "platform": "ios",
-                    "app_version": AppVersion.string
-                ])
+                          parameters: nil)
         }
     }
 }

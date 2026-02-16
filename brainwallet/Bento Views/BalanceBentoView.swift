@@ -75,10 +75,6 @@ struct BalanceBentoView: View {
                      }
                     .padding([.leading, .trailing], sidePadding)
                     .frame(width: width, height: height * 0.25, alignment: .top)
-////                    .padding(.top, 4)
-//                    Rectangle().fill(.red)
-//                        .frame(width: width, height: height * 0.25, alignment: .top)
-
                     HStack {
                         ZStack {
                             VStack {
@@ -115,10 +111,7 @@ struct BalanceBentoView: View {
                                 newMainViewModel.isLTCValueShown = isLTCValueShown
                                 Analytics
                                     .logEvent("user_tapped_switch_fiat_ltc",
-                                    parameters: [
-                                        "platform": "ios",
-                                        "app_version": AppVersion.string
-                                    ])
+                                    parameters: nil)
                             }
                         }
                     }

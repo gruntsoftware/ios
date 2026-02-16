@@ -88,7 +88,7 @@ struct LockScreenView: View {
                     .frame(width: width, height: 45, alignment: .center)
                     .padding(.top, 20.0)
                     .padding(.bottom, 20.0)
-
+                    .accessibilityIdentifier("Lock Screen Footer View")
                     HStack {
                         Text(AppVersion.string)
                             .frame(alignment: .center)

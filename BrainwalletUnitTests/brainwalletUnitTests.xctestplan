@@ -1,15 +1,27 @@
 {
   "configurations" : [
     {
-      "id" : "19C3EF97-5448-4481-8A53-57BED2DE6B8B",
+      "id" : "AEDC2994-6395-476D-9A3C-0E69A8BE82FD",
       "name" : "Configuration 1",
       "options" : {
-
+        "targetForVariableExpansion" : {
+          "containerPath" : "container:brainwallet.xcodeproj",
+          "identifier" : "75A2A78F1DA5934300A983D8",
+          "name" : "brainwallet"
+        }
       }
     }
   ],
   "defaultOptions" : {
-
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:brainwallet.xcodeproj",
+          "identifier" : "75A2A78F1DA5934300A983D8",
+          "name" : "brainwallet"
+        }
+      ]
+    }
   },
   "testTargets" : [
     {

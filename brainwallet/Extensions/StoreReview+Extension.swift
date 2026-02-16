@@ -1,6 +1,10 @@
 import StoreKit
 
 // Inspired by https://stackoverflow.com/questions/63953891/requestreview-was-deprecated-in-ios-14-0
+// For iOS 16+ and higher. place in anyview
+// @Environment(\.requestReview) private var requestReview
+// requestReview()
+
 public extension SKStoreReviewController {
 	static func requestReviewInCurrentScene() {
 		if let scene = UIApplication.shared

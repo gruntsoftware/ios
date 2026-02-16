@@ -280,7 +280,7 @@ struct BuyReceiveView: View {
                                 .textFieldStyle(.roundedBorder)
                                 .focused($keyboardFocused)
                                 .frame(width: 80, alignment: .center)
-                                .onChange(of: pickedAmountString) { newValue in
+                                .onChange(of: pickedAmountString) { _,newValue in
                                     if newValue.count > 6 {
                                         pickedAmountString = "\(fiatMaxAmount)"
                                     }
@@ -372,10 +372,7 @@ struct BuyReceiveView: View {
                     updateFiatAmounts()
 
                     Analytics.logEvent("user_did_tap_buyreceive_sheet",
-                        parameters: [
-                            "platform": "ios",
-                            "app_version": AppVersion.string
-                        ])
+                                       parameters: nil)
                 }
                 .alert(String(localized:"Address Copied"), isPresented: $didCopyAddress,
                        actions: {
