@@ -16186,6 +16186,7 @@
       }
     },
     "Paper Key" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -23352,6 +23353,7 @@
       }
     },
     "Submit" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -26138,6 +26140,7 @@
       }
     },
     "The words entered do not match your paper key. Please try again." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -27583,6 +27586,7 @@
       }
     },
     "To make sure everything was written down correctly, please enter the following words from your paper key." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -30483,6 +30487,7 @@
       }
     },
     "Word" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

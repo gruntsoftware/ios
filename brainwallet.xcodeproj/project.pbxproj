@@ -244,7 +244,6 @@
 		C312D2EA2D7DC27700BB97A4 /* ForgotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24D2D7DC27700BB97A4 /* ForgotView.swift */; };
 		C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D32D7DC27700BB97A4 /* AnimatableIcon.swift */; };
 		C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */; };
-		C312D2F72D7DC27700BB97A4 /* ArticleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2022D7DC27700BB97A4 /* ArticleIds.swift */; };
 		C312D2FC2D7DC27700BB97A4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E72D7DC27700BB97A4 /* GradientView.swift */; };
 		C312D3072D7DC27700BB97A4 /* CGRect+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D06E2D7DC27700BB97A4 /* CGRect+Additions.swift */; };
 		C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0872D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift */; };
@@ -317,7 +316,6 @@
 		C312D3D52D7DC27700BB97A4 /* UIScreen+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D07E2D7DC27700BB97A4 /* UIScreen+Additions.swift */; };
 		C312D3D82D7DC27700BB97A4 /* UITableView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0802D7DC27700BB97A4 /* UITableView+Additions.swift */; };
 		C312D3DA2D7DC27700BB97A4 /* CameraGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1DF2D7DC27700BB97A4 /* CameraGuideView.swift */; };
-		C312D3DC2D7DC27700BB97A4 /* ConfirmPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E12D7DC27700BB97A4 /* ConfirmPhrase.swift */; };
 		C312D3DD2D7DC27700BB97A4 /* ReceiveLTCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2922D7DC27700BB97A4 /* ReceiveLTCViewController.swift */; };
 		C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */; };
 		C312D3E82D7DC27700BB97A4 /* FinishedStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24B2D7DC27700BB97A4 /* FinishedStepView.swift */; };
@@ -329,7 +327,6 @@
 		C312D3FE2D7DC27700BB97A4 /* ReduxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0AC2D7DC27700BB97A4 /* ReduxState.swift */; };
 		C312D3FF2D7DC27700BB97A4 /* InViewAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E92D7DC27700BB97A4 /* InViewAlert.swift */; };
 		C312D4002D7DC27700BB97A4 /* MessageUIPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2802D7DC27700BB97A4 /* MessageUIPresenter.swift */; };
-		C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E32D7DC27700BB97A4 /* DrawableCircle.swift */; };
 		C312D4062D7DC27700BB97A4 /* IntroStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2542D7DC27700BB97A4 /* IntroStepView.swift */; };
 		C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E82D7DC27700BB97A4 /* InAppAlert.swift */; };
 		C312D40F2D7DC27700BB97A4 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2472D7DC27700BB97A4 /* Environment.swift */; };
@@ -339,8 +336,6 @@
 		C312D41D2D7DC27700BB97A4 /* ModalNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1BF2D7DC27700BB97A4 /* ModalNavigationController.swift */; };
 		C312D4222D7DC27700BB97A4 /* ModalDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1A72D7DC27700BB97A4 /* ModalDisplayable.swift */; };
 		C312D4292D7DC27700BB97A4 /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D42D7DC27700BB97A4 /* CheckView.swift */; };
-		C312D4312D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1BB2D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift */; };
-		C312D4322D7DC27700BB97A4 /* SecurityCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F22D7DC27700BB97A4 /* SecurityCenterCell.swift */; };
 		C312D4332D7DC27700BB97A4 /* RemoteConfigHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2962D7DC27700BB97A4 /* RemoteConfigHelper.swift */; };
 		C312D4342D7DC27700BB97A4 /* TextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2B92D7DC27700BB97A4 /* TextView+Extension.swift */; };
 		C312D4372D7DC27700BB97A4 /* CreateStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D23D2D7DC27700BB97A4 /* CreateStepView.swift */; };
@@ -373,7 +368,6 @@
 		C312D4772D7DC27700BB97A4 /* NSNotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2852D7DC27700BB97A4 /* NSNotificationNameExtension.swift */; };
 		C312D4782D7DC27700BB97A4 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2392D7DC27700BB97A4 /* ContainerViewController.swift */; };
 		C312D4792D7DC27700BB97A4 /* SafariServices+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2992D7DC27700BB97A4 /* SafariServices+Extension.swift */; };
-		C312D47A2D7DC27700BB97A4 /* PhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1EE2D7DC27700BB97A4 /* PhraseView.swift */; };
 		C312D47F2D7DC27700BB97A4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A62D7DC27700BB97A4 /* Extensions.swift */; };
 		C312D4812D7DC27700BB97A4 /* DismissModalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B02D7DC27700BB97A4 /* DismissModalAnimator.swift */; };
 		C312D4832D7DC27700BB97A4 /* GradientCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E52D7DC27700BB97A4 /* GradientCircle.swift */; };
@@ -871,7 +865,6 @@
 		C312D1B32D7DC27700BB97A4 /* PinTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinTransitioningDelegate.swift; sourceTree = "<group>"; };
 		C312D1B42D7DC27700BB97A4 /* PresentModalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentModalAnimator.swift; sourceTree = "<group>"; };
 		C312D1B92D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsSpendingLimitViewController.swift; sourceTree = "<group>"; };
-		C312D1BB2D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPaperPhraseViewController.swift; sourceTree = "<group>"; };
 		C312D1BF2D7DC27700BB97A4 /* ModalNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNavigationController.swift; sourceTree = "<group>"; };
 		C312D1C12D7DC27700BB97A4 /* PinPadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPadViewController.swift; sourceTree = "<group>"; };
 		C312D1CB2D7DC27700BB97A4 /* VerifyPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPinViewController.swift; sourceTree = "<group>"; };
@@ -884,9 +877,7 @@
 		C312D1DD2D7DC27700BB97A4 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		C312D1DF2D7DC27700BB97A4 /* CameraGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraGuideView.swift; sourceTree = "<group>"; };
 		C312D1E02D7DC27700BB97A4 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
-		C312D1E12D7DC27700BB97A4 /* ConfirmPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPhrase.swift; sourceTree = "<group>"; };
 		C312D1E22D7DC27700BB97A4 /* DefaultCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCurrencyViewController.swift; sourceTree = "<group>"; };
-		C312D1E32D7DC27700BB97A4 /* DrawableCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableCircle.swift; sourceTree = "<group>"; };
 		C312D1E52D7DC27700BB97A4 /* GradientCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientCircle.swift; sourceTree = "<group>"; };
 		C312D1E62D7DC27700BB97A4 /* GradientSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientSwitch.swift; sourceTree = "<group>"; };
 		C312D1E72D7DC27700BB97A4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -896,17 +887,14 @@
 		C312D1EB2D7DC27700BB97A4 /* LoadingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProgressView.swift; sourceTree = "<group>"; };
 		C312D1EC2D7DC27700BB97A4 /* ModalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderView.swift; sourceTree = "<group>"; };
 		C312D1ED2D7DC27700BB97A4 /* NonScrollingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonScrollingCollectionView.swift; sourceTree = "<group>"; };
-		C312D1EE2D7DC27700BB97A4 /* PhraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseView.swift; sourceTree = "<group>"; };
 		C312D1EF2D7DC27700BB97A4 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		C312D1F02D7DC27700BB97A4 /* RadialGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
-		C312D1F22D7DC27700BB97A4 /* SecurityCenterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCenterCell.swift; sourceTree = "<group>"; };
 		C312D1F42D7DC27700BB97A4 /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 		C312D1FB2D7DC27700BB97A4 /* ExchangeUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeUpdater.swift; sourceTree = "<group>"; };
 		C312D1FD2D7DC27700BB97A4 /* AddressFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFieldView.swift; sourceTree = "<group>"; };
 		C312D1FE2D7DC27700BB97A4 /* AlertFailureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFailureView.swift; sourceTree = "<group>"; };
 		C312D2002D7DC27700BB97A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C312D2012D7DC27700BB97A4 /* ApplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
-		C312D2022D7DC27700BB97A4 /* ArticleIds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleIds.swift; sourceTree = "<group>"; };
 		C312D2042D7DC27700BB97A4 /* AssociatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssociatedObject.swift; sourceTree = "<group>"; };
 		C312D22A2D7DC27700BB97A4 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTileView.swift; sourceTree = "<group>"; };
@@ -1999,7 +1987,6 @@
 				C312D0832D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift */,
 				C312D0852D7DC27700BB97A4 /* UIViewController+Alerts.swift */,
 				C312D1B92D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift */,
-				C312D1BB2D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift */,
 				C312D1BF2D7DC27700BB97A4 /* ModalNavigationController.swift */,
 				C312D1C12D7DC27700BB97A4 /* PinPadViewController.swift */,
 				C312D1AD2D7DC27700BB97A4 /* UpdatePinViewController.swift */,
@@ -2020,9 +2007,7 @@
 				C312D1DD2D7DC27700BB97A4 /* AlertView.swift */,
 				C312D1DF2D7DC27700BB97A4 /* CameraGuideView.swift */,
 				C312D1E02D7DC27700BB97A4 /* Circle.swift */,
-				C312D1E12D7DC27700BB97A4 /* ConfirmPhrase.swift */,
 				C312D1E22D7DC27700BB97A4 /* DefaultCurrencyViewController.swift */,
-				C312D1E32D7DC27700BB97A4 /* DrawableCircle.swift */,
 				C312D1E52D7DC27700BB97A4 /* GradientCircle.swift */,
 				C312D1E62D7DC27700BB97A4 /* GradientSwitch.swift */,
 				C312D1E72D7DC27700BB97A4 /* GradientView.swift */,
@@ -2032,17 +2017,14 @@
 				C312D1EB2D7DC27700BB97A4 /* LoadingProgressView.swift */,
 				C312D1EC2D7DC27700BB97A4 /* ModalHeaderView.swift */,
 				C312D1ED2D7DC27700BB97A4 /* NonScrollingCollectionView.swift */,
-				C312D1EE2D7DC27700BB97A4 /* PhraseView.swift */,
 				C312D1EF2D7DC27700BB97A4 /* PinView.swift */,
 				C312D1F02D7DC27700BB97A4 /* RadialGradientView.swift */,
-				C312D1F22D7DC27700BB97A4 /* SecurityCenterCell.swift */,
 				C312D1F42D7DC27700BB97A4 /* SeparatorCell.swift */,
 				C312D0AC2D7DC27700BB97A4 /* ReduxState.swift */,
 				C312D1FB2D7DC27700BB97A4 /* ExchangeUpdater.swift */,
 				C312D1CB2D7DC27700BB97A4 /* VerifyPinViewController.swift */,
 				C312D1FD2D7DC27700BB97A4 /* AddressFieldView.swift */,
 				C312D1FE2D7DC27700BB97A4 /* AlertFailureView.swift */,
-				C312D2022D7DC27700BB97A4 /* ArticleIds.swift */,
 				C312D2042D7DC27700BB97A4 /* AssociatedObject.swift */,
 				C312D22E2D7DC27700BB97A4 /* BuyTileView.swift */,
 				C312D2342D7DC27700BB97A4 /* CheckboxesStepView.swift */,
@@ -2648,7 +2630,6 @@
 				C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */,
 				242C43EF2F25397300CF6EA4 /* WalkthroughStep3View.swift in Sources */,
 				C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */,
-				C312D2F72D7DC27700BB97A4 /* ArticleIds.swift in Sources */,
 				246C3F5E2F244E61009BC881 /* TutorialReceiveBentoView.swift in Sources */,
 				242871882DE5D36F0035DE48 /* SyncSubBentoViewModel.swift in Sources */,
 				2476AE362E2802AF0065CE22 /* InputSeedWordView.swift in Sources */,
@@ -2812,7 +2793,6 @@
 				C312D3DA2D7DC27700BB97A4 /* CameraGuideView.swift in Sources */,
 				246C42A02F24E235009BC881 /* SendStep2View.swift in Sources */,
 				2402046C2DC7F3B200EC8E99 /* LockScreenFooterView.swift in Sources */,
-				C312D3DC2D7DC27700BB97A4 /* ConfirmPhrase.swift in Sources */,
 				C312D3DD2D7DC27700BB97A4 /* ReceiveLTCViewController.swift in Sources */,
 				C312D3E62D7DC27700BB97A4 /* TransferAmountViewModel.swift in Sources */,
 				C312D3E82D7DC27700BB97A4 /* FinishedStepView.swift in Sources */,
@@ -2830,7 +2810,6 @@
 				24A0ACAB2E0C812C0077E695 /* SettingsLitecoinDetailView.swift in Sources */,
 				24D7AE562DCFF6870078252E /* NewConfirmView.swift in Sources */,
 				C312D4002D7DC27700BB97A4 /* MessageUIPresenter.swift in Sources */,
-				C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */,
 				24B0653B2DC6433800B5E000 /* SimpleHeaderView.swift in Sources */,
 				24D0343B2E1AED2F00AF81DF /* SwiftUIEffects.swift in Sources */,
 				C312D4062D7DC27700BB97A4 /* IntroStepView.swift in Sources */,
@@ -2854,8 +2833,6 @@
 				243B88872F1112E500A8DB69 /* LeaderEllipseView.swift in Sources */,
 				C312D4222D7DC27700BB97A4 /* ModalDisplayable.swift in Sources */,
 				C312D4292D7DC27700BB97A4 /* CheckView.swift in Sources */,
-				C312D4312D7DC27700BB97A4 /* ConfirmPaperPhraseViewController.swift in Sources */,
-				C312D4322D7DC27700BB97A4 /* SecurityCenterCell.swift in Sources */,
 				24F5BD4E2E0452670010D340 /* SettingsActionLockView.swift in Sources */,
 				24FBB86A2E035E10002B5F84 /* SettingsHostingController.swift in Sources */,
 				24AAB31F2DE79EE300F0C18C /* NewReceiveViewModel.swift in Sources */,
@@ -2909,7 +2886,6 @@
 				C312D4792D7DC27700BB97A4 /* SafariServices+Extension.swift in Sources */,
 				247A7D072E951660000DF8C0 /* BalanceBentoView.swift in Sources */,
 				2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */,
-				C312D47A2D7DC27700BB97A4 /* PhraseView.swift in Sources */,
 				241D22432DB526B7000302C8 /* TopUpView.swift in Sources */,
 				24B7D75D2DF6FA0C0031F129 /* ModalPresenter+Extension.swift in Sources */,
 				C312D47F2D7DC27700BB97A4 /* Extensions.swift in Sources */,
@@ -3193,7 +3169,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602120;
+				CURRENT_PROJECT_VERSION = 2602121;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3210,7 +3186,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.9.1;
+				MARKETING_VERSION = 3.9.2;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
@@ -3385,7 +3361,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602120;
+				CURRENT_PROJECT_VERSION = 2602121;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3401,7 +3377,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.9.1;
+				MARKETING_VERSION = 3.9.2;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
