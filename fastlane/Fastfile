@@ -48,19 +48,8 @@ platform :ios do
       derived_data_path: "./build",
       cloned_source_packages_path: "./SourcePackages",
       output_types: "html,junit",
-      output_directory: "./fastlane/test_output",
-      skip_build: false 
-    )
-  end
-  lane :run_all_tests_iPhone13Mini do
-    run_tests(
-      scheme: "brainwalletAllTests",
-      clean: true,
-      code_coverage: true,
-      configuration: "Debug",
-      devices: ["iPhone 13 Mini"],
-      output_types: "html,junit",
-      output_directory: "./fastlane/test_output",
+      output_files: "report.junit",
+      output_directory: "./test_output", # This worked output_directory: "./output/scan",
       skip_build: false
     )
   end

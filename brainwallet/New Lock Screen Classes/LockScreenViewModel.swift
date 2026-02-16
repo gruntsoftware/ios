@@ -49,7 +49,9 @@ class LockScreenViewModel: ObservableObject, Subscriber {
             .addObserver(forName: .walletSyncStartedNotification,
                 object: nil,
                          queue: nil) { [weak self] _ in
-                self?.updateWalletManager()
+                Task { @MainActor in
+                    self?.updateWalletManager()
+                }
         }
 	}
 
@@ -97,16 +99,6 @@ class LockScreenViewModel: ObservableObject, Subscriber {
             selector: { $0.currentRate != $1.currentRate },
                 callback: { [weak self] _ in
                     self?.fetchCurrentPrice() })
-
-//        store.subscribe(self,
-//                        selector: { $0.walletState != $1.walletState },
-//                        callback: { [weak self] _ in
-//            if let walletManager = self?.walletManager,
-//                let newAddress = walletManager.wallet?.receiveAddress {
-//                self?.freshReceiveAddress = newAddress
-//            }
-//        })
-
 	}
     // MARK: - Add Notfications
 

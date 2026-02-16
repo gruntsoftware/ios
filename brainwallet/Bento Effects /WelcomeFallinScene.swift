@@ -118,7 +118,6 @@ class WelcomeFallinScene: SKScene, SKPhysicsContactDelegate {
 
     func makeSprites() {
         let randX = Double.random(in: 0 ... 1.0)
-        let randY = Double.random(in: 0 ... 1.0)
 
         let emojiFallArray = ["😬","🇮🇹","😂","😭","❤️","🤣","🔥","😍","🥺",
                        "🥰","🙏","✨","👀","👠","🍑","🌴","🖼️","🛀🏿",

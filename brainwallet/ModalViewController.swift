@@ -100,12 +100,12 @@ class ModalViewController: UIViewController, Subscriber {
 			self.swipeGestureRecognizer.isEnabled = true
 		})
 		addTopCorners()
-		header.closeCallback = { [weak self] in
-			if let delegate = self?.transitioningDelegate as? ModalTransitionDelegate {
-				delegate.reset()
-			}
-			self?.dismiss(animated: true, completion: {})
-		}
+//		header.closeCallback = { [weak self] in
+////			if let delegate = self?.transitioningDelegate as? ModalTransitionDelegate {
+////				delegate.reset()
+////			}
+////			self?.dismiss(animated: true, completion: {})
+//		}
 	}
 
 	override func viewDidAppear(_ animated: Bool) {

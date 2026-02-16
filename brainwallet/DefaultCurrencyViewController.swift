@@ -61,12 +61,6 @@ class UserPreferredCurrencyViewController: UITableViewController, Subscriber {
 		titleLabel.text =  String(localized: "Currency", bundle: .main)
 		titleLabel.sizeToFit()
 		navigationItem.titleView = titleLabel
-
-		let faqButton = UIButton.buildFaqButton(store: store, articleId: ArticleIds.nothing)
-		faqButton.tintColor = BrainwalletUIColor.content
-        faqButton.isEnabled = false
-        faqButton.alpha = 0.0
-		navigationItem.rightBarButtonItems = [UIBarButtonItem.negativePadding, UIBarButtonItem(customView: faqButton)]
 	}
 
 	private func setExchangeRateLabel() {
@@ -143,21 +137,6 @@ class UserPreferredCurrencyViewController: UITableViewController, Subscriber {
 		case 5: litecoinUnitSwitch.selectedSegmentIndex = 1
 		case 8: litecoinUnitSwitch.selectedSegmentIndex = 2
 		default: litecoinUnitSwitch.selectedSegmentIndex = 2
-		}
-
-		litecoinUnitSwitch.valueChanged = strongify(self) { myself in
-			let newIndex = myself.litecoinUnitSwitch.selectedSegmentIndex
-
-			switch newIndex {
-			case 0: // photons
-				myself.store.perform(action: MaxDigits.set(2))
-			case 1: // lites
-				myself.store.perform(action: MaxDigits.set(5))
-			case 2: // LTC
-				myself.store.perform(action: MaxDigits.set(8))
-			default: // LTC
-				myself.store.perform(action: MaxDigits.set(8))
-			}
 		}
 
 		litecoinLabel.text = String(localized: "Litecoin Display Unit" , bundle: .main)

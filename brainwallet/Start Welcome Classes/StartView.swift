@@ -70,7 +70,6 @@ struct StartView: View {
             let miniGameWidth = geometry.size.width * 0.9
 
             let height = geometry.size.height
-            let verticalPadding: CGFloat = 20.0
 
             NavigationStack(path: $path) {
                 ZStack {

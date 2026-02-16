@@ -280,7 +280,7 @@ struct BuyReceiveView: View {
                                 .textFieldStyle(.roundedBorder)
                                 .focused($keyboardFocused)
                                 .frame(width: 80, alignment: .center)
-                                .onChange(of: pickedAmountString) { newValue in
+                                .onChange(of: pickedAmountString) { _,newValue in
                                     if newValue.count > 6 {
                                         pickedAmountString = "\(fiatMaxAmount)"
                                     }
