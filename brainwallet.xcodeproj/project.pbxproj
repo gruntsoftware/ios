@@ -2206,6 +2206,7 @@
 				75A2A78C1DA5934300A983D8 /* Sources */,
 				2489E05F2DF0A6DE00630888 /* Run Swiftlint & Swiftlint - fix */,
 				75A2A78D1DA5934300A983D8 /* Frameworks */,
+				24DA52122F433F3600FBDE82 /* Explode environment variables for Xcode Cloud testing */,
 				75A2A78E1DA5934300A983D8 /* Resources */,
 				C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */,
 				C3A3FFB526FE46E8000FE955 /* Mark Dev Notes */,
@@ -2492,6 +2493,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#!/bin/bash\n# Run test for coverage    xcrun --sdk macosx15.5 swift $SRCROOT/brainwallet/Localizations/check_localization_coverage.swift\n\nif [ -f \"$SRCROOT/SwiftScripts/check_localization_coverage.swift\" ];\nthen\n    echo \"✅Running localization script... '$SRCROOT'\"\n    xcrun --sdk macosx15.5 swift $SRCROOT/SwiftScripts/check_localization_coverage.swift\nelse\n    echo '⚠️Warning: Localization coverage script not found ⚠️'\n    exit 0\nfi\n";
+		};
+		24DA52122F433F3600FBDE82 /* Explode environment variables for Xcode Cloud testing */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Explode environment variables for Xcode Cloud testing";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -n \"$CI_XCODE_CLOUD\" ]]; then\n    echo \"Running in Xcode Cloud\"\n    echo \"$DEBUG_SERVICE_DATA\" | base64 --decode > \\\n        \"$CI_WORKSPACE/service-data.plist\"\n    echo \"$GOOGLE_SERVICES_PLIST\" | base64 --decode > \\\n        \"$CI_WORKSPACE/GoogleService-Info.plist\"\n    echo \"$REMOTE_CONFIG_DEFAULTS\" | base64 --decode > \\\n        \"$CI_WORKSPACE/remote-config-defaults.plist\"\nelse\n    echo \"Skipping secret file generation\"\nfi\n";
 		};
 		58A9FE4C291BC37400B75825 /* Count number of swift lines */ = {
 			isa = PBXShellScriptBuildPhase;
