@@ -32,10 +32,6 @@ class BiometricsSpendingLimitViewController: UITableViewController, Subscriber {
 		titleLabel.sizeToFit()
 		navigationItem.titleView = titleLabel
 
-		let faqButton = UIButton.buildFaqButton(store: store, articleId: ArticleIds.nothing)
-		faqButton.tintColor = BrainwalletUIColor.content
-		navigationItem.rightBarButtonItems = [UIBarButtonItem.negativePadding, UIBarButtonItem(customView: faqButton)]
-
 		body.text =  String(localized: "You will be asked to enter your 6-digit PIN to send any transaction over your spending limit, and every 48 hours since the last time you entered your 6-digit PIN.", bundle: .main)
 
 		// If the user has a limit that is not a current option, we display their limit

@@ -1,7 +1,7 @@
 import BRCore
 import Foundation
 
-extension UInt256: CustomStringConvertible {
+extension UInt256: @retroactive CustomStringConvertible {
 	public var description: String {
 		return String(format: "%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x" +
 			"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
@@ -12,7 +12,7 @@ extension UInt256: CustomStringConvertible {
 	}
 }
 
-extension UInt128: Equatable {
+extension UInt128: @retroactive Equatable {
 	public static func == (l: UInt128, r: UInt128) -> Bool {
 		return l.u64 == r.u64
 	}
@@ -22,7 +22,7 @@ extension UInt128: Equatable {
 	}
 }
 
-extension UInt160: Equatable {
+extension UInt160: @retroactive Equatable {
 	public static func == (l: UInt160, r: UInt160) -> Bool {
 		return l.u32 == r.u32
 	}
@@ -32,7 +32,7 @@ extension UInt160: Equatable {
 	}
 }
 
-extension UInt256: Equatable {
+extension UInt256: @retroactive Equatable {
 	public static func == (l: UInt256, r: UInt256) -> Bool {
 		return l.u64 == r.u64
 	}
@@ -49,7 +49,7 @@ extension UInt256: Equatable {
 	}
 }
 
-extension UInt512: Equatable {
+extension UInt512: @retroactive Equatable {
 	public static func == (l: UInt512, r: UInt512) -> Bool {
 		return l.u64 == r.u64
 	}

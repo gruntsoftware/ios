@@ -9,6 +9,20 @@ The open source code of Brainwallet iOS
 
 ## Release Notes
 
+### v3.9.0 - v3.9.1 Latest
+Update README for improved description by @kcw-grunt in #78
+Beta Release [ 🚀 ] Merge Develop into Main by @kcw-grunt in #81
+
+#### Fixes and Changes:
+- Current fiat preference from Settings needs to be reset if set in the TickerBento
+- Localizations are covered to 100%
+- Mini game FALLINMOJI is present in the Welcome and Game Hub
+- When setting the theme from the Settings and the Lock Screen and the Main screen is not consistently applied
+- In general the fonts in the app are not consistent and need to be managed properly for consistency
+- Mini game sounds set a nominal level
+- Layout for iPhone 8 - iPhone 17 Pro Max is set for: Welcome Screen
+- Support.brainwallet.co link is fixed
+
 ### v3.6.0 Latest
 
 #### What's Changed

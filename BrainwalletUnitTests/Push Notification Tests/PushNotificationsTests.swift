@@ -41,8 +41,7 @@ class PushNotificationsTests: XCTestCase {
    
    /// 2. Test that FCM token subscription logic builds expected topics
    func testDidReceiveFCMTokenSubscribesToTopics() {
-       // Override Locale
-       let locale = Locale(identifier: "en_US")
+       
        let token = "mock_token"
        
        // Run function

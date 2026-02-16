@@ -89,7 +89,7 @@ struct PINRowView: View {
 
             }
             .frame(maxWidth: 280.0, alignment: .center)
-            .onChange(of: pinState ) { _ in
+            .onChange(of: pinState ) { _,_ in
                 updatePIN()
             }.onAppear {
                 self.updatePIN()

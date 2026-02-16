@@ -46,7 +46,9 @@ struct SettingsExpandingSecurityView: View {
                             Spacer()
                             VStack {
                                 Button(action: {
-                                    shouldExpandSecurity.toggle()
+                                    withAnimation(.easeInOut(duration: 0.3)) {
+                                        shouldExpandSecurity.toggle()
+                                    }
                                     let impactMed = UIImpactFeedbackGenerator(style: .medium)
                                         impactMed.impactOccurred()
                                 }) {
@@ -70,7 +72,7 @@ struct SettingsExpandingSecurityView: View {
                         SecurityListView(viewModel: viewModel)
                             .transition(.opacity)
                             .transition(.move(edge: .top))
-                            .animation(.easeInOut(duration: 0.3))
+                            .animation(.easeInOut(duration: 0.3), value: shouldExpandSecurity)
                             .padding(.top, 16.0)
                         Spacer()
                     }

@@ -72,8 +72,6 @@ class WalletCoordinator: Subscriber {
 		}
 		endBackgroundTask()
 		if notification.userInfo != nil {
-			guard let code = notification.userInfo?["errorCode"] else { return }
-			guard let message = notification.userInfo?["errorDescription"] else { return }
 			store.perform(action: WalletChange.setSyncingState(.connecting))
 			endActivity()
 
@@ -236,14 +234,14 @@ class WalletCoordinator: Subscriber {
 			let amount = Amount(amount: amount, rate: rate, maxDigits: store.state.maxDigits)
 			let primary = store.state.isLTCValueShown ? amount.localCurrency : amount.bits
 			let secondary = store.state.isLTCValueShown ? amount.bits : amount.localCurrency
-			let message = String(format: "S.TransactionDetails.received" , "\(primary) (\(secondary))")
+			let message = String(format: "Received %@ from the network" , "\(primary) (\(secondary))")
 			store.trigger(name: .lightWeightAlert(message))
 			showLocalNotification(message: message)
-			ping()
+			playPingSound()
 		}
 	}
 
-	private func ping() {
+	private func playPingSound() {
 		if let url = Bundle.main.url(forResource: "coinflip", withExtension: "aiff") {
 			var id: SystemSoundID = 0
 			AudioServicesCreateSystemSoundID(url as CFURL, &id)

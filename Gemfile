@@ -10,6 +10,6 @@ gem "bundler", "2.6.9"  # Use a modern bundler
 
 # iOS specific gems
 gem "xcode-install"
-
+gem "xcpretty"
 # Testing and code quality
 # Note: scan is included with fastlane, no need for separate gem

@@ -92,7 +92,6 @@ struct TransactionDetailBentoView: View {
             let height = geometry.size.height
             let labelWidth = geometry.size.width * 0.20
             let rowPadding: CGFloat = 1
-            let textRowHeight: CGFloat = 14
             let convertedFeesValue = Double((Double(currentTransaction?.fee ?? UInt64(0))) / 100_000_000)
 
             let didSend = (currentTransaction?.direction == .sent) ? true : false
