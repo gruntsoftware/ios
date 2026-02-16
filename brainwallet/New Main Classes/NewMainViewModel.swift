@@ -165,7 +165,7 @@ class NewMainViewModel: ObservableObject, Subscriber {
     private
     let ratesPriceUpdateTimerPeriod: Double = {
         #if DEBUG
-            return 3.0
+            return 6.0
         #else
             return 20.0
         #endif
@@ -423,10 +423,9 @@ class NewMainViewModel: ObservableObject, Subscriber {
         guard let store = store,
             let walletManager = self.walletManager else {
             Analytics.logEvent("wallet_manager_error", parameters: [
-                "platform": "ios",
-                "app_version": AppVersion.string,
                 "error_message": "wallet_manager_nil"
             ])
+
             return false
         }
         store.perform(action: PinLength.set(newPasscode.utf8.count))

@@ -82,11 +82,7 @@ struct SendStep3View: View {
         }
         .onAppear {
             Analytics
-                .logEvent("user_completed_send_tutorial",
-                parameters: [
-                    "platform": "ios",
-                    "app_version": AppVersion.string
-                ])
+                .logEvent("user_completed_send_tutorial", parameters: nil)
         }
     }
 }

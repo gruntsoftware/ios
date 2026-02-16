@@ -59,28 +59,27 @@ struct LockReceiveModalView: View {
 
                     VStack {
                         Text(String(localized: "New LTC Address"))
-                            .modifier(BWIPSSemiBold(size: 18.0))
+                            .modifier(BWIPSSemiBold(size: 15.0))
                             .frame(alignment: .center)
                             .foregroundColor(BrainwalletColor.content)
-                            .padding([.top,.bottom], 8)
-
+                            .padding(3.0)
                         ZStack {
                            RoundedRectangle(cornerRadius: 16)
                                .foregroundColor(.white)
-                               .frame(width: abs(qrWidth + padding), height: abs(qrWidth + padding))
+                               .frame(width: abs(qrWidth * 0.8 + padding),
+                                      height: abs(qrWidth * 0.8 + padding))
                                .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
                             Image(uiImage: generateQR(newAddress: newAddress))
                                .resizable()
                                .scaledToFit()
-                               .frame(width: qrWidth)
+                               .frame(width: qrWidth * 0.8)
                        }
 
                         Text(newAddress)
-                            .modifier(BWIPSLight(size: 14.0))
-                            .minimumScaleFactor(0.9)
+                            .modifier(BWIPSLight(size: 11.0))
                             .frame(alignment: .center)
                             .foregroundColor(BrainwalletColor.content)
-                            .padding([.top,.bottom], 8)
+                            .padding(3.0)
                     }
                     .frame(width: width * 0.75,
                            height: height * 0.85)
@@ -95,9 +94,3 @@ struct LockReceiveModalView: View {
         }
     }
 }
-//                        HStack {
-//                            Spacer()
-//                            VStack {
-//                                Text(newAddress)
-//                            }
-//                            .frame(width: qrWidth, alignment: .leading)

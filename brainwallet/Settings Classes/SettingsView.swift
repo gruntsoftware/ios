@@ -85,6 +85,7 @@ struct SettingsView: View {
                                 .listRowBackground(shouldExpandSecurity ? BrainwalletColor.background : BrainwalletColor.surface)
                                 .listRowInsets(EdgeInsets())
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                                .padding(.top, leadRowPad)
                                 .padding(.leading, leadRowPad)
                                 .padding(.trailing, trailRowPad)
                                 SettingsExpandingCurrencyView(title: String(localized: "Fiat Currency"),

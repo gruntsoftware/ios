@@ -78,7 +78,7 @@ struct GameHubBentoView: View {
                                         .lineLimit(1)
                                         .minimumScaleFactor(0.3)
                                         .padding(.leading, 16)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .frame(alignment: .leading)
                                         .foregroundStyle(
                                             LinearGradient(
                                                 colors: [.white,.white, BentoColor.gameBlue1.opacity(0.2)],
@@ -90,7 +90,7 @@ struct GameHubBentoView: View {
                                     Text("ARE YOU GOOD ENOUGH TO BE #1?")
                                         .modifier(BWIPSMedium(size: 16.0))
                                         .padding(.leading, 16)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .frame(alignment: .leading)
                                         .foregroundStyle(
                                             LinearGradient(
                                                 colors: [.white,.white,.white,BentoColor.gameBlue1.opacity(0.1)],
@@ -111,15 +111,15 @@ struct GameHubBentoView: View {
 
                 HStack {
                     Spacer()
-                    FallinMojiDemoView(width: width * 0.6,
+                    FallinMojiDemoView(width: width * 0.8,
                                        height: height,
                                        shouldPlay: $shouldShowGameMode)
-                        .frame(width: width * 0.6, alignment: .trailing)
+                    .frame(width: width * 0.8, alignment: .trailing)
+                        .clipped()
                     }
 
             }
             .cornerRadius(bentoCornerRadius)
-            .frame(height: gameBentoHeight, alignment: .center)
             .frame(minHeight: gameBentoHeight * 0.9, idealHeight: gameBentoHeight * 1.4, maxHeight: gameBentoHeight * 2, alignment: .center)
 
             .onAppear {

@@ -5,6 +5,9 @@ import FirebaseAnalytics
 
 struct WelcomeMojiDemoView: View {
 
+    @Environment(\.requestReview)
+    private var requestReview
+
     @Binding
     var shouldPlay: Bool
 
@@ -138,6 +141,8 @@ struct WelcomeMojiDemoView: View {
 
                         Button {
                             userWantsToExit.toggle()
+                            Analytics.logEvent("did_exit_demo_game",
+                                               parameters: nil)
                         } label: {
                             Text("Exit")
                                 .modifier(BWIPSLight(size: 30))
@@ -162,11 +167,7 @@ struct WelcomeMojiDemoView: View {
                         Button {
                             didStartGame.toggle()
                             welcomeScene?.startGame()
-                            Analytics.logEvent("did_start_demo_game",
-                                parameters: [
-                                    "platform": "ios",
-                                    "app_version": AppVersion.string
-                                ])
+                            Analytics.logEvent("did_start_demo_game",parameters: nil)
                         } label: {
                             VStack {
                                 Text("Start! \nTap & score")
@@ -191,6 +192,13 @@ struct WelcomeMojiDemoView: View {
                 }
             }
             .frame(width: width, height: height)
+        }
+        .onAppear {
+            requestReview()
+            Analytics.logEvent("did_request_rating",
+                parameters: [
+                    "request_placement": String(describing: type(of: WelcomeMojiDemoView.self))
+                ])
         }
         .onDisappear {
             welcomeScene = nil

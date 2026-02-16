@@ -20,7 +20,7 @@ extension ModalPresenter {
         case .receive:
             return nil
         case .menu:
-            return menuViewController()
+            return nil // DEPRECATED menuViewController
         case .loginScan:
             return nil // The scan view needs a custom presentation
         case .loginAddress:
@@ -130,32 +130,6 @@ extension ModalPresenter {
             })
         }))
         topViewController?.present(alert, animated: true, completion: nil)
-    }
-
-    func menuViewController() -> UIViewController? {
-        let menu = MenuViewController()
-        let root = ModalViewController(childViewController: menu, store: store)
-        menu.didTapSecurity = { [weak self, weak menu] in
-            self?.modalTransitionDelegate.reset()
-        }
-
-        menu.didTapSupport = { [weak self, weak menu] in
-            menu?.dismiss(animated: true, completion: {
-                let urlString = BrainwalletSupport.dashboard
-
-                guard let url = URL(string: urlString) else { return }
-
-                let vc = SFSafariViewController(url: url)
-                self?.topViewController?.present(vc, animated: true, completion: nil)
-            })
-        }
-        menu.didTapLock = { [weak self, weak menu] in
-            menu?.dismiss(animated: true) { self?.store.trigger(name: .lock) }
-        }
-        menu.didTapSettings = { [weak self, weak menu] in
-            menu?.dismiss(animated: true) { self?.presentSettings() }
-        }
-        return root
     }
 
     func handleCopyAddresses(success: String?, error _: String?) {

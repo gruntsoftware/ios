@@ -29,11 +29,9 @@ struct BrainwalletSocials {
     static let linktree = "https://linktr.ee/brainwallet"
 }
 
-struct ExplorerURLs {
-    static let blockexplorer = "https://blockexplorer.one/litecoin/mainnet/tx/"
-    static let litecoinspace =  "https://litecoinspace.org/tx/"
-    static let blockchair = "https://blockchair.com/litecoin/transaction/"
-}
+let explorerURLs = ["https://blockexplorer.one/litecoin/mainnet/tx/",
+                    "https://litecoinspace.org/tx/",
+                    "https://blockchair.com/litecoin/transaction/"]
 
 struct APIServer {
 	static let baseUrl = "https://api.grunt.ltd/"

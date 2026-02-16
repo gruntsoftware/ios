@@ -62,11 +62,7 @@ struct TutorialReceivePageView: View {
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 Analytics
-                    .logEvent("user_tapped_receive_tutorial",
-                    parameters: [
-                        "platform": "ios",
-                        "app_version": AppVersion.string
-                    ])
+                    .logEvent("user_tapped_receive_tutorial", parameters: nil)
             }
         }
     }

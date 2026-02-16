@@ -56,6 +56,7 @@ struct LockScreenFooterView: View {
                         .frame(minWidth: width * 0.20,
                             minHeight: 30.0,
                             alignment: .center)
+                        .accessibilityIdentifier("Theme Preference Button")
 
                         Button(action: {
                             viewModel.shouldShowReceiveAddress.toggle()

@@ -44,9 +44,9 @@ class InAppAlert: UIView {
 			message.topAnchor.constraint(equalTo: image.bottomAnchor, constant: C.padding[1]),
 			message.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -C.padding[2])
 		])
-		close.tap = { [weak self] in
-			self?.dismiss()
-		}
+//		close.tap = { [weak self] in
+//			self?.dismiss()
+//		}
 		close.tintColor = BrainwalletUIColor.content
 		message.textAlignment = .center
 	}

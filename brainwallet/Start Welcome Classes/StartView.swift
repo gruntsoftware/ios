@@ -70,7 +70,6 @@ struct StartView: View {
             let miniGameWidth = geometry.size.width * 0.9
 
             let height = geometry.size.height
-            let verticalPadding: CGFloat = 20.0
 
             NavigationStack(path: $path) {
                 ZStack {
@@ -94,7 +93,7 @@ struct StartView: View {
                                    maxHeight: miniGameWidth,
                                    alignment: .center)
                             .padding([.leading, .trailing], 16.0)
-                            .accessibilityIdentifier("welcomMojiDemoView")
+                            .accessibilityIdentifier("Welcome Moji Demo View")
                         Spacer()
                         HStack {
                             Button(action: {
@@ -263,8 +262,6 @@ struct StartView: View {
 
                         Analytics.logEvent("wallet_creation_error",
                             parameters: [
-                                "platform": "ios",
-                                "app_version": AppVersion.string,
                                 "error_message": "failed_to_create_wallet"
                             ])
                     }
@@ -282,6 +279,7 @@ struct StartView: View {
             }
 
         }
+
     }
 }
 
