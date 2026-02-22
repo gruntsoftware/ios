@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct EmojiSetView: View {
 
@@ -178,6 +179,7 @@ struct EmojiSetView: View {
                             delay(0.4) {
                                 shouldShowView.toggle()
                             }
+
                         }
                     }) {
                         Text("Ready, Set, Go!")
@@ -217,6 +219,11 @@ struct EmojiSetView: View {
                     delay(0.4) {
                         focusedField = .firstField
                     }
+
+                        Analytics
+                            .logEvent("user_was_shown_emoji_set_view",
+                            parameters: nil)
+
                 }
             }
         }

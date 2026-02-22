@@ -178,6 +178,7 @@
 		24BEC6072DF0B53000140AAD /* WipeWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BEC6062DF0B52600140AAD /* WipeWalletView.swift */; };
 		24BFAF902F4B635200DC0521 /* BrainwalletPhraseContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFAF8F2F4B635200DC0521 /* BrainwalletPhraseContainerView.swift */; };
 		24BFAF922F4B875D00DC0521 /* EmojiPhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFAF912F4B875D00DC0521 /* EmojiPhraseView.swift */; };
+		24BFB0492F4BB03B00DC0521 /* EmojiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFB0482F4BB03B00DC0521 /* EmojiViewModel.swift */; };
 		24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */; };
 		24C6D2D42E1D6B150096AD62 /* SeedWordPileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6D2D32E1D6B030096AD62 /* SeedWordPileView.swift */; };
 		24C6D2D62E1D9C4E0096AD62 /* SeedWordDragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6D2D52E1D9C4E0096AD62 /* SeedWordDragView.swift */; };
@@ -186,7 +187,6 @@
 		24C73FBC2DF2CA4100042B01 /* PromptTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */; };
 		24C8875E2F3DCDC100E14910 /* AudioServicesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8875D2F3DCDA300E14910 /* AudioServicesWrapper.swift */; };
 		24C949CB2F4A5C6E0073852B /* UIEmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C949CA2F4A5C6E0073852B /* UIEmojiTextField.swift */; };
-		24CA0BD92F471B7D00DB0DC7 /* EmojiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CA0BD82F471B7D00DB0DC7 /* EmojiViewModel.swift */; };
 		24CA0BE32F475F3200DB0DC7 /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CA0BE22F475F3200DB0DC7 /* EmojiView.swift */; };
 		24D0343B2E1AED2F00AF81DF /* SwiftUIEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0343A2E1AED2200AF81DF /* SwiftUIEffects.swift */; };
 		24D0343D2E1BFB9500AF81DF /* RestoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0343C2E1BFB9500AF81DF /* RestoreView.swift */; };
@@ -765,6 +765,7 @@
 		24BEC6062DF0B52600140AAD /* WipeWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipeWalletView.swift; sourceTree = "<group>"; };
 		24BFAF8F2F4B635200DC0521 /* BrainwalletPhraseContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainwalletPhraseContainerView.swift; sourceTree = "<group>"; };
 		24BFAF912F4B875D00DC0521 /* EmojiPhraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPhraseView.swift; sourceTree = "<group>"; };
+		24BFB0482F4BB03B00DC0521 /* EmojiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewModel.swift; sourceTree = "<group>"; };
 		24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
 		24C6D2D32E1D6B030096AD62 /* SeedWordPileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordPileView.swift; sourceTree = "<group>"; };
 		24C6D2D52E1D9C4E0096AD62 /* SeedWordDragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordDragView.swift; sourceTree = "<group>"; };
@@ -773,7 +774,6 @@
 		24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTypeEnum.swift; sourceTree = "<group>"; };
 		24C8875D2F3DCDA300E14910 /* AudioServicesWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioServicesWrapper.swift; sourceTree = "<group>"; };
 		24C949CA2F4A5C6E0073852B /* UIEmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmojiTextField.swift; sourceTree = "<group>"; };
-		24CA0BD82F471B7D00DB0DC7 /* EmojiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewModel.swift; sourceTree = "<group>"; };
 		24CA0BE22F475F3200DB0DC7 /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
 		24D0343A2E1AED2200AF81DF /* SwiftUIEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIEffects.swift; sourceTree = "<group>"; };
 		24D0343C2E1BFB9500AF81DF /* RestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreView.swift; sourceTree = "<group>"; };
@@ -1660,6 +1660,7 @@
 		249DDE402DCD55D700B2B275 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				24295E3C2E341F1C00A76776 /* BrainwalletUnitTests */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1721,7 +1722,6 @@
 		24B0653E2DC647DC00B5E000 /* Game Classes */ = {
 			isa = PBXGroup;
 			children = (
-				24CA0BD82F471B7D00DB0DC7 /* EmojiViewModel.swift */,
 				24444F462F461FC000AFF295 /* GameHubViewModel.swift */,
 				24B0653F2DC647F000B5E000 /* GameView.swift */,
 				24444F4D2F462E3000AFF295 /* EmojiSetView.swift */,
@@ -1762,6 +1762,7 @@
 				24C949CA2F4A5C6E0073852B /* UIEmojiTextField.swift */,
 				24BFAF8F2F4B635200DC0521 /* BrainwalletPhraseContainerView.swift */,
 				24BFAF912F4B875D00DC0521 /* EmojiPhraseView.swift */,
+				24BFB0482F4BB03B00DC0521 /* EmojiViewModel.swift */,
 			);
 			path = "Emoji Classes";
 			sourceTree = "<group>";
@@ -1861,7 +1862,6 @@
 				75A2A7F11DA5935F00A983D8 /* Frameworks */,
 				75A2A7911DA5934300A983D8 /* Products */,
 				249DDE402DCD55D700B2B275 /* Recovered References */,
-				24295E3C2E341F1C00A76776 /* BrainwalletUnitTests */,
 				24295E9C2E3428CA00A76776 /* BrainwalletUITests */,
 			);
 			sourceTree = "<group>";
@@ -2717,7 +2717,6 @@
 				C312D3572D7DC27700BB97A4 /* ModalPresenter.swift in Sources */,
 				C312D3592D7DC27700BB97A4 /* StartViewModel.swift in Sources */,
 				C312D35A2D7DC27700BB97A4 /* LaunchCardHostingController.swift in Sources */,
-				24CA0BD92F471B7D00DB0DC7 /* EmojiViewModel.swift in Sources */,
 				C312D35D2D7DC27700BB97A4 /* LoginTransitionDelegate.swift in Sources */,
 				C312D3602D7DC27700BB97A4 /* Circle.swift in Sources */,
 				2428717B2DE5C1060035DE48 /* GenericPinPadCell.swift in Sources */,
@@ -2930,6 +2929,7 @@
 				24B7D75D2DF6FA0C0031F129 /* ModalPresenter+Extension.swift in Sources */,
 				C312D47F2D7DC27700BB97A4 /* Extensions.swift in Sources */,
 				C312D4812D7DC27700BB97A4 /* DismissModalAnimator.swift in Sources */,
+				24BFB0492F4BB03B00DC0521 /* EmojiViewModel.swift in Sources */,
 				C312D4832D7DC27700BB97A4 /* GradientCircle.swift in Sources */,
 				C312D4842D7DC27700BB97A4 /* ModalViewController.swift in Sources */,
 				245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */,

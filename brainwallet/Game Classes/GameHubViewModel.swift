@@ -35,7 +35,7 @@ class GameHubViewModel: ObservableObject {
 
         guard let walletManager = self.walletManager else { return }
 
-        ///TBD After the Unity code is ready
+        /// TBD After the Unity code is ready
         if walletManager.wallet != nil,
            ((walletManager.emojiStringCount() % 3) == 0) {
 
