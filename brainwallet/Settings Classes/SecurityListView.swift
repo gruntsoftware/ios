@@ -58,7 +58,7 @@ struct SecurityListView: View {
                             SettingsActionSeedPhraseView(title:
                                 String(localized: "Seed Phrase"),
                                 detailText: String(localized: "Show my seed phrase"),
-                                willShowBrainwalletPhrase: $willShowSeedPhrase)
+                                willShowSeedPhrase: $willShowSeedPhrase)
                                 .frame(height: phraseRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
@@ -96,7 +96,9 @@ struct SecurityListView: View {
 
                         }
                         .sheet(isPresented: $willShowBrainwalletPhrase) {
-                            // TBD 
+                            if let walletManager = newMainViewModel.walletManager {
+                                BrainwalletPhraseContainerView(shouldShow:$willShowBrainwalletPhrase, walletManager: walletManager)
+                            }
                         }
                 }
             }

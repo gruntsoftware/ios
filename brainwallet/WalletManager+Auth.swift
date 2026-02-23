@@ -278,6 +278,44 @@ extension WalletManager: WalletAuthenticator {
         }
 	}
 
+    // returns the emoji string
+    func emojiString(pin: String) -> String? {
+        guard authenticate(pin: pin) else {
+            return nil
+        }
+
+        do {
+            let fetchedEmojiString: String? = try keychainItem(key: KeychainKey.emoji)
+            return fetchedEmojiString
+        } catch {
+            return nil
+        }
+    }
+
+    // returns the emoji string
+    func deleteEmojiString(pin: String) -> Bool {
+        guard authenticate(pin: pin) else {
+            return false
+        }
+        do {
+            try setKeychainItem(key: KeychainKey.emoji, item: "", authenticated: true)
+            return true
+
+        } catch {
+            return false
+        }
+    }
+
+    // returns the emoji count
+    func emojiStringCount() -> Int {
+        do {
+            let fetchedEmojiString: String? = try keychainItem(key: KeychainKey.emoji)
+            return fetchedEmojiString?.count ?? 0
+        } catch {
+            return -1
+        }
+    }
+
 	// recover an existing wallet using 12 word wallet recovery phrase
 	// will fail if a wallet already exists on the keychain
 	func setSeedPhrase(_ phrase: String) -> Bool {
@@ -297,6 +335,36 @@ extension WalletManager: WalletAuthenticator {
 			return true
 		} catch { return false }
 	}
+
+    // Add an emoji to the phrase
+    func updateEmojiString(_ emoji: String) -> Bool {
+        guard emoji.count != 1 else {
+            debugPrint("Error: emoji string must be 1 character long")
+            return false
+        }
+        var fetchedEmojiString: String
+
+        do {
+            let emojiString: String? = try keychainItem(key: KeychainKey.emoji)
+            fetchedEmojiString = emojiString ?? ""
+        } catch {
+            return false
+        }
+
+        fetchedEmojiString += emoji
+
+        if fetchedEmojiString.count <= 12 {
+
+            do {
+                try setKeychainItem(key: KeychainKey.emoji, item: fetchedEmojiString, authenticated: true)
+                return true
+
+            } catch {
+                return false
+            }
+        }
+        return false
+    }
 
 	// create a new wallet and return the 12 word wallet recovery phrase
 	// will fail if a wallet already exists on the keychain
@@ -477,6 +545,7 @@ extension WalletManager: WalletAuthenticator {
 		public static let apiAuthKey = "authprivkey"
 		public static let userAccount = "https://api.grunt.ltd"
 		public static let seed = "seed" // deprecated
+        public static let emoji = "emoji"
 	}
 
 	private struct DefaultsKey {

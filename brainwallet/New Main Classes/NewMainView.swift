@@ -20,8 +20,14 @@ struct NewMainView: View {
     @ObservedObject
     var newReceiveViewModel: NewReceiveViewModel
 
+    @StateObject
+    var gameHubViewModel = GameHubViewModel()
+
     @State
     private var userDidTapSend: Bool = false
+
+    @State
+    private var shouldShowEmojiPicker: Bool = false
 
     @State
     private var userDidTapSendWhileSyncing: Bool = false
@@ -116,11 +122,18 @@ struct NewMainView: View {
                 ZStack(alignment: .bottom) {
 
                     if userPrefersDarkTheme {
-                        GridWaveContentView(renderWidth: width, renderHeight: height, userPrefersDarkTheme: $userPrefersDarkTheme)
-                            .mask(LinearGradient(gradient: Gradient(colors: mainGradientStyle.maskGradientStops),
-                                                 startPoint: .top, endPoint: .bottom))
-                            .edgesIgnoringSafeArea(.all)
-                            .offset(x: 0, y: -20)
+                        if !shouldShowEmojiPicker {
+                            GridWaveContentView(renderWidth: width, renderHeight: height, userPrefersDarkTheme: $userPrefersDarkTheme)
+                                .mask(LinearGradient(gradient: Gradient(colors: mainGradientStyle.maskGradientStops),
+                                                     startPoint: .top, endPoint: .bottom))
+                                .edgesIgnoringSafeArea(.all)
+                                .offset(x: 0, y: -20)
+                        } else {
+                            LinearGradient(gradient: Gradient(colors: [BentoColor.purple4,BentoColor.purple4,BentoColor.purple3,.black,.clear]),
+                                                     startPoint: .top, endPoint: .bottom)
+                                .edgesIgnoringSafeArea(.all)
+                                .offset(x: 0, y: -20)
+                        }
                     } else {
                         Color.init(#colorLiteral(red: 0.9725490196, green: 0.9803921569, blue: 0.9843137255, alpha: 1))
                         .edgesIgnoringSafeArea(.all)
@@ -193,6 +206,17 @@ struct NewMainView: View {
                     }
                     .frame(maxHeight: .infinity, alignment: .init(horizontal: .center, vertical: .top))
                     .padding([.leading, .trailing], bentoPadding + 10)
+
+                    if shouldShowEmojiPicker {
+                            EmojiSetView(viewModel: newMainViewModel,
+                                shouldShowView: $shouldShowEmojiPicker,
+                                userPrefersDarkTheme: $userPrefersDarkTheme
+                            )
+                            .background(.ultraThinMaterial)
+                            .transition(.opacity)
+                            .environmentObject(gameHubViewModel)
+                    }
+
                 }
                 .toolbar {
 
@@ -280,6 +304,7 @@ struct NewMainView: View {
                                     .foregroundStyle(walletIsSyncing ? content.opacity(0.3) : content)
                             }
                         })
+                        .disabled(shouldShowEmojiPicker)
                         .accessibilityIdentifier("sendTabBarItem")
 
                         Spacer()
@@ -301,6 +326,7 @@ struct NewMainView: View {
                                     .foregroundStyle(content)
                             }
                         })
+                        .disabled(shouldShowEmojiPicker)
                         .accessibilityIdentifier("buyReceiveTabBarItem")
 
                         Spacer()
@@ -323,6 +349,7 @@ struct NewMainView: View {
                                     .foregroundStyle(content)
                             }
                         })
+                        .disabled(shouldShowEmojiPicker)
                         .accessibilityIdentifier("gameHubTabBarItem")
 
                         Spacer()
@@ -349,7 +376,7 @@ struct NewMainView: View {
                                     .animation(.easeInOut, value: shouldShowTransactionDetail)
                             }
                         })
-                        .disabled(disableTransactionDetail)
+                        .disabled(disableTransactionDetail || shouldShowEmojiPicker)
                         .accessibilityIdentifier("historyHubTabBarItem")
 
                         Spacer()
@@ -360,6 +387,7 @@ struct NewMainView: View {
                     userPrefersDarkTheme = newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                     walletIsSyncing = newMainViewModel.walletIsSyncing
+                    gameHubViewModel.walletManager = newMainViewModel.walletManager
                     requestRatingReview()
                 }
                 .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
@@ -375,6 +403,16 @@ struct NewMainView: View {
                 .onChange(of: newMainViewModel.userWantsToTopUp) { _,newState in
                     if newState {
                         userDidTapBuyReceive.toggle()
+                    }
+                }
+                .onChange(of: gameHubViewModel.shouldUserSetEmojis) { _,shouldSetUserEmojis in
+
+                    if shouldSetUserEmojis {
+                        delay(0.2) {
+                            withAnimation {
+                               shouldShowEmojiPicker.toggle()
+                            }
+                        }
                     }
                 }
                 .sheet(isPresented: $userDidTapSend) {
