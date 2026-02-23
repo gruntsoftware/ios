@@ -149,6 +149,8 @@
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
 		249DDE422DCD573700B2B275 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249DDE412DCD572F00B2B275 /* SettingsView.swift */; };
 		24A0ACAB2E0C812C0077E695 /* SettingsLitecoinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */; };
+		24A0FFE22F4C50080003BAA0 /* EmojiSetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0FFE12F4C50080003BAA0 /* EmojiSetViewModifier.swift */; };
+		24A0FFE32F4C50080003BAA0 /* EmojiSetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0FFE12F4C50080003BAA0 /* EmojiSetViewModifier.swift */; };
 		24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A404222DC92F35006CD076 /* WebBuyView.swift */; };
 		24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */; };
 		24AAB31D2DE79ECC00F0C18C /* NewReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */; };
@@ -735,6 +737,7 @@
 		249C45DA2D936DA600E9C3B0 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = ../core/module.modulemap; sourceTree = SOURCE_ROOT; };
 		249DDE412DCD572F00B2B275 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLitecoinDetailView.swift; sourceTree = "<group>"; };
+		24A0FFE12F4C50080003BAA0 /* EmojiSetViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiSetViewModifier.swift; sourceTree = "<group>"; };
 		24A404222DC92F35006CD076 /* WebBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBuyView.swift; sourceTree = "<group>"; };
 		24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveHostingController.swift; sourceTree = "<group>"; };
 		24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveView.swift; sourceTree = "<group>"; };
@@ -1763,6 +1766,7 @@
 				24BFAF8F2F4B635200DC0521 /* BrainwalletPhraseContainerView.swift */,
 				24BFAF912F4B875D00DC0521 /* EmojiPhraseView.swift */,
 				24BFB0482F4BB03B00DC0521 /* EmojiViewModel.swift */,
+				24A0FFE12F4C50080003BAA0 /* EmojiSetViewModifier.swift */,
 			);
 			path = "Emoji Classes";
 			sourceTree = "<group>";
@@ -2589,6 +2593,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24A0FFE32F4C50080003BAA0 /* EmojiSetViewModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2907,6 +2912,7 @@
 				C312D4632D7DC27700BB97A4 /* PinPadCells.swift in Sources */,
 				C312D4662D7DC27700BB97A4 /* PaymentRequest.swift in Sources */,
 				C312D4692D7DC27700BB97A4 /* CGContext+Additions.swift in Sources */,
+				24A0FFE22F4C50080003BAA0 /* EmojiSetViewModifier.swift in Sources */,
 				24E078A82DF1F9A9004B5958 /* PromptCellView.swift in Sources */,
 				C312D46D2D7DC27700BB97A4 /* DismissLoginAnimator.swift in Sources */,
 				C312D46E2D7DC27700BB97A4 /* SeedWordContainerView.swift in Sources */,
