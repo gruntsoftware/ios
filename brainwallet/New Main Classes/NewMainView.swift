@@ -391,7 +391,7 @@ struct NewMainView: View {
                 .onChange(of: gameHubViewModel.shouldUserSetEmojis) { _,shouldSetUserEmojis in
 
                     if shouldSetUserEmojis {
-                        delay(0.2) {
+                        delay(0.6) {
                             withAnimation {
                                 shouldShowEmojiPicker.toggle()
                             }

@@ -1,5 +1,5 @@
 //
-//  EmojiSetViewModifier.swift 
+//  EmojiSetViewModifier.swift
 //
 //  Created by Kerry Washington on 23/02/2026.
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
@@ -14,9 +14,9 @@ struct EmojiSetViewModifier<OverlayView: View>: ViewModifier {
         ZStack {
             content
             if showEmojiSetView {
-                emojiSetView
-                    .background(.ultraThinMaterial)
-                    .zIndex(1)
+                    emojiSetView
+                        .background(.ultraThinMaterial)
+                        .zIndex(1)
             }
         }
     }
