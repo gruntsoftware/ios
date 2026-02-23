@@ -150,7 +150,6 @@
 		249DDE422DCD573700B2B275 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249DDE412DCD572F00B2B275 /* SettingsView.swift */; };
 		24A0ACAB2E0C812C0077E695 /* SettingsLitecoinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */; };
 		24A0FFE22F4C50080003BAA0 /* EmojiSetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0FFE12F4C50080003BAA0 /* EmojiSetViewModifier.swift */; };
-		24A0FFE32F4C50080003BAA0 /* EmojiSetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0FFE12F4C50080003BAA0 /* EmojiSetViewModifier.swift */; };
 		24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A404222DC92F35006CD076 /* WebBuyView.swift */; };
 		24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */; };
 		24AAB31D2DE79ECC00F0C18C /* NewReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */; };
@@ -2593,7 +2592,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24A0FFE32F4C50080003BAA0 /* EmojiSetViewModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3216,7 +3214,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602230;
+				CURRENT_PROJECT_VERSION = 2602231;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3408,7 +3406,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602230;
+				CURRENT_PROJECT_VERSION = 2602231;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;

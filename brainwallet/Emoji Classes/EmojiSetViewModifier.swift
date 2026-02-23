@@ -1,6 +1,5 @@
 //
-//  EmojiSetViewModifier.swift
-//  BrainwalletUnitTests
+//  EmojiSetViewModifier.swift 
 //
 //  Created by Kerry Washington on 23/02/2026.
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
