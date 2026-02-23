@@ -171,8 +171,17 @@ struct EmojiSetView: View {
                         .frame(alignment: .topLeading)
                         .foregroundStyle( userPrefersDarkTheme ? .white : BentoColor.purple3)
                         .accessibilityIdentifier("emojiPickerViewDescription2")
-                        .padding([.top, .bottom], 4.0)
+                        .padding(.top, 4.0)
+                        .padding([.leading, .trailing], 32.0)
+
+                    Text(String(localized:" Each emoji must be different."))
+                        .modifier(BWIPSSemiBold(size: 18.0))
+                        .frame(alignment: .topLeading)
+                        .foregroundStyle( userPrefersDarkTheme ? .white : BentoColor.purple3)
+                        .accessibilityIdentifier("emojiPickerViewDescription3")
+                        .padding([.top, .bottom], 1.0)
                         .padding([.leading, .trailing], 16.0)
+                        .opacity(uniqueEmojisSelected ? 0.0 : 1.0)
 
                     Button(action: {
                         if newMainViewModel.setEmojiTriplet() {
@@ -219,11 +228,9 @@ struct EmojiSetView: View {
                     delay(0.4) {
                         focusedField = .firstField
                     }
-
                         Analytics
                             .logEvent("user_was_shown_emoji_set_view",
                             parameters: nil)
-
                 }
             }
         }

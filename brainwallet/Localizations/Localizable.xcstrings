@@ -140,6 +140,9 @@
         }
       }
     },
+    " Each emoji must be different." : {
+
+    },
     " Home " : {
       "localizations" : {
         "ar" : {
