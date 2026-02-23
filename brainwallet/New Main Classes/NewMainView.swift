@@ -442,6 +442,3 @@ struct NewMainView: View {
         }
     }
 }
-
-//    .background(.ultraThinMaterial)
-//    .environmentObject(gameHubViewModel))
