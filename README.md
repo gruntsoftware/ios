@@ -14,6 +14,7 @@ The open source code of Brainwallet iOS
 
 #### Fixes and Changes:
 - Minor layout changes
+- Successfully enabled Xcode Cloud testing
 
 
 ### v3.9.0 - v3.9.1 Latest
