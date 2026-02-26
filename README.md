@@ -9,6 +9,13 @@ The open source code of Brainwallet iOS
 
 ## Release Notes
 
+### v3.9.2
+ Added the first Emoji Picker so that users are ready to set their first 3 emojis for gameplay.
+
+#### Fixes and Changes:
+- Minor layout changes
+
+
 ### v3.9.0 - v3.9.1 Latest
 Update README for improved description by @kcw-grunt in #78
 Beta Release [ 🚀 ] Merge Develop into Main by @kcw-grunt in #81
