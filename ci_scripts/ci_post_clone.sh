@@ -1,4 +1,7 @@
 #!/bin/sh
+# Apple Xcode Cloud Documentation
+# https://developer.apple.com/documentation/xcode/writing-custom-build-scripts#Create-a-custom-build-script
+# ci_post_clone: Adding post clone tools prior to building
 
 # Exit on error
 set -e
