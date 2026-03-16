@@ -304,7 +304,7 @@ struct NewMainView: View {
                                     .foregroundColor(content)
                                     .padding(6)
 
-                                Text("Buy/Receive")
+                                Text("Get/Receive")
                                     .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundStyle(content)
                             }
