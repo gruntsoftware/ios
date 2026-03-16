@@ -1639,14 +1639,6 @@
 			path = Modules/core;
 			sourceTree = "<group>";
 		};
-		249DDE402DCD55D700B2B275 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				24295E3C2E341F1C00A76776 /* BrainwalletUnitTests */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		24A404212DC92F1F006CD076 /* New Buy Webview */ = {
 			isa = PBXGroup;
 			children = (
@@ -1844,7 +1836,7 @@
 				75B6F52F1DA71DCC0031A93F /* Modules */,
 				75A2A7F11DA5935F00A983D8 /* Frameworks */,
 				75A2A7911DA5934300A983D8 /* Products */,
-				249DDE402DCD55D700B2B275 /* Recovered References */,
+				24295E3C2E341F1C00A76776 /* BrainwalletUnitTests */,
 				24295E9C2E3428CA00A76776 /* BrainwalletUITests */,
 			);
 			sourceTree = "<group>";
