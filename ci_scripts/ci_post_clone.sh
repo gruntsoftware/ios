@@ -14,3 +14,14 @@ echo "DEBUG_SERVICE_DATA" > "$CI_PRIMARY_REPOSITORY_PATH/brainwallet/PreLaunchRe
 echo "✅ GoogleService-Info.plist written"
 echo "🕹️ Remote Config written"
 echo "💽 Service Data written"
+
+
+echo "Pre-resolving Swift Package dependencies..."
+xcodebuild \
+  -resolvePackageDependencies \
+  -workspace "$CI_PRIMARY_REPOSITORY_PATH/BrainwalletHybrid.xcworkspace" \
+  -scheme brainwalletUITests \
+  -derivedDataPath "$CI_DERIVED_DATA_PATH" \
+  2>&1 | tail -20
+
+echo "✅ Package resolution complete"
