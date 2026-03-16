@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework",
       "state" : {
-        "revision" : "6cc9a9400a9d15e26d1ccf83ed9924c1dfbe8b75",
-        "version" : "6.17.8"
+        "revision" : "d23b242b28c663618bce5fe9e2f3adb85b32bfb3",
+        "version" : "6.17.9"
       }
     },
     {
@@ -141,8 +141,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
       "state" : {
-        "revision" : "9bbb079b69af9d66470ced85461bf13bb40becac",
-        "version" : "1.35.0"
+        "revision" : "a008af1a102ff3dd6cc3764bb69bf63226d0f5f6",
+        "version" : "1.36.1"
       }
     }
   ],

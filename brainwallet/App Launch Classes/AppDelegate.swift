@@ -193,16 +193,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
 	/// Sets the correct Google Services  plist file
 	private func setFirebaseConfiguration() {
-        
-        let isTesting = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
-
-        guard !isTesting else {
-            print("⚠️ Firebase skipped: running under XCTest")
-            return
-        }
 
 		guard let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") else {
-            assertionFailure("GoogleService-Info.plist missing — Firebase not configured")
 			return
 		}
 
