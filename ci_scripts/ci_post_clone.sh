@@ -15,6 +15,8 @@ echo "✅ GoogleService-Info.plist written"
 echo "🕹️ Remote Config written"
 echo "💽 Service Data written"
 
+rm -rf ~/Library/Developer/Xcode/DerivedData
+echo "✅ DerivedData cleaned"
 
 echo "Pre-resolving Swift Package dependencies..."
 xcodebuild \
