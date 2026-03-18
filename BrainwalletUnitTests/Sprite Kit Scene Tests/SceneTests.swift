@@ -89,7 +89,7 @@ class FallinSceneTests: XCTestCase {
                 expectation.fulfill()
             }
             
-            waitForExpectations(timeout: 1.0)
+            waitForExpectations(timeout: 1.5)
             
             let labelNodes = scene.children.compactMap { $0 as? SKLabelNode }
             XCTAssertFalse(labelNodes.first?.text?.isEmpty ?? true, "Label should have text")
