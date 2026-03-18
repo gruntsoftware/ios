@@ -226,6 +226,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                     options.apiKey = "test-api-key"
                     FirebaseApp.configure(options: options)
                 }
+                Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
                 return
             }
             fatalError("GoogleService-Info.plist not found in bundle " +
