@@ -192,33 +192,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     }
 
 	/// Sets the correct Google Services  plist file
-	private func setFirebaseConfiguration() {
+    private func setFirebaseConfiguration() {
 
-		guard let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") else {
-			return
-		}
+        // Search both the flat bundle root and the PreLaunchResources
+        // subdirectory. Xcode Cloud places the plist at the subdirectory
+        // path; local builds may resolve it at the root.
+        let candidatePaths: [String?] = [
+            Bundle
+                .main
+                .path(forResource: "GoogleService-Info",
+                             ofType: "plist"),
+            Bundle
+                .main
+                .path(forResource: "GoogleService-Info",
+                             ofType: "plist",
+                             inDirectory: "PreLaunchResources")
+        ]
 
-		if let fboptions = FirebaseOptions(contentsOfFile: filePath) {
-            FirebaseApp.configure(options: fboptions)
-             #if DEBUG
-               Analytics.setUserProperty("debug_mode", forName: "debug_enabled")
+        guard let filePath = candidatePaths.compactMap({ $0 }).first else {
+            // No plist found. Fail hard in production; skip silently in tests.
+            if isRunningTests {
+                print("⚠️ setFirebaseConfiguration: skipping — " +
+                      "GoogleService-Info.plist not found in test bundle.")
+                return
+            }
+            fatalError("GoogleService-Info.plist not found in bundle " +
+                       "root or PreLaunchResources/")
+        }
 
-               /// Notfy the Firebase Console for monitoring and debugging
-               Analytics
-                   .logEvent("debug_mode_launched",
-                       parameters: ["device": UIDevice.current.model
-                       ])
-             #endif
+        guard let options = FirebaseOptions(contentsOfFile: filePath) else {
+            if isRunningTests { return }
+            fatalError("GoogleService-Info.plist found at \(filePath) " +
+                       "but could not be parsed by FirebaseOptions.")
+        }
 
-		} else {
-            Analytics.logEvent("error_message",
-                               parameters: [
-                                "firebase_config_failed": "launch_error"
-                               ])
+        FirebaseApp.configure(options: options)
+    }
 
-			assertionFailure("Couldn't load Firebase config file")
-		}
-	}
+    private var isRunningTests: Bool {
+        ProcessInfo.processInfo.environment["XCTestBundlePath"] != nil
+    }
 
 	/// On Demand Resources
 	/// Use for another resource heavy view
