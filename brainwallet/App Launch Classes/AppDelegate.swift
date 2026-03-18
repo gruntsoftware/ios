@@ -223,7 +223,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                     )
                     options.projectID = "test-project"
                     options.storageBucket = "test-project.firebasestorage.app"
-                    options.apiKey = "test-api-key"
+                    options.apiKey = "AIzaSy00000000000000000000000000000000"
                     FirebaseApp.configure(options: options)
                 }
                 Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
