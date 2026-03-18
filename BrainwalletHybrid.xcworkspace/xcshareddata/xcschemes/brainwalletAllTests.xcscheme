@@ -33,6 +33,9 @@
             reference = "container:BrainwalletUnitTests/brainwalletUnitTests.xctestplan"
             default = "YES">
          </TestPlanReference>
+         <TestPlanReference
+            reference = "container:BrainwalletUITests/brainwalletUITests.xctestplan">
+         </TestPlanReference>
       </TestPlans>
       <Testables>
          <TestableReference
@@ -43,6 +46,17 @@
                BlueprintIdentifier = "24295E3A2E341F1C00A76776"
                BuildableName = "BrainwalletUnitTests.xctest"
                BlueprintName = "BrainwalletUnitTests"
+               ReferencedContainer = "container:brainwallet.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "24295E9A2E3428CA00A76776"
+               BuildableName = "BrainwalletUITests.xctest"
+               BlueprintName = "BrainwalletUITests"
                ReferencedContainer = "container:brainwallet.xcodeproj">
             </BuildableReference>
          </TestableReference>
