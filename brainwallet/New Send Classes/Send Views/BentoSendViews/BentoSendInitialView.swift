@@ -306,7 +306,7 @@ struct BentoSendInitialView: View {
                                               text: $sendMemo)
                                     .focused($focusedField, equals: .memoField)
                                     .onChange(of: sendMemo) { _,_ in
-                                        isSendInformationValid()
+                                        _ = isSendInformationValid()
                                     }
                                     .textFieldStyle(BentoSendTextFieldStyle())
                                 }

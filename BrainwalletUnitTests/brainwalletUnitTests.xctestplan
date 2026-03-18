@@ -21,6 +21,11 @@
           "name" : "brainwallet"
         }
       ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:brainwallet.xcodeproj",
+      "identifier" : "75A2A78F1DA5934300A983D8",
+      "name" : "brainwallet"
     }
   },
   "testTargets" : [
