@@ -194,6 +194,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 	/// Sets the correct Google Services  plist file
     private func setFirebaseConfiguration() {
 
+        let isRunningTests = ProcessInfo.processInfo.environment["XCTestBundlePath"] != nil
+
         // Search both the flat bundle root and the PreLaunchResources
         // subdirectory. Xcode Cloud places the plist at the subdirectory
         // path; local builds may resolve it at the root.
@@ -212,8 +214,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         guard let filePath = candidatePaths.compactMap({ $0 }).first else {
             // No plist found. Fail hard in production; skip silently in tests.
             if isRunningTests {
-                print("⚠️ setFirebaseConfiguration: skipping — " +
-                      "GoogleService-Info.plist not found in test bundle.")
+                // Must still configure FirebaseApp or Crashlytics/Performance will SEGV
+                // during their static initialisation phase
+                if FirebaseApp.app() == nil {
+                    let options = FirebaseOptions(
+                        googleAppID: "1:000000000000:ios:0000000000000000000000",
+                        gcmSenderID: "000000000000"
+                    )
+                    options.projectID = "test-project"
+                    options.storageBucket = "test-project.firebasestorage.app"
+                    options.apiKey = "test-api-key"
+                    FirebaseApp.configure(options: options)
+                }
                 return
             }
             fatalError("GoogleService-Info.plist not found in bundle " +
@@ -221,16 +233,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         }
 
         guard let options = FirebaseOptions(contentsOfFile: filePath) else {
-            if isRunningTests { return }
+            if isRunningTests {
+                // Must still configure FirebaseApp or Crashlytics/Performance will SEGV
+                // during their static initialisation phase
+                if FirebaseApp.app() == nil {
+                    let options = FirebaseOptions(
+                        googleAppID: "1:000000000000:ios:0000000000000000000000",
+                        gcmSenderID: "000000000000"
+                    )
+                    options.projectID = "test-project"
+                    options.storageBucket = "test-project.firebasestorage.app"
+                    options.apiKey = "test-api-key"
+                    FirebaseApp.configure(options: options)
+                }
+                return
+            }
             fatalError("GoogleService-Info.plist found at \(filePath) " +
                        "but could not be parsed by FirebaseOptions.")
         }
 
         FirebaseApp.configure(options: options)
-    }
-
-    private var isRunningTests: Bool {
-        ProcessInfo.processInfo.environment["XCTestBundlePath"] != nil
     }
 
 	/// On Demand Resources
