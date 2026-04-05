@@ -187,7 +187,6 @@ jobs:
             - ./DerivedData
             - ~/Library/Developer/Xcode/DerivedData
             - ~/Library/Caches/com.apple.dt.Xcode/
-      
       # Store artifacts and handle failures
       - run:
           name: Capture crash logs
