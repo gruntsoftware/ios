@@ -67,17 +67,10 @@ jobs:
       - run:
           name: Configure Github Auth & Setup SSH and submodules
           command: |
-          # Validate token exists
-            if [ -z "$GH_TOKEN" ]; then
-              echo "ERROR: GH_TOKEN is not set in context bw-ios-test"
-              exit 1
-            fi
-            # Add GitHub to known hosts (use keyscan, not hardcoded hash)
-            ssh-keyscan github.com >> ~/.ssh/known_hosts
-            # Update submodules using token auth
+            echo 'github.com ssh-rsa SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g' >> ~/.ssh/known_hosts
+            ssh-add ~/.ssh/id_rsa_*
             sed -i "s#https://github.com/#https://${GH_TOKEN}@github.com/#g" .gitmodules
-            git submodule update --init Modules/core
-            git submodule update --init Private/general-purpose
+            git submodule init && git submodule update --init Modules/core && git submodule update --init Private/general-purpose
       - run:
           name: Setup environment files
           command: |
