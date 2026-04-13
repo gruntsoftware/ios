@@ -101,14 +101,14 @@ final class GlobalCurrencyEnumStructureTests: XCTestCase {
 final class GlobalCurrencyIdentifiableTests: XCTestCase {
 
     func testId_returnsSelf() {
-        XCTAssertEqual(GlobalCurrency.USD.id, GlobalCurrency.USD)
-        XCTAssertEqual(GlobalCurrency.EUR.id, GlobalCurrency.EUR)
-        XCTAssertEqual(GlobalCurrency.LTC.id, GlobalCurrency.LTC)
+        XCTAssertEqual(GlobalCurrency.USD.code, "USD")
+        XCTAssertEqual(GlobalCurrency.EUR.code, "EUR")
+        XCTAssertEqual(GlobalCurrency.LTC.code, "LTC")
     }
 
     func testAllCases_idEqualsSelf() {
         for currency in GlobalCurrency.allCases {
-            XCTAssertEqual(currency.id, currency, "\(currency) id should equal self")
+            XCTAssertEqual(currency.code, currency.id, "\(currency) id should equal self")
         }
     }
 }
