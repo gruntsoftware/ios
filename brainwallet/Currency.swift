@@ -172,7 +172,7 @@ enum GlobalCurrency: Int, CaseIterable, Equatable, Identifiable {
     case ZMK
     case ZMW
 
-    var id: GlobalCurrency { self }
+    var id: String { code }
 
     static func from(code: String) -> GlobalCurrency? {
         return allCases.first { $0.code == code }

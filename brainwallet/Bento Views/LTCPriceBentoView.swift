@@ -55,8 +55,8 @@ struct LTCPriceBentoView: View {
                     Spacer()
                     HStack {
                         Picker("", selection: $pickedCurrency) {
-                            ForEach(globalCurrencies, id: \.self) {
-                                Text(verbatim: "\($0.countryFlag)   \($0.code) / LTC")
+                            ForEach(globalCurrencies, id: \.code) { currency in
+                                Text(verbatim: "\(currency.countryFlag)   \(currency.code) / LTC")
                                     .modifier(BWIPSSemiBold(size: 18.0))
                                     .frame(maxHeight: 19.0, alignment: .leading)
                                     .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
