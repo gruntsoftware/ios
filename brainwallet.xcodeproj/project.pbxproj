@@ -244,7 +244,6 @@
 		C312D2DC2D7DC27700BB97A4 /* PresentModalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B42D7DC27700BB97A4 /* PresentModalAnimator.swift */; };
 		C312D2DF2D7DC27700BB97A4 /* MockSeeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2812D7DC27700BB97A4 /* MockSeeds.swift */; };
 		C312D2E12D7DC27700BB97A4 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1EF2D7DC27700BB97A4 /* PinView.swift */; };
-		C312D2E22D7DC27700BB97A4 /* SimpleUTXO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D09A2D7DC27700BB97A4 /* SimpleUTXO.swift */; };
 		C312D2E32D7DC27700BB97A4 /* SeedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D29E2D7DC27700BB97A4 /* SeedWordView.swift */; };
 		C312D2E42D7DC27700BB97A4 /* KVStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2552D7DC27700BB97A4 /* KVStoreCoordinator.swift */; };
 		C312D2E72D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2352D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift */; };
@@ -866,7 +865,6 @@
 		C312D0972D7DC27700BB97A4 /* KeyboardNotificationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationInfo.swift; sourceTree = "<group>"; };
 		C312D0982D7DC27700BB97A4 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		C312D0992D7DC27700BB97A4 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
-		C312D09A2D7DC27700BB97A4 /* SimpleUTXO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleUTXO.swift; sourceTree = "<group>"; };
 		C312D09B2D7DC27700BB97A4 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		C312D0A62D7DC27700BB97A4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C312D0A72D7DC27700BB97A4 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
@@ -2139,7 +2137,6 @@
 				C312D0972D7DC27700BB97A4 /* KeyboardNotificationInfo.swift */,
 				C312D0982D7DC27700BB97A4 /* Rate.swift */,
 				C312D0992D7DC27700BB97A4 /* Setting.swift */,
-				C312D09A2D7DC27700BB97A4 /* SimpleUTXO.swift */,
 				C312D09B2D7DC27700BB97A4 /* Types.swift */,
 			);
 			path = brainwallet;
@@ -2649,7 +2646,6 @@
 				2415FFDF2DBD8505002A2199 /* SeedWordsGridView.swift in Sources */,
 				C312D2DF2D7DC27700BB97A4 /* MockSeeds.swift in Sources */,
 				C312D2E12D7DC27700BB97A4 /* PinView.swift in Sources */,
-				C312D2E22D7DC27700BB97A4 /* SimpleUTXO.swift in Sources */,
 				C312D2E32D7DC27700BB97A4 /* SeedWordView.swift in Sources */,
 				C312D2E42D7DC27700BB97A4 /* KVStoreCoordinator.swift in Sources */,
 				C312D2E72D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift in Sources */,
@@ -3236,7 +3232,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules $(SRCROOT)/br-swift";
+				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules/core $(SRCROOT)/brainwallet/br-swift";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3427,7 +3423,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules $(SRCROOT)/br-swift";
+				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules/core $(SRCROOT)/brainwallet/br-swift";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
