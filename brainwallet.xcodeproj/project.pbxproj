@@ -73,6 +73,8 @@
 		243B88872F1112E500A8DB69 /* LeaderEllipseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243B88812F1112DC00A8DB69 /* LeaderEllipseView.swift */; };
 		244310442E21BCBD004AE386 /* errorsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 244310432E21BCBD004AE386 /* errorsound.mp3 */; };
 		244310462E21BCCE004AE386 /* clickseedword.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 244310452E21BCCE004AE386 /* clickseedword.mp3 */; };
+		24444F4C2F461FCA00AFF295 /* GameHubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444F462F461FC000AFF295 /* GameHubViewModel.swift */; };
+		24444F4E2F462E3000AFF295 /* EmojiSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444F4D2F462E3000AFF295 /* EmojiSetView.swift */; };
 		244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244520332DE70310003AFFDF /* LockScreenHostingController.swift */; };
 		2446DF522E2906AC001453DF /* bloop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2446DF512E2906AC001453DF /* bloop.mp3 */; };
 		244A8D932DE84C890024D356 /* BrainwalletShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */; };
@@ -174,6 +176,9 @@
 		24BC37C02E22B249005DD3AC /* coinflip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 24BC37BF2E22B249005DD3AC /* coinflip.mp3 */; };
 		24BEBB972DCDE4D4001E1F1F /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		24BEC6072DF0B53000140AAD /* WipeWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BEC6062DF0B52600140AAD /* WipeWalletView.swift */; };
+		24BFAF902F4B635200DC0521 /* BrainwalletPhraseContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFAF8F2F4B635200DC0521 /* BrainwalletPhraseContainerView.swift */; };
+		24BFAF922F4B875D00DC0521 /* EmojiPhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFAF912F4B875D00DC0521 /* EmojiPhraseView.swift */; };
+		24BFB0492F4BB03B00DC0521 /* EmojiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BFB0482F4BB03B00DC0521 /* EmojiViewModel.swift */; };
 		24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */; };
 		24C6D2D42E1D6B150096AD62 /* SeedWordPileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6D2D32E1D6B030096AD62 /* SeedWordPileView.swift */; };
 		24C6D2D62E1D9C4E0096AD62 /* SeedWordDragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6D2D52E1D9C4E0096AD62 /* SeedWordDragView.swift */; };
@@ -181,6 +186,8 @@
 		24C6D2DA2E1E77BE0096AD62 /* WordBucketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6D2D92E1E77B90096AD62 /* WordBucketView.swift */; };
 		24C73FBC2DF2CA4100042B01 /* PromptTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */; };
 		24C8875E2F3DCDC100E14910 /* AudioServicesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8875D2F3DCDA300E14910 /* AudioServicesWrapper.swift */; };
+		24C949CB2F4A5C6E0073852B /* UIEmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C949CA2F4A5C6E0073852B /* UIEmojiTextField.swift */; };
+		24CA0BE32F475F3200DB0DC7 /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CA0BE22F475F3200DB0DC7 /* EmojiView.swift */; };
 		24D0343B2E1AED2F00AF81DF /* SwiftUIEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0343A2E1AED2200AF81DF /* SwiftUIEffects.swift */; };
 		24D0343D2E1BFB9500AF81DF /* RestoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0343C2E1BFB9500AF81DF /* RestoreView.swift */; };
 		24D7AE542DCFF6530078252E /* NewConfirmHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */; };
@@ -237,7 +244,6 @@
 		C312D2DC2D7DC27700BB97A4 /* PresentModalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B42D7DC27700BB97A4 /* PresentModalAnimator.swift */; };
 		C312D2DF2D7DC27700BB97A4 /* MockSeeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2812D7DC27700BB97A4 /* MockSeeds.swift */; };
 		C312D2E12D7DC27700BB97A4 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1EF2D7DC27700BB97A4 /* PinView.swift */; };
-		C312D2E22D7DC27700BB97A4 /* SimpleUTXO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D09A2D7DC27700BB97A4 /* SimpleUTXO.swift */; };
 		C312D2E32D7DC27700BB97A4 /* SeedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D29E2D7DC27700BB97A4 /* SeedWordView.swift */; };
 		C312D2E42D7DC27700BB97A4 /* KVStoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2552D7DC27700BB97A4 /* KVStoreCoordinator.swift */; };
 		C312D2E72D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2352D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift */; };
@@ -542,6 +548,8 @@
 		243B88812F1112DC00A8DB69 /* LeaderEllipseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderEllipseView.swift; sourceTree = "<group>"; };
 		244310432E21BCBD004AE386 /* errorsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = errorsound.mp3; sourceTree = "<group>"; };
 		244310452E21BCCE004AE386 /* clickseedword.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clickseedword.mp3; sourceTree = "<group>"; };
+		24444F462F461FC000AFF295 /* GameHubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHubViewModel.swift; sourceTree = "<group>"; };
+		24444F4D2F462E3000AFF295 /* EmojiSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiSetView.swift; sourceTree = "<group>"; };
 		244520332DE70310003AFFDF /* LockScreenHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHostingController.swift; sourceTree = "<group>"; };
 		2446DF512E2906AC001453DF /* bloop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bloop.mp3; sourceTree = "<group>"; };
 		244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainwalletShapes.swift; sourceTree = "<group>"; };
@@ -754,6 +762,9 @@
 		24BC04C22E0DB1C1007B0195 /* SettingsActionSeedPhraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActionSeedPhraseView.swift; sourceTree = "<group>"; };
 		24BC37BF2E22B249005DD3AC /* coinflip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinflip.mp3; sourceTree = "<group>"; };
 		24BEC6062DF0B52600140AAD /* WipeWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipeWalletView.swift; sourceTree = "<group>"; };
+		24BFAF8F2F4B635200DC0521 /* BrainwalletPhraseContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainwalletPhraseContainerView.swift; sourceTree = "<group>"; };
+		24BFAF912F4B875D00DC0521 /* EmojiPhraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPhraseView.swift; sourceTree = "<group>"; };
+		24BFB0482F4BB03B00DC0521 /* EmojiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewModel.swift; sourceTree = "<group>"; };
 		24C639CD2DC6D5E70014E6DD /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
 		24C6D2D32E1D6B030096AD62 /* SeedWordPileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordPileView.swift; sourceTree = "<group>"; };
 		24C6D2D52E1D9C4E0096AD62 /* SeedWordDragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordDragView.swift; sourceTree = "<group>"; };
@@ -761,6 +772,8 @@
 		24C6D2D92E1E77B90096AD62 /* WordBucketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBucketView.swift; sourceTree = "<group>"; };
 		24C73FBB2DF2CA3600042B01 /* PromptTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTypeEnum.swift; sourceTree = "<group>"; };
 		24C8875D2F3DCDA300E14910 /* AudioServicesWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioServicesWrapper.swift; sourceTree = "<group>"; };
+		24C949CA2F4A5C6E0073852B /* UIEmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmojiTextField.swift; sourceTree = "<group>"; };
+		24CA0BE22F475F3200DB0DC7 /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
 		24D0343A2E1AED2200AF81DF /* SwiftUIEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIEffects.swift; sourceTree = "<group>"; };
 		24D0343C2E1BFB9500AF81DF /* RestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreView.swift; sourceTree = "<group>"; };
 		24D7AE532DCFF6440078252E /* NewConfirmHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConfirmHostingController.swift; sourceTree = "<group>"; };
@@ -852,7 +865,6 @@
 		C312D0972D7DC27700BB97A4 /* KeyboardNotificationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationInfo.swift; sourceTree = "<group>"; };
 		C312D0982D7DC27700BB97A4 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		C312D0992D7DC27700BB97A4 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
-		C312D09A2D7DC27700BB97A4 /* SimpleUTXO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleUTXO.swift; sourceTree = "<group>"; };
 		C312D09B2D7DC27700BB97A4 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		C312D0A62D7DC27700BB97A4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C312D0A72D7DC27700BB97A4 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
@@ -1646,6 +1658,7 @@
 		249DDE402DCD55D700B2B275 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				24295E3C2E341F1C00A76776 /* BrainwalletUnitTests */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1707,7 +1720,10 @@
 		24B0653E2DC647DC00B5E000 /* Game Classes */ = {
 			isa = PBXGroup;
 			children = (
+				24444F462F461FC000AFF295 /* GameHubViewModel.swift */,
 				24B0653F2DC647F000B5E000 /* GameView.swift */,
+				24444F4D2F462E3000AFF295 /* EmojiSetView.swift */,
+				24CA0BE22F475F3200DB0DC7 /* EmojiView.swift */,
 			);
 			path = "Game Classes";
 			sourceTree = "<group>";
@@ -1736,6 +1752,17 @@
 				24F5BD492E0442D00010D340 /* SettingsFooterView.swift */,
 			);
 			path = "Settings Classes";
+			sourceTree = "<group>";
+		};
+		24C949C42F4A5C440073852B /* Emoji Classes */ = {
+			isa = PBXGroup;
+			children = (
+				24C949CA2F4A5C6E0073852B /* UIEmojiTextField.swift */,
+				24BFAF8F2F4B635200DC0521 /* BrainwalletPhraseContainerView.swift */,
+				24BFAF912F4B875D00DC0521 /* EmojiPhraseView.swift */,
+				24BFB0482F4BB03B00DC0521 /* EmojiViewModel.swift */,
+			);
+			path = "Emoji Classes";
 			sourceTree = "<group>";
 		};
 		24D034392E1AED0200AF81DF /* Geometric Effects */ = {
@@ -1833,7 +1860,6 @@
 				75A2A7F11DA5935F00A983D8 /* Frameworks */,
 				75A2A7911DA5934300A983D8 /* Products */,
 				249DDE402DCD55D700B2B275 /* Recovered References */,
-				24295E3C2E341F1C00A76776 /* BrainwalletUnitTests */,
 				24295E9C2E3428CA00A76776 /* BrainwalletUITests */,
 			);
 			sourceTree = "<group>";
@@ -1962,6 +1988,7 @@
 				24E078A62DF1F915004B5958 /* Legacy Prompt Classes */,
 				24F378002DE89C5B00A388AB /* MoonPay Helper */,
 				244A8D912DE84C710024D356 /* Brainwallet Custom Shapes */,
+				24C949C42F4A5C440073852B /* Emoji Classes */,
 				24AAB3192DE79E6E00F0C18C /* New Receive Classes */,
 				248E5C402DE78625003F232F /* Networking */,
 				241B477E2DCEA05D00279954 /* Localizations */,
@@ -2110,7 +2137,6 @@
 				C312D0972D7DC27700BB97A4 /* KeyboardNotificationInfo.swift */,
 				C312D0982D7DC27700BB97A4 /* Rate.swift */,
 				C312D0992D7DC27700BB97A4 /* Setting.swift */,
-				C312D09A2D7DC27700BB97A4 /* SimpleUTXO.swift */,
 				C312D09B2D7DC27700BB97A4 /* Types.swift */,
 			);
 			path = brainwallet;
@@ -2620,7 +2646,6 @@
 				2415FFDF2DBD8505002A2199 /* SeedWordsGridView.swift in Sources */,
 				C312D2DF2D7DC27700BB97A4 /* MockSeeds.swift in Sources */,
 				C312D2E12D7DC27700BB97A4 /* PinView.swift in Sources */,
-				C312D2E22D7DC27700BB97A4 /* SimpleUTXO.swift in Sources */,
 				C312D2E32D7DC27700BB97A4 /* SeedWordView.swift in Sources */,
 				C312D2E42D7DC27700BB97A4 /* KVStoreCoordinator.swift in Sources */,
 				C312D2E72D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift in Sources */,
@@ -2639,6 +2664,7 @@
 				24E078AA2DF1F9AE004B5958 /* PromptCellViewModel.swift in Sources */,
 				C3236A012D7DE355007039A1 /* URLController.swift in Sources */,
 				2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */,
+				24444F4E2F462E3000AFF295 /* EmojiSetView.swift in Sources */,
 				24C6D2D82E1E75510096AD62 /* SeedWordTargetView.swift in Sources */,
 				C312D3072D7DC27700BB97A4 /* CGRect+Additions.swift in Sources */,
 				247A83932EA034BC00B5DFD8 /* Renderer.swift in Sources */,
@@ -2711,6 +2737,7 @@
 				24C6D2D42E1D6B150096AD62 /* SeedWordPileView.swift in Sources */,
 				24B065372DC6281D00B5E000 /* NewMainViewModel.swift in Sources */,
 				2416CE722DA90D0D00FFBD10 /* BRTxInputExtension.swift in Sources */,
+				24444F4C2F461FCA00AFF295 /* GameHubViewModel.swift in Sources */,
 				24BC04C32E0DB1C1007B0195 /* SettingsActionSeedPhraseView.swift in Sources */,
 				2416CE742DA90D0D00FFBD10 /* BRReplicatedKVStore.swift in Sources */,
 				249DDE422DCD573700B2B275 /* SettingsView.swift in Sources */,
@@ -2779,6 +2806,7 @@
 				2457DC822EB63AAE00688B9A /* TransactionHelper.swift in Sources */,
 				2476646E2F3002BB00F1A70E /* WelcomeFallinScene.swift in Sources */,
 				240CF5A72F2E7C7500428378 /* FallinMojiDemoView.swift in Sources */,
+				24C949CB2F4A5C6E0073852B /* UIEmojiTextField.swift in Sources */,
 				24DB05E42E05D5E800C57FE9 /* SettingsActionThemeView.swift in Sources */,
 				C312D3CB2D7DC27700BB97A4 /* PartnerData.swift in Sources */,
 				C312D3CD2D7DC27700BB97A4 /* AlertFailureView.swift in Sources */,
@@ -2787,6 +2815,7 @@
 				C312D3D22D7DC27700BB97A4 /* LaunchView.swift in Sources */,
 				C312D3D42D7DC27700BB97A4 /* BuyTileView.swift in Sources */,
 				C312D3D52D7DC27700BB97A4 /* UIScreen+Additions.swift in Sources */,
+				24CA0BE32F475F3200DB0DC7 /* EmojiView.swift in Sources */,
 				C312D3D82D7DC27700BB97A4 /* UITableView+Additions.swift in Sources */,
 				240CEE1C2F2D87CB00428378 /* WalkthroughStep4View.swift in Sources */,
 				24006C2C2F0FCE5500F29F0A /* BentoSendInitialView.swift in Sources */,
@@ -2884,6 +2913,7 @@
 				247A83972EA2A9A500B5DFD8 /* BentoBackgroundHelpers.swift in Sources */,
 				240850F42F40B29B0097706A /* SendProgressBarView.swift in Sources */,
 				C312D4752D7DC27700BB97A4 /* ApplicationController.swift in Sources */,
+				24BFAF902F4B635200DC0521 /* BrainwalletPhraseContainerView.swift in Sources */,
 				24DB05E82E06B44700C57FE9 /* SettingsExpandingBlockchainView.swift in Sources */,
 				C312D4772D7DC27700BB97A4 /* NSNotificationNameExtension.swift in Sources */,
 				C312D4782D7DC27700BB97A4 /* ContainerViewController.swift in Sources */,
@@ -2895,6 +2925,7 @@
 				24B7D75D2DF6FA0C0031F129 /* ModalPresenter+Extension.swift in Sources */,
 				C312D47F2D7DC27700BB97A4 /* Extensions.swift in Sources */,
 				C312D4812D7DC27700BB97A4 /* DismissModalAnimator.swift in Sources */,
+				24BFB0492F4BB03B00DC0521 /* EmojiViewModel.swift in Sources */,
 				C312D4832D7DC27700BB97A4 /* GradientCircle.swift in Sources */,
 				C312D4842D7DC27700BB97A4 /* ModalViewController.swift in Sources */,
 				245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */,
@@ -2905,6 +2936,7 @@
 				C312D48A2D7DC27700BB97A4 /* MenuButtonType.swift in Sources */,
 				248E5C422DE78653003F232F /* NetworkHelper.swift in Sources */,
 				C312D48B2D7DC27700BB97A4 /* CreateWalletView.swift in Sources */,
+				24BFAF922F4B875D00DC0521 /* EmojiPhraseView.swift in Sources */,
 				C312D48F2D7DC27700BB97A4 /* SimpleRedux.swift in Sources */,
 				241D22492DB526E9000302C8 /* YourSeedWordsView.swift in Sources */,
 				C312D4912D7DC27700BB97A4 /* ForgotAlertViewModel.swift in Sources */,
@@ -2995,6 +3027,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules/core $(SRCROOT)/brainwallet/br-swift";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brainwallet.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Brainwallet";
@@ -3024,6 +3057,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet.BrainwalletUnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules/core $(SRCROOT)/brainwallet/br-swift";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Brainwallet.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Brainwallet";
@@ -3174,7 +3208,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602120;
+				CURRENT_PROJECT_VERSION = 2602270;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3191,7 +3225,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.9.1;
+				MARKETING_VERSION = 3.9.3;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
@@ -3200,7 +3234,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules $(SRCROOT)/br-swift";
+				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules/core $(SRCROOT)/brainwallet/br-swift";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3366,7 +3400,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602120;
+				CURRENT_PROJECT_VERSION = 2602270;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3382,7 +3416,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.9.1;
+				MARKETING_VERSION = 3.9.3;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
@@ -3391,7 +3425,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules $(SRCROOT)/br-swift";
+				SWIFT_INCLUDE_PATHS = "$(SDK_DIR)/usr/include $(SRCROOT)/Modules/core $(SRCROOT)/brainwallet/br-swift";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
