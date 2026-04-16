@@ -2536,6 +2536,12 @@
             "value" : "주소 복사 완료"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adres gekopieerd"
+          }
+        },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2564,6 +2570,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Adress kopierad"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "คัดลอกที่อยู่เรียบร้อยแล้ว"
           }
         },
         "tr" : {
