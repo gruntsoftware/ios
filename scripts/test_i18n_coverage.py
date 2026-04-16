@@ -30,7 +30,7 @@ from pathlib import Path
 
 # ── Configuration ──────────────────────────────────────────────────────────────
 
-DEFAULT_GLOB    = "**/Localizable.xcstrings"
+DEFAULT_GLOB    = "**/brainwallet/Localizations/Localizable.xcstrings"
 WARN_THRESHOLD  = float(os.environ.get("COVERAGE_WARN_PCT", "80"))
 
 ALL_LANGUAGES: dict[str, str] = {
