@@ -170,7 +170,8 @@ struct NewMainView: View {
 
                                     VStack {
                                         LTCPriceBentoView(viewModel: newMainViewModel,
-                                                          userPrefersDarkTheme: $userPrefersDarkTheme)
+                                                          userPrefersDarkTheme: $userPrefersDarkTheme
+                                        )
                                         .frame(maxHeight: midBentoHeight * 0.78)
                                         .padding(bentoPadding)
                                         .accessibilityIdentifier("ltcPriceBentoView")
