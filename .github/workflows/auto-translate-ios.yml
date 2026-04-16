@@ -1,0 +1,84 @@
+name: 🍎 Auto-Translate iOS Localizable.xcstrings
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - '**/Localizable.xcstrings'
+  workflow_dispatch:
+    inputs:
+      force_retranslate:
+        description: 'Force retranslation of all strings (ignores existing translations)'
+        required: false
+        default: 'false'
+        type: boolean
+      languages:
+        description: 'Comma-separated language codes to translate, e.g. "de,fr,ja" (blank = all)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.TRANSLATION_PAT_GHA_CLAUDE_JUL082026 }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Run translation script
+        env:
+          ANTHROPIC_GH_API_KEY: ${{ secrets.ANTHROPIC_GH_API_KEY }}
+          FORCE_RETRANSLATE: ${{ github.event.inputs.force_retranslate || 'false' }}
+          TARGET_LANGUAGES: ${{ github.event.inputs.languages || '' }}
+        run: python scripts/translate_xcstrings.py
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Create branch and commit
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          BRANCH="translations/ios-auto-$(date +%Y%m%d-%H%M%S)"
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add '**/*.xcstrings'
+          git commit -m "chore(i18n): auto-translate missing iOS xcstrings [skip ci]
+
+          Languages: ar, de, es-419, fa-IR, fr, hi, id, it, ja, ko, pa, pl, pt-BR, nl, ru, sv, th, tr, uk, zh-Hans, zh-Hant
+          Triggered by: ${{ github.sha }}"
+          git push origin "$BRANCH"
+
+      - name: Open Pull Request
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.TRANSLATION_PAT_GHA_CLAUDE_JUL082026 }}
+        run: |
+          gh pr create \
+            --title "🌍 Auto-translations: missing iOS strings updated" \
+            --body "$(cat /tmp/pr_body.md)" \
+            --base "${{ github.ref_name }}" \
+            --head "$BRANCH" \
+            --label "translations" \
+            --reviewer "${{ github.actor }}"
