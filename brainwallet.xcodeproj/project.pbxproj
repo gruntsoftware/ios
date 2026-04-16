@@ -2332,6 +2332,8 @@
 				pl,
 				fr,
 				"es-419",
+				nl,
+				th,
 			);
 			mainGroup = 75A2A7871DA5934300A983D8;
 			packageReferences = (
