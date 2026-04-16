@@ -170,6 +170,16 @@ jobs:
             fi
             
             echo "✅ All build prerequisites verified"
+  # ── i18n coverage check ────────────────────────────────────────────────────
+  # Lightweight informational job: runs on Linux (no Mac machine needed),
+  # reports translation coverage per language, and fails the pipeline only
+  # if any language drops below COVERAGE_WARN_PCT (default 80 %).
+  # It never blocks a release for in-flight translations — raise the threshold
+  # once the auto-translate workflow has caught up.
+      - run:
+          name: Check i18n coverage
+          command: python3 scripts/test_i18n_coverage.py
+
       - run:
           name: Run Fastlane iPhone 16 simulator Tests
           command: |
@@ -189,7 +199,6 @@ jobs:
             - ./DerivedData
             - ~/Library/Developer/Xcode/DerivedData
             - ~/Library/Caches/com.apple.dt.Xcode/
-      
       # Store artifacts and handle failures
       - run:
           name: Capture crash logs
@@ -199,18 +208,18 @@ jobs:
             log show --predicate 'process == "Brainwallet"' --last 10m || echo "No system logs found for Brainwallet"
           when: on_fail
       - store_test_results:
-          path: test_output   #.This works path: output/scan
+          path: test_output
       - store_artifacts:
           path: ~/Library/Logs/DiagnosticReports
           destination: crash-logs
           when: on_fail
-  # New daily maintenance job
+
 workflows:
   version: 4
   
-  # Main workflow - runs unit tests by default
+  # Main workflow - runs unit tests on every push
   build-test-brainwallet-ios:
     jobs:
       - build-unit-tests-per-push:
-          context: 
-            - bw-ios-test
+          context:
+            - bw-ios-test 
