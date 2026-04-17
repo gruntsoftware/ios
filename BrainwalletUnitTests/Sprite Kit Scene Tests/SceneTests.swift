@@ -57,7 +57,7 @@ class FallinSceneTests: XCTestCase {
                 expectation.fulfill()
             }
             
-            waitForExpectations(timeout: 1.0)
+            waitForExpectations(timeout: 0.2)
             XCTAssertGreaterThan(scene.children.count, 0, "Should have at least one child node after makeDot is called")
         }
         
