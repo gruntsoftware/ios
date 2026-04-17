@@ -10,7 +10,12 @@
             "key" : "IS_RUNNING_UNIT_TESTS",
             "value" : "1"
           }
-        ]
+        ],
+        "targetForVariableExpansion" : {
+          "containerPath" : "container:brainwallet.xcodeproj",
+          "identifier" : "24295E3A2E341F1C00A76776",
+          "name" : "BrainwalletUnitTests"
+        }
       }
     }
   ],
