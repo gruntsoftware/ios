@@ -15,8 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        // Must be first — prevents SEGV from Firebase static initialisers
-        // in Xcode Cloud's test-without-building phase. See build_logs/ for history.
         if ProcessInfo.processInfo.environment["IS_RUNNING_UNIT_TESTS"] == "1" {
             return true
         }
