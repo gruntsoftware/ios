@@ -15,12 +15,7 @@ class ModalTransitionDelegate: NSObject, Subscriber {
 	}
 
 	func reset() {
-		isInteractive = false
-		presentedViewController = nil
-		if let panGr = panGestureRecognizer {
-			UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.removeGestureRecognizer(panGr)
-		}
-		store.trigger(name: .showStatusBar)
+        /// Deprecated
 	}
 
 	var shouldDismissInteractively = true

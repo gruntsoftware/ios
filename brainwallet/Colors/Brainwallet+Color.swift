@@ -79,26 +79,32 @@ struct BrainwalletUIColor {
 
 struct BentoColor {
     /// purple1 - #C8B3EE
+    private static let purple1Chip = Color(#colorLiteral(red: 0.7843137255, green: 0.7019607843, blue: 0.9333333333, alpha: 1))
     static let purple1 = Color(red: 0.7843137254901961,
                                green: 0.7019607843137254,
                                blue: 0.9333333333333333)
     /// purple2 - #8669BA
+    private static let purple2Chip = Color(#colorLiteral(red: 0.5254901961, green: 0.4117647059, blue: 0.7294117647, alpha: 1))
     static let purple2 = Color(red: 0.5254901960784314,
                                green: 0.4117647058823529,
                                blue: 0.7294117647058823)
     /// purple3 - #121348
+    private static let purple3Chip = Color(#colorLiteral(red: 0.07058823529, green: 0.07450980392, blue: 0.2823529412, alpha: 1))
     static let purple3 = Color(red: 0.07058823529411765,
                                green: 0.07450980392156863,
                                blue: 0.2823529411764706)
     /// purple4 - #491FA3
+    private static let purple4Chip = Color(#colorLiteral(red: 0.2862745098, green: 0.1215686275, blue: 0.6392156863, alpha: 1))
     static let purple4  = Color(red:  0.28627450980392155,
                                 green: 0.12156862745098039,
                                 blue: 0.6392156862745098)
     /// purple5 - #5754FF
+    private static let purple5Chip = Color(#colorLiteral(red: 0.3411764706, green: 0.3294117647, blue: 1, alpha: 1))
     static let purple5  = Color(red:  0.3411764705882353,
                                 green: 0.32941176470588235,
                                 blue: 1)
     /// grayBackground- #E8EAEC
+    private static let grayChip = Color(#colorLiteral(red: 0.9098039216, green: 0.9176470588, blue: 0.9254901961, alpha: 1))
     static let grayBackground = Color(red: 0.9098039215686274,
                                       green: 0.9176470588235294,
                                       blue: 0.9254901960784314)

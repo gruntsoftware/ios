@@ -315,14 +315,14 @@ struct BuyReceiveView: View {
 
                             Spacer()
 
-                            /// Buy LTC Button Group
+                            /// Get LTC Button Group
                             Button(action: {
                                 userIsBuying.toggle()
                                 let signingData = viewModel.buildUnsignedMoonPayUrl()
                                 viewModel.fetchMoonpaySignedUrl(signingData: signingData)
                             }) {
                                 HStack {
-                                    Text("BUY LTC")
+                                    Text("GET LTC")
                                         .frame(width: 120, alignment: .center)
                                         .font(liveQuoteFont)
                                         .foregroundColor(BrainwalletColor.content)
@@ -343,7 +343,7 @@ struct BuyReceiveView: View {
                             }
                             .frame(width: width * 0.4, height: modalCorner, alignment: .bottom)
                             .padding(.all, 10.0)
-                            /// Buy LTC Button Group
+                            /// GET LTC Button Group
                         }
                         .frame(width: width * 0.95,
                                height: (viewModel.canUserBuy && isExpanded) ? modalBuyViewHeight : modalReceiveViewHeight,

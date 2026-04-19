@@ -13,15 +13,15 @@ struct SettingsActionSeedPhraseView: View {
     private let detailText: String
 
     @Binding
-    var willShowBrainwalletPhrase: Bool
+    var willShowSeedPhrase: Bool
 
     @State
     private var  fetchedEmoji = ""
 
-    init(title: String, detailText: String, willShowBrainwalletPhrase: Binding<Bool>) {
+    init(title: String, detailText: String, willShowSeedPhrase: Binding<Bool>) {
         self.title = title
         self.detailText = detailText
-        _willShowBrainwalletPhrase = willShowBrainwalletPhrase
+        _willShowSeedPhrase = willShowSeedPhrase
     }
 
     var body: some View {
@@ -46,7 +46,7 @@ struct SettingsActionSeedPhraseView: View {
                         Spacer()
                         VStack {
                             Button(action: {
-                                willShowBrainwalletPhrase.toggle()
+                                willShowSeedPhrase.toggle()
                             }) {
                                 VStack {
                                     ZStack {

@@ -1,4 +1,5 @@
 import FirebaseRemoteConfig
+import FirebaseAnalytics
 import Foundation
 import KeychainAccess
 import UIKit
@@ -45,7 +46,9 @@ class RemoteConfigHelper: NSObject {
 		remoteConfig.addOnConfigUpdateListener { _, error in
 			guard error != nil else {
 				let errorDict: [String: String] = ["error": error?.localizedDescription ?? ""]
-				return
+                Analytics
+                    .logEvent("error_remote_config", parameters: errorDict)
+                return
 			}
 
 			self.fetchAndActivateRemoteConfig()
