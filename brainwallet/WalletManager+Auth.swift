@@ -437,35 +437,55 @@ extension WalletManager: WalletAuthenticator {
 	// wipe the existing wallet from the keychain
 	func wipeWallet(pin: String = "forceWipe") -> Bool {
 		guard pin == "forceWipe" || authenticate(pin: pin) else { return false }
-
-		do {
-			lazyWallet = nil
-			lazyPeerManager = nil
-			if db != nil { sqlite3_close(db) }
-			db = nil
-			masterPubKey = BRMasterPubKey()
-			didInitWallet = false
-			earliestKeyTime = 0
-			if let bundleId = Bundle.main.bundleIdentifier {
-				UserDefaults.standard.removePersistentDomain(forName: bundleId)
-			}
-			try BWAPIClient(authenticator: self).kv?.rmdb()
-			try? FileManager.default.removeItem(atPath: dbPath)
-			try? FileManager.default.removeItem(at: BRReplicatedKVStore.dbPath)
-			try setKeychainItem(key: KeychainKey.apiAuthKey, item: nil as Data?)
-			try setKeychainItem(key: KeychainKey.spendLimit, item: nil as Int64?)
-			try setKeychainItem(key: KeychainKey.creationTime, item: nil as Data?)
-			try setKeychainItem(key: KeychainKey.pinFailTime, item: nil as Int64?)
-			try setKeychainItem(key: KeychainKey.pinFailCount, item: nil as Int64?)
-			try setKeychainItem(key: KeychainKey.pin, item: nil as String?)
-			try setKeychainItem(key: KeychainKey.masterPubKey, item: nil as Data?)
-			try setKeychainItem(key: KeychainKey.seed, item: nil as Data?)
-			try setKeychainItem(key: KeychainKey.mnemonic, item: nil as String?, authenticated: true)
-			return true
-		} catch {
-			debugPrint(":::Wipe wallet error: \(error)")
-			return false
-		}
+ 
+        // Disconnect PeerManager to keep from thread
+        peerManager?.disconnect()
+        lazyPeerManager = nil
+        lazyWallet = nil
+        
+        // Clear the DB
+        if db != nil { sqlite3_close(db) }
+        db = nil
+        
+        // Clear the MasterPK
+        masterPubKey = BRMasterPubKey()
+        didInitWallet = false
+        earliestKeyTime = 0
+        
+        // Clear the device bundle
+        if let bundleId = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: bundleId)
+        }
+         
+        // KV store — guard against nil authKey (the crash site)
+        do {
+            if let kv = try? BWAPIClient(authenticator: self).kv {
+                try kv.rmdb()
+            }
+        } catch let error {
+            debugPrint(":::Wipe wallet KV Store error: \(error)")
+            return false
+        }
+        
+        // File manager clear
+        try? FileManager.default.removeItem(atPath: dbPath)
+        try? FileManager.default.removeItem(at: BRReplicatedKVStore.dbPath)
+        
+        do {
+            try setKeychainItem(key: KeychainKey.apiAuthKey, item: nil as Data?)
+            try setKeychainItem(key: KeychainKey.spendLimit, item: nil as Int64?)
+            try setKeychainItem(key: KeychainKey.creationTime, item: nil as Data?)
+            try setKeychainItem(key: KeychainKey.pinFailTime, item: nil as Int64?)
+            try setKeychainItem(key: KeychainKey.pinFailCount, item: nil as Int64?)
+            try setKeychainItem(key: KeychainKey.pin, item: nil as String?)
+            try setKeychainItem(key: KeychainKey.masterPubKey, item: nil as Data?)
+            try setKeychainItem(key: KeychainKey.seed, item: nil as Data?)
+            try setKeychainItem(key: KeychainKey.mnemonic, item: nil as String?, authenticated: true)
+            return true
+        } catch {
+            debugPrint(":::Wipe wallet error: \(error)")
+            return false
+        }
 	}
 
 	func deleteWalletDatabase(pin: String = "forceWipe") -> Bool {

@@ -19,7 +19,7 @@ struct ReceiveStep1View: View {
     var userPrefersDarkTheme: Bool
 
     private let titleStep1 = String(localized: "1. Fresh LTC Address")
-    private let descriptionStep1 = String(localized: "Brainwallet makes a new address each time. Tap on Buy/Receive Tab show or copy the QR code in the screen that shows.")
+    private let descriptionStep1 = String(localized: "Brainwallet makes a new address each time. Tap on Get/Receive Tab show or copy the QR code in the screen that shows.")
 
     init(selectedStep: Binding<Int>,
          userPrefersDarkTheme: Binding<Bool>) {

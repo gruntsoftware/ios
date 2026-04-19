@@ -192,34 +192,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     }
 
 	/// Sets the correct Google Services  plist file
-	private func setFirebaseConfiguration() {
+    func setFirebaseConfiguration() {
+        guard FirebaseApp.app() == nil else { return }
 
-		guard let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") else {
-			assertionFailure("Couldn't load google services file")
-			return
-		}
-
-		if let fboptions = FirebaseOptions(contentsOfFile: filePath) {
-            FirebaseApp.configure(options: fboptions)
-             #if DEBUG
-               Analytics.setUserProperty("debug_mode", forName: "debug_enabled")
-
-               /// Notfy the Firebase Console for monitoring and debugging
-               Analytics
-                   .logEvent("debug_mode_launched",
-                       parameters: ["device": UIDevice.current.model
-                       ])
-             #endif
-
-		} else {
-            Analytics.logEvent("error_message",
-                               parameters: [
-                                "firebase_config_failed": "launch_error"
-                               ])
-
-			assertionFailure("Couldn't load Firebase config file")
-		}
-	}
+        if let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist"),
+           let options = FirebaseOptions(contentsOfFile: filePath) {
+            // Production path — real plist present
+            FirebaseApp.configure(options: options)
+        } else {
+            // Plist absent — CI/test environment, configure with stub
+            // to prevent Crashlytics/Performance SEGV during static init
+            let options = FirebaseOptions(
+                googleAppID: "1:000000000000:ios:0000000000000000000000",
+                gcmSenderID: "000000000000"
+            )
+            options.projectID = "test-project"
+            options.storageBucket = "test-project.firebasestorage.app"
+            options.apiKey = "AIzaSy00000000000000000000000000000000"
+            FirebaseApp.configure(options: options)
+            Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
+        }
+    }
 
 	/// On Demand Resources
 	/// Use for another resource heavy view

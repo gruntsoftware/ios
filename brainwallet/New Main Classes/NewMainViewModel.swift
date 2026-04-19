@@ -438,7 +438,14 @@ class NewMainViewModel: ObservableObject, Subscriber {
             // Set Preferred Currency
             UserDefaults.userPreferredCurrencyCode = code
             store.perform(action: UserPreferredCurrency.setDefault(code))
+            debugPrint("::: CODE: userPreferredCurrencyCode")
+
+            Analytics
+                .logEvent("user_set_preferred_fiat",
+                          parameters: nil)
         }
+        debugPrint("::: CODE: out if  userPreferredCurrencyCode")
+
     }
 
     func setPinPasscode(newPasscode: String) -> Bool {
