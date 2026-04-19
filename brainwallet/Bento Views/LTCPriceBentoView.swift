@@ -15,12 +15,7 @@ struct LTCPriceBentoView: View {
     var newMainViewModel: NewMainViewModel
 
     @State
-    private var pickedCurrency: GlobalCurrency = .USD
-
-    @State
     private var selectedFiat: Bool = false
-
-    let globalCurrencies: [GlobalCurrency] = GlobalCurrency.allCases
 
     @State
     var shouldShowSettings: Bool = false
@@ -54,22 +49,18 @@ struct LTCPriceBentoView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     Spacer()
                     HStack {
-                        Picker("", selection: $pickedCurrency) {
-                            ForEach(globalCurrencies, id: \.self) {
-                                Text(verbatim: "\($0.countryFlag)   \($0.code) / LTC")
+                        Picker("", selection: $newMainViewModel.currentGlobalFiat) {
+                            ForEach(newMainViewModel.globalCurrencies, id: \.self) { currency in
+                                Text(verbatim: "\(currency.countryFlag)   \(currency.code) / LTC")
                                     .modifier(BWIPSSemiBold(size: 18.0))
                                     .frame(maxHeight: 19.0, alignment: .leading)
                                     .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
                             }
                         }
                         .pickerStyle(.wheel)
-                        .onChange(of: pickedCurrency) { _,_ in
-                            delay(0.2) {
-                                newMainViewModel.userDidSetCurrencyPreference(currency: pickedCurrency)
-                                Analytics
-                                    .logEvent("user_set_preferred_fiat",
-                                    parameters: nil)
-                            }
+                        .onChange(of: newMainViewModel.currentGlobalFiat) { _,_ in
+                                newMainViewModel
+                                .userDidSetCurrencyPreference(currency: newMainViewModel.currentGlobalFiat)
                         }
                         .frame(alignment: .leading)
                         .frame(minHeight: height * 0.2, idealHeight: height * 0.3, maxHeight: height * 0.35)
@@ -81,7 +72,7 @@ struct LTCPriceBentoView: View {
                            maxHeight: height * 0.5)
                     .padding(.bottom, 2.0)
                     if height > 200 {
-                        Text(pickedCurrency.fullCurrencyName)
+                        Text(newMainViewModel.currentGlobalFiat.fullCurrencyName)
                             .modifier(BWIPSLight(size: 16.0, lineLimit: 2))
                             .padding([.leading, .trailing], 8.0)
                             .padding(.bottom, 2.0)
@@ -116,7 +107,6 @@ struct LTCPriceBentoView: View {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                 if let dateFormatter = newMainViewModel.dateFormatter {
                     currentDateLabel = "as of " + String(describing: dateFormatter.string(from: Date()))
-                    pickedCurrency = newMainViewModel.currentGlobalFiat
                 }
             }
             .onChange(of: newMainViewModel.currentFiatValue) { _,_ in

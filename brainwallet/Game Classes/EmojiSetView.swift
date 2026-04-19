@@ -17,8 +17,8 @@ struct EmojiSetView: View {
        case thirdField
     }
 
-    @EnvironmentObject
-    var gameHubViewModel: GameHubViewModel
+    @ObservedObject
+    var gameHubModel: GameHubViewModel
 
     @ObservedObject
     var newMainViewModel: NewMainViewModel
@@ -54,11 +54,13 @@ struct EmojiSetView: View {
     let backgroundColor = LinearGradient(colors: [.clear, BentoColor.purple4], startPoint: .topLeading,
                                         endPoint: .bottomTrailing)
 
-    init(viewModel: NewMainViewModel,
+    init(gameHubViewModel: GameHubViewModel,
+         viewModel: NewMainViewModel,
          shouldShowView: Binding<Bool>,
          userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
         _shouldShowView = shouldShowView
+        gameHubModel = gameHubViewModel
         newMainViewModel = viewModel
 
     }
@@ -84,12 +86,12 @@ struct EmojiSetView: View {
                 VStack {
                     HStack {
                         VStack {
-                            Text(gameHubViewModel.currentEmojiTriplet.guideTitle)
+                            Text(gameHubModel.currentEmojiTriplet.guideTitle)
                                 .modifier(BWIPSBold(size: 26.0))
                                 .frame(alignment: .center)
                                 .foregroundStyle( userPrefersDarkTheme ? .white : BentoColor.purple3)
                                 .accessibilityIdentifier("emojiPickerViewTitle")
-                            Text(gameHubViewModel.currentEmojiTriplet.guideDetail)
+                            Text(gameHubModel.currentEmojiTriplet.guideDetail)
                                 .modifier(BWIPSSemiBold(size: 20.0, lineLimit: 2))
                                 .frame(alignment: .topLeading)
                                 .foregroundStyle( userPrefersDarkTheme ? .white : BentoColor.purple3)
@@ -166,20 +168,31 @@ struct EmojiSetView: View {
                     .padding([.leading, .trailing], 16.0)
                     .padding(.top, 1.0)
 
-                    Text(gameHubViewModel.currentEmojiTriplet.guideDetail2)
+                    Text(gameHubModel.currentEmojiTriplet.guideDetail2)
                         .modifier(BWIPSSemiBold(size: 20.0, lineLimit: 2))
                         .frame(alignment: .topLeading)
                         .foregroundStyle( userPrefersDarkTheme ? .white : BentoColor.purple3)
                         .accessibilityIdentifier("emojiPickerViewDescription2")
-                        .padding([.top, .bottom], 4.0)
+                        .padding(.top, 4.0)
+                        .padding([.leading, .trailing], 32.0)
+
+                    Text(String(localized:" Each emoji must be different."))
+                        .modifier(BWIPSSemiBold(size: 18.0))
+                        .frame(alignment: .topLeading)
+                        .foregroundStyle( userPrefersDarkTheme ? .white : BentoColor.purple3)
+                        .accessibilityIdentifier("emojiPickerViewDescription3")
+                        .padding([.top, .bottom], 1.0)
                         .padding([.leading, .trailing], 16.0)
+                        .opacity(uniqueEmojisSelected ? 0.0 : 1.0)
 
                     Button(action: {
                         if newMainViewModel.setEmojiTriplet() {
                             delay(0.4) {
                                 shouldShowView.toggle()
+                                Analytics
+                                    .logEvent("user_set_emojis",
+                                    parameters: nil)
                             }
-
                         }
                     }) {
                         Text("Ready, Set, Go!")
@@ -219,11 +232,9 @@ struct EmojiSetView: View {
                     delay(0.4) {
                         focusedField = .firstField
                     }
-
                         Analytics
                             .logEvent("user_was_shown_emoji_set_view",
                             parameters: nil)
-
                 }
             }
         }
