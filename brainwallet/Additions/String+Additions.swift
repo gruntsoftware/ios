@@ -59,16 +59,16 @@ extension String {
 		let endCount = tagsRemoved.utf8.count
 		var i = 0
 		while output.string.utf8.count < endCount || i < 50 {
-			var regular: NSString?
-			var bold: NSString?
-			scanner.scanUpTo(startTag, into: &regular)
-			scanner.scanUpTo(endTag, into: &bold)
-			if let regular = regular {
-				output.append(NSAttributedString(string: (regular as String).tagsRemoved, attributes: UIFont.regularAttributes))
-			}
-			if let bold = bold {
-				output.append(NSAttributedString(string: (bold as String).tagsRemoved, attributes: UIFont.boldAttributes))
-			}
+            if let regular = scanner.scanUpToString(startTag) {
+                output.append(NSAttributedString(string: (regular as String)
+                    .tagsRemoved, attributes: UIFont.regularAttributes))
+            }
+
+            if let bold = scanner.scanUpToString(endTag) {
+                output.append(NSAttributedString(string: (bold as String)
+                    .tagsRemoved, attributes: UIFont.boldAttributes))
+            }
+
 			i += 1
 		}
 		return output

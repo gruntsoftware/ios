@@ -306,7 +306,7 @@ struct BentoSendInitialView: View {
                                               text: $sendMemo)
                                     .focused($focusedField, equals: .memoField)
                                     .onChange(of: sendMemo) { _,_ in
-                                        isSendInformationValid()
+                                        _ = isSendInformationValid()
                                     }
                                     .textFieldStyle(BentoSendTextFieldStyle())
                                 }
@@ -403,7 +403,7 @@ struct BentoSendInitialView: View {
         }
         .alert(isPresented: $shouldShowEmptyWalletAlert) {
               Alert(title: Text("TOP UP NOW!"),
-                      message: Text("You have no Litecoin. Tap Buy/Recieve. Get LTC in 5 minutes with MoonPay!"),
+                      message: Text("You have no Litecoin. Tap Get/Recieve. Get LTC in 5 minutes with MoonPay!"),
                       dismissButton: .default(Text("Ok"),action: { shouldShowView = false }))
         }
         .onDisappear {

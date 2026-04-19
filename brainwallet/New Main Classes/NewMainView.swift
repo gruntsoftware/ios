@@ -20,8 +20,14 @@ struct NewMainView: View {
     @ObservedObject
     var newReceiveViewModel: NewReceiveViewModel
 
+    @StateObject
+    var gameHubViewModel = GameHubViewModel()
+
     @State
     private var userDidTapSend: Bool = false
+
+    @State
+    private var shouldShowEmojiPicker: Bool = false
 
     @State
     private var userDidTapSendWhileSyncing: Bool = false
@@ -116,15 +122,16 @@ struct NewMainView: View {
                 ZStack(alignment: .bottom) {
 
                     if userPrefersDarkTheme {
-                        GridWaveContentView(renderWidth: width, renderHeight: height, userPrefersDarkTheme: $userPrefersDarkTheme)
-                            .mask(LinearGradient(gradient: Gradient(colors: mainGradientStyle.maskGradientStops),
-                                                 startPoint: .top, endPoint: .bottom))
-                            .edgesIgnoringSafeArea(.all)
-                            .offset(x: 0, y: -20)
+                            GridWaveContentView(renderWidth: width, renderHeight: height, userPrefersDarkTheme: $userPrefersDarkTheme)
+                                .mask(LinearGradient(gradient: Gradient(colors: mainGradientStyle.maskGradientStops),
+                                                     startPoint: .top, endPoint: .bottom))
+                                .edgesIgnoringSafeArea(.all)
+                                .offset(x: 0, y: -20)
+                                .transition(.opacity)
                     } else {
                         Color.init(#colorLiteral(red: 0.9725490196, green: 0.9803921569, blue: 0.9843137255, alpha: 1))
-                        .edgesIgnoringSafeArea(.all)
-                        .offset(x: 0, y: -20)
+                            .edgesIgnoringSafeArea(.all)
+                            .offset(x: 0, y: -20)
                     }
 
                     VStack {
@@ -139,18 +146,18 @@ struct NewMainView: View {
                             TransactionDetailBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme:  $userPrefersDarkTheme)
                             .frame(maxHeight: 320, alignment: .top)
-                                .padding(bentoPadding)
-                                .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 1.0 : 0.0, anchor: .top)
-                                .transition(.scale)
-                                .accessibilityIdentifier("transactionDetailBentoView")
+                            .padding(bentoPadding)
+                            .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 1.0 : 0.0, anchor: .top)
+                            .transition(.scale)
+                            .accessibilityIdentifier("transactionDetailBentoView")
                             Spacer()
                         }
-                            TransactionHistoryBentoView(viewModel: newMainViewModel,
+                        TransactionHistoryBentoView(viewModel: newMainViewModel,
                                                     detailIsShowing: $shouldShowTransactionDetail,
                                                     userPrefersDarkTheme: $userPrefersDarkTheme)
-                            .frame(height: transactionsBentoHeight, alignment: .bottom)
-                            .padding(bentoPadding)
-                            .accessibilityIdentifier("transactionHistoryBentoView")
+                        .frame(height: transactionsBentoHeight, alignment: .bottom)
+                        .padding(bentoPadding)
+                        .accessibilityIdentifier("transactionHistoryBentoView")
 
                         if !shouldShowTransactionDetail {
                             Group {
@@ -163,7 +170,8 @@ struct NewMainView: View {
 
                                     VStack {
                                         LTCPriceBentoView(viewModel: newMainViewModel,
-                                                          userPrefersDarkTheme: $userPrefersDarkTheme)
+                                                          userPrefersDarkTheme: $userPrefersDarkTheme
+                                        )
                                         .frame(maxHeight: midBentoHeight * 0.78)
                                         .padding(bentoPadding)
                                         .accessibilityIdentifier("ltcPriceBentoView")
@@ -178,12 +186,12 @@ struct NewMainView: View {
                                 .frame(maxHeight: height * 0.5, alignment: .top)
                                 .padding([.top,.leading, .trailing], bentoPadding)
                                 GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .frame(idealHeight: balanceBentoHeight * 0.9, maxHeight: balanceBentoHeight, alignment: .top)
-                                        .padding(bentoPadding)
-                                        .accessibilityIdentifier("gameHubBentoView")
-                                        .onTapGesture {
-                                            newMainViewModel.shouldShowGameMode.toggle()
-                                        }
+                                    .frame(idealHeight: balanceBentoHeight * 0.9, maxHeight: balanceBentoHeight, alignment: .top)
+                                    .padding(bentoPadding)
+                                    .accessibilityIdentifier("gameHubBentoView")
+                                    .onTapGesture {
+                                        newMainViewModel.shouldShowGameMode.toggle()
+                                    }
                             }
                             .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 0.0 : 1.0, anchor: .bottom)
                             .transition(.scale)
@@ -197,35 +205,35 @@ struct NewMainView: View {
                 .toolbar {
 
                     ToolbarItem(placement: .navigationBarLeading) {
-                            Button(action: {
-                                userPrefersDarkTheme.toggle()
-                                newMainViewModel.updateTheme(shouldBeDark: userPrefersDarkTheme)
-                            }) {
+                        Button(action: {
+                            userPrefersDarkTheme.toggle()
+                            newMainViewModel.updateTheme(shouldBeDark: userPrefersDarkTheme)
+                        }) {
 
-                                ZStack {
-                                    Ellipse()
-                                        .frame(width: iconSize * 2.0,
-                                               height: iconSize * 2.0,
-                                               alignment: .center)
-                                        .modifier(BentoSurface(userPrefersDarkTheme: $userPrefersDarkTheme))
-                                        .overlay(
-                                            Ellipse()
-                                                .stroke(content.opacity(0.3), lineWidth: 0.5)
-                                                .frame(width: iconSize * 2.0,
-                                                       height: iconSize * 2.0,
-                                                       alignment: .center)
-                                        )
+                            ZStack {
+                                Ellipse()
+                                    .frame(width: iconSize * 2.0,
+                                           height: iconSize * 2.0,
+                                           alignment: .center)
+                                    .modifier(BentoSurface(userPrefersDarkTheme: $userPrefersDarkTheme))
+                                    .overlay(
+                                        Ellipse()
+                                            .stroke(content.opacity(0.3), lineWidth: 0.5)
+                                            .frame(width: iconSize * 2.0,
+                                                   height: iconSize * 2.0,
+                                                   alignment: .center)
+                                    )
 
-                                    Image(systemName: userPrefersDarkTheme ?
-                                          "sun.max" : "moon.stars")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize,
-                                           height: iconSize)
-                                    .foregroundColor(content)
-                                }
+                                Image(systemName: userPrefersDarkTheme ?
+                                      "sun.max" : "moon.stars")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: iconSize,
+                                       height: iconSize)
+                                .foregroundColor(content)
                             }
-                            .accessibilityIdentifier("themePreferenceButton")
+                        }
+                        .accessibilityIdentifier("themePreferenceButton")
 
                     }
 
@@ -280,6 +288,7 @@ struct NewMainView: View {
                                     .foregroundStyle(walletIsSyncing ? content.opacity(0.3) : content)
                             }
                         })
+                        .disabled(shouldShowEmojiPicker)
                         .accessibilityIdentifier("sendTabBarItem")
 
                         Spacer()
@@ -296,11 +305,12 @@ struct NewMainView: View {
                                     .foregroundColor(content)
                                     .padding(6)
 
-                                Text("Buy/Receive")
+                                Text("Get/Receive")
                                     .modifier(BWIPSSemiBold(size: 19.0))
                                     .foregroundStyle(content)
                             }
                         })
+                        .disabled(shouldShowEmojiPicker)
                         .accessibilityIdentifier("buyReceiveTabBarItem")
 
                         Spacer()
@@ -323,6 +333,7 @@ struct NewMainView: View {
                                     .foregroundStyle(content)
                             }
                         })
+                        .disabled(shouldShowEmojiPicker)
                         .accessibilityIdentifier("gameHubTabBarItem")
 
                         Spacer()
@@ -349,7 +360,7 @@ struct NewMainView: View {
                                     .animation(.easeInOut, value: shouldShowTransactionDetail)
                             }
                         })
-                        .disabled(disableTransactionDetail)
+                        .disabled(disableTransactionDetail || shouldShowEmojiPicker)
                         .accessibilityIdentifier("historyHubTabBarItem")
 
                         Spacer()
@@ -360,6 +371,7 @@ struct NewMainView: View {
                     userPrefersDarkTheme = newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                     walletIsSyncing = newMainViewModel.walletIsSyncing
+                    gameHubViewModel.walletManager = newMainViewModel.walletManager
                     requestRatingReview()
                 }
                 .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
@@ -377,8 +389,18 @@ struct NewMainView: View {
                         userDidTapBuyReceive.toggle()
                     }
                 }
+                .onChange(of: gameHubViewModel.shouldUserSetEmojis) { _,shouldSetUserEmojis in
+
+                    if shouldSetUserEmojis {
+                        delay(0.6) {
+                            withAnimation {
+                                shouldShowEmojiPicker.toggle()
+                            }
+                        }
+                    }
+                }
                 .sheet(isPresented: $userDidTapSend) {
-                 if !walletIsSyncing {
+                    if !walletIsSyncing {
                         BentoSendModalView(viewModel: newMainViewModel,
                                            userPrefersDarkTheme: $userPrefersDarkTheme,
                                            userWalletIsEmpty: $userBalanceIsEmpty,
@@ -388,9 +410,9 @@ struct NewMainView: View {
                         .presentationDetents([.height(sheetContentHeight)])
                         .presentationBackground(.ultraThickMaterial)
                         .ignoresSafeArea(edges: .bottom)
-                  } else {
-                      BentoNoSendModalView(userPrefersDarkTheme: $userPrefersDarkTheme,
-                                           shouldShowView: $userDidTapSend)
+                    } else {
+                        BentoNoSendModalView(userPrefersDarkTheme: $userPrefersDarkTheme,
+                                             shouldShowView: $userDidTapSend)
                         .cornerRadius(bentoCornerRadius)
                         .presentationDragIndicator(.hidden)
                         .presentationDetents([.height(height * 0.4)])
@@ -408,9 +430,16 @@ struct NewMainView: View {
                     Alert(title: Text(currentPrompt.title),
                           message: Text(currentPrompt.body),
                           dismissButton: .default(Text(String(localized: "Ok")),
-                                         action: { shouldShowPromptAlert = false }))
+                                                  action: { shouldShowPromptAlert = false }))
                 }
             }
+            .showEmojiPicker(showEmojiSetView: shouldShowEmojiPicker,
+                             emojiSetView:
+                                EmojiSetView(gameHubViewModel: gameHubViewModel,
+                                             viewModel: newMainViewModel,
+                                             shouldShowView: $shouldShowEmojiPicker,
+                                             userPrefersDarkTheme: $userPrefersDarkTheme)
+        )
         }
     }
 }

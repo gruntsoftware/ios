@@ -188,6 +188,20 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
     var resetSettingsDrawer: (() -> Void)?
 
+    @Published
+    var currentEmojiTriplet: EmojiTriplet = .first
+
+    @Published
+    var didSelectTriplet: Bool = false
+
+    @Published
+    var canSelect: Bool = false
+
+    @Published
+    var tripletDictionary: [Int : String] = [1 : "",
+                                            2 : "",
+                                            3  : ""]
+
     init(store: Store, walletManager: WalletManager) {
         self.store = store
         self.walletManager = walletManager
@@ -232,6 +246,14 @@ class NewMainViewModel: ObservableObject, Subscriber {
         NotificationCenter.default.removeObserver(self, name: .languageChangedNotification, object: nil)
         updateTimer?.invalidate()
         self.updateTimer = nil
+    }
+
+    func setEmojiTriplet() -> Bool {
+        guard let walletManager = self.walletManager else { return false }
+        let first = tripletDictionary[1] ?? ""
+        let second = tripletDictionary[2] ?? ""
+        let third = tripletDictionary[3] ?? ""
+        return walletManager.updateEmojiString("\(first)\(second)\(third)")
     }
 
     private func setBalances() {
@@ -416,7 +438,14 @@ class NewMainViewModel: ObservableObject, Subscriber {
             // Set Preferred Currency
             UserDefaults.userPreferredCurrencyCode = code
             store.perform(action: UserPreferredCurrency.setDefault(code))
+            debugPrint("::: CODE: userPreferredCurrencyCode")
+
+            Analytics
+                .logEvent("user_set_preferred_fiat",
+                          parameters: nil)
         }
+        debugPrint("::: CODE: out if  userPreferredCurrencyCode")
+
     }
 
     func setPinPasscode(newPasscode: String) -> Bool {

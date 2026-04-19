@@ -185,11 +185,11 @@ class NewReceiveViewModelTests: XCTestCase {
         
         // Test with a known date
         let testDate = Date(timeIntervalSince1970: 1717200000) // June 1, 2024 00:00:00 UTC
-        let formattedString = formatter.string(from: testDate)
+        let formattedString = formatter.string(from: testDate).lowercased()
         
         XCTAssertFalse(formattedString.isEmpty)
         XCTAssertTrue(formattedString.contains("2024"))
-        XCTAssertTrue(formattedString.contains("Jun"))
+        XCTAssertTrue(formattedString.contains("jun"))
     }
     
     func testDateFormatterLocale() {

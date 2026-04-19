@@ -2,8 +2,9 @@
   "configurations" : [
     {
       "id" : "AEDC2994-6395-476D-9A3C-0E69A8BE82FD",
-      "name" : "Configuration 1",
+      "name" : "Main Test Configuration",
       "options" : {
+        "areLocalizationScreenshotsEnabled" : true,
         "targetForVariableExpansion" : {
           "containerPath" : "container:brainwallet.xcodeproj",
           "identifier" : "75A2A78F1DA5934300A983D8",
@@ -21,6 +22,11 @@
           "name" : "brainwallet"
         }
       ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:brainwallet.xcodeproj",
+      "identifier" : "75A2A78F1DA5934300A983D8",
+      "name" : "brainwallet"
     }
   },
   "testTargets" : [

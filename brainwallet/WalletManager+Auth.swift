@@ -278,6 +278,44 @@ extension WalletManager: WalletAuthenticator {
         }
 	}
 
+    // returns the emoji string
+    func emojiString(pin: String) -> String? {
+        guard authenticate(pin: pin) else {
+            return nil
+        }
+
+        do {
+            let fetchedEmojiString: String? = try keychainItem(key: KeychainKey.emoji)
+            return fetchedEmojiString
+        } catch {
+            return nil
+        }
+    }
+
+    // returns the emoji string
+    func deleteEmojiString(pin: String) -> Bool {
+        guard authenticate(pin: pin) else {
+            return false
+        }
+        do {
+            try setKeychainItem(key: KeychainKey.emoji, item: "", authenticated: true)
+            return true
+
+        } catch {
+            return false
+        }
+    }
+
+    // returns the emoji count
+    func emojiStringCount() -> Int {
+        do {
+            let fetchedEmojiString: String? = try keychainItem(key: KeychainKey.emoji)
+            return fetchedEmojiString?.count ?? 0
+        } catch {
+            return -1
+        }
+    }
+
 	// recover an existing wallet using 12 word wallet recovery phrase
 	// will fail if a wallet already exists on the keychain
 	func setSeedPhrase(_ phrase: String) -> Bool {
@@ -297,6 +335,36 @@ extension WalletManager: WalletAuthenticator {
 			return true
 		} catch { return false }
 	}
+
+    // Add an emoji to the phrase
+    func updateEmojiString(_ emoji: String) -> Bool {
+        guard emoji.count != 1 else {
+            debugPrint("Error: emoji string must be 1 character long")
+            return false
+        }
+        var fetchedEmojiString: String
+
+        do {
+            let emojiString: String? = try keychainItem(key: KeychainKey.emoji)
+            fetchedEmojiString = emojiString ?? ""
+        } catch {
+            return false
+        }
+
+        fetchedEmojiString += emoji
+
+        if fetchedEmojiString.count <= 12 {
+
+            do {
+                try setKeychainItem(key: KeychainKey.emoji, item: fetchedEmojiString, authenticated: true)
+                return true
+
+            } catch {
+                return false
+            }
+        }
+        return false
+    }
 
 	// create a new wallet and return the 12 word wallet recovery phrase
 	// will fail if a wallet already exists on the keychain
@@ -369,35 +437,55 @@ extension WalletManager: WalletAuthenticator {
 	// wipe the existing wallet from the keychain
 	func wipeWallet(pin: String = "forceWipe") -> Bool {
 		guard pin == "forceWipe" || authenticate(pin: pin) else { return false }
-
-		do {
-			lazyWallet = nil
-			lazyPeerManager = nil
-			if db != nil { sqlite3_close(db) }
-			db = nil
-			masterPubKey = BRMasterPubKey()
-			didInitWallet = false
-			earliestKeyTime = 0
-			if let bundleId = Bundle.main.bundleIdentifier {
-				UserDefaults.standard.removePersistentDomain(forName: bundleId)
-			}
-			try BWAPIClient(authenticator: self).kv?.rmdb()
-			try? FileManager.default.removeItem(atPath: dbPath)
-			try? FileManager.default.removeItem(at: BRReplicatedKVStore.dbPath)
-			try setKeychainItem(key: KeychainKey.apiAuthKey, item: nil as Data?)
-			try setKeychainItem(key: KeychainKey.spendLimit, item: nil as Int64?)
-			try setKeychainItem(key: KeychainKey.creationTime, item: nil as Data?)
-			try setKeychainItem(key: KeychainKey.pinFailTime, item: nil as Int64?)
-			try setKeychainItem(key: KeychainKey.pinFailCount, item: nil as Int64?)
-			try setKeychainItem(key: KeychainKey.pin, item: nil as String?)
-			try setKeychainItem(key: KeychainKey.masterPubKey, item: nil as Data?)
-			try setKeychainItem(key: KeychainKey.seed, item: nil as Data?)
-			try setKeychainItem(key: KeychainKey.mnemonic, item: nil as String?, authenticated: true)
-			return true
-		} catch {
-			debugPrint(":::Wipe wallet error: \(error)")
-			return false
-		}
+ 
+        // Disconnect PeerManager to keep from thread
+        peerManager?.disconnect()
+        lazyPeerManager = nil
+        lazyWallet = nil
+        
+        // Clear the DB
+        if db != nil { sqlite3_close(db) }
+        db = nil
+        
+        // Clear the MasterPK
+        masterPubKey = BRMasterPubKey()
+        didInitWallet = false
+        earliestKeyTime = 0
+        
+        // Clear the device bundle
+        if let bundleId = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: bundleId)
+        }
+         
+        // KV store — guard against nil authKey (the crash site)
+        do {
+            if let kv = try? BWAPIClient(authenticator: self).kv {
+                try kv.rmdb()
+            }
+        } catch let error {
+            debugPrint(":::Wipe wallet KV Store error: \(error)")
+            return false
+        }
+        
+        // File manager clear
+        try? FileManager.default.removeItem(atPath: dbPath)
+        try? FileManager.default.removeItem(at: BRReplicatedKVStore.dbPath)
+        
+        do {
+            try setKeychainItem(key: KeychainKey.apiAuthKey, item: nil as Data?)
+            try setKeychainItem(key: KeychainKey.spendLimit, item: nil as Int64?)
+            try setKeychainItem(key: KeychainKey.creationTime, item: nil as Data?)
+            try setKeychainItem(key: KeychainKey.pinFailTime, item: nil as Int64?)
+            try setKeychainItem(key: KeychainKey.pinFailCount, item: nil as Int64?)
+            try setKeychainItem(key: KeychainKey.pin, item: nil as String?)
+            try setKeychainItem(key: KeychainKey.masterPubKey, item: nil as Data?)
+            try setKeychainItem(key: KeychainKey.seed, item: nil as Data?)
+            try setKeychainItem(key: KeychainKey.mnemonic, item: nil as String?, authenticated: true)
+            return true
+        } catch {
+            debugPrint(":::Wipe wallet error: \(error)")
+            return false
+        }
 	}
 
 	func deleteWalletDatabase(pin: String = "forceWipe") -> Bool {
@@ -477,6 +565,7 @@ extension WalletManager: WalletAuthenticator {
 		public static let apiAuthKey = "authprivkey"
 		public static let userAccount = "https://api.grunt.ltd"
 		public static let seed = "seed" // deprecated
+        public static let emoji = "emoji"
 	}
 
 	private struct DefaultsKey {
