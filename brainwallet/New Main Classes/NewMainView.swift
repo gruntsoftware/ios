@@ -91,6 +91,8 @@ struct NewMainView: View {
     
     private let socialsURL = URL(string: BrainwalletSocials.linktree)!
 
+    private let bitrefillURL = URL(string: BrainwalletShop.bitrefillCode)!
+
     init(viewModel: NewMainViewModel,
          receiveViewModel: NewReceiveViewModel) {
         newMainViewModel = viewModel
@@ -179,11 +181,11 @@ struct NewMainView: View {
                                             .padding(bentoPadding)
                                             .accessibilityIdentifier("ltcPriceBentoView")
                                             
-                                            FavouritesBentoView(viewModel: newMainViewModel,
+                                            ShopBentoView(viewModel: newMainViewModel,
                                                                 userPrefersDarkTheme: $userPrefersDarkTheme)
                                             .frame(maxHeight: heightPadded * 0.3)
                                             .padding(bentoPadding)
-                                            .accessibilityIdentifier("favouritesBentoView")
+                                            .accessibilityIdentifier("shopBentoView")
                                         }
                                     }
                                     .padding(bentoPadding)
@@ -436,6 +438,13 @@ struct NewMainView: View {
                 }
                 .sheet(isPresented: $newMainViewModel.shouldShowSocials) {
                     WebView(url: socialsURL, scrollToSignup: .constant(false))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .cornerRadius(8.0)
+                        .padding(.top, 12.0)
+                        .padding(8.0)
+                }
+                .sheet(isPresented: $newMainViewModel.shouldShowShop) {
+                    WebView(url: bitrefillURL, scrollToSignup: .constant(false))
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .cornerRadius(8.0)
                         .padding(.top, 12.0)

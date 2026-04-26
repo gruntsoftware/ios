@@ -52,7 +52,10 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
     @Published
     var shouldShowGameMode: Bool = false
-
+     
+    @Published
+    var shouldShowShop: Bool = false
+     
     @Published
     var seedPhrase: [SeedWord] = []
 

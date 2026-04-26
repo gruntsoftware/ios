@@ -29,6 +29,13 @@ struct BrainwalletSocials {
     static let linktree = "https://linktr.ee/brainwallet"
 }
 
+struct BrainwalletShop {
+    static let bitrefillCode = "https://www.bitrefill.com/?ref=bAshL935"
+    static let bitrefillCom = "https://bitrefill.com"
+
+}
+
+
 let explorerURLs = ["https://blockexplorer.one/litecoin/mainnet/tx/",
                     "https://litecoinspace.org/tx/",
                     "https://blockchair.com/litecoin/transaction/"]

@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework",
       "state" : {
-        "revision" : "d23b242b28c663618bce5fe9e2f3adb85b32bfb3",
-        "version" : "6.17.9"
+        "revision" : "a5ec9fcd848421a5bd08287e891fb103ecc65907",
+        "version" : "6.18.0"
       }
     },
     {
@@ -87,8 +87,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/gtm-session-fetcher.git",
       "state" : {
-        "revision" : "a883ddb9fd464216133a5ab441f1ae8995978573",
-        "version" : "5.1.0"
+        "revision" : "0be208810d2e8b90fcd2464d1816723b47819fe7",
+        "version" : "5.2.0"
       }
     },
     {
@@ -141,8 +141,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
       "state" : {
-        "revision" : "a008af1a102ff3dd6cc3764bb69bf63226d0f5f6",
-        "version" : "1.36.1"
+        "revision" : "81558271e243f8f47dfe8e9fdd55f3c2b5413f68",
+        "version" : "1.37.0"
       }
     }
   ],

@@ -227,3 +227,45 @@ struct StaticBackgroundView: View {
         }
     }
 }
+
+struct ShopBackgroundView: View {
+    
+    @Binding
+    var userPrefersDarkTheme: Bool
+    var imageName: String = "shop_background_01"
+    
+    var body: some View {
+        
+        GeometryReader { geometry in
+            
+            let width = geometry.size.width
+            ZStack {
+                Group {
+                    RoundedRectangle(cornerRadius: bentoCornerRadius)
+                        .fill(LinearGradient(
+                            colors: [BentoColor.purple4,
+                                     BentoColor.purple3],
+                            startPoint: .bottom,
+                            endPoint: .top
+                        ))
+                        .edgesIgnoringSafeArea(.all)
+                    GeometryReader { geometry in
+                        Image(imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: geometry.size.width,
+                                   height: geometry.size.height)
+                            .clipped()
+
+                    }
+                    RoundedRectangle(cornerRadius: bentoCornerRadius)
+                        .stroke(.white.opacity(0.2),
+                                lineWidth:  1.0)
+                }
+                .opacity(userPrefersDarkTheme ? 1.0 : 0.0)
+            }
+        }
+    }
+}
+
+
