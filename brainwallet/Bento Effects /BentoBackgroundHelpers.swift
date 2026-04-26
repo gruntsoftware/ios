@@ -26,12 +26,14 @@ import UIKit
      var maskGradientStops: [Color] {
          switch self {
          case .darkStyle:
-             return [.black,.black,.black,.black,.clear]
+             return [BrainwalletColor.midnight, BentoColor.purple3, BentoColor.purple4,.black]
          case .lightStyle:
              return [.black,.black,.clear,.clear,.clear]
          }
      }
  }
+
+
 
 struct BentoSurface: ViewModifier {
 
@@ -176,6 +178,46 @@ struct GameBackgroundView: View {
                         .resizable()
                         .opacity(0.7)
                         .frame(width: width, height: height)
+                    RoundedRectangle(cornerRadius: bentoCornerRadius)
+                        .stroke(BentoColor.grayBorder,
+                                lineWidth:  1.5)
+                }
+                .opacity(userPrefersDarkTheme ? 0.0 : 1.0)
+            }
+        }
+    }
+}
+
+struct StaticBackgroundView: View {
+    
+    @Binding
+    var userPrefersDarkTheme: Bool
+    var imageName: String = "game-hub-stars"
+     
+    var body: some View {
+        
+        GeometryReader { geometry in
+            
+            let width = geometry.size.width
+            ZStack {
+                Group {
+                    RoundedRectangle(cornerRadius: bentoCornerRadius)
+                        .fill(LinearGradient(
+                            colors: [BentoColor.purple4,
+                                     BentoColor.purple3],
+                            startPoint: .bottom,
+                            endPoint: .top
+                        ))
+                        .edgesIgnoringSafeArea(.all)
+                    GeometryReader { geometry in
+                        Image(imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .offset(y: -5)
+                            .frame(width: geometry.size.width,
+                                   height: geometry.size.height)
+                            .clipped()
+                    }
                     RoundedRectangle(cornerRadius: bentoCornerRadius)
                         .stroke(BentoColor.grayBorder,
                                 lineWidth:  1.5)

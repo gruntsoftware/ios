@@ -85,6 +85,7 @@ struct TransactionHistoryBentoView: View {
                                 }
                                 .scrollTargetLayout()
                             }
+                            .frame(height: detailIsShowing ? transactionsBentoHeight * 2 : transactionsBentoHeight, alignment: .leading)
                             .scrollTargetBehavior(.viewAligned)
 
                     .opacity(filteredTransactions.isEmpty ? 0 : 1)

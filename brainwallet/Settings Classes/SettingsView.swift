@@ -53,7 +53,7 @@ struct SettingsView: View {
 
     private let supportURL = URL(string: "https://brainwallet.co/support")!
 
-    private let socialsURL = URL(string: "https://linktr.ee/brainwallet")!
+    private let socialsURL = URL(string: BrainwalletSocials.linktree)!
 
     init(viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.newMainViewModel = viewModel
