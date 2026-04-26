@@ -46,7 +46,7 @@ struct GiftCardsView: View {
                                            gradient: BrainwalletGradient.orangeCard,
                                            rotationAngle: 20.0)
                         .frame(width: 100, height: 63.05)
-                        .offset(x: shouldAnimate ? 30 :  105, y: 2.0)
+                        .offset(x: shouldAnimate ? 30 :  105, y: -2.0)
                         .onAppear {
                             withAnimation(.easeInOut(duration: 1.0)) {
                                 shouldAnimate = true
