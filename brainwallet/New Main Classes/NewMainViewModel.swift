@@ -91,6 +91,12 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
     @Published
     var shouldShowSettings = false
+    
+    @Published
+    var shouldShowSocials = false
+    
+    @Published
+    var shouldShowBuyReceive = false
 
     @Published
     var walletBalanceFiat = ""

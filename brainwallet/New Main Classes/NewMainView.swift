@@ -52,7 +52,7 @@ struct NewMainView: View {
 
     @State
     private var shouldShowGameMode: Bool = false
-
+  
     @State
     private var shouldShowPromptAlert: Bool = false
 
@@ -88,6 +88,8 @@ struct NewMainView: View {
     private var userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    private let socialsURL = URL(string: BrainwalletSocials.linktree)!
 
     init(viewModel: NewMainViewModel,
          receiveViewModel: NewReceiveViewModel) {
@@ -122,9 +124,8 @@ struct NewMainView: View {
                 ZStack(alignment: .bottom) {
 
                     if userPrefersDarkTheme {
-                            GridWaveContentView(renderWidth: width, renderHeight: height, userPrefersDarkTheme: $userPrefersDarkTheme)
-                                .mask(LinearGradient(gradient: Gradient(colors: mainGradientStyle.maskGradientStops),
-                                                     startPoint: .top, endPoint: .bottom))
+                            LinearGradient(gradient: Gradient(colors: mainGradientStyle.maskGradientStops),
+                                                     startPoint: .top, endPoint: .bottom)
                                 .edgesIgnoringSafeArea(.all)
                                 .offset(x: 0, y: -20)
                                 .transition(.opacity)
@@ -167,31 +168,32 @@ struct NewMainView: View {
                                     .frame(maxHeight: midBentoHeight * 0.9, alignment: .top)
                                     .padding(bentoPadding)
                                     .accessibilityIdentifier("tutorialsBentoView")
+                                    
+                                    GeometryReader { geo in
 
-                                    VStack {
-                                        LTCPriceBentoView(viewModel: newMainViewModel,
-                                                          userPrefersDarkTheme: $userPrefersDarkTheme
-                                        )
-                                        .frame(maxHeight: midBentoHeight * 0.78)
-                                        .padding(bentoPadding)
-                                        .accessibilityIdentifier("ltcPriceBentoView")
-
-                                        FavouritesBentoView(viewModel: newMainViewModel,
-                                                            userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .frame(maxHeight: midBentoHeight * 0.12)
-                                        .padding(bentoPadding)
-                                        .accessibilityIdentifier("favouritesBentoView")
+                                        let heightPadded = geo.size.height
+                                        VStack(spacing: bentoPadding) {
+                                            LTCPriceBentoView(viewModel: newMainViewModel,
+                                                              userPrefersDarkTheme: $userPrefersDarkTheme)
+                                            .frame(maxHeight: heightPadded * 0.7)
+                                            .padding(bentoPadding)
+                                            .accessibilityIdentifier("ltcPriceBentoView")
+                                            
+                                            FavouritesBentoView(viewModel: newMainViewModel,
+                                                                userPrefersDarkTheme: $userPrefersDarkTheme)
+                                            .frame(maxHeight: heightPadded * 0.3)
+                                            .padding(bentoPadding)
+                                            .accessibilityIdentifier("favouritesBentoView")
+                                        }
                                     }
+                                    .padding(bentoPadding)
                                 }
                                 .frame(maxHeight: height * 0.5, alignment: .top)
-                                .padding([.top,.leading, .trailing], bentoPadding)
-                                GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
+                                
+                                GameHubCarouselBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                                     .frame(idealHeight: balanceBentoHeight * 0.9, maxHeight: balanceBentoHeight, alignment: .top)
                                     .padding(bentoPadding)
-                                    .accessibilityIdentifier("gameHubBentoView")
-                                    .onTapGesture {
-                                        newMainViewModel.shouldShowGameMode.toggle()
-                                    }
+                                    .accessibilityIdentifier("gameHubCarouselBentoView")
                             }
                             .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 0.0 : 1.0, anchor: .bottom)
                             .transition(.scale)
@@ -425,6 +427,24 @@ struct NewMainView: View {
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
+                }
+                .sheet(isPresented: $newMainViewModel.shouldShowBuyReceive) {
+                    BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
+                        .cornerRadius(bentoCornerRadius)
+                        .presentationDetents([.large])
+                        .presentationDragIndicator(.visible)
+                }
+                .sheet(isPresented: $newMainViewModel.shouldShowSocials) {
+                    WebView(url: socialsURL, scrollToSignup: .constant(false))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .cornerRadius(8.0)
+                        .padding(.top, 12.0)
+                        .padding(8.0)
+                }
+                .sheet(isPresented: $newMainViewModel.shouldShowGameMode) {
+                    GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme, selectedStep: .constant(0))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .accessibilityIdentifier("gameHubBentoView")
                 }
                 .alert(isPresented: $shouldShowPromptAlert) {
                     Alert(title: Text(currentPrompt.title),
