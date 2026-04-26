@@ -7250,6 +7250,9 @@
         }
       }
     },
+    "Click and follow us!" : {
+
+    },
     "Complete" : {
       "localizations" : {
         "ar" : {
@@ -32742,6 +32745,9 @@
         }
       }
     },
+    "Top up in 5 minutes with our partner" : {
+
+    },
     "TOP UP NOW!" : {
       "localizations" : {
         "ar" : {
@@ -36311,9 +36317,6 @@
           }
         }
       }
-    },
-    "You have no Litecoin. Tap Get/Recieve. Get LTC in 5 minutes with MoonPay!" : {
-
     },
     "You have some LTC? Change your local fiat to figure out how much you can send. Or, calculate in LTC. Go to settings to adjust your preferred network fee" : {
       "comment" : "Description for the second step of the send flow.",

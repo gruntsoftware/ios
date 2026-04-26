@@ -36,7 +36,7 @@ struct FavouritesBentoView: View {
             let width = geometry.size.width
             let height = geometry.size.height
 
-            let favoriteTileSize: CGFloat = height * 0.4
+            let favoriteTileSize: CGFloat = height * 0.2
 
             let labelBackground =  userPrefersDarkTheme ? BrainwalletColor.content.opacity(0.1) :
             BentoColor.tutorialGreen1

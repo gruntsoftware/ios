@@ -394,6 +394,9 @@
 		C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */ = {isa = PBXBuildFile; fileRef = C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */; };
 		C3236A012D7DE355007039A1 /* URLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3236A002D7DE34D007039A1 /* URLController.swift */; };
 		C35C122A293D48340009022D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1229293D48340009022D /* KeychainAccess */; };
+		C3FACF6C2F9E023700886FAD /* GameHubCarouselBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */; };
+		C3FACF6E2F9E025300886FAD /* MoonPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6D2F9E025300886FAD /* MoonPayView.swift */; };
+		C3FACF702F9E026500886FAD /* SocialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6F2F9E026500886FAD /* SocialsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -979,6 +982,9 @@
 		C312D2C92D7DC27700BB97A4 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletManager+Auth.swift"; sourceTree = "<group>"; };
 		C3236A002D7DE34D007039A1 /* URLController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLController.swift; sourceTree = "<group>"; };
+		C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHubCarouselBentoView.swift; sourceTree = "<group>"; };
+		C3FACF6D2F9E025300886FAD /* MoonPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPayView.swift; sourceTree = "<group>"; };
+		C3FACF6F2F9E026500886FAD /* SocialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -1334,10 +1340,10 @@
 		247A7D022E950443000DF8C0 /* Bento Views */ = {
 			isa = PBXGroup;
 			children = (
+				C3FACF652F9E021900886FAD /* Game Hub Bentos */,
 				24289A3F2EB0D3E600F0F11F /* Transaction Bentos */,
 				24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */,
 				247A7D062E951653000DF8C0 /* BalanceBentoView.swift */,
-				247A7D122E952864000DF8C0 /* GameHubBentoView.swift */,
 				247A7D0C2E951CD7000DF8C0 /* TutorialsBentoView.swift */,
 				247A7D0E2E951D10000DF8C0 /* LTCPriceBentoView.swift */,
 				247A7D102E951D3F000DF8C0 /* FavouritesBentoView.swift */,
@@ -2116,6 +2122,17 @@
 			path = brainwallet;
 			sourceTree = "<group>";
 		};
+		C3FACF652F9E021900886FAD /* Game Hub Bentos */ = {
+			isa = PBXGroup;
+			children = (
+				247A7D122E952864000DF8C0 /* GameHubBentoView.swift */,
+				C3FACF6D2F9E025300886FAD /* MoonPayView.swift */,
+				C3FACF6F2F9E026500886FAD /* SocialsView.swift */,
+				C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */,
+			);
+			path = "Game Hub Bentos";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
@@ -2701,6 +2718,7 @@
 				C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */,
 				2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */,
 				240850F62F40E3A30097706A /* BackgroundRectangle.swift in Sources */,
+				C3FACF6E2F9E025300886FAD /* MoonPayView.swift in Sources */,
 				24691D142EAE4D30003CDC7C /* SyncSubBentoView.swift in Sources */,
 				2416CE6B2DA90D0D00FFBD10 /* BRSocketHelpers.c in Sources */,
 				2416CE6C2DA90D0D00FFBD10 /* BWAPIClient.swift in Sources */,
@@ -2734,6 +2752,7 @@
 				24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */,
 				243136FD2E0B251D00BCBED1 /* SettingsActionToggleView.swift in Sources */,
 				C312D3762D7DC27700BB97A4 /* AddressFieldView.swift in Sources */,
+				C3FACF702F9E026500886FAD /* SocialsView.swift in Sources */,
 				C312D3772D7DC27700BB97A4 /* UserDefaults+Additions.swift in Sources */,
 				C312D3782D7DC27700BB97A4 /* PinTransitioningDelegate.swift in Sources */,
 				244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */,
@@ -2765,6 +2784,7 @@
 				241B7CDF2E68CA3F00B18679 /* ExportButtonViewModel.swift in Sources */,
 				C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */,
 				24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */,
+				C3FACF6C2F9E023700886FAD /* GameHubCarouselBentoView.swift in Sources */,
 				242C43F32F253A3E00CF6EA4 /* TutorialWalkthroughBentoView.swift in Sources */,
 				C312D3B52D7DC27700BB97A4 /* UpdatePinViewController.swift in Sources */,
 				C312D3B62D7DC27700BB97A4 /* PaymentProtocol.swift in Sources */,
