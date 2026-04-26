@@ -65,6 +65,8 @@ struct MoonPayView: View {
             }
             .cornerRadius(bentoCornerRadius)
             .frame(minHeight: gameBentoHeight * 0.9, idealHeight: gameBentoHeight * 1.4, maxHeight: gameBentoHeight * 2, alignment: .center)
+            .frame(maxWidth: .infinity, alignment: .init(horizontal: .center, vertical: .center))
+
         }
     }
 }

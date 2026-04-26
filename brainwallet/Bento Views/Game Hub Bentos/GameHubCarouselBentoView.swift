@@ -45,20 +45,19 @@ struct GameHubCarouselBentoView: View {
                         GameHubBentoView(viewModel: newMainViewModel,
                                          userPrefersDarkTheme: $userPrefersDarkTheme,
                                          selectedStep: $selectedStep)
-                        .padding(.horizontal, 4)
                         .tag(0)
                         MoonPayView(viewModel: newMainViewModel,
                                     selectedStep: $selectedStep)
-                        .padding(.horizontal, 4)
                         .tag(1)
                         SocialsBentoView(viewModel: newMainViewModel,
                                          selectedStep: $selectedStep)
-                        .padding(.horizontal, 4)
                         .tag(2)
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))
-                     
+
                 }
+                .frame(maxWidth: .infinity, alignment: .init(horizontal: .center, vertical: .center))
+
             }
             .cornerRadius(bentoCornerRadius)
             .frame(minHeight: gameBentoHeight * 0.9, idealHeight: gameBentoHeight * 1.4, maxHeight: gameBentoHeight * 2, alignment: .center)

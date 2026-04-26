@@ -178,6 +178,7 @@ struct NewMainView: View {
                                             .frame(maxHeight: heightPadded * 0.7)
                                             .padding(bentoPadding)
                                             .accessibilityIdentifier("ltcPriceBentoView")
+                                            
                                             FavouritesBentoView(viewModel: newMainViewModel,
                                                                 userPrefersDarkTheme: $userPrefersDarkTheme)
                                             .frame(maxHeight: heightPadded * 0.3)
