@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "2610"
+   LastUpgradeVersion = "2640"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES"
-      buildArchitectures = "All">
+      buildArchitectures = "Automatic">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -28,63 +28,20 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      enableASanStackUseAfterReturn = "YES"
-      codeCoverageEnabled = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "YES"
-      localizableStringsDataGatheringEnabled = "YES">
-      <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
-      </AdditionalOptions>
-      <CodeCoverageTargets>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "75A2A78F1DA5934300A983D8"
-            BuildableName = "Brainwallet.app"
-            BlueprintName = "brainwallet"
-            ReferencedContainer = "container:brainwallet.xcodeproj">
-         </BuildableReference>
-      </CodeCoverageTargets>
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "24295E3A2E341F1C00A76776"
-               BuildableName = "BrainwalletUnitTests.xctest"
-               BlueprintName = "BrainwalletUnitTests"
-               ReferencedContainer = "container:brainwallet.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "24295E9A2E3428CA00A76776"
-               BuildableName = "BrainwalletUITests.xctest"
-               BlueprintName = "BrainwalletUITests"
-               ReferencedContainer = "container:brainwallet.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
+      shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "en"
-      region = "US"
+      language = "nl"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      queueDebuggingEnableBacktraceRecording = "Yes">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
@@ -95,19 +52,6 @@
             ReferencedContainer = "container:brainwallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-FIRDebugEnabled"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
-      <LocationScenarioReference
-         identifier = "San Francisco, CA, USA"
-         referenceType = "1">
-      </LocationScenarioReference>
-      <StoreKitConfigurationFileReference
-         identifier = "../Private/general-purpose/BrainwalletiOSPrivateGeneralPurpose/brainwallet-private-general-purpose.storekit">
-      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

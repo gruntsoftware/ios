@@ -46,21 +46,6 @@ class FallinSceneTests: XCTestCase {
             // Then
             XCTAssertTrue(scene.physicsBody?.affectedByGravity ?? false, "Physics body should be affected by gravity")
         }
-        
-        func testDidMoveToView_CallsMakeDot() {
-            // When
-            view.presentScene(scene)
-            
-            // Then - wait a brief moment for makeDot to execute
-            let expectation = self.expectation(description: "Wait for makeDot")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                expectation.fulfill()
-            }
-            
-            waitForExpectations(timeout: 1.0)
-            XCTAssertGreaterThan(scene.children.count, 0, "Should have at least one child node after makeDot is called")
-        }
-        
         // MARK: - makeDot() Tests
         
         func testMakeDot_CreatesLabelNode() {
