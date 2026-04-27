@@ -40,34 +40,46 @@ struct TransactionRowView: View {
 
             ZStack {
                 BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme).edgesIgnoringSafeArea(.all)
-                VStack {
-                    Spacer()
+                
+                // DEV: Spacer for next release
+                //                HStack  {
+                //
+                //                Spacer()
+                //                    Text("20%")
+                //                        .modifier(BWIPSRegular(size: 10.0))
+                //                        .frame(alignment: .trailing)
+                //                        .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
+                //
+                //                    ConfirmationStatus(numberOfConfs: 6)
+                //                        .frame(width: 20, height: 20)
+                //                        .padding(.trailing, 16)
+                //                }
+                VStack(alignment: .trailing) {
                     HStack {
                         Text(transaction.longTimestamp)
-                            .modifier(BWIPSRegular(size: 19.0))
+                            .modifier(BWIPSRegular(size: 17.0))
                             .frame(maxWidth: width * 0.5, alignment: .leading)
                             .foregroundStyle( userPrefersDarkTheme ? .white: BrainwalletColor.nearBlack.opacity(0.8))
 
                         Spacer()
                         Text(amountLabel)
-                            .modifier(BWIPSBold(size: 22.0))
+                            .modifier(BWIPSSemiBold(size: 17.0))
                             .frame(maxWidth: width * 0.5, alignment: .trailing)
                             .foregroundColor(transaction.direction == .sent ? BrainwalletColor.transferRed : BrainwalletColor.affirm)
                     }
                     .padding([.leading, .trailing], 16)
-
+                    .padding(.top, 3)
                     Spacer()
-
                     HStack {
                         Spacer()
                         Text(transaction.detailsAddressText)
-                            .modifier(BWIPSThin(size: 15.0))
+                            .modifier(BWIPSThin(size: 14.0))
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .foregroundStyle( userPrefersDarkTheme ? .white.opacity(0.8): BrainwalletColor.nearBlack.opacity(0.8))
 
                     }
                     .padding([.leading, .trailing], 16)
-                    Spacer()
+                    .padding(.bottom, 3)
                 }
             }
         }
