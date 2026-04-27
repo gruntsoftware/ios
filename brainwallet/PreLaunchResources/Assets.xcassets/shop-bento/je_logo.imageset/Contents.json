@@ -9,7 +9,11 @@
       "scale" : "2x"
     },
     {
+<<<<<<<< HEAD:brainwallet/PreLaunchResources/Assets.xcassets/shop-bento/je_logo.imageset/Contents.json
       "filename" : "je.png",
+========
+      "filename" : "receive-art.png",
+>>>>>>>> main:brainwallet/PreLaunchResources/Assets.xcassets/tutorial-artwork/tutorial-receive-art.imageset/Contents.json
       "idiom" : "universal",
       "scale" : "3x"
     }
