@@ -394,6 +394,7 @@
 		C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */ = {isa = PBXBuildFile; fileRef = C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */; };
 		C3236A012D7DE355007039A1 /* URLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3236A002D7DE34D007039A1 /* URLController.swift */; };
 		C35C122A293D48340009022D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1229293D48340009022D /* KeychainAccess */; };
+		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
 		C3E18A9F2F9E657000966C74 /* GiftCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18A9E2F9E656600966C74 /* GiftCardsView.swift */; };
 		C3E18AA12F9EC22000966C74 /* ConfirmationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */; };
 		C3FACF6C2F9E023700886FAD /* GameHubCarouselBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */; };
@@ -984,6 +985,7 @@
 		C312D2C92D7DC27700BB97A4 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletManager+Auth.swift"; sourceTree = "<group>"; };
 		C3236A002D7DE34D007039A1 /* URLController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLController.swift; sourceTree = "<group>"; };
+		C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupAskView.swift; sourceTree = "<group>"; };
 		C3E18A9E2F9E656600966C74 /* GiftCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardsView.swift; sourceTree = "<group>"; };
 		C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationStatus.swift; sourceTree = "<group>"; };
 		C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHubCarouselBentoView.swift; sourceTree = "<group>"; };
@@ -1013,11 +1015,6 @@
 		24295E9C2E3428CA00A76776 /* BrainwalletUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BrainwalletUITests;
-			sourceTree = "<group>";
-		};
-		C323CB5C2F9FBE300051DF6F /* Signup Notification Classes */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Signup Notification Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -1969,7 +1966,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
-				C323CB5C2F9FBE300051DF6F /* Signup Notification Classes */,
+				C3C95F702FA1498E002E2BEE /* Signup Notification Classes */,
 				246C3F4F2F2430DF009BC881 /* Tutorial Classes */,
 				24E6675F2F167A4B00909157 /* New Send Classes */,
 				247A838B2EA00CEB00B5DFD8 /* Bento Effects  */,
@@ -2133,6 +2130,14 @@
 			path = brainwallet;
 			sourceTree = "<group>";
 		};
+		C3C95F702FA1498E002E2BEE /* Signup Notification Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */,
+			);
+			path = "Signup Notification Classes";
+			sourceTree = "<group>";
+		};
 		C3E18A982F9E5E7300966C74 /* Shop Bentos */ = {
 			isa = PBXGroup;
 			children = (
@@ -2254,9 +2259,6 @@
 			);
 			dependencies = (
 				24618EE82D90397E00A878AC /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				C323CB5C2F9FBE300051DF6F /* Signup Notification Classes */,
 			);
 			name = brainwallet;
 			packageProductDependencies = (
@@ -2650,6 +2652,7 @@
 				C312D2D32D7DC27700BB97A4 /* ExchangeUpdater.swift in Sources */,
 				C312D2D42D7DC27700BB97A4 /* Currency.swift in Sources */,
 				24126E062ECA741200F9A4BE /* ScanOverlayView.swift in Sources */,
+				C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */,
 				2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */,
 				C312D2D62D7DC27700BB97A4 /* RecoverWalletView.swift in Sources */,
 				C312D2D72D7DC27700BB97A4 /* Date+Additions.swift in Sources */,
@@ -3199,7 +3202,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602278;
+				CURRENT_PROJECT_VERSION = 2602279;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3391,7 +3394,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602278;
+				CURRENT_PROJECT_VERSION = 2602279;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
