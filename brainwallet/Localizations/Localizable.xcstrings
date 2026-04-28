@@ -27285,6 +27285,136 @@
         }
       }
     },
+    "Sign up to updates, news and contests!\n\nPlease give us permission for our occasional push notifications.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اشترك للحصول على التحديثات والأخبار والمسابقات!\n\nيرجى منحنا الإذن لإرسال إشعارات فورية عرضية."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Melden Sie sich für Updates, Nachrichten und Wettbewerbe an!\n\nBitte geben Sie uns die Berechtigung für gelegentliche Push-Benachrichtigungen."
+          }
+        },
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Suscríbete a actualizaciones, noticias y concursos!\n\nPor favor, autorízanos para enviar notificaciones push ocasionales."
+          }
+        },
+        "fa-IR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در خبرنامه، اخبار و مسابقات ما ثبت‌نام کنید!\n\nلطفاً اجازه دهید که اطلاعات فوری را برای شما ارسال کنیم."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inscrivez-vous pour recevoir les mises à jour, actualités et concours !\n\nVeuillez nous autoriser à vous envoyer nos notifications push occasionnelles."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अपडेट, समाचार और प्रतियोगिताओं के लिए साइन अप करें!\n\nकृपया हमें अपनी कभी-कभार पुश सूचनाओं की अनुमति दें।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daftar untuk update, berita, dan kontes!\n\nMohon izinkan notifikasi push kami sesekali."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iscriviti per ricevere aggiornamenti, notizie e partecipare ai contest!\n\nPer favore, concedici il permesso per le nostre notifiche push occasionali."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アップデート、ニュース、コンテストに登録しましょう！\n\n時々のプッシュ通知を許可してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "업데이트, 뉴스 및 이벤트에 가입하세요!\n\n가끔 받는 푸시 알림을 허용해 주세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meld je aan voor updates, nieuws en wedstrijden!\n\nGraag willen we je toestemming voor onze occasionele pushberichten."
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਅਪਡੇਟਸ, ਖਬਰਾਂ ਅਤੇ ਮੁਕਾਬਲਿਆਂ ਲਈ ਸਾਈਨ ਅੱਪ ਕਰੋ!\n\nਕਿਰਪਾ ਕਰਕੇ ਸਾਨੂੰ ਆਪਣੀ ਕਦੇ-ਕਦਾਈਂ ਪੁਸ਼ ਸੂਚਨਾਵਾਂ ਲਈ ਅਨੁਮਤੀ ਦਿਓ।"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zarejestruj się, aby otrzymywać aktualizacje, wiadomości i brać udział w konkursach!\n\nProszę udziel nam zezwolenia na okazjonalne powiadomienia push."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inscreva-se para receber atualizações, notícias e promoções!\n\nPermita que enviemos notificações ocasionais para você."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подпишитесь на обновления, новости и конкурсы!\n\nПожалуйста, разрешите нам отправлять вам уведомления время от времени."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Registrera dig för uppdateringar, nyheter och tävlingar!\n\nTillåt oss att skicka push-meddelanden då och då."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลงทะเบียนเพื่อรับข่าวสาร ข้อมูลข่าว และการประกวด!\n\nโปรดอนุญาตให้เราส่งการแจ้งเตือนแบบพุช (push notification) เป็นครั้งคราว"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncellemelere, haberlere ve yarışmalara kaydol!\n\nLütfen ara sıra gönderilecek bildirimler için bize izin ver."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Підпишіться на оновлення, новини та конкурси!\n\nБудь ласка, надайте нам дозвіл на нечасті push-повідомлення."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "订阅更新、新闻和竞赛！\n\n请允许我们发送偶尔的推送通知。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "訂閱更新、新聞和活動！\n\n請允許我們偶爾發送推播通知。"
+          }
+        }
+      }
+    },
     "Social": {
       "localizations": {
         "ar": {
@@ -36175,6 +36305,136 @@
           "stringUnit": {
             "state": "translated",
             "value": "單字"
+          }
+        }
+      }
+    },
+    "Yes!  Send me updates!": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نعم! أرسل لي التحديثات!"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ja! Senden Sie mir Updates!"
+          }
+        },
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Sí! ¡Envíame actualizaciones!"
+          }
+        },
+        "fa-IR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بله! اطلاعات را برای من ارسال کنید!"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oui ! Envoyez-moi les mises à jour !"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हाँ! मुझे अपडेट भेजें!"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ya! Kirimkan update kepada saya!"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sì! Inviami gli aggiornamenti!"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "はい！アップデートを送ってください！"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "예!  업데이트를 보내주세요!"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ja! Stuur me updates!"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਹਾਂ! ਮੈਨੂੰ ਅਪਡੇਟਸ ਭੇਜੋ!"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tak! Wyślij mi aktualizacje!"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sim! Envie-me atualizações!"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Да! Отправляйте мне обновления!"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ja! Skicka mig uppdateringar!"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ใช่! ส่งข้อมูลข่าวสารให้ฉัน!"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evet! Bana güncellemeleri gönder!"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Так! Надсилайте мені оновлення!"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "好的！发送更新给我！"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "好的！傳送更新給我！"
           }
         }
       }

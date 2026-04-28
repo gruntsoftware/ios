@@ -53,9 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         // Firebase Remote Config
         self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
         
-        // FCM
-        launchFCMessaging(application: application)
-        
 
         // Wipe restart
         // Register for system notifications
@@ -86,7 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
         UIView.swizzleSetFrame()
         self.applicationController.launch(application: UIApplication.shared, window: thisWindow)
-
         return true
 	}
 
@@ -215,7 +211,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     options.bundleID = Bundle.main.bundleIdentifier ?? "co.brainwallet.test"
     FirebaseApp.configure(options: options)
     Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
-}
+        }
     }
 
 	/// On Demand Resources
@@ -268,16 +264,17 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler()
     }
 
-    func launchFCMessaging(application: UIApplication) {
+    func launchFCMessaging(completion: @escaping (Bool) -> Void) {
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             if granted {
                 DispatchQueue.main.async {
-                    application.registerForRemoteNotifications()
+                    UIApplication.shared.registerForRemoteNotifications()
+                    completion(true)
                 }
             }
-
+            completion(false)
             if error != nil {
                 Analytics
                     .logEvent("fcm_messaging_registration_error",

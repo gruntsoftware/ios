@@ -100,6 +100,9 @@ class NewMainViewModel: ObservableObject, Subscriber {
     
     @Published
     var shouldShowBuyReceive = false
+    
+    @Published
+    var didRegisterForNotifications: Bool = false
 
     @Published
     var walletBalanceFiat = ""
@@ -529,5 +532,17 @@ class NewMainViewModel: ObservableObject, Subscriber {
         }
         return draggableSeedPhrase
     }
-
+    
+    func requestNotificationPermissions() {
+        DispatchQueue.main.async {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.launchFCMessaging { didRegister in
+                    self.didRegisterForNotifications = didRegister
+                }
+            }
+            else {
+                debugPrint("launchFCMessaging not called")
+            }
+        }
+    }
 }
