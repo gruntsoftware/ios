@@ -98,20 +98,7 @@ struct NewMainView: View {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
     }
-
-    private func requestRatingReview() {
-
-        guard let txns = newMainViewModel.transactions else { return }
-
-        if (txns.count > 2 && txns.count < 4) {
-            requestReview()
-            Analytics
-                .logEvent("did_request_rating",
-                    parameters: ["request_placement": String(describing: type(of: NewMainView.self))])
-        }
-
-    }
-
+ 
     var body: some View {
         GeometryReader { geometry in
 
@@ -376,7 +363,6 @@ struct NewMainView: View {
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                     walletIsSyncing = newMainViewModel.walletIsSyncing
                     gameHubViewModel.walletManager = newMainViewModel.walletManager
-                    requestRatingReview()
                 }
                 .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
                     disableTransactionDetail = newMainViewModel.filteredTransactions.isEmpty
