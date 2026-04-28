@@ -1015,6 +1015,11 @@
 			path = BrainwalletUITests;
 			sourceTree = "<group>";
 		};
+		C323CB5C2F9FBE300051DF6F /* Signup Notification Classes */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Signup Notification Classes";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1964,6 +1969,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				C323CB5C2F9FBE300051DF6F /* Signup Notification Classes */,
 				246C3F4F2F2430DF009BC881 /* Tutorial Classes */,
 				24E6675F2F167A4B00909157 /* New Send Classes */,
 				247A838B2EA00CEB00B5DFD8 /* Bento Effects  */,
@@ -2248,6 +2254,9 @@
 			);
 			dependencies = (
 				24618EE82D90397E00A878AC /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C323CB5C2F9FBE300051DF6F /* Signup Notification Classes */,
 			);
 			name = brainwallet;
 			packageProductDependencies = (

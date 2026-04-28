@@ -246,6 +246,12 @@ struct StartView: View {
                             TopUpSetAmountView(viewModel: newMainViewModel, path: $path)
                                 .navigationBarBackButtonHidden()
                         }
+                    case .signupAskView:
+                            ZStack {
+                            SignupAskView(isRestoringAnOldWallet: isRestoringAnOldWallet,
+                                          viewModel: newMainViewModel, path: $path)
+                                    .navigationBarBackButtonHidden()
+                        }
                     case .tempSettingsView:
                         ZStack {
                             SettingsView(viewModel: newMainViewModel, path: $path)
@@ -291,6 +297,7 @@ enum Onboarding: Hashable {
     case inputWordsView
     case yourSeedWordsView
     case yourSeedProveView
+    case signupAskView(isRestoringAnOldWallet: Bool)
     case topUpView
     case topUpSetAmountView
     case tempSettingsView
