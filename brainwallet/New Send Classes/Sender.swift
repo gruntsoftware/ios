@@ -43,16 +43,23 @@ class Sender {
 		return transaction != nil
 	}
 
-	func createTransactionWithOpsOutputs(amount: UInt64,
-	                                     to: String) -> Bool {
-
-		transaction = walletManager.wallet?.createOpsTransaction(forAmount: amount,
-		                                                         toAddress: to,
-		                                                         opsFee: tieredOpsFee(amount: amount),
-		                                                         opsAddress: Partner.partnerKeyPath(name: .walletOps))
-
-		return transaction != nil
-	}
+    func createTransactionWithOpsOutputs(amount: UInt64, toAddress: String) -> Bool {
+        guard amount > 0 else {
+            assertionFailure("createTransactionWithOpsOutputs called with zero amount")
+            return false
+        }
+        
+        // Dust threshold check — 546 litoshis is standard P2PKH dust limit
+        guard amount >= litoshiDustThreshold else {
+            return false
+        }
+        transaction = walletManager.wallet?.createOpsTransaction(forAmount: amount,
+                                                                 toAddress: toAddress,
+                                                                 opsFee: tieredOpsFee(amount: amount),
+                                                                 opsAddress: Partner.partnerKeyPath(name: .walletOps))
+        
+        return transaction != nil
+    }
 
 	func feeForTx(amount: UInt64) -> UInt64 {
 		return walletManager.wallet?.feeForTx(amount: amount) ?? 0

@@ -123,7 +123,7 @@ struct BentoSendConfirmView: View {
                                     guard let networkFee = walletManager.wallet?.feeForTx(amount: amountInLitoshis + opsFeeAmount) else { return }
 
                                     /// Created transaction
-                                    _ = sender.createTransactionWithOpsOutputs(amount: amountInLitoshis, to: newMainViewModel.currentSendAddress)
+                                    _ = sender.createTransactionWithOpsOutputs(amount: amountInLitoshis, toAddress: newMainViewModel.currentSendAddress)
 
                                     /// Created transaction
                                     sender.send(biometricsMessage: biometricsMessage,

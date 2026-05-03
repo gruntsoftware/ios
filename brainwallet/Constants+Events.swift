@@ -15,7 +15,7 @@ let gameBentoHeight: CGFloat = 120.0
 let transactionsBentoHeight: CGFloat = 70.0
 let iconSize: CGFloat = 20.0
 let largeButtonHeight: CGFloat = 50.0
-
+let litoshiDustThreshold: Int = 546
 struct BrainwalletSupport {
 	static let dashboard = "https://brainwallet.co/support.html"
 }
