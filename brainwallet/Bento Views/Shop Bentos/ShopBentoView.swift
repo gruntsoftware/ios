@@ -12,7 +12,7 @@ struct ShopBentoView: View {
 
     @ObservedObject
     var newMainViewModel: NewMainViewModel
-
+    
     @State
     var shouldShowSettings: Bool = false
 
