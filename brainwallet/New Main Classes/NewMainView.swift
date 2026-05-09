@@ -75,9 +75,6 @@ struct NewMainView: View {
 
     private let bentoPadding = 2.0
     
-    private var widgetURL = URL(string: BrainwalletShop.bitrefillCode)!
-    
-    
     private let buttonPlatformFactor: CGFloat = 2.1
 
     private let noSendTitle = String(localized: "Send is Disabled")
@@ -102,16 +99,6 @@ struct NewMainView: View {
          receiveViewModel: NewReceiveViewModel) {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
-        
-        loadShopURL()
-        
-    }
-    
-    private mutating func loadShopURL() {
-        
-        if let url = shopViewModel.getWidgetUrl()  {
-            widgetURL = url
-        }
     }
  
     var body: some View {
@@ -444,7 +431,7 @@ struct NewMainView: View {
                         .padding(8.0)
                 }
                 .sheet(isPresented: $newMainViewModel.shouldShowShop) {
-                    WebView(url: widgetURL, scrollToSignup: .constant(false))
+                    WebView(url: shopViewModel.widgetURL, scrollToSignup: .constant(false))
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .cornerRadius(8.0)
                         .padding(.top, 12.0)
