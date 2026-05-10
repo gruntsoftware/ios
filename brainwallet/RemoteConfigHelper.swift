@@ -11,6 +11,7 @@ enum RemoteConfigKeys: String {
 	case KEY_KEYSTORE_MANAGER_ENABLED = "key_keystore_manager_enabled"
 	case KEY_PROD_API_BASEURL = "key_prod_api_baseurl"
 	case KEY_DEV_API_BASEURL = "key_dev_api_baseurl"
+    case PATH_SHOP_CONTENT = "path_shop_content"
 }
 
 class RemoteConfigHelper: NSObject {

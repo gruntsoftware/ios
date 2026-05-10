@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct SocialsBentoView: View {
     
@@ -34,6 +35,8 @@ struct SocialsBentoView: View {
                
                         Button(action: {
                             newMainViewModel.shouldShowSocials.toggle()
+                            Analytics.logEvent("user_did_tap_linktree",
+                                               parameters: nil)
                         }) {
                             
                             HStack {
