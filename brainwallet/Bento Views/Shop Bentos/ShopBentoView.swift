@@ -7,12 +7,13 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct ShopBentoView: View {
 
     @ObservedObject
     var newMainViewModel: NewMainViewModel
-
+    
     @State
     var shouldShowSettings: Bool = false
 
@@ -68,6 +69,8 @@ struct ShopBentoView: View {
             }
             .onTapGesture {
                 newMainViewModel.shouldShowShop.toggle()
+                Analytics.logEvent("user_did_tap_shop_bento",
+                                   parameters: nil)
             }
                 
         }

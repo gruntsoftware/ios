@@ -22,6 +22,9 @@ struct NewMainView: View {
 
     @StateObject
     var gameHubViewModel = GameHubViewModel()
+    
+    @StateObject
+    var shopViewModel = ShopBentoViewModel()
 
     @State
     private var userDidTapSend: Bool = false
@@ -71,7 +74,7 @@ struct NewMainView: View {
     private let buttonSize: CGFloat = 20.0
 
     private let bentoPadding = 2.0
-
+    
     private let buttonPlatformFactor: CGFloat = 2.1
 
     private let noSendTitle = String(localized: "Send is Disabled")
@@ -91,7 +94,6 @@ struct NewMainView: View {
     
     private let socialsURL = URL(string: BrainwalletSocials.linktree)!
 
-    private let bitrefillURL = URL(string: BrainwalletShop.bitrefillCode)!
 
     init(viewModel: NewMainViewModel,
          receiveViewModel: NewReceiveViewModel) {
@@ -167,7 +169,6 @@ struct NewMainView: View {
                                             .frame(maxHeight: heightPadded * 0.7)
                                             .padding(bentoPadding)
                                             .accessibilityIdentifier("ltcPriceBentoView")
-                                            
                                             ShopBentoView(viewModel: newMainViewModel,
                                                                 userPrefersDarkTheme: $userPrefersDarkTheme)
                                             .frame(maxHeight: heightPadded * 0.3)
@@ -430,7 +431,7 @@ struct NewMainView: View {
                         .padding(8.0)
                 }
                 .sheet(isPresented: $newMainViewModel.shouldShowShop) {
-                    WebView(url: bitrefillURL, scrollToSignup: .constant(false))
+                    WebView(url: shopViewModel.widgetURL, scrollToSignup: .constant(false))
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .cornerRadius(8.0)
                         .padding(.top, 12.0)
