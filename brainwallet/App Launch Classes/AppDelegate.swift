@@ -15,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        if ProcessInfo.processInfo.environment["IS_RUNNING_UNIT_TESTS"] == "1" {
+            return true
+        }
+        
         var regionCode2Char: String = "RU"
         let countryRussia = MoonpayCountryData(alphaCode2Char: "RU",
                                        alphaCode3Char: "RUS",
@@ -35,22 +39,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
         // Ops
         _ = Partner.partnerKeyPath(name: .walletStart)
-
-        // Firebase
-        if FirebaseApp.app() == nil {
-            self.setFirebaseConfiguration()
-        }
-
+        
         // AF
         /// Activating for  future use
         /// AppsFlyerLib.shared().appsFlyerDevKey = Partner.partnerKeyPath(name: .prodAF)
         /// AppsFlyerLib.shared().appleAppID = BrainwalletAppStore.adamIDString
 
-        // Remote Config
+        // Firebase
+        if FirebaseApp.app() == nil {
+            self.setFirebaseConfiguration()
+        }
+        
+        // Firebase Remote Config
         self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
-
-        // FCM
-        launchFCMessaging(application: application)
+        
 
         // Wipe restart
         // Register for system notifications
@@ -81,7 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
         UIView.swizzleSetFrame()
         self.applicationController.launch(application: UIApplication.shared, window: thisWindow)
-
         return true
 	}
 
@@ -200,17 +201,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
             // Production path — real plist present
             FirebaseApp.configure(options: options)
         } else {
-            // Plist absent — CI/test environment, configure with stub
-            // to prevent Crashlytics/Performance SEGV during static init
-            let options = FirebaseOptions(
-                googleAppID: "1:000000000000:ios:0000000000000000000000",
-                gcmSenderID: "000000000000"
-            )
-            options.projectID = "test-project"
-            options.storageBucket = "test-project.firebasestorage.app"
-            options.apiKey = "AIzaSy00000000000000000000000000000000"
-            FirebaseApp.configure(options: options)
-            Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
+    let options = FirebaseOptions(
+        googleAppID: "1:000000000000:ios:0000000000000000000000",
+        gcmSenderID: "000000000000"
+    )
+    options.projectID = "test-project"
+    options.storageBucket = "test-project.firebasestorage.app"
+    options.apiKey = "AIzaSy00000000000000000000000000000000"
+    options.bundleID = Bundle.main.bundleIdentifier ?? "co.brainwallet.test"
+    FirebaseApp.configure(options: options)
+    Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
         }
     }
 
@@ -264,16 +264,17 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler()
     }
 
-    func launchFCMessaging(application: UIApplication) {
+    func launchFCMessaging(completion: @escaping (Bool) -> Void) {
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             if granted {
                 DispatchQueue.main.async {
-                    application.registerForRemoteNotifications()
+                    UIApplication.shared.registerForRemoteNotifications()
+                    completion(true)
                 }
             }
-
+            completion(false)
             if error != nil {
                 Analytics
                     .logEvent("fcm_messaging_registration_error",

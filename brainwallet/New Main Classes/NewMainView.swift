@@ -22,6 +22,9 @@ struct NewMainView: View {
 
     @StateObject
     var gameHubViewModel = GameHubViewModel()
+    
+    @StateObject
+    var shopViewModel = ShopBentoViewModel()
 
     @State
     private var userDidTapSend: Bool = false
@@ -52,7 +55,7 @@ struct NewMainView: View {
 
     @State
     private var shouldShowGameMode: Bool = false
-
+  
     @State
     private var shouldShowPromptAlert: Bool = false
 
@@ -71,7 +74,7 @@ struct NewMainView: View {
     private let buttonSize: CGFloat = 20.0
 
     private let bentoPadding = 2.0
-
+    
     private let buttonPlatformFactor: CGFloat = 2.1
 
     private let noSendTitle = String(localized: "Send is Disabled")
@@ -88,26 +91,16 @@ struct NewMainView: View {
     private var userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    private let socialsURL = URL(string: BrainwalletSocials.linktree)!
+
 
     init(viewModel: NewMainViewModel,
          receiveViewModel: NewReceiveViewModel) {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
     }
-
-    private func requestRatingReview() {
-
-        guard let txns = newMainViewModel.transactions else { return }
-
-        if (txns.count > 2 && txns.count < 4) {
-            requestReview()
-            Analytics
-                .logEvent("did_request_rating",
-                    parameters: ["request_placement": String(describing: type(of: NewMainView.self))])
-        }
-
-    }
-
+ 
     var body: some View {
         GeometryReader { geometry in
 
@@ -122,9 +115,8 @@ struct NewMainView: View {
                 ZStack(alignment: .bottom) {
 
                     if userPrefersDarkTheme {
-                            GridWaveContentView(renderWidth: width, renderHeight: height, userPrefersDarkTheme: $userPrefersDarkTheme)
-                                .mask(LinearGradient(gradient: Gradient(colors: mainGradientStyle.maskGradientStops),
-                                                     startPoint: .top, endPoint: .bottom))
+                            LinearGradient(gradient: Gradient(colors: mainGradientStyle.maskGradientStops),
+                                                     startPoint: .top, endPoint: .bottom)
                                 .edgesIgnoringSafeArea(.all)
                                 .offset(x: 0, y: -20)
                                 .transition(.opacity)
@@ -167,31 +159,31 @@ struct NewMainView: View {
                                     .frame(maxHeight: midBentoHeight * 0.9, alignment: .top)
                                     .padding(bentoPadding)
                                     .accessibilityIdentifier("tutorialsBentoView")
+                                    
+                                    GeometryReader { geo in
 
-                                    VStack {
-                                        LTCPriceBentoView(viewModel: newMainViewModel,
-                                                          userPrefersDarkTheme: $userPrefersDarkTheme
-                                        )
-                                        .frame(maxHeight: midBentoHeight * 0.78)
-                                        .padding(bentoPadding)
-                                        .accessibilityIdentifier("ltcPriceBentoView")
-
-                                        FavouritesBentoView(viewModel: newMainViewModel,
-                                                            userPrefersDarkTheme: $userPrefersDarkTheme)
-                                        .frame(maxHeight: midBentoHeight * 0.12)
-                                        .padding(bentoPadding)
-                                        .accessibilityIdentifier("favouritesBentoView")
+                                        let heightPadded = geo.size.height
+                                        VStack(spacing: bentoPadding) {
+                                            LTCPriceBentoView(viewModel: newMainViewModel,
+                                                              userPrefersDarkTheme: $userPrefersDarkTheme)
+                                            .frame(maxHeight: heightPadded * 0.7)
+                                            .padding(bentoPadding)
+                                            .accessibilityIdentifier("ltcPriceBentoView")
+                                            ShopBentoView(viewModel: newMainViewModel,
+                                                                userPrefersDarkTheme: $userPrefersDarkTheme)
+                                            .frame(maxHeight: heightPadded * 0.3)
+                                            .padding(bentoPadding)
+                                            .accessibilityIdentifier("shopBentoView")
+                                        }
                                     }
+                                    .padding(bentoPadding)
                                 }
                                 .frame(maxHeight: height * 0.5, alignment: .top)
-                                .padding([.top,.leading, .trailing], bentoPadding)
-                                GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
+                                
+                                GameHubCarouselBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                                     .frame(idealHeight: balanceBentoHeight * 0.9, maxHeight: balanceBentoHeight, alignment: .top)
                                     .padding(bentoPadding)
-                                    .accessibilityIdentifier("gameHubBentoView")
-                                    .onTapGesture {
-                                        newMainViewModel.shouldShowGameMode.toggle()
-                                    }
+                                    .accessibilityIdentifier("gameHubCarouselBentoView")
                             }
                             .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 0.0 : 1.0, anchor: .bottom)
                             .transition(.scale)
@@ -372,7 +364,6 @@ struct NewMainView: View {
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
                     walletIsSyncing = newMainViewModel.walletIsSyncing
                     gameHubViewModel.walletManager = newMainViewModel.walletManager
-                    requestRatingReview()
                 }
                 .onChange(of: newMainViewModel.filteredTransactions) { _,_ in
                     disableTransactionDetail = newMainViewModel.filteredTransactions.isEmpty
@@ -425,6 +416,31 @@ struct NewMainView: View {
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
+                }
+                .sheet(isPresented: $newMainViewModel.shouldShowBuyReceive) {
+                    BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
+                        .cornerRadius(bentoCornerRadius)
+                        .presentationDetents([.large])
+                        .presentationDragIndicator(.visible)
+                }
+                .sheet(isPresented: $newMainViewModel.shouldShowSocials) {
+                    WebView(url: socialsURL, scrollToSignup: .constant(false))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .cornerRadius(8.0)
+                        .padding(.top, 12.0)
+                        .padding(8.0)
+                }
+                .sheet(isPresented: $newMainViewModel.shouldShowShop) {
+                    WebView(url: shopViewModel.widgetURL, scrollToSignup: .constant(false))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .cornerRadius(8.0)
+                        .padding(.top, 12.0)
+                        .padding(8.0)
+                }
+                .sheet(isPresented: $newMainViewModel.shouldShowGameMode) {
+                    GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme, selectedStep: .constant(0))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .accessibilityIdentifier("gameHubBentoView")
                 }
                 .alert(isPresented: $shouldShowPromptAlert) {
                     Alert(title: Text(currentPrompt.title),

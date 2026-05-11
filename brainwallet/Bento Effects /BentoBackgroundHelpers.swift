@@ -26,12 +26,14 @@ import UIKit
      var maskGradientStops: [Color] {
          switch self {
          case .darkStyle:
-             return [.black,.black,.black,.black,.clear]
+             return [BrainwalletColor.midnight, BentoColor.purple3, BentoColor.purple4,.black]
          case .lightStyle:
              return [.black,.black,.clear,.clear,.clear]
          }
      }
  }
+
+
 
 struct BentoSurface: ViewModifier {
 
@@ -179,6 +181,94 @@ struct GameBackgroundView: View {
                     RoundedRectangle(cornerRadius: bentoCornerRadius)
                         .stroke(BentoColor.grayBorder,
                                 lineWidth:  1.5)
+                }
+                .opacity(userPrefersDarkTheme ? 0.0 : 1.0)
+            }
+        }
+    }
+}
+
+struct StaticBackgroundView: View {
+    
+    @Binding
+    var userPrefersDarkTheme: Bool
+    var imageName: String = "game-hub-stars"
+     
+    var body: some View {
+        
+        GeometryReader { geometry in
+            
+            let width = geometry.size.width
+            ZStack {
+                Group {
+                    RoundedRectangle(cornerRadius: bentoCornerRadius)
+                        .fill(LinearGradient(
+                            colors: [BentoColor.purple4,
+                                     BentoColor.purple3],
+                            startPoint: .bottom,
+                            endPoint: .top
+                        ))
+                        .edgesIgnoringSafeArea(.all)
+                    GeometryReader { geometry in
+                        Image(imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .offset(y: -5)
+                            .frame(width: geometry.size.width,
+                                   height: geometry.size.height)
+                            .clipped()
+                    }
+                    RoundedRectangle(cornerRadius: bentoCornerRadius)
+                        .stroke(BentoColor.grayBorder,
+                                lineWidth:  1.5)
+                }
+                .opacity(userPrefersDarkTheme ? 0.0 : 1.0)
+            }
+        }
+    }
+}
+
+struct ShopBackgroundView: View {
+    
+    @Binding
+    var userPrefersDarkTheme: Bool
+    var imageName: String = "shop_background_01"
+    
+    var body: some View {
+        
+        GeometryReader { geometry in
+            
+            ZStack {
+                Group {
+                    GeometryReader { geometry in
+                        Image(imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: geometry.size.width,
+                                   height: geometry.size.height)
+                            .clipped()
+                        
+                    }
+                    RoundedRectangle(cornerRadius: bentoCornerRadius)
+                        .stroke(BentoColor.grayBorder.opacity(0.4),
+                                lineWidth:  1.5)
+                }
+                .opacity(userPrefersDarkTheme ? 1.0 : 0.0)
+                
+                Group {
+                    GeometryReader { geometry in
+                        Image(imageName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: geometry.size.width,
+                                   height: geometry.size.height)
+                            .clipped()
+                            .opacity(0.02)
+                        
+                    }
+                    RoundedRectangle(cornerRadius: bentoCornerRadius)
+                        .stroke(Color.gray.opacity(0.4)
+                                ,lineWidth: 1.5)
                 }
                 .opacity(userPrefersDarkTheme ? 0.0 : 1.0)
             }

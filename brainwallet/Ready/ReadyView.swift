@@ -101,7 +101,7 @@ struct ReadyView: View {
 
                         Spacer(minLength: 30.0)
                             Button(action: {
-                                path.append(.setPasscodeView(isRestoringAnOldWallet: true))
+                                path.append(.setPasscodeView(isRestoringAnOldWallet: false))
                             }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)

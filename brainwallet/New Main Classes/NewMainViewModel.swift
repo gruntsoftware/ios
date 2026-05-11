@@ -52,7 +52,10 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
     @Published
     var shouldShowGameMode: Bool = false
-
+     
+    @Published
+    var shouldShowShop: Bool = false
+     
     @Published
     var seedPhrase: [SeedWord] = []
 
@@ -91,6 +94,15 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
     @Published
     var shouldShowSettings = false
+    
+    @Published
+    var shouldShowSocials = false
+    
+    @Published
+    var shouldShowBuyReceive = false
+    
+    @Published
+    var didRegisterForNotifications: Bool = false
 
     @Published
     var walletBalanceFiat = ""
@@ -520,5 +532,17 @@ class NewMainViewModel: ObservableObject, Subscriber {
         }
         return draggableSeedPhrase
     }
-
+    
+    func requestNotificationPermissions() {
+        DispatchQueue.main.async {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.launchFCMessaging { didRegister in
+                    self.didRegisterForNotifications = didRegister
+                }
+            }
+            else {
+                debugPrint("launchFCMessaging not called")
+            }
+        }
+    }
 }

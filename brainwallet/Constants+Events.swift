@@ -15,7 +15,7 @@ let gameBentoHeight: CGFloat = 120.0
 let transactionsBentoHeight: CGFloat = 70.0
 let iconSize: CGFloat = 20.0
 let largeButtonHeight: CGFloat = 50.0
-
+let litoshiDustThreshold: Int = 546
 struct BrainwalletSupport {
 	static let dashboard = "https://brainwallet.co/support.html"
 }
@@ -28,6 +28,13 @@ struct BrainwalletAppStore {
 struct BrainwalletSocials {
     static let linktree = "https://linktr.ee/brainwallet"
 }
+
+struct BrainwalletShop {
+    static let bitrefillCode = "https://www.bitrefill.com/?ref=bAshL935"
+    static let bitrefillCom = "https://bitrefill.com"
+
+}
+
 
 let explorerURLs = ["https://blockexplorer.one/litecoin/mainnet/tx/",
                     "https://litecoinspace.org/tx/",
