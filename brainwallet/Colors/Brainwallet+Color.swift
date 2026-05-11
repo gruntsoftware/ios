@@ -42,6 +42,8 @@ struct BrainwalletColor {
     static let blue = Color(#colorLiteral(red: 0.1607843137, green: 0.4078431373, blue: 0.9490196078, alpha: 1))
     static let nearBlack = Color(#colorLiteral(red: 0.08235294118, green: 0.08235294118, blue: 0.08235294118, alpha: 1))
     static let lightgray = Color(#colorLiteral(red: 0.8352941176, green: 0.8352941176, blue: 0.8352941176, alpha: 1))
+    
+    
 }
 
 struct BrainwalletUIColor {
@@ -76,6 +78,8 @@ struct BrainwalletUIColor {
 }
 
 /// Brainwallet Bento Colors
+///
+ 
 
 struct BentoColor {
     /// purple1 - #C8B3EE
@@ -174,12 +178,31 @@ struct BentoColor {
     static let sendBottomPurple = Color(red: 0.1568627450980392,
                                       green: 0.0196078431372549,
                                       blue: 0.5372549019607843)
-
+    
     /// nearNearBlack - #2D2D2D
     static let nearNearBlack = Color(red: 0.17647058823529413,
-                                      green: 0.17647058823529413,
-                                      blue: 0.17647058823529413)
+                                     green: 0.17647058823529413,
+                                     blue: 0.17647058823529413)
 
+    /// middleBlue - #475A96
+    static let middleBlue = Color(red: 0.27843, green: 0.3529, blue: 0.5882)
+    
+    /// outerBlue - #1F263F
+    static let outerBlue = Color(red: 0.1215,
+                                 green: 0.1490,
+                                 blue: 0.24705)
+    
+    /// middleGray - #575971
+    static let middleGray = Color(hex: "575971")
+    
+    /// outerGray - #1E202D
+    static let outerGray = Color(hex: "1E202D")
+    
+    /// middleOrange - #FB6E36
+    static let middleOrange = Color(hex: "FB6E36")
+    
+    /// outerOrange - #D43603
+    static let outerOrange = Color(hex: "D43603")
     /// darkMode - Linear Gradient 1
     static let darkModeColor1 = LinearGradient(colors: [BentoColor.sendTopPurple,
                                                              BentoColor.sendBottomPurple],
@@ -190,4 +213,42 @@ struct BentoColor {
     /// background - Linear Gradient 1
     static let background1 = LinearGradient(colors: [.white],startPoint: .topLeading, endPoint: .bottomTrailing)
 
+}
+
+struct BrainwalletGradient {
+    
+    static let blueCard = RadialGradient(stops: [Gradient.Stop(color: BentoColor.middleBlue, location: 0.0),
+                                                 Gradient.Stop(color: BentoColor.outerBlue, location: 0.950)
+                                                ], center: .center, startRadius: 0.0, endRadius: 200.0)
+    static let grayCard = RadialGradient(stops: [Gradient.Stop(color: BentoColor.middleGray, location: 0.0),
+                                                 Gradient.Stop(color: BentoColor.outerGray, location: 1.0)
+                                                ], center: UnitPoint(x: 0.1, y: 0.1), startRadius: 0.0, endRadius: 100.0)
+    static let orangeCard = RadialGradient(stops: [Gradient.Stop(color: BentoColor.middleOrange, location: 0.0),
+                                                   Gradient.Stop(color: BentoColor.outerOrange, location: 0.950)
+                                                  ], center: UnitPoint(x: 0.1, y: 0.1), startRadius: 0.0, endRadius: 100.0)
+}
+extension Color {
+    init(hex: String) {
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var int: UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&int)
+        let a, r, g, b: UInt64
+        switch hex.count {
+            case 3: // RGB shorthand e.g. "FFF"
+                (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+            case 6: // RGB e.g. "FF0000"
+                (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+            case 8: // ARGB e.g. "FFFF0000"
+                (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+            default:
+                (a, r, g, b) = (255, 0, 0, 0)
+        }
+        self.init(
+            .sRGB,
+            red: Double(r) / 255,
+            green: Double(g) / 255,
+            blue: Double(b) / 255,
+            opacity: Double(a) / 255
+        )
+    }
 }

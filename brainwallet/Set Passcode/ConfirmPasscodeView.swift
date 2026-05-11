@@ -127,11 +127,7 @@ struct ConfirmPasscodeView: View {
                             store?.perform(action: SimpleReduxAlert.Show(.pinSet(callback: {
                             })))
 
-                            if isRestoringAnOldWallet {
-                               path.append(.yourSeedWordsView)
-                            } else {
-                               path.append(.inputWordsView)
-                            }
+                            path.append(.signupAskView(isRestoringAnOldWallet: isRestoringAnOldWallet))
                         } else {
                             startShake.toggle()
                             delay(0.4) {

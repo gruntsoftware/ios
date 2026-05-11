@@ -117,7 +117,7 @@
 		247A7D0B2E95195E000DF8C0 /* TransactionHistoryBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D0A2E95194F000DF8C0 /* TransactionHistoryBentoView.swift */; };
 		247A7D0D2E951CE1000DF8C0 /* TutorialsBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D0C2E951CD7000DF8C0 /* TutorialsBentoView.swift */; };
 		247A7D0F2E951D10000DF8C0 /* LTCPriceBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D0E2E951D10000DF8C0 /* LTCPriceBentoView.swift */; };
-		247A7D112E951D3F000DF8C0 /* FavouritesBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D102E951D3F000DF8C0 /* FavouritesBentoView.swift */; };
+		247A7D112E951D3F000DF8C0 /* ShopBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D102E951D3F000DF8C0 /* ShopBentoView.swift */; };
 		247A7D132E95286E000DF8C0 /* GameHubBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D122E952864000DF8C0 /* GameHubBentoView.swift */; };
 		247A838A2E9EFD3F00B5DFD8 /* TransactionDetailBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A83892E9EFD2000B5DFD8 /* TransactionDetailBentoView.swift */; };
 		247A838D2EA00D0100B5DFD8 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A838C2EA00CFB00B5DFD8 /* MetalView.swift */; };
@@ -393,7 +393,14 @@
 		C312D4952D7DC27700BB97A4 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F02D7DC27700BB97A4 /* RadialGradientView.swift */; };
 		C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */ = {isa = PBXBuildFile; fileRef = C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */; };
 		C3236A012D7DE355007039A1 /* URLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3236A002D7DE34D007039A1 /* URLController.swift */; };
+		C353E3BA2FAE9F9E00BFFB30 /* ShopBentoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */; };
 		C35C122A293D48340009022D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1229293D48340009022D /* KeychainAccess */; };
+		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
+		C3E18A9F2F9E657000966C74 /* GiftCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18A9E2F9E656600966C74 /* GiftCardsView.swift */; };
+		C3E18AA12F9EC22000966C74 /* ConfirmationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */; };
+		C3FACF6C2F9E023700886FAD /* GameHubCarouselBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */; };
+		C3FACF6E2F9E025300886FAD /* MoonPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6D2F9E025300886FAD /* MoonPayView.swift */; };
+		C3FACF702F9E026500886FAD /* SocialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6F2F9E026500886FAD /* SocialsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -585,7 +592,7 @@
 		247A7D0A2E95194F000DF8C0 /* TransactionHistoryBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryBentoView.swift; sourceTree = "<group>"; };
 		247A7D0C2E951CD7000DF8C0 /* TutorialsBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsBentoView.swift; sourceTree = "<group>"; };
 		247A7D0E2E951D10000DF8C0 /* LTCPriceBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTCPriceBentoView.swift; sourceTree = "<group>"; };
-		247A7D102E951D3F000DF8C0 /* FavouritesBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesBentoView.swift; sourceTree = "<group>"; };
+		247A7D102E951D3F000DF8C0 /* ShopBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBentoView.swift; sourceTree = "<group>"; };
 		247A7D122E952864000DF8C0 /* GameHubBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHubBentoView.swift; sourceTree = "<group>"; };
 		247A83892E9EFD2000B5DFD8 /* TransactionDetailBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailBentoView.swift; sourceTree = "<group>"; };
 		247A838C2EA00CFB00B5DFD8 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
@@ -979,6 +986,13 @@
 		C312D2C92D7DC27700BB97A4 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletManager+Auth.swift"; sourceTree = "<group>"; };
 		C3236A002D7DE34D007039A1 /* URLController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLController.swift; sourceTree = "<group>"; };
+		C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBentoViewModel.swift; sourceTree = "<group>"; };
+		C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupAskView.swift; sourceTree = "<group>"; };
+		C3E18A9E2F9E656600966C74 /* GiftCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardsView.swift; sourceTree = "<group>"; };
+		C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationStatus.swift; sourceTree = "<group>"; };
+		C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHubCarouselBentoView.swift; sourceTree = "<group>"; };
+		C3FACF6D2F9E025300886FAD /* MoonPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPayView.swift; sourceTree = "<group>"; };
+		C3FACF6F2F9E026500886FAD /* SocialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -1334,13 +1348,13 @@
 		247A7D022E950443000DF8C0 /* Bento Views */ = {
 			isa = PBXGroup;
 			children = (
+				C3E18A982F9E5E7300966C74 /* Shop Bentos */,
+				C3FACF652F9E021900886FAD /* Game Hub Bentos */,
 				24289A3F2EB0D3E600F0F11F /* Transaction Bentos */,
 				24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */,
 				247A7D062E951653000DF8C0 /* BalanceBentoView.swift */,
-				247A7D122E952864000DF8C0 /* GameHubBentoView.swift */,
 				247A7D0C2E951CD7000DF8C0 /* TutorialsBentoView.swift */,
 				247A7D0E2E951D10000DF8C0 /* LTCPriceBentoView.swift */,
-				247A7D102E951D3F000DF8C0 /* FavouritesBentoView.swift */,
 				240850F52F40E3A30097706A /* BackgroundRectangle.swift */,
 				240850F72F40E4310097706A /* LTCFiatToggleView.swift */,
 			);
@@ -1743,6 +1757,7 @@
 		24D034392E1AED0200AF81DF /* Geometric Effects */ = {
 			isa = PBXGroup;
 			children = (
+				C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */,
 				24D0343A2E1AED2200AF81DF /* SwiftUIEffects.swift */,
 			);
 			path = "Geometric Effects";
@@ -1953,6 +1968,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				C3C95F702FA1498E002E2BEE /* Signup Notification Classes */,
 				246C3F4F2F2430DF009BC881 /* Tutorial Classes */,
 				24E6675F2F167A4B00909157 /* New Send Classes */,
 				247A838B2EA00CEB00B5DFD8 /* Bento Effects  */,
@@ -2114,6 +2130,35 @@
 				C312D09B2D7DC27700BB97A4 /* Types.swift */,
 			);
 			path = brainwallet;
+			sourceTree = "<group>";
+		};
+		C3C95F702FA1498E002E2BEE /* Signup Notification Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */,
+			);
+			path = "Signup Notification Classes";
+			sourceTree = "<group>";
+		};
+		C3E18A982F9E5E7300966C74 /* Shop Bentos */ = {
+			isa = PBXGroup;
+			children = (
+				C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */,
+				C3E18A9E2F9E656600966C74 /* GiftCardsView.swift */,
+				247A7D102E951D3F000DF8C0 /* ShopBentoView.swift */,
+			);
+			path = "Shop Bentos";
+			sourceTree = "<group>";
+		};
+		C3FACF652F9E021900886FAD /* Game Hub Bentos */ = {
+			isa = PBXGroup;
+			children = (
+				247A7D122E952864000DF8C0 /* GameHubBentoView.swift */,
+				C3FACF6D2F9E025300886FAD /* MoonPayView.swift */,
+				C3FACF6F2F9E026500886FAD /* SocialsView.swift */,
+				C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */,
+			);
+			path = "Game Hub Bentos";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2610,6 +2655,7 @@
 				C312D2D32D7DC27700BB97A4 /* ExchangeUpdater.swift in Sources */,
 				C312D2D42D7DC27700BB97A4 /* Currency.swift in Sources */,
 				24126E062ECA741200F9A4BE /* ScanOverlayView.swift in Sources */,
+				C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */,
 				2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */,
 				C312D2D62D7DC27700BB97A4 /* RecoverWalletView.swift in Sources */,
 				C312D2D72D7DC27700BB97A4 /* Date+Additions.swift in Sources */,
@@ -2631,6 +2677,7 @@
 				C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */,
 				C312D2F72D7DC27700BB97A4 /* ArticleIds.swift in Sources */,
 				246C3F5E2F244E61009BC881 /* TutorialReceiveBentoView.swift in Sources */,
+				C3E18AA12F9EC22000966C74 /* ConfirmationStatus.swift in Sources */,
 				242871882DE5D36F0035DE48 /* SyncSubBentoViewModel.swift in Sources */,
 				2476AE362E2802AF0065CE22 /* InputSeedWordView.swift in Sources */,
 				247A7D0D2E951CE1000DF8C0 /* TutorialsBentoView.swift in Sources */,
@@ -2683,7 +2730,7 @@
 				C312D34F2D7DC27700BB97A4 /* DispatchQueue+Additions.swift in Sources */,
 				C312D3512D7DC27700BB97A4 /* DataValidation.swift in Sources */,
 				24126E082ECA7F8900F9A4BE /* ScanOverlayDataView.swift in Sources */,
-				247A7D112E951D3F000DF8C0 /* FavouritesBentoView.swift in Sources */,
+				247A7D112E951D3F000DF8C0 /* ShopBentoView.swift in Sources */,
 				246A9A072DF5F54C002480CB /* Utility.swift in Sources */,
 				C312D3572D7DC27700BB97A4 /* ModalPresenter.swift in Sources */,
 				C312D3592D7DC27700BB97A4 /* StartViewModel.swift in Sources */,
@@ -2701,6 +2748,7 @@
 				C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */,
 				2416CE6A2DA90D0D00FFBD10 /* BRMasterKeyExtension.swift in Sources */,
 				240850F62F40E3A30097706A /* BackgroundRectangle.swift in Sources */,
+				C3FACF6E2F9E025300886FAD /* MoonPayView.swift in Sources */,
 				24691D142EAE4D30003CDC7C /* SyncSubBentoView.swift in Sources */,
 				2416CE6B2DA90D0D00FFBD10 /* BRSocketHelpers.c in Sources */,
 				2416CE6C2DA90D0D00FFBD10 /* BWAPIClient.swift in Sources */,
@@ -2734,6 +2782,7 @@
 				24F5BD502E0460C90010D340 /* SecurityListView.swift in Sources */,
 				243136FD2E0B251D00BCBED1 /* SettingsActionToggleView.swift in Sources */,
 				C312D3762D7DC27700BB97A4 /* AddressFieldView.swift in Sources */,
+				C3FACF702F9E026500886FAD /* SocialsView.swift in Sources */,
 				C312D3772D7DC27700BB97A4 /* UserDefaults+Additions.swift in Sources */,
 				C312D3782D7DC27700BB97A4 /* PinTransitioningDelegate.swift in Sources */,
 				244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */,
@@ -2765,6 +2814,7 @@
 				241B7CDF2E68CA3F00B18679 /* ExportButtonViewModel.swift in Sources */,
 				C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */,
 				24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */,
+				C3FACF6C2F9E023700886FAD /* GameHubCarouselBentoView.swift in Sources */,
 				242C43F32F253A3E00CF6EA4 /* TutorialWalkthroughBentoView.swift in Sources */,
 				C312D3B52D7DC27700BB97A4 /* UpdatePinViewController.swift in Sources */,
 				C312D3B62D7DC27700BB97A4 /* PaymentProtocol.swift in Sources */,
@@ -2807,6 +2857,7 @@
 				C312D3F32D7DC27700BB97A4 /* WalletCoordinator.swift in Sources */,
 				243136FB2E0AFD1700BCBED1 /* SettingsHelpers.swift in Sources */,
 				2457DDE82EB7EC4400688B9A /* CoreModeView.swift in Sources */,
+				C3E18A9F2F9E657000966C74 /* GiftCardsView.swift in Sources */,
 				247A7D132E95286E000DF8C0 /* GameHubBentoView.swift in Sources */,
 				C312D3FC2D7DC27700BB97A4 /* UIView+InitAdditions.swift in Sources */,
 				C312D3FD2D7DC27700BB97A4 /* LocaleChangeViewModel.swift in Sources */,
@@ -2827,6 +2878,7 @@
 				C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */,
 				246C3F5C2F2431D0009BC881 /* TutorialSendPageView.swift in Sources */,
 				C312D40F2D7DC27700BB97A4 /* Environment.swift in Sources */,
+				C353E3BA2FAE9F9E00BFFB30 /* ShopBentoViewModel.swift in Sources */,
 				2480B5832DF2016300653403 /* PromptHostingCell.swift in Sources */,
 				C312D4152D7DC27700BB97A4 /* VerifyPinViewController.swift in Sources */,
 				242C43F02F25397300CF6EA4 /* WalkthroughStep1View.swift in Sources */,
@@ -3154,7 +3206,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602273;
+				CURRENT_PROJECT_VERSION = 2602280;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3171,7 +3223,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.9.3;
+				MARKETING_VERSION = 3.9.5;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
@@ -3346,7 +3398,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602273;
+				CURRENT_PROJECT_VERSION = 2602280;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3362,7 +3414,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.9.3;
+				MARKETING_VERSION = 3.9.5;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;

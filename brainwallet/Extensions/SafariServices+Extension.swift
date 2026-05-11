@@ -28,7 +28,7 @@ struct WebView: UIViewRepresentable {
 	func updateUIView(_ webview: WKWebView, context _: Context) {
 
 		webview.endEditing(true)
-
+        //activityIndicator.stopAnimating()
 		if scrollToSignup {
 			let point = CGPoint(x: 0, y: webview.scrollView.contentSize.height - webview.frame.size.height / 2)
 
@@ -45,12 +45,24 @@ class SignupWebView: WKWebView, WKNavigationDelegate {
 	@Binding
 	var didStartEditing: Bool
 
+    let activityIndicator = UIActivityIndicatorView(style: .large)
+
 	init(frame: CGRect, didStartEditing: Binding<Bool>) {
 		_didStartEditing = didStartEditing
 
 		let configuration = WKWebViewConfiguration()
 		super.init(frame: frame, configuration: configuration)
 		navigationDelegate = self
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.startAnimating()
+        activityIndicator.frame = CGRect(x: self.bounds.center.x - 40, y: self.bounds.center.y - 40, width: 80, height: 80)
+        self.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
 	}
 
 	@available(*, unavailable)
@@ -63,6 +75,9 @@ class SignupWebView: WKWebView, WKNavigationDelegate {
 	}
 
 	func webView(_ webView: WKWebView, didFinish _: WKNavigation!) {
+        
+       activityIndicator.stopAnimating()
+
 		var scriptContent = "var meta = document.createElement('meta');"
 		scriptContent += "meta.name='viewport';"
 		scriptContent += "meta.content='width=device-width';"
@@ -95,4 +110,8 @@ class SignupWebView: WKWebView, WKNavigationDelegate {
             debugPrint(result ?? "")
 		})
 	}
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+       activityIndicator.stopAnimating()
+    }
 }
