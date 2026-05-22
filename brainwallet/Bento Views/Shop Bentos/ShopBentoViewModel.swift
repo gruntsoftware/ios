@@ -9,78 +9,150 @@
 import Foundation
 import SwiftUI
 
+
+struct ShopCard: Decodable, Identifiable {
+    let countryCode: String
+    let countryName: String
+    let productSlug: String
+    let productName: String
+    let productURL: URL
+    let cardImageWebP: URL
+
+    var id: String { productSlug }
+
+    enum CodingKeys: String, CodingKey {
+        case countryCode  = "country_code"
+        case countryName  = "country_name"
+        case productSlug  = "product_slug"
+        case productName  = "product_name"
+        case productURL   = "product_url"
+        case cardImageWebP = "card_image_webp"
+    }
+}
+
 class ShopBentoViewModel: ObservableObject {
-    
+
     // MARK: - Public Variables
-    
+
     @Published
     var widgetURL: URL = URL(string: BrainwalletShop.bitrefillCode)!
-    
+
     @Published
     var cards: [ShopCard]?
-    
-    @Published
-    var cardImages: [UIImage]?
-    
-    @Published
-    var cardImagesVersion: Int = 0
-    
-    @StateObject
-    private var loader = ImageLoader()
-      
-    
+
     init() {
         let key = RemoteConfigKeys.PATH_SHOP_CONTENT.rawValue
         let shopJson = RemoteConfigHelper().getString(key: key)
         fetchShopConfig(from: shopJson)
     }
-    
+
     func updateCardImages(_ images: [UIImage]) {
         cardImages = images
         cardImagesVersion += 1
 
-    }
-    
-    private func loadCardImages(_ cards: [ShopCard]?) async {
-        guard let realCards = cards else {
-            return
-        }
-        var loaded: [UIImage] = []
-        for card in realCards {
-            if let uiImage = await ImageLoader.loadImage(from: card.cardImageWebP) {
-                loaded.append(uiImage)
-            } else {
-                loaded.append(UIImage(named: "bw-placeholder")!)
-            }
-        }
-        await MainActor.run {
-            updateCardImages(loaded)
+    // MARK: - Models
+
+    private struct ShopConfig: Decodable {
+        let shopData: ShopData
+
+        enum CodingKeys: String, CodingKey {
+            case shopData = "shop_data"
         }
     }
-     
+
+    private struct ShopData: Decodable {
+        let widgetUrl: URL
+        let cards: [ShopCard]
+        enum CodingKeys: String, CodingKey {
+            case widgetUrl = "widget_url"
+            case cards
+        }
+    }
+
     // MARK: - Fetch
-    
+
     func fetchShopConfig(from jsonString: String) {
-        guard let jsonData = jsonString.data(using: .utf8) else {
+        guard let outerData = jsonString.data(using: .utf8) else {
             assertionFailure("ShopConfig: invalid UTF-8 string")
             return
         }
-        
+
         do {
-            let shopConfig = try JSONDecoder().decode(ShopConfig.self, from: jsonData)
-            let data = shopConfig.shopData
+            let config = try JSONDecoder().decode(ShopConfig.self, from: outerData)
+            let data = config.shopData
             widgetURL = data.widgetUrl
-            
-            if let regionCode = Locale.current.region?.identifier {
-                cards = data.cards.filter { $0.countryCode.contains(regionCode) }
-                Task {
-                    await loadCardImages(cards)
-                }
-            }
-            
+            cards = data.cards
         } catch {
             assertionFailure("ShopConfig decode failed: \(error)")
         }
     }
 }
 
+//
+//class ShopBentoViewModel: ObservableObject {
+//
+//    // MARK: - Public Variables
+//
+//    @Published
+//    var widgetURL: URL = URL(string: BrainwalletShop.bitrefillCode)!
+//
+//    init() {
+//        let key = RemoteConfigKeys.PATH_SHOP_CONTENT.rawValue
+//        let shopJson = RemoteConfigHelper().getString(key: key)
+//        fetchShopConfig(from: shopJson)
+//    }
+//
+//    // MARK: - Models
+//
+//    private struct ShopConfig: Decodable {
+//        let shopData: ShopData
+//        enum CodingKeys: String, CodingKey {
+//            case shopData = "shop_data"
+//        }
+//    }
+//
+//    private struct ShopData: Decodable {
+//        let widgetUrl: URL
+//        let cards: [ShopCard]
+//        enum CodingKeys: String, CodingKey {
+//            case widgetUrl = "widget_url"
+//            case cards
+//        }
+//    }
+//
+//    private struct ShopCard: Decodable, Identifiable {
+//        let countryCode: String
+//        let countryName: String
+//        let productSlug: String
+//        let productName: String
+//        let productURL: URL
+//        let cardImageWebP: URL
+//
+//        var id: String { productSlug }
+//
+//        enum CodingKeys: String, CodingKey {
+//            case countryCode  = "country_code"
+//            case countryName  = "country_name"
+//            case productSlug  = "product_slug"
+//            case productName  = "product_name"
+//            case productURL   = "product_url"
+//            case cardImageWebP = "card_image_webp"
+//        }
+//    }
+//    // MARK: - Fetch
+//
+//    /// Internal entry point — accepts a raw JSON string so tests can inject directly.
+//    func fetchShopConfig(from jsonString: String) {
+//        guard let data = jsonString.data(using: .utf8) else {
+//            assertionFailure("ShopConfig: invalid UTF-8 string")
+//            return
+//        }
+//        do {
+//            let config = try JSONDecoder().decode(ShopConfig.self, from: data)
+//            loadCardImages()
+//        } catch {
+//            // DecodingError will tell you exactly which key/type failed
+//            assertionFailure("ShopConfig decode failed: \(error)")
+//        }
+//    }
+//}
