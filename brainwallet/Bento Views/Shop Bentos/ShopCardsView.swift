@@ -1,5 +1,5 @@
 //
-//  GiftCardsView.swift
+//  ShopCardsView.swift
 //  brainwallet
 //
 //  Created by Kerry Washington on 4/26/26.
@@ -9,23 +9,40 @@
 
 import SwiftUI
 
-struct GiftCardsView: View {
+struct ShopCardsView: View {
           
     
     @State
     private var shouldAnimate: Bool = false
     
+    @State
+    private var image1 = UIImage(named: "bw-placeholder")!
+    
+    @State
+    private var image2 = UIImage(named: "bw-placeholder")!
+    
+    @State
+    private var image3 = UIImage(named: "bw-placeholder")!
+  
+    @ObservedObject
+    var shopViewModel: ShopBentoViewModel
+ 
+    private func loadImages() {
+        let images = shopViewModel.cardImages
+        image1 = images?[safe: 0] ?? UIImage(named: "bw-placeholder")!
+        image2 = images?[safe: 1] ?? UIImage(named: "bw-placeholder")!
+        image3 = images?[safe: 2] ?? UIImage(named: "bw-placeholder")!
+    }
     
     var body: some View {
         GeometryReader { geometry in
             
             let width = geometry.size.width
-            let height = geometry.size.height
 
             ZStack {
                 HStack {
                     VStack(alignment: .trailing) {
-                        SingleGiftCardView(giftCardImage: "visa_logo",
+                        SingleShopCardView(cardUIImage: image1,
                                            gradient: BrainwalletGradient.blueCard,
                                            rotationAngle: 20.0)
                         .frame(width: 100, height: 63.05)
@@ -42,7 +59,7 @@ struct GiftCardsView: View {
                 HStack {
                     VStack(alignment: .trailing) {
                         
-                        SingleGiftCardView(giftCardImage: "je_logo",
+                        SingleShopCardView(cardUIImage: image2,
                                            gradient: BrainwalletGradient.orangeCard,
                                            rotationAngle: 20.0)
                         .frame(width: 100, height: 63.05)
@@ -61,8 +78,8 @@ struct GiftCardsView: View {
                 HStack {
                     VStack(alignment: .trailing) {
                         Spacer()
-                        SingleGiftCardView(giftCardImage: "amazon_logo",
-                                           gradient: BrainwalletGradient.grayCard,
+                        SingleShopCardView(cardUIImage: image3,
+                                           gradient: BrainwalletGradient.blueCard,
                                            rotationAngle: -20.0)
                         .frame(width: 100, height: 63.05)
                         .offset(x: shouldAnimate ? 25 :  105, y: 15.0)
@@ -79,35 +96,42 @@ struct GiftCardsView: View {
                 
             }
         }
+        .onChange(of: shopViewModel.cardImagesVersion) { _, newVersion in
+            loadImages()
+            withAnimation(.easeInOut(duration: 2.0)) {
+                shouldAnimate = true
+            }
+        }
     }
 }
  
-
-
-struct SingleGiftCardView: View {
+struct SingleShopCardView: View {
     
-    let giftCardImage: String
-    
+    let cardUIImage: UIImage
     let gradient: RadialGradient
-
     let rotationAngle: Double
-     
     var body: some View {
         GeometryReader { geometry in
-            
             let width = geometry.size.width
             
             ZStack {
-                    RoundedRectangle(cornerRadius: 8, style: .continuous)
-                        .fill(gradient)
-                        .frame(width: width, height: width * 0.6305)
-                        .rotationEffect(Angle(degrees: rotationAngle))
-                    Image(giftCardImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: width * 0.6)
-                        .rotationEffect(Angle(degrees: rotationAngle))
-                }
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .fill(gradient)
+                    .frame(width: width, height: width * 0.6305)
+                    .rotationEffect(Angle(degrees: rotationAngle))
+                
+                Image(uiImage: cardUIImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: width, height: width * 0.6305)
+                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    .rotationEffect(Angle(degrees: rotationAngle))
+            }
         }
+    }
+}
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        indices.contains(index) ? self[index] : nil
     }
 }
