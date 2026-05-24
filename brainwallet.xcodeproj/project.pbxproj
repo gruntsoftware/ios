@@ -392,11 +392,13 @@
 		C312D4942D7DC27700BB97A4 /* RetryTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2982D7DC27700BB97A4 /* RetryTimer.swift */; };
 		C312D4952D7DC27700BB97A4 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F02D7DC27700BB97A4 /* RadialGradientView.swift */; };
 		C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */ = {isa = PBXBuildFile; fileRef = C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */; };
+		C32233132FC214A70043CBA7 /* ShopImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322330D2FC214990043CBA7 /* ShopImages.swift */; };
 		C3236A012D7DE355007039A1 /* URLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3236A002D7DE34D007039A1 /* URLController.swift */; };
+		C33C4A1F2FC1C96100C23DA7 /* ShopStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33C4A192FC1C94B00C23DA7 /* ShopStructs.swift */; };
 		C353E3BA2FAE9F9E00BFFB30 /* ShopBentoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */; };
 		C35C122A293D48340009022D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1229293D48340009022D /* KeychainAccess */; };
 		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
-		C3E18A9F2F9E657000966C74 /* GiftCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18A9E2F9E656600966C74 /* GiftCardsView.swift */; };
+		C3E18A9F2F9E657000966C74 /* ShopCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */; };
 		C3E18AA12F9EC22000966C74 /* ConfirmationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */; };
 		C3FACF6C2F9E023700886FAD /* GameHubCarouselBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */; };
 		C3FACF6E2F9E025300886FAD /* MoonPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6D2F9E025300886FAD /* MoonPayView.swift */; };
@@ -985,10 +987,12 @@
 		C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
 		C312D2C92D7DC27700BB97A4 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletManager+Auth.swift"; sourceTree = "<group>"; };
+		C322330D2FC214990043CBA7 /* ShopImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopImages.swift; sourceTree = "<group>"; };
 		C3236A002D7DE34D007039A1 /* URLController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLController.swift; sourceTree = "<group>"; };
+		C33C4A192FC1C94B00C23DA7 /* ShopStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopStructs.swift; sourceTree = "<group>"; };
 		C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBentoViewModel.swift; sourceTree = "<group>"; };
 		C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupAskView.swift; sourceTree = "<group>"; };
-		C3E18A9E2F9E656600966C74 /* GiftCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardsView.swift; sourceTree = "<group>"; };
+		C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCardsView.swift; sourceTree = "<group>"; };
 		C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationStatus.swift; sourceTree = "<group>"; };
 		C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHubCarouselBentoView.swift; sourceTree = "<group>"; };
 		C3FACF6D2F9E025300886FAD /* MoonPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPayView.swift; sourceTree = "<group>"; };
@@ -2143,8 +2147,10 @@
 		C3E18A982F9E5E7300966C74 /* Shop Bentos */ = {
 			isa = PBXGroup;
 			children = (
+				C322330D2FC214990043CBA7 /* ShopImages.swift */,
+				C33C4A192FC1C94B00C23DA7 /* ShopStructs.swift */,
 				C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */,
-				C3E18A9E2F9E656600966C74 /* GiftCardsView.swift */,
+				C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */,
 				247A7D102E951D3F000DF8C0 /* ShopBentoView.swift */,
 			);
 			path = "Shop Bentos";
@@ -2671,6 +2677,7 @@
 				C312D2E42D7DC27700BB97A4 /* KVStoreCoordinator.swift in Sources */,
 				C312D2E72D7DC27700BB97A4 /* ChildViewTransitioningDelegate.swift in Sources */,
 				247A83912EA00D8600B5DFD8 /* aurora.metal in Sources */,
+				C32233132FC214A70043CBA7 /* ShopImages.swift in Sources */,
 				C312D2EA2D7DC27700BB97A4 /* ForgotView.swift in Sources */,
 				C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */,
 				242C43EF2F25397300CF6EA4 /* WalkthroughStep3View.swift in Sources */,
@@ -2857,7 +2864,7 @@
 				C312D3F32D7DC27700BB97A4 /* WalletCoordinator.swift in Sources */,
 				243136FB2E0AFD1700BCBED1 /* SettingsHelpers.swift in Sources */,
 				2457DDE82EB7EC4400688B9A /* CoreModeView.swift in Sources */,
-				C3E18A9F2F9E657000966C74 /* GiftCardsView.swift in Sources */,
+				C3E18A9F2F9E657000966C74 /* ShopCardsView.swift in Sources */,
 				247A7D132E95286E000DF8C0 /* GameHubBentoView.swift in Sources */,
 				C312D3FC2D7DC27700BB97A4 /* UIView+InitAdditions.swift in Sources */,
 				C312D3FD2D7DC27700BB97A4 /* LocaleChangeViewModel.swift in Sources */,
@@ -2929,6 +2936,7 @@
 				C312D4622D7DC27700BB97A4 /* UIViewController+BRWAdditions.swift in Sources */,
 				C312D4632D7DC27700BB97A4 /* PinPadCells.swift in Sources */,
 				C312D4662D7DC27700BB97A4 /* PaymentRequest.swift in Sources */,
+				C33C4A1F2FC1C96100C23DA7 /* ShopStructs.swift in Sources */,
 				C312D4692D7DC27700BB97A4 /* CGContext+Additions.swift in Sources */,
 				24A0FFE22F4C50080003BAA0 /* EmojiSetViewModifier.swift in Sources */,
 				24E078A82DF1F9A9004B5958 /* PromptCellView.swift in Sources */,
@@ -3206,7 +3214,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602280;
+				CURRENT_PROJECT_VERSION = 2602282;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3223,7 +3231,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.9.5;
+				MARKETING_VERSION = 3.9.6;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
@@ -3398,7 +3406,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602280;
+				CURRENT_PROJECT_VERSION = 2602282;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3414,7 +3422,7 @@
 					"@executable_path/Frameworks",
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
-				MARKETING_VERSION = 3.9.5;
+				MARKETING_VERSION = 3.9.6;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;

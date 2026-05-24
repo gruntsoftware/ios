@@ -23,7 +23,7 @@ struct NewMainView: View {
     @StateObject
     var gameHubViewModel = GameHubViewModel()
     
-    @StateObject
+    @ObservedObject
     var shopViewModel = ShopBentoViewModel()
 
     @State
@@ -169,8 +169,9 @@ struct NewMainView: View {
                                             .frame(maxHeight: heightPadded * 0.7)
                                             .padding(bentoPadding)
                                             .accessibilityIdentifier("ltcPriceBentoView")
-                                            ShopBentoView(viewModel: newMainViewModel,
-                                                                userPrefersDarkTheme: $userPrefersDarkTheme)
+                                            ShopBentoView(shopBentoViewModel: shopViewModel,
+                                                          newMViewModel: newMainViewModel,
+                                                          userPrefersDarkTheme: $userPrefersDarkTheme)
                                             .frame(maxHeight: heightPadded * 0.3)
                                             .padding(bentoPadding)
                                             .accessibilityIdentifier("shopBentoView")
