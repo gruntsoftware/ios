@@ -23,7 +23,7 @@ struct NewMainView: View {
     @StateObject
     var gameHubViewModel = GameHubViewModel()
     
-    @ObservedObject
+    @StateObject
     var shopViewModel = ShopBentoViewModel()
 
     @State

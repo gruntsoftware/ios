@@ -18,6 +18,9 @@ class ShopBentoViewModel: ObservableObject {
 
     @Published
     var cards: [ShopCard]?
+    
+    @Published
+    var cardsAreLoaded = false
 
     @Published
     var cardImages: [UIImage]?
@@ -55,6 +58,7 @@ class ShopBentoViewModel: ObservableObject {
         }
         await MainActor.run {
             updateCardImages(loaded)
+            cardsAreLoaded = true
         }
     }
 

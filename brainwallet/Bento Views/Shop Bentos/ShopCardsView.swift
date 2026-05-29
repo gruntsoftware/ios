@@ -10,7 +10,6 @@
 import SwiftUI
 
 struct ShopCardsView: View {
-          
     
     @State
     private var shouldAnimate: Bool = false
@@ -96,11 +95,15 @@ struct ShopCardsView: View {
                 
             }
         }
-        .onChange(of: shopViewModel.cardImagesVersion) { _, newVersion in
-            loadImages()
-            withAnimation(.easeInOut(duration: 2.0)) {
-                shouldAnimate = true
+        .onChange(of: shopViewModel.cardsAreLoaded) { _, newVersion in
+            
+            if shopViewModel.cardsAreLoaded {
+                loadImages()
+                withAnimation(.easeInOut(duration: 2.0)) {
+                    shouldAnimate = true
+                }
             }
+            
         }
     }
 }
