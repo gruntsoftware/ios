@@ -283,7 +283,6 @@
 		C312D35A2D7DC27700BB97A4 /* LaunchCardHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2582D7DC27700BB97A4 /* LaunchCardHostingController.swift */; };
 		C312D35D2D7DC27700BB97A4 /* LoginTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B12D7DC27700BB97A4 /* LoginTransitionDelegate.swift */; };
 		C312D3602D7DC27700BB97A4 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E02D7DC27700BB97A4 /* Circle.swift */; };
-		C312D3632D7DC27700BB97A4 /* SignupWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A72D7DC27700BB97A4 /* SignupWebView.swift */; };
 		C312D3652D7DC27700BB97A4 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D06C2D7DC27700BB97A4 /* Async.swift */; };
 		C312D3682D7DC27700BB97A4 /* PINFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D28C2D7DC27700BB97A4 /* PINFieldView.swift */; };
 		C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0822D7DC27700BB97A4 /* UIView+BRWAdditions.swift */; };
@@ -968,7 +967,6 @@
 		C312D29D2D7DC27700BB97A4 /* SeedWordContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordContainerView.swift; sourceTree = "<group>"; };
 		C312D29E2D7DC27700BB97A4 /* SeedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordView.swift; sourceTree = "<group>"; };
 		C312D2A42D7DC27700BB97A4 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
-		C312D2A72D7DC27700BB97A4 /* SignupWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupWebView.swift; sourceTree = "<group>"; };
 		C312D2A92D7DC27700BB97A4 /* SimpleRedux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRedux.swift; sourceTree = "<group>"; };
 		C312D2AA2D7DC27700BB97A4 /* StandardDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDividerView.swift; sourceTree = "<group>"; };
 		C312D2AC2D7DC27700BB97A4 /* StartHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartHostingController.swift; sourceTree = "<group>"; };
@@ -2116,7 +2114,6 @@
 				C312D2962D7DC27700BB97A4 /* RemoteConfigHelper.swift */,
 				C312D2982D7DC27700BB97A4 /* RetryTimer.swift */,
 				C312D29B2D7DC27700BB97A4 /* SeedPhraseStepView.swift */,
-				C312D2A72D7DC27700BB97A4 /* SignupWebView.swift */,
 				C312D2A92D7DC27700BB97A4 /* SimpleRedux.swift */,
 				C312D2AA2D7DC27700BB97A4 /* StandardDividerView.swift */,
 				C312D2B82D7DC27700BB97A4 /* TestnetData.swift */,
@@ -2745,7 +2742,6 @@
 				C312D35D2D7DC27700BB97A4 /* LoginTransitionDelegate.swift in Sources */,
 				C312D3602D7DC27700BB97A4 /* Circle.swift in Sources */,
 				2428717B2DE5C1060035DE48 /* GenericPinPadCell.swift in Sources */,
-				C312D3632D7DC27700BB97A4 /* SignupWebView.swift in Sources */,
 				C312D3652D7DC27700BB97A4 /* Async.swift in Sources */,
 				C312D3682D7DC27700BB97A4 /* PINFieldView.swift in Sources */,
 				240CEE1E2F2D87E500428378 /* WalkthroughStep5View.swift in Sources */,

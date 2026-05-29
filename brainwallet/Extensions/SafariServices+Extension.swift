@@ -8,6 +8,7 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
 	let url: URL
+    
 	@Binding
 	var scrollToSignup: Bool
 
@@ -28,7 +29,6 @@ struct WebView: UIViewRepresentable {
 	func updateUIView(_ webview: WKWebView, context _: Context) {
 
 		webview.endEditing(true)
-        //activityIndicator.stopAnimating()
 		if scrollToSignup {
 			let point = CGPoint(x: 0, y: webview.scrollView.contentSize.height - webview.frame.size.height / 2)
 
@@ -74,42 +74,37 @@ class SignupWebView: WKWebView, WKNavigationDelegate {
 		return scrollView.contentSize
 	}
 
-	func webView(_ webView: WKWebView, didFinish _: WKNavigation!) {
+    func webView(_ webView: WKWebView, didFinish _: WKNavigation!) {
+        activityIndicator.stopAnimating()
         
-       activityIndicator.stopAnimating()
-
-		var scriptContent = "var meta = document.createElement('meta');"
-		scriptContent += "meta.name='viewport';"
-		scriptContent += "meta.content='width=device-width';"
-		scriptContent += "document.getElementsByTagName('head')[0].appendChild(meta);"
-		scriptContent += "document.body.scrollHeight;"
-
-		webView.evaluateJavaScript(scriptContent, completionHandler: { height, _ in
-
-            print(height ?? 0.0)
-		})
-
-		webView.evaluateJavaScript("document.body.innerHTML", completionHandler: { (value: Any!, error: Error!) in
-			if error != nil {
-				// Error logic
-				return
-			}
-			// webView.invalidateIntrinsicContentSize()
-
-			//            let js = "document.getElementById(\"MY_TEXTFIELD_ID\").focus();"
-			//            webView.evaluateJavaScript(js)
-
-			//       webview.canBecomeFocused = true
-
-			// document.getElementById('myID').focus();
-
-			// webview.scrollView.setZoomScale(0.3, animated: true)
-
-			let result = value as? String
-
-            debugPrint(result ?? "")
-		})
-	}
+        // Inject viewport meta
+        var scriptContent = "var meta = document.createElement('meta');"
+        scriptContent += "meta.name='viewport';"
+        scriptContent += "meta.content='width=device-width';"
+        scriptContent += "document.getElementsByTagName('head')[0].appendChild(meta);"
+        webView.evaluateJavaScript(scriptContent, completionHandler: nil)
+        
+        // Inject postMessage listener
+        let messageScript = """
+            (function() {
+                function handleMessage(event) {
+                    try {
+                        var data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+                        if (data && data.event === 'invoice_created') {
+                            window.webkit.messageHandlers.BitrefillHandler.postMessage(JSON.stringify(data));
+                        }
+                    } catch(e) {
+                        console.log('parse error:', e);
+                    }
+                }
+                window.addEventListener('message', handleMessage);
+                document.addEventListener('message', handleMessage);
+            })();
+        """
+        webView.evaluateJavaScript(messageScript, completionHandler: nil)
+    }
+    
+     
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
        activityIndicator.stopAnimating()
