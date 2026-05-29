@@ -42,7 +42,7 @@ struct ShopCardsView: View {
                 HStack {
                     VStack(alignment: .trailing) {
                         SingleShopCardView(cardUIImage: image1,
-                                           gradient: BrainwalletGradient.blueCard,
+                                           gradient: BrainwalletGradient.grayCard,
                                            rotationAngle: 20.0)
                         .frame(width: 100, height: 63.05)
                         .offset(x: shouldAnimate ? -15 :  145, y: 10.0)
@@ -59,7 +59,7 @@ struct ShopCardsView: View {
                     VStack(alignment: .trailing) {
                         
                         SingleShopCardView(cardUIImage: image2,
-                                           gradient: BrainwalletGradient.orangeCard,
+                                           gradient: BrainwalletGradient.grayCard,
                                            rotationAngle: 20.0)
                         .frame(width: 100, height: 63.05)
                         .offset(x: shouldAnimate ? 30 :  105, y: -2.0)
@@ -78,7 +78,7 @@ struct ShopCardsView: View {
                     VStack(alignment: .trailing) {
                         Spacer()
                         SingleShopCardView(cardUIImage: image3,
-                                           gradient: BrainwalletGradient.blueCard,
+                                           gradient: BrainwalletGradient.grayCard,
                                            rotationAngle: -20.0)
                         .frame(width: 100, height: 63.05)
                         .offset(x: shouldAnimate ? 25 :  105, y: 15.0)
@@ -118,16 +118,15 @@ struct SingleShopCardView: View {
             let width = geometry.size.width
             
             ZStack {
-                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .fill(gradient)
-                    .frame(width: width, height: width * 0.6305)
-                    .rotationEffect(Angle(degrees: rotationAngle))
-                
                 Image(uiImage: cardUIImage)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: width, height: width * 0.6305)
                     .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    .rotationEffect(Angle(degrees: rotationAngle))
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .fill(gradient.opacity(0.08))
+                    .frame(width: width, height: width * 0.6305)
                     .rotationEffect(Angle(degrees: rotationAngle))
             }
         }

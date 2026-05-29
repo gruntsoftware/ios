@@ -5,8 +5,6 @@ import UIKit
 import WebKit
 import FirebaseAnalytics
 
-// inspired https://www.swiftyplace.com/blog/loading-a-web-view-in-swiftui-with-wkwebview
-
 struct WebView: UIViewRepresentable {
     
     let url: URL
@@ -101,7 +99,6 @@ struct WebView: UIViewRepresentable {
     }
 }
  
-
 class EmbeddedWebView: WKWebView, WKNavigationDelegate {
     @Binding var didStartEditing: Bool
     let activityIndicator = UIActivityIndicatorView(style: .large)
