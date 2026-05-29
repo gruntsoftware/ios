@@ -100,6 +100,24 @@ struct NewMainView: View {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
     }
+  
+    private func updateWidgetTheme(url: URL) -> URL {
+        let theme = userPrefersDarkTheme ? "dark" : "light"
+        
+        guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+            return url
+        }
+        
+        var queryItems = components.queryItems ?? []
+        if let index = queryItems.firstIndex(where: { $0.name == "theme" }) {
+            queryItems[index] = URLQueryItem(name: "theme", value: theme)
+        } else {
+            queryItems.append(URLQueryItem(name: "theme", value: theme))
+        }
+        components.queryItems = queryItems
+        
+        return components.url ?? url
+    }
  
     var body: some View {
         GeometryReader { geometry in
@@ -432,7 +450,7 @@ struct NewMainView: View {
                         .padding(8.0)
                 }
                 .sheet(isPresented: $newMainViewModel.shouldShowShop) {
-                    WebView(url: shopViewModel.widgetURL, scrollToSignup: .constant(false))
+                    WebView(url: updateWidgetTheme(url: shopViewModel.widgetURL), scrollToSignup: .constant(false))
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .cornerRadius(8.0)
                         .padding(.top, 12.0)
