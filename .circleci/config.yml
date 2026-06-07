@@ -5,7 +5,7 @@
 version: 2.1
 orbs:
   macos: circleci/macos@2
-  ruby: circleci/ruby@4.0.5
+  ruby: circleci/ruby@2.5.3
 jobs:
   build-unit-tests-per-push:
     macos:
@@ -48,8 +48,8 @@ jobs:
               brew install rbenv ruby-build
             fi
             eval "$(rbenv init -)"
-            rbenv install -s 3.2.2
-            rbenv global 3.2.2
+            rbenv install -s 4.0.5
+            rbenv global 4.0.5
             ruby -v
             
             # Clean gem environment
