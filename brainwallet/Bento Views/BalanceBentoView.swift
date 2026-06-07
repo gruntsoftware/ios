@@ -30,6 +30,10 @@ struct BalanceBentoView: View {
         _userPrefersDarkTheme = userPrefersDarkTheme
         newMainViewModel = viewModel
     }
+    
+    private func playBoing() {
+        SoundsHelper().play(filename: "boingspringmouthharp042013", type: "mp3")
+    }
 
     var body: some View {
         GeometryReader { geometry in
@@ -59,6 +63,7 @@ struct BalanceBentoView: View {
                         Spacer()
                         Button(action: {
                             shouldShowBalance.toggle()
+                            playBoing()
                         }) {
                             Image(systemName: shouldShowBalance ? "eye.slash" : "eye")
                                 .resizable()
