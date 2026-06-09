@@ -50,8 +50,8 @@ extension UIFont {
         return UIFont(name: "IBMPlexSans-Thin", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
     }
 
-    static func boldenVan(size: CGFloat) -> UIFont {
-        return UIFont(name: "BoldenVan", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
+    static func lilitaOne(size: CGFloat) -> UIFont {
+        return UIFont(name: "LilitaOne", size: size) ?? UIFont.preferredFont(forTextStyle: .body)
     }
 
 	static var regularAttributes: [NSAttributedString.Key: Any] {
@@ -102,7 +102,7 @@ extension Font {
         return Font.custom("IBMPlexSans-Thin", size: size)
     }
 
-    static func boldenVan(size: CGFloat) -> Font {
-        return Font.custom("BoldenVan", size: size)
+    static func lilitaOne(size: CGFloat) -> Font {
+        return Font.custom("LilitaOne", size: size)
     }
 }

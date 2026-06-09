@@ -125,7 +125,6 @@
 		247A83932EA034BC00B5DFD8 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A83922EA034B600B5DFD8 /* Renderer.swift */; };
 		247A83952EA034FE00B5DFD8 /* GridWaveContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A83942EA034E900B5DFD8 /* GridWaveContentView.swift */; };
 		247A83972EA2A9A500B5DFD8 /* BentoBackgroundHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A83962EA2A99100B5DFD8 /* BentoBackgroundHelpers.swift */; };
-		247A83992EA3E3D800B5DFD8 /* BoldenVan.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 247A83982EA3E3D800B5DFD8 /* BoldenVan.ttf */; };
 		247D74E62DA907FB00855B14 /* BRAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C45792D936D5900E9C3B0 /* BRAddress.c */; };
 		247D74E72DA907FB00855B14 /* BRBase58.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457C2D936D5900E9C3B0 /* BRBase58.c */; };
 		247D74E82DA907FB00855B14 /* BRBech32.c in Sources */ = {isa = PBXBuildFile; fileRef = 249C457E2D936D5900E9C3B0 /* BRBech32.c */; };
@@ -400,6 +399,7 @@
 		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
 		C3E18A9F2F9E657000966C74 /* ShopCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */; };
 		C3E18AA12F9EC22000966C74 /* ConfirmationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */; };
+		C3E7712D2FD852E800706509 /* LilitaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3E7712C2FD852E800706509 /* LilitaOne.ttf */; };
 		C3FACF6C2F9E023700886FAD /* GameHubCarouselBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */; };
 		C3FACF6E2F9E025300886FAD /* MoonPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6D2F9E025300886FAD /* MoonPayView.swift */; };
 		C3FACF702F9E026500886FAD /* SocialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6F2F9E026500886FAD /* SocialsView.swift */; };
@@ -602,7 +602,6 @@
 		247A83922EA034B600B5DFD8 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		247A83942EA034E900B5DFD8 /* GridWaveContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridWaveContentView.swift; sourceTree = "<group>"; };
 		247A83962EA2A99100B5DFD8 /* BentoBackgroundHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoBackgroundHelpers.swift; sourceTree = "<group>"; };
-		247A83982EA3E3D800B5DFD8 /* BoldenVan.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BoldenVan.ttf; sourceTree = "<group>"; };
 		2480B5822DF2015B00653403 /* PromptHostingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptHostingCell.swift; sourceTree = "<group>"; };
 		248E5C412DE7863C003F232F /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		2492829B2DAC22B00088528E /* BIP39Words.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BIP39Words.plist; sourceTree = "<group>"; };
@@ -994,6 +993,7 @@
 		C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupAskView.swift; sourceTree = "<group>"; };
 		C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCardsView.swift; sourceTree = "<group>"; };
 		C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationStatus.swift; sourceTree = "<group>"; };
+		C3E7712C2FD852E800706509 /* LilitaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LilitaOne.ttf; sourceTree = "<group>"; };
 		C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHubCarouselBentoView.swift; sourceTree = "<group>"; };
 		C3FACF6D2F9E025300886FAD /* MoonPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPayView.swift; sourceTree = "<group>"; };
 		C3FACF6F2F9E026500886FAD /* SocialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialsView.swift; sourceTree = "<group>"; };
@@ -1898,6 +1898,7 @@
 		C312D0962D7DC27700BB97A4 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				C3E7712C2FD852E800706509 /* LilitaOne.ttf */,
 				24AFEEE52F3152CE00427D02 /* IBMPlexSans-Bold.ttf */,
 				24AFEEE62F3152CE00427D02 /* IBMPlexSans-Italic.ttf */,
 				24AFEEE72F3152CE00427D02 /* IBMPlexSans-Light.ttf */,
@@ -1905,7 +1906,6 @@
 				24AFEEE92F3152CE00427D02 /* IBMPlexSans-Regular.ttf */,
 				24AFEEEA2F3152CE00427D02 /* IBMPlexSans-SemiBold.ttf */,
 				24AFEEEB2F3152CE00427D02 /* IBMPlexSans-Thin.ttf */,
-				247A83982EA3E3D800B5DFD8 /* BoldenVan.ttf */,
 				24DBB7C52F34E75A002E6511 /* IBMPlexSans-ExtraLight.ttf */,
 			);
 			path = Fonts;
@@ -2448,7 +2448,6 @@
 				24E06FC52DF4790B00719B6C /* remote-config-defaults.plist in Resources */,
 				2461418F2DA9B7AF007BB116 /* LaunchScreen.storyboard in Resources */,
 				24D7EA052E336D0800A9AB68 /* Assets.xcassets in Resources */,
-				247A83992EA3E3D800B5DFD8 /* BoldenVan.ttf in Resources */,
 				24D7EA062E336D0800A9AB68 /* Icon.xcassets in Resources */,
 				24D7EA072E336D0800A9AB68 /* POSTBouncer.html in Resources */,
 				C30D099E2FC5AB720083EDE2 /* GoogleService-Info.plist in Resources */,
@@ -2456,6 +2455,7 @@
 				24DBB7C62F34E75A002E6511 /* IBMPlexSans-ExtraLight.ttf in Resources */,
 				24AFEEED2F3152CE00427D02 /* IBMPlexSans-SemiBold.ttf in Resources */,
 				C38F57252FD490430005538A /* boingspringmouthharp042013.mp3 in Resources */,
+				C3E7712D2FD852E800706509 /* LilitaOne.ttf in Resources */,
 				24AFEEEE2F3152CE00427D02 /* IBMPlexSans-Medium.ttf in Resources */,
 				24AFEEEF2F3152CE00427D02 /* IBMPlexSans-Light.ttf in Resources */,
 				24AFEEF02F3152CE00427D02 /* IBMPlexSans-Italic.ttf in Resources */,

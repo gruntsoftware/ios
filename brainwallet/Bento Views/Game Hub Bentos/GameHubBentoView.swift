@@ -80,7 +80,7 @@ struct GameHubBentoView: View {
                                 HStack {
                                     VStack {
                                         Text("FALLINMOJI")
-                                            .font(.boldenVan(size: 100))
+                                            .font(.lilitaOne(size: 100))
                                             .lineLimit(1)
                                             .minimumScaleFactor(0.3)
                                             .padding(.leading, 16)
