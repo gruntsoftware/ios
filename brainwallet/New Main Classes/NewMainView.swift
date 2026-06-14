@@ -26,9 +26,6 @@ struct NewMainView: View {
     @StateObject
     var shopViewModel = ShopBentoViewModel()
 
-    @StateObject
-    var shopViewModel = ShopBentoViewModel()
-
     @State
     private var userDidTapSend: Bool = false
 
@@ -96,10 +93,6 @@ struct NewMainView: View {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     private let socialsURL = URL(string: BrainwalletSocials.linktree)!
-
-
-    private let socialsURL = URL(string: BrainwalletSocials.linktree)!
-
 
     init(viewModel: NewMainViewModel,
          receiveViewModel: NewReceiveViewModel) {
