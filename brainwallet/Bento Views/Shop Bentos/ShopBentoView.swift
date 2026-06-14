@@ -12,8 +12,11 @@ import FirebaseAnalytics
 struct ShopBentoView: View {
 
     @ObservedObject
+    var shopViewModel: ShopBentoViewModel
+
+    @ObservedObject
     var newMainViewModel: NewMainViewModel
-    
+
     @State
     var shouldShowSettings: Bool = false
 
@@ -27,15 +30,20 @@ struct ShopBentoView: View {
 
     private let tagLabelWidth: CGFloat = 80.0
 
-    init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
+    init(shopBentoViewModel: ShopBentoViewModel,
+         newMViewModel: NewMainViewModel,
+         userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
-        newMainViewModel = viewModel
+        shopViewModel = shopBentoViewModel
+        newMainViewModel = newMViewModel
     }
+
+
     var body: some View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
- 
+
             ZStack {
                 ShopBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme,
                                      imageName: "shop_background_01").edgesIgnoringSafeArea(.all)
@@ -57,7 +65,7 @@ struct ShopBentoView: View {
                     }
                     .frame(width: width * 0.5)
                     VStack(alignment: .trailing) {
-                        GiftCardsView()
+                        ShopCardsView(shopViewModel: shopViewModel)
                     }
                     .frame(maxWidth: width * 0.5)
                 }
@@ -72,7 +80,7 @@ struct ShopBentoView: View {
                 Analytics.logEvent("user_did_tap_shop_bento",
                                    parameters: nil)
             }
-                
+
         }
     }
 }
