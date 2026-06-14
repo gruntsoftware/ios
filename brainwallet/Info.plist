@@ -217,5 +217,7 @@
 	</array>
 	<key>UIDesignRequiresCompatibility</key>
 	<true/>
+	<key>JVMOptions</key>
+	<string></string>
 </dict>
 </plist>

@@ -5,6 +5,8 @@ import FirebaseAnalytics
 import LocalAuthentication
 import SwiftUI
 import UIKit
+import BWIOSGdx
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
@@ -12,12 +14,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 	var applicationController = ApplicationController()
 	var remoteConfigurationHelper: RemoteConfigHelper?
 	var resourceRequest: NSBundleResourceRequest?
+    let bwGameSDK = BwGameSdkInstance()
 
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         if ProcessInfo.processInfo.environment["IS_RUNNING_UNIT_TESTS"] == "1" {
             return true
         }
+        
+        UNUserNotificationCenter.current().setBadgeCount(0) { _ in }
+        // Re-assert libGDX pause state after system resume, if a container is tracking it
+        //GameContainerViewController.current?.reassertGameState()
         
         var regionCode2Char: String = "RU"
         let countryRussia = MoonpayCountryData(alphaCode2Char: "RU",
@@ -83,6 +91,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
         UIView.swizzleSetFrame()
         self.applicationController.launch(application: UIApplication.shared, window: thisWindow)
+        
+        // libGDX: initialize once, paused + hidden, host window stays key
+        bwGameSDK?.startGame(thisWindow)
         return true
 	}
 
