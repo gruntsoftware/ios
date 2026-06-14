@@ -10,13 +10,13 @@ import SwiftUI
 import FirebaseAnalytics
 
 struct ShopBentoView: View {
-    
+
     @ObservedObject
     var shopViewModel: ShopBentoViewModel
-    
+
     @ObservedObject
     var newMainViewModel: NewMainViewModel
-    
+
     @State
     var shouldShowSettings: Bool = false
 
@@ -37,13 +37,12 @@ struct ShopBentoView: View {
         shopViewModel = shopBentoViewModel
         newMainViewModel = newMViewModel
     }
-    
-    
+
+
     var body: some View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
- 
             ZStack {
                 ShopBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme,
                                      imageName: "shop_background_01").edgesIgnoringSafeArea(.all)
@@ -80,7 +79,6 @@ struct ShopBentoView: View {
                 Analytics.logEvent("user_did_tap_shop_bento",
                                    parameters: nil)
             }
-                
         }
     }
 }
