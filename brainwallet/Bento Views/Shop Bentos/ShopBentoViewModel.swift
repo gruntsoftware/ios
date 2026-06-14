@@ -5,7 +5,6 @@
 ////  Created by Kerry Washington on 5/8/26.
 ////  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 ////
-
 import Foundation
 import SwiftUI
 
@@ -18,7 +17,6 @@ class ShopBentoViewModel: ObservableObject {
 
     @Published
     var cards: [ShopCard]?
-    
     @Published
     var cardsAreLoaded = false
 
