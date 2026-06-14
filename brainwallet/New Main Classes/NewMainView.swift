@@ -22,7 +22,7 @@ struct NewMainView: View {
 
     @StateObject
     var gameHubViewModel = GameHubViewModel()
-    
+
     @StateObject
     var shopViewModel = ShopBentoViewModel()
 
@@ -55,7 +55,7 @@ struct NewMainView: View {
 
     @State
     private var shouldShowGameMode: Bool = false
-  
+
     @State
     private var shouldShowPromptAlert: Bool = false
 
@@ -74,7 +74,7 @@ struct NewMainView: View {
     private let buttonSize: CGFloat = 20.0
 
     private let bentoPadding = 2.0
-    
+
     private let buttonPlatformFactor: CGFloat = 2.1
 
     private let noSendTitle = String(localized: "Send is Disabled")
@@ -91,7 +91,7 @@ struct NewMainView: View {
     private var userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
+
     private let socialsURL = URL(string: BrainwalletSocials.linktree)!
 
 
@@ -100,7 +100,25 @@ struct NewMainView: View {
         newMainViewModel = viewModel
         newReceiveViewModel = receiveViewModel
     }
- 
+
+    private func updateWidgetTheme(url: URL) -> URL {
+        let theme = userPrefersDarkTheme ? "dark" : "light"
+
+        guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+            return url
+        }
+
+        var queryItems = components.queryItems ?? []
+        if let index = queryItems.firstIndex(where: { $0.name == "theme" }) {
+            queryItems[index] = URLQueryItem(name: "theme", value: theme)
+        } else {
+            queryItems.append(URLQueryItem(name: "theme", value: theme))
+        }
+        components.queryItems = queryItems
+
+        return components.url ?? url
+    }
+
     var body: some View {
         GeometryReader { geometry in
 
@@ -159,7 +177,7 @@ struct NewMainView: View {
                                     .frame(maxHeight: midBentoHeight * 0.9, alignment: .top)
                                     .padding(bentoPadding)
                                     .accessibilityIdentifier("tutorialsBentoView")
-                                    
+
                                     GeometryReader { geo in
 
                                         let heightPadded = geo.size.height
@@ -169,8 +187,9 @@ struct NewMainView: View {
                                             .frame(maxHeight: heightPadded * 0.7)
                                             .padding(bentoPadding)
                                             .accessibilityIdentifier("ltcPriceBentoView")
-                                            ShopBentoView(viewModel: newMainViewModel,
-                                                                userPrefersDarkTheme: $userPrefersDarkTheme)
+                                            ShopBentoView(shopBentoViewModel: shopViewModel,
+                                                          newMViewModel: newMainViewModel,
+                                                          userPrefersDarkTheme: $userPrefersDarkTheme)
                                             .frame(maxHeight: heightPadded * 0.3)
                                             .padding(bentoPadding)
                                             .accessibilityIdentifier("shopBentoView")
@@ -179,7 +198,7 @@ struct NewMainView: View {
                                     .padding(bentoPadding)
                                 }
                                 .frame(maxHeight: height * 0.5, alignment: .top)
-                                
+
                                 GameHubCarouselBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
                                     .frame(idealHeight: balanceBentoHeight * 0.9, maxHeight: balanceBentoHeight, alignment: .top)
                                     .padding(bentoPadding)
@@ -431,7 +450,7 @@ struct NewMainView: View {
                         .padding(8.0)
                 }
                 .sheet(isPresented: $newMainViewModel.shouldShowShop) {
-                    WebView(url: shopViewModel.widgetURL, scrollToSignup: .constant(false))
+                    WebView(url: updateWidgetTheme(url: shopViewModel.widgetURL), scrollToSignup: .constant(false))
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .cornerRadius(8.0)
                         .padding(.top, 12.0)

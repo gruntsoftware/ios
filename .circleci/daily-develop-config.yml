@@ -49,8 +49,8 @@ jobs:
               brew install rbenv ruby-build
             fi
             eval "$(rbenv init -)"
-            rbenv install -s 3.2.2
-            rbenv global 3.2.2
+            rbenv install -s 3.3.0
+            rbenv global 3.3.0
             ruby -v
             
             # Clean gem environment
