@@ -391,6 +391,10 @@
 		C312D4942D7DC27700BB97A4 /* RetryTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2982D7DC27700BB97A4 /* RetryTimer.swift */; };
 		C312D4952D7DC27700BB97A4 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F02D7DC27700BB97A4 /* RadialGradientView.swift */; };
 		C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */ = {isa = PBXBuildFile; fileRef = C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */; };
+		C31F416A2FF6818400D9DA3D /* BWIOSGdx.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; };
+		C31F416B2FF6818400D9DA3D /* BWIOSGdx.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C31F416F2FF691B900D9DA3D /* SocialPostHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F416E2FF691B200D9DA3D /* SocialPostHelper.swift */; };
+		C31F41712FF6968A00D9DA3D /* SocialPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F41702FF6968700D9DA3D /* SocialPostViewModel.swift */; };
 		C32233132FC214A70043CBA7 /* ShopImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322330D2FC214990043CBA7 /* ShopImages.swift */; };
 		C3236A012D7DE355007039A1 /* URLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3236A002D7DE34D007039A1 /* URLController.swift */; };
 		C32553C12FE09097008B1861 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32553C02FE09097008B1861 /* OpenGLES.framework */; };
@@ -402,9 +406,11 @@
 		C32553CD2FE090E4008B1861 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32553CC2FE090E4008B1861 /* CoreGraphics.framework */; };
 		C32553CF2FE0A03A008B1861 /* GameContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32553CE2FE0A02B008B1861 /* GameContainerViewController.swift */; };
 		C33C4A1F2FC1C96100C23DA7 /* ShopStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33C4A192FC1C94B00C23DA7 /* ShopStructs.swift */; };
+		C35312F52FE289E600FC2840 /* GameEmbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35312F42FE289D000FC2840 /* GameEmbedViewController.swift */; };
 		C353E3BA2FAE9F9E00BFFB30 /* ShopBentoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */; };
 		C35C122A293D48340009022D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1229293D48340009022D /* KeychainAccess */; };
 		C38F57252FD490430005538A /* boingspringmouthharp042013.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */; };
+		C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0BBC22FF6DB11000D5DB8 /* AlertToast */; };
 		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
 		C3E18A9F2F9E657000966C74 /* ShopCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */; };
 		C3E18AA12F9EC22000966C74 /* ConfirmationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */; };
@@ -482,10 +488,11 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		246F97EC2E846230001923A6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C31F416B2FF6818400D9DA3D /* BWIOSGdx.xcframework in Embed Frameworks */,
 				24FF3E6A2E898D4000FF43C5 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -994,6 +1001,8 @@
 		C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
 		C312D2C92D7DC27700BB97A4 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletManager+Auth.swift"; sourceTree = "<group>"; };
+		C31F416E2FF691B200D9DA3D /* SocialPostHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostHelper.swift; sourceTree = "<group>"; };
+		C31F41702FF6968700D9DA3D /* SocialPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostViewModel.swift; sourceTree = "<group>"; };
 		C322330D2FC214990043CBA7 /* ShopImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopImages.swift; sourceTree = "<group>"; };
 		C3236A002D7DE34D007039A1 /* URLController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLController.swift; sourceTree = "<group>"; };
 		C32553C02FE09097008B1861 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1006,6 +1015,7 @@
 		C32553CE2FE0A02B008B1861 /* GameContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContainerViewController.swift; sourceTree = "<group>"; };
 		C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = BWIOSGdx.xcframework; path = "Private/bw-gdlib/ios/build/robovm/BWIOSGdx.xcframework"; sourceTree = "<group>"; };
 		C33C4A192FC1C94B00C23DA7 /* ShopStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopStructs.swift; sourceTree = "<group>"; };
+		C35312F42FE289D000FC2840 /* GameEmbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEmbedViewController.swift; sourceTree = "<group>"; };
 		C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBentoViewModel.swift; sourceTree = "<group>"; };
 		C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boingspringmouthharp042013.mp3; sourceTree = "<group>"; };
 		C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupAskView.swift; sourceTree = "<group>"; };
@@ -1064,11 +1074,13 @@
 				24BEBB972DCDE4D4001E1F1F /* (null) in Frameworks */,
 				C32553CB2FE090DA008B1861 /* QuartzCore.framework in Frameworks */,
 				246028532E5F178400CDEB7A /* FirebaseInAppMessaging-Beta in Frameworks */,
+				C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */,
 				C32553C92FE090D1008B1861 /* AVFoundation.framework in Frameworks */,
 				246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */,
 				C32553C52FE090A6008B1861 /* OpenAL.framework in Frameworks */,
 				24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */,
 				2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */,
+				C31F416A2FF6818400D9DA3D /* BWIOSGdx.xcframework in Frameworks */,
 				C32553C32FE0909E008B1861 /* GLKit.framework in Frameworks */,
 				246028592E5F178400CDEB7A /* FirebaseRemoteConfig in Frameworks */,
 				C35C122A293D48340009022D /* KeychainAccess in Frameworks */,
@@ -1736,6 +1748,7 @@
 		24B0653E2DC647DC00B5E000 /* Game Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C35312F42FE289D000FC2840 /* GameEmbedViewController.swift */,
 				C32553CE2FE0A02B008B1861 /* GameContainerViewController.swift */,
 				24444F462F461FC000AFF295 /* GameHubViewModel.swift */,
 				24B0653F2DC647F000B5E000 /* GameView.swift */,
@@ -2006,6 +2019,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				C31F416D2FF6918E00D9DA3D /* Social Network Classes */,
 				C3C95F702FA1498E002E2BEE /* Signup Notification Classes */,
 				246C3F4F2F2430DF009BC881 /* Tutorial Classes */,
 				24E6675F2F167A4B00909157 /* New Send Classes */,
@@ -2169,6 +2183,15 @@
 			path = brainwallet;
 			sourceTree = "<group>";
 		};
+		C31F416D2FF6918E00D9DA3D /* Social Network Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C31F41702FF6968700D9DA3D /* SocialPostViewModel.swift */,
+				C31F416E2FF691B200D9DA3D /* SocialPostHelper.swift */,
+			);
+			path = "Social Network Classes";
+			sourceTree = "<group>";
+		};
 		C3C95F702FA1498E002E2BEE /* Signup Notification Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -2297,6 +2320,7 @@
 				58A9FE4C291BC37400B75825 /* Count number of swift lines */,
 				246F97EC2E846230001923A6 /* Embed Frameworks */,
 				245F189D2DD1F92000D20715 /* Collect and Send dSYMs to Crashlytics */,
+				C35312F32FE1B5B100FC2840 /* Flatten+Sign+Relocate Asset Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2313,6 +2337,7 @@
 				246028542E5F178400CDEB7A /* FirebaseMessaging */,
 				246028562E5F178400CDEB7A /* FirebasePerformance */,
 				246028582E5F178400CDEB7A /* FirebaseRemoteConfig */,
+				C3B0BBC22FF6DB11000D5DB8 /* AlertToast */,
 			);
 			productName = breadwallet;
 			productReference = 75A2A7901DA5934300A983D8 /* Brainwallet.app */;
@@ -2399,6 +2424,7 @@
 				C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
 				2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C3B0BBC12FF6DB11000D5DB8 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 75A2A7911DA5934300A983D8 /* Products */;
@@ -2602,7 +2628,8 @@
 		};
 		C32553BA2FE08F9F008B1861 /* Build RoboVM  */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			alwaysOutOfDate = 1;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -2614,9 +2641,28 @@
 			);
 			outputPaths = (
 			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n# Skip the RoboVM framework build entirely on simulator — libGDX is device-only.\nif [ \"$PLATFORM_NAME\" = \"iphonesimulator\" ]; then\n    echo \"Simulator build — skipping RoboVM framework build\"\n    exit 0\nfi\nexport JAVA_HOME=\"$(/usr/libexec/java_home -v 17)\"\nexport PATH=\"$JAVA_HOME/bin:$PATH\"\ncd \"$SRCROOT\"\ngit submodule update --init --recursive Private/bw-gdlib\ncd Private/bw-gdlib\n./gradlew :ios:robovmInstall --no-daemon\n";
+		};
+		C35312F32FE1B5B100FC2840 /* Flatten+Sign+Relocate Asset Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Flatten+Sign+Relocate Asset Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nexport JAVA_HOME=\"$(/usr/libexec/java_home -v 17)\"\nexport PATH=\"$JAVA_HOME/bin:$PATH\"\ncd \"$SRCROOT\"\ngit submodule update --init --recursive Private/bw-gdlib\ncd Private/bw-gdlib\n./gradlew :ios:robovmInstall --no-daemon\n";
+			shellScript = "# Type a script oset -e\nset -e\n\n# On simulator, libGDX can't run (device-only natives). Remove BWIOSGdx everywhere dyld looks.\nif [ \"$PLATFORM_NAME\" = \"iphonesimulator\" ]; then\n    echo \"Simulator build — stripping BWIOSGdx\"\n    rm -rf \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BWIOSGdx.framework\"\n    rm -rf \"${BUILT_PRODUCTS_DIR}/BWIOSGdx.framework\"\n    echo \"Stripped BWIOSGdx from app bundle and build products\"\n    exit 0\nfi\nAPP_FW=\"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nNESTED=\"$APP_FW/BWIOSGdx.framework/Frameworks\"\n\necho \"=== Flatten + sign nested frameworks ===\"\necho \"App Frameworks: $APP_FW\"\necho \"Nested source:  $NESTED\"\n\nif [ ! -d \"$NESTED\" ]; then\n    echo \"No nested frameworks dir — nothing to flatten\"\n    exit 0\nfi\n\nfor fw in \"$NESTED\"/*.framework; do\n    name=$(basename \"$fw\")\n    echo \"Flattening + signing: $name\"\n    rm -rf \"$APP_FW/$name\"\n    cp -R \"$fw\" \"$APP_FW/$name\"\n    codesign --force --timestamp=none --sign \"${EXPANDED_CODE_SIGN_IDENTITY}\" \"$APP_FW/$name\"\ndone\n\n# remove nested copies so there's one source of truth (the flattened siblings)\nrm -rf \"$NESTED\"\n\n# re-sign BWIOSGdx since we modified its contents\necho \"Re-signing BWIOSGdx.framework\"\ncodesign --force --timestamp=none --sign \"${EXPANDED_CODE_SIGN_IDENTITY}\" \"$APP_FW/BWIOSGdx.framework\"\n\n# copy libGDX assets to app bundle root (libGDX reads from NSBundle.mainBundle)\nGDX_RES=\"$APP_FW/BWIOSGdx.framework/BWIOSGdx.bundle/Resources\"\nAPP_ROOT=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nif [ -d \"$GDX_RES\" ]; then\n    echo \"Copying libGDX assets to app bundle root\"\n    cp -R \"$GDX_RES/.\" \"$APP_ROOT/\"\nfi\n\necho \"=== Done ===\"\n";
 		};
 		C3A3FFB526FE46E8000FE955 /* Mark Dev Notes */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2799,6 +2845,7 @@
 				C312D3602D7DC27700BB97A4 /* Circle.swift in Sources */,
 				2428717B2DE5C1060035DE48 /* GenericPinPadCell.swift in Sources */,
 				C312D3652D7DC27700BB97A4 /* Async.swift in Sources */,
+				C31F41712FF6968A00D9DA3D /* SocialPostViewModel.swift in Sources */,
 				C312D3682D7DC27700BB97A4 /* PINFieldView.swift in Sources */,
 				240CEE1E2F2D87E500428378 /* WalkthroughStep5View.swift in Sources */,
 				246EA1972EC8B32D00085D3A /* DataScannerView.swift in Sources */,
@@ -2844,6 +2891,7 @@
 				C3FACF702F9E026500886FAD /* SocialsView.swift in Sources */,
 				C312D3772D7DC27700BB97A4 /* UserDefaults+Additions.swift in Sources */,
 				C312D3782D7DC27700BB97A4 /* PinTransitioningDelegate.swift in Sources */,
+				C35312F52FE289E600FC2840 /* GameEmbedViewController.swift in Sources */,
 				244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */,
 				247A7D0B2E95195E000DF8C0 /* TransactionHistoryBentoView.swift in Sources */,
 				C312D37A2D7DC27700BB97A4 /* NumberFormatter+Additions.swift in Sources */,
@@ -2902,6 +2950,7 @@
 				24CA0BE32F475F3200DB0DC7 /* EmojiView.swift in Sources */,
 				C312D3D82D7DC27700BB97A4 /* UITableView+Additions.swift in Sources */,
 				240CEE1C2F2D87CB00428378 /* WalkthroughStep4View.swift in Sources */,
+				C31F416F2FF691B900D9DA3D /* SocialPostHelper.swift in Sources */,
 				24006C2C2F0FCE5500F29F0A /* BentoSendInitialView.swift in Sources */,
 				C312D3DA2D7DC27700BB97A4 /* CameraGuideView.swift in Sources */,
 				246C42A02F24E235009BC881 /* SendStep2View.swift in Sources */,
@@ -3562,7 +3611,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 12.7.0;
+				version = 12.15.0;
 			};
 		};
 		249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
@@ -3579,6 +3628,14 @@
 			requirement = {
 				kind = exactVersion;
 				version = 4.2.0;
+			};
+		};
+		C3B0BBC12FF6DB11000D5DB8 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.9;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -3623,6 +3680,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		C3B0BBC22FF6DB11000D5DB8 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3B0BBC12FF6DB11000D5DB8 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

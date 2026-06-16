@@ -2,11 +2,10 @@ import FirebaseMessaging
 import Firebase
 import FirebaseCore
 import FirebaseAnalytics
+import FirebasePerformance
 import LocalAuthentication
 import SwiftUI
 import UIKit
-import BWIOSGdx
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
@@ -14,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 	var applicationController = ApplicationController()
 	var remoteConfigurationHelper: RemoteConfigHelper?
 	var resourceRequest: NSBundleResourceRequest?
-    let bwGameSDK = BwGameSdkInstance()
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -41,7 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
         NetworkHelper.init().fetchCurrenciesCountries(completion:  { countryData  in
 
-            let currentMoonPayCountry = countryData.filter { $0.alphaCode2Char == regionCode2Char }.first ?? countryRussia
+            let currentMoonPayCountry = countryData
+                .filter { $0.alphaCode2Char == regionCode2Char }
+                .first ?? countryRussia
             UserDefaults.userCanBuyInCurrentLocale = currentMoonPayCountry.isBuyAllowed
         })
 
@@ -91,12 +91,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
         UIView.swizzleSetFrame()
         self.applicationController.launch(application: UIApplication.shared, window: thisWindow)
-        
-        // libGDX: initialize once, paused + hidden, host window stays key
-        bwGameSDK?.startGame(thisWindow)
+         
         return true
 	}
-
+     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         // Receved FCM Token
         let dataDict: [String: String] = ["token" : fcmToken ?? ""]
@@ -153,7 +151,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 		applicationController.didEnterBackground()
 	}
 
-	func application(_: UIApplication, shouldAllowExtensionPointIdentifier _: UIApplication.ExtensionPointIdentifier) -> Bool {
+	func application(_: UIApplication,
+                     shouldAllowExtensionPointIdentifier _: UIApplication.ExtensionPointIdentifier) -> Bool {
 		return false // disable extensions such as custom keyboards for security purposes
 	}
 
@@ -190,7 +189,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
             // Clear the root view controller
             thisWindow.rootViewController = nil
-
             /// TBD to restart the app
         }
     }
@@ -212,16 +210,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
             // Production path — real plist present
             FirebaseApp.configure(options: options)
         } else {
-    let options = FirebaseOptions(
-        googleAppID: "1:000000000000:ios:0000000000000000000000",
-        gcmSenderID: "000000000000"
-    )
-    options.projectID = "test-project"
-    options.storageBucket = "test-project.firebasestorage.app"
-    options.apiKey = "AIzaSy00000000000000000000000000000000"
-    options.bundleID = Bundle.main.bundleIdentifier ?? "co.brainwallet.test"
-    FirebaseApp.configure(options: options)
-    Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
+            let options = FirebaseOptions(
+                googleAppID: "1:000000000000:ios:0000000000000000000000",
+                gcmSenderID: "000000000000"
+            )
+            options.projectID = "test-project"
+            options.storageBucket = "test-project.firebasestorage.app"
+            options.apiKey = "AIzaSy00000000000000000000000000000000"
+            options.bundleID = Bundle.main.bundleIdentifier ?? "co.brainwallet.test"
+            FirebaseApp.configure(options: options)
+            
+            // Stub config — disable everything that uses GoogleDataTransport upload,
+            // or GDT fails to create its path and crashes on the fake project.
+            Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
+            Analytics.setAnalyticsCollectionEnabled(false)
+            // Performance monitoring off (it also feeds GDT):
+            Performance.sharedInstance().isDataCollectionEnabled = false
+            Performance.sharedInstance().isInstrumentationEnabled = false
         }
     }
 
@@ -270,7 +275,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                                withCompletionHandler completionHandler: @escaping () -> Void) {
 
         let userInfo = response.notification.request.content.userInfo
-        NotificationCenter.default.post(name: Notification.Name("didReceiveRemoteNotification"), object: nil, userInfo: userInfo)
+        NotificationCenter.default
+            .post(name: Notification.Name("didReceiveRemoteNotification"),
+                  object: nil, userInfo: userInfo)
         debugPrint("User tapped notification: \(userInfo)")
         completionHandler()
     }

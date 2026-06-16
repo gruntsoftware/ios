@@ -217,7 +217,10 @@
 	</array>
 	<key>UIDesignRequiresCompatibility</key>
 	<true/>
-	<key>JVMOptions</key>
-	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>instagram-stories</string>
+		<string>twitter</string>
+	</array>
 </dict>
 </plist>
