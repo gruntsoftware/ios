@@ -391,8 +391,6 @@
 		C312D4942D7DC27700BB97A4 /* RetryTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2982D7DC27700BB97A4 /* RetryTimer.swift */; };
 		C312D4952D7DC27700BB97A4 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1F02D7DC27700BB97A4 /* RadialGradientView.swift */; };
 		C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */ = {isa = PBXBuildFile; fileRef = C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */; };
-		C31F416A2FF6818400D9DA3D /* BWIOSGdx.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; };
-		C31F416B2FF6818400D9DA3D /* BWIOSGdx.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C31F416F2FF691B900D9DA3D /* SocialPostHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F416E2FF691B200D9DA3D /* SocialPostHelper.swift */; };
 		C31F41712FF6968A00D9DA3D /* SocialPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F41702FF6968700D9DA3D /* SocialPostViewModel.swift */; };
 		C32233132FC214A70043CBA7 /* ShopImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322330D2FC214990043CBA7 /* ShopImages.swift */; };
@@ -405,6 +403,8 @@
 		C32553CB2FE090DA008B1861 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32553CA2FE090DA008B1861 /* QuartzCore.framework */; };
 		C32553CD2FE090E4008B1861 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32553CC2FE090E4008B1861 /* CoreGraphics.framework */; };
 		C32553CF2FE0A03A008B1861 /* GameContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32553CE2FE0A02B008B1861 /* GameContainerViewController.swift */; };
+		C32A486B2FF7242A00B10F54 /* BWIOSGdx.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; };
+		C32A486C2FF7242B00B10F54 /* BWIOSGdx.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C33C4A1F2FC1C96100C23DA7 /* ShopStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33C4A192FC1C94B00C23DA7 /* ShopStructs.swift */; };
 		C35312F52FE289E600FC2840 /* GameEmbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35312F42FE289D000FC2840 /* GameEmbedViewController.swift */; };
 		C353E3BA2FAE9F9E00BFFB30 /* ShopBentoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */; };
@@ -492,7 +492,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C31F416B2FF6818400D9DA3D /* BWIOSGdx.xcframework in Embed Frameworks */,
+				C32A486C2FF7242B00B10F54 /* BWIOSGdx.xcframework in Embed Frameworks */,
 				24FF3E6A2E898D4000FF43C5 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -1077,10 +1077,10 @@
 				C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */,
 				C32553C92FE090D1008B1861 /* AVFoundation.framework in Frameworks */,
 				246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */,
+				C32A486B2FF7242A00B10F54 /* BWIOSGdx.xcframework in Frameworks */,
 				C32553C52FE090A6008B1861 /* OpenAL.framework in Frameworks */,
 				24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */,
 				2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */,
-				C31F416A2FF6818400D9DA3D /* BWIOSGdx.xcframework in Frameworks */,
 				C32553C32FE0909E008B1861 /* GLKit.framework in Frameworks */,
 				246028592E5F178400CDEB7A /* FirebaseRemoteConfig in Frameworks */,
 				C35C122A293D48340009022D /* KeychainAccess in Frameworks */,
