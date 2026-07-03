@@ -437,7 +437,8 @@ struct NewMainView: View {
                                 } else if socialNetwork == "instagram" {
                                     social.shareToInstagramStories(image: image)
                                 }
-    
+                                newMainViewModel.gameExitUpdated = false
+
                             } catch {
                                 print("Failed to decode payload: \(error)")
                             }
@@ -498,13 +499,6 @@ struct NewMainView: View {
                         .cornerRadius(8.0)
                         .padding(.top, 12.0)
                         .padding(8.0)
-                }
-                .sheet(isPresented: $newMainViewModel.shouldShowGameSDK) {
-                    GameHubBentoView(viewModel: newMainViewModel,
-                                     userPrefersDarkTheme: $userPrefersDarkTheme,
-                                     selectedStep: .constant(0))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .accessibilityIdentifier("gameHubBentoView")
                 }
                 .alert(isPresented: $shouldShowPromptAlert) {
                     Alert(title: Text(currentPrompt.title),

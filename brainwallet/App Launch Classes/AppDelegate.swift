@@ -22,8 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         }
         
         UNUserNotificationCenter.current().setBadgeCount(0) { _ in }
-        // Re-assert libGDX pause state after system resume, if a container is tracking it
-        //GameContainerViewController.current?.reassertGameState()
         
         var regionCode2Char: String = "RU"
         let countryRussia = MoonpayCountryData(alphaCode2Char: "RU",

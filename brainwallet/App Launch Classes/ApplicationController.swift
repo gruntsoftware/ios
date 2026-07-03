@@ -4,26 +4,6 @@ import UIKit
 #if !targetEnvironment(simulator)
 import BWIOSGdx
 #endif
-
-struct GameJSON: Codable {
-    let socialNetwork: String
-    let unixTimeStamp: Int
-    let totalScore: Int?
-    let scoreA: Int?
-    let scoreB: Int?
-    let scoreC: Int?
-    let bonusAmount: Int?
-    
-    enum CodingKeys: String, CodingKey {
-        case socialNetwork = "social_network"
-        case unixTimeStamp = "timestamp"
-        case totalScore = "total_score"
-        case bonusAmount = "bonus_amount"
-        case scoreA = "score_a"
-        case scoreB = "score_b"
-        case scoreC = "score_c"
-    }
-}
   
 class ApplicationController: Subscriber {
     // Ideally the window would be private, but is unfortunately required
@@ -161,9 +141,9 @@ class ApplicationController: Subscriber {
             assertionFailure("shouldHideGameSDK: window is nil")
             return
         }
-           
+        let currentLocaleLanguage = Locale.current.language.languageCode?.identifier ?? "en"
         let launchParameters: [String: Any] = [
-            "language": "en",
+            "language": currentLocaleLanguage,
             "address": address,
             "timestamp": Int(Date().timeIntervalSince1970),
             "emojis": "😀👍🏽🎛️"
@@ -177,13 +157,40 @@ class ApplicationController: Subscriber {
             let jsonData = try JSONSerialization
                 .data(withJSONObject: jsonObject, options: [])
             if let jsonString = String(data: jsonData, encoding: .utf8) {
+                
+                
+                //GameContainerViewController.current?.reassertGameState()
                 DispatchQueue.main.async {
                     self.gameController = GameContainerViewController()
                     window.rootViewController = self.gameController
-                    self.bwGameSDK?
-                        .startGame(withLaunchParams: window,
-                                   launchParams: jsonString)
-                    self.gameController?.isGameActive = true
+                    
+                    guard let gameview = self.gameController?.view else {
+                        return
+                    }
+                    
+                    let outgoingView = window.rootViewController?.view
+
+                    gameview.frame = window.bounds
+                    gameview.alpha = 0.0
+                    window.addSubview(gameview)
+                    
+                    
+                    UIView.transition(with: window,
+                                      duration: 0.3,
+                                      options: .transitionCrossDissolve,
+                                      animations: {
+                        
+                        gameview.alpha = 1.0
+                        outgoingView?.alpha = 0.0
+                        
+                    }, completion: { [weak self] _ in
+                        outgoingView?.alpha = 1.0
+                        window.rootViewController = self?.gameController
+                        self?.bwGameSDK?
+                            .startGame(withLaunchParams: window,
+                                       launchParams: jsonString)
+                        self?.gameController?.isGameActive = true
+                    })
                 }
             }
         } catch {
@@ -194,42 +201,52 @@ class ApplicationController: Subscriber {
     
     func shouldHideGameSDK(dictionary: [AnyHashable: Any]) {
         
+        var isUserPostingToSocial = false
         guard gameController != nil else {
             assertionFailure("shouldHideGameSDK: called with no gameController")
             return
         }
         
-        let payload = dictionary["jsonString"] as? String
-        guard let payload = payload,
+        guard let payload = dictionary["jsonString"] as? String,
               let data = payload.data(using: .utf8) else {
             return
         }
         
         do {
             let decodedObject = try JSONDecoder().decode(GameJSON.self, from: data)
-            let socialNetwork: String = decodedObject.socialNetwork
-            if (socialNetwork == "twitter" || socialNetwork == "instagram") {
-
-                //SOCIAL
-                DispatchQueue.main.async {
-                    self.gameController?.isGameActive = false
-                    self.window?.rootViewController = self.mainViewController
-                    self.gameController = nil
-                    self.mainViewController?.newMainViewModel?.gameExitUpdated = true
-                    self.mainViewController?.newMainViewModel?.gameExitDictionary = dictionary
-                }
-                
-            } else {
-                //NO GAME DATA
-                DispatchQueue.main.async {
-                    self.gameController?.isGameActive = false
-                    self.window?.rootViewController = self.mainViewController
-                    self.gameController = nil
-                }
+            isUserPostingToSocial = decodedObject.socialNetwork == "twitter"
+            || decodedObject.socialNetwork == "instagram"
+            
+            DispatchQueue.main.async {
+                self.dismissGameController(transitionDictionary: isUserPostingToSocial ? dictionary : nil)
             }
-             
         } catch {
             print("Failed to decode payload: \(error)")
+        }
+    }
+    
+    private func dismissGameController(transitionDictionary: [AnyHashable: Any]? = nil) {
+
+        gameController?.isGameActive = false
+        guard let window = self.window else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            UIView.transition(with: window,
+                              duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                window.rootViewController = self.mainViewController
+            }, completion: { [weak self] _ in
+                self?.gameController = nil
+            })
+        }
+        
+        //POST GAME DATA TRANSITION
+        if let transitionDictionary {
+            mainViewController?.newMainViewModel?.gameExitUpdated = true
+            mainViewController?.newMainViewModel?.gameExitDictionary = transitionDictionary
         }
     }
      

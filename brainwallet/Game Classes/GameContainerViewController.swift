@@ -29,9 +29,7 @@ final class GameContainerViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    /// Source of truth for whether libGDX is foregrounded + rendering.
+     
     var isGameActive: Bool = false {
         didSet {
 #if !targetEnvironment(simulator)
@@ -50,8 +48,7 @@ final class GameContainerViewController: UIViewController {
     @objc func toggleGame() {
         isGameActive.toggle()
     }
-    
-    // Safety: if this VC leaves the screen, never leave libGDX rendering behind it.
+     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if isGameActive { isGameActive = false }
