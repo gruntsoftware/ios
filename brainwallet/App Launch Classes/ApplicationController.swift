@@ -1,7 +1,10 @@
 import BackgroundTasks
 import SwiftUI
 import UIKit
-
+#if !targetEnvironment(simulator)
+import BWIOSGdx
+#endif
+  
 class ApplicationController: Subscriber {
     // Ideally the window would be private, but is unfortunately required
     // by the UIApplicationDelegate Protocol
@@ -24,9 +27,22 @@ class ApplicationController: Subscriber {
     private var launchURL: URL?
     private var hasPerformedWalletDependentInitialization = false
     private var didInitWallet = false
+    var gameController: GameContainerViewController?
+    #if !targetEnvironment(simulator)
+        var bwGameSDK: BwGameSdk?
+    #endif
 
     init() {
-        transitionDelegate = ModalTransitionDelegate(type: .transactionDetail, store: store)
+        
+        // Game: initialize once, paused + hidden, host window stays key
+        #if !targetEnvironment(simulator)
+            bwGameSDK = BwGameSdkInstance()
+        #else
+            debugPrint(":::: game disabled on simulator (device-only natives)")
+        #endif
+        
+        transitionDelegate = ModalTransitionDelegate(type: .transactionDetail,
+                                                     store: store)
         DispatchQueue.walletQueue.async {
             guardProtected(queue: DispatchQueue.walletQueue) {
                 self.initWallet()
@@ -36,7 +52,8 @@ class ApplicationController: Subscriber {
 
     func initWallet() {
 
-        guard let tempWalletManager = try? WalletManager(store: store, dbPath: nil) else {
+        guard let tempWalletManager = try? WalletManager(store: store,
+                                                         dbPath: nil) else {
             assertionFailure("WalletManager no initialized")
             return
         }
@@ -44,7 +61,7 @@ class ApplicationController: Subscriber {
         walletManager = tempWalletManager
 
         _ = walletManager?.wallet // attempt to initialize wallet
-
+         
         /// Update fiat rate
         let preferredCurrencyCode = UserDefaults.userPreferredCurrencyCode
 
@@ -53,7 +70,9 @@ class ApplicationController: Subscriber {
                 preferredCurrencyCode }) else {
                 return
             }
-            self.store.perform(action: ExchangeRates.setRates(currentRate: currentRate, rates: rates))
+            self.store
+                .perform(action: ExchangeRates
+                    .setRates(currentRate: currentRate, rates: rates))
         })
 
         DispatchQueue.main.async {
@@ -98,10 +117,12 @@ class ApplicationController: Subscriber {
 					self.setup()
 					DispatchQueue.walletQueue.async {
 						do {
-							self.walletManager = try WalletManager(store: self.store, dbPath: nil)
-							_ = self.walletManager?.wallet // attempt to initialize wallet
+							self.walletManager = try WalletManager(store:
+                                                                    self.store,
+                                                                   dbPath: nil)
+							_ = self.walletManager?.wallet// try to initialize wallet
 						} catch {
-							assertionFailure("::: Error creating new wallet: \(error)")
+							assertionFailure("::: Error creating wallet: \(error)")
 						}
 						DispatchQueue.main.async {
 							self.didInitWalletManager()
@@ -114,7 +135,121 @@ class ApplicationController: Subscriber {
 
 		TransactionManager.sharedInstance.fetchTransactionData(store: store)
 	}
+    
+    func shouldShowGameSDK(address: String) {
+        guard let window = self.window else {
+            assertionFailure("shouldHideGameSDK: window is nil")
+            return
+        }
+        let currentLocaleLanguage = Locale.current.language.languageCode?.identifier ?? "en"
+        let launchParameters: [String: Any] = [
+            "language": currentLocaleLanguage,
+            "address": address,
+            "timestamp": Int(Date().timeIntervalSince1970),
+            "emojis": "😀👍🏽🎛️"
+        ]
+        
+        let jsonObject: [String: Any] = [
+            "launchParameters": launchParameters
+        ]
+        
+        do {
+            let jsonData = try JSONSerialization
+                .data(withJSONObject: jsonObject, options: [])
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                
+                
+                //GameContainerViewController.current?.reassertGameState()
+                DispatchQueue.main.async {
+                    self.gameController = GameContainerViewController()
+                    window.rootViewController = self.gameController
+                    
+                    guard let gameview = self.gameController?.view else {
+                        return
+                    }
+                    
+                    let outgoingView = window.rootViewController?.view
 
+                    gameview.frame = window.bounds
+                    gameview.alpha = 0.0
+                    window.addSubview(gameview)
+                    
+                    
+                    UIView.transition(with: window,
+                                      duration: 0.3,
+                                      options: .transitionCrossDissolve,
+                                      animations: {
+                        
+                        gameview.alpha = 1.0
+                        outgoingView?.alpha = 0.0
+                        
+                    }, completion: { [weak self] _ in
+                        outgoingView?.alpha = 1.0
+                        window.rootViewController = self?.gameController
+                        self?.bwGameSDK?
+                            .startGame(withLaunchParams: window,
+                                       launchParams: jsonString)
+                        self?.gameController?.isGameActive = true
+                    })
+                }
+            }
+        } catch {
+            print("Error converting to JSON: \(error)")
+        }
+    }
+    
+    
+    func shouldHideGameSDK(dictionary: [AnyHashable: Any]) {
+        
+        var isUserPostingToSocial = false
+        guard gameController != nil else {
+            assertionFailure("shouldHideGameSDK: called with no gameController")
+            return
+        }
+        
+        guard let payload = dictionary["jsonString"] as? String,
+              let data = payload.data(using: .utf8) else {
+            return
+        }
+        
+        do {
+            let decodedObject = try JSONDecoder().decode(GameJSON.self, from: data)
+            isUserPostingToSocial = decodedObject.socialNetwork == "twitter"
+            || decodedObject.socialNetwork == "instagram"
+            
+            DispatchQueue.main.async {
+                self.dismissGameController(transitionDictionary: isUserPostingToSocial ? dictionary : nil)
+            }
+        } catch {
+            print("Failed to decode payload: \(error)")
+        }
+    }
+    
+    private func dismissGameController(transitionDictionary: [AnyHashable: Any]? = nil) {
+
+        gameController?.isGameActive = false
+        guard let window = self.window else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            UIView.transition(with: window,
+                              duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                window.rootViewController = self.mainViewController
+            }, completion: { [weak self] _ in
+                self?.gameController = nil
+            })
+        }
+        
+        //POST GAME DATA TRANSITION
+        if let transitionDictionary {
+            mainViewController?.newMainViewModel?.gameExitUpdated = true
+            mainViewController?.newMainViewModel?.gameExitDictionary = transitionDictionary
+        }
+    }
+     
 	func willEnterForeground() {
 		guard let walletManager = walletManager else { return }
 		guard !walletManager.noWallet else { return }
@@ -152,7 +287,8 @@ class ApplicationController: Subscriber {
 		}
 		// Save the backgrounding time if the user is logged in
 		if !store.state.isLoginRequired {
-			UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: timeSinceLastExitKey)
+			UserDefaults.standard.set(Date().timeIntervalSince1970,
+                                      forKey: timeSinceLastExitKey)
 		}
 	}
 
@@ -171,15 +307,18 @@ class ApplicationController: Subscriber {
 
 	private func didInitWalletManager() {
         guard let walletManager = walletManager else {
-            assertionFailure("WalletManager must be initialized before ApplicationController")
+            assertionFailure("WalletManager must be init before ApplicationController")
             return
         }
 		guard let window = window else { return }
-        NotificationCenter.default.post(name: .walletDidIntializeNotification, object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: .walletDidIntializeNotification,
+                                        object: nil, userInfo: nil)
 
 		hasPerformedWalletDependentInitialization = true
 		walletCoordinator = WalletCoordinator(walletManager: walletManager, store: store)
-		modalPresenter = ModalPresenter(store: store, walletManager: walletManager, window: window, apiClient: noAuthApiClient)
+		modalPresenter = ModalPresenter(store: store,
+                                        walletManager: walletManager,
+                                        window: window, apiClient: noAuthApiClient)
 		exchangeUpdater = ExchangeUpdater(store: store, walletManager: walletManager)
 		mainViewController?.walletManager = walletManager
 		defaultsUpdater = UserDefaultsUpdater(walletManager: walletManager)
@@ -264,9 +403,13 @@ class ApplicationController: Subscriber {
 
 	func performBackgroundFetch() {
 		let group = DispatchGroup()
-		if let peerManager = walletManager?.peerManager, peerManager.syncProgress(fromStartHeight: peerManager.lastBlockHeight) < 1.0 {
+		if let peerManager = walletManager?.peerManager,
+            peerManager
+            .syncProgress(fromStartHeight: peerManager.lastBlockHeight) < 1.0 {
 			group.enter()
-			store.lazySubscribe(self, selector: { $0.walletState.syncState != $1.walletState.syncState }, callback: { state in
+			store.lazySubscribe(self,
+                                selector: { $0.walletState.syncState != $1.walletState.syncState },
+                                callback: { state in
 				if self.fetchCompletionHandler != nil {
 					if state.walletState.syncState == .success {
 						DispatchQueue.walletConcurrentQueue.async {
