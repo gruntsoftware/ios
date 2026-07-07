@@ -43,7 +43,6 @@ struct ShopBentoView: View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
-
             ZStack {
                 ShopBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme,
                                      imageName: "shop_background_01").edgesIgnoringSafeArea(.all)
@@ -80,7 +79,6 @@ struct ShopBentoView: View {
                 Analytics.logEvent("user_did_tap_shop_bento",
                                    parameters: nil)
             }
-
         }
     }
 }

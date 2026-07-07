@@ -17,7 +17,6 @@ class ShopBentoViewModel: ObservableObject {
 
     @Published
     var cards: [ShopCard]?
-
     @Published
     var cardsAreLoaded = false
 

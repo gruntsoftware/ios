@@ -77,7 +77,6 @@ struct WebView: UIViewRepresentable {
             """
             webView.evaluateJavaScript(messageScript, completionHandler: nil)
         }
-
         // MARK: - WKScriptMessageHandler
         func userContentController(_ userContentController: WKUserContentController,
                                    didReceive message: WKScriptMessage) {
@@ -87,7 +86,6 @@ struct WebView: UIViewRepresentable {
                   let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                   let invoiceId = json["invoiceId"] as? String,
                   let paymentUri = json["paymentUri"] as? String else { return }
-
             DispatchQueue.main.async {
                 if (!invoiceId.isEmpty && !paymentUri.isEmpty) {
                     Analytics
@@ -110,7 +108,6 @@ class EmbeddedWebView: WKWebView, WKNavigationDelegate {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.startAnimating()
         self.addSubview(activityIndicator)
-
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
