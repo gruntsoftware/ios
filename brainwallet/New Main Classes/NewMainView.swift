@@ -8,6 +8,7 @@
 
 import SwiftUI
 import FirebaseAnalytics
+import AlertToast
 
 struct NewMainView: View {
 
@@ -31,6 +32,9 @@ struct NewMainView: View {
 
     @State
     private var shouldShowEmojiPicker: Bool = false
+    
+    @State
+    private var shouldCustomToast: Bool = false
 
     @State
     private var userDidTapSendWhileSyncing: Bool = false
@@ -52,9 +56,6 @@ struct NewMainView: View {
 
     @State
     private var shouldShowExportOptions: Bool = false
-
-    @State
-    private var shouldShowGameMode: Bool = false
 
     @State
     private var shouldShowPromptAlert: Bool = false
@@ -84,6 +85,8 @@ struct NewMainView: View {
                                 database catchs up to the latest block.\nPlease try again later.
                                 """
 
+    private let pasteXMessage = String(localized: "Copied! Paste your score to X.")
+
     @State
     private var mainGradientStyle: MainGradientStyle = .lightStyle
 
@@ -93,7 +96,6 @@ struct NewMainView: View {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     private let socialsURL = URL(string: BrainwalletSocials.linktree)!
-
 
     init(viewModel: NewMainViewModel,
          receiveViewModel: NewReceiveViewModel) {
@@ -115,7 +117,6 @@ struct NewMainView: View {
             queryItems.append(URLQueryItem(name: "theme", value: theme))
         }
         components.queryItems = queryItems
-
         return components.url ?? url
     }
 
@@ -198,8 +199,9 @@ struct NewMainView: View {
                                     .padding(bentoPadding)
                                 }
                                 .frame(maxHeight: height * 0.5, alignment: .top)
-
-                                GameHubCarouselBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme)
+                                GameHubCarouselBentoView(viewModel: newMainViewModel,
+                                                         userPrefersDarkTheme: $userPrefersDarkTheme,
+                                                         shouldToggleGame: $newMainViewModel.shouldShowGameMode)
                                     .frame(idealHeight: balanceBentoHeight * 0.9, maxHeight: balanceBentoHeight, alignment: .top)
                                     .padding(bentoPadding)
                                     .accessibilityIdentifier("gameHubCarouselBentoView")
@@ -327,7 +329,7 @@ struct NewMainView: View {
                         Spacer()
 
                         Button(action: {
-                            newMainViewModel.shouldShowGameMode.toggle()
+                            newMainViewModel.shouldShowGameSDK.toggle()
                             Analytics.logEvent("user_did_tap_gamemode", parameters: nil)
                         }, label: {
                             VStack(spacing: 4) {
@@ -409,6 +411,48 @@ struct NewMainView: View {
                         }
                     }
                 }
+                .onChange(of: newMainViewModel.gameExitUpdated) { _,_ in
+                    
+                    if newMainViewModel.gameExitUpdated {
+                            let gameExitDictionary = newMainViewModel.gameExitDictionary
+                            let payload = gameExitDictionary["jsonString"] as? String
+                            guard let payload = payload,
+                                  let data = payload.data(using: .utf8) else {
+                                return
+                            }
+                            guard let screenShotData = gameExitDictionary["screenshotdata"] as? Data else { return }
+    
+                            do {
+                                let decodedObject = try JSONDecoder().decode(GameJSON.self, from: data)
+                                let socialNetwork: String = decodedObject.socialNetwork
+                                let social = SocialPostViewModel()
+                                guard let image = social.image(from: screenShotData) else { return }
+    
+                                if socialNetwork == "twitter" {
+                                    shouldCustomToast.toggle()
+                                    delay(3) {
+                                        social.shareToX(image: image)
+                                        shouldCustomToast.toggle()
+                                    }
+                                } else if socialNetwork == "instagram" {
+                                    social.shareToInstagramStories(image: image)
+                                }
+                                newMainViewModel.gameExitUpdated = false
+
+                            } catch {
+                                print("Failed to decode payload: \(error)")
+                            }
+                    }
+                 }
+                .onChange(of: newMainViewModel.shouldShowGameSDK) { _,_ in
+                    let address = newReceiveViewModel.newReceiveAddress
+                    if newMainViewModel.shouldShowGameSDK {
+                        DispatchQueue.userInitQueue.async {
+                            appDelegate.applicationController
+                                .shouldShowGameSDK(address: address)
+                        }
+                    }
+                }
                 .sheet(isPresented: $userDidTapSend) {
                     if !walletIsSyncing {
                         BentoSendModalView(viewModel: newMainViewModel,
@@ -456,17 +500,16 @@ struct NewMainView: View {
                         .padding(.top, 12.0)
                         .padding(8.0)
                 }
-                .sheet(isPresented: $newMainViewModel.shouldShowGameMode) {
-                    GameHubBentoView(viewModel: newMainViewModel, userPrefersDarkTheme: $userPrefersDarkTheme, selectedStep: .constant(0))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .accessibilityIdentifier("gameHubBentoView")
-                }
                 .alert(isPresented: $shouldShowPromptAlert) {
                     Alert(title: Text(currentPrompt.title),
                           message: Text(currentPrompt.body),
                           dismissButton: .default(Text(String(localized: "Ok")),
                                                   action: { shouldShowPromptAlert = false }))
                 }
+                .toast(isPresenting: $shouldCustomToast){
+                    AlertToast(type: .regular, title: pasteXMessage)
+                }
+
             }
             .showEmojiPicker(showEmojiSetView: shouldShowEmojiPicker,
                              emojiSetView:
@@ -474,7 +517,8 @@ struct NewMainView: View {
                                              viewModel: newMainViewModel,
                                              shouldShowView: $shouldShowEmojiPicker,
                                              userPrefersDarkTheme: $userPrefersDarkTheme)
-        )
+            )
+            
         }
     }
 }

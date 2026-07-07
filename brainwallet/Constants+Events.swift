@@ -74,6 +74,7 @@ struct C {
 	static let satoshis: UInt64 = 100_000_000
     static let litoshis: UInt64 = 100_000_000
 	static let walletQueue = "com.gruntsoftware.brainwalletqueue"
+    static let userInitQueue = "com.gruntsoftware.brainwalletqueue.userinit"
 	static let ltcCurrencyCode = "LTC"
 	static let null = "(null)"
 	static let maxMemoLength = 250

@@ -4,6 +4,7 @@ import FirebaseAnalytics
 enum ServiceType {
     case walletOps
     case walletStart
+    case postMetaID
     case agentPubKey
     case prodAF
 
@@ -13,6 +14,8 @@ enum ServiceType {
             return "wallet_ops"
         case .walletStart:
             return "wallet_start"
+        case .postMetaID:
+            return "post-meta-id"
         case .agentPubKey:
             return "agent_pub_key"
         case .prodAF:
@@ -78,6 +81,15 @@ struct Partner {
                 return keyString
             } else {
                 let errorDescription = "error_agent-base64-pubkey"
+                return errorDescription
+            }
+                
+        case .postMetaID:
+            if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
+               let keyString = dictionary["post-meta-id"] as? String {
+                return keyString
+            } else {
+                let errorDescription = "error_post-meta-id"
                 return errorDescription
             }
 		case .prodAF:
