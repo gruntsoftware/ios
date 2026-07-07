@@ -231,6 +231,8 @@
 		24FBB86A2E035E10002B5F84 /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */; };
 		24FF3E6A2E898D4000FF43C5 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 755CD9D11DAA197C0075898E /* libBRCore.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		C30B03C12FFD158600373A82 /* BWIOSGdx.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; };
+		C30B03C22FFD158600373A82 /* BWIOSGdx.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C30D099E2FC5AB720083EDE2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C30D099D2FC5AB720083EDE2 /* GoogleService-Info.plist */; };
 		C312D2D02D7DC27700BB97A4 /* ReachabilityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2912D7DC27700BB97A4 /* ReachabilityMonitor.swift */; };
 		C312D2D12D7DC27700BB97A4 /* CopyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D23A2D7DC27700BB97A4 /* CopyButtonView.swift */; };
@@ -405,8 +407,6 @@
 		C32553CF2FE0A03A008B1861 /* GameContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32553CE2FE0A02B008B1861 /* GameContainerViewController.swift */; };
 		C32A487D2FF79FD800B10F54 /* GameStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32A487C2FF79FD000B10F54 /* GameStructs.swift */; };
 		C33C4A1F2FC1C96100C23DA7 /* ShopStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33C4A192FC1C94B00C23DA7 /* ShopStructs.swift */; };
-		C347A3B92FFBCB1A00C70BDD /* BWIOSGdx.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; };
-		C347A3BA2FFBCB1A00C70BDD /* BWIOSGdx.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C35312F52FE289E600FC2840 /* GameEmbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35312F42FE289D000FC2840 /* GameEmbedViewController.swift */; };
 		C353E3BA2FAE9F9E00BFFB30 /* ShopBentoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */; };
 		C35C122A293D48340009022D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1229293D48340009022D /* KeychainAccess */; };
@@ -493,7 +493,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C347A3BA2FFBCB1A00C70BDD /* BWIOSGdx.xcframework in Embed Frameworks */,
+				C30B03C22FFD158600373A82 /* BWIOSGdx.xcframework in Embed Frameworks */,
 				24FF3E6A2E898D4000FF43C5 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -1014,7 +1014,6 @@
 		C32553CA2FE090DA008B1861 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C32553CC2FE090E4008B1861 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C32553CE2FE0A02B008B1861 /* GameContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContainerViewController.swift; sourceTree = "<group>"; };
-		C32A48712FF77E7500B10F54 /* BWIOSGdx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BWIOSGdx.framework; path = "Private/bw-gdlib/ios/build/robovm/BWIOSGdx.xcframework/arm64/BWIOSGdx.framework"; sourceTree = "<group>"; };
 		C32A487C2FF79FD000B10F54 /* GameStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStructs.swift; sourceTree = "<group>"; };
 		C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = BWIOSGdx.xcframework; path = "Private/bw-gdlib/ios/build/robovm/BWIOSGdx.xcframework"; sourceTree = "<group>"; };
 		C33C4A192FC1C94B00C23DA7 /* ShopStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopStructs.swift; sourceTree = "<group>"; };
@@ -1080,7 +1079,7 @@
 				C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */,
 				C32553C92FE090D1008B1861 /* AVFoundation.framework in Frameworks */,
 				246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */,
-				C347A3B92FFBCB1A00C70BDD /* BWIOSGdx.xcframework in Frameworks */,
+				C30B03C12FFD158600373A82 /* BWIOSGdx.xcframework in Frameworks */,
 				C32553C52FE090A6008B1861 /* OpenAL.framework in Frameworks */,
 				24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */,
 				2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */,
@@ -1914,7 +1913,6 @@
 		75A2A7F11DA5935F00A983D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C32A48712FF77E7500B10F54 /* BWIOSGdx.framework */,
 				C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */,
 				C32553CC2FE090E4008B1861 /* CoreGraphics.framework */,
 				C32553CA2FE090DA008B1861 /* QuartzCore.framework */,

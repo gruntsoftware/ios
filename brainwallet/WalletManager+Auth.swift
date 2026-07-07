@@ -292,19 +292,19 @@ extension WalletManager: WalletAuthenticator {
         }
     }
     
-    // returns the emoji array
-    func emojiStringArray() -> [String]? {
-         var emojiStringArray: [String] = []
+    // returns the emoji array string
+    func emojiStringResult() -> String? {
+         var emojiStringResult = ""
         
         do {
             let fetchedEmojiString: String? = try keychainItem(key: KeychainKey.emoji)
             if let emojiString = fetchedEmojiString {
-                emojiStringArray = emojiString.split(separator: ",").map(String.init)
+                emojiStringResult = emojiString
             }
         } catch {
-            return []
+            return ""
         }
-        return emojiStringArray
+        return emojiStringResult
     }
 
     // returns the emoji string

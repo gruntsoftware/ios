@@ -144,13 +144,17 @@ class ApplicationController: Subscriber {
         let currentLocaleLanguage = Locale.current.language.languageCode?.identifier ?? "en"
         
         guard let walletManager = walletManager,
-        let emojiArray = walletManager.emojiStringArray() else { return }
+        let emojiResult = walletManager.emojiStringResult() else { return }
+        
+        let emojiArray = emojiResult.map { String($0) }
+        let jsonData = try! JSONSerialization.data(withJSONObject: emojiArray)
+        let emojisJson = String(data: jsonData, encoding: .utf8)!
         
         let launchParameters: [String: Any] = [
             "language": currentLocaleLanguage,
             "address": address,
             "timestamp": Int(Date().timeIntervalSince1970),
-            "emojis": emojiArray
+            "emojis": emojisJson
         ]
         
         let jsonObject: [String: Any] = [
