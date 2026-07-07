@@ -231,8 +231,6 @@
 		24FBB86A2E035E10002B5F84 /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */; };
 		24FF3E6A2E898D4000FF43C5 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 755CD9D11DAA197C0075898E /* libBRCore.a */; settings = {ATTRIBUTES = (Required, ); }; };
-		C30B03CD2FFD28AF00373A82 /* BWIOSGdx.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; };
-		C30B03CE2FFD28AF00373A82 /* BWIOSGdx.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C30D099E2FC5AB720083EDE2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C30D099D2FC5AB720083EDE2 /* GoogleService-Info.plist */; };
 		C312D2D02D7DC27700BB97A4 /* ReachabilityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2912D7DC27700BB97A4 /* ReachabilityMonitor.swift */; };
 		C312D2D12D7DC27700BB97A4 /* CopyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D23A2D7DC27700BB97A4 /* CopyButtonView.swift */; };
@@ -413,6 +411,8 @@
 		C38F57252FD490430005538A /* boingspringmouthharp042013.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */; };
 		C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0BBC22FF6DB11000D5DB8 /* AlertToast */; };
 		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
+		C3CE345E2FFD8823004A2ECA /* BWIOSGdx.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; };
+		C3CE345F2FFD8823004A2ECA /* BWIOSGdx.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3E18A9F2F9E657000966C74 /* ShopCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */; };
 		C3E18AA12F9EC22000966C74 /* ConfirmationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */; };
 		C3FACF6C2F9E023700886FAD /* GameHubCarouselBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */; };
@@ -493,7 +493,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C30B03CE2FFD28AF00373A82 /* BWIOSGdx.xcframework in Embed Frameworks */,
+				C3CE345F2FFD8823004A2ECA /* BWIOSGdx.xcframework in Embed Frameworks */,
 				24FF3E6A2E898D4000FF43C5 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -1079,7 +1079,7 @@
 				C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */,
 				C32553C92FE090D1008B1861 /* AVFoundation.framework in Frameworks */,
 				246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */,
-				C30B03CD2FFD28AF00373A82 /* BWIOSGdx.xcframework in Frameworks */,
+				C3CE345E2FFD8823004A2ECA /* BWIOSGdx.xcframework in Frameworks */,
 				C32553C52FE090A6008B1861 /* OpenAL.framework in Frameworks */,
 				24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */,
 				2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */,
