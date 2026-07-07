@@ -52,6 +52,9 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
     @Published
     var shouldShowGameMode: Bool = false
+    
+    @Published
+    var shouldShowGameSDK: Bool = false
      
     @Published
     var shouldShowShop: Bool = false
@@ -142,6 +145,13 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
     @Published
     var bwTransaction = BWTransaction()
+    
+    
+    @Published
+    var gameExitUpdated = false
+    
+    @Published
+    var gameExitDictionary: [AnyHashable: Any] = ["":""]
 
     @Published
     var transactions: [Transaction]?

@@ -291,6 +291,21 @@ extension WalletManager: WalletAuthenticator {
             return nil
         }
     }
+    
+    // returns the emoji array string
+    func emojiStringResult() -> String? {
+         var emojiStringResult = ""
+        
+        do {
+            let fetchedEmojiString: String? = try keychainItem(key: KeychainKey.emoji)
+            if let emojiString = fetchedEmojiString {
+                emojiStringResult = emojiString
+            }
+        } catch {
+            return ""
+        }
+        return emojiStringResult
+    }
 
     // returns the emoji string
     func deleteEmojiString(pin: String) -> Bool {

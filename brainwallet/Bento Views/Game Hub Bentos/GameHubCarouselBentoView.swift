@@ -11,13 +11,16 @@ import SwiftUI
 struct GameHubCarouselBentoView: View {
 
     @ObservedObject
-    var newMainViewModel: NewMainViewModel
+    var viewModel: NewMainViewModel
 
     @Binding
     var userPrefersDarkTheme: Bool
     
+    @Binding
+    var shouldToggleGame: Bool
+    
     @State
-    private var selectedStep: Int = 0
+    private var selectedTab: Int = 0
     
     @State
     private var carouselDirection: Int = 1
@@ -31,9 +34,10 @@ struct GameHubCarouselBentoView: View {
    @State
     private var carouselTimer: Timer?
 
-    init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>) {
+    init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>, shouldToggleGame: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
-        newMainViewModel = viewModel
+        _shouldToggleGame = shouldToggleGame
+        self.viewModel = viewModel
     }
     var body: some View {
         GeometryReader { geometry in
@@ -41,19 +45,24 @@ struct GameHubCarouselBentoView: View {
             ZStack {
                 VStack(alignment: .center) {
                      
-                    TabView(selection: $selectedStep) {
-                        GameHubBentoView(viewModel: newMainViewModel,
+                    TabView(selection: $selectedTab) {
+                        GameHubBentoView(viewModel: viewModel,
                                          userPrefersDarkTheme: $userPrefersDarkTheme,
-                                         selectedStep: $selectedStep)
+                                         selectedStep: $selectedTab)
                         .tag(0)
-                        MoonPayView(viewModel: newMainViewModel,
-                                    selectedStep: $selectedStep)
+                        MoonPayView(viewModel: viewModel,
+                                    selectedStep: $selectedTab)
                         .tag(1)
-                        SocialsBentoView(viewModel: newMainViewModel,
-                                         selectedStep: $selectedStep)
+                        SocialsBentoView(viewModel: viewModel,
+                                         selectedStep: $selectedTab)
                         .tag(2)
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))
+                    .onTapGesture {
+                        if selectedTab == 0 {
+                            shouldToggleGame.toggle()
+                        }
+                    }
 
                 }
                 .frame(maxWidth: .infinity, alignment: .init(horizontal: .center, vertical: .center))
@@ -63,10 +72,7 @@ struct GameHubCarouselBentoView: View {
             .frame(minHeight: gameBentoHeight * 0.9, idealHeight: gameBentoHeight * 1.4, maxHeight: gameBentoHeight * 2, alignment: .center)
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
-                startCarousel()
-            }
-            .onDisappear {
-                stopCarousel()
+
             }
         }
     }
@@ -87,10 +93,10 @@ struct GameHubCarouselBentoView: View {
     
     private func advanceCarousel() {
         withAnimation {
-            selectedStep += carouselDirection
-            if selectedStep >= 2 {
+            selectedTab += carouselDirection
+            if selectedTab >= 2 {
                 carouselDirection = -1
-            } else if selectedStep <= 0 {
+            } else if selectedTab <= 0 {
                 carouselDirection = 1
             }
         }
