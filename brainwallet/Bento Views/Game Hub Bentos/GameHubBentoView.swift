@@ -74,7 +74,7 @@ struct GameHubBentoView: View {
                         HStack {
                             
                             Button(action: {
-                                newMainViewModel.shouldShowGameMode.toggle()
+                                newMainViewModel.shouldShowGameSDK.toggle()
                             }) {
                                 
                                 HStack {
@@ -131,7 +131,7 @@ struct GameHubBentoView: View {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
             }
             .onTapGesture {
-                newMainViewModel.shouldShowGameMode.toggle()
+                newMainViewModel.shouldShowGameSDK.toggle()
             }
         }
     }
