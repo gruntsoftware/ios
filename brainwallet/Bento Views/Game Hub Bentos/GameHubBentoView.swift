@@ -12,13 +12,13 @@ struct GameHubBentoView: View {
 
     @Binding
     var userPrefersDarkTheme: Bool
-    
+
     @Binding
     var selectedStep: Int
 
     @State
     private var mainGradientStyle: MainGradientStyle = .lightStyle
- 
+
     private let buttonSize: CGFloat = 20.0
 
     private let buttonPlatformFactor: CGFloat = 2.1
@@ -61,7 +61,7 @@ struct GameHubBentoView: View {
                         }
                         Spacer()
                     }
-                    
+
                     VStack(alignment: .center) {
                         HStack {
                             VStack {
@@ -78,7 +78,7 @@ struct GameHubBentoView: View {
                                             endPoint: .bottom
                                         )
                                     )
-                                
+
                                 Text("ARE YOU GOOD ENOUGH TO BE #1?")
                                     .modifier(BWIPSMedium(size: 16.0))
                                     .padding(.leading, 16)
@@ -97,7 +97,7 @@ struct GameHubBentoView: View {
                             Spacer()
                         }
                     }
-                    
+
                     HStack {
                         Spacer()
                         FallinMojiDemoView(width: width * 0.8,

@@ -15,19 +15,19 @@ struct GameHubCarouselBentoView: View {
 
     @Binding
     var userPrefersDarkTheme: Bool
-    
+
     @Binding
     var shouldShowGameSDK: Bool
-    
+
     @State
     private var selectedTab: Int = 0
-    
+
     @State
     private var carouselDirection: Int = 1
 
     @State
     private var mainGradientStyle: MainGradientStyle = .lightStyle
-    
+
    @State
     private var carouselTimer: Timer?
 
@@ -38,7 +38,7 @@ struct GameHubCarouselBentoView: View {
     }
     var body: some View {
         GeometryReader { geometry in
-  
+
             ZStack {
                 VStack(alignment: .center) {
                     TabView(selection: $selectedTab) {
@@ -74,7 +74,7 @@ struct GameHubCarouselBentoView: View {
             }
         }
     }
-    
+
     private func startCarousel() {
         stopCarousel()
         carouselTimer = Timer.scheduledTimer(withTimeInterval: 15.0,
@@ -83,12 +83,12 @@ struct GameHubCarouselBentoView: View {
         }
         RunLoop.main.add(carouselTimer!, forMode: .common)
     }
-    
+
     private func stopCarousel() {
         carouselTimer?.invalidate()
         carouselTimer = nil
     }
-    
+
     private func advanceCarousel() {
         withAnimation {
             selectedTab += carouselDirection
