@@ -209,7 +209,8 @@ class ApplicationController: Subscriber {
     
     func shouldHideGameSDK(dictionary: [AnyHashable: Any]) {
         
-        var isUserPostingToSocial = false
+        //Either exit game or post to social after decoding dictionary
+        var userIsPostingToSocial = false
         guard gameController != nil else {
             assertionFailure("shouldHideGameSDK: called with no gameController")
             return
@@ -222,42 +223,43 @@ class ApplicationController: Subscriber {
         
         do {
             let decodedObject = try JSONDecoder().decode(GameJSON.self, from: data)
-            isUserPostingToSocial = decodedObject.socialNetwork == "twitter"
+            userIsPostingToSocial = decodedObject.socialNetwork == "twitter"
             || decodedObject.socialNetwork == "instagram"
             
             DispatchQueue.main.async {
-                self.dismissGameController(transitionDictionary: isUserPostingToSocial ? dictionary : nil)
+                 
+                guard let window = self.window else {
+                    return
+                }
+                
+                let outgoingView = window.rootViewController?.view
+                let incomingVC = self.mainViewController
+                
+                outgoingView?.alpha = 1.0
+                UIView.animate(withDuration: 0.3, animations: {
+                    outgoingView?.alpha = 0.0
+                }, completion: { [weak self] _ in
+                    window.rootViewController = incomingVC
+                    outgoingView?.alpha = 1.0
+                    self?.gameController = nil
+                })
+                
+                
+                //Reset the toggle
+                self.mainViewController?.newMainViewModel?.shouldShowGameSDK = false
+
+                //POST GAME DATA TRANSITION
+                if userIsPostingToSocial {
+                    self.mainViewController?.newMainViewModel?.gameExitDictionary = dictionary
+                    self.mainViewController?.newMainViewModel?.gameExitUpdated = true
+                }
+
             }
         } catch {
             print("Failed to decode payload: \(error)")
         }
     }
     
-    private func dismissGameController(transitionDictionary: [AnyHashable: Any]? = nil) {
-
-        gameController?.isGameActive = false
-        guard let window = self.window else {
-            return
-        }
-        
-        DispatchQueue.main.async {
-            UIView.transition(with: window,
-                              duration: 0.3,
-                              options: .transitionCrossDissolve,
-                              animations: {
-                window.rootViewController = self.mainViewController
-            }, completion: { [weak self] _ in
-                self?.gameController = nil
-            })
-        }
-        
-        //POST GAME DATA TRANSITION
-        if let transitionDictionary {
-            mainViewController?.newMainViewModel?.gameExitUpdated = true
-            mainViewController?.newMainViewModel?.gameExitDictionary = transitionDictionary
-        }
-    }
-     
 	func willEnterForeground() {
 		guard let walletManager = walletManager else { return }
 		guard !walletManager.noWallet else { return }
