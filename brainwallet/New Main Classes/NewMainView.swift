@@ -201,7 +201,7 @@ struct NewMainView: View {
                                 .frame(maxHeight: height * 0.5, alignment: .top)
                                 GameHubCarouselBentoView(viewModel: newMainViewModel,
                                                          userPrefersDarkTheme: $userPrefersDarkTheme,
-                                                         shouldToggleGame: $newMainViewModel.shouldShowGameMode)
+                                                         shouldShowGameSDK: $newMainViewModel.shouldShowGameSDK)
                                     .frame(idealHeight: balanceBentoHeight * 0.9, maxHeight: balanceBentoHeight, alignment: .top)
                                     .padding(bentoPadding)
                                     .accessibilityIdentifier("gameHubCarouselBentoView")
@@ -246,6 +246,7 @@ struct NewMainView: View {
                                 .foregroundColor(content)
                             }
                         }
+                        .sensoryFeedback(.success, trigger: userPrefersDarkTheme)  // ← test here
                         .accessibilityIdentifier("themePreferenceButton")
 
                     }
