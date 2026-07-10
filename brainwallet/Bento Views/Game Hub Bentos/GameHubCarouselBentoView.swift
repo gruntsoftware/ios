@@ -17,7 +17,7 @@ struct GameHubCarouselBentoView: View {
     var userPrefersDarkTheme: Bool
     
     @Binding
-    var shouldToggleGame: Bool
+    var shouldShowGameSDK: Bool
     
     @State
     private var selectedTab: Int = 0
@@ -27,16 +27,13 @@ struct GameHubCarouselBentoView: View {
 
     @State
     private var mainGradientStyle: MainGradientStyle = .lightStyle
-
-    @State
-    private var shouldShowGameMode: Bool = false
     
    @State
     private var carouselTimer: Timer?
 
-    init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>, shouldToggleGame: Binding<Bool>) {
+    init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>, shouldShowGameSDK: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
-        _shouldToggleGame = shouldToggleGame
+        _shouldShowGameSDK = shouldShowGameSDK
         self.viewModel = viewModel
     }
     var body: some View {
@@ -44,12 +41,18 @@ struct GameHubCarouselBentoView: View {
   
             ZStack {
                 VStack(alignment: .center) {
-                     
                     TabView(selection: $selectedTab) {
-                        GameHubBentoView(viewModel: viewModel,
-                                         userPrefersDarkTheme: $userPrefersDarkTheme,
+                        GameHubBentoView(userPrefersDarkTheme: $userPrefersDarkTheme,
                                          selectedStep: $selectedTab)
                         .tag(0)
+                        .contentShape(Rectangle())
+                        .simultaneousGesture(
+                            LongPressGesture(minimumDuration:0.1)
+                                .onEnded { _ in
+                                    guard !shouldShowGameSDK else { return }
+                                    shouldShowGameSDK.toggle()
+                                }
+                        )
                         MoonPayView(viewModel: viewModel,
                                     selectedStep: $selectedTab)
                         .tag(1)
@@ -58,21 +61,16 @@ struct GameHubCarouselBentoView: View {
                         .tag(2)
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))
-                    .onTapGesture {
-                        if selectedTab == 0 {
-                            shouldToggleGame.toggle()
-                        }
-                    }
-
                 }
                 .frame(maxWidth: .infinity, alignment: .init(horizontal: .center, vertical: .center))
 
             }
             .cornerRadius(bentoCornerRadius)
             .frame(minHeight: gameBentoHeight * 0.9, idealHeight: gameBentoHeight * 1.4, maxHeight: gameBentoHeight * 2, alignment: .center)
+            .sensoryFeedback(.success, trigger: shouldShowGameSDK)
+            .sensoryFeedback(.selection, trigger: selectedTab)
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
-
             }
         }
     }

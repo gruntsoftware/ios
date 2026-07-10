@@ -56,8 +56,7 @@ final class GameContainerViewController: UIViewController {
 }
 extension GameContainerViewController: BwGameEndListener {
     func onGameEnded(_ dictionary: [AnyHashable: Any]) {
+       isGameActive = false 
        appDelegate.applicationController.shouldHideGameSDK(dictionary: dictionary)
-        
-        
     }
 }
