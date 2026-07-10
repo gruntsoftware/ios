@@ -32,7 +32,7 @@ struct NewMainView: View {
 
     @State
     private var shouldShowEmojiPicker: Bool = false
-    
+
     @State
     private var shouldCustomToast: Bool = false
 
@@ -413,7 +413,7 @@ struct NewMainView: View {
                     }
                 }
                 .onChange(of: newMainViewModel.gameExitUpdated) { _,_ in
-                    
+
                     if newMainViewModel.gameExitUpdated {
                             let gameExitDictionary = newMainViewModel.gameExitDictionary
                             let payload = gameExitDictionary["jsonString"] as? String
@@ -422,13 +422,13 @@ struct NewMainView: View {
                                 return
                             }
                             guard let screenShotData = gameExitDictionary["screenshotdata"] as? Data else { return }
-    
+
                             do {
                                 let decodedObject = try JSONDecoder().decode(GameJSON.self, from: data)
                                 let socialNetwork: String = decodedObject.socialNetwork
                                 let social = SocialPostViewModel()
                                 guard let image = social.image(from: screenShotData) else { return }
-    
+
                                 if socialNetwork == "twitter" {
                                     shouldCustomToast.toggle()
                                     delay(3) {
@@ -519,7 +519,7 @@ struct NewMainView: View {
                                              shouldShowView: $shouldShowEmojiPicker,
                                              userPrefersDarkTheme: $userPrefersDarkTheme)
             )
-            
+
         }
     }
 }

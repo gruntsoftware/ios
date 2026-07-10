@@ -4,7 +4,7 @@ import UIKit
 #if !targetEnvironment(simulator)
 import BWIOSGdx
 #endif
-  
+
 class ApplicationController: Subscriber {
     // Ideally the window would be private, but is unfortunately required
     // by the UIApplicationDelegate Protocol
@@ -33,14 +33,14 @@ class ApplicationController: Subscriber {
     #endif
 
     init() {
-        
+
         // Game: initialize once, paused + hidden, host window stays key
         #if !targetEnvironment(simulator)
             bwGameSDK = BwGameSdkInstance()
         #else
             debugPrint(":::: game disabled on simulator (device-only natives)")
         #endif
-        
+
         transitionDelegate = ModalTransitionDelegate(type: .transactionDetail,
                                                      store: store)
         DispatchQueue.walletQueue.async {
@@ -61,7 +61,7 @@ class ApplicationController: Subscriber {
         walletManager = tempWalletManager
 
         _ = walletManager?.wallet // attempt to initialize wallet
-         
+
         /// Update fiat rate
         let preferredCurrencyCode = UserDefaults.userPreferredCurrencyCode
 
@@ -135,62 +135,62 @@ class ApplicationController: Subscriber {
 
 		TransactionManager.sharedInstance.fetchTransactionData(store: store)
 	}
-    
+
     func shouldShowGameSDK(address: String) {
         guard let window = self.window else {
             assertionFailure("shouldHideGameSDK: window is nil")
             return
         }
         let currentLocaleLanguage = Locale.current.language.languageCode?.identifier ?? "en"
-        
+
         guard let walletManager = walletManager,
         let emojiResult = walletManager.emojiStringResult() else { return }
-        
+
         let emojiArray = emojiResult.map { String($0) }
         let jsonData = try! JSONSerialization.data(withJSONObject: emojiArray)
         let emojisJson = String(data: jsonData, encoding: .utf8)!
-        
+
         let launchParameters: [String: Any] = [
             "language": currentLocaleLanguage,
             "address": address,
             "timestamp": Int(Date().timeIntervalSince1970),
             "emojis": emojisJson
         ]
-        
+
         let jsonObject: [String: Any] = [
             "launchParameters": launchParameters
         ]
-        
+
         do {
             let jsonData = try JSONSerialization
                 .data(withJSONObject: jsonObject, options: [])
             if let jsonString = String(data: jsonData, encoding: .utf8) {
-                
-                
+
+
                 //GameContainerViewController.current?.reassertGameState()
                 DispatchQueue.main.async {
                     self.gameController = GameContainerViewController()
                     window.rootViewController = self.gameController
-                    
+
                     guard let gameview = self.gameController?.view else {
                         return
                     }
-                    
+
                     let outgoingView = window.rootViewController?.view
 
                     gameview.frame = window.bounds
                     gameview.alpha = 0.0
                     window.addSubview(gameview)
-                    
-                    
+
+
                     UIView.transition(with: window,
                                       duration: 0.3,
                                       options: .transitionCrossDissolve,
                                       animations: {
-                        
+
                         gameview.alpha = 1.0
                         outgoingView?.alpha = 0.0
-                        
+
                     }, completion: { [weak self] _ in
                         outgoingView?.alpha = 1.0
                         window.rootViewController = self?.gameController
@@ -205,36 +205,36 @@ class ApplicationController: Subscriber {
             print("Error converting to JSON: \(error)")
         }
     }
-    
-    
+
+
     func shouldHideGameSDK(dictionary: [AnyHashable: Any]) {
-        
+
         //Either exit game or post to social after decoding dictionary
         var userIsPostingToSocial = false
         guard gameController != nil else {
             assertionFailure("shouldHideGameSDK: called with no gameController")
             return
         }
-        
+
         guard let payload = dictionary["jsonString"] as? String,
               let data = payload.data(using: .utf8) else {
             return
         }
-        
+
         do {
             let decodedObject = try JSONDecoder().decode(GameJSON.self, from: data)
             userIsPostingToSocial = decodedObject.socialNetwork == "twitter"
             || decodedObject.socialNetwork == "instagram"
-            
+
             DispatchQueue.main.async {
-                 
+
                 guard let window = self.window else {
                     return
                 }
-                
+
                 let outgoingView = window.rootViewController?.view
                 let incomingVC = self.mainViewController
-                
+
                 outgoingView?.alpha = 1.0
                 UIView.animate(withDuration: 0.3, animations: {
                     outgoingView?.alpha = 0.0
@@ -243,8 +243,8 @@ class ApplicationController: Subscriber {
                     outgoingView?.alpha = 1.0
                     self?.gameController = nil
                 })
-                
-                
+
+
                 //Reset the toggle
                 self.mainViewController?.newMainViewModel?.shouldShowGameSDK = false
 
@@ -259,7 +259,7 @@ class ApplicationController: Subscriber {
             print("Failed to decode payload: \(error)")
         }
     }
-    
+
 	func willEnterForeground() {
 		guard let walletManager = walletManager else { return }
 		guard !walletManager.noWallet else { return }
