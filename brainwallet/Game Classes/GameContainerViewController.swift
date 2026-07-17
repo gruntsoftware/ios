@@ -10,12 +10,12 @@ import UIKit
 import BWIOSGdx
 #endif
 final class GameContainerViewController: UIViewController {
-    
+
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 #if !targetEnvironment(simulator)
 
     var bwGameSDK: BwGameSdk?
- 
+
 #endif
 
     init() {
@@ -25,16 +25,16 @@ final class GameContainerViewController: UIViewController {
         bwGameSDK?.setGameEndListener(self)
         #endif
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-     
+
     var isGameActive: Bool = false {
         didSet {
 #if !targetEnvironment(simulator)
             guard isGameActive != oldValue, bwGameSDK != nil else { return }
-            
+
             if isGameActive {
                 bwGameSDK?.showGame()  // makeKeyAndVisible + didBecomeActive (resume)
             } else {
@@ -43,12 +43,12 @@ final class GameContainerViewController: UIViewController {
 #endif
         }
     }
-    
+
     // Example toggle
     @objc func toggleGame() {
         isGameActive.toggle()
     }
-     
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if isGameActive { isGameActive = false }
@@ -56,8 +56,7 @@ final class GameContainerViewController: UIViewController {
 }
 extension GameContainerViewController: BwGameEndListener {
     func onGameEnded(_ dictionary: [AnyHashable: Any]) {
+       isGameActive = false
        appDelegate.applicationController.shouldHideGameSDK(dictionary: dictionary)
-        
-        
     }
 }

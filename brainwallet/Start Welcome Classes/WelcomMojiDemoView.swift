@@ -100,7 +100,7 @@ struct WelcomeMojiDemoView: View {
                 VStack {
                     HStack {
                         Text("\(counter)")
-                            .modifier(BWBoldenVan(size: 35))
+                            .modifier(BWLilitaOne(size: 35))
                             .padding(.top, 8)
                             .padding([.trailing], 24)
                             .frame(maxWidth: .infinity, alignment: .trailing)
@@ -118,7 +118,7 @@ struct WelcomeMojiDemoView: View {
                 VStack {
 
                     Text( String(format: "%.2f", countdown))
-                        .modifier(BWBoldenVan(size: 35))
+                        .modifier(BWLilitaOne(size: 35))
                         .padding(.top, 8)
                         .padding([.leading], 24)
 
@@ -171,7 +171,7 @@ struct WelcomeMojiDemoView: View {
                         } label: {
                             VStack {
                                 Text("Start! \nTap & score")
-                                    .modifier(BWBoldenVan(size: 50, lineLimit: 2))
+                                    .modifier(BWLilitaOne(size: 50, lineLimit: 2))
                                     .frame(width: 200, height: 95)
                                     .foregroundStyle(
                                         LinearGradient(
