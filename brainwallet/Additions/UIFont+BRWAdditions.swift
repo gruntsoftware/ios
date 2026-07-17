@@ -102,7 +102,7 @@ extension Font {
         return Font.custom("IBMPlexSans-Thin", size: size)
     }
 
-    static func boldenVan(size: CGFloat) -> Font {
-        return Font.custom("BoldenVan", size: size)
+    static func lilitaOne(size: CGFloat) -> Font {
+        return Font.custom("LilitaOne", size: size)
     }
 }

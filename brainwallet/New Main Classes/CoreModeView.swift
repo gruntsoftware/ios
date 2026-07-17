@@ -33,29 +33,7 @@ struct CoreModeView: View {
 
             let width = geometry.size.width
             let height = geometry.size.height
-
-            if showGameMode {
-              //  SampleGameView(showGame: $showGameMode)
-                WelcomeMojiDemoView(width: width,
-                                   height: height,
-                                   shouldPlay: .constant(true),
-                                   userWantsToExit: $showGameMode,
-                                   gameIsInWelcomeMode: false)
-                    .frame(maxWidth: width,
-                           maxHeight: height,
-                           alignment: .center)
-                    .padding([.leading, .trailing], 16.0)
-                    .accessibilityIdentifier("welcomMojiDemoView")
-
-            } else {
-                NewMainView(viewModel: newMainViewModel, receiveViewModel: newReceiveViewModel)
-            }
-        }
-        .onChange(of: newMainViewModel.shouldShowGameMode) { _,_ in
-            showGameMode = newMainViewModel.shouldShowGameMode
-        }
-        .onChange(of: showGameMode) { _,_ in
-            newMainViewModel.shouldShowGameMode = showGameMode
+            NewMainView(viewModel: newMainViewModel, receiveViewModel: newReceiveViewModel)
         }
     }
 }

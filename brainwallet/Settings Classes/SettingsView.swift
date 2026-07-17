@@ -180,6 +180,12 @@ struct SettingsView: View {
                 }
             }
         }
+        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
+            .onEnded({ value in
+                if value.translation.width < 0 {
+                    newMainViewModel.userDidTapTheSettingsButton()
+                }
+            }))
         .sheet(isPresented: $shouldShowSocialSheet) {
             ZStack {
                 BrainwalletColor.background.edgesIgnoringSafeArea(.all)

@@ -10,20 +10,14 @@ import SwiftUI
 
 struct GameHubBentoView: View {
 
-    @ObservedObject
-    var newMainViewModel: NewMainViewModel
-
     @Binding
     var userPrefersDarkTheme: Bool
-    
+
     @Binding
     var selectedStep: Int
 
     @State
     private var mainGradientStyle: MainGradientStyle = .lightStyle
-
-    @State
-    private var shouldShowGameMode: Bool = false
 
     private let buttonSize: CGFloat = 20.0
 
@@ -31,12 +25,10 @@ struct GameHubBentoView: View {
 
     private let tagLabelWidth: CGFloat = 80.0
 
-    init(viewModel: NewMainViewModel,
-         userPrefersDarkTheme: Binding<Bool>,
+    init(userPrefersDarkTheme: Binding<Bool>,
          selectedStep: Binding<Int>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
         _selectedStep = selectedStep
-        newMainViewModel = viewModel
     }
     var body: some View {
         GeometryReader { geometry in
@@ -69,57 +61,47 @@ struct GameHubBentoView: View {
                         }
                         Spacer()
                     }
-                    
+
                     VStack(alignment: .center) {
                         HStack {
-                            
-                            Button(action: {
-                                newMainViewModel.shouldShowGameSDK.toggle()
-                            }) {
-                                
-                                HStack {
-                                    VStack {
-                                        Text("FALLINMOJI")
-                                            .font(.boldenVan(size: 100))
-                                            .lineLimit(1)
-                                            .minimumScaleFactor(0.3)
-                                            .padding(.leading, 16)
-                                            .frame(alignment: .leading)
-                                            .foregroundStyle(
-                                                LinearGradient(
-                                                    colors: [.white,.white, BentoColor.gameBlue1.opacity(0.2)],
-                                                    startPoint: .top,
-                                                    endPoint: .bottom
-                                                )
-                                            )
-                                        
-                                        Text("ARE YOU GOOD ENOUGH TO BE #1?")
-                                            .modifier(BWIPSMedium(size: 16.0))
-                                            .padding(.leading, 16)
-                                            .frame(alignment: .leading)
-                                            .foregroundStyle(
-                                                LinearGradient(
-                                                    colors: [.white,.white,.white,BentoColor.gameBlue1.opacity(0.1)],
-                                                    startPoint: .top,
-                                                    endPoint: .bottom
-                                                )
-                                            )
-                                    }
-                                    .frame(width: width * 0.6)
-                                    .fixedSize(horizontal: true, vertical: false)
-                                    .padding(.top, 5)
-                                    Spacer()
-                                }
+                            VStack {
+                                Text("FALLINMOJI")
+                                    .font(.lilitaOne(size: 100))
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.3)
+                                    .padding(.leading, 16)
+                                    .frame(alignment: .leading)
+                                    .foregroundStyle(
+                                        LinearGradient(
+                                            colors: [.white,.white, BentoColor.gameBlue1.opacity(0.2)],
+                                            startPoint: .top,
+                                            endPoint: .bottom
+                                        )
+                                    )
+
+                                Text("ARE YOU GOOD ENOUGH TO BE #1?")
+                                    .modifier(BWIPSMedium(size: 16.0))
+                                    .padding(.leading, 16)
+                                    .frame(alignment: .leading)
+                                    .foregroundStyle(
+                                        LinearGradient(
+                                            colors: [.white,.white,.white,BentoColor.gameBlue1.opacity(0.1)],
+                                            startPoint: .top,
+                                            endPoint: .bottom
+                                        )
+                                    )
                             }
-                            .accessibilityIdentifier("enterGamesModeButton")
+                            .frame(width: width * 0.6)
+                            .fixedSize(horizontal: true, vertical: false)
+                            .padding(.top, 5)
+                            Spacer()
                         }
                     }
-                    
+
                     HStack {
                         Spacer()
                         FallinMojiDemoView(width: width * 0.8,
-                                           height: height,
-                                           shouldPlay: $shouldShowGameMode)
+                                           height: height)
                         .frame(width: width * 0.8, alignment: .trailing)
                         .clipped()
                     }
@@ -129,9 +111,6 @@ struct GameHubBentoView: View {
             .frame(maxWidth: .infinity, alignment: .init(horizontal: .center, vertical: .center))
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
-            }
-            .onTapGesture {
-                newMainViewModel.shouldShowGameSDK.toggle()
             }
         }
     }

@@ -10,16 +10,11 @@ import SwiftUI
 
 struct FallinMojiDemoView: View {
 
-    @Binding
-    var shouldPlay: Bool
-
     var width: CGFloat = 0.0
     var height: CGFloat = 0.0
 
     init(width: CGFloat,
-         height: CGFloat,
-         shouldPlay: Binding<Bool>) {
-        _shouldPlay = shouldPlay
+         height: CGFloat) { 
         self.height = height
         self.width = width
     }
