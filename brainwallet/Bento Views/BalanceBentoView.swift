@@ -115,7 +115,7 @@ struct BalanceBentoView: View {
                                 isLTCValueShown.toggle()
                                 newMainViewModel.isLTCValueShown = isLTCValueShown
                                 Analytics
-                                    .logEvent("user_tapped_switch_fiat_ltc",
+                                    .logEvent("did_toggle_balance_visibility",
                                     parameters: nil)
                             }
                         }

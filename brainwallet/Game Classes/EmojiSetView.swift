@@ -190,7 +190,7 @@ struct EmojiSetView: View {
                             delay(0.4) {
                                 shouldShowView.toggle()
                                 Analytics
-                                    .logEvent("user_set_emojis",
+                                    .logEvent("user_set_first_set_emojis",
                                     parameters: nil)
                             }
                         }

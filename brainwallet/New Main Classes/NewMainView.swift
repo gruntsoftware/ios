@@ -331,7 +331,7 @@ struct NewMainView: View {
 
                         Button(action: {
                             newMainViewModel.shouldShowGameSDK.toggle()
-                            Analytics.logEvent("user_did_tap_gamemode", parameters: nil)
+                            Analytics.logEvent("user_did_tap_gamehub", parameters: nil)
                         }, label: {
                             VStack(spacing: 4) {
                                 Image(systemName: "gamecontroller")
