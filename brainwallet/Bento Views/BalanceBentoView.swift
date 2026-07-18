@@ -64,6 +64,8 @@ struct BalanceBentoView: View {
                         Button(action: {
                             shouldShowBalance.toggle()
                             playBoing()
+                            Analytics.logEvent("did_toggle_fiat_ltc",
+                                               parameters: nil)
                         }) {
                             Image(systemName: shouldShowBalance ? "eye.slash" : "eye")
                                 .resizable()

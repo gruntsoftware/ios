@@ -428,7 +428,12 @@ struct NewMainView: View {
                                 let socialNetwork: String = decodedObject.socialNetwork
                                 let social = SocialPostViewModel()
                                 guard let image = social.image(from: screenShotData) else { return }
-
+                                
+                                Analytics
+                                    .logEvent("user_may_post_score_to_social",
+                                              parameters: [
+                                                "social_network": socialNetwork
+                                              ])
                                 if socialNetwork == "twitter" {
                                     shouldCustomToast.toggle()
                                     delay(3) {

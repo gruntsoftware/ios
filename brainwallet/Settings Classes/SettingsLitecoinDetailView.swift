@@ -6,6 +6,7 @@
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
+import FFirebaseAnalytics
 
 struct SettingsLitecoinDetailView: View {
 
@@ -88,6 +89,8 @@ struct SettingsLitecoinDetailView: View {
                         HStack {
                             Button(action: {
                                 willSync.toggle()
+                                Analytics.logEvent("did_start_resync",
+                                                   parameters: nil)
                             }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)

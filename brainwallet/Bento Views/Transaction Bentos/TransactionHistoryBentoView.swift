@@ -7,6 +7,7 @@
 //
 import SwiftUI
 import BRCore
+import FirebaseAnalytics
 
 struct TransactionHistoryBentoView: View {
 
@@ -100,6 +101,9 @@ struct TransactionHistoryBentoView: View {
                                     ZStack {
                                         Button {
                                             filterModeState.toggle()
+                                            Analytics
+                                                .logEvent("did_toggle_txn_filter",
+                                                               parameters: nil)
                                         } label: {
                                             HStack {
                                                 Image(systemName: filterModeState.icon)
