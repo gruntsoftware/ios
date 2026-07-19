@@ -62,9 +62,9 @@ struct EmojiTextField: UIViewRepresentable {
         textField.placeholder = placeholder
         textField.text = text
         textField.textAlignment = .center
-        textField.font = UIFont.systemFont(ofSize: 65)
+        textField.font = UIFont.systemFont(ofSize: 50)
         textField.backgroundColor = .clear
-        textField.tintColor = UIColor(BentoColor.tutorialGreen2)
+        textField.tintColor = UIColor(.white)
         textField.delegate = context.coordinator
         return textField
     }

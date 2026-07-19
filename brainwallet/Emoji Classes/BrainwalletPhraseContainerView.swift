@@ -118,7 +118,6 @@ struct BrainwalletPhraseContainerView: View {
             }
             .onChange(of: didEnterPINCode) { _,_ in
                 if let fetchedEmojis =  walletManager.emojiString(pin: enteredPIN) {
-
                     fetchedEmojisArray = fetchedEmojis.map { String($0) }
                     shouldShowEmojis = true
                 }

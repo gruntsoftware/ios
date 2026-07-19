@@ -74,7 +74,7 @@
 		244310442E21BCBD004AE386 /* errorsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 244310432E21BCBD004AE386 /* errorsound.mp3 */; };
 		244310462E21BCCE004AE386 /* clickseedword.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 244310452E21BCCE004AE386 /* clickseedword.mp3 */; };
 		24444F4C2F461FCA00AFF295 /* GameHubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444F462F461FC000AFF295 /* GameHubViewModel.swift */; };
-		24444F4E2F462E3000AFF295 /* EmojiSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444F4D2F462E3000AFF295 /* EmojiSetView.swift */; };
+		24444F4E2F462E3000AFF295 /* EmojiSetPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24444F4D2F462E3000AFF295 /* EmojiSetPagerView.swift */; };
 		244520342DE7031F003AFFDF /* LockScreenHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244520332DE70310003AFFDF /* LockScreenHostingController.swift */; };
 		2446DF522E2906AC001453DF /* bloop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2446DF512E2906AC001453DF /* bloop.mp3 */; };
 		244A8D932DE84C890024D356 /* BrainwalletShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */; };
@@ -147,7 +147,6 @@
 		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
 		249DDE422DCD573700B2B275 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249DDE412DCD572F00B2B275 /* SettingsView.swift */; };
 		24A0ACAB2E0C812C0077E695 /* SettingsLitecoinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */; };
-		24A0FFE22F4C50080003BAA0 /* EmojiSetViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0FFE12F4C50080003BAA0 /* EmojiSetViewModifier.swift */; };
 		24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A404222DC92F35006CD076 /* WebBuyView.swift */; };
 		24AAB31B2DE79E9000F0C18C /* ReceiveHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */; };
 		24AAB31D2DE79ECC00F0C18C /* NewReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */; };
@@ -408,6 +407,7 @@
 		C353E3BA2FAE9F9E00BFFB30 /* ShopBentoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */; };
 		C35C122A293D48340009022D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1229293D48340009022D /* KeychainAccess */; };
 		C38F57252FD490430005538A /* boingspringmouthharp042013.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */; };
+		C395E2B83013770A00CF5F5B /* EnterPinForSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */; };
 		C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0BBC22FF6DB11000D5DB8 /* AlertToast */; };
 		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
 		C3CE345E2FFD8823004A2ECA /* BWIOSGdx.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; };
@@ -415,6 +415,10 @@
 		C3CE34612FFD8D1F004A2ECA /* LilitaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CE34602FFD8D1F004A2ECA /* LilitaOne.ttf */; };
 		C3E18A9F2F9E657000966C74 /* ShopCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */; };
 		C3E18AA12F9EC22000966C74 /* ConfirmationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */; };
+		C3F8D2DC300CF60A005A684E /* HowToSetEmojisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F8D2DB300CF606005A684E /* HowToSetEmojisView.swift */; };
+		C3F8D2DE300CF616005A684E /* PickEmojisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F8D2DD300CF614005A684E /* PickEmojisView.swift */; };
+		C3F8D2E0300D2E7A005A684E /* RowHowToSetEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F8D2DF300D2E77005A684E /* RowHowToSetEmoji.swift */; };
+		C3F8D2E2300EA917005A684E /* SetEmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F8D2E1300EA911005A684E /* SetEmojiView.swift */; };
 		C3FACF6C2F9E023700886FAD /* GameHubCarouselBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */; };
 		C3FACF6E2F9E025300886FAD /* MoonPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6D2F9E025300886FAD /* MoonPayView.swift */; };
 		C3FACF702F9E026500886FAD /* SocialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6F2F9E026500886FAD /* SocialsView.swift */; };
@@ -573,7 +577,7 @@
 		244310432E21BCBD004AE386 /* errorsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = errorsound.mp3; sourceTree = "<group>"; };
 		244310452E21BCCE004AE386 /* clickseedword.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clickseedword.mp3; sourceTree = "<group>"; };
 		24444F462F461FC000AFF295 /* GameHubViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHubViewModel.swift; sourceTree = "<group>"; };
-		24444F4D2F462E3000AFF295 /* EmojiSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiSetView.swift; sourceTree = "<group>"; };
+		24444F4D2F462E3000AFF295 /* EmojiSetPagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiSetPagerView.swift; sourceTree = "<group>"; };
 		244520332DE70310003AFFDF /* LockScreenHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenHostingController.swift; sourceTree = "<group>"; };
 		2446DF512E2906AC001453DF /* bloop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bloop.mp3; sourceTree = "<group>"; };
 		244A8D922DE84C7F0024D356 /* BrainwalletShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainwalletShapes.swift; sourceTree = "<group>"; };
@@ -754,7 +758,6 @@
 		249C45DA2D936DA600E9C3B0 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = ../core/module.modulemap; sourceTree = SOURCE_ROOT; };
 		249DDE412DCD572F00B2B275 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLitecoinDetailView.swift; sourceTree = "<group>"; };
-		24A0FFE12F4C50080003BAA0 /* EmojiSetViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiSetViewModifier.swift; sourceTree = "<group>"; };
 		24A404222DC92F35006CD076 /* WebBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBuyView.swift; sourceTree = "<group>"; };
 		24AAB31A2DE79E9000F0C18C /* ReceiveHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveHostingController.swift; sourceTree = "<group>"; };
 		24AAB31C2DE79ECA00F0C18C /* NewReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiveView.swift; sourceTree = "<group>"; };
@@ -1019,10 +1022,15 @@
 		C35312F42FE289D000FC2840 /* GameEmbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEmbedViewController.swift; sourceTree = "<group>"; };
 		C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBentoViewModel.swift; sourceTree = "<group>"; };
 		C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boingspringmouthharp042013.mp3; sourceTree = "<group>"; };
+		C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPinForSeedView.swift; sourceTree = "<group>"; };
 		C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupAskView.swift; sourceTree = "<group>"; };
 		C3CE34602FFD8D1F004A2ECA /* LilitaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LilitaOne.ttf; sourceTree = "<group>"; };
 		C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCardsView.swift; sourceTree = "<group>"; };
 		C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationStatus.swift; sourceTree = "<group>"; };
+		C3F8D2DB300CF606005A684E /* HowToSetEmojisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToSetEmojisView.swift; sourceTree = "<group>"; };
+		C3F8D2DD300CF614005A684E /* PickEmojisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickEmojisView.swift; sourceTree = "<group>"; };
+		C3F8D2DF300D2E77005A684E /* RowHowToSetEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowHowToSetEmoji.swift; sourceTree = "<group>"; };
+		C3F8D2E1300EA911005A684E /* SetEmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEmojiView.swift; sourceTree = "<group>"; };
 		C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHubCarouselBentoView.swift; sourceTree = "<group>"; };
 		C3FACF6D2F9E025300886FAD /* MoonPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPayView.swift; sourceTree = "<group>"; };
 		C3FACF6F2F9E026500886FAD /* SocialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialsView.swift; sourceTree = "<group>"; };
@@ -1755,7 +1763,6 @@
 				C32553CE2FE0A02B008B1861 /* GameContainerViewController.swift */,
 				24444F462F461FC000AFF295 /* GameHubViewModel.swift */,
 				24B0653F2DC647F000B5E000 /* GameView.swift */,
-				24444F4D2F462E3000AFF295 /* EmojiSetView.swift */,
 				24CA0BE22F475F3200DB0DC7 /* EmojiView.swift */,
 			);
 			path = "Game Classes";
@@ -1790,11 +1797,16 @@
 		24C949C42F4A5C440073852B /* Emoji Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */,
+				C3F8D2E1300EA911005A684E /* SetEmojiView.swift */,
+				C3F8D2DF300D2E77005A684E /* RowHowToSetEmoji.swift */,
+				C3F8D2DD300CF614005A684E /* PickEmojisView.swift */,
+				C3F8D2DB300CF606005A684E /* HowToSetEmojisView.swift */,
 				24C949CA2F4A5C6E0073852B /* UIEmojiTextField.swift */,
 				24BFAF8F2F4B635200DC0521 /* BrainwalletPhraseContainerView.swift */,
 				24BFAF912F4B875D00DC0521 /* EmojiPhraseView.swift */,
+				24444F4D2F462E3000AFF295 /* EmojiSetPagerView.swift */,
 				24BFB0482F4BB03B00DC0521 /* EmojiViewModel.swift */,
-				24A0FFE12F4C50080003BAA0 /* EmojiSetViewModifier.swift */,
 			);
 			path = "Emoji Classes";
 			sourceTree = "<group>";
@@ -2766,6 +2778,7 @@
 				C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */,
 				2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */,
 				C312D2D62D7DC27700BB97A4 /* RecoverWalletView.swift in Sources */,
+				C3F8D2E0300D2E7A005A684E /* RowHowToSetEmoji.swift in Sources */,
 				C312D2D72D7DC27700BB97A4 /* Date+Additions.swift in Sources */,
 				24AAB31D2DE79ECC00F0C18C /* NewReceiveView.swift in Sources */,
 				C312D2D92D7DC27700BB97A4 /* LockScreenViewModel.swift in Sources */,
@@ -2793,10 +2806,11 @@
 				242871812DE5C28B0035DE48 /* WhiteNumberPad.swift in Sources */,
 				C312D2FC2D7DC27700BB97A4 /* GradientView.swift in Sources */,
 				C32A487D2FF79FD800B10F54 /* GameStructs.swift in Sources */,
+				C3F8D2DC300CF60A005A684E /* HowToSetEmojisView.swift in Sources */,
 				24E078AA2DF1F9AE004B5958 /* PromptCellViewModel.swift in Sources */,
 				C3236A012D7DE355007039A1 /* URLController.swift in Sources */,
 				2428718C2DE5E3370035DE48 /* NewSyncHostingController.swift in Sources */,
-				24444F4E2F462E3000AFF295 /* EmojiSetView.swift in Sources */,
+				24444F4E2F462E3000AFF295 /* EmojiSetPagerView.swift in Sources */,
 				24C6D2D82E1E75510096AD62 /* SeedWordTargetView.swift in Sources */,
 				C312D3072D7DC27700BB97A4 /* CGRect+Additions.swift in Sources */,
 				247A83932EA034BC00B5DFD8 /* Renderer.swift in Sources */,
@@ -2853,6 +2867,7 @@
 				C312D3682D7DC27700BB97A4 /* PINFieldView.swift in Sources */,
 				240CEE1E2F2D87E500428378 /* WalkthroughStep5View.swift in Sources */,
 				246EA1972EC8B32D00085D3A /* DataScannerView.swift in Sources */,
+				C3F8D2E2300EA917005A684E /* SetEmojiView.swift in Sources */,
 				2457DD342EB79AD000688B9A /* EmptyTransactionRow.swift in Sources */,
 				2472D5D42F1276D100DC6737 /* BentoSendStyle.swift in Sources */,
 				C312D36C2D7DC27700BB97A4 /* UIView+BRWAdditions.swift in Sources */,
@@ -2922,6 +2937,7 @@
 				C312D39A2D7DC27700BB97A4 /* PinDigitView.swift in Sources */,
 				C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */,
 				C312D39D2D7DC27700BB97A4 /* PromptTableViewCell.swift in Sources */,
+				C3F8D2DE300CF616005A684E /* PickEmojisView.swift in Sources */,
 				241B7CDF2E68CA3F00B18679 /* ExportButtonViewModel.swift in Sources */,
 				C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */,
 				24C639CE2DC6D5F60014E6DD /* TransactionRowView.swift in Sources */,
@@ -3044,7 +3060,6 @@
 				C312D4662D7DC27700BB97A4 /* PaymentRequest.swift in Sources */,
 				C33C4A1F2FC1C96100C23DA7 /* ShopStructs.swift in Sources */,
 				C312D4692D7DC27700BB97A4 /* CGContext+Additions.swift in Sources */,
-				24A0FFE22F4C50080003BAA0 /* EmojiSetViewModifier.swift in Sources */,
 				24E078A82DF1F9A9004B5958 /* PromptCellView.swift in Sources */,
 				C312D46D2D7DC27700BB97A4 /* DismissLoginAnimator.swift in Sources */,
 				C312D46E2D7DC27700BB97A4 /* SeedWordContainerView.swift in Sources */,
@@ -3073,6 +3088,7 @@
 				245A91DC2DBA3E670048E3A6 /* PINRowView.swift in Sources */,
 				24DB05EA2E06B49B00C57FE9 /* SettingsExpandingGamesView.swift in Sources */,
 				240850F82F40E4310097706A /* LTCFiatToggleView.swift in Sources */,
+				C395E2B83013770A00CF5F5B /* EnterPinForSeedView.swift in Sources */,
 				24DB05EC2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift in Sources */,
 				C312D4872D7DC27700BB97A4 /* Transaction.swift in Sources */,
 				C312D48A2D7DC27700BB97A4 /* MenuButtonType.swift in Sources */,

@@ -6,7 +6,7 @@
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
-import FFirebaseAnalytics
+import FirebaseAnalytics
 
 struct SettingsLitecoinDetailView: View {
 
