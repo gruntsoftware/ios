@@ -1,11 +1,7 @@
 name: 🤖 Claude Copilot PR Summary for iOS
 
 on:
-  pull_request:
-    types: [opened, reopened]
-    branches:
-      - develop
-      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
