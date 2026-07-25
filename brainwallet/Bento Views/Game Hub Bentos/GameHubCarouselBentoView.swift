@@ -84,14 +84,6 @@ struct GameHubCarouselBentoView: View {
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
             }
-            .onChange(of: userEmojisAreSet) { _,newValue in
-                if (newValue) {
-                        DispatchQueue.userInitQueue.async {
-                            appDelegate.applicationController
-                            .shouldShowGameSDK(address: newReceiveAddress)
-                        }
-                    }
-                }
             }
             .frame(maxWidth: .infinity,
                    alignment: .init(horizontal: .center,

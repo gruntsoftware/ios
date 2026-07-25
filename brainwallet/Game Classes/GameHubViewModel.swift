@@ -21,6 +21,13 @@ class GameHubViewModel: ObservableObject {
     @Published
     var userEmojisAreSet: Bool = false
 
+    // Session-only: true for the single transition right after the user
+    // finishes PickEmojisView. Distinct from userEmojisAreSet, which is
+    // re-derived from the Keychain on every launch and would otherwise
+    // look identical to a fresh completion.
+    @Published
+    var didJustCompleteEmojiSetup: Bool = false
+
     @Published
     var currentEmojiTriplet: EmojiTriplet = .first
 

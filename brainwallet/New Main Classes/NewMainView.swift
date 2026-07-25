@@ -503,13 +503,13 @@ struct NewMainView: View {
                         .presentationDragIndicator(.hidden)
                     }
                 }
-                .onChange(of: gameHubViewModel.userEmojisAreSet) { _, newValue in
+                .onChange(of: gameHubViewModel.didJustCompleteEmojiSetup) { _, newValue in
+                    guard newValue else { return }
                     let address = newReceiveViewModel.newReceiveAddress
-                    if newValue {
-                        DispatchQueue.userInitQueue.async {
-                            appDelegate.applicationController.shouldShowGameSDK(address: address)
-                        }
+                    DispatchQueue.userInitQueue.async {
+                        appDelegate.applicationController.shouldShowGameSDK(address: address)
                     }
+                    gameHubViewModel.didJustCompleteEmojiSetup = false
                 }
                 .alert(isPresented: $shouldShowPromptAlert) {
                     Alert(title: Text(currentPrompt.title),

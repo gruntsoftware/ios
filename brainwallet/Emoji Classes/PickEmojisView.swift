@@ -213,6 +213,7 @@ struct PickEmojisView: View {
                                                          second: secondEmojiString,
                                                          third: thirdEmojiString)) {
                         gameHubViewModel.checkEmojiCount()
+                        gameHubViewModel.didJustCompleteEmojiSetup = true
                     }
                     }) {
                         ZStack {
