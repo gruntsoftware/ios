@@ -141,8 +141,6 @@ struct WelcomeMojiDemoView: View {
 
                         Button {
                             userWantsToExit.toggle()
-                            Analytics.logEvent("did_exit_demo_game",
-                                               parameters: nil)
                         } label: {
                             Text("Exit")
                                 .modifier(BWIPSLight(size: 30))
@@ -167,7 +165,6 @@ struct WelcomeMojiDemoView: View {
                         Button {
                             didStartGame.toggle()
                             welcomeScene?.startGame()
-                            Analytics.logEvent("did_start_demo_game",parameters: nil)
                         } label: {
                             VStack {
                                 Text("Start! \nTap & score")

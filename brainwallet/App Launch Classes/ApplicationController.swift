@@ -60,7 +60,7 @@ class ApplicationController: Subscriber {
 
         walletManager = tempWalletManager
 
-        _ = walletManager?.wallet // attempt to initialize wallet
+        _ = walletManager?.wallet
 
         /// Update fiat rate
         let preferredCurrencyCode = UserDefaults.userPreferredCurrencyCode
@@ -120,7 +120,7 @@ class ApplicationController: Subscriber {
 							self.walletManager = try WalletManager(store:
                                                                     self.store,
                                                                    dbPath: nil)
-							_ = self.walletManager?.wallet// try to initialize wallet
+							_ = self.walletManager?.wallet
 						} catch {
 							assertionFailure("::: Error creating wallet: \(error)")
 						}
@@ -371,6 +371,7 @@ class ApplicationController: Subscriber {
 	private func setupRootViewController() {
 		mainViewController = MainViewController(store: store)
 		window?.rootViewController = mainViewController
+        
 	}
 
 	private func startDataFetchers() {

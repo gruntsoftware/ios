@@ -20,6 +20,45 @@ struct BentoSendTextFieldStyle: TextFieldStyle {
     }
 }
 
+
+//
+//  BrainwalletTextFieldStyle.swift
+//  brainwallet
+//
+//  Created by Kerry Washington on 7/24/26.
+//  Copyright © 2026 Grunt Software, LTD. All rights reserved.
+//
+
+import SwiftUI
+
+struct TranslucentWhiteTextFieldStyle: TextFieldStyle {
+    
+    // Match the coral/salmon dashed border from the design
+    private let borderColor = Color.white.opacity(0.8)
+    private let backgroundColor = Color.white.opacity(0.08)
+    private let borderWidth: CGFloat = 1.0
+    
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .padding(.horizontal, 16.0)
+            .padding(.vertical, 8.0)
+            .background(
+                GeometryReader { geometry in
+                    let radius = geometry.size.height / 2
+                    RoundedRectangle(cornerRadius: radius)
+                        .fill(backgroundColor)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: radius)
+                                .strokeBorder(
+                                    style: StrokeStyle(lineWidth: borderWidth)
+                                )
+                                .foregroundColor(borderColor)
+                        )
+                }
+            )
+    }
+}
+
 // Source - https://stackoverflow.com/a
 // Posted by Valerika
 // Retrieved 2026-01-10, License - CC BY-SA 4.0

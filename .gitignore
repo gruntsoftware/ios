@@ -9,6 +9,9 @@ Private/
 # OS Related
 .DS_Store
 
+# Claude Code local settings/skills
+.claude/
+
 # Various settings
 *.moved-aside
 

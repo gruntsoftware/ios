@@ -70,7 +70,7 @@ struct TutorialReceiveBentoView: View {
                       Text("Follow the easy steps to stack LTC. Get it from a friend or our partner MoonPay")
                             .modifier(BWIPSRegular(size: 15.0, lineLimit: 4))
                             .kerning(0.2)
-                            .padding([.leading], 8)
+                            .padding(.leading, 8)
                             .padding(.trailing, 10)
                             .frame(alignment: .leading)
                             .foregroundStyle( userPrefersDarkTheme ? .white : .black)

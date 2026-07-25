@@ -231,6 +231,7 @@ struct TransactionDetailBentoView: View {
                     HStack {
                         Button(action: {
                                 shouldShowExportSheet.toggle()
+                            //DEV Add txn_details_copied when copy feature added
                         }) {
                            ZStack {
                                BentoBackgroundView(userPrefersDarkTheme: $userPrefersDarkTheme)

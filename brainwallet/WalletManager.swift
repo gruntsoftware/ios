@@ -2,6 +2,7 @@ import BRCore
 import Foundation
 import SQLite3
 import SystemConfiguration
+import FirebaseAnalytics
 
 let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
 let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
@@ -36,6 +37,8 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 		do {
 			instance = try WalletManager(store: Store(), dbPath: nil)
 		} catch {
+            Analytics.logEvent("wallet_not_initialized",
+                               parameters: nil)
             assertionFailure("ERROR: Instance of WalletManager not initialized")
 		}
 		return instance!
