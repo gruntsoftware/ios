@@ -55,8 +55,15 @@ struct BrainwalletPhraseContainerView: View {
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
-                        Text("This is your Brainwallet phrase. Its your emojis you use to remember your 12 seed words.")
-                            .modifier(BWIPSSemiBold(size: 24.0, lineLimit: 3))
+                        Text("Enter your PIN to view your Brainwallet phrase")
+                            .modifier(BWIPSSemiBold(size: 24.0, lineLimit: 2))
+                            .foregroundColor(BrainwalletColor.content)
+                    }
+                    .padding(20)
+                    
+                    HStack {
+                        Text("It's your emojis you use to remember your 12 seed words.")
+                            .modifier(BWIPSSemiBold(size: 24.0, lineLimit: 2))
                             .foregroundColor(BrainwalletColor.content)
                     }
                     .padding(20)
@@ -89,7 +96,7 @@ struct BrainwalletPhraseContainerView: View {
                             SecureField("Enter PIN",
                                         text: $enteredPIN)
                             .keyboardType(.numberPad)
-                            .textFieldStyle(.roundedBorder)
+                            .textFieldStyle(TranslucentWhiteTextFieldStyle())
                             .multilineTextAlignment(.center)
                             .toolbar {
                                 ToolbarItemGroup(placement: .keyboard) {
