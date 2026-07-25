@@ -14,6 +14,7 @@ extension ApplicationController {
         if UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) == nil {
             UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
         }
+        
 	}
 
 	func countLaunches() {

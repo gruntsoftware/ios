@@ -63,14 +63,16 @@ struct SecurityListView: View {
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                            SettingsActionBrainwalletPhraseView(title:
-                                String(localized: "Brainwallet Phrase"),
-                                detailText: String(localized: "Show my emojis"),
-                                willShowBrainwalletPhrase: $willShowBrainwalletPhrase)
-                            .frame(height: phraseRowHeight)
+                            if (newMainViewModel.walletManager?.emojiStringCount() == 3) {
+                                SettingsActionBrainwalletPhraseView(title:
+                                                                        String(localized: "Brainwallet Phrase"),
+                                                                    detailText: String(localized: "Show my emojis"),
+                                                                    willShowBrainwalletPhrase: $willShowBrainwalletPhrase)
+                                .frame(height: phraseRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
+                            }
                             SettingsActionShareView(title:
                                 String(localized: "Share Anonymous Data"),
                                 detailText: "to improve Brainwallet",

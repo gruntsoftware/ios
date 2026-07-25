@@ -64,6 +64,8 @@ struct BalanceBentoView: View {
                         Button(action: {
                             shouldShowBalance.toggle()
                             playBoing()
+                            Analytics.logEvent("did_toggle_fiat_ltc",
+                                               parameters: nil)
                         }) {
                             Image(systemName: shouldShowBalance ? "eye.slash" : "eye")
                                 .resizable()
@@ -115,7 +117,7 @@ struct BalanceBentoView: View {
                                 isLTCValueShown.toggle()
                                 newMainViewModel.isLTCValueShown = isLTCValueShown
                                 Analytics
-                                    .logEvent("user_tapped_switch_fiat_ltc",
+                                    .logEvent("did_toggle_balance_visibility",
                                     parameters: nil)
                             }
                         }

@@ -12,7 +12,7 @@ struct GameHubBentoView: View {
 
     @Binding
     var userPrefersDarkTheme: Bool
-
+      
     @Binding
     var selectedStep: Int
 

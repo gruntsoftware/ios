@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct GameHubCarouselBentoView: View {
 
@@ -18,9 +19,15 @@ struct GameHubCarouselBentoView: View {
 
     @Binding
     var shouldShowGameSDK: Bool
+    
+    @Binding
+    var userEmojisAreSet: Bool
 
     @State
     private var selectedTab: Int = 0
+    
+    @State
+    private var newReceiveAddress = ""
 
     @State
     private var carouselDirection: Int = 1
@@ -30,43 +37,61 @@ struct GameHubCarouselBentoView: View {
 
    @State
     private var carouselTimer: Timer?
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-    init(viewModel: NewMainViewModel, userPrefersDarkTheme: Binding<Bool>, shouldShowGameSDK: Binding<Bool>) {
+    init(viewModel: NewMainViewModel,
+         newReceiveAddress: String,
+         userPrefersDarkTheme: Binding<Bool>,
+         shouldShowGameSDK: Binding<Bool>,
+         userEmojisAreSet: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
         _shouldShowGameSDK = shouldShowGameSDK
+        _userEmojisAreSet = userEmojisAreSet
         self.viewModel = viewModel
+        self.newReceiveAddress = newReceiveAddress
     }
     var body: some View {
         GeometryReader { geometry in
-
-            ZStack {
-                VStack(alignment: .center) {
-                    TabView(selection: $selectedTab) {
-                        GameHubBentoView(userPrefersDarkTheme: $userPrefersDarkTheme,
-                                         selectedStep: $selectedTab)
-                        .tag(0)
-                        .contentShape(Rectangle())
-                        .simultaneousGesture(
-                            LongPressGesture(minimumDuration:0.1)
-                                .onEnded { _ in
-                                    guard !shouldShowGameSDK else { return }
-                                    shouldShowGameSDK.toggle()
-                                }
-                        )
-                        MoonPayView(viewModel: viewModel,
-                                    selectedStep: $selectedTab)
-                        .tag(1)
-                        SocialsBentoView(viewModel: viewModel,
-                                         selectedStep: $selectedTab)
-                        .tag(2)
-                    }
-                    .tabViewStyle(.page(indexDisplayMode: .never))
+        ZStack {
+            VStack(alignment: .center) {
+                TabView(selection: $selectedTab) {
+                    GameHubBentoView(userPrefersDarkTheme: $userPrefersDarkTheme,
+                                     selectedStep: $selectedTab)
+                    .tag(0)
+                    .contentShape(Rectangle())
+                    .simultaneousGesture(
+                        LongPressGesture(minimumDuration:0.05)
+                            .onEnded { _ in
+                               if (userEmojisAreSet) {
+                                   DispatchQueue.userInitQueue.async {
+                                       appDelegate.applicationController
+                                           .shouldShowGameSDK(address: newReceiveAddress)
+                                   }
+                               } else {
+                                   shouldShowGameSDK.toggle()
+                                   Analytics.logEvent("user_did_tap_gamehub",
+                                                      parameters: nil)
+                               }
+                            }
+                    )
+                    MoonPayView(viewModel: viewModel,
+                                selectedStep: $selectedTab)
+                    .tag(1)
+                    SocialsBentoView(viewModel: viewModel,
+                                     selectedStep: $selectedTab)
+                    .tag(2)
                 }
-                .frame(maxWidth: .infinity, alignment: .init(horizontal: .center, vertical: .center))
-
+                .tabViewStyle(.page(indexDisplayMode: .never))
             }
+            }
+            .frame(maxWidth: .infinity,
+                   alignment: .init(horizontal: .center,
+                                    vertical: .center))
             .cornerRadius(bentoCornerRadius)
-            .frame(minHeight: gameBentoHeight * 0.9, idealHeight: gameBentoHeight * 1.4, maxHeight: gameBentoHeight * 2, alignment: .center)
+            .frame(minHeight: gameBentoHeight * 0.9,
+                   idealHeight: gameBentoHeight * 1.4,
+                   maxHeight: gameBentoHeight * 2, alignment: .center)
             .sensoryFeedback(.success, trigger: shouldShowGameSDK)
             .sensoryFeedback(.selection, trigger: selectedTab)
             .onAppear {

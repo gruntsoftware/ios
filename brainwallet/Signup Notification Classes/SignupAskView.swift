@@ -77,9 +77,6 @@ struct SignupAskView: View {
                     // Primary button
                     Button(action: {
                         viewModel.requestNotificationPermissions()
-                        Analytics
-                            .logEvent("user_requested_notification_permission",
-                                      parameters: nil)
                     }) {
                         Text("Yes!  Send me updates!")
                             .modifier(BWIPSSemiBold(size: 20.0))
@@ -98,10 +95,7 @@ struct SignupAskView: View {
                             path.append(.inputWordsView)
                         } else {
                             path.append(.yourSeedWordsView)
-                        }
-                        Analytics
-                            .logEvent("user_skipped_notification_permission",
-                                      parameters: nil)
+                        } 
                     }) {
                         Text("Maybe later (Skip)")
                             .modifier(BWIPSRegular(size: 15.0))

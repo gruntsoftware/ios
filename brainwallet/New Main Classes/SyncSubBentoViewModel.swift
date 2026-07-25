@@ -10,6 +10,7 @@ import AVFoundation
 import Foundation
 import SwiftUI
 import UIKit
+import FirebaseAnalytics
 
 let kTodaysEpochTime: TimeInterval = Date().timeIntervalSince1970
 
@@ -194,6 +195,8 @@ class SyncSubBentoViewModel: ObservableObject, Subscriber {
                 // Check if sync is complete
                 if walletState.syncProgress >= 0.999 {
                     self.isSyncing = false
+                    Analytics.logEvent("user_did_complete_sync",
+                                  parameters: nil)
                 }
             }
         }
