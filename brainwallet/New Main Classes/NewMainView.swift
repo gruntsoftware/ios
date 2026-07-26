@@ -336,10 +336,13 @@ struct NewMainView: View {
                         Button(action: {
                             
                             if (gameHubViewModel.userEmojisAreSet) {
-                                shouldShowEmojiPicker.toggle()
-                            } else {
-                                newMainViewModel.shouldShowGameSDK.toggle()
+                                let address = newReceiveViewModel.newReceiveAddress
+                                DispatchQueue.userInitQueue.async {
+                                    appDelegate.applicationController.shouldShowGameSDK(address: address)
+                                }
                                 Analytics.logEvent("user_did_tap_gamehub", parameters: nil)
+                            } else {
+                                shouldShowEmojiPicker.toggle()
                             }
                         }, label: {
                             VStack(spacing: 4) {
