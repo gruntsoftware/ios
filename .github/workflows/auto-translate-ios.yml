@@ -7,6 +7,12 @@ on:
       - develop
     paths:
       - '**/Localizable.xcstrings'
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths:
+      - '**/Localizable.xcstrings'
   workflow_dispatch:
     inputs:
       force_retranslate:
@@ -33,6 +39,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.ref }}
           token: ${{ secrets.TRANSLATION_PAT_GHA_CLAUDE_JUL082026 }}
 
       - name: Set up Python
@@ -78,7 +85,7 @@ jobs:
           gh pr create \
             --title "🌍 Auto-translations: missing iOS strings updated" \
             --body "$(cat /tmp/pr_body.md)" \
-            --base "${{ github.ref_name }}" \
+            --base "${{ github.event.pull_request.base.ref || github.ref_name }}" \
             --head "$BRANCH" \
             --label "translations" \
             --reviewer "${{ github.actor }}"
