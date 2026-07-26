@@ -15,9 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		requestResourceWith(tag: ["initial-resources", "speakTag"]) { [self] in
 
-			// Language
-            Bundle.setLanguage(UserDefaults.selectedLanguage)
-
             // Locale and fetch access
             // DEV: Break here to test Locale/Matrix
             let countryRussia = MoonpayCountryData(alphaCode2Char: "RU",
