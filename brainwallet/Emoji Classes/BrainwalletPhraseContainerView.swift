@@ -45,28 +45,27 @@ struct BrainwalletPhraseContainerView: View {
         self.walletManager = walletManager
     }
     var body: some View {
+        ZStack {
         GeometryReader { geometry in
 
             let width = geometry.size.width
             let height = geometry.size.height
             let wordViewWidth = width / CGFloat(wordViewWidthRoot) - wordPad
-            ZStack {
+            
 
                 BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
-                VStack {
+            VStack {
                     HStack {
                         Text("Enter your PIN to view your Brainwallet phrase")
                             .modifier(BWIPSSemiBold(size: 24.0, lineLimit: 2))
+                            .multilineTextAlignment(.center)
+
                             .foregroundColor(BrainwalletColor.content)
                     }
+                    .frame(maxWidth: .infinity, alignment: .init(horizontal: .center, vertical: .center))
                     .padding(20)
                     
-                    HStack {
-                        Text("It's your emojis you use to remember your 12 seed words.")
-                            .modifier(BWIPSSemiBold(size: 24.0, lineLimit: 2))
-                            .foregroundColor(BrainwalletColor.content)
-                    }
-                    .padding(20)
+                  
                     if shouldShowEmojis {
                         LazyVGrid(columns: viewColumns, spacing: 1.0) {
                             ForEach(0 ..< fetchedEmojisArray.count, id: \.self) { index in
@@ -75,6 +74,7 @@ struct BrainwalletPhraseContainerView: View {
                                        height: height * 0.1)
                             }
                         }
+                        .padding(15)
                         Spacer()
                         Button(action: {
                             if walletManager.deleteEmojiString(pin: enteredPIN) {
@@ -82,14 +82,26 @@ struct BrainwalletPhraseContainerView: View {
                                 shouldShow.toggle()
                             }
                         }) {
-                            Text("Delete my Emojis")
-                                .modifier(BWIPSBold(size: 24.0))
-                                .foregroundColor(BrainwalletColor.content.opacity(0.6))
-                                .frame(width: width * 0.7, height: largeButtonHeight, alignment: .center)
+                           
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(BentoColor.grayBorder,
+                                            lineWidth: 0.5)
+                                    .frame(height: 48)
+                                Text("Delete my Emojis")
+                                    .modifier(BWIPSBold(size: 24.0))
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(BrainwalletColor.content.opacity(0.6))
+                                    .frame(width: width * 0.7, height: largeButtonHeight, alignment: .center)
+                            }
 
                         }
-                        .padding(.all, 8.0)
-                        .accessibilityIdentifier("BrainwalletPhraseContainerView.DeleteEmojis")
+                        .frame(height: 48)
+                        .padding([.leading, .trailing], 20)
+                        .padding([.top, .bottom], 20)
+                        .accessibilityIdentifier("EmojisSettingsView.deleteButton")
+                        
+                      
 
                     } else {
                         HStack {
@@ -115,10 +127,17 @@ struct BrainwalletPhraseContainerView: View {
                         .frame(height: secureFieldHeight, alignment: .top)
                         .padding(.top, 32.0)
                     }
+                    
+                    HStack {
+                        Text("It's your emojis you use to remember your 12 seed words.")
+                            .modifier(BWIPSRegular(size: 16.0, lineLimit: 2))
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(BrainwalletColor.content)
+                    }
+                    .padding(.top, 32.0)
                     Spacer()
                 }
             }
-            .padding(.all, 10)
             .onAppear {
                 viewColumns = [GridItem](repeating: GridItem(.flexible()),
                                          count: wordViewWidthRoot)
@@ -129,6 +148,9 @@ struct BrainwalletPhraseContainerView: View {
                     shouldShowEmojis = true
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            
         }
+       
     }
 }
