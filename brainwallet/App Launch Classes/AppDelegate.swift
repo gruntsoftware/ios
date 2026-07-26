@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         if ProcessInfo.processInfo.environment["IS_RUNNING_UNIT_TESTS"] == "1" {
             return true
         }
-        
+
         UNUserNotificationCenter.current().setBadgeCount(0) { _ in }
         
         var regionCode2Char: String = "RU"
