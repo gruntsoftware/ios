@@ -141,7 +141,7 @@ class ApplicationController: Subscriber {
             assertionFailure("shouldHideGameSDK: window is nil")
             return
         }
-        let currentLocaleLanguage = Locale.current.language.languageCode?.identifier ?? "en"
+        let currentLocaleLanguage = Bundle.main.preferredLocalizations.first ?? "en"
 
         guard let walletManager = walletManager,
         let emojiResult = walletManager.emojiStringResult() else { return }
