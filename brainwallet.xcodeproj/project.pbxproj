@@ -2327,7 +2327,7 @@
 				24B84F802E0861560060C2EE /* Check percentage of localization coverage to 80 % */,
 				75A2A78C1DA5934300A983D8 /* Sources */,
 				2489E05F2DF0A6DE00630888 /* Run Swiftlint & Swiftlint - fix */,
-				C32553BA2FE08F9F008B1861 /* Build RoboVM  */,
+				C32553BA2FE08F9F008B1861 /* Inactive Build RoboVM  */,
 				75A2A78D1DA5934300A983D8 /* Frameworks */,
 				75A2A78E1DA5934300A983D8 /* Resources */,
 				C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */,
@@ -2641,7 +2641,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Total number of swift lines\\n------------------\" && find . -name '*.swift' -print0 | xargs -0 wc -l | grep \"total\"\n";
 		};
-		C32553BA2FE08F9F008B1861 /* Build RoboVM  */ = {
+		C32553BA2FE08F9F008B1861 /* Inactive Build RoboVM  */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 8;
@@ -2651,14 +2651,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Build RoboVM ";
+			name = "Inactive Build RoboVM ";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n# Skip the RoboVM framework build entirely on simulator — libGDX is device-only.\nif [ \"$PLATFORM_NAME\" = \"iphonesimulator\" ]; then\n    echo \"Simulator build — skipping RoboVM framework build\"\n    exit 0\nfi\nexport JAVA_HOME=\"$(/usr/libexec/java_home -v 17)\"\nexport PATH=\"$JAVA_HOME/bin:$PATH\"\ncd \"$SRCROOT\"\ngit submodule update --init --recursive Private/bw-gdlib\ncd Private/bw-gdlib\n./gradlew :ios:robovmInstall --no-daemon\n";
+			shellScript = "\n# set -e\n# Skip the RoboVM framework build entirely on simulator — libGDX is device-only.\n# if [ \"$PLATFORM_NAME\" = \"iphonesimulator\" ]; then\n#     echo \"Simulator build — skipping RoboVM framework build\"\n#     exit 0\n# fi\n# export JAVA_HOME=\"$(/usr/libexec/java_home -v 17)\"\n# export PATH=\"$JAVA_HOME/bin:$PATH\"\n# cd \"$SRCROOT\"\n# git submodule update --init --recursive Private/bw-gdlib\n# cd Private/bw-gdlib\n# ./gradlew :ios:robovmInstall --no-daemon\n";
 		};
 		C35312F32FE1B5B100FC2840 /* Flatten+Sign+Relocate Asset Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3336,7 +3336,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602296;
+				CURRENT_PROJECT_VERSION = 2602297;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3532,7 +3532,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602296;
+				CURRENT_PROJECT_VERSION = 2602297;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
