@@ -4,6 +4,8 @@
 [submodule "Private/general-purpose"]
 	path = Private/general-purpose
 	url = https://github.com/gruntsoftware/ios-private-general-purpose.git
+	branch = main
 [submodule "Private/bw-gdlib"]
 	path = Private/bw-gdlib
 	url = https://github.com/gruntsoftware/bw-gdlib.git
+	branch = main
