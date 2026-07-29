@@ -73,17 +73,6 @@ For the full, up-to-date changelog see [GitHub Releases](https://github.com/grun
 
 ---
 
-### **v3.9.3**  [PR [#93](https://github.com/gruntsoftware/ios/pull/93)]
----
-- **Test coverage**: two new suites adding 742+ assertions, covering emoji selection logic (`EmojiViewModel`, `EmojiTriplet`, `EmojiSection`) and fiat currency handling (`Currency`, `GlobalCurrency` across all 160 cases)
-- **AI-assisted PR summaries**: new GitHub Actions workflow generating structured PR descriptions
-- **CI/CD cleanup**: removed a problematic `ssh-add -D` step, simplified submodule init, refactored Xcode Cloud build scripts
-- Localization updates across 16 languages; minor emoji/send-receive UI refinements
-
-**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.1...v3.9.3
-
----
-
 ### **v3.9.11**  [PR [#127](https://github.com/gruntsoftware/ios/pull/127)]
 ---
 Fixed a crash in the Game Hub introduced by v3.9.10's Fallinmoji launch:
@@ -113,7 +102,7 @@ Continued the Shop Bento buy/sell-gift-card work started in v3.9.5:
 - Replaced the old in-app `SignupWebView` with a `SafariServices`-based signup flow
 - Added Indonesian localization scheme
 
-**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.5...v3.9.10
+**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.5...v3.9.7
 
 ---
 
@@ -123,6 +112,17 @@ Continued the Shop Bento buy/sell-gift-card work started in v3.9.5:
 - Minor fixes to `ReadyView`, `RestoreView`, `ConfirmPasscodeView`, `SettingsView`
 
 **Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.3...v3.9.5
+
+---
+
+### **v3.9.3**  [PR [#93](https://github.com/gruntsoftware/ios/pull/93)]
+---
+- **Test coverage**: two new suites adding 742+ assertions, covering emoji selection logic (`EmojiViewModel`, `EmojiTriplet`, `EmojiSection`) and fiat currency handling (`Currency`, `GlobalCurrency` across all 160 cases)
+- **AI-assisted PR summaries**: new GitHub Actions workflow generating structured PR descriptions
+- **CI/CD cleanup**: removed a problematic `ssh-add -D` step, simplified submodule init, refactored Xcode Cloud build scripts
+- Localization updates across 16 languages; minor emoji/send-receive UI refinements
+
+**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.1...v3.9.3
 
 ---
 
