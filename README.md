@@ -80,13 +80,49 @@ For the full, up-to-date changelog see [GitHub Releases](https://github.com/grun
 - **CI/CD cleanup**: removed a problematic `ssh-add -D` step, simplified submodule init, refactored Xcode Cloud build scripts
 - Localization updates across 16 languages; minor emoji/send-receive UI refinements
 
-**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.1...v3.9.5
+**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.1...v3.9.3
 
 ---
 
-### **v3.9.5 – v3.9.13**  [PRs [#111](https://github.com/gruntsoftware/ios/pull/111), [#117](https://github.com/gruntsoftware/ios/pull/117), [#124](https://github.com/gruntsoftware/ios/pull/124), [#127](https://github.com/gruntsoftware/ios/pull/127)]
+### **v3.9.11**  [PR [#127](https://github.com/gruntsoftware/ios/pull/127)]
 ---
-A chain of incremental releases (v3.9.5, v3.9.7, v3.9.10, v3.9.11, v3.9.13) with no individually curated release notes beyond the version bumps themselves — see the [compare view](https://github.com/gruntsoftware/ios/compare/v3.9.5...v3.9.13) for the full diff.
+Fixed a crash in the Game Hub introduced by v3.9.10's Fallinmoji launch:
+- `GameHubBentoView`/`GameHubCarouselBentoView` refactored and stabilized
+- Swapped the `BoldenVan` font for `LilitaOne`
+- Minor fixes to `FallinMojiDemoView`/`WelcomMojiDemoView` and `CoreModeView`
+
+**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.10...v3.9.11
+
+---
+
+### **v3.9.10**  [PR [#124](https://github.com/gruntsoftware/ios/pull/124)]
+---
+**Fallinmoji** — the mini-game first added to the Android app now lands on iOS:
+- New `Private/bw-gdlib` submodule wired in, with `GameContainerViewController`/`GameEmbedViewController`/`GameStructs` hosting the game inside the Game Hub Bento carousel
+- New social sharing flow (`SocialPostHelper`, `SocialPostViewModel`)
+- Large localization expansion (`Localizable.xcstrings`)
+
+**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.7...v3.9.10
+
+---
+
+### **v3.9.7**  [PR [#117](https://github.com/gruntsoftware/ios/pull/117)]
+---
+Continued the Shop Bento buy/sell-gift-card work started in v3.9.5:
+- New `ShopCardsView`, `ShopImages`, `ShopStructs`; `ShopBentoViewModel` substantially refactored
+- Replaced the old in-app `SignupWebView` with a `SafariServices`-based signup flow
+- Added Indonesian localization scheme
+
+**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.5...v3.9.10
+
+---
+
+### **v3.9.5**  [PR [#111](https://github.com/gruntsoftware/ios/pull/111)]
+---
+- Added Shop Bento gift-card assets (Amazon, BitRefill, Visa) and a new `SignupAskView`
+- Minor fixes to `ReadyView`, `RestoreView`, `ConfirmPasscodeView`, `SettingsView`
+
+**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.3...v3.9.5
 
 ---
 
