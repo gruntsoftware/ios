@@ -16,7 +16,7 @@
 - **Website**: [brainwallet.co](https://brainwallet.co)
 - **Support**: [brainwallet.co/support.html](https://brainwallet.co/support.html)
 
-## Why Brainwallet
+## Why Brainwallet?
 
 **Standalone, not a client of our servers.** Brainwallet connects directly to the Litecoin peer-to-peer network using SPV (simplified payment verification), via the vendored `breadwallet-core` C library (`Modules/core`) — the same wallet-core lineage as the Android app. Checking balances and broadcasting transactions doesn't depend on any Brainwallet-run backend.
 
