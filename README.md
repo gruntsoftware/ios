@@ -59,7 +59,7 @@ Test targets are `BrainwalletUnitTests` and `BrainwalletUITests`. Run via Fastla
 
 ## Security
 
-Found a security vulnerability? Please **do not** open a public issue — report it via [brainwallet.co/support.html](https://brainwallet.co/support.html) instead. This repo doesn't yet have a dedicated `SECURITY.md` (the Android sibling repo does) — worth adding for parity.
+Found a security vulnerability? Please **do not** open a public issue — see [SECURITY.md](SECURITY.md) for how to report it privately.
 
 ## License
 
