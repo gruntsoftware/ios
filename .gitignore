@@ -11,6 +11,7 @@ Private/
 
 # Claude Code local settings/skills
 .claude/
+CLAUDE.local.md
 
 # Various settings
 *.moved-aside
