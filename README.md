@@ -5,6 +5,7 @@
 ### CircleCI status  
 [![Release](https://img.shields.io/github/v/release/gruntsoftware/ios?style=plastic)](https://github.com/gruntsoftware/ios/releases)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/gruntsoftware/ios/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/gruntsoftware/ios/tree/main)
+[![Tests](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/grunt-claude-bot/1121e3f9e22e6fda5273ea795bcc85be/raw/tests-badge.json)](https://dl.circleci.com/status-badge/redirect/gh/gruntsoftware/ios/tree/develop)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## App Store
