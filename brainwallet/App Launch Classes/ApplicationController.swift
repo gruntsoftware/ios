@@ -1,4 +1,6 @@
 import BackgroundTasks
+import FirebaseAnalytics
+import StoreKit
 import SwiftUI
 import UIKit
 #if !targetEnvironment(simulator)
@@ -28,6 +30,8 @@ class ApplicationController: Subscriber {
     private var hasPerformedWalletDependentInitialization = false
     private var didInitWallet = false
     var gameController: GameContainerViewController?
+    // Injectable so tests can substitute a spy instead of hitting the real StoreKit prompt.
+    var reviewRequester: AppStoreReviewRequesting.Type = SKStoreReviewController.self
     #if !targetEnvironment(simulator)
         var bwGameSDK: BwGameSdk?
     #endif
@@ -252,9 +256,22 @@ class ApplicationController: Subscriber {
                     self.mainViewController?.newMainViewModel?.gameExitUpdated = true
                 }
 
+                //Game finished, prompt for a review after the transition settles
+                self.requestReviewAfterGameFinished()
+
             }
         } catch {
             print("Failed to decode payload: \(error)")
+        }
+    }
+
+    // Extracted so tests can trigger the post-game review prompt directly,
+    // without driving the full window-transition/animation pipeline above.
+    func requestReviewAfterGameFinished() {
+        let reviewRequester = self.reviewRequester
+        delay(3.0) {
+            Analytics.logEvent("did_play_game", parameters: nil)
+            reviewRequester.requestReviewInCurrentScene()
         }
     }
 
