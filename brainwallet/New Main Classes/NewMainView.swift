@@ -31,9 +31,6 @@ struct NewMainView: View {
     private var userDidTapSend: Bool = false
 
     @State
-    private var shouldShowEmojiPicker: Bool = false
-
-    @State
     private var shouldCustomToast: Bool = false
 
     @State
@@ -342,7 +339,7 @@ struct NewMainView: View {
                                 }
                                 Analytics.logEvent("user_did_tap_gamehub", parameters: nil)
                             } else {
-                                shouldShowEmojiPicker.toggle()
+                                newMainViewModel.shouldShowGameSDK.toggle()
                             }
                         }, label: {
                             VStack(spacing: 4) {
@@ -429,7 +426,7 @@ struct NewMainView: View {
                                 let socialNetwork: String = decodedObject.socialNetwork
                                 let social = SocialPostViewModel()
                                 guard let image = social.image(from: screenShotData) else { return }
-                                
+
                                 Analytics
                                     .logEvent("user_may_post_score_to_social",
                                               parameters: [
