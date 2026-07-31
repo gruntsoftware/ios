@@ -12,6 +12,8 @@ import FirebaseAnalytics
 struct BalanceBentoView: View {
     @ObservedObject
     var newMainViewModel: NewMainViewModel
+    @Environment(\.requestReview)
+    private var requestReview
     @State
     private var shouldShowSettings: Bool = false
     @State
@@ -66,6 +68,11 @@ struct BalanceBentoView: View {
                             playBoing()
                             Analytics.logEvent("did_toggle_fiat_ltc",
                                                parameters: nil)
+                            if BalanceBentoReviewPolicy.shouldRequestReview(afterTogglingBalanceVisibilityTo: shouldShowBalance) {
+                                delay(0.8) {
+                                    requestReview()
+                                }
+                            }
                         }) {
                             Image(systemName: shouldShowBalance ? "eye.slash" : "eye")
                                 .resizable()
@@ -119,6 +126,11 @@ struct BalanceBentoView: View {
                                 Analytics
                                     .logEvent("did_toggle_balance_visibility",
                                     parameters: nil)
+                            }
+                            if BalanceBentoReviewPolicy.shouldRequestReview(afterTogglingCurrencyEmphasisTo: isLTCValueShown) {
+                                delay(0.8) {
+                                    requestReview()
+                                }
                             }
                         }
                     }
