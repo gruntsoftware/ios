@@ -114,6 +114,7 @@
 		2476AE342E27B44B0065CE22 /* InputWordsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */; };
 		2476AE362E2802AF0065CE22 /* InputSeedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476AE352E28029B0065CE22 /* InputSeedWordView.swift */; };
 		247A7D072E951660000DF8C0 /* BalanceBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D062E951653000DF8C0 /* BalanceBentoView.swift */; };
+		9ED4226AC1AA476BB099F35A /* BalanceBentoReviewPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F1465DCBE495A8993C1FD /* BalanceBentoReviewPolicy.swift */; };
 		247A7D0B2E95195E000DF8C0 /* TransactionHistoryBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D0A2E95194F000DF8C0 /* TransactionHistoryBentoView.swift */; };
 		247A7D0D2E951CE1000DF8C0 /* TutorialsBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D0C2E951CD7000DF8C0 /* TutorialsBentoView.swift */; };
 		247A7D0F2E951D10000DF8C0 /* LTCPriceBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247A7D0E2E951D10000DF8C0 /* LTCPriceBentoView.swift */; };
@@ -611,6 +612,7 @@
 		2476AE332E27B44B0065CE22 /* InputWordsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWordsGridView.swift; sourceTree = "<group>"; };
 		2476AE352E28029B0065CE22 /* InputSeedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputSeedWordView.swift; sourceTree = "<group>"; };
 		247A7D062E951653000DF8C0 /* BalanceBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceBentoView.swift; sourceTree = "<group>"; };
+		5C3F1465DCBE495A8993C1FD /* BalanceBentoReviewPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceBentoReviewPolicy.swift; sourceTree = "<group>"; };
 		247A7D0A2E95194F000DF8C0 /* TransactionHistoryBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryBentoView.swift; sourceTree = "<group>"; };
 		247A7D0C2E951CD7000DF8C0 /* TutorialsBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsBentoView.swift; sourceTree = "<group>"; };
 		247A7D0E2E951D10000DF8C0 /* LTCPriceBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTCPriceBentoView.swift; sourceTree = "<group>"; };
@@ -1403,6 +1405,7 @@
 				24289A3F2EB0D3E600F0F11F /* Transaction Bentos */,
 				24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */,
 				247A7D062E951653000DF8C0 /* BalanceBentoView.swift */,
+				5C3F1465DCBE495A8993C1FD /* BalanceBentoReviewPolicy.swift */,
 				247A7D0C2E951CD7000DF8C0 /* TutorialsBentoView.swift */,
 				247A7D0E2E951D10000DF8C0 /* LTCPriceBentoView.swift */,
 				240850F52F40E3A30097706A /* BackgroundRectangle.swift */,
@@ -3076,6 +3079,7 @@
 				C312D4782D7DC27700BB97A4 /* ContainerViewController.swift in Sources */,
 				C312D4792D7DC27700BB97A4 /* SafariServices+Extension.swift in Sources */,
 				247A7D072E951660000DF8C0 /* BalanceBentoView.swift in Sources */,
+				9ED4226AC1AA476BB099F35A /* BalanceBentoReviewPolicy.swift in Sources */,
 				2434109C2DBC0C95001C595B /* ConfirmPasscodeView.swift in Sources */,
 				C312D47A2D7DC27700BB97A4 /* PhraseView.swift in Sources */,
 				241D22432DB526B7000302C8 /* TopUpView.swift in Sources */,
