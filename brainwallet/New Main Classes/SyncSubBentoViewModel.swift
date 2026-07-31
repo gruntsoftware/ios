@@ -94,7 +94,6 @@ class SyncSubBentoViewModel: ObservableObject, Subscriber {
     func setCurrency(code: String) {
         UserDefaults.userPreferredCurrencyCode = code
         UserDefaults.standard.synchronize()
-        Bundle.setLanguage(code)
 
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: .preferredCurrencyChangedNotification,
