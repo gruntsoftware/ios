@@ -5,12 +5,6 @@ import StoreKit
 // @Environment(\.requestReview) private var requestReview
 // requestReview()
 
-// Seam so callers (e.g. ApplicationController) can inject a spy in unit tests
-// instead of invoking the real StoreKit prompt.
-protocol AppStoreReviewRequesting {
-	static func requestReviewInCurrentScene()
-}
-
 public extension SKStoreReviewController {
 	static func requestReviewInCurrentScene() {
 		if let scene = UIApplication.shared
@@ -22,5 +16,3 @@ public extension SKStoreReviewController {
 		}
 	}
 }
-
-extension SKStoreReviewController: AppStoreReviewRequesting {}

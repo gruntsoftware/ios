@@ -22,7 +22,7 @@ extension ApplicationController {
 			launchNumber += 1
 			UserDefaults.standard.set(NSNumber(value: launchNumber), forKey: numberOfBrainwalletLaunches)
             if launchNumber == 3 {
-                reviewRequester.requestReviewInCurrentScene()
+                SKStoreReviewController.requestReviewInCurrentScene()
                 Analytics.logEvent("did_request_rating", parameters: nil)
             }
 		} else {
