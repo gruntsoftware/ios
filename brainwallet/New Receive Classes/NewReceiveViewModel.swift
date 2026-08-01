@@ -64,14 +64,23 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     var walletManager: WalletManager
     var ltcToFiatRate: Double = 0.0
 
+    // Fetched once at init so buildUnsignedMoonPayUrl() (called synchronously
+    // from several Views) can read it without becoming an async call itself.
+    // Not private: unit tests assert on it directly and inject ipAddressFetcher.
+    var cachedIPAddress: String = ""
+
+    // Injectable so tests can substitute a spy instead of hitting the real network.
+    var ipAddressFetcher: PublicIPAddressFetching = NetworkHelper()
+
     var dismissReceiveModal: (() -> Void)?
 
     let currencies: [SupportedFiatCurrency] = SupportedFiatCurrency.allCases
 
-    init(store: Store, walletManager: WalletManager, canUserBuy: Bool) {
+    init(store: Store, walletManager: WalletManager, canUserBuy: Bool, ipAddressFetcher: PublicIPAddressFetching = NetworkHelper()) {
         self.store = store
         self.walletManager = walletManager
         self.canUserBuy = canUserBuy
+        self.ipAddressFetcher = ipAddressFetcher
 
         updatePublishables()
 
@@ -79,6 +88,12 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
             // fetch buy quote
             fetchBuyQuoteLimits(buyAmount: pickedAmount, baseCurrencyCode: pickedCurrency)
         }
+
+        ipAddressFetcher.fetchPublicIPAddress(completion: { [weak self] ipAddress in
+            DispatchQueue.main.async {
+                self?.cachedIPAddress = ipAddress
+            }
+        })
 
         NotificationCenter.default.addObserver(self,
                          selector: #selector(updatePublishables),
@@ -152,7 +167,6 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
                                          iOSVersion, udid)
 
         let obfuscatedExternalID: String = Utility().encryptMessageRSA2048(formattedExternalID)
-
         let currentLocaleLanguage = Bundle.main.preferredLocalizations.first ?? "en"
         let userTheme = UserDefaults.userPreferredDarkTheme ? "dark" : "light"
 
@@ -160,6 +174,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
                                                     baseCurrencyAmount: String(Double(pickedAmount)),
                                                     language: currentLocaleLanguage,
                                                     walletAddress: newReceiveAddress,
+                                                    ipAddress: cachedIPAddress,
                                                     userPreferredCurrencyCode: "ltc",
                                                     externalTransactionId: obfuscatedExternalID,
                                                     currencyCode: "ltc",
@@ -178,6 +193,26 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
                 self.didFetchURLString = true
             }
          })
+    }
+
+    /// Guarantees cachedIPAddress is resolved before MoonpaySigningData is
+    /// built and the sign-url request fires, instead of racing the init-time
+    /// prefetch. Use this (rather than buildUnsignedMoonPayUrl() followed by
+    /// fetchMoonpaySignedUrl()) wherever the app actually calls the MoonPay
+    /// signing endpoint.
+    func signAndFetchMoonPayUrl() {
+        guard cachedIPAddress.isEmpty else {
+            fetchMoonpaySignedUrl(signingData: buildUnsignedMoonPayUrl())
+            return
+        }
+
+        ipAddressFetcher.fetchPublicIPAddress(completion: { [weak self] ipAddress in
+            DispatchQueue.main.async {
+                guard let self else { return }
+                self.cachedIPAddress = ipAddress
+                self.fetchMoonpaySignedUrl(signingData: self.buildUnsignedMoonPayUrl())
+            }
+        })
     }
 
     private func generateQRCode() {
