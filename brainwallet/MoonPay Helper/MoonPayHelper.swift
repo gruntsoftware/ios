@@ -67,6 +67,7 @@ public struct MoonpaySigningData: Codable, Hashable {
     var baseCurrencyAmount: String = ""
     var language: String = "en"
     var walletAddress: String = ""
+    var ipAddress: String = ""
     var userPreferredCurrencyCode: String = ""
     var externalTransactionId: String = "en"
     var currencyCode: String = ""

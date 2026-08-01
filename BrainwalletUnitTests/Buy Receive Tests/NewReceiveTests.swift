@@ -315,8 +315,105 @@ class NewReceiveViewModelTests: XCTestCase {
         // Test string capitalization as used in the timestamp
         let testString = "01 jun 2025 10:30:45"
         let capitalizedString = testString.capitalized
-        
+
         XCTAssertEqual(capitalizedString, "01 Jun 2025 10:30:45")
+    }
+
+    // MARK: - IP Address Tests
+
+    func testInitPopulatesCachedIPAddressFromInjectedFetcher() {
+        let spy = PublicIPAddressFetchingSpy()
+        spy.providedIPAddress = "198.51.100.7"
+
+        let viewModelWithSpy = NewReceiveViewModel(store: Store(),
+                                                    walletManager: mockWalletManager,
+                                                    canUserBuy: false,
+                                                    ipAddressFetcher: spy)
+
+        let expectation = expectation(description: "cachedIPAddress populated from init")
+        DispatchQueue.main.async {
+            XCTAssertEqual(viewModelWithSpy.cachedIPAddress, "198.51.100.7")
+            XCTAssertEqual(spy.fetchCallCount, 1)
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 1.0)
+    }
+
+    func testBuildUnsignedMoonPayUrlUsesCachedIPAddress() {
+        let spy = PublicIPAddressFetchingSpy()
+        spy.providedIPAddress = "198.51.100.7"
+
+        let viewModelWithSpy = NewReceiveViewModel(store: Store(),
+                                                    walletManager: mockWalletManager,
+                                                    canUserBuy: false,
+                                                    ipAddressFetcher: spy)
+
+        let expectation = expectation(description: "signingData reflects the cached IP")
+        DispatchQueue.main.async {
+            let signingData = viewModelWithSpy.buildUnsignedMoonPayUrl()
+            XCTAssertEqual(signingData.ipAddress, "198.51.100.7")
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 1.0)
+    }
+
+    func testSignAndFetchMoonPayUrlResolvesIPBeforeSigningWhenNotYetCached() {
+        let spy = PublicIPAddressFetchingSpy()
+        spy.providedIPAddress = "198.51.100.7"
+
+        let viewModelWithSpy = NewReceiveViewModel(store: Store(),
+                                                    walletManager: mockWalletManager,
+                                                    canUserBuy: false,
+                                                    ipAddressFetcher: spy)
+
+        // The init-time prefetch's completion is queued on the main run loop
+        // but hasn't run yet, so this is still deterministically empty here.
+        XCTAssertEqual(viewModelWithSpy.cachedIPAddress, "")
+
+        viewModelWithSpy.signAndFetchMoonPayUrl()
+
+        let expectation = expectation(description: "cachedIPAddress resolved before signing")
+        DispatchQueue.main.async {
+            XCTAssertEqual(viewModelWithSpy.cachedIPAddress, "198.51.100.7")
+            XCTAssertEqual(spy.fetchCallCount, 2, "one fetch from init, one from signAndFetchMoonPayUrl")
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 1.0)
+    }
+
+    func testSignAndFetchMoonPayUrlReusesCachedIPAddressWithoutRefetching() {
+        let spy = PublicIPAddressFetchingSpy()
+        spy.providedIPAddress = "198.51.100.7"
+
+        let viewModelWithSpy = NewReceiveViewModel(store: Store(),
+                                                    walletManager: mockWalletManager,
+                                                    canUserBuy: false,
+                                                    ipAddressFetcher: spy)
+
+        let readyExpectation = expectation(description: "init-time prefetch settles")
+        DispatchQueue.main.async {
+            readyExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 1.0)
+
+        XCTAssertEqual(viewModelWithSpy.cachedIPAddress, "198.51.100.7")
+        XCTAssertEqual(spy.fetchCallCount, 1)
+
+        viewModelWithSpy.signAndFetchMoonPayUrl()
+
+        XCTAssertEqual(spy.fetchCallCount, 1, "should reuse the cached IP instead of fetching again")
+    }
+}
+
+// MARK: - Test Doubles
+
+final class PublicIPAddressFetchingSpy: PublicIPAddressFetching {
+    var providedIPAddress: String = ""
+    private(set) var fetchCallCount = 0
+
+    func fetchPublicIPAddress(completion: @escaping (String) -> Void) {
+        fetchCallCount += 1
+        completion(providedIPAddress)
     }
 }
 

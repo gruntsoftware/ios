@@ -9,7 +9,13 @@ import SwiftUI
 import Foundation
 import Network
 
-class NetworkHelper: ObservableObject {
+// Seam so NewReceiveViewModel can inject a spy in unit tests instead of
+// hitting the real network to resolve the user's public IP address.
+protocol PublicIPAddressFetching {
+    func fetchPublicIPAddress(completion: @escaping (String) -> Void)
+}
+
+class NetworkHelper: ObservableObject, PublicIPAddressFetching {
 
     func exchangeRates(_ handler: @escaping (_ rates: [Rate], _ error: String?) -> Void) {
 
@@ -169,23 +175,30 @@ class NetworkHelper: ObservableObject {
         task.resume()
     }
 
-    func fetchSignedURL(mpData: MoonpaySigningData, completion: @escaping (String) -> Void) {
-        let baseURL = APIServer.baseUrl
+    /// Pure and separately testable so the sign-url query string (in particular,
+    /// that ipAddress is actually included) can be verified without a network call.
+    static func signUrlRequestString(baseURL: String, mpData: MoonpaySigningData) -> String {
         let suffix = "v1/moonpay/sign-url"
-        var request: URLRequest
-
-        let urlString = """
+        return """
         \(baseURL)\(suffix)?\
         baseCurrencyCode=\(mpData.baseCurrencyCode)&\
         baseCurrencyAmount=\(mpData.baseCurrencyAmount)&\
         language=\(mpData.language)&\
         walletAddress=\(mpData.walletAddress)&\
+        ipAddress=\(mpData.ipAddress)&\
         userPreferredCurrencyCode=\(mpData.userPreferredCurrencyCode)&\
         externalTransactionId=\(mpData.externalTransactionId)&\
         currencyCode=\(mpData.currencyCode)&\
         themeId=\(mpData.themeId)&\
         theme=\(mpData.theme)
         """
+    }
+
+    func fetchSignedURL(mpData: MoonpaySigningData, completion: @escaping (String) -> Void) {
+        let baseURL = APIServer.baseUrl
+        var request: URLRequest
+
+        let urlString = NetworkHelper.signUrlRequestString(baseURL: baseURL, mpData: mpData)
 
         if let createdURL = URL(string: urlString) {
             request = URLRequest(url: createdURL)
@@ -216,6 +229,30 @@ class NetworkHelper: ObservableObject {
                         completion(fallbackURLString)
                     }
                 }
+            }
+        }
+        task.resume()
+    }
+
+    func fetchPublicIPAddress(completion: @escaping (String) -> Void) {
+        guard let url = URL(string: "https://api.ipify.org") else {
+            completion("")
+            return
+        }
+        var request = URLRequest(url: url)
+        #if targetEnvironment(simulator)
+            request.assumesHTTP3Capable = false
+        #endif
+        request.httpMethod = "GET"
+        request.timeoutInterval = 10
+        request.allHTTPHeaderFields = ["accept": "text/plain"]
+
+        let task = URLSession(configuration: .ephemeral).dataTask(with: request) { data, _, error in
+
+            if error == nil, let data = data, let ipAddress = String(data: data, encoding: .utf8) {
+                completion(ipAddress)
+            } else {
+                completion("")
             }
         }
         task.resume()
