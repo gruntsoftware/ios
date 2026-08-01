@@ -318,8 +318,7 @@ struct BuyReceiveView: View {
                             /// Get LTC Button Group
                             Button(action: {
                                 userIsBuying.toggle()
-                                let signingData = viewModel.buildUnsignedMoonPayUrl()
-                                viewModel.fetchMoonpaySignedUrl(signingData: signingData)
+                                viewModel.signAndFetchMoonPayUrl()
                             }) {
                                 HStack {
                                     Text("GET LTC")
