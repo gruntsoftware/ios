@@ -147,14 +147,12 @@ class ApplicationController: Subscriber {
         let emojiResult = walletManager.emojiStringResult() else { return }
 
         let emojiArray = emojiResult.map { String($0) }
-        let jsonData = try! JSONSerialization.data(withJSONObject: emojiArray)
-        let emojisJson = String(data: jsonData, encoding: .utf8)!
 
         let launchParameters: [String: Any] = [
             "language": currentLocaleLanguage,
             "address": address,
             "timestamp": Int(Date().timeIntervalSince1970),
-            "emojis": emojisJson
+            "emojis": emojiArray
         ]
 
         let jsonObject: [String: Any] = [
