@@ -2660,7 +2660,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "\n# set -e\n# Skip the RoboVM framework build entirely on simulator — libGDX is device-only.\n# if [ \"$PLATFORM_NAME\" = \"iphonesimulator\" ]; then\n#     echo \"Simulator build — skipping RoboVM framework build\"\n#     exit 0\n# fi\n# export JAVA_HOME=\"$(/usr/libexec/java_home -v 17)\"\n# export PATH=\"$JAVA_HOME/bin:$PATH\"\n# cd \"$SRCROOT\"\n# git submodule update --init --recursive Private/bw-gdlib\n# cd Private/bw-gdlib\n# ./gradlew :ios:robovmInstall --no-daemon\n";
+			shellScript = "set -e\n\n# Skip the RoboVM framework build entirely on simulator — libGDX is device-only.\nif [ \"$PLATFORM_NAME\" = \"iphonesimulator\" ]; then\n    echo \"Simulator build — skipping RoboVM framework build\"\n    exit 0\nfi\nexport JAVA_HOME=\"$(/usr/libexec/java_home -v 17)\"\nexport PATH=\"$JAVA_HOME/bin:$PATH\"\ncd \"$SRCROOT\"\ngit submodule update --init --recursive Private/bw-gdlib\ncd Private/bw-gdlib\n./gradlew :ios:robovmInstall --no-daemon\n";
 		};
 		C35312F32FE1B5B100FC2840 /* Flatten+Sign+Relocate Asset Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

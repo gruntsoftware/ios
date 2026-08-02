@@ -197,7 +197,7 @@ struct NewMainView: View {
                                 }
                                 .frame(maxHeight: height * 0.5, alignment: .top)
                                 GameHubCarouselBentoView(viewModel: newMainViewModel,
-                                                         newReceiveAddress: newReceiveViewModel.newReceiveAddress,
+                                                         newReceiveViewModel: newReceiveViewModel,
                                                          userPrefersDarkTheme: $userPrefersDarkTheme,
                                                          shouldShowGameSDK: $newMainViewModel.shouldShowGameSDK,
                                                          userEmojisAreSet: $gameHubViewModel.userEmojisAreSet
