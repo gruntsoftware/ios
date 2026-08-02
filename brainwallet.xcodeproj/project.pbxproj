@@ -230,6 +230,7 @@
 		24FF3E6A2E898D4000FF43C5 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 755CD9D11DAA197C0075898E /* libBRCore.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		C30D099E2FC5AB720083EDE2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C30D099D2FC5AB720083EDE2 /* GoogleService-Info.plist */; };
+		C30EDB51301F53700099A314 /* BalanceBentoReviewPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30EDB50301F53700099A314 /* BalanceBentoReviewPolicy.swift */; };
 		C312D2D02D7DC27700BB97A4 /* ReachabilityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2912D7DC27700BB97A4 /* ReachabilityMonitor.swift */; };
 		C312D2D12D7DC27700BB97A4 /* CopyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D23A2D7DC27700BB97A4 /* CopyButtonView.swift */; };
 		C312D2D22D7DC27700BB97A4 /* LightWeightAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1EA2D7DC27700BB97A4 /* LightWeightAlert.swift */; };
@@ -843,6 +844,7 @@
 		75A2A8091DA5936F00A983D8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		75FEFD1B1DAED56E00203D3A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		C30D099D2FC5AB720083EDE2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C30EDB50301F53700099A314 /* BalanceBentoReviewPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceBentoReviewPolicy.swift; sourceTree = "<group>"; };
 		C312D0682D7DC27700BB97A4 /* MenuButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonType.swift; sourceTree = "<group>"; };
 		C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApplicationController+Extension.swift"; sourceTree = "<group>"; };
 		C312D06C2D7DC27700BB97A4 /* Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
@@ -1403,6 +1405,7 @@
 				24289A3F2EB0D3E600F0F11F /* Transaction Bentos */,
 				24691D132EAE4D1C003CDC7C /* SyncSubBentoView.swift */,
 				247A7D062E951653000DF8C0 /* BalanceBentoView.swift */,
+				C30EDB50301F53700099A314 /* BalanceBentoReviewPolicy.swift */,
 				247A7D0C2E951CD7000DF8C0 /* TutorialsBentoView.swift */,
 				247A7D0E2E951D10000DF8C0 /* LTCPriceBentoView.swift */,
 				240850F52F40E3A30097706A /* BackgroundRectangle.swift */,
@@ -2794,6 +2797,7 @@
 				247A83912EA00D8600B5DFD8 /* aurora.metal in Sources */,
 				C32233132FC214A70043CBA7 /* ShopImages.swift in Sources */,
 				C312D2EA2D7DC27700BB97A4 /* ForgotView.swift in Sources */,
+				C30EDB51301F53700099A314 /* BalanceBentoReviewPolicy.swift in Sources */,
 				C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */,
 				242C43EF2F25397300CF6EA4 /* WalkthroughStep3View.swift in Sources */,
 				C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */,
