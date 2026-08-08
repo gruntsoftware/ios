@@ -14,6 +14,9 @@ struct GameHubCarouselBentoView: View {
     @ObservedObject
     var viewModel: NewMainViewModel
 
+    @ObservedObject
+    var newReceiveViewModel: NewReceiveViewModel
+
     @Binding
     var userPrefersDarkTheme: Bool
 
@@ -25,9 +28,6 @@ struct GameHubCarouselBentoView: View {
 
     @State
     private var selectedTab: Int = 0
-    
-    @State
-    private var newReceiveAddress = ""
 
     @State
     private var carouselDirection: Int = 1
@@ -41,7 +41,7 @@ struct GameHubCarouselBentoView: View {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     init(viewModel: NewMainViewModel,
-         newReceiveAddress: String,
+         newReceiveViewModel: NewReceiveViewModel,
          userPrefersDarkTheme: Binding<Bool>,
          shouldShowGameSDK: Binding<Bool>,
          userEmojisAreSet: Binding<Bool>) {
@@ -49,7 +49,7 @@ struct GameHubCarouselBentoView: View {
         _shouldShowGameSDK = shouldShowGameSDK
         _userEmojisAreSet = userEmojisAreSet
         self.viewModel = viewModel
-        self.newReceiveAddress = newReceiveAddress
+        self.newReceiveViewModel = newReceiveViewModel
     }
     var body: some View {
         GeometryReader { geometry in
@@ -64,9 +64,10 @@ struct GameHubCarouselBentoView: View {
                         LongPressGesture(minimumDuration:0.05)
                             .onEnded { _ in
                                if (userEmojisAreSet) {
+                                   let address = newReceiveViewModel.newReceiveAddress
                                    DispatchQueue.userInitQueue.async {
                                        appDelegate.applicationController
-                                           .shouldShowGameSDK(address: newReceiveAddress)
+                                           .shouldShowGameSDK(address: address)
                                    }
                                } else {
                                    shouldShowGameSDK.toggle()

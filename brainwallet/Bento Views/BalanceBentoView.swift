@@ -66,11 +66,16 @@ struct BalanceBentoView: View {
                         Button(action: {
                             shouldShowBalance.toggle()
                             playBoing()
-                            Analytics.logEvent("did_toggle_fiat_ltc",
-                                               parameters: nil)
-                            if BalanceBentoReviewPolicy.shouldRequestReview(afterTogglingBalanceVisibilityTo: shouldShowBalance) {
+                            if BalanceBentoReviewPolicy
+                                .shouldRequestReview(afterTogglingBalanceVisibilityTo: shouldShowBalance) {
                                 delay(0.8) {
                                     requestReview()
+                                    let placementString = "\(BalanceBentoView.self).show_balance"
+                                    Analytics
+                                        .logEvent("did_request_rating",
+                                                  parameters: [
+                                                    "request_placement": placementString
+                                                  ])
                                 }
                             }
                         }) {
@@ -123,13 +128,16 @@ struct BalanceBentoView: View {
                             withAnimation(.spring(response: 0.8, dampingFraction: 0.5, blendDuration: 0.2)) {
                                 isLTCValueShown.toggle()
                                 newMainViewModel.isLTCValueShown = isLTCValueShown
-                                Analytics
-                                    .logEvent("did_toggle_balance_visibility",
-                                    parameters: nil)
                             }
                             if BalanceBentoReviewPolicy.shouldRequestReview(afterTogglingCurrencyEmphasisTo: isLTCValueShown) {
                                 delay(0.8) {
                                     requestReview()
+                                    let placementString = "\(BalanceBentoView.self).toggle_ltc_fiat"
+                                    Analytics
+                                        .logEvent("did_request_rating",
+                                                  parameters: [
+                                                    "request_placement": placementString
+                                                  ])
                                 }
                             }
                         }
