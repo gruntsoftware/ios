@@ -1,5 +1,4 @@
 import BRCore
-import FirebaseAnalytics
 import Foundation
 import UIKit
 

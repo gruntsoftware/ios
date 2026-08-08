@@ -6,7 +6,6 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
-import FirebaseAnalytics
 
 struct WalkthroughStep1View: View {
 

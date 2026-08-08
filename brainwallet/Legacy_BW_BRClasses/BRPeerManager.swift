@@ -48,6 +48,14 @@ class BRPeerManager {
 		                          	return Unmanaged<BRPeerManager>.fromOpaque(info).takeUnretainedValue().listener.networkIsReachable() ? 1 : 0
 		                          },
 		                          nil) // threadCleanup
+
+		// called by core when it detects and recovers from unexpected internal state (e.g. a missing
+		// checkpoint block) instead of crashing. warning is a short, static, human-readable string with
+		// no dynamic/sensitive content. See BRPeerManagerSetIntegrityWarningCallback() in BRPeerManager.h.
+		BRPeerManagerSetIntegrityWarningCallback(cPointer) { info, warning in
+			guard let info = info, let warning = warning else { return }
+			Unmanaged<BRPeerManager>.fromOpaque(info).takeUnretainedValue().listener.integrityWarning(String(cString: warning))
+		}
 	}
 
 	// true if currently connected to at least one peer

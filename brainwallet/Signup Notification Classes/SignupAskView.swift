@@ -8,7 +8,6 @@
  
 
 import SwiftUI
-import FirebaseAnalytics
 
 struct SignupAskView: View {
     
