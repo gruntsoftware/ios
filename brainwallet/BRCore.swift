@@ -25,6 +25,7 @@ protocol BRPeerManagerListener {
     func saveBlocks(_ replace: Bool, _ blocks: [BRBlockRef?])
     func savePeers(_ replace: Bool, _ peers: [BRPeer])
     func networkIsReachable() -> Bool
+    func integrityWarning(_ warning: String)
 }
 
 private func secureAllocate(allocSize: CFIndex, hint _: CFOptionFlags, info _: UnsafeMutableRawPointer?)

@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import FirebaseAnalytics
 
 enum SetField : Int {
     case firstField = 1

@@ -3,6 +3,7 @@ import Foundation
 import SQLite3
 import SystemConfiguration
 import FirebaseAnalytics
+import FirebaseCrashlytics
 
 let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
 let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
@@ -384,6 +385,17 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 		DispatchQueue.main.async {
 			NotificationCenter.default.post(name: .walletTxStatusUpdateNotification, object: nil)
 		}
+	}
+
+	// called from core (via BRPeerManager) when it detects and recovers from unexpected internal state
+	// (e.g. a missing checkpoint block) instead of crashing. Reported to Crashlytics so it doesn't go
+	// unmonitored, matching the Android BRPeerManager.onIntegrityWarning() reporting pattern.
+	func integrityWarning(_ warning: String) {
+		Crashlytics.crashlytics().record(error: NSError(
+			domain: "BRPeerManager",
+			code: 0,
+			userInfo: [NSLocalizedDescriptionKey: "BRPeerManager native integrity warning: \(warning)"]
+		))
 	}
 
 	func saveBlocks(_ replace: Bool, _ blocks: [BRBlockRef?]) {

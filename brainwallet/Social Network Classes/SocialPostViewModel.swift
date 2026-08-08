@@ -6,7 +6,6 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
-import FirebaseAnalytics
 import UniformTypeIdentifiers
 
 enum SocialNetwork: String, CaseIterable, Identifiable {

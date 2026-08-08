@@ -1,4 +1,3 @@
-import FirebaseAnalytics
 import Foundation
 
 // this is the default that matches the mobile-api if the server is unavailable
