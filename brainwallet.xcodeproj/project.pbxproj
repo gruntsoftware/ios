@@ -2331,6 +2331,7 @@
 				75A2A78C1DA5934300A983D8 /* Sources */,
 				2489E05F2DF0A6DE00630888 /* Run Swiftlint & Swiftlint - fix */,
 				C32553BA2FE08F9F008B1861 /* Build RoboVM  */,
+				C35312F32FE1B5B100FC2840 /* Flatten+Sign+Relocate Asset Frameworks */,
 				75A2A78D1DA5934300A983D8 /* Frameworks */,
 				75A2A78E1DA5934300A983D8 /* Resources */,
 				C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */,
@@ -2338,7 +2339,6 @@
 				58A9FE4C291BC37400B75825 /* Count number of swift lines */,
 				246F97EC2E846230001923A6 /* Embed Frameworks */,
 				245F189D2DD1F92000D20715 /* Collect and Send dSYMs to Crashlytics */,
-				C35312F32FE1B5B100FC2840 /* Flatten+Sign+Relocate Asset Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3340,7 +3340,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602298;
+				CURRENT_PROJECT_VERSION = 2602299;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3361,7 +3361,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/bw-gdlib/<robovm-output-dir>";
-				MARKETING_VERSION = 3.9.13;
+				MARKETING_VERSION = 3.9.14;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
@@ -3536,7 +3536,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602298;
+				CURRENT_PROJECT_VERSION = 2602299;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3556,7 +3556,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/bw-gdlib/<robovm-output-dir>";
-				MARKETING_VERSION = 3.9.13;
+				MARKETING_VERSION = 3.9.14;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
