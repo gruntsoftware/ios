@@ -135,6 +135,10 @@ class LockScreenHostingController: UIHostingController<LockScreenView>, Subscrib
         delegate?.didUnlock()
         unlockTimer?.invalidate()
         unlockTimer = nil
+        
+        Analytics.logEvent("did_unlock",
+                           parameters: nil)
+        
     }
 
     @available(*, unavailable)

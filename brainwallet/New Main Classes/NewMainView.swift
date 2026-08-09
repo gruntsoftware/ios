@@ -31,9 +31,6 @@ struct NewMainView: View {
     private var userDidTapSend: Bool = false
 
     @State
-    private var shouldShowEmojiPicker: Bool = false
-
-    @State
     private var shouldCustomToast: Bool = false
 
     @State
@@ -200,11 +197,16 @@ struct NewMainView: View {
                                 }
                                 .frame(maxHeight: height * 0.5, alignment: .top)
                                 GameHubCarouselBentoView(viewModel: newMainViewModel,
+                                                         newReceiveViewModel: newReceiveViewModel,
                                                          userPrefersDarkTheme: $userPrefersDarkTheme,
-                                                         shouldShowGameSDK: $newMainViewModel.shouldShowGameSDK)
-                                    .frame(idealHeight: balanceBentoHeight * 0.9, maxHeight: balanceBentoHeight, alignment: .top)
-                                    .padding(bentoPadding)
-                                    .accessibilityIdentifier("gameHubCarouselBentoView")
+                                                         shouldShowGameSDK: $newMainViewModel.shouldShowGameSDK,
+                                                         userEmojisAreSet: $gameHubViewModel.userEmojisAreSet
+                                )
+                                .frame(idealHeight: balanceBentoHeight * 0.9,
+                                       maxHeight: balanceBentoHeight,
+                                       alignment: .top)
+                                .padding(bentoPadding)
+                                .accessibilityIdentifier("gameHubCarouselBentoView")
                             }
                             .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 0.0 : 1.0, anchor: .bottom)
                             .transition(.scale)
@@ -302,7 +304,7 @@ struct NewMainView: View {
                                     .foregroundStyle(walletIsSyncing ? content.opacity(0.3) : content)
                             }
                         })
-                        .disabled(shouldShowEmojiPicker)
+                        .disabled(walletIsSyncing)
                         .accessibilityIdentifier("sendTabBarItem")
 
                         Spacer()
@@ -324,14 +326,21 @@ struct NewMainView: View {
                                     .foregroundStyle(content)
                             }
                         })
-                        .disabled(shouldShowEmojiPicker)
                         .accessibilityIdentifier("buyReceiveTabBarItem")
 
                         Spacer()
 
                         Button(action: {
-                            newMainViewModel.shouldShowGameSDK.toggle()
-                            Analytics.logEvent("user_did_tap_gamemode", parameters: nil)
+                            
+                            if (gameHubViewModel.userEmojisAreSet) {
+                                let address = newReceiveViewModel.newReceiveAddress
+                                DispatchQueue.userInitQueue.async {
+                                    appDelegate.applicationController.shouldShowGameSDK(address: address)
+                                }
+                                Analytics.logEvent("user_did_tap_gamehub", parameters: nil)
+                            } else {
+                                newMainViewModel.shouldShowGameSDK.toggle()
+                            }
                         }, label: {
                             VStack(spacing: 4) {
                                 Image(systemName: "gamecontroller")
@@ -347,7 +356,6 @@ struct NewMainView: View {
                                     .foregroundStyle(content)
                             }
                         })
-                        .disabled(shouldShowEmojiPicker)
                         .accessibilityIdentifier("gameHubTabBarItem")
 
                         Spacer()
@@ -374,7 +382,7 @@ struct NewMainView: View {
                                     .animation(.easeInOut, value: shouldShowTransactionDetail)
                             }
                         })
-                        .disabled(disableTransactionDetail || shouldShowEmojiPicker)
+                        .disabled(disableTransactionDetail)
                         .accessibilityIdentifier("historyHubTabBarItem")
 
                         Spacer()
@@ -402,16 +410,6 @@ struct NewMainView: View {
                         userDidTapBuyReceive.toggle()
                     }
                 }
-                .onChange(of: gameHubViewModel.shouldUserSetEmojis) { _,shouldSetUserEmojis in
-
-                    if shouldSetUserEmojis {
-                        delay(0.6) {
-                            withAnimation {
-                                shouldShowEmojiPicker.toggle()
-                            }
-                        }
-                    }
-                }
                 .onChange(of: newMainViewModel.gameExitUpdated) { _,_ in
 
                     if newMainViewModel.gameExitUpdated {
@@ -429,6 +427,11 @@ struct NewMainView: View {
                                 let social = SocialPostViewModel()
                                 guard let image = social.image(from: screenShotData) else { return }
 
+                                Analytics
+                                    .logEvent("user_may_post_score_to_social",
+                                              parameters: [
+                                                "social_network": socialNetwork
+                                              ])
                                 if socialNetwork == "twitter" {
                                     shouldCustomToast.toggle()
                                     delay(3) {
@@ -445,15 +448,6 @@ struct NewMainView: View {
                             }
                     }
                  }
-                .onChange(of: newMainViewModel.shouldShowGameSDK) { _,_ in
-                    let address = newReceiveViewModel.newReceiveAddress
-                    if newMainViewModel.shouldShowGameSDK {
-                        DispatchQueue.userInitQueue.async {
-                            appDelegate.applicationController
-                                .shouldShowGameSDK(address: address)
-                        }
-                    }
-                }
                 .sheet(isPresented: $userDidTapSend) {
                     if !walletIsSyncing {
                         BentoSendModalView(viewModel: newMainViewModel,
@@ -501,6 +495,22 @@ struct NewMainView: View {
                         .padding(.top, 12.0)
                         .padding(8.0)
                 }
+                .sheet(isPresented: $newMainViewModel.shouldShowGameSDK) {
+                    if (!gameHubViewModel.userEmojisAreSet) {
+                        EmojiSetPagerView(gameHubViewModel: gameHubViewModel,
+                                          viewModel: newMainViewModel)
+                        .presentationBackground(.ultraThinMaterial)
+                        .presentationDragIndicator(.hidden)
+                    }
+                }
+                .onChange(of: gameHubViewModel.didJustCompleteEmojiSetup) { _, newValue in
+                    guard newValue else { return }
+                    let address = newReceiveViewModel.newReceiveAddress
+                    DispatchQueue.userInitQueue.async {
+                        appDelegate.applicationController.shouldShowGameSDK(address: address)
+                    }
+                    gameHubViewModel.didJustCompleteEmojiSetup = false
+                }
                 .alert(isPresented: $shouldShowPromptAlert) {
                     Alert(title: Text(currentPrompt.title),
                           message: Text(currentPrompt.body),
@@ -510,16 +520,7 @@ struct NewMainView: View {
                 .toast(isPresenting: $shouldCustomToast){
                     AlertToast(type: .regular, title: pasteXMessage)
                 }
-
             }
-            .showEmojiPicker(showEmojiSetView: shouldShowEmojiPicker,
-                             emojiSetView:
-                                EmojiSetView(gameHubViewModel: gameHubViewModel,
-                                             viewModel: newMainViewModel,
-                                             shouldShowView: $shouldShowEmojiPicker,
-                                             userPrefersDarkTheme: $userPrefersDarkTheme)
-            )
-
         }
     }
 }

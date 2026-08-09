@@ -183,6 +183,16 @@ struct BentoColor {
     static let nearNearBlack = Color(red: 0.17647058823529413,
                                      green: 0.17647058823529413,
                                      blue: 0.17647058823529413)
+    
+    /// 14134C - #14134C
+    static let color14134C = Color(red: 0.0784313725490196,
+                                     green: 0.07450980392156863,
+                                     blue: 0.2980392156862745)
+    
+    /// 5827E2 - #5827E2
+    static let color5827E2 = Color(red: 0.34509803921568627,
+                                   green: 0.15294117647058825,
+                                   blue: 0.8862745098039215)
 
     /// middleBlue - #475A96
     static let middleBlue = Color(red: 0.27843, green: 0.3529, blue: 0.5882)

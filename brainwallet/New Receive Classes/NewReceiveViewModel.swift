@@ -153,7 +153,7 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
 
         let obfuscatedExternalID: String = Utility().encryptMessageRSA2048(formattedExternalID)
 
-        let currentLocaleLanguage = Locale.current.language.languageCode?.identifier ?? "en"
+        let currentLocaleLanguage = Bundle.main.preferredLocalizations.first ?? "en"
         let userTheme = UserDefaults.userPreferredDarkTheme ? "dark" : "light"
 
         let moonpaySigningData = MoonpaySigningData(baseCurrencyCode: pickedCurrency.code,
