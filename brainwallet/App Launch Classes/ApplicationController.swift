@@ -1,5 +1,6 @@
 import BackgroundTasks
 import FirebaseAnalytics
+import FirebaseCrashlytics
 import StoreKit
 import SwiftUI
 import UIKit
@@ -196,9 +197,18 @@ class ApplicationController: Subscriber {
                     }, completion: { [weak self] _ in
                         outgoingView?.alpha = 1.0
                         window.rootViewController = self?.gameController
+                        // Breadcrumbs for the BwGameSdk launch handoff — see
+                        // Crashlytics issue 73139f0b2fbbbce51f6d8ce92489aa1f
+                        // (SIGABRT inside BWIOSGdx during a GLKView _display:
+                        // callback, ~1s after the game view appeared). The
+                        // vendored BWIOSGdx binary wasn't symbolicating at all
+                        // (missing dSYM), so these logs give us real timing/
+                        // state context if it recurs instead of a guess.
+                        Crashlytics.crashlytics().log("game: calling BwGameSdk.startGame()")
                         self?.bwGameSDK?
                             .startGame(withLaunchParams: window,
                                        launchParams: jsonString)
+                        Crashlytics.crashlytics().log("game: BwGameSdk.startGame() returned, setting isGameActive = true")
                         self?.gameController?.isGameActive = true
                     })
                 }
@@ -210,6 +220,7 @@ class ApplicationController: Subscriber {
 
 
     func shouldHideGameSDK(dictionary: [AnyHashable: Any]) {
+        Crashlytics.crashlytics().log("game: shouldHideGameSDK() called")
 
         //Either exit game or post to social after decoding dictionary
         var userIsPostingToSocial = false

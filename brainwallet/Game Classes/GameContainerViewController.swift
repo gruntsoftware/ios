@@ -5,6 +5,7 @@
 //  Created by Kerry Washington on 6/15/26.
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
+import FirebaseCrashlytics
 import UIKit
 #if !targetEnvironment(simulator)
 import BWIOSGdx
@@ -36,8 +37,10 @@ final class GameContainerViewController: UIViewController {
             guard isGameActive != oldValue, bwGameSDK != nil else { return }
 
             if isGameActive {
+                Crashlytics.crashlytics().log("game: calling BwGameSdk.showGame()")
                 bwGameSDK?.showGame()  // makeKeyAndVisible + didBecomeActive (resume)
             } else {
+                Crashlytics.crashlytics().log("game: calling BwGameSdk.hideGame()")
                 bwGameSDK?.hideGame()   // willResignActive (pause + glFinish) + host reclaims key
             }
 #endif
