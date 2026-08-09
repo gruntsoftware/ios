@@ -12,6 +12,8 @@ import FirebaseAnalytics
 struct BalanceBentoView: View {
     @ObservedObject
     var newMainViewModel: NewMainViewModel
+    @Environment(\.requestReview)
+    private var requestReview
     @State
     private var shouldShowSettings: Bool = false
     @State
@@ -64,6 +66,18 @@ struct BalanceBentoView: View {
                         Button(action: {
                             shouldShowBalance.toggle()
                             playBoing()
+                            if BalanceBentoReviewPolicy
+                                .shouldRequestReview(afterTogglingBalanceVisibilityTo: shouldShowBalance) {
+                                delay(0.8) {
+                                    requestReview()
+                                    let placementString = "\(BalanceBentoView.self).show_balance"
+                                    Analytics
+                                        .logEvent("did_request_rating",
+                                                  parameters: [
+                                                    "request_placement": placementString
+                                                  ])
+                                }
+                            }
                         }) {
                             Image(systemName: shouldShowBalance ? "eye.slash" : "eye")
                                 .resizable()
@@ -114,9 +128,17 @@ struct BalanceBentoView: View {
                             withAnimation(.spring(response: 0.8, dampingFraction: 0.5, blendDuration: 0.2)) {
                                 isLTCValueShown.toggle()
                                 newMainViewModel.isLTCValueShown = isLTCValueShown
-                                Analytics
-                                    .logEvent("user_tapped_switch_fiat_ltc",
-                                    parameters: nil)
+                            }
+                            if BalanceBentoReviewPolicy.shouldRequestReview(afterTogglingCurrencyEmphasisTo: isLTCValueShown) {
+                                delay(0.8) {
+                                    requestReview()
+                                    let placementString = "\(BalanceBentoView.self).toggle_ltc_fiat"
+                                    Analytics
+                                        .logEvent("did_request_rating",
+                                                  parameters: [
+                                                    "request_placement": placementString
+                                                  ])
+                                }
                             }
                         }
                     }

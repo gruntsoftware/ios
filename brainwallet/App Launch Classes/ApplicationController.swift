@@ -1,4 +1,6 @@
 import BackgroundTasks
+import FirebaseAnalytics
+import StoreKit
 import SwiftUI
 import UIKit
 #if !targetEnvironment(simulator)
@@ -28,6 +30,8 @@ class ApplicationController: Subscriber {
     private var hasPerformedWalletDependentInitialization = false
     private var didInitWallet = false
     var gameController: GameContainerViewController?
+    // Injectable so tests can substitute a spy instead of hitting the real StoreKit prompt.
+    var reviewRequester: AppStoreReviewRequesting.Type = SKStoreReviewController.self
     #if !targetEnvironment(simulator)
         var bwGameSDK: BwGameSdk?
     #endif
@@ -60,7 +64,7 @@ class ApplicationController: Subscriber {
 
         walletManager = tempWalletManager
 
-        _ = walletManager?.wallet // attempt to initialize wallet
+        _ = walletManager?.wallet
 
         /// Update fiat rate
         let preferredCurrencyCode = UserDefaults.userPreferredCurrencyCode
@@ -120,7 +124,7 @@ class ApplicationController: Subscriber {
 							self.walletManager = try WalletManager(store:
                                                                     self.store,
                                                                    dbPath: nil)
-							_ = self.walletManager?.wallet// try to initialize wallet
+							_ = self.walletManager?.wallet
 						} catch {
 							assertionFailure("::: Error creating wallet: \(error)")
 						}
@@ -141,20 +145,18 @@ class ApplicationController: Subscriber {
             assertionFailure("shouldHideGameSDK: window is nil")
             return
         }
-        let currentLocaleLanguage = Locale.current.language.languageCode?.identifier ?? "en"
+        let currentLocaleLanguage = Bundle.main.preferredLocalizations.first ?? "en"
 
         guard let walletManager = walletManager,
         let emojiResult = walletManager.emojiStringResult() else { return }
 
         let emojiArray = emojiResult.map { String($0) }
-        let jsonData = try! JSONSerialization.data(withJSONObject: emojiArray)
-        let emojisJson = String(data: jsonData, encoding: .utf8)!
 
         let launchParameters: [String: Any] = [
             "language": currentLocaleLanguage,
             "address": address,
             "timestamp": Int(Date().timeIntervalSince1970),
-            "emojis": emojisJson
+            "emojis": emojiArray
         ]
 
         let jsonObject: [String: Any] = [
@@ -254,9 +256,22 @@ class ApplicationController: Subscriber {
                     self.mainViewController?.newMainViewModel?.gameExitUpdated = true
                 }
 
+                //Game finished, prompt for a review after the transition settles
+                self.requestReviewAfterGameFinished()
+
             }
         } catch {
             print("Failed to decode payload: \(error)")
+        }
+    }
+
+    // Extracted so tests can trigger the post-game review prompt directly,
+    // without driving the full window-transition/animation pipeline above.
+    func requestReviewAfterGameFinished() {
+        let reviewRequester = self.reviewRequester
+        delay(3.0) {
+            Analytics.logEvent("did_play_game", parameters: nil)
+            reviewRequester.requestReviewInCurrentScene()
         }
     }
 
@@ -371,6 +386,7 @@ class ApplicationController: Subscriber {
 	private func setupRootViewController() {
 		mainViewController = MainViewController(store: store)
 		window?.rootViewController = mainViewController
+        
 	}
 
 	private func startDataFetchers() {

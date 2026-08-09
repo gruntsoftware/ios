@@ -25,9 +25,6 @@ struct EmojiView: View {
 
     var body: some View {
         GeometryReader { geometry in
-
-            let factoredSize = geometry.size.width * sizeFactor
-
             ZStack {
                 Text(emoji)
                     .modifier(BWIPSRegular(size: 30))

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         if ProcessInfo.processInfo.environment["IS_RUNNING_UNIT_TESTS"] == "1" {
             return true
         }
-        
+
         UNUserNotificationCenter.current().setBadgeCount(0) { _ in }
         
         var regionCode2Char: String = "RU"
@@ -101,10 +101,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         Messaging.messaging().unsubscribe(fromTopic: "/topics/*") { error in
             if error != nil {
                 debugPrint("Error unsubscribing from topics: \(String(describing: error))")
-                    Analytics
-                        .logEvent("fcm_messaging_unsubscribe_error",
-                            parameters: ["error": "Error unsubscribing from topics: \(String(describing: error))"
-                            ])
             }
         }
         // Messaging topic subscription
@@ -121,10 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
            topicsArray.forEach { topic in
                Messaging.messaging().subscribe(toTopic: topic) { error in
                    if error != nil {
-                       Analytics
-                           .logEvent("fcm_messaging_subscription_error",
-                               parameters: ["error": "topic \(topic) \(String(describing: error))"
-                               ])
+                       debugPrint("Error subscribing from topics: \(String(describing: error))")
                    }
                }
            }
@@ -292,10 +285,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             }
             completion(false)
             if error != nil {
-                Analytics
-                    .logEvent("fcm_messaging_registration_error",
-                              parameters: ["error": "\(String(describing: error))"
-                              ])
+                debugPrint("Error messaging registration from topics: \(String(describing: error))") 
             }
         }
     }
