@@ -2,6 +2,7 @@ import BRCore
 import Foundation
 import UIKit
 import FirebaseAnalytics
+import FirebaseCrashlytics
 
 enum SendResult {
 	case success
@@ -48,16 +49,42 @@ class Sender {
             assertionFailure("createTransactionWithOpsOutputs called with zero amount")
             return false
         }
-        
+
         // Dust threshold check — 546 litoshis is standard P2PKH dust limit
         guard amount >= litoshiDustThreshold else {
             return false
         }
+
+        // BRWalletCreateOpsTransaction() (core) hard-asserts — SIGABRT, not a
+        // recoverable error — on an invalid address for either output, so both
+        // addresses must be validated before we ever call into it. See
+        // BRWalletCreateOpsTransaction.cold.4 crashes (e.g. Crashlytics issue
+        // d20dcdc984ce6926d52abfc6644330d6): a malformed/placeholder ops
+        // address from Partner.partnerKeyPath (missing or malformed
+        // service-data.plist) reached the core call unvalidated and aborted
+        // the process on the main thread.
+        guard toAddress.isValidAddress else {
+            Crashlytics.crashlytics().record(error: NSError(
+                domain: "Sender",
+                code: 0,
+                userInfo: [NSLocalizedDescriptionKey: "createTransactionWithOpsOutputs rejected invalid destination address"]))
+            return false
+        }
+
+        let opsAddress = Partner.partnerKeyPath(name: .walletOps)
+        guard opsAddress.isValidAddress else {
+            Crashlytics.crashlytics().record(error: NSError(
+                domain: "Sender",
+                code: 0,
+                userInfo: [NSLocalizedDescriptionKey: "createTransactionWithOpsOutputs rejected invalid ops address: \(opsAddress)"]))
+            return false
+        }
+
         transaction = walletManager.wallet?.createOpsTransaction(forAmount: amount,
                                                                  toAddress: toAddress,
                                                                  opsFee: tieredOpsFee(amount: amount),
-                                                                 opsAddress: Partner.partnerKeyPath(name: .walletOps))
-        
+                                                                 opsAddress: opsAddress)
+
         return transaction != nil
     }
 

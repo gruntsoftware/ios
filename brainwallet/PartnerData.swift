@@ -59,11 +59,16 @@ struct Partner {
 		switch name {
 		case .walletOps:
 			if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
-			   let opsArray = dictionary["wallet-ops"] as? [String] {
+			   let opsArray = dictionary["wallet-ops"] as? [String],
+			   !opsArray.isEmpty {
 				let randomInt = Int.random(in: 0 ..< opsArray.count)
 				let keyString = opsArray[randomInt]
 				return keyString
 			} else {
+				// Note: this sentinel (and the other "error_*"/"error: ..." returns in this
+				// function) is not a valid address. Callers that feed this into address-validating
+				// APIs (e.g. Sender.createTransactionWithOpsOutputs) must check isValidAddress
+				// before use rather than assume a usable key path was returned.
 				let errorDescription = "error_wallet_opskey"
 				return errorDescription
 			}
