@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import FirebaseAnalytics
 
 struct BalanceBentoView: View {
     @ObservedObject
@@ -70,12 +69,7 @@ struct BalanceBentoView: View {
                                 .shouldRequestReview(afterTogglingBalanceVisibilityTo: shouldShowBalance) {
                                 delay(0.8) {
                                     requestReview()
-                                    let placementString = "\(BalanceBentoView.self).show_balance"
-                                    Analytics
-                                        .logEvent("did_request_rating",
-                                                  parameters: [
-                                                    "request_placement": placementString
-                                                  ])
+                                    debugPrint("did_request_rating")
                                 }
                             }
                         }) {
@@ -132,12 +126,7 @@ struct BalanceBentoView: View {
                             if BalanceBentoReviewPolicy.shouldRequestReview(afterTogglingCurrencyEmphasisTo: isLTCValueShown) {
                                 delay(0.8) {
                                     requestReview()
-                                    let placementString = "\(BalanceBentoView.self).toggle_ltc_fiat"
-                                    Analytics
-                                        .logEvent("did_request_rating",
-                                                  parameters: [
-                                                    "request_placement": placementString
-                                                  ])
+                                    debugPrint("did_request_rating")
                                 }
                             }
                         }

@@ -1,7 +1,6 @@
 import UIKit
 import SwiftUI
 import SpriteKit
-import FirebaseAnalytics
 
 struct WelcomeMojiDemoView: View {
 
@@ -192,10 +191,7 @@ struct WelcomeMojiDemoView: View {
         }
         .onAppear {
             requestReview()
-            Analytics.logEvent("did_request_rating",
-                parameters: [
-                    "request_placement": String(describing: type(of: WelcomeMojiDemoView.self))
-                ])
+            debugPrint("did_request_rating")
         }
         .onDisappear {
             welcomeScene = nil

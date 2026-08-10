@@ -1,6 +1,5 @@
 import Foundation
 import StoreKit
-import FirebaseAnalytics
 extension ApplicationController {
 	func setupDefaults() {
 		if UserDefaults.standard.object(forKey: shouldRequireLoginTimeoutKey) == nil {
@@ -23,7 +22,7 @@ extension ApplicationController {
 			UserDefaults.standard.set(NSNumber(value: launchNumber), forKey: numberOfBrainwalletLaunches)
             if launchNumber == 3 {
                 reviewRequester.requestReviewInCurrentScene()
-                Analytics.logEvent("did_request_rating", parameters: nil)
+                debugPrint("did_request_rating")
             }
 		} else {
 			UserDefaults.standard.set(NSNumber(value: 1), forKey: numberOfBrainwalletLaunches)

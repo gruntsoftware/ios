@@ -6,7 +6,6 @@
 //  Copyright © 2026 Grunt Software, LTD. All rights reserved.
 //
 import SwiftUI
-import FirebaseAnalytics
 
 struct ReceiveStep1View: View {
     @Environment(\.requestReview)
@@ -52,11 +51,7 @@ struct ReceiveStep1View: View {
         }
         .onAppear {
             requestReview()
-            Analytics
-                .logEvent("did_request_rating",
-                          parameters: [
-                            "request_placement": String(describing: type(of: ReceiveStep1View.self))
-                          ])
+            debugPrint("did_request_rating")
         }
     }
 }
