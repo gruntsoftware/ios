@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import FirebaseAnalytics
 
 struct TopUpView: View {
 
@@ -149,9 +148,6 @@ struct TopUpView: View {
 
                         Button(action: {
                             path.removeAll()
-                            Analytics.logEvent("did_skip_top_up",
-                                               parameters: nil)
-                            
                         }) {
                             ZStack {
                                 Text("Maybe later (Skip)")

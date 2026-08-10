@@ -140,11 +140,7 @@ struct BentoSendConfirmView: View {
                                                     shouldDismiss.toggle()
                                                     nextIndex = 2
                                                     requestReview()
-                                                    Analytics
-                                                        .logEvent("did_request_rating",
-                                                                  parameters: [
-                                                                    "request_placement": String(describing: type(of: BentoSendConfirmView.self))
-                                                                  ])
+                                                    debugPrint("did_request_rating")
                                                 }
                                             }
                                             case .creationError:
