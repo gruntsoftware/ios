@@ -71,8 +71,6 @@ struct GameHubCarouselBentoView: View {
                                    }
                                } else {
                                    shouldShowGameSDK.toggle()
-                                   Analytics.logEvent("user_did_tap_gamehub",
-                                                      parameters: nil)
                                }
                             }
                     )
