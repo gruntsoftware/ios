@@ -29,14 +29,12 @@ final class FirebaseAnalyticsEventCatalogTests: XCTestCase {
     private static let knownEvents: [AnalyticsEventRecord] = [
         AnalyticsEventRecord(eventName: "wallet_not_initialized", sourceFile: "WalletManager.swift"),
         AnalyticsEventRecord(eventName: "service_data_error", sourceFile: "PartnerData.swift"),
-        AnalyticsEventRecord(eventName: "did_request_rating", sourceFile: "App Launch Classes/ApplicationController+Extension.swift"),
         AnalyticsEventRecord(eventName: "did_play_game", sourceFile: "App Launch Classes/ApplicationController.swift"),
         AnalyticsEventRecord(eventName: "user_did_complete_sync", sourceFile: "New Main Classes/SyncSubBentoViewModel.swift"),
         AnalyticsEventRecord(eventName: "wallet_manager_error", sourceFile: "New Main Classes/NewMainViewModel.swift"),
         AnalyticsEventRecord(eventName: "wallet_creation_error", sourceFile: "Start Welcome Classes/StartView.swift"),
         AnalyticsEventRecord(eventName: "did_start_resync", sourceFile: "Settings Classes/SettingsLitecoinDetailView.swift"),
         AnalyticsEventRecord(eventName: "user_did_tap_buyreceive_sheet", sourceFile: "New Receive Classes/BuyReceiveView.swift"),
-        AnalyticsEventRecord(eventName: "did_request_rating", sourceFile: "Start Welcome Classes/WelcomMojiDemoView.swift"),
         AnalyticsEventRecord(eventName: "did_unlock", sourceFile: "New Lock Screen Classes/LockScreenHostingController.swift"),
         AnalyticsEventRecord(eventName: "user_did_tap_send_sheet", sourceFile: "New Send Classes/Send Views/BentoSendViews/BentoSendModalView.swift"),
         AnalyticsEventRecord(eventName: "user_did_tap_nosend_sheet", sourceFile: "New Send Classes/Send Views/BentoSendViews/BentoNoSendModalView.swift"),
@@ -44,12 +42,13 @@ final class FirebaseAnalyticsEventCatalogTests: XCTestCase {
         AnalyticsEventRecord(eventName: "user_did_tap_linktree", sourceFile: "Bento Views/Game Hub Bentos/SocialsView.swift")
     ]
 
-    /// Expected number of *call sites* (some event names, e.g. `did_request_rating`,
-    /// are logged from more than one place). Update alongside `knownEvents`.
-    private static let expectedCallSiteCount = 15
+    /// Expected number of *call sites* (tracked separately from the distinct-name count
+    /// below in case a future event ends up logged from more than one place). Update
+    /// alongside `knownEvents`.
+    private static let expectedCallSiteCount = 13
 
     /// Expected number of *distinct* Firebase event names sent to Analytics.
-    private static let expectedUniqueEventCount = 14
+    private static let expectedUniqueEventCount = 13
 
     // MARK: - Informational catalog
 
