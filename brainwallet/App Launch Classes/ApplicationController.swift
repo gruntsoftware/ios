@@ -224,10 +224,17 @@ class ApplicationController: Subscriber {
         }
 
         do {
-            let decodedObject = try JSONDecoder().decode(GameJSON.self, from: data)
+            let decodedPayload = try JSONDecoder().decode(GameExitPayload.self, from: data)
+            let decodedObject = decodedPayload.exitData   // was: the whole decoded object
+            
             userIsPostingToSocial = decodedObject.socialNetwork == "twitter"
             || decodedObject.socialNetwork == "instagram"
-
+            
+            // Forward every game event recorded during this session to Firebase.
+            for event in decodedPayload.events {
+                let params = event.params.compactMapValues { $0.firebaseValue }
+                Analytics.logEvent(event.name, parameters: params.isEmpty ? nil : params)
+            }
             DispatchQueue.main.async {
 
                 guard let window = self.window else {

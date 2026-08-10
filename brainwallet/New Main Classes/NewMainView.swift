@@ -421,7 +421,8 @@ struct NewMainView: View {
                             guard let screenShotData = gameExitDictionary["screenshotdata"] as? Data else { return }
 
                             do {
-                                let decodedObject = try JSONDecoder().decode(GameJSON.self, from: data)
+                                let decodedPayload = try JSONDecoder().decode(GameExitPayload.self, from: data)
+                                let decodedObject = decodedPayload.exitData
                                 let socialNetwork: String = decodedObject.socialNetwork
                                 let social = SocialPostViewModel()
                                 guard let image = social.image(from: screenShotData) else { return }

@@ -60,3 +60,4 @@ extension GameContainerViewController: BwGameEndListener {
        appDelegate.applicationController.shouldHideGameSDK(dictionary: dictionary)
     }
 }
+
