@@ -6,7 +6,7 @@
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
 
-import SwiftUI
+import SwiftUI 
 
 struct TopUpView: View {
 
@@ -148,6 +148,7 @@ struct TopUpView: View {
 
                         Button(action: {
                             path.removeAll()
+                            
                         }) {
                             ZStack {
                                 Text("Maybe later (Skip)")

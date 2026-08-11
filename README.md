@@ -74,6 +74,17 @@ For the full, up-to-date changelog see [GitHub Releases](https://github.com/grun
 
 ---
 
+### **v3.9.15**  [PR [#151](https://github.com/gruntsoftware/ios/pull/151)]
+---
+- Fixed game-exit analytics events being silently dropped: `bw-gdlib` now wraps the exit payload as `{"exitData": ..., "events": [...]}`, and iOS decodes it (`GameExitPayload`) and forwards every collected event to Firebase Analytics instead of throwing/discarding it; Android's `AndroidLauncher` now forwards the same `jsonString` too
+- Updated `Private/bw-gdlib` submodule to v1.6.4
+- Removed redundant/duplicate Facebook & Analytics `logEvent` calls for the Game Hub and top-up-skip flows, including a duplicated `did_request_rating` event
+- Removed duplicate/orphaned Legacy `BW_BRClasses` files no longer referenced by the Xcode project
+
+**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.13...v3.9.15
+
+---
+
 ### **v3.9.11**  [PR [#127](https://github.com/gruntsoftware/ios/pull/127)]
 ---
 Fixed a crash in the Game Hub introduced by v3.9.10's Fallinmoji launch:
