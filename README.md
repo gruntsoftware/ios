@@ -5,6 +5,7 @@
 ### CircleCI status  
 [![Release](https://img.shields.io/github/v/release/gruntsoftware/ios?style=plastic)](https://github.com/gruntsoftware/ios/releases)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/gruntsoftware/ios/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/gruntsoftware/ios/tree/main)
+[![Tests](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/grunt-claude-bot/1121e3f9e22e6fda5273ea795bcc85be/raw/tests-badge.json)](https://dl.circleci.com/status-badge/redirect/gh/gruntsoftware/ios/tree/develop)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## App Store
@@ -70,6 +71,18 @@ Brainwallet iOS is released under the [MIT License](LICENSE). The vendored walle
 ## Release Notes
 
 For the full, up-to-date changelog see [GitHub Releases](https://github.com/gruntsoftware/ios/releases) and the [compare view](https://github.com/gruntsoftware/ios/compare). Highlights from recent versions:
+
+---
+
+### **v3.9.15**  [PR [#151](https://github.com/gruntsoftware/ios/pull/151)]
+---
+- Fixed game-exit analytics events being silently dropped: `bw-gdlib` now wraps the exit payload as `{"exitData": ..., "events": [...]}`, and iOS decodes it (`GameExitPayload`) and forwards every collected event to Firebase Analytics instead of throwing/discarding it; Android's `AndroidLauncher` now forwards the same `jsonString` too
+- Fixed App Store rejection ("Invalid Bundle... contains disallowed nested bundles"): the `Flatten+Sign+Relocate Asset Frameworks` build phase had been reordered (in #145) to run before `Embed Frameworks`, making it a silent no-op on clean/archive builds so `BWIOSGdx.framework`'s nested sub-frameworks shipped unflattened. Restored to run last, matching v3.9.13.
+- Updated `Private/bw-gdlib` submodule to v1.6.4
+- Removed redundant/duplicate Facebook & Analytics `logEvent` calls for the Game Hub and top-up-skip flows, including a duplicated `did_request_rating` event
+- Removed duplicate/orphaned Legacy `BW_BRClasses` files no longer referenced by the Xcode project
+
+**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.13...v3.9.15
 
 ---
 

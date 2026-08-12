@@ -6,8 +6,7 @@
 //  Copyright © 2025 Grunt Software, LTD. All rights reserved.
 //
 
-import SwiftUI
-import FirebaseAnalytics
+import SwiftUI 
 
 struct TopUpView: View {
 
@@ -149,8 +148,6 @@ struct TopUpView: View {
 
                         Button(action: {
                             path.removeAll()
-                            Analytics.logEvent("did_skip_top_up",
-                                               parameters: nil)
                             
                         }) {
                             ZStack {

@@ -164,8 +164,7 @@ struct TopUpSetAmountView: View {
                     Spacer()
                     Button(action: {
                         userIsBuying.toggle()
-                        let signingData = receiveViewModel.buildUnsignedMoonPayUrl()
-                        receiveViewModel.fetchMoonpaySignedUrl(signingData: signingData)
+                        receiveViewModel.signAndFetchMoonPayUrl()
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: largeButtonHeight/2)

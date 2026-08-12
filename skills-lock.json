@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "aso": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/aso/SKILL.md",
+      "computedHash": "f84a1fb5cb1a8a7f7171bd60ae6850f24a82fa6af94bd5f12e5b3e9227480a34"
+    },
+    "ios-simulator": {
+      "source": "dpearson2699/swift-ios-skills",
+      "sourceType": "github",
+      "skillPath": "skills/ios-simulator/SKILL.md",
+      "computedHash": "992f700cacced89d430e8cca5b0d95f12f16c1b8c3aa06bf419d4ab61509609f"
+    }
+  }
+}
