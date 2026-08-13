@@ -69,5 +69,9 @@ GoogleService-Info.plist
 Brainwallet-StoreKit-v1.storekit
 /fastlane/report.xml
 **/fastlane/test_output/
-## Games protection 
+## Games protection
 brainwallet/PreLaunchResources/topics_schema.plist
+
+# App Store Connect API credentials (asc-metadata-upload skill)
+.claude/skills/asc-metadata-upload/.env
+*.p8

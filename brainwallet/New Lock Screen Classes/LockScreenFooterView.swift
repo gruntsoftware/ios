@@ -77,6 +77,7 @@ struct LockScreenFooterView: View {
                             minHeight: 30.0,
                             alignment: .center)
                         .padding(8.0)
+                        .accessibilityIdentifier("QR Code Button")
 
                         Button(action: {
                             shouldShowWipeAlert.toggle()
