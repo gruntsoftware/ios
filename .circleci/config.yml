@@ -70,28 +70,7 @@ jobs:
             echo 'github.com ssh-rsa SHA256:Z4bsDPFhTv8vuTERTBcs6b5RHFRspyI77b7tQUsju1g' >> ~/.ssh/known_hosts
             ssh-add ~/.ssh/id_rsa_*
             sed -i "s#https://github.com/#https://${GH_TOKEN}@github.com/#g" .gitmodules
-            git submodule init && git submodule update --init Modules/core && git submodule update --init Private/general-purpose && git submodule update --init Private/bw-gdlib
-      # BWIOSGdx.xcframework isn't checked into bw-gdlib (its ios/build/ dir is
-      # gitignored there, same as any other build output) -- it's a RoboVM AOT
-      # artifact that has to be compiled locally. `robovmInstall` is the
-      # bw-gdlib Gradle task that produces build/robovm/BWIOSGdx.xcframework
-      # (confirmed via `./gradlew :ios:tasks --all`). Without this step
-      # xcodebuild fails later with:
-      #   error: There is no XCFramework found at '.../Private/bw-gdlib/ios/build/robovm/BWIOSGdx.xcframework'
-      - run:
-          name: Build BWIOSGdx.xcframework (bw-gdlib)
-          command: |
-            if ! command -v java &> /dev/null; then
-              brew install openjdk@17
-              echo 'export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"' >> $BASH_ENV
-              echo 'export JAVA_HOME="/opt/homebrew/opt/openjdk@17"' >> $BASH_ENV
-              source $BASH_ENV
-            fi
-            java -version
-            cd Private/bw-gdlib
-            ./gradlew :ios:robovmInstall --stacktrace
-            cd ../..
-            test -d Private/bw-gdlib/ios/build/robovm/BWIOSGdx.xcframework || { echo "BWIOSGdx.xcframework was not produced"; exit 1; }
+            git submodule init && git submodule update --init Modules/core && git submodule update --init Private/general-purpose
       - run:
           name: Setup environment files
           command: |
