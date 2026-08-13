@@ -194,12 +194,15 @@ class ApplicationController: Subscriber {
                         outgoingView?.alpha = 0.0
 
                     }, completion: { [weak self] _ in
+                        #if !targetEnvironment(simulator)
                         outgoingView?.alpha = 1.0
                         window.rootViewController = self?.gameController
+
                         self?.bwGameSDK?
                             .startGame(withLaunchParams: window,
                                        launchParams: jsonString)
                         self?.gameController?.isGameActive = true
+                        #endif
                     })
                 }
             }

@@ -1089,7 +1089,6 @@
 				C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */,
 				C32553C92FE090D1008B1861 /* AVFoundation.framework in Frameworks */,
 				246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */,
-				C398824D302B305700FE9517 /* BWIOSGdx.xcframework in Frameworks */,
 				C32553C52FE090A6008B1861 /* OpenAL.framework in Frameworks */,
 				24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */,
 				2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */,
@@ -2680,7 +2679,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script oset -e\nset -e\n\n# On simulator, libGDX can't run (device-only natives). Remove BWIOSGdx everywhere dyld looks.\nif [ \"$PLATFORM_NAME\" = \"iphonesimulator\" ]; then\n    echo \"Simulator build — stripping BWIOSGdx\"\n    rm -rf \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BWIOSGdx.framework\"\n    rm -rf \"${BUILT_PRODUCTS_DIR}/BWIOSGdx.framework\"\n    echo \"Stripped BWIOSGdx from app bundle and build products\"\n    exit 0\nfi\nAPP_FW=\"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nNESTED=\"$APP_FW/BWIOSGdx.framework/Frameworks\"\n\necho \"=== Flatten + sign nested frameworks ===\"\necho \"App Frameworks: $APP_FW\"\necho \"Nested source:  $NESTED\"\n\nif [ ! -d \"$NESTED\" ]; then\n    echo \"No nested frameworks dir — nothing to flatten\"\n    exit 0\nfi\n\nfor fw in \"$NESTED\"/*.framework; do\n    name=$(basename \"$fw\")\n    echo \"Flattening + signing: $name\"\n    rm -rf \"$APP_FW/$name\"\n    cp -R \"$fw\" \"$APP_FW/$name\"\n    codesign --force --timestamp=none --sign \"${EXPANDED_CODE_SIGN_IDENTITY}\" \"$APP_FW/$name\"\ndone\n\n# remove nested copies so there's one source of truth (the flattened siblings)\nrm -rf \"$NESTED\"\n\n# re-sign BWIOSGdx since we modified its contents\necho \"Re-signing BWIOSGdx.framework\"\ncodesign --force --timestamp=none --sign \"${EXPANDED_CODE_SIGN_IDENTITY}\" \"$APP_FW/BWIOSGdx.framework\"\n\n# copy libGDX assets to app bundle root (libGDX reads from NSBundle.mainBundle)\nGDX_RES=\"$APP_FW/BWIOSGdx.framework/BWIOSGdx.bundle/Resources\"\nAPP_ROOT=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nif [ -d \"$GDX_RES\" ]; then\n    echo \"Copying libGDX assets to app bundle root\"\n    cp -R \"$GDX_RES/.\" \"$APP_ROOT/\"\nfi\n\necho \"=== Done ===\"\n";
+			shellScript = "set -e\n\n# BWIOSGdx.xcframework's top-level binary has a real arm64-simulator slice\n# (RoboVM AOT-compiles it), but the vendored native libs it links against\n# (gdx-box2d/gdx-freetype/gdx-miniaudio/gdx core, from libGDX's natives-ios\n# Maven artifacts) are device-only arm64 -- byte-identical in both xcframework\n# slice folders. Until bw-gdlib ships real simulator builds of those, strip\n# BWIOSGdx everywhere dyld looks so the app can still launch on Simulator.\nif [ \"$PLATFORM_NAME\" = \"iphonesimulator\" ]; then\n    echo \"Simulator build — stripping BWIOSGdx (vendored natives are device-only)\"\n    rm -rf \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BWIOSGdx.framework\"\n    rm -rf \"${BUILT_PRODUCTS_DIR}/BWIOSGdx.framework\"\n    echo \"Stripped BWIOSGdx from app bundle and build products\"\n    exit 0\nfi\nAPP_FW=\"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nNESTED=\"$APP_FW/BWIOSGdx.framework/Frameworks\"\n\necho \"=== Flatten + sign nested frameworks ===\"\necho \"App Frameworks: $APP_FW\"\necho \"Nested source:  $NESTED\"\n\nif [ ! -d \"$NESTED\" ]; then\n    echo \"No nested frameworks dir — nothing to flatten\"\n    exit 0\nfi\n\nfor fw in \"$NESTED\"/*.framework; do\n    name=$(basename \"$fw\")\n    echo \"Flattening + signing: $name\"\n    rm -rf \"$APP_FW/$name\"\n    cp -R \"$fw\" \"$APP_FW/$name\"\n    codesign --force --timestamp=none --sign \"${EXPANDED_CODE_SIGN_IDENTITY}\" \"$APP_FW/$name\"\ndone\n\n# remove nested copies so there's one source of truth (the flattened siblings)\nrm -rf \"$NESTED\"\n\n# re-sign BWIOSGdx since we modified its contents\necho \"Re-signing BWIOSGdx.framework\"\ncodesign --force --timestamp=none --sign \"${EXPANDED_CODE_SIGN_IDENTITY}\" \"$APP_FW/BWIOSGdx.framework\"\n\n# copy libGDX assets to app bundle root (libGDX reads from NSBundle.mainBundle)\nGDX_RES=\"$APP_FW/BWIOSGdx.framework/BWIOSGdx.bundle/Resources\"\nAPP_ROOT=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\nif [ -d \"$GDX_RES\" ]; then\n    echo \"Copying libGDX assets to app bundle root\"\n    cp -R \"$GDX_RES/.\" \"$APP_ROOT/\"\nfi\n\necho \"=== Done ===\"\n";
 		};
 		C3A3FFB526FE46E8000FE955 /* Mark Dev Notes */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3348,6 +3347,9 @@
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Private/bw-gdlib/ios/build/robovm",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
+					"$(SRCROOT)/Private/bw-gdlib/ios/build/robovm",
 					"$(PROJECT_DIR)/Private/bw-gdlib/ios/build/robovm/BWIOSGdx.xcframework/arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -3363,6 +3365,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/bw-gdlib/<robovm-output-dir>";
 				MARKETING_VERSION = 3.9.15;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = "$(inherited) -framework BWIOSGdx";
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
 				PRODUCT_MODULE_NAME = brainwallet;
@@ -3543,6 +3546,9 @@
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Private/bw-gdlib/ios/build/robovm",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
+					"$(SRCROOT)/Private/bw-gdlib/ios/build/robovm",
 					"$(PROJECT_DIR)/Private/bw-gdlib/ios/build/robovm/BWIOSGdx.xcframework/arm64",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -3559,6 +3565,7 @@
 				MARKETING_VERSION = 3.9.15;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = "-ObjC -framework BWIOSGdx";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
 				PRODUCT_MODULE_NAME = brainwallet;

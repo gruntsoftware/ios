@@ -36,9 +36,13 @@ final class LockScreenViewUITests: XCTestCase {
         XCTAssertTrue(app.descendants(matching: .any)["Lock Screen Footer View"].exists)
 
         app.activate()
-        app/*@START_MENU_TOKEN@*/.buttons["moon.stars"]/*[[".otherElements",".buttons[\"Clear Night\"]",".buttons[\"moon.stars\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.firstMatch.tap()
-        app/*@START_MENU_TOKEN@*/.buttons["sun.max"]/*[[".otherElements",".buttons[\"Brightness Higher\"]",".buttons[\"sun.max\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.firstMatch.tap()
-        app/*@START_MENU_TOKEN@*/.buttons["qrcode"]/*[[".otherElements",".buttons[\"Qr Code\"]",".buttons[\"qrcode\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.firstMatch.tap()
+        // Theme toggle: both taps hit the same button (its SF Symbol/label flips
+        // between "moon.stars"/"Clear Night" and "sun.max"/"Brightness Higher"
+        // depending on state), so key off its stable accessibilityIdentifier
+        // instead of the state-dependent auto-generated label.
+        app.buttons["Theme Preference Button"].firstMatch.tap()
+        app.buttons["Theme Preference Button"].firstMatch.tap()
+        app.buttons["QR Code Button"].firstMatch.tap()
         
         let element = app/*@START_MENU_TOKEN@*/.buttons["8"]/*[[".otherElements.buttons[\"8\"]",".buttons[\"8\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.firstMatch
         element.swipeDown()
