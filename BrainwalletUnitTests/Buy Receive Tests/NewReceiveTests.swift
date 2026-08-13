@@ -178,15 +178,20 @@ class NewReceiveViewModelTests: XCTestCase {
     // MARK: - Date Formatter Tests
     
     func testISO8601DateFormatterFormat() {
-        // Test the date formatter configuration
+        // Test the date formatter configuration.
+        // Fixed to en_US_POSIX rather than Locale.current: this test asserts
+        // an English month abbreviation ("jun"), so it needs a deterministic
+        // locale to avoid failing on CI runners (or devices) whose current
+        // locale formats months differently -- e.g. this failed on Xcode
+        // Cloud's build agent, whose default locale isn't en_US.
         let formatter = DateFormatter()
-        formatter.locale = Locale.current
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "dd MMM yyyy HH:mm:ss"
-        
+
         // Test with a known date
         let testDate = Date(timeIntervalSince1970: 1717200000) // June 1, 2024 00:00:00 UTC
         let formattedString = formatter.string(from: testDate).lowercased()
-        
+
         XCTAssertFalse(formattedString.isEmpty)
         XCTAssertTrue(formattedString.contains("2024"))
         XCTAssertTrue(formattedString.contains("jun"))
