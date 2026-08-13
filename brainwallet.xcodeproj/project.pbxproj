@@ -409,8 +409,6 @@
 		C35C122A293D48340009022D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1229293D48340009022D /* KeychainAccess */; };
 		C38F57252FD490430005538A /* boingspringmouthharp042013.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */; };
 		C395E2B83013770A00CF5F5B /* EnterPinForSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */; };
-		C398824D302B305700FE9517 /* BWIOSGdx.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; };
-		C398824E302B305700FE9517 /* BWIOSGdx.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0BBC22FF6DB11000D5DB8 /* AlertToast */; };
 		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
 		C3CE34612FFD8D1F004A2ECA /* LilitaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CE34602FFD8D1F004A2ECA /* LilitaOne.ttf */; };
@@ -3338,15 +3336,13 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602300;
+				CURRENT_PROJECT_VERSION = 2602302;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/Private/bw-gdlib/ios/build/robovm",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Private/bw-gdlib/ios/build/robovm";
 				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
 					"$(SRCROOT)/Private/bw-gdlib/ios/build/robovm",
 					"$(PROJECT_DIR)/Private/bw-gdlib/ios/build/robovm/BWIOSGdx.xcframework/arm64",
@@ -3364,7 +3360,11 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/bw-gdlib/<robovm-output-dir>";
 				MARKETING_VERSION = 3.9.15;
 				ONLY_ACTIVE_ARCH = YES;
-				"OTHER_LDFLAGS[sdk=iphoneos*]" = "$(inherited) -framework BWIOSGdx";
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
+					"$(inherited)",
+					"-framework",
+					BWIOSGdx,
+				);
 				OTHER_SWIFT_FLAGS = "-DDebug $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
 				PRODUCT_MODULE_NAME = brainwallet;
@@ -3538,14 +3538,12 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602300;
+				CURRENT_PROJECT_VERSION = 2602302;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/Private/bw-gdlib/ios/build/robovm",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Private/bw-gdlib/ios/build/robovm";
 				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
 					"$(SRCROOT)/Private/bw-gdlib/ios/build/robovm",
 					"$(PROJECT_DIR)/Private/bw-gdlib/ios/build/robovm/BWIOSGdx.xcframework/arm64",
@@ -3564,7 +3562,11 @@
 				MARKETING_VERSION = 3.9.15;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
-				"OTHER_LDFLAGS[sdk=iphoneos*]" = "-ObjC -framework BWIOSGdx";
+				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
+					"-ObjC",
+					"-framework",
+					BWIOSGdx,
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruntsoftware.brainwallet;
 				PRODUCT_MODULE_NAME = brainwallet;
