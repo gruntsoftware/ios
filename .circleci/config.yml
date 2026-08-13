@@ -86,18 +86,29 @@ jobs:
             echo "$REMOTE_CONFIG_DEFAULTS" | base64 --decode > remote-config-defaults.plist
             echo "$DEBUG_SERVICE_DATA" | base64 --decode > service-data.plist
             
-            # Verify GoogleService-Info.plist was created successfully
-            if [ ! -f "GoogleService-Info.plist" ]; then
-              echo "ERROR: GoogleService-Info.plist was not created!"
+            # Fail fast on a bad env var here instead of a cryptic
+            # "unable to read input file as a property list" from xcodebuild's
+            # CopyPlistFile step later (this exact failure mode hit Xcode
+            # Cloud build 431: DEBUG_SERVICE_DATA didn't decode to a valid
+            # plist). Naming the broken var/file points straight at what to
+            # fix in the CircleCI project env vars.
+            check_plist() {
+              if [ ! -s "$2" ] || ! /usr/libexec/PlistBuddy -c "Print" "$2" >/dev/null 2>&1; then
+                echo "ERROR: $1 did not decode to a valid plist -- check its value in CircleCI's project env vars"
+                exit 1
+              fi
+            }
+            check_plist "GOOGLE_SERVICES_PLIST -> GoogleService-Info.plist" GoogleService-Info.plist
+            check_plist "REMOTE_CONFIG_DEFAULTS -> remote-config-defaults.plist" remote-config-defaults.plist
+            check_plist "DEBUG_SERVICE_DATA -> service-data.plist" service-data.plist
+            # Brainwallet-StoreKit-v1.storekit is JSON (Xcode's StoreKit
+            # Configuration format), not a plist -- plutil -lint rejects JSON
+            # outright, so validate with a real JSON parser instead.
+            if [ ! -s "Brainwallet-StoreKit-v1.storekit" ] || ! python3 -m json.tool Brainwallet-StoreKit-v1.storekit >/dev/null 2>&1; then
+              echo "ERROR: BRAINWALLET_IOS_STOREKIT_V1_0_FILE -> Brainwallet-StoreKit-v1.storekit did not decode to valid JSON -- check its value in CircleCI's project env vars"
               exit 1
             fi
-            
-            # Verify the file has content and is valid
-            if [ ! -s "GoogleService-Info.plist" ]; then
-              echo "ERROR: GoogleService-Info.plist is empty!"
-              exit 1
-            fi
-            
+
             echo "GoogleService-Info.plist created successfully:"
             ls -la GoogleService-Info.plist
             echo "File size: $(wc -c < GoogleService-Info.plist) bytes"
