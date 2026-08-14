@@ -8,13 +8,6 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-enum SocialNetwork: String, CaseIterable, Identifiable {
-    case instagramStories
-    case twitter
-    
-    var id: Self { self }
-}
-
 final class SocialPostViewModel: ObservableObject {
     @Published var isPresentingShareSheet = false
     @Published var shareImage: UIImage?

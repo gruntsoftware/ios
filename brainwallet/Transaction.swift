@@ -5,11 +5,6 @@ import SwiftUI
 // Ideally this would be a struct, but it needs to be a class to allow
 // for lazy variables
 
-struct TransactionStatusTuple {
-	var percentageString: String
-	var units: Int
-}
-
 class Transaction : Hashable, Identifiable {
 	// MARK: - Public
 
