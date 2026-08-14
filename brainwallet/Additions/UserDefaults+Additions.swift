@@ -16,6 +16,8 @@ private let customNodeIPKey = "customNodeIPKey"
 private let customNodePortKey = "customNodePortKey"
 private let hasPromptedShareDataKey = "hasPromptedShareDataKey"
 private let didSeeTransactionCorruption = "DidSeeTransactionCorruption"
+private let hasLoggedInitialSyncDurationKey = "hasLoggedInitialSyncDurationKey"
+private let foregroundSyncDurationSecondsKey = "foregroundSyncDurationSecondsKey"
 
 let timeSinceLastExitKey = "TimeSinceLastExit"
 let shouldRequireLoginTimeoutKey = "ShouldRequireLoginTimeoutKey"
@@ -240,5 +242,35 @@ extension UserDefaults {
 	static var hasPromptedBiometrics: Bool {
 		get { return defaults.bool(forKey: hasPromptedBiometricsKey) }
 		set { defaults.set(newValue, forKey: hasPromptedBiometricsKey) }
+	}
+}
+
+// MARK: - Analytics
+
+extension UserDefaults {
+	/// Whether the one-time "time to first sync" duration metric has already
+	/// been sent for this wallet. Set once, right after the metric is logged,
+	/// so it fires exactly once per wallet (not on every subsequent app
+	/// launch's incremental catch-up sync).
+	static var hasLoggedInitialSyncDuration: Bool {
+		get { return defaults.bool(forKey: hasLoggedInitialSyncDurationKey) }
+		set { defaults.set(newValue, forKey: hasLoggedInitialSyncDurationKey) }
+	}
+
+	/// Running total of wall-clock seconds spent actively syncing (peer
+	/// manager in .syncing state) while the app was in the foreground,
+	/// accumulated across every sync segment up to the first time progress
+	/// crosses the completion threshold. A "segment" is one continuous
+	/// stretch of active foreground syncing — backgrounding, a connectivity
+	/// drop, or leaving .syncing closes the current segment; becoming active
+	/// again while still mid-sync opens a new one. This deliberately excludes
+	/// time spent backgrounded/closed, so it reflects actual sync speed
+	/// rather than how long the user took to reopen the app.
+	///
+	/// Implicitly reset whenever the wallet is wiped
+	/// (WalletManager.wipeWallet() removes the whole persistent domain).
+	static var foregroundSyncDurationSeconds: TimeInterval {
+		get { return defaults.double(forKey: foregroundSyncDurationSecondsKey) }
+		set { defaults.set(newValue, forKey: foregroundSyncDurationSecondsKey) }
 	}
 }
