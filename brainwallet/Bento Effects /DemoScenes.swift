@@ -40,7 +40,8 @@ class FallinScene: SKScene, SKPhysicsContactDelegate {
 
          addChild(label)
 
-        delay(2.0) {
+        delay(2.0) { [weak self] in
+            guard let self else { return }
             if self.children.count < 12 {
                 self.makeDot()
             } else {
