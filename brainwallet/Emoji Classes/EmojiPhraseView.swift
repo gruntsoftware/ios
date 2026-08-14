@@ -8,12 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct EmojiItem: Identifiable, Equatable {
-    let id = UUID()
-    let word: String
-    let tagNumber: Int
-}
-
 struct EmojiPhraseView: View {
     let emojiItem: String
     let emojiNumber: Int

@@ -166,36 +166,3 @@ struct TransactionHistoryBentoView: View {
     }
 }
 
-class BRHelp: NSObject {
-
-    override init() {}
-    public func makeTransaction (
-        txHash: UInt256 = UInt256(),
-        version: UInt32 = 1,
-        inputs: UnsafeMutablePointer<BRTxInput>? = nil,
-        inCount: Int = 0,
-        outputs: UnsafeMutablePointer<BRTxOutput>? = nil,
-        outCount: Int = 0,
-        lockTime: UInt32 = 0,
-        blockHeight: UInt32 = 0,
-        timestamp: UInt32 = UInt32(Date().timeIntervalSince1970)
-    ) -> UnsafeMutablePointer<BRTransaction> {
-        let txPtr = UnsafeMutablePointer<BRTransaction>.allocate(capacity: 1)
-        txPtr.initialize(to: BRTransaction(
-            txHash: txHash,
-            version: version,
-            inputs: inputs,
-            inCount: inCount,
-            outputs: outputs,
-            outCount: outCount,
-            lockTime: lockTime,
-            blockHeight: blockHeight,
-            timestamp: timestamp
-        ))
-        return txPtr
-    }
-}
-//
-// .background(
-//        RoundedRectangle(cornerRadius: 10)
-//            .fill(Color.white.opacity(0.07))

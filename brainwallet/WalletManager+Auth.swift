@@ -28,13 +28,6 @@ enum BiometricsResult {
 	case failure
 }
 
-enum TransferCardResult {
-	case success
-	case cancel
-	case fallback
-	case failure
-}
-
 extension WalletManager: WalletAuthenticator {
 	private static var failedPins = [String]()
 
