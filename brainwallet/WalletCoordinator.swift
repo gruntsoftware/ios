@@ -2,10 +2,26 @@ import AVFoundation
 import Foundation
 import UIKit
 import UserNotifications
+import FirebaseAnalytics
 
 private let lastBlockHeightKey = "LastBlockHeightKey"
 private let progressUpdateInterval: TimeInterval = 0.5
 private let updateDebounceInterval: TimeInterval = 1.0
+
+/// Sync is considered "done" for the foreground-sync-duration metric once
+/// block-height-based progress crosses this fraction — not 1.0, since the
+/// final progress tick and the syncState -> .success transition are two
+/// separate events and the last tick before completion can land anywhere
+/// below full completion.
+private let kSyncDurationThreshold = 0.98
+
+/// Sanity ceiling for the foreground-sync-duration metric, in seconds (24
+/// hours). foregroundSyncDurationSeconds only accumulates time while the app
+/// is active and syncState == .syncing, so this should rarely if ever bite —
+/// it's a backstop against clock skew or a pathologically bad connection,
+/// not the normal background-time case that motivated using accumulated
+/// segments over a single wall-clock diff in the first place.
+private let kMaxSyncDurationSeconds: TimeInterval = 24 * 60 * 60
 
 class WalletCoordinator: Subscriber {
 	var kvStore: BRReplicatedKVStore? {
@@ -22,6 +38,10 @@ class WalletCoordinator: Subscriber {
 	private var backgroundTaskId: UIBackgroundTaskIdentifier?
 	private var reachability = ReachabilityMonitor()
 	private var retryTimer: RetryTimer?
+
+	/// Start time of the currently-open active-foreground-sync segment, if
+	/// any. nil whenever we're not both syncing and in the foreground.
+	private var activeSyncSegmentStart: Date?
 
 	init(walletManager: WalletManager, store: Store) {
 		self.walletManager = walletManager
@@ -50,6 +70,7 @@ class WalletCoordinator: Subscriber {
                     let timestamp = self.walletManager.peerManager?.lastBlockTimestamp else { return }
 			DispatchQueue.main.async {
 				self.store.perform(action: WalletChange.setProgress(progress: progress, timestamp: timestamp))
+				self.logSyncDurationIfNeeded(progress: progress)
 			}
 		}
 		updateBalance()
@@ -62,9 +83,11 @@ class WalletCoordinator: Subscriber {
 		progressTimer = Timer.scheduledTimer(timeInterval: progressUpdateInterval, target: self, selector: #selector(WalletCoordinator.updateProgress), userInfo: nil, repeats: true)
 		store.perform(action: WalletChange.setSyncingState(.syncing))
 		startActivity()
+		resumeSyncSegmentIfNeeded()
 	}
 
 	private func onSyncStop(notification: Notification) {
+		pauseSyncSegment()
 		if UIApplication.shared.applicationState != .active {
 			DispatchQueue.walletQueue.async {
 				self.walletManager.peerManager?.disconnect()
@@ -94,6 +117,68 @@ class WalletCoordinator: Subscriber {
 		progressTimer = nil
 		store.perform(action: WalletChange.setSyncingState(.success))
 		endActivity()
+	}
+
+	// MARK: - Foreground Sync Duration Metric
+
+	/// Starts (or resumes) timing an active-foreground-sync segment. No-op
+	/// unless a segment isn't already open, we're actually syncing, the app
+	/// is in the foreground, and the metric hasn't already been sent for
+	/// this wallet.
+	private func resumeSyncSegmentIfNeeded() {
+		guard activeSyncSegmentStart == nil,
+		      !UserDefaults.hasLoggedInitialSyncDuration,
+		      store.state.walletState.syncState == .syncing,
+		      UIApplication.shared.applicationState == .active
+		else { return }
+		activeSyncSegmentStart = Date()
+	}
+
+	/// Closes the current active-foreground-sync segment (if any), folding
+	/// its elapsed time into the persisted running total. Called whenever
+	/// something ends the segment: sync stops/pauses (onSyncStop), the app
+	/// leaves the foreground (willResignActive), or the completion threshold
+	/// is reached (logSyncDurationIfNeeded, to fold in the final partial tick).
+	private func pauseSyncSegment() {
+		guard let start = activeSyncSegmentStart else { return }
+		activeSyncSegmentStart = nil
+		let elapsed = Date().timeIntervalSince(start)
+		guard elapsed > 0 else { return }
+		UserDefaults.foregroundSyncDurationSeconds += elapsed
+	}
+
+	/// Logs the one-time "foreground time to sync" metric once block-height
+	/// progress first crosses kSyncDurationThreshold: the accumulated
+	/// wall-clock seconds spent actively syncing while the app was in the
+	/// foreground (UserDefaults.foregroundSyncDurationSeconds), deliberately
+	/// excluding any time spent backgrounded or closed mid-sync so it
+	/// reflects actual sync speed rather than how long the user took to
+	/// reopen the app.
+	///
+	/// Guarded so it fires at most once ever per wallet, not once per app
+	/// launch -- every launch re-syncs a few incremental blocks from the
+	/// persisted last-synced height, which would otherwise cross the
+	/// threshold almost immediately on every relaunch.
+	private func logSyncDurationIfNeeded(progress: Double) {
+		guard !UserDefaults.hasLoggedInitialSyncDuration,
+		      progress >= kSyncDurationThreshold
+		else { return }
+
+		// Fold in the currently-open segment so the final tick that crosses
+		// the threshold is counted, then mark this wallet as evaluated either
+		// way -- don't keep re-checking on every subsequent progress tick.
+		pauseSyncSegment()
+		UserDefaults.hasLoggedInitialSyncDuration = true
+
+		let syncDurationSeconds = Int(UserDefaults.foregroundSyncDurationSeconds)
+
+		// Discard anything past the sanity ceiling rather than logging it --
+		// this metric only accumulates active foreground time, so this should
+		// rarely trigger; it's a backstop, not the normal case.
+		guard syncDurationSeconds >= 0, TimeInterval(syncDurationSeconds) <= kMaxSyncDurationSeconds else { return }
+
+		Analytics.logEvent("user_did_complete_sync",
+		                    parameters: ["sync_duration_seconds": syncDurationSeconds])
 	}
 
 	private func endBackgroundTask() {
@@ -202,6 +287,19 @@ class WalletCoordinator: Subscriber {
 
 		NotificationCenter.default.addObserver(forName: .languageChangedNotification, object: nil, queue: nil, using: { _ in
 			myself?.updateTransactions()
+		})
+
+		// Foreground/background transitions bound the foreground-sync-duration
+		// metric's segments independently of syncState: the peer manager can
+		// keep syncing for a few seconds into the background (until the
+		// background task's expiration handler disconnects it), and we don't
+		// want that grace period counted as "foreground" time.
+		NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil, using: { _ in
+			myself?.resumeSyncSegmentIfNeeded()
+		})
+
+		NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification, object: nil, queue: nil, using: { _ in
+			myself?.pauseSyncSegment()
 		})
 	}
 
