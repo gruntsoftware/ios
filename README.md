@@ -74,6 +74,25 @@ For the full, up-to-date changelog see [GitHub Releases](https://github.com/grun
 
 ---
 
+### **v3.9.16**
+---
+- Fixed `user_did_complete_sync` analytics event never firing: `syncState` had usually already flipped to `.success` by the time the final progress update landed, so the `isSyncing` gate skipped the check. `WalletCoordinator` now owns the metric directly, tracking accumulated active-foreground sync time and logging a new time-to-98%-sync duration (#161)
+- Fixed a Simulator launch crash (`dyld: Library not loaded: @rpath/BWIOSGdx.framework/BWIOSGdx`): `BWIOSGdx.xcframework` is now linked device-only via SDK-scoped build settings instead of the unconditional Frameworks build phase; also stabilized a flaky `LockScreenViewUITests` test that depended on locale/theme-dependent SF Symbol accessibility labels (#153)
+- Fixed CircleCI and Xcode Cloud both failing on every build: stopped building `BWIOSGdx.xcframework` in CI, fixed `ci_post_clone.sh` silently writing garbage secrets, and added fail-fast validation for generated secret files on both providers (#154)
+- Fixed a Crashlytics-reported `EXC_BAD_ACCESS` in `_peerThreadRoutine` by bumping `Modules/core`: `threadCleanup` is now null-checked before being invoked, matching the other optional callbacks in the same function (#155)
+- Fixed a Simulator crash regression reintroduced while bumping `Private/bw-gdlib` to v1.6.8; restored the device-only linking from #153 (#156)
+- Removed confirmed-unused code and resources across the repo — orphaned directories, 55 orphaned `.swift` files, dead Redux actions, unused SwiftUI view modifiers, and dead image/sound resources (328 files changed, 12,450 lines removed) (#157)
+
+**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.15...v3.9.16
+
+**Why grab this update?**
+- Sync now finishes without the app second-guessing itself — fewer crash-prone edge cases means a smoother first launch and a wallet that's ready faster
+- Every release stays self-custodial by design: your seed phrase and keys never leave your device, update after update
+- Free, open-source, and actively maintained — audit the code yourself or just trust that it's still being cared for
+- [Download Brainwallet on the App Store](https://apps.apple.com/us/app/brainwallet/id6444157498) and keep your Litecoin truly in your own hands
+
+---
+
 ### **v3.9.15**  [PR [#151](https://github.com/gruntsoftware/ios/pull/151)]
 ---
 - Fixed game-exit analytics events being silently dropped: `bw-gdlib` now wraps the exit payload as `{"exitData": ..., "events": [...]}`, and iOS decodes it (`GameExitPayload`) and forwards every collected event to Firebase Analytics instead of throwing/discarding it; Android's `AndroidLauncher` now forwards the same `jsonString` too
