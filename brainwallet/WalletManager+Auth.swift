@@ -390,15 +390,27 @@ extension WalletManager: WalletAuthenticator {
 		// wrapping in an autorelease pool ensures sensitive memory is wiped and released immediately
 		return autoreleasepool {
 			var entropy = UInt128()
-			let entropyRef = UnsafeMutableRawPointer(mutating: &entropy).assumingMemoryBound(to: UInt8.self)
-			guard SecRandomCopyBytes(kSecRandomDefault, MemoryLayout<UInt128>.size, entropyRef) == 0
-			else { return nil }
-			let phraseLen = BRBIP39Encode(nil, 0, &words, entropyRef, MemoryLayout<UInt128>.size)
-			var phraseData = CFDataCreateMutable(secureAllocator, phraseLen) as Data
-			phraseData.count = phraseLen
-			guard phraseData.withUnsafeMutableBytes({
-				BRBIP39Encode($0, phraseLen, &words, entropyRef, MemoryLayout<UInt128>.size)
-			}) == phraseData.count else { return nil }
+			var phraseData = Data()
+
+			// entropyRef is only valid for the lifetime of this closure -- every use of it
+			// (SecRandomCopyBytes and both BRBIP39Encode calls) has to happen inside here.
+			let encodeSucceeded: Bool = withUnsafeMutableBytes(of: &entropy) { entropyBuffer in
+				let entropyRef = entropyBuffer.baseAddress!.assumingMemoryBound(to: UInt8.self)
+				guard SecRandomCopyBytes(kSecRandomDefault, MemoryLayout<UInt128>.size, entropyRef) == 0
+				else { return false }
+
+				let phraseLen = BRBIP39Encode(nil, 0, &words, entropyRef, MemoryLayout<UInt128>.size)
+				var data = CFDataCreateMutable(secureAllocator, phraseLen) as Data
+				data.count = phraseLen
+				guard data.withUnsafeMutableBytes({
+					BRBIP39Encode($0, phraseLen, &words, entropyRef, MemoryLayout<UInt128>.size)
+				}) == data.count else { return false }
+
+				phraseData = data
+				return true
+			}
+			guard encodeSucceeded else { return nil }
+
 			entropy = UInt128()
 			let phrase = CFStringCreateFromExternalRepresentation(secureAllocator, phraseData as CFData,
 			                                                      CFStringBuiltInEncodings.UTF8.rawValue) as String
