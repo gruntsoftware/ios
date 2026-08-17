@@ -88,7 +88,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
             [UIAlertController.self])
                 .tintColor = BrainwalletUIColor.content
 
-        UIView.swizzleSetFrame()
         self.applicationController.launch(application: UIApplication.shared, window: thisWindow)
          
         return true

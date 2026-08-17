@@ -294,7 +294,6 @@
 		C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A92D7DC27700BB97A4 /* WalletInfo.swift */; };
 		C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */; };
 		C312D3B62D7DC27700BB97A4 /* PaymentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2892D7DC27700BB97A4 /* PaymentProtocol.swift */; };
-		C312D3B72D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0832D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift */; };
 		C312D3BC2D7DC27700BB97A4 /* Constants+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2382D7DC27700BB97A4 /* Constants+Events.swift */; };
 		C312D3C22D7DC27700BB97A4 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D22A2D7DC27700BB97A4 /* BundleExtension.swift */; };
 		C312D3C32D7DC27700BB97A4 /* FailedAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2482D7DC27700BB97A4 /* FailedAlertView.swift */; };
@@ -315,7 +314,6 @@
 		C312D3FC2D7DC27700BB97A4 /* UIView+InitAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0842D7DC27700BB97A4 /* UIView+InitAdditions.swift */; };
 		C312D3FD2D7DC27700BB97A4 /* LocaleChangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2632D7DC27700BB97A4 /* LocaleChangeViewModel.swift */; };
 		C312D3FE2D7DC27700BB97A4 /* ReduxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0AC2D7DC27700BB97A4 /* ReduxState.swift */; };
-		C312D4002D7DC27700BB97A4 /* MessageUIPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2802D7DC27700BB97A4 /* MessageUIPresenter.swift */; };
 		C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E32D7DC27700BB97A4 /* DrawableCircle.swift */; };
 		C312D4062D7DC27700BB97A4 /* IntroStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2542D7DC27700BB97A4 /* IntroStepView.swift */; };
 		C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E82D7DC27700BB97A4 /* InAppAlert.swift */; };
@@ -828,7 +826,6 @@
 		C312D0802D7DC27700BB97A4 /* UITableView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Additions.swift"; sourceTree = "<group>"; };
 		C312D0812D7DC27700BB97A4 /* UIView+AnimationAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AnimationAdditions.swift"; sourceTree = "<group>"; };
 		C312D0822D7DC27700BB97A4 /* UIView+BRWAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BRWAdditions.swift"; sourceTree = "<group>"; };
-		C312D0832D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FrameChangeBlocking.swift"; sourceTree = "<group>"; };
 		C312D0842D7DC27700BB97A4 /* UIView+InitAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+InitAdditions.swift"; sourceTree = "<group>"; };
 		C312D0852D7DC27700BB97A4 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		C312D0862D7DC27700BB97A4 /* UIViewController+BRWAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+BRWAdditions.swift"; sourceTree = "<group>"; };
@@ -907,7 +904,6 @@
 		C312D2792D7DC27700BB97A4 /* LockScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenViewModel.swift; sourceTree = "<group>"; };
 		C312D27D2D7DC27700BB97A4 /* LWActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWActivityIndicator.swift; sourceTree = "<group>"; };
 		C312D27F2D7DC27700BB97A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		C312D2802D7DC27700BB97A4 /* MessageUIPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUIPresenter.swift; sourceTree = "<group>"; };
 		C312D2812D7DC27700BB97A4 /* MockSeeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSeeds.swift; sourceTree = "<group>"; };
 		C312D2822D7DC27700BB97A4 /* ModalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresenter.swift; sourceTree = "<group>"; };
 		C312D2832D7DC27700BB97A4 /* MoonpayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonpayHelper.swift; sourceTree = "<group>"; };
@@ -2015,7 +2011,6 @@
 				C312D0722D7DC27700BB97A4 /* LAContext+Extensions.swift */,
 				C312D07B2D7DC27700BB97A4 /* UIImage+Utils.swift */,
 				C312D0822D7DC27700BB97A4 /* UIView+BRWAdditions.swift */,
-				C312D0832D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift */,
 				C312D0852D7DC27700BB97A4 /* UIViewController+Alerts.swift */,
 				C312D1B92D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift */,
 				C312D1C12D7DC27700BB97A4 /* PinPadViewController.swift */,
@@ -2076,7 +2071,6 @@
 				C312D2632D7DC27700BB97A4 /* LocaleChangeViewModel.swift */,
 				C312D27D2D7DC27700BB97A4 /* LWActivityIndicator.swift */,
 				C312D27F2D7DC27700BB97A4 /* MainViewController.swift */,
-				C312D2802D7DC27700BB97A4 /* MessageUIPresenter.swift */,
 				C312D2812D7DC27700BB97A4 /* MockSeeds.swift */,
 				C312D2822D7DC27700BB97A4 /* ModalPresenter.swift */,
 				24B7D75C2DF6F9F60031F129 /* ModalPresenter+Extension.swift */,
@@ -2823,7 +2817,6 @@
 				242C43F32F253A3E00CF6EA4 /* TutorialWalkthroughBentoView.swift in Sources */,
 				C312D3B62D7DC27700BB97A4 /* PaymentProtocol.swift in Sources */,
 				24B0653D2DC6476A00B5E000 /* BentoSendPrepView.swift in Sources */,
-				C312D3B72D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift in Sources */,
 				24F378022DE89C7800A388AB /* MoonPayHelper.swift in Sources */,
 				C312D3BC2D7DC27700BB97A4 /* Constants+Events.swift in Sources */,
 				C312D3C22D7DC27700BB97A4 /* BundleExtension.swift in Sources */,
@@ -2865,7 +2858,6 @@
 				C312D3FE2D7DC27700BB97A4 /* ReduxState.swift in Sources */,
 				24A0ACAB2E0C812C0077E695 /* SettingsLitecoinDetailView.swift in Sources */,
 				24D7AE562DCFF6870078252E /* NewConfirmView.swift in Sources */,
-				C312D4002D7DC27700BB97A4 /* MessageUIPresenter.swift in Sources */,
 				C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */,
 				24B0653B2DC6433800B5E000 /* SimpleHeaderView.swift in Sources */,
 				C312D4062D7DC27700BB97A4 /* IntroStepView.swift in Sources */,

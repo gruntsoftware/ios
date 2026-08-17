@@ -600,7 +600,7 @@ open class BRReplicatedKVStore: NSObject {
 						do {
 							_ = try self.setRemoteVersion(key: key, localVer: localVer, remoteVer: newRemoteVer)
 						} catch let e where e is BRReplicatedKVStoreError {
-							return completionHandler(e as! BRReplicatedKVStoreError)
+                            return completionHandler(e as? BRReplicatedKVStoreError)
 						} catch {
 							return completionHandler(.replicationError)
 						}

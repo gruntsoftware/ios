@@ -94,4 +94,19 @@ class WalletManagerAuthTests: XCTestCase {
 		XCTAssertFalse(walletManager.wipeWallet(pin: "000000"), "wipeWallet with a wrong PIN should fail")
 		XCTAssertFalse(walletManager.noWallet, "Wallet should be untouched after a failed wipe attempt")
 	}
+
+	// MARK: - userAccount
+
+	func testUserAccountRoundTripsThroughKeychain() throws {
+		let account: [AnyHashable: Any] = ["token": "abc123", "expires": 42]
+		walletManager.userAccount = account
+
+		let fetched = try XCTUnwrap(walletManager.userAccount)
+		XCTAssertEqual(fetched["token"] as? String, "abc123")
+		XCTAssertEqual(fetched["expires"] as? Int, 42)
+	}
+
+	func testUserAccountIsNilBeforeItIsSet() {
+		XCTAssertNil(walletManager.userAccount)
+	}
 }
