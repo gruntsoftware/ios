@@ -67,7 +67,9 @@ extension WalletManager: WalletAuthenticator {
 		var earliestKeyTime = BIP39CreationTime
 		if let creationTime: Data = try keychainItem(key: KeychainKey.creationTime),
 		   creationTime.count == MemoryLayout<TimeInterval>.stride {
-			creationTime.withUnsafeBytes { earliestKeyTime = $0.pointee }
+			creationTime.withUnsafeBytes { (buffer: UnsafeRawBufferPointer) in
+				earliestKeyTime = buffer.load(as: TimeInterval.self)
+			}
 		}
 
 		try self.init(masterPubKey: masterPubKey,
@@ -402,8 +404,8 @@ extension WalletManager: WalletAuthenticator {
 				let phraseLen = BRBIP39Encode(nil, 0, &words, entropyRef, MemoryLayout<UInt128>.size)
 				var data = CFDataCreateMutable(secureAllocator, phraseLen) as Data
 				data.count = phraseLen
-				guard data.withUnsafeMutableBytes({
-					BRBIP39Encode($0, phraseLen, &words, entropyRef, MemoryLayout<UInt128>.size)
+				guard data.withUnsafeMutableBytes({ (buffer: UnsafeMutableRawBufferPointer) in
+					BRBIP39Encode(buffer.baseAddress?.assumingMemoryBound(to: CChar.self), phraseLen, &words, entropyRef, MemoryLayout<UInt128>.size)
 				}) == data.count else { return false }
 
 				phraseData = data
@@ -546,7 +548,9 @@ extension WalletManager: WalletAuthenticator {
 				let pkLen = BRKeyPrivKey(&key, nil, 0)
 				var pkData = CFDataCreateMutable(secureAllocator, pkLen) as Data
 				pkData.count = pkLen
-				guard pkData.withUnsafeMutableBytes({ BRKeyPrivKey(&key, $0, pkLen) }) == pkLen else { return nil }
+				guard pkData.withUnsafeMutableBytes({ (buffer: UnsafeMutableRawBufferPointer) in
+					BRKeyPrivKey(&key, buffer.baseAddress?.assumingMemoryBound(to: CChar.self), pkLen)
+				}) == pkLen else { return nil }
 				let privKey = CFStringCreateFromExternalRepresentation(secureAllocator, pkData as CFData,
 				                                                       CFStringBuiltInEncodings.UTF8.rawValue) as String
 				try setKeychainItem(key: KeychainKey.apiAuthKey, item: privKey)
@@ -636,7 +640,9 @@ private func keychainItem<T>(key: String) throws -> T? {
 		                                                CFStringBuiltInEncodings.UTF8.rawValue) as? T
 	case is Int64.Type:
 		guard data.count == MemoryLayout<T>.stride else { return nil }
-		return data.withUnsafeBytes { $0.pointee }
+		return data.withUnsafeBytes { (buffer: UnsafeRawBufferPointer) -> T in
+			buffer.load(as: T.self)
+		}
 	case is [AnyHashable: Any].Type:
 		return NSKeyedUnarchiver.unarchiveObject(with: data) as? T
 	default:
