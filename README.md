@@ -2,10 +2,7 @@
 
 **Brainwallet** is a free, open-source, self-custodial [Litecoin](https://litecoin.org) wallet for iOS. Your seed phrase and keys stay on your device — Brainwallet never has custody of your funds.
 
-### CircleCI status  
 [![Release](https://img.shields.io/github/v/release/gruntsoftware/ios?style=plastic)](https://github.com/gruntsoftware/ios/releases)
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/gruntsoftware/ios/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/gruntsoftware/ios/tree/main)
-[![Tests](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/grunt-claude-bot/1121e3f9e22e6fda5273ea795bcc85be/raw/tests-badge.json)](https://dl.circleci.com/status-badge/redirect/gh/gruntsoftware/ios/tree/develop)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## App Store
@@ -56,7 +53,7 @@
 
 ## Testing
 
-Test targets are `BrainwalletUnitTests` and `BrainwalletUITests`. Run via Fastlane, e.g. `bundle exec fastlane run_unit_tests_iPhone16ProMax` (see `fastlane/Fastfile` for other lanes). CI runs on CircleCI (`.circleci/config.yml`).
+Test targets are `BrainwalletUnitTests` and `BrainwalletUITests`. Run via Fastlane, e.g. `bundle exec fastlane run_unit_tests_iPhone16ProMax` (see `fastlane/Fastfile` for other lanes). CI runs on Xcode Cloud (`ci_scripts/`); i18n translation coverage is checked separately via a GitHub Actions workflow (`.github/workflows/i18n-coverage.yml`).
 
 ## Security
 

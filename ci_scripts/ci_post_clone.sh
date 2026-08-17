@@ -10,8 +10,7 @@ RESOURCES_DIR="$CI_PRIMARY_REPOSITORY_PATH/brainwallet/PreLaunchResources"
 
 # Write the files to the correct location.
 # These env vars are base64-encoded in Xcode Cloud's environment variable
-# settings (App Store Connect), same as their CircleCI counterparts in
-# .circleci/config.yml's "Setup environment files" step -- keep both in sync.
+# settings (App Store Connect).
 echo "$GOOGLE_SERVICES_PLIST" | base64 --decode > "$RESOURCES_DIR/GoogleService-Info.plist"
 echo "$REMOTE_CONFIG_DEFAULTS" | base64 --decode > "$RESOURCES_DIR/remote-config-defaults.plist"
 echo "$DEBUG_SERVICE_DATA" | base64 --decode > "$RESOURCES_DIR/service-data.plist"
