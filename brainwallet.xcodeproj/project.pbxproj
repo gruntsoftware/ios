@@ -379,8 +379,6 @@
 		C38F57252FD490430005538A /* boingspringmouthharp042013.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */; };
 		C395E2B83013770A00CF5F5B /* EnterPinForSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */; };
 		C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0BBC22FF6DB11000D5DB8 /* AlertToast */; };
-		C3BC69AF30323E3500A04919 /* BWIOSGdx.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; };
-		C3BC69B030323E3500A04919 /* BWIOSGdx.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C335491D2FE14FA1007741F5 /* BWIOSGdx.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
 		C3CE34612FFD8D1F004A2ECA /* LilitaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CE34602FFD8D1F004A2ECA /* LilitaOne.ttf */; };
 		C3E18A9F2F9E657000966C74 /* ShopCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */; };
@@ -467,7 +465,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C3BC69B030323E3500A04919 /* BWIOSGdx.xcframework in Embed Frameworks */,
 				24FF3E6A2E898D4000FF43C5 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -1027,7 +1024,6 @@
 				C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */,
 				C32553C92FE090D1008B1861 /* AVFoundation.framework in Frameworks */,
 				246F97EA2E846230001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework in Frameworks */,
-				C3BC69AF30323E3500A04919 /* BWIOSGdx.xcframework in Frameworks */,
 				C32553C52FE090A6008B1861 /* OpenAL.framework in Frameworks */,
 				24D91D0B2166923E0077A619 /* UserNotifications.framework in Frameworks */,
 				2460284F2E5F178400CDEB7A /* FirebaseAnalytics in Frameworks */,
@@ -3216,7 +3212,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602307;
+				CURRENT_PROJECT_VERSION = 2602308;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3418,7 +3414,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602307;
+				CURRENT_PROJECT_VERSION = 2602308;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
