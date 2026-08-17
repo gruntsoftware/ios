@@ -103,12 +103,7 @@ class ModalPresenter: Subscriber {
 
     func showLightWeightAlert(message: String) {
 		let alert = LightWeightAlert(message: message)
-
-		guard let view = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first
-		else {
-			return
-		}
-
+        guard let view = UIApplication.shared.currentKeyWindow else { return }
 		view.addSubview(alert)
 		alert.constrain([
 			alert.centerXAnchor.constraint(equalTo: view.centerXAnchor),
