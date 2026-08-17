@@ -203,7 +203,7 @@ def main():
 
     print(f"\n{'─' * 62}\n")
 
-    # Write a plain-text copy for the CircleCI artifact store
+    # Write a plain-text copy for the CI artifact store (GitHub Actions)
     artifact_path = Path("/tmp/i18n_coverage_report.txt")
     try:
         with open(artifact_path, "w", encoding="utf-8") as f:
