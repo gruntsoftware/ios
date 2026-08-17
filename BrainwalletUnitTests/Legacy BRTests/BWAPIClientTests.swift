@@ -10,8 +10,8 @@ class FakeAuthenticator: WalletAuthenticator {
 	init() {
 		let count = 32
 		var keyData = Data(count: count)
-		let result = keyData.withUnsafeMutableBytes {
-			SecRandomCopyBytes(kSecRandomDefault, count, $0)
+		let result = keyData.withUnsafeMutableBytes { (buffer: UnsafeMutableRawBufferPointer) in
+			SecRandomCopyBytes(kSecRandomDefault, count, buffer.baseAddress!)
 		}
 		if result != errSecSuccess {
 			fatalError("couldnt generate random data for key")
@@ -33,7 +33,9 @@ class FakeAuthenticator: WalletAuthenticator {
 		k.compressed = 1
 		let pkLen = BRKeyPrivKey(&k, nil, 0)
 		var pkData = Data(count: pkLen)
-		BRKeyPrivKey(&k, pkData.withUnsafeMutableBytes { $0 }, pkLen)
+		_ = pkData.withUnsafeMutableBytes { (buffer: UnsafeMutableRawBufferPointer) in
+			BRKeyPrivKey(&k, buffer.baseAddress?.assumingMemoryBound(to: CChar.self), pkLen)
+		}
 		return String(data: pkData, encoding: .utf8)
 	}
 }
@@ -43,19 +45,16 @@ class BWAPIClientTests: XCTestCase {
 	var authenticator: WalletAuthenticator!
 	var client: BWAPIClient!
     var sut: BWAPIClient!
-    var mockURLSession: MockURLSession!
 
-	  
     override func setUpWithError() throws {
         try super.setUpWithError()
         authenticator = FakeAuthenticator() // each test will get its own account
         client = BWAPIClient(authenticator: authenticator)
         sut = BWAPIClient(authenticator: authenticator)
     }
-    
+
     override func tearDownWithError() throws {
         sut = nil
-         mockURLSession = nil
         authenticator = nil
         client = nil
         try super.tearDownWithError()
@@ -66,19 +65,25 @@ class BWAPIClientTests: XCTestCase {
 		let b = pubKey1.base58DecodedData()
 		let b2 = b.base58
 		XCTAssertEqual(pubKey1, b2) // sanity check on our base58 functions
-		let key = client.authKey!.publicKey.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) -> BRKey in
+		let key = client
+            .authKey!.publicKey
+            .withUnsafeBytes { (buffer: UnsafeRawBufferPointer) -> BRKey in
 			var k = BRKey()
-			BRKeySetPubKey(&k, ptr, client.authKey!.publicKey.count)
+			BRKeySetPubKey(&k, buffer.baseAddress?
+                .assumingMemoryBound(to: UInt8.self), client.authKey!
+                .publicKey.count)
 			return k
 		}
-		XCTAssertEqual(pubKey1, key.publicKey.base58) // the key decoded from our encoded key is the same
+		XCTAssertEqual(pubKey1, key.publicKey.base58)
+        // the key decoded from our encoded key is the same
 	}
 	/*
 	 func testHandshake() {
 	     // test that we can get a token and access /me
 	     let req = URLRequest(url: client.url("/me"))
 	     let exp = expectation(description: "auth")
-	     client.dataTaskWithRequest(req, authenticated: true, retryCount: 0) { (data, resp, err) in
+	     client
+            .dataTaskWithRequest(req, authenticated: true, retryCount: 0) { (data, resp, err) in
 	         XCTAssertEqual(resp?.statusCode, 200)
 	         exp.fulfill()
 	     }.resume()
@@ -133,7 +138,8 @@ class BWAPIClientTests: XCTestCase {
         let url = sut.url(path, args: args)
         
         // Then
-        XCTAssertTrue(url.absoluteString.contains("John Doe") || url.absoluteString.contains("%20"))
+        XCTAssertTrue(url.absoluteString
+            .contains("John Doe") || url.absoluteString.contains("%20"))
     }
     
     func testURL_WithEmptyArgs_ReturnsPathOnly() {
@@ -239,7 +245,7 @@ class BWAPIClientTests: XCTestCase {
     func testURLSession_ServerTrustChallenge_ForWrongHost_Rejects() {
         // Given
         let session = URLSession.shared
-        let task = URLSessionDataTask()
+        let task = session.dataTask(with: URL(string: "https://evil.example.com")!)
         let protectionSpace = URLProtectionSpace(
             host: "evil.example.com",
             port: 443,
@@ -274,8 +280,8 @@ class BWAPIClientTests: XCTestCase {
     func testURLSession_Redirect_ToDifferentHost_DoesNotFollow() {
         // Given
         let session = URLSession.shared
-        let task = URLSessionDataTask()
         let originalURL = URL(string: "https://api.grunt.ltd/endpoint")!
+        let task = session.dataTask(with: originalURL)
         let newURL = URL(string: "https://evil.example.com/phishing")!
         
         var originalRequest = URLRequest(url: originalURL)
@@ -300,8 +306,62 @@ class BWAPIClientTests: XCTestCase {
         
         waitForExpectations(timeout: 1.0)
     }
-    
-    
+
+    func testURLSession_Redirect_FromDifferentHost_DoesNotFollow() {
+        // Given: the task's own current request is NOT on our API host, even
+        // though the redirect target is -- an untrusted origin shouldn't be
+        // able to route a request onto our API this way either.
+        let session = URLSession.shared
+        let originalURL = URL(string: "https://evil.example.com/redirector")!
+        let task = session.dataTask(with: originalURL)
+        let newURL = URL(string: "https://api.grunt.ltd/endpoint")!
+        let newRequest = URLRequest(url: newURL)
+        let response = HTTPURLResponse(
+            url: originalURL,
+            statusCode: 302,
+            httpVersion: nil,
+            headerFields: nil
+        )!
+
+        let expectation = self.expectation(description: "Redirect handled")
+
+        // When
+        sut.urlSession(session, task: task, willPerformHTTPRedirection: response, newRequest: newRequest) { request in
+            // Then
+            XCTAssertNil(request)
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1.0)
+    }
+
+    func testURLSession_Redirect_SameHost_Follows() {
+        // Given: both the originating task and the redirect target stay on our
+        // own API -- this legitimate case should still be followed.
+        let session = URLSession.shared
+        let originalURL = URL(string: "https://api.grunt.ltd/endpoint")!
+        let task = session.dataTask(with: originalURL)
+        let newURL = URL(string: "https://api.grunt.ltd/redirected")!
+        let newRequest = URLRequest(url: newURL)
+        let response = HTTPURLResponse(
+            url: originalURL,
+            statusCode: 302,
+            httpVersion: nil,
+            headerFields: nil
+        )!
+
+        let expectation = self.expectation(description: "Redirect handled")
+
+        // When
+        sut.urlSession(session, task: task, willPerformHTTPRedirection: response, newRequest: newRequest) { request in
+            // Then
+            XCTAssertEqual(request?.url, newURL)
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1.0)
+    }
+
     // MARK: - URL Extension Tests
     
     func testResourceString_PathOnly() {
@@ -427,34 +487,6 @@ class BWAPIClientTests: XCTestCase {
         
         // Then
         XCTAssertEqual(url.absoluteString, "https://api.grunt.ltd/")
-    }
-}
-
-// MARK: - Mock Classes
- 
-class MockAuthenticationChallengeSender: NSObject, URLAuthenticationChallengeSender {
-    func use(_ credential: URLCredential, for challenge: URLAuthenticationChallenge) {}
-    func continueWithoutCredential(for challenge: URLAuthenticationChallenge) {}
-    func cancel(_ challenge: URLAuthenticationChallenge) {}
-}
-
-class MockURLSession: URLSession {
-    var mockDataTask: MockURLSessionDataTask?
-    
-    override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        let task = MockURLSessionDataTask()
-        task.completionHandler = completionHandler
-        mockDataTask = task
-        return task
-    }
-}
-
-class MockURLSessionDataTask: URLSessionDataTask {
-    var completionHandler: ((Data?, URLResponse?, Error?) -> Void)?
-    
-    override func resume() {
-        // Simulate completion
-        completionHandler?(nil, nil, nil)
     }
 }
 

@@ -352,7 +352,14 @@ class WalletCoordinator: Subscriber {
 	private func showLocalNotification(message: String) {
 		guard UIApplication.shared.applicationState == .background || UIApplication.shared.applicationState == .inactive else { return }
 		guard store.state.isPushNotificationsEnabled else { return }
-		UIApplication.shared.applicationIconBadgeNumber = UIApplication.shared.applicationIconBadgeNumber + 1
+
+		let newBadgeCount = UserDefaults.pendingNotificationBadgeCount + 1
+		UserDefaults.pendingNotificationBadgeCount = newBadgeCount
+		UNUserNotificationCenter.current().setBadgeCount(newBadgeCount) { error in
+			if let error = error {
+				debugPrint("Failed to set badge count: \(error.localizedDescription)")
+			}
+		}
 
         // Create and schedule the notification
         let content = UNMutableNotificationContent()
