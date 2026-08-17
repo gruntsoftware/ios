@@ -6,10 +6,6 @@ extension UIButton {
 		button.setTitle(title, for: .normal)
 		button.setImage(image, for: .normal)
 		button.titleLabel?.font = UIFont.customMedium(size: 11.0)
-		if let font = button.titleLabel?.font {
-			let spacing: CGFloat = C.padding[1] / 2.0
-			let titleSize = NSString(string: title).size(withAttributes: [NSAttributedString.Key.font: font])
-        }
 		return button
 	}
 

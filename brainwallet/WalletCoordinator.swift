@@ -257,36 +257,35 @@ class WalletCoordinator: Subscriber {
 	}
 
 	private func addWalletObservers() {
-		weak var myself = self
-		NotificationCenter.default.addObserver(forName: .walletBalanceChangedNotification, object: nil, queue: nil, using: {
+		NotificationCenter.default.addObserver(forName: .walletBalanceChangedNotification, object: nil, queue: nil, using: { [weak self]
 			_ in
-			myself?.updateBalance()
-			myself?.requestTxUpdate()
+			self?.updateBalance()
+			self?.requestTxUpdate()
 		})
 
-		NotificationCenter.default.addObserver(forName: .walletTxStatusUpdateNotification, object: nil, queue: nil, using: { _ in
-			myself?.requestTxUpdate()
+		NotificationCenter.default.addObserver(forName: .walletTxStatusUpdateNotification, object: nil, queue: nil, using: { [weak self] _ in
+			self?.requestTxUpdate()
 		})
 
-		NotificationCenter.default.addObserver(forName: .walletTxRejectedNotification, object: nil, queue: nil, using: { note in
+		NotificationCenter.default.addObserver(forName: .walletTxRejectedNotification, object: nil, queue: nil, using: { [weak self] note in
 			guard let recommendRescan = note.userInfo?["recommendRescan"] as? Bool else { return }
-			myself?.requestTxUpdate()
+			self?.requestTxUpdate()
 			if recommendRescan {
-				myself?.store.perform(action: RecommendRescan.set(recommendRescan))
+				self?.store.perform(action: RecommendRescan.set(recommendRescan))
 			}
 		})
 
-		NotificationCenter.default.addObserver(forName: .walletSyncStartedNotification, object: nil, queue: nil, using: { _ in
-			myself?.onSyncStart()
-            myself?.updateTransactions()
+		NotificationCenter.default.addObserver(forName: .walletSyncStartedNotification, object: nil, queue: nil, using: { [weak self] _ in
+			self?.onSyncStart()
+            self?.updateTransactions()
 		})
 
-		NotificationCenter.default.addObserver(forName: .walletSyncStoppedNotification, object: nil, queue: nil, using: { note in
-			myself?.onSyncStop(notification: note)
+		NotificationCenter.default.addObserver(forName: .walletSyncStoppedNotification, object: nil, queue: nil, using: { [weak self] note in
+			self?.onSyncStop(notification: note)
 		})
 
-		NotificationCenter.default.addObserver(forName: .languageChangedNotification, object: nil, queue: nil, using: { _ in
-			myself?.updateTransactions()
+		NotificationCenter.default.addObserver(forName: .languageChangedNotification, object: nil, queue: nil, using: { [weak self] _ in
+			self?.updateTransactions()
 		})
 
 		// Foreground/background transitions bound the foreground-sync-duration
@@ -294,12 +293,12 @@ class WalletCoordinator: Subscriber {
 		// keep syncing for a few seconds into the background (until the
 		// background task's expiration handler disconnects it), and we don't
 		// want that grace period counted as "foreground" time.
-		NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil, using: { _ in
-			myself?.resumeSyncSegmentIfNeeded()
+		NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil, using: { [weak self] _ in
+			self?.resumeSyncSegmentIfNeeded()
 		})
 
-		NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification, object: nil, queue: nil, using: { _ in
-			myself?.pauseSyncSegment()
+		NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification, object: nil, queue: nil, using: { [weak self] _ in
+			self?.pauseSyncSegment()
 		})
 	}
 
@@ -353,7 +352,14 @@ class WalletCoordinator: Subscriber {
 	private func showLocalNotification(message: String) {
 		guard UIApplication.shared.applicationState == .background || UIApplication.shared.applicationState == .inactive else { return }
 		guard store.state.isPushNotificationsEnabled else { return }
-		UIApplication.shared.applicationIconBadgeNumber = UIApplication.shared.applicationIconBadgeNumber + 1
+
+		let newBadgeCount = UserDefaults.pendingNotificationBadgeCount + 1
+		UserDefaults.pendingNotificationBadgeCount = newBadgeCount
+		UNUserNotificationCenter.current().setBadgeCount(newBadgeCount) { error in
+			if let error = error {
+				debugPrint("Failed to set badge count: \(error.localizedDescription)")
+			}
+		}
 
         // Create and schedule the notification
         let content = UNMutableNotificationContent()

@@ -44,7 +44,9 @@ extension BRKey {
 			let count = BRKeyPrivKey(&self, nil, 0)
 			var data = CFDataCreateMutable(secureAllocator, count) as Data
 			data.count = count
-			guard data.withUnsafeMutableBytes({ BRKeyPrivKey(&self, $0, count) }) != 0 else { return nil }
+			guard data.withUnsafeMutableBytes({ (buffer: UnsafeMutableRawBufferPointer) in
+				BRKeyPrivKey(&self, buffer.baseAddress?.assumingMemoryBound(to: CChar.self), count)
+			}) != 0 else { return nil }
 			return CFStringCreateFromExternalRepresentation(secureAllocator, data as CFData,
 			                                                CFStringBuiltInEncodings.UTF8.rawValue) as String
 		}
@@ -59,7 +61,9 @@ extension BRKey {
 			let count = BRKeyBIP38Key(&self, nil, 0, nfcPhrase as String)
 			var data = CFDataCreateMutable(secureAllocator, count) as Data
 			data.count = count
-			guard data.withUnsafeMutableBytes({ BRKeyBIP38Key(&self, $0, count, nfcPhrase as String) }) != 0
+			guard data.withUnsafeMutableBytes({ (buffer: UnsafeMutableRawBufferPointer) in
+				BRKeyBIP38Key(&self, buffer.baseAddress?.assumingMemoryBound(to: CChar.self), count, nfcPhrase as String)
+			}) != 0
 			else { return nil }
 			return CFStringCreateFromExternalRepresentation(secureAllocator, data as CFData,
 			                                                CFStringBuiltInEncodings.UTF8.rawValue) as String

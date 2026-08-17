@@ -192,11 +192,19 @@ open class BWAPIClient: NSObject, URLSessionDelegate, URLSessionTaskDelegate, BW
 
 	public func urlSession(_: URLSession, task: URLSessionTask, willPerformHTTPRedirection _: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
 		var actualRequest = request
-		if let currentReq = task.currentRequest, var curHost = currentReq.url?.host, let curScheme = currentReq.url?.scheme {
+		if let currentReq = task.currentRequest, var curHost = currentReq.url?.host, let curScheme = currentReq.url?.scheme,
+		   var newHost = request.url?.host, let newScheme = request.url?.scheme {
 			if let curPort = currentReq.url?.port, curPort != 443, curPort != 80 {
 				curHost = "\(curHost):\(curPort)"
 			}
-			if curHost == host, curScheme == proto {
+			if let newPort = request.url?.port, newPort != 443, newPort != 80 {
+				newHost = "\(newHost):\(newPort)"
+			}
+			// Only follow redirects that both originate from AND continue to point at our
+			// own API -- checking the origin alone would follow a redirect anywhere the
+			// moment it's issued by api.grunt.ltd, silently sending an (often
+			// authenticated) follow-up request off our domain.
+			if curHost == host, curScheme == proto, newHost == host, newScheme == proto {
 				// follow the redirect if we're interacting with our API
 				actualRequest = decorateRequest(request)
 				log("redirecting \(String(describing: currentReq.url)) to \(String(describing: request.url))")

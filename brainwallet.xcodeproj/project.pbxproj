@@ -379,6 +379,7 @@
 		C38F57252FD490430005538A /* boingspringmouthharp042013.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */; };
 		C395E2B83013770A00CF5F5B /* EnterPinForSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */; };
 		C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0BBC22FF6DB11000D5DB8 /* AlertToast */; };
+		C3BC6CBD303331FB00A04919 /* UIApplication+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC6CBC303331D800A04919 /* UIApplication+Additions.swift */; };
 		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
 		C3CE34612FFD8D1F004A2ECA /* LilitaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CE34602FFD8D1F004A2ECA /* LilitaOne.ttf */; };
 		C3E18A9F2F9E657000966C74 /* ShopCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */; };
@@ -960,6 +961,7 @@
 		C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBentoViewModel.swift; sourceTree = "<group>"; };
 		C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boingspringmouthharp042013.mp3; sourceTree = "<group>"; };
 		C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPinForSeedView.swift; sourceTree = "<group>"; };
+		C3BC6CBC303331D800A04919 /* UIApplication+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Additions.swift"; sourceTree = "<group>"; };
 		C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupAskView.swift; sourceTree = "<group>"; };
 		C3CE34602FFD8D1F004A2ECA /* LilitaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LilitaOne.ttf; sourceTree = "<group>"; };
 		C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCardsView.swift; sourceTree = "<group>"; };
@@ -1184,6 +1186,7 @@
 		242871822DE5C4E10035DE48 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				C3BC6CBC303331D800A04919 /* UIApplication+Additions.swift */,
 				C312D0872D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift */,
 				C312D0882D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift */,
 				C312D07A2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift */,
@@ -2237,7 +2240,6 @@
 				C35312F32FE1B5B100FC2840 /* Flatten+Sign+Relocate Asset Frameworks */,
 				75A2A78D1DA5934300A983D8 /* Frameworks */,
 				75A2A78E1DA5934300A983D8 /* Resources */,
-				C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */,
 				C3A3FFB526FE46E8000FE955 /* Mark Dev Notes */,
 				58A9FE4C291BC37400B75825 /* Count number of swift lines */,
 				246F97EC2E846230001923A6 /* Embed Frameworks */,
@@ -2602,26 +2604,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# http://www.benzado.com/blog/post/329/make-xcode-nag-you-about-unfinished-todos\necho \"make-xcode-nag-you-about-unfinished-todos for swift files only\"\nKEYWORDS=\"DEV:|TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\\brainwallet\" \\( -name \"*.swift\" \\) -print0 | \\\nxargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | \\\nperl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
 		};
-		C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script for CircleCI SPM Caching";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/newOutputFile-circleci-spm-cache",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#cp brainwallet.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved Package.resolved\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2718,6 +2700,7 @@
 				246C3F5A2F2431B6009BC881 /* TutorialSendBentoView.swift in Sources */,
 				C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */,
 				C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */,
+				C3BC6CBD303331FB00A04919 /* UIApplication+Additions.swift in Sources */,
 				C312D3132D7DC27700BB97A4 /* UserDefaultsUpdater.swift in Sources */,
 				C312D3152D7DC27700BB97A4 /* UILabel+BRWAdditions.swift in Sources */,
 				C312D3172D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift in Sources */,

@@ -40,9 +40,9 @@ public extension String {
 
 		var result = Data(count: 128 / 8)
 		let resultCount = result.count
-		return result.withUnsafeMutableBytes { (resultBytes: UnsafeMutablePointer<CUnsignedChar>) -> String in
-			data.withUnsafeBytes { dataBytes in
-				BRMD5(resultBytes, dataBytes, data.count)
+		return result.withUnsafeMutableBytes { (resultBytes: UnsafeMutableRawBufferPointer) -> String in
+			data.withUnsafeBytes { (dataBytes: UnsafeRawBufferPointer) in
+				BRMD5(resultBytes.baseAddress, dataBytes.baseAddress, data.count)
 			}
 			var hash = String()
 			for i in 0 ..< resultCount {
@@ -55,7 +55,9 @@ public extension String {
 	func base58DecodedData() -> Data {
 		let len = BRBase58Decode(nil, 0, self)
 		var data = Data(count: len)
-		_ = data.withUnsafeMutableBytes { BRBase58Decode($0, len, self) }
+		_ = data.withUnsafeMutableBytes { (buffer: UnsafeMutableRawBufferPointer) in
+			BRBase58Decode(buffer.baseAddress?.assumingMemoryBound(to: UInt8.self), len, self)
+		}
 		return data
 	}
 
@@ -153,10 +155,12 @@ public extension Data {
 	}
 
 	var base58: String {
-		return withUnsafeBytes { (selfBytes: UnsafePointer<UInt8>) -> String in
+		return withUnsafeBytes { (selfBuffer: UnsafeRawBufferPointer) -> String in
+			let selfBytes = selfBuffer.baseAddress?.assumingMemoryBound(to: UInt8.self)
 			let len = BRBase58Encode(nil, 0, selfBytes, self.count)
 			var data = Data(count: len)
-			return data.withUnsafeMutableBytes { (b: UnsafeMutablePointer<Int8>) in
+			return data.withUnsafeMutableBytes { (buffer: UnsafeMutableRawBufferPointer) -> String in
+				let b = buffer.baseAddress!.assumingMemoryBound(to: Int8.self)
 				BRBase58Encode(b, len, selfBytes, self.count)
 				return String(cString: b)
 			}
@@ -165,9 +169,9 @@ public extension Data {
 
 	var sha1: Data {
 		var data = Data(count: 20)
-		data.withUnsafeMutableBytes { (bytes: UnsafeMutablePointer<UInt8>) in
-			self.withUnsafeBytes { (selfBytes: UnsafePointer<UInt8>) in
-				BRSHA1(bytes, selfBytes, self.count)
+		data.withUnsafeMutableBytes { (bytes: UnsafeMutableRawBufferPointer) in
+			self.withUnsafeBytes { (selfBytes: UnsafeRawBufferPointer) in
+				BRSHA1(bytes.baseAddress, selfBytes.baseAddress, self.count)
 			}
 		}
 		return data
@@ -175,9 +179,9 @@ public extension Data {
 
 	var sha256: Data {
 		var data = Data(count: 32)
-		data.withUnsafeMutableBytes { (bytes: UnsafeMutablePointer<UInt8>) in
-			self.withUnsafeBytes { (selfBytes: UnsafePointer<UInt8>) in
-				BRSHA256(bytes, selfBytes, self.count)
+		data.withUnsafeMutableBytes { (bytes: UnsafeMutableRawBufferPointer) in
+			self.withUnsafeBytes { (selfBytes: UnsafeRawBufferPointer) in
+				BRSHA256(bytes.baseAddress, selfBytes.baseAddress, self.count)
 			}
 		}
 		return data
@@ -188,8 +192,8 @@ public extension Data {
 	}
 
 	var uInt256: UInt256 {
-		return withUnsafeBytes { (ptr: UnsafePointer<UInt256>) -> UInt256 in
-			ptr.pointee
+		return withUnsafeBytes { (buffer: UnsafeRawBufferPointer) -> UInt256 in
+			buffer.load(as: UInt256.self)
 		}
 	}
 
@@ -197,8 +201,8 @@ public extension Data {
 		let offt = Int(offset)
 		let size = MemoryLayout<UInt8>.size
 		if count < offt + size { return 0 }
-		return subdata(in: offt ..< (offt + size)).withUnsafeBytes { (ptr: UnsafePointer<UInt8>) -> UInt8 in
-			ptr.pointee
+		return subdata(in: offt ..< (offt + size)).withUnsafeBytes { (buffer: UnsafeRawBufferPointer) -> UInt8 in
+			buffer.load(as: UInt8.self)
 		}
 	}
 
@@ -206,8 +210,8 @@ public extension Data {
 		let offt = Int(offset)
 		let size = MemoryLayout<UInt32>.size
 		if count < offt + size { return 0 }
-		return subdata(in: offt ..< (offt + size)).withUnsafeBytes { (ptr: UnsafePointer<UInt32>) -> UInt32 in
-			CFSwapInt32LittleToHost(ptr.pointee)
+		return subdata(in: offt ..< (offt + size)).withUnsafeBytes { (buffer: UnsafeRawBufferPointer) -> UInt32 in
+			CFSwapInt32LittleToHost(buffer.load(as: UInt32.self))
 		}
 	}
 
@@ -215,16 +219,18 @@ public extension Data {
 		let offt = Int(offset)
 		let size = MemoryLayout<UInt64>.size
 		if count < offt + size { return 0 }
-		return subdata(in: offt ..< (offt + size)).withUnsafeBytes { (ptr: UnsafePointer<UInt64>) -> UInt64 in
-			CFSwapInt64LittleToHost(ptr.pointee)
+		return subdata(in: offt ..< (offt + size)).withUnsafeBytes { (buffer: UnsafeRawBufferPointer) -> UInt64 in
+			CFSwapInt64LittleToHost(buffer.load(as: UInt64.self))
 		}
 	}
 
 	func compactSign(key: BRKey) -> Data {
-		return withUnsafeBytes { (_: UnsafePointer<UInt8>) -> Data in
+		return withUnsafeBytes { (_: UnsafeRawBufferPointer) -> Data in
 			var data = Data(count: 65)
 			var k = key
-			_ = data.withUnsafeMutableBytes { BRKeyCompactSign(&k, $0, 65, self.uInt256) }
+			_ = data.withUnsafeMutableBytes { (buffer: UnsafeMutableRawBufferPointer) in
+				BRKeyCompactSign(&k, buffer.baseAddress, 65, self.uInt256)
+			}
 			return data
 		}
 	}
@@ -234,9 +240,8 @@ public extension Data {
 		gettimeofday(&tv, nil)
 		var t = UInt64(tv.tv_usec) * 1_000_000 + UInt64(tv.tv_usec)
 		let p = [UInt8](repeating: 0, count: 4)
-		return Data(bytes: &t, count: MemoryLayout<UInt64>.size).withUnsafeBytes { (dat: UnsafePointer<UInt8>) -> [UInt8] in
-			let buf = UnsafeBufferPointer(start: dat, count: MemoryLayout<UInt64>.size)
-			return p + Array(buf)
+		return Data(bytes: &t, count: MemoryLayout<UInt64>.size).withUnsafeBytes { (buffer: UnsafeRawBufferPointer) -> [UInt8] in
+			p + Array(buffer)
 		}
 	}
 
@@ -272,9 +277,18 @@ public extension Data {
 	var masterPubKey: BRMasterPubKey? {
 		guard count >= (4 + 32 + 33) else { return nil }
 		var mpk = BRMasterPubKey()
-		mpk.fingerPrint = subdata(in: 0 ..< 4).withUnsafeBytes { $0.pointee }
-		mpk.chainCode = subdata(in: 4 ..< (4 + 32)).withUnsafeBytes { $0.pointee }
-		mpk.pubKey = subdata(in: (4 + 32) ..< (4 + 32 + 33)).withUnsafeBytes { $0.pointee }
+		mpk.fingerPrint = subdata(in: 0 ..< 4).withUnsafeBytes { (buffer: UnsafeRawBufferPointer) -> UInt32 in
+			buffer.load(as: UInt32.self)
+		}
+		mpk.chainCode = subdata(in: 4 ..< (4 + 32)).withUnsafeBytes { (buffer: UnsafeRawBufferPointer) -> UInt256 in
+			buffer.load(as: UInt256.self)
+		}
+		let pubKeyBytes = subdata(in: (4 + 32) ..< (4 + 32 + 33))
+		withUnsafeMutablePointer(to: &mpk.pubKey) { pubKeyPtr in
+			pubKeyPtr.withMemoryRebound(to: UInt8.self, capacity: 33) { bytePtr in
+				_ = pubKeyBytes.copyBytes(to: UnsafeMutableBufferPointer(start: bytePtr, count: 33))
+			}
+		}
 		return mpk
 	}
 
@@ -383,7 +397,9 @@ public extension BRKey {
 		var k = self
 		let len = BRKeyPubKey(&k, nil, 0)
 		var data = Data(count: len)
-		BRKeyPubKey(&k, data.withUnsafeMutableBytes { (d: UnsafeMutablePointer<UInt8>) -> UnsafeMutablePointer<UInt8> in d }, len)
+		_ = data.withUnsafeMutableBytes { (buffer: UnsafeMutableRawBufferPointer) in
+			BRKeyPubKey(&k, buffer.baseAddress, len)
+		}
 		return data
 	}
 }

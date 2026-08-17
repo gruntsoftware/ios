@@ -18,6 +18,7 @@ private let hasPromptedShareDataKey = "hasPromptedShareDataKey"
 private let didSeeTransactionCorruption = "DidSeeTransactionCorruption"
 private let hasLoggedInitialSyncDurationKey = "hasLoggedInitialSyncDurationKey"
 private let foregroundSyncDurationSecondsKey = "foregroundSyncDurationSecondsKey"
+private let pendingNotificationBadgeCountKey = "pendingNotificationBadgeCountKey"
 
 let timeSinceLastExitKey = "TimeSinceLastExit"
 let shouldRequireLoginTimeoutKey = "ShouldRequireLoginTimeoutKey"
@@ -272,5 +273,21 @@ extension UserDefaults {
 	static var foregroundSyncDurationSeconds: TimeInterval {
 		get { return defaults.double(forKey: foregroundSyncDurationSecondsKey) }
 		set { defaults.set(newValue, forKey: foregroundSyncDurationSecondsKey) }
+	}
+}
+
+// MARK: - Notifications
+
+extension UserDefaults {
+	/// Mirrors the badge count this app has last asked UNUserNotificationCenter
+	/// to display. UIApplication.applicationIconBadgeNumber -- the old
+	/// synchronous getter/setter -- was deprecated in iOS 17 in favor of
+	/// UNUserNotificationCenter.setBadgeCount(_:withCompletionHandler:), which
+	/// has no matching getter, so this is the app's own record of what it last
+	/// set. Kept in sync with the two places that reset the system badge to 0
+	/// (AppDelegate's launch and applicationDidBecomeActive).
+	static var pendingNotificationBadgeCount: Int {
+		get { return defaults.integer(forKey: pendingNotificationBadgeCountKey) }
+		set { defaults.set(newValue, forKey: pendingNotificationBadgeCountKey) }
 	}
 }

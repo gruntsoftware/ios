@@ -26,8 +26,6 @@ struct SocialsBentoView: View {
     var body: some View {
         GeometryReader { geometry in
 
-            let width = geometry.size.width
-
             ZStack {
                 StaticBackgroundView(userPrefersDarkTheme: .constant(false),
                                      imageName: "socials_background_1")

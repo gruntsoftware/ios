@@ -120,7 +120,6 @@ struct NewMainView: View {
     var body: some View {
         GeometryReader { geometry in
 
-            let width = geometry.size.width
             let height = geometry.size.height
             let midBentoHeight = geometry.size.height
             let sheetContentHeight = height * 0.7

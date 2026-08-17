@@ -112,7 +112,6 @@ struct BentoSendConfirmView: View {
                             if viewModel.didVerifyPin() {
                                 debugPrint("didVerifyPin post: \(viewModel.pinDigits)\n")
 
-                                var transactionError: TransactionCreationError?
                                 let biometricsMessage = "Authorize this transaction"
                                 /// Setup  Transaction
                                 if let sender = newMainViewModel.sender,
@@ -158,7 +157,6 @@ struct BentoSendConfirmView: View {
                                     })
 
                                 } else {
-                                    transactionError = .invalidLTCAddress
                                     clearPINSettings()
                                 }
 

@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
             return true
         }
 
+        UserDefaults.pendingNotificationBadgeCount = 0
         UNUserNotificationCenter.current().setBadgeCount(0) { _ in }
         
         var regionCode2Char: String = "RU"
@@ -125,6 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     }
 
 	func applicationDidBecomeActive(_: UIApplication) {
+		UserDefaults.pendingNotificationBadgeCount = 0
 		UNUserNotificationCenter.current().setBadgeCount(0) { error in
             if let error = error {
                 debugPrint("Failed to set badge count: \(error.localizedDescription)")

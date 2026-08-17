@@ -45,8 +45,6 @@ struct SignupAskView: View {
     }
     var body: some View {
         GeometryReader { geometry in
-            let width = geometry.size.width
-            
             ZStack {
                 BrainwalletColor.midnight.edgesIgnoringSafeArea(.all)
                 
