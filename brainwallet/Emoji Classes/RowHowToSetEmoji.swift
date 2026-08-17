@@ -15,8 +15,6 @@ struct RowHowToSetEmoji: View {
     let rowIndex: Int
     var body: some View {
         GeometryReader { geometry in
-            let height = geometry.size.height
-            let width = geometry.size.width
             let iconBorderRatio = 2.3
             let iconSize: CGFloat = 26.0
             

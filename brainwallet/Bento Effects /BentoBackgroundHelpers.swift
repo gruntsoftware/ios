@@ -197,8 +197,7 @@ struct StaticBackgroundView: View {
     var body: some View {
         
         GeometryReader { geometry in
-            
-            let width = geometry.size.width
+
             ZStack {
                 Group {
                     RoundedRectangle(cornerRadius: bentoCornerRadius)

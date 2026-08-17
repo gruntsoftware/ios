@@ -87,7 +87,7 @@ extension String {
 			}
 			bytes[index >> 1] |= nibble
 		}
-		return Data(bytes: bytes)
+		return Data(bytes)
 	}
 }
 

@@ -62,6 +62,8 @@ class ModalTransitionDelegate: NSObject, Subscriber {
 			break
 		case .possible:
 			break
+		@unknown default:
+			break
 		}
 	}
 

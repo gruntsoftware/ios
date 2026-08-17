@@ -466,7 +466,7 @@ extension WalletManager: WalletAuthenticator {
          
         // KV store — guard against nil authKey (the crash site)
         do {
-            if let kv = try? BWAPIClient(authenticator: self).kv {
+            if let kv = BWAPIClient(authenticator: self).kv {
                 try kv.rmdb()
             }
         } catch let error {
