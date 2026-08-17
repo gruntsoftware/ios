@@ -644,7 +644,12 @@ private func keychainItem<T>(key: String) throws -> T? {
 			buffer.load(as: T.self)
 		}
 	case is [AnyHashable: Any].Type:
-		return NSKeyedUnarchiver.unarchiveObject(with: data) as? T
+		// Allowlist of plist-compatible classes userAccount's dictionary can actually
+		// contain -- unarchivedObject(ofClasses:from:) refuses to instantiate anything
+		// outside this set, unlike the deprecated unarchiveObject(with:) it replaces.
+		let allowedClasses: [AnyClass] = [NSDictionary.self, NSArray.self, NSString.self,
+		                                   NSNumber.self, NSDate.self, NSData.self, NSNull.self]
+		return try NSKeyedUnarchiver.unarchivedObject(ofClasses: allowedClasses, from: data) as? T
 	default:
 		throw NSError(domain: NSOSStatusErrorDomain, code: Int(errSecParam))
 	}
@@ -663,13 +668,13 @@ private func setKeychainItem<T>(key: String, item: T?, authenticated: Bool = fal
 		case is Data.Type:
 			data = item as? Data
 		case is String.Type:
-            data = CFStringCreateExternalRepresentation(secureAllocator, item as! CFString,
+                data = CFStringCreateExternalRepresentation(secureAllocator, (item as! CFString),
 			                                            CFStringBuiltInEncodings.UTF8.rawValue, 0) as Data
 		case is Int64.Type:
 			data = CFDataCreateMutable(secureAllocator, MemoryLayout<T>.stride) as Data
 			[item].withUnsafeBufferPointer { data?.append($0) }
 		case is [AnyHashable: Any].Type:
-			data = NSKeyedArchiver.archivedData(withRootObject: item)
+			data = try NSKeyedArchiver.archivedData(withRootObject: item, requiringSecureCoding: true)
 		default:
 			throw NSError(domain: NSOSStatusErrorDomain, code: Int(errSecParam))
 		}
