@@ -18,7 +18,6 @@ class ModalPresenter: Subscriber {
     let window: UIWindow
     let alertHeight: CGFloat = 260.0
     let modalTransitionDelegate: ModalTransitionDelegate
-    let messagePresenter = MessageUIPresenter()
     let verifyPinTransitionDelegate = TransitioningDelegate()
     let noAuthApiClient: BWAPIClient
     var currentRequest: PaymentRequest?
