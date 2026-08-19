@@ -178,15 +178,25 @@ class NewReceiveViewModelTests: XCTestCase {
     // MARK: - Date Formatter Tests
     
     func testISO8601DateFormatterFormat() {
-        // Test the date formatter configuration
+        // Test the date formatter configuration.
+        // Pinned to en_US_POSIX + UTC rather than Locale.current/the system
+        // time zone: this test asserts an English month abbreviation ("jun")
+        // for a date defined in UTC, so both the locale AND the time zone
+        // need to be deterministic. Locale alone isn't enough -- the test
+        // date is June 1 00:00:00 UTC, which is still May 31 in any zone
+        // west of UTC (e.g. US Pacific/Eastern), so without pinning
+        // .timeZone this failed on Xcode Cloud's build agent even after
+        // fixing the locale, since its system time zone renders this same
+        // instant as "31 May" rather than "01 Jun".
         let formatter = DateFormatter()
-        formatter.locale = Locale.current
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(identifier: "UTC")
         formatter.dateFormat = "dd MMM yyyy HH:mm:ss"
-        
+
         // Test with a known date
         let testDate = Date(timeIntervalSince1970: 1717200000) // June 1, 2024 00:00:00 UTC
         let formattedString = formatter.string(from: testDate).lowercased()
-        
+
         XCTAssertFalse(formattedString.isEmpty)
         XCTAssertTrue(formattedString.contains("2024"))
         XCTAssertTrue(formattedString.contains("jun"))

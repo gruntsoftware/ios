@@ -501,6 +501,11 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
         if walletManager.setSeedPhrase(restoredPhrase) {
             UserDefaults.writePaperPhraseDate = Date()
+            // generateNewWallet() sets this for the Create flow, but Restore
+            // never did, so walletState.creationDate (persisted into WalletInfo
+            // via KVStoreCoordinator) stayed at Date.zeroValue() for every
+            // restored wallet.
+            store.perform(action: WalletChange.setWalletCreationDate(Date()))
             store.perform(action: SimpleReduxAlert.Show(.paperKeySet(callback: {})))
             store.trigger(name: .didCreateOrRecoverWallet)
             DispatchQueue.walletQueue.async {

@@ -88,7 +88,8 @@ class WelcomeFallinScene: SKScene, SKPhysicsContactDelegate {
                    let playAction = SKAction.play()
                    let volumeAction = SKAction.changeVolume(to: 0.06, duration: 0.2)
                    let boomOrBaap = Bool.random()
-                   delay(0.1) {
+                   delay(0.1) { [weak self] in
+                       guard let self else { return }
                        boomOrBaap ? self.boom.run(SKAction.group([playAction, volumeAction])) :
                        self.baap.run(SKAction.group([playAction, volumeAction]))
 
@@ -137,7 +138,8 @@ class WelcomeFallinScene: SKScene, SKPhysicsContactDelegate {
 
          addChild(label)
 
-        delay(1.0) {
+        delay(1.0) { [weak self] in
+            guard let self else { return }
 
             if self.countdown <= 0.0 {
                 self.countdown = 30.0

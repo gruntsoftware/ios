@@ -2,34 +2,6 @@ import UIKit
 
 // MARK: - Startup Modals
 
-struct ShowStartFlow: Action {
-	let reduce: Reducer = {
-		$0.clone(isStartFlowVisible: true)
-	}
-}
-
-struct HideStartFlow: Action {
-	let reduce: Reducer = { state in
-		ReduxState(isStartFlowVisible: false,
-		           isLoginRequired: state.isLoginRequired,
-		           rootModal: .none,
-		           walletState: state.walletState,
-		           isLTCValueShown: state.isLTCValueShown,
-		           currentRate: state.currentRate,
-		           rates: state.rates,
-		           alert: state.alert,
-		           isBiometricsEnabled: state.isBiometricsEnabled,
-		           userPreferredCurrencyCode: state.userPreferredCurrencyCode,
-		           recommendRescan: state.recommendRescan,
-		           isLoadingTransactions: state.isLoadingTransactions,
-		           maxDigits: state.maxDigits,
-		           isPushNotificationsEnabled: state.isPushNotificationsEnabled,
-		           isPromptingBiometrics: state.isPromptingBiometrics,
-		           pinLength: state.pinLength,
-		           fees: state.fees)
-	}
-}
-
 struct Reset: Action {
 	let reduce: Reducer = { _ in
 		ReduxState.initial.clone(isLoginRequired: false)
@@ -108,17 +80,6 @@ enum WalletChange {
 		let reduce: Reducer
 		init(_ isRescanning: Bool) {
 			reduce = { $0.clone(isRescanning: isRescanning) }
-		}
-	}
-}
-
-// MARK: - Currency
-
-enum CurrencyChange {
-	struct toggle: Action {
-		let reduce: Reducer = {
-			UserDefaults.isLTCValueShown = !$0.isLTCValueShown
-			return $0.clone(isLTCValueShown: !$0.isLTCValueShown)
 		}
 	}
 }
@@ -202,16 +163,6 @@ enum LoadTransactions {
 	}
 }
 
-enum MaxDigits {
-	struct set: Action {
-		let reduce: Reducer
-		init(_ maxDigits: Int) {
-			UserDefaults.maxDigits = maxDigits
-			reduce = { $0.clone(maxDigits: maxDigits) }
-		}
-	}
-}
-
 enum biometricsActions {
 	struct setIsPrompting: Action {
 		let reduce: Reducer
@@ -230,38 +181,9 @@ enum PinLength {
 	}
 }
 
-enum UpdateFees {
-	struct set: Action {
-		let reduce: Reducer
-		init(_ fees: Fees) {
-			reduce = { $0.clone(fees: fees) }
-		}
-	}
-}
-
 // MARK: - State Creation Helpers
 
 extension ReduxState {
-	func clone(isStartFlowVisible: Bool) -> ReduxState {
-		return ReduxState(isStartFlowVisible: isStartFlowVisible,
-		                  isLoginRequired: isLoginRequired,
-		                  rootModal: rootModal,
-		                  walletState: walletState,
-		                  isLTCValueShown: isLTCValueShown,
-		                  currentRate: currentRate,
-		                  rates: rates,
-		                  alert: alert,
-		                  isBiometricsEnabled: isBiometricsEnabled,
-		                  userPreferredCurrencyCode: userPreferredCurrencyCode,
-		                  recommendRescan: recommendRescan,
-		                  isLoadingTransactions: isLoadingTransactions,
-		                  maxDigits: maxDigits,
-		                  isPushNotificationsEnabled: isPushNotificationsEnabled,
-		                  isPromptingBiometrics: isPromptingBiometrics,
-		                  pinLength: pinLength,
-		                  fees: fees)
-	}
-
 	func rootModal(_ type: RootModal) -> ReduxState {
 		return ReduxState(isStartFlowVisible: false,
 		                  isLoginRequired: isLoginRequired,
@@ -462,26 +384,6 @@ extension ReduxState {
 		                  fees: fees)
 	}
 
-	func clone(isLTCValueShown: Bool) -> ReduxState {
-		return ReduxState(isStartFlowVisible: isStartFlowVisible,
-		                  isLoginRequired: isLoginRequired,
-		                  rootModal: rootModal,
-		                  walletState: walletState,
-		                  isLTCValueShown: isLTCValueShown,
-		                  currentRate: currentRate,
-		                  rates: rates,
-		                  alert: alert,
-		                  isBiometricsEnabled: isBiometricsEnabled,
-		                  userPreferredCurrencyCode: userPreferredCurrencyCode,
-		                  recommendRescan: recommendRescan,
-		                  isLoadingTransactions: isLoadingTransactions,
-		                  maxDigits: maxDigits,
-		                  isPushNotificationsEnabled: isPushNotificationsEnabled,
-		                  isPromptingBiometrics: isPromptingBiometrics,
-		                  pinLength: pinLength,
-		                  fees: fees)
-	}
-
 	func clone(isLoginRequired: Bool) -> ReduxState {
 		return ReduxState(isStartFlowVisible: isStartFlowVisible,
 		                  isLoginRequired: isLoginRequired,
@@ -642,26 +544,6 @@ extension ReduxState {
 		                  fees: fees)
 	}
 
-	func clone(maxDigits: Int) -> ReduxState {
-		return ReduxState(isStartFlowVisible: isStartFlowVisible,
-		                  isLoginRequired: isLoginRequired,
-		                  rootModal: rootModal,
-		                  walletState: walletState,
-		                  isLTCValueShown: isLTCValueShown,
-		                  currentRate: currentRate,
-		                  rates: rates,
-		                  alert: alert,
-		                  isBiometricsEnabled: isBiometricsEnabled,
-		                  userPreferredCurrencyCode: userPreferredCurrencyCode,
-		                  recommendRescan: recommendRescan,
-		                  isLoadingTransactions: isLoadingTransactions,
-		                  maxDigits: maxDigits,
-		                  isPushNotificationsEnabled: isPushNotificationsEnabled,
-		                  isPromptingBiometrics: isPromptingBiometrics,
-		                  pinLength: pinLength,
-		                  fees: fees)
-	}
-
 	func clone(isPushNotificationsEnabled: Bool) -> ReduxState {
 		return ReduxState(isStartFlowVisible: isStartFlowVisible,
 		                  isLoginRequired: isLoginRequired,
@@ -722,23 +604,4 @@ extension ReduxState {
 		                  fees: fees)
 	}
 
-	func clone(fees: Fees) -> ReduxState {
-		return ReduxState(isStartFlowVisible: isStartFlowVisible,
-		                  isLoginRequired: isLoginRequired,
-		                  rootModal: rootModal,
-		                  walletState: walletState,
-		                  isLTCValueShown: isLTCValueShown,
-		                  currentRate: currentRate,
-		                  rates: rates,
-		                  alert: alert,
-		                  isBiometricsEnabled: isBiometricsEnabled,
-		                  userPreferredCurrencyCode: userPreferredCurrencyCode,
-		                  recommendRescan: recommendRescan,
-		                  isLoadingTransactions: isLoadingTransactions,
-		                  maxDigits: maxDigits,
-		                  isPushNotificationsEnabled: isPushNotificationsEnabled,
-		                  isPromptingBiometrics: isPromptingBiometrics,
-		                  pinLength: pinLength,
-		                  fees: fees)
-	}
 }

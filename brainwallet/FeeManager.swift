@@ -19,9 +19,3 @@ struct Fees: Equatable {
 		            timestamp: defaultTimestamp)
 	}
 }
-
-enum FeeType {
-	case regular
-	case economy
-	case luxury
-}

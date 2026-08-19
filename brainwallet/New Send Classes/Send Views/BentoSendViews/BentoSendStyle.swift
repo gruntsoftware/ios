@@ -63,15 +63,6 @@ struct TranslucentWhiteTextFieldStyle: TextFieldStyle {
 // Posted by Valerika
 // Retrieved 2026-01-10, License - CC BY-SA 4.0
 
-struct SendTextModalTitleModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .modifier(BWIPSLight(size: 13.0))
-            .frame(height: 22, alignment: .topLeading)
-            .padding(.leading, 16)
-    }
-}
-
 struct SendTextModalSubTitleModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -183,34 +174,6 @@ struct SendTextPrepDataModifier: ViewModifier {
             .modifier(BWIPSThin(size: 14.0))
             .foregroundColor(userPrefersDarkTheme ? .white : .black)
             .frame(maxWidth: .infinity, alignment: .leading)
-    }
-}
-
-struct SendCompletedTitleModifier: ViewModifier {
-
-    @Binding
-    var userPrefersDarkTheme: Bool
-
-    func body(content: Content) -> some View {
-        content
-            .modifier(BWIPSBold(size: 24.0))
-            .foregroundColor(userPrefersDarkTheme ? .white : .black)
-    }
-}
-
-struct SendCompletedSubTitleModifier: ViewModifier {
-
-    @Binding
-    var userPrefersDarkTheme: Bool
-
-    func body(content: Content) -> some View {
-        content
-            .modifier(BWIPSThin(size: 15.0))
-            .foregroundColor(userPrefersDarkTheme ? .white : .black)
-            .frame(maxWidth: .infinity, alignment: .center)
-            .kerning(2.0)
-            .padding([.top, .bottom], 10)
-            .padding([.leading, .trailing], 15)
     }
 }
 
