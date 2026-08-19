@@ -71,6 +71,33 @@ For the full, up-to-date changelog see [GitHub Releases](https://github.com/grun
 
 ---
 
+### **v3.9.17**
+---
+- Reworked the Buy/Receive sheet (`BuyReceiveView`) to match the Android app's layout: explicit close button, full (non-truncated) receive address with a "Copy New Address" affordance, a currency picker that shows more surrounding rows, bordered preset-amount chips with inline custom entry, a unified "Buy LTC" button, and a translucent sheet background (#177)
+- Cleared the remaining deprecated Security/Foundation API usage and a real infinite-recursion bug found while auditing warnings (#175)
+- Reduced the Swift compiler warnings list, starting from 100 unique warning sites (#174)
+- Removed CircleCI entirely — Xcode Cloud is now the sole CI for this repo (#173)
+- Updated `Private/bw-gdlib` submodule to v1.6.9, adding a QR privacy hide/show toggle to `GameEndView` (#171)
+- Updated `Modules/core` submodule (#176)
+- Removed 22 dead `Localizable.xcstrings` entries with no remaining source reference, and added the missing translations (21 locales each) for `BUY / RECEIVE`, `COPY NEW ADDRESS`, and `POWERED BY MOONPAY`, which had been silently falling back to English for every non-English user
+
+**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.16...v3.9.17
+
+---
+
+### **v3.9.16**
+---
+- Fixed `user_did_complete_sync` analytics event never firing: `syncState` had usually already flipped to `.success` by the time the final progress update landed, so the `isSyncing` gate skipped the check. `WalletCoordinator` now owns the metric directly, tracking accumulated active-foreground sync time and logging a new time-to-98%-sync duration (#161)
+- Fixed a Simulator launch crash (`dyld: Library not loaded: @rpath/BWIOSGdx.framework/BWIOSGdx`): `BWIOSGdx.xcframework` is now linked device-only via SDK-scoped build settings instead of the unconditional Frameworks build phase; also stabilized a flaky `LockScreenViewUITests` test that depended on locale/theme-dependent SF Symbol accessibility labels (#153)
+- Fixed CircleCI and Xcode Cloud both failing on every build: stopped building `BWIOSGdx.xcframework` in CI, fixed `ci_post_clone.sh` silently writing garbage secrets, and added fail-fast validation for generated secret files on both providers (#154)
+- Fixed a Crashlytics-reported `EXC_BAD_ACCESS` in `_peerThreadRoutine` by bumping `Modules/core`: `threadCleanup` is now null-checked before being invoked, matching the other optional callbacks in the same function (#155)
+- Fixed a Simulator crash regression reintroduced while bumping `Private/bw-gdlib` to v1.6.8; restored the device-only linking from #153 (#156)
+- Removed confirmed-unused code and resources across the repo — orphaned directories, 55 orphaned `.swift` files, dead Redux actions, unused SwiftUI view modifiers, and dead image/sound resources (328 files changed, 12,450 lines removed) (#157)
+
+**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.15...v3.9.16
+
+---
+
 ### **v3.9.15**  [PR [#151](https://github.com/gruntsoftware/ios/pull/151)]
 ---
 - Fixed game-exit analytics events being silently dropped: `bw-gdlib` now wraps the exit payload as `{"exitData": ..., "events": [...]}`, and iOS decodes it (`GameExitPayload`) and forwards every collected event to Firebase Analytics instead of throwing/discarding it; Android's `AndroidLauncher` now forwards the same `jsonString` too
