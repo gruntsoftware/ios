@@ -23,7 +23,8 @@ class BuyReceiveHostingController: UIHostingController<BuyReceiveView> {
     init(store: Store, walletManager: WalletManager, isModalMode: Bool) {
         self.isModalMode = isModalMode
         let viewModel = NewReceiveViewModel(store: store, walletManager: walletManager, canUserBuy: true)
-        super.init(rootView: BuyReceiveView(viewModel: viewModel, isModalMode: isModalMode))
+        super.init(rootView: BuyReceiveView(viewModel: viewModel,
+                                            isModalMode: isModalMode))
 
         viewModel.dismissReceiveModal = { [weak self] in
             self?.dismissBuyReceiveModal?()
