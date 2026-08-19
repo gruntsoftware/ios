@@ -244,11 +244,13 @@
 		C312D2EA2D7DC27700BB97A4 /* ForgotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24D2D7DC27700BB97A4 /* ForgotView.swift */; };
 		C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D32D7DC27700BB97A4 /* AnimatableIcon.swift */; };
 		C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */; };
+		FF9BADE3A170F008C98BDA4D /* UIPickerView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F43635FF15DBD8CE79E53 /* UIPickerView+Extension.swift */; };
 		C312D2FC2D7DC27700BB97A4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E72D7DC27700BB97A4 /* GradientView.swift */; };
 		C312D3072D7DC27700BB97A4 /* CGRect+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D06E2D7DC27700BB97A4 /* CGRect+Additions.swift */; };
 		C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0872D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift */; };
 		C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */; };
 		C312D3132D7DC27700BB97A4 /* UserDefaultsUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C62D7DC27700BB97A4 /* UserDefaultsUpdater.swift */; };
+		C74016995BF8E51D0570D4A3 /* VariableBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907D0CB963306B3055BAA1B /* VariableBlurView.swift */; };
 		C312D3152D7DC27700BB97A4 /* UILabel+BRWAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D07C2D7DC27700BB97A4 /* UILabel+BRWAdditions.swift */; };
 		C312D3172D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1B92D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift */; };
 		C312D3192D7DC27700BB97A4 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0982D7DC27700BB97A4 /* Rate.swift */; };
@@ -933,8 +935,10 @@
 		C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferAmountViewModel.swift; sourceTree = "<group>"; };
 		C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		556F43635FF15DBD8CE79E53 /* UIPickerView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPickerView+Extension.swift"; sourceTree = "<group>"; };
 		C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafeMutablePointerExtension.swift; sourceTree = "<group>"; };
 		C312D2C62D7DC27700BB97A4 /* UserDefaultsUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsUpdater.swift; sourceTree = "<group>"; };
+		D907D0CB963306B3055BAA1B /* VariableBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableBlurView.swift; sourceTree = "<group>"; };
 		C312D2C72D7DC27700BB97A4 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
 		C312D2C92D7DC27700BB97A4 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
@@ -1216,6 +1220,7 @@
 				C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */,
 				C312D2852D7DC27700BB97A4 /* NSNotificationNameExtension.swift */,
 				C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */,
+				556F43635FF15DBD8CE79E53 /* UIPickerView+Extension.swift */,
 				C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */,
 				C312D2C72D7DC27700BB97A4 /* View+Extension.swift */,
 				C312D07D2D7DC27700BB97A4 /* UINavigationController+Extension.swift */,
@@ -2091,6 +2096,7 @@
 				C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */,
 				C3236A002D7DE34D007039A1 /* URLController.swift */,
 				C312D2C62D7DC27700BB97A4 /* UserDefaultsUpdater.swift */,
+				D907D0CB963306B3055BAA1B /* VariableBlurView.swift */,
 				C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */,
 				C312D2C92D7DC27700BB97A4 /* WalletManager.swift */,
 				C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */,
@@ -2675,6 +2681,7 @@
 				C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */,
 				242C43EF2F25397300CF6EA4 /* WalkthroughStep3View.swift in Sources */,
 				C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */,
+				FF9BADE3A170F008C98BDA4D /* UIPickerView+Extension.swift in Sources */,
 				246C3F5E2F244E61009BC881 /* TutorialReceiveBentoView.swift in Sources */,
 				C3E18AA12F9EC22000966C74 /* ConfirmationStatus.swift in Sources */,
 				242871882DE5D36F0035DE48 /* SyncSubBentoViewModel.swift in Sources */,
@@ -2696,6 +2703,7 @@
 				C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */,
 				C3BC6CBD303331FB00A04919 /* UIApplication+Additions.swift in Sources */,
 				C312D3132D7DC27700BB97A4 /* UserDefaultsUpdater.swift in Sources */,
+				C74016995BF8E51D0570D4A3 /* VariableBlurView.swift in Sources */,
 				C312D3152D7DC27700BB97A4 /* UILabel+BRWAdditions.swift in Sources */,
 				C312D3172D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift in Sources */,
 				C312D3192D7DC27700BB97A4 /* Rate.swift in Sources */,

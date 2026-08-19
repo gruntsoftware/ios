@@ -469,16 +469,20 @@ struct NewMainView: View {
                     }
                 }
                 .sheet(isPresented: $userDidTapBuyReceive) {
-                    BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
+                    BuyReceiveView(viewModel: newReceiveViewModel,
+                                   isModalMode: true)
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
+                        .presentationBackground(.ultraThinMaterial)
                 }
                 .sheet(isPresented: $newMainViewModel.shouldShowBuyReceive) {
-                    BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
+                    BuyReceiveView(viewModel: newReceiveViewModel,
+                                   isModalMode: true)
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
+                        .presentationBackground(.ultraThinMaterial)
                 }
                 .sheet(isPresented: $newMainViewModel.shouldShowSocials) {
                     WebView(url: socialsURL, scrollToSignup: .constant(false))
