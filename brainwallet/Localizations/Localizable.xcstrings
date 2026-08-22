@@ -1044,6 +1044,7 @@
       }
     },
     "%@ %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -5857,6 +5858,9 @@
         }
       }
     },
+    "BUY / RECEIVE" : {
+
+    },
     "Buy Gift Cards with LTC!" : {
       "localizations" : {
         "ar" : {
@@ -8462,6 +8466,9 @@
           }
         }
       }
+    },
+    "COPY NEW ADDRESS" : {
+
     },
     "Copy Wallet Addresses" : {
       "localizations" : {
@@ -21122,6 +21129,9 @@
           }
         }
       }
+    },
+    "POWERED BY MOONPAY" : {
+
     },
     "Re-Enter PIN" : {
       "extractionState" : "stale",
@@ -34161,6 +34171,7 @@
       }
     },
     "via" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
