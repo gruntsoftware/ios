@@ -87,10 +87,15 @@ def load_xcstrings(path: Path) -> dict:
 
 
 def save_xcstrings(data: dict, path: Path):
-    """Write back with the same compact-ish formatting Xcode uses."""
+    """Write back with the same formatting Xcode uses.
+
+    Xcode's String Catalog serializer puts a space before every colon
+    ("key" : value), which is not json.dump's default ("key": value). Without
+    matching that, every single line of the file changes on every run, even
+    when the only real change is a couple of new translations.
+    """
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-        f.write("\n")
+        json.dump(data, f, ensure_ascii=False, indent=2, separators=(",", " : "))
 
 
 def is_passthrough(key: str, value: str) -> bool:
