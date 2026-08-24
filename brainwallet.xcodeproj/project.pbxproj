@@ -390,7 +390,6 @@
 		C3FACF6E2F9E025300886FAD /* MoonPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6D2F9E025300886FAD /* MoonPayView.swift */; };
 		C3FACF702F9E026500886FAD /* SocialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6F2F9E026500886FAD /* SocialsView.swift */; };
 		C74016995BF8E51D0570D4A3 /* VariableBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907D0CB963306B3055BAA1B /* VariableBlurView.swift */; };
-		FF9BADE3A170F008C98BDA4D /* UIPickerView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556F43635FF15DBD8CE79E53 /* UIPickerView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -801,7 +800,6 @@
 		24F5BD572E04711E0010D340 /* CurrencyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerView.swift; sourceTree = "<group>"; };
 		24F64C1F2DAFBD94001DC9B6 /* WelcomMojiDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomMojiDemoView.swift; sourceTree = "<group>"; };
 		24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHostingController.swift; sourceTree = "<group>"; };
-		556F43635FF15DBD8CE79E53 /* UIPickerView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPickerView+Extension.swift"; sourceTree = "<group>"; };
 		5C3F1465DCBE495A8993C1FD /* BalanceBentoReviewPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceBentoReviewPolicy.swift; sourceTree = "<group>"; };
 		755CD9D11DAA197C0075898E /* libBRCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBRCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A2A7901DA5934300A983D8 /* Brainwallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brainwallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1220,7 +1218,6 @@
 				C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */,
 				C312D2852D7DC27700BB97A4 /* NSNotificationNameExtension.swift */,
 				C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */,
-				556F43635FF15DBD8CE79E53 /* UIPickerView+Extension.swift */,
 				C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */,
 				C312D2C72D7DC27700BB97A4 /* View+Extension.swift */,
 				C312D07D2D7DC27700BB97A4 /* UINavigationController+Extension.swift */,
@@ -2681,7 +2678,6 @@
 				C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */,
 				242C43EF2F25397300CF6EA4 /* WalkthroughStep3View.swift in Sources */,
 				C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */,
-				FF9BADE3A170F008C98BDA4D /* UIPickerView+Extension.swift in Sources */,
 				246C3F5E2F244E61009BC881 /* TutorialReceiveBentoView.swift in Sources */,
 				C3E18AA12F9EC22000966C74 /* ConfirmationStatus.swift in Sources */,
 				242871882DE5D36F0035DE48 /* SyncSubBentoViewModel.swift in Sources */,

@@ -124,9 +124,6 @@ struct BuyReceiveView: View {
         UISegmentedControl.appearance().backgroundColor = BrainwalletUIColor.background
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color.primary)], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color.secondary)], for: .normal)
-        /// The wheel currency picker's row/selection background is cleared by
-        /// UIPickerView+Extension.swift, which reaches its internal subviews -
-        /// the appearance proxy alone can't touch those.
     }
 
     func updateFiatAmounts() {
