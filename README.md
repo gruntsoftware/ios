@@ -71,6 +71,22 @@ For the full, up-to-date changelog see [GitHub Releases](https://github.com/grun
 
 ---
 
+### **v3.9.18**  [PR [#194](https://github.com/gruntsoftware/ios/pull/194)]
+---
+- Fixed the top Crashlytics crash in 3.9.17 — `NSInternalInconsistencyException: Tried to fetch selected row in component 0, but there are only 0 tables` — caused by a global `UIPickerView` background-clearing override that raced with SwiftUI's wheel picker setup during the unlock/onboarding transition; the override has been removed
+- Reworked the Buy/Receive sheet (`BuyReceiveView`) to match the Android app's layout: explicit close button, full (non-truncated) receive address with a "Copy New Address" affordance, a currency picker that shows more surrounding rows, bordered preset-amount chips (min/10x/max/Custom) with inline custom entry, a unified "Buy LTC" button, and a translucent sheet background (#177)
+- Fixed the remaining deprecated Security/Foundation API usage and a real infinite-recursion bug uncovered while auditing compiler warnings (#175)
+- Fixed `user_did_complete_sync` analytics event never firing (#161)
+- Fixed a Simulator launch crash, a flaky `LockScreenViewUITests` test, and a Crashlytics-reported `EXC_BAD_ACCESS` in `_peerThreadRoutine` (#153, #154, #155, #156)
+- Added the missing translations (21 locales each) for `BUY / RECEIVE`, `COPY NEW ADDRESS`, and `POWERED BY MOONPAY`, which had been silently falling back to English for every non-English user
+- Removed CircleCI entirely — Xcode Cloud is now the sole CI for this repo (#173)
+- Updated `Private/bw-gdlib` submodule to v1.6.9 and `Modules/core` (#171, #176)
+- Removed confirmed-unused code and resources across the repo — orphaned directories, 55 orphaned `.swift` files, dead Redux actions, unused SwiftUI view modifiers, and dead image/sound resources (328 files changed, 12,450 lines removed) (#157)
+
+**Full Changelog**: https://github.com/gruntsoftware/ios/compare/v3.9.15...v3.9.18
+
+---
+
 ### **v3.9.15**  [PR [#151](https://github.com/gruntsoftware/ios/pull/151)]
 ---
 - Fixed game-exit analytics events being silently dropped: `bw-gdlib` now wraps the exit payload as `{"exitData": ..., "events": [...]}`, and iOS decodes it (`GameExitPayload`) and forwards every collected event to Firebase Analytics instead of throwing/discarding it; Android's `AndroidLauncher` now forwards the same `jsonString` too
