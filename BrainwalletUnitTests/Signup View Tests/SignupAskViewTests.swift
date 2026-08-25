@@ -44,9 +44,7 @@ final class SignupAskViewTests: XCTestCase {
         
         // Simulates the "Maybe later (Skip)" button action for a new wallet
         let isRestoring = false
-        if isRestoring {
-            path.append(.inputWordsView)
-        } else {
+        if !isRestoring {
             path.append(.yourSeedWordsView)
         }
         
@@ -61,8 +59,6 @@ final class SignupAskViewTests: XCTestCase {
         let isRestoring = true
         if isRestoring {
             path.append(.inputWordsView)
-        } else {
-            path.append(.yourSeedWordsView)
         }
         
         XCTAssertEqual(path, [.inputWordsView])

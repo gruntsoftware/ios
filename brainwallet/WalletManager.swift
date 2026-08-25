@@ -1,7 +1,6 @@
 import BRCore
 import Foundation
 import SQLite3
-import SystemConfiguration
 import FirebaseAnalytics
 import FirebaseCrashlytics
 
@@ -32,6 +31,11 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 	var earliestKeyTime: TimeInterval = 0
 
 	var userPreferredfpRate: Double = FalsePositiveRates.semiPrivate.rawValue
+
+	// Long-lived so networkIsReachable() -- called synchronously from the C
+	// peer-manager's networkIsReachable callback -- can just read the
+	// monitor's current path instead of spinning up a new one per call.
+	private let reachability = ReachabilityMonitor()
 
 	static let sharedInstance: WalletManager = {
 		var instance: WalletManager?
@@ -530,13 +534,7 @@ class WalletManager: BRWalletListener, BRPeerManagerListener {
 	}
 
 	func networkIsReachable() -> Bool {
-		var flags: SCNetworkReachabilityFlags = []
-		var zeroAddress = sockaddr()
-		zeroAddress.sa_len = UInt8(MemoryLayout<sockaddr>.size)
-		zeroAddress.sa_family = sa_family_t(AF_INET)
-		guard let reachability = SCNetworkReachabilityCreateWithAddress(nil, &zeroAddress) else { return false }
-		if !SCNetworkReachabilityGetFlags(reachability, &flags) { return false }
-		return flags.contains(.reachable) && !flags.contains(.connectionRequired)
+		return reachability.isReachable
 	}
 
 	private func loadTransactions() -> [BRTxRef?] {

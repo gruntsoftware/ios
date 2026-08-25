@@ -600,7 +600,7 @@ open class BRReplicatedKVStore: NSObject {
 						do {
 							_ = try self.setRemoteVersion(key: key, localVer: localVer, remoteVer: newRemoteVer)
 						} catch let e where e is BRReplicatedKVStoreError {
-							return completionHandler(e as! BRReplicatedKVStoreError)
+                            return completionHandler(e as? BRReplicatedKVStoreError)
 						} catch {
 							return completionHandler(.replicationError)
 						}
@@ -739,9 +739,8 @@ open class BRReplicatedKVStore: NSObject {
 		gettimeofday(&tv, nil)
 		var t = UInt64(tv.tv_usec) * 1_000_000 + UInt64(tv.tv_usec)
 		let p = [UInt8](repeating: 0, count: 4)
-		return Data(bytes: &t, count: MemoryLayout<UInt64>.size).withUnsafeBytes { (dat: UnsafePointer<UInt8>) -> [UInt8] in
-			let buf = UnsafeBufferPointer(start: dat, count: MemoryLayout<UInt64>.size)
-			return p + Array(buf)
+		return Data(bytes: &t, count: MemoryLayout<UInt64>.size).withUnsafeBytes { (buffer: UnsafeRawBufferPointer) -> [UInt8] in
+			p + Array(buffer)
 		}
 	}
 

@@ -86,7 +86,6 @@ extension BWAPIClient {
                     rates = array.compactMap { Rate(data: $0) }
                 }
             }.resume()
-            attemptRequest()
         }
         return rates
     }

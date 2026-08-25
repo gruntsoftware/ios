@@ -1,0 +1,45 @@
+name: 🌐 i18n Coverage Check
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - '**/Localizable.xcstrings'
+      - 'scripts/test_i18n_coverage.py'
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths:
+      - '**/Localizable.xcstrings'
+      - 'scripts/test_i18n_coverage.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  i18n-coverage:
+    name: Check translation coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Lightweight informational check: reports translation coverage per
+      # language and fails the job only if any language drops below
+      # COVERAGE_WARN_PCT (default 80%). It never blocks a release for
+      # in-flight translations -- raise the threshold once the
+      # auto-translate workflow has caught up.
+      - name: Run i18n coverage check
+        run: python3 scripts/test_i18n_coverage.py
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: i18n-coverage-report
+          path: /tmp/i18n_coverage_report.txt
+          if-no-files-found: ignore

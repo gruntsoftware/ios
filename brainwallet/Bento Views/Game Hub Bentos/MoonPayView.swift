@@ -28,10 +28,6 @@ struct MoonPayView: View {
         GeometryReader { geometry in
 
             let width = geometry.size.width
-            let height = geometry.size.height
-
-            let labelBackground = Color.white.opacity(0.1)
-            let labelForeground = Color.white
 
             ZStack {
                 StaticBackgroundView(userPrefersDarkTheme: .constant(false),

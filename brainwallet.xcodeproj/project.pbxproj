@@ -294,7 +294,6 @@
 		C312D39C2D7DC27700BB97A4 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0A92D7DC27700BB97A4 /* WalletInfo.swift */; };
 		C312D3A72D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C32D7DC27700BB97A4 /* UnsafeMutablePointerExtension.swift */; };
 		C312D3B62D7DC27700BB97A4 /* PaymentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2892D7DC27700BB97A4 /* PaymentProtocol.swift */; };
-		C312D3B72D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0832D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift */; };
 		C312D3BC2D7DC27700BB97A4 /* Constants+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2382D7DC27700BB97A4 /* Constants+Events.swift */; };
 		C312D3C22D7DC27700BB97A4 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D22A2D7DC27700BB97A4 /* BundleExtension.swift */; };
 		C312D3C32D7DC27700BB97A4 /* FailedAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2482D7DC27700BB97A4 /* FailedAlertView.swift */; };
@@ -315,7 +314,6 @@
 		C312D3FC2D7DC27700BB97A4 /* UIView+InitAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0842D7DC27700BB97A4 /* UIView+InitAdditions.swift */; };
 		C312D3FD2D7DC27700BB97A4 /* LocaleChangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2632D7DC27700BB97A4 /* LocaleChangeViewModel.swift */; };
 		C312D3FE2D7DC27700BB97A4 /* ReduxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0AC2D7DC27700BB97A4 /* ReduxState.swift */; };
-		C312D4002D7DC27700BB97A4 /* MessageUIPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2802D7DC27700BB97A4 /* MessageUIPresenter.swift */; };
 		C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E32D7DC27700BB97A4 /* DrawableCircle.swift */; };
 		C312D4062D7DC27700BB97A4 /* IntroStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2542D7DC27700BB97A4 /* IntroStepView.swift */; };
 		C312D40C2D7DC27700BB97A4 /* InAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E82D7DC27700BB97A4 /* InAppAlert.swift */; };
@@ -379,6 +377,7 @@
 		C38F57252FD490430005538A /* boingspringmouthharp042013.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */; };
 		C395E2B83013770A00CF5F5B /* EnterPinForSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */; };
 		C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0BBC22FF6DB11000D5DB8 /* AlertToast */; };
+		C3BC6CBD303331FB00A04919 /* UIApplication+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC6CBC303331D800A04919 /* UIApplication+Additions.swift */; };
 		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
 		C3CE34612FFD8D1F004A2ECA /* LilitaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CE34602FFD8D1F004A2ECA /* LilitaOne.ttf */; };
 		C3E18A9F2F9E657000966C74 /* ShopCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */; };
@@ -390,6 +389,7 @@
 		C3FACF6C2F9E023700886FAD /* GameHubCarouselBentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */; };
 		C3FACF6E2F9E025300886FAD /* MoonPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6D2F9E025300886FAD /* MoonPayView.swift */; };
 		C3FACF702F9E026500886FAD /* SocialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6F2F9E026500886FAD /* SocialsView.swift */; };
+		C74016995BF8E51D0570D4A3 /* VariableBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907D0CB963306B3055BAA1B /* VariableBlurView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -827,7 +827,6 @@
 		C312D0802D7DC27700BB97A4 /* UITableView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Additions.swift"; sourceTree = "<group>"; };
 		C312D0812D7DC27700BB97A4 /* UIView+AnimationAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AnimationAdditions.swift"; sourceTree = "<group>"; };
 		C312D0822D7DC27700BB97A4 /* UIView+BRWAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BRWAdditions.swift"; sourceTree = "<group>"; };
-		C312D0832D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FrameChangeBlocking.swift"; sourceTree = "<group>"; };
 		C312D0842D7DC27700BB97A4 /* UIView+InitAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+InitAdditions.swift"; sourceTree = "<group>"; };
 		C312D0852D7DC27700BB97A4 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		C312D0862D7DC27700BB97A4 /* UIViewController+BRWAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+BRWAdditions.swift"; sourceTree = "<group>"; };
@@ -906,7 +905,6 @@
 		C312D2792D7DC27700BB97A4 /* LockScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenViewModel.swift; sourceTree = "<group>"; };
 		C312D27D2D7DC27700BB97A4 /* LWActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWActivityIndicator.swift; sourceTree = "<group>"; };
 		C312D27F2D7DC27700BB97A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		C312D2802D7DC27700BB97A4 /* MessageUIPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageUIPresenter.swift; sourceTree = "<group>"; };
 		C312D2812D7DC27700BB97A4 /* MockSeeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSeeds.swift; sourceTree = "<group>"; };
 		C312D2822D7DC27700BB97A4 /* ModalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresenter.swift; sourceTree = "<group>"; };
 		C312D2832D7DC27700BB97A4 /* MoonpayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonpayHelper.swift; sourceTree = "<group>"; };
@@ -960,6 +958,7 @@
 		C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBentoViewModel.swift; sourceTree = "<group>"; };
 		C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boingspringmouthharp042013.mp3; sourceTree = "<group>"; };
 		C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPinForSeedView.swift; sourceTree = "<group>"; };
+		C3BC6CBC303331D800A04919 /* UIApplication+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Additions.swift"; sourceTree = "<group>"; };
 		C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupAskView.swift; sourceTree = "<group>"; };
 		C3CE34602FFD8D1F004A2ECA /* LilitaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LilitaOne.ttf; sourceTree = "<group>"; };
 		C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCardsView.swift; sourceTree = "<group>"; };
@@ -971,6 +970,7 @@
 		C3FACF6B2F9E023700886FAD /* GameHubCarouselBentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHubCarouselBentoView.swift; sourceTree = "<group>"; };
 		C3FACF6D2F9E025300886FAD /* MoonPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPayView.swift; sourceTree = "<group>"; };
 		C3FACF6F2F9E026500886FAD /* SocialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialsView.swift; sourceTree = "<group>"; };
+		D907D0CB963306B3055BAA1B /* VariableBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableBlurView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -1184,6 +1184,7 @@
 		242871822DE5C4E10035DE48 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				C3BC6CBC303331D800A04919 /* UIApplication+Additions.swift */,
 				C312D0872D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift */,
 				C312D0882D7DC27700BB97A4 /* UIViewPropertyAnimator+BRWAdditions.swift */,
 				C312D07A2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift */,
@@ -2012,7 +2013,6 @@
 				C312D0722D7DC27700BB97A4 /* LAContext+Extensions.swift */,
 				C312D07B2D7DC27700BB97A4 /* UIImage+Utils.swift */,
 				C312D0822D7DC27700BB97A4 /* UIView+BRWAdditions.swift */,
-				C312D0832D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift */,
 				C312D0852D7DC27700BB97A4 /* UIViewController+Alerts.swift */,
 				C312D1B92D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift */,
 				C312D1C12D7DC27700BB97A4 /* PinPadViewController.swift */,
@@ -2073,7 +2073,6 @@
 				C312D2632D7DC27700BB97A4 /* LocaleChangeViewModel.swift */,
 				C312D27D2D7DC27700BB97A4 /* LWActivityIndicator.swift */,
 				C312D27F2D7DC27700BB97A4 /* MainViewController.swift */,
-				C312D2802D7DC27700BB97A4 /* MessageUIPresenter.swift */,
 				C312D2812D7DC27700BB97A4 /* MockSeeds.swift */,
 				C312D2822D7DC27700BB97A4 /* ModalPresenter.swift */,
 				24B7D75C2DF6F9F60031F129 /* ModalPresenter+Extension.swift */,
@@ -2094,6 +2093,7 @@
 				C312D2C02D7DC27700BB97A4 /* TransferAmountViewModel.swift */,
 				C3236A002D7DE34D007039A1 /* URLController.swift */,
 				C312D2C62D7DC27700BB97A4 /* UserDefaultsUpdater.swift */,
+				D907D0CB963306B3055BAA1B /* VariableBlurView.swift */,
 				C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */,
 				C312D2C92D7DC27700BB97A4 /* WalletManager.swift */,
 				C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */,
@@ -2237,7 +2237,6 @@
 				C35312F32FE1B5B100FC2840 /* Flatten+Sign+Relocate Asset Frameworks */,
 				75A2A78D1DA5934300A983D8 /* Frameworks */,
 				75A2A78E1DA5934300A983D8 /* Resources */,
-				C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */,
 				C3A3FFB526FE46E8000FE955 /* Mark Dev Notes */,
 				58A9FE4C291BC37400B75825 /* Count number of swift lines */,
 				246F97EC2E846230001923A6 /* Embed Frameworks */,
@@ -2602,26 +2601,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# http://www.benzado.com/blog/post/329/make-xcode-nag-you-about-unfinished-todos\necho \"make-xcode-nag-you-about-unfinished-todos for swift files only\"\nKEYWORDS=\"DEV:|TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\\brainwallet\" \\( -name \"*.swift\" \\) -print0 | \\\nxargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | \\\nperl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
 		};
-		C3D00A6D2D1B10E900AC2840 /* Run Script for CircleCI SPM Caching */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script for CircleCI SPM Caching";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/newOutputFile-circleci-spm-cache",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#cp brainwallet.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved Package.resolved\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2718,7 +2697,9 @@
 				246C3F5A2F2431B6009BC881 /* TutorialSendBentoView.swift in Sources */,
 				C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */,
 				C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */,
+				C3BC6CBD303331FB00A04919 /* UIApplication+Additions.swift in Sources */,
 				C312D3132D7DC27700BB97A4 /* UserDefaultsUpdater.swift in Sources */,
+				C74016995BF8E51D0570D4A3 /* VariableBlurView.swift in Sources */,
 				C312D3152D7DC27700BB97A4 /* UILabel+BRWAdditions.swift in Sources */,
 				C312D3172D7DC27700BB97A4 /* BiometricsSpendingLimitViewController.swift in Sources */,
 				C312D3192D7DC27700BB97A4 /* Rate.swift in Sources */,
@@ -2840,7 +2821,6 @@
 				242C43F32F253A3E00CF6EA4 /* TutorialWalkthroughBentoView.swift in Sources */,
 				C312D3B62D7DC27700BB97A4 /* PaymentProtocol.swift in Sources */,
 				24B0653D2DC6476A00B5E000 /* BentoSendPrepView.swift in Sources */,
-				C312D3B72D7DC27700BB97A4 /* UIView+FrameChangeBlocking.swift in Sources */,
 				24F378022DE89C7800A388AB /* MoonPayHelper.swift in Sources */,
 				C312D3BC2D7DC27700BB97A4 /* Constants+Events.swift in Sources */,
 				C312D3C22D7DC27700BB97A4 /* BundleExtension.swift in Sources */,
@@ -2882,7 +2862,6 @@
 				C312D3FE2D7DC27700BB97A4 /* ReduxState.swift in Sources */,
 				24A0ACAB2E0C812C0077E695 /* SettingsLitecoinDetailView.swift in Sources */,
 				24D7AE562DCFF6870078252E /* NewConfirmView.swift in Sources */,
-				C312D4002D7DC27700BB97A4 /* MessageUIPresenter.swift in Sources */,
 				C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */,
 				24B0653B2DC6433800B5E000 /* SimpleHeaderView.swift in Sources */,
 				C312D4062D7DC27700BB97A4 /* IntroStepView.swift in Sources */,
@@ -3212,7 +3191,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602306;
+				CURRENT_PROJECT_VERSION = 2602311;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3234,7 +3213,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/bw-gdlib/<robovm-output-dir>";
-				MARKETING_VERSION = 3.9.16;
+				MARKETING_VERSION = 3.9.17;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
 					"$(inherited)",
@@ -3414,7 +3393,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602306;
+				CURRENT_PROJECT_VERSION = 2602311;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3435,7 +3414,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/bw-gdlib/<robovm-output-dir>";
-				MARKETING_VERSION = 3.9.16;
+				MARKETING_VERSION = 3.9.17;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				"OTHER_LDFLAGS[sdk=iphoneos*]" = (

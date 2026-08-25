@@ -33,7 +33,7 @@ jobs:
             -- '*.swift' '*.m' '*.h' '*.c' '*.xib' '*.storyboard' \
                '*.xcconfig' '*.plist' '*.yaml' '*.yml' '*.json' \
                'Package.swift' 'Package.resolved' 'Podfile' 'Podfile.lock' \
-               '.circleci/**' '.github/**' \
+               'ci_scripts/**' '.github/**' \
             | head -c 32000 > pr_diff.txt
 
           # Summarise stats for the prompt
@@ -83,20 +83,20 @@ jobs:
               /\.xib$|\.storyboard$|Color|Theme|Style|Asset/.test(f)
             );
             const isConfig = files.some(f =>
-              /\.xcconfig$|\.plist$|Package\.swift$|Podfile|\.circleci|\.github/.test(f)
+              /\.xcconfig$|\.plist$|Package\.swift$|Podfile|ci_scripts|\.github/.test(f)
             );
             const isPerfOrFix = files.some(f =>
               /Fix|Bug|Crash|Patch|Hotfix/i.test(f)
             );
             const isCICD = files.some(f =>
-              /\.circleci|\.github|fastlane|Fastfile|Matchfile/.test(f)
+              /ci_scripts|\.github|fastlane|Fastfile|Matchfile/.test(f)
             );
 
             // --- Build Claude prompt ---
             const prompt = `
             You are a senior iOS engineer reviewing a pull request for the Brainwallet iOS app
             (Swift, SwiftUI + UIKit hybrid, AppDelegate architecture, Firebase Analytics/Crashlytics,
-            CircleCI + Xcode Cloud CI, Swift Package Manager dependencies).
+            Xcode Cloud CI, Swift Package Manager dependencies).
 
             Repository layout:
             - brainwallet/                  → Main app source (Swift, SwiftUI Views, ViewControllers)
@@ -105,7 +105,7 @@ jobs:
             - BrainwalletUITests/           → XCUITest UI test suite
             - Modules/                      → SPM local modules
             - Private/                      → Private keys / provisioning (gitignored in prod)
-            - .circleci/                    → CircleCI pipeline config
+            - ci_scripts/                   → Xcode Cloud custom build scripts
             - .github/                      → GitHub Actions workflows
             - fastlane/                     → Fastlane lanes (scan, match, deliver)
             - BrainwalletHybrid.xcworkspace → Workspace root

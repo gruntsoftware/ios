@@ -67,7 +67,9 @@ extension WalletManager: WalletAuthenticator {
 		var earliestKeyTime = BIP39CreationTime
 		if let creationTime: Data = try keychainItem(key: KeychainKey.creationTime),
 		   creationTime.count == MemoryLayout<TimeInterval>.stride {
-			creationTime.withUnsafeBytes { earliestKeyTime = $0.pointee }
+			creationTime.withUnsafeBytes { (buffer: UnsafeRawBufferPointer) in
+				earliestKeyTime = buffer.load(as: TimeInterval.self)
+			}
 		}
 
 		try self.init(masterPubKey: masterPubKey,
@@ -390,15 +392,27 @@ extension WalletManager: WalletAuthenticator {
 		// wrapping in an autorelease pool ensures sensitive memory is wiped and released immediately
 		return autoreleasepool {
 			var entropy = UInt128()
-			let entropyRef = UnsafeMutableRawPointer(mutating: &entropy).assumingMemoryBound(to: UInt8.self)
-			guard SecRandomCopyBytes(kSecRandomDefault, MemoryLayout<UInt128>.size, entropyRef) == 0
-			else { return nil }
-			let phraseLen = BRBIP39Encode(nil, 0, &words, entropyRef, MemoryLayout<UInt128>.size)
-			var phraseData = CFDataCreateMutable(secureAllocator, phraseLen) as Data
-			phraseData.count = phraseLen
-			guard phraseData.withUnsafeMutableBytes({
-				BRBIP39Encode($0, phraseLen, &words, entropyRef, MemoryLayout<UInt128>.size)
-			}) == phraseData.count else { return nil }
+			var phraseData = Data()
+
+			// entropyRef is only valid for the lifetime of this closure -- every use of it
+			// (SecRandomCopyBytes and both BRBIP39Encode calls) has to happen inside here.
+			let encodeSucceeded: Bool = withUnsafeMutableBytes(of: &entropy) { entropyBuffer in
+				let entropyRef = entropyBuffer.baseAddress!.assumingMemoryBound(to: UInt8.self)
+				guard SecRandomCopyBytes(kSecRandomDefault, MemoryLayout<UInt128>.size, entropyRef) == 0
+				else { return false }
+
+				let phraseLen = BRBIP39Encode(nil, 0, &words, entropyRef, MemoryLayout<UInt128>.size)
+				var data = CFDataCreateMutable(secureAllocator, phraseLen) as Data
+				data.count = phraseLen
+				guard data.withUnsafeMutableBytes({ (buffer: UnsafeMutableRawBufferPointer) in
+					BRBIP39Encode(buffer.baseAddress?.assumingMemoryBound(to: CChar.self), phraseLen, &words, entropyRef, MemoryLayout<UInt128>.size)
+				}) == data.count else { return false }
+
+				phraseData = data
+				return true
+			}
+			guard encodeSucceeded else { return nil }
+
 			entropy = UInt128()
 			let phrase = CFStringCreateFromExternalRepresentation(secureAllocator, phraseData as CFData,
 			                                                      CFStringBuiltInEncodings.UTF8.rawValue) as String
@@ -466,7 +480,7 @@ extension WalletManager: WalletAuthenticator {
          
         // KV store — guard against nil authKey (the crash site)
         do {
-            if let kv = try? BWAPIClient(authenticator: self).kv {
+            if let kv = BWAPIClient(authenticator: self).kv {
                 try kv.rmdb()
             }
         } catch let error {
@@ -534,7 +548,9 @@ extension WalletManager: WalletAuthenticator {
 				let pkLen = BRKeyPrivKey(&key, nil, 0)
 				var pkData = CFDataCreateMutable(secureAllocator, pkLen) as Data
 				pkData.count = pkLen
-				guard pkData.withUnsafeMutableBytes({ BRKeyPrivKey(&key, $0, pkLen) }) == pkLen else { return nil }
+				guard pkData.withUnsafeMutableBytes({ (buffer: UnsafeMutableRawBufferPointer) in
+					BRKeyPrivKey(&key, buffer.baseAddress?.assumingMemoryBound(to: CChar.self), pkLen)
+				}) == pkLen else { return nil }
 				let privKey = CFStringCreateFromExternalRepresentation(secureAllocator, pkData as CFData,
 				                                                       CFStringBuiltInEncodings.UTF8.rawValue) as String
 				try setKeychainItem(key: KeychainKey.apiAuthKey, item: privKey)
@@ -624,9 +640,16 @@ private func keychainItem<T>(key: String) throws -> T? {
 		                                                CFStringBuiltInEncodings.UTF8.rawValue) as? T
 	case is Int64.Type:
 		guard data.count == MemoryLayout<T>.stride else { return nil }
-		return data.withUnsafeBytes { $0.pointee }
+		return data.withUnsafeBytes { (buffer: UnsafeRawBufferPointer) -> T in
+			buffer.load(as: T.self)
+		}
 	case is [AnyHashable: Any].Type:
-		return NSKeyedUnarchiver.unarchiveObject(with: data) as? T
+		// Allowlist of plist-compatible classes userAccount's dictionary can actually
+		// contain -- unarchivedObject(ofClasses:from:) refuses to instantiate anything
+		// outside this set, unlike the deprecated unarchiveObject(with:) it replaces.
+		let allowedClasses: [AnyClass] = [NSDictionary.self, NSArray.self, NSString.self,
+		                                   NSNumber.self, NSDate.self, NSData.self, NSNull.self]
+		return try NSKeyedUnarchiver.unarchivedObject(ofClasses: allowedClasses, from: data) as? T
 	default:
 		throw NSError(domain: NSOSStatusErrorDomain, code: Int(errSecParam))
 	}
@@ -645,13 +668,13 @@ private func setKeychainItem<T>(key: String, item: T?, authenticated: Bool = fal
 		case is Data.Type:
 			data = item as? Data
 		case is String.Type:
-            data = CFStringCreateExternalRepresentation(secureAllocator, item as! CFString,
+                data = CFStringCreateExternalRepresentation(secureAllocator, (item as! CFString),
 			                                            CFStringBuiltInEncodings.UTF8.rawValue, 0) as Data
 		case is Int64.Type:
 			data = CFDataCreateMutable(secureAllocator, MemoryLayout<T>.stride) as Data
 			[item].withUnsafeBufferPointer { data?.append($0) }
 		case is [AnyHashable: Any].Type:
-			data = NSKeyedArchiver.archivedData(withRootObject: item)
+			data = try NSKeyedArchiver.archivedData(withRootObject: item, requiringSecureCoding: true)
 		default:
 			throw NSError(domain: NSOSStatusErrorDomain, code: Int(errSecParam))
 		}

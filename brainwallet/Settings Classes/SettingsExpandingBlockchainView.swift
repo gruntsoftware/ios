@@ -69,8 +69,8 @@ struct SettingsExpandingBlockchainView: View {
                         SettingsLitecoinDetailView(willSync: $willSync)
                             .transition(.opacity)
                             .transition(.slide)
-                            .animation(.easeInOut(duration: 0.3))
                             .frame(height: shouldExpandBlockchain ? 200 : 0.1)
+                            .animation(.easeInOut(duration: 0.3), value: shouldExpandBlockchain)
                         Spacer()
                     }
                     .alert(String(localized: "Sync with Blockchain?"),

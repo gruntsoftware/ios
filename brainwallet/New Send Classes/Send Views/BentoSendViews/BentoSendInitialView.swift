@@ -379,7 +379,7 @@ struct BentoSendInitialView: View {
                 return
             }
             sendLTCAddress = pasteboard
-            isSendInformationValid()
+            _ = isSendInformationValid()
         }
         .onChange(of: isLTCValueShown) { _,newValue in
             newMainViewModel.isLTCValueShown = newValue

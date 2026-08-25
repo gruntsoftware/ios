@@ -57,11 +57,7 @@ extension ModalPresenter {
 
     func presentAlert(_ type: AlertType, completion: @escaping () -> Void) {
         let alertView = AlertView(type: type)
-        guard let window = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first
-        else {
-            return
-        }
-
+        guard let window = UIApplication.shared.currentKeyWindow else { return }
         let size = window.bounds.size
         window.addSubview(alertView)
 

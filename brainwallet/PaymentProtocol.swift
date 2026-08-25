@@ -81,7 +81,8 @@ class PaymentProtocolRequest {
 	init?(version: UInt32 = 1, pkiType: String = "none", pkiData: [UInt8]? = nil, details: PaymentProtocolDetails,
 	      signature: [UInt8]? = nil) {
 		guard details.isManaged else { return nil } // request must be able take over memory management of details
-		guard let cPointer = BRPaymentProtocolRequestNew(version, pkiType, pkiData, pkiData?.count ?? 0, details.cPointer,
+		guard let cPointer = BRPaymentProtocolRequestNew(version,
+                                                         pkiType, pkiData, pkiData?.count ?? 0, details.cPointer,
 		                                             signature, signature?.count ?? 0) else { return nil }
 		details.isManaged = false
 		self.cPointer = cPointer
@@ -96,7 +97,8 @@ class PaymentProtocolRequest {
 	}
 
 	var bytes: [UInt8] {
-		var bytes = [UInt8](repeating: 0, count: BRPaymentProtocolRequestSerialize(cPointer, nil, 0))
+		var bytes = [UInt8](repeating: 0,
+                            count: BRPaymentProtocolRequestSerialize(cPointer, nil, 0))
 		BRPaymentProtocolRequestSerialize(cPointer, &bytes, bytes.count)
 		return bytes
 	}
@@ -111,7 +113,8 @@ class PaymentProtocolRequest {
 
 	var pkiData: [UInt8]? { // depends on pkiType, optional
 		guard cPointer.pointee.pkiData != nil else { return nil }
-		return [UInt8](UnsafeBufferPointer(start: cPointer.pointee.pkiData, count: cPointer.pointee.pkiDataLen))
+		return [UInt8](UnsafeBufferPointer(start: cPointer.pointee.pkiData,
+                                           count: cPointer.pointee.pkiDataLen))
 	}
 
 	var details: PaymentProtocolDetails { // required
@@ -120,7 +123,8 @@ class PaymentProtocolRequest {
 
 	var signature: [UInt8]? { // pki-dependent signature, optional
 		guard cPointer.pointee.signature != nil else { return nil }
-		return [UInt8](UnsafeBufferPointer(start: cPointer.pointee.signature, count: cPointer.pointee.sigLen))
+		return [UInt8](UnsafeBufferPointer(start: cPointer.pointee.signature,
+                                           count: cPointer.pointee.sigLen))
 	}
 
 	var certs: [[UInt8]] { // array of DER encoded certificates
@@ -128,8 +132,12 @@ class PaymentProtocolRequest {
 		var idx = 0
 
 		while BRPaymentProtocolRequestCert(cPointer, nil, 0, idx) > 0 {
-			certs.append([UInt8](repeating: 0, count: BRPaymentProtocolRequestCert(cPointer, nil, 0, idx)))
-			BRPaymentProtocolRequestCert(cPointer, UnsafeMutablePointer(mutating: certs[idx]), certs[idx].count, idx)
+			var cert = [UInt8](repeating: 0,
+                               count: BRPaymentProtocolRequestCert(cPointer, nil, 0, idx))
+			cert.withUnsafeMutableBufferPointer { buffer in
+				_ = BRPaymentProtocolRequestCert(cPointer, buffer.baseAddress, buffer.count, idx)
+			}
+			certs.append(cert)
 			idx = idx + 1
 		}
 
@@ -137,8 +145,11 @@ class PaymentProtocolRequest {
 	}
 
 	var digest: [UInt8] { // hash of the request needed to sign or verify the request
-		let digest = [UInt8](repeating: 0, count: BRPaymentProtocolRequestDigest(cPointer, nil, 0))
-		BRPaymentProtocolRequestDigest(cPointer, UnsafeMutablePointer(mutating: digest), digest.count)
+		var digest = [UInt8](repeating: 0,
+                             count: BRPaymentProtocolRequestDigest(cPointer, nil, 0))
+		digest.withUnsafeMutableBufferPointer { buffer in
+			_ = BRPaymentProtocolRequestDigest(cPointer, buffer.baseAddress, buffer.count)
+		}
 		return digest
 	}
 
@@ -149,10 +160,9 @@ class PaymentProtocolRequest {
 			var certs = [SecCertificate]()
 			let policies = [SecPolicy](repeating: SecPolicyCreateBasicX509(), count: 1)
 			var trust: SecTrust?
-			var trustResult = SecTrustResultType.invalid
 
 			for c in self.certs {
-				if let cert = SecCertificateCreateWithData(nil, Data(bytes: c) as CFData) { certs.append(cert) }
+				if let cert = SecCertificateCreateWithData(nil, Data(c) as CFData) { certs.append(cert) }
 			}
 
 			if !certs.isEmpty {
@@ -160,44 +170,47 @@ class PaymentProtocolRequest {
 			}
 
 			SecTrustCreateWithCertificates(certs as CFTypeRef, policies as CFTypeRef, &trust)
-			if let trust = trust { SecTrustEvaluate(trust, &trustResult) } // verify certificate chain
+			var trustError: CFError?
+			// verify certificate chain; SecTrustEvaluateWithError also subsumes what
+			// SecTrustCopyProperties used to be needed for below (a human-readable
+			// reason for the failure)
+			let isTrusted = trust.map { SecTrustEvaluateWithError($0, &trustError) } ?? false
 
-			// .unspecified indicates a positive result that wasn't decided by the user
-			guard trustResult == .unspecified || trustResult == .proceed
+			guard isTrusted
 			else {
 				errMsg = !certs.isEmpty ? "S.PaymentProtocol.Errors.untrustedCertificate"  : "S.PaymentProtocol.Errors.missingCertificate"
 
-				if let trust = trust, let properties = SecTrustCopyProperties(trust) {
-					for prop in properties as! [[AnyHashable: Any]] {
-						if prop["type"] as? String != kSecPropertyTypeError as String { continue }
-						errMsg = errMsg! + " - " + (prop["value"] as! String)
-						break
-					}
+				if let trustError = trustError {
+					errMsg = errMsg! + " - " + (trustError as Error).localizedDescription
 				}
 
 				return false
 			}
 
-			var status = errSecUnimplemented
 			var pubKey: SecKey?
-			if let trust = trust { pubKey = SecTrustCopyPublicKey(trust) }
+			if let trust = trust { pubKey = SecTrustCopyKey(trust) }
 
+			var verifyError: Unmanaged<CFError>?
+			var isSignatureValid = false
 			if let pubKey = pubKey, let signature = signature {
 				if pkiType == "x509+sha256" {
-					status = SecKeyRawVerify(pubKey, .PKCS1SHA256, digest, digest.count, signature, signature.count)
+					isSignatureValid = SecKeyVerifySignature(pubKey, .rsaSignatureDigestPKCS1v15SHA256,
+					                                          Data(digest) as CFData, Data(signature) as CFData, &verifyError)
 				} else if pkiType == "x509+sha1" {
-					status = SecKeyRawVerify(pubKey, .PKCS1SHA1, digest, digest.count, signature, signature.count)
+					isSignatureValid = SecKeyVerifySignature(pubKey, .rsaSignatureDigestPKCS1v15SHA1,
+					                                          Data(digest) as CFData, Data(signature) as CFData, &verifyError)
 				}
 			}
 
-			guard status == errSecSuccess
+			guard isSignatureValid
 			else {
-				if status == errSecUnimplemented {
+				if pkiType != "x509+sha256", pkiType != "x509+sha1" {
 					errMsg = "S.PaymentProtocol.Errors.unsupportedSignatureType"
 					print(errMsg!)
 				} else {
-					errMsg = NSError(domain: NSOSStatusErrorDomain, code: Int(status)).localizedDescription
-					debugPrint(":::SecKeyRawVerify error: " + errMsg!)
+					let underlyingError = verifyError?.takeRetainedValue()
+					errMsg = (underlyingError as Error?)?.localizedDescription ?? "S.PaymentProtocol.Errors.unsupportedSignatureType"
+					debugPrint(":::SecKeyVerifySignature error: " + errMsg!)
 				}
 
 				return false

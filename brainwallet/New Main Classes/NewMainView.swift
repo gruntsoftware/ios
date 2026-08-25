@@ -120,7 +120,6 @@ struct NewMainView: View {
     var body: some View {
         GeometryReader { geometry in
 
-            let width = geometry.size.width
             let height = geometry.size.height
             let midBentoHeight = geometry.size.height
             let sheetContentHeight = height * 0.7
@@ -470,16 +469,20 @@ struct NewMainView: View {
                     }
                 }
                 .sheet(isPresented: $userDidTapBuyReceive) {
-                    BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
+                    BuyReceiveView(viewModel: newReceiveViewModel,
+                                   isModalMode: true)
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
+                        .presentationBackground(.ultraThinMaterial)
                 }
                 .sheet(isPresented: $newMainViewModel.shouldShowBuyReceive) {
-                    BuyReceiveView(viewModel: newReceiveViewModel, isModalMode: true)
+                    BuyReceiveView(viewModel: newReceiveViewModel,
+                                   isModalMode: true)
                         .cornerRadius(bentoCornerRadius)
                         .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
+                        .presentationBackground(.ultraThinMaterial)
                 }
                 .sheet(isPresented: $newMainViewModel.shouldShowSocials) {
                     WebView(url: socialsURL, scrollToSignup: .constant(false))
