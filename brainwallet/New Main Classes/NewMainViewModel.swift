@@ -125,6 +125,11 @@ class NewMainViewModel: ObservableObject, Subscriber {
     @Published
     var currentNetworkFee = Litecoin(rawValue: 0.0)
 
+    /// Tiered (economy/regular/luxury) fee-per-kb, sourced from BWAPIClient.feePerKb(_:)
+    /// (GET v1/fee-per-kb) — backs the Network Fee picker in SettingsLitecoinDetailView.
+    @Published
+    var currentFees: Fees = .usingDefaultValues
+
     @Published
     var currentPreFeeAmount = Litecoin(rawValue: 0.0)
 
@@ -253,6 +258,20 @@ class NewMainViewModel: ObservableObject, Subscriber {
         dateFormatter!.setLocalizedDateFormatFromTemplate("dd MMM hh:mm:ss a")
         setBalances()
         updateTransactions()
+        fetchNetworkFees()
+    }
+
+    /// Fetches the tiered fee-per-kb from the mobile-api (v1/fee-per-kb) and
+    /// publishes it as `currentFees` for the Settings network fee picker.
+    private func fetchNetworkFees() {
+        walletManager?.apiClient?.feePerKb { [weak self] fees, error in
+            guard let self else { return }
+            if let error {
+                debugPrint("::: ERROR: fee-per-kb fetch failed: \(error)")
+                return
+            }
+            self.currentFees = fees
+        }
     }
 
     deinit {

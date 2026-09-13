@@ -26,6 +26,7 @@ let numberOfBrainwalletLaunches = "NumberOfBrainwalletLaunches"
 let appHasRequestedReviewKey = "appHasRequestedReviewKey"
 let userDidPreferDarkModeKey = "UserDidPreferDarkMode"
 let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
+let userSetPreferredNetworkFeeKey = "UserSetPreferredNetworkFeeKey"
 
 public extension NSNotification.Name {
     static let walletBalanceChangedNotification = NSNotification.Name("WalletBalanceChanged")
@@ -48,7 +49,19 @@ public extension NSNotification.Name {
 }
 
 extension UserDefaults {
-
+    
+    
+    static var userSetPreferredNetworkFee: Int {
+        get {
+            guard defaults.object(forKey: userSetPreferredNetworkFeeKey) != nil
+            else {
+                return Int(Fees.usingDefaultValues.luxury)
+            }
+            return defaults.integer(forKey: userSetPreferredNetworkFeeKey)
+        }
+        set { defaults.set(newValue, forKey: userSetPreferredNetworkFeeKey) }
+    }
+     
     static var userCanBuyInCurrentLocale: Bool {
         get {
             guard defaults.object(forKey: userCurrentLocaleMPApprovedKey) != nil

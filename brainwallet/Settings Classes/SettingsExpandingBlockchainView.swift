@@ -19,8 +19,14 @@ struct SettingsExpandingBlockchainView: View {
 
     @State
     private var willSync: Bool = false
+    
+    @State
+    private var userWantsTrustedNode: Bool = false
 
     private var title: String
+
+    /// Height of the detail panel when expanded; total expanded row = closedRowHeight + this.
+    private let detailExpandedHeight: CGFloat = 300.0
 
     init(title: String, viewModel: NewMainViewModel, shouldExpandBlockchain: Binding <Bool>) {
         self.title = title
@@ -28,64 +34,54 @@ struct SettingsExpandingBlockchainView: View {
         self.viewModel = viewModel
     }
 
-    var body: some View {
-        NavigationStack {
-            GeometryReader { _ in
-                ZStack {
-                    VStack {
-                        HStack {
-                            VStack {
-                                Text(title)
-                                    .modifier(BWIPSSemiBold(size: 19.0))
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .frame(height: 25.0)
-                                    .padding(.top, 8.0)
-                            }
+    @ViewBuilder
+    private var blockchainDetail: some View {
+        SettingsLitecoinDetailView(willSync: $willSync,
+                                   userWantsTrustedNode: $userWantsTrustedNode,
+                                   fees: viewModel.currentFees,
+                                   currentRate: viewModel.exchangeRate)
+            .frame(maxWidth: .infinity)
+    }
 
-                            Spacer()
-                            VStack {
-                                Button(action: {
-                                    shouldExpandBlockchain.toggle()
-                                }) {
-                                    VStack {
-                                        HStack {
-                                            Image(systemName: "chevron.right")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: expandArrowSize,
-                                                    height: expandArrowSize)
-                                                .foregroundColor(BrainwalletColor.content)
-                                                .rotationEffect(Angle(degrees: shouldExpandBlockchain ? 90 : 0))
-                                        }
-                                    }
-                                    .frame(width: 30.0, height: 30.0, alignment: .top)
-                                    .padding(.top, 9.0)
-                                }
-                                .frame(width: 30.0, height: 30.0)
-                            }
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0.0) {
+            Divider()
+                .frame(height: 1)
+                .overlay(Color.white)
+            Text(title)
+                .modifier(BWIPSSemiBold(size: 15.0))
+                .foregroundColor(BrainwalletColor.content)
+                .frame(maxWidth: .infinity, alignment: .leadingFirstTextBaseline)
+                .frame(height: closedRowHeight)
+                .overlay(alignment: .trailing) {
+                    Button(action: {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            shouldExpandBlockchain.toggle()
                         }
-                        .padding(.top, 1.0)
-                        SettingsLitecoinDetailView(willSync: $willSync)
-                            .transition(.opacity)
-                            .transition(.slide)
-                            .frame(height: shouldExpandBlockchain ? 200 : 0.1)
-                            .animation(.easeInOut(duration: 0.3), value: shouldExpandBlockchain)
-                        Spacer()
+                        let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                        impactMed.impactOccurred()
+                    }) {
+                        Image(systemName: "chevron.down")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: expandArrowSize, height: expandArrowSize)
+                            .foregroundColor(BrainwalletColor.content)
+                            .rotationEffect(Angle(degrees: shouldExpandBlockchain ? 180 : 0))
                     }
-                    .alert(String(localized: "Sync with Blockchain?"),
-                        isPresented: $willSync,
-                        actions: {
-                            Button(String(localized: "Cancel"), role: .cancel) { }
-                            Button( String(localized: "Ok"), role: .destructive) {
-                                viewModel.userWillSyncBlockchain()
-                            }
-                           },
-                           message: {
-                               Text("You will not be able to send Litecoin while syncing. It may take a while.")
-                           })
+                    .frame(width: 30.0, height: 30.0)
+                    .contentShape(Rectangle())
                 }
+
+            ScrollView(.vertical) {
+                blockchainDetail
             }
+            .frame(height: shouldExpandBlockchain ? detailExpandedHeight : 0.0, alignment: .top)
+            .clipped()
+            .opacity(shouldExpandBlockchain ? 1.0 : 0.0)
+            .allowsHitTesting(shouldExpandBlockchain)
+            .scrollIndicators(.visible)
         }
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .fixedSize(horizontal: false, vertical: true)
     }
 }

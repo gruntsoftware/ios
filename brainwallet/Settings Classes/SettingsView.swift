@@ -42,9 +42,6 @@ struct SettingsView: View {
     @State
     private var shouldShowSupportSheet: Bool = false
 
-    @State
-    private var tempRowHeight: CGFloat = closedRowHeight
-
     let footerRowHeight: CGFloat = 55.0
 
     let squareButtonSize: CGFloat = 55.0
@@ -78,85 +75,68 @@ struct SettingsView: View {
 
                     HStack {
                         VStack {
-                            List {
-                                SettingsExpandingSecurityView(title: String(localized: "Security"),
-                                     viewModel: newMainViewModel, shouldExpandSecurity: $shouldExpandSecurity)
-                                .frame(height: shouldExpandSecurity ? 300 : tempRowHeight)
-                                .listRowBackground(shouldExpandSecurity ? BrainwalletColor.background : BrainwalletColor.surface)
-                                .listRowInsets(EdgeInsets())
-                                .listRowSeparatorTint(BrainwalletColor.content)
-                                .padding(.top, leadRowPad)
-                                .padding(.leading, leadRowPad)
-                                .padding(.trailing, trailRowPad)
-                                SettingsExpandingCurrencyView(title: String(localized: "Fiat Currency"),
-                                    viewModel: newMainViewModel, shouldExpandCurrency: $shouldExpandCurrency)
-                                .frame(height: shouldExpandCurrency ? pickerViewHeight : tempRowHeight)
-                                .listRowBackground(shouldExpandCurrency ? BrainwalletColor.background : BrainwalletColor.surface)
-                                .listRowInsets(EdgeInsets())
-                                .listRowSeparatorTint(BrainwalletColor.content)
-                                .padding(.leading, leadRowPad)
-                                .padding(.trailing, trailRowPad)
-                                SettingsExpandingBlockchainView(title: String(localized: "Blockchain: Litecoin"),
-                                    viewModel: newMainViewModel, shouldExpandBlockchain: $shouldExpandBlockchain)
-                                .frame(maxWidth: .infinity)
-                                .frame(height: shouldExpandBlockchain ? 200 : tempRowHeight)
-                                .listRowBackground(shouldExpandBlockchain ? BrainwalletColor.background : BrainwalletColor.surface)
-                                .listRowInsets(EdgeInsets())
-                                .listRowSeparatorTint(BrainwalletColor.content)
-                                .padding(.leading, leadRowPad)
-                                .padding(.trailing, trailRowPad)
-                                SettingsLabelView(title: String(localized: "Social"),
-                                                  detailText: "linktr.ee/brainwallet")
-                                .frame(height: tempRowHeight)
-                                .listRowBackground(BrainwalletColor.surface)
-                                .listRowInsets(EdgeInsets())
-                                .listRowSeparatorTint(BrainwalletColor.content)
-                                .padding(.leading, leadRowPad)
-                                .padding(.trailing, trailRowPad)
-                                .onTapGesture {
-                                    shouldShowSocialSheet.toggle()
-                                }
-                                SettingsLabelView(title: String(localized: "Support"),
-                                                  detailText: "support.brainwallet.co")
-                                .frame(height: tempRowHeight)
-                                .listRowBackground(BrainwalletColor.surface)
-                                .listRowInsets(EdgeInsets())
-                                .listRowSeparatorTint(BrainwalletColor.content)
-                                .padding(.leading, leadRowPad)
-                                .padding(.trailing, trailRowPad)
-                                .onTapGesture {
-                                    shouldShowSupportSheet.toggle()
-                                }
-                                SettingsActionThemeView(title:
-                                    userPrefersDarkMode ?
-                                    String(localized: "Dark Mode")
-                                    : String(localized: "Light Mode"),
-                                    detailText: "",
-                                    action: .preferDarkMode,
-                                    userPrefersDark: $userPrefersDarkMode)
-                                        .frame(height: tempRowHeight)
-                                        .listRowBackground(BrainwalletColor.surface)
-                                        .listRowInsets(EdgeInsets())
-                                        .listRowSeparatorTint(BrainwalletColor.content)
-                                        .padding(.leading, leadRowPad)
-                                        .padding(.trailing, trailRowPad)
-
-                                SettingsActionLockView(title: String(localized: "Lock"),
-                                    detailText: "", action: .lock, didTriggerLock: $didTriggerLock)
-                                .frame(height: tempRowHeight)
-                                .listRowBackground(BrainwalletColor.surface)
-                                .listRowInsets(EdgeInsets())
-                                .listRowSeparatorTint(BrainwalletColor.content)
-                                .padding(.leading, leadRowPad)
-                                .padding(.trailing, trailRowPad)
+                            SettingsExpandingSecurityView(title: String(localized: "Security"),
+                                                          viewModel: newMainViewModel, shouldExpandSecurity: $shouldExpandSecurity)
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .animation(.easeInOut(duration: 0.3), value: shouldExpandSecurity)
+                            .padding(.top, leadRowPad)
+                            .padding(.leading, leadRowPad)
+                            .padding(.trailing, trailRowPad)
+                            SettingsExpandingCurrencyView(title: String(localized: "Fiat Currency"),
+                                                          viewModel: newMainViewModel,
+                                                          shouldExpandCurrency: $shouldExpandCurrency)
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .animation(.easeInOut(duration: 0.3), value: shouldExpandCurrency)
+                            .padding(.leading, leadRowPad)
+                            .padding(.trailing, trailRowPad)
+                            SettingsExpandingBlockchainView(title: String(localized: "Blockchain: Litecoin"),
+                                                            viewModel: newMainViewModel, shouldExpandBlockchain: $shouldExpandBlockchain)
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .animation(.easeInOut(duration: 0.3), value: shouldExpandBlockchain)
+                            .padding(.leading, leadRowPad)
+                            .padding(.trailing, trailRowPad)
+                            SettingsLabelView(title: String(localized: "Social"),
+                                              detailText: "linktr.ee/brainwallet")
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .padding(.leading, leadRowPad)
+                            .padding(.trailing, trailRowPad)
+                            .onTapGesture {
+                                shouldShowSocialSheet.toggle()
                             }
-                            .listStyle(.plain)
-                            .scrollIndicators(.hidden)
-                            .buttonStyle(PlainButtonStyle())
-                            SettingsFooterView()
-                                .frame(height: footerRowHeight * 0.4, alignment: .bottom)
-                                .padding(.bottom, 1.0)
-                                .padding(.top, 24.0)
+                            SettingsLabelView(title: String(localized: "Support"),
+                                              detailText: "support.brainwallet.co")
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .padding(.leading, leadRowPad)
+                            .padding(.trailing, trailRowPad)
+                            .onTapGesture {
+                                shouldShowSupportSheet.toggle()
+                            }
+                            SettingsActionThemeView(title:
+                                                        userPrefersDarkMode ?
+                                                    String(localized: "Dark Mode")
+                                                    : String(localized: "Light Mode"),
+                                                    action: .preferDarkMode,
+                                                    userPrefersDark: $userPrefersDarkMode)
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .padding(.leading, leadRowPad)
+                            .padding(.trailing, trailRowPad)
+
+                            SettingsActionLockView(title: String(localized: "Lock"),
+                                                   detailText: "", action: .lock, didTriggerLock: $didTriggerLock)
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .padding(.leading, leadRowPad)
+                            .padding(.trailing, trailRowPad)
+
+                            SettingsLabelView(title: String(localized: "App Version:"),
+                                              detailText: "\(AppVersion.string)")
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .padding(.leading, leadRowPad)
+                            .padding(.trailing, trailRowPad)
+                            Divider()
+                                .frame(height: 1)
+                                .frame(width: width * 0.9)
+                                .overlay(Color.white)
+                            Spacer()
 
                         }
                         .frame(width: width * 0.9)
@@ -180,9 +160,10 @@ struct SettingsView: View {
                 }
             }
         }
-        .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
+        .simultaneousGesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
             .onEnded({ value in
-                if value.translation.width < 0 {
+                let didStartAtLeadingEdge = value.startLocation.x < 24.0
+                if didStartAtLeadingEdge && value.translation.width < 0 {
                     newMainViewModel.userDidTapTheSettingsButton()
                 }
             }))
