@@ -28453,7 +28453,6 @@
       }
     },
     "Sync with Blockchain?" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -36678,7 +36677,6 @@
       }
     },
     "You will not be able to send Litecoin while syncing. It may take a while." : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

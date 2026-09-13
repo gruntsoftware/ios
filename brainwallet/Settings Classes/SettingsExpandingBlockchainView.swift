@@ -83,5 +83,16 @@ struct SettingsExpandingBlockchainView: View {
         }
         .frame(maxWidth: .infinity, alignment: .topLeading)
         .fixedSize(horizontal: false, vertical: true)
+        .alert(String(localized: "Sync with Blockchain?"),
+               isPresented: $willSync,
+               actions: {
+            Button(String(localized: "Cancel"), role: .cancel) { }
+            Button( String(localized: "Ok"), role: .destructive) {
+                viewModel.userWillSyncBlockchain()
+            }
+        },
+               message: {
+            Text("You will not be able to send Litecoin while syncing. It may take a while.")
+        })
     }
 }
