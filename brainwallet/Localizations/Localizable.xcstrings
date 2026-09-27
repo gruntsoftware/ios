@@ -10817,6 +10817,9 @@
         }
       }
     },
+    "Enter the IPv4 address and port of the Litecoin node your Brainwallet should sync with." : {
+
+    },
     "Enter your current PIN." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -11991,6 +11994,9 @@
           }
         }
       }
+    },
+    "Failed to wipe wallet" : {
+
     },
     "Failed to wipe wallet." : {
       "localizations" : {
@@ -15272,6 +15278,9 @@
         }
       }
     },
+    "IP address" : {
+
+    },
     "It's your emojis you use to remember your 12 seed words." : {
       "localizations" : {
         "ar" : {
@@ -16314,6 +16323,9 @@
           }
         }
       }
+    },
+    "Litecoin Mainnet" : {
+
     },
     "Loading Wallet" : {
       "extractionState" : "stale",
@@ -21277,6 +21289,9 @@
         }
       }
     },
+    "Please try again." : {
+
+    },
     "Please write this down" : {
       "localizations" : {
         "ar" : {
@@ -21406,6 +21421,9 @@
           }
         }
       }
+    },
+    "Port" : {
+
     },
     "POWERED BY MOONPAY" : {
       "localizations" : {
@@ -24143,6 +24161,9 @@
         }
       }
     },
+    "Save trusted node" : {
+
+    },
     "Save your 12 words" : {
       "localizations" : {
         "ar" : {
@@ -26364,6 +26385,9 @@
           }
         }
       }
+    },
+    "Set trusted Litecoin node / SPV Peer" : {
+
     },
     "Set your first emojis!" : {
       "comment" : "A title displayed at the top of the emoji picker view.",
@@ -35498,6 +35522,9 @@
           }
         }
       }
+    },
+    "Wiping your wallet…" : {
+
     },
     "Word" : {
       "extractionState" : "stale",

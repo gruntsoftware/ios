@@ -1,4 +1,5 @@
 import Foundation
+import KeychainAccess
 
 private let defaults = UserDefaults.standard
 private let isBiometricsEnabledKey = "isbiometricsenabled"
@@ -20,6 +21,15 @@ private let hasLoggedInitialSyncDurationKey = "hasLoggedInitialSyncDurationKey"
 private let foregroundSyncDurationSecondsKey = "foregroundSyncDurationSecondsKey"
 private let pendingNotificationBadgeCountKey = "pendingNotificationBadgeCountKey"
 
+private let trustedNodeKeychain = Keychain(service: "brainwallet.trustednode")
+private let userTrustedNodeIpAddressKey = "userTrustedNodeIpAddress"
+private let userTrustedNodePortKey = "userTrustedNodePort"
+private let userPurchasedTrustedNodeKey = "userPurchasedTrustedNode"
+
+/// StoreKit product id for the Trusted LTC Node in-app purchase. Must match
+/// "Trusted LTC Node Feature" in BWProductsList.plist (ios-private-general-purpose).
+let trustedLTCNodeProductId = "com.gruntsoftware.brainwallet.trusted_ltc_node_1"
+
 let timeSinceLastExitKey = "TimeSinceLastExit"
 let shouldRequireLoginTimeoutKey = "ShouldRequireLoginTimeoutKey"
 let numberOfBrainwalletLaunches = "NumberOfBrainwalletLaunches"
@@ -27,6 +37,7 @@ let appHasRequestedReviewKey = "appHasRequestedReviewKey"
 let userDidPreferDarkModeKey = "UserDidPreferDarkMode"
 let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
 let userSetPreferredNetworkFeeKey = "UserSetPreferredNetworkFeeKey"
+let userPrefersUsingTrustedNodeKey = "UserPrefersUsingTrustedNodeKey"
 
 public extension NSNotification.Name {
     static let walletBalanceChangedNotification = NSNotification.Name("WalletBalanceChanged")
@@ -50,6 +61,45 @@ public extension NSNotification.Name {
 
 extension UserDefaults {
     
+    // MARK: - Trusted Node
+    static var userTrustedNodeIpAddress: String? {
+        get { trustedNodeKeychain[userTrustedNodeIpAddressKey] }
+        set { trustedNodeKeychain[userTrustedNodeIpAddressKey] = newValue }
+    }
+    
+    static var userTrustedNodePort: String? {
+        get { trustedNodeKeychain[userTrustedNodePortKey] }
+        set { trustedNodeKeychain[userTrustedNodePortKey] = newValue }
+    }
+    
+    static var userTrustedNodePurchased: Bool? {
+        get {
+            guard let value = trustedNodeKeychain[userPurchasedTrustedNodeKey] else { return nil }
+            return value == "true"
+        }
+        set {
+            guard let newValue else {
+                trustedNodeKeychain[userPurchasedTrustedNodeKey] = nil
+                return
+            }
+            trustedNodeKeychain[userPurchasedTrustedNodeKey] = newValue ? "true" : "false"
+        }
+    }
+
+    static func wipeTrustedNodeKeychain() throws {
+        try trustedNodeKeychain.removeAll()
+    }
+
+    static var userPrefersUsingTrustedNode: Bool {
+        get {
+            guard defaults.object(forKey: userPrefersUsingTrustedNodeKey) != nil
+            else {
+                return true
+            }
+            return defaults.bool(forKey: userPrefersUsingTrustedNodeKey)
+        }
+        set { defaults.set(newValue, forKey: userPrefersUsingTrustedNodeKey) }
+    }
     
     static var userSetPreferredNetworkFee: Int {
         get {

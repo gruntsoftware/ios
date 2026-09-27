@@ -219,6 +219,13 @@ class NewMainViewModel: ObservableObject, Subscriber {
 
     @Published
     var canSelect: Bool = false
+    
+    
+    @Published
+    var shouldShowTrustedNodeSheet: Bool = false
+    
+    @Published
+    var shouldShowEditTrustedIPAddress: Bool = false
   
     init(store: Store, walletManager: WalletManager) {
         self.store = store

@@ -19,16 +19,15 @@ struct SettingsExpandingBlockchainView: View {
 
     @State
     private var willSync: Bool = false
-    
-    @State
-    private var userWantsTrustedNode: Bool = false
+     
 
     private var title: String
 
     /// Height of the detail panel when expanded; total expanded row = closedRowHeight + this.
-    private let detailExpandedHeight: CGFloat = 300.0
+    private let detailExpandedHeight: CGFloat = 340.0
 
-    init(title: String, viewModel: NewMainViewModel, shouldExpandBlockchain: Binding <Bool>) {
+    init(title: String, viewModel: NewMainViewModel,
+         shouldExpandBlockchain: Binding <Bool>) {
         self.title = title
         _shouldExpandBlockchain = shouldExpandBlockchain
         self.viewModel = viewModel
@@ -37,10 +36,10 @@ struct SettingsExpandingBlockchainView: View {
     @ViewBuilder
     private var blockchainDetail: some View {
         SettingsLitecoinDetailView(willSync: $willSync,
-                                   userWantsTrustedNode: $userWantsTrustedNode,
                                    fees: viewModel.currentFees,
                                    currentRate: viewModel.exchangeRate)
             .frame(maxWidth: .infinity)
+            .environmentObject(viewModel)
     }
 
     var body: some View {

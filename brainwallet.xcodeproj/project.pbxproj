@@ -224,6 +224,7 @@
 		24FBB86A2E035E10002B5F84 /* SettingsHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FBB8692E035E07002B5F84 /* SettingsHostingController.swift */; };
 		24FF3E6A2E898D4000FF43C5 /* BrainwalletiOSPrivateGeneralPurpose.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		759DA0BE1DAC36A3008CC49B /* libBRCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 755CD9D11DAA197C0075898E /* libBRCore.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		89B92973AA76D3E95DC98045 /* SetTrustedNodeIPModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FE3B2FCD7C7D94FA7D2A7 /* SetTrustedNodeIPModalView.swift */; };
 		9ED4226AC1AA476BB099F35A /* BalanceBentoReviewPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3F1465DCBE495A8993C1FD /* BalanceBentoReviewPolicy.swift */; };
 		C30D099E2FC5AB720083EDE2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C30D099D2FC5AB720083EDE2 /* GoogleService-Info.plist */; };
 		C312D2D02D7DC27700BB97A4 /* ReachabilityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2912D7DC27700BB97A4 /* ReachabilityMonitor.swift */; };
@@ -375,6 +376,7 @@
 		C35C122A293D48340009022D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1229293D48340009022D /* KeychainAccess */; };
 		C38F57252FD490430005538A /* boingspringmouthharp042013.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */; };
 		C395E2B83013770A00CF5F5B /* EnterPinForSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */; };
+		C39859383069234400E99439 /* bw-iap-config-v2.storekit in Resources */ = {isa = PBXBuildFile; fileRef = C39859373069234400E99439 /* bw-iap-config-v2.storekit */; };
 		C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0BBC22FF6DB11000D5DB8 /* AlertToast */; };
 		C3BC6CBD303331FB00A04919 /* UIApplication+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC6CBC303331D800A04919 /* UIApplication+Additions.swift */; };
 		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
@@ -419,20 +421,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 2425ACB32E4BD610007185C7;
 			remoteInfo = "private-general-purpose";
-		};
-		246F97E22E846218001923A6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 246F97832E846218001923A6 /* private-general-purpose.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2425ACC02E4BD612007185C7;
-			remoteInfo = "private-general-purposeTests";
-		};
-		246F97E42E846218001923A6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 246F97832E846218001923A6 /* private-general-purpose.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2425ACCA2E4BD612007185C7;
-			remoteInfo = "private-general-purposeUITests";
 		};
 		246F97E62E846218001923A6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -804,6 +792,7 @@
 		75A2A7F21DA5935F00A983D8 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		75A2A8091DA5936F00A983D8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		75FEFD1B1DAED56E00203D3A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		907FE3B2FCD7C7D94FA7D2A7 /* SetTrustedNodeIPModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTrustedNodeIPModalView.swift; sourceTree = "<group>"; };
 		C30D099D2FC5AB720083EDE2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApplicationController+Extension.swift"; sourceTree = "<group>"; };
 		C312D06C2D7DC27700BB97A4 /* Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
@@ -956,6 +945,7 @@
 		C353E3B42FAE9F9000BFFB30 /* ShopBentoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBentoViewModel.swift; sourceTree = "<group>"; };
 		C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boingspringmouthharp042013.mp3; sourceTree = "<group>"; };
 		C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPinForSeedView.swift; sourceTree = "<group>"; };
+		C39859373069234400E99439 /* bw-iap-config-v2.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "bw-iap-config-v2.storekit"; sourceTree = "<group>"; };
 		C3BC6CBC303331D800A04919 /* UIApplication+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Additions.swift"; sourceTree = "<group>"; };
 		C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupAskView.swift; sourceTree = "<group>"; };
 		C3CE34602FFD8D1F004A2ECA /* LilitaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LilitaOne.ttf; sourceTree = "<group>"; };
@@ -1321,8 +1311,6 @@
 			isa = PBXGroup;
 			children = (
 				246F97E12E846218001923A6 /* private-general-purpose.app */,
-				246F97E32E846218001923A6 /* private-general-purposeTests.xctest */,
-				246F97E52E846218001923A6 /* private-general-purposeUITests.xctest */,
 				246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */,
 				246F97E92E846218001923A6 /* BrainwalletiOSPrivateGeneralPurposeTests.xctest */,
 			);
@@ -1765,6 +1753,7 @@
 		24D7E9FC2E336CE100A9AB68 /* PreLaunchResources */ = {
 			isa = PBXGroup;
 			children = (
+				C39859373069234400E99439 /* bw-iap-config-v2.storekit */,
 				24D7EA0D2E336F9100A9AB68 /* service-data.plist */,
 				24D7E9FD2E336D0800A9AB68 /* general.css */,
 				24D7E9FE2E336D0800A9AB68 /* moon_pay_buy_status.txt */,
@@ -1963,6 +1952,7 @@
 		C312D2CD2D7DC27700BB97A4 /* brainwallet */ = {
 			isa = PBXGroup;
 			children = (
+				C35BD2C63065C1C300B4EE55 /* TrustedNode Classes */,
 				C31F416D2FF6918E00D9DA3D /* Social Network Classes */,
 				C3C95F702FA1498E002E2BEE /* Signup Notification Classes */,
 				246C3F4F2F2430DF009BC881 /* Tutorial Classes */,
@@ -2108,6 +2098,14 @@
 				C31F416E2FF691B200D9DA3D /* SocialPostHelper.swift */,
 			);
 			path = "Social Network Classes";
+			sourceTree = "<group>";
+		};
+		C35BD2C63065C1C300B4EE55 /* TrustedNode Classes */ = {
+			isa = PBXGroup;
+			children = (
+				907FE3B2FCD7C7D94FA7D2A7 /* SetTrustedNodeIPModalView.swift */,
+			);
+			path = "TrustedNode Classes";
 			sourceTree = "<group>";
 		};
 		C3C95F702FA1498E002E2BEE /* Signup Notification Classes */ = {
@@ -2371,20 +2369,6 @@
 			remoteRef = 246F97E02E846218001923A6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		246F97E32E846218001923A6 /* private-general-purposeTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "private-general-purposeTests.xctest";
-			remoteRef = 246F97E22E846218001923A6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		246F97E52E846218001923A6 /* private-general-purposeUITests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "private-general-purposeUITests.xctest";
-			remoteRef = 246F97E42E846218001923A6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		246F97E72E846218001923A6 /* BrainwalletiOSPrivateGeneralPurpose.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -2440,6 +2424,7 @@
 				24AFEEF22F3152CE00427D02 /* IBMPlexSans-Regular.ttf in Resources */,
 				24D7EA082E336D0800A9AB68 /* moon_pay_buy_status.txt in Resources */,
 				24D7EA092E336D0800A9AB68 /* RELEASE_NOTES.md in Resources */,
+				C39859383069234400E99439 /* bw-iap-config-v2.storekit in Resources */,
 				24D7EA0A2E336D0800A9AB68 /* general.css in Resources */,
 				24D7EA0B2E336D0800A9AB68 /* CHANGELOG.md in Resources */,
 				24D7EA0E2E336F9100A9AB68 /* service-data.plist in Resources */,
@@ -2857,6 +2842,7 @@
 				C312D3FD2D7DC27700BB97A4 /* LocaleChangeViewModel.swift in Sources */,
 				C312D3FE2D7DC27700BB97A4 /* ReduxState.swift in Sources */,
 				24A0ACAB2E0C812C0077E695 /* SettingsLitecoinDetailView.swift in Sources */,
+				89B92973AA76D3E95DC98045 /* SetTrustedNodeIPModalView.swift in Sources */,
 				24D7AE562DCFF6870078252E /* NewConfirmView.swift in Sources */,
 				C312D4022D7DC27700BB97A4 /* DrawableCircle.swift in Sources */,
 				24B0653B2DC6433800B5E000 /* SimpleHeaderView.swift in Sources */,
