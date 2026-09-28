@@ -45,6 +45,22 @@ struct BrainwalletColor {
     
     
 }
+extension BrainwalletColor {
+    /// Modal sheet background: midnight for dark theme, lavender for light.
+    static func modalBackground(userPrefersDarkTheme: Bool) -> Color {
+        userPrefersDarkTheme ? midnight : lavender
+    }
+    
+    /// Modal primary (title/product name) text color.
+    static func modalPrimaryText(userPrefersDarkTheme: Bool) -> Color {
+        userPrefersDarkTheme ? .white : nearBlack
+    }
+    
+    /// Modal secondary (description/divider) text color.
+    static func modalSecondaryText(userPrefersDarkTheme: Bool) -> Color {
+        userPrefersDarkTheme ? Color.white.opacity(0.7) : nearBlack.opacity(0.7)
+    }
+}
 
 struct BrainwalletUIColor {
     /// surface - midnight or white

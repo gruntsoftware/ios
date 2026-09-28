@@ -25,45 +25,32 @@ struct SettingsActionLockView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            GeometryReader { _ in
-                ZStack {
-                    HStack {
-                        VStack {
-                            Text(title)
-                                .modifier(BWIPSSemiBold(size: 19.0))
+        VStack(alignment: .leading, spacing: 0.0) {
+            Divider()
+                .frame(height: 1)
+                .overlay(Color.white)
+            Text(title)
+                .modifier(BWIPSSemiBold(size: 15.0))
+                .foregroundColor(BrainwalletColor.content)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: closedRowHeight)
+                .overlay(alignment: .trailing) {
+                    Button(action: {
+                        didTriggerLock.toggle()
+                    }) {
+                            Image(systemName: didTriggerLock ? action.isOnSystemImage : action.isOffSystemImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 30.0,
+                                       height: 30.0)
                                 .foregroundColor(BrainwalletColor.content)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .frame(height: 25.0)
-                                .padding(.top, 8.0)
-                            Text(detailText)
-                                .modifier(BWIPSLight(size: 18.0))
-                                .foregroundColor(BrainwalletColor.content)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding([.top, .bottom], 1.0)
-                            Spacer()
-                        }
 
-                        Spacer()
-                        VStack {
-                            Button(action: {
-                                didTriggerLock.toggle()
-                            }) {
-                                VStack {
-                                    Image(systemName: didTriggerLock ? action.isOnSystemImage : action.isOffSystemImage)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 30.0,
-                                               height: 30.0)
-                                        .foregroundColor(BrainwalletColor.content)
-                                    Spacer()
-                                }
-                            }
-                            .frame(width: 30.0, height: 30.0)
-                        }
                     }
+                    .frame(width: 30.0, height: 30.0)
+                    .contentShape(Rectangle())
                 }
-            }
         }
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .fixedSize(horizontal: false, vertical: true)
     }
 }
