@@ -119,9 +119,6 @@ struct LockScreenFooterView: View {
                     .onChange(of: userPrefersDarkMode) { _,_ in
                         viewModel.userDidSetThemePreference(userPrefersDarkMode: userPrefersDarkMode)
                     }
-                    .onChange(of: viewModel.didCompleteWipingWallet) { _,_ in
-                        shouldShowWipeAlert.toggle()
-                    }
                 }
             }
         }
