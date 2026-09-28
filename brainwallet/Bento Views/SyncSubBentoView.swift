@@ -29,6 +29,7 @@ struct SyncSubBentoView: View {
 
     private let progressBarHeight: CGFloat = 14.0
     private let progressIconSize: CGFloat = 13.0
+    private let syncModeIconSize: CGFloat = 10.0
 
     init(viewModel: SyncSubBentoViewModel) {
         self.viewModel = viewModel
@@ -40,12 +41,21 @@ struct SyncSubBentoView: View {
                             Spacer()
                             HStack {
                                 Spacer()
+                                Image(viewModel.peerSyncMode == .random_mainnet ?
+                                      "main-network-icon" :"trusted-icon")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: syncModeIconSize,
+                                           height: syncModeIconSize,
+                                           alignment: .bottomLeading)
+                                    .padding(.leading, 12)
 
                                 Text(viewModel.syncStateMessage)
                                     .modifier(BWIPSSemiBold(size: 11.0))
                                     .frame(alignment: .trailing)
                                     .foregroundColor(.white)
                             }
+                            .frame(width: 160)
                             .padding(.bottom, 2)
                             HStack {
                                 Spacer()
