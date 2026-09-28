@@ -71,6 +71,17 @@ struct SettingsLitecoinDetailView: View {
         }
     }
 
+    /// Re-applies the trusted-node/mainnet preference to the running SPV sync so a toggle
+    /// flip takes effect immediately rather than on next launch. `setFixedPeer` (called from
+    /// `connect()`) disconnects any currently-connected peers before pinning/clearing the
+    /// fixed peer, so this alone is enough to force a clean switch.
+    private func reconnectPeerManager() {
+        guard let walletManager = viewModel.walletManager else { return }
+        DispatchQueue.walletQueue.async {
+            walletManager.peerManager?.connect()
+        }
+    }
+
     /// Litoshis (fee-per-kb) for the currently selected Picker tag (0 = economy, 1 = regular, 2 = luxury).
     /// Fee tier math lives in `NetworkFeeTier` (FeeManager.swift) so it's unit-testable on its own.
     private func feeInLitoshis(forTag tag: Int) -> UInt64 {
@@ -123,9 +134,11 @@ struct SettingsLitecoinDetailView: View {
                             .onChange(of: userPrefersMainnetVsTrusted) { _, newValue in
                                 UserDefaults.userPrefersUsingTrustedNode = newValue
                                 nodeLabel = Self.nodeLabel(prefersTrustedNode: newValue)
+                                reconnectPeerManager()
                             }
+                            
                         }
-                         
+                        
                         Spacer()
                         
                         Button(action: {
