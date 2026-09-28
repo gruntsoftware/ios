@@ -123,137 +123,6 @@
       },
       "shouldTranslate" : false
     },
-    " Each emoji must be different." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " يجب أن تكون كل رمز تعبيري مختلفاً."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jedes Emoji muss unterschiedlich sein."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Cada emoji debe ser diferente."
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " هر ایموجی باید متفاوت باشد."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Chaque emoji doit être différent."
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " प्रत्येक emoji अलग होना चाहिए।"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Setiap emoji harus berbeda."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Ogni emoji deve essere diverso."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " 各絵文字は異なる必要があります。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " 각 이모지는 달라야 합니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Elke emoji moet verschillend zijn."
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " ਹਰੇਕ emoji ਵੱਖਰਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Każdy emoji musi być inny."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Cada emoji deve ser diferente."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Каждый эмодзи должен быть разным."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Varje emoji måste vara olika."
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " แต่ละ emoji ต้องแตกต่างกัน"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Her emoji farklı olmalıdır."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Кожен емодзі має бути різним."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "每个表情符号必须不同。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " 每個表情符號必須不同。"
-          }
-        }
-      }
-    },
     " Home " : {
       "localizations" : {
         "ar" : {
@@ -1804,7 +1673,134 @@
       }
     },
     "%llu ł" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%llu ł"
+          }
+        }
+      }
     },
     "1. Check your balance" : {
       "comment" : "Title for the first step in the send flow.",
@@ -2599,7 +2595,134 @@
       }
     },
     "A higher value means the transaction completes sooner" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "القيمة الأعلى تعني أن المعاملة تكتمل بشكل أسرع"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein höherer Wert bedeutet, dass die Transaktion schneller abgeschlossen wird"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un valor más alto significa que la transacción se completa más rápido"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مقدار بالاتر به معنای تکمیل سریع‌تر تراکنش است"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une valeur plus élevée signifie que la transaction se termine plus rapidement"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "उच्च मान का मतलब है कि लेनदेन जल्दी पूरा हो जाएगा"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nilai yang lebih tinggi berarti transaksi selesai lebih cepat"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un valore più alto significa che la transazione si completa più velocemente"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "値が高いほど、トランザクションがより早く完了します"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "높은 값일수록 거래가 더 빨리 완료됩니다"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Een hogere waarde betekent dat de transactie sneller wordt voltooid"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਉੱਚਾ ਮੁੱਲ ਮਤਲਬ ਲੈਣ-ਦੇਣ ਜਲਦੀ ਪੂਰਾ ਹੋਵੇਗਾ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyższa wartość oznacza szybsze zakończenie transakcji"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um valor mais alto significa que a transação é concluída mais rapidamente"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Более высокое значение означает более быстрое завершение транзакции"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ett högre värde betyder att transaktionen slutförs snabbare"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ค่าที่สูงขึ้นหมายความว่าธุรกรรมเสร็จสิ้นเร็วขึ้น"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daha yüksek bir değer işlemin daha hızlı tamamlanmasını sağlar"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Більша вартість означає швидше завершення транзакції"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "数值越高，交易完成速度越快"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "較高的數值表示交易完成速度更快"
+          }
+        }
+      }
     },
     "Add 3 more emojis, and you have a dozen." : {
       "comment" : "Guide detail text for the final emoji triplet selection screen.",
@@ -7039,7 +7162,134 @@
       }
     },
     "Choose preferred fee:" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر الرسوم المفضلة:"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bevorzugte Gebühr wählen:"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige la comisión preferida:"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کمیسیون مورد نظر را انتخاب کنید:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisir les frais préférés :"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "पसंदीदा शुल्क चुनें:"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilih biaya yang diinginkan:"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli la commissione preferita:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "希望する手数料を選択："
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선호하는 수수료 선택:"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kies de gewenste vergoeding:"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਪਸੰਦਦਾ ਫੀਸ ਚੁਣੋ:"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz preferowaną opłatę:"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha a taxa preferida:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите предпочитаемую комиссию:"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Välj föredragen avgift:"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกค่าธรรมเนียมที่ต้องการ:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tercih edilen ücreti seçin:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть бажану комісію:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择首选费用："
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇偏好的手續費："
+          }
+        }
+      }
     },
     "Choose your 3 emojis for the game" : {
       "localizations" : {
@@ -9124,137 +9374,6 @@
         }
       }
     },
-    "Currency" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "عملة"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Währung"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Moneda"
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ارز"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monnaie"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "मुद्रा"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mata uang"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Valuta"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "通貨"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "통화"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Valuta"
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਮੁਦਰਾ"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Waluta"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Moeda"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Валюта"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Valuta"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "สกุลเงิน"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Para Birimi"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Валюта"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "货币"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "貨幣"
-          }
-        }
-      }
-    },
     "Dark Mode" : {
       "localizations" : {
         "ar" : {
@@ -10818,266 +10937,131 @@
       }
     },
     "Enter the IPv4 address and port of the Litecoin node your Brainwallet should sync with." : {
-
-    },
-    "Enter your current PIN." : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "أدخل رقم التعريف الشخصي الحالي الخاص بك."
+            "value" : "أدخل عنوان IPv4 والمنفذ لعقدة Litecoin التي يجب أن يتزامن معها Brainwallet."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Geben Sie Ihre aktuelle PIN ein."
+            "value" : "Geben Sie die IPv4-Adresse und den Port des Litecoin-Knotens ein, mit dem sich Ihr Brainwallet synchronisieren soll."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ingrese su PIN actual."
+            "value" : "Ingresa la dirección IPv4 y el puerto del nodo Litecoin con el que tu Brainwallet debe sincronizarse."
           }
         },
         "fa-IR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "پین فعلی خود را وارد کنید."
+            "value" : "آدرس IPv4 و درگاه گره Litecoin را که Brainwallet باید با آن همگام‌سازی شود وارد کنید."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Entrez votre code PIN actuel."
+            "value" : "Entrez l'adresse IPv4 et le port du nœud Litecoin avec lequel votre Brainwallet doit se synchroniser."
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "अपना वर्तमान पिन दर्ज करें."
+            "value" : "Litecoin नोड का IPv4 पता और पोर्ट दर्ज करें जिसके साथ आपका Brainwallet सिंक होना चाहिए।"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Masukkan PIN Anda saat ini."
+            "value" : "Masukkan alamat IPv4 dan port node Litecoin yang harus disinkronkan dengan Brainwallet Anda."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Inserisci il tuo PIN attuale."
+            "value" : "Inserisci l'indirizzo IPv4 e la porta del nodo Litecoin con cui Brainwallet deve sincronizzarsi."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "現在のPINを入力してください。"
+            "value" : "Brainwalletが同期するLitecoinノードのIPv4アドレスとポートを入力してください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "현재 PIN을 입력하세요."
+            "value" : "Brainwallet이 동기화할 Litecoin 노드의 IPv4 주소와 포트를 입력하세요."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Voer uw huidige PIN in."
+            "value" : "Voer het IPv4-adres en de poort in van het Litecoin-knooppunt waarmee uw Brainwallet moet synchroniseren."
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਆਪਣਾ ਮੌਜੂਦਾ ਪਿੰਨ ਦਰਜ ਕਰੋ।"
+            "value" : "ਉਹ IPv4 ਪਤਾ ਅਤੇ ਪੋਰਟ ਦਰਜ ਕਰੋ ਜਿਸ ਨਾਲ ਤੁਹਾਡਾ Brainwallet ਸਿੰਕ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ।"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wprowadź aktualny kod PIN."
+            "value" : "Wprowadź adres IPv4 i port węzła Litecoin, z którym powinien synchronizować się Brainwallet."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Digite seu PIN atual."
+            "value" : "Digite o endereço IPv4 e a porta do nó Litecoin com o qual sua Brainwallet deve sincronizar."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Введите свой текущий PIN-код."
+            "value" : "Введите IPv4-адрес и порт узла Litecoin, с которым должен синхронизироваться ваш Brainwallet."
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ange din nuvarande PIN-kod."
+            "value" : "Ange IPv4-adressen och porten för den Litecoin-nod som din Brainwallet ska synkroniseras med."
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ป้อน PIN ปัจจุบันของคุณ"
+            "value" : "ป้อน IPv4 address และ port ของโหนด Litecoin ที่ Brainwallet ของคุณควรซิงค์กับ"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Geçerli PIN kodunuzu girin."
+            "value" : "Brainwallet'ınızın senkronize olacağı Litecoin düğümünün IPv4 adresini ve portunu girin."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Введіть свій поточний PIN-код."
+            "value" : "Введіть IPv4 адресу та порт вузла Litecoin, з яким повинен синхронізуватися ваш Brainwallet."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "请输入您当前的PIN码。"
+            "value" : "输入您的 Brainwallet 应同步的 Litecoin 节点的 IPv4 地址和端口。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "輸入您目前的 PIN。"
-          }
-        }
-      }
-    },
-    "Enter your new PIN." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "أدخل رقم التعريف الشخصي الجديد الخاص بك."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geben Sie Ihre neue PIN ein."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ingrese su nuevo PIN."
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "رمز جدید خود را وارد کنید."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entrez votre nouveau code PIN."
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "अपना नया पिन दर्ज करें."
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Masukkan PIN baru Anda."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inserisci il tuo nuovo PIN."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "新しいPINを入力してください。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "새 PIN을 입력합니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voer uw nieuwe PIN in."
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਆਪਣਾ ਨਵਾਂ ਪਿੰਨ ਦਰਜ ਕਰੋ।"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wprowadź nowy kod PIN."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Digite seu novo PIN."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Введите новый PIN-код."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ange din nya PIN-kod."
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ป้อน PIN ใหม่ของคุณ"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni PIN kodunuzu girin."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Введіть свій новий PIN-код."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请输入您的新密码。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "輸入您的新 PIN。"
+            "value" : "輸入您的 Brainwallet 應同步的 Litecoin 節點的 IPv4 位址和連接埠。"
           }
         }
       }
@@ -11338,137 +11322,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "輸入你的 PIN 以查看你的 Brainwallet 助記詞"
-          }
-        }
-      }
-    },
-    "Exchange Rate" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "سعر الصرف"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wechselkurse"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tipo de Cambio"
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "نرخ ارز"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Taux de change"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "विनिमय दर"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nilai Tukar"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tasso di cambio"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "為替レート"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "환율"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wisselkoers"
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਐਕਸਚੇਂਜ ਦਰ"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kurs wymiany"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Taxa de câmbio"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Обменный курс"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Växelkurs"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "อัตราแลกเปลี่ยน"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Döviz Kuru"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Обмінний курс"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "汇率"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "匯率"
           }
         }
       }
@@ -11996,7 +11849,134 @@
       }
     },
     "Failed to wipe wallet" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشل مسح المحفظة"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wallet konnte nicht gelöscht werden"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pudo borrar la billetera"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پاک‌سازی کیف‌پول ناموفق بود"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible d'effacer le portefeuille"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "वॉलेट को मिटाने में विफल"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gagal menghapus dompet"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancellazione del portafoglio non riuscita"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウォレットのワイプに失敗しました"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지갑 초기화 실패"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portemonnee wissen mislukt"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਵਾਲਿਟ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się wyczyścić portfela"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha ao limpar a carteira"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка при очистке кошелька"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Misslyckades att rensa plånbok"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ล้างกระเป๋าสตางค์ไม่สำเร็จ"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cüzdan silme başarısız oldu"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося очистити гаманець"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清除钱包失败"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清除錢包失敗"
+          }
+        }
+      }
     },
     "Failed to wipe wallet." : {
       "localizations" : {
@@ -12657,139 +12637,135 @@
         }
       }
     },
-    "Found transactions are added to the device's database and added or subtracted creating your Brainwallet's balance. There is no Litecoin in any wallet. Litecoin is only found on the network.  Brainwallet is a simple way to check your transaction history and it stores your private keys" : {
-      "extractionState" : "stale",
+    "Full Blockchain sync:" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تُضاف المعاملات التي تم العثور عليها إلى قاعدة بيانات الجهاز وتُضاف أو تُطرح لإنشاء رصيد محفظة الدماغ الخاصة بك. لا يوجد لايتكوين في أي محفظة. لايتكوين موجود فقط على الشبكة.  براين والت هو طريقة بسيطة للتحقق من سجل معاملاتك ويخزن مفاتيحك الخاصة."
+            "value" : "مزامنة البلوكتشين الكاملة:"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gefundene Transaktionen werden der Datenbank des Geräts hinzugefügt und addiert oder subtrahiert, wodurch der Kontostand Ihrer Brainwallet entsteht. Es gibt kein Litecoin in irgendeiner Wallet. Litecoin ist nur im Netzwerk zu finden.  Brainwallet ist eine einfache Möglichkeit, Ihre Transaktionshistorie zu überprüfen, und es speichert Ihre privaten Schlüssel."
+            "value" : "Vollständige Blockchain-Synchronisierung:"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Las transacciones encontradas se agregan a la base de datos del dispositivo y se suman o restan creando el saldo de tu Brainwallet. No hay Litecoin en ninguna billetera. Litecoin solo se encuentra en la red.  Brainwallet es una forma sencilla de verificar tu historial de transacciones y almacena tus claves privadas"
+            "value" : "Sincronización completa de Blockchain:"
           }
         },
         "fa-IR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تراکنش‌های یافت شده به پایگاه داده دستگاه اضافه می‌شوند و با اضافه یا کم کردن، موجودی کیف پول مغزی شما را ایجاد می‌کنند. هیچ لایت کوینی در هیچ کیف پولی وجود ندارد. لایت کوین فقط در شبکه یافت می‌شود.  کیف پول مغزی (Brainwallet) روشی ساده برای بررسی تاریخچه تراکنش‌های شماست و کلیدهای خصوصی شما را ذخیره می‌کند."
+            "value" : "همگام‌سازی کامل Blockchain:"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les transactions trouvées sont ajoutées à la base de données de l'appareil et ajoutées ou soustraites, créant ainsi le solde de votre Brainwallet. Il n’y a pas de Litecoin dans un portefeuille. Le Litecoin ne se trouve que sur le réseau.  Brainwallet est un moyen simple de vérifier l’historique de vos transactions et il stocke vos clés privées"
+            "value" : "Synchronisation complète de la Blockchain :"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "पाए गए लेनदेन को डिवाइस के डेटाबेस में जोड़ दिया जाता है और आपके ब्रेनवॉलेट के बैलेंस को बनाने के लिए जोड़ा या घटाया जाता है। किसी भी वॉलेट में लाइटकॉइन नहीं है। लाइटकॉइन केवल नेटवर्क पर ही पाया जाता है।  ब्रेनवॉलेट आपके लेन-देन इतिहास की जांच करने का एक सरल तरीका है और यह आपकी निजी कुंजियों को संग्रहीत करता है"
+            "value" : "पूर्ण ब्लॉकचेन सिंक:"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Transaksi yang ditemukan akan ditambahkan ke database perangkat dan ditambahkan atau dikurangi sehingga menciptakan saldo Brainwallet Anda. Tidak ada Litecoin di dompet mana pun. Litecoin hanya ditemukan di jaringan.  Brainwallet adalah cara sederhana untuk memeriksa riwayat transaksi Anda dan menyimpan kunci pribadi Anda"
+            "value" : "Sinkronisasi Blockchain penuh:"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le transazioni trovate vengono aggiunte al database del dispositivo e sommate o sottratte, creando il saldo del tuo Brainwallet. Non c'è Litecoin in nessun portafoglio. Litecoin si trova solo sulla rete.  Brainwallet è un modo semplice per controllare la cronologia delle transazioni e memorizza le tue chiavi private"
+            "value" : "Sincronizzazione completa della Blockchain:"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "見つかったトランザクションはデバイスのデータベースに追加され、加算または減算されてあなたのBrainwalletの残高が算出されます。どのウォレットにもライトコインはありません。ライトコインはネットワーク上にのみ存在する。ブレインウォレットは、取引履歴を確認する簡単な方法であり、秘密鍵を保存します。"
+            "value" : "完全ブロックチェーン同期："
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "찾은 트랜잭션이 장치의 데이터베이스에 추가되고 추가 또는 차감되어 Brainwallet의 잔액이 생성됩니다. 어떤 지갑에도 Litecoin은 없습니다. Litecoin은 네트워크에서만 발견됩니다.  Brainwallet은 대금 수령 내역을 확인하고 개인 키를 저장하는 간단한 방법입니다."
+            "value" : "전체 블록체인 동기화:"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gevonden transacties worden aan de database van het apparaat toegevoegd en bij elkaar opgeteld of afgetrokken, wat uw Brainwallet-saldo vormt. Er is geen Litecoin in enige portefeuille. Litecoin is alleen op het netwerk te vinden. Brainwallet is een eenvoudige manier om uw transactiegeschiedenis te controleren en slaat uw privésleutels op"
+            "value" : "Volledige blockchain-synchronisatie:"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਮਿਲੇ ਟ੍ਰਾਂਜੈਕਸ਼ਨਾਂ ਨੂੰ ਡਿਵਾਈਸ ਦੇ ਡੇਟਾਬੇਸ ਵਿੱਚ ਜੋੜਿਆ ਜਾਂਦਾ ਹੈ ਅਤੇ ਤੁਹਾਡੇ ਬ੍ਰੇਨਵਾਲਿਟ ਦਾ ਬਕਾਇਆ ਬਣਾਉਣ ਲਈ ਜੋੜਿਆ ਜਾਂ ਘਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ। ਕਿਸੇ ਵੀ ਵਾਲਿਟ ਵਿੱਚ Litecoin ਨਹੀਂ ਹੈ। ਲਾਈਟਕੋਇਨ ਸਿਰਫ਼ ਨੈੱਟਵਰਕ 'ਤੇ ਹੀ ਮਿਲਦਾ ਹੈ।  ਬ੍ਰੇਨਵਾਲਟ ਤੁਹਾਡੇ ਲੈਣ-ਦੇਣ ਦੇ ਇਤਿਹਾਸ ਦੀ ਜਾਂਚ ਕਰਨ ਦਾ ਇੱਕ ਸਧਾਰਨ ਤਰੀਕਾ ਹੈ ਅਤੇ ਇਹ ਤੁਹਾਡੀਆਂ ਨਿੱਜੀ ਕੁੰਜੀਆਂ ਨੂੰ ਸਟੋਰ ਕਰਦਾ ਹੈ"
+            "value" : "ਪੂਰਾ ਬਲਾਕਚੇਨ ਸਿੰਕ:"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Znalezione transakcje są dodawane do bazy danych urządzenia i dodawane lub odejmowane, tworząc saldo Brainwallet. Litecoin nie znajduje się w żadnym portfelu. Litecoin znajduje się tylko w sieci.  Brainwallet to prosty sposób na sprawdzenie historii transakcji i przechowywanie kluczy prywatnych"
+            "value" : "Pełna synchronizacja Blockchain:"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "As transações encontradas são adicionadas ao banco de dados do dispositivo e adicionadas ou subtraídas, criando o saldo de seu Brainwallet. Não há Litecoin em nenhuma carteira. O Litecoin só pode ser encontrado na rede.  O Brainwallet é uma maneira simples de verificar seu histórico de transações e armazena suas chaves privadas"
+            "value" : "Sincronização completa da Blockchain:"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Найденные транзакции добавляются в базу данных устройства и прибавляются или вычитаются, создавая баланс вашего Brainwallet. В кошельке нет Litecoin. Litecoin можно найти только в сети.  Brainwallet — это простой способ проверить историю ваших транзакций, и он хранит ваши приватные ключи."
+            "value" : "Полная синхронизация блокчейна:"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hittade transaktioner läggs till i enhetens databas och adderas eller subtraheras för att skapa ditt Brainwallets saldo. Det finns ingen Litecoin i någon plånbok. Litecoin finns endast på nätverket.  Brainwallet är ett enkelt sätt att kontrollera din transaktionshistorik och det lagrar dina privata nycklar"
+            "value" : "Fullständig blockkedje-synkronisering:"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ธุรกรรมที่พบจะถูกเพิ่มลงในฐานข้อมูลของอุปกรณ์และบวกหรือลบเพื่อสร้างยอดคงเหลือของ Brainwallet ของคุณ ไม่มี Litecoin อยู่ในกระเป๋าใดๆ Litecoin พบได้เฉพาะในเครือข่ายเท่านั้น Brainwallet เป็นวิธีง่ายๆ ในการตรวจสอบประวัติธุรกรรมของคุณ และจัดเก็บคีย์ส่วนตัวของคุณ"
+            "value" : "ซิงค์ Blockchain เต็มรูปแบบ:"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bulunan işlemler cihazın veritabanına eklenir ve Brainwallet'ınızın bakiyesini oluşturacak şekilde eklenir veya çıkarılır. Hiçbir cüzdanda Litecoin yoktur. Litecoin yalnızca ağ üzerinde bulunur.  Brainwallet işlem geçmişinizi kontrol etmenin basit bir yoludur ve özel anahtarlarınızı saklar"
+            "value" : "Tam Blockchain senkronizasyonu:"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Знайдені транзакції додаються до бази даних пристрою та додаються або віднімаються, створюючи баланс вашого Brainwallet. У жодному гаманці немає Litecoin. Лайткойн можна знайти лише в мережі.  Brainwallet — це простий спосіб перевірити історію транзакцій, який зберігає ваші приватні ключі."
+            "value" : "Повна синхронізація блокчейну:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "找到的交易会被添加到设备的数据库中，并进行加减以创建您的脑钱包余额。任何钱包中都没有莱特币。莱特币仅在网络上存在。Brainwallet 是一种简单的方法来检查您的交易历史，并存储您的私钥。"
+            "value" : "完全区块链同步："
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "發現的交易會被添加到設備的資料庫中，並添加或減去創建您的 Brainwallet 餘額。任何錢包中都沒有萊特幣。萊特幣僅在網路上存在。Brainwallet 是一種檢查您的交易歷史記錄的簡單方法，它儲存您的私鑰"
+            "value" : "完整區塊鏈同步："
           }
         }
       }
-    },
-    "Full Blockchain sync:" : {
-
     },
     "Game & Sync" : {
       "localizations" : {
@@ -15016,7 +14992,134 @@
       }
     },
     "If transactions are missing you can run a blockchain sync. This can take >3 hours." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إذا كانت المعاملات مفقودة، يمكنك تشغيل مزامنة البلوكتشين. قد يستغرق هذا أكثر من 3 ساعات."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falls Transaktionen fehlen, können Sie eine Blockchain-Synchronisierung durchführen. Dies kann über 3 Stunden dauern."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si faltan transacciones, puedes ejecutar una sincronización de blockchain. Esto puede tomar más de 3 horas."
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اگر تراکنش‌ها گم شده‌اند می‌توانید همگام‌سازی blockchain را اجرا کنید. این می‌تواند بیش از 3 ساعت طول بکشد."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si des transactions manquent, vous pouvez exécuter une synchronisation de la blockchain. Cela peut prendre plus de 3 heures."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "यदि लेनदेन गायब हैं तो आप ब्लॉकचेन सिंक चला सकते हैं। इसमें 3 घंटे से अधिक समय लग सकता है।"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jika transaksi hilang, Anda dapat menjalankan sinkronisasi blockchain. Ini dapat memakan waktu >3 jam."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se mancano transazioni puoi eseguire una sincronizzazione della blockchain. Questa operazione può richiedere più di 3 ore."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "トランザクションが欠落している場合は、ブロックチェーン同期を実行できます。3時間以上かかる場合があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "거래가 누락된 경우 블록체인 동기화를 실행할 수 있습니다. 3시간 이상 걸릴 수 있습니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als transacties ontbreken, kunt u een blockchain-synchronisatie uitvoeren. Dit kan meer dan 3 uur duren."
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਜੇ ਲੈਣ-ਦੇਣ ਗਾਇਬ ਹਨ ਤਾਂ ਤੁਸੀਂ ਬਲਾਕਚੇਨ ਸਿੰਕ ਚਲਾ ਸਕਦੇ ਹੋ। ਇਹ 3 ਘੰਟੇ ਤੋਂ ਵੱਧ ਸਮਾਂ ਲੈ ਸਕਦਾ ਹੈ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeśli brakuje transakcji, możesz uruchomić synchronizację blockchain. Może to zająć ponad 3 godziny."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se há transações faltando, você pode executar uma sincronização da blockchain. Isso pode levar mais de 3 horas."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если транзакции отсутствуют, вы можете запустить синхронизацию блокчейна. Это может занять более 3 часов."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Om transaktioner saknas kan du köra en blockkedje-synkronisering. Detta kan ta >3 timmar."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หากธุรกรรมหายไป คุณสามารถเรียกใช้การซิงค์ blockchain ได้ ซึ่งอาจใช้เวลา >3 ชั่วโมง"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İşlemler eksikse blockchain senkronizasyonunu çalıştırabilirsiniz. Bu 3 saatten fazla sürebilir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Якщо транзакції відсутні, ви можете запустити синхронізацію блокчейну. Це може зайняти >3 годин."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果交易缺失，您可以运行区块链同步。这可能需要超过 3 小时。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果交易遺失，您可以執行區塊鏈同步。此操作可能需要超過 3 小時。"
+          }
+        }
+      }
     },
     "If you saved 12 word seed phrase on your phone or had it on Litewallet, you can restore your Brainwallet here." : {
       "localizations" : {
@@ -15279,7 +15382,134 @@
       }
     },
     "IP address" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عنوان IP"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP-Adresse"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dirección IP"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آدرس IP"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresse IP"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP पता"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alamat IP"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indirizzo IP"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IPアドレス"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP 주소"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP-adres"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP ਪਤਾ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adres IP"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Endereço IP"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP-адрес"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP-adress"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ที่อยู่ IP"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP adresi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP адреса"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP 地址"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP 位址"
+          }
+        }
+      }
     },
     "It's your emojis you use to remember your 12 seed words." : {
       "localizations" : {
@@ -16193,267 +16423,132 @@
         }
       }
     },
-    "Litecoin Display Unit" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "وحدة عرض لايتكوين"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Litecoin-Anzeigeeinheit"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unidad de Visualización de Litecoin"
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "واحد نمایش لایت کوین"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unité d’affichage Litecoin"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "लाइटकॉइन डिस्प्ले यूनिट"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unit Tampilan Litecoin"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unità di visualizzazione Litecoin"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ライトコイン表示ユニット"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Litecoin 디스플레이 장치"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Litecoin weergave-eenheid"
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਲਾਈਟਕੋਇਨ ਡਿਸਪਲੇ ਯੂਨਿਟ"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wyświetlacz Litecoin"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unidade de exibição de Litecoin"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Блок отображения Litecoin"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Litecoin Displayenhet"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "หน่วยแสดงผล Litecoin"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Litecoin Görüntüleme Birimi"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Блок відображення Litecoin"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "莱特币显示单位"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "萊特幣顯示單元"
-          }
-        }
-      }
-    },
     "Litecoin Mainnet" : {
-
-    },
-    "Loading Wallet" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "جارٍ تحميل المحفظة"
+            "value" : "شبكة Litecoin الرئيسية"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Brieftasche laden"
+            "value" : "Litecoin Mainnet"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cargando Billetera"
+            "value" : "Litecoin Mainnet"
           }
         },
         "fa-IR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "بارگذاری کیف پول"
+            "value" : "Litecoin Mainnet"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chargement du portefeuille"
+            "value" : "Litecoin Mainnet"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "वॉलेट लोड हो रहा है"
+            "value" : "Litecoin Mainnet"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Memuat Dompet"
+            "value" : "Litecoin Mainnet"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caricamento del portafoglio"
+            "value" : "Litecoin Mainnet"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ウォレットを読み込み中"
+            "value" : "Litecoin Mainnet"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "지갑 로딩 중"
+            "value" : "Litecoin Mainnet"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Portemonnee laden"
+            "value" : "Litecoin Mainnet"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਵਾਲਿਟ ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
+            "value" : "Litecoin Mainnet"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ładowanie portfela"
+            "value" : "Litecoin Mainnet"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Carregando a carteira"
+            "value" : "Litecoin Mainnet"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Загрузка кошелька"
+            "value" : "Litecoin Mainnet"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Laddar Plånbok"
+            "value" : "Litecoin Mainnet"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "กำลังโหลด Wallet"
+            "value" : "Litecoin Mainnet"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cüzdan yükleniyor"
+            "value" : "Litecoin Mainnet"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Завантаження гаманця"
+            "value" : "Litecoin Mainnet"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "加载钱包"
+            "value" : "Litecoin 主网"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "加載錢包"
+            "value" : "Litecoin 主網"
           }
         }
       }
@@ -18021,7 +18116,134 @@
       }
     },
     "Network Fee (per kb):" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رسوم الشبكة (لكل كيلوبايت):"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netzwerkgebühr (pro kb):"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comisión de red (por kb):"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کمیسیون شبکه (به ازای هر kb):"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frais réseau (par ko) :"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "नेटवर्क शुल्क (प्रति kb):"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biaya Jaringan (per kb):"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commissione di rete (per kb):"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ネットワーク手数料（1kbあたり）："
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 수수료 (kb당):"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netwerkvergoeding (per kb):"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਨੈਟਵਰਕ ਫੀਸ (ਪ್ਰਤਿ kb):"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opłata sieciowa (na kb):"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taxa de Rede (por kb):"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сетевая комиссия (за кБ):"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nätverksavgift (per kb):"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ค่าธรรมเนียมเครือข่าย (ต่อ kb):"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ağ Ücreti (kb başına):"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Комісія мережі (за кб):"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "网络费用（每 kb）："
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "網路手續費（每 kb）："
+          }
+        }
+      }
     },
     "Network fees" : {
       "localizations" : {
@@ -19459,137 +19681,6 @@
         }
       }
     },
-    "Paper Key" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "مفتاح الورق"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Papierschlüssel"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Llave de Papel"
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "کلید کاغذی"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clé en papier"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "कागज़ की कुंजी"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kunci Kertas"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chiave di carta"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "紙のキー"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "용지 키"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Papieren sleutel"
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਕਾਗਜ਼ ਦੀ ਚਾਬੀ"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klucz do papieru"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chave de papel"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Бумажный ключ"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pappersnyckel"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "กุญแจกระดาษ"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kağıt Anahtar"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Паперовий ключ"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "纸钥匙"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "紙鑰匙"
-          }
-        }
-      }
-    },
     "Paper Key Set" : {
       "localizations" : {
         "ar" : {
@@ -19721,7 +19812,134 @@
       }
     },
     "Peer sync mode" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "وضع مزامنة النظير"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peer-Synchronisierungsmodus"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo de sincronización de pares"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حالت همگام‌سازی Peer"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode synchronisation pair"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "पीयर सिंक मोड"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode sinkronisasi peer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modalità sincronizzazione peer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ピア同期モード"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "피어 동기화 모드"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peer-synchronisatiemodus"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਪੀਅਰ ਸਿੰਕ ਮੋਡ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryb synchronizacji Peer"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo de sincronização de pares"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режим синхронизации пиров"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peer-synkroniseringsläge"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "โหมดซิงค์ Peer"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peer senkronizasyon modu"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режим синхронізації від пірів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "对等节点同步模式"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "對等節點同步模式"
+          }
+        }
+      }
     },
     "Pick 3 Emojis" : {
       "localizations" : {
@@ -21290,7 +21508,134 @@
       }
     },
     "Please try again." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يرجى المحاولة مرة أخرى."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte versuchen Sie es erneut."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, intenta de nuevo."
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لطفاً دوباره تلاش کنید."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez réessayer."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "कृपया पुनः प्रयास करें।"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silakan coba lagi."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per favore, riprova."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もう一度お試しください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다시 시도해주세요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Probeer het opnieuw."
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਕਿਰਪਾ ਕਰਕੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spróbuj ponownie."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tente novamente."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пожалуйста, попробуйте ещё раз."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Försök igen."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "โปรดลองอีกครั้ง"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lütfen tekrar deneyin."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Будь ласка, спробуйте ще раз."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请重试。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請重試。"
+          }
+        }
+      }
     },
     "Please write this down" : {
       "localizations" : {
@@ -21423,7 +21768,134 @@
       }
     },
     "Port" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المنفذ"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Port"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puerto"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "درگاه"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Port"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "पोर्ट"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Port"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porta"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ポート"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "포트"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poort"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਪੋਰਟ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Port"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porta"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Порт"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Port"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พอร์ต"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Port"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Порт"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "端口"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "連接埠"
+          }
+        }
+      }
     },
     "POWERED BY MOONPAY" : {
       "localizations" : {
@@ -21555,268 +22027,6 @@
         }
       }
     },
-    "Re-Enter PIN" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "أعد إدخال الرقم السري"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erneute PIN-Eingabe"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vuelva a ingresar el PIN"
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "وارد کردن مجدد پین"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entrez à nouveau le code PIN"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "पिन पुनः दर्ज करें"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Masukkan Kembali PIN"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reinserisci il PIN"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PINを再入力してください"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN 재입력"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN opnieuw invoeren"
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਪਿੰਨ ਦੁਬਾਰਾ ਦਰਜ ਕਰੋ"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ponowne wprowadzenie kodu PIN"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Digitar novamente o PIN"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Повторный ввод PIN-кода"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ange PIN-koden igen"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ใส่ PIN ใหม่"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN'i Yeniden Girin"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Повторно введіть PIN-код"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新输入密码"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新輸入 PIN"
-          }
-        }
-      }
-    },
-    "Re-Enter your new PIN." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "أعد إدخال رقم التعريف الشخصي الجديد الخاص بك."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geben Sie Ihre neue PIN erneut ein."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vuelva a ingresar su nuevo PIN."
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "رمز جدید خود را دوباره وارد کنید."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entrez à nouveau votre nouveau code PIN."
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "अपना नया पिन पुनः दर्ज करें."
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Masukkan kembali PIN baru Anda."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reinserisci il nuovo PIN."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "新しいPINを再度入力してください。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "새 PIN을 다시 입력하세요."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voer je nieuwe PIN opnieuw in."
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਆਪਣਾ ਨਵਾਂ ਪਿੰਨ ਦੁਬਾਰਾ ਦਰਜ ਕਰੋ।"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wprowadź ponownie nowy kod PIN."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Digite novamente seu novo PIN."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Повторно введите новый PIN-код."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ange din nya PIN-kod igen."
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ใส่ PIN ใหม่ของคุณอีกครั้ง"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeni PIN kodunuzu tekrar girin."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Введіть свій новий PIN-код ще раз."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请重新输入您的新密码。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新輸入您的新 PIN。"
-          }
-        }
-      }
-    },
     "Ready to start?" : {
       "localizations" : {
         "ar" : {
@@ -21943,137 +22153,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "準備開始嗎？"
-          }
-        }
-      }
-    },
-    "Ready, Set, Go!" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "استعد، جهز، يا!"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Auf geht's!"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Listos, en sus marcas, fuera!"
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "آماده، آماده شو، برو!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prêt, Partez, Allez !"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "तैयार, सेट, चलिए!"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Siap, Set, Mulai!"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pronti, via!"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "レディ、セット、ゴー！"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "준비, 시작, 고!"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klaar, af, go!"
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਤਿਆਰ, ਸੈੱਟ, ਚੱਲੋ!"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gotów, start, w drogę!"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Preparado, Pronto, Já!"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Готово, начали!"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Redo, spara, kör!"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "พร้อม ตั้งไว้ ไป!"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hazır, Başla, Git!"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Готові? Поїхали!"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "准备好了，开始，走！"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "準備好了，開始，出發！"
           }
         }
       }
@@ -23118,137 +23197,6 @@
         }
       }
     },
-    "Remember this PIN. If you forget it, you won't be able to access your Litecoin." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تذكر هذا الرقم السري. إذا نسيت ذلك، فلن تتمكن من الوصول إلى اللايتكوين الخاص بك."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Merken Sie sich diese PIN. Wenn Sie es vergessen, können Sie nicht mehr auf Ihre Litecoin zugreifen."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recuerda este PIN. Si lo olvidas, no podrás acceder a tu Litecoin."
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "این پین را به خاطر بسپارید. اگر آن را فراموش کنید، قادر به دسترسی به لایت‌کوین خود نخواهید بود."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "N’oubliez pas ce code PIN. Si vous l’oubliez, vous ne pourrez pas accéder à votre Litecoin."
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "इस पिन को याद रखें. यदि आप इसे भूल जाते हैं, तो आप अपने लाइटकॉइन तक पहुंच नहीं पाएंगे।"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ingat PIN ini. Jika Anda lupa, Anda tidak akan dapat mengakses Litecoin Anda."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ricordati questo PIN. Se lo dimentichi, non potrai più accedere ai tuoi Litecoin."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "このPINを覚えておいてください。忘れると、Litecoin にアクセスできなくなります。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이 PIN을 기억하세요. 잊어버리면 Litecoin에 액세스할 수 없습니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Onthoud deze PIN. Als je deze vergeet, kun je je Litecoin niet meer openen."
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਇਸ ਪਿੰਨ ਨੂੰ ਯਾਦ ਰੱਖੋ। ਜੇਕਰ ਤੁਸੀਂ ਇਸਨੂੰ ਭੁੱਲ ਜਾਂਦੇ ਹੋ, ਤਾਂ ਤੁਸੀਂ ਆਪਣੇ Litecoin ਤੱਕ ਪਹੁੰਚ ਨਹੀਂ ਕਰ ਸਕੋਗੇ।"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zapamiętaj ten kod PIN. Jeśli go zapomnisz, nie będziesz mieć dostępu do swoich Litecoinów."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lembre-se deste PIN. Se você o esquecer, não poderá acessar seu Litecoin."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Запомните этот PIN-код. Если вы его забудете, то не сможете получить доступ к своим Litecoin."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kom ihåg denna PIN-kod Om du glömmer det kommer du inte att kunna komma åt dina Litecoin."
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "จำไว้ว่า PIN นี้ หากลืมไป คุณจะไม่สามารถเข้าถึง Litecoin ของคุณได้"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu şifreyi unutmayın. Eğer unutursanız, Litecoin'inize erişemezsiniz."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Запам'ятайте цей PIN-код. Якщо ви його забудете, то не зможете отримати доступ до свого Litecoin."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请记住这个密码。如果你忘记了，你将无法访问你的莱特币。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "記住此 PIN。如果您忘記了，您將無法存取您的萊特幣。"
-          }
-        }
-      }
-    },
     "RESET / START OVER" : {
       "localizations" : {
         "ar" : {
@@ -24162,7 +24110,134 @@
       }
     },
     "Save trusted node" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حفظ العقدة الموثوقة"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vertrauenswürdigen Knoten speichern"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar nodo de confianza"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ذخیره گره قابل اعتماد"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer le nœud de confiance"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "विश्वसनीय नोड सहेजें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simpan node terpercaya"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salva nodo affidabile"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "信頼できるノードを保存"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "신뢰할 수 있는 노드 저장"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vertrouwd knooppunt opslaan"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਵਿਸ਼ਵਾਸ ਕੀਤੀ ਨੋਡ ਸੰਭਾਲੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapisz zaufany węzeł"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvar nó confiável"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить доверенный узел"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spara betrodd nod"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "บันทึกโหนดที่เชื่อถือได้"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güvenilen düğümü kaydet"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зберегти довірений вузол"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存受信任节点"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "儲存信任的節點"
+          }
+        }
+      }
     },
     "Save your 12 words" : {
       "localizations" : {
@@ -26251,10 +26326,264 @@
       }
     },
     "Set from spv peers in the Litecoin mainnet or a trusted peer to sync with the blockchain" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر من نظراء SPV في شبكة Litecoin الرئيسية أو من نظير موثوق للمزامنة مع البلوكتشين"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wählen Sie aus SPV-Peers im Litecoin-Mainnet oder einem vertrauenswürdigen Peer zum Synchronisieren mit der Blockchain"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura desde pares SPV en la red principal de Litecoin o un par de confianza para sincronizar con la blockchain"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "از spv peers در Litecoin mainnet یا یک peer قابل اعتماد برای همگام‌سازی با blockchain انتخاب کنید"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définir à partir des pairs SPV du réseau principal Litecoin ou d'un pair de confiance pour se synchroniser avec la blockchain"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Litecoin mainnet में SPV पीयर्स से या ब्लॉकचेन के साथ सिंक करने के लिए एक विश्वसनीय पीयर से सेट करें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atur dari peer SPV di Litecoin mainnet atau peer terpercaya untuk disinkronkan dengan blockchain"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli tra i peer SPV della rete principale Litecoin o un peer affidabile per sincronizzarti con la blockchain"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Litecoin mainnetのSPVピアまたは信頼できるピアから設定して、ブロックチェーンと同期します"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Litecoin 메인넷의 SPV 피어 또는 신뢰할 수 있는 피어에서 선택하여 블록체인과 동기화"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stel in via SPV-peers in het Litecoin-netwerk of een vertrouwd peer om met de blockchain te synchroniseren"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Litecoin mainnet ਵਿੱਚ SPV ਪੀਅਰਸ ਜਾਂ ਵਿਸ਼ਵਾਸ ਕੀਤੇ ਪੀਅਰ ਤੋਂ ਬਲਾਕਚੇਨ ਨਾਲ ਸਿੰਕ ਕਰਨ ਲਈ ਸੈੱਟ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustaw z równorzędnych węzłów SPV w sieci głównej Litecoin lub zaufanego węzła w celu synchronizacji z blockchain"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defina a partir de pares SPV na rede principal Litecoin ou de um par confiável para sincronizar com a blockchain"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установите пиры SPV из Litecoin mainnet или доверенного пира для синхронизации с блокчейном"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ange från SPV-peers i Litecoin-huvudnätverket eller en betrodd peer för att synkronisera med blockkedjan"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตั้งค่าจาก SPV peers ใน Litecoin mainnet หรือ trusted peer เพื่อซิงค์กับ blockchain"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Litecoin mainnet'indeki SPV eşlerinden veya blockchain ile senkronize olmak için güvenilen bir eşten ayarlayın"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть із SPV вузлів у мережі Litecoin або довіреного піра для синхронізації з блокчейном"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从 Litecoin 主网中的 SPV 对等节点或受信任的对等节点设置以与区块链同步"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "從 Litecoin 主網中的 SPV 對等節點或信任的對等節點設定，以與區塊鏈同步"
+          }
+        }
+      }
     },
     "Set IP Address" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين عنوان IP"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP-Adresse festlegen"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establecer dirección IP"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعیین آدرس IP"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définir l'adresse IP"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP पता सेट करें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atur Alamat IP"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta indirizzo IP"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IPアドレスを設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP 주소 설정"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP-adres instellen"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP ਪਤਾ ਸੈੱਟ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustaw adres IP"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Endereço IP"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установить IP-адрес"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ange IP-adress"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตั้งค่าที่อยู่ IP"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP Adresini Ayarla"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Встановити IP адресу"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置 IP 地址"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定 IP 位址"
+          }
+        }
+      }
     },
     "Set PIN" : {
       "localizations" : {
@@ -26387,7 +26716,134 @@
       }
     },
     "Set trusted Litecoin node / SPV Peer" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعيين عقدة Litecoin الموثوقة / نظير SPV"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vertrauenswürdigen Litecoin-Knoten / SPV-Peer festlegen"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurar nodo Litecoin de confianza / Par SPV"
+          }
+        },
+        "fa-IR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعیین گره قابل اعتماد Litecoin / SPV Peer"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définir le nœud Litecoin de confiance / Pair SPV"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "विश्वसनीय Litecoin नोड / SPV पीयर सेट करें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atur node Litecoin terpercaya / SPV Peer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta nodo Litecoin affidabile / Peer SPV"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "信頼できるLitecoinノード/SPVピアを設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "신뢰할 수 있는 Litecoin 노드 / SPV 피어 설정"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vertrouwd Litecoin-knooppunt / SPV-peer instellen"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਵਿਸ਼ਵਾਸ ਕੀਤੀ Litecoin ਨੋਡ / SPV ਪੀਅਰ ਸੈੱਟ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustaw zaufany węzeł Litecoin / SPV Peer"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir nó Litecoin confiável / Par SPV"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установить доверенный узел Litecoin / SPV пира"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ange betrodd Litecoin-nod / SPV-peer"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตั้งค่าโหนด Litecoin ที่เชื่อถือได้ / SPV Peer"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güvenilen Litecoin düğümü / SPV Eşi Ayarla"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Встановити довірений вузол Litecoin / SPV Peer"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置受信任的 Litecoin 节点 / SPV 对等节点"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定信任的 Litecoin 節點 / SPV 對等節點"
+          }
+        }
+      }
     },
     "Set your first emojis!" : {
       "comment" : "A title displayed at the top of the emoji picker view.",
@@ -26517,137 +26973,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定你的第一批表情符號！"
-          }
-        }
-      }
-    },
-    "Settings" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الإعدادات"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Einstellungen"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Configuración"
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تنظیمات"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Paramètres"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "सेटिंग्स"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pengaturan"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Impostazioni"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "설정"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Instellingen"
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਸੈਟਿੰਗਾਂ"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ustawienia"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Configurações"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Настройки"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inställningar"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "การตั้งค่า"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ayarlar"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Налаштування"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设置"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定"
           }
         }
       }
@@ -27694,137 +28019,6 @@
         }
       }
     },
-    "Submit" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "إرسال"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Absenden"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enviar"
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ارسال کنید"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Envoyer"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "जमा करना"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kirim"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invia"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "送信"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "제출"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Indienen"
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਜਮ੍ਹਾਂ ਕਰੋ"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wyślij"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enviar"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Отправить"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Skicka in"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ส่ง"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gönder"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Надіслати"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "提交"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "提交"
-          }
-        }
-      }
-    },
     "Success" : {
       "localizations" : {
         "ar" : {
@@ -28345,137 +28539,6 @@
         }
       }
     },
-    "Sync to the Litecoin Blockchain" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "المزامنة مع سلسلة كتل لايتكوين"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchronisieren mit der Litecoin-Blockchain"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sincronizar con la Blockchain de Litecoin"
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "همگام‌سازی با بلاک‌چین لایت‌کوین"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchronisation avec la blockchain Litecoin"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "लाइटकॉइन ब्लॉकचेन से सिंक करें"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sinkronisasi ke Blockchain Litecoin"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sincronizzazione con la blockchain di Litecoin"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ライトコインブロックチェーンに同期"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Litecoin 블록체인에 동기화"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchroniseren met de Litecoin Blockchain"
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਲਾਈਟਕੋਇਨ ਬਲਾਕਚੈਨ ਨਾਲ ਸਿੰਕ ਕਰੋ"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchronizacja z łańcuchem blokowym Litecoin"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sincronização com o blockchain do Litecoin"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Синхронизация с блокчейном Litecoin"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synkronisera med Litecoin-blockkedjan"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ซิงค์กับ Litecoin Blockchain"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Litecoin Blok Zinciri ile Senkronizasyon"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Синхронізація з блокчейном Litecoin"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "同步到莱特币区块链"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "同步至萊特幣區塊鏈"
-          }
-        }
-      }
-    },
     "Sync with Blockchain?" : {
       "localizations" : {
         "ar" : {
@@ -28602,137 +28665,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "與區塊鏈同步？"
-          }
-        }
-      }
-    },
-    "Syncing is a process where Brainwallet scans the Litecoin blockchain to see if any transactions that match your seed words (private keys) are in any transactions." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "المزامنة هي عملية يقوم فيها Brainwallet بفحص سلسلة الكتل الخاصة بـ Litecoin لمعرفة ما إذا كانت هناك أي معاملات تتطابق مع كلمات البذور الخاصة بك (المفاتيح الخاصة) في أي معاملات."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Das Synchronisieren ist ein Prozess, bei dem Brainwallet die Litecoin-Blockchain durchsucht, um zu sehen, ob Transaktionen, die mit Ihren Seed-Wörtern (privaten Schlüsseln) übereinstimmen, in irgendwelchen Transaktionen enthalten sind."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La sincronización es un proceso donde Brainwallet escanea la cadena de bloques de Litecoin para ver si alguna transacción que coincida con tus palabras semilla (claves privadas) está en alguna transacción."
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "همگام‌سازی فرآیندی است که در آن برین‌والت (Brainwallet) بلاک‌چین لایت‌کوین را اسکن می‌کند تا ببیند آیا تراکنش‌هایی که با کلمات بذر شما (کلیدهای خصوصی) مطابقت دارند در هیچ تراکنشی وجود دارند."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La synchronisation est un processus par lequel Brainwallet analyse la blockchain Litecoin pour voir si des transactions qui correspondent à vos mots de récupération (clés privées) sont dans des transactions."
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "सिंकिंग एक ऐसी प्रक्रिया है जिसमें ब्रेनवॉलेट लाइटकॉइन ब्लॉकचेन को स्कैन करता है, यह देखने के लिए कि क्या किसी लेनदेन में आपके बीज शब्दों (निजी कुंजी) से मेल खाने वाला कोई लेनदेन है या नहीं।"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sinkronisasi adalah sebuah proses di mana Brainwallet memindai blockchain Litecoin untuk melihat apakah ada transaksi yang cocok dengan seed words (kunci pribadi) Anda dalam setiap transaksi."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La sincronizzazione è un processo tramite il quale Brainwallet analizza la blockchain di Litecoin per verificare se sono presenti transazioni che corrispondono alle tue seed word (chiavi private)."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "同期とは、BrainwalletがLitecoinブロックチェーンをスキャンし、あなたのシードワード（秘密鍵）に一致するトランザクションが存在するかどうかを確認するプロセスです。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "동기화는 Brainwallet이 Litecoin 블록 체인을 스캔하여 시드 단어 (개인 키) 와 일치하는 거래가 거래에 있는지 확인하는 프로세스입니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchroniseren is een proces waarbij Brainwallet de Litecoin blockchain scant om te zien of transacties die overeenkomen met je seed woorden (private keys) in transacties voorkomen."
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਸਿੰਕਿੰਗ ਇੱਕ ਪ੍ਰਕਿਰਿਆ ਹੈ ਜਿੱਥੇ ਬ੍ਰੇਨਵਾਲਟ ਲਾਈਟਕੋਇਨ ਬਲਾਕਚੈਨ ਨੂੰ ਸਕੈਨ ਕਰਦਾ ਹੈ ਇਹ ਦੇਖਣ ਲਈ ਕਿ ਕੀ ਤੁਹਾਡੇ ਸੀਡ ਵਰਡਜ਼ (ਪ੍ਰਾਈਵੇਟ ਕੁੰਜੀਆਂ) ਨਾਲ ਮੇਲ ਖਾਂਦਾ ਕੋਈ ਲੈਣ-ਦੇਣ ਕਿਸੇ ਲੈਣ-ਦੇਣ ਵਿੱਚ ਹੈ।"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synchronizacja to proces, w którym Brainwallet skanuje łańcuch bloków Litecoin, aby sprawdzić, czy w transakcjach znajdują się jakiekolwiek transakcje pasujące do słów seed (kluczy prywatnych)."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A sincronização é um processo em que o Brainwallet examina o blockchain do Litecoin para ver se alguma transação que corresponda às suas palavras-semente (chaves privadas) está em alguma transação."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Синхронизация — это процесс, при котором Brainwallet сканирует блокчейн Litecoin, чтобы проверить, есть ли какие-либо транзакции, соответствующие вашим seed-фразам (приватным ключам), в каких-либо транзакциях."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Synkronisering är en process där Brainwallet skannar Litecoin-blockkedjan för att se om några transaktioner som matchar dina frö-ord (privata nycklar) finns i några transaktioner."
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "การซิงค์เป็นกระบวนการที่ Brainwallet สแกน Litecoin blockchain เพื่อตรวจสอบว่ามีธุรกรรมใดที่ตรงกับ seed words (private keys) ของคุณหรือไม่"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Senkronizasyon, Brainwallet'ın Litecoin blok zincirini tarayarak tohum kelimelerinizle (özel anahtarlar) eşleşen herhangi bir işlem olup olmadığını görmek için yaptığı bir işlemdir."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Синхронізація – це процес, під час якого Brainwallet сканує блокчейн Litecoin, щоб перевірити, чи є в ньому транзакції, що відповідають вашим основоположним словам (приватним ключам)."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "同步是一个过程，Brainwallet会扫描莱特币区块链，以查看是否有任何交易与您的种子词（私钥）匹配。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "同步是一個過程，其中 Brainwallet 掃描萊特幣區塊鏈以查看任何交易中是否有與您的種子詞（私鑰）匹配的交易。"
           }
         }
       }
@@ -30691,137 +30623,6 @@
         }
       }
     },
-    "The words entered do not match your paper key. Please try again." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الكلمات المدخلة لا تتطابق مع مفتاح الورقة الخاص بك. يرجى المحاولة مرة أخرى."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die eingegebenen Wörter stimmen nicht mit Ihrem Papierschlüssel überein. Bitte versuchen Sie es erneut."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Las palabras ingresadas no coinciden con tu clave de papel. Por favor, inténtalo de nuevo."
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "کلمات وارد شده با کلید کاغذی شما مطابقت ندارند. لطفاً دوباره تلاش کنید."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les mots saisis ne correspondent pas à votre clé en papier. Veuillez réessayer."
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "दर्ज किए गए शब्द आपके पेपर कुंजी से मेल नहीं खाते हैं। कृपया पुन: प्रयास करें।"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kata-kata yang dimasukkan tidak cocok dengan kunci kertas Anda. Silakan coba lagi."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le parole immesse non corrispondono alla chiave cartacea. Riprova per favore."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "入力された単語がお手元のペーパーキーと一致しません。もう一度お試しください。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "입력한 단어가 용지 키와 일치하지 않습니다. 다시 시도해주세요."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "De ingevoerde woorden komen niet overeen met je papieren sleutel. Probeer het opnieuw."
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਦਰਜ ਕੀਤੇ ਸ਼ਬਦ ਤੁਹਾਡੀ ਪੇਪਰ ਕੀ ਨਾਲ ਮੇਲ ਨਹੀਂ ਖਾਂਦੇ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wprowadzone słowa nie pasują do klucza papierowego. Spróbuj ponownie."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "As palavras digitadas não correspondem à chave do papel. Tente novamente."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Введенные слова не соответствуют вашему бумажному ключу. Пожалуйста, попробуйте снова."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Orden som angavs matchar inte din pappernyckel. Försök igen."
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "คำที่คุณป้อนไม่ตรงกับ paper key ของคุณ โปรดลองอีกครั้ง"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Girilen kelimeler kağıt anahtarınızla eşleşmiyor. Lütfen tekrar deneyin."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Введені слова не відповідають вашому паперовому ключу. Будь ласка, спробуйте ще раз."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "输入的单词与您的纸质密钥不匹配。请再试一次。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "輸入的單字與您的紙質鑰匙不符。請重試。"
-          }
-        }
-      }
-    },
     "There was a serious error in creating your Brainwallet. Visit us at brainwallet.co to file a customer support ticket." : {
       "localizations" : {
         "ar" : {
@@ -31345,139 +31146,6 @@
         }
       }
     },
-    "This is your Brainwallet phrase. Its your emojis you use to remember your 12 seed words." : {
-      "comment" : "A description of the purpose of the user's brainwallet phrase.",
-      "extractionState" : "stale",
-      "isCommentAutoGenerated" : true,
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "هذه عبارة Brainwallet الخاصة بك. إنها الرموز التعبيرية التي تستخدمها لتذكر كلمات البذرة الـ 12 الخاصة بك."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dies ist deine Brainwallet-Phrase. Es sind deine Emojis, die du nutzt, um deine 12 Seed-Wörter zu merken."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esta es tu frase Brainwallet. Son los emojis que usas para recordar tus 12 palabras semilla."
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "این عبارت Brainwallet شما است. این ایموجی‌های شما هستند که برای یادآوری 12 کلمه بذر استفاده می‌کنید."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ceci est votre phrase Brainwallet. Ce sont vos emojis que vous utilisez pour mémoriser vos 12 mots clés."
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "यह आपका Brainwallet phrase है। ये आपके इमोजी हैं जिनका उपयोग आप अपने 12 seed words को याद रखने के लिए करते हैं।"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ini adalah frasa Brainwallet Anda. Ini emoji Anda yang digunakan untuk mengingat 12 seed words Anda."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Questa è la tua frase Brainwallet. Sono i tuoi emoji che usi per ricordare le tue 12 parole seed."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "これはあなたのBrainwalletフレーズです。12個のシードワードを覚えるために使う絵文字です。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이것은 당신의 Brainwallet 구문입니다. 12개의 시드 단어를 기억하기 위해 사용하는 이모지입니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dit is je Brainwallet-zin. Dit zijn je emoji's om je 12 zaadwoorden te onthouden."
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਇਹ ਤੁਹਾਡਾ Brainwallet ਫਰੇਜ਼ ਹੈ। ਇਹ ਤੁਹਾਡੀਆਂ ਈਮੋਜੀਆਂ ਹਨ ਜਿਹਨਾਂ ਨੂੰ ਤੁਸੀਂ ਆਪਣੇ 12 seed words ਨੂੰ ਯਾਦ ਰੱਖਣ ਲਈ ਵਰਤਦੇ ਹੋ।"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To jest Twoja fraza Brainwallet. To emoji, których używasz, aby zapamiętać swoje 12 seed words."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esta é sua frase Brainwallet. São seus emojis que você usa para lembrar suas 12 palavras-chave."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Это ваша Brainwallet фраза. Это эмодзи, которые вы используете, чтобы запомнить ваши 12 seed words."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Detta är din Brainwallet-fras. Det är dina emojis som du använder för att komma ihåg dina 12 seed-ord."
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "นี่คือวลี Brainwallet ของคุณ เป็น emoji ของคุณที่ใช้เพื่อจำคำ seed 12 คำของคุณ"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu sizin Brainwallet cümlenizdir. 12 tohum sözcüğünüzü hatırlamak için kullandığınız emojilerinizdir."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Це ваша фраза Brainwallet. Це ваші емодзі, які ви використовуєте, щоб запам'ятати свої 12 seed words."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "这是你的Brainwallet密语。用你选择的表情符号来记住你的12个助记词。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "這是你的 Brainwallet 助記詞。這些是你用來記憶 12 個助記詞的表情符號。"
-          }
-        }
-      }
-    },
     "This is your final set!" : {
       "comment" : "Title for the final emoji selection guide screen.",
       "isCommentAutoGenerated" : true,
@@ -31606,137 +31274,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "這是你的最終組合！"
-          }
-        }
-      }
-    },
-    "This process can take 5 - 45 mins depending on your connectivty to the Litecoin network." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "يمكن أن تستغرق هذه العملية من 5 إلى 45 دقيقة اعتمادًا على اتصالك بشبكة لايتكوين."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dieser Vorgang kann je nach Ihrer Verbindung zum Litecoin-Netzwerk 5 - 45 Minuten dauern."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este proceso puede tomar de 5 a 45 minutos dependiendo de tu conectividad a la red de Litecoin."
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "این فرآیند می‌تواند بسته به کیفیت اتصال شما به شبکه لایت‌کوین، بین ۵ تا ۴۵ دقیقه طول بکشد."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ce processus peut prendre de 5 à 45 minutes en fonction de votre connexion au réseau Litecoin."
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "इस प्रक्रिया में लाइटकॉइन नेटवर्क से आपकी कनेक्टिविटी के आधार पर 5 - 45 मिनट लग सकते हैं।"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Proses ini dapat memakan waktu 5 - 45 menit tergantung pada konektivitas Anda ke jaringan Litecoin."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Questo processo può richiedere dai 5 ai 45 minuti, a seconda della connettività alla rete Litecoin."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "このプロセスは、ライトコインネットワークへの接続状況によって、5分から45分かかることがあります。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이 프로세스는 Litecoin 네트워크에 연결하는 데 따라 5 ~ 45분이 소요될 수 있습니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dit proces kan 5 tot 45 minuten duren, afhankelijk van je verbinding met het Litecoin-netwerk."
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਇਸ ਪ੍ਰਕਿਰਿਆ ਵਿੱਚ 5 - 45 ਮਿੰਟ ਲੱਗ ਸਕਦੇ ਹਨ ਜੋ ਕਿ Litecoin ਨੈੱਟਵਰਕ ਨਾਲ ਤੁਹਾਡੀ ਕਨੈਕਟੀਵਿਟੀ ਦੇ ਆਧਾਰ 'ਤੇ ਹੁੰਦਾ ਹੈ।"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Proces ten może zająć od 5 do 45 minut w zależności od połączenia z siecią Litecoin."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esse processo pode levar de 5 a 45 minutos, dependendo de sua conexão com a rede Litecoin."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Этот процесс может занять от 5 до 45 минут в зависимости от вашего подключения к сети Litecoin."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Denna process kan ta 5 - 45 minuter beroende på din anslutning till Litecoin-nätverket."
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "กระบวนการนี้อาจใช้เวลา 5 - 45 นาที ขึ้นอยู่กับการเชื่อมต่อของคุณกับเครือข่าย Litecoin"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu işlem Litecoin ağına olan bağlantınıza bağlı olarak 5 - 45 dakika sürebilir."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Цей процес може тривати від 5 до 45 хвилин залежно від вашого підключення до мережі Litecoin."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "此过程可能需要5到45分钟，具体取决于您与莱特币网络的连接情况。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "此過程可能需要 5 - 45 分鐘，具體取決於您與萊特幣網路的連接情況。"
           }
         }
       }
@@ -32391,267 +31928,132 @@
         }
       }
     },
-    "To make sure everything was written down correctly, please enter the following words from your paper key." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "للتأكد من أن كل شيء قد كُتب بشكل صحيح، يرجى إدخال الكلمات التالية من مفتاح الورق الخاص بك."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Um sicherzugehen, dass Sie alles richtig aufgeschrieben haben, tragen Sie bitte die folgenden Wörter auf Ihrem Papierschlüssel ein."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Para asegurarse de que todo se haya escrito correctamente, por favor ingrese las siguientes palabras de su clave en papel."
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "برای اطمینان از اینکه همه چیز به درستی نوشته شده است، لطفاً کلمات زیر را از کلید کاغذی خود وارد کنید."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pour vous assurer que tout a été noté correctement, veuillez entrer les mots suivants sur votre clé en papier."
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "यह सुनिश्चित करने के लिए कि सब कुछ सही ढंग से लिखा गया है, कृपया अपने पेपर कुंजी से निम्नलिखित शब्द दर्ज करें।"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Untuk memastikan semuanya ditulis dengan benar, silakan masukkan kata-kata berikut ini dari kunci kertas Anda."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Per assicurarti che tutto sia stato scritto correttamente, inserisci le seguenti parole dalla tua legenda cartacea."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "すべてが正しく書き留められているか確認するには、ペーパーキーから次の単語を入力してください。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "모든 내용이 올바르게 작성되었는지 확인하려면 종이 키에서 다음 단어를 입력하십시오."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voer de volgende woorden van je papieren sleutel in om zeker te stellen dat alles correct is opgeschreven."
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਇਹ ਯਕੀਨੀ ਬਣਾਉਣ ਲਈ ਕਿ ਸਭ ਕੁਝ ਸਹੀ ਢੰਗ ਨਾਲ ਲਿਖਿਆ ਗਿਆ ਹੈ, ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀ ਪੇਪਰ ਕੀ ਤੋਂ ਹੇਠਾਂ ਦਿੱਤੇ ਸ਼ਬਦ ਦਰਜ ਕਰੋ।"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aby upewnić się, że wszystko zostało poprawnie zapisane, wpisz następujące słowa z klucza do papieru."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Para ter certeza de que tudo foi escrito corretamente, digite as seguintes palavras da chave de papel."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Чтобы убедиться, что все записано правильно, введите следующие слова с бумажного ключа."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "För att säkerställa att allt skrevs ner korrekt, vänligen ange följande ord från din pappersnyckel."
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "เพื่อให้แน่ใจว่าทุกอย่างถูกเขียนลงอย่างถูกต้อง โปรดป้อนคำต่อไปนี้จาก paper key ของคุณ"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Her şeyin doğru yazıldığından emin olmak için, lütfen kağıt anahtarınızdan aşağıdaki kelimeleri girin."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Щоб переконатися, що все записано правильно, введіть наступні слова з вашого паперового ключа."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "为了确保所有内容都正确记录下来，请输入纸质密钥中的以下单词。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "為了確保所有內容都正確寫下來，請從紙質密鑰中輸入以下單字。"
-          }
-        }
-      }
-    },
     "Toggle mode" : {
-
-    },
-    "TOP SECRET" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "سري للغاية"
+            "value" : "تبديل الوضع"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "STRENG GEHEIM"
+            "value" : "Modus wechseln"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ALTO SECRETO"
+            "value" : "Alternar modo"
           }
         },
         "fa-IR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "کاملاً محرمانه"
+            "value" : "تغییر حالت"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TOP SECRET"
+            "value" : "Basculer le mode"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "गोपनीय\nशीर्ष गोपनीय"
+            "value" : "मोड टॉगल करें"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SANGAT RAHASIA"
+            "value" : "Alihkan mode"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TOP SECRET"
+            "value" : "Cambia modalità"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "トップシークレット"
+            "value" : "モードを切り替え"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "극비"
+            "value" : "모드 전환"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TOPGEHEIM"
+            "value" : "Modus wisselen"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਸ਼ਾਇਦ ਬਾਅਦ ਵਿੱਚ (ਛੱਡੋ"
+            "value" : "ਮੋਡ ਬਦਲੋ"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TOP SECRET"
+            "value" : "Zmień tryb"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TOP SECRET"
+            "value" : "Alternar modo"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "СОВЕРШЕННО СЕКРЕТНО"
+            "value" : "Переключить режим"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TOPP HEMLIG"
+            "value" : "Växla läge"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ลับสูงสุด"
+            "value" : "สลับโหมด"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ÇOK GİZLİ"
+            "value" : "Modu değiştir"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ЦІЛКОМ СЕКРЕТНО"
+            "value" : "Перемикнути режим"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "绝密"
+            "value" : "切换模式"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "絕密"
+            "value" : "切換模式"
           }
         }
       }
@@ -34610,137 +34012,6 @@
         }
       }
     },
-    "via" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "عبر"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "über"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "vía"
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "از طریق"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "via"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "के जरिए"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "melalui"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tramite"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "経由"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "경유"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "via"
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਰਾਹੀਂ"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "za pośrednictwem"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "via"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "через"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "via"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ผ่าน"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "üzerinden"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "через"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "通过"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "透過"
-          }
-        }
-      }
-    },
     "Wallet Creation Error" : {
       "localizations" : {
         "ar" : {
@@ -35524,135 +34795,131 @@
       }
     },
     "Wiping your wallet…" : {
-
-    },
-    "Word" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "كلمة"
+            "value" : "جاري مسح محفظتك…"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wort"
+            "value" : "Ihr Wallet wird gelöscht…"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Palabra"
+            "value" : "Borrando tu billetera…"
           }
         },
         "fa-IR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "واژه"
+            "value" : "درحال پاک‌سازی کیف‌پول…"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mot"
+            "value" : "Effacement de votre portefeuille…"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "शब्द"
+            "value" : "आपके वॉलेट को मिटाया जा रहा है…"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kata"
+            "value" : "Menghapus dompet Anda…"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Parola"
+            "value" : "Cancellazione del portafoglio in corso…"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "単語"
+            "value" : "ウォレットをワイプしています…"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "단어"
+            "value" : "지갑을 초기화하는 중…"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Woord"
+            "value" : "Uw portemonnee wordt gewist…"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਸ਼ਬਦ"
+            "value" : "ਤੁਹਾਡਾ ਵਾਲਿਟ ਮਿਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ…"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Słowo"
+            "value" : "Czyszczenie portfela…"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Palavra"
+            "value" : "Limpando sua carteira…"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Слово"
+            "value" : "Очистка вашего кошелька…"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ord"
+            "value" : "Rensar din plånbok…"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "คำ"
+            "value" : "กำลังล้างกระเป๋าสตางค์ของคุณ…"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kelime"
+            "value" : "Cüzdanınız siliniyor…"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Слово"
+            "value" : "Очищення вашого гаманця…"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "单词"
+            "value" : "正在清除您的钱包…"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "單字"
+            "value" : "正在清除您的錢包…"
           }
         }
       }
@@ -36829,137 +36096,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "同步時您將無法發送萊特幣。這可能需要一段時間。"
-          }
-        }
-      }
-    },
-    "Your PIN will be used to unlock your Brainwallet and send money." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "سيتم استخدام رقم التعريف الشخصي لفتح محفظة الدماغ الخاصة بك وإرسال الأموال."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ihre PIN wird verwendet, um Ihr Brainwallet zu entsperren und Geld zu senden."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Su PIN se utilizará para desbloquear su Brainwallet y enviar dinero."
-          }
-        },
-        "fa-IR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "رمز شما برای باز کردن قفل کیف پول مغزی شما و ارسال پول استفاده خواهد شد."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Votre code PIN sera utilisé pour déverrouiller votre Brainwallet et envoyer de l’argent."
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "आपके पिन का उपयोग आपके ब्रेनवॉलेट को अनलॉक करने और पैसे भेजने के लिए किया जाएगा।"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN Anda akan digunakan untuk membuka kunci Brainwallet Anda dan mengirim uang."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Il tuo PIN verrà utilizzato per sbloccare il tuo Brainwallet e inviare denaro."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN は Brainwallet のロックを解除して送金するために使用されます。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN은 Brainwallet의 잠금을 해제하고 금액을 보내는 데 사용됩니다."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Je PIN wordt gebruikt om je Brainwallet te ontgrendelen en geld te versturen."
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਤੁਹਾਡੇ ਪਿੰਨ ਦੀ ਵਰਤੋਂ ਤੁਹਾਡੇ ਬ੍ਰੇਨਵਾਲਿਟ ਨੂੰ ਅਨਲੌਕ ਕਰਨ ਅਤੇ ਪੈਸੇ ਭੇਜਣ ਲਈ ਕੀਤੀ ਜਾਵੇਗੀ।"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Twój kod PIN zostanie użyty do odblokowania Brainwallet i wysłania pieniędzy."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seu PIN será usado para desbloquear o Brainwallet e enviar dinheiro."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ваш PIN-код будет использоваться для разблокировки кошелька Brainwallet и отправки денег."
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Din PIN-kod kommer att användas för att låsa upp din Brainwallet och skicka pengar."
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN ของคุณจะใช้เพื่อปลดล็อก Brainwallet และส่งเงิน"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PIN kodunuz Brainwallet'ınızın kilidini açmak ve para göndermek için kullanılacaktır."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ваш PIN-код буде використано для розблокування вашого Brainwallet та надсилання грошей."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "您的PIN码将用于解锁您的脑钱包并发送资金。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "您的 PIN 將用於解鎖您的 Brainwallet 並匯款。"
           }
         }
       }
