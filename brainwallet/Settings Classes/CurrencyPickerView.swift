@@ -85,9 +85,9 @@ struct CurrencyPickerView: View {
                             Spacer()
                         }
                         .frame(width: width * 0.1, alignment: .leading)
-                        .background(BrainwalletColor.background)
+                        .background(BrainwalletColor.surface)
                     }
-                    .background(BrainwalletColor.background)
+                    .background(BrainwalletColor.surface)
 
                 }
             }

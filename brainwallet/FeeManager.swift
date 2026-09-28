@@ -19,3 +19,38 @@ struct Fees: Equatable {
 		            timestamp: defaultTimestamp)
 	}
 }
+
+/// The 3 selectable fee-per-kb tiers shown by the Settings network fee picker
+/// (SettingsLitecoinDetailView), split out from the view so the math is unit-testable
+/// without instantiating SwiftUI state.
+enum NetworkFeeTier: Int, CaseIterable {
+	case economy = 0
+	case regular = 1
+	case luxury = 2
+
+	/// The tier's fee-per-kb, in litoshis.
+	func litoshis(from fees: Fees) -> UInt64 {
+		switch self {
+		case .economy: return fees.economy
+		case .regular: return fees.regular
+		case .luxury: return fees.luxury
+		}
+	}
+
+	/// The tier whose fee (in litoshis) is numerically closest to `storedLitoshis`
+	/// (e.g. a previously persisted `UserDefaults.userSetPreferredNetworkFee`).
+	/// Ties favor the lower tier (economy over regular, regular over luxury).
+	static func closest(to storedLitoshis: Int, in fees: Fees) -> NetworkFeeTier {
+		allCases.min {
+			abs(Int($0.litoshis(from: fees)) - storedLitoshis) < abs(Int($1.litoshis(from: fees)) - storedLitoshis)
+		} ?? .regular
+	}
+
+	/// Converts a litoshi fee-per-kb into a formatted fiat string (e.g. "12.34 USD"),
+	/// or "" when the calculated amount is zero (no fee, or no rate loaded yet).
+	static func formattedFiatAmount(litoshis: UInt64, rate: Rate) -> String {
+		let feeInLTC = Double(litoshis) / Double(C.litoshis)
+		let calculation = feeInLTC * rate.rate
+		return calculation == 0 ? "" : String(format: "%.3f %@", calculation, rate.code)
+	}
+}
