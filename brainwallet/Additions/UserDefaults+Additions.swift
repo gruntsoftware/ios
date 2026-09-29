@@ -26,7 +26,7 @@ private let userPurchasedTrustedNodeKey = "userPurchasedTrustedNode"
 
 /// StoreKit product id for the Trusted LTC Node in-app purchase. Must match
 /// "Trusted LTC Node Feature" in BWProductsList.plist (ios-private-general-purpose).
-let trustedLTCNodeProductId = "com.gruntsoftware.brainwallet.trusted_ltc_node_1"
+let trustedLTCNodeProductId = "com.gruntsoftware.brainwallet.trusted_ltc_node_2"
 
 let timeSinceLastExitKey = "TimeSinceLastExit"
 let shouldRequireLoginTimeoutKey = "ShouldRequireLoginTimeoutKey"
