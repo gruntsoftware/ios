@@ -8,6 +8,7 @@
 - A toggle lets you switch between your trusted node and random mainnet peers. The preference is passed to `BRPeerManager` (`PeerSyncMode`: `random_mainnet` / `trusted`).
 - The sync status view shows an icon for the current peer sync mode.
 - Replaces the old, unused `customNodeIP` / `customNodePort` defaults.
+- Fixed before release: the purchase sheet could appear empty because the app listed a retired product id (`trusted_ltc_node_1`). It now uses `trusted_ltc_node_2`, matching App Store Connect, with tests that keep the ids in sync.
 
 ### Live network fees
 - The Settings fee picker now shows real Economy / Regular / Luxury tiers fetched from the fee-per-kb endpoint, instead of placeholder values.
@@ -28,7 +29,8 @@
 ## Other changes
 - Refreshed translations (`Localizable.xcstrings` auto-translate).
 - Transaction detail and color palette tweaks.
-- Updated submodules: `Modules/core` and `Private/general-purpose`.
+- Updated submodules: `Modules/core` and `Private/general-purpose` (now at `124e7b5`, with the product id fix).
+- Build 2602316 replaces 2602315, which App Review could not use to find the Trusted Node purchase (Guideline 2.1(b)).
 - Added the `brainwallet-local-storekit` scheme for local StoreKit testing.
 - `.gitignore` cleanup.
 
@@ -44,4 +46,4 @@
 > - Updated translations and other improvements.
 
 ## Comparison basis
-Changes are listed against `main` (the last release, `v3.9.18`). `develop` and `release/v3.10.0` share the Trusted Node merge (#197). The release branch adds only the version bump and an i18n catalog update. `develop` has one more translation PR (#198) and a stale catalog removal that are not in the release.
+Changes are listed against `main` (the last release, `v3.9.18`). `develop` and `release/v3.10.0` share the Trusted Node merge (#197). The release branch adds the version bump, an i18n catalog update, and the Trusted Node product id fix with its tests. `develop` has one more translation PR (#198) and a stale catalog removal that are not in the release.
