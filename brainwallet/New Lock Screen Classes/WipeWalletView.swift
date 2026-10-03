@@ -16,17 +16,25 @@ struct WipeWalletView: View {
     @Binding
      var shouldDismiss: Bool
 
+    @Binding
+     var didCompleteWipe: Bool
+
     @State
      var isWipingWallet: Bool = false
 
     let squareImageSize: CGFloat = 25.0
     let themeBorderSize: CGFloat = 44.0
 
+    private var isBusy: Bool {
+        isWipingWallet && !didCompleteWipe && !viewModel.wipeWalletDidFail
+    }
+
     init(viewModel: LockScreenViewModel,
          shouldDismiss: Binding<Bool>,
-         didCompleteWipe: Binding<Bool>,) {
+         didCompleteWipe: Binding<Bool>) {
         self.viewModel = viewModel
         _shouldDismiss = shouldDismiss
+        _didCompleteWipe = didCompleteWipe
     }
 
     var body: some View {
@@ -51,7 +59,37 @@ struct WipeWalletView: View {
 
                     Spacer()
 
-                    if !isWipingWallet {
+                    if viewModel.wipeWalletDidFail {
+                        Text("Failed to wipe wallet")
+                            .modifier(BWIPSRegular(size: 24.0))
+                            .foregroundColor(BrainwalletColor.content)
+                            .frame(alignment: .center)
+                            .padding(.all, 20.0)
+
+                        Text("Please try again.")
+                            .modifier(BWIPSRegular(size: 24.0, lineLimit: 2))
+                            .foregroundColor(BrainwalletColor.content)
+                            .frame(alignment: .center)
+                            .padding(.all, 20.0)
+                    } else if didCompleteWipe {
+                        Text("Wallet is deleted")
+                            .modifier(BWIPSRegular(size: 24.0))
+                            .foregroundColor(BrainwalletColor.content)
+                            .frame(alignment: .center)
+                            .padding(.all, 20.0)
+
+                        Text("Start over by swiping up and restarting the app.")
+                            .modifier(BWIPSRegular(size: 24.0, lineLimit: 2))
+                            .foregroundColor(BrainwalletColor.content)
+                            .frame(alignment: .center)
+                            .padding(.all, 20.0)
+                    } else if isWipingWallet {
+                        Text("Wiping your wallet…")
+                            .modifier(BWIPSRegular(size: 24.0))
+                            .foregroundColor(BrainwalletColor.content)
+                            .frame(alignment: .center)
+                            .padding(.all, 20.0)
+                    } else {
                         Text("This will erase your PIN, data & memos. This cannot be undone.")
                             .modifier(BWIPSRegular(size: 24.0, lineLimit: 2))
                             .foregroundColor(BrainwalletColor.content)
@@ -72,26 +110,13 @@ struct WipeWalletView: View {
                             .foregroundColor(BrainwalletColor.content)
                             .tint(BrainwalletColor.surface)
                             .padding(.all, 20.0)
-                    } else {
-                        Text("Wallet is deleted")
-                            .modifier(BWIPSRegular(size: 24.0))
-                            .foregroundColor(BrainwalletColor.content)
-                            .frame(alignment: .center)
-                            .padding(.all, 20.0)
-
-                        Text("Start over by swiping up and restarting the app.")
-                            .modifier(BWIPSRegular(size: 24.0, lineLimit: 2))
-                            .foregroundColor(BrainwalletColor.content)
-                            .frame(alignment: .center)
-                            .padding(.all, 20.0)
                     }
 
                     Spacer()
                     Button(action: {
-                        isWipingWallet.toggle()
-                        delay(4.0) {
-                            viewModel.startWipeProcess()
-                        }
+                        viewModel.wipeWalletDidFail = false
+                        isWipingWallet = true
+                        viewModel.startWipeProcess()
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: largeButtonHeight/2)
@@ -113,6 +138,7 @@ struct WipeWalletView: View {
                         }
                         .padding(.all, 8.0)
                     }
+                    .disabled(isBusy || didCompleteWipe)
                     .accessibilityIdentifier("Wipe Button")
 
                     Button(action: {
@@ -126,14 +152,14 @@ struct WipeWalletView: View {
                             Text("Cancel")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                  .modifier(BWIPSBold(size: 24.0))
-                                .foregroundColor( isWipingWallet ? BrainwalletColor.content.opacity(0.2) : BrainwalletColor.content)
+                                .foregroundColor( isBusy ? BrainwalletColor.content.opacity(0.2) : BrainwalletColor.content)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: largeButtonHeight/2)
-                                        .stroke(isWipingWallet ? BrainwalletColor.content.opacity(0.2) : BrainwalletColor.content, lineWidth: 2.0)
+                                        .stroke(isBusy ? BrainwalletColor.content.opacity(0.2) : BrainwalletColor.content, lineWidth: 2.0)
                                 )
                         }
                         .padding(.all, 8.0)
-                        .disabled(isWipingWallet)
+                        .disabled(isBusy)
                         .accessibilityIdentifier("Cancel")
                     }
                 }

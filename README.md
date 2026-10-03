@@ -37,6 +37,17 @@
 - Buy/sell LTC and gift cards via in-app widgets
 - SwiftUI-based Bento UI hosted in a lightweight UIKit shell, with legacy UIKit screens still being migrated
 
+## Release Notes
+
+### v3.10.0
+- **Trusted Node**: connect to your own Litecoin node (IP + port) via in-app purchase, with a toggle between trusted node and random mainnet peers. Sync status shows the current peer mode.
+- **Live network fees**: Settings fee picker shows real Economy/Regular/Luxury tiers with the fiat cost, and remembers your choice.
+- **Redesigned Settings**: consistent expandable rows, clearer blockchain section, blockchain sync confirmation alert restored.
+- **Safer wallet wipe**: waits for wallet, database and keychain (incl. trusted-node data) cleanup and shows an error on failure.
+- Refreshed translations and updated submodules.
+
+Full notes: [RELEASE_NOTES.md](RELEASE_NOTES.md)
+
 ## Auditing code
 
 ### Prerequisites
