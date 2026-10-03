@@ -4,7 +4,7 @@
 
 ### Trusted Node (new)
 - Connect Brainwallet to your own Litecoin node by entering its IP address and port in Settings.
-- Unlocked with an in-app purchase (`trusted_ltc_node_1`); the purchase state, IP and port are stored in the iOS Keychain (service `brainwallet.trustednode`).
+- Unlocked with an in-app purchase (`trusted_ltc_node_2`); the purchase state, IP and port are stored in the iOS Keychain (service `brainwallet.trustednode`).
 - A toggle lets you switch between your trusted node and random mainnet peers. The preference is passed to `BRPeerManager` (`PeerSyncMode`: `random_mainnet` / `trusted`).
 - The sync status view shows an icon for the current peer sync mode.
 - Replaces the old, unused `customNodeIP` / `customNodePort` defaults.
