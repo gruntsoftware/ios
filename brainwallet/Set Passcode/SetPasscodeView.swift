@@ -28,8 +28,8 @@ struct SetPasscodeView: View {
     private var userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
     init(isRestoringAnOldWallet: Bool, path: Binding<[Onboarding]>) {
-        self.isRestoringAnOldWallet = isRestoringAnOldWallet
         _path = path
+        _isRestoringAnOldWallet = State(initialValue: isRestoringAnOldWallet)
     }
 
     var body: some View {
