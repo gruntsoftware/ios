@@ -31,13 +31,7 @@ struct PickEmojisView: View {
     private var thirdEmojiString: String = ""
     
     @State
-    private var firstEmojiSelected = false
-    
-    @State
-    private var secondEmojiSelected = false
-    
-    @State
-    private var thirdEmojiSelected = false
+    private var selectedField: SetField? = .firstField
     
     @State
     private var shouldShowSeedWords: Bool = false
@@ -45,8 +39,13 @@ struct PickEmojisView: View {
     @Binding
     var selectedPage: Int
     
-    @FocusState
-    private var focusedField: SetField?
+    private func selection(for field: SetField) -> Binding<Bool> {
+        Binding(get: { selectedField == field },
+                set: { isOn in
+                    if isOn { selectedField = field }
+                    else if selectedField == field { selectedField = nil }
+                })
+    }
     
     let backgroundGradient: LinearGradient
     
@@ -141,48 +140,48 @@ struct PickEmojisView: View {
                     .padding(.top, 30.0)
                 }
                 Text("Tap a box. Show or hide words to choose your emojis. Tap an emoji. Each emoji must be different.")
-                    .modifier(BWIPSRegular(size: 18, lineLimit: 3))
+                    .modifier(BWIPSRegular(size: 20, lineLimit: 3))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
-                    .frame(height: 44.0)
-                    .padding([.leading, .trailing], 50.0)
+                    .frame(height: 60.0)
+                    .padding([.leading, .trailing], 30.0)
                     .padding(.top, 10.0)
                     .padding(.bottom, 10.0)
                     .accessibilityIdentifier("howItWorksViewDescription")
                 
                 HStack {
-                    SetEmojiView(isSelected: $firstEmojiSelected,
+                    SetEmojiView(isSelected: selection(for: .firstField),
                                  seedWord: firstWord,
                                  emojiString: $firstEmojiString,
                                  shouldShowWord: $shouldShowSeedWords,
-                                 viewIndex: 1)
+                                 viewIndex: 1,
+                                 isActive: selectedPage == 2)
                     .frame(width: width * setFactor)
                     .frame(height: emojiRowFactor)
                     .background(emojisFieldGradient)
                     .cornerRadius(16.0)
-                    .focused($focusedField, equals: .firstField)
                     
-                    SetEmojiView(isSelected: $secondEmojiSelected,
+                    SetEmojiView(isSelected: selection(for: .secondField),
                                  seedWord: secondWord,
                                  emojiString: $secondEmojiString,
                                  shouldShowWord: $shouldShowSeedWords,
-                                 viewIndex: 2)
+                                 viewIndex: 2,
+                                 isActive: selectedPage == 2)
                     .frame(width: width * setFactor)
                     .frame(height: emojiRowFactor)
                     .background(emojisFieldGradient)
                     .cornerRadius(16.0)
-                    .focused($focusedField, equals: .secondField)
                     
-                    SetEmojiView(isSelected: $thirdEmojiSelected,
+                    SetEmojiView(isSelected: selection(for: .thirdField),
                                  seedWord: thirdWord,
                                  emojiString: $thirdEmojiString,
                                  shouldShowWord: $shouldShowSeedWords,
-                                 viewIndex: 3)
+                                 viewIndex: 3,
+                                 isActive: selectedPage == 2)
                     .frame(width: width * setFactor)
                     .frame(height: emojiRowFactor)
                     .background(emojisFieldGradient)
                     .cornerRadius(16.0)
-                    .focused($focusedField, equals: .thirdField)
                     
                 }
                 .frame(width: width * 0.95)
@@ -230,14 +229,9 @@ struct PickEmojisView: View {
                         .padding( .bottom, 16.0)
                         .disabled(!uniqueEmojisSelected)
                 }
-                    .background(backgroundGradient)
+                .background(backgroundGradient)
             }
             .ignoresSafeArea(.keyboard)
-            .onChange(of: focusedField) { _, newValue in
-                firstEmojiSelected  = newValue == .firstField
-                secondEmojiSelected = newValue == .secondField
-                thirdEmojiSelected  = newValue == .thirdField
-            }
             .onChange(of: firstEmojiString) { _, _ in uniqueEmojisSelected = areUniqueEmojisSelected() }
             .onChange(of: secondEmojiString) { _, _ in uniqueEmojisSelected = areUniqueEmojisSelected() }
             .onChange(of: thirdEmojiString) { _, _ in uniqueEmojisSelected = areUniqueEmojisSelected() }
