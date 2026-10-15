@@ -196,7 +196,8 @@ struct TopUpSetAmountView: View {
                     VStack {
                         ZStack {
                             WebBuyView(signingData: receiveViewModel.buildUnsignedMoonPayUrl(),
-                                       viewModel: receiveViewModel)
+                                       viewModel: receiveViewModel,
+                                       onBack: { userIsBuying = false })
                             Image("moonpay-symbol-prp")
                                 .resizable()
                                 .frame(width: 50.0, height: 50.0)
