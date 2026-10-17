@@ -17,7 +17,6 @@ class PushNotificationsTests: XCTestCase {
    override func setUp() {
        super.setUp()
        appDelegate = AppDelegate()
-       appDelegate.window = UIWindow()
    }
    
    override func tearDown() {

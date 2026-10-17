@@ -9,7 +9,6 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
-	var window: UIWindow?
 	var applicationController = ApplicationController()
 	var remoteConfigurationHelper: RemoteConfigHelper?
 	var resourceRequest: NSBundleResourceRequest?
@@ -79,19 +78,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
             object: nil
         )
 
-        guard let thisWindow = window else { return false }
-
-        // Set global themes
-        thisWindow.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark: .light
-
-        UIView.appearance(whenContainedInInstancesOf:
-            [UIAlertController.self])
-                .tintColor = BrainwalletUIColor.content
-
-        self.applicationController.launch(application: UIApplication.shared, window: thisWindow)
-         
+        // Window creation and ApplicationController.launch happen in SceneDelegate.willConnectTo
         return true
 	}
+
+    func application(_ application: UIApplication,
+                     configurationForConnecting connectingSceneSession: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        let config = UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        config.delegateClass = SceneDelegate.self
+        return config
+    }
      
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         // Receved FCM Token
@@ -124,7 +121,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         }
     }
 
-	func applicationDidBecomeActive(_: UIApplication) {
+	/// Called from SceneDelegate.sceneDidBecomeActive
+	func clearNotificationBadge() {
 		UserDefaults.pendingNotificationBadgeCount = 0
 		UNUserNotificationCenter.current().setBadgeCount(0) { error in
             if let error = error {
@@ -135,21 +133,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         /// AppsFlyerLib.shared().start()
 	}
 
-	func applicationWillEnterForeground(_: UIApplication) {
-		applicationController.willEnterForeground()
-	}
-
-	func applicationDidEnterBackground(_: UIApplication) {
-		applicationController.didEnterBackground()
-	}
-
 	func application(_: UIApplication,
                      shouldAllowExtensionPointIdentifier _: UIApplication.ExtensionPointIdentifier) -> Bool {
 		return false // disable extensions such as custom keyboards for security purposes
-	}
-
-	func application(_: UIApplication, open url: URL, options _: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-		return applicationController.open(url: url)
 	}
 
 	func application(_: UIApplication, shouldSaveSecureApplicationState _: NSCoder) -> Bool {
@@ -175,7 +161,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         debugPrint(":::: Restarting after wiping wallet")
 
         DispatchQueue.main.async {
-            guard let thisWindow = self.window else { return }
+            guard let thisWindow = self.applicationController.window else { return }
 
             thisWindow.rootViewController?.dismiss(animated: false, completion: nil)
 
@@ -188,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     @objc
     func updateUserThemePreference() {
         DispatchQueue.main.async {
-            guard let thisWindow = self.window else { return }
+            guard let thisWindow = self.applicationController.window else { return }
             thisWindow.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark : .light
         }
     }

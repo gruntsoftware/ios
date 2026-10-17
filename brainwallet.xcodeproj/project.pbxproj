@@ -358,6 +358,7 @@
 		C312D48F2D7DC27700BB97A4 /* SimpleRedux.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2A92D7DC27700BB97A4 /* SimpleRedux.swift */; };
 		C312D4942D7DC27700BB97A4 /* RetryTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2982D7DC27700BB97A4 /* RetryTimer.swift */; };
 		C312D4BB2D7DC27700BB97A4 /* coinflip.aiff in Resources */ = {isa = PBXBuildFile; fileRef = C312D0AF2D7DC27700BB97A4 /* coinflip.aiff */; };
+		C312D5E02D7DC27700BB97A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D5E12D7DC27700BB97A4 /* SceneDelegate.swift */; };
 		C31F416F2FF691B900D9DA3D /* SocialPostHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F416E2FF691B200D9DA3D /* SocialPostHelper.swift */; };
 		C31F41712FF6968A00D9DA3D /* SocialPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F41702FF6968700D9DA3D /* SocialPostViewModel.swift */; };
 		C32233132FC214A70043CBA7 /* ShopImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322330D2FC214990043CBA7 /* ShopImages.swift */; };
@@ -927,6 +928,7 @@
 		C312D2C82D7DC27700BB97A4 /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
 		C312D2C92D7DC27700BB97A4 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		C312D2CA2D7DC27700BB97A4 /* WalletManager+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletManager+Auth.swift"; sourceTree = "<group>"; };
+		C312D5E12D7DC27700BB97A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C31F416E2FF691B200D9DA3D /* SocialPostHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostHelper.swift; sourceTree = "<group>"; };
 		C31F41702FF6968700D9DA3D /* SocialPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialPostViewModel.swift; sourceTree = "<group>"; };
 		C322330D2FC214990043CBA7 /* ShopImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopImages.swift; sourceTree = "<group>"; };
@@ -1267,6 +1269,7 @@
 			children = (
 				C312D06B2D7DC27700BB97A4 /* ApplicationController+Extension.swift */,
 				C312D2002D7DC27700BB97A4 /* AppDelegate.swift */,
+				C312D5E12D7DC27700BB97A4 /* SceneDelegate.swift */,
 				C312D2012D7DC27700BB97A4 /* ApplicationController.swift */,
 			);
 			path = "App Launch Classes";
@@ -2782,6 +2785,7 @@
 				C312D3882D7DC27700BB97A4 /* Brainwallet+Color.swift in Sources */,
 				24B0652A2DC6135900B5E000 /* WalletBalanceView.swift in Sources */,
 				C312D38D2D7DC27700BB97A4 /* AppDelegate.swift in Sources */,
+				C312D5E02D7DC27700BB97A4 /* SceneDelegate.swift in Sources */,
 				24F64C202DAFBDA4001DC9B6 /* WelcomMojiDemoView.swift in Sources */,
 				241D223F2DB526A1000302C8 /* ReadyView.swift in Sources */,
 				C312D38E2D7DC27700BB97A4 /* UIFont+BRWAdditions.swift in Sources */,
@@ -3173,7 +3177,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602317;
+				CURRENT_PROJECT_VERSION = 2602318;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3195,7 +3199,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/bw-gdlib/<robovm-output-dir>";
-				MARKETING_VERSION = 3.10.1;
+				MARKETING_VERSION = 3.10.2;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
 					"$(inherited)",
@@ -3375,7 +3379,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602317;
+				CURRENT_PROJECT_VERSION = 2602318;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3396,7 +3400,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/bw-gdlib/<robovm-output-dir>";
-				MARKETING_VERSION = 3.10.1;
+				MARKETING_VERSION = 3.10.2;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
