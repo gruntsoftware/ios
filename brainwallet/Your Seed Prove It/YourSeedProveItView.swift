@@ -78,6 +78,10 @@ struct YourSeedProveItView: View {
                 Capsule()
                     .stroke(targetedSlots.contains(wordNumber) ? BrainwalletColor.affirm.opacity(0.9) : .clear, lineWidth: 2.0)
             )
+            .padding(.top, 8)
+            .padding(.bottom, 20)
+            .padding(.horizontal, 6)
+            .contentShape(Rectangle())
             .dropDestination(for: DraggableSeedWord.self) { droppedSeedWords, _ in
                 let droppedWord = droppedSeedWords.first
                 if let matchedWord = droppedWord?.word,
@@ -104,6 +108,9 @@ struct YourSeedProveItView: View {
                     targetedSlots.remove(wordNumber)
                 }
             }
+            .padding(.top, -8)
+            .padding(.bottom, -20)
+            .padding(.horizontal, -6)
     }
 
     var body: some View {
@@ -181,6 +188,9 @@ struct YourSeedProveItView: View {
 
                             Group {
                                 SeedWordDragView(seedWord: [draggableItem])
+                                    .frame(height: 40)
+                                    .contentShape(.dragPreview, Capsule())
+                                    .contentShape(.interaction, Capsule())
                                     .draggable(draggableItem, preview: {
                                         SeedWordDragView(seedWord: [draggableItem])
                                             .frame(width: 110, height: 40)
