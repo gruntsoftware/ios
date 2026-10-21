@@ -16,6 +16,8 @@ class UIEmojiTextField: UITextField {
 
     var isEmoji = false {
         didSet {
+            // Reloading input views while the keyboard animates in tears it down and leaves a blank keyboard
+            guard isEmoji != oldValue else { return }
             setEmoji()
         }
     }
@@ -103,7 +105,9 @@ struct EmojiTextField: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UIEmojiTextField, context: Context) {
-        uiView.text = text
+        if uiView.text != text {
+            uiView.text = text
+        }
         uiView.isEmoji = true
         context.coordinator.parent = self
 

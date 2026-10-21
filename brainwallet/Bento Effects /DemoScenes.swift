@@ -27,8 +27,8 @@ class FallinScene: SKScene, SKPhysicsContactDelegate {
 
     override func update(_ currentTime: TimeInterval) {
         guard spawnsFromTop else { return }
-        // Remove once a dot has fallen 99% of the scene (y points up), before it can reach the floor and bounce
-        let removalY = size.height * 0.01
+        // Remove once a dot has fallen 90% of the scene (y points up), before it can reach the floor and bounce
+        let removalY = size.height * 0.1
         children
             .filter { $0.position.y <= removalY }
             .forEach { $0.removeFromParent() }
