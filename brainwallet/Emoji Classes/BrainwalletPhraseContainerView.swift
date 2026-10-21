@@ -117,7 +117,7 @@ struct BrainwalletPhraseContainerView: View {
                                         didEnterPINCode.toggle()
                                     }
                                     .foregroundColor(BrainwalletColor.content)
-                                    .frame(width: width * 0.25, alignment: .trailing)
+                                    .frame(width: width * 0.25, alignment: .center)
                                 }
                             }
                             .frame(width: width * 0.3,

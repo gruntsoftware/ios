@@ -5,8 +5,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
-    private var appDelegate: AppDelegate? {
-        UIApplication.shared.delegate as? AppDelegate
+    private var applicationController: ApplicationController? {
+        (UIApplication.shared.delegate as? AppDelegate)?.applicationController
     }
 
     func scene(_ scene: UIScene,
@@ -24,28 +24,56 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             [UIAlertController.self])
                 .tintColor = BrainwalletUIColor.content
 
-        appDelegate?.applicationController.launch(application: UIApplication.shared, window: thisWindow)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(restartAfterWipedWallet),
+                                               name: .didDeleteWalletDBNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateUserThemePreference),
+                                               name: .changedThemePreferenceNotification,
+                                               object: nil)
+
+        applicationController?.launch(window: thisWindow)
 
         // URL used to cold-launch the app
         if let url = connectionOptions.urlContexts.first?.url {
-            _ = appDelegate?.applicationController.open(url: url)
+            _ = applicationController?.open(url: url)
         }
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         guard let url = URLContexts.first?.url else { return }
-        _ = appDelegate?.applicationController.open(url: url)
+        _ = applicationController?.open(url: url)
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        appDelegate?.clearNotificationBadge()
+        (UIApplication.shared.delegate as? AppDelegate)?.clearNotificationBadge()
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        appDelegate?.applicationController.willEnterForeground()
+        applicationController?.willEnterForeground()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        appDelegate?.applicationController.didEnterBackground()
+        applicationController?.didEnterBackground()
+    }
+
+    @objc
+    private func restartAfterWipedWallet() {
+        debugPrint(":::: Restarting after wiping wallet")
+        DispatchQueue.main.async {
+            guard let window = self.applicationController?.window else { return }
+            window.rootViewController?.dismiss(animated: false, completion: nil)
+            // Clear the root view controller
+            window.rootViewController = nil
+            /// TBD to restart the app
+        }
+    }
+
+    @objc
+    private func updateUserThemePreference() {
+        DispatchQueue.main.async {
+            self.applicationController?.window?.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark : .light
+        }
     }
 }

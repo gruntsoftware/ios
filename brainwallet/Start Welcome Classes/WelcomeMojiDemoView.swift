@@ -199,3 +199,14 @@ struct WelcomeMojiDemoView: View {
         }
     }
 }
+
+#Preview {
+    // Same square sizing StartView uses (90% of a ~390pt wide screen)
+    let size: CGFloat = 350
+    WelcomeMojiDemoView(width: size,
+                        height: size,
+                        shouldPlay: .constant(true),
+                        userWantsToExit: .constant(false),
+                        gameIsInWelcomeMode: true)
+        .frame(width: size, height: size)
+}

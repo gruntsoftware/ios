@@ -7,6 +7,7 @@
 //
 
 @testable import brainwallet
+import UIKit
 import XCTest
 
 final class SceneLifecycleTests: XCTestCase {
@@ -28,9 +29,21 @@ final class SceneLifecycleTests: XCTestCase {
         XCTAssertNotNil(NSClassFromString(delegateName), "SceneDelegate class name must resolve at runtime")
     }
 
-    func testAppDelegateNoLongerOwnsWindow() {
+    /// libGDX sets `UIApplicationDelegate.window` to its game window. AppDelegate must accept it,
+    /// keep the host window, and attach the game window to the host's scene so it can be shown.
+    func testAppDelegateAdoptsGameWindowIntoHostScene() throws {
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
         let appDelegate = AppDelegate()
-        XCTAssertFalse(appDelegate.responds(to: NSSelectorFromString("window")))
+        XCTAssertTrue(appDelegate.responds(to: NSSelectorFromString("setWindow:")))
+
+        let hostWindow = UIWindow(windowScene: scene)
+        appDelegate.applicationController.launch(window: hostWindow)
+
+        let gameWindow = UIWindow(frame: UIScreen.main.bounds)
+        appDelegate.window = gameWindow
+
+        XCTAssertTrue(appDelegate.window === hostWindow)
+        XCTAssertTrue(gameWindow.windowScene === scene)
     }
 
     func testClearNotificationBadgeResetsPendingCount() {

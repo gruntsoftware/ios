@@ -18,8 +18,6 @@ class FallinSceneTests: XCTestCase {
         override func setUp() {
             super.setUp()
             scene = FallinScene(size: CGSize(width: 375, height: 667))
-            scene.width = 375
-            scene.height = 667
             view = SKView(frame: CGRect(x: 0, y: 0, width: 375, height: 667))
         }
         
@@ -99,11 +97,37 @@ class FallinSceneTests: XCTestCase {
             }
             
             XCTAssertGreaterThanOrEqual(label.position.x, 0, "X position should be >= 0")
-            XCTAssertLessThanOrEqual(label.position.x, scene.width / 2, "X position should be <= width/2")
+            XCTAssertLessThanOrEqual(label.position.x, scene.size.width / 2, "X position should be <= width/2")
             XCTAssertGreaterThanOrEqual(label.position.y, 0, "Y position should be >= 0")
-            XCTAssertLessThanOrEqual(label.position.y, scene.height, "Y position should be <= height")
+            XCTAssertLessThanOrEqual(label.position.y, scene.size.height, "Y position should be <= height")
         }
         
+        func testMakeDot_SpawnsFromTopAtRandomX() {
+            scene.spawnsFromTop = true
+            scene.makeDot()
+
+            let label = scene.children.compactMap { $0 as? SKLabelNode }.first
+            XCTAssertNotNil(label, "No label node found")
+            XCTAssertEqual(label?.position.y ?? 0, scene.size.height - 15.0, accuracy: 0.001, "Should spawn at the top")
+            XCTAssertGreaterThanOrEqual(label?.position.x ?? -1, 15.0)
+            XCTAssertLessThanOrEqual(label?.position.x ?? .infinity, scene.size.width - 15.0)
+        }
+
+        func testUpdate_RemovesDotsAfterFalling90Percent() {
+            scene.spawnsFromTop = true
+            let fallen = SKLabelNode(text: "🔥")
+            fallen.position = CGPoint(x: 100, y: scene.size.height * 0.1)
+            let falling = SKLabelNode(text: "🍋")
+            falling.position = CGPoint(x: 100, y: scene.size.height * 0.5)
+            scene.addChild(fallen)
+            scene.addChild(falling)
+
+            scene.update(0)
+
+            XCTAssertNil(fallen.parent, "Dot at 90% of the fall should be removed")
+            XCTAssertNotNil(falling.parent, "Dot still falling should remain")
+        }
+
         func testMakeDot_LabelHasPhysicsBody() {
             // When
             scene.makeDot()

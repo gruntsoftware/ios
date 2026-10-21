@@ -1,4 +1,3 @@
-import BackgroundTasks
 import FirebaseAnalytics
 import StoreKit
 import SwiftUI
@@ -7,10 +6,8 @@ import UIKit
 import BWIOSGdx
 #endif
 
+/// Owns the wallet, store and root view controllers. The window is handed in by SceneDelegate.
 class ApplicationController: Subscriber {
-    // Ideally the window would be private, but is unfortunately required
-    // by the UIApplicationDelegate Protocol
-
     var window: UIWindow?
     fileprivate let store = Store()
     private var modalPresenter: ModalPresenter?
@@ -20,16 +17,16 @@ class ApplicationController: Subscriber {
     private var transitionDelegate: ModalTransitionDelegate
     private var kvStoreCoordinator: KVStoreCoordinator?
     private var mainViewController: MainViewController?
-    fileprivate var application: UIApplication?
     private var urlController: URLController?
     private var defaultsUpdater: UserDefaultsUpdater?
     private var reachability = ReachabilityMonitor()
     private let noAuthApiClient = BWAPIClient(authenticator: NoAuthAuthenticator())
-    var fetchCompletionHandler: ((UIBackgroundFetchResult) -> Void)?
     private var launchURL: URL?
     private var hasPerformedWalletDependentInitialization = false
     private var didInitWallet = false
     var gameController: GameContainerViewController?
+    /// The window libGDX creates for the game; see adoptGameWindow(_:)
+    private weak var gameWindow: UIWindow?
     // Injectable so tests can substitute a spy instead of hitting the real StoreKit prompt.
     var reviewRequester: AppStoreReviewRequesting.Type = SKStoreReviewController.self
     #if !targetEnvironment(simulator)
@@ -87,8 +84,7 @@ class ApplicationController: Subscriber {
         }
     }
 
-	func launch(application: UIApplication, window: UIWindow?) {
-		self.application = application
+	func launch(window: UIWindow?) {
 		self.window = window
 		setup()
 		reachability.didChange = { isReachable in
@@ -169,42 +165,26 @@ class ApplicationController: Subscriber {
             if let jsonString = String(data: jsonData, encoding: .utf8) {
 
 
-                //GameContainerViewController.current?.reassertGameState()
+                #if !targetEnvironment(simulator)
                 DispatchQueue.main.async {
                     self.gameController = GameContainerViewController()
-                    window.rootViewController = self.gameController
 
-                    guard let gameview = self.gameController?.view else {
-                        return
-                    }
+                    // The game window draws black until libGDX finishes create() and renders a frame,
+                    // so keep it transparent over the main UI and fade it in once it has content.
+                    self.gameWindow?.alpha = 0.0
+                    self.bwGameSDK?
+                        .startGame(withLaunchParams: window,
+                                   launchParams: jsonString)
+                    self.gameController?.isGameActive = true
 
-                    let outgoingView = window.rootViewController?.view
-
-                    gameview.frame = window.bounds
-                    gameview.alpha = 0.0
-                    window.addSubview(gameview)
-
-
-                    UIView.transition(with: window,
-                                      duration: 0.3,
-                                      options: .transitionCrossDissolve,
-                                      animations: {
-
-                        gameview.alpha = 1.0
-                        outgoingView?.alpha = 0.0
-
-                    }, completion: { [weak self] _ in
-                        #if !targetEnvironment(simulator)
-                        outgoingView?.alpha = 1.0
-                        window.rootViewController = self?.gameController
-
-                        self?.bwGameSDK?
-                            .startGame(withLaunchParams: window,
-                                       launchParams: jsonString)
-                        self?.gameController?.isGameActive = true
-                        #endif
+                    UIView.animate(withDuration: 0.4, delay: 0.8, animations: {
+                        self.gameWindow?.alpha = 1.0
+                    }, completion: { _ in
+                        // Swap the root while the game window covers it
+                        window.rootViewController = self.gameController
                     })
                 }
+                #endif
             }
         } catch {
             print("Error converting to JSON: \(error)")
@@ -243,6 +223,8 @@ class ApplicationController: Subscriber {
                 guard let window = self.window else {
                     return
                 }
+                // The game window sits above the host window; hide it so the main UI is visible again
+                self.gameWindow?.isHidden = true
 
                 let outgoingView = window.rootViewController?.view
                 let incomingVC = self.mainViewController
@@ -273,6 +255,19 @@ class ApplicationController: Subscriber {
         } catch {
             print("Failed to decode payload: \(error)")
         }
+    }
+
+    /// libGDX creates its game UIWindow without a scene and hands it to `UIApplicationDelegate.window`.
+    /// Under the UIScene lifecycle a scene-less window is never shown, so attach it to the host scene.
+    /// The host window stays the app's window.
+    func adoptGameWindow(_ newWindow: UIWindow?) {
+        guard let newWindow, newWindow !== window else { return }
+        if newWindow.windowScene == nil {
+            newWindow.windowScene = window?.windowScene
+        }
+        // Attaching to the scene shows it at once, black until the game renders; shouldShowGameSDK fades it in
+        newWindow.alpha = 0.0
+        gameWindow = newWindow
     }
 
     // Extracted so tests can trigger the post-game review prompt directly,
@@ -327,10 +322,6 @@ class ApplicationController: Subscriber {
 		}
 	}
 
-	func performFetch(_ completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-		fetchCompletionHandler = completionHandler
-	}
-
 	func open(url: URL) -> Bool {
 		if let urlController = urlController {
 			return urlController.handleUrl(url)
@@ -377,12 +368,36 @@ class ApplicationController: Subscriber {
 
 			// For when watch app launches app in background
 		} else {
-			DispatchQueue.walletQueue.async { [weak self] in
+			DispatchQueue.walletQueue.async {
 				walletManager.peerManager?.connect()
-				if self?.fetchCompletionHandler != nil {
-					self?.performBackgroundFetch()
-				}
 			}
+		}
+	}
+
+	private func setupDefaults() {
+		if UserDefaults.standard.object(forKey: shouldRequireLoginTimeoutKey) == nil {
+			UserDefaults.standard.set(60.0 * 3.0, forKey: shouldRequireLoginTimeoutKey) // Default 3 min timeout
+		}
+
+        if UserDefaults.standard.object(forKey: userDidPreferDarkModeKey) == nil {
+            UserDefaults.standard.set(false, forKey: userDidPreferDarkModeKey)
+        }
+
+        if UserDefaults.standard.object(forKey: userCurrentLocaleMPApprovedKey) == nil {
+            UserDefaults.standard.set(false, forKey: userCurrentLocaleMPApprovedKey)
+        }
+	}
+
+	func countLaunches() {
+		if var launchNumber = UserDefaults.standard.object(forKey: numberOfBrainwalletLaunches) as? Int {
+			launchNumber += 1
+			UserDefaults.standard.set(NSNumber(value: launchNumber), forKey: numberOfBrainwalletLaunches)
+            if launchNumber == 3 {
+                reviewRequester.requestReviewInCurrentScene()
+                debugPrint("did_request_rating")
+            }
+		} else {
+			UserDefaults.standard.set(NSNumber(value: 1), forKey: numberOfBrainwalletLaunches)
 		}
 	}
 
@@ -434,45 +449,6 @@ class ApplicationController: Subscriber {
 	private func offMainInitialization() {
 		Task(priority: .background) {
 			_ = Rate.symbolMap // Initialize currency symbol map
-		}
-	}
-
-	func performBackgroundFetch() {
-		let group = DispatchGroup()
-		if let peerManager = walletManager?.peerManager,
-            peerManager
-            .syncProgress(fromStartHeight: peerManager.lastBlockHeight) < 1.0 {
-			group.enter()
-			store.lazySubscribe(self,
-                                selector: { $0.walletState.syncState != $1.walletState.syncState },
-                                callback: { state in
-				if self.fetchCompletionHandler != nil {
-					if state.walletState.syncState == .success {
-						DispatchQueue.walletConcurrentQueue.async {
-							peerManager.disconnect()
-							DispatchQueue.main.async {
-								group.leave()
-							}
-						}
-					}
-				}
-			})
-		}
-
-		group.enter()
-		Async.parallel(callbacks: [
-			{ self.exchangeUpdater?.refresh(completion: $0) }
-		], completion: {
-			group.leave()
-		})
-
-		DispatchQueue.global(qos: .utility).async {
-			if group.wait(timeout: .now() + 25.0) == .timedOut {
-				self.fetchCompletionHandler?(.failed)
-			} else {
-				self.fetchCompletionHandler?(.newData)
-			}
-			self.fetchCompletionHandler = nil
 		}
 	}
 }
