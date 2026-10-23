@@ -212,7 +212,13 @@ class ApplicationController: Subscriber {
             
             userIsPostingToSocial = decodedObject.socialNetwork == "twitter"
             || decodedObject.socialNetwork == "instagram"
-            
+
+            // Save this game's score to the Keychain. The game sends its timestamp in milliseconds.
+            let scoreRecord = GameScoreRecord(totalScore: decodedObject.totalScore ?? 0,
+                                              timestamp: decodedObject.unixTimeStamp
+                                                ?? Int(Date().timeIntervalSince1970 * 1000))
+            UserDefaults.appendGameScore(scoreRecord)
+
             // Forward every game event recorded during this session to Firebase.
             for event in decodedPayload.events {
                 let params = event.params.compactMapValues { $0.firebaseValue }
@@ -247,9 +253,8 @@ class ApplicationController: Subscriber {
                     self.mainViewController?.newMainViewModel?.gameExitDictionary = dictionary
                     self.mainViewController?.newMainViewModel?.gameExitUpdated = true
                 }
-
-                //Game finished, prompt for a review after the transition settles
-                self.requestReviewAfterGameFinished()
+                //Test game scores and request when user has 2 scores
+                self.requestReviewIfEnoughGamesPlayed()
 
             }
         } catch {
@@ -270,8 +275,14 @@ class ApplicationController: Subscriber {
         gameWindow = newWindow
     }
 
-    // Extracted so tests can trigger the post-game review prompt directly,
-    // without driving the full window-transition/animation pipeline above.
+    // Extracted so tests can check the games-played gate without driving the window transition above
+    @discardableResult
+    func requestReviewIfEnoughGamesPlayed() -> Bool {
+        guard UserDefaults.gameScores.count >= 2 else { return false }
+        requestReviewAfterGameFinished()
+        return true
+    }
+
     func requestReviewAfterGameFinished() {
         let reviewRequester = self.reviewRequester
         delay(3.0) {

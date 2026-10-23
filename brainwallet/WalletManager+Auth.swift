@@ -504,7 +504,14 @@ extension WalletManager: WalletAuthenticator {
         // File manager clear
         try? FileManager.default.removeItem(atPath: dbPath)
         try? FileManager.default.removeItem(at: BRReplicatedKVStore.dbPath)
-        
+
+        // Game scores — a failure here shouldn't block the wallet wipe
+        do {
+            try UserDefaults.wipeGameScoresKeychain()
+        } catch {
+            debugPrint(":::Wipe game scores error: \(error)")
+        }
+
         do {
             try setKeychainItem(key: KeychainKey.apiAuthKey, item: nil as Data?)
             try setKeychainItem(key: KeychainKey.spendLimit, item: nil as Int64?)

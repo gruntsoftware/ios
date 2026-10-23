@@ -24,6 +24,9 @@ private let userTrustedNodeIpAddressKey = "userTrustedNodeIpAddress"
 private let userTrustedNodePortKey = "userTrustedNodePort"
 private let userPurchasedTrustedNodeKey = "userPurchasedTrustedNode"
 
+private let gameScoresKeychain = Keychain(service: "brainwallet.gamescores")
+private let gameScoresKey = "gameScores"
+
 /// StoreKit product id for the Trusted LTC Node in-app purchase. Must match
 /// "Trusted LTC Node Feature" in BWProductsList.plist (ios-private-general-purpose).
 let trustedLTCNodeProductId = "com.gruntsoftware.brainwallet.trusted_ltc_node_2"
@@ -86,6 +89,30 @@ extension UserDefaults {
 
     static func wipeTrustedNodeKeychain() throws {
         try trustedNodeKeychain.removeAll()
+    }
+
+    // MARK: - Game Scores
+    /// Finished games, oldest first, stored on the Keychain as a stringified JSON array
+    static var gameScores: [GameScoreRecord] {
+        get {
+            guard let scoresString = gameScoresKeychain[gameScoresKey],
+                  let data = scoresString.data(using: .utf8),
+                  let scores = try? JSONDecoder().decode([GameScoreRecord].self, from: data)
+            else { return [] }
+            return scores
+        }
+        set {
+            guard let data = try? JSONEncoder().encode(newValue) else { return }
+            gameScoresKeychain[gameScoresKey] = String(data: data, encoding: .utf8)
+        }
+    }
+
+    static func appendGameScore(_ record: GameScoreRecord) {
+        gameScores.append(record)
+    }
+
+    static func wipeGameScoresKeychain() throws {
+        try gameScoresKeychain.removeAll()
     }
 
     static var userPrefersUsingTrustedNode: Bool {
