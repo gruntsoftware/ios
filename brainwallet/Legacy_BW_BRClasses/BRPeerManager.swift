@@ -1,11 +1,18 @@
 import BRCore
 import Foundation
 
+
+enum PeerSyncMode: String {
+    case random_mainnet
+    case trusted
+}
+
 class BRPeerManager {
 	let cPointer: OpaquePointer
 	let listener: BRPeerManagerListener
 	let mainNetParams = [BRMainNetParams]
 	var falsePositiveRate: Double
+    var syncMode: PeerSyncMode = .random_mainnet
 
 	init?(wallet: BRWallet,
 	      earliestKeyTime: TimeInterval,
@@ -65,10 +72,29 @@ class BRPeerManager {
 
 	// connect to litecoin peer-to-peer network (also call this whenever networkIsReachable() status changes)
 	func connect() {
-		if let fixedAddress = UserDefaults.customNodeIP {
-			setFixedPeer(address: fixedAddress, port: UserDefaults.customNodePort ?? C.standardPort)
-		}
+		applyTrustedNodePreference()
 		BRPeerManagerConnect(cPointer)
+	}
+
+	private func applyTrustedNodePreference() {
+		guard UserDefaults.userPrefersUsingTrustedNode,
+		      let ipAddress = UserDefaults.userTrustedNodeIpAddress,
+		      let packedAddress = BRPeerManager.packedIPv4Address(ipAddress)
+		else {
+			setFixedPeer(address: 0, port: 0)
+            syncMode = .random_mainnet
+			return
+		}
+        syncMode = .trusted
+		let port = UserDefaults.userTrustedNodePort.flatMap(Int.init) ?? C.standardPort
+		setFixedPeer(address: packedAddress, port: port)
+	}
+
+	// packs a dotted-quad IPv4 string into the network-byte-order integer setFixedPeer expects
+	private static func packedIPv4Address(_ ipAddress: String) -> Int? {
+		var addr = in_addr()
+		guard inet_pton(AF_INET, ipAddress, &addr) == 1 else { return nil }
+		return Int(addr.s_addr)
 	}
 
 	// disconnect from litecoin peer-to-peer network

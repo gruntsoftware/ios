@@ -12,8 +12,11 @@ import SpriteKit
 
 class FallinScene: SKScene, SKPhysicsContactDelegate {
 
-    var width: CGFloat = 0.0
-    var height: CGFloat = 0.0
+    /// When true, every emoji drops in from the top edge at a random x and is removed
+    /// after falling 90% of the scene height. SpriteKit's y-axis points up, so the top is y = size.height.
+    var spawnsFromTop: Bool = false
+
+    private let dotRadius: CGFloat = 15.0
 
     override func didMove(to _: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
@@ -22,17 +25,24 @@ class FallinScene: SKScene, SKPhysicsContactDelegate {
         makeDot()
     }
 
+    override func update(_ currentTime: TimeInterval) {
+        guard spawnsFromTop else { return }
+        // Remove once a dot has fallen 90% of the scene (y points up), before it can reach the floor and bounce
+        let removalY = size.height * 0.1
+        children
+            .filter { $0.position.y <= removalY }
+            .forEach { $0.removeFromParent() }
+    }
+
     func makeDot() {
-        let randX = Double.random(in: 0 ... 1.0)
-        let randY = Double.random(in: 0 ... 1.0)
 
         let emojiArray = ["😬","🇮🇹","😂", "😭","❤️","🤣","🔥",
                           "😍","🥺","🥰","🙏","✨","👀","👠",
                           "🍑","🌴","🖼️","🛀🏿","🍌","🧄","📻",
                           "🏖️","🎨", "💍", "🍋", "🧛🏻‍♀️", "📡"]
         let label = SKLabelNode(text: emojiArray.randomElement() ?? "")
-            label.position = CGPoint(x: (width / 2) * randX, y: height * randY)
-            label.physicsBody = SKPhysicsBody(circleOfRadius: 15.0)
+            label.position = spawnPoint()
+            label.physicsBody = SKPhysicsBody(circleOfRadius: dotRadius)
             label.physicsBody?.affectedByGravity = true
             label.physicsBody?.isDynamic = true
             label.physicsBody?.restitution = 0.5
@@ -50,5 +60,16 @@ class FallinScene: SKScene, SKPhysicsContactDelegate {
             }
 
         }
+    }
+
+    private func spawnPoint() -> CGPoint {
+        if spawnsFromTop {
+            // Inset by the radius so the body starts inside the edge loop instead of overlapping it
+            let x = CGFloat.random(in: dotRadius ... max(dotRadius, size.width - dotRadius))
+            return CGPoint(x: x, y: size.height - dotRadius)
+        }
+        let randX = Double.random(in: 0 ... 1.0)
+        let randY = Double.random(in: 0 ... 1.0)
+        return CGPoint(x: (size.width / 2) * randX, y: size.height * randY)
     }
 }

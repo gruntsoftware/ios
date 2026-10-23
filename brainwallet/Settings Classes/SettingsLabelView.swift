@@ -20,27 +20,26 @@ struct SettingsLabelView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            GeometryReader { _ in
-                ZStack {
-                    rowBackgroundColor.edgesIgnoringSafeArea(.all)
-                    VStack {
-                        Text(title)
-                            .modifier(BWIPSSemiBold(size: 19.0))
-                            .foregroundColor(BrainwalletColor.content)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .frame(height: 25.0)
-                            .padding(.top, 8.0)
-                        Text(detailText)
-                            .modifier(BWIPSRegular(size: 19.0))
-                            .kerning(0.2)
-                            .foregroundColor(BrainwalletColor.content)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .frame(height: 21.0, alignment: .center)
-                            .padding(.bottom, 11.0)
-                    }
-                }
+        VStack(alignment: .leading, spacing: 0.0) {
+            Divider()
+                .frame(height: 1)
+                .overlay(Color.white)
+            VStack(alignment: .leading, spacing: 2.0) {
+                Text(title)
+                    .modifier(BWIPSSemiBold(size: 15.0))
+                    .foregroundColor(BrainwalletColor.content)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text(detailText)
+                    .modifier(BWIPSRegular(size: 14.0))
+                    .kerning(0.2)
+                    .foregroundColor(BrainwalletColor.content.opacity(0.8))
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(height: closedRowHeight)
         }
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .fixedSize(horizontal: false, vertical: true)
+        .background(rowBackgroundColor)
     }
 }

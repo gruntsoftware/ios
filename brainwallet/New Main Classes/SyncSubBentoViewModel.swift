@@ -45,6 +45,9 @@ class SyncSubBentoViewModel: ObservableObject, Subscriber {
 
     @Published
     var syncStateMessage = ""
+    
+    @Published
+    var peerSyncMode: PeerSyncMode = .random_mainnet
 
     @Published
     var syncStateMessageColor: Color = BrainwalletColor.content
@@ -204,7 +207,7 @@ class SyncSubBentoViewModel: ObservableObject, Subscriber {
 
                             if reduxState.walletState.syncState == .syncing {
                                 self.isSyncing = true
-
+                                self.peerSyncMode = peerManager.syncMode
                                 self.currentBlockHeightString = "\(peerManager.lastBlockHeight)"
 
                                 self.currentBlockHeight = peerManager.lastBlockHeight

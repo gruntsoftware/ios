@@ -25,6 +25,9 @@ struct SetEmojiView: View {
     @Binding
     var shouldShowWord: Bool
 
+    /// False while this page is off-screen so the keyboard doesn't pop early.
+    var isActive: Bool = true
+
     
     private let emojisViewGradient = LinearGradient(colors: [BentoColor.color14134C.opacity(0.5),
                                                                 BentoColor.color5827E2.opacity(0.1),
@@ -35,7 +38,9 @@ struct SetEmojiView: View {
          seedWord: String,
          emojiString: Binding<String>,
          shouldShowWord: Binding<Bool>,
-         viewIndex: Int) {
+         viewIndex: Int,
+         isActive: Bool = true) {
+        self.isActive = isActive
         _isSelected = isSelected
         _shouldShowWord = shouldShowWord
         _emoji = emojiString
@@ -88,7 +93,9 @@ struct SetEmojiView: View {
                                 .stroke(isSelected ? .white :.clear, lineWidth: 2.0)
                                 
                                 EmojiTextField(text: $emoji,
-                                               userPrefersDarkTheme: .constant(true))
+                                               userPrefersDarkTheme: .constant(true),
+                                               isFirstResponder: isSelected && isActive,
+                                               onBeginEditing: { isSelected = true })
                                     .onChange(of: emoji) { _,_ in
                                         
                                         if !emoji.isEmpty {

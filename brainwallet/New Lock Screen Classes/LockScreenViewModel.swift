@@ -26,6 +26,9 @@ class LockScreenViewModel: ObservableObject, Subscriber {
     var didCompleteWipingWallet = false
 
     @Published
+    var wipeWalletDidFail = false
+
+    @Published
     var pinDigits = [Int(),Int(),Int(),Int()]
 
     var userSubmittedPIN: ((String) -> Void)?

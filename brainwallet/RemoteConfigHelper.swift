@@ -30,6 +30,10 @@ class RemoteConfigHelper: NSObject {
 
 	deinit {}
 
+	func wipeEnvironmentKeychain() throws {
+		try keychainEnvironment.removeAll()
+	}
+
 	private func setupRemoteConfig() {
 		remoteConfig.setDefaults(fromPlist: "remote-config-defaults")
 		#if DEBUG

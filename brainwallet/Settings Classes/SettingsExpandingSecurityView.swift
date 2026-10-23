@@ -21,6 +21,9 @@ struct SettingsExpandingSecurityView: View {
 
     var securityListView: SecurityListView
 
+    /// Height of the detail panel when expanded; total expanded row = closedRowHeight + this.
+    private let detailExpandedHeight: CGFloat = 250.0
+
     init(title: String, viewModel: NewMainViewModel, shouldExpandSecurity: Binding <Bool>) {
         self.title = title
         _shouldExpandSecurity = shouldExpandSecurity
@@ -29,56 +32,42 @@ struct SettingsExpandingSecurityView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            GeometryReader { _ in
-                ZStack {
-                    VStack {
-                        HStack {
-                            VStack {
-                                Text(title)
-                                    .modifier(BWIPSSemiBold(size: 19.0))
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .frame(height: 25.0)
-                                    .padding(.top, 8.0)
-                            }
-
-                            Spacer()
-                            VStack {
-                                Button(action: {
-                                    withAnimation(.easeInOut(duration: 0.3)) {
-                                        shouldExpandSecurity.toggle()
-                                    }
-                                    let impactMed = UIImpactFeedbackGenerator(style: .medium)
-                                        impactMed.impactOccurred()
-                                }) {
-                                    VStack {
-                                        HStack {
-                                            Image(systemName: "chevron.right")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: expandArrowSize, height: expandArrowSize)
-                                                .foregroundColor(BrainwalletColor.content)
-                                                .rotationEffect(Angle(degrees: shouldExpandSecurity ? 90 : 0))
-                                        }
-                                    }
-                                    .frame(width: 30.0, height: 30.0, alignment: .top)
-                                    .padding(.top, 11.0)
-                                }
-                                .frame(width: 30.0, height: 30.0)
-                            }
+        VStack(alignment: .leading, spacing: 0.0) {
+            Divider()
+                .frame(height: 1)
+                .overlay(Color.white)
+            Text(title)
+                .modifier(BWIPSSemiBold(size: 15.0))
+                .foregroundColor(BrainwalletColor.content)
+                .frame(maxWidth: .infinity, alignment: .leadingFirstTextBaseline)
+                .frame(height: closedRowHeight)
+                .overlay(alignment: .trailing) {
+                    Button(action: {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            shouldExpandSecurity.toggle()
                         }
-                        .padding(.top, 1.0)
-                        SecurityListView(viewModel: viewModel)
-                            .transition(.opacity)
-                            .transition(.move(edge: .top))
-                            .animation(.easeInOut(duration: 0.3), value: shouldExpandSecurity)
-                            .padding(.top, 16.0)
-                        Spacer()
+                        let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                        impactMed.impactOccurred()
+                    }) {
+                        Image(systemName: "chevron.down")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: expandArrowSize, height: expandArrowSize)
+                            .foregroundColor(BrainwalletColor.content)
+                            .rotationEffect(Angle(degrees: shouldExpandSecurity ? 180 : 0))
                     }
-
+                    .frame(width: 30.0, height: 30.0)
+                    .contentShape(Rectangle())
                 }
-            }
+
+            SecurityListView(viewModel: viewModel)
+                .frame(maxWidth: .infinity)
+                .frame(height: shouldExpandSecurity ? detailExpandedHeight : 0.0, alignment: .top)
+                .clipped()
+                .opacity(shouldExpandSecurity ? 1.0 : 0.0)
+                .allowsHitTesting(shouldExpandSecurity)
         }
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .fixedSize(horizontal: false, vertical: true)
     }
 }

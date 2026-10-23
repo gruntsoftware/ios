@@ -10,59 +10,42 @@ import SwiftUI
 struct SettingsActionThemeView: View {
 
     private let title: String
-    private let detailText: String
 
     let action: SettingsAction
 
     @Binding
     var userPrefersDark: Bool
 
-    init(title: String, detailText: String, action: SettingsAction, userPrefersDark: Binding<Bool>) {
+    init(title: String, action: SettingsAction, userPrefersDark: Binding<Bool>) {
         self.title = title
-        self.detailText = detailText
         self.action = action
         _userPrefersDark = userPrefersDark
     }
 
     var body: some View {
-        NavigationStack {
-            GeometryReader { _ in
-                ZStack {
-                    HStack {
-                        VStack {
-                            Text(title)
-                                .modifier(BWIPSSemiBold(size: 19.0))
-                                .foregroundColor(BrainwalletColor.content)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .frame(height: 25.0)
-                                .padding(.top, 8.0)
-                            Text(detailText)
-                                .modifier(BWIPSLight(size: 18.0))
-                                .foregroundColor(BrainwalletColor.content)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding([.top, .bottom], 1.0)
-                            Spacer()
-                        }
-
-                        Spacer()
-                        VStack {
-                            Button(action: { userPrefersDark.toggle() }) {
-                                VStack {
-                                    Image(systemName: userPrefersDark ? action.isOffSystemImage : action.isOnSystemImage)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 30.0,
-                                               height: 30.0)
-                                        .foregroundColor(BrainwalletColor.content)
-                                        .padding(20.0)
-                                    Spacer()
-                                }
-                            }
+        
+        VStack(alignment: .leading, spacing: 0.0) {
+            Divider()
+                .frame(height: 1)
+                .overlay(Color.white)
+            Text(title)
+                .modifier(BWIPSSemiBold(size: 15.0))
+                .foregroundColor(BrainwalletColor.content)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: closedRowHeight)
+                .overlay(alignment: .trailing) {
+                    Button(action: { userPrefersDark.toggle() }) {
+                        Image(systemName: userPrefersDark ? action.isOffSystemImage : action.isOnSystemImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
                             .frame(width: 30.0, height: 30.0)
-                        }
+                            .foregroundColor(BrainwalletColor.content)
                     }
+                    .frame(width: 30.0, height: 30.0)
+                    .contentShape(Rectangle())
                 }
-            }
         }
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .fixedSize(horizontal: false, vertical: true)
     }
 }

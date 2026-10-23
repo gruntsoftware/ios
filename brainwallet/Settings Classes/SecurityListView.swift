@@ -93,13 +93,20 @@ struct SecurityListView: View {
                         }
                         .sheet(isPresented: $willShowSeedPhrase) {
                             if let walletManager = newMainViewModel.walletManager {
-                                SeedWordContainerView(walletManager: walletManager)
+                                // Sheets don't inherit a NavigationStack; without one the keyboard toolbar (Done) isn't shown
+                                NavigationStack {
+                                    SeedWordContainerView(walletManager: walletManager)
+                                        .toolbar(.hidden, for: .navigationBar)
+                                }
                             }
 
                         }
                         .sheet(isPresented: $willShowBrainwalletPhrase) {
                             if let walletManager = newMainViewModel.walletManager {
-                                BrainwalletPhraseContainerView(shouldShow:$willShowBrainwalletPhrase, walletManager: walletManager)
+                                NavigationStack {
+                                    BrainwalletPhraseContainerView(shouldShow:$willShowBrainwalletPhrase, walletManager: walletManager)
+                                        .toolbar(.hidden, for: .navigationBar)
+                                }
                             }
                         }
                 }

@@ -1,0 +1,9 @@
+{
+  "id" : "1c298c87-65ad-41d7-ba5a-a86216fea7ff",
+  "targets" : [
+    {
+      "id" : "BC978526-32CC-4098-97E9-7A50FD84D5E8",
+      "name" : "brainwallet"
+    }
+  ]
+}

@@ -9,10 +9,15 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
-	var window: UIWindow?
 	var applicationController = ApplicationController()
 	var remoteConfigurationHelper: RemoteConfigHelper?
-	var resourceRequest: NSBundleResourceRequest?
+
+    /// The window lives in SceneDelegate. libGDX still sets `UIApplicationDelegate.window` to its game window
+    /// (crashed with "unrecognized selector setWindow:"), so hand that to ApplicationController to attach to the scene.
+    var window: UIWindow? {
+        get { applicationController.window }
+        set { applicationController.adoptGameWindow(newValue) }
+    }
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -21,9 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
             return true
         }
 
-        UserDefaults.pendingNotificationBadgeCount = 0
-        UNUserNotificationCenter.current().setBadgeCount(0) { _ in }
-        
+        clearNotificationBadge()
+
         var regionCode2Char: String = "RU"
         let countryRussia = MoonpayCountryData(alphaCode2Char: "RU",
                                        alphaCode3Char: "RUS",
@@ -59,39 +63,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         
         // Firebase Remote Config
         self.remoteConfigurationHelper = RemoteConfigHelper.sharedInstance
-        
 
-        // Wipe restart
-        // Register for system notifications
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(restartAfterWipedWallet),
-            name: .didDeleteWalletDBNotification,
-            object: nil
-        )
-
-        // Set User theme preference
-        // Register for system notifications
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(updateUserThemePreference),
-            name: .changedThemePreferenceNotification,
-            object: nil
-        )
-
-        guard let thisWindow = window else { return false }
-
-        // Set global themes
-        thisWindow.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark: .light
-
-        UIView.appearance(whenContainedInInstancesOf:
-            [UIAlertController.self])
-                .tintColor = BrainwalletUIColor.content
-
-        self.applicationController.launch(application: UIApplication.shared, window: thisWindow)
-         
+        // Window, theme and wipe handling live in SceneDelegate
         return true
 	}
+
+    func application(_ application: UIApplication,
+                     configurationForConnecting connectingSceneSession: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        let config = UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        config.delegateClass = SceneDelegate.self
+        return config
+    }
      
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         // Receved FCM Token
@@ -124,7 +107,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         }
     }
 
-	func applicationDidBecomeActive(_: UIApplication) {
+	/// Called at launch and from SceneDelegate.sceneDidBecomeActive
+	func clearNotificationBadge() {
 		UserDefaults.pendingNotificationBadgeCount = 0
 		UNUserNotificationCenter.current().setBadgeCount(0) { error in
             if let error = error {
@@ -135,29 +119,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         /// AppsFlyerLib.shared().start()
 	}
 
-	func applicationWillEnterForeground(_: UIApplication) {
-		applicationController.willEnterForeground()
-	}
-
-	func applicationDidEnterBackground(_: UIApplication) {
-		applicationController.didEnterBackground()
-	}
-
 	func application(_: UIApplication,
                      shouldAllowExtensionPointIdentifier _: UIApplication.ExtensionPointIdentifier) -> Bool {
 		return false // disable extensions such as custom keyboards for security purposes
-	}
-
-	func application(_: UIApplication, open url: URL, options _: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-		return applicationController.open(url: url)
-	}
-
-	func application(_: UIApplication, shouldSaveSecureApplicationState _: NSCoder) -> Bool {
-		return true
-	}
-
-	func application(_: UIApplication, shouldRestoreApplicationState _: NSCoder) -> Bool {
-		return true
 	}
 
     func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -167,30 +131,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 	func application(_: UIApplication, didReceiveRemoteNotification remoteNotificationDictionary: [AnyHashable: Any],
 	                 fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void) {
         debugPrint(":::: did receive rn \(remoteNotificationDictionary.debugDescription)")
-    }
-
-    @objc
-    private func restartAfterWipedWallet() {
-        // Change State
-        debugPrint(":::: Restarting after wiping wallet")
-
-        DispatchQueue.main.async {
-            guard let thisWindow = self.window else { return }
-
-            thisWindow.rootViewController?.dismiss(animated: false, completion: nil)
-
-            // Clear the root view controller
-            thisWindow.rootViewController = nil
-            /// TBD to restart the app
-        }
-    }
-
-    @objc
-    func updateUserThemePreference() {
-        DispatchQueue.main.async {
-            guard let thisWindow = self.window else { return }
-            thisWindow.overrideUserInterfaceStyle = UserDefaults.userPreferredDarkTheme ? .dark : .light
-        }
     }
 
 	/// Sets the correct Google Services  plist file
@@ -221,35 +161,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
             Performance.sharedInstance().isInstrumentationEnabled = false
         }
     }
-
-	/// On Demand Resources
-	/// Use for another resource heavy view
-	/// Inspired by https://www.youtube.com/watch?v=B5RV8p4-9a8&t=178s
-	func requestResourceWith(tag: [String],
-	                         onSuccess: @escaping () -> Void,
-	                         onFailure _: @escaping (NSError) -> Void) {
-		resourceRequest = NSBundleResourceRequest(tags: Set(tag))
-
-		guard let request = resourceRequest else { return }
-
-		request.endAccessingResources()
-		request.loadingPriority = NSBundleResourceRequestLoadingPriorityUrgent
-		request.conditionallyBeginAccessingResources { areResourcesAvailable in
-
-			DispatchQueue.main.async {
-				if !areResourcesAvailable {
-					request.beginAccessingResources { error in
-						guard error != nil else {
-							return
-						}
-						onSuccess()
-					}
-				} else {
-					onSuccess()
-				}
-			}
-		}
-	}
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {

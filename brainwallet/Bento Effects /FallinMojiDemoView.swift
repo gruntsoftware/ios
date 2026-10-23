@@ -23,8 +23,6 @@ struct FallinMojiDemoView: View {
         let scene = FallinScene()
          scene.size = CGSize(width: width, height: height)
          scene.scaleMode = .fill
-         scene.width = width
-         scene.height = height
          scene.backgroundColor = .clear
          return scene
     }

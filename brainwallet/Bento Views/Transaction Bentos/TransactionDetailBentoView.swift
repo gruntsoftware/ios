@@ -73,8 +73,6 @@ struct TransactionDetailBentoView: View {
     @State
     private var qrImage = UIImage()
 
-    private var productsTitle = "Products"
-
     init(viewModel: NewMainViewModel,
          userPrefersDarkTheme: Binding<Bool>) {
         _userPrefersDarkTheme = userPrefersDarkTheme
@@ -270,13 +268,14 @@ struct TransactionDetailBentoView: View {
                 }
             }
             .sheet(isPresented: $shouldShowExportSheet) {
-                WalletProductsModalView(title: .constant(productsTitle), data: exportViewModel.transactionData)
-              .background(BrainwalletColor.surface)
+               ExportTransactionsModalView(userPrefersDarkTheme: userPrefersDarkTheme,
+                                        data: exportViewModel.transactionData)
               .cornerRadius(bentoCornerRadius)
-              .presentationDragIndicator(.hidden)
               .presentationDetents([.height(height * 0.7)])
-              .presentationBackground(.ultraThickMaterial)
-              .ignoresSafeArea(edges: .bottom)
+              .presentationDetents([.medium])
+              .presentationBackground(BrainwalletColor
+                .modalBackground(userPrefersDarkTheme: userPrefersDarkTheme))
+              .presentationDragIndicator(.visible)
             }
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle

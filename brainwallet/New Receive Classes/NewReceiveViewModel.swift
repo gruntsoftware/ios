@@ -201,6 +201,10 @@ class NewReceiveViewModel: ObservableObject, Subscriber {
     /// fetchMoonpaySignedUrl()) wherever the app actually calls the MoonPay
     /// signing endpoint.
     func signAndFetchMoonPayUrl() {
+        // Reset so WebBuyView's onChange fires again on every launch
+        // and never loads a previous session's signed URL.
+        didFetchURLString = false
+        signedURLString = ""
         guard cachedIPAddress.isEmpty else {
             fetchMoonpaySignedUrl(signingData: buildUnsignedMoonPayUrl())
             return

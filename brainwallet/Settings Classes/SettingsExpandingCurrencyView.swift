@@ -24,6 +24,12 @@ struct SettingsExpandingCurrencyView: View {
     private var pickedCurrency: GlobalCurrency = .USD
 
     private var title: String
+    
+    /// Height of the detail panel when expanded; total expanded row = closedRowHeight + this.
+    private let detailExpandedHeight: CGFloat = 120.0
+    
+    //let pickerViewHeight: CGFloat = 160.0
+
 
     init(title: String, viewModel: NewMainViewModel, shouldExpandCurrency: Binding <Bool>) {
         self.title = title
@@ -32,64 +38,41 @@ struct SettingsExpandingCurrencyView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            GeometryReader { _ in
-                ZStack {
-                    VStack {
-                        HStack {
-                            VStack {
-                                Text("\(title) (\(pickedCurrency.symbol))")
-                                    .modifier(BWIPSSemiBold(size: 19.0))
-                                    .foregroundColor(BrainwalletColor.content)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .frame(height: 25.0)
-                                    .padding(.top, 8.0)
-                            }
-                            Spacer()
-
-                            VStack {
-                                Button(action: {
-                                    shouldExpandCurrency.toggle()
-                                    let impactRigid = UIImpactFeedbackGenerator(style: .rigid)
-                                    impactRigid.impactOccurred()
-                                }) {
-                                    VStack {
-                                        HStack {
-                                            Image(systemName: "chevron.right")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: expandArrowSize, height: expandArrowSize)
-                                                .foregroundColor(BrainwalletColor.content)
-                                                .rotationEffect(Angle(degrees: shouldExpandCurrency ? 90 : 0))
-
-                                        }
-
-                                    }
-                                    .frame(width: 30.0, height: 30.0, alignment: .top)
-                                    .padding(.top, 9.0)
-
-                                }
-                                .frame(width: 30.0, height: 30.0)
-                            }
-                            .frame(width: 30.0, height: 50.0)
-
+        VStack(alignment: .leading, spacing: 0.0) {
+            Divider()
+                .frame(height: 1)
+                .overlay(Color.white)
+            Text("\(title) (\(pickedCurrency.symbol))")
+                .modifier(BWIPSSemiBold(size: 15.0))
+                .foregroundColor(BrainwalletColor.content)
+                .frame(maxWidth: .infinity, alignment: .leadingFirstTextBaseline)
+                .frame(height: closedRowHeight)
+                .overlay(alignment: .trailing) {
+                    Button(action: {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            shouldExpandCurrency.toggle()
                         }
-                        .padding(.top, 1.0)
-                        .padding(.bottom, 8.0)
-                        CurrencyPickerView(viewModel: viewModel, pickedCurrency: $pickedCurrency)
-                            .transition(.opacity)
-                            .animation(.easeInOut(duration: 0.3), value: shouldExpandCurrency)
-                            .frame(height: shouldExpandCurrency ? pickerViewHeight : 0.1)
-                        Spacer()
+                        let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                        impactMed.impactOccurred()
+                    }) {
+                        Image(systemName: "chevron.down")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: expandArrowSize, height: expandArrowSize)
+                            .foregroundColor(BrainwalletColor.content)
+                            .rotationEffect(Angle(degrees: shouldExpandCurrency ? 180 : 0))
                     }
-                    .onChange(of: viewModel.currentGlobalFiat, { _, _ in
-                        pickedCurrency = viewModel.currentGlobalFiat
-                    })
-                    .onAppear {
-                        pickedCurrency = viewModel.currentGlobalFiat
-                    }
+                    .frame(width: 30.0, height: 30.0)
+                    .contentShape(Rectangle())
                 }
-            }
+            
+            CurrencyPickerView(viewModel: viewModel, pickedCurrency: $pickedCurrency)
+                .transition(.opacity)
+                .animation(.easeInOut(duration: 0.3), value: shouldExpandCurrency)
+                .frame(height: shouldExpandCurrency ? detailExpandedHeight : 0.0)
+                .opacity(shouldExpandCurrency ? 1.0 : 0.0)
         }
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .fixedSize(horizontal: false, vertical: true)
     }
 }

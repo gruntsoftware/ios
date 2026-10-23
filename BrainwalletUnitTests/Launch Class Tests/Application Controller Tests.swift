@@ -12,14 +12,12 @@ import XCTest
 final class ApplicationControllerTests: XCTestCase {
 
     var controller: ApplicationController!
-    var mockApplication: UIApplication!
     var testWindow: UIWindow!
 
     override func setUp() {
         super.setUp()
         controller = ApplicationController()
         testWindow = UIWindow()
-        mockApplication = UIApplication.shared
     }
 
     override func tearDown() {
@@ -44,19 +42,8 @@ final class ApplicationControllerTests: XCTestCase {
         XCTAssertFalse(controller.shouldRequireLogin())
     }
 
-    func testPerformFetchStoresCompletionHandler() {
-        let expectation = expectation(description: "fetch completion")
-        controller.performFetch { result in
-            XCTAssertEqual(result, .noData) // we'll pass `.noData` later to trigger it
-            expectation.fulfill()
-        }
-
-        controller.fetchCompletionHandler?(.noData)
-        waitForExpectations(timeout: 1)
-    }
-
-    func testLaunchAssignsApplicationAndWindow() {
-        controller.launch(application: mockApplication, window: testWindow)
+    func testLaunchAssignsWindow() {
+        controller.launch(window: testWindow)
         XCTAssertTrue(controller.window === testWindow)
     }
 }
