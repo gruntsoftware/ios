@@ -4,9 +4,6 @@ import SpriteKit
 
 struct WelcomeMojiDemoView: View {
 
-    @Environment(\.requestReview)
-    private var requestReview
-
     @Binding
     var shouldPlay: Bool
 
@@ -188,10 +185,6 @@ struct WelcomeMojiDemoView: View {
                 }
             }
             .frame(width: width, height: height)
-        }
-        .onAppear {
-            requestReview()
-            debugPrint("did_request_rating")
         }
         .onDisappear {
             welcomeScene = nil
