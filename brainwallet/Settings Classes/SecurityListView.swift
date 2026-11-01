@@ -20,13 +20,22 @@ struct SecurityListView: View {
     private var willShowSeedPhrase: Bool = false
 
     @State
-    private var willShowBrainwalletPhrase: Bool = false
+    private var userTappedForBrainwalletPhrase: Bool = false
+
+    @State
+    private var shouldShowPINAlert: Bool = false
+
+    @State
+    private var brainwalletPhrasePIN: String = ""
 
     @State
     private var willShareData: Bool = false
 
     @State
     private var userPrefersDarkMode: Bool = true
+    
+    @State
+    private var emojiCount: Int = 0
 
     let footerRowHeight: CGFloat = 55.0
 
@@ -63,11 +72,11 @@ struct SecurityListView: View {
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
                                 .listRowSeparatorTint(BrainwalletColor.content)
-                            if (newMainViewModel.walletManager?.emojiStringCount() == 3) {
+                            if (emojiCount >= 3) {
                                 SettingsActionBrainwalletPhraseView(title:
                                                                         String(localized: "Brainwallet Phrase"),
                                                                     detailText: String(localized: "Show my emojis"),
-                                                                    willShowBrainwalletPhrase: $willShowBrainwalletPhrase)
+                                                                    userTappedForBrainwalletPhrase: $shouldShowPINAlert)
                                 .frame(height: phraseRowHeight)
                                 .background(BrainwalletColor.background)
                                 .listRowBackground(BrainwalletColor.background)
@@ -101,16 +110,44 @@ struct SecurityListView: View {
                             }
 
                         }
-                        .sheet(isPresented: $willShowBrainwalletPhrase) {
+                        .alert(Text("Enter your PIN to view your Brainwallet phrase"),
+                               isPresented: $shouldShowPINAlert) {
+                            SecureField("Enter PIN", text: $brainwalletPhrasePIN)
+                                .keyboardType(.numberPad)
+                            Button("Cancel", role: .cancel) {
+                                brainwalletPhrasePIN = ""
+                            }
+                            Button("Enter") {
+                                if newMainViewModel.walletManager?.emojiString(pin: brainwalletPhrasePIN) != nil {
+                                    userTappedForBrainwalletPhrase = true
+                                } else {
+                                    brainwalletPhrasePIN = ""
+                                }
+                            }
+                        }
+                        .sheet(isPresented: $userTappedForBrainwalletPhrase,
+                               onDismiss: { brainwalletPhrasePIN = "" }) {
                             if let walletManager = newMainViewModel.walletManager {
                                 NavigationStack {
-                                    BrainwalletPhraseContainerView(shouldShow:$willShowBrainwalletPhrase, walletManager: walletManager)
+                                    BrainwalletPhraseContainerView(shouldShow: $userTappedForBrainwalletPhrase,
+                                                                   walletManager: walletManager,
+                                                                   pin: brainwalletPhrasePIN)
                                         .toolbar(.hidden, for: .navigationBar)
                                 }
                             }
                         }
+                        .onAppear(perform: updateEmojiCount)
+                        .onReceive(NotificationCenter
+                            .default.publisher(for: .emojiStringDidChangeNotification)
+                            .receive(on: DispatchQueue.main)) { _ in
+                            updateEmojiCount()
+                        }
                 }
             }
         }
+    }
+
+    private func updateEmojiCount() {
+        emojiCount = newMainViewModel.walletManager?.emojiStringCount() ?? 0
     }
 }

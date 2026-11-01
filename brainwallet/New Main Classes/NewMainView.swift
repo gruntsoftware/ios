@@ -120,6 +120,26 @@ struct NewMainView: View {
         return components.url ?? url
     }
 
+    // No emojis: pick the first 3. With 3 set, emojis 4 - 6 wait until 2 games are played
+    private func saveEmojisOrLaunchGame() {
+        let emojiCount = newMainViewModel.walletManager?.emojiStringCount() ?? 0
+        let needsFirstEmojis = !gameHubViewModel.userEmojisAreSet
+        let needsNextEmojis = emojiCount == 3 && UserDefaults.gameScores.count >= 2
+
+        if needsFirstEmojis || needsNextEmojis {
+            newMainViewModel.shouldShowGameSDK.toggle()
+        } else {
+            launchGame()
+        }
+    }
+
+    private func launchGame() {
+        let address = newReceiveViewModel.newReceiveAddress
+        DispatchQueue.userInitQueue.async {
+            appDelegate.applicationController.shouldShowGameSDK(address: address)
+        }
+    }
+
     var body: some View {
         GeometryReader { geometry in
 
@@ -199,11 +219,9 @@ struct NewMainView: View {
                                 }
                                 .frame(maxHeight: height * 0.5, alignment: .top)
                                 GameHubCarouselBentoView(viewModel: newMainViewModel,
-                                                         newReceiveViewModel: newReceiveViewModel,
                                                          userPrefersDarkTheme: $userPrefersDarkTheme,
                                                          shouldShowGameSDK: $newMainViewModel.shouldShowGameSDK,
-                                                         userEmojisAreSet: $gameHubViewModel.userEmojisAreSet
-                                )
+                                                         onGameHubTap: saveEmojisOrLaunchGame)
                                 .frame(idealHeight: balanceBentoHeight * 0.9,
                                        maxHeight: balanceBentoHeight,
                                        alignment: .top)
@@ -327,17 +345,7 @@ struct NewMainView: View {
 
                             Spacer()
 
-                            Button(action: {
-                                
-                                if (gameHubViewModel.userEmojisAreSet) {
-                                    let address = newReceiveViewModel.newReceiveAddress
-                                    DispatchQueue.userInitQueue.async {
-                                        appDelegate.applicationController.shouldShowGameSDK(address: address)
-                                    }
-                                } else {
-                                    newMainViewModel.shouldShowGameSDK.toggle()
-                                }
-                            }, label: {
+                            Button(action: saveEmojisOrLaunchGame, label: {
                                 VStack(spacing: 0) {
                                     Image(systemName: "gamecontroller")
                                         .resizable()
@@ -500,19 +508,31 @@ struct NewMainView: View {
                         .padding(8.0)
                 }
                 .sheet(isPresented: $newMainViewModel.shouldShowGameSDK) {
+                    
+                    
                     if (!gameHubViewModel.userEmojisAreSet) {
                         EmojiSetPagerView(gameHubViewModel: gameHubViewModel,
                                           viewModel: newMainViewModel)
                         .presentationBackground(.ultraThinMaterial)
                         .presentationDragIndicator(.hidden)
+                    } else {
+                        let emojiCount = newMainViewModel.walletManager?.emojiStringCount() ?? 0
+                        
+                        // The sheet only opens for 3 emojis, every other count launches the game on tap
+                        switch emojiCount {
+                            case 3:
+                                SetSixthEmojiView(gameHubViewModel: gameHubViewModel,
+                                                  viewModel: newMainViewModel)
+                                .presentationBackground(.ultraThinMaterial)
+                                .presentationDragIndicator(.hidden)
+                            default:
+                                EmptyView()
+                        }
                     }
                 }
                 .onChange(of: gameHubViewModel.didJustCompleteEmojiSetup) { _, newValue in
                     guard newValue else { return }
-                    let address = newReceiveViewModel.newReceiveAddress
-                    DispatchQueue.userInitQueue.async {
-                        appDelegate.applicationController.shouldShowGameSDK(address: address)
-                    }
+                    launchGame()
                     gameHubViewModel.didJustCompleteEmojiSetup = false
                 }
                 .alert(isPresented: $shouldShowPromptAlert) {

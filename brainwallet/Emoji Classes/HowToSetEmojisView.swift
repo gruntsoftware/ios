@@ -22,11 +22,7 @@ struct HowToSetEmojisView: View {
                             "lock"]
     
 
-    let backgroundGradient: LinearGradient
-    
-    init(backgroundGradient: LinearGradient,
-         selectedPage: Binding<Int>) {
-        self.backgroundGradient = backgroundGradient
+    init(selectedPage: Binding<Int>) {
         _selectedPage = selectedPage
     }
 
@@ -93,6 +89,11 @@ struct HowToSetEmojisView: View {
                 }
         }
         .frame(maxWidth: .infinity, alignment: .center)
-        .background(backgroundGradient)
+        .background(emojisBackgroundGradient.ignoresSafeArea())
     }
+}
+
+#Preview {
+    @Previewable @State var selectedPage = 0
+    HowToSetEmojisView(selectedPage: $selectedPage)
 }

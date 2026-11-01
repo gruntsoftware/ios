@@ -29,11 +29,6 @@ struct SetEmojiView: View {
     var isActive: Bool = true
 
     
-    private let emojisViewGradient = LinearGradient(colors: [BentoColor.color14134C.opacity(0.5),
-                                                                BentoColor.color5827E2.opacity(0.1),
-                                                                Color.white.opacity(0.1)],
-                                                       startPoint: .leading, endPoint: .trailing)
-    
     init(isSelected: Binding<Bool>,
          seedWord: String,
          emojiString: Binding<String>,

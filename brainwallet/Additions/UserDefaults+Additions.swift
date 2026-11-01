@@ -58,6 +58,7 @@ public extension NSNotification.Name {
     static let transactionsStoppedScrollNotification = Notification.Name("transactionsStoppedScroll")
     static let transactionsCountUpdateNotification = Notification.Name("transactionsCountUpdate")
     static let walletDidIntializeNotification: Notification.Name = Notification.Name("WalletDidIntialize")
+    static let emojiStringDidChangeNotification = Notification.Name("emojiStringDidChange")
 }
 
 extension UserDefaults {

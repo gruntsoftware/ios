@@ -308,6 +308,7 @@ extension WalletManager: WalletAuthenticator {
         }
         do {
             try setKeychainItem(key: KeychainKey.emoji, item: "", authenticated: true)
+            NotificationCenter.default.post(name: .emojiStringDidChangeNotification, object: nil)
             return true
 
         } catch {
@@ -345,7 +346,7 @@ extension WalletManager: WalletAuthenticator {
 		} catch { return false }
 	}
 
-    // Add an emoji to the phrase
+    // Add emojis to the phrase. Up to 12
     func updateEmojiString(_ emoji: String) -> Bool {
         guard emoji.count != 1 else {
             debugPrint("Error: emoji string must be 1 character long")
@@ -366,6 +367,7 @@ extension WalletManager: WalletAuthenticator {
 
             do {
                 try setKeychainItem(key: KeychainKey.emoji, item: fetchedEmojiString, authenticated: true)
+                NotificationCenter.default.post(name: .emojiStringDidChangeNotification, object: nil)
                 return true
 
             } catch {
@@ -373,6 +375,11 @@ extension WalletManager: WalletAuthenticator {
             }
         }
         return false
+    }
+    
+    // Wipes all emojis
+    func clearEmojiString() {
+        
     }
 
 	// create a new wallet and return the 12 word wallet recovery phrase
