@@ -43,6 +43,16 @@ final class GameHubViewModelEmojiTests: XCTestCase {
         super.tearDown()
     }
 
+    // MARK: - First Triplet
+
+    func testFirstTripletReplacesLeftoverEmojis() {
+        XCTAssertTrue(walletManager.updateEmojiString("🍋🚀🐶🌙🎸🍕"))
+
+        XCTAssertTrue(sut.setFirstEmojiTriplet(first: "🌵", second: "🎈", third: "🧩"))
+
+        XCTAssertEqual(walletManager.emojiStringResult(), "🌵🎈🧩")
+    }
+
     // MARK: - Second Triplet
 
     func testSecondTripletAppendsToFirstAndKeepsEmojisSet() {

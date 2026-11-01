@@ -55,6 +55,8 @@ class GameHubViewModel: ObservableObject {
         if first.isEmpty || second.isEmpty || third.isEmpty {
             return false
         }
+        // The first triplet starts a new phrase, so drop any emojis left from an earlier one
+        walletManager.clearEmojiString()
         return walletManager.updateEmojiString("\(first)\(second)\(third)")
     }
     
