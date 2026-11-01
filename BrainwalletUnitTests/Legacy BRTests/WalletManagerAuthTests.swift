@@ -87,6 +87,39 @@ class WalletManagerAuthTests: XCTestCase {
 		XCTAssertTrue(walletManager.noWallet, "Wallet should no longer exist after wipeWallet")
 	}
 
+	func testWipeWalletClearsGameScores() {
+		XCTAssertTrue(walletManager.setSeedPhrase(validPhrase))
+		XCTAssertTrue(walletManager.forceSetPin(newPin: pin))
+		UserDefaults.appendGameScore(GameScoreRecord(totalScore: 10, timestamp: 1))
+		UserDefaults.appendGameScore(GameScoreRecord(totalScore: 20, timestamp: 2))
+		XCTAssertEqual(UserDefaults.gameScores.count, 2)
+
+		XCTAssertTrue(walletManager.wipeWallet())
+		XCTAssertEqual(UserDefaults.gameScores, [], "wipeWallet should remove every stored game score")
+	}
+
+	func testWipeWalletClearsEmojis() {
+		XCTAssertTrue(walletManager.setSeedPhrase(validPhrase))
+		XCTAssertTrue(walletManager.forceSetPin(newPin: pin))
+		XCTAssertTrue(walletManager.updateEmojiString("🍋🚀🐶"))
+		XCTAssertEqual(walletManager.emojiStringCount(), 3)
+
+		XCTAssertTrue(walletManager.wipeWallet())
+		XCTAssertEqual(walletManager.emojiStringCount(), 0, "wipeWallet should remove the stored emojis")
+	}
+
+	func testDeleteEmojiStringClearsGameScores() {
+		XCTAssertTrue(walletManager.setSeedPhrase(validPhrase))
+		XCTAssertTrue(walletManager.forceSetPin(newPin: pin))
+		XCTAssertTrue(walletManager.updateEmojiString("🍋🚀🐶"))
+		UserDefaults.appendGameScore(GameScoreRecord(totalScore: 10, timestamp: 1))
+		UserDefaults.appendGameScore(GameScoreRecord(totalScore: 20, timestamp: 2))
+
+		XCTAssertTrue(walletManager.deleteEmojiString(pin: pin))
+		XCTAssertEqual(walletManager.emojiStringCount(), 0)
+		XCTAssertEqual(UserDefaults.gameScores, [], "Deleting the emojis should remove every stored game score")
+	}
+
 	func testWipeWalletRequiresCorrectPinWhenNotForced() {
 		XCTAssertTrue(walletManager.setSeedPhrase(validPhrase))
 		XCTAssertTrue(walletManager.forceSetPin(newPin: pin))

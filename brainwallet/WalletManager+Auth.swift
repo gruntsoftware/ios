@@ -308,6 +308,12 @@ extension WalletManager: WalletAuthenticator {
         }
         do {
             try setKeychainItem(key: KeychainKey.emoji, item: "", authenticated: true)
+            // Scores were earned with the old emojis, so the game count starts over
+            do {
+                try UserDefaults.wipeGameScoresKeychain()
+            } catch {
+                debugPrint(":::Wipe game scores error: \(error)")
+            }
             NotificationCenter.default.post(name: .emojiStringDidChangeNotification, object: nil)
             return true
 
@@ -379,7 +385,12 @@ extension WalletManager: WalletAuthenticator {
     
     // Wipes all emojis
     func clearEmojiString() {
-        
+        do {
+            try setKeychainItem(key: KeychainKey.emoji, item: nil as String?, authenticated: true)
+            NotificationCenter.default.post(name: .emojiStringDidChangeNotification, object: nil)
+        } catch {
+            debugPrint(":::Clear emoji string error: \(error)")
+        }
     }
 
 	// create a new wallet and return the 12 word wallet recovery phrase
@@ -498,6 +509,17 @@ extension WalletManager: WalletAuthenticator {
             UserDefaults.standard.removePersistentDomain(forName: bundleId)
         }
          
+        // Game scores — a failure here shouldn't block the wallet wipe.
+        // Runs before the KV store step, whose early return would skip it
+        do {
+            try UserDefaults.wipeGameScoresKeychain()
+        } catch {
+            debugPrint(":::Wipe game scores error: \(error)")
+        }
+
+        // Emojis belong to the old seed phrase
+        clearEmojiString()
+
         // KV store — guard against nil authKey (the crash site)
         do {
             if let kv = BWAPIClient(authenticator: self).kv {
@@ -511,13 +533,6 @@ extension WalletManager: WalletAuthenticator {
         // File manager clear
         try? FileManager.default.removeItem(atPath: dbPath)
         try? FileManager.default.removeItem(at: BRReplicatedKVStore.dbPath)
-
-        // Game scores — a failure here shouldn't block the wallet wipe
-        do {
-            try UserDefaults.wipeGameScoresKeychain()
-        } catch {
-            debugPrint(":::Wipe game scores error: \(error)")
-        }
 
         do {
             try setKeychainItem(key: KeychainKey.apiAuthKey, item: nil as Data?)
