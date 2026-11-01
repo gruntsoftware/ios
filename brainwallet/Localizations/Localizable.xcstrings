@@ -10806,6 +10806,9 @@
         }
       }
     },
+    "Enter" : {
+
+    },
     "Enter PIN" : {
       "localizations" : {
         "ar" : {
@@ -16293,6 +16296,12 @@
           }
         }
       }
+    },
+    "Let's Play!" : {
+
+    },
+    "Level up to 6 emojis!" : {
+
     },
     "Light Mode" : {
       "localizations" : {

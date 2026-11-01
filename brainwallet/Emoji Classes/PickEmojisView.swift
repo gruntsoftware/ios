@@ -12,6 +12,9 @@ enum SetField : Int {
     case firstField = 1
     case secondField = 2
     case thirdField = 3
+    case fourthField = 4
+    case fifthField = 5
+    case sixthField = 6
 }
 
 struct PickEmojisView: View {
@@ -39,15 +42,13 @@ struct PickEmojisView: View {
     @Binding
     var selectedPage: Int
     
-    private func selection(for field: SetField) -> Binding<Bool> {
+    private func emojiFieldSelection(for field: SetField) -> Binding<Bool> {
         Binding(get: { selectedField == field },
                 set: { isOn in
                     if isOn { selectedField = field }
                     else if selectedField == field { selectedField = nil }
                 })
     }
-    
-    let backgroundGradient: LinearGradient
     
     private let seedPhrase: String
     
@@ -64,28 +65,15 @@ struct PickEmojisView: View {
     
     @State
     private var uniqueEmojisSelected = false
-
-    
-    
-    private let emojisSectionGradient = LinearGradient(colors: [BentoColor.color14134C.opacity(0.5),
-                                                                BentoColor.color5827E2.opacity(0.1),
-                                                                Color.white.opacity(0.1)],
-                                                       startPoint: .leading, endPoint: .trailing)
-    
-    private let emojisFieldGradient = LinearGradient(colors: [Color.white.opacity(0.1),
-                                                                Color.white.opacity(0.03)],
-                                                     startPoint: .topLeading, endPoint: .bottomTrailing)
     
     init(gameHubViewModel: GameHubViewModel,
          viewModel: NewMainViewModel,
          seedPhrase: String,
-         selectedPage: Binding<Int>,
-         backgroundGradient: LinearGradient) {
+         selectedPage: Binding<Int>) {
         _selectedPage = selectedPage
         self.gameHubViewModel = gameHubViewModel
         self.seedPhrase = seedPhrase
         newMainViewModel = viewModel
-        self.backgroundGradient = backgroundGradient
         
         let words = seedPhrase.split(separator: " ").map(String.init)
         firstTriplet = Array(words.prefix(3))
@@ -150,7 +138,7 @@ struct PickEmojisView: View {
                     .accessibilityIdentifier("howItWorksViewDescription")
                 
                 HStack {
-                    SetEmojiView(isSelected: selection(for: .firstField),
+                    SetEmojiView(isSelected: emojiFieldSelection(for: .firstField),
                                  seedWord: firstWord,
                                  emojiString: $firstEmojiString,
                                  shouldShowWord: $shouldShowSeedWords,
@@ -161,7 +149,7 @@ struct PickEmojisView: View {
                     .background(emojisFieldGradient)
                     .cornerRadius(16.0)
                     
-                    SetEmojiView(isSelected: selection(for: .secondField),
+                    SetEmojiView(isSelected: emojiFieldSelection(for: .secondField),
                                  seedWord: secondWord,
                                  emojiString: $secondEmojiString,
                                  shouldShowWord: $shouldShowSeedWords,
@@ -172,7 +160,7 @@ struct PickEmojisView: View {
                     .background(emojisFieldGradient)
                     .cornerRadius(16.0)
                     
-                    SetEmojiView(isSelected: selection(for: .thirdField),
+                    SetEmojiView(isSelected: emojiFieldSelection(for: .thirdField),
                                  seedWord: thirdWord,
                                  emojiString: $thirdEmojiString,
                                  shouldShowWord: $shouldShowSeedWords,
@@ -207,7 +195,7 @@ struct PickEmojisView: View {
                 Spacer()
                 
                 Button(action: {
-                    if (gameHubViewModel.setEmojiTriplet(first: firstEmojiString,
+                    if (gameHubViewModel.setFirstEmojiTriplet(first: firstEmojiString,
                                                          second: secondEmojiString,
                                                          third: thirdEmojiString)) {
                         gameHubViewModel.checkEmojiCount()
@@ -229,7 +217,7 @@ struct PickEmojisView: View {
                         .padding( .bottom, 16.0)
                         .disabled(!uniqueEmojisSelected)
                 }
-                .background(backgroundGradient)
+                .background(emojisBackgroundGradient.ignoresSafeArea())
             }
             .ignoresSafeArea(.keyboard)
             .onChange(of: firstEmojiString) { _, _ in uniqueEmojisSelected = areUniqueEmojisSelected() }
@@ -238,3 +226,11 @@ struct PickEmojisView: View {
         }
 }
 
+#Preview {
+    @Previewable @State var selectedPage = 0
+    let walletManager = MockSeeds.walletManager
+    PickEmojisView(gameHubViewModel: GameHubViewModel(walletManager: walletManager),
+                   viewModel: NewMainViewModel(store: Store(), walletManager: walletManager),
+                   seedPhrase: MockSeeds.twelveWords.map(\.word).joined(separator: " "),
+                   selectedPage: $selectedPage)
+}

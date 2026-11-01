@@ -25,11 +25,6 @@ struct EmojiSetPagerView: View {
     @State
     private var seedPhrase: String = ""
     
-    private let viewBackgroundGradient = LinearGradient(colors: [BentoColor.sendTopPurple,
-                                                                BentoColor.sendBottomPurple.opacity(0.7),
-                                                                BentoColor.sendBottomPurple.opacity(0.05)],
-                                                       startPoint: .top, endPoint: .bottom)
-    
     init(gameHubViewModel: GameHubViewModel,
          viewModel: NewMainViewModel) {
         self.gameHubViewModel = gameHubViewModel
@@ -43,11 +38,9 @@ struct EmojiSetPagerView: View {
             
             ZStack {
                 TabView(selection: $selectedPage) {
-                    HowToSetEmojisView(backgroundGradient: viewBackgroundGradient,
-                                       selectedPage: $selectedPage)
+                    HowToSetEmojisView(selectedPage: $selectedPage)
                     .tag(0)
-                    EnterPinForSeedView(backgroundGradient: viewBackgroundGradient,
-                                        enteredPin: $enteredPin,
+                    EnterPinForSeedView(enteredPin: $enteredPin,
                                         seedPhrase: $seedPhrase,
                                         viewModel: newMainViewModel,
                                         selectedPage: $selectedPage)
@@ -57,11 +50,12 @@ struct EmojiSetPagerView: View {
                     PickEmojisView(gameHubViewModel: gameHubViewModel,
                                    viewModel: newMainViewModel,
                                    seedPhrase: seedPhrase,
-                                   selectedPage: $selectedPage,
-                                   backgroundGradient: viewBackgroundGradient)
+                                   selectedPage: $selectedPage)
                     .tag(2)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
+                // Let the pages reach the bottom edge so each page's gradient fills it, content stays inset
+                .ignoresSafeArea(.container, edges: .bottom)
                 .animation(.easeInOut(duration: 0.8), value: selectedPage)
                 .transition(.slide)
             }.onChange(of: gameHubViewModel.userEmojisAreSet) { _ , newValue in
@@ -69,7 +63,6 @@ struct EmojiSetPagerView: View {
                     newMainViewModel.shouldShowGameSDK = false
                 }
             }
-
         }
     }
 }
