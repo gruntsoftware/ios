@@ -28,10 +28,16 @@ struct WebBuyView: View {
 
     private var signingData: MoonpaySigningData
 
-    init(signingData: MoonpaySigningData, viewModel: NewReceiveViewModel) {
+    /// Called when the user taps back; the owner dismisses the web view sheet.
+    private var onBack: (() -> Void)?
+
+    init(signingData: MoonpaySigningData,
+         viewModel: NewReceiveViewModel,
+         onBack: (() -> Void)? = nil) {
 
         self.signingData = signingData
         self.viewModel = viewModel
+        self.onBack = onBack
     }
 
     var body: some View {
@@ -48,6 +54,23 @@ struct WebBuyView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding([.leading, .trailing], 8.0)
+
+                if let onBack {
+                    VStack {
+                        HStack {
+                            Button(action: onBack) {
+                                Image(systemName: "arrow.backward")
+                                    .font(.system(size: 18, weight: .semibold))
+                                    .foregroundColor(BrainwalletColor.content)
+                                    .frame(width: 44, height: 44)
+                            }
+                            .accessibilityIdentifier("moonPayWebBackButton")
+                            Spacer()
+                        }
+                        .padding(.leading, 8.0)
+                        Spacer()
+                    }
+                }
             }
             .onChange(of: viewModel.didFetchURLString) { _,didFetchURL in
 

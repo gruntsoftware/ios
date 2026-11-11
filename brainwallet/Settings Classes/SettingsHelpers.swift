@@ -7,7 +7,7 @@
 //
 import SwiftUI
 
-let closedRowHeight: CGFloat = 65.0
+let closedRowHeight: CGFloat = 50.0
 let toggleRowHeight: CGFloat = 50.0
 let updatePINRowHeight: CGFloat = 100.0
 let phraseRowHeight: CGFloat = 60.0
@@ -15,7 +15,7 @@ let expandedRowHeight: CGFloat = 240.0
 let rowLeadingPad: CGFloat = 32.0
 let leadRowPad: CGFloat = 40.0
 let trailRowPad: CGFloat = 16.0
-let expandArrowSize: CGFloat = 20.0
+let expandArrowSize: CGFloat = 16.0
 let pickerViewHeight: CGFloat = 160.0
 
 enum SettingsAction: CaseIterable {

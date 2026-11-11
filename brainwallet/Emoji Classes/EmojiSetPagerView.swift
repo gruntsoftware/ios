@@ -69,7 +69,13 @@ struct EmojiSetPagerView: View {
                     newMainViewModel.shouldShowGameSDK = false
                 }
             }
-            
+
         }
     }
+}
+
+#Preview {
+    let walletManager = MockSeeds.walletManager
+    EmojiSetPagerView(gameHubViewModel: GameHubViewModel(walletManager: walletManager),
+                      viewModel: NewMainViewModel(store: Store(), walletManager: walletManager))
 }

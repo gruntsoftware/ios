@@ -26,6 +26,17 @@ struct GameJSON: Codable {
         case scoreC = "score_c"
     }
 }
+/// One finished game, stored on the Keychain as part of a JSON array string.
+struct GameScoreRecord: Codable, Equatable {
+    let totalScore: Int
+    let timestamp: Int
+
+    enum CodingKeys: String, CodingKey {
+        case totalScore = "total_score"
+        case timestamp
+    }
+}
+
 struct GameExitPayload: Decodable {
     let exitData: GameJSON          // existing struct, unchanged
     let events: [AnalyticsEventDTO]

@@ -50,59 +50,76 @@ struct EnterPinForSeedView: View {
             let width = geometry.size.width
             
             VStack(alignment: .center) {
-                Text("Enter your PIN to fetch the seed words")
-                    .modifier(BWIPSSemiBold(size: 22.0,
-                                            lineLimit: 2))
-                    .foregroundColor(.white)
+                
+                ZStack {
+                    HStack {
+                        Button(action: {
+                            withAnimation {
+                                selectedPage = 0
+                            }
+                        }) {
+                            Image(systemName: "xmark")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.white)
+                        }
+                        Spacer()
+                    }
+                    .padding(.top, 30.0)
+                    .padding(.leading, 24.0)
+                    .frame(height: 50.0)
+                }
+                    Text("Enter your PIN to fetch the seed words")
+                        .modifier(BWIPSSemiBold(size: 22.0,
+                                                lineLimit: 2))
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding([.leading, .trailing], 40.0)
+                        .padding([.top, .bottom], 44.0)
+                        .accessibilityIdentifier("enterPINFetchSeedTitle")
+                    
+                    SecureField(String(localized:"Enter PIN"),
+                                text: $enteredPin)
+                    .font(.ibmPlexSansRegular(size: 20))
                     .multilineTextAlignment(.center)
-                    .padding([.leading, .trailing], 40.0)
-                    .padding([.top, .bottom], 44.0)
-                    .accessibilityIdentifier("enterPINFetchSeedTitle")
-                
-               
-                
-                TextField(String(localized:"Enter PIN"),
-                          text: $enteredPin)
-                .font(.ibmPlexSansRegular(size: 20))
-                .multilineTextAlignment(.center)
-                .keyboardType(.numberPad)
-                .textFieldStyle(TranslucentWhiteTextFieldStyle())
-                .frame(width: width * 0.4, alignment: .center)
-                .onChange(of: enteredPin) { _,newValue in
-                    if newValue.count == 4 {
-                        if let walletManager = walletManager,
-                        let phrase = walletManager.seedPhrase(pin: newValue) {
-                            seedPhrase = phrase
-                            pinWasEnteredCorrectly  = true
-                            keyboardFocused = false
+                    .foregroundColor(.white)
+                    .keyboardType(.numberPad)
+                    .textFieldStyle(TranslucentWhiteTextFieldStyle())
+                    .frame(width: width * 0.4, alignment: .center)
+                    .onChange(of: enteredPin) { _,newValue in
+                        if newValue.count == 4 {
+                            if let walletManager = walletManager,
+                               let phrase = walletManager.seedPhrase(pin: newValue) {
+                                seedPhrase = phrase
+                                pinWasEnteredCorrectly  = true
+                                keyboardFocused = false
+                            }
                         }
                     }
-                }
-                .focused($keyboardFocused)
-                .accessibilityIdentifier("enterPINFetchSeedTextField")
-
-
-                Spacer()
+                    .focused($keyboardFocused)
+                    .accessibilityIdentifier("enterPINFetchSeedTextField")
                 
-                Button(action: {
-                    if pinWasEnteredCorrectly {
-                        selectedPage += 1
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        if pinWasEnteredCorrectly {
+                            selectedPage += 1
+                        }
+                    }) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(.white)
+                            Text("Continue")
+                                .modifier(BWIPSSemiBold(size: 19.0))
+                                .foregroundColor(enteredPin.isEmpty ?
+                                                 BrainwalletColor.midnight.opacity(0.5) : BrainwalletColor.midnight)
+                        }
                     }
-                }) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(.white)
-                        Text("Continue")
-                            .modifier(BWIPSSemiBold(size: 19.0))
-                            .foregroundColor(enteredPin.isEmpty ?
-                                             BrainwalletColor.midnight.opacity(0.5) : BrainwalletColor.midnight)
-                    }
-                }
-                .frame(width: width * 0.9, height: 50.0, alignment: .center)
-                .cornerRadius(11.0)
-                .padding( .bottom, 16.0)
-                .disabled(!pinWasEnteredCorrectly)
-                
+                    .frame(width: width * 0.9, height: 50.0, alignment: .center)
+                    .cornerRadius(11.0)
+                    .padding( .bottom, 16.0)
+                    .disabled(!pinWasEnteredCorrectly)
             }
             .frame(width: width, height: height, alignment: .center)
             .onDisappear {

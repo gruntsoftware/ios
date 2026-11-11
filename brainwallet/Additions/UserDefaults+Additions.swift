@@ -1,4 +1,5 @@
 import Foundation
+import KeychainAccess
 
 private let defaults = UserDefaults.standard
 private let isBiometricsEnabledKey = "isbiometricsenabled"
@@ -12,13 +13,23 @@ private let isLTCValueShownKey = "isLTCValueShownKey"
 private let maxDigitsKey = "SETTINGS_MAX_DIGITS"
 private let pushTokenKey = "pushTokenKey"
 private let currentRateKey = "currentRateKey"
-private let customNodeIPKey = "customNodeIPKey"
-private let customNodePortKey = "customNodePortKey"
 private let hasPromptedShareDataKey = "hasPromptedShareDataKey"
 private let didSeeTransactionCorruption = "DidSeeTransactionCorruption"
 private let hasLoggedInitialSyncDurationKey = "hasLoggedInitialSyncDurationKey"
 private let foregroundSyncDurationSecondsKey = "foregroundSyncDurationSecondsKey"
 private let pendingNotificationBadgeCountKey = "pendingNotificationBadgeCountKey"
+
+private let trustedNodeKeychain = Keychain(service: "brainwallet.trustednode")
+private let userTrustedNodeIpAddressKey = "userTrustedNodeIpAddress"
+private let userTrustedNodePortKey = "userTrustedNodePort"
+private let userPurchasedTrustedNodeKey = "userPurchasedTrustedNode"
+
+private let gameScoresKeychain = Keychain(service: "brainwallet.gamescores")
+private let gameScoresKey = "gameScores"
+
+/// StoreKit product id for the Trusted LTC Node in-app purchase. Must match
+/// "Trusted LTC Node Feature" in BWProductsList.plist (ios-private-general-purpose).
+let trustedLTCNodeProductId = "com.gruntsoftware.brainwallet.trusted_ltc_node_2"
 
 let timeSinceLastExitKey = "TimeSinceLastExit"
 let shouldRequireLoginTimeoutKey = "ShouldRequireLoginTimeoutKey"
@@ -26,6 +37,8 @@ let numberOfBrainwalletLaunches = "NumberOfBrainwalletLaunches"
 let appHasRequestedReviewKey = "appHasRequestedReviewKey"
 let userDidPreferDarkModeKey = "UserDidPreferDarkMode"
 let userCurrentLocaleMPApprovedKey = "UserCurrentLocaleMPApproved"
+let userSetPreferredNetworkFeeKey = "UserSetPreferredNetworkFeeKey"
+let userPrefersUsingTrustedNodeKey = "UserPrefersUsingTrustedNodeKey"
 
 public extension NSNotification.Name {
     static let walletBalanceChangedNotification = NSNotification.Name("WalletBalanceChanged")
@@ -48,7 +61,82 @@ public extension NSNotification.Name {
 }
 
 extension UserDefaults {
+    
+    // MARK: - Trusted Node
+    static var userTrustedNodeIpAddress: String? {
+        get { trustedNodeKeychain[userTrustedNodeIpAddressKey] }
+        set { trustedNodeKeychain[userTrustedNodeIpAddressKey] = newValue }
+    }
+    
+    static var userTrustedNodePort: String? {
+        get { trustedNodeKeychain[userTrustedNodePortKey] }
+        set { trustedNodeKeychain[userTrustedNodePortKey] = newValue }
+    }
+    
+    static var userTrustedNodePurchased: Bool? {
+        get {
+            guard let value = trustedNodeKeychain[userPurchasedTrustedNodeKey] else { return nil }
+            return value == "true"
+        }
+        set {
+            guard let newValue else {
+                trustedNodeKeychain[userPurchasedTrustedNodeKey] = nil
+                return
+            }
+            trustedNodeKeychain[userPurchasedTrustedNodeKey] = newValue ? "true" : "false"
+        }
+    }
 
+    static func wipeTrustedNodeKeychain() throws {
+        try trustedNodeKeychain.removeAll()
+    }
+
+    // MARK: - Game Scores
+    /// Finished games, oldest first, stored on the Keychain as a stringified JSON array
+    static var gameScores: [GameScoreRecord] {
+        get {
+            guard let scoresString = gameScoresKeychain[gameScoresKey],
+                  let data = scoresString.data(using: .utf8),
+                  let scores = try? JSONDecoder().decode([GameScoreRecord].self, from: data)
+            else { return [] }
+            return scores
+        }
+        set {
+            guard let data = try? JSONEncoder().encode(newValue) else { return }
+            gameScoresKeychain[gameScoresKey] = String(data: data, encoding: .utf8)
+        }
+    }
+
+    static func appendGameScore(_ record: GameScoreRecord) {
+        gameScores.append(record)
+    }
+
+    static func wipeGameScoresKeychain() throws {
+        try gameScoresKeychain.removeAll()
+    }
+
+    static var userPrefersUsingTrustedNode: Bool {
+        get {
+            guard defaults.object(forKey: userPrefersUsingTrustedNodeKey) != nil
+            else {
+                return true
+            }
+            return defaults.bool(forKey: userPrefersUsingTrustedNodeKey)
+        }
+        set { defaults.set(newValue, forKey: userPrefersUsingTrustedNodeKey) }
+    }
+    
+    static var userSetPreferredNetworkFee: Int {
+        get {
+            guard defaults.object(forKey: userSetPreferredNetworkFeeKey) != nil
+            else {
+                return Int(Fees.usingDefaultValues.luxury)
+            }
+            return defaults.integer(forKey: userSetPreferredNetworkFeeKey)
+        }
+        set { defaults.set(newValue, forKey: userSetPreferredNetworkFeeKey) }
+    }
+     
     static var userCanBuyInCurrentLocale: Bool {
         get {
             guard defaults.object(forKey: userCurrentLocaleMPApprovedKey) != nil
@@ -184,22 +272,6 @@ extension UserDefaults {
 			return data
 		}
 		set { defaults.set(newValue, forKey: currentRateKey) }
-	}
-
-	static var customNodeIP: Int? {
-		get {
-			guard defaults.object(forKey: customNodeIPKey) != nil else { return nil }
-			return defaults.integer(forKey: customNodeIPKey)
-		}
-		set { defaults.set(newValue, forKey: customNodeIPKey) }
-	}
-
-	static var customNodePort: Int? {
-		get {
-			guard defaults.object(forKey: customNodePortKey) != nil else { return nil }
-			return defaults.integer(forKey: customNodePortKey)
-		}
-		set { defaults.set(newValue, forKey: customNodePortKey) }
 	}
 
 	static var hasPromptedShareData: Bool {

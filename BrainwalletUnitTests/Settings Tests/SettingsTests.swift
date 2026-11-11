@@ -14,7 +14,7 @@ class SettingsHelpersTests: XCTestCase {
     // MARK: - Constants Tests
     
     func testClosedRowHeight() {
-        XCTAssertEqual(closedRowHeight, 65.0, "closedRowHeight should be 65.0")
+        XCTAssertEqual(closedRowHeight, 50.0, "closedRowHeight should be 50.0")
     }
     
     func testToggleRowHeight() {
@@ -42,7 +42,7 @@ class SettingsHelpersTests: XCTestCase {
     }
     
     func testExpandArrowSize() {
-        XCTAssertEqual(expandArrowSize, 20.0, "expandArrowSize should be 20.0")
+        XCTAssertEqual(expandArrowSize, 16.0, "expandArrowSize should be 16.0")
     }
     
     func testPickerViewHeight() {

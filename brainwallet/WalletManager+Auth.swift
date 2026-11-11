@@ -455,14 +455,27 @@ extension WalletManager: WalletAuthenticator {
 		} catch { return false }
 	}
 
+	/// Detaches the peer manager and wallet but keeps them alive briefly. BRPeerManagerDisconnect
+	/// can return while a still-connecting peer thread is winding down, and freeing the manager
+	/// (BRPeerFree) at that moment is a use-after-free in `_peerThreadRoutine`. Wallet is retired
+	/// with it because the peer manager's C callbacks reference the wallet.
+	private func retirePeerManagerAndWallet() {
+		let retiredPeerManager = lazyPeerManager
+		let retiredWallet = lazyWallet
+		lazyPeerManager = nil
+		lazyWallet = nil
+		DispatchQueue.global(qos: .utility).asyncAfter(deadline: .now() + 5.0) {
+			withExtendedLifetime((retiredPeerManager, retiredWallet)) {}
+		}
+	}
+
 	// wipe the existing wallet from the keychain
 	func wipeWallet(pin: String = "forceWipe") -> Bool {
 		guard pin == "forceWipe" || authenticate(pin: pin) else { return false }
  
         // Disconnect PeerManager to keep from thread
         peerManager?.disconnect()
-        lazyPeerManager = nil
-        lazyWallet = nil
+        retirePeerManagerAndWallet()
         
         // Clear the DB
         if db != nil { sqlite3_close(db) }
@@ -491,7 +504,14 @@ extension WalletManager: WalletAuthenticator {
         // File manager clear
         try? FileManager.default.removeItem(atPath: dbPath)
         try? FileManager.default.removeItem(at: BRReplicatedKVStore.dbPath)
-        
+
+        // Game scores — a failure here shouldn't block the wallet wipe
+        do {
+            try UserDefaults.wipeGameScoresKeychain()
+        } catch {
+            debugPrint(":::Wipe game scores error: \(error)")
+        }
+
         do {
             try setKeychainItem(key: KeychainKey.apiAuthKey, item: nil as Data?)
             try setKeychainItem(key: KeychainKey.spendLimit, item: nil as Int64?)
@@ -513,8 +533,7 @@ extension WalletManager: WalletAuthenticator {
 		guard pin == "forceWipe" || authenticate(pin: pin) else { return false }
 
 		do {
-			lazyWallet = nil
-			lazyPeerManager = nil
+			retirePeerManagerAndWallet()
 			if db != nil { sqlite3_close(db) }
 			db = nil
 			didInitWallet = false

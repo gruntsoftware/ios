@@ -16,6 +16,8 @@ class UIEmojiTextField: UITextField {
 
     var isEmoji = false {
         didSet {
+            // Reloading input views while the keyboard animates in tears it down and leaves a blank keyboard
+            guard isEmoji != oldValue else { return }
             setEmoji()
         }
     }
@@ -41,6 +43,35 @@ class UIEmojiTextField: UITextField {
         return nil
     }
 
+    /// Set by SwiftUI; honoured as soon as the field is in a window,
+    /// because becomeFirstResponder() silently fails before that.
+    var wantsFocus = false
+
+    private var focusWorkItem: DispatchWorkItem?
+
+    /// Shows the keyboard after a delay; the box border is not affected.
+    func requestFocus(after delay: TimeInterval = 1.0) {
+        focusWorkItem?.cancel()
+        let item = DispatchWorkItem { [weak self] in
+            guard let self, self.wantsFocus, self.window != nil, !self.isFirstResponder else { return }
+            self.becomeFirstResponder()
+        }
+        focusWorkItem = item
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: item)
+    }
+
+    func dropFocus() {
+        focusWorkItem?.cancel()
+        if isFirstResponder { resignFirstResponder() }
+    }
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window != nil && wantsFocus && !isFirstResponder {
+            requestFocus()
+        }
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         // Update frame when layout changes
@@ -55,6 +86,9 @@ struct EmojiTextField: UIViewRepresentable {
     @Binding var text: String
     @Binding var userPrefersDarkTheme: Bool
     var placeholder: String = ""
+    /// nil = unmanaged (user taps decide). true/false = drive the keyboard.
+    var isFirstResponder: Bool?
+    var onBeginEditing: (() -> Void)?
 
     func makeUIView(context: Context) -> UIEmojiTextField {
 
@@ -66,12 +100,25 @@ struct EmojiTextField: UIViewRepresentable {
         textField.backgroundColor = .clear
         textField.tintColor = UIColor(.white)
         textField.delegate = context.coordinator
+        textField.wantsFocus = isFirstResponder ?? false
         return textField
     }
 
     func updateUIView(_ uiView: UIEmojiTextField, context: Context) {
-        uiView.text = text
+        if uiView.text != text {
+            uiView.text = text
+        }
         uiView.isEmoji = true
+        context.coordinator.parent = self
+
+        guard let wantsFocus = isFirstResponder else { return }
+        let changed = uiView.wantsFocus != wantsFocus
+        uiView.wantsFocus = wantsFocus
+        if wantsFocus && changed && uiView.window != nil {
+            uiView.requestFocus()
+        } else if !wantsFocus {
+            uiView.dropFocus()
+        }
     }
 
     func makeCoordinator() -> Coordinator {
@@ -83,6 +130,10 @@ struct EmojiTextField: UIViewRepresentable {
 
         init(parent: EmojiTextField) {
             self.parent = parent
+        }
+
+        func textFieldDidBeginEditing(_ textField: UITextField) {
+            parent.onBeginEditing?()
         }
 
         func textFieldDidChangeSelection(_ textField: UITextField) {

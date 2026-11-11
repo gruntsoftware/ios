@@ -84,6 +84,9 @@ struct BuyReceiveView: View {
     @State
     private var isModalMode: Bool = false
 
+    @Environment(\.dismiss)
+    private var dismiss
+
     @FocusState
     var keyboardFocused: Bool
 
@@ -204,7 +207,9 @@ struct BuyReceiveView: View {
                     if userIsBuying {
                         VStack {
                             ZStack {
-                                WebBuyView(signingData: viewModel.buildUnsignedMoonPayUrl(), viewModel: viewModel)
+                                WebBuyView(signingData: viewModel.buildUnsignedMoonPayUrl(),
+                                           viewModel: viewModel,
+                                           onBack: { dismiss() })
 
                                 Image("moonpay-symbol-prp")
                                     .resizable()

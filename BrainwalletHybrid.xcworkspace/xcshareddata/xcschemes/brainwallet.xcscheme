@@ -104,9 +104,6 @@
          identifier = "San Francisco, CA, USA"
          referenceType = "1">
       </LocationScenarioReference>
-      <StoreKitConfigurationFileReference
-         identifier = "../Private/general-purpose/BrainwalletiOSPrivateGeneralPurpose/brainwallet-private-general-purpose.storekit">
-      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

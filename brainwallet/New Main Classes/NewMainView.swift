@@ -65,6 +65,9 @@ struct NewMainView: View {
 
     @State
     private var shouldRing: Bool = false
+    
+    @State
+    private var shouldAnimateLock: Bool = false
 
     @State
     private var bellAngle: Double = 0.0
@@ -219,36 +222,45 @@ struct NewMainView: View {
                 .toolbar {
 
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action: {
-                            userPrefersDarkTheme.toggle()
-                            newMainViewModel.updateTheme(shouldBeDark: userPrefersDarkTheme)
-                        }) {
-
-                            ZStack {
-                                Ellipse()
-                                    .frame(width: iconSize * 2.0,
-                                           height: iconSize * 2.0,
-                                           alignment: .center)
-                                    .modifier(BentoSurface(userPrefersDarkTheme: $userPrefersDarkTheme))
-                                    .overlay(
-                                        Ellipse()
-                                            .stroke(content.opacity(0.3), lineWidth: 0.5)
-                                            .frame(width: iconSize * 2.0,
-                                                   height: iconSize * 2.0,
-                                                   alignment: .center)
-                                    )
-
-                                Image(systemName: userPrefersDarkTheme ?
-                                      "sun.max" : "moon.stars")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: iconSize,
-                                       height: iconSize)
-                                .foregroundColor(content)
+                        HStack {
+                            Button(action: {
+                                userPrefersDarkTheme.toggle()
+                                newMainViewModel.updateTheme(shouldBeDark: userPrefersDarkTheme)
+                            }) {
+                                
+                               
+                                    Image(systemName: userPrefersDarkTheme ?
+                                          "sun.max" : "moon.stars")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: mainTabIconSize,
+                                           height: mainTabIconSize)
+                                    .foregroundColor(content)
+                                
                             }
+                            .sensoryFeedback(.success, trigger: userPrefersDarkTheme)
+                            .accessibilityIdentifier("themePreferenceButton")
+                            .padding(.horizontal, 6)
+                            
+                            Button(action: {
+                                
+                                    shouldAnimateLock = true
+                                delay(0.6) {
+                                        newMainViewModel.lockBrainwallet()
+                                    }
+                            }) {
+                                Image(systemName: shouldAnimateLock ? "lock" : "lock.open")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: mainTabIconSize,
+                                               height: mainTabIconSize)
+                                        .foregroundColor(content)
+                                
+                            }
+                            .sensoryFeedback(.success, trigger: userPrefersDarkTheme)
+                            .accessibilityIdentifier("themePreferenceButton")
+                            .padding(.horizontal, 6)
                         }
-                        .sensoryFeedback(.success, trigger: userPrefersDarkTheme)  // ← test here
-                        .accessibilityIdentifier("themePreferenceButton")
 
                     }
 
@@ -258,19 +270,6 @@ struct NewMainView: View {
                             shouldShowSettings = newMainViewModel.shouldShowSettings
                             newMainViewModel.userDidTapTheSettingsButton()
                         }) {
-                            ZStack {
-                                Ellipse()
-                                    .frame(width: iconSize * 2.0,
-                                           height: iconSize * 2.0,
-                                           alignment: .center)
-                                    .modifier(BentoSurface(userPrefersDarkTheme: $userPrefersDarkTheme))
-                                    .overlay(
-                                        Ellipse()
-                                            .stroke(content.opacity(0.3), lineWidth: 0.5)
-                                            .frame(width: iconSize * 2.0,
-                                                   height: iconSize * 2.0,
-                                                   alignment: .center)
-                                    )
 
                                 Image(systemName: "line.3.horizontal")
                                     .resizable()
@@ -278,115 +277,117 @@ struct NewMainView: View {
                                     .frame(width: iconSize, height: iconSize,
                                            alignment: .center)
                                     .foregroundColor(content)
-                            }
-
                         }
                         .accessibilityIdentifier("settingsButton")
                     }
 
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        Spacer()
-                        Button(action: {
-                            userDidTapSend.toggle()
-                        }, label: {
-                            VStack(spacing: 4) {
-                                Image(systemName: "paperplane")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: mainTabIconSize,
-                                           height: mainTabIconSize)
-                                    .foregroundColor( walletIsSyncing ? content.opacity(0.3) : content)
-                                    .padding(6)
+                    ToolbarItem(placement: .bottomBar) {
+                        HStack(spacing: 0) {
+                            Spacer()
+                            Button(action: {
+                                userDidTapSend.toggle()
+                            }, label: {
+                                VStack(spacing: 0) {
+                                    Image(systemName: "paperplane")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: mainTabIconSize,
+                                               height: mainTabIconSize)
+                                        .foregroundColor( walletIsSyncing ? content.opacity(0.3) : content)
+                                        .padding(2)
 
-                                Text("Send")
-                                    .modifier(BWIPSSemiBold(size: 19.0))
-                                    .foregroundStyle(walletIsSyncing ? content.opacity(0.3) : content)
-                            }
-                        })
-                        .disabled(walletIsSyncing)
-                        .accessibilityIdentifier("sendTabBarItem")
-
-                        Spacer()
-
-                        Button(action: {
-                            userDidTapBuyReceive.toggle()
-                        }, label: {
-                            VStack(spacing: 4) {
-                                Image(systemName: "arrow.left.arrow.right")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: mainTabIconSize,
-                                           height: mainTabIconSize)
-                                    .foregroundColor(content)
-                                    .padding(6)
-
-                                Text("Get/Receive")
-                                    .modifier(BWIPSSemiBold(size: 19.0))
-                                    .foregroundStyle(content)
-                            }
-                        })
-                        .accessibilityIdentifier("buyReceiveTabBarItem")
-
-                        Spacer()
-
-                        Button(action: {
-                            
-                            if (gameHubViewModel.userEmojisAreSet) {
-                                let address = newReceiveViewModel.newReceiveAddress
-                                DispatchQueue.userInitQueue.async {
-                                    appDelegate.applicationController.shouldShowGameSDK(address: address)
+                                    Text("Send")
+                                        .modifier(BWIPSSemiBold(size: 19.0))
+                                        .foregroundStyle(walletIsSyncing ? content.opacity(0.3) : content)
                                 }
-                            } else {
-                                newMainViewModel.shouldShowGameSDK.toggle()
-                            }
-                        }, label: {
-                            VStack(spacing: 4) {
-                                Image(systemName: "gamecontroller")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: mainTabIconSize,
-                                           height: mainTabIconSize)
-                                    .foregroundColor(content)
-                                    .padding(6)
+                            })
+                            .disabled(walletIsSyncing)
+                            .accessibilityIdentifier("sendTabBarItem")
 
-                                Text("Game Hub")
-                                    .modifier(BWIPSSemiBold(size: 19.0))
-                                    .foregroundStyle(content)
-                            }
-                        })
-                        .accessibilityIdentifier("gameHubTabBarItem")
+                            Spacer()
 
-                        Spacer()
+                            Button(action: {
+                                userDidTapBuyReceive.toggle()
+                            }, label: {
+                                VStack(spacing: 0) {
+                                    Image(systemName: "arrow.left.arrow.right")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: mainTabIconSize,
+                                               height: mainTabIconSize)
+                                        .foregroundColor(content)
+                                        .padding(2)
 
-                        Button(action: {
-                            withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
-                                shouldShowTransactionDetail.toggle()
-                            }
-                        }, label: {
-                            VStack(spacing: 4) {
-                                Image(systemName: shouldShowTransactionDetail ? "house" : "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: mainTabIconSize,
-                                           height: mainTabIconSize)
-                                    .foregroundColor(content)
-                                    .padding(6)
-                                    .animation(.easeInOut, value: shouldShowTransactionDetail)
+                                    Text("Buy/Receive")
+                                        .modifier(BWIPSSemiBold(size: 19.0))
+                                        .foregroundStyle(content)
+                                }
+                            })
+                            .accessibilityIdentifier("buyReceiveTabBarItem")
 
-                                Text(shouldShowTransactionDetail ? " Home " :"History")
-                                    .modifier(BWIPSSemiBold(size: 19.0))
-                                    .foregroundStyle(content)
-                                    .contentTransition(.opacity)
-                                    .animation(.easeInOut, value: shouldShowTransactionDetail)
-                            }
-                        })
-                        .disabled(disableTransactionDetail)
-                        .accessibilityIdentifier("historyHubTabBarItem")
+                            Spacer()
 
-                        Spacer()
+                            Button(action: {
+                                
+                                if (gameHubViewModel.userEmojisAreSet) {
+                                    let address = newReceiveViewModel.newReceiveAddress
+                                    DispatchQueue.userInitQueue.async {
+                                        appDelegate.applicationController.shouldShowGameSDK(address: address)
+                                    }
+                                } else {
+                                    newMainViewModel.shouldShowGameSDK.toggle()
+                                }
+                            }, label: {
+                                VStack(spacing: 0) {
+                                    Image(systemName: "gamecontroller")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: mainTabIconSize,
+                                               height: mainTabIconSize)
+                                        .foregroundColor(content)
+                                        .padding(2)
+
+                                    Text("Game Hub")
+                                        .modifier(BWIPSSemiBold(size: 19.0))
+                                        .foregroundStyle(content)
+                                }
+                            })
+                            .accessibilityIdentifier("gameHubTabBarItem")
+
+                            Spacer()
+
+                            Button(action: {
+                                withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                                    shouldShowTransactionDetail.toggle()
+                                }
+                            }, label: {
+                                VStack(alignment: .center, spacing: 0) {
+                                    Image(systemName: shouldShowTransactionDetail ? "house" : "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: mainTabIconSize,
+                                               height: mainTabIconSize)
+                                        .foregroundColor(content)
+                                        .padding(2)
+                                        .animation(.easeInOut, value: shouldShowTransactionDetail)
+
+                                    Text(shouldShowTransactionDetail ? " Home " :"History")
+                                        .modifier(BWIPSSemiBold(size: 19.0))
+                                        .foregroundStyle(content)
+                                        .contentTransition(.opacity)
+                                        .animation(.easeInOut, value: shouldShowTransactionDetail)
+                                }
+                            })
+                            .disabled(disableTransactionDetail)
+                            .accessibilityIdentifier("historyHubTabBarItem")
+
+                            Spacer()
+                        }
+                        .padding(.vertical, 8) // +4pt capsule height so the labels aren't cropped
+                        .frame(width: geometry.size.width - 2 * (bentoPadding + 20))
                     }
                 }
-                .toolbarBackground(.hidden, for: .bottomBar)
+                .modifier(BottomBarBackgroundModifier())
                 .onAppear {
                     userPrefersDarkTheme = newMainViewModel.userPrefersDarkMode
                     mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
@@ -524,6 +525,17 @@ struct NewMainView: View {
                     AlertToast(type: .regular, title: pasteXMessage)
                 }
             }
+        }
+    }
+}
+
+/// iOS 26+ uses the system Liquid Glass bottom bar; earlier versions keep the transparent bar.
+private struct BottomBarBackgroundModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 26, *) {
+            content
+        } else {
+            content.toolbarBackground(.hidden, for: .bottomBar)
         }
     }
 }

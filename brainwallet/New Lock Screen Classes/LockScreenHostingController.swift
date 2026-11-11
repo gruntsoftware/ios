@@ -63,32 +63,35 @@ class LockScreenHostingController: UIHostingController<LockScreenView>, Subscrib
 
     private func wipeWallet() {
         guard let walletManager = walletManager else {
+            viewModel.wipeWalletDidFail = true
             return
         }
 
-        let group = DispatchGroup()
-
-        group.enter()
         DispatchQueue.walletQueue.async {
-            _ = walletManager.peerManager?.disconnect()
-            group.leave()
-        }
+            walletManager.peerManager?.disconnect()
+            let didWipeWallet = walletManager.wipeWallet(pin: "forceWipe")
+            let didDeleteDatabase = walletManager.deleteWalletDatabase(pin: "forceWipe")
 
-        group.enter()
-        DispatchQueue.walletQueue.async {
-            _ = walletManager.wipeWallet(pin: "forceWipe")
-            group.leave()
-        }
+            var didWipeKeychainAccess = true
+            do {
+                try UserDefaults.wipeTrustedNodeKeychain()
+                try RemoteConfigHelper.sharedInstance.wipeEnvironmentKeychain()
+            } catch let error as NSError {
+                debugPrint("Error | wipeWallet: Failed to wipe keychain: \(error.localizedDescription)")
+                didWipeKeychainAccess = false
+            }
 
-        group.enter()
-        DispatchQueue.walletQueue.asyncAfter(deadline: .now() + 1.0) {
-            _ = walletManager.deleteWalletDatabase(pin: "forceWipe")
-            group.leave()
-        }
+            DispatchQueue.main.async {
+                guard didWipeWallet, didDeleteDatabase, didWipeKeychainAccess else {
+                    self.viewModel.wipeWalletDidFail = true
+                    return
+                }
 
-        group.notify(queue: .main) {
-            self.walletWiped()
-            NotificationCenter.default.post(name: .walletDidWipeNotification, object: nil)
+                self.walletWiped()
+                self.store.trigger(name: .reinitWalletManager {
+                    NotificationCenter.default.post(name: .walletDidWipeNotification, object: nil)
+                })
+            }
         }
     }
 
