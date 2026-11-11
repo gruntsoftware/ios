@@ -4,9 +4,6 @@ import SpriteKit
 
 struct WelcomeMojiDemoView: View {
 
-    @Environment(\.requestReview)
-    private var requestReview
-
     @Binding
     var shouldPlay: Bool
 
@@ -189,13 +186,20 @@ struct WelcomeMojiDemoView: View {
             }
             .frame(width: width, height: height)
         }
-        .onAppear {
-            requestReview()
-            debugPrint("did_request_rating")
-        }
         .onDisappear {
             welcomeScene = nil
             didStartGame = false
         }
     }
+}
+
+#Preview {
+    // Same square sizing StartView uses (90% of a ~390pt wide screen)
+    let size: CGFloat = 350
+    WelcomeMojiDemoView(width: size,
+                        height: size,
+                        shouldPlay: .constant(true),
+                        userWantsToExit: .constant(false),
+                        gameIsInWelcomeMode: true)
+        .frame(width: size, height: size)
 }

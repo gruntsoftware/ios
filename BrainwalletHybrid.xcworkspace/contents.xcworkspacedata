@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:brainwallet/PreLaunchResources/bw-iap-config-v2.storekit">
-   </FileRef>
-   <FileRef
-      location = "group:brainwallet/PreLaunchResources/Configuration.storekit">
-   </FileRef>
-   <FileRef
       location = "container:brainwallet.xcodeproj">
    </FileRef>
 </Workspace>

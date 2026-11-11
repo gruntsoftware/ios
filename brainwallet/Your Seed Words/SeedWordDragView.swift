@@ -26,53 +26,34 @@ struct SeedWordDragView: View {
 	let cellHeight = 40.0
     let buttonSize = 17.0
 
-    @State
-    private var isDragging: Bool = false
-
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
 
 	var body: some View {
-		GeometryReader { geometry in
+		ZStack {
+			RoundedRectangle(cornerRadius: cellHeight / 2)
+				.foregroundColor(BrainwalletColor.background.opacity(0.9))
+			HStack {
+				Spacer()
+				Text(seedWord.first?.word ?? "")
+					.modifier(BWIPSLight(size: 16.0))
+					.foregroundColor(userPrefersDarkTheme ? .white :
+																BrainwalletColor.content)
+					.padding([.leading, .trailing], wordPad)
 
-			let width = geometry.size.width
-			let height = geometry.size.height
-			ZStack {
-				VStack {
-					ZStack {
-						RoundedRectangle(cornerRadius: cellHeight / 2)
-							.frame(height: cellHeight, alignment: .center)
-                            .foregroundColor(BrainwalletColor.background.opacity(0.9))
-						VStack {
-							HStack {
-                                Spacer()
-                                Text(seedWord.first?.word ?? "")
-                                    .modifier(BWIPSLight(size: 16.0))
-                                    .foregroundColor(userPrefersDarkTheme ? .white :
-                                                                    BrainwalletColor.content)
-                                    .frame(height: cellHeight,
-									       alignment: .leading)
-                                    .padding([.leading, .trailing], wordPad)
-
-                                Image(systemName: "square.grid.4x3.fill")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .rotationEffect(Angle(degrees: 90))
-                                    .modifier(BWIPSThin(size: 11.0))
-                                    .frame(width: buttonSize,
-                                           height: buttonSize,
-                                        alignment: .center)
-                                    .foregroundColor(BrainwalletColor.content.opacity(0.5))
-                                    .padding(.trailing, genericPad)
-							}
-						}
-					}
-				}
-                .onTapGesture {
-                    isDragging.toggle()
-                }
-				.frame(width: width, height: height)
+				Image(systemName: "square.grid.4x3.fill")
+					.resizable()
+					.aspectRatio(contentMode: .fit)
+					.rotationEffect(Angle(degrees: 90))
+					.modifier(BWIPSThin(size: 11.0))
+					.frame(width: buttonSize,
+						   height: buttonSize,
+						   alignment: .center)
+					.foregroundColor(BrainwalletColor.content.opacity(0.5))
+					.padding(.trailing, genericPad)
 			}
-			.frame(width: width, height: height)
 		}
+		// Definite height so the view's bounds (and drag lift preview) equal the capsule
+		.frame(maxWidth: .infinity)
+		.frame(height: cellHeight)
 	}
 }

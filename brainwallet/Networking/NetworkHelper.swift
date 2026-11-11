@@ -229,6 +229,8 @@ class NetworkHelper: ObservableObject, PublicIPAddressFetching {
                         completion(fallbackURLString)
                     }
                 }
+            } else {
+                completion("https://brainwallet.co/mobile-top-up.html")
             }
         }
         task.resume()

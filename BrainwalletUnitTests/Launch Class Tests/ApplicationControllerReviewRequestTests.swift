@@ -31,12 +31,20 @@ final class ApplicationControllerReviewRequestTests: XCTestCase {
         controller.reviewRequester = ReviewRequestingSpy.self
         ReviewRequestingSpy.reset()
         UserDefaults.standard.removeObject(forKey: numberOfBrainwalletLaunches)
+        try? UserDefaults.wipeGameScoresKeychain()
     }
 
     override func tearDown() {
         controller = nil
         UserDefaults.standard.removeObject(forKey: numberOfBrainwalletLaunches)
+        try? UserDefaults.wipeGameScoresKeychain()
         super.tearDown()
+    }
+
+    private func appendGameScores(_ count: Int) {
+        for index in 0..<count {
+            UserDefaults.appendGameScore(GameScoreRecord(totalScore: index * 10, timestamp: index))
+        }
     }
 
     // MARK: - countLaunches()
@@ -79,5 +87,76 @@ final class ApplicationControllerReviewRequestTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 4.0)
+    }
+
+    // MARK: - requestReviewIfEnoughGamesPlayed()
+
+    func testDoesNotRequestReviewWithNoGameScores() {
+        XCTAssertFalse(controller.requestReviewIfEnoughGamesPlayed())
+    }
+
+    func testDoesNotRequestReviewAfterOneGame() {
+        appendGameScores(1)
+
+        XCTAssertFalse(controller.requestReviewIfEnoughGamesPlayed())
+    }
+
+    func testRequestsReviewAfterTwoGames() {
+        appendGameScores(2)
+
+        XCTAssertTrue(controller.requestReviewIfEnoughGamesPlayed())
+    }
+
+    func testRequestsReviewAfterMoreThanTwoGames() {
+        appendGameScores(5)
+
+        XCTAssertTrue(controller.requestReviewIfEnoughGamesPlayed())
+    }
+
+    func testRequestReviewAfterTwoGamesInvokesReviewRequesterAfterDelay() {
+        let expectation = expectation(description: "review requested after second game")
+        appendGameScores(2)
+
+        controller.requestReviewIfEnoughGamesPlayed()
+
+        XCTAssertEqual(ReviewRequestingSpy.requestReviewCallCount, 0, "should not fire immediately")
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.2) {
+            XCTAssertEqual(ReviewRequestingSpy.requestReviewCallCount, 1)
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 4.0)
+    }
+
+    // MARK: - UserDefaults.gameScores
+
+    func testGameScoresIsEmptyByDefault() {
+        XCTAssertEqual(UserDefaults.gameScores, [])
+    }
+
+    func testAppendGameScoreStoresRecordsInOrder() {
+        let first = GameScoreRecord(totalScore: 120, timestamp: 1_792_780_800_000)
+        let second = GameScoreRecord(totalScore: 340, timestamp: 1_792_780_900_000)
+
+        UserDefaults.appendGameScore(first)
+        UserDefaults.appendGameScore(second)
+
+        XCTAssertEqual(UserDefaults.gameScores, [first, second])
+    }
+
+    func testGameScoreRecordEncodesSnakeCaseKeys() throws {
+        let data = try JSONEncoder().encode([GameScoreRecord(totalScore: 42, timestamp: 7)])
+        let json = try XCTUnwrap(JSONSerialization.jsonObject(with: data) as? [[String: Int]])
+
+        XCTAssertEqual(json, [["total_score": 42, "timestamp": 7]])
+    }
+
+    func testWipeGameScoresKeychainClearsScores() throws {
+        appendGameScores(3)
+
+        try UserDefaults.wipeGameScoresKeychain()
+
+        XCTAssertEqual(UserDefaults.gameScores, [])
     }
 }
