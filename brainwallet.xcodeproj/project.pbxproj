@@ -375,7 +375,6 @@
 		C35C122A293D48340009022D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C35C1229293D48340009022D /* KeychainAccess */; };
 		C38F57252FD490430005538A /* boingspringmouthharp042013.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C38F57242FD490430005538A /* boingspringmouthharp042013.mp3 */; };
 		C395E2B83013770A00CF5F5B /* EnterPinForSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */; };
-		C39859383069234400E99439 /* bw-iap-config-v2.storekit in Resources */ = {isa = PBXBuildFile; fileRef = C39859373069234400E99439 /* bw-iap-config-v2.storekit */; };
 		C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0BBC22FF6DB11000D5DB8 /* AlertToast */; };
 		C3BC6CBD303331FB00A04919 /* UIApplication+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC6CBC303331D800A04919 /* UIApplication+Additions.swift */; };
 		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
@@ -2421,7 +2420,6 @@
 				24AFEEF22F3152CE00427D02 /* IBMPlexSans-Regular.ttf in Resources */,
 				24D7EA082E336D0800A9AB68 /* moon_pay_buy_status.txt in Resources */,
 				24D7EA092E336D0800A9AB68 /* RELEASE_NOTES.md in Resources */,
-				C39859383069234400E99439 /* bw-iap-config-v2.storekit in Resources */,
 				24D7EA0A2E336D0800A9AB68 /* general.css in Resources */,
 				24D7EA0B2E336D0800A9AB68 /* CHANGELOG.md in Resources */,
 				24D7EA0E2E336F9100A9AB68 /* service-data.plist in Resources */,
