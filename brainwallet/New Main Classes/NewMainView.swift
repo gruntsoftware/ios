@@ -146,7 +146,8 @@ struct NewMainView: View {
             let height = geometry.size.height
             let midBentoHeight = geometry.size.height
             let sheetContentHeight = height * 0.7
-            let mainTabIconSize: CGFloat = 26.0
+            let mainTabIconSize: CGFloat = 18.0
+            let mainTabIconWeight: Font.Weight = .regular
 
             let content = BrainwalletColor.content
             NavigationStack {
@@ -249,10 +250,8 @@ struct NewMainView: View {
                                
                                     Image(systemName: userPrefersDarkTheme ?
                                           "sun.max" : "moon.stars")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: mainTabIconSize,
-                                           height: mainTabIconSize)
+                                    .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                    .frame(width: mainTabIconSize, height: mainTabIconSize)
                                     .foregroundColor(content)
                                 
                             }
@@ -268,10 +267,8 @@ struct NewMainView: View {
                                     }
                             }) {
                                 Image(systemName: shouldAnimateLock ? "lock" : "lock.open")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: mainTabIconSize,
-                                               height: mainTabIconSize)
+                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor(content)
                                 
                             }
@@ -290,10 +287,8 @@ struct NewMainView: View {
                         }) {
 
                                 Image(systemName: "line.3.horizontal")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize, height: iconSize,
-                                           alignment: .center)
+                                    .font(.system(size: iconSize, weight: mainTabIconWeight))
+                                    .frame(width: iconSize, height: iconSize)
                                     .foregroundColor(content)
                         }
                         .accessibilityIdentifier("settingsButton")
@@ -307,12 +302,10 @@ struct NewMainView: View {
                             }, label: {
                                 VStack(spacing: 0) {
                                     Image(systemName: "paperplane")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: mainTabIconSize,
-                                               height: mainTabIconSize)
+                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor( walletIsSyncing ? content.opacity(0.3) : content)
-                                        .padding(2)
+                                        .padding(3)
 
                                     Text("Send")
                                         .modifier(BWIPSSemiBold(size: 19.0))
@@ -329,12 +322,10 @@ struct NewMainView: View {
                             }, label: {
                                 VStack(spacing: 0) {
                                     Image(systemName: "arrow.left.arrow.right")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: mainTabIconSize,
-                                               height: mainTabIconSize)
+                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor(content)
-                                        .padding(2)
+                                        .padding(3)
 
                                     Text("Buy/Receive")
                                         .modifier(BWIPSSemiBold(size: 19.0))
@@ -348,12 +339,10 @@ struct NewMainView: View {
                             Button(action: saveEmojisOrLaunchGame, label: {
                                 VStack(spacing: 0) {
                                     Image(systemName: "gamecontroller")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: mainTabIconSize,
-                                               height: mainTabIconSize)
+                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor(content)
-                                        .padding(2)
+                                        .padding(3)
 
                                     Text("Game Hub")
                                         .modifier(BWIPSSemiBold(size: 19.0))
@@ -371,12 +360,10 @@ struct NewMainView: View {
                             }, label: {
                                 VStack(alignment: .center, spacing: 0) {
                                     Image(systemName: shouldShowTransactionDetail ? "house" : "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: mainTabIconSize,
-                                               height: mainTabIconSize)
+                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor(content)
-                                        .padding(2)
+                                        .padding(3)
                                         .animation(.easeInOut, value: shouldShowTransactionDetail)
 
                                     Text(shouldShowTransactionDetail ? " Home " :"History")
