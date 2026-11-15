@@ -2,6 +2,8 @@ import FirebaseAnalytics
 import StoreKit
 import SwiftUI
 import UIKit
+import BrainwalletiOSPrivateGeneralPurpose
+
 #if !targetEnvironment(simulator)
 import BWIOSGdx
 #endif
@@ -41,6 +43,11 @@ class ApplicationController: Subscriber {
         #else
             debugPrint(":::: game disabled on simulator (device-only natives)")
         #endif
+
+        // AF: configure() is @MainActor; ApplicationController is created on the main thread by AppDelegate.
+        MainActor.assumeIsolated {
+            AFLauncher.shared.configure()
+        }
 
         transitionDelegate = ModalTransitionDelegate(type: .transactionDetail,
                                                      store: store)
@@ -435,6 +442,7 @@ class ApplicationController: Subscriber {
 			self?.modalPresenter?.walletManager = self?.walletManager
 			self?.startDataFetchers()
 			self?.mainViewController?.didUnlock()
+            AFLauncher.shared.logEvent(id: "E20261115A")
 		})
 	}
 

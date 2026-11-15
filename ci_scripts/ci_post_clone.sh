@@ -41,6 +41,20 @@ if [ ! -s "$RESOURCES_DIR/Brainwallet-StoreKit-v1.storekit" ] || ! python3 -m js
   exit 1
 fi
 
+# AppsFlyer dev key lives in the private framework's gitignored AFConfig.plist.
+# The submodule's script writes it from AF_DEV_KEY (a secret in Xcode Cloud's
+# environment variable settings); without the key it writes a placeholder and
+# AppsFlyer stays off.
+AF_CONFIG_SCRIPT="$CI_PRIMARY_REPOSITORY_PATH/Private/general-purpose/scripts/write-af-config.sh"
+if [ ! -x "$AF_CONFIG_SCRIPT" ]; then
+  echo "❌ ERROR: $AF_CONFIG_SCRIPT not found -- is the Private/general-purpose submodule checked out at v1.4.0 or later?"
+  exit 1
+fi
+if [ -z "$AF_DEV_KEY" ]; then
+  echo "⚠️ WARNING: AF_DEV_KEY is not set -- AppsFlyer will be disabled in this build"
+fi
+AF_DEV_KEY="$AF_DEV_KEY" "$AF_CONFIG_SCRIPT"
+
 echo "✅ GoogleService-Info.plist written"
 echo "🕹️ Remote Config written"
 echo "💽 Service Data written"

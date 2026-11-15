@@ -6,7 +6,6 @@ enum ServiceType {
     case walletStart
     case postMetaID
     case agentPubKey
-    case prodAF
 
     var name: String {
         switch self {
@@ -18,8 +17,6 @@ enum ServiceType {
             return "post-meta-id"
         case .agentPubKey:
             return "agent_pub_key"
-        case .prodAF:
-            return "prod_af"
         }
     }
 }
@@ -92,14 +89,6 @@ struct Partner {
                 let errorDescription = "error_post-meta-id"
                 return errorDescription
             }
-		case .prodAF:
-			if let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject],
-			   let keyString = dictionary["af-prod-id"] as? String {
-				return keyString
-			} else {
-				let errorDescription = "error_afprod_id_key"
-				return errorDescription
-			}
 		}
 	}
 

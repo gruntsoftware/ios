@@ -143,7 +143,6 @@
 		2480B5832DF2016300653403 /* PromptHostingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2480B5822DF2015B00653403 /* PromptHostingCell.swift */; };
 		248E5C422DE78653003F232F /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E5C412DE7863C003F232F /* NetworkHelper.swift */; };
 		2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2492829B2DAC22B00088528E /* BIP39Words.plist */; };
-		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
 		249DDE422DCD573700B2B275 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249DDE412DCD572F00B2B275 /* SettingsView.swift */; };
 		24A0ACAB2E0C812C0077E695 /* SettingsLitecoinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */; };
 		24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A404222DC92F35006CD076 /* WebBuyView.swift */; };
@@ -1019,7 +1018,6 @@
 				C35C122A293D48340009022D /* KeychainAccess in Frameworks */,
 				246028572E5F178400CDEB7A /* FirebasePerformance in Frameworks */,
 				C32553CD2FE090E4008B1861 /* CoreGraphics.framework in Frameworks */,
-				249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */,
 				C32553C72FE090AD008B1861 /* AudioToolbox.framework in Frameworks */,
 				22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */,
 				22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */,
@@ -2244,7 +2242,6 @@
 			name = brainwallet;
 			packageProductDependencies = (
 				C35C1229293D48340009022D /* KeychainAccess */,
-				249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */,
 				2460284E2E5F178400CDEB7A /* FirebaseAnalytics */,
 				246028502E5F178400CDEB7A /* FirebaseCrashlytics */,
 				246028522E5F178400CDEB7A /* FirebaseInAppMessaging-Beta */,
@@ -2336,7 +2333,6 @@
 			mainGroup = 75A2A7871DA5934300A983D8;
 			packageReferences = (
 				C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
 				2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C3B0BBC12FF6DB11000D5DB8 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
@@ -3171,7 +3167,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602326;
+				CURRENT_PROJECT_VERSION = 2602327;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3373,7 +3369,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602326;
+				CURRENT_PROJECT_VERSION = 2602327;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3484,14 +3480,6 @@
 				version = 13.1.1;
 			};
 		};
-		249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.16.1;
-			};
-		};
 		C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
@@ -3540,11 +3528,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfig;
-		};
-		249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
-			productName = AppsFlyerLib;
 		};
 		C35C1229293D48340009022D /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;

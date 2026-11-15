@@ -50,11 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
         // Ops
         _ = Partner.partnerKeyPath(name: .walletStart)
-        
-        // AF
-        /// Activating for  future use
-        /// AppsFlyerLib.shared().appsFlyerDevKey = Partner.partnerKeyPath(name: .prodAF)
-        /// AppsFlyerLib.shared().appleAppID = BrainwalletAppStore.adamIDString
 
         // Firebase
         if FirebaseApp.app() == nil {
@@ -115,8 +110,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                 debugPrint("Failed to set badge count: \(error.localizedDescription)")
             }
         }
-		/// Activating for  future use
-        /// AppsFlyerLib.shared().start()
 	}
 
 	func application(_: UIApplication,
