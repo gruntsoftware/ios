@@ -305,7 +305,7 @@ struct NewMainView: View {
                                         .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
                                         .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor( walletIsSyncing ? content.opacity(0.3) : content)
-                                        .padding(3)
+                                        .padding(5)
 
                                     Text("Send")
                                         .modifier(BWIPSSemiBold(size: 19.0))
@@ -325,7 +325,7 @@ struct NewMainView: View {
                                         .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
                                         .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor(content)
-                                        .padding(3)
+                                        .padding(5)
 
                                     Text("Buy/Receive")
                                         .modifier(BWIPSSemiBold(size: 19.0))
@@ -342,7 +342,7 @@ struct NewMainView: View {
                                         .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
                                         .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor(content)
-                                        .padding(3)
+                                        .padding(5)
 
                                     Text("Game Hub")
                                         .modifier(BWIPSSemiBold(size: 19.0))
@@ -363,7 +363,7 @@ struct NewMainView: View {
                                         .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
                                         .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor(content)
-                                        .padding(3)
+                                        .padding(5)
                                         .animation(.easeInOut, value: shouldShowTransactionDetail)
 
                                     Text(shouldShowTransactionDetail ? " Home " :"History")
