@@ -442,7 +442,7 @@ class ApplicationController: Subscriber {
 			self?.modalPresenter?.walletManager = self?.walletManager
 			self?.startDataFetchers()
 			self?.mainViewController?.didUnlock()
-            AFLauncher.shared.logEvent("E-20261115-A")
+            AFLauncher.shared.logEvent(id: "E20261115A")
 		})
 	}
 
