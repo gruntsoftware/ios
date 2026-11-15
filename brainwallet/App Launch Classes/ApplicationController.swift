@@ -9,7 +9,6 @@ import BWIOSGdx
 #endif
 
 /// Owns the wallet, store and root view controllers. The window is handed in by SceneDelegate.
-@MainActor
 class ApplicationController: Subscriber {
     var window: UIWindow?
     fileprivate let store = Store()
@@ -44,10 +43,11 @@ class ApplicationController: Subscriber {
         #else
             debugPrint(":::: game disabled on simulator (device-only natives)")
         #endif
-        
-        
-        // AF
-        AFLauncher.shared.configure()
+
+        // AF: configure() is @MainActor; ApplicationController is created on the main thread by AppDelegate.
+        MainActor.assumeIsolated {
+            AFLauncher.shared.configure()
+        }
 
         transitionDelegate = ModalTransitionDelegate(type: .transactionDetail,
                                                      store: store)
