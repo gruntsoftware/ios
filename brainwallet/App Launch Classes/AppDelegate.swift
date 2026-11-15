@@ -6,6 +6,7 @@ import FirebasePerformance
 import LocalAuthentication
 import SwiftUI
 import UIKit
+import BrainwalletiOSPrivateGeneralPurpose
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
@@ -51,10 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         // Ops
         _ = Partner.partnerKeyPath(name: .walletStart)
         
-        // AF
-        /// Activating for  future use
-        /// AppsFlyerLib.shared().appsFlyerDevKey = Partner.partnerKeyPath(name: .prodAF)
-        /// AppsFlyerLib.shared().appleAppID = BrainwalletAppStore.adamIDString
+        // AppsFlyer: SDK, dev key and start-on-active live in the private framework
+        AFLauncher.shared.configure()
 
         // Firebase
         if FirebaseApp.app() == nil {
@@ -115,8 +114,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                 debugPrint("Failed to set badge count: \(error.localizedDescription)")
             }
         }
-		/// Activating for  future use
-        /// AppsFlyerLib.shared().start()
 	}
 
 	func application(_: UIApplication,

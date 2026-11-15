@@ -29,15 +29,6 @@
       }
     },
     {
-      "identity" : "appsflyerframework",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework",
-      "state" : {
-        "revision" : "9af29d0e961580213771cd71e09ae81a472ed72e",
-        "version" : "6.17.2"
-      }
-    },
-    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
