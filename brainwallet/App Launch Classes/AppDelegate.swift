@@ -134,6 +134,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
            let options = FirebaseOptions(contentsOfFile: filePath) {
             // Production path — real plist present
             FirebaseApp.configure(options: options)
+
+            // Keep debug, simulator and TestFlight sessions out of Google Analytics.
+            // Set explicitly every launch: Firebase persists this flag across launches,
+            // so App Store builds must turn it back on.
+            let collectAnalytics = !E.isInternalTestBuild
+            Analytics.setAnalyticsCollectionEnabled(collectAnalytics)
+            debugPrint("::: Analytics collection enabled: \(collectAnalytics)")
         } else {
             let options = FirebaseOptions(
                 googleAppID: "1:000000000000:ios:0000000000000000000000",
