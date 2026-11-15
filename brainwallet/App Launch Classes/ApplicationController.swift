@@ -278,7 +278,7 @@ class ApplicationController: Subscriber {
     // Extracted so tests can check the games-played gate without driving the window transition above
     @discardableResult
     func requestReviewIfEnoughGamesPlayed() -> Bool {
-        guard UserDefaults.gameScores.count >= 2 else { return false }
+        guard UserDefaults.gameScores.count >= 3 else { return false }
         requestReviewAfterGameFinished()
         return true
     }

@@ -28,14 +28,10 @@ struct EnterPinForSeedView: View {
     @FocusState
     var keyboardFocused: Bool
 
-    let backgroundGradient: LinearGradient
-    
-    init(backgroundGradient: LinearGradient,
-         enteredPin: Binding<String>,
+    init(enteredPin: Binding<String>,
          seedPhrase: Binding<String>,
          viewModel: NewMainViewModel,
          selectedPage: Binding<Int>) {
-        self.backgroundGradient = backgroundGradient
         _enteredPin = enteredPin
         _selectedPage = selectedPage
         _seedPhrase = seedPhrase
@@ -126,6 +122,6 @@ struct EnterPinForSeedView: View {
                 enteredPin = ""
             }
         }
-        .background(backgroundGradient)
+        .background(emojisBackgroundGradient.ignoresSafeArea())
     }
 }
