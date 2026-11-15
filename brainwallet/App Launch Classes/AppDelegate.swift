@@ -6,7 +6,6 @@ import FirebasePerformance
 import LocalAuthentication
 import SwiftUI
 import UIKit
-import BrainwalletiOSPrivateGeneralPurpose
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
@@ -51,9 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
         // Ops
         _ = Partner.partnerKeyPath(name: .walletStart)
-        
-        // AppsFlyer: SDK, dev key and start-on-active live in the private framework
-        AFLauncher.shared.configure()
 
         // Firebase
         if FirebaseApp.app() == nil {

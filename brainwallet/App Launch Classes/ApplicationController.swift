@@ -2,10 +2,13 @@ import FirebaseAnalytics
 import StoreKit
 import SwiftUI
 import UIKit
+import BrainwalletiOSPrivateGeneralPurpose
+
 #if !targetEnvironment(simulator)
 import BWIOSGdx
 #endif
 
+@MainActor
 /// Owns the wallet, store and root view controllers. The window is handed in by SceneDelegate.
 class ApplicationController: Subscriber {
     var window: UIWindow?
@@ -41,6 +44,10 @@ class ApplicationController: Subscriber {
         #else
             debugPrint(":::: game disabled on simulator (device-only natives)")
         #endif
+        
+        
+        // AF
+        AFLauncher.shared.configure()
 
         transitionDelegate = ModalTransitionDelegate(type: .transactionDetail,
                                                      store: store)
@@ -435,6 +442,7 @@ class ApplicationController: Subscriber {
 			self?.modalPresenter?.walletManager = self?.walletManager
 			self?.startDataFetchers()
 			self?.mainViewController?.didUnlock()
+            AFLauncher.shared.logEvent("E-20261115-A")
 		})
 	}
 
