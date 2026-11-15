@@ -127,7 +127,8 @@ struct ConfirmPasscodeView: View {
                             store?.perform(action: SimpleReduxAlert.Show(.pinSet(callback: {
                             })))
 
-                            path.append(.signupAskView(isRestoringAnOldWallet: isRestoringAnOldWallet))
+                            path.append(Onboarding.destinationAfterPasscodeConfirmed(
+                                isRestoringAnOldWallet: isRestoringAnOldWallet))
                         } else {
                             startShake.toggle()
                             delay(0.4) {
@@ -149,5 +150,13 @@ struct ConfirmPasscodeView: View {
                     pinState = [false,false,false,false]
                 }
             }
+    }
+}
+
+extension Onboarding {
+    /// Where onboarding goes once the passcode has been confirmed.
+    /// Restoring users enter their existing seed; new users are shown their new seed.
+    static func destinationAfterPasscodeConfirmed(isRestoringAnOldWallet: Bool) -> Onboarding {
+        isRestoringAnOldWallet ? .inputWordsView : .yourSeedWordsView
     }
 }

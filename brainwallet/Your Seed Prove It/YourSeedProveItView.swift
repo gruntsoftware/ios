@@ -69,7 +69,17 @@ struct YourSeedProveItView: View {
     }
 
     private func isPhraseMatched() -> Bool {
-        return (1...12).allSatisfy { seedWords[$0]?.first?.word.isEmpty == false }
+        Self.isPhraseMatched(seedWords)
+    }
+
+    /// True when every one of the 12 slots holds a placed word.
+    static func isPhraseMatched(_ seedWords: [Int: [DraggableSeedWord]]) -> Bool {
+        (1...12).allSatisfy { seedWords[$0]?.first?.word.isEmpty == false }
+    }
+
+    /// Title for the bottom button: "Done" once the phrase is complete, otherwise reset.
+    static func primaryButtonTitle(isPhraseMatched: Bool) -> String {
+        isPhraseMatched ? String(localized: "Done") : String(localized: "RESET / START OVER")
     }
 
     private func createWordBucket(for wordNumber: Int) -> some View {
@@ -232,7 +242,7 @@ struct YourSeedProveItView: View {
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .foregroundColor(BrainwalletColor.grape)
                                 .padding([.leading, .trailing], 8.0)
-                            Text(isPhraseMatched() ? String(localized:"Game & Sync") : String(localized:"RESET / START OVER"))
+                            Text(Self.primaryButtonTitle(isPhraseMatched: isPhraseMatched()))
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .modifier(BWIPSBold(size: 24.0))
                                 .padding([.leading, .trailing], 8.0)
