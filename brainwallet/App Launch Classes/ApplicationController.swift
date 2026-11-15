@@ -8,8 +8,8 @@ import BrainwalletiOSPrivateGeneralPurpose
 import BWIOSGdx
 #endif
 
-@MainActor
 /// Owns the wallet, store and root view controllers. The window is handed in by SceneDelegate.
+@MainActor
 class ApplicationController: Subscriber {
     var window: UIWindow?
     fileprivate let store = Store()
