@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct YourSeedProveItView: View {
     @Binding var path: [Onboarding]
@@ -30,7 +31,9 @@ struct YourSeedProveItView: View {
     let userPrefersDarkTheme = UserDefaults.userPreferredDarkTheme
     let canUserBuy: Bool = UserDefaults.userCanBuyInCurrentLocale
 
-    private let columns = Array(repeating: GridItem(.flexible(minimum: 80)), count: 3)
+    private var columns: [GridItem] {
+        Array(repeating: GridItem(.flexible(minimum: 80), spacing: elementSpacing), count: 3)
+    }
 
     init(viewModel: NewMainViewModel, path: Binding<[Onboarding]>) {
         self.viewModel = viewModel
@@ -193,7 +196,7 @@ struct YourSeedProveItView: View {
                         .padding([.leading, .trailing], 20.0)
                     Spacer()
                     // Draggable words
-                    LazyVGrid(columns: columns) {
+                    LazyVGrid(columns: columns, spacing: elementSpacing + 4.0) {
                         ForEach(shuffledDraggableWords, id: \.id) { draggableItem in
 
                             Group {
@@ -207,8 +210,7 @@ struct YourSeedProveItView: View {
                                             .contentShape(.dragPreview, Capsule())
                                             .padding(.bottom, 24.0)
                                     })
-                                     .padding([.top, .bottom], 16.0)
-                                    .padding([.leading, .trailing], 2.0)
+                                    .frame(minHeight: fieldHeight)
                             }
                             .simultaneousGesture(
                                 TapGesture().onEnded {
@@ -219,7 +221,7 @@ struct YourSeedProveItView: View {
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .frame(height: 200, alignment: .center)
+                    .frame(height: height * 0.25, alignment: .center)
                     .padding([.leading, .trailing], 20.0)
                     Spacer()
                     Button(action: {
@@ -232,6 +234,10 @@ struct YourSeedProveItView: View {
                                 NotificationCenter.default.post(name: .didCompleteOnboardingNotification,
                                                                     object: nil,
                                                                     userInfo: nil)
+                                Analytics
+                                    .logEvent("user_confirmed_wallet",
+                                              parameters: [
+                                                "completion" : "create"])
                             }
                         } else {
                             resetWords()

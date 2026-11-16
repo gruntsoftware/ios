@@ -1,4 +1,5 @@
 import SwiftUI
+import FirebaseAnalytics
 
 struct InputWordsView: View {
 
@@ -100,6 +101,10 @@ struct InputWordsView: View {
                         if phraseIsVerified {
                             playCoin()
                             viewModel.didRestoreOldBrainwallet()
+                            Analytics
+                                .logEvent("user_confirmed_wallet",
+                                          parameters: [
+                                "completion" : "restore"])
                         }
 
                     }) {
