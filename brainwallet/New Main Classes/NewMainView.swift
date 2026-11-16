@@ -257,7 +257,7 @@ struct NewMainView: View {
                             }
                             .sensoryFeedback(.success, trigger: userPrefersDarkTheme)
                             .accessibilityIdentifier("themePreferenceButton")
-                            .padding(.horizontal, 6)
+                            .padding(.horizontal, 8)
                             
                             Button(action: {
                                 
@@ -274,7 +274,7 @@ struct NewMainView: View {
                             }
                             .sensoryFeedback(.success, trigger: userPrefersDarkTheme)
                             .accessibilityIdentifier("themePreferenceButton")
-                            .padding(.horizontal, 6)
+                            .padding(.horizontal, 8)
                         }
 
                     }
@@ -287,11 +287,12 @@ struct NewMainView: View {
                         }) {
 
                                 Image(systemName: "line.3.horizontal")
-                                    .font(.system(size: iconSize, weight: mainTabIconWeight))
-                                    .frame(width: iconSize, height: iconSize)
+                                    .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                    .frame(width: mainTabIconSize, height: mainTabIconSize)
                                     .foregroundColor(content)
                         }
                         .accessibilityIdentifier("settingsButton")
+                        .padding(6)
                     }
 
                     ToolbarItem(placement: .bottomBar) {
