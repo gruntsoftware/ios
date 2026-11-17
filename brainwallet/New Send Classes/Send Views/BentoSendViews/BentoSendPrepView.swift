@@ -187,17 +187,14 @@ struct BentoSendPrepView: View {
                 }
             }
         }
-        .sheet(isPresented: $userCanAttemptToSend) {
+        .translucentSheet(isPresented: $userCanAttemptToSend,
+                          height: .medium,
+                          background: .ultraThickMaterial) {
             BentoSendConfirmView(viewModel: SendPinLockModel(walletManager: newMainViewModel.walletManager ?? nil),
                                  newMainViewModel: newMainViewModel,
                                  userPrefersDarkTheme: $userPrefersDarkTheme,
                                  nextIndex: $currentIndex,
                                  shouldDismiss: $userCanAttemptToSend)
-                .cornerRadius(bentoCornerRadius)
-                .presentationDragIndicator(.hidden)
-                .presentationDetents([.medium])
-                .presentationBackground(.ultraThickMaterial)
-                .ignoresSafeArea(edges: .bottom)
         }
         .onAppear {
             backgroundColor = userPrefersDarkTheme ? BentoColor.darkModeColor1 : BentoColor.lightModeColor1
