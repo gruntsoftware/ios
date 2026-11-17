@@ -133,14 +133,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         if let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist"),
            let options = FirebaseOptions(contentsOfFile: filePath) {
             // Production path — real plist present
+            // Debug, simulator and TestFlight sessions run in Analytics debug mode, matching
+            // Android's scripts/firebase-debug-devices.sh. Their events carry debug_mode=1,
+            // so they show in Firebase DebugView and the GA4 "Developer traffic" data filter
+            // drops them from reports. Must be set before FirebaseApp.configure().
+            if E.isInternalTestBuild {
+                var arguments = ProcessInfo.processInfo.arguments
+                arguments.removeAll { $0 == "-FIRDebugDisabled" || $0 == "-FIRAnalyticsDebugDisabled" }
+                if !arguments.contains("-FIRAnalyticsDebugEnabled") {
+                    arguments.append("-FIRAnalyticsDebugEnabled")
+                }
+                ProcessInfo.processInfo.setValue(arguments, forKey: "arguments")
+            }
+
             FirebaseApp.configure(options: options)
 
-            // Keep debug, simulator and TestFlight sessions out of Google Analytics.
-            // Set explicitly every launch: Firebase persists this flag across launches,
-            // so App Store builds must turn it back on.
-            let collectAnalytics = !E.isInternalTestBuild
-            Analytics.setAnalyticsCollectionEnabled(collectAnalytics)
-            debugPrint("::: Analytics collection enabled: \(collectAnalytics)")
+            // Collection stays on for every build so test devices still reach DebugView.
+            // Set explicitly every launch: Firebase persists this flag across launches, and
+            // builds from before this change turned it off on internal test devices.
+            Analytics.setAnalyticsCollectionEnabled(true)
+            debugPrint("::: Analytics debug mode (developer traffic): \(E.isInternalTestBuild)")
         } else {
             let options = FirebaseOptions(
                 googleAppID: "1:000000000000:ios:0000000000000000000000",
