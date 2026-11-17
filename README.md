@@ -2,6 +2,8 @@
 
 **Brainwallet** is a free, open-source, self-custodial [Litecoin](https://litecoin.org) wallet for iOS. Your seed phrase and keys stay on your device — Brainwallet never has custody of your funds.
 
+Tired of watching charts? Take a break with the free mini-games in the Bento Game Hub.
+
 [![Release](https://img.shields.io/github/v/release/gruntsoftware/ios?style=plastic)](https://github.com/gruntsoftware/ios/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
