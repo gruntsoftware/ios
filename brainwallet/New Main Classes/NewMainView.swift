@@ -444,42 +444,30 @@ struct NewMainView: View {
                             }
                     }
                  }
-                .sheet(isPresented: $userDidTapSend) {
+                .translucentSheet(isPresented: $userDidTapSend,
+                                  height: .height(walletIsSyncing ? height * 0.4 : sheetContentHeight),
+                                  background: .ultraThickMaterial) {
                     if !walletIsSyncing {
                         BentoSendModalView(viewModel: newMainViewModel,
                                            userPrefersDarkTheme: $userPrefersDarkTheme,
                                            userWalletIsEmpty: $userBalanceIsEmpty,
                                            shouldShowView: $userDidTapSend)
-                        .cornerRadius(bentoCornerRadius)
-                        .presentationDragIndicator(.hidden)
-                        .presentationDetents([.height(sheetContentHeight)])
-                        .presentationBackground(.ultraThickMaterial)
-                        .ignoresSafeArea(edges: .bottom)
                     } else {
                         BentoNoSendModalView(userPrefersDarkTheme: $userPrefersDarkTheme,
                                              shouldShowView: $userDidTapSend)
-                        .cornerRadius(bentoCornerRadius)
-                        .presentationDragIndicator(.hidden)
-                        .presentationDetents([.height(height * 0.4)])
-                        .presentationBackground(.ultraThickMaterial)
-                        .ignoresSafeArea(edges: .bottom)
                     }
                 }
-                .sheet(isPresented: $userDidTapBuyReceive) {
+                .translucentSheet(isPresented: $userDidTapBuyReceive,
+                                  background: .ultraThinMaterial,
+                                  showsDragIndicator: true) {
                     BuyReceiveView(viewModel: newReceiveViewModel,
                                    isModalMode: true)
-                        .cornerRadius(bentoCornerRadius)
-                        .presentationDetents([.large])
-                        .presentationDragIndicator(.visible)
-                        .presentationBackground(.ultraThinMaterial)
                 }
-                .sheet(isPresented: $newMainViewModel.shouldShowBuyReceive) {
+                .translucentSheet(isPresented: $newMainViewModel.shouldShowBuyReceive,
+                                  background: .ultraThinMaterial,
+                                  showsDragIndicator: true) {
                     BuyReceiveView(viewModel: newReceiveViewModel,
                                    isModalMode: true)
-                        .cornerRadius(bentoCornerRadius)
-                        .presentationDetents([.large])
-                        .presentationDragIndicator(.visible)
-                        .presentationBackground(.ultraThinMaterial)
                 }
                 .sheet(isPresented: $newMainViewModel.shouldShowSocials) {
                     WebView(url: socialsURL, scrollToSignup: .constant(false))
@@ -495,24 +483,19 @@ struct NewMainView: View {
                         .padding(.top, 12.0)
                         .padding(8.0)
                 }
-                .sheet(isPresented: $newMainViewModel.shouldShowGameSDK) {
-                    
-                    
+                .translucentSheet(isPresented: $newMainViewModel.shouldShowGameSDK,
+                                  background: .ultraThinMaterial) {
                     if (!gameHubViewModel.userEmojisAreSet) {
                         EmojiSetPagerView(gameHubViewModel: gameHubViewModel,
                                           viewModel: newMainViewModel)
-                        .presentationBackground(.ultraThinMaterial)
-                        .presentationDragIndicator(.hidden)
                     } else {
                         let emojiCount = newMainViewModel.walletManager?.emojiStringCount() ?? 0
-                        
+
                         // The sheet only opens for 3 emojis, every other count launches the game on tap
                         switch emojiCount {
                             case 3:
                                 SetSixthEmojiView(gameHubViewModel: gameHubViewModel,
                                                   viewModel: newMainViewModel)
-                                .presentationBackground(.ultraThinMaterial)
-                                .presentationDragIndicator(.hidden)
                             default:
                                 EmptyView()
                         }
