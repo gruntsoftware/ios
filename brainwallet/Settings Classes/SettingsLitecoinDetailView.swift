@@ -31,13 +31,13 @@ struct SettingsLitecoinDetailView: View {
     private var feesPerFiat = ""
     
     @State
-    private var nodeLabel: String = String(localized: "Set IP Address")
+    private var nodeLabel: String = String(localized: "Set Trusted Node")
     
     @State
     private var selectedNetworkFeeIndex = 1
      
     private let syncButtonHeight: CGFloat = 40.0
-    private let syncButtonWidth: CGFloat = 180.0
+    private let syncButtonWidth: CGFloat = 140.0
     
     init(willSync: Binding<Bool>,
          fees: Fees,
@@ -56,7 +56,7 @@ struct SettingsLitecoinDetailView: View {
                let trustedPort = UserDefaults.userTrustedNodePort {
                 return "\(trustedIpAddress):\(trustedPort)"
             } else {
-                return String(localized: "Set IP Address")
+                return String(localized: "Set Trusted Node")
             }
         } else {
             return String(localized: "Litecoin Mainnet")
@@ -110,12 +110,12 @@ struct SettingsLitecoinDetailView: View {
                         .frame(height: 1)
                         .overlay(Color.white)
                     
-                    Text(String(localized: "Peer sync mode"))
+                    Text(String(localized: "Trusted Node mode"))
                         .modifier(BWIPSSemiBold(size: 15.0))
                         .foregroundColor(BrainwalletColor.content)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Text(String(localized: "Set from spv peers in the Litecoin mainnet or a trusted peer to sync with the blockchain"))
+                    Text(String(localized: "Set from spv peers in the Litecoin mainnet or a trusted node to sync with the blockchain"))
                         .modifier(BWIPSRegular(size: 14.0, lineLimit: 2))
                         .foregroundColor(BrainwalletColor.content)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -147,11 +147,13 @@ struct SettingsLitecoinDetailView: View {
                             Text(nodeLabel)
                                 .frame(width: syncButtonWidth, height: syncButtonHeight,
                                        alignment: .center)
-                                .modifier(BWIPSSemiBold(size: 15.0))
+                                .modifier(BWIPSSemiBold(size: 14.0))
                                 .foregroundStyle(.white)
                                 .background(
                                     RoundedRectangle(cornerRadius: syncButtonHeight/2)
-                                        .fill(BrainwalletColor.background)
+                                        .fill(BrainwalletColor.blue)
+                                        .shadow(color: .black.opacity(0.6),
+                                                radius: 2.0, x: -3, y: 3)
                                         
                                 )
                         }
@@ -191,11 +193,13 @@ struct SettingsLitecoinDetailView: View {
                             Text("Sync")
                                 .frame(width: syncButtonWidth, height: syncButtonHeight,
                                        alignment: .center)
-                                .modifier(BWIPSSemiBold(size: 15.0))
+                                .modifier(BWIPSSemiBold(size: 14.0))
                                 .foregroundStyle(.white)
                                 .background(
                                     RoundedRectangle(cornerRadius: syncButtonHeight/2)
-                                        .fill(BrainwalletColor.background)
+                                        .fill(BrainwalletColor.blue)
+                                        .shadow(color: .black.opacity(0.6),
+                                                radius: 2.0, x: -3, y: 3)
                                 )
                         }
                         .frame(height: 44.0)
