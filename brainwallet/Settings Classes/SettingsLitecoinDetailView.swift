@@ -37,7 +37,8 @@ struct SettingsLitecoinDetailView: View {
     private var selectedNetworkFeeIndex = 1
      
     private let syncButtonHeight: CGFloat = 40.0
-    private let syncButtonWidth: CGFloat = 140.0
+    private let trustedButtonWidth: CGFloat = 140.0
+    private let syncButtonWidth: CGFloat = 100.0
     
     init(willSync: Binding<Bool>,
          fees: Fees,
@@ -145,7 +146,7 @@ struct SettingsLitecoinDetailView: View {
                             purchaseTrustedNodeOrEditIPAddress()
                         }) {
                             Text(nodeLabel)
-                                .frame(width: syncButtonWidth, height: syncButtonHeight,
+                                .frame(width: trustedButtonWidth, height: syncButtonHeight,
                                        alignment: .center)
                                 .modifier(BWIPSSemiBold(size: 14.0))
                                 .foregroundStyle(.white)
