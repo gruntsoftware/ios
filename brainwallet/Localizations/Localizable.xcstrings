@@ -20335,6 +20335,7 @@
       }
     },
     "Peer sync mode" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -26718,7 +26719,11 @@
         }
       }
     },
+    "Set from spv peers in the Litecoin mainnet or a trusted node to sync with the blockchain" : {
+
+    },
     "Set from spv peers in the Litecoin mainnet or a trusted peer to sync with the blockchain" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -26849,6 +26854,7 @@
       }
     },
     "Set IP Address" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -27237,6 +27243,9 @@
           }
         }
       }
+    },
+    "Set Trusted Node" : {
+
     },
     "Set your first emojis!" : {
       "comment" : "A title displayed at the top of the emoji picker view.",
@@ -33491,6 +33500,9 @@
           }
         }
       }
+    },
+    "Trusted Node mode" : {
+
     },
     "Try all features of the Brainwallet, from sending and receiving crypto to managing your keys." : {
       "comment" : "A description of the various features of the Brainwallet.",
