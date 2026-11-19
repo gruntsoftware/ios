@@ -41,15 +41,14 @@ Tired of watching charts? Take a break with the free mini-games in the Bento Gam
 
 ## Release Notes
 
-### v3.10.4
-- **Trusted Node**: connect to your own Litecoin node (IP + port) via in-app purchase, with a toggle between trusted node and random mainnet peers. Sync status shows the current peer mode.
-- **Live network fees**: Settings fee picker shows real Economy/Regular/Luxury tiers with the fiat cost, and remembers your choice.
-- **Redesigned Settings**: consistent expandable rows, clearer blockchain section, blockchain sync confirmation alert restored.
-- **Safer wallet wipe**: waits for wallet, database and keychain (incl. trusted-node data) cleanup and shows an error on failure.
-- **iOS 27 support**: adopts the `UIScene` lifecycle to fix a launch crash on iOS 27.
-- **App Review fixes**: rating prompt removed from the welcome screen and shown only after two games.
-- Fixes for the emoji keyboard, seed word drag and layout, plus a MoonPay back button.
-- Refreshed translations and updated submodules.
+### v3.11.0
+- **Emojis for seed words 4–6**: after two games, a new step lets you pick emojis for seed words 4–6 too.
+- **Simpler onboarding**: the push-notification ask is gone, and the last step finishes with "Done".
+- **Easier-to-find Trusted Node**: the button is now "Set Trusted Node" and stands out in Settings.
+- **Translucent sheets restored on iOS 26+**: tutorials, send, receive and emoji setup sheets show the main view underneath again.
+- Polished nav bar icons and fixed the seed word drag grid layout.
+- Internal test builds no longer count toward production analytics.
+- Refreshed translations and updated the private framework.
 
 Full notes: [RELEASE_NOTES.md](RELEASE_NOTES.md)
 
