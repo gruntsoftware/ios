@@ -11,20 +11,20 @@ struct SettingsActionBrainwalletPhraseView: View {
 
     private let title: String
     private let detailText: String
-    let emojiFont: Font = .ibmPlexSansBold(size: 34.0)
+    let emojiFont: Font = .ibmPlexSansBold(size: 32.0)
 
     let randoMojis: [String] = ["😄", "🚨", "🚫", "😂", "🤣", "💕", "😅", "🦺", "😂", "✅"]
 
     @Binding
-    var willShowBrainwalletPhrase: Bool
+    var userTappedForBrainwalletPhrase: Bool
 
     @State
     private var  fetchedEmoji = ""
 
-    init(title: String, detailText: String, willShowBrainwalletPhrase: Binding<Bool>) {
+    init(title: String, detailText: String, userTappedForBrainwalletPhrase: Binding<Bool>) {
         self.title = title
         self.detailText = detailText
-        _willShowBrainwalletPhrase = willShowBrainwalletPhrase
+        _userTappedForBrainwalletPhrase = userTappedForBrainwalletPhrase
     }
 
     func createRandomEmoji() -> String {
@@ -39,7 +39,7 @@ struct SettingsActionBrainwalletPhraseView: View {
                     HStack {
                         VStack {
                             Text(title)
-                                .modifier(BWIPSSemiBold(size: 19.0))
+                                .modifier(BWIPSSemiBold(size: 18.0))
                                 .foregroundColor(BrainwalletColor.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.top, 4.0)
@@ -54,7 +54,7 @@ struct SettingsActionBrainwalletPhraseView: View {
                         Spacer()
                         VStack {
                             Button(action: {
-                                willShowBrainwalletPhrase.toggle()
+                                userTappedForBrainwalletPhrase.toggle()
 
                             }) {
                                 VStack {

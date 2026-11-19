@@ -50,11 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
 
         // Ops
         _ = Partner.partnerKeyPath(name: .walletStart)
-        
-        // AF
-        /// Activating for  future use
-        /// AppsFlyerLib.shared().appsFlyerDevKey = Partner.partnerKeyPath(name: .prodAF)
-        /// AppsFlyerLib.shared().appleAppID = BrainwalletAppStore.adamIDString
 
         // Firebase
         if FirebaseApp.app() == nil {
@@ -115,8 +110,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
                 debugPrint("Failed to set badge count: \(error.localizedDescription)")
             }
         }
-		/// Activating for  future use
-        /// AppsFlyerLib.shared().start()
 	}
 
 	func application(_: UIApplication,
@@ -140,7 +133,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         if let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist"),
            let options = FirebaseOptions(contentsOfFile: filePath) {
             // Production path — real plist present
+            // Debug, simulator and TestFlight sessions run in Analytics debug mode, matching
+            // Android's scripts/firebase-debug-devices.sh. Their events carry debug_mode=1,
+            // so they show in Firebase DebugView and the GA4 "Developer traffic" data filter
+            // drops them from reports. Must be set before FirebaseApp.configure().
+            if E.isInternalTestBuild {
+                var arguments = ProcessInfo.processInfo.arguments
+                arguments.removeAll { $0 == "-FIRDebugDisabled" || $0 == "-FIRAnalyticsDebugDisabled" }
+                if !arguments.contains("-FIRAnalyticsDebugEnabled") {
+                    arguments.append("-FIRAnalyticsDebugEnabled")
+                }
+                ProcessInfo.processInfo.setValue(arguments, forKey: "arguments")
+            }
+
             FirebaseApp.configure(options: options)
+
+            // Collection stays on for every build so test devices still reach DebugView.
+            // Set explicitly every launch: Firebase persists this flag across launches, and
+            // builds from before this change turned it off on internal test devices.
+            Analytics.setAnalyticsCollectionEnabled(true)
+            debugPrint("::: Analytics debug mode (developer traffic): \(E.isInternalTestBuild)")
         } else {
             let options = FirebaseOptions(
                 googleAppID: "1:000000000000:ios:0000000000000000000000",

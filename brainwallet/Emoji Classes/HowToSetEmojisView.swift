@@ -22,11 +22,7 @@ struct HowToSetEmojisView: View {
                             "lock"]
     
 
-    let backgroundGradient: LinearGradient
-    
-    init(backgroundGradient: LinearGradient,
-         selectedPage: Binding<Int>) {
-        self.backgroundGradient = backgroundGradient
+    init(selectedPage: Binding<Int>) {
         _selectedPage = selectedPage
     }
 
@@ -35,7 +31,7 @@ struct HowToSetEmojisView: View {
         GeometryReader { geometry in
             let height = geometry.size.height
             let width = geometry.size.width
-            let rowRatio = height * 0.5 * 0.33
+            let rowRatio = height * 0.5 * 0.26
             
             VStack(alignment: .center) {
                     Text("Choose your 3 emojis for the game")
@@ -88,11 +84,16 @@ struct HowToSetEmojisView: View {
                     }
                     .frame(width: width * 0.9, height: 50.0)
                     .cornerRadius(11.0)
-                    .padding( .bottom, 16.0)
+                    .padding(.bottom, 90.0)
 
                 }
         }
         .frame(maxWidth: .infinity, alignment: .center)
-        .background(backgroundGradient)
+        .background(emojisBackgroundGradient.ignoresSafeArea())
     }
+}
+
+#Preview {
+    @Previewable @State var selectedPage = 0
+    HowToSetEmojisView(selectedPage: $selectedPage)
 }

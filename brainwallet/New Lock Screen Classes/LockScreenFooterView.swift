@@ -106,15 +106,12 @@ struct LockScreenFooterView: View {
                                        shouldDismiss: $shouldShowWipeAlert,
                                        didCompleteWipe: $viewModel.didCompleteWipingWallet)
                     }
-                    .sheet(isPresented: $shouldShowAddressModal) {
+                    .translucentSheet(isPresented: $shouldShowAddressModal,
+                                      height: .medium,
+                                      background: .ultraThickMaterial) {
                         LockReceiveModalView(viewModel: viewModel,
                                              shouldShowAddressModal: $shouldShowAddressModal,
                                              userPrefersDarkMode: $userPrefersDarkMode)
-                        .cornerRadius(bentoCornerRadius)
-                        .presentationDragIndicator(.hidden)
-                        .presentationDetents([.medium])
-                        .presentationBackground(.ultraThickMaterial)
-                        .ignoresSafeArea(edges: .bottom)
                     }
                     .onChange(of: userPrefersDarkMode) { _,_ in
                         viewModel.userDidSetThemePreference(userPrefersDarkMode: userPrefersDarkMode)

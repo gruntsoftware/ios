@@ -143,7 +143,6 @@
 		2480B5832DF2016300653403 /* PromptHostingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2480B5822DF2015B00653403 /* PromptHostingCell.swift */; };
 		248E5C422DE78653003F232F /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E5C412DE7863C003F232F /* NetworkHelper.swift */; };
 		2492829C2DAC22B00088528E /* BIP39Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2492829B2DAC22B00088528E /* BIP39Words.plist */; };
-		249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */; };
 		249DDE422DCD573700B2B275 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249DDE412DCD572F00B2B275 /* SettingsView.swift */; };
 		24A0ACAB2E0C812C0077E695 /* SettingsLitecoinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0ACAA2E0C812C0077E695 /* SettingsLitecoinDetailView.swift */; };
 		24A404232DC92F3E006CD076 /* WebBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A404222DC92F35006CD076 /* WebBuyView.swift */; };
@@ -243,7 +242,7 @@
 		C312D2EA2D7DC27700BB97A4 /* ForgotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D24D2D7DC27700BB97A4 /* ForgotView.swift */; };
 		C312D2EC2D7DC27700BB97A4 /* AnimatableIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1D32D7DC27700BB97A4 /* AnimatableIcon.swift */; };
 		C312D2F12D7DC27700BB97A4 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C22D7DC27700BB97A4 /* UITableViewExtension.swift */; };
-		C312D2FC2D7DC27700BB97A4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E72D7DC27700BB97A4 /* GradientView.swift */; };
+		C312D2FC2D7DC27700BB97A4 /* GradientViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D1E72D7DC27700BB97A4 /* GradientViewHelper.swift */; };
 		C312D3072D7DC27700BB97A4 /* CGRect+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D06E2D7DC27700BB97A4 /* CGRect+Additions.swift */; };
 		C312D3112D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D0872D7DC27700BB97A4 /* UIViewControllerContextTransitioning+BRAdditions.swift */; };
 		C312D3122D7DC27700BB97A4 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312D2C12D7DC27700BB97A4 /* UIApplication+Extension.swift */; };
@@ -377,7 +376,7 @@
 		C395E2B83013770A00CF5F5B /* EnterPinForSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */; };
 		C3B0BBC32FF6DB11000D5DB8 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0BBC22FF6DB11000D5DB8 /* AlertToast */; };
 		C3BC6CBD303331FB00A04919 /* UIApplication+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC6CBC303331D800A04919 /* UIApplication+Additions.swift */; };
-		C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */; };
+		C3CE191E308CBF9C008CDBDA /* SetSixthEmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE191D308CBF4F008CDBDA /* SetSixthEmojiView.swift */; };
 		C3CE34612FFD8D1F004A2ECA /* LilitaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3CE34602FFD8D1F004A2ECA /* LilitaOne.ttf */; };
 		C3E18A9F2F9E657000966C74 /* ShopCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */; };
 		C3E18AA12F9EC22000966C74 /* ConfirmationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */; };
@@ -847,7 +846,7 @@
 		C312D1E02D7DC27700BB97A4 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		C312D1E12D7DC27700BB97A4 /* ConfirmPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPhrase.swift; sourceTree = "<group>"; };
 		C312D1E32D7DC27700BB97A4 /* DrawableCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableCircle.swift; sourceTree = "<group>"; };
-		C312D1E72D7DC27700BB97A4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		C312D1E72D7DC27700BB97A4 /* GradientViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViewHelper.swift; sourceTree = "<group>"; };
 		C312D1E82D7DC27700BB97A4 /* InAppAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppAlert.swift; sourceTree = "<group>"; };
 		C312D1EA2D7DC27700BB97A4 /* LightWeightAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightWeightAlert.swift; sourceTree = "<group>"; };
 		C312D1EC2D7DC27700BB97A4 /* ModalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderView.swift; sourceTree = "<group>"; };
@@ -944,7 +943,7 @@
 		C395E2B2301376FE00CF5F5B /* EnterPinForSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPinForSeedView.swift; sourceTree = "<group>"; };
 		C39859373069234400E99439 /* bw-iap-config-v2.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "bw-iap-config-v2.storekit"; sourceTree = "<group>"; };
 		C3BC6CBC303331D800A04919 /* UIApplication+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Additions.swift"; sourceTree = "<group>"; };
-		C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupAskView.swift; sourceTree = "<group>"; };
+		C3CE191D308CBF4F008CDBDA /* SetSixthEmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSixthEmojiView.swift; sourceTree = "<group>"; };
 		C3CE34602FFD8D1F004A2ECA /* LilitaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LilitaOne.ttf; sourceTree = "<group>"; };
 		C3E18A9E2F9E656600966C74 /* ShopCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCardsView.swift; sourceTree = "<group>"; };
 		C3E18AA02F9EC21600966C74 /* ConfirmationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationStatus.swift; sourceTree = "<group>"; };
@@ -1017,7 +1016,6 @@
 				C35C122A293D48340009022D /* KeychainAccess in Frameworks */,
 				246028572E5F178400CDEB7A /* FirebasePerformance in Frameworks */,
 				C32553CD2FE090E4008B1861 /* CoreGraphics.framework in Frameworks */,
-				249C45E02D9415D900E9C3B0 /* AppsFlyerLib in Frameworks */,
 				C32553C72FE090AD008B1861 /* AudioToolbox.framework in Frameworks */,
 				22A9A9661DF61FEE000F0016 /* WebKit.framework in Frameworks */,
 				22A9A9641DF61FE7000F0016 /* Security.framework in Frameworks */,
@@ -1719,6 +1717,7 @@
 				C3F8D2DF300D2E77005A684E /* RowHowToSetEmoji.swift */,
 				C3F8D2DD300CF614005A684E /* PickEmojisView.swift */,
 				C3F8D2DB300CF606005A684E /* HowToSetEmojisView.swift */,
+				C3CE191D308CBF4F008CDBDA /* SetSixthEmojiView.swift */,
 				24C949CA2F4A5C6E0073852B /* UIEmojiTextField.swift */,
 				24BFAF8F2F4B635200DC0521 /* BrainwalletPhraseContainerView.swift */,
 				24BFAF912F4B875D00DC0521 /* EmojiPhraseView.swift */,
@@ -1950,7 +1949,6 @@
 			children = (
 				C35BD2C63065C1C300B4EE55 /* TrustedNode Classes */,
 				C31F416D2FF6918E00D9DA3D /* Social Network Classes */,
-				C3C95F702FA1498E002E2BEE /* Signup Notification Classes */,
 				246C3F4F2F2430DF009BC881 /* Tutorial Classes */,
 				24E6675F2F167A4B00909157 /* New Send Classes */,
 				247A838B2EA00CEB00B5DFD8 /* Bento Effects  */,
@@ -2017,7 +2015,7 @@
 				C312D1E02D7DC27700BB97A4 /* Circle.swift */,
 				C312D1E12D7DC27700BB97A4 /* ConfirmPhrase.swift */,
 				C312D1E32D7DC27700BB97A4 /* DrawableCircle.swift */,
-				C312D1E72D7DC27700BB97A4 /* GradientView.swift */,
+				C312D1E72D7DC27700BB97A4 /* GradientViewHelper.swift */,
 				C312D1E82D7DC27700BB97A4 /* InAppAlert.swift */,
 				C312D1EA2D7DC27700BB97A4 /* LightWeightAlert.swift */,
 				C312D1EC2D7DC27700BB97A4 /* ModalHeaderView.swift */,
@@ -2102,14 +2100,6 @@
 				907FE3B2FCD7C7D94FA7D2A7 /* SetTrustedNodeIPModalView.swift */,
 			);
 			path = "TrustedNode Classes";
-			sourceTree = "<group>";
-		};
-		C3C95F702FA1498E002E2BEE /* Signup Notification Classes */ = {
-			isa = PBXGroup;
-			children = (
-				C3C95F072FA13DEF002E2BEE /* SignupAskView.swift */,
-			);
-			path = "Signup Notification Classes";
 			sourceTree = "<group>";
 		};
 		C3E18A982F9E5E7300966C74 /* Shop Bentos */ = {
@@ -2241,7 +2231,6 @@
 			name = brainwallet;
 			packageProductDependencies = (
 				C35C1229293D48340009022D /* KeychainAccess */,
-				249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */,
 				2460284E2E5F178400CDEB7A /* FirebaseAnalytics */,
 				246028502E5F178400CDEB7A /* FirebaseCrashlytics */,
 				246028522E5F178400CDEB7A /* FirebaseInAppMessaging-Beta */,
@@ -2333,7 +2322,6 @@
 			mainGroup = 75A2A7871DA5934300A983D8;
 			packageReferences = (
 				C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
 				2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C3B0BBC12FF6DB11000D5DB8 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
@@ -2634,7 +2622,6 @@
 				C312D2D32D7DC27700BB97A4 /* ExchangeUpdater.swift in Sources */,
 				C312D2D42D7DC27700BB97A4 /* Currency.swift in Sources */,
 				24126E062ECA741200F9A4BE /* ScanOverlayView.swift in Sources */,
-				C3C95F082FA13DEF002E2BEE /* SignupAskView.swift in Sources */,
 				2473D44F2DB991EC0076746A /* PasscodeGridView.swift in Sources */,
 				C312D2D62D7DC27700BB97A4 /* RecoverWalletView.swift in Sources */,
 				C3F8D2E0300D2E7A005A684E /* RowHowToSetEmoji.swift in Sources */,
@@ -2661,7 +2648,7 @@
 				2476AE362E2802AF0065CE22 /* InputSeedWordView.swift in Sources */,
 				247A7D0D2E951CE1000DF8C0 /* TutorialsBentoView.swift in Sources */,
 				242871812DE5C28B0035DE48 /* WhiteNumberPad.swift in Sources */,
-				C312D2FC2D7DC27700BB97A4 /* GradientView.swift in Sources */,
+				C312D2FC2D7DC27700BB97A4 /* GradientViewHelper.swift in Sources */,
 				C32A487D2FF79FD800B10F54 /* GameStructs.swift in Sources */,
 				C3F8D2DC300CF60A005A684E /* HowToSetEmojisView.swift in Sources */,
 				24E078AA2DF1F9AE004B5958 /* PromptCellViewModel.swift in Sources */,
@@ -2783,6 +2770,7 @@
 				24E7591E2E0B407F0065BA02 /* SettingsResetPINView.swift in Sources */,
 				24C8875E2F3DCDC100E14910 /* AudioServicesWrapper.swift in Sources */,
 				246C42A62F250E96009BC881 /* CalloutTextView.swift in Sources */,
+				C3CE191E308CBF9C008CDBDA /* SetSixthEmojiView.swift in Sources */,
 				24572C762F1E30C0009C72F0 /* BentoNoSendModalView.swift in Sources */,
 				C312D3962D7DC27700BB97A4 /* LAContext+Extensions.swift in Sources */,
 				24006C2A2F0FCCA500F29F0A /* BentoSendCompletedView.swift in Sources */,
@@ -3167,7 +3155,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602323;
+				CURRENT_PROJECT_VERSION = 2602332;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_POSTPROCESSING = NO;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
@@ -3189,7 +3177,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/bw-gdlib/<robovm-output-dir>";
-				MARKETING_VERSION = 3.10.4;
+				MARKETING_VERSION = 3.11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
 					"$(inherited)",
@@ -3369,7 +3357,7 @@
 				CODE_SIGN_ENTITLEMENTS = brainwallet/brainwallet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2602323;
+				CURRENT_PROJECT_VERSION = 2602332;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = U8WDVUDC2P;
 				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
@@ -3390,7 +3378,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/bw-gdlib/<robovm-output-dir>";
-				MARKETING_VERSION = 3.10.4;
+				MARKETING_VERSION = 3.11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
@@ -3477,15 +3465,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 12.15.0;
-			};
-		};
-		249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.16.1;
+				version = 13.1.1;
 			};
 		};
 		C35C1228293D48330009022D /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
@@ -3536,11 +3516,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2460284D2E5F178400CDEB7A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfig;
-		};
-		249C45DF2D9415D900E9C3B0 /* AppsFlyerLib */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 249C45DE2D9415D900E9C3B0 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
-			productName = AppsFlyerLib;
 		};
 		C35C1229293D48340009022D /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;

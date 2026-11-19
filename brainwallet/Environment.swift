@@ -118,6 +118,19 @@ struct E {
 		#endif
 	}()
 
+	/// True for any build that isn't a real App Store install:
+	/// Xcode debug builds, simulators (Intel or Apple Silicon), and TestFlight/sandbox installs.
+	/// Used to keep internal testing (mostly UK devices) out of Google Analytics.
+	static let isInternalTestBuild: Bool = {
+		#if DEBUG || targetEnvironment(simulator)
+			return true
+		#else
+			// TestFlight and ad-hoc/dev-signed installs carry a sandbox receipt;
+			// App Store installs carry "receipt".
+			return Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt"
+		#endif
+	}()
+
 	static let isScreenshots: Bool = {
 		#if Screenshots
 			return true

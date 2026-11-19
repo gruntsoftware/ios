@@ -120,13 +120,34 @@ struct NewMainView: View {
         return components.url ?? url
     }
 
+    // No emojis: pick the first 3. With 3 set, emojis 4 - 6 wait until 2 games are played
+    private func saveEmojisOrLaunchGame() {
+        let emojiCount = newMainViewModel.walletManager?.emojiStringCount() ?? 0
+        let needsFirstEmojis = !gameHubViewModel.userEmojisAreSet
+        let needsNextEmojis = emojiCount == 3 && UserDefaults.gameScores.count >= 2
+
+        if needsFirstEmojis || needsNextEmojis {
+            newMainViewModel.shouldShowGameSDK.toggle()
+        } else {
+            launchGame()
+        }
+    }
+
+    private func launchGame() {
+        let address = newReceiveViewModel.newReceiveAddress
+        DispatchQueue.userInitQueue.async {
+            appDelegate.applicationController.shouldShowGameSDK(address: address)
+        }
+    }
+
     var body: some View {
         GeometryReader { geometry in
 
             let height = geometry.size.height
             let midBentoHeight = geometry.size.height
             let sheetContentHeight = height * 0.7
-            let mainTabIconSize: CGFloat = 26.0
+            let mainTabIconSize: CGFloat = 18.0
+            let mainTabIconWeight: Font.Weight = .regular
 
             let content = BrainwalletColor.content
             NavigationStack {
@@ -199,11 +220,9 @@ struct NewMainView: View {
                                 }
                                 .frame(maxHeight: height * 0.5, alignment: .top)
                                 GameHubCarouselBentoView(viewModel: newMainViewModel,
-                                                         newReceiveViewModel: newReceiveViewModel,
                                                          userPrefersDarkTheme: $userPrefersDarkTheme,
                                                          shouldShowGameSDK: $newMainViewModel.shouldShowGameSDK,
-                                                         userEmojisAreSet: $gameHubViewModel.userEmojisAreSet
-                                )
+                                                         onGameHubTap: saveEmojisOrLaunchGame)
                                 .frame(idealHeight: balanceBentoHeight * 0.9,
                                        maxHeight: balanceBentoHeight,
                                        alignment: .top)
@@ -231,16 +250,14 @@ struct NewMainView: View {
                                
                                     Image(systemName: userPrefersDarkTheme ?
                                           "sun.max" : "moon.stars")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: mainTabIconSize,
-                                           height: mainTabIconSize)
+                                    .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                    .frame(width: mainTabIconSize, height: mainTabIconSize)
                                     .foregroundColor(content)
                                 
                             }
                             .sensoryFeedback(.success, trigger: userPrefersDarkTheme)
                             .accessibilityIdentifier("themePreferenceButton")
-                            .padding(.horizontal, 6)
+                            .padding(.horizontal, 8)
                             
                             Button(action: {
                                 
@@ -250,16 +267,14 @@ struct NewMainView: View {
                                     }
                             }) {
                                 Image(systemName: shouldAnimateLock ? "lock" : "lock.open")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: mainTabIconSize,
-                                               height: mainTabIconSize)
+                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor(content)
                                 
                             }
                             .sensoryFeedback(.success, trigger: userPrefersDarkTheme)
                             .accessibilityIdentifier("themePreferenceButton")
-                            .padding(.horizontal, 6)
+                            .padding(.horizontal, 8)
                         }
 
                     }
@@ -272,13 +287,12 @@ struct NewMainView: View {
                         }) {
 
                                 Image(systemName: "line.3.horizontal")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: iconSize, height: iconSize,
-                                           alignment: .center)
+                                    .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                    .frame(width: mainTabIconSize, height: mainTabIconSize)
                                     .foregroundColor(content)
                         }
                         .accessibilityIdentifier("settingsButton")
+                        .padding(6)
                     }
 
                     ToolbarItem(placement: .bottomBar) {
@@ -289,12 +303,10 @@ struct NewMainView: View {
                             }, label: {
                                 VStack(spacing: 0) {
                                     Image(systemName: "paperplane")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: mainTabIconSize,
-                                               height: mainTabIconSize)
+                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor( walletIsSyncing ? content.opacity(0.3) : content)
-                                        .padding(2)
+                                        .padding(5)
 
                                     Text("Send")
                                         .modifier(BWIPSSemiBold(size: 19.0))
@@ -311,12 +323,10 @@ struct NewMainView: View {
                             }, label: {
                                 VStack(spacing: 0) {
                                     Image(systemName: "arrow.left.arrow.right")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: mainTabIconSize,
-                                               height: mainTabIconSize)
+                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor(content)
-                                        .padding(2)
+                                        .padding(5)
 
                                     Text("Buy/Receive")
                                         .modifier(BWIPSSemiBold(size: 19.0))
@@ -327,25 +337,13 @@ struct NewMainView: View {
 
                             Spacer()
 
-                            Button(action: {
-                                
-                                if (gameHubViewModel.userEmojisAreSet) {
-                                    let address = newReceiveViewModel.newReceiveAddress
-                                    DispatchQueue.userInitQueue.async {
-                                        appDelegate.applicationController.shouldShowGameSDK(address: address)
-                                    }
-                                } else {
-                                    newMainViewModel.shouldShowGameSDK.toggle()
-                                }
-                            }, label: {
+                            Button(action: saveEmojisOrLaunchGame, label: {
                                 VStack(spacing: 0) {
                                     Image(systemName: "gamecontroller")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: mainTabIconSize,
-                                               height: mainTabIconSize)
+                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor(content)
-                                        .padding(2)
+                                        .padding(5)
 
                                     Text("Game Hub")
                                         .modifier(BWIPSSemiBold(size: 19.0))
@@ -363,12 +361,10 @@ struct NewMainView: View {
                             }, label: {
                                 VStack(alignment: .center, spacing: 0) {
                                     Image(systemName: shouldShowTransactionDetail ? "house" : "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: mainTabIconSize,
-                                               height: mainTabIconSize)
+                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
+                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
                                         .foregroundColor(content)
-                                        .padding(2)
+                                        .padding(5)
                                         .animation(.easeInOut, value: shouldShowTransactionDetail)
 
                                     Text(shouldShowTransactionDetail ? " Home " :"History")
@@ -448,42 +444,30 @@ struct NewMainView: View {
                             }
                     }
                  }
-                .sheet(isPresented: $userDidTapSend) {
+                .translucentSheet(isPresented: $userDidTapSend,
+                                  height: .height(walletIsSyncing ? height * 0.4 : sheetContentHeight),
+                                  background: .ultraThickMaterial) {
                     if !walletIsSyncing {
                         BentoSendModalView(viewModel: newMainViewModel,
                                            userPrefersDarkTheme: $userPrefersDarkTheme,
                                            userWalletIsEmpty: $userBalanceIsEmpty,
                                            shouldShowView: $userDidTapSend)
-                        .cornerRadius(bentoCornerRadius)
-                        .presentationDragIndicator(.hidden)
-                        .presentationDetents([.height(sheetContentHeight)])
-                        .presentationBackground(.ultraThickMaterial)
-                        .ignoresSafeArea(edges: .bottom)
                     } else {
                         BentoNoSendModalView(userPrefersDarkTheme: $userPrefersDarkTheme,
                                              shouldShowView: $userDidTapSend)
-                        .cornerRadius(bentoCornerRadius)
-                        .presentationDragIndicator(.hidden)
-                        .presentationDetents([.height(height * 0.4)])
-                        .presentationBackground(.ultraThickMaterial)
-                        .ignoresSafeArea(edges: .bottom)
                     }
                 }
-                .sheet(isPresented: $userDidTapBuyReceive) {
+                .translucentSheet(isPresented: $userDidTapBuyReceive,
+                                  background: .ultraThinMaterial,
+                                  showsDragIndicator: true) {
                     BuyReceiveView(viewModel: newReceiveViewModel,
                                    isModalMode: true)
-                        .cornerRadius(bentoCornerRadius)
-                        .presentationDetents([.large])
-                        .presentationDragIndicator(.visible)
-                        .presentationBackground(.ultraThinMaterial)
                 }
-                .sheet(isPresented: $newMainViewModel.shouldShowBuyReceive) {
+                .translucentSheet(isPresented: $newMainViewModel.shouldShowBuyReceive,
+                                  background: .ultraThinMaterial,
+                                  showsDragIndicator: true) {
                     BuyReceiveView(viewModel: newReceiveViewModel,
                                    isModalMode: true)
-                        .cornerRadius(bentoCornerRadius)
-                        .presentationDetents([.large])
-                        .presentationDragIndicator(.visible)
-                        .presentationBackground(.ultraThinMaterial)
                 }
                 .sheet(isPresented: $newMainViewModel.shouldShowSocials) {
                     WebView(url: socialsURL, scrollToSignup: .constant(false))
@@ -499,20 +483,27 @@ struct NewMainView: View {
                         .padding(.top, 12.0)
                         .padding(8.0)
                 }
-                .sheet(isPresented: $newMainViewModel.shouldShowGameSDK) {
+                .translucentSheet(isPresented: $newMainViewModel.shouldShowGameSDK,
+                                  background: .ultraThinMaterial) {
                     if (!gameHubViewModel.userEmojisAreSet) {
                         EmojiSetPagerView(gameHubViewModel: gameHubViewModel,
                                           viewModel: newMainViewModel)
-                        .presentationBackground(.ultraThinMaterial)
-                        .presentationDragIndicator(.hidden)
+                    } else {
+                        let emojiCount = newMainViewModel.walletManager?.emojiStringCount() ?? 0
+
+                        // The sheet only opens for 3 emojis, every other count launches the game on tap
+                        switch emojiCount {
+                            case 3:
+                                SetSixthEmojiView(gameHubViewModel: gameHubViewModel,
+                                                  viewModel: newMainViewModel)
+                            default:
+                                EmptyView()
+                        }
                     }
                 }
                 .onChange(of: gameHubViewModel.didJustCompleteEmojiSetup) { _, newValue in
                     guard newValue else { return }
-                    let address = newReceiveViewModel.newReceiveAddress
-                    DispatchQueue.userInitQueue.async {
-                        appDelegate.applicationController.shouldShowGameSDK(address: address)
-                    }
+                    launchGame()
                     gameHubViewModel.didJustCompleteEmojiSetup = false
                 }
                 .alert(isPresented: $shouldShowPromptAlert) {

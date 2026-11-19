@@ -2,6 +2,8 @@ import FirebaseAnalytics
 import StoreKit
 import SwiftUI
 import UIKit
+import BrainwalletiOSPrivateGeneralPurpose
+
 #if !targetEnvironment(simulator)
 import BWIOSGdx
 #endif
@@ -41,6 +43,11 @@ class ApplicationController: Subscriber {
         #else
             debugPrint(":::: game disabled on simulator (device-only natives)")
         #endif
+
+        // AF: configure() is @MainActor; ApplicationController is created on the main thread by AppDelegate.
+        MainActor.assumeIsolated {
+            AFLauncher.shared.configure()
+        }
 
         transitionDelegate = ModalTransitionDelegate(type: .transactionDetail,
                                                      store: store)
@@ -278,7 +285,7 @@ class ApplicationController: Subscriber {
     // Extracted so tests can check the games-played gate without driving the window transition above
     @discardableResult
     func requestReviewIfEnoughGamesPlayed() -> Bool {
-        guard UserDefaults.gameScores.count >= 2 else { return false }
+        guard UserDefaults.gameScores.count >= 3 else { return false }
         requestReviewAfterGameFinished()
         return true
     }
@@ -435,6 +442,7 @@ class ApplicationController: Subscriber {
 			self?.modalPresenter?.walletManager = self?.walletManager
 			self?.startDataFetchers()
 			self?.mainViewController?.didUnlock()
+            AFLauncher.shared.logEvent(id: "E20261115A")
 		})
 	}
 

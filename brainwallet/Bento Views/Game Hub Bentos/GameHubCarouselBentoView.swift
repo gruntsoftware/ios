@@ -13,17 +13,13 @@ struct GameHubCarouselBentoView: View {
     @ObservedObject
     var viewModel: NewMainViewModel
 
-    @ObservedObject
-    var newReceiveViewModel: NewReceiveViewModel
-
     @Binding
     var userPrefersDarkTheme: Bool
 
     @Binding
     var shouldShowGameSDK: Bool
-    
-    @Binding
-    var userEmojisAreSet: Bool
+
+    let onGameHubTap: () -> Void
 
     @State
     private var selectedTab: Int = 0
@@ -36,19 +32,15 @@ struct GameHubCarouselBentoView: View {
 
    @State
     private var carouselTimer: Timer?
-    
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     init(viewModel: NewMainViewModel,
-         newReceiveViewModel: NewReceiveViewModel,
          userPrefersDarkTheme: Binding<Bool>,
          shouldShowGameSDK: Binding<Bool>,
-         userEmojisAreSet: Binding<Bool>) {
+         onGameHubTap: @escaping () -> Void) {
         _userPrefersDarkTheme = userPrefersDarkTheme
         _shouldShowGameSDK = shouldShowGameSDK
-        _userEmojisAreSet = userEmojisAreSet
         self.viewModel = viewModel
-        self.newReceiveViewModel = newReceiveViewModel
+        self.onGameHubTap = onGameHubTap
     }
     var body: some View {
         GeometryReader { geometry in
@@ -61,17 +53,7 @@ struct GameHubCarouselBentoView: View {
                     .contentShape(Rectangle())
                     .simultaneousGesture(
                         LongPressGesture(minimumDuration:0.05)
-                            .onEnded { _ in
-                               if (userEmojisAreSet) {
-                                   let address = newReceiveViewModel.newReceiveAddress
-                                   DispatchQueue.userInitQueue.async {
-                                       appDelegate.applicationController
-                                           .shouldShowGameSDK(address: address)
-                                   }
-                               } else {
-                                   shouldShowGameSDK.toggle()
-                               }
-                            }
+                            .onEnded { _ in onGameHubTap() }
                     )
                     MoonPayView(viewModel: viewModel,
                                 selectedStep: $selectedTab)

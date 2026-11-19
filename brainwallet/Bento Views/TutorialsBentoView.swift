@@ -99,27 +99,15 @@ struct TutorialsBentoView: View {
             .onAppear {
                 mainGradientStyle = userPrefersDarkTheme ? .darkStyle : .lightStyle
             }
-            .sheet(isPresented: $shouldShowSendPage) {
+            .translucentSheet(isPresented: $shouldShowSendPage, background: .opacity(0.2)) {
                 TutorialSendPageView(userPrefersDarkTheme: $userPrefersDarkTheme)
                     .environmentObject(newMainViewModel)
-                .cornerRadius(bentoCornerRadius)
-                .presentationDragIndicator(.hidden)
-                .presentationBackground(.opacity(0.1))
-                .ignoresSafeArea(edges: .bottom)
             }
-            .sheet(isPresented: $shouldShowReceivePage) {
+            .translucentSheet(isPresented: $shouldShowReceivePage, background: .opacity(0.2)) {
                 TutorialReceivePageView(userPrefersDarkTheme: $userPrefersDarkTheme)
-                .cornerRadius(bentoCornerRadius)
-                .presentationDragIndicator(.hidden)
-                .presentationBackground(.opacity(0.1))
-                .ignoresSafeArea(edges: .bottom)
             }
-            .sheet(isPresented: $shouldShowWalkthroughPage) {
+            .translucentSheet(isPresented: $shouldShowWalkthroughPage, background: .opacity(0.2)) {
                 TutorialWalkthroughPageView(userPrefersDarkTheme: $userPrefersDarkTheme)
-                .cornerRadius(bentoCornerRadius)
-                .presentationDragIndicator(.hidden)
-                .presentationBackground(.opacity(0.1))
-                .ignoresSafeArea(edges: .bottom)
             }
 
         }

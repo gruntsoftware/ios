@@ -1,4 +1,5 @@
 import SwiftUI
+import FirebaseAnalytics
 
 struct InputWordsView: View {
 
@@ -100,6 +101,10 @@ struct InputWordsView: View {
                         if phraseIsVerified {
                             playCoin()
                             viewModel.didRestoreOldBrainwallet()
+                            Analytics
+                                .logEvent("user_confirmed_wallet",
+                                          parameters: [
+                                "completion" : "restore"])
                         }
 
                     }) {
@@ -108,7 +113,7 @@ struct InputWordsView: View {
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                 .foregroundColor(BrainwalletColor.surface)
 
-                            Text("Restore & Sync")
+                            Text("Done")
                                 .frame(width: width * 0.9, height: largeButtonHeight, alignment: .center)
                                  .modifier(BWIPSBold(size: 24.0))
                                 .foregroundColor(phraseIsVerified ? BrainwalletColor.content : BrainwalletColor.content.opacity(0.5))

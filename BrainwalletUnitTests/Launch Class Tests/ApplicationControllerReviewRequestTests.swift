@@ -101,21 +101,27 @@ final class ApplicationControllerReviewRequestTests: XCTestCase {
         XCTAssertFalse(controller.requestReviewIfEnoughGamesPlayed())
     }
 
-    func testRequestsReviewAfterTwoGames() {
+    func testDoesNotRequestReviewAfterTwoGames() {
         appendGameScores(2)
+
+        XCTAssertFalse(controller.requestReviewIfEnoughGamesPlayed())
+    }
+
+    func testRequestsReviewAfterThreeGames() {
+        appendGameScores(3)
 
         XCTAssertTrue(controller.requestReviewIfEnoughGamesPlayed())
     }
 
-    func testRequestsReviewAfterMoreThanTwoGames() {
+    func testRequestsReviewAfterMoreThanThreeGames() {
         appendGameScores(5)
 
         XCTAssertTrue(controller.requestReviewIfEnoughGamesPlayed())
     }
 
-    func testRequestReviewAfterTwoGamesInvokesReviewRequesterAfterDelay() {
-        let expectation = expectation(description: "review requested after second game")
-        appendGameScores(2)
+    func testRequestReviewAfterThreeGamesInvokesReviewRequesterAfterDelay() {
+        let expectation = expectation(description: "review requested after third game")
+        appendGameScores(3)
 
         controller.requestReviewIfEnoughGamesPlayed()
 
