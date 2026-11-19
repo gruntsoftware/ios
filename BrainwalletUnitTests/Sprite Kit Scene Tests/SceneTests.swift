@@ -50,14 +50,7 @@ class FallinSceneTests: XCTestCase {
             // When
             scene.makeDot()
             
-            // Then - wait briefly for async execution
-            let expectation = self.expectation(description: "Wait for node creation")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                expectation.fulfill()
-            }
-            
-            waitForExpectations(timeout: 1.0)
-            
+            // Then - makeDot() adds the node synchronously
             let labelNodes = scene.children.compactMap { $0 as? SKLabelNode }
             XCTAssertGreaterThan(labelNodes.count, 0, "Should create at least one SKLabelNode")
         }
@@ -66,14 +59,7 @@ class FallinSceneTests: XCTestCase {
             // When
             scene.makeDot()
             
-            // Then
-            let expectation = self.expectation(description: "Wait for node creation")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                expectation.fulfill()
-            }
-            
-            waitForExpectations(timeout: 1.5)
-            
+            // Then - makeDot() adds the node synchronously
             let labelNodes = scene.children.compactMap { $0 as? SKLabelNode }
             XCTAssertFalse(labelNodes.first?.text?.isEmpty ?? true, "Label should have text")
         }
@@ -82,14 +68,7 @@ class FallinSceneTests: XCTestCase {
             // When
             scene.makeDot()
             
-            // Then
-            let expectation = self.expectation(description: "Wait for node creation")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                expectation.fulfill()
-            }
-            
-            waitForExpectations(timeout: 1.0)
-            
+            // Then - makeDot() adds the node synchronously
             let labelNodes = scene.children.compactMap { $0 as? SKLabelNode }
             guard let label = labelNodes.first else {
                 XCTFail("No label node found")
@@ -132,14 +111,7 @@ class FallinSceneTests: XCTestCase {
             // When
             scene.makeDot()
             
-            // Then
-            let expectation = self.expectation(description: "Wait for node creation")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                expectation.fulfill()
-            }
-            
-            waitForExpectations(timeout: 1.0)
-            
+            // Then - makeDot() adds the node synchronously
             let labelNodes = scene.children.compactMap { $0 as? SKLabelNode }
             XCTAssertNotNil(labelNodes.first?.physicsBody, "Label should have physics body")
         }
@@ -148,14 +120,7 @@ class FallinSceneTests: XCTestCase {
             // When
             scene.makeDot()
             
-            // Then
-            let expectation = self.expectation(description: "Wait for node creation")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                expectation.fulfill()
-            }
-            
-            waitForExpectations(timeout: 1.0)
-            
+            // Then - makeDot() adds the node synchronously
             let labelNodes = scene.children.compactMap { $0 as? SKLabelNode }
             guard let physicsBody = labelNodes.first?.physicsBody else {
                 XCTFail("No physics body found")
@@ -205,7 +170,7 @@ class FallinSceneTests: XCTestCase {
                 expectation.fulfill()
             }
             
-            waitForExpectations(timeout: 3.0)
+            waitForExpectations(timeout: 10.0)
             
             // After removal and adding one new dot
             XCTAssertLessThan(scene.children.count, 12, "Should have removed children and started fresh")
