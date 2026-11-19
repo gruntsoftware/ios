@@ -1,0 +1,15 @@
+Preferred fiat currency
+
+1. Settings matches the rest of the app
+   a. On the main screen, pick a new currency in the LTC price bento (e.g. EUR).
+   b. Open Settings. Fiat Currency should show the same currency, and its picker should be on it.
+   c. Close and relaunch the app. Settings should still show your currency, not USD.
+
+2. Changing it in Settings
+   a. In Settings, expand Fiat Currency and pick another currency (e.g. GBP).
+   b. Go back to the main screen. The balance and the LTC price bento should both use GBP.
+
+3. Price pulse while the new currency loads
+   a. Pick a new currency in the LTC price bento.
+   b. The price should fade in and out quickly until the price in the new currency appears (up to about 20 seconds), then stop and stay fully visible.
+   c. Changing the currency in Settings should also make the bento price pulse until the new price shows.

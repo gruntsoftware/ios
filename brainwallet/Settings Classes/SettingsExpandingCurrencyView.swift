@@ -73,6 +73,14 @@ struct SettingsExpandingCurrencyView: View {
                 .opacity(shouldExpandCurrency ? 1.0 : 0.0)
         }
         .frame(maxWidth: .infinity, alignment: .topLeading)
-        .fixedSize(horizontal: false, vertical: true)
+        .fixedSize(horizontal: false, vertical: true) 
+        .onAppear {
+            pickedCurrency = viewModel.currentGlobalFiat
+        }
+        .onChange(of: viewModel.currentGlobalFiat) { _, newFiat in
+            if pickedCurrency != newFiat {
+                pickedCurrency = newFiat
+            }
+        }
     }
 }

@@ -7,6 +7,53 @@
 
 set -e
 
+# --- TestFlight "What to Test" -----------------------------------------------------------
+# Xcode Cloud uses TestFlight/WhatToTest.<locale>.txt (next to ci_scripts) as the build's
+# "What to Test" when the TestFlight post-actions run. Each PR to develop updates the file
+# with QA steps for its change. If the commit being built didn't touch it, the notes are
+# from an older build, so replace them with this commit's message. Then add the build
+# number and commit so QA can tell builds apart.
+write_what_to_test() {
+  local notes_dir="$CI_PRIMARY_REPOSITORY_PATH/TestFlight"
+  local notes="$notes_dir/WhatToTest.en-US.txt"
+  local repo="$CI_PRIMARY_REPOSITORY_PATH"
+  mkdir -p "$notes_dir"
+
+  # Xcode Cloud clones shallowly; we need the parent commit to see what changed.
+  git -C "$repo" rev-parse -q --verify HEAD^ >/dev/null 2>&1 \
+    || git -C "$repo" fetch -q --deepen 1 origin 2>/dev/null || true
+
+  if ! git -C "$repo" diff --name-only HEAD^ HEAD 2>/dev/null | grep -qx "TestFlight/WhatToTest.en-US.txt"; then
+    echo "ℹ️ WhatToTest.en-US.txt not updated in this commit -- using the commit message"
+    {
+      echo "No QA notes were added for this build. Changes:"
+      echo
+      # Drop co-author trailers and the blank lines they leave at the end.
+      git -C "$repo" log -1 --pretty=format:"%B" HEAD \
+        | sed '/^Co-[Aa]uthored-[Bb]y:/d' \
+        | awk '{ lines[NR] = $0 } NF { last = NR } END { for (i = 1; i <= last; i++) print lines[i] }'
+    } > "$notes"
+  fi
+
+  {
+    echo
+    echo
+    echo "Build ${CI_BUILD_NUMBER:-?} · ${CI_BRANCH:-?} @ $(echo "${CI_COMMIT:-$(git -C "$repo" rev-parse HEAD)}" | cut -c1-7)"
+  } >> "$notes"
+
+  # TestFlight allows up to 4,000 characters.
+  local trimmed
+  trimmed="$(head -c 3990 "$notes")"
+  printf '%s\n' "$trimmed" > "$notes"
+
+  echo "--- TestFlight What to Test ---"
+  cat "$notes"
+}
+
+if [ "${CI_XCODEBUILD_ACTION:-}" = "archive" ]; then
+  write_what_to_test || echo "⚠️ Could not write What to Test notes"
+fi
+
 echo "--- Collecting test diagnostics for download ---"
 
 # Xcode Cloud exposes this automatically — it's the resultbundle.xcresult path

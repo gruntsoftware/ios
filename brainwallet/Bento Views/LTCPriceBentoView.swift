@@ -28,6 +28,9 @@ struct LTCPriceBentoView: View {
     @State
     private var mainGradientStyle: MainGradientStyle = .lightStyle
 
+    @State
+    private var isUpdatingFiat: Bool = false
+
     private let buttonSize: CGFloat = 20.0
 
     private let buttonPlatformFactor: CGFloat = 2.1
@@ -58,6 +61,7 @@ struct LTCPriceBentoView: View {
                         }
                         .pickerStyle(.wheel)
                         .onChange(of: newMainViewModel.currentGlobalFiat) { _,_ in
+                                isUpdatingFiat = true
                                 newMainViewModel
                                 .userDidSetCurrencyPreference(currency: newMainViewModel.currentGlobalFiat)
                         }
@@ -85,6 +89,7 @@ struct LTCPriceBentoView: View {
                         .contentTransition(.opacity)
                         .layoutPriority(1.0)
                         .animation(.easeInOut, value: newMainViewModel.currentFiatValue)
+                        .modifier(BWPulsingText(isPulsing: isUpdatingFiat))
                         .padding(.bottom, 2.0)
 
                     HStack {
@@ -109,6 +114,10 @@ struct LTCPriceBentoView: View {
                 }
             }
             .onChange(of: newMainViewModel.currentFiatValue) { _,_ in
+                if isUpdatingFiat,
+                   newMainViewModel.exchangeRate?.code == newMainViewModel.currentGlobalFiat.code {
+                    isUpdatingFiat = false
+                }
                 if let dateFormatter = newMainViewModel.dateFormatter {
                     currentDateLabel = "as of " + String(describing: dateFormatter.string(from: Date()))
                 }

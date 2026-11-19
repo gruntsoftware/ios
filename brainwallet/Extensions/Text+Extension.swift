@@ -97,3 +97,36 @@ struct BWLilitaOne: ViewModifier {
             .truncationMode(.middle)
     }
 }
+ 
+struct BWPulsingText: ViewModifier {
+    let isPulsing: Bool
+
+    private let pulseDuration: Double = 0.6
+    private let highOpacity: Double = 0.9
+    private let lowOpacity: Double = 0.09
+
+    @State
+    private var isDimmed: Bool = false
+
+    func body(content: Content) -> some View {
+        content
+            .opacity(isPulsing ? (isDimmed ? lowOpacity : highOpacity) : 1.0)
+            .onAppear { updatePulse(isPulsing) }
+            .onChange(of: isPulsing) { _, newValue in
+                updatePulse(newValue)
+            }
+    }
+
+    private func updatePulse(_ shouldPulse: Bool) {
+        if shouldPulse {
+            isDimmed = false
+            withAnimation(.easeInOut(duration: pulseDuration).repeatForever(autoreverses: true)) {
+                isDimmed = true
+            }
+        } else {
+            withAnimation(.easeInOut(duration: pulseDuration)) {
+                isDimmed = false
+            }
+        }
+    }
+}
