@@ -3177,7 +3177,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/bw-gdlib/<robovm-output-dir>";
-				MARKETING_VERSION = 3.11.0;
+				MARKETING_VERSION = 3.11.1;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
 					"$(inherited)",
@@ -3378,7 +3378,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS)",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/bw-gdlib/<robovm-output-dir>";
-				MARKETING_VERSION = 3.11.0;
+				MARKETING_VERSION = 3.11.1;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
