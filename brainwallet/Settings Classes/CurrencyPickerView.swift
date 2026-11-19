@@ -52,7 +52,8 @@ struct CurrencyPickerView: View {
                             .frame(height: elementsHeight)
                             .pickerStyle(.wheel)
                             .frame(width: width * 0.75, alignment: .trailing)
-                            .onChange(of: pickedCurrency) { _,_ in
+                            .onChange(of: pickedCurrency) { _,_ in 
+                                guard pickedCurrency != viewModel.currentGlobalFiat else { return }
                                selectedFiat = false
                                 delay(0.4) {
                                     selectedFiat = true
