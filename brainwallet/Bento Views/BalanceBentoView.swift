@@ -133,8 +133,6 @@ struct BalanceBentoView: View {
                     }
                     .layoutPriority(1)
                     .accessibilityIdentifier("balanceFiatToggleButton")
-
-                    Spacer()
                 }
 
             }

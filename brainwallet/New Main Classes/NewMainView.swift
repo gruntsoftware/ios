@@ -76,6 +76,8 @@ struct NewMainView: View {
 
     private let bentoPadding = 2.0
 
+    private let bentoStackSpacing = 7.0
+
     private let buttonPlatformFactor: CGFloat = 2.1
 
     private let noSendTitle = String(localized: "Send is Disabled")
@@ -146,8 +148,10 @@ struct NewMainView: View {
             let height = geometry.size.height
             let midBentoHeight = geometry.size.height
             let sheetContentHeight = height * 0.7
-            let mainTabIconSize: CGFloat = 18.0
-            let mainTabIconWeight: Font.Weight = .regular
+            let navTabIconSize: CGFloat = 18.0
+            let navTabIconWeight: Font.Weight = .regular
+            let bottomTabIconSize: CGFloat = 17.0
+            let bottomTabIconWeight: Font.Weight = .light
 
             let content = BrainwalletColor.content
             NavigationStack {
@@ -165,11 +169,10 @@ struct NewMainView: View {
                             .offset(x: 0, y: -20)
                     }
 
-                    VStack {
+                    VStack(spacing: bentoStackSpacing) {
                         BalanceBentoView(viewModel: newMainViewModel,
                                          userPrefersDarkTheme: $userPrefersDarkTheme)
                         .frame(height:  balanceBentoHeight, alignment: .top)
-                        .padding(bentoPadding)
                         .padding(.top, 10)
                         .accessibilityIdentifier("balanceBentoView")
 
@@ -177,7 +180,6 @@ struct NewMainView: View {
                             TransactionDetailBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme:  $userPrefersDarkTheme)
                             .frame(maxHeight: 320, alignment: .top)
-                            .padding(bentoPadding)
                             .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 1.0 : 0.0, anchor: .top)
                             .transition(.scale)
                             .accessibilityIdentifier("transactionDetailBentoView")
@@ -187,36 +189,31 @@ struct NewMainView: View {
                                                     detailIsShowing: $shouldShowTransactionDetail,
                                                     userPrefersDarkTheme: $userPrefersDarkTheme)
                         .frame(height: transactionsBentoHeight, alignment: .bottom)
-                        .padding(bentoPadding)
                         .accessibilityIdentifier("transactionHistoryBentoView")
 
                         if !shouldShowTransactionDetail {
                             Group {
-                                HStack {
+                                HStack(spacing: bentoStackSpacing) {
                                     TutorialsBentoView(viewModel: newMainViewModel,
                                                        userPrefersDarkTheme: $userPrefersDarkTheme)
                                     .frame(maxHeight: midBentoHeight * 0.9, alignment: .top)
-                                    .padding(bentoPadding)
                                     .accessibilityIdentifier("tutorialsBentoView")
 
                                     GeometryReader { geo in
 
-                                        let heightPadded = geo.size.height
-                                        VStack(spacing: bentoPadding) {
+                                        let heightPadded = geo.size.height - bentoStackSpacing
+                                        VStack(spacing: bentoStackSpacing) {
                                             LTCPriceBentoView(viewModel: newMainViewModel,
                                                               userPrefersDarkTheme: $userPrefersDarkTheme)
                                             .frame(maxHeight: heightPadded * 0.7)
-                                            .padding(bentoPadding)
                                             .accessibilityIdentifier("ltcPriceBentoView")
                                             ShopBentoView(shopBentoViewModel: shopViewModel,
                                                           newMViewModel: newMainViewModel,
                                                           userPrefersDarkTheme: $userPrefersDarkTheme)
                                             .frame(maxHeight: heightPadded * 0.3)
-                                            .padding(bentoPadding)
                                             .accessibilityIdentifier("shopBentoView")
                                         }
                                     }
-                                    .padding(bentoPadding)
                                 }
                                 .frame(maxHeight: height * 0.5, alignment: .top)
                                 GameHubCarouselBentoView(viewModel: newMainViewModel,
@@ -226,7 +223,6 @@ struct NewMainView: View {
                                 .frame(idealHeight: balanceBentoHeight * 0.9,
                                        maxHeight: balanceBentoHeight,
                                        alignment: .top)
-                                .padding(bentoPadding)
                                 .accessibilityIdentifier("gameHubCarouselBentoView")
                             }
                             .scaleEffect(x: 1.0, y: shouldShowTransactionDetail ? 0.0 : 1.0, anchor: .bottom)
@@ -250,8 +246,8 @@ struct NewMainView: View {
                                
                                     Image(systemName: userPrefersDarkTheme ?
                                           "sun.max" : "moon.stars")
-                                    .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
-                                    .frame(width: mainTabIconSize, height: mainTabIconSize)
+                                    .font(.system(size: navTabIconSize, weight: navTabIconWeight))
+                                    .frame(width: navTabIconSize, height: navTabIconSize)
                                     .foregroundColor(content)
                                 
                             }
@@ -267,8 +263,8 @@ struct NewMainView: View {
                                     }
                             }) {
                                 Image(systemName: shouldAnimateLock ? "lock" : "lock.open")
-                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
-                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
+                                        .font(.system(size: navTabIconSize, weight: navTabIconWeight))
+                                        .frame(width: navTabIconSize, height: navTabIconSize)
                                         .foregroundColor(content)
                                 
                             }
@@ -287,8 +283,8 @@ struct NewMainView: View {
                         }) {
 
                                 Image(systemName: "line.3.horizontal")
-                                    .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
-                                    .frame(width: mainTabIconSize, height: mainTabIconSize)
+                                    .font(.system(size: navTabIconSize, weight: navTabIconWeight))
+                                    .frame(width: navTabIconSize, height: navTabIconSize)
                                     .foregroundColor(content)
                         }
                         .accessibilityIdentifier("settingsButton")
@@ -303,13 +299,13 @@ struct NewMainView: View {
                             }, label: {
                                 VStack(spacing: 0) {
                                     Image(systemName: "paperplane")
-                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
-                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
+                                        .font(.system(size: bottomTabIconSize, weight: bottomTabIconWeight))
+                                        .frame(width: bottomTabIconSize, height: bottomTabIconSize)
                                         .foregroundColor( walletIsSyncing ? content.opacity(0.3) : content)
                                         .padding(5)
 
                                     Text("Send")
-                                        .modifier(BWIPSSemiBold(size: 19.0))
+                                        .modifier(BWIPSSemiBold(size: 18.0))
                                         .foregroundStyle(walletIsSyncing ? content.opacity(0.3) : content)
                                 }
                             })
@@ -323,13 +319,13 @@ struct NewMainView: View {
                             }, label: {
                                 VStack(spacing: 0) {
                                     Image(systemName: "arrow.left.arrow.right")
-                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
-                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
+                                        .font(.system(size: bottomTabIconSize, weight: bottomTabIconWeight))
+                                        .frame(width: bottomTabIconSize, height: bottomTabIconSize)
                                         .foregroundColor(content)
                                         .padding(5)
 
                                     Text("Buy/Receive")
-                                        .modifier(BWIPSSemiBold(size: 19.0))
+                                        .modifier(BWIPSSemiBold(size: 18.0))
                                         .foregroundStyle(content)
                                 }
                             })
@@ -340,13 +336,13 @@ struct NewMainView: View {
                             Button(action: saveEmojisOrLaunchGame, label: {
                                 VStack(spacing: 0) {
                                     Image(systemName: "gamecontroller")
-                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
-                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
+                                        .font(.system(size: bottomTabIconSize, weight: bottomTabIconWeight))
+                                        .frame(width: bottomTabIconSize, height: bottomTabIconSize)
                                         .foregroundColor(content)
                                         .padding(5)
 
                                     Text("Game Hub")
-                                        .modifier(BWIPSSemiBold(size: 19.0))
+                                        .modifier(BWIPSSemiBold(size: 18.0))
                                         .foregroundStyle(content)
                                 }
                             })
@@ -361,14 +357,14 @@ struct NewMainView: View {
                             }, label: {
                                 VStack(alignment: .center, spacing: 0) {
                                     Image(systemName: shouldShowTransactionDetail ? "house" : "clock.arrow.trianglehead.2.counterclockwise.rotate.90")
-                                        .font(.system(size: mainTabIconSize, weight: mainTabIconWeight))
-                                        .frame(width: mainTabIconSize, height: mainTabIconSize)
+                                        .font(.system(size: bottomTabIconSize, weight: bottomTabIconWeight))
+                                        .frame(width: bottomTabIconSize, height: bottomTabIconSize)
                                         .foregroundColor(content)
                                         .padding(5)
                                         .animation(.easeInOut, value: shouldShowTransactionDetail)
 
                                     Text(shouldShowTransactionDetail ? " Home " :"History")
-                                        .modifier(BWIPSSemiBold(size: 19.0))
+                                        .modifier(BWIPSSemiBold(size: 18.0))
                                         .foregroundStyle(content)
                                         .contentTransition(.opacity)
                                         .animation(.easeInOut, value: shouldShowTransactionDetail)
