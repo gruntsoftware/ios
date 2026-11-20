@@ -171,8 +171,6 @@ struct BentoSendConfirmView: View {
                                                 delay(0.5) {
                                                     shouldDismiss.toggle()
                                                     nextIndex = 2
-                                                    requestReview()
-                                                    debugPrint("did_request_rating")
                                                 }
                                             }
                                             case .creationError:
