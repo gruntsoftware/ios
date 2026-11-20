@@ -109,24 +109,35 @@ class Sender {
                                          if result == .success {
                                              myself.publish(completion: completion)
                                              myself.updateFBData()
-
                                          } else {
-                                             if result == .failure || result == .fallback {
-
+                                             /// The PIN was already entered and verified, so sign with it
+                                             DispatchQueue.walletQueue.async {
+                                                 myself.signWithPinAndPublish(transaction,
+                                                                              pinCode: pinCode,
+                                                                              completion: completion)
                                              }
                                          }
                                      })
             }
         } else {
-            let group = DispatchGroup()
-            group.enter()
             DispatchQueue.walletQueue.async {
-                if self.walletManager.signTransaction(transaction, pin: pinCode) {
-                    self.publish(completion: completion)
-                    self.updateFBData()
+                self.signWithPinAndPublish(transaction,
+                                           pinCode: pinCode,
+                                           completion: completion)
+            }
+        }
+    }
 
-                }
-                group.leave()
+    /// Signs with the PIN and publishes, or reports the signing failure
+    private func signWithPinAndPublish(_ transaction: BRTxRef,
+                                       pinCode: String,
+                                       completion: @escaping (SendResult) -> Void) {
+        if walletManager.signTransaction(transaction, pin: pinCode) {
+            publish(completion: completion)
+            updateFBData()
+        } else {
+            DispatchQueue.main.async {
+                completion(.creationError("Could not sign transaction."))
             }
         }
     }
@@ -226,10 +237,20 @@ class Sender {
 	/// Publish TX
 	/// - Parameter completion: completion
 	private func publish(completion: @escaping (SendResult) -> Void) {
-		guard let tx = transaction else { assertionFailure("publish failure"); return }
+		guard let tx = transaction else {
+			DispatchQueue.main.async { completion(.creationError("Could not create transaction.")) }
+			return
+		}
 		DispatchQueue.walletQueue.async { [weak self] in
 			guard let myself = self else { assertionFailure("myself didn't exist"); return }
-			myself.walletManager.peerManager?.publishTx(tx, completion: { _, error in
+			guard let peerManager = myself.walletManager.peerManager else {
+				DispatchQueue.main.async {
+					completion(.publishFailure(.posixError(errorCode: ENOTCONN,
+					                                       description: "Not connected to the Litecoin network.")))
+				}
+				return
+			}
+			peerManager.publishTx(tx, completion: { _, error in
 				DispatchQueue.main.async {
 					if let error = error {
 						completion(.publishFailure(error))

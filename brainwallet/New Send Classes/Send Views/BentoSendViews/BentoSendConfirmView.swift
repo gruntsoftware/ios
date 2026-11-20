@@ -40,6 +40,15 @@ struct BentoSendConfirmView: View {
     @State
     private var didFillPIN: Bool = false
 
+    @State
+    private var isSending: Bool = false
+
+    @State
+    private var sendErrorMessage: String = ""
+
+    @State
+    private var shouldShowSendError: Bool = false
+
     @Binding
     var userPrefersDarkTheme: Bool
 
@@ -69,6 +78,16 @@ struct BentoSendConfirmView: View {
         viewModel.pinDigits = []
     }
 
+    /// Stops the sending state and tells the user why the send failed
+    func showSendError(_ message: String) {
+        isSending = false
+        pinDigits = []
+        pinState = [false,false,false,false]
+        viewModel.pinDigits = []
+        sendErrorMessage = message
+        shouldShowSendError = true
+    }
+
         var body: some View {
 
             GeometryReader { geometry in
@@ -80,22 +99,28 @@ struct BentoSendConfirmView: View {
                     BrainwalletColor.surface.edgesIgnoringSafeArea(.all)
 
                     VStack {
-                        Text(String(localized: "Enter PIN"))
+                        Text(isSending ? String(localized: "Sending…") : String(localized: "Enter PIN"))
                             .modifier(BWIPSBold(size: 24.0))
                             .foregroundColor(userPrefersDarkTheme ? .white : .black)
                             .frame(width: width, height: 30.0, alignment: .top)
                             .padding([.top, .bottom], 8.0)
 
-                        PINRowView(pinState: $pinState)
-                            .frame(width: 180, height: 30.0)
-                            .offset(x: startShake ? 7 : 0)
-                            .animation(.spring(response: 0.15, dampingFraction: 0.1, blendDuration: 0.2), value: startShake)
-                            .padding(20.0)
+                        if isSending {
+                            ProgressView()
+                                .controlSize(.large)
+                                .frame(width: width * 0.6, height: height * 0.5, alignment: .center)
+                        } else {
+                            PINRowView(pinState: $pinState)
+                                .frame(width: 180, height: 30.0)
+                                .offset(x: startShake ? 7 : 0)
+                                .animation(.spring(response: 0.15, dampingFraction: 0.1, blendDuration: 0.2), value: startShake)
+                                .padding(20.0)
 
-                        PasscodeGridView(digits: $pinDigits,
-                                         userPrefersDarkMode: $userPrefersDarkTheme)
-                        .frame(width: width * 0.6, height: height * 0.5, alignment: .center)
-                        .padding(15.0)
+                            PasscodeGridView(digits: $pinDigits,
+                                             userPrefersDarkMode: $userPrefersDarkTheme)
+                            .frame(width: width * 0.6, height: height * 0.5, alignment: .center)
+                            .padding(15.0)
+                        }
 
                     }
                     .onChange(of: pinDigits) { _,_ in
@@ -105,7 +130,7 @@ struct BentoSendConfirmView: View {
                         didFillPIN  = pinState.allSatisfy { $0 == true }
                         let pinString = pinDigits.map(String.init).joined()
 
-                        if didFillPIN {
+                        if didFillPIN && !isSending {
                             viewModel.pinDigits = pinDigits
                             debugPrint("didVerifyPin pre: \(viewModel.pinDigits)\n")
 
@@ -119,10 +144,18 @@ struct BentoSendConfirmView: View {
                                     let totalAmount = newMainViewModel.currentPreFeeAmount
                                     let amountInLitoshis = UInt64(totalAmount.rawValue * 100_000_000)
                                     let opsFeeAmount = tieredOpsFee(amount: amountInLitoshis)
-                                    guard let networkFee = walletManager.wallet?.feeForTx(amount: amountInLitoshis + opsFeeAmount) else { return }
+                                    guard let networkFee = walletManager.wallet?.feeForTx(amount: amountInLitoshis + opsFeeAmount) else {
+                                        showSendError(String(localized: "The wallet isn't ready yet. Please try again."))
+                                        return
+                                    }
 
                                     /// Created transaction
-                                    _ = sender.createTransactionWithOpsOutputs(amount: amountInLitoshis, toAddress: newMainViewModel.currentSendAddress)
+                                    guard sender.createTransactionWithOpsOutputs(amount: amountInLitoshis, toAddress: newMainViewModel.currentSendAddress) else {
+                                        showSendError(String(localized: "Could not create the transaction. Check the amount and your balance."))
+                                        return
+                                    }
+
+                                    isSending = true
 
                                     /// Created transaction
                                     sender.send(biometricsMessage: biometricsMessage,
@@ -138,8 +171,6 @@ struct BentoSendConfirmView: View {
                                                 delay(0.5) {
                                                     shouldDismiss.toggle()
                                                     nextIndex = 2
-                                                    requestReview()
-                                                    debugPrint("did_request_rating")
                                                 }
                                             }
                                             case .creationError:
@@ -147,17 +178,23 @@ struct BentoSendConfirmView: View {
                                                 .logEvent("error_message",
                                                           parameters: [
                                                             "transaction_failure" : "transaction_creation_failed"])
+                                            showSendError(String(localized: "Could not sign the transaction. Your Litecoin has not been sent."))
 
-                                            case .publishFailure:
+                                            case .publishFailure(let error):
                                             Analytics
                                                 .logEvent("error_message",
                                                                parameters: [
                                                                 "transaction_failure" : "transaction_publish_failed"])
+                                            var reason = ""
+                                            if case .posixError(_, let description) = error {
+                                                reason = description
+                                            }
+                                            showSendError(String(localized: "The Litecoin network did not accept this transaction. Your Litecoin has not been sent.") + (reason.isEmpty ? "" : "\n\n\(reason)"))
                                         }
                                     })
 
                                 } else {
-                                    clearPINSettings()
+                                    showSendError(String(localized: "The wallet isn't ready yet. Please try again."))
                                 }
 
                             } else {
@@ -177,6 +214,9 @@ struct BentoSendConfirmView: View {
                             }
                         }
                     }
+                }
+                .alert(sendErrorMessage, isPresented: $shouldShowSendError) {
+                    Button("OK", role: .cancel) { }
                 }
                 .onDisappear {
                     clearPINSettings()

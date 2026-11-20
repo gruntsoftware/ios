@@ -453,6 +453,15 @@ struct NewMainView: View {
                                              shouldShowView: $userDidTapSend)
                     }
                 }
+                .onChange(of: userDidTapSend) { wasShowingSend, isShowingSend in
+                    guard wasShowingSend, !isShowingSend,
+                          !newMainViewModel.bwTransaction.txIDString.isEmpty else { return }
+                    newMainViewModel.bwTransaction.txIDString = ""
+                    delay(2.0) {
+                        requestReview()
+                        debugPrint("did_request_rating")
+                    }
+                }
                 .translucentSheet(isPresented: $userDidTapBuyReceive,
                                   background: .ultraThinMaterial,
                                   showsDragIndicator: true) {
