@@ -1,0 +1,71 @@
+name: 🔢 Sync build number from TestFlight
+
+# Xcode Cloud numbers each build from its own counter and ignores the project's
+# CURRENT_PROJECT_VERSION. After the nightly TestFlight Build (02:00 London), this copies the
+# latest TestFlight build number into the project on develop, so local builds and the repo match
+# TestFlight. It commits only when the number changed.
+#
+# Scheduled runs use this file from the default branch (main), so the schedule starts once it
+# reaches main. Run it by hand from the Actions tab at any time.
+#
+# Secrets:
+#   ASC_KEY_ID, ASC_ISSUER_ID, ASC_PRIVATE_KEY  App Store Connect team API key, Developer role
+#   BUILD_NUMBER_SYNC_PAT                       grunt-claude-bot fine-grained token,
+#                                               Contents: read and write on this repo; the bot
+#                                               must be allowed to bypass develop's rules
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # 06:00 UTC: 06:00 London in winter, 07:00 in summer
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-build-number
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out develop
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          token: ${{ secrets.BUILD_NUMBER_SYNC_PAT }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyJWT
+        run: pip install "pyjwt[crypto]==2.10.1"
+
+      - name: Copy the latest TestFlight build number into the project
+        id: sync
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
+        run: |
+          python .github/scripts/sync_build_number.py \
+            --project brainwallet.xcodeproj/project.pbxproj \
+            --app-id 6444157498
+
+      - name: Commit and push to develop
+        if: steps.sync.outputs.changed == 'true'
+        env:
+          NEW: ${{ steps.sync.outputs.new }}
+          OLD: ${{ steps.sync.outputs.old }}
+        run: |
+          git config user.name  "grunt-claude-bot"
+          git config user.email "308083480+grunt-claude-bot@users.noreply.github.com"
+          git add brainwallet.xcodeproj/project.pbxproj
+          git commit -m "Sync build number to $NEW from TestFlight [skip ci]" \
+                     -m "CURRENT_PROJECT_VERSION $OLD -> $NEW, the latest build in App Store Connect."
+          # develop may have moved while this ran; rebase once and retry.
+          git push origin HEAD:develop || { git pull --rebase origin develop && git push origin HEAD:develop; }
