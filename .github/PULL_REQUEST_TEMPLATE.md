@@ -28,10 +28,11 @@
 - [ ] Code coverage percentage of the codebase: __%
 
 ## 🧑‍🔬 TestFlight What to Test (iOS PRs to develop)
-<!-- Each merge to develop becomes one TestFlight build. Replace the contents of
-     TestFlight/WhatToTest.en-US.txt with short steps QA should follow for this change.
-     If you don't, the build's notes fall back to this PR's merge commit message. -->
-- [ ] Updated `TestFlight/WhatToTest.en-US.txt` with steps for QA
+<!-- TestFlight Build runs once a day from develop. Its "What to Test" notes list every PR
+     merged since the previous build: the PR title, then a one- or two-sentence summary taken
+     from the squash commit (the first commit subjects, or the first sentences of the message).
+     Write a title QA can act on, and make the first commit subjects describe what changed. -->
+- [ ] PR title and first commit subjects describe the change for QA
 
 ## 📸 Screenshots/Videos
 <!-- Add screenshots or screen recordings of UI changes -->
