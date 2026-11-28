@@ -33,6 +33,19 @@ class APITests: XCTestCase {
 		}
 	}
 
+	func testLitecoinNodesReturnsUsablePeers() throws {
+		let done = expectation(description: "nodes api")
+		var peers: [ApiPeer]?
+		URLSessionLitecoinNodesFetcher().fetchNodes(timeout: ApiPeersRepository.fetchTimeout) { data in
+			peers = data.flatMap(ApiPeer.peers(fromNodesResponse:))
+			done.fulfill()
+		}
+		wait(for: [done], timeout: ApiPeersRepository.fetchTimeout + 2)
+		let result = try XCTUnwrap(peers)
+		XCTAssertFalse(result.isEmpty)
+		XCTAssertTrue(result.allSatisfy { $0.brPeer != nil })
+	}
+
 	func testfeePerKb() throws {
 		apiClient.feePerKb { fees, _ in
 			XCTAssertGreaterThan(fees.economy, 0)

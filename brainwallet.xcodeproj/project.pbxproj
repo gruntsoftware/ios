@@ -388,6 +388,7 @@
 		C3FACF6E2F9E025300886FAD /* MoonPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6D2F9E025300886FAD /* MoonPayView.swift */; };
 		C3FACF702F9E026500886FAD /* SocialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FACF6F2F9E026500886FAD /* SocialsView.swift */; };
 		C74016995BF8E51D0570D4A3 /* VariableBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907D0CB963306B3055BAA1B /* VariableBlurView.swift */; };
+		EFA110E01F1679764979D190 /* ApiPeersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FB1DE3B41244F6174696A3 /* ApiPeersRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -457,6 +458,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		07FB1DE3B41244F6174696A3 /* ApiPeersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPeersRepository.swift; sourceTree = "<group>"; };
 		22A9A95D1DF61FD0000F0016 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		22A9A95F1DF61FD8000F0016 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		22A9A9611DF61FE0000F0016 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1356,6 +1358,7 @@
 			isa = PBXGroup;
 			children = (
 				248E5C412DE7863C003F232F /* NetworkHelper.swift */,
+				07FB1DE3B41244F6174696A3 /* ApiPeersRepository.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -2914,6 +2917,7 @@
 				24DB05EC2E06B5BB00C57FE9 /* SettingsExpandingCurrencyView.swift in Sources */,
 				C312D4872D7DC27700BB97A4 /* Transaction.swift in Sources */,
 				248E5C422DE78653003F232F /* NetworkHelper.swift in Sources */,
+				EFA110E01F1679764979D190 /* ApiPeersRepository.swift in Sources */,
 				C312D48B2D7DC27700BB97A4 /* CreateWalletView.swift in Sources */,
 				24BFAF922F4B875D00DC0521 /* EmojiPhraseView.swift in Sources */,
 				C312D48F2D7DC27700BB97A4 /* SimpleRedux.swift in Sources */,
