@@ -121,6 +121,7 @@ class ApplicationController: Subscriber {
 				if let callback = callback {
 					self.store.removeAllSubscriptions()
 					self.store.perform(action: Reset())
+					self.kvStoreCoordinator = nil
 					self.setup()
 					DispatchQueue.walletQueue.async {
 						do {
@@ -216,7 +217,7 @@ class ApplicationController: Subscriber {
         do {
             let decodedPayload = try JSONDecoder().decode(GameExitPayload.self, from: data)
             let decodedObject = decodedPayload.exitData   // was: the whole decoded object
-            
+
             userIsPostingToSocial = decodedObject.socialNetwork == "twitter"
             || decodedObject.socialNetwork == "instagram"
 
@@ -429,7 +430,7 @@ class ApplicationController: Subscriber {
 	private func setupRootViewController() {
 		mainViewController = MainViewController(store: store)
 		window?.rootViewController = mainViewController
-        
+
 	}
 
 	private func startDataFetchers() {
