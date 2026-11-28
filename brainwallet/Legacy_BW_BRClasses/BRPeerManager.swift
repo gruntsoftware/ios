@@ -70,10 +70,28 @@ class BRPeerManager {
 		return BRPeerManagerConnectStatus(cPointer) == BRPeerStatusConnected
 	}
 
-	// connect to litecoin peer-to-peer network (also call this whenever networkIsReachable() status changes)
 	func connect() {
 		applyTrustedNodePreference()
+		applyApiPeers()
 		BRPeerManagerConnect(cPointer)
+	}
+
+	private func applyApiPeers() {
+		var apiPeers: [ApiPeer] = []
+		if syncMode == .random_mainnet,
+		   RemoteConfigHelper.sharedInstance.getBool(key: RemoteConfigKeys.KEY_FEATURE_SELECTED_PEERS_ENABLED.rawValue,
+		                                              defaultValue: true) {
+			apiPeers = Thread.isMainThread ? ApiPeersRepository.shared.cachedPeers() : ApiPeersRepository.shared.fetchPeers()
+		}
+		let accepted = setApiPeers(apiPeers)
+		debugPrint("::: applyApiPeers: core accepted \(accepted) of \(apiPeers.count) api peer(s)")
+	}
+
+	// replaces core's api peers, returns how many it accepted
+	@discardableResult
+	func setApiPeers(_ apiPeers: [ApiPeer]) -> Int {
+		let peers = apiPeers.compactMap(\.brPeer)
+		return peers.withUnsafeBufferPointer { BRPeerManagerSetApiPeers(cPointer, $0.baseAddress, $0.count) }
 	}
 
 	private func applyTrustedNodePreference() {
